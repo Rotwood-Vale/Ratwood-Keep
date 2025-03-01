@@ -4,10 +4,29 @@
 		var/targloc = get_turf(target)
 		ready_proj(target, user, quiet, zone_override, fired_from)
 		if(distro) //We have to spread a pixel-precision bullet. throw_proj was called before so angles should exist by now...
-			if(randomspread)
-				spread = round((rand() - 0.5) * distro)
-			else //Smart spread
-				spread = round((i / pellets - 0.5) * distro)
+			// REDMOON ADD START - ranged_weapon_balancing - нулевой разброс при хорошей удаче и максимальный при плохой
+			if(user.goodluck(4))
+				to_chat(user, "LUCKY SHOT! Right in the spot!")
+				spread = 0
+			else if(user.badluck(4))
+				to_chat(user, "DAMN! UNLUCK, HAND SLIPPED!")
+				spread = 10 // сильно в бок
+			else
+			// REDMOON ADD END
+				if(randomspread)
+					spread = rand(0, distro) // REDMOON EDIT - изменяем механику разброса - WAS round((my_spread - 0.5) * distro)		
+				else //Smart spread
+					spread = round((i / pellets - 0.5) * distro)
+				// REDMOON ADD START
+				// ranged_weapon_balancing - снижение разброса в зависимости от навыков стреляющего
+				if(user.buckled)
+					if(isanimal(user.buckled)) // TODO: добавить сюда обходку для набегателей с конными лучниками
+						to_chat(user, span_warning("It's hard to shoot accurate while mounting!"))
+						spread += 4.5
+				// ranged_weapon_balancing - снижение разброса в зависимости от навыков стреляющего
+				var/obj/item/weapon = fired_from
+				spread = max(0, spread - user.mind.get_skill_level(weapon.associated_skill) * 3)
+				// REDMOON ADD END
 		if(!throw_proj(target, targloc, user, params, spread))
 			return 0
 		if(i > 1)

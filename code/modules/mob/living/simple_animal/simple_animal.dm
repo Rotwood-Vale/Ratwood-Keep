@@ -740,6 +740,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				riding_datum.vehicle_move_delay -= 1
 				if(loc != oldloc)
 					var/turf/open/T = loc
+					riding_datum.vehicle_move_delay += min(2,5, T.slowdown) // REDMOON ADD - сайга больше не гонщик в реке
 					if(!do_footstep && T.footstep)
 						do_footstep = TRUE
 						playsound(loc,pick('sound/foley/footsteps/hoof/horserun (1).ogg','sound/foley/footsteps/hoof/horserun (2).ogg','sound/foley/footsteps/hoof/horserun (3).ogg'), 100, TRUE)
@@ -748,6 +749,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			else
 				if(loc != oldloc)
 					var/turf/open/T = loc
+					riding_datum.vehicle_move_delay += T.slowdown // REDMOON ADD - сайга больше не гонщик в реке
 					if(!do_footstep && T.footstep)
 						do_footstep = TRUE
 						playsound(loc,pick('sound/foley/footsteps/hoof/horsewalk (1).ogg','sound/foley/footsteps/hoof/horsewalk (2).ogg','sound/foley/footsteps/hoof/horsewalk (3).ogg'), 100, TRUE)

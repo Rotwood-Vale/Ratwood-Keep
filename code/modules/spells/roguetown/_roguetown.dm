@@ -109,4 +109,6 @@
 				P.vv_edit_var(V, projectile_var_overrides[V])
 		ready_projectile(P, target, user, i)
 		P.fire()
+		if(fears_mount) // REDMOON ADD - hard_to_cast_spells_while_riding - при касте маунт испугается и сбросит всадника
+			mount_fear_check(user) // REDMOON ADD
 	return TRUE
