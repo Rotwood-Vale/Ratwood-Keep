@@ -2189,6 +2189,7 @@
 #include "modular_redmoon\code\modules\roguetown\roguejobs\artifcier\artifcier_recipes.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\armor.dm"
 #include "modular_redmoon\code\modules\roguetown\roguejobs\blacksmith\anvil_recipes\weapons.dm"
+#include "modular_redmoon\code\modules\roguetown\roguestock\import.dm"
 #include "modular_redmoon\code\modules\spells\minion_order.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\necromancer.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\ravox.dm"
