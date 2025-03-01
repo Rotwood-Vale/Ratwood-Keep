@@ -90,26 +90,65 @@
 	M.adjustFireLoss(1, 0)
 
 
-/datum/reagent/medicine/manapot
-	name = "Mana Potion"
+//lesser and greater mana potions
+/datum/reagent/medicine/lessermanapot
+	name = "Lesser Mana Potion"
 	description = "Gradually regenerates stamina."
 	reagent_state = LIQUID
-	color = "#0000ff"
-	taste_description = "manna"
+	color = "#00e1ff"
+	taste_description = "cold oil and fish"
 	overdose_threshold = 0
 	metabolization_rate = 20 * REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 210
 
-/datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/lessermanapot/on_mob_life(mob/living/carbon/M)
 	M.energy_add(100)
 	..()
 	. = 1
+
+/datum/reagent/medicine/manapot
+	name = "Mana Potion"
+	description = "Gradually regenerates stamina and removes tiredness."
+	reagent_state = LIQUID
+	color = "#0077ff"
+	taste_description = "manna"
+	overdose_threshold = 0
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
+	M.energy_add(200)
+	..()
+	. = 1
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_stress(/datum/stressevent/sleepytime)
+
+/datum/reagent/medicine/greatermanapot
+	name = "Greater Mana Potion"
+	description = "Gradually regenerates stamina and removes tiredness."
+	reagent_state = LIQUID
+	color = "#0000ffc9"
+	taste_description = "pure manna"
+	overdose_threshold = 0 //effectively a energy drink, no reason to add a overdose unlike health
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/greatermanapot/on_mob_life(mob/living/carbon/M)
+	M.energy_add(400)
+	..()
+	. = 1
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_stress(/datum/stressevent/sleepytime)
+		M.Sleeping(-40)
+		M.apply_status_effect(/datum/status_effect/buff/greatermanabuff)
 
 /datum/reagent/berrypoison
 	name = "Berry Poison"
 	description = "Contains a poisonous thick, dark purple liquid."
 	reagent_state = LIQUID
-	color = "#00B4FF"
+	color = "#00ffdd"  //more cyan/greenish to differ from mana
 	metabolization_rate = 0.1
 
 /datum/reagent/berrypoison/on_mob_life(mob/living/carbon/M)
