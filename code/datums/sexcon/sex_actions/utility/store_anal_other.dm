@@ -6,7 +6,7 @@
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_ANUS))
 		return FALSE
-	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/vagina)
+	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/anus)
 	if(!targetass)
 		return FALSE
 	if(targetass.contents.len)
@@ -20,7 +20,7 @@
 		return FALSE
 	if(!target.getorganslot(ORGAN_SLOT_ANUS))
 		return FALSE
-	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/vagina)
+	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/anus)
 	if(targetass.contents.len)
 		return TRUE
 	if(!get_insertable_in_hand(user))
@@ -29,7 +29,7 @@
 
 /datum/sex_action/store_ass_other/on_start(mob/living/user, mob/living/target)
 	var/obj/item/useditem = user.get_active_held_item()
-	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/vagina)
+	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/anus)
 	if(istype(useditem, /obj/item/rogueweapon))
 		to_chat(user, span_userdanger("[useditem] may cut [target] while i put it in, depending on my precision of hand."))
 	if(user.m_intent != MOVE_INTENT_SNEAK && !targetass.contents.len)
@@ -39,7 +39,7 @@
 
 /datum/sex_action/store_ass_other/is_finished(mob/living/user, mob/living/target)
 	var/obj/item/useditem = user.get_active_held_item()
-	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/vagina)
+	var/obj/item/organ/anus/targetass = target.getorgan(/obj/item/organ/anus)
 	var/mob/living/carbon/human/targetussy = user
 	var/stealskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/stealing))
 	var/medicineskill =  max(1,user.mind.get_skill_level(/datum/skill/misc/treatment))
