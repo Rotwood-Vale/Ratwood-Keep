@@ -11,7 +11,7 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "Owner of the Whitevein Lounge, you take care of the "workers" under your care."
+	tutorial = "Owner of the Whitevein Lounge, you take care of the workers under your care."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman
