@@ -2,7 +2,6 @@
 	title = "Court Magos"
 	flag = WIZARD
 	department_flag = NOBLEMEN
-	selection_color = JCOLOR_NOBLE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
