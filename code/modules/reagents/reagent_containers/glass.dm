@@ -8,7 +8,7 @@
 	reagent_flags = OPENCONTAINER|REFILLABLE
 	obj_flags = CAN_BE_HIT
 	spillable = TRUE
-	possible_item_intents = list(/datum/intent/fill, INTENT_POUR, INTENT_SPLASH,INTENT_GENERIC)
+	possible_item_intents = list(/datum/intent/fill, INTENT_SPLASH, INTENT_POUR, INTENT_GENERIC)
 	resistance_flags = ACID_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
