@@ -171,7 +171,7 @@
 
 /datum/supply_pack/rogue/bandit/Clothing/Dragonscale
 	name = "Dragonscale Necklace"
-	cost = 2000
+	cost = 3000
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)
 
 /datum/supply_pack/rogue/bandit/Clothing/Dragonscale_ring

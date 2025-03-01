@@ -315,3 +315,33 @@
 							to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 							to_chat(H, (span_cultsmall(pick(ravoxlines))))		
 						H.add_stress(/datum/stressevent/soulchurner)
+
+// /datum/controller/subsystem/minor_mapping/Initialize(timeofday)
+// 	. = ..()
+// 	var/turf/target_dirt
+// 	var/list/potential_targets = list()
+// 	for(var/area_type in GLOB.areas_in_town)
+// 		for(var/turf/turf in GLOB.areas_by_type[area_type])
+// 			if(!istype(turf, /turf/open/floor/rogue/dirt))
+// 				continue
+// 			potential_targets += turf
+
+// 	target_dirt = safepick(potential_targets)
+// 	var/obj/item/paper/scroll/target_scroll1
+// 	if(!target_dirt)
+// 		log_runtime("Уважаемые кодеры, вы пидорасы. target_dirt отсутствует.")
+// 		return
+// 	new /obj/structure/reliquarybox(target_dirt)
+// 	potential_targets -= target_dirt
+
+// 	target_dirt = safepick(potential_targets)
+// 	if(!target_dirt)
+// 		log_runtime("Уважаемые кодеры, вы пидорасы X2. target_dirt отсутствует.")
+// 		return
+// 	new /obj/item/roguekey/psydonkey(target_dirt)
+
+// /obj/item/paper/scroll/reliquarybox
+// 	desc = "Координаты: [src.x], [src.y], [src.z] (Reliquary Box)"
+
+// /obj/item/paper/scroll/psydonkey
+// 	desc = "Координаты: [src.x], [src.y], [src.z] (Reliquary Key)"
