@@ -731,14 +731,14 @@
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 22.5)
-	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 24, /datum/reagent/alch/syrum_swamp_weed = 24)
+	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
 
 	
 /datum/chemical_reaction/alch/greatermana
 	name = "greater mana pot"
 	id = /datum/reagent/medicine/greatermanapot
 	results = list(/datum/reagent/medicine/greatermanapot = 22.5)
-	required_reagents = list(/datum/reagent/medicine/manapot = 24, /datum/reagent/alch/syrum_poison_berry = 24)
+	required_reagents = list(/datum/reagent/medicine/manapot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
 
 /*documentation: 15 oz = 45 units, 1 oz = 3 units.
 2 lesser makes 1 normal bottle, 2 normal makes 1 greater bottle
