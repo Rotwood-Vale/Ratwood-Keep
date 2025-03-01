@@ -197,7 +197,12 @@
 	if(user.mouth)
 		to_chat(user, span_warning("My mouth has something in it."))
 		return FALSE
-
+	// REDMOON ADD START - summons_cannot_attack_master - призванное существо в обычных условиях не может атаковать своего хозяина
+	if(user.summoner == src.real_name)
+		to_chat(src, span_notice("I felt an urge in [user] to bite me... Pathetic."))
+		to_chat(user, span_danger("I... Must not... Harm... My master..."))
+		return FALSE
+	// REDMOON ADD END				face_atom(A)
 	var/datum/intent/bite/bitten = new()
 	if(checkdefense(bitten, user))
 		return FALSE
@@ -422,8 +427,6 @@
 				if(HAS_TRAIT(src, TRAIT_NO_BITE))
 					to_chat(src, span_warning("I can't bite."))
 					return
-				changeNext_move(mmb_intent.clickcd)
-				face_atom(A)
 				A.onbite(src)
 				return
 			if(INTENT_STEAL)

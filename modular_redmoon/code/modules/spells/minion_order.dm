@@ -31,7 +31,7 @@
 	// Target is another mob
 	else if(ismob(target))
 		var/mob/living/mob_target = target
-		if(caster.faction_check_mob(target) || (mob_target.summoner && mob_target.summoner == caster.name))
+		if(mob_target.summoner && mob_target.summoner == caster.real_name)  // REDMOON EDIT - ai_fixes - замена name на real_name, т.к. кастер может надеть маску - WAS: caster.name
 			src.process_minions(order_type = "aggressive", target = target)
 			return
 		else
@@ -48,15 +48,20 @@
 	var/msg = ""
 
 	for (var/mob/other_mob in oview(src.order_range, caster))
-		if (istype(other_mob, /mob/living/simple_animal) && !other_mob.client) // Only simple_mobs for now
-			var/mob/living/simple_animal/minion = other_mob
+		if(!other_mob.client) // REDMOON EDIT - ai_fixes - убирание проверки на симпл-моба, чтобы можно было интереснее играть некроманту - WAS if(istype(other_mob, /mob/living/simple_animal) && !other_mob.client)
+			var/mob/living/minion = other_mob // REDMOON EDIT - ai_fixes - замена var/mob/living/simple_animal/minion на var/mob/living/minion, чтобы некромант мог контролировать поднятых из людей скелетов без игроков
 
-			if ((faction_ordering && caster.faction_check_mob(minion)) || (!faction_ordering && minion.summoner == caster.name))
-
+			if ((faction_ordering && caster.faction_check_mob(minion)) || (!faction_ordering && minion.summoner == caster.real_name)) // REDMOON EDIT - ai_fixes - замена name на real_name, т.к. кастер может надеть маску - WAS: caster.name
+				if(!minion.ai_controller) // REDMOON ADD - ai_fixes - Если за скелета зайдёт игрок и выйдет из него, то получится моб без ИИ. Нужно в будущем прикрутить ИИ.
+					continue // REDMOON ADD
+				minion.ai_controller.CancelActions() // REDMOON ADD - отмена всех приказов
 				minion.ai_controller.clear_blackboard_key(BB_FOLLOW_TARGET)
+				minion.ai_controller.ordered_to_attack = null // REDMOON ADD - сброс приказа на атаку
+				/* REDMOON REMOVAL START - ai_fixes - CancelActions() уже делает это
 				minion.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 				minion.ai_controller.clear_blackboard_key(BB_TRAVEL_DESTINATION)
 				minion.ai_controller.clear_blackboard_key(BB_BASIC_MOB_RETALIATE_LIST)
+				/ REDMOON REMOVAL END */
 				count += 1
 				switch (order_type)
 					if ("goto")
@@ -71,6 +76,7 @@
 						//minion.balloon_alert(caster, "Returning to my natural state.")
 						msg = "roam free."
 					if ("attack")
+						minion.ai_controller.ordered_to_attack = target // REDMOON ADD - отдача приказа на атаку цели независимо от фракции
 						minion.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
 						//minion.balloon_alert(caster, "Attacking [target.name].")
 						msg = "attack [target.name]"

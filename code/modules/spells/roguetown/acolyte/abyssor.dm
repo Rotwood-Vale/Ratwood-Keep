@@ -111,7 +111,12 @@
 	if(isopenturf(T))
 		if(!user.mind.has_spell(/obj/effect/proc_holder/spell/invoked/minion_order))
 			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
-		new /mob/living/simple_animal/hostile/retaliate/rogue/mossback(T, user, townercrab)
+		var/mob/pet = new /mob/living/simple_animal/hostile/retaliate/rogue/mossback(T, user, townercrab) // REDMOON EDIT - ai_fixes - добавлена привязка к миньонам в начале
+		// REDMOON ADD START - ai_fixes
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.minions += pet
+		// REDMOON ADD END
 		return TRUE
 	else
 		to_chat(user, span_warning("The targeted location is blocked. My call fails to draw a mossback."))

@@ -30,7 +30,7 @@
 	. = ..()
 	if(timeleft)
 		QDEL_IN(src, timeleft) //delete after it runs out, see code/modules/mob/living/simple_animal/rogue/creacher/familiar.dm for timeleft var
-	summoner = user
+	summoner = user.real_name // REDMOON EDIT - ai_fixes - замена name на real_name, т.к. кастер может надеть маску - WAS: user.name
 	faction += "[REF(summoner)]" //this makes them care about the summoner
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/PickTarget(list/Targets)//Step 3, pick amongst the possible, attackable targets

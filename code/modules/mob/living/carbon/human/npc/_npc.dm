@@ -244,6 +244,10 @@
 	if(aggressive && !faction_check_mob(L))
 		return TRUE
 
+	// REDMOON ADD START - summons_cannot_attack_master - призванное существо в обычных условиях не может атаковать своего хозяина
+	if(summoner == L.real_name)
+		return
+	// REDMOON ADD END
 	return FALSE
 
 /mob/living/carbon/human/proc/handle_combat()

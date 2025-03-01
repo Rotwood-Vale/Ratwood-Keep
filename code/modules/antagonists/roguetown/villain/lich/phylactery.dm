@@ -1,3 +1,4 @@
+/* REDMOO REMOVAL START - старый и ненадёжный код филактерия
 /obj/item/phylactery
 	name = "phylactery"
 	desc = "Looks like it is filled with some intense power."
@@ -23,3 +24,4 @@
 		possessor.owner.current.forceMove(get_turf(src))
 		possessor.rise_anew()
 		qdel(src)
+/ REDMOON REMOVAL END*/

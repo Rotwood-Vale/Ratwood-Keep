@@ -119,14 +119,14 @@
 /mob/living/simple_animal/hostile/rogue/skeleton/Initialize(mapload, mob/user, cabal_affine = FALSE)
 	. = ..()
 	if(user)
-		summoner = user.name
+		summoner = user.real_name // REDMOON EDIT - ai_fixes - замена name на real_name, т.к. кастер может надеть маску - WAS: user.name
 		if (cabal_affine)
 			faction |= "cabal"
 
 /mob/living/simple_animal/hostile/rogue/skeleton/Life()
 	. = ..()
 	if(!target)
-		if(prob(60))
+		if(prob(2)) // REDMOON EDIT - оно нереально спамит для некромантов, снижен шанс - WAS: if(prob(60))
 			emote(pick("idle"), TRUE)
 
 /mob/living/simple_animal/hostile/rogue/skeleton/taunted(mob/user)

@@ -44,6 +44,7 @@
 			if(VD)
 				dust(just_ash=TRUE,drop_items=TRUE)
 				return
+		/* REDMOON REMOVAL START - старый код взаимодействия с филактериев - сейчас не используется
 		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
 		if (L && !L.out_of_lives)
 			if(L.consume_phylactery())
@@ -56,6 +57,7 @@
 				L.out_of_lives = TRUE
 				gib()
 				return
+		/ REDMOON REMOVAL END */
 
 	if(!gibbed)
 		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)

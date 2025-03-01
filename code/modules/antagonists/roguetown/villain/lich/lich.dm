@@ -40,6 +40,7 @@
 	L.update_body_parts(redraw = TRUE)
 
 /datum/antagonist/lich/proc/equip_lich()
+	redmoon_lich_fixes() // REDMOON ADD - lich_fixes - пакет исправлений для лича
 	owner.unknow_all_people()
 	for(var/datum/mind/MF in get_minds())
 		owner.become_unknown_to(MF)
@@ -135,19 +136,19 @@
 
 /datum/outfit/job/roguetown/lich/post_equip(mob/living/carbon/human/H)
 	..()
-	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
-	for(var/i in 1 to 3)
-		var/obj/item/phylactery/new_phylactery = new(H.loc)
-		lichman.phylacteries += new_phylactery
-		new_phylactery.possessor = lichman
-		H.equip_to_slot_or_del(new_phylactery,SLOT_IN_BACKPACK, TRUE)
-
+//	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
+//	for(var/i in 1 to 3)
+	var/obj/item/phylactery/new_phylactery = new /obj/item/phylactery(H.loc, H.mind)
+//		lichman.phylacteries += new_phylactery
+//		new_phylactery.possessor = lichman
+	H.equip_to_slot_if_possible(new_phylactery, SLOT_IN_BACKPACK)
+	/* REDMOON REMOVAL START - старый код филактерия 
 /datum/antagonist/lich/proc/consume_phylactery(timer = 10 SECONDS)
 	for(var/obj/item/phylactery/phyl in phylacteries)
 		phyl.be_consumed(timer)
 		phylacteries -= phyl
 		return TRUE
-
+	/ REDMOON REMOVAL END */
 /datum/antagonist/lich/proc/rise_anew()
 	var/mob/living/carbon/human/bigbad = owner.current
 	bigbad.revive(TRUE, TRUE)
@@ -165,3 +166,13 @@
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(bigbad)
+	// REDMOON ADD START - lich_fixes - некромант после спавна из филактерии появляется как новый персонаж. Даём нужные статы
+	bigbad.ambushable = FALSE
+	bigbad.change_stat("strength", -1)
+	bigbad.change_stat("intelligence", 10)
+	bigbad.change_stat("constitution", 10)
+	bigbad.change_stat("endurance", -1)
+	bigbad.change_stat("speed", -1)
+	bigbad.set_patron(/datum/patron/zizo)
+	skele_look()
+	// REDMOON ADD END

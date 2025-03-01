@@ -77,9 +77,14 @@
 
 /datum/ai_behavior/find_and_set/dead_bodies/search_tactic(datum/ai_controller/controller, locate_paths, search_range)
 	var/list/found = list()
+	var/mob/owner = controller.pawn // REDMOON ADD - ai_fixes
 	for(var/mob/living/mob in oview(search_range, controller.pawn))
 		if(mob.stat == CONSCIOUS)
 			continue
+		// REDMOON ADD START - ai_fixes - призванные существа не жрут союзников
+		if(owner.faction_check_mob(mob) && controller.ordered_to_attack != mob) // пфофксить, что он сначала атакует
+			continue
+		// REDMOON ADD END
 		found |= mob
 	if(!length(found))
 		return null

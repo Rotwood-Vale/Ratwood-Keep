@@ -17,14 +17,19 @@
 /datum/targetting_datum/basic/can_attack(mob/living/living_mob, atom/the_target)
 	if(isturf(the_target) || !the_target ) // bail out on invalids
 		return FALSE
-	var/mob/living/simple_animal/attacker = living_mob
-	if(attacker.binded == TRUE)
-		return FALSE
+	if(isanimal(living_mob)) // REDMOON ADD - ai_fixes - для NPC под управлением некроманта
+		var/mob/living/simple_animal/attacker = living_mob
+		if(attacker.binded == TRUE)
+			return FALSE
 
 	if(ismob(the_target)) //Target is in godmode, ignore it.
 		var/mob/M = the_target
 		if(M.status_flags & GODMODE)
 			return FALSE
+		// REDMOON ADD START - ai_fixes - фикс атаки призываемого волка по своему хозяину
+		if(living_mob.summoner == M.real_name) // запрещаем саммонам даже думать об атаке хозяина
+			return FALSE 
+		// REDMOON ADD END
 
 	if(living_mob.see_invisible < the_target.invisibility)//Target's invisible to us, forget it
 		return FALSE
@@ -35,7 +40,8 @@
 	if(isliving(the_target)) //Targetting vs living mobs
 		var/mob/living/L = the_target
 		if(faction_check(living_mob, L) || L.stat)
-			return FALSE
+			if(living_mob.ai_controller.ordered_to_attack != the_target) // REDMOON ADD - ai_fixes - позволяет атаковать персонажа той же фракции по приказу хозяина
+				return FALSE
 		return TRUE
 
 	return FALSE

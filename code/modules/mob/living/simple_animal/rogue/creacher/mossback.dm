@@ -35,14 +35,18 @@
 	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/combat/wooshes/blunt/wooshhuge (1).ogg','sound/combat/wooshes/blunt/wooshhuge (2).ogg','sound/combat/wooshes/blunt/wooshhuge (3).ogg')
-	dodgetime = 0
+	dodgetime = 30 // REDMOON EDIT - ai_fixes - большой и сильный, КД на додж повышено, иначе он быстрее волка - WAS: 0
 	aggressive = 1
-//	stat_attack = UNCONSCIOUS
+	stat_attack = UNCONSCIOUS // REDMOON ADD - ai_fixes - включаем ИИ моба
+	can_have_ai = FALSE // REDMOON ADD - ai_fixes - включаем ИИ моба
+	AIStatus = AI_OFF// REDMOON ADD - ai_fixes - включаем ИИ моба
+	body_eater = 1 // REDMOON ADD - ai_fixes - включаем ИИ моба
+	ai_controller = /datum/ai_controller/mossback // REDMOON ADD - ai_fixes - включаем ИИ моба
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mossback/Initialize(mapload, mob/user, townercrab = FALSE)
 	. = ..()
 	if(user)
-		summoner += user.name
+		summoner += user.real_name // REDMOON EDIT - ai_fixes - замена name на real_name, т.к. кастер может надеть маску - WAS: user.name
 		if (townercrab)
 			faction = list("neutral")
 			tamed(1)
