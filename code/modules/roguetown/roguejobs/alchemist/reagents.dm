@@ -99,7 +99,7 @@
 	taste_description = "cold oil and fish"
 	overdose_threshold = 0
 	metabolization_rate = 20 * REAGENTS_METABOLISM
-	alpha = 210
+	alpha = 220
 
 /datum/reagent/medicine/lessermanapot/on_mob_life(mob/living/carbon/M)
 	M.energy_add(100)
@@ -114,7 +114,7 @@
 	taste_description = "manna"
 	overdose_threshold = 0
 	metabolization_rate = 20 * REAGENTS_METABOLISM
-	alpha = 210
+	alpha = 220
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
 	M.energy_add(200)
