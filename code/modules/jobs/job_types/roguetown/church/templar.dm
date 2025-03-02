@@ -21,6 +21,18 @@
 /datum/outfit/job/roguetown/templar
 	allowed_patrons = ALL_CLERIC_PATRONS
 
+/datum/job/roguetown/templar/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/title = "Brother"
+		if(H.gender == FEMALE)
+			title = "Sister"
+		H.real_name = "[title] [prev_real_name]"
+		H.name = "[title] [prev_name]"
+
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
