@@ -365,15 +365,15 @@
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
 
-/obj/item/storage/belt/rogue/leather/overseer
-    name = "belt with pouches"
-    desc = "Leather belt with some pouches attached."
-    icon_state = "overseerbelt"
-    item_state = "overseerbelt"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    sellprice = 15
-    w_class = WEIGHT_CLASS_BULKY
+// /obj/item/storage/belt/rogue/leather/overseer
+//     name = "belt with pouches"
+//     desc = "Leather belt with some pouches attached."
+//     icon_state = "overseerbelt"
+//     item_state = "overseerbelt"
+//     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+//     mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+//     sellprice = 15
+//     w_class = WEIGHT_CLASS_BULKY
 
 //----------------- MORE AZURE SPRITEWORK ---------------------
 

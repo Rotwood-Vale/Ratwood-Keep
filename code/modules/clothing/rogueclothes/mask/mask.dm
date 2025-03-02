@@ -286,15 +286,15 @@
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
 
-/obj/item/clothing/mask/rogue/overseer
-    name = "cloth hood"
-    desc = "You wouldn't hide your face if there was no reason for."
-    icon_state = "overseerhood"
-    item_state = "overseerhood"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
-    body_parts_covered = FACE|EARS|MOUTH|NECK
-    slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
-    experimental_onhip = TRUE
-    sewrepair = TRUE
+// /obj/item/clothing/mask/rogue/overseer
+//     name = "cloth hood"
+//     desc = "You wouldn't hide your face if there was no reason for."
+//     icon_state = "overseerhood"
+//     item_state = "overseerhood"
+//     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+//     mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+//     flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
+//     body_parts_covered = FACE|EARS|MOUTH|NECK
+//     slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+//     experimental_onhip = TRUE
+//     sewrepair = TRUE
