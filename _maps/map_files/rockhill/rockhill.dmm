@@ -12679,6 +12679,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
+"guc" = (
+/obj/structure/reliquarybox,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "guN" = (
 /obj/structure/roguewindow/curtain,
 /turf/open/floor/rogue/herringbone,
@@ -18210,6 +18214,7 @@
 /area/rogue/indoors/town/shop)
 "jlY" = (
 /obj/structure/table/vtable/v2,
+/obj/item/roguekey/psydonkey,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
 "jma" = (
@@ -253228,7 +253233,7 @@ qpb
 myB
 txa
 sGZ
-iTw
+guc
 iSR
 gSK
 cTA
