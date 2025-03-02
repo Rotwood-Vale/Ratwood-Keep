@@ -51,3 +51,18 @@
 	name = "bottle of mercury"
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/mercury)
+
+/datum/supply_pack/rogue/bandit/Mage/magic_dagger
+	name = "Glowing Purple Silver Dagger"
+	cost = 1500
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
+
+/datum/supply_pack/rogue/bandit/Mage/chalk
+	name = "Stick of Chalk"
+	cost = 150
+	contains = list(/obj/item/chalk)
+
+/datum/supply_pack/rogue/bandit/Mage/manaseed
+	name = "Manabloom Seeds"
+	cost = 300
+	contains = list(/obj/item/seeds/manabloom)
