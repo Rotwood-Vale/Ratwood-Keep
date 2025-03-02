@@ -96,10 +96,22 @@
 	desc = "Lengths of cloth for sewing and tailoring."
 	item_type = /obj/item/natural/cloth
 	held_items = list(0, 2)
-	payout_price = 3
-	withdraw_price = 5
+	payout_price = 2
+	withdraw_price = 3
 	transport_fee = 2
-	export_price = 5
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 2
+
+/datum/roguestock/stockpile/silk
+	name = "Silk"
+	desc = "Lengths of silk for sewing and tailoring."
+	item_type = /obj/item/natural/silk
+	held_items = list(0, 2)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 2
+	export_price = 3
 	importexport_amt = 10
 	passive_generation = 2
 
@@ -109,9 +121,9 @@
 	item_type = /obj/item/natural/fibers
 	held_items = list(0, 2)
 	payout_price = 1
-	withdraw_price = 3
+	withdraw_price = 1
 	transport_fee = 1
-	export_price = 3
+	export_price = 1
 	importexport_amt = 10
 	passive_generation = 4
 
