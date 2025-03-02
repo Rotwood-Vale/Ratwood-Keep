@@ -86,8 +86,6 @@
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSmobs.wait/30)
 
-#define STAMINA_REGEN_BLOCK_TIME (10 SECONDS)
-
 #define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 1 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
@@ -431,6 +429,7 @@
 #define SKIN_COLOR_EBON "4e3729"
 
 //AASIMAR SKIN TONES
+#define SKIN_COLOR_ARCHON "feddcd"
 #define SKIN_COLOR_PLANETAR "ffd859"
 #define SKIN_COLOR_DEVA "b6f1f2"
 #define SKIN_COLOR_SOLAR "daeaeb"
@@ -438,7 +437,7 @@
 #define SKIN_COLOR_GAEIA "db874f"
 #define SKIN_COLOR_CELESTIAL "e1c565"
 #define SKIN_COLOR_OLYMPIA "c7f9cc"
-#define SKIN_COLOR_NECRAL "23130c"
+#define SKIN_COLOR_NECRAL "6e483c"
 #define SKIN_COLOR_ABYSSAL "22577a"
 
 //HALF ELF SKIN TONES
@@ -454,6 +453,7 @@
 #define SKIN_COLOR_BLACK_HAMMER "09371A"
 #define SKIN_COLOR_SHELLCREST "3C5166"
 #define SKIN_COLOR_SKULL_SEEKER "292413"
+#define SKIN_COLOR_LIGHT_RAIDER "9F9149"
 
 //TIEFLING SKIN TONES
 #define SKIN_COLOR_ZARIEL "DBA960"

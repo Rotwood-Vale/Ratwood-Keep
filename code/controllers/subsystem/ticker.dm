@@ -185,11 +185,7 @@ SUBSYSTEM_DEF(ticker)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = LAZYLEN(GLOB.new_player_list)
-			totalPlayersReady = 0
-			for(var/i in GLOB.new_player_list)
-				var/mob/dead/new_player/player = i
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					++totalPlayersReady
+			totalPlayersReady = num_players(TRUE)
 
 			if(start_immediately)
 				timeLeft = 0
@@ -206,15 +202,9 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			if(timeLeft <= 0)
-				if(!checkreqroles())
-/*					if(failedstarts >= 13)
-						current_state = GAME_STATE_SETTING_UP
-						Master.SetRunLevel(RUNLEVEL_SETUP)
-						if(start_immediately)
-							fire()
-					else*/
-					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
+				if(!checkreqroles()) // Unable to find a duke.
+					current_state = GAME_STATE_PREGAME
+					start_at = world.time + 60 SECONDS
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
@@ -227,7 +217,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
-				start_at = world.time + 600
+				start_at = world.time + 60 SECONDS
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
@@ -248,7 +238,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/checkreqroles()
 	var/list/readied_jobs = list()
-	var/list/required_jobs = list()
+	var/list/required_jobs = list("Duke")
+
+	// Start now server button
+	if(start_immediately)
+		job_change_locked = TRUE
+		return TRUE
 
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -261,6 +256,13 @@ SUBSYSTEM_DEF(ticker)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
 					readied_jobs.Add(V)
+
+#ifndef FASTLOAD
+	if(!("Duke" in readied_jobs))
+		var/list/stuffy = list("Set Duke to 'high' in your class preferences to start the game!", "PLAY Duke NOW!", "A Duke is required to start.", "Pray for a Duke.", "One day, there will be a Duke.", "Just try playing Duke.", "If you don't play Duke, the game will never start.", "We need at least one Duke to start the game.", "We're waiting for you to pick Duke to start.", "Still no Duke is readied..", "I'm going to lose my mind if we don't get a Duke readied up.","No. The game will not start because there is no Duke.")
+		to_chat(world, span_purple("[pick(stuffy)]"))
+		return FALSE
+#endif
 
 	job_change_locked = TRUE
 	return TRUE
@@ -379,6 +381,22 @@ SUBSYSTEM_DEF(ticker)
 
 		transfer_characters()	//transfer keys to the new mobs
 		log_game("GAME SETUP: transfer characters success")
+
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			if(H.client)
+				var/datum/job/J = SSjob.GetJob(H.job)
+				if(!J)
+					continue
+				if(SSjob.GetJob(H.job).family_blacklisted)
+					continue
+				if(SSfamily.special_role_blacklist.Find(H.mind.special_role))
+					continue
+				if(H.client.prefs.family == FAMILY_FULL)
+					SSfamily.family_candidates += H
+
+
+		SSfamily.SetupLordFamily()
+		SSfamily.SetupFamilies()
 
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
@@ -744,6 +762,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	SStriumphs.end_triumph_saving_time()
+
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time

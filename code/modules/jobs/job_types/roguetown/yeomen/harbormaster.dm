@@ -5,14 +5,14 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = list(/datum/species/akula, /datum/species/human/northern, /datum/species/lizardfolk)
+	allowed_races = list(/datum/species/axian, /datum/species/human/northern, /datum/species/lizardfolk)
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "A long retired captain, \
 	you have seen everything the many ports of the known world have to offer. \
 	During the dae, you comfortably sit back and manage the flow of goods of the local harbor, \
 	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot. \
-	You work closely with the merchant, ensuring the safety of the harbor and the goods that pass through it."
+	You work closely with the merchant and steward, ensuring the safety of them, the harbor and the goods that pass through it. Command your mates while listening to your supervisors in order to protect their business."
 
 	display_order = JDO_HARBORMASTER
 	whitelist_req = FALSE

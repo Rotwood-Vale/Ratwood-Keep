@@ -6,6 +6,7 @@ GLOBAL_LIST_INIT(character_accents, list("No accent",
 	"Hammerhold accent",
 	"Assimar accent",
 	"Lizard accent",
+	"Hissing accent",
 	"Tiefling accent",
 	"Half Orc accent",
 	"Akula accent"))

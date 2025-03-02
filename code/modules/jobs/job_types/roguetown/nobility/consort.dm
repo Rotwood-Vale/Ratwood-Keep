@@ -11,13 +11,17 @@
 	allowed_races = RACES_TOLERATED_UP
 	tutorial = "Picked out of your political value rather than likely any form of love, you have become the Ruler's most trusted confidant and likely friend throughout your marriage. Your loyalty and, perhaps, love; will be tested this day. For the daggers that threaten your beloved are as equally pointed at your own throat."
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
+	spells = list(SPELL_CONVERT_ROLE_SERVANT)
 	outfit = /datum/outfit/job/roguetown/consort
 
 	display_order = JDO_LADY
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
+
+	family_blacklisted = TRUE
+	ruler_family = TRUE
+	lord_rel_type = REL_TYPE_SPOUSE
 
 // Prevent same sex ruler-consorts
 /datum/job/roguetown/consort/special_job_check(mob/dead/new_player/player)
@@ -45,6 +49,19 @@
 	. = ..()
 	if(GLOB.lordsurname && H)
 		give_lord_surname(H, preserve_original = TRUE)
+	if(ishuman(H))
+		var/index = findtext(H.real_name, " ")
+		if(index)
+			index = copytext(H.real_name, 1,index)
+		if(!index)
+			index = H.real_name
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/honorary = "Duke"
+		if(H.gender == FEMALE)
+			honorary = "Duchess"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/consort/pre_equip(mob/living/carbon/human/H)
 	. = ..()
@@ -83,7 +100,7 @@
 		
 	else
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/gun/ballistic/arquebus_pistol
+		beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 		beltl = /obj/item/ammo_holder/bullet/lead
 		r_hand = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich

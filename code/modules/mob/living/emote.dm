@@ -165,6 +165,42 @@
 
 	emote("choke", intentional = TRUE)
 
+/datum/emote/living/trill
+	key = "trill"
+	key_third_person = "trills"
+	message = "trills."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/purr
+	key = "purr"
+	key_third_person = "purrs"
+	message = "purrs."
+	message_muffled = "make a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
@@ -764,7 +800,7 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(intentional)
-			if(!C.rogfat_add(10))
+			if(!C.stamina_add(10))
 				to_chat(C, span_warning("I try to scream but my voice fails me."))
 				. = FALSE
 
@@ -873,8 +909,13 @@
 	key = "haltyell"
 	message = "shouts a halt!"
 	emote_type = EMOTE_AUDIBLE
-	only_forced_audio = TRUE
-	show_runechat = FALSE
+	show_runechat = TRUE
+
+/mob/living/carbon/human/verb/emote_haltyell()
+	set name = "HALT!"
+	set category = "Noises"
+
+	emote("haltyell", intentional = TRUE)
 
 /datum/emote/living/rage
 	key = "rage"

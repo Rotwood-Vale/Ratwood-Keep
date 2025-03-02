@@ -203,7 +203,7 @@
 		var/datum/supply_pack/PA = new path
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
-		cost=cost+tax_amt
+		cost = cost + tax_amt
 		if(upgrade_flags & UPGRADE_NOTAX)
 			cost = PA.cost
 		if(budget >= cost)
@@ -340,9 +340,10 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			var/costy = PA.cost
+			var/cost = PA.cost 
+			var/costy = cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
-				costy=round(costy+(SStreasury.tax_value * costy))
+				costy = round(costy + (SStreasury.tax_value * cost))
 			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	if(!canread)

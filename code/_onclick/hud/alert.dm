@@ -191,7 +191,7 @@
 /atom/movable/screen/alert/hot
 	name = "Too Hot"
 	desc = ""
-	icon_state = "hot"
+	icon_state = "fire"
 
 /atom/movable/screen/alert/cold
 	name = "Too Cold"

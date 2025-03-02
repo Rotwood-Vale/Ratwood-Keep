@@ -30,6 +30,14 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 	/area/rogue/indoors/shelter/rtfield
 	)))
 
+GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
+	/area/rogue/outdoors/town, 
+	/area/rogue/indoors/town, 
+	/area/rogue/indoors/shelter/town
+	)))
+
+#define isintown(A) (is_type_in_typecache(A, GLOB.areas_in_town))
+
 #define isforestsex(A) (is_type_in_typecache(A, GLOB.our_forest_sex))
 
 #define isgroundlessturf(A) (is_type_in_typecache(A, GLOB.turfs_without_ground))
@@ -84,7 +92,7 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define isseelie(A) (is_species(A, /datum/species/seelie))
 
 //furry species
-#define isakula(A) (is_species(A, /datum/species/akula))
+#define isaxian(A) (is_species(A, /datum/species/axian))
 #define isanthromorph(A) (is_species(A, /datum/species/anthromorph))
 #define isanthromorphsmall(A) (is_species(A, /datum/species/anthromorphsmall))
 #define isdemihuman(A) (is_species(A, /datum/species/demihuman))

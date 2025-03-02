@@ -73,6 +73,7 @@
 			backr = /obj/item/rogueweapon/shield/tower
 			beltl = /obj/item/ammo_holder/quiver/bolts
 			beltr = /obj/item/storage/backpack/rogue/satchel
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)
@@ -118,7 +119,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/gun/ballistic/handgonne
+			backr = /obj/item/gun/ballistic/firearm/handgonne
 			beltl = /obj/item/ammo_holder/bullet/lead
 			beltr = /obj/item/powderflask
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
@@ -126,6 +127,7 @@
 			pants = /obj/item/clothing/under/roguetown/grenzelpants
 			shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 			gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
 			H.change_stat("strength", 1)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)

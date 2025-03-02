@@ -69,6 +69,26 @@
 					/obj/item/seeds/beet,
 				)
 
+/datum/supply_pack/rogue/seeds/tea
+	name = "Tea"
+	cost = 15
+	contains = list(
+					/obj/item/seeds/tea,
+					/obj/item/seeds/tea,
+					/obj/item/seeds/tea,
+					)
+
+/datum/supply_pack/rogue/seeds/grain
+	name = "Seed Bundle (Grain)"
+	cost = 20
+	contains = list(/obj/item/seeds/wheat,
+					/obj/item/seeds/wheat,
+					/obj/item/seeds/wheat/oat,
+					/obj/item/seeds/wheat/oat,
+					/obj/item/seeds/rice,
+					/obj/item/seeds/rice,
+					)
+
 /datum/supply_pack/rogue/seeds/vegetable
 	name = "Seed Bundle (veg)"
 	cost = 20
@@ -94,4 +114,15 @@
 					/obj/item/seeds/apple,
 					/obj/item/seeds/apple,
 					/obj/item/seeds/apple,
+				)
+
+/datum/supply_pack/rogue/seeds/manabloom
+	name = "manabloom"
+	cost = 20
+	contains = list(
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
+					/obj/item/seeds/manabloom,
 				)

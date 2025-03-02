@@ -6,6 +6,124 @@ Or during making lesser raise undead, it would try inheriting from normal raise 
 Please whenever possible, make each spell its own procholder, and do *not* have them inherit from another completed spell. Lest you bugger shit up.
 ~Neri. */
 
+/* MAGE GAMEPLAY LOOP NOTES:
+The amount of spellpoints mages has varies fairly significantly.
+Highly dependant on the mage's book quality for total amount, multiplied by a learning modifier dependant on arcana skill and reading as well as int.
+That said, mage apprentices for the most part, start off with 5 (8 if counting the first night's rest) spell points.
+Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
+Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
+Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
+-Radiantflash */
+//A spell to choose new spells, upon spawning or gaining levels - NOTE: Please keep this spell at the top of the file to make it better for organization -RadiantFlash
+/obj/effect/proc_holder/spell/invoked/learnspell
+	name = "Attempt to learn a new spell"
+	desc = "Weave a new spell"
+	school = "transmutation"
+	overlay_state = "book1"
+	chargedrain = 0
+	chargetime = 0
+
+/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
+	. = ..()
+	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+
+	var/list/spell_choices = list(
+		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
+		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
+		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
+		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
+		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
+		SPELL_SPITFIRE,				// 3 cost	combat, burstfire single target damage
+		SPELL_ARCANEBOLT,			// 3 cost	combat, single target single shot damage
+		SPELL_FROSTBOLT,			// 3 cost	combat, single target, single shot lesser damage w/ slow
+		SPELL_LIGHTNINGLURE,		// 3 cost	combat, ranged single target hard stun w/ time requirement.
+		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
+		SPELL_FINDFAMILIAR,			// 3 cost	combat, summon spell.
+		SPELL_PUSH_SPELL,			// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		SPELL_ARCYNE_STORM,			// 2 cost	combat, light damaging AOE, stall/area denial spell
+		SPELL_DARKVISION,			// 2 cost	utility, dark sight
+		SPELL_HASTE,				// 2 cost	utility/combatbuff, faster mve speed.
+		SPELL_SUMMON_WEAPON,		// 2 cost	utility/combat, summons a marked weapon to caster.
+		SPELL_MENDING,				// 2 cost	utility, repairs items
+		SPELL_MESSAGE,				// 2 cost	utility, messages anyone you know the name of.
+		SPELL_BLADE_BURST,			// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
+		SPELL_FETCH,				// 2 cost	utility/combat, pulls single target closer
+		SPELL_REPEL,				// 2 cost	utility/combat, flings single target away
+		SPELL_FORCEWALL_WEAK,		// 2 cost	utility/combat, places walls caster can walk through. stall spell.
+		SPELL_NONDETECTION,			// 1 cost	utility, no scrying your location.
+		SPELL_FEATHERFALL,			// 1 cost	utility, no fall damage from 1 zlevel drop
+		SPELL_PRESTIDIGITATION		// free for all mage roles, Utility spell, used in gathering components and parlor tricks
+
+	)
+
+	//Patron Spelllists
+	var/list/spell_choices_noc = list(
+		SPELL_MAGEBLINDNESS,  // 2cost
+		SPELL_MAGEINVISIBILITY,
+	)
+
+	var/list/spell_choices_graggar = list(
+
+	)
+
+	var/list/spell_choices_matthios = list()
+
+	var/list/spell_choices_zizo = list(
+		SPELL_STRENGTHEN_UNDEAD,// 4 cost
+		SPELL_SICKNESS,// 3 cost
+		SPELL_EYEBITE,// 3 cost
+	)
+
+	if(user.patron.type == /datum/patron/divine/noc)
+		spell_choices.Add(spell_choices_noc)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/graggar)
+		spell_choices.Add(spell_choices_graggar)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/matthios)
+		spell_choices.Add(spell_choices_matthios)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/zizo)
+		spell_choices.Add(spell_choices_zizo)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	var/totalspellcount = 0
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		totalspellcount++
+	if(totalspellcount >= 12)
+		to_chat(user,span_warning("You can not memorize more spells then you already have!"))
+		return
+	var/spellsleft = 12 - totalspellcount
+	to_chat(user,span_warning("You can memorize [spellsleft] more spells."))
+	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
+	var/obj/effect/proc_holder/spell/item = choices[choice]
+	if(!item)
+		return     // user canceled;
+	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
+		return
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		if(knownspell.type == item.type)
+			to_chat(user,span_warning("You already know this one!"))
+			return	//already know the spell
+	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
+		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
+		return		// not enough spell points
+	else
+		user.mind.used_spell_points += item.cost
+		user.mind.AddSpell(new item)
+
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
 	desc = "Emit a bolt of lightning that burns and stuns a target."
@@ -229,14 +347,14 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	releasedrain = 50
 	chargedrain = 3
 	chargetime = 15
-	charge_max = 20 SECONDS
+	charge_max = 40 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 10	//Court mage starts with this, If they want a /second/ they can pay the massive price for it.
+	cost = 13
 	xp_gain = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/great
@@ -282,7 +400,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	var/exp_light = 0
 	var/exp_flash = 1
 	var/exp_fire = 0
-	damage = 15	//no armor really has burn protection. So assuming all three connect, 45 burn damage- average damage of fireball with firestacks nerfed. Thats a big 'if' however. Notably, won't cause wounds,
+	damage = 5		// 5 damage per impact, leading to 15 if all three hit. More notably, Each projectile adds 3 firestacks.
 	damage_type = BURN
 	homing = TRUE
 	nodamage = FALSE
@@ -295,12 +413,15 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 /obj/projectile/magic/aoe/rogue2/on_hit(target)
 	if(ismob(target))
-		var/mob/M = target
+		var/mob/living/M = target
 		if(M.anti_magic_check())
 			visible_message(span_warning("[src] fizzles on contact with [target]!"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
+		else
+			M.adjust_fire_stacks(3)
+			M.IgniteMob()
 	var/turf/T
 	if(isturf(target))
 		T = target
@@ -388,6 +509,53 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 			qdel(src)
 			return BULLET_ACT_BLOCK
 
+/obj/effect/proc_holder/spell/invoked/projectile/repel
+	name = "Repel"
+	desc = "Shoot out a magical bolt that pushes out the target struck away from the caster."
+	clothes_req = FALSE
+	range = 10
+	projectile_type = /obj/projectile/magic/repel
+	overlay_state = ""
+	sound = list('sound/magic/magnet.ogg')
+	active = FALSE
+	releasedrain = 7
+	chargedrain = 0
+	chargetime = 7
+	charge_max = 8 SECONDS
+	warnie = "spellwarning"
+	overlay_state = "fetch"
+	no_early_release = TRUE
+	charging_slowdown = 1
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+	xp_gain = TRUE
+
+/obj/projectile/magic/repel
+	name = "bolt of repeling"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "curseblob"
+	range = 15
+
+/obj/projectile/magic/repel/on_hit(target)
+
+	var/atom/throw_target = get_edge_target_turf(firer, get_dir(firer, target)) //ill be real I got no idea why this worked.
+	if(isliving(target))
+		var/mob/living/L = target
+		if(L.anti_magic_check() || !firer)
+			L.visible_message(span_warning("[src] vanishes on contact with [target]!"))
+			return BULLET_ACT_BLOCK
+		L.throw_at(throw_target, 7, 4)
+	else
+		if(isitem(target))
+			var/obj/item/I = target
+			var/mob/living/carbon/human/carbon_firer
+			if (ishuman(firer))
+				carbon_firer = firer
+				if (carbon_firer?.can_catch_item())
+					throw_target = get_edge_target_turf(firer, get_dir(firer, target))
+			I.throw_at(throw_target, 7, 4)
+
 #define PRESTI_CLEAN "presti_clean"
 #define PRESTI_SPARK "presti_spark"
 #define PRESTI_MOTE "presti_mote"
@@ -430,6 +598,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	var/spark_cd = 0
 	var/xp_interval = 150 // really don't want people to spam this too much for xp - they will, but the intent is for them to not
 	var/xp_cooldown = 0
+	var/gatherspeed = 35
 
 /obj/item/melee/touch_attack/prestidigitation/Initialize()
 	. = ..()
@@ -444,20 +613,19 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	qdel(src)
 
 /obj/item/melee/touch_attack/prestidigitation/afterattack(atom/target, mob/living/carbon/user, proximity)
-	var/fatigue_used
 	switch (user.used_intent.type)
 		if (INTENT_HELP) // Clean something like a bar of soap
-			fatigue_used = handle_cost(user, PRESTI_CLEAN)
-			if (clean_thing(target, user))
-				handle_xp(user, fatigue_used, TRUE) // cleaning ignores the xp cooldown because it awards comparatively little
+			handle_cost(user, PRESTI_CLEAN)
+			if(istype(target,/obj/structure/well/fountain/mana) || istype(target, /turf/open/lava))
+				gather_thing(target, user)
+				return
+			clean_thing(target, user)
 		if (INTENT_DISARM) // Snap your fingers and produce a spark
-			fatigue_used = handle_cost(user, PRESTI_SPARK)
-			if (create_spark(user))
-				handle_xp(user, fatigue_used)
+			handle_cost(user, PRESTI_SPARK)
+			create_spark(user)
 		if (/datum/intent/use) // Summon an orbiting arcane mote for light
-			fatigue_used = handle_cost(user, PRESTI_MOTE)
-			if (handle_mote(user))
-				handle_xp(user, fatigue_used)
+			handle_cost(user, PRESTI_MOTE)
+			handle_mote(user)
 
 /obj/item/melee/touch_attack/prestidigitation/proc/handle_cost(mob/living/carbon/human/user, action)
 	// handles fatigue/stamina deduction, this stuff isn't free - also returns the cost we took to use for xp calculations
@@ -472,7 +640,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		if (PRESTI_MOTE)
 			extra_fatigue = 15 // same deal here
 
-	user.rogfat_add(fatigue_used + extra_fatigue)
+	user.stamina_add(fatigue_used + extra_fatigue)
 
 	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
 	if (skill_level >= SKILL_LEVEL_EXPERT)
@@ -552,6 +720,20 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 			return TRUE
 		return FALSE
 
+
+/obj/item/melee/touch_attack/prestidigitation/proc/gather_thing(atom/target, mob/living/carbon/human/user)
+
+	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	gatherspeed = initial(gatherspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
+	var/turf/Turf = get_turf(target)
+	if (istype(target, /obj/structure/well/fountain/mana))
+		if (do_after(user, src.gatherspeed, target = target))
+			to_chat(user, span_notice("I mold the liquid mana in \the [target.name] with my arcane power, crystalizing it!"))
+			new /obj/item/natural/manacrystal(Turf)
+	if (istype(target, /turf/open/lava))
+		if (do_after(user, src.gatherspeed, target = target))
+			to_chat(user, span_notice("I mold a handful of oozing lava  with my arcane power, rapidly hardening it!"))
+			new /obj/item/natural/obsidian(user.loc)
 // Intents for prestidigitation
 
 /obj/effect/wisp/prestidigitation
@@ -564,99 +746,6 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "wisp"
-
-//A spell to choose new spells, upon spawning or gaining levels
-/obj/effect/proc_holder/spell/invoked/learnspell
-	name = "Attempt to learn a new spell"
-	desc = "Weave a new spell"
-	school = "transmutation"
-	overlay_state = "book1"
-	chargedrain = 0
-	chargetime = 0
-
-/obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
-	. = ..()
-	//list of spells you can learn, it may be good to move this somewhere else eventually
-	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
-	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
-
-	var/list/spell_choices = list(
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,
-		/obj/effect/proc_holder/spell/invoked/projectile/arcanebolt,
-		/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe,
-		/obj/effect/proc_holder/spell/invoked/findfamiliar,
-		/obj/effect/proc_holder/spell/invoked/push_spell,
-		/obj/effect/proc_holder/spell/targeted/touch/darkvision,// 2 cost
-		/obj/effect/proc_holder/spell/invoked/haste,
-		/obj/effect/proc_holder/spell/invoked/message,
-		/obj/effect/proc_holder/spell/invoked/blade_burst,
-		/obj/effect/proc_holder/spell/invoked/projectile/fetch,
-		/obj/effect/proc_holder/spell/targeted/touch/nondetection, // 1 cost
-		/obj/effect/proc_holder/spell/targeted/touch/prestidigitation,
-		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/invoked/forcewall_weak,
-	)
-
-	//Patron Spelllists
-	var/list/spell_choices_noc = list(
-		/obj/effect/proc_holder/spell/invoked/mageblindness,  // 2cost
-		/obj/effect/proc_holder/spell/invoked/mageinvisibility,
-	)
-
-	var/list/spell_choices_graggar = list(
-
-	)
-
-	var/list/spell_choices_matthios = list()
-
-	var/list/spell_choices_zizo = list(
-		/obj/effect/proc_holder/spell/invoked/strengthen_undead,// 4 cost
-		/obj/effect/proc_holder/spell/invoked/projectile/sickness,// 3 cost
-		/obj/effect/proc_holder/spell/invoked/eyebite,// 3 cost
-	)
-
-	if(user.patron.type == /datum/patron/divine/noc)
-		spell_choices.Add(spell_choices_noc)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/graggar)
-		spell_choices.Add(spell_choices_graggar)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/inhumen/matthios)
-		spell_choices.Add(spell_choices_matthios)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else if(user.patron.type == /datum/patron/zizo)
-		spell_choices.Add(spell_choices_zizo)
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	else
-		for(var/i = 1, i <= spell_choices.len, i++)
-			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
-
-	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
-	var/obj/effect/proc_holder/spell/item = choices[choice]
-	if(!item)
-		return     // user canceled;
-	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
-		return
-	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
-		if(knownspell.type == item.type)
-			to_chat(user,span_warning("You already know this one!"))
-			return	//already know the spell
-	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
-		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
-		return		// not enough spell points
-	else
-		user.mind.used_spell_points += item.cost
-		user.mind.AddSpell(new item)
 
 //forcewall
 /obj/effect/proc_holder/spell/invoked/forcewall_weak
@@ -698,7 +787,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	climbable = TRUE
 	climb_time = 0
-	var/timeleft = 10 SECONDS
+	var/timeleft = 20 SECONDS
 
 /obj/structure/forcefield_weak/Initialize()
 	. = ..()
@@ -1051,7 +1140,7 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 		if(!do_after(user, 5 SECONDS, target = spelltarget))
 			return
 		spelltarget.apply_status_effect(/datum/status_effect/buff/darkvision)
-		user.rogfat_add(80)
+		user.stamina_add(80)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and touches [spelltarget] with an arcyne focus.")
 		else
@@ -1154,6 +1243,497 @@ Please whenever possible, make each spell its own procholder, and do *not* have 
 	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
 	return TRUE
 
+/datum/status_effect/buff/frostbite
+	id = "frostbite"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
+	duration = 20 SECONDS
+	effectedstats = list("speed" = -2)
+
+/atom/movable/screen/alert/status_effect/buff/frostbite
+	name = "Frostbite"
+	desc = "I can feel myself slowing down."
+	icon_state = "debuff"
+	color = "#00fffb"
+
+/datum/status_effect/buff/frostbite/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
+	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+
+/datum/status_effect/buff/frostbite/on_remove()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+	. = ..()
+
+/obj/effect/proc_holder/spell/invoked/projectile/frostbolt // to do: get scroll icon
+	name = "Frost Bolt"
+	desc = "A ray of frozen energy, slowing the first thing it touches and lightly damaging it."
+	range = 8
+	projectile_type = /obj/projectile/magic/frostbolt
+	overlay_state = "null"
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 3
+	charge_max = 13 SECONDS //cooldown
+
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	antimagic_allowed = FALSE //can you use it if you are antimagicked?
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 3
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+/obj/projectile/magic/frostbolt
+	name = "Frost Dart"
+	icon_state = "ice_2"
+	damage = 20
+	nodamage = FALSE
+	damage_type = BURN
+	flag = "magic"
+	range = 10
+	speed = 8 //higher is slower
+	var/aoe_range = 0
+
+/obj/projectile/magic/frostbolt/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			L.apply_status_effect(/datum/status_effect/buff/frostbite)
+			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
+//	qdel(src)
+
+/obj/effect/temp_visual/snap_freeze
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldsparkles"
+	name = "rippeling arcyne ice"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 1 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/effect/proc_holder/spell/targeted/lightninglure
+	name = "Lightning Lure"
+	desc = "An electric connection forms between you and the target, and after several seconds of build up, shocks the target if they remain nearby."
+	overlay_state = "null"
+	releasedrain = 50
+	chargetime = 1
+	charge_max = 12 SECONDS
+	range = 3
+	warnie = "spellwarning"
+	movement_interrupt = FALSE
+	no_early_release = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 3 // might even deserve a cost of 3
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+	invocation = ""
+	invocation_type = "shout" //can be none, whisper, emote and shout
+	include_user = FALSE
+
+	var/delay = 5 SECONDS
+	var/sprite_changes = 10
+	var/datum/beam/current_beam = null
+
+/obj/effect/proc_holder/spell/targeted/lightninglure/cast(list/targets, mob/user = usr)
+	for(var/mob/living/carbon/C in targets)
+		user.visible_message(span_warning("[C] is connected to [user] with a lightning lure!"), span_warning("You create a static link with [C]."))
+		playsound(user, 'sound/items/stunmace_gen (2).ogg', 100)
+
+		var/x
+		for(x=1; x < sprite_changes; x++)
+			current_beam = new(user,C,time=50/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
+			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
+			sleep(delay/sprite_changes)
+
+		var/dist = get_dist(user, C)
+		if (dist <= range)
+			C.electrocute_act(1, user) //just shock
+		else
+			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
+			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
+
+/obj/effect/proc_holder/spell/invoked/mending
+	name = "Mending"
+	desc = "Arcana sinks into your chosen item and mends it's damage partly."
+	overlay_state = "null"
+	releasedrain = 50
+	chargetime = 5
+	charge_max = 20 SECONDS
+	//chargetime = 10
+	//charge_max = 30 SECONDS
+	range = 6
+	warnie = "spellwarning"
+	movement_interrupt = FALSE
+	no_early_release = FALSE
+	chargedloop = null
+	sound = 'sound/magic/whiteflame.ogg'
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 2
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+	invocation = ""
+	invocation_type = "shout" //can be none, whisper, emote and shout
+
+/obj/effect/proc_holder/spell/invoked/mending/cast(list/targets, mob/living/user)
+	if(istype(targets[1], /obj/item))
+		var/obj/item/I = targets[1]
+		if(I.obj_broken == TRUE)
+			to_chat(user, span_warning("This item is too broken to repair!"))
+			return
+		if(I.obj_integrity < I.max_integrity)
+			var/repair_percent = 0.25
+			repair_percent *= I.max_integrity
+			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
+			user.visible_message(span_info("[I] glows in a faint mending light."))
+		else
+			user.visible_message(span_info("[I] appears to be in pefect condition."))
+			revert_cast()
+	else
+		to_chat(user, span_warning("There is no item here!"))
+		revert_cast()
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm
+	name = "Arcyne storm"
+	desc = "Conjure ripples of force into existance over a large area, injuring any who enter"
+	cost = 2
+	xp_gain = TRUE
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 35
+	charge_max = 50 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	overlay_state = "hierophant"
+	range = 3
+	var/damage = 10
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+	var/list/affected_turfs = list()
+	for(var/turf/turfs_in_range in range(range, T)) // use inrange instead of view
+		if(turfs_in_range.density)
+			continue
+		affected_turfs.Add(turfs_in_range)
+	for(var/i = 1, i < 16, i++)
+		addtimer(CALLBACK(src, PROC_REF(apply_damage), affected_turfs), wait = i * 1 SECONDS)
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(var/list/affected_turfs)
+	for(var/turf/damage_turf in affected_turfs)
+		new /obj/effect/temp_visual/hierophant/squares(damage_turf)
+		for(var/mob/living/L in damage_turf.contents)
+			L.adjustBruteLoss(damage)
+			playsound(damage_turf, "genslash", 40, TRUE)
+			to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
+
+
+/obj/effect/temp_visual/hierophant
+	name = "vortex energy"
+	layer = BELOW_MOB_LAYER
+	var/mob/living/caster //who made this, anyway
+
+/obj/effect/temp_visual/hierophant/Initialize(mapload, new_caster)
+	. = ..()
+	if(new_caster)
+		caster = new_caster
+
+/obj/effect/temp_visual/hierophant/squares
+	icon_state = "hierophant_squares"
+	duration = 3
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	randomdir = FALSE
+
+/obj/effect/temp_visual/hierophant/squares/Initialize(mapload, new_caster)
+	. = ..()
+
+/obj/effect/proc_holder/spell/invoked/meteor_storm
+	name = "Meteor storm"
+	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
+	cost = 13
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 50
+	charge_max = 100 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+
+/obj/effect/proc_holder/spell/invoked/meteor_storm/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+//	var/list/affected_turfs = list()
+	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
+	sleep(2)
+	create_meteors(T)
+
+//meteor storm and lightstorm.
+/obj/effect/proc_holder/spell/invoked/meteor_storm/proc/create_meteors(atom/target)
+	if(!target)
+		return
+	target.visible_message(span_boldwarning("Fire rains from the sky!"))
+	var/turf/targetturf = get_turf(target)
+	for(var/turf/turf as anything in RANGE_TURFS(6,targetturf))
+		if(prob(20))
+			new /obj/effect/temp_visual/target(turf)
+
+/obj/effect/temp_visual/fireball
+	icon = 'icons/obj/projectiles.dmi'
+	icon_state = "meteor"
+	name = "meteor"
+	desc = "Get out of the way!"
+	layer = FLY_LAYER
+	plane = GAME_PLANE_UPPER
+	randomdir = FALSE
+	duration = 9
+	pixel_z = 270
+
+/obj/effect/temp_visual/fireball/Initialize(mapload)
+	. = ..()
+	animate(src, pixel_z = 0, time = duration)
+
+/obj/effect/temp_visual/target
+	icon = 'icons/mob/actions/actions_items.dmi'
+	icon_state = "sniper_zoom"
+	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+	light_range = 2
+	duration = 9
+	var/exp_heavy = 0
+	var/exp_light = 2
+	var/exp_flash = 0
+	var/exp_fire = 3
+	var/exp_hotspot = 0
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+/obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
+	. = ..()
+	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
+
+/obj/effect/temp_visual/target/proc/fall(list/flame_hit)	//Potentially minor explosion at each impact point
+	var/turf/T = get_turf(src)
+	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/fireball(T)
+	sleep(duration)
+	if(ismineralturf(T))
+		var/turf/closed/mineral/M = T
+		M.gets_drilled()
+	new /obj/effect/hotspot(T)
+	for(var/mob/living/L in T.contents)
+		if(islist(flame_hit) && !flame_hit[L])
+			L.adjustFireLoss(40)
+			L.adjust_fire_stacks(8)
+			L.IgniteMob()
+			to_chat(L, span_userdanger("You're hit by a meteor!"))
+			flame_hit[L] = TRUE
+		else
+			L.adjustFireLoss(10) //if we've already hit them, do way less damage
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, hotspot_range = exp_hotspot, soundin = explode_sound)
+
+/obj/effect/proc_holder/spell/targeted/summonweapon
+	name = "Summon Weapon"
+	desc = "Summon an imbued weapon."
+	clothes_req = FALSE
+	school = "transmutation"
+	range = -1
+	include_user = TRUE
+	cooldown_min = 100
+	charge_max = 2 MINUTES
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	action_icon_state = "summons"
+	invocation = "Zar’kalthra ven’thelis!"
+	invocation_type = "Whisper"
+	cost = 2
+	var/obj/marked_item
+
+
+obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = usr)
+	for(var/mob/living/L in targets)
+		var/list/hand_items = list(L.get_active_held_item(),L.get_inactive_held_item())
+		var/message
+		if(!marked_item) //linking item to the spell
+			message = "<span class='notice'>"
+			for(var/obj/item/rogueweapon/item in hand_items)
+				if(item.item_flags & ABSTRACT)
+					continue
+				if(SEND_SIGNAL(item, COMSIG_ITEM_MARK_RETRIEVAL) & COMPONENT_BLOCK_MARK_RETRIEVAL)
+					continue
+				if(HAS_TRAIT(item, TRAIT_NODROP))
+					message += "Though it feels redundant, "
+				marked_item = 		item
+				message += "You imbue [item] for summoning.</span>"
+				name = "Summon [item]"
+				break
+
+			if(!marked_item)
+				if(hand_items)
+					message = span_warning("I aren't holding anything that can be imbued to summon!")
+				else
+					message = span_warning("I must hold the desired weapon in my hands to imbue it for summoning!")
+
+		else if(marked_item && marked_item in hand_items) //unlinking item to the spell
+			message = span_notice("I remove the imbuement on [marked_item] to use elsewhere.")
+			name = "Instant Summons"
+			marked_item = 		null
+
+		else if(marked_item && QDELETED(marked_item)) //the item was destroyed at some point
+			message = span_warning("I sense my imbued weapon has been destroyed!")
+			name = "summon weapon"
+			marked_item = 		null
+
+		else	//Getting previously marked item
+			var/obj/item/rogueweapon/item_to_retrieve = marked_item
+
+			var/infinite_recursion = 0 //I don't want to know how someone could put something inside itself but these are wizards so let's be safe
+			while(!isturf(item_to_retrieve.loc) && infinite_recursion < 10) //if it's in something you get the whole thing.
+				if(isitem(item_to_retrieve.loc))
+					var/obj/item/I = item_to_retrieve.loc
+					if(I.item_flags & ABSTRACT) //Being able to summon abstract things because your item happened to get placed there is a no-no
+						break
+				if(ismob(item_to_retrieve.loc)) //If its on someone, properly drop it
+					var/mob/M = item_to_retrieve.loc
+					M.dropItemToGround(item_to_retrieve)
+					if(iscarbon(M)) //Edge case housekeeping
+						var/mob/living/carbon/C = M
+						for(var/X in C.bodyparts)
+							var/obj/item/bodypart/part = X
+							if(item_to_retrieve in part.embedded_objects)
+								part.remove_embedded_object(item_to_retrieve)
+								to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
+								break
+					if(!isturf(item_to_retrieve.loc))
+						item_to_retrieve = item_to_retrieve.loc
+
+				infinite_recursion += 1
+
+			if(!item_to_retrieve)
+				return
+
+			if(item_to_retrieve.loc)
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly disappears!"))
+			if(!L.put_in_hands(item_to_retrieve))
+				item_to_retrieve.forceMove(L.drop_location())
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly appears!"))
+				playsound(get_turf(L), 'sound/blank.ogg', 50, TRUE)
+			else
+				item_to_retrieve.loc.visible_message(span_warning("The [item_to_retrieve.name] suddenly appears in [L]'s hand!"))
+				playsound(get_turf(L), 'sound/blank.ogg', 50, TRUE)
+
+
+		if(message)
+			to_chat(L, message)
+
+
+/obj/effect/proc_holder/spell/invoked/sundering_lightning
+	name = "Sundering Lightning"
+	desc = "Summons forth dangerous rapid lightning strikes."
+	cost = 13
+	releasedrain = 50
+	chargedrain = 1
+	chargetime = 50
+	charge_max = 100 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	range = 4
+
+/obj/effect/proc_holder/spell/invoked/sundering_lightning/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+//	var/list/affected_turfs = list()
+	playsound(T,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
+	T.visible_message(span_boldwarning("The air feels crackling and charged!"))
+	sleep(30)
+	create_lightning(T)
+
+//meteor storm and lightstorm.
+/obj/effect/proc_holder/spell/invoked/sundering_lightning/proc/create_lightning(atom/target)
+	if(!target)
+		return
+	var/turf/targetturf = get_turf(target)
+	var/last_dist = 0
+	for(var/t in spiral_range_turfs(range, targetturf))
+		var/turf/T = t
+		if(!T)
+			continue
+		var/dist = get_dist(targetturf, T)
+		if(dist > last_dist)
+			last_dist = dist
+			sleep(2 + min(range - last_dist, 12) * 0.5) //gets faster
+		new /obj/effect/temp_visual/targetlightning(T)
+
+
+/obj/effect/temp_visual/lightning
+	icon = 'icons/effects/32x96.dmi'
+	icon_state = "lightning"
+	name = "lightningbolt"
+	desc = "ZAPP!!"
+	layer = FLY_LAYER
+	plane = GAME_PLANE_UPPER
+	randomdir = FALSE
+	duration = 7
+
+/obj/effect/temp_visual/lightning/Initialize(mapload)
+	. = ..()
+
+/obj/effect/temp_visual/targetlightning
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "trap"
+	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+	light_range = 2
+	duration =15
+	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
+
+/obj/effect/temp_visual/targetlightning/Initialize(mapload, list/flame_hit)
+	. = ..()
+	INVOKE_ASYNC(src, PROC_REF(storm), flame_hit)
+
+/obj/effect/temp_visual/targetlightning/proc/storm(list/flame_hit)	//electroshocktherapy
+	var/turf/T = get_turf(src)
+	sleep(duration)
+	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/lightning(T)
+
+	for(var/mob/living/L in T.contents)
+		L.electrocute_act(50)
+		to_chat(L, span_userdanger("You're hit by lightning!!!"))
 // Noc Spells
 
 /obj/effect/proc_holder/spell/invoked/mageblindness

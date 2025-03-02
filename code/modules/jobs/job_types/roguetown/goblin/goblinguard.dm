@@ -59,7 +59,6 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 	r_hand = /obj/item/rogueweapon/mace/spiked
 	l_hand = /obj/item/rogueweapon/shield/wood
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -69,9 +68,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 2)
+		H.change_stat("strength", 3)
 		H.change_stat("perception", 1)
-		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
@@ -91,7 +89,6 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 	r_hand = /obj/item/rogueweapon/spear/stone
 	l_hand = /obj/item/rogueweapon/shield/wood
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3 , TRUE)
@@ -103,9 +100,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.change_stat("strength", 1)
+		H.change_stat("strength", 2)
 		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("intelligence", -2)
 
@@ -122,11 +118,10 @@
 	. = ..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 	r_hand = /obj/item/rogueweapon/stoneaxe/battle
-	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -153,7 +148,6 @@
 	r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/ammo_holder/quiver/bolts
-	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

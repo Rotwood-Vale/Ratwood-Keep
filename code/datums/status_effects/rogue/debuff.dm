@@ -231,16 +231,6 @@
 	desc = "It's hard to think..."
 	icon_state = "fentanyl"
 
-//Death debuff
-
-/datum/status_effect/debuff/death_weaken
-	id = "death_weaken"
-	alert_type = null
-	status_type = STATUS_EFFECT_UNIQUE
-	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
-	effectedstats = list("strength" = -2, "perception" = -2, "intelligence" = -2, "constitution" = -2, "endurance" = -2, "speed" = -2)
-	var/extralives = 1
-
 /// SURRENDERING DEBUFFS
 
 /datum/status_effect/debuff/breedable
@@ -311,4 +301,84 @@
 /atom/movable/screen/alert/status_effect/debuff/ravox_burden
 	name = "Ravox's Burden"
 	desc = "Some divine power is straining my mind!"
+	icon_state = "muscles"
+
+/datum/status_effect/debuff/cold
+	id = "Frostveiled"
+	alert_type =  /atom/movable/screen/alert/status_effect/debuff/cold
+	effectedstats = list("speed" = -2)
+	duration = 12 SECONDS
+
+/datum/status_effect/debuff/cold/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 12 SECONDS)
+
+/atom/movable/screen/alert/status_effect/debuff/cold
+	name = "Cold"
+	desc = "Something has chilled me to the bone! It's hard to move."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/frostbite
+	id = "frostbite"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
+	duration = 20 SECONDS
+	effectedstats = list("speed" = -2)
+
+/atom/movable/screen/alert/status_effect/buff/frostbite
+	name = "Frostbite"
+	desc = "I can feel myself slowing down."
+	icon_state = "debuff"
+	color = "#00fffb"
+
+/datum/status_effect/buff/frostbite/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
+	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+
+/datum/status_effect/buff/frostbite/on_remove()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+	. = ..()
+	
+// Darkling debuffs
+/datum/status_effect/debuff/darkling_glare
+	id = "darkling_glare"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_glare
+	effectedstats = list("perception" = -1)
+	duration = 10 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/darkling_glare
+	name = "Eye Strain"
+	desc = "My eyes are starting to water, the light burns."
+	icon_state = "stressb"
+
+/datum/status_effect/debuff/darkling_migraine
+	id = "darkling_migraine"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
+	effectedstats = list("endurance" = -1, "intelligence" = -1) //Will basically always be stacked with the eye strain penalty
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/darkling_migraine
+	name = "Migraine"
+	icon_state = "muscles"
+	desc = "My head is pounding, I can barely think. I need to get away from the light and rest a while!"
+
+/// Strengthen undead debuff
+/datum/status_effect/debuff/weaken_living
+	id = "weaken_living"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/weaken_living
+	effectedstats = list("speed" = -3, "constitution" = -3)
+	duration = 25 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/weaken_living
+	name = "Macabre chill"
+	desc = "I can feel the cold embrace of death seeping into my bones"
 	icon_state = "muscles"

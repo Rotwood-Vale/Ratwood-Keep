@@ -127,7 +127,7 @@ All foods are distributed among various categories. Use common sense.
 					STOP_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/food/snacks/can_craft_with()
-	if(eat_effect == /datum/status_effect/debuff/rotfood)
+	if(eat_effect == /datum/status_effect/debuff/rotfood || bitecount > 0)
 		return FALSE
 	return ..()
 
@@ -281,11 +281,11 @@ All foods are distributed among various categories. Use common sense.
 				if(0 to NUTRITION_LEVEL_STARVING)
 					user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
 					M.changeNext_move(CLICK_CD_MELEE * 0.5)
-/*			if(M.rogstam <= 50)
+/*			if(M.energy <= 50)
 				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
-			else if(M.rogstam > 50 && M.rogstam < 500)
+			else if(M.energy > 50 && M.energy < 500)
 				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src]."), span_notice("I hungrily [eatverb] \the [src]."))
-			else if(M.rogstam > 500 && M.rogstam < 1000)
+			else if(M.energy > 500 && M.energy < 1000)
 				user.visible_message(span_notice("[user] [eatverb]s \the [src]."), span_notice("I [eatverb] \the [src]."))
 			if(HAS_TRAIT(M, TRAIT_VORACIOUS))
 			M.changeNext_move(CLICK_CD_MELEE * 0.5) nom nom nom*/

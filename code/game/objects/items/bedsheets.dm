@@ -13,6 +13,7 @@ LINEN BINS
 	icon_state = "sheetwhite"
 	item_state = "sheetwhite"
 	layer = MOB_LAYER
+	plane = GAME_PLANE_FOV_HIDDEN
 	throwforce = 0
 	throw_speed = 1
 	throw_range = 2

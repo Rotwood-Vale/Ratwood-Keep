@@ -62,6 +62,12 @@
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	sellprice = 6
 
+/datum/crafting_recipe/roguetown/hunting/summonerspouch
+	name = "summoners pouch"
+	result = list(/obj/item/storage/magebag)
+	reqs = list(/obj/item/natural/hide/cured = 1)
+	sellprice = 6
+
 /datum/crafting_recipe/roguetown/hunting/satchel
 	name = "leather satchel"
 	result = list(/obj/item/storage/backpack/rogue/satchel)
@@ -105,6 +111,12 @@
 				/obj/item/natural/fibers = 2)
 	sellprice = 28
 
+/datum/crafting_recipe/roguetown/hunting/bombpouch
+	name = "bomb pouch"
+	result = /obj/item/ammo_holder/bomb
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 2)
+	sellprice = 28
 /datum/crafting_recipe/roguetown/hunting/saddle
 	name = "saddle"
 	result = /obj/item/natural/saddle

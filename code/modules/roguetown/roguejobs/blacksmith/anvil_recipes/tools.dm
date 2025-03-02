@@ -1,5 +1,9 @@
 /datum/anvil_recipe/tools
 	i_type = "Tools"
+
+/datum/anvil_recipe/tools/steel
+	skill_level = 3
+
 /datum/anvil_recipe/general
 	i_type = "General"
 
@@ -57,7 +61,18 @@
 	name = "Hammer (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer
+	created_item = /obj/item/rogueweapon/hammer/iron
+
+/datum/anvil_recipe/tools/iron/handsaw
+	name = "Handsaw (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/handsaw
+
+/datum/anvil_recipe/tools/iron/chisel
+	name = "Chisel"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/chisel
 
 /datum/anvil_recipe/tools/iron/tongs
 	name = "Tongs"
@@ -126,7 +141,6 @@
 						/obj/item/lockpick,
 						/obj/item/lockpick
 						)
-	skill_level = 1
 
 /datum/anvil_recipe/tools/lockpickring
 	name = "Lockpickrings x3"
@@ -135,9 +149,14 @@
 						/obj/item/lockpickring,
 						/obj/item/lockpickring
 						)
-	skill_level = 0
 
 // --------- Steel -----------
+
+/datum/anvil_recipe/tools/steel/hammer
+	name = "Claw hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/steel
 
 /datum/anvil_recipe/tools/steel/pick
 	name = "Pickaxe (+1 Stick)"
@@ -179,11 +198,6 @@
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
-	
-/datum/anvil_recipe/general/cupsgold
-	name = "Cowbell"
-	req_bar = /obj/item/ingot/copper
-	created_item = list(/obj/item/catbell/cow)
 
 /datum/anvil_recipe/general/cowbell
 	name = "Cowbell x3"

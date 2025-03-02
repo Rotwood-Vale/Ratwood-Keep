@@ -60,18 +60,17 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	if(allmig)
 		return FALSE
 
-	if(ttime >= GLOB.round_timer)
-		if(roundvoteend)
-			if(ttime >= round_ends_at)
-				for(var/mob/living/carbon/human/H in GLOB.human_list)
-					if(H.stat != DEAD)
-						if(H.allmig_reward)
-							H.adjust_triumphs(H.allmig_reward)
-							H.allmig_reward = 0
-				return TRUE
-		else
-			if(!SSvote.mode && SSticker.autovote)
-				SSvote.initiate_vote("endround", "Zizo")
+	if(roundvoteend)
+		if(ttime >= round_ends_at)
+			for(var/mob/living/carbon/human/H in GLOB.human_list)
+				if(H.stat != DEAD)
+					if(H.allmig_reward)
+						H.adjust_triumphs(H.allmig_reward)
+						H.allmig_reward = 0
+			return TRUE
+	else if(ttime >= GLOB.round_timer)
+		if(!SSvote.mode && SSticker.autovote)
+			SSvote.initiate_vote("endround", "Zizo")
 
 	if(headrebdecree)
 		if(reb_end_time == 0)
@@ -164,7 +163,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		return TRUE
 
 	if(num_players() >= 64)
-		var/major_roll_highpop = pick(1,2,3,4)
+		var/major_roll_highpop = pick(1,2,3)
 		switch(major_roll_highpop)
 			if(1)
 				pick_rebels()
@@ -174,13 +173,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				pick_werewolves()
 				log_game("Major Antagonist: Vampires and Werewolves")
 			if(3)
-				pick_cultist()
-				log_game("Major Antagonist: Cultists")
-			if(4)
 				pick_lich()
 				log_game("Major Antagonist: Lich")
 	else if(num_players() >= 52)
-		var/major_roll_midpop = pick(1,2,3)
+		var/major_roll_midpop = pick(1,2)
 		switch(major_roll_midpop)
 			if(1)
 				pick_rebels()
@@ -189,18 +185,18 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				pick_vampires()
 				pick_werewolves()
 				log_game("Major Antagonist: Vampires and Werewolves")
-			if(3)
-				pick_cultist()
-				log_game("Major Antagonist: Cultists")
-	else
-		var/major_roll_lowpop = pick(1,2)
+	else//Lowpop? Least destructive major antag.
+		var/major_roll_lowpop = pick(1,2,3)
 		switch(major_roll_lowpop)
 			if(1)
 				pick_rebels()
 				log_game("Major Antagonist: Peasant Rebellion")
-			if(2)//Vampires alone for lowpop. More RP orientend.
+			if(2)
 				pick_vampires()
 				log_game("Major Antagonist: Vampires")
+			if(3)
+				pick_werewolves()
+				log_game("Major Antagonist: Werewolves")
 
 	if(prob(100))
 		pick_bandits()
@@ -210,9 +206,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
 
+/*
 	if(prob(10))
 		pick_maniac()
 		log_game("Minor Antagonist: Maniac")
+*/
 
 	return TRUE
 
@@ -231,10 +229,10 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Smith",
 	"Goblin Shaman")
 	var/num_bandits = 0
-	var/limit_bandits = pick(4,5,6,7,8)
-	if(num_players() >= 12)
-		// 1 bandit per 12 players,
-		num_bandits = round(num_players() / 12)
+	var/limit_bandits = 8
+	if(num_players() >= 9)
+		// 1 bandit per 9 players,
+		num_bandits = round(num_players() / 9)
 		if(num_bandits >= limit_bandits)	//caps bandits at 8
 			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
@@ -276,6 +274,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				if(candidate.assigned_role in GLOB.noble_positions) // Job cat string stoppers
 					continue
 				if(candidate.assigned_role in GLOB.church_positions) // Many of these guys vanishing would suck
+					continue
+				if(candidate.assigned_role in GLOB.inquisition_positions) // Many of these guys vanishing would suck
 					continue
 				if(candidate.assigned_role in GLOB.yeoman_positions) // Many of these guys vanishing would suck
 					continue
@@ -353,6 +353,8 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				if(rebelguy.assigned_role in GLOB.youngfolk_positions)
 					blockme = TRUE
 				if(rebelguy.assigned_role in GLOB.church_positions)
+					blockme = TRUE
+				if(rebelguy.assigned_role in GLOB.inquisition_positions)
 					blockme = TRUE
 				if(rebelguy.assigned_role in GLOB.yeoman_positions)
 					blockme = TRUE

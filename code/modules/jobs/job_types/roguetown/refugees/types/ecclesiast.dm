@@ -5,7 +5,7 @@
 				that is putting your unwavering faith to test."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_VERY_SHUNNED_UP
 	category_tags = list(CTAG_REFUGEE)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
@@ -113,6 +113,7 @@
 					backl = /obj/item/storage/backpack/rogue/satchel
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/mace
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					H.change_stat("strength", 2)
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 1)
@@ -143,6 +144,7 @@
 					backr = /obj/item/rogueweapon/shield/tower/metal
 					backl = /obj/item/storage/backpack/rogue/satchel
 					beltr = /obj/item/rogueweapon/mace/steel
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 2)
@@ -169,6 +171,7 @@
 					backr = /obj/item/rogueweapon/shield/tower/metal
 					backl = /obj/item/storage/backpack/rogue/satchel
 					beltr = /obj/item/rogueweapon/sword/decorated
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
 					H.change_stat("endurance", 2)
 					H.change_stat("constitution", 2)

@@ -232,11 +232,11 @@
 			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
 
 /datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if((prob(30) && !isvineimmune(crosser)) || (prob(5)))
+	if(prob(30) && !isvineimmune(crosser))
 		to_chat(crosser, span_warning("I feel stuck on the vines."))
 		return FALSE
 	else
-		return TRUE	
+		return TRUE
 
 /obj/structure/spacevine/Initialize()
 	. = ..()
@@ -259,7 +259,8 @@
 
 /obj/structure/spacevine/Destroy()
 	for(var/datum/spacevine_mutation/SM in mutations)
-		SM.on_death(src)
+		if(!isnull(SM))
+			SM.on_death(src)
 	if(master)
 		master.VineDestroyed(src)
 	mutations = list()

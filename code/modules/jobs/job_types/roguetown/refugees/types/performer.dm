@@ -69,7 +69,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+			beltl = /obj/item/ammo_holder/bomb/smokebombs
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			head = /obj/item/clothing/head/roguetown/bardhat //with this hat, they will get all the pussy(or dick depending on preference(or both ig))
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -110,6 +110,7 @@
 			pants = /obj/item/clothing/under/roguetown/tights
 			armor = /obj/item/clothing/suit/roguetown/shirt/jester
 			belt = /obj/item/storage/belt/rogue/leather
+			beltr = /obj/item/ammo_holder/bomb/smokebombs
 			beltl = /obj/item/storage/belt/rogue/pouch
 			head = /obj/item/clothing/head/roguetown/jester
 			neck = /obj/item/clothing/neck/roguetown/coif

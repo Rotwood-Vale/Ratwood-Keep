@@ -128,6 +128,11 @@
 
 	var/last_message = ""
 
+	var/blend_type
+	var/filter_type
+
+	var/datum/weather_effect/weather_special_effect
+
 /datum/particle_weather/proc/severityMod()
 	return max(0.3, severity / maxSeverity)
 /*
@@ -160,6 +165,9 @@
 
 	if(particleEffectType)
 		SSParticleWeather.SetparticleEffect(new particleEffectType);
+
+	if(weather_special_effect)
+		SSParticleWeather.weather_special_effect = new weather_special_effect(src)
 
 	//Always step severity to start
 	ChangeSeverity()

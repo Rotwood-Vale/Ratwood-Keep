@@ -127,11 +127,14 @@
 /obj/item/storage/keyring/man_at_arms
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
+/obj/item/storage/keyring/squire 
+	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
+
 /obj/item/storage/keyring/captain
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/dungeoneer
-	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
+	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
 
 /obj/item/storage/keyring/veteran
 	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
@@ -139,8 +142,8 @@
 /obj/item/storage/keyring/knight
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
 
-/obj/item/storage/keyring/velder
-	keys = list(/obj/item/key/velder, /obj/item/key/blacksmith/town, /obj/item/key/farm, /obj/item/key/butcher)
+/obj/item/storage/keyring/mayor
+	keys = list(/obj/item/key/mayor, /obj/item/key/blacksmith/town, /obj/item/key/farm, /obj/item/key/butcher)
 
 /obj/item/storage/keyring/Butcher
 	keys = list(/obj/item/key/farm, /obj/item/key/butcher)
@@ -160,8 +163,11 @@
 /obj/item/storage/keyring/mage
 	keys = list(/obj/item/key/manor, /obj/item/key/tower, /obj/item/key/mage)
 
+/obj/item/storage/keyring/mageapprentice
+	keys = list(/obj/item/key/manor, /obj/item/key/tower)
+
 /obj/item/storage/keyring/innkeep
-	keys = list(/obj/item/key/tavern, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
+	keys = list(/obj/item/key/tavern, /obj/item/key/nightman, /obj/item/key/fancyroomiii, /obj/item/key/fancyroomii, /obj/item/key/fancyroomi, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
 
 /obj/item/storage/keyring/priest
 	keys = list(/obj/item/key/priest, /obj/item/key/confession, /obj/item/key/church, /obj/item/key/graveyard)
@@ -179,7 +185,7 @@
 	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)
 
 /obj/item/storage/keyring/steward
-	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor)
+	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor,)
 
 /obj/item/storage/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
@@ -215,7 +221,7 @@
 	keys = list(/obj/item/key/goblin, /obj/item/key/goblinguard, /obj/item/key/goblinchief)
 
 /obj/item/storage/keyring/harbormaster
-	keys = list(/obj/item/key/harbor, /obj/item/key/ship)
+	keys = list(/obj/item/key/harbor, /obj/item/key/ship,)
 
 
 /obj/item/lockpickring

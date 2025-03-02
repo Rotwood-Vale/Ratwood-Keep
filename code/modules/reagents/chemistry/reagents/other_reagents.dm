@@ -93,6 +93,25 @@
 		M.add_nausea(50)
 	return ..()
 
+/datum/reagent/water/salty
+	name = "Salt Water"
+	taste_description = "salt"
+	hydration = -7 //Saltwater makes you thirstier
+
+/datum/reagent/water/salty/on_mob_life(mob/living/carbon/M)
+	M.adjustToxLoss(0.5)
+	M.add_nausea(50)
+
+/datum/reagent/rawsalt
+	name = "Raw Salt"
+	taste_description = "salt"
+	var/hydration = -15 //Don't eat raw salt
+
+/datum/reagent/rawsalt/on_mob_life(mob/living/carbon/M)
+	M.adjustToxLoss(0.5)
+	M.add_nausea(50)
+	M.adjust_hydration(hydration)
+
 /*
  *	Water reaction to turf
  */
@@ -913,7 +932,6 @@
 	..()
 
 /datum/reagent/stimulum/on_mob_life(mob/living/carbon/M)
-	M.adjustStaminaLoss(-2*REM, 0)
 	M.adjustToxLoss(current_cycle*0.1*REM, 0) // 1 toxin damage per cycle at cycle 10
 	..()
 

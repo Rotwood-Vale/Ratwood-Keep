@@ -19,6 +19,19 @@
 	miracle = FALSE
 	devotion_cost = 0
 
+/obj/effect/proc_holder/spell/targeted/docheallsser  /////// lesser miricle, granted by enchanted rings
+	action_icon = 'icons/mob/actions/roguespells.dmi'
+	name = "Close Wounds"
+	overlay_state = "doc"
+	range = 1
+	include_user = TRUE
+	sound = 'sound/gore/flesh_eat_03.ogg'
+	associated_skill = /datum/skill/misc/treatment
+	antimagic_allowed = TRUE
+	charge_max = 60 SECONDS
+	miracle = FALSE
+	devotion_cost = 0
+
 /obj/effect/proc_holder/spell/targeted/stable // sets ox lose to 0 knocks out some toxin, brings blood levels to safe. epi stabalizes ox lose, antihol purges booze, water and iron slowly restores blood.
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Stabilising Syringe"
@@ -57,6 +70,7 @@
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
+	/// Amount of PQ gained for curing zombos
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
 /obj/effect/proc_holder/spell/targeted/cpr
@@ -71,61 +85,73 @@
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
+	/// Amount of PQ gained for reviving
 	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]) && targets[1].has_status_effect(/datum/status_effect/debuff/wheart))
-		testing("revived1")
-		var/mob/living/target = targets[1]
-		if(target == user)
-			return FALSE
-		if(target.stat < DEAD)
-			to_chat(user, span_warning("Nothing happens."))
-			return FALSE
-		if(target.mob_biotypes & MOB_UNDEAD)
-			to_chat(user, span_warning("It's undead, I can't."))
-			return FALSE
-		if(!target.revive(full_heal = FALSE))
-			to_chat(user, span_warning("They need to be mended more."))
-			return FALSE
-		testing("revived2")
-		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-		//GET OVER HERE!
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			qdel(underworld_spirit)
-			ghost.mind.transfer_to(target, TRUE)
-		target.grab_ghost(force = TRUE)
-		target.emote("breathgasp")
-		target.Jitter(100)
-		if(isseelie(target))
-			var/mob/living/carbon/human/fairy_target = target
-			fairy_target.set_heartattack(FALSE)
-			var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
-			if(Wing == null)
-				var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
-				var/obj/item/organ/wings/seelie/new_wings = new wing_type()
-				new_wings.Insert(fairy_target)
-		target.update_body()
-		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
-		if(target.mind)
-			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-				adjust_playerquality(revive_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-		return TRUE
-	to_chat(user, span_warning("I need to prime their heart first."))
-	return FALSE
+
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	if(target == user)
+		revert_cast()
+		return FALSE
+	if(target.stat < DEAD)
+		to_chat(user, span_warning("Nothing happens."))
+		revert_cast()
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_RITUALIZED))
+		to_chat(user, span_warning("The life essence was sucked out of this body."))
+		revert_cast()
+		return FALSE
+	if(world.time > target.mob_timers["lastdied"] + 10 MINUTES)
+		to_chat(user, span_warning("It's too late."))
+		revert_cast()
+		return FALSE
+	if(target.mob_biotypes & MOB_UNDEAD)
+		to_chat(user, span_warning("It's undead, I can't."))
+		revert_cast()
+		return FALSE
+	if(!target.revive(full_heal = FALSE))
+		to_chat(user, span_warning("They need to be mended more."))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+	//GET OVER HERE!
+	if(underworld_spirit)
+		var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+		qdel(underworld_spirit)
+		ghost.mind.transfer_to(target, TRUE)
+	target.grab_ghost(force = TRUE)
+	target.emote("breathgasp")
+	target.Jitter(100)
+	if(isseelie(target))
+		var/mob/living/carbon/human/fairy_target = target
+		fairy_target.set_heartattack(FALSE)
+		var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
+		if(Wing == null)
+			var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
+			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
+			new_wings.Insert(fairy_target)
+	target.update_body()
+	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+	target.mind?.remove_antag_datum(/datum/antagonist/zombie)
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -137,16 +163,22 @@
 
 	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
 		to_chat(user, span_warning("I need to prime their liver first"))
+		revert_cast() // No need to consume the spell if it isn't properly cast.
 		return FALSE
 
 	var/mob/living/target = targets[1]
 
 	if(target == user)
+		revert_cast()
+		return FALSE
+
+	// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
+	if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
+		to_chat(user, span_warning("It's of an incurable evil, I can't."))
+		revert_cast()
 		return FALSE
 
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
-
-	testing("curerot2")
 
 	if(was_zombie)
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
@@ -164,11 +196,26 @@
 
 	if(iscarbon(target))
 		var/mob/living/carbon/stinky = target
-		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
-			rotty.rotted = FALSE
-			rotty.skeletonized = FALSE
-			rotty.update_limb()
-			rotty.update_disabled()
+		for(var/obj/item/bodypart/limb in stinky.bodyparts)
+			limb.rotted = FALSE
+			limb.skeletonized = FALSE
+			limb.update_limb()
+			limb.update_disabled()
+
+	// Specific edge-case where a body rots without a head or rots after a head is placed back on. We always want this gone so we can at least revive the person even if there is no mind, this is caused by the failure to remove the zombie antag datum.
+	// un-deadite'ing process
+	target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
+
+	for(var/trait in GLOB.traits_deadite)
+		REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
+
+	if(target.stat < DEAD) // Drag and shove ghost back in.
+		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
+		if(underworld_spirit)
+			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
+			ghost.mind.transfer_to(target, TRUE)
+			qdel(underworld_spirit)
+	target.grab_ghost(force = TRUE) // even suicides
 
 	target.update_body()
 	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
@@ -177,12 +224,14 @@
 
 /obj/effect/proc_holder/spell/targeted/debride/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(5, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed"))
+		revert_cast()
 		return FALSE
 	return TRUE
 
@@ -207,7 +256,31 @@
 		target.adjustOxyLoss(-50)
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
+
+/obj/effect/proc_holder/spell/targeted/docheallsser/cast(list/targets, mob/living/user)
+	. = ..()
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		target.visible_message(span_green("[user] tends to [target]'s wounds."), span_notice("I feel better already."))
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
+			if(affecting)
+				if(affecting.heal_damage(25, 25))
+					C.update_damage_overlays()
+				if(affecting.heal_wounds(25))
+					C.update_damage_overlays()
+		else
+			target.adjustBruteLoss(-25)
+			target.adjustFireLoss(-25)
+		target.adjustToxLoss(-25)
+		target.adjustOxyLoss(-25)
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+		return TRUE
+	return FALSE
+
 
 /obj/effect/proc_holder/spell/targeted/stable/cast(list/targets, mob/user)
 	. = ..()
@@ -222,53 +295,39 @@
 		target.emote("rage")
 		target.blood_volume += BLOOD_VOLUME_SURVIVE
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast(list/targets, mob/user)
 	. = ..()
 	if(iscarbon(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		var/obj/item/bodypart/BPA = target.get_bodypart(BODY_ZONE_R_ARM)
+		var/obj/item/bodypart/BPA = target.get_bodypart(user.zone_selected)
+		if(!BPA)
+			to_chat(user, span_warning("They're missing that part!"))
+			revert_cast()
+			return FALSE
 		BPA.add_wound(/datum/wound/artery/)
 		target.visible_message(span_danger("[user] drains the reagents and toxins from [target]."))
 		target.adjustToxLoss(-999)
 		target.reagents.remove_all_type(/datum/reagent, 9999)
 		target.emote("scream")
 		return TRUE
+	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/purge/cast_check(skipcharge = 0,mob/user = usr)
 	if(!..())
+		revert_cast()
 		return FALSE
 	var/found = null
 	for(var/obj/structure/bed/rogue/S in oview(2, user))
 		found = S
 	if(!found)
 		to_chat(user, span_warning("I need to lay them on a bed."))
+		revert_cast()
 		return FALSE
 	return TRUE
-
-/obj/item/organ/heart/weak
-	name = "weakened heart"
-	desc = "This seems hardly functional."
-
-/datum/status_effect/debuff/wheart
-	id = "wheart"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/wheart
-	effectedstats = list("strength" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
-
-/atom/movable/screen/alert/status_effect/debuff/wheart
-	name = "Weak Heart"
-	desc = "I feel drained and sluggish. My heart beats painfully."
-
-/obj/item/organ/heart/weak/Insert(mob/living/carbon/M)
-	..()
-	M.apply_status_effect(/datum/status_effect/debuff/wheart)
-
-/obj/item/organ/heart/weak/Remove(mob/living/carbon/M, special = 0)
-	..()
-	if(M.has_status_effect(/datum/status_effect/debuff/wheart))
-		M.remove_status_effect(/datum/status_effect/debuff/wheart)
 
 /obj/item/organ/liver/weak
 	name = "weakened liver"
@@ -342,59 +401,7 @@
 		liver.Insert(target)
 		return TRUE
 
-
-/datum/surgery/bypass
-	name = "Coronary Artery Bypass Surgery"
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	possible_locs = list(BODY_ZONE_CHEST)
-	steps = list(
-		/datum/surgery_step/incise,
-		/datum/surgery_step/clamp,
-		/datum/surgery_step/retract,
-		/datum/surgery_step/saw,
-		/datum/surgery_step/bypass,
-		/datum/surgery_step/cauterize,
-	)
-
-/datum/surgery_step/bypass
-	name = "Perform Heart Rejuvination"
-	time = 20 SECONDS
-	accept_hand = TRUE
-	implements = list(
-		TOOL_HEMOSTAT = 60,
-		TOOL_IMPROVHEMOSTAT = 30,
-		TOOL_HAND = 10,
-	)
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED | SURGERY_RETRACTED | SURGERY_BROKEN
-	skill_min = SKILL_LEVEL_EXPERT
-	skill_median = SKILL_LEVEL_MASTER
-
-/datum/surgery_step/bypass/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	if(target.has_status_effect(/datum/status_effect/debuff/wheart))
-		to_chat(user, "Their heart is too weak")
-		return FALSE
-	else
-		display_results(user, target, span_notice("I begin to bypass the arteries in [target]'s heart...."),
-			span_notice("[user] begins to bypass the arteries in [target]'s heart."),
-			span_notice("[user] begins to bypass the arteries in [target]'s heart."))
-		return TRUE
-
-/datum/surgery_step/bypass/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I successfully bypass the arteries in [target]'s heart."),
-		span_notice("[user] successfully bypassess the arteries in [target]'s heart, restoring its function!"),
-		span_notice("[user] successfully bypassess the arteries in [target]'s heart, restoring its function!"))
-	var/obj/item/organ/heart/heart = target.getorganslot(ORGAN_SLOT_HEART)
-	if(heart)
-		heart.Remove(target)
-		QDEL_NULL(heart)
-		heart = new /obj/item/organ/heart/weak
-		heart.Insert(target)
-		return TRUE
-
 //------------------------------------------------reagents--------------------------------------------//
-
-
 
 /obj/item/reagent_containers/powder/alch
 	name = "essence"
@@ -602,7 +609,7 @@
 	M.adjustToxLoss(2, 0)
 
 /datum/reagent/medicine/caffeine/on_mob_life(mob/living/carbon/M)
-	M.rogstam_add(800)
+	M.energy_add(800)
 	..()
 	. = 1
 	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -686,12 +693,37 @@
 
 //---------------------------------------alch reactions----------------------------------------------//
 
-/datum/chemical_reaction/alch/health
-	name = "health pot"
+
+/datum/chemical_reaction/alch
+	name = "debug alch reaction"
 	mix_sound = 'sound/items/fillbottle.ogg'
-	id = /datum/reagent/medicine/healthpot
-	results = list(/datum/reagent/medicine/healthpot = 45)
+	id = /datum/reagent/alch
+	required_container = /obj/item/reagent_containers/glass/alembic
+
+/datum/chemical_reaction/alch/lesserhealth
+	name = "lesser health pot"
+	id = /datum/reagent/medicine/lesserhealthpot
+	results = list(/datum/reagent/medicine/lesserhealthpot = 45) //15 oz
 	required_reagents = list(/datum/reagent/alch/syrum_meat = 24, /datum/reagent/alch/syrum_ash = 24)
+
+/datum/chemical_reaction/alch/health //purify minor health pot into half a bottle by using essence of clarity (swampweed)
+	name = "health pot purification"
+	id = /datum/reagent/medicine/healthpot
+	results = list(/datum/reagent/medicine/healthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
+
+
+/datum/chemical_reaction/alch/greaterhealth //purify health pot into half a bottle of super by using essence of poison (poison berry) which used to be in the old red recipe
+	name = "greater health pot purification"
+	id = /datum/reagent/medicine/greaterhealthpot
+	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
+	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
+
+/*documentation: 15 oz = 45 units
+2 lesser health makes 1 health bottle, 2 health makes 1 greater health
+you need 4 lesser bottles to make 2 health to make 1 half bottle of greater
+8 lesser bottles for 1 bottle of greater
+end recipe count: 8 ash, 8 minced meat, 4 swampweed, 2 poisonberry to make 1 bottle of greater*/
 
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
@@ -728,6 +760,22 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/moondust(location)
+
+/datum/chemical_reaction/alch/puresalt
+	name = "puresalt"
+	id = "puresalt"
+	required_reagents = list(/datum/reagent/water/salty = 30) //Boil off the water to get pure salt
+	results = list(/datum/reagent/rawsalt = 15)
+
+/datum/chemical_reaction/alch/saltsea
+	name = "saltsea"
+	id = "saltsea"
+	required_reagents = list(/datum/reagent/rawsalt = 15)
+
+/datum/chemical_reaction/alch/saltsea/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/reagent_containers/powder/salt(location)
 
 /datum/chemical_reaction/alch/spice
 	name = "spiceify"
@@ -868,8 +916,8 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "skit"
 	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_HIP
 	throwforce = 1
-	slot_flags = null
 
 /obj/item/storage/fancy/skit/update_icon()
 	if(fancy_open)
@@ -1132,7 +1180,7 @@
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
 	icon_state = "pinkb"
 	icon = 'icons/roguetown/items/surgery.dmi'
-	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15) 
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
 	dissolvable = FALSE
 	grind_results = null
 
@@ -1252,7 +1300,7 @@
 
 /obj/item/reagent_containers/glass/alembic
 	name = "metal alembic"
-	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH)
+	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH, /datum/intent/fill) //It's janky and annoying to need to fill the alembic this way, but also Moricode is stupid and I'll refactor it later.
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
@@ -1365,7 +1413,7 @@
 		grinding_started = TRUE // Mark grinding as started
 		to_chat(user, "I start grinding...")
 		if((do_after(user, 25, target = src)) && grinded)
-			if(grinded.mill_result) // This goes first.
+			if(grinded.mill_result && !istype(user.rmb_intent, /datum/rmb_intent/strong)) // This goes first. Strong intent to bypass.
 				new grinded.mill_result(get_turf(src))
 				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
@@ -1375,17 +1423,21 @@
 				grinded.on_juice()
 				reagents.add_reagent_list(grinded.juice_results)
 				to_chat(user, "I juice [grinded] into a fine liquid.")
-			if(grinded.reagents) // Food and pills.
-				grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+			if(grinded.grind_results && !isemptylist(grinded.grind_results))
+				grinded.on_grind()
+				reagents.add_reagent_list(grinded.grind_results)
+				to_chat(user, "I break [grinded] into powder.")
 				QDEL_NULL(grinded)
 				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
 				grinding_started = FALSE // Reset grinding status
 				return
-			grinded.on_grind()
-			reagents.add_reagent_list(grinded.grind_results)
-			to_chat(user, "I break [grinded] into powder.")
-			QDEL_NULL(grinded)
-			icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+			if(grinded.reagents) // Other stuff that might have reagents in them, let's not cause a runtime shall we?
+				grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+				icon_state = reagents.total_volume > 0 ? "mortar_full" : "mortar_empty"
+				to_chat(user, "I pound [grinded] into mush.")
+				QDEL_NULL(grinded)
+				grinding_started = FALSE // Reset grinding status
+				return
 			grinding_started = FALSE // Reset grinding status
 			return
 		else

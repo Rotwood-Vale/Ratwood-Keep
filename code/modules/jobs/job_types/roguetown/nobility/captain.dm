@@ -8,16 +8,17 @@
 	spawn_positions = 1
 
 	allowed_races = RACES_TOLERATED_UP
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You served your time gracefully as a soldier, and now you've grown into a role which many men dream to become. \
-				You are the Marshal's chosen, elevated to command His Highness' personal retinue. \
+	tutorial = "You served your time gracefully as a Knight of the crown, and now you've grown into a role which many men dream to become. \
+				You are the Marshal's chosen, a Banneret, elevated to command His Highness' personal retinue. \
 				Keep your men in line, as for this realm to prosper, the duke must be safe. \
-				The Men at Arms and the Gatemaster are under your direct supervision."
+				The Men at Arms and the Gatemaster are under your direct supervision. \
+				The only men on par with you, as part of the armed retinue and not under your direct command, are your fellow Knights."
 	display_order = JDO_GUARD_CAPTAIN
 	whitelist_req = FALSE
 
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
+	spells = list(SPELL_CONVERT_ROLE_GUARD)
 	outfit = /datum/outfit/job/roguetown/captain
 
 	give_bank_account = 26
@@ -40,13 +41,14 @@
 			S.name = "captain's cape ([index])"
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		H.real_name = "Captain [prev_real_name]"
-		H.name = "Captain [prev_name]"
+		var/honorary = "Knight-Captain"
+		H.real_name = "[honorary] [prev_real_name]"
+		H.name = "[honorary] [prev_name]"
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -59,7 +61,7 @@
 	cloak = /obj/item/clothing/cloak/stabard/guardhood
 	backl = /obj/item/rogueweapon/shield/tower
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1, /obj/item/natural/feather = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -91,8 +93,6 @@
 			H.update_hair()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	H.verbs |= /mob/proc/haltyell
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"

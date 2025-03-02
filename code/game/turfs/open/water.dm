@@ -20,6 +20,7 @@
 	icon_state = "together"
 	baseturfs = /turf/open/water
 	slowdown = 5
+	turf_flags = NONE
 	var/obj/effect/overlay/water/water_overlay
 	var/obj/effect/overlay/water/top/water_top_overlay
 	bullet_sizzle = TRUE
@@ -86,7 +87,7 @@
 //				drained += (user.checkwornweight()*2)
 				if(!user.check_armor_skill())
 					drained += 40
-				if(!user.rogfat_add(drained))
+				if(!user.stamina_add(drained))
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)
 
@@ -299,6 +300,21 @@
 				var/obj/item/natural/worms/leech/I = new(C)
 				BP.add_embedded_object(I, silent = TRUE)
 				return .
+
+/turf/open/water/sea
+	name = "shallows"
+	desc = "Shallow salty seawater, gentle waves lap across the surface"
+	water_level = 2
+	water_color = "#034ea4"
+	water_reagent = /datum/reagent/water/salty
+
+/turf/open/water/sea/deep
+	name = "sea"
+	desc = "Deep salty seawater, who knows what dwells beneath the surface?"
+	water_level = 3
+	water_color = "#02014b"
+	slowdown = 5
+	swim_skill = TRUE
 
 /turf/open/water/swamp/deep
 	name = "murk"

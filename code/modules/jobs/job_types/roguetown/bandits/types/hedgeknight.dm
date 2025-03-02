@@ -8,7 +8,7 @@
 	cmode_music = 'sound/music/combat_bandit2.ogg'
 	maximum_possible_slots = 1
 	min_pq = 30
-	pickprob = 30
+	pickprob = 50
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -28,21 +28,21 @@
 	r_hand = /obj/item/rogueweapon/greatsword/zwei
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
-	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-	if(prob(30))
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.mind.AddSpell(new SPELL_JOINCOMRADES)
 	H.change_stat("strength", 4)
 	H.change_stat("endurance", 2)
 	H.change_stat("constitution", 2)
@@ -50,6 +50,42 @@
 	H.change_stat("speed", -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
+
+/obj/effect/proc_holder/spell/invoked/joincomrades
+    name = "Recruit Comrade"
+    desc = "Recruit someone to your cause and change their patron to Matthios."
+    overlay_state = "recruit_bog"
+    antimagic_allowed = TRUE
+    charge_max = 100
+    var/recruitment_message = "Join us, %RECRUIT!"
+    var/recruitment_range = 1
+    var/accept_message = "I will, comrade!"
+    var/refuse_message = "I refuse."
+
+/obj/effect/proc_holder/spell/invoked/joincomrades/cast(list/targets, mob/user = usr)
+    . = ..()
+    var/list/recruitment = list()
+    for(var/mob/living/carbon/human/recruit in (get_hearers_in_view(recruitment_range, user) - user))
+        if(!recruit.patron || recruit.patron.type == /datum/patron/inhumen/matthios)
+            continue
+        recruitment[recruit.name] = recruit
+    if(!length(recruitment))
+        to_chat(user, span_warning("There are no potential comrades in range."))
+        return
+    var/inputty = input(user, "Select a potential comrade!", "[name]") as anything in recruitment
+    if(inputty)
+        var/mob/living/carbon/human/recruit = recruitment[inputty]
+        if(!QDELETED(recruit) && (recruit in get_hearers_in_view(recruitment_range, user)))
+            if(recruit.patron && recruit.patron.type != /datum/patron/inhumen/matthios)
+                var/garbaggio = alert(recruit, "Become our comrade!", "Warning", "Yes", "No") 
+                if(garbaggio == "Yes")
+                    to_chat(user, span_blue("[recruit] joins the comrades!"))
+                    recruit.set_patron(/datum/patron/inhumen/matthios)
+                else
+                    to_chat(recruit, span_danger("I reject the offer."))
+                    to_chat(user, span_danger("[recruit] rejects the offer."))
+            else
+                user << "[recruit]'s patron is already Matthios."

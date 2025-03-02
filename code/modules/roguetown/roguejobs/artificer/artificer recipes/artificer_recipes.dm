@@ -163,7 +163,19 @@
 	created_item = /obj/item/contraption/lock_imprinter
 	hammers_per_item = 12
 	skill_level = 4
-	
+
+/datum/artificer_recipe/contraptions/smokebombs
+	name = "smokebomb(s) (6) (+1 Coal)"
+	required_item = /obj/item/ingot/iron
+	additional_items = list(/obj/item/rogueore/coal = 1)
+	created_item = list(/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,
+						/obj/item/smokebomb,)
+	hammers_per_item = 12
+	skill_level = 3
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
@@ -220,18 +232,58 @@
 	i_type = "Ammunition"
 
 /datum/artificer_recipe/ammunition/bolts
-	name = "Crossbow Bolts 5x (+1 Iron)"
+	name = "Crossbow Bolts 20x (+3 planks, +2 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt, /obj/item/ammo_casing/caseless/rogue/bolt)
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt, 
+						/obj/item/ammo_casing/caseless/rogue/bolt
+					)
 	hammers_per_item = 6
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/arrows
-	name = "Arrows 5x (+1 Iron)"
+	name = "Arrows 20x (+3 Planks, +2 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron,/obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron, /obj/item/ammo_casing/caseless/rogue/arrow/iron)
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron
+					)
 	hammers_per_item = 6
 	skill_level = 2
 
@@ -373,7 +425,7 @@
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/arquebus)
+	created_item = list(/obj/item/gun/ballistic/firearm/arquebus)
 	hammers_per_item = 10
 	skill_level = 4
 
@@ -383,7 +435,7 @@
 	additional_items = list(/obj/item/gunlock = 1,
 							/obj/item/gunstock = 1,
 							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/blunderbuss)
+	created_item = list(/obj/item/gun/ballistic/firearm/blunderbuss)
 	hammers_per_item = 10
 	skill_level = 4
 

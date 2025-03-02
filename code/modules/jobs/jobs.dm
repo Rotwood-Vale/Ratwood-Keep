@@ -59,46 +59,51 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"Cyborg",
 	ROLE_PAI))
 
+// FIRST POSITIONS SUCH AS DUKE OR HEAD BUTLER E.T.C. MUST ALWAYS STAY ON THE TOP OF THE LIST
 GLOBAL_LIST_INIT(noble_positions, list(
 	"Duke",
 	"Duke Consort",
 	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
-	"Councillor",
 	"Steward",
 	"Knight",
-	"Court Magos",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Court Physician",
-	"Jester",
 	"Head Butler",
+	"Court Magos",
+	"Court Physician",
+	"Councillor",
+	"Jester",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
+	"Town Sheriff",
 	"Watchman",
-	"Vanguard",
 	"Warden",
+	"Gatemaster",
+	"Vanguard",
+	"Veteran",
 	"Man at Arms",
 	"Dungeoneer",
-	"Gatemaster",
-	"Town Sheriff",
-	"Veteran",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
 	"Priest",
-	"Inquisitor",
-	"Confessor",
 	"Acolyte",
 	"Mortician",
 	"Templar",
 	"Druid",
 ))
 
+GLOBAL_LIST_INIT(inquisition_positions, list(
+	"Inquisitor",
+	"Confessor",
+))
+
 GLOBAL_LIST_INIT(yeoman_positions, list(
+	"Mayor",
 	"Merchant",
 	"Scholar",
 	"Barkeep",
@@ -108,7 +113,6 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Architect",
 	"Artificer",
 	"Scribe",
-	"Village Elder",
 	"Harbormaster",
 	"Longshoreman",
 ))
@@ -117,33 +121,33 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
 	"Butcher",
 	"Cook",
-	"Lunatic",
 	"Miner",
 	"Hunter",
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Henchman",
 	"Nightmaster",
+	"Henchman",
 	"Prostitute",
 	"Docker",
 	"Prisoner",
 	"Beggar",
+	"Lunatic",
 	"Town Seelie",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Mercenary",
 	"Guild Clerk",
+	"Mercenary",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
-	"Smithy Apprentice",
-	"Magicians Apprentice",
-	"Churchling",
 	"Servant",
+	"Magicians Apprentice",
+	"Smithy Apprentice",
+	"Churchling",
 	"Shophand",
 ))
 
@@ -189,6 +193,7 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.courtier_positions
 	sorting_order += GLOB.garrison_positions
 	sorting_order += GLOB.church_positions
+	sorting_order += GLOB.inquisition_positions
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.youngfolk_positions

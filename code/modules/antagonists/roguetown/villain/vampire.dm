@@ -61,13 +61,19 @@
 		ADD_TRAIT(owner.current, TRAIT_NOBLE, TRAIT_GENERIC)
 	owner.special_role = name
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_SPECIALUNDEAD, TRAIT_GENERIC) //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp2.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -83,7 +89,8 @@
 //			batform = new
 //			owner.current.AddSpell(batform)
 	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
+	
 	if(!is_lesser)
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
@@ -95,6 +102,7 @@
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)
@@ -191,27 +199,42 @@
 	VD.disguised = TRUE
 	skin_tone = VD.cache_skin
 	hair_color = VD.cache_hair
-	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new VD.cache_eyes
+	eyes.Insert(src)
+	set_eye_color(src, VD.cache_eye_color, VD.cache_eye_color)
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes &= ~MOB_UNDEAD
+	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
 	if(!VD)
 		return
 	VD.disguised = FALSE
-//	VD.cache_skin = skin_tone
-//	VD.cache_eyes = eye_color
-//	VD.cache_hair = hair_color
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
-	eye_color = "ff0000"
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
+	set_eye_color(src, "#FF0000", "#FF0000")
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes |= MOB_UNDEAD
+	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
 
 
@@ -341,30 +364,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	max_integrity = 0
-
-/mob/living/carbon/human/proc/vamp_regenerate()
-	set name = "Regenerate"
-	set category = "VAMPIRE"
-	var/silver_curse_status = FALSE
-	for(var/datum/status_effect/debuff/silver_curse/silver_curse in status_effects)
-		silver_curse_status = TRUE
-		break
-	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
-	if(!VD)
-		return
-	if(VD.disguised)
-		to_chat(src, span_warning("My curse is hidden."))
-		return
-	if(silver_curse_status)
-		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
-		return
-	if(VD.vitae < 500)
-		to_chat(src, span_warning("Not enough vitae."))
-		return
-	to_chat(src, span_greentext("! REGENERATE !"))
-	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-500)
-	fully_heal()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)

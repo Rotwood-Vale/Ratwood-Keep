@@ -43,6 +43,7 @@
 					else
 						to_chat(user, span_warning("I'm carrying enough with the pitchfork."))
 					W.update_icon()
+					playsound(loc,"plantcross", 80, FALSE)
 					return
 
 	if(istype(I, /obj/item/rogueweapon/mace/woodclub))//reused some commented out code

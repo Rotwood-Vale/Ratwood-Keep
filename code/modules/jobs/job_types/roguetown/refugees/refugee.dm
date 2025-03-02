@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	show_in_credits = TRUE
 	min_pq = 0
 	max_pq = null
-	
+
 	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
 	PQ_boost_divider = 10
 
@@ -31,6 +31,9 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
+	announce_latejoin = FALSE
+
+	family_blacklisted = TRUE //we should have refugee-only families
 
 
 /datum/job/roguetown/refugee/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

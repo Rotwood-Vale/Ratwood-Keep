@@ -24,7 +24,7 @@
 		if("Half Orc accent")
 			return strings("middlespeak.json", "full")
 		if("Akula accent")
-			return strings("pirate_replacement.json", "full")
+			return strings("axian_replacement.json", "full")
 
 /datum/species/proc/post_accent_treatment(mob/living/carbon/human, message)
 	return message
@@ -85,6 +85,8 @@
 			return strings("spanish_replacement.json", "syllable")
 		if("Half Orc accent")
 			return strings("middlespeak.json", "syllable")
+		if("Hissing accent")
+			return strings("hissing_replacement.json", "syllable")
 
 #define REGEX_FULLWORD 1
 #define REGEX_STARTWORD 2

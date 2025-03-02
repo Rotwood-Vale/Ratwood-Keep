@@ -34,7 +34,7 @@
 			return TRUE
 		target.visible_message(span_info("Necrotic energy floods over [target]!"), span_userdanger("I feel colder as the dark energy floods into me!"))
 		if(iscarbon(target))
-			target.Paralyze(50)
+			target.apply_status_effect(/datum/status_effect/debuff/weaken_living)
 		else
 			target.adjustBruteLoss(20)
 		return TRUE
@@ -143,6 +143,10 @@
 		to_chat(user, span_warning("I cannot raise the living."))
 		return FALSE
 
+	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
+		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
+		return FALSE
+
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 	var/obj/item/bodypart/target_larm = target.get_bodypart(BODY_ZONE_L_ARM)
 	var/obj/item/bodypart/target_rarm = target.get_bodypart(BODY_ZONE_R_ARM)
@@ -221,10 +225,19 @@
 		to_chat(user, span_warning("I cannot raise goblins."))
 		return FALSE
 
+	// bandaid like the goblins, should also prevent farming the sewers for a free skeleton army
+	if(istype(obj, /mob/living/carbon/human/species/human/northern/bum))
+		to_chat(user, span_warning("I cannot raise this wretch."))
+		return FALSE
+
 	var/mob/living/carbon/human/target = obj
 
 	if(target.stat != DEAD)
 		to_chat(user, span_warning("I cannot raise the living."))
+		return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_SPECIALUNDEAD))
+		to_chat(user, span_warning("This is an undead far beyond my perview. I cannot make it mine."))
 		return FALSE
 
 	var/obj/item/bodypart/target_head = target.get_bodypart(BODY_ZONE_HEAD)
@@ -358,6 +371,12 @@
 	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
 	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
+	mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 1, TRUE)
+	mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD
@@ -368,7 +387,7 @@
 	cmode_music = 'sound/music/combat_cult.ogg'
 
 	patron = master.patron
-	mob_biotypes = MOB_UNDEAD
+	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
 	ambushable = FALSE
 	underwear = "Nude"
@@ -389,18 +408,18 @@
 
 	can_do_sex = FALSE //where my bonger go
 
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC) //Skeletons can't regen stamina and have shit skills so after dicussion with Gyran, this'll be a bandaid. If it proves unbalanced I'll figure out a way to let them regen stam reliably.
-
 	update_body()
 
 	to_chat(src, span_userdanger("My master is [master.real_name]."))

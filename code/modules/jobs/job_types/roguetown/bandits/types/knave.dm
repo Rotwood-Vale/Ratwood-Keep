@@ -41,6 +41,7 @@
 	H.change_stat("perception", 2)
 	H.change_stat("speed", 2) //It's all about speed and perception
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
 	var/weapons = list("2x Dagger", "Bow & Sword")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
@@ -65,5 +66,4 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("perception", 1)
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE

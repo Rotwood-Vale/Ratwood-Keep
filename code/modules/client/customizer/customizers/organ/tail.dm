@@ -44,6 +44,7 @@
 		/datum/sprite_accessory/tail/twocat,
 		/datum/sprite_accessory/tail/tiger,
 		/datum/sprite_accessory/tail/leopard,
+		/datum/sprite_accessory/tail/lynx,
 		)
 
 /datum/customizer/organ/tail/lizard
@@ -78,8 +79,11 @@
 	name = "Axian Tail"
 	organ_type = /obj/item/organ/tail/akula
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/data_shark,
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/shark,
 		/datum/sprite_accessory/tail/sharknofin,
+		/datum/sprite_accessory/tail/fshark
 		)
 
 /datum/customizer/organ/tail/tiefling
@@ -103,6 +107,7 @@
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/monkey,
 		/datum/sprite_accessory/tail/axolotl,
@@ -114,6 +119,7 @@
 		/datum/sprite_accessory/tail/corvid,
 		/datum/sprite_accessory/tail/cow,
 		/datum/sprite_accessory/tail/eevee,
+		/datum/sprite_accessory/tail/fshark,
 		/datum/sprite_accessory/tail/fennec,
 		/datum/sprite_accessory/tail/fish,
 		/datum/sprite_accessory/tail/fox,
@@ -155,6 +161,7 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/lynx,
 		)
 
 /datum/customizer/organ/tail/anthro
@@ -165,6 +172,7 @@
 	name = "Wild-Kin Tail"
 	organ_type = /obj/item/organ/tail/anthro
 	sprite_accessories = list(
+		/datum/sprite_accessory/tail/akulashark,
 		/datum/sprite_accessory/tail/cat,
 		/datum/sprite_accessory/tail/monkey,
 		/datum/sprite_accessory/tail/axolotl,
@@ -176,6 +184,7 @@
 		/datum/sprite_accessory/tail/corvid,
 		/datum/sprite_accessory/tail/cow,
 		/datum/sprite_accessory/tail/eevee,
+		/datum/sprite_accessory/tail/fshark,
 		/datum/sprite_accessory/tail/fennec,
 		/datum/sprite_accessory/tail/fish,
 		/datum/sprite_accessory/tail/fox,
@@ -218,4 +227,5 @@
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/snuppy,
+		/datum/sprite_accessory/tail/lynx,
 		)

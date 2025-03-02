@@ -39,8 +39,8 @@
 
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
-		if(levels <= 2 || isseelie(src))	
-			return 
+		if(levels <= 2 || isseelie(src))
+			return
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -713,7 +713,6 @@
 	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		if(blood_volume <= 0)
 			health = 0
-	staminaloss = getStaminaLoss()
 	update_stat()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
@@ -722,7 +721,6 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-		remove_status_effect(/datum/status_effect/debuff/death_weaken)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src
@@ -752,7 +750,6 @@
 	SetImmobilized(0, FALSE)
 	SetParalyzed(0, FALSE)
 	SetSleeping(0, FALSE)
-	setStaminaLoss(0)
 	SetUnconscious(0, FALSE)
 	if(should_update_mobility)
 		update_mobility()
@@ -1059,7 +1056,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
 						span_notice("I break free of [pulledby]'s grip!"), null, null, pulledby)
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
@@ -1074,7 +1071,7 @@
 
 		return FALSE
 	else
-		rogfat_add(rand(5,15))
+		stamina_add(rand(5,15))
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
 //			shitte = " ([resist_chance]%)"
@@ -1166,7 +1163,7 @@
 	if(check_arm_grabbed(active_hand_index))
 		to_chat(src, span_warning("Someone is grabbing my arm!"))
 		return
-	
+
 	if(istype(src, /mob/living/carbon/spirit))
 		to_chat(src, span_warning("Your hands pass right through \the [what]!"))
 		return
@@ -1324,9 +1321,6 @@
 		return FALSE
 	return TRUE
 
-/mob/living/proc/update_stamina()
-	return
-
 /mob/living/proc/owns_soul()
 	if(mind)
 		return mind.soulOwner == mind
@@ -1370,9 +1364,11 @@
 
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
+	if (HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
 	if(fire_stacks > 0 && !on_fire)
 		testing("ignis")
-		on_fire = 1
+		on_fire = TRUE
 		src.visible_message(span_warning("[src] catches fire!"), \
 						span_danger("I'm set on fire!"))
 		new/obj/effect/dummy/lighting_obj/moblight/fire(src)
@@ -1388,7 +1384,7 @@
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
-		on_fire = 0
+		on_fire = FALSE
 		fire_stacks = 0
 		for(var/obj/effect/dummy/lighting_obj/moblight/fire/F in src)
 			qdel(F)
@@ -1398,7 +1394,7 @@
 		update_fire()
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
-	fire_stacks = CLAMP(fire_stacks + add_fire_stacks, -20, 20)
+	fire_stacks = CLAMP(fire_stacks + add_fire_stacks, -20, 100)
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()
 
@@ -1407,7 +1403,8 @@
 /mob/living/proc/spreadFire(mob/living/L)
 	if(!istype(L))
 		return
-
+	if(HAS_TRAIT(L, TRAIT_NOFIRE) || HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
 	if(on_fire)
 		if(L.on_fire) // If they were also on fire
 			var/firesplit = (fire_stacks + L.fire_stacks)/2
@@ -1533,7 +1530,7 @@
 			fall(!canstand_involuntary)
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
 		if (pixelshifted)
-			layer = 3.99 + pixelshift_layer //So mobs can pixelshift layers while lying down
+			layer = LYING_MOB_LAYER + pixelshift_layer //So mobs can pixelshift layers while lying down
 	else
 		if(layer == LYING_MOB_LAYER)
 			layer = initial(layer)
@@ -1706,7 +1703,6 @@
 			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
 			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 			BRAIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brain' id='brain'>[getOrganLoss(ORGAN_SLOT_BRAIN)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[getStaminaLoss()]</a>
 		</font>
 	"}
 
@@ -1794,7 +1790,7 @@
 		return
 	if(!can_look_up())
 		return
-	changeNext_move(CLICK_CD_MELEE)
+	changeNext_move(CLICK_CD_RAPID)
 	if(m_intent != MOVE_INTENT_SNEAK)
 		visible_message(span_info("[src] looks up."))
 	var/turf/ceiling = get_step_multiz(src, UP)
@@ -1824,14 +1820,6 @@
 	if(T.can_see_sky())
 		do_time_change()
 
-	var/ttime = 10
-	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 0
-
-	if(!do_after(src, ttime, target = src))
-		return
 	reset_perspective(ceiling)
 	update_cone_show()
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking)) //We stop looking up if we move.
@@ -1849,7 +1837,7 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-	
+
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
 	var/dist = get_dist(src, T)
@@ -1887,18 +1875,11 @@
 
 	if(!OS)
 		return
-	var/ttime = 10
-	if(STAPER > 5)
-		ttime = 10 - (STAPER - 5)
-		if(ttime < 0)
-			ttime = 0
 
 	visible_message(span_info("[src] looks down through [T]."))
 
-	if(!do_after(src, ttime, target = src))
-		return
 
-	changeNext_move(CLICK_CD_MELEE)
+	changeNext_move(CLICK_CD_RAPID)
 	reset_perspective(OS)
 	update_cone_show()
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
@@ -1909,7 +1890,7 @@
 		return
 
 	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
-	
+
 	if(client)
 		client.pixel_x = 0
 		client.pixel_y = 0

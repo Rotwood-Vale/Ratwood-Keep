@@ -317,7 +317,7 @@
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-		var/armor = run_armor_check(affecting, M.d_type, armor_penetration = M.a_intent.penfactor, damage = damage)
+		var/armor = run_armor_check(affecting, M.damage_type, armor_penetration = M.a_intent.penfactor, damage = damage)
 		next_attack_msg.Cut()
 
 		var/nodmg = FALSE
@@ -641,15 +641,18 @@
 	else
 		examination += span_dead("[m1] dead.")
 
-	switch(blood_volume)
-		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-			examination += span_artery("<B>[m1] extremely anemic.</B>")
-		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			examination += span_artery("<B>[m1] very anemic.</B>")
-		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			examination += span_artery("[m1] anemic.")
-		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			examination += span_artery("[m1] a little anemic.")
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		examination += span_notice("[m1] bloodless.")
+	else
+		switch(blood_volume)
+			if(-INFINITY to BLOOD_VOLUME_SURVIVE)
+				examination += span_artery("<B>[m1] extremely anemic.</B>")
+			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+				examination += span_artery("<B>[m1] very anemic.</B>")
+			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				examination += span_artery("[m1] anemic.")
+			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				examination += span_artery("[m1] a little anemic.")
 
 	if(HAS_TRAIT(src, TRAIT_PARALYSIS))
 		if(HAS_TRAIT(src, TRAIT_NO_BITE))

@@ -79,6 +79,7 @@
 
 	var/cached_mailer
 	var/cached_mailedto
+	var/trapped
 
 /obj/item/paper/get_real_price()
 	if(info)
@@ -159,7 +160,9 @@
 /obj/item/paper/proc/format_browse(t, mob/user)
 	user << browse_rsc('html/book.png')
 	var/dat = {"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-			<html><head><style type=\"text/css\">
+			<html><head>
+			<meta charset=\"UTF-8\">
+			<style type=\"text/css\">
 			body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>"}
 	dat += "[t]<br>"
 	dat += "<a href='?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
@@ -195,6 +198,14 @@
 		mailedto = null
 		update_icon()
 		return
+	if(trapped)
+		var/mob/living/victim = user
+		victim.visible_message(span_notice("[user] opens the [src]."))
+		to_chat(user, span_warning("This parchment is full of strange symbols that start to glow. How odd. Wait-"))
+		sleep(5)
+		victim.adjust_fire_stacks(15)
+		victim.IgniteMob()
+		victim.visible_message(span_danger("[user] bursts into flames upon reading [src]!"))
 	read(user)
 	if(rigged && (SSevents.holidays && SSevents.holidays[APRIL_FOOLS]))
 		if(!spam_flag)
@@ -374,6 +385,13 @@
 	if(is_blind(user))
 		return ..()
 
+	if(istype(P, /obj/item/natural/feather/infernal))
+		if(trapped)
+			to_chat(user, span_warning("[src] is already trapped."))
+		else
+			to_chat(user, span_warning("I draw infernal symbols on this [src], rigging it to explode."))
+			trapped = TRUE
+
 	if(istype(P, /obj/item/natural/thorn)|| istype(P, /obj/item/natural/feather))
 		if(length(info) > maxlen)
 			to_chat(user, span_warning("[src] is full of verba."))
@@ -386,7 +404,6 @@
 			to_chat(user, span_warning("I can't write."))
 			return
 		return
-
 	if(istype(P, /obj/item/paper))
 		var/obj/item/paper/p = P
 		if(info && p.info)

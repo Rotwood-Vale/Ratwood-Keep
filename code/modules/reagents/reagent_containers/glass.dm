@@ -1,4 +1,5 @@
 
+
 /obj/item/reagent_containers/glass
 	name = "glass"
 	amount_per_transfer_from_this = 10
@@ -7,7 +8,7 @@
 	reagent_flags = OPENCONTAINER|REFILLABLE
 	obj_flags = CAN_BE_HIT
 	spillable = TRUE
-	possible_item_intents = list(INTENT_GENERIC, /datum/intent/fill, INTENT_POUR, INTENT_SPLASH)
+	possible_item_intents = list(/datum/intent/fill, INTENT_SPLASH, INTENT_POUR, INTENT_GENERIC)
 	resistance_flags = ACID_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -40,47 +41,71 @@
 	if(istype(M))
 		if(user.used_intent.type == INTENT_GENERIC)
 			return ..()
-
-		else
-
-			if(!spillable)
-				return
-
-			if(!reagents || !reagents.total_volume)
-				to_chat(user, span_warning("[src] is empty!"))
-				return
-			if(user.used_intent.type == INTENT_SPLASH)
-				var/R
-				M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
-								span_danger("[user] splashes the contents of [src] onto you!"))
-				if(reagents)
-					for(var/datum/reagent/A in reagents.reagent_list)
-						R += "[A] ([num2text(A.volume)]),"
-
-				if(isturf(target) && reagents.reagent_list.len && thrownby)
-					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				reagents.reaction(M, TOUCH)
-				log_combat(user, M, "splashed", R)
-				reagents.clear_reagents()
-				return
-			else if(user.used_intent.type == INTENT_POUR)
-				if(!canconsume(M, user))
-					return
-				if(M != user)
-					M.visible_message(span_danger("[user] attempts to feed [M] something."), \
-								span_danger("[user] attempts to feed you something."))
-					if(!do_mob(user, M))
-						return
-					if(!reagents || !reagents.total_volume)
-						return // The drink might be empty after the delay, such as by spam-feeding
-					M.visible_message(span_danger("[user] feeds [M] something."), \
-								span_danger("[user] feeds you something."))
-					log_combat(user, M, "fed", reagents.log_list())
+		if(user.used_intent.type == /datum/intent/fill)
+			if(ishuman(M))
+				var/mob/living/carbon/human/humanized = M
+				if(get_location_accessible(humanized, BODY_ZONE_CHEST))
+					if(humanized.has_breasts() && humanized.getorganslot(ORGAN_SLOT_BREASTS).lactating)
+						if(humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored > 0)
+							if(reagents.total_volume < volume)
+								var/milk_to_take = min(humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored, max(humanized.getorganslot(ORGAN_SLOT_BREASTS).breast_size, 1), volume - reagents.total_volume)
+								if(do_after(user, 20, target = M))
+									reagents.add_reagent(/datum/reagent/consumable/milk, milk_to_take)
+									humanized.getorganslot(ORGAN_SLOT_BREASTS).milk_stored -= milk_to_take
+									user.visible_message(span_notice("[user] milks [M] using \the [src]."), span_notice("I milk [M] using \the [src]."))
+							else
+								to_chat(user, span_warning("[src] is full."))
+						else
+							var/obj/item/organ/vagina/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
+							if(vagina && vagina.pregnant)
+								to_chat(user, span_warning("[M] is out of milk!"))
+							else
+								to_chat(user, span_warning("[M] Does not seem to be producing milk."))
+					else
+						to_chat(user, span_warning("[M] cannot be milked!"))
 				else
-					to_chat(user, span_notice("I swallow a gulp of [src]."))
-				addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
-				playsound(M.loc,pick(drinksounds), 100, TRUE)
+					to_chat(user, span_warning("[M]'s chest must be exposed before I can milk them!"))
+				return 1
+		if(!spillable)
+			return
+
+
+		if(!reagents || !reagents.total_volume)
+			to_chat(user, span_warning("[src] is empty!"))
+			return
+		if(user.used_intent.type == INTENT_SPLASH)
+			var/R
+			M.visible_message(span_danger("[user] splashes the contents of [src] onto [M]!"), \
+							span_danger("[user] splashes the contents of [src] onto you!"))
+			if(reagents)
+				for(var/datum/reagent/A in reagents.reagent_list)
+					R += "[A] ([num2text(A.volume)]),"
+
+			if(isturf(target) && reagents.reagent_list.len && thrownby)
+				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
+				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
+			reagents.reaction(M, TOUCH)
+			log_combat(user, M, "splashed", R)
+			reagents.clear_reagents()
+			return
+		else if(user.used_intent.type == INTENT_POUR)
+			if(!canconsume(M, user))
 				return
+			if(M != user)
+				M.visible_message(span_danger("[user] attempts to feed [M] something."), \
+							span_danger("[user] attempts to feed you something."))
+				if(!do_mob(user, M))
+					return
+				if(!reagents || !reagents.total_volume)
+					return // The drink might be empty after the delay, such as by spam-feeding
+				M.visible_message(span_danger("[user] feeds [M] something."), \
+							span_danger("[user] feeds you something."))
+				log_combat(user, M, "fed", reagents.log_list())
+			else
+				to_chat(user, span_notice("I swallow a gulp of [src]."))
+			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+			playsound(M.loc,pick(drinksounds), 100, TRUE)
+			return
 /obj/item/reagent_containers/glass/attack_obj(obj/target, mob/living/user)
 	if(user.used_intent.type == INTENT_GENERIC)
 		return ..()
@@ -242,22 +267,17 @@
 /obj/item/reagent_containers/glass/bucket/wooden
 	name = "bucket"
 	icon_state = "woodbucket"
-	item_state = "woodbucket"
 	icon = 'icons/roguetown/items/misc.dmi'
-
 	possible_item_intents = list(/datum/intent/fill, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9
-	volume = 198
+	volume = 300 //100 oz
 	armor = list("blunt" = 25, "slash" = 20, "stab" = 15, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	dropshrink = 0.8
 	slot_flags = null
-
-/obj/item/reagent_containers/glass/bucket/wooden/alter
-	icon = 'modular/Neu_Food/icons/cooking.dmi'
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/cloth))
@@ -292,14 +312,14 @@
 	cut_overlays()
 
 	if(reagents.total_volume > 0)
-		if(reagents.total_volume <= 50)
-			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_half")
+		if(reagents.total_volume <= 200)
+			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 50)
-			var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bucket_full")
+		if(reagents.total_volume > 200)
+			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
