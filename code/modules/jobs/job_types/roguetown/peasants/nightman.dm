@@ -43,6 +43,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("intelligence", -1)
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	if(H.dna?.species)
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
