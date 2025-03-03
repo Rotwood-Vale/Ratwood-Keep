@@ -53,3 +53,14 @@
 
 /datum/anvil_recipe/armor/gold
 	skill_level = 5
+
+/datum/anvil_recipe/armor/shapel_helmet
+	name = "Shapel Helmet"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/shapel
+
+/datum/anvil_recipe/armor/steel/skirt_halfplate
+	name = "Skirt Steel Half-Plate (+2 Steel, +1 Cured Hide)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/skirt

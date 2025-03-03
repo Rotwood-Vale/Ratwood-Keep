@@ -207,3 +207,10 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+
+/obj/item/clothing/suit/roguetown/armor/plate
+	body_parts_covered = CHEST|GROIN|VITALS|ARMS
+
+/obj/item/clothing/suit/roguetown/armor/plate/skirt
+	name = "Skirt Steel Half-Plate"
+	body_parts_covered = CHEST|GROIN|VITALS|LEGS

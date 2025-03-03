@@ -532,3 +532,9 @@
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "maidhead"
 	item_state = "maidhead"
+
+/obj/item/clothing/head/roguetown/helmet/bascinet/shapel
+	name = "Shapel Helmet"
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "ldgn_shapel"
