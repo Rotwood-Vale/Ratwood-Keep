@@ -118,7 +118,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/oyster
 	name = "oyster"
-	desc = "Description goes here" //Still need icons for all of the rarities
+	desc = "Description goes here" //Still need description
 	icon_state = "oyster"
 	sellprice = 5
 	var/closed
@@ -170,6 +170,22 @@
 		var/mutable_appearance/pearl = mutable_appearance(icon, "pearl")
 		add_overlay(pearl)
 
+/obj/item/reagent_containers/food/snacks/fish/crab
+	name = "crab"
+	desc = "Description goes here" //Still need description
+	icon_state = "crab"
+	sellprice = 10
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
+
+/obj/item/reagent_containers/food/snacks/fish/lobster
+	name = "lobster"
+	desc = "Description goes here" //Still need description
+	icon_state = "lobster"
+	sellprice = 15
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
+
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
 	trash = null
@@ -209,3 +225,10 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
 	name = "cooked shrimp"
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
+	icon_state = "crabcooked"
+	name = "cooked crab"
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
+	icon_state = "lobstercooked"
+	name = "cooked lobster"
