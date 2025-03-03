@@ -1689,3 +1689,25 @@
 	item_state = "feldhood"
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	color = null
+
+/obj/item/clothing/head/roguetown/helmet/overseer
+    name = "Confessor mask"
+    desc = "An iconic brass-colored metallic mask depicting visage of the Crying God. Too bulky to be worn with helmets."
+    icon_state = "overseermask"
+    item_state = "overseermask"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    max_integrity = 150
+    flags_inv = HIDEFACE
+    body_parts_covered = FACE|HEAD|HAIR|EARS|NOSE
+    flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+    block2add = FOV_BEHIND
+    slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
+    sellprice = 25
+
+/obj/item/clothing/head/roguetown/helmet/overseer/vice
+    name = "Lord Inquisitor mask"
+    desc = "Silver-colored metallic mask covered in protective runes, depicting visage of the Crying God. Too bulky to be worn with helmets."
+    icon_state = "viceseermask"
+    item_state = "viceseermask"
+    sellprice = 40
