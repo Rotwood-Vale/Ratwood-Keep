@@ -235,8 +235,8 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
 			return TRUE
-	var/mob/living/simple_animal/bound = mob.pulling
-	if(bound)
+	if(istype(mob.pulling, /mob/living/simple_animal) && isliving(mob.pulling))
+		var/mob/living/simple_animal/bound = mob.pulling
 		if(bound.binded)
 			move_delay = world.time + 10
 			to_chat(src, span_warning("[bound] is bound in a summoning circle. I can't move them!"))

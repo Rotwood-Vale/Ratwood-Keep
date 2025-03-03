@@ -164,14 +164,14 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/mask/rogue/facemask/goldmask
-	name = "Gold Mask"
+	name = "gold mask"
 	icon_state = "goldmask"
 	max_integrity = 150
 	sellprice = 100
 	smeltresult = /obj/item/ingot/gold
 
 /obj/item/clothing/mask/rogue/exoticsilkmask
-	name = "Exotic Silk Mask"
+	name = "exotic silk mask"
 	icon_state = "exoticsilkmask"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	body_parts_covered = NECK|MOUTH
@@ -285,3 +285,16 @@
 	desc = "A silver mask, forever locked in a rigor of uncontestable joy. The Order of Saint Xylix can't decide on whether it's meant to represent Psydon's 'mirthfulness', 'theatricality', or the unpredictable melding of both."
 	icon_state = "psydonmask"
 	item_state = "psydonmask"
+
+/obj/item/clothing/mask/rogue/overseer
+    name = "cloth hood"
+    desc = "You wouldn't hide your face if there was no reason for."
+    icon_state = "overseerhood"
+    item_state = "overseerhood"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS
+    body_parts_covered = FACE|EARS|MOUTH|NECK
+    slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+    experimental_onhip = TRUE
+    sewrepair = TRUE
