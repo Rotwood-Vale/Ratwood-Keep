@@ -70,7 +70,7 @@
 	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
 	switch(wanted_choice)
 		if ("Not wanted")
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if ("Wanted")
 			H.change_stat("endurance", 2)
 			H.change_stat("constitution", 1)

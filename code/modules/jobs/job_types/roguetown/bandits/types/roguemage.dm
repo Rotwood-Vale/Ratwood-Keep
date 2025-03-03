@@ -59,7 +59,7 @@
 	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
 	switch(wanted_choice)
 		if ("Not wanted")
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1)
 		if ("Wanted")
 			backpack_contents = list(/obj/item/book/granter/spellbook/expert = 1, /obj/item/chalk = 1)

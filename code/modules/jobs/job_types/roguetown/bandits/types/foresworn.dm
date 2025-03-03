@@ -59,7 +59,7 @@
 	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
 	switch(wanted_choice)
 		if ("Not wanted")
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if ("Wanted")
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
