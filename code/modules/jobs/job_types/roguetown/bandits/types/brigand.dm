@@ -62,7 +62,6 @@
 		if ("Not wanted")
 			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if ("Wanted")
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
