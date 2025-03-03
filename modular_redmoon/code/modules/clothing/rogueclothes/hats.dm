@@ -535,6 +535,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/shapel
 	name = "Shapel Helmet"
+	flags_inv = HIDEEARS
 	icon = 'modular_redmoon/icons/hats.dmi'
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "ldgn_shapel"
