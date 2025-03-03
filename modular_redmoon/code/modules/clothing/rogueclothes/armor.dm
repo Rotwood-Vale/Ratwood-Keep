@@ -214,3 +214,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/skirt
 	name = "Skirt Steel Half-Plate"
 	body_parts_covered = CHEST|GROIN|VITALS|LEGS
+	icon_state = "skirt_plate"
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
