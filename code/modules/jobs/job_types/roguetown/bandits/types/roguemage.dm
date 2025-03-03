@@ -62,7 +62,7 @@
 			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1)
 		if ("Wanted")
-			backpack_contents = list(/obj/item/book/granter/spellbook/expert = 1, /obj/item/chalk = 1)
+			backpack_contents = list(/obj/item/book/granter/spellbook/expert = 1)
 			H.change_stat("intelligence", 2)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
