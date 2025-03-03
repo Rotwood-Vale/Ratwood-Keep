@@ -17,7 +17,9 @@
 /obj/item/clothing/neck/roguetown/cloth
 	name = "padded gorget"
 	desc = "Sturdy, durable, flexible. Will protect your neck from some good lumbering."
-	icon_state = "lgorget"
+	icon_state = "cgorget"
+	icon = 'modular_redmoon/icons/neck.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/onmob_neck.dmi'
 	armor = list("blunt" = 70, "slash" = 60, "stab" = 30, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	max_integrity = 150
 	slot_flags = ITEM_SLOT_NECK

@@ -30,7 +30,7 @@
 				/obj/item/natural/silk = 1)
 	skill_level = 4
 
-/datum/crafting_recipe/roguetown/sewing/abyssorrobe
+/datum/crafting_recipe/roguetown/sewing/cgorget
 	name = "padded gorget - (4 cloths, 2 fibers; EXPERT)"
 	result = list(/obj/item/clothing/neck/roguetown/cloth)
 	reqs = list(/obj/item/natural/cloth = 4,
