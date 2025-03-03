@@ -182,12 +182,17 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/grassred, 
+						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
 	neighborlay = "grassedge"
 	max_integrity = 1200
 
 /turf/open/floor/rogue/grass/Initialize()
-	dir = pick(GLOB.cardinals)
-//	GLOB.dirt_list += src
+	dir = pick(GLOB.alldirs)
 	. = ..()
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
