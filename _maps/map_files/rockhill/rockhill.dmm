@@ -35835,6 +35835,10 @@
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/bath)
+"sFj" = (
+/obj/effect/landmark/start/vagrantlate,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "sFm" = (
 /obj/structure/closet/crate/chest{
 	lockid = "bog_gatehouse"
@@ -222553,7 +222557,7 @@ gLf
 uEX
 rSC
 gLf
-gLf
+sFj
 qDn
 lrs
 agM
@@ -224277,7 +224281,7 @@ nvH
 jKG
 lrs
 rRb
-gLf
+sFj
 uEX
 rSC
 gLf
@@ -226448,7 +226452,7 @@ iCS
 iCS
 gLf
 qDn
-gLf
+sFj
 gLf
 gLf
 qAU
@@ -233343,7 +233347,7 @@ rWZ
 bCe
 sdL
 rRb
-gLf
+sFj
 rSC
 uEX
 gLf
@@ -234665,7 +234669,7 @@ gLf
 gLf
 gLf
 gLf
-gLf
+sFj
 qDn
 uJF
 wbg
