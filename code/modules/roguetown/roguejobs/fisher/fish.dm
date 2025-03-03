@@ -119,15 +119,24 @@
 /obj/item/reagent_containers/food/snacks/fish/oyster
 	name = "oyster"
 	desc = "Description goes here" //Still need icons for all of the rarities
-	icon_state = "oysters"
+	icon_state = "oyster"
 	sellprice = 5
 	var/closed
 	var/obj/item/pearl
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
 	. = ..()
-	var/pearl_chosen = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200)) //rarities should probably be changed later
-	switch(pearl_chosen)
+	var/pearl_weight
+	switch(name) //checks the rarity of the oyster via the name
+		if("legendary oyster")
+			pearl_weight = pickweight(list("bpearl" = 50, "pearl" =160, "nopearl"=25)) //specific weights should be modified due to balance later
+		if("ultra-rare oyster")
+			pearl_weight = pickweight(list("bpearl" = 20, "pearl" =120, "nopearl"=75))
+		if("rare oyster")
+			pearl_weight = pickweight(list("bpearl" = 5, "pearl" =80, "nopearl"=150))
+		if("common oyster")
+			pearl_weight = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200))
+	switch(pearl_weight)
 		if("nopearl")
 			pearl = null
 		if("pearl")
@@ -137,15 +146,14 @@
 	closed = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/rogueweapon/huntingknife))
-		if(closed)
-			user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
-			closed = FALSE
-			if(pearl)
-				icon_state = "oysters_pearl" //pearls should probably be made into an overlay later, for all of the rarities
-			else
-				icon_state = "oysters_nopearl"
-
+	if(istype(I, /obj/item/rogueweapon/huntingknife) && closed)
+		user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
+		closed = FALSE
+		icon_state = "[icon_state]_open"
+		update_icon()
+	else
+		. = ..()
+	
 /obj/item/reagent_containers/food/snacks/fish/oyster/attack_right(mob/user)
 	if(user.get_active_held_item())
 		return
@@ -153,7 +161,14 @@
 		if(pearl)
 			user.put_in_hands(pearl)
 			pearl = null
-			icon_state = "oysters_nopearl"
+			update_icon()
+	. = ..()
+
+/obj/item/reagent_containers/food/snacks/fish/oyster/update_icon()
+	cut_overlays()
+	if(!closed && pearl)
+		var/mutable_appearance/pearl = mutable_appearance(icon, "pearl")
+		add_overlay(pearl)
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
