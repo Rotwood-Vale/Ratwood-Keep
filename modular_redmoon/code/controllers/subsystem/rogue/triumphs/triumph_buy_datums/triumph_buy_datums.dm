@@ -1,4 +1,5 @@
 /datum/triumph_buy/on_buy()
-	log_game("[usr] активирует [src].")
-	message_admins("[usr] активирует [src].")
+	log_game("[usr] активирует [src.desc].")
+	message_admins("[usr] активирует [src.desc].")
+	send2irc("[usr] активирует [src.desc].")
 	. = ..()
