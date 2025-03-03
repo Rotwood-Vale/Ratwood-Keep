@@ -173,7 +173,10 @@
 				else
 					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-					send_ooc_note(span_boldwarning("New letter from <b>[sentfrom].</b>"), name = send2place)
+					for (var/mob/living/carbon/human/H in world)  
+						if (H.real_name == send2place)  
+							to_chat(H, span_notice("A new letter from [sentfrom] has arrived!"))  
+							playsound(H, 'sound/misc/mail.ogg', 100, FALSE, -1)  
 					return
 	if(istype(P, /obj/item/roguecoin))
 		if(coin_loaded)
