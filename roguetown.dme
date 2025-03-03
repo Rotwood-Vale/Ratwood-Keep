@@ -2171,6 +2171,7 @@
 #include "modular_redmoon\code\modules\antagonists\purishep.dm"
 #include "modular_redmoon\code\modules\antagonists\_common\antag_datum.dm"
 #include "modular_redmoon\code\modules\armor\rogueclothes\armor.dm"
+#include "modular_redmoon\code\modules\cargo\packsrogue\food.dm"
 #include "modular_redmoon\code\modules\client\client_procs.dm"
 #include "modular_redmoon\code\modules\client\preferences_toggles.dm"
 #include "modular_redmoon\code\modules\client\customizer\organ\genitals.dm"
