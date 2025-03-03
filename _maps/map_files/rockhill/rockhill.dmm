@@ -7748,6 +7748,12 @@
 "dUn" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"dUo" = (
+/obj/effect/landmark/start/vagrantlate,
+/turf/open/floor/rogue/metal{
+	icon_state = "plating2"
+	},
+/area/rogue/under/town/sewer)
 "dUx" = (
 /obj/item/rope/chain,
 /obj/item/rope/chain,
@@ -35835,10 +35841,6 @@
 /obj/structure/roguemachine/scomm/l,
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/bath)
-"sFj" = (
-/obj/effect/landmark/start/vagrantlate,
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/town/sewer)
 "sFm" = (
 /obj/structure/closet/crate/chest{
 	lockid = "bog_gatehouse"
@@ -222557,7 +222559,7 @@ gLf
 uEX
 rSC
 gLf
-sFj
+gLf
 qDn
 lrs
 agM
@@ -224281,7 +224283,7 @@ nvH
 jKG
 lrs
 rRb
-sFj
+gLf
 uEX
 rSC
 gLf
@@ -226452,7 +226454,7 @@ iCS
 iCS
 gLf
 qDn
-sFj
+gLf
 gLf
 gLf
 qAU
@@ -233347,7 +233349,7 @@ rWZ
 bCe
 sdL
 rRb
-sFj
+gLf
 rSC
 uEX
 gLf
@@ -234669,7 +234671,7 @@ gLf
 gLf
 gLf
 gLf
-sFj
+gLf
 qDn
 uJF
 wbg
@@ -238106,7 +238108,7 @@ udz
 gLf
 gLf
 iyQ
-iyQ
+dUo
 iyZ
 uEX
 uEX
