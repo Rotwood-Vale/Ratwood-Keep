@@ -7,7 +7,7 @@
 
 /obj/structure/roguemachine/mulyeogdrug
 	name = "LOVE"
-	desc = "You care for yourself."
+	desc = "Let's love each other."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -169,10 +169,10 @@
     var/canread = user.can_read(src, TRUE)
     var/contents
     if(canread)
-        contents = "<center>LOVE - Let's have fun.<BR>"
+        contents = "<center>LOVE - Embrace me.<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
     else
-        contents = "<center>[stars("LOVE - Let's have fun.")]<BR>"
+        contents = "<center>[stars("LOVE - Embrace me.")]<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
 
     var/mob/living/carbon/human/H = user
@@ -201,6 +201,10 @@
             contents += "[namer] + [full_price] <a href='?src=[REF(src)];buy=[I]'>BUY</a><BR>"
         else
             contents += "[stars(namer)] + [stars(full_price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
+
+    var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
+    popup.set_content(contents)
+    popup.open()
 
 /obj/structure/roguemachine/mulyeogdrug/obj_break(damage_flag)
 	..()
