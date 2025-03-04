@@ -120,6 +120,15 @@
 	character.change_stat("intelligence", 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
 
+/datum/special_trait/arsonist
+	name = "Arsonist"
+	greet_text = span_notice("I like seeing things combust and burn. I have a stash of firebombs!")
+	weight = 100
+
+/datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.special_items["A firebomb"] = /obj/item/bomb
+	character.mind.special_items["Another firebomb"] = /obj/item/bomb
+
 /datum/special_trait/psydons_rider
 	name = "Psydon's Drunkest Rider"
 	greet_text = span_notice("I ride! None shall stop me for that is Psydon's divine will!")
