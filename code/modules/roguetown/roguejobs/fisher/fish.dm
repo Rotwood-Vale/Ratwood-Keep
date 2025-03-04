@@ -123,6 +123,7 @@
 	sellprice = 5
 	var/closed
 	var/obj/item/pearl
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
 	. = ..()
@@ -177,6 +178,7 @@
 	sellprice = 10
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
 
 /obj/item/reagent_containers/food/snacks/fish/lobster
 	name = "lobster"
@@ -185,6 +187,7 @@
 	sellprice = 15
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
@@ -229,6 +232,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
 	icon_state = "crabcooked"
 	name = "cooked crab"
+
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	icon_state = "lobstercooked"
 	name = "cooked lobster"
