@@ -71,7 +71,7 @@
 		H.change_stat("strength", 3)
 		H.change_stat("perception", 1)
 		H.change_stat("endurance", 1)
-		H.change_stat("intelligence", -3)
+		H.change_stat("intelligence", -2)
 
 /datum/subclass/gob_outrider
 	name = "Outrider"
@@ -103,7 +103,7 @@
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 2)
 		H.change_stat("endurance", 1)
-		H.change_stat("intelligence", -3)
+		H.change_stat("intelligence", -2)
 
 /datum/subclass/gob_raider
 	name = "Raider"
@@ -161,4 +161,4 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", 4)
-		H.change_stat("intelligence", -2)
+		H.change_stat("intelligence", -1)
