@@ -91,6 +91,8 @@
 		return 0
 	if(has_buckled_mobs() && tame)
 		return 0
+	if(binded)
+		return 0
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
 
 	if(environment_smash)
@@ -293,6 +295,8 @@
 	if(!target || !CanAttack(target))
 		LoseTarget()
 		return 0
+	if(binded)
+		return 0
 	if(target in possible_targets)
 		var/target_distance = get_dist(targets_from,target)
 		if(ranged) //We ranged? Shoot at em
@@ -345,7 +349,7 @@
 			FindTarget()
 
 
-/mob/living/simple_animal/hostile/proc/AttackingTarget(mob/living/target)
+/mob/living/simple_animal/hostile/proc/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
 		return FALSE //but more importantly return before attack_animal called
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
@@ -402,6 +406,9 @@
 
 /mob/living/simple_animal/hostile/proc/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
+		return
+	if(binded)
+		to_chat(src, span_warning("I'm bound and can't hurt anyone!"))
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
@@ -500,13 +507,14 @@
 
 
 /mob/living/simple_animal/hostile/proc/EscapeConfinement()
-	if(buckled)
-		buckled.attack_animal(src)
-	if(!targets_from.loc)
-		return
-	if(!isturf(targets_from.loc))//Did someone put us in something?
-		var/atom/A = targets_from.loc
-		A.attack_animal(src)//Bang on it till we get out
+	if(targets_from)
+		if(buckled)
+			buckled.attack_animal(src)
+		if(!targets_from.loc)
+			return
+		if(!isturf(targets_from.loc))//Did someone put us in something?
+			var/atom/A = targets_from.loc
+			A.attack_animal(src)//Bang on it till we get out
 
 
 /mob/living/simple_animal/hostile/proc/FindHidden()

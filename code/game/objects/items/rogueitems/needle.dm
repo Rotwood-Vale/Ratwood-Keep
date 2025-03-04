@@ -76,9 +76,12 @@
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
+		if(!I.sewrepair || !I.max_integrity)
+			to_chat(user, span_warning("[I] can't be repaired!"))
+			return
 		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, span_warning("This is not damaged!"))
+				to_chat(user, span_warning("[I] is not damaged!"))
 				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))

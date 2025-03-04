@@ -514,6 +514,12 @@
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
+			if(HAS_TRAIT(user, TRAIT_POISONBITE))
+				if(C.reagents)
+					var/poison = user.STACON/4 //more peak species level, more poison
+					C.reagents.add_reagent(/datum/reagent/toxin/venom, poison)
+					//C.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
+					to_chat(user, span_warning("You inject venom into [C]!"))
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
@@ -621,5 +627,6 @@
 							C.mind.add_antag_datum(new_antag)
 							sleep(20)
 							C.fully_heal()
+							VDrinker.handle_vitae(0) // Updates pool max.
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))
