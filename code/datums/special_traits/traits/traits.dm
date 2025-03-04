@@ -306,6 +306,43 @@
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)
 
+/datum/special_trait/hunted
+	name = "Hunted"
+	greet_text = span_boldwarning("Someone put a bounty on my head!")
+	weight = 100
+
+/datum/special_trait/hunted/on_apply(mob/living/carbon/human/character, silent)
+	var/reason = ""
+	var/employer = "unknown employer"
+	var/employer_gender
+	if(prob(65))
+		employer_gender = MALE
+	else
+		employer_gender = FEMALE
+	if(employer_gender == MALE)
+		employer = pick(list("Baron", "Lord", "Nobleman", "Heir"))
+	else
+		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
+	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
+	var/amount = rand(40,100)
+	switch(rand(1,7))
+		if(1)
+			reason = "Murder"
+		if(2)
+			reason = "Kinslaying"
+		if(3)
+			reason = "Besmirching a Noble's name"
+		if(4)
+			reason = "Treason"
+		if(5)
+			reason = "Arson"
+		if(6)
+			reason = "Heresy"
+		if(7)
+			reason = "Robbing a Noble"
+	add_bounty(character.real_name, amount, FALSE, reason, employer)
+	if(!silent)
+		to_chat(character, span_notice("Whether I've done it or not, I have been accused of [reason] and the [employer] put a bounty on my head!"))
 
 /datum/special_trait/heretic
 	name = "Known Heretic"
