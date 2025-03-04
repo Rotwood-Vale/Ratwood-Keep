@@ -1,7 +1,7 @@
 /datum/special_trait/nothing
 	name = "Nothing"
 	greet_text = span_notice("You're not special, tough luck I guess.")
-	weight = 200
+	weight = 100
 
 
 // Positive Specials
@@ -159,6 +159,18 @@
 	ADD_TRAIT(character, TRAIT_ZJUMP, "[type]")
 	ADD_TRAIT(character, TRAIT_LEAPER, "[type]")
 	ADD_TRAIT(character, TRAIT_NOFALLDAMAGE1, "[type]")
+
+
+/datum/special_trait/thief
+	name = "Thief"
+	greet_text = span_notice("Life's not easy around here, but I've made mine a little easier by taking things of others")
+	weight = 100
+
+/datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 
 
 /datum/special_trait/polyglot
