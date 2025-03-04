@@ -72,7 +72,6 @@
 			to_chat(world, "[the_name] was a bandit.")
 		else
 			to_chat(world, "[the_name] was a bandit. Their band stole [totaldonated] mammons worth of loot!")
-	return
 
 	var/traitorwin = TRUE
 
@@ -85,7 +84,7 @@
 			count += objective.triumph_count
 
 	if(!count)
-		count = 1
+		count = 5
 
 	if(traitorwin)
 		owner.adjust_triumphs(count)

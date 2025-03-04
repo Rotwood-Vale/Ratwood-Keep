@@ -11,4 +11,7 @@
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
-	cloak = /obj/item/clothing/cloak/lordcloak
+	if(H.gender == MALE)
+		cloak = /obj/item/clothing/cloak/lordcloak
+	else
+		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak

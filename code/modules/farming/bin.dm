@@ -29,7 +29,7 @@
 	// var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	// STR.max_w_class = WEIGHT_CLASS_HUGE
 	// STR.max_items = 20
-	AddComponent(/datum/component/storage/concrete/roguetown/bin)
+	AddComponent(/datum/component/storage/concrete/grid/bin)
 	. = ..()
 	pixel_x = 0
 	pixel_y = 0

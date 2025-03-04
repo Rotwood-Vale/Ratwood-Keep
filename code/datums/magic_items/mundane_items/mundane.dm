@@ -67,8 +67,8 @@
 	var/obj/item/storage = i
 	var/datum/component/storage/STR = storage.GetComponent(/datum/component/storage)
 
-	STR.max_combined_w_class = STR.max_combined_w_class * 2
-	STR.max_items = STR.max_items * 2
+	STR.screen_max_rows = STR.screen_max_rows + 2
+	STR.screen_max_columns = STR.screen_max_columns + 2
 
 
 /datum/magic_item/mundane/revealing

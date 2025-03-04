@@ -148,3 +148,8 @@
 						/obj/item/needle/thorn,
 						/obj/item/needle/pestra)
 					))
+
+/datum/component/storage/concrete/grid/bin
+	max_w_class = WEIGHT_CLASS_HUGE
+	screen_max_rows = 8
+	screen_max_columns = 4
