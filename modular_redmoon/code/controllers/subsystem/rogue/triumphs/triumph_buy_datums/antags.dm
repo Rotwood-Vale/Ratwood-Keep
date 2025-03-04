@@ -97,7 +97,7 @@
 
 /obj/item/antagcoin
 	name = "Flip Me"
-	desc = "Xylix's gift."
+	desc = "Подбросишь левой - поиграешься. Подбросишь правой - сгоришь."
 	icon_state = "coin_valid"
 	icon = 'modular_redmoon/icons/economy.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -107,19 +107,27 @@
 	var/cooldown = 0
 
 /obj/item/antagcoin/lich
+	name = "Flip Me: Lich Energy"
 	antagcoin_role = /datum/antagonist/lich
 
 /obj/item/antagcoin/werewolf
+	name = "Flip Me: Werewolf Energy"
 	antagcoin_role = /datum/antagonist/werewolf
 
 /obj/item/antagcoin/maniac
+	name = "Flip Me: Maniac Energy"
 	antagcoin_role = /datum/antagonist/maniac
 
 /obj/item/antagcoin/zizocultist
+	name = "Flip Me: Zizo Energy"
 	antagcoin_role = /datum/antagonist/zizocultist
 
 /obj/item/antagcoin/revolution
+	name = "Flip Me: Rebel Energy"
 	antagcoin_role = /datum/antagonist/prebel/head
+
+/obj/item/antagcoin/triumph
+	name = "Flip Me: Triumph Energy"
 
 /obj/item/antagcoin/Initialize(mapload)
 	. = ..()
