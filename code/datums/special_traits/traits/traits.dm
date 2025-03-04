@@ -217,6 +217,15 @@
 	ADD_TRAIT(character, TRAIT_NASTY_EATER, "[type]")
 
 
+/datum/special_trait/lucky
+	name = "Lucky"
+	greet_text = span_notice("Xylix smiles on me.")
+	weight = 10
+
+/datum/special_trait/lucky/on_apply(mob/living/carbon/human/character, silent)
+	character.STALUC = rand(15, 20)
+
+
 /datum/special_trait/graggar_champion
 	name = "Graggar's Little Champ"
 	greet_text = span_notice("A life of devotion to Graggar has taught me how to chew through flesh and bone alike with ease.")
