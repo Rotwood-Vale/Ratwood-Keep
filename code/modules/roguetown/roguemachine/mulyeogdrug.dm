@@ -26,7 +26,7 @@
 /obj/structure/roguemachine/mulyeogdrug/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/key))
 		var/obj/item/key/K = P
-		if(K.lockid == "nightman")
+		if(K.lockid == "mentor")
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			update_icon()
@@ -80,7 +80,7 @@
 				budget -= full_price
 				recent_payments += held_items[O]["PRICE"]
 				if(!(drugrade_flags & DRUGRADE_NOTAX))
-					SStreasury.give_money_treasury(tax_amt, "purity import tax")
+					SStreasury.give_money_treasury(tax_amt, "love import tax")
 			else
 				say("Not enough!")
 				return
@@ -174,6 +174,33 @@
     else
         contents = "<center>[stars("LOVE - Let's have fun.")]<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
+
+    var/mob/living/carbon/human/H = user
+    if(H.job == "Mentor")
+        if(canread)
+            contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a><BR>"
+        else
+            contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a><BR>"
+
+    // Dynamically generate item prices based on tax flag
+    for(var/I in held_items)
+        var/price = held_items[I]["PRICE"]
+        var/tax_amt = round(SStreasury.tax_value * price)
+        var/full_price = price + tax_amt
+        var/namer = held_items[I]["NAME"]
+
+        // Apply tax exemption if the flag is set
+        if(drugrade_flags & DRUGRADE_NOTAX)
+            full_price = price
+
+        if(!namer)
+            held_items[I]["NAME"] = "thing"
+            namer = "thing"
+
+        if(canread)
+            contents += "[namer] + [full_price] <a href='?src=[REF(src)];buy=[I]'>BUY</a><BR>"
+        else
+            contents += "[stars(namer)] + [stars(full_price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
 
 /obj/structure/roguemachine/mulyeogdrug/obj_break(damage_flag)
 	..()

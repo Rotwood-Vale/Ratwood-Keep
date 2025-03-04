@@ -399,7 +399,6 @@
 	return ..()
 
 /datum/status_effect/buff/debuff/on_remove()
-	. = ..()
 
 /atom/movable/screen/alert/status_effect/debuff/paralysis
 	name = "Drug-Induced Paralysis"
@@ -421,7 +420,6 @@
 	return ..()
 
 /datum/status_effect/buff/debuff/on_remove()
-	. = ..()
 
 /atom/movable/screen/alert/status_effect/debuff/witness
 	name = "Blindness"

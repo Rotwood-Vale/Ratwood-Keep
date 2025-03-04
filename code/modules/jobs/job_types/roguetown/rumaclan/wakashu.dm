@@ -32,7 +32,7 @@
 	beltl = /obj/item/ammo_holder/mulyeog/rumahench
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/storage/keyring/mulyeog)
+	backpack_contents = list(/obj/item/storage/keyring/nightman)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)

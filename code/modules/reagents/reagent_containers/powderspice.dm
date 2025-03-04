@@ -383,7 +383,6 @@
 /obj/item/reagent_containers/powder/paralysis
 	name = "stundust"
 	desc = "Best used during dates with the missus."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spicenew"
 	possible_transfer_amounts = list()
 	volume = 15
@@ -526,7 +525,7 @@
 
 /obj/item/reagent_containers/powder/stoneskin
 	name = "stoneskin"
-	desc = ""
+	desc = "Rumors say that it just numbs your nerves."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spice"
 	possible_transfer_amounts = list()

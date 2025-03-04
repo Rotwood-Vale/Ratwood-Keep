@@ -183,10 +183,8 @@
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/hardballz/on_apply()
-	. = ..()
 
 /datum/status_effect/buff/hardballz/on_remove()
-	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/hardballz
 	name = "Hardy"
@@ -202,10 +200,8 @@
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/hawkeyes/on_apply()
-	. = ..()
 
 /datum/status_effect/buff/hawkeyes/on_remove()
-	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/hawkeyes
 	name = "Focused"
@@ -221,10 +217,8 @@
 	duration = 30 SECONDS
 
 /datum/status_effect/buff/stoneskin/on_apply()
-	. = ..()
 
 /datum/status_effect/buff/stoneskin/on_remove()
-	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/stoneskin
 	name = "Tough"
