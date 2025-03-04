@@ -12,10 +12,10 @@ SUBSYSTEM_DEF(skills)
 	var/static/list/level_names = list( // Why did I change the level names you ask? It's very shrimple. Because they flow better in a sentence. Like-- "Journeymanly"??? "Apprenticely"???
 		SKILL_LEVEL_NOVICE = span_info("<span class='small'>Beginner</span>"), 
 		SKILL_LEVEL_APPRENTICE = span_info("Competent"), 
-		SKILL_LEVEL_JOURNEYMAN = span_biginfo("Professional"), 
-		SKILL_LEVEL_EXPERT = span_biginfo("<span style='color: green;'>Elite</span>"), 
-		SKILL_LEVEL_MASTER = "<b>Veteran</b>", 
-		SKILL_LEVEL_LEGENDARY = "<b><span style='color: gold;'>Master</span></b>",
+		SKILL_LEVEL_JOURNEYMAN = span_biginfo("Proficient"), 
+		SKILL_LEVEL_EXPERT = span_biginfo("<span style='color: green;'>Expert</span>"), 
+		SKILL_LEVEL_MASTER = "<b>Master</b>", 
+		SKILL_LEVEL_LEGENDARY = "<b><span style='color: gold;'>Legendary</span></b>",
 	)//This list is already in the right order, due to indexing
 /datum/controller/subsystem/skills/Initialize(timeofday)
 	InitializeSkills()
