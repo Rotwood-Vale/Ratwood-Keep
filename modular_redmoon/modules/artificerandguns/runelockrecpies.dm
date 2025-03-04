@@ -96,7 +96,7 @@
 	name = "Mechanised powderflask"
 	icon = 'modular_redmoon/modules/artificerandguns/runelock.dmi'
 	desc = "A neatly engineered gunpowder flask that compresses powder for size decreasement and cuts it for you so you dont have to measure it that much."
-	icon_state = "enguflask"
+	icon_state = "engiflask"
 	item_state = "powderflask"
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_NECK | ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_SMALL
