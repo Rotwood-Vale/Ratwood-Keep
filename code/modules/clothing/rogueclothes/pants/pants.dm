@@ -240,7 +240,7 @@
 //----------------- BLACKSTEEL---------------------
 
 /obj/item/clothing/under/roguetown/blacksteel/platelegs
-	name = "Blacksteel Plate Chausses"
+	name = "blacksteel plate chausses"
 	desc = "Reinforced leg plates forged of durable blacksteel."
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
@@ -401,7 +401,19 @@
 /obj/item/clothing/under/roguetown/skirt/red
 	color = CLOTHING_RED
 
-//eastern pants
+/obj/item/clothing/under/roguetown/trou/overseer
+    name = "heavy trousers"
+    desc = "A pair of washed-out heavy trousers in grey colors."
+    icon_state = "overseerpants"
+    item_state = "overseerpants"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    max_integrity = 110
+    armor = list("blunt" = 35, "slash" = 25, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+    prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+
+	//eastern pants
 
 /obj/item/clothing/under/roguetown/trou/eastpants1
 	name = "cut-throat's pants"
@@ -424,3 +436,4 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = HIDECROTCH
+

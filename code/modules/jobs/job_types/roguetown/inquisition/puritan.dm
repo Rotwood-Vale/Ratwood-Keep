@@ -34,7 +34,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	shoes = /obj/item/clothing/shoes/roguetown/armor/inqboots
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	cloak = /obj/item/clothing/cloak/cape/puritan
+	cloak = /obj/item/clothing/cloak/cape/inquisitor
 	beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
 	beltl = /obj/item/storage/belt/rogue/pouch/ammo
 	head = /obj/item/clothing/head/roguetown/inqhat
@@ -42,7 +42,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
 	backr = /obj/item/rogueweapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver, /obj/item/lockpick = 1)
+	backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/helmet/overseer/vice)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)

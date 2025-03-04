@@ -19,7 +19,7 @@
 	density = TRUE
 	max_integrity = 200
 	CanAtmosPass = ATMOS_PASS_DENSITY
-	climbable = TRUE
+	climbable = FALSE
 	climb_time = 0
 
 /obj/structure/arcyne_wall/Initialize()
@@ -50,7 +50,6 @@ s
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	max_integrity = 1100
 	CanAtmosPass = ATMOS_PASS_DENSITY
-	climbable = TRUE
 	climb_time = 0
 
 /obj/structure/arcyne_wall/greater/caster
@@ -246,7 +245,7 @@ s
 	name = "manaflower"
 	desc = ""
 	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "manabloom"
+	icon_state = "manabloom2"
 	color = null
 	layer = BELOW_MOB_LAYER
 	max_integrity = 60

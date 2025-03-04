@@ -346,6 +346,7 @@
 	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = null // It won't help, like, at all.
 	sellprice = 10
+	sleeves_state_override = "gambeson" // nearly similar sprites with regular gambeson, so no point to make another set of sleeved icons
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	name = "padded gambeson"
@@ -354,6 +355,7 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_SMASH)
 	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	sellprice = 30
+	sleeves_state_override = "gambeson" // nearly similar sprites with regular gambeson, so no point to make another set of sleeved icons
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "arming jacket"
@@ -479,7 +481,7 @@
 //Gronn
 /obj/item/clothing/suit/roguetown/armor/hudesutu_quyaq
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Hudesutu quyaq"
+	name = "hudesutu quyaq"
 	desc = "Lamellar Armor made of iron and leathers."
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "hudesutu"
@@ -495,7 +497,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/kurche
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "Kurche"
+	name = "kurche"
 	desc = "Pieces of Iron Plates and Leathers that protect the vitals."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "kurche"
@@ -659,7 +661,7 @@
 
 //Gronn
 /obj/item/clothing/suit/roguetown/armor/leather/chargah
-	name = "Chargah"
+	name = "chargah"
 	desc = "A robe made from padded cloth."
 	icon_state = "chargah"
 	item_state = "chargah"
@@ -676,7 +678,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel
-	name = "Hatanga Degel"
+	name = "hatanga degel"
 	desc = "A soft padded armor made from leathers."
 	icon_state = "hatanga"
 	item_state = "hatanga"
@@ -693,7 +695,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/hatanga_degel_fur
-	name = "Hatanga Degel Fur"
+	name = "hatanga degel fur"
 	desc = "A soft padded armor made from leathers and fur."
 	icon_state = "hatangafur"
 	item_state = "hatangafur"
@@ -710,7 +712,7 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/suit/roguetown/armor/leather/Huus_quyaq
-	name = "Huus quyaq"
+	name = "huus quyaq"
 	desc = "Armor made of leather plates."
 	icon_state = "huus"
 	item_state = "huus"
@@ -1089,6 +1091,7 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	body_parts_covered = CHEST
 
+<<<<<<< HEAD
 /obj/item/clothing/suit/roguetown/armor/eastsuit1
 	name = "old dobo robe"
 	desc = "You are no warrior."
@@ -1172,3 +1175,29 @@
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = HIDEBOOB|HIDECROTCH
+=======
+/obj/item/clothing/suit/roguetown/armor/gambeson/overseer
+    name = "confessor jacket"
+    desc = "Padded jacket that provides adequate protection against unarmed innocents."
+    icon_state = "overseerjacket"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    slot_flags = ITEM_SLOT_ARMOR
+    body_parts_covered = CHEST|GROIN|ARMS|VITALS
+    prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+    armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+    max_integrity = 150
+    sellprice = 30
+    boobed = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/overseer
+    name = "Lord inquisitor coat"
+    desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
+    icon_state = "viceseercoat"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    boobed = TRUE
+    ignore_sleeves_code = FALSE
+>>>>>>> 729a5763962c2c35e72a1b5eb69e870ffad5dd2d
