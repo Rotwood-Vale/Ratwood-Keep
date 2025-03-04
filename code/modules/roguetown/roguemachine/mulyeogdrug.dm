@@ -175,37 +175,6 @@
         contents = "<center>[stars("LOVE - Let's have fun.")]<BR>"
         contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
 
-    var/mob/living/carbon/human/H = user
-    if(H.job == "Mentor") //kinda crashes the game if it's a Mentor - i've learned
-        if(canread)
-            contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a><BR>"
-        else
-            contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a><BR>"
-
-    // Dynamically generate item prices based on tax flag
-    for(var/I in held_items)
-        var/price = held_items[I]["PRICE"]
-        var/tax_amt = round(SStreasury.tax_value * price)
-        var/full_price = price + tax_amt
-        var/namer = held_items[I]["NAME"]
-
-        // Apply tax exemption if the flag is set
-        if(drugrade_flags & DRUGRADE_NOTAX)
-            full_price = price
-
-        if(!namer)
-            held_items[I]["NAME"] = "thing"
-            namer = "thing"
-
-        if(canread)
-            contents += "[namer] + [full_price] <a href='?src=[REF(src)];buy=[I]'>BUY</a><BR>"
-        else
-            contents += "[stars(namer)] + [stars(full_price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
-
-    var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
-    popup.set_content(contents)
-    popup.open()
-
 /obj/structure/roguemachine/mulyeogdrug/obj_break(damage_flag)
 	..()
 	budget2change(budget)

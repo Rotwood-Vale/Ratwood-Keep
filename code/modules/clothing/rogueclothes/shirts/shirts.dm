@@ -537,7 +537,14 @@
 	GLOB.lordcolor -= src
 	return ..()
 
-	/obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+/obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+    icon_state = "overseershirt"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    color = null
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
     icon_state = "overseershirt"
     icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
     mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
@@ -597,9 +604,3 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-/obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
-    icon_state = "overseershirt"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    color = null
