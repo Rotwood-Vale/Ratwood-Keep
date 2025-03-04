@@ -49,3 +49,5 @@
 		H.change_stat("endurance", 2)
 
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC) //it's not as good as it sounds i swear
+	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+
