@@ -2196,6 +2196,7 @@
 #include "modular_redmoon\code\modules\spells\minion_order.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\necromancer.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\ravox.dm"
+#include "modular_redmoon\code\modules\spells\roguetown\acolyte\sawbones.dm"
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\xylix.dm"
 #include "modular_redmoon\code\modules\surgery\organs\organ_dna.dm\_organ_dna.dm"
 #include "modular_redmoon\code\modules\surgery\organs\feature_organs\genitals.dm"
