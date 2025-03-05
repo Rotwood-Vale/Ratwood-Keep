@@ -21,7 +21,7 @@
 	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
 	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
 	var/releasedrain = 1 //drain when we go off, regardless
-	var/misscost = 1	//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
+	var/misscost = 10	//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
 	var/tranged = 0
 	var/noaa = FALSE //turns off auto aiming, also turns off the 'swooshes'
 	var/warnie = ""
@@ -414,7 +414,7 @@
 	noaa = TRUE
 	rmb_ranged = TRUE
 	releasedrain = 8
-	misscost = 6.5
+	misscost = 5
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "blunt"
