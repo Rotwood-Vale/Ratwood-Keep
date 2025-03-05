@@ -75,6 +75,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Some wounds make no sense on a dismembered limb and need to go
 	var/qdel_on_droplimb = FALSE
 
+	/// If TRUE, this wound can become infected
+	var/can_become_infected = FALSE
+
+	/// Cleanliness of the wound
+	var/wound_cleanliness = WOUND_CLEANLINESS_DIRTY
+
+	/// Current infection level of the wound
+	var/infection_level = 0
+
+
 /datum/wound/Destroy(force)
 	. = ..()
 	if(zombie_infection_timer)
@@ -175,6 +185,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		var/sounding = get_sound_effect(affected.owner, affected)
 		if(sounding)
 			playsound(affected.owner, sounding, 100, vary = FALSE)
+	RegisterSignal(affected.owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(clean_infection))
 	return TRUE
 
 /// Effects when a wound is gained on a bodypart
@@ -258,6 +269,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /// Effects when this wound is removed from a given mob
 /datum/wound/proc/on_mob_loss(mob/living/affected)
+	UnregisterSignal(affected, COMSIG_COMPONENT_CLEAN_ACT)
 	if(mob_overlay)
 		affected.update_damage_overlays()
 	if(zombie_infection_timer)
@@ -269,7 +281,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		return FALSE
 	if(!isnull(clotting_threshold) && clotting_rate && (bleed_rate > clotting_threshold))
 		bleed_rate = max(clotting_threshold, bleed_rate - clotting_rate)
-	if(passive_healing)
+	if(can_become_infected && owner.mind) //We don't want to track infection for NPCs
+		process_infection()
+	if(passive_healing && infection_level <= WOUND_INFECTION_INFECTED)
 		heal_wound(passive_healing)
 	return TRUE
 
@@ -277,12 +291,16 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/on_death()
 	return
 	
+
+
 /// Heals this wound by the given amount, and deletes it if it's healed completely
 /datum/wound/proc/heal_wound(heal_amount, iteration = 0)
 	// Wound cannot be healed normally, whp is null
 	if(isnull(whp))
 		return 0
 	var/amount_healed = min(whp, round(heal_amount, DAMAGE_PRECISION))
+	if(can_become_infected && infection_level > WOUND_INFECTION_INFECTED) 
+		amount_healed *= 0.5 //Infected wounds heal slower from all sources.
 	whp -= amount_healed
 	if(whp <= 0)
 		bleed_rate = 0
@@ -356,3 +374,38 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(weapon && !can_embed(weapon))
 		return FALSE
 	return prob(wound_or_boolean.embed_chance)
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+///////////////////INFECTION HANDLING LOGIC//////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+///Called from the life() proc and responsible for handling non-werewolf, non-deadite wound infections
+/datum/wound/proc/process_infection()
+	if(infection_level > WOUND_INFECTION_INFECTED && owner != null)
+		owner.adjustToxLoss(0.1)
+		if(infection_level > WOUND_INFECTION_GANGRENOUS && !bodypart_owner.rotted)
+			bodypart_owner.rotted = TRUE
+	infection_level =  clamp((infection_level + wound_cleanliness*0.1), 0, 300)
+	return
+
+/datum/wound/proc/treat_infection(var/treatment_effectiveness = 25)
+	var/amount_treated = min(infection_level, round(treatment_effectiveness, DAMAGE_PRECISION))
+	infection_level = clamp((infection_level - treatment_effectiveness), 0, 300)
+	return amount_treated
+
+///Do cleaning behavior for the wound. An argument of TRUE will set it to sterile.
+/datum/wound/proc/clean_infection(var/sterilize = FALSE)
+	wound_cleanliness = sterilize ? WOUND_CLEANLINESS_STERILE : WOUND_CLEANLINESS_CLEAN
+
+///Do filthifying behavior for the wound
+/datum/wound/proc/filthify_wound()
+	if(!can_become_infected)
+		return
+	if(wound_cleanliness != WOUND_CLEANLINESS_FILTHY)
+		wound_cleanliness = WOUND_CLEANLINESS_FILTHY
+		if(owner)
+			owner.adjustToxLoss(0.2) //It's possible to have a LOT of wounds, so we want to be careful how much of this we deal
