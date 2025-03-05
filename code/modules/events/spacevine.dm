@@ -224,11 +224,16 @@
 	quality = NEGATIVE
 	severity = 10
 
+/datum/spacevine_mutation/earthy/on_grow(obj/structure/spacevine/holder)
+	. = ..()
+	holder.max_integrity = 100
+	holder.obj_integrity = holder.max_integrity
+
 /datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(10) && !isvineimmune(crosser))
+	if(prob(50) && !isvineimmune(crosser))
 		holder.entangle(crosser)
 	if(!isvineimmune(crosser))
-		if(crosser.apply_damage(5, BRUTE))
+		if(crosser.apply_damage(50, BRUTE))
 			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
 
 /datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)

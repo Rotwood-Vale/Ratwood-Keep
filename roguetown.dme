@@ -2075,6 +2075,7 @@
 #include "modular_redmoon\code\datums\gods\patrons\zizo.dm"
 #include "modular_redmoon\code\datums\looping_sounds\loop_sounds.dm"
 #include "modular_redmoon\code\datums\migrants\crusaders_roles.dm"
+#include "modular_redmoon\code\datums\migrants\migrant_wave.dm"
 #include "modular_redmoon\code\datums\migrants\migrant_waves\crusaders.dm"
 #include "modular_redmoon\code\datums\migrants\migrant_waves\fablefield_roles.dm"
 #include "modular_redmoon\code\datums\mob_descriptors\other.dm"
