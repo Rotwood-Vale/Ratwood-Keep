@@ -2,6 +2,7 @@
 	title = "Goblin Cook"
 	flag = GOBLINCOOK
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -14,6 +15,7 @@
 	display_order = JDO_GOBLINCOOK
 	min_pq = 2
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblincook
 	allowed_patrons = list(/datum/patron/inhumen/graggar)

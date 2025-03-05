@@ -2,6 +2,7 @@
 	title = "Goblin Rabble"
 	flag = GOBLINRABBLE
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 6
 	spawn_positions = 6
@@ -13,8 +14,7 @@
 	display_order = JDO_GOBLINRABBLE
 	min_pq = 0
 	max_pq = null
-
-/datum/job/roguetown/goblinrabble/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
