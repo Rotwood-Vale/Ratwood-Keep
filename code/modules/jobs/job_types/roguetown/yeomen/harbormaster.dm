@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_races = list(/datum/species/axian, /datum/species/human/northern, /datum/species/lizardfolk)
+	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	tutorial = "A long retired captain, \

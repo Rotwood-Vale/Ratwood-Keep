@@ -394,7 +394,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
-	name = "Exotic Silks"
+	name = "exotic silks"
 	desc = "Fanciful gold laced silks barely able to conceal what little it covers."
 	icon_state = "exoticsilkbra"
 	item_state = "exoticsilkbra"
