@@ -10,8 +10,14 @@
 /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot
 	list_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45)
 
+/obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
+	list_reagents = list(/datum/reagent/medicine/lessermanapot = 45)
+
 /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	list_reagents = list(/datum/reagent/medicine/manapot = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/greatermanapot
+	list_reagents = list(/datum/reagent/medicine/greatermanapot = 45)
 
 /obj/item/reagent_containers/glass/bottle/rogue/poison
 	list_reagents = list(/datum/reagent/toxin/killersice = 1)
