@@ -11,7 +11,7 @@
 	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	tutorial = "A local gang leader, originating from foreign lands; \
 	Nobody but you knows that you were once a lowly thug's courtesan. Now, you are the current Captain of the Ruma Clan. You have total control over your underlings, and are infinitely above them.\
-	You care only for mammon, strict martial prowess, and obedience. Enforce the Clan's incredibly strict heirarcy, cut off tongues if you have to. Rumor is - there's some new kids in town. Kick them out."
+	You care only for mammon, strict martial prowess, and obedience. You work with the Nightmaster in order to keep the local Garrison off of your back. Enforce the Clan's incredibly strict heirarcy, cut off tongues if you have to. Rumor is - there's some new kids in town. Kick them out."
 	display_order = JDO_RUMACAPTAIN
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/rumacaptain
