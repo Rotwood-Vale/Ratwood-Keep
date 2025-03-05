@@ -16,7 +16,7 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/goblin
-	soundpack_f = /datum/voicepack/female
+	soundpack_f = /datum/voicepack/male/goblin
 	custom_clothes = TRUE
 	use_f = TRUE
 	clothes_id = "dwarf"
@@ -53,8 +53,8 @@
 		"intelligence" = -2, 
 		"constitution" = 2,
 		"endurance" = 1, 
-		"speed" = 2, 
-		"fortune" = -1
+		"speed" = 2,
+		"fortune" = 0
 		)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
