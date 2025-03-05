@@ -23,7 +23,7 @@
 /datum/outfit/job/roguetown/rumacaptain/pre_equip(mob/living/carbon/human/H)
 	..()
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich/ //intended use is to pay off the keep
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich/ //intended use is to pay off ransoms/whatever
 	shirt = /obj/item/clothing/suit/roguetown/shirt/easttats
 	armor = /obj/item/clothing/suit/roguetown/armor/eastsuit/captainrobe
 	shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan

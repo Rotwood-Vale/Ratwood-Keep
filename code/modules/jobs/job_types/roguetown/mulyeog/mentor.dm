@@ -26,7 +26,7 @@
 	head = /obj/item/clothing/head/roguetown/easthat
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 	pants = /obj/item/clothing/under/roguetown/trou/eastpants1
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich/ //intended use is to pay off the keep
+	neck = /obj/item/storage/belt/rogue/pouch/coins/rich/ //intended use is to pay off ransoms/whatever
 	shirt = /obj/item/clothing/suit/roguetown/shirt/eastshirt1
 	armor = /obj/item/clothing/suit/roguetown/armor/eastsuit/mentorsuit
 	shoes = /obj/item/clothing/shoes/roguetown/armor
