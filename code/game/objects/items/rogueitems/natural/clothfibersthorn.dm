@@ -183,16 +183,15 @@
 /obj/item/natural/cloth/attack_turf(turf/T, mob/living/user)
 	if(istype(T, /turf/open/water))
 		return ..()
-	if(prob(30 + (wet*10)))
-		if(wet)
-			for(var/obj/effect/decal/cleanable/C in T)
-				qdel(C)
-			wet = max(wet-1, 0)
-	
-			to_chat(user, span_info("I wipe \the [T.name] with [src]."))
-			playsound(user, "clothwipe", 100, TRUE)
-		else
-			to_chat(user, span_warning("\The [name] is dry!"))
+	if(wet)
+		for(var/obj/effect/decal/cleanable/C in T)
+			qdel(C)
+		wet = max(wet-1, 0)
+
+		to_chat(user, span_info("I wipe \the [T.name] with [src]."))
+		playsound(user, "clothwipe", 100, TRUE)
+	else
+		to_chat(user, span_warning("\The [name] is dry!"))
 
 
 // BANDAGING
