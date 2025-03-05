@@ -225,6 +225,8 @@ GLOBAL_LIST(teleport_runes)
 		invokers += user
 	if(req_invokers > 1)
 		for(var/mob/living/invoker in range(runesize, src))
+			if(invoker == user)
+				continue
 			if(!invoker.can_speak())
 				continue
 			if(invoker.stat != CONSCIOUS)
@@ -241,8 +243,7 @@ GLOBAL_LIST(teleport_runes)
 			if(magictype == "blood")
 				if(isblood(invoker))
 					invokers += invoker
-			if(invoker == user)
-				continue
+
 
 	return invokers
 
