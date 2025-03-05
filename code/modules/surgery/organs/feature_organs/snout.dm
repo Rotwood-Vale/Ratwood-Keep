@@ -37,3 +37,7 @@
 /obj/item/organ/snout/akula
 	name = "axian snout"
 	accessory_type = /datum/sprite_accessory/snout/sergal
+
+/obj/item/organ/snout/rat
+	name = "rat snout"
+	accessory_type = /datum/sprite_accessory/snout/sergal
