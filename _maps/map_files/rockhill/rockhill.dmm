@@ -7748,6 +7748,12 @@
 "dUn" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"dUo" = (
+/obj/effect/landmark/start/vagrantlate,
+/turf/open/floor/rogue/metal{
+	icon_state = "plating2"
+	},
+/area/rogue/under/town/sewer)
 "dUx" = (
 /obj/item/rope/chain,
 /obj/item/rope/chain,
@@ -238102,7 +238108,7 @@ udz
 gLf
 gLf
 iyQ
-iyQ
+dUo
 iyZ
 uEX
 uEX
