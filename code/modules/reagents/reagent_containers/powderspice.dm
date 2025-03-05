@@ -420,7 +420,6 @@
 /obj/item/reagent_containers/powder/witness
 	name = "WITNESS"
 	desc = "See the truth of reality."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "flour"
 	possible_transfer_amounts = list()
 	volume = 15
@@ -458,7 +457,6 @@
 /obj/item/reagent_containers/powder/hardballz
 	name = "hardballz"
 	desc = "Endurance enhancing powder."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spicenew"
 	possible_transfer_amounts = list()
 	volume = 15
@@ -492,7 +490,6 @@
 /obj/item/reagent_containers/powder/hawkeyes
 	name = "hawkeyes"
 	desc = "Perception enhancing powder."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "flour"
 	possible_transfer_amounts = list()
 	volume = 15
@@ -526,7 +523,6 @@
 /obj/item/reagent_containers/powder/stoneskin
 	name = "stoneskin"
 	desc = "Rumors say that it just numbs your nerves."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spice"
 	possible_transfer_amounts = list()
 	volume = 15
@@ -560,7 +556,6 @@
 /obj/item/reagent_containers/powder/salvation
 	name = "SALVATION"
 	desc = "Used best in emergencies."
-	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "spicenew"
 	possible_transfer_amounts = list()
 	volume = 15
