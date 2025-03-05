@@ -105,7 +105,7 @@
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
-
+#define TRAIT_HERETIC "Mark of heresy" //Preist puts it on you prevents ressurection and cure rot
 
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -172,6 +172,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands.",
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
+	TRAIT_HERETIC = span_info("I have been marked as a heretic. Necra will not allow me to return back, Pestra will not take the rot away, the spark of miracles will not close my wounds..."),
 ))
 
 // trait accessor defines
