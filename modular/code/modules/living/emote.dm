@@ -29,12 +29,7 @@
 	user.log_message("SUBTLE - " + message, LOG_EMOTE)
 	message = "<b>[user]</b> " + message
 
-	for(var/mob/M in GLOB.dead_mob_list)
-		if(!M.client || isnewplayer(M))
-			continue
-		var/T = get_turf(user)
-		if(M.stat == DEAD && M.client && (M.client.prefs?.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
-			M.show_message(message)
-
-	user.visible_message("<i>[message]</i>", vision_distance = 1)
+	var/list/ghostless = get_hearers_in_view(1, user) - GLOB.dead_mob_list
+	for(var/mob/living/L in ghostless)
+		to_chat(L, "<i>[message]</i>")
 
