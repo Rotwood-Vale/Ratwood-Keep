@@ -306,6 +306,18 @@
 	character.change_stat("speed", -2)
 	character.change_stat("intelligence", -4)
 
+/datum/special_trait/heretic
+	name = "Known Heretic"
+	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
+	req_text = "Non-Church role"
+	weight = 100
+	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
+
+/datum/special_trait/heretic/on_apply(mob/living/carbon/human/character, silent)
+	GLOB.excommunicated_players += character.real_name
+	character.add_stress(/datum/stressevent/psycurse)
+	character.devotion?.excommunicate()
+
 /datum/special_trait/hunted
 	name = "Hunted"
 	greet_text = span_boldwarning("Someone put a bounty on my head!")
