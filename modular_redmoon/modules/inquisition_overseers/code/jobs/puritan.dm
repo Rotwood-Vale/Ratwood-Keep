@@ -48,7 +48,7 @@
     shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
     gloves = /obj/item/clothing/gloves/roguetown/leather/overseer/vice
     wrists = /obj/item/clothing/neck/roguetown/psicross/silver
-    beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock
+    beltr = /obj/item/gun/ballistic/revolver/grenadelauncher/runelock_rk
     beltl = /obj/item/rogueweapon/sword/cutlass
     backr = /obj/item/storage/backpack/rogue/satchel/black
     backpack_contents = list(/obj/item/storage/keyring/puritan = 1, /obj/item/rogueweapon/huntingknife/idagger/silver, /obj/item/lockpick = 1, /obj/item/storage/belt/rogue/pouch/ammo = 1)
