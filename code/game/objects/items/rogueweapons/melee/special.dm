@@ -80,12 +80,14 @@
 				HU.visible_message(span_warning("[HU] electrocutes [H] with the [src]."))
 				H.electrocute_act(5, src)
 				to_chat(H, span_danger("I'm electrocuted by the scepter!"))
+				log_combat(user, H, "electrocuted", addition="with master rod")
 				return
 
 			if(istype(user.used_intent, /datum/intent/lord_silence))
 				HU.visible_message("<span class='warning'>[HU] silences [H] with \the [src].</span>")
 				H.set_silence(20 SECONDS)
 				to_chat(H, "<span class='danger'>I'm silenced by the scepter!</span>")
+				log_combat(user, H, "silenced", addition="with master rod")
 				return
 
 /obj/item/rogueweapon/mace/stunmace
