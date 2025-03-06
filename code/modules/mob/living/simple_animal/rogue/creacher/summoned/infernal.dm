@@ -35,6 +35,22 @@
 		Retaliate()
 		GiveTarget(pulledby)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/DestroyObjectsInDirection(direction)
+	var/turf/T = get_step(targets_from, direction)
+	if(QDELETED(T))
+		return
+	if(T.Adjacent(targets_from))
+		if(CanSmashTurfs(T))
+			T.attack_animal(src)
+			return
+	for(var/obj/O in T.contents)
+		if(!O.Adjacent(targets_from))
+			continue
+		if((ismachinery(O) || isstructure(O)) && environment_smash >= ENVIRONMENT_SMASH_STRUCTURES && !O.IsObscured())
+			O.attack_animal(src)
+			return
+
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -98,6 +114,7 @@
 	maxHealth = 70
 	ranged = TRUE
 	projectiletype = /obj/projectile/magic/firebolt
+	obj_damage = 75
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 8
@@ -201,8 +218,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 170
 	maxHealth = 170
-	melee_damage_lower = 15
-	melee_damage_upper = 17
+	obj_damage = 75
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -286,6 +304,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 600
 	maxHealth = 600
+	obj_damage = 75
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7
@@ -304,7 +323,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
@@ -376,8 +395,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 700
 	maxHealth = 700
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_WALLS
@@ -395,7 +415,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
