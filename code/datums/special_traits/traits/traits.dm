@@ -1,9 +1,3 @@
-/datum/special_trait/nothing
-	name = "Nothing"
-	greet_text = span_notice("You're not special, tough luck I guess.")
-	weight = 100
-
-
 // Positive Specials
 /datum/special_trait/tough
 	name = "Tough"
