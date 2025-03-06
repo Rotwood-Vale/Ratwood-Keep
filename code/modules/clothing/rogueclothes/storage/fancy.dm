@@ -181,6 +181,7 @@
 		/obj/item/reagent_containers/,
 		/obj/item/candle/,
 		/obj/item/needle/,
+		/obj/item/book/rogue/medical_notebook,
 	))
 
 /obj/item/storage/fancy/ifak/PopulateContents()
