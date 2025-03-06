@@ -228,11 +228,15 @@
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"
 	name = "cooked shrimp"
+	tastes = list("shrimp" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
 	icon_state = "crabcooked"
 	name = "cooked crab"
-
+	tastes = list("shellfish" = 1)
+	
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	icon_state = "lobstercooked"
 	name = "cooked lobster"
+	tastes = list("shellfish" = 1)
+

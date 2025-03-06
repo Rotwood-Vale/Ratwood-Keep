@@ -329,3 +329,33 @@
 				qdel(src)
 	else
 		return ..()
+
+/* ............ Shellfish ................... */
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(user.mind)
+		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal(loc)
+				qdel(I)
+				qdel(src)
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION+BUTTERSLICE_NUTRITION + 1)
+	tastes = list("lobster" = 1, "butter" = 1)
+	name = "lobster meal"
+	desc = "Originally an elven cuisine composed of mortal races flesh and bread, the classic wiener in a bun, now modified and staple food of Grenzelhoft cuisine."
+	icon_state = "lobster_meal"
+	foodtype = MEAT
+	warming = 5 MINUTES
+	bitesize = 5
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/foodbuff

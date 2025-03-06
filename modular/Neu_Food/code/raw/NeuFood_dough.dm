@@ -119,6 +119,15 @@
 				new /obj/item/reagent_containers/food/snacks/rogue/dough(loc)
 				qdel(I)
 				qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/fish/crab))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
+			to_chat(user, "<span class='notice'>Covering the crab with dough...</span>")
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw(loc)
+				qdel(I)
+				qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to roll it out!</span>")
 	else

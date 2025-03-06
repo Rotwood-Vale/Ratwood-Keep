@@ -67,12 +67,11 @@
 			check_counter = world.time
 			var/skill = user.mind.get_skill_level(/datum/skill/labor/fishing)
 			if(skill > 1) //novice and no skill are both 20 minutes
-				time2catch = 25 MINUTES - 5 SECONDS * skill //THIS SHOULD BE MINUTES, DON'T FORGET IT
+				time2catch = 25 MINUTES - 5 MINUTES * skill 
 			if(skill == 5)
-				time2catch = 3 SECONDS //THIS ONE IS MINUTES TOO
+				time2catch = 3 MINUTES 
 			if(skill == 6)
 				time2catch = 90 SECONDS 
-			desc = "[desc] [time2catch] ticks for a catch" //THIS IS DEBUG, DON'T FORGET TO REMOVE IT DUMBASS
 			icon_state = "fishingcage_ready"
 			START_PROCESSING(SSobj, src)
 			return
