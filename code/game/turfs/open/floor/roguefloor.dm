@@ -917,6 +917,10 @@
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
 
+/turf/open/floor/rogue/cobblerock/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
+
 /turf/open/floor/rogue/cobblerock/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
 

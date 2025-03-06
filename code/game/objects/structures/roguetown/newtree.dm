@@ -134,7 +134,8 @@
 	var/turf/target = get_step_multiz(src, UP)
 	if(istype(target, /turf/open/transparent/openspace))
 		var/obj/structure/flora/newtree/T = new(target)
-		T.base_state = "center-leaf[rand(1,2)]"
+		T.base_state = "center-leaf[tree_type]"
+		T.tree_type = tree_type
 		T.update_icon()
 
 /obj/structure/flora/newtree/proc/build_branches()
@@ -147,19 +148,32 @@
 					if(!locate(/obj/structure) in NB)
 						var/obj/structure/flora/newbranch/T = new(NB)
 						T.dir = D
+						T.base_state = "center-leaf[tree_type]"
+						T.update_icon()
 					if(!locate(/obj/structure) in NT)
 						var/obj/structure/flora/newbranch/connector/TC = new(NT)
 						TC.dir = D
+						TC.base_state = "center-leaf[tree_type]"
+						TC.update_icon()
 				else
 					if(!locate(/obj/structure) in NB)
-						new /obj/structure/flora/newleaf(NB)
+						var/obj/structure/flora/newleaf/NL= new(NB)
+						NL.dir = D
+						NL.leaf_type = tree_type
+						NL.update_icon()
+
 					if(!locate(/obj/structure) in NT)
 						var/obj/structure/flora/newbranch/TC = new(NT)
 						TC.dir = D
+						TC.base_state = "center-leaf[tree_type]"
+						TC.update_icon()
 			else
 				if(!locate(/obj/structure) in NT)
 					var/obj/structure/flora/newbranch/TC = new(NT)
 					TC.dir = D
+					TC.base_state = "center-leaf[tree_type]"
+					TC.update_icon()
+
 		else
 			if(prob(70))
 				if(isopenturf(NT))
@@ -176,6 +190,8 @@
 			if(!locate(/obj/structure) in NT)
 				var/obj/structure/flora/newleaf/corner/T = new(NT)
 				T.dir = D
+				T.leaf_type = tree_type
+				T.update_icon()
 
 
 ///BRANCHES
@@ -185,8 +201,7 @@
 	desc = "A stable branch, should be safe to walk on."
 	icon = 'icons/roguetown/misc/tree.dmi'
 	icon_state = "branch-end1"
-//	var/tree_type = 1
-	var/base_state = TRUE
+	var/base_state = 1
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	static_debris = list(/obj/item/grown/log/tree/stick = 1)
 	density = FALSE
@@ -208,7 +223,6 @@
 	. = ..()
 	if(base_state)
 		AddComponent(/datum/component/squeak, list('sound/foley/plantcross1.ogg','sound/foley/plantcross2.ogg','sound/foley/plantcross3.ogg','sound/foley/plantcross4.ogg'), 100)
-		base_state = "center-leaf[rand(1,2)]"
 	update_icon()
 
 /obj/structure/flora/newbranch/connector
@@ -244,10 +258,8 @@
 	icon_state = "corner-leaf1"
 
 
-/obj/structure/flora/newleaf/corner/Initialize()
-	. = ..()
-	icon_state = "corner-leaf[rand(1,2)]"
-	update_icon()
+/obj/structure/flora/newleaf/corner/update_icon()
+	icon_state = "corner-leaf[leaf_type]"
 
 /obj/structure/flora/newleaf
 	name = "leaves"
@@ -255,8 +267,7 @@
 	icon_state = "center-leaf1"
 	density = FALSE
 	max_integrity = 10
+	var/leaf_type = 1
 
-/obj/structure/flora/newleaf/Initialize()
-	. = ..()
-	icon_state = "center-leaf[rand(1,2)]"
-	update_icon()
+/obj/structure/flora/newleaf/update_icon()
+	icon_state = "center-leaf[leaf_type]"
