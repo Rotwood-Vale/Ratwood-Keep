@@ -99,6 +99,7 @@
 	health = 50
 	maxHealth = 50
 	ranged = FALSE
+	obj_damage = 75
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	vision_range = 8
@@ -178,8 +179,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 170
 	maxHealth = 170
-	melee_damage_lower = 15
-	melee_damage_upper = 17
+	obj_damage = 75
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -197,7 +199,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 20 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = list()
@@ -264,8 +266,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 650
 	maxHealth = 650
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -283,7 +286,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 30 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = "plantcross"
@@ -301,8 +304,10 @@
 		var/turf/T = newloc
 		if(contains_vines(T))
 			src.move_to_delay = 2
+			src.STASPD = 15
 		else
 			src.move_to_delay = 8
+			src.STASPD = 4
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
@@ -412,8 +417,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 700
 	maxHealth = 700
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -430,7 +436,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 30 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = null

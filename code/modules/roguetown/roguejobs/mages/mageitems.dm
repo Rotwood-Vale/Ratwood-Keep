@@ -161,7 +161,7 @@
 
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
-	name = "glowing purple silver dagger"
+	name = "arcyne silver dagger"
 	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
 	var/is_bled = FALSE
 	var/obj/effect/decal/cleanable/roguerune/rune_to_scribe = null
@@ -611,7 +611,7 @@ obj/item/hourglass/temporal/stop()
 	icon = 'icons/obj/shards.dmi'
 	icon_state = "obsidian"
 	desc = "Volcanic glass cooled from molten lava rapidly."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/leyline
@@ -619,7 +619,7 @@ obj/item/hourglass/temporal/stop()
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "leyline"
 	desc = "A shard of a fractured leyline, it glows with lost power."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
@@ -652,7 +652,7 @@ obj/item/hourglass/temporal/stop()
 	name = "runed artifact"
 	icon_state = "runedartifact"
 	desc = "an old stone from age long ago, marked with glowing sigils."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/artifact/Initialize()
@@ -665,14 +665,14 @@ obj/item/hourglass/temporal/stop()
 	name = "crystalized mana"
 	icon_state = "manacrystal"
 	desc = "A crystal made of mana, woven into an artifical structure."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/voidstone
 	name = "Voidstone"
 	icon_state = "voidstone"
 	desc = "A piece of blackstone, it feels disconcerting to stare at it for long."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 //combined items
@@ -681,7 +681,7 @@ obj/item/hourglass/temporal/stop()
 	icon_state = "wessence"
 	icon = 'icons/roguetown/items/natural.dmi'
 	desc = "You should not be seeing this"
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
