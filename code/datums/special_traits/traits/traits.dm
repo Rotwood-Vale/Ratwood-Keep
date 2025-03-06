@@ -356,13 +356,6 @@
 	if(!silent)
 		to_chat(character, span_notice("Whether I've done it or not, I have been accused of [reason] and the [employer] put a bounty on my head!"))
 
-/datum/special_trait/heretic
-	name = "Known Heretic"
-	greet_text = span_boldwarning("I've been denounced by the church for either reasons legitimate or not!")
-	req_text = "Non-Church role"
-	weight = 100
-	restricted_jobs = list(CHURCH_ROLES, INQUISITION_ROLES)
-
 /datum/special_trait/heretic/on_apply(mob/living/carbon/human/character, silent)
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
