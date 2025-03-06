@@ -41,7 +41,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
-	var/weapons = list("flintgonne", "halberd", "zweihander")
+	var/weapons = list("flintgonne", "blunderbuss")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 
 	switch(weaponschoice)
@@ -49,7 +49,7 @@
 		if("flintgonne")
 			backr = /obj/item/gun/ballistic/firearm/flintgonne
 			beltl = /obj/item/ammo_holder/bullet/lead
-		if("halberd")
+		if("blunderbuss")
 			r_hand = /obj/item/gun/ballistic/firearm/blunderbuss
 			beltl = /obj/item/ammo_holder/bullet/grapeshot
 		else
