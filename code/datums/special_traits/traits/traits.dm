@@ -97,7 +97,7 @@
 /datum/special_trait/beautiful
 	name = "Beautiful"
 	greet_text = span_notice("My face is a work of art.")
-	weight = 100
+	weight = 200
 
 /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
