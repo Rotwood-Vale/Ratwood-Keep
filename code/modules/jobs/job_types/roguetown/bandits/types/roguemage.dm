@@ -15,7 +15,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/book/granter/spellbook/mid = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
