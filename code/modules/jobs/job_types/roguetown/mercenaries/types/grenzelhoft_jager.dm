@@ -30,7 +30,6 @@
 	..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/ammo_holder/bullet/lead
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -40,9 +39,22 @@
 	pants = /obj/item/clothing/under/roguetown/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
-	backr = /obj/item/gun/ballistic/firearm/flintgonne
 	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
+	var/weapons = list("flintgonne", "halberd", "zweihander")
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+
+		if("flintgonne")
+			backr = /obj/item/gun/ballistic/firearm/flintgonne
+			beltl = /obj/item/ammo_holder/bullet/lead
+		if("halberd")
+			r_hand = /obj/item/gun/ballistic/firearm/blunderbuss
+			beltl = /obj/item/ammo_holder/bullet/grapeshot
+		else
+			backr = /obj/item/gun/ballistic/firearm/flintgonne
+			beltl = /obj/item/ammo_holder/bullet/lead
 
 	//Humie grenzelhofts are always set to be, well, grenzelhoft
 	if(ishumannorthern(H))
