@@ -296,6 +296,29 @@
 	walking_stick = TRUE
 	wdefense = 6
 
+/obj/item/rogueweapon/halberd/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/halberdherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/halberdherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Halberds...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/halberdherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		bigboy = 0
+		gripsprite = FALSE
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/halberdherald.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Halberd"
+	else
+		..()
+
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
 	if(tag)

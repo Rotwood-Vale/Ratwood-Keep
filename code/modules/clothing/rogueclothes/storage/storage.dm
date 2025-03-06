@@ -351,11 +351,22 @@
 		STR.allow_dump_out = TRUE
 
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
-	name = "Exotic Silk Belt"
+	name = "exotic silk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1
 	sewrepair = TRUE
+
+
+/obj/item/storage/belt/rogue/leather/overseer
+    name = "belt with pouches"
+    desc = "Leather belt with some pouches attached."
+    icon_state = "overseerbelt"
+    item_state = "overseerbelt"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sellprice = 15
+    w_class = WEIGHT_CLASS_BULKY
 
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
