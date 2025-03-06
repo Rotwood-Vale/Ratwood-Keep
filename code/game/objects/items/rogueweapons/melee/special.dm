@@ -146,8 +146,8 @@
 			target.electrocute_act(5, src)
 			charge -= 6
 		else//TODO: Check target.STACON!!!!!!!!!!
-			target.energy_add(-10)
-			target.stamina_add(5)
+			target.energy_add(-200)
+			target.stamina_add(25)
 			charge -= 3
 		if(charge <= 0)
 			on = FALSE
