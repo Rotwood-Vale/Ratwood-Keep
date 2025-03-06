@@ -176,11 +176,10 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/,
 		/obj/item/natural/cloth/,
 		/obj/item/natural/bundle/cloth/,
 		/obj/item/reagent_containers/,
-		/obj/item/candle,
+		/obj/item/candle/,
 		/obj/item/needle/,
 	))
 
