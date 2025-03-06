@@ -12496,6 +12496,14 @@
 /obj/item/rogueweapon/hammer/iron,
 /obj/item/storage/keyring,
 /obj/item/storage/keyring,
+/obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer,
+/obj/item/clothing/under/roguetown/trou/artipants,
+/obj/item/clothing/head/roguetown/articap,
+/obj/item/clothing/head/roguetown/articap,
+/obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/artificer,
+/obj/item/clothing/under/roguetown/trou/artipants,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -16164,6 +16172,8 @@
 /obj/item/clothing/under/roguetown/loincloth{
 	pixel_y = 4
 	},
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut,
+/obj/item/clothing/under/roguetown/skirt/random,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
 "iwg" = (
@@ -18810,6 +18820,9 @@
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_y = -32
 	},
+/obj/item/clothing/cloak/matron,
+/obj/item/clothing/under/roguetown/skirt/red,
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut,
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
 	},
@@ -23276,6 +23289,7 @@
 	},
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/storage/backpack/rogue/satchel,
+/obj/item/clothing/cloak/cape/inquisitor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/sewer)
 "mow" = (
@@ -29261,6 +29275,8 @@
 	pixel_y = 0;
 	pixel_x = -32
 	},
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut,
+/obj/item/clothing/under/roguetown/skirt/random,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
 "pvF" = (
@@ -29742,6 +29758,8 @@
 /obj/item/clothing/cloak/stole/red,
 /obj/item/clothing/cloak/chasuble,
 /obj/item/clothing/head/roguetown/priesthat,
+/obj/item/clothing/cloak/stole/purple,
+/obj/item/clothing/cloak/stole,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
 "pHl" = (
@@ -31725,6 +31743,8 @@
 /obj/item/clothing/under/roguetown/tights/random,
 /obj/item/clothing/cloak/hierophant,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
+/obj/item/clothing/suit/roguetown/shirt/robe/archivist,
+/obj/item/clothing/suit/roguetown/shirt/robe/hierophant,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/academy)
 "qND" = (
@@ -35948,6 +35968,14 @@
 /obj/item/clothing/cloak/tabard,
 /obj/item/clothing/cloak/tabard,
 /obj/item/clothing/cloak/tabard,
+/obj/item/clothing/cloak/templar/abyssor,
+/obj/item/clothing/cloak/templar/abyssor,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/necran,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/pestran,
+/obj/item/clothing/cloak/templar/psydon,
+/obj/item/clothing/cloak/templar/psydon,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church)
 "tft" = (
@@ -36137,6 +36165,10 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
+/obj/item/clothing/suit/roguetown/shirt/apothshirt,
+/obj/item/clothing/suit/roguetown/shirt/apothshirt,
+/obj/item/clothing/under/roguetown/trou/apothecary,
+/obj/item/clothing/under/roguetown/trou/apothecary,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -40258,6 +40290,8 @@
 	pixel_y = 12;
 	pixel_x = 24
 	},
+/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut,
+/obj/item/clothing/under/roguetown/skirt/blue,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "vzC" = (
