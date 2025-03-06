@@ -172,7 +172,7 @@
 /obj/item/storage/fancy/ifak/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
+	STR.max_items = 7
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
