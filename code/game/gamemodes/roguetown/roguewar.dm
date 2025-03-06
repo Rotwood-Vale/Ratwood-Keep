@@ -1,7 +1,6 @@
 /datum/game_mode/roguewar/proc/get_team()
 
 
-/* 
 /datum/game_mode/roguewar
 	name = "chaosmode"
 	config_tag = "chaosmode"
@@ -410,4 +409,3 @@
 	if(werewolves.len)
 		if(vampires.len)
 			return "werewolf"
- */
