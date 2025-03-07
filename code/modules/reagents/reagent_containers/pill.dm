@@ -136,3 +136,21 @@
 	icon_state = "pill9"
 	list_reagents = list(/datum/reagent/iron = 30)
 	rename_with_volume = TRUE
+
+/obj/item/reagent_containers/pill/caffpill
+	name = "WAKE-UP"
+	desc = "Pep-pills. A promise to make you alert."
+	icon_state = "pillg"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
+	dissolvable = FALSE
+	grind_results = null
+
+/obj/item/reagent_containers/pill/pnkpill
+	name = "PNKBAWLS"
+	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
+	icon_state = "pinkb"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
+	dissolvable = FALSE
+	grind_results = null
