@@ -124,6 +124,7 @@
 	var/closed
 	var/obj/item/pearl
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
+	trash = /obj/item/oystershell
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/Initialize()
 	. = ..()
@@ -147,11 +148,15 @@
 	closed = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/oyster/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/rogueweapon/huntingknife) && closed)
-		user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
-		closed = FALSE
-		icon_state = "[icon_state]_open"
-		update_icon()
+	if(istype(I, /obj/item/rogueweapon/huntingknife))
+		if(closed)
+			user.visible_message("<span class='notice'>[user] opens the oyster with the knife.</span>")
+			closed = FALSE
+			icon_state = "[icon_state]_open"
+			update_icon()
+		else
+			if(slice(src, user))
+				new /obj/item/oystershell(user.loc)
 	else
 		. = ..()
 	
@@ -170,6 +175,14 @@
 	if(!closed && pearl)
 		var/mutable_appearance/pearl = mutable_appearance(icon, "pearl")
 		add_overlay(pearl)
+
+/obj/item/oystershell
+	name = "oyster shell"
+	icon = 'icons/roguetown/misc/fish.dmi'
+	icon_state = "oyster_shell"
+	desc = "" //DESCRIPTION!!
+	dropshrink = 0.5
+	sellprice = 3
 
 /obj/item/reagent_containers/food/snacks/fish/crab
 	name = "crab"

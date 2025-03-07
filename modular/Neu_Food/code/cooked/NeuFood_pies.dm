@@ -572,7 +572,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
 	name = "raw crab cake"
-	desc = ""
+	desc = "" //DESCRIPTION!!
 	icon_state = "crab_cake_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
@@ -582,7 +582,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/crabcake
 	name = "crab cake"
-	desc = ""
+	desc = "" //DESCRIPTION!!
 	icon_state = "crab_cake"
 	eat_effect = /datum/status_effect/buff/foodbuff
 	bitesize = 4

@@ -225,12 +225,27 @@
 	name = "pearl amulet"
 	icon_state = "pearlcross"
 	desc = "An amulet made of white pearls, usually worn by fishers or sailors."
+	sellprice = 80
 
 /obj/item/clothing/neck/roguetown/psicross/bpearl
 	name = "blue pearl amulet"
 	icon_state = "bpearlcross"
 	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Abyssor, or as lucky charms for captains of ships."
+	sellprice = 220
 	
+/obj/item/clothing/neck/roguetown/psicross/shell
+	name = "oyster shell necklace"
+	icon_state = "oyster_necklace"
+	desc = "" //DESCRIPTION!!!
+	sellprice = 25
+
+/obj/item/clothing/neck/roguetown/psicross/shell/bracelet
+	name = "shell bracelet"
+	icon_state = "oyster_bracelet"
+	desc = "" //DESCRIPTION!!
+	sellprice = 15
+	slot_flags = ITEM_SLOT_WRISTS
+
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
 	desc = "A heart, for Eora so loved the world she taught us to love ourselves. Wearing it is to feel the warmth of a lover's embrace, and to carry the weight of a bond that even death cannot sever. In showing kindness, one creates a world - scoured as it is with evil and rot - worth saving."
