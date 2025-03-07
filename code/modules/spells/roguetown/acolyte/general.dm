@@ -29,7 +29,7 @@
 		var/situational_bonus = 1
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
-			if(/datum/patron/old_god)
+			if(/datum/patron/godless)
 				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
 			if(/datum/patron/divine/astrata)
 				target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
@@ -45,11 +45,11 @@
 					conditional_buff = TRUE
 			if(/datum/patron/divine/dendor)
 				target.visible_message(span_info("A rush of primal energy spirals about [target]!"), span_notice("I'm infused with primal energies!"))
-				var/list/natural_stuff = list(/obj/structure/flora/roguegrass, /obj/structure/flora/roguetree, /obj/structure/flora/rogueshroom, /obj/structure/soil, /obj/structure/flora/newtree, /obj/structure/flora/tree, /obj/structure/glowshroom)
+				var/list/natural_stuff = list(/obj/structure/soil, /obj/structure/flora, /obj/structure/glowshroom)
 				situational_bonus = 0
 				// the more natural stuff around US, the more we heal
 				for (var/obj/O in oview(5, user))
-					if (O in natural_stuff)
+					if (O in istype(natural_stuff))
 						situational_bonus = min(situational_bonus + 0.1, 2)
 				for (var/obj/structure/flora/roguetree/wise/O in oview(5, user))
 					situational_bonus += 1.5
@@ -108,14 +108,14 @@
 				if (HAS_TRAIT(user, TRAIT_PACIFISM))
 					conditional_buff = TRUE
 					situational_bonus += 1.5
-			if(/datum/patron/inhumen/zizo)
+			if(/datum/patron/zizo)
 				target.visible_message(span_info("Vital energies are sapped towards [target]!"), span_notice("The life around me pales as I am restored!"))
 				// set up a ritual pile of bones (or just cast near a stack of bones whatever) around us for massive bonuses, cap at 50 for 75 healing total (wowie)
-				situational_bonus = 0
-				for (var/obj/item/natural/bone/O in oview(5, user))
-					situational_bonus += (0.5)
-				for (var/obj/item/natural/bundle/bone/S in oview(5, user))
-					situational_bonus += (S.amount * 0.5)
+				situational_bonus = 2.5
+				// for (var/obj/item/natural/bone/O in oview(5, user))
+				// 	situational_bonus += (0.5)
+				// for (var/obj/item/natural/bundle/bone/S in oview(5, user))
+				// 	situational_bonus += (S.amount * 0.5)
 				if (situational_bonus > 0)
 					conditional_buff = TRUE
 					situational_bonus = min(situational_bonus, 5)
