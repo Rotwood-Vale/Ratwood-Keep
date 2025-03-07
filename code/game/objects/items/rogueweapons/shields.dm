@@ -76,6 +76,8 @@
 	tshield = 1
 	chargetime = 1
 	warnie = "shieldwarn"
+	charge_pointer = 'icons/effects/mousemice/charge/shield_charging.dmi'
+	charged_pointer = 'icons/effects/mousemice/charge/shield_charged.dmi'
 
 /obj/item/rogueweapon/shield/wood
 	name = "wooden shield"

@@ -29,7 +29,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
 	duration = 10 SECONDS
 	examine_text = "SUBJECTPRONOUN is bathed in a restorative aura!"
-	var/healing_on_tick = 1
+	var/healing_on_tick = 0.1
 	var/outline_colour = "#c42424"
 
 /datum/status_effect/buff/healing/on_creation(mob/living/new_owner, new_healing_on_tick)
@@ -60,6 +60,16 @@
 
 /datum/status_effect/buff/healing/on_remove()
 	owner.remove_filter(MIRACLE_HEALING_FILTER)
+
+/atom/movable/screen/alert/status_effect/buff/fortify
+	name = "Fortifying Miracle"
+	desc = "Divine intervention bolsters me and aids my recovery."
+	icon_state = "buff"
+
+/datum/status_effect/buff/fortify //Increases all healing while it lasts.
+	id = "fortify"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/fortify
+	duration = 1 MINUTES
 
 #define CRANKBOX_FILTER "crankboxbuff_glow"
 /atom/movable/screen/alert/status_effect/buff/churnerprotection
