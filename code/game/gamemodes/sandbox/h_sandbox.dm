@@ -38,8 +38,8 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 		hsbinfo = "<center><b>Sandbox Panel</b></center><hr>"
 		if(admin)
 			hsbinfo += "<b>Administration</b><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbtobj'>Toggle Object Spawning</a><br>"
-			hsbinfo += "- <a href='?src=[REF(src)];hsb=hsbtac'>Toggle Item Spawn Panel Auto-close</a><br>"
+			hsbinfo += "- <a href='byond://?src=[REF(src)];hsb=hsbtobj'>Toggle Object Spawning</a><br>"
+			hsbinfo += "- <a href='byond://?src=[REF(src)];hsb=hsbtac'>Toggle Item Spawn Panel Auto-close</a><br>"
 		else
 			hsbinfo += "<i>Some item spawning may be disabled by the administrators.</i><br>"
 			hsbinfo += "<i>Only administrators may spawn dangerous canisters.</i><br>"
@@ -103,7 +103,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						clothinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						clothinfo += "<a href='byond://?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(clothinfo,"window=sandbox")
 
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 					for(var/typekey in spawn_forbidden)
 						all_items -= typesof(typekey)
 					for(var/O in reverseRange(all_items))
-						reaginfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						reaginfo += "<a href='byond://?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(reaginfo,"window=sandbox")
 
@@ -132,7 +132,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 						all_items -= typesof(typekey)
 
 					for(var/O in reverseRange(all_items))
-						objinfo += "<a href='?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
+						objinfo += "<a href='byond://?src=[REF(src)];hsb=hsb_safespawn&path=[O]'>[O]</a><br>"
 
 				usr << browse(objinfo,"window=sandbox")
 

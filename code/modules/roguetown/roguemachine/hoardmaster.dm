@@ -88,7 +88,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/contents
 	contents = "<center>Wishes for the Free<BR>"
-	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
+	contents += "<a href='byond://?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
 
 
 	var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
@@ -109,18 +109,18 @@
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
+			contents += "<a href='byond://?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
 		contents += "</center>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center><a href='byond://?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='byond://?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)

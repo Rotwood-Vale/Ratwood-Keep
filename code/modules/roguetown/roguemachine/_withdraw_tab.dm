@@ -12,18 +12,18 @@
 /datum/withdraw_tab/proc/get_contents(title, show_back)
 	var/contents = "<center>[title]<BR>"
 	if(show_back)
-		contents += "<a href='?src=[REF(parent_structure)];navigate=directory'>(back)</a><BR>"
+		contents += "<a href='byond://?src=[REF(parent_structure)];navigate=directory'>(back)</a><BR>"
 
 	contents += "--------------<BR>"
-	contents += "<a href='?src=[REF(parent_structure)];change=1'>Stored Mammon: [budget]</a><BR>"
-	contents += "<a href='?src=[REF(parent_structure)];compact=1'>Compact Mode: [compact ? "ENABLED" : "DISABLED"]</a></center><BR>"
+	contents += "<a href='byond://?src=[REF(parent_structure)];change=1'>Stored Mammon: [budget]</a><BR>"
+	contents += "<a href='byond://?src=[REF(parent_structure)];compact=1'>Compact Mode: [compact ? "ENABLED" : "DISABLED"]</a></center><BR>"
 
 	if(compact)
 		for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
 			var/remote_stockpile = stockpile_index == 1 ? 2 : 1
 			if(!A.withdraw_disabled)
-				contents += "<b>[A.name]:</b> <a href='?src=[REF(parent_structure)];withdraw=[REF(A)]'>LCL: [A.held_items[stockpile_index]] at [A.withdraw_price]m</a> /"
-				contents += "<a href='?src=[REF(parent_structure)];withdraw=[REF(A)];remote=1'>RMT: [A.held_items[remote_stockpile]] at [A.withdraw_price+A.transport_fee]m</a><BR>"
+				contents += "<b>[A.name]:</b> <a href='byond://?src=[REF(parent_structure)];withdraw=[REF(A)]'>LCL: [A.held_items[stockpile_index]] at [A.withdraw_price]m</a> /"
+				contents += "<a href='byond://?src=[REF(parent_structure)];withdraw=[REF(A)];remote=1'>RMT: [A.held_items[remote_stockpile]] at [A.withdraw_price+A.transport_fee]m</a><BR>"
 
 			else
 				contents += "<b>[A.name]:</b> Withdrawing Disabled..."
@@ -36,8 +36,8 @@
 			var/remote_stockpile = stockpile_index == 1 ? 2 : 1
 			contents += "Stockpiled Amount (Remote): [A.held_items[remote_stockpile]]<BR>"
 			if(!A.withdraw_disabled)
-				contents += "<a href='?src=[REF(parent_structure)];withdraw=[REF(A)]'>\[Withdraw Local ([A.withdraw_price])\] </a>"
-				contents += "<a href='?src=[REF(parent_structure)];withdraw=[REF(A)];remote=1'>\[Withdraw Remote ([A.withdraw_price+A.transport_fee])\]</a><BR><BR>"
+				contents += "<a href='byond://?src=[REF(parent_structure)];withdraw=[REF(A)]'>\[Withdraw Local ([A.withdraw_price])\] </a>"
+				contents += "<a href='byond://?src=[REF(parent_structure)];withdraw=[REF(A)];remote=1'>\[Withdraw Remote ([A.withdraw_price+A.transport_fee])\]</a><BR><BR>"
 			else
 				contents += "Withdrawing Disabled...<BR><BR>"
 

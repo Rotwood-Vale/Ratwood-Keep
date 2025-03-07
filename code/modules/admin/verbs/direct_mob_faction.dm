@@ -22,7 +22,7 @@
 		<center><B>Mass Direct Mobs</B></center><hr>
 		<B>Current Settings:</B><br>
 		Radius: [radius]<br>
-		<A href='?src=[REF(src)];[HrefToken()];mass_direct=set_radius;current_radius=[radius];faction=[faction]'>Set Radius</A><br>
+		<A href='byond://?src=[REF(src)];[HrefToken()];mass_direct=set_radius;current_radius=[radius];faction=[faction]'>Set Radius</A><br>
 		<br>
 		Faction: <select onchange="window.location='?src=[REF(src)];[HrefToken()];mass_direct=set_faction;radius=[radius];faction=' + this.value">
 			<option value=''>Select Faction</option>
@@ -34,7 +34,7 @@
 	if(faction)
 		dat += {"
 			<br>
-			<A href='?src=[REF(src)];[HrefToken()];mass_direct=begin_targeting;radius=[radius];faction=[faction]'>Begin Directing Mobs</A><br>
+			<A href='byond://?src=[REF(src)];[HrefToken()];mass_direct=begin_targeting;radius=[radius];faction=[faction]'>Begin Directing Mobs</A><br>
 			"}
 	
 	usr << browse(dat, "window=mass_direct;size=300x400")

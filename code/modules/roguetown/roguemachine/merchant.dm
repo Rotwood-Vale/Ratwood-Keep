@@ -305,14 +305,14 @@
 	var/canread = user.can_read(src, TRUE)
 	var/contents
 	contents = "<center>GOLDFACE - In the name of greed.<BR>"
-	contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
+	contents += "<a href='byond://?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
 
 	var/mob/living/carbon/human/H = user
 	if(H.job == "Merchant")
 		if(canread)
-			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
+			contents += "<a href='byond://?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
-			contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
+			contents += "<a href='byond://?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
 
 	contents += "</center><BR>"
 
@@ -329,11 +329,11 @@
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
+			contents += "<a href='byond://?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
 		contents += "</center>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center><a href='byond://?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
@@ -344,7 +344,7 @@
 			var/costy = cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
 				costy = round(costy + (SStreasury.tax_value * cost))
-			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='byond://?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	if(!canread)
 		contents = stars(contents)

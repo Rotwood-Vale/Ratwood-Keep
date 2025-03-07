@@ -271,19 +271,19 @@
 
 			for(var/i in 1 to plus_factor)
 				plus_str += "+"
-		data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
+		data += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
 	if(special_session_queue && special_session_queue.len)
 		for(var/datum/subclass/datums in special_session_queue)
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
 	if(showing_challenge_classes)
 		for(var/datum/subclass/datums in SSrole_class_handler.sorted_class_categories[CTAG_CHALLENGE])
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
+			data += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32>[datums.name]<img class='ninetysskull' src='[SSassets.transport.get_asset_url("haha_skull.gif")]' width=32 height=32></a></div>"
 	data += "</div>"
 
 	//Buttondiv Segment
 	data += "<div class='footer'>"
 	data += {"	
-		<a class='mo_bottom_buttons' href='?src=\ref[src];show_challenge_class=1'>[showing_challenge_classes ? "Hide Challenge Classes" : "Show Challenge Classes"]</a>
+		<a class='mo_bottom_buttons' href='byond://?src=\ref[src];show_challenge_class=1'>[showing_challenge_classes ? "Hide Challenge Classes" : "Show Challenge Classes"]</a>
 	</div>
 	"}
 

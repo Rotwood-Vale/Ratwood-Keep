@@ -149,15 +149,15 @@
 	if(canread)
 		contents = "<center>THE PEDDLER, THIRD ITERATION<BR>"
 		if(locked)
-			contents += "<a href='?src=[REF(src)];change=1'>Stored Mammon:</a> [budget]<BR>"
+			contents += "<a href='byond://?src=[REF(src)];change=1'>Stored Mammon:</a> [budget]<BR>"
 		else
-			contents += "<a href='?src=[REF(src)];withdrawgain=1'>Stored Profits:</a> [wgain]<BR>"
+			contents += "<a href='byond://?src=[REF(src)];withdrawgain=1'>Stored Profits:</a> [wgain]<BR>"
 	else
 		contents = "<center>[stars("THE PEDDLER, THIRD ITERATION")]<BR>"
 		if(locked)
-			contents += "<a href='?src=[REF(src)];change=1'>[stars("Stored Mammon:")]</a> [budget]<BR>"
+			contents += "<a href='byond://?src=[REF(src)];change=1'>[stars("Stored Mammon:")]</a> [budget]<BR>"
 		else
-			contents += "<a href='?src=[REF(src)];withdrawgain=1'>[stars("Stored Profits:")]</a> [wgain]<BR>"
+			contents += "<a href='byond://?src=[REF(src)];withdrawgain=1'>[stars("Stored Profits:")]</a> [wgain]<BR>"
 
 	contents += "</center>"
 
@@ -171,14 +171,14 @@
 			namer = "thing"
 		if(locked)
 			if(canread)
-				contents += "[icon2html(I, user)] [namer] - [price] <a href='?src=[REF(src)];buy=[REF(I)]'>BUY</a>"
+				contents += "[icon2html(I, user)] [namer] - [price] <a href='byond://?src=[REF(src)];buy=[REF(I)]'>BUY</a>"
 			else
-				contents += "[icon2html(I, user)] [stars(namer)] - [price] <a href='?src=[REF(src)];buy=[REF(I)]'>[stars("BUY")]</a>"
+				contents += "[icon2html(I, user)] [stars(namer)] - [price] <a href='byond://?src=[REF(src)];buy=[REF(I)]'>[stars("BUY")]</a>"
 		else
 			if(canread)
-				contents += "[icon2html(I, user)] <a href='?src=[REF(src)];setname=[REF(I)]'>[namer]</a> - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>TAKE</a>"
+				contents += "[icon2html(I, user)] <a href='byond://?src=[REF(src)];setname=[REF(I)]'>[namer]</a> - <a href='byond://?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='byond://?src=[REF(src)];retrieve=[REF(I)]'>TAKE</a>"
 			else
-				contents += "[icon2html(I, user)] <a href='?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
+				contents += "[icon2html(I, user)] <a href='byond://?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='byond://?src=[REF(src)];setprice=[REF(I)]'>[price]</a> <a href='byond://?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
 		contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 300)

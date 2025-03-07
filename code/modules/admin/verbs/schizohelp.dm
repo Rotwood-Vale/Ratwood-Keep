@@ -19,13 +19,13 @@ GLOBAL_LIST_EMPTY_TYPED(schizohelps, /datum/schizohelp)
 	for(var/client/voice in (GLOB.clients - client))
 		if(!(voice.prefs.toggles & SCHIZO_VOICE) || check_rights_for(voice, R_ADMIN))
 			continue
-		var/answer_button = span_info("(<a href='?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)")
+		var/answer_button = span_info("(<a href='byond://?src=[voice];schizohelp=[REF(ticket)];'>ANSWER</a>)")
 		to_chat(voice, "[message] [answer_button]")
 
 	for(var/client/admin in GLOB.admins)
 		if(!(admin.prefs.chat_toggles & CHAT_PRAYER))
 			continue
-		var/answer_button = span_info("(<a href='?src=[admin];schizohelp=[REF(ticket)];'>ANSWER</a>)")
+		var/answer_button = span_info("(<a href='byond://?src=[admin];schizohelp=[REF(ticket)];'>ANSWER</a>)")
 		to_chat(admin, "[message_admins] [answer_button]")
 	COOLDOWN_START(src, schizohelp_cooldown, 1 MINUTES)
 
