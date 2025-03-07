@@ -157,6 +157,7 @@
 		else
 			if(slice(src, user))
 				new /obj/item/oystershell(user.loc)
+				new /obj/item/oystershell(user.loc)
 	else
 		. = ..()
 	
