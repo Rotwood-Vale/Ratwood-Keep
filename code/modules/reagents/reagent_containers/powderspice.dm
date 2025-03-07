@@ -445,3 +445,178 @@
 //		if(M.client.screen && M.client.screen.len)
 ///			var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in M.client.screen
 //			PM.backdrop(M.client.mob)
+
+
+/obj/item/reagent_containers/powder/alch
+	name = "essence"
+	desc = "powderized and ready to brew"
+	gender = PLURAL
+	icon_state = "salt"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 24
+
+/obj/item/reagent_containers/powder/alch/berry
+	name = "essence of berry"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#4682b4"
+	brew_reagent = /datum/reagent/alch/syrum_berry
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 24
+
+/obj/item/reagent_containers/powder/alch/berryp
+	name = "essence of poison berry"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#61DE2A"
+	brew_reagent = /datum/reagent/alch/syrum_poison_berry
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/berrypoison = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/mincem
+	name = "essence of flesh"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#ff7f7f"
+	can_brew = TRUE
+	brew_reagent = /datum/reagent/alch/syrum_meat
+	brew_amt = 24
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/mincef
+	name = "essence of fish"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#ff7f7f"
+	brew_reagent = /datum/reagent/alch/syrum_fish
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/stone
+	name = "essence of earth"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrum_stone
+	brew_amt = 24
+	can_brew = TRUE
+	color = "#808080"
+	list_reagents = null
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/pipe
+	name = "essence of addiction"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrum_westleach_leaf
+	brew_amt = 24
+	can_brew = TRUE
+	color = "#808080"
+	list_reagents = list(/datum/reagent/drug/nicotine = 30)
+	grind_results = null
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/swamp
+	name = "essence of clarity"
+	gender = PLURAL
+	icon_state = "salt"
+	brew_reagent = /datum/reagent/alch/syrum_swamp_weed
+	brew_amt = 24
+	can_brew = TRUE
+	color = "#61DE2A"
+	list_reagents = list(/datum/reagent/drug/space_drugs = 30)
+	grind_results = null
+	volume = 10
+
+/datum/reagent/alch
+	name = "hmm"
+	description = "shouldnt see this"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_ash
+	name = "syrum of fire"
+	description = "refined viscous ash"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_westleach_leaf
+	name = "west syrum"
+	description = "refined west essence"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_swamp_weed
+	name = "swamp syrum"
+	description = "refined berry poison"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_meat
+	name = "meaty syrum"
+	description = "refined viscous slop"
+	reagent_state = LIQUID
+	color = "#ff7f7f"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_fish
+	name = "fishy syrum"
+	description = "refined viscous fishy smelling gunk"
+	reagent_state = LIQUID
+	color = "#ff7f7f"
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_stone
+	name = "earthy syrum"
+	description = "refined liquid state stone"
+	reagent_state = LIQUID
+	color = "#E2E5DE"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_salt
+	name = "salty syrum"
+	description = "refined liquid state salt"
+	reagent_state = LIQUID
+	color = "#E2E5DE"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_poison_berry
+	name = "poison syrum"
+	description = "refined berry poison"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_berry
+	name = "berry syrum"
+	description = "refined berry essence"
+	reagent_state = LIQUID
+	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null

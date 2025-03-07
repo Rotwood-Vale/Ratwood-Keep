@@ -90,26 +90,65 @@
 	M.adjustFireLoss(1, 0)
 
 
-/datum/reagent/medicine/manapot
-	name = "Mana Potion"
+//lesser and greater mana potions
+/datum/reagent/medicine/lessermanapot
+	name = "Lesser Mana Potion"
 	description = "Gradually regenerates stamina."
 	reagent_state = LIQUID
-	color = "#0000ff"
-	taste_description = "manna"
+	color = "#00e1ff"
+	taste_description = "cold oil and fish"
 	overdose_threshold = 0
 	metabolization_rate = 20 * REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 220
 
-/datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
+/datum/reagent/medicine/lessermanapot/on_mob_life(mob/living/carbon/M)
 	M.energy_add(100)
 	..()
 	. = 1
+
+/datum/reagent/medicine/manapot
+	name = "Mana Potion"
+	description = "Gradually regenerates stamina and removes tiredness."
+	reagent_state = LIQUID
+	color = "#0077ff"
+	taste_description = "manna"
+	overdose_threshold = 0
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	alpha = 220
+
+/datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
+	M.energy_add(200)
+	..()
+	. = 1
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_stress(/datum/stressevent/sleepytime)
+
+/datum/reagent/medicine/greatermanapot
+	name = "Greater Mana Potion"
+	description = "Gradually regenerates stamina and removes tiredness."
+	reagent_state = LIQUID
+	color = "#4c00ffe3"
+	taste_description = "pure manna"
+	overdose_threshold = 0 //effectively a energy drink, no reason to add a overdose unlike health
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/greatermanapot/on_mob_life(mob/living/carbon/M)
+	M.energy_add(400)
+	..()
+	. = 1
+	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		M.remove_stress(/datum/stressevent/sleepytime)
+		M.Sleeping(-40)
+		M.apply_status_effect(/datum/status_effect/buff/greatermanabuff)
 
 /datum/reagent/berrypoison
 	name = "Berry Poison"
 	description = "Contains a poisonous thick, dark purple liquid."
 	reagent_state = LIQUID
-	color = "#00B4FF"
+	color = "#00ffdd"  //more cyan/greenish to differ from mana
 	metabolization_rate = 0.1
 
 /datum/reagent/berrypoison/on_mob_life(mob/living/carbon/M)
@@ -159,3 +198,77 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
 	skill_level = 5
+
+/datum/reagent/medicine/caffeine
+	name = "caffeine"
+	description = "No Sleep"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/stimu
+	name = "Stimu"
+	description = "crit stabalizer and blood restorer painkiller"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/stimu/on_mob_metabolize(mob/living/carbon/M)
+	..()
+	ADD_TRAIT(M, TRAIT_NOCRITDAMAGE, TRAIT_GENERIC)
+	ADD_TRAIT(M, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+/datum/reagent/medicine/stimu/on_mob_end_metabolize(mob/living/carbon/M)
+	REMOVE_TRAIT(M, TRAIT_NOCRITDAMAGE, TRAIT_GENERIC)
+	REMOVE_TRAIT(M, TRAIT_NOPAIN, TRAIT_GENERIC)
+	..()
+
+/datum/reagent/medicine/stimu/on_mob_life(mob/living/carbon/M)
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.heal_wounds(2) //same as health pot only heal wounds while bleeding. technically.
+		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_NORMAL)
+	if(M.health <= M.crit_threshold)
+		M.adjustToxLoss(-0.5*REM, 0)
+		M.adjustBruteLoss(-0.5*REM, 0)
+		M.adjustFireLoss(-0.5*REM, 0)
+		M.adjustOxyLoss(-0.5*REM, 0)
+	if(M.losebreath >= 4)
+		M.losebreath -= 2
+	if(M.losebreath < 0)
+		M.losebreath = 0
+	..()
+
+/datum/reagent/medicine/purify
+	name = "PURIFY"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
+
+/datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
+	M.adjustFireLoss(0.5*REM, 0)
+	M.heal_wounds(3)
+
+	// Iterate through all body parts
+	for (var/obj/item/bodypart/B in M.bodyparts)
+		// Iterate through wounds on each body part
+		for (var/datum/wound/W in B.wounds)
+			// Check for and remove zombie infection
+			if (W.zombie_infection_timer)
+				deltimer(W.zombie_infection_timer)
+				W.zombie_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+			// Check for and remove werewolf infection
+			if (W.werewolf_infection_timer)
+				deltimer(W.werewolf_infection_timer)
+				W.werewolf_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+
+			// Handle destruction of the wound
+			W.Destroy(0)
+
+	M.update_damage_overlays()
+
