@@ -17,7 +17,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
 	max_blade_int = 100
-	max_integrity = 175
+	max_integrity = 200
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
@@ -243,7 +243,6 @@
 /obj/item/rogueweapon/huntingknife/idagger
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
-	max_integrity = 100
 	name = "iron dagger"
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
@@ -277,7 +276,7 @@
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
-	max_integrity = 150
+	max_integrity = 300
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/attack_right(mob/user)
@@ -325,7 +324,7 @@
 	desc = "A crudely crafted knife made of stone."
 	icon_state = "stone_knife"
 	smeltresult = null
-	max_integrity = 50
+	max_integrity = 100
 	max_blade_int = 50
 	wdefense = 1
 

@@ -15,7 +15,6 @@
 	swingsound = BLADEWOOSH_MED
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 100
-	max_integrity = 150
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
 	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
@@ -442,7 +441,7 @@
 	icon_state = "isword"
 	minstr = 6
 	smeltresult = /obj/item/ingot/iron
-	max_integrity = 100
+	max_integrity = 300
 	sellprice = 10
 	can_cdg = TRUE
 
@@ -482,7 +481,7 @@
 	force = 17
 	desc = "An ancient-looking iron sword."
 	icon_state = "iswordshort_d"
-	max_integrity = 75
+	max_integrity = 100
 
 /datum/intent/sword/cut/short
 	clickcd = 10
@@ -496,7 +495,7 @@
 	name = "iron messer"
 	desc = "A single edged blade to slice and chop with."
 	icon_state = "imesser"
-	max_integrity = 125
+	max_integrity = 325
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
 	gripped_intents = null
 	minstr = 4
@@ -508,13 +507,13 @@
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
 	smeltresult = /obj/item/ingot/steel
-	max_integrity = 175 //A stout blade that will last a long time before breakage
+	max_integrity = 475 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
 	desc = "A swift sabre. Parries realiantly and strikes swiftly"
 	icon_state = "saber"
-	max_integrity = 230
+	max_integrity = 430
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
@@ -536,7 +535,7 @@
 	blade with a specialized stabbing tip."
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
-	max_integrity = 215
+	max_integrity = 315
 	bigboy = TRUE
 	pixel_y = -16
 	pixel_x = -16
@@ -658,7 +657,7 @@
 	name = "cutlass"
 	desc = "Used by pirates and deckhands."
 	icon_state = "cutlass"
-	max_integrity = 220
+	max_integrity = 420
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = null
 	wdefense = 7
@@ -670,7 +669,7 @@
 	icon_state = "esaber"
 	item_state = "esaber"
 	smeltresult = /obj/item/ingot/silver
-	max_integrity = 205
+	max_integrity = 405
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	var/last_used = 0
@@ -793,14 +792,14 @@
 	gripped_intents = null
 	smeltresult = /obj/item/ingot/bronze
 	max_blade_int = 100
-	max_integrity = 200
+	max_integrity = 300
 	dropshrink = 0.80
 	wdefense = 2
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
 	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
 	icon_state = "saber"
-	max_integrity = 150
+	max_integrity = 350
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')

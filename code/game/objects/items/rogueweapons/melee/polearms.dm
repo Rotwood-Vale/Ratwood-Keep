@@ -267,7 +267,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 4
-	max_integrity = 50
+	max_integrity = 100
 	throwforce = 20
 
 /obj/item/rogueweapon/halberd
