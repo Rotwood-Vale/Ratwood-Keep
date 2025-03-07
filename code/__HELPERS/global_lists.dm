@@ -56,10 +56,11 @@
 		if(B.allow_random)
 			GLOB.bark_random_list[B.id] = path
 
-	// Loadout items
-	for (var/path in subtypesof(/datum/loadout_item))
-		var/datum/loadout_item/loadout_item = new path()
-		GLOB.loadout_items[path] = loadout_item
+	// Backgrounds
+	for (var/path in subtypesof(/datum/background))
+		var/datum/background/background = new path()
+		GLOB.backgrounds[path] = background
+	sortList(GLOB.backgrounds, GLOBAL_PROC_REF(cmp_text_dsc))
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.

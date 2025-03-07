@@ -12,6 +12,8 @@
 	S["family_surname"]									>> family_surname
 	S["family_genitals"] 								>> family_genitals
 
+	S["prefer_old_chat"]								>> prefer_old_chat
+
 	if(!family_genitals)
 		family_genitals = list()
 
@@ -25,6 +27,8 @@
 	WRITE_FILE(S["bark_speed"]							, bark_speed)
 	WRITE_FILE(S["bark_pitch"]							, bark_pitch)
 	WRITE_FILE(S["bark_variance"]						, bark_variance)
+
+	WRITE_FILE(S["prefer_old_chat"]						, prefer_old_chat)
 
 	if(loadout)
 		WRITE_FILE(S["loadout"] 						, loadout.type)

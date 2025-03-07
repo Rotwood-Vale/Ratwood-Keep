@@ -8,24 +8,24 @@
 //DEBUG STUFF
 var escaper = encodeURIComponent || escape;
 var decoder = decodeURIComponent || unescape;
-window.onerror = function(msg, url, line, col, error) {
+window.onerror = function (msg, url, line, col, error) {
 	if (document.location.href.indexOf("proc=debug") <= 0) {
 		var extra = !col ? '' : ' | column: ' + col;
 		extra += !error ? '' : ' | error: ' + error;
 		extra += !navigator.userAgent ? '' : ' | user agent: ' + navigator.userAgent;
 		var debugLine = 'Error: ' + msg + ' | url: ' + url + ' | line: ' + line + extra;
-		window.location = '?_src_=chat&proc=debug&param[error]='+escaper(debugLine);
+		window.location = '?_src_=chat&proc=debug&param[error]=' + escaper(debugLine);
 	}
 	return true;
 };
 
 //Globals
 window.status = 'Output';
-var $messages, $subOptions, $subAudio, $selectedSub, $contextMenu, $filterMessages, $last_message;
+var $messages, $subOptions, $subAudio, $selectedSub, $contextMenu, $filterMessages, $last_message, $messagelog;
 var opts = {
 	//General
 	'messageCount': 0, //A count...of messages...
-	'messageLimit': 5000, //A limit...for the messages...
+	'messageLimit': 2053, //A limit...for the messages...
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
@@ -34,13 +34,14 @@ var opts = {
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
 	'restarting': false, //Is the round restarting?
-	'darkmode':false, //Are we using darkmode? If not WHY ARE YOU LIVING IN 2009???
+	'darkmode': false, //Are we using darkmode? If not WHY ARE YOU LIVING IN 2009???
 
 	//Options menu
 	'selectedSubLoop': null, //Contains the interval loop for closing the selected sub menu
 	'suppressSubClose': false, //Whether or not we should be hiding the selected sub menu
 	'highlightTerms': [],
 	'highlightLimit': 5,
+	'highlightColor': '#FFFF00', //The color of the highlighted message
 	'pingDisabled': false, //Has the user disabled the ping counter
 
 	//Ping display
@@ -66,7 +67,7 @@ var opts = {
 	'updatedVolume': 0, //The volume level that is sent to the server
 	'musicStartAt': 0, //The position the music starts playing
 	'musicEndAt': 0, //The position the music... stops playing... if null, doesn't apply (so the music runs through)
-	
+
 	'defaultMusicVolume': 25,
 
 	'messageCombining': false,
@@ -76,6 +77,12 @@ var replaceRegexes = {};
 
 function clamp(val, min, max) {
 	return Math.max(min, Math.min(val, max))
+}
+
+function outerHTML(el) {
+	var wrap = document.createElement('div');
+	wrap.appendChild(el.cloneNode(true));
+	return wrap.innerHTML;
 }
 
 //Polyfill for fucking date now because of course IE8 and below don't support it
@@ -108,8 +115,7 @@ function linkify(parent, insertBefore, text) {
 		// add the link
 		var link = document.createElement("a");
 		link.href = href;
-		link.href = encodeURI(href);
-		link.textContent = match[0].replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		link.textContent = match[0];
 		parent.insertBefore(link, insertBefore);
 
 		start = regex.lastIndex;
@@ -141,11 +147,11 @@ function linkify_node(node) {
 function linkify_fallback(text) {
 	var rex = /((?:<a|<iframe|<img)(?:.*?(?:src="|href=").*?))?(?:(?:https?:\/\/)|(?:www\.))+(?:[^ ]*?\.[^ ]*?)+[-A-Za-z0-9+&@#\/%?=~_|$!:,.;]+/ig;
 	return text.replace(rex, function ($0, $1) {
-		if(/^https?:\/\/.+/i.test($0)) {
-			return $1 ? $0: '<a href="'+$0+'">'+$0+'</a>';
+		if (/^https?:\/\/.+/i.test($0)) {
+			return $1 ? $0 : '<a href="' + $0 + '">' + $0 + '</a>';
 		}
 		else {
-			return $1 ? $0: '<a href="http://'+$0+'">'+$0+'</a>';
+			return $1 ? $0 : '<a href="http://' + $0 + '">' + $0 + '</a>';
 		}
 	});
 }
@@ -155,7 +161,7 @@ function byondDecode(message) {
 	// The replace for + is because FOR SOME REASON, BYOND replaces spaces with a + instead of %20, and a plus with %2b.
 	// Marvelous.
 	message = message.replace(/\+/g, "%20");
-	try { 
+	try {
 		// This is a workaround for the above not always working when BYOND's shitty url encoding breaks. (byond bug id:2399401)
 		if (decodeURIComponent) {
 			message = decodeURIComponent(message);
@@ -177,65 +183,60 @@ function replaceRegex() {
 	$(this).removeAttr('replaceRegex');
 }
 
-// Get a highlight markup span
-function createHighlightMarkup() {	var extra = '';
+//Actually turns the highlight term match into appropriate html
+function addHighlightMarkup(match) {
+	var extra = '';
 	if (opts.highlightColor) {
-		extra += ' style="background-color: '+ opts.highlightColor + '"';
+		extra += ' style="background-color: ' + opts.highlightColor + '"';
 	}
-	return '<span class="highlight"' + extra + '></span>';
+	return '<span class="highlight"' + extra + '>' + match + '</span>';
 }
 
-// Get all child text nodes that match a regex pattern
-function getTextNodes(elem, pattern) {
-	var result = $([]);
-	$(elem).contents().each(function(idx, child) {
-		if (child.nodeType === 3 && /\S/.test(child.nodeValue) && pattern.test(child.nodeValue)) {
-			result = result.add(child);
-		}
-		else {
-			result = result.add(getTextNodes(child, pattern));
-		}
-	});
-	return result;
-}
-
-
-// Highlight all text terms matching the registered regex patterns
+//Highlights words based on user settings
 function highlightTerms(el) {
-	var pattern = new RegExp("(" + opts.highlightTerms.join('|') + ")", 'gi');
-	var nodes = getTextNodes(el, pattern);
-	nodes.each(function (idx, node) {
-		var content = $(node).text();
-		var parent = $(node).parent();
-		var pre = $(node.previousSibling);
-		$(node).remove();
-		content.split(pattern).forEach(function (chunk) {
-			// Get our highlighted span/text node
-			var toInsert = null;
-			if (pattern.test(chunk)) {
-				var tmpElem = $(createHighlightMarkup());
-				tmpElem.text(chunk);
-				toInsert = tmpElem;
+	if (el.children.length > 0) {
+		for (var h = 0; h < el.children.length; h++) {
+			highlightTerms(el.children[h]);
+		}
+	}
+
+	var hasTextNode = false;
+	for (var node = 0; node < el.childNodes.length; node++) {
+		if (el.childNodes[node].nodeType === 3) {
+			hasTextNode = true;
+			break;
+		}
+	}
+
+	if (hasTextNode) { //If element actually has text
+		var newText = '';
+		for (var c = 0; c < el.childNodes.length; c++) { //Each child element
+			if (el.childNodes[c].nodeType === 3) { //Is it text only?
+				var words = el.childNodes[c].data.split(' ');
+				for (var w = 0; w < words.length; w++) { //Each word in the text
+					var newWord = null;
+					for (var i = 0; i < opts.highlightTerms.length; i++) { //Each highlight term
+						if (opts.highlightTerms[i] && words[w].toLowerCase().indexOf(opts.highlightTerms[i].toLowerCase()) > -1) { //If a match is found
+							newWord = words[w].replace("<", "&lt;").replace(new RegExp(opts.highlightTerms[i], 'gi'), addHighlightMarkup);
+							break;
+						}
+						if (window.console)
+							console.log(newWord)
+					}
+					newText += newWord || words[w].replace("<", "&lt;");
+					newText += w >= words.length ? '' : ' ';
+				}
+			} else { //Every other type of element
+				newText += outerHTML(el.childNodes[c]);
 			}
-			else {
-				toInsert = document.createTextNode(chunk);
-			}
-			// Insert back into our element
-			if (pre.length == 0) {
-				var result = parent.prepend(toInsert);
-				pre = $(result[0].firstChild);
-			}
-			else {
-				pre.after(toInsert);
-				pre = $(pre[0].nextSibling);
-			}
-		});
-	});
+		}
+		el.innerHTML = newText;
+	}
 }
 
 function iconError(E) {
 	var that = this;
-	setTimeout(function() {
+	setTimeout(function () {
 		var attempts = $(that).data('reload_attempts');
 		if (typeof attempts === 'undefined' || !attempts) {
 			attempts = 1;
@@ -244,7 +245,7 @@ function iconError(E) {
 			return;
 		var src = that.src;
 		that.src = null;
-		that.src = src+'#'+attempts;
+		that.src = src + '#' + attempts;
 		$(that).data('reload_attempts', ++attempts);
 	}, opts.imageRetryDelay);
 }
@@ -294,7 +295,7 @@ function output(message, flag) {
 				var tempCount = 0;
 				for (var i = 0; i < messageClasses.length; i++) { //Every class
 					var thisClass = messageClasses[i];
-					$.each(opts.showMessagesFilters, function(key, val) { //Every filter
+					$.each(opts.showMessagesFilters, function (key, val) { //Every filter
 						if (key !== 'All' && val.show === false && typeof val.match != 'undefined') {
 							for (var i = 0; i < val.match.length; i++) {
 								var matchClass = val.match[i];
@@ -330,7 +331,7 @@ function output(message, flag) {
 			if ($('#newMessages').length) {
 				$('#newMessages').remove();
 			}
-		//If not, put the new messages box in
+			//If not, put the new messages box in
 		} else {
 			if ($('#newMessages').length) {
 				var messages = $('#newMessages .number').text();
@@ -342,6 +343,7 @@ function output(message, flag) {
 				}
 			} else {
 				$messages.after('<a href="#" id="newMessages"><span class="number">1</span> new <span class="messageWord">message</span> <i class="icon-double-angle-down"></i></a>');
+				$messagelog.after('<a href="#" id="newMessages"><span class="number">1</span> new <span class="messageWord">message</span> <i class="icon-double-angle-down"></i></a>');
 			}
 		}
 	}
@@ -370,14 +372,14 @@ function output(message, flag) {
 				badge = badge.detach();
 				badge.text(parseInt(badge.text()) + 1);
 			} else {
-				badge = $('<span/>', {'class': 'r', 'text': 2});
+				badge = $('<span/>', { 'class': 'r', 'text': 2 });
 			}
 			lastmessages.html(message);
 			lastmessages.find('[replaceRegex]').each(replaceRegex);
 			lastmessages.append(badge);
 			badge.animate({
 				"font-size": "0.9em"
-			}, 100, function() {
+			}, 100, function () {
 				badge.animate({
 					"font-size": "0.7em"
 				}, 100);
@@ -395,22 +397,23 @@ function output(message, flag) {
 			entry.className += ' hidden';
 			entry.setAttribute('data-filter', filteredOut);
 		}
-		entry.innerHTML = DOMPurify.sanitize(entry.innerHTML);
-		$(entry).find('[replaceRegex]').each(replaceRegex); //just in case
+
+		$(entry).find('[replaceRegex]').each(replaceRegex);
 
 		$last_message = trimmed_message;
 		$messages[0].appendChild(entry);
+		$messagelog[0].appendChild(entry);
 		$(entry).find("img.icon").error(iconError);
 
 		var to_linkify = $(entry).find(".linkify");
 		if (typeof Node === 'undefined') {
 			// Linkify fallback for old IE
-			for(var i = 0; i < to_linkify.length; ++i) {
+			for (var i = 0; i < to_linkify.length; ++i) {
 				to_linkify[i].innerHTML = linkify_fallback(to_linkify[i].innerHTML);
 			}
 		} else {
 			// Linkify for modern IE versions
-			for(var i = 0; i < to_linkify.length; ++i) {
+			for (var i = 0; i < to_linkify.length; ++i) {
 				linkify_node(to_linkify[i]);
 			}
 		}
@@ -418,7 +421,7 @@ function output(message, flag) {
 		//Actually do the snap
 		//Stuff we can do after the message shows can go here, in the interests of responsiveness
 		if (opts.highlightTerms && opts.highlightTerms.length > 0) {
-			highlightTerms($(entry));
+			highlightTerms(entry);
 		}
 	}
 
@@ -427,8 +430,7 @@ function output(message, flag) {
 	}
 }
 
-function internalOutput(message, flag)
-{
+function internalOutput(message, flag) {
 	output(escaper(message), flag)
 }
 
@@ -440,34 +442,34 @@ function runByond(uri) {
 function setCookie(cname, cvalue, exdays) {
 	cvalue = escaper(cvalue);
 	var d = new Date();
-	d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	var expires = 'expires='+d.toUTCString();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = 'expires=' + d.toUTCString();
 	document.cookie = cname + '=' + cvalue + '; ' + expires + "; path=/";
 }
 
 function getCookie(cname) {
 	var name = cname + '=';
 	var ca = document.cookie.split(';');
-	for(var i=0; i < ca.length; i++) {
-	var c = ca[i];
-	while (c.charAt(0)==' ') c = c.substring(1);
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1);
 		if (c.indexOf(name) === 0) {
-			return decoder(c.substring(name.length,c.length));
+			return decoder(c.substring(name.length, c.length));
 		}
 	}
 	return '';
 }
 
-function rgbToHex(R,G,B) {return toHex(R)+toHex(G)+toHex(B);}
+function rgbToHex(R, G, B) { return toHex(R) + toHex(G) + toHex(B); }
 function toHex(n) {
-	n = parseInt(n,10);
+	n = parseInt(n, 10);
 	if (isNaN(n)) return "00";
-	n = Math.max(0,Math.min(n,255));
-	return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
+	n = Math.max(0, Math.min(n, 255));
+	return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
 }
 
-/*function swap() { //Swap to darkmode
-	if (opts.darkmode){
+function swap() { //Swap to darkmode
+	if (opts.darkmode) {
 		document.getElementById("sheetofstyles").href = "browserOutput.css";
 		opts.darkmode = false;
 		runByond('?_src_=chat&proc=swaptolightmode');
@@ -477,13 +479,13 @@ function toHex(n) {
 		runByond('?_src_=chat&proc=swaptodarkmode');
 	}
 	setCookie('darkmode', (opts.darkmode ? 'true' : 'false'), 365);
-}*/
+}
 
 function handleClientData(ckey, ip, compid) {
 	//byond sends player info to here
-	var currentData = {'ckey': ckey, 'ip': ip, 'compid': compid};
+	var currentData = { 'ckey': ckey, 'ip': ip, 'compid': compid };
 	if (opts.clientData && !$.isEmptyObject(opts.clientData)) {
-		runByond('?_src_=chat&proc=analyzeClientData&param[cookie]='+JSON.stringify({'connData': opts.clientData}));
+		runByond('?_src_=chat&proc=analyzeClientData&param[cookie]=' + JSON.stringify({ 'connData': opts.clientData }));
 
 		for (var i = 0; i < opts.clientData.length; i++) {
 			var saved = opts.clientData[i];
@@ -516,16 +518,16 @@ function ehjaxCallback(data) {
 		runByond('?_src_=chat&proc=ping');
 
 	} else if (data == 'pong') {
-		if (opts.pingDisabled) {return;}
+		if (opts.pingDisabled) { return; }
 		opts.pongTime = Date.now();
 		var pingDuration = Math.ceil((opts.pongTime - opts.pingTime) / 2);
-		$('#pingMs').text(pingDuration+'ms');
+		$('#pingMs').text(pingDuration + 'ms');
 		pingDuration = Math.min(pingDuration, 255);
 		var red = pingDuration;
 		var green = 255 - pingDuration;
 		var blue = 0;
 		var hex = rgbToHex(red, green, blue);
-		$('#pingDot').css('color', '#'+hex);
+		$('#pingDot').css('color', '#' + hex);
 
 	} else if (data == 'roundrestart') {
 		opts.restarting = true;
@@ -539,7 +541,7 @@ function ehjaxCallback(data) {
 			dataJ = $.parseJSON(data);
 		} catch (e) {
 			//But...incorrect :sadtrombone:
-			window.onerror('JSON: '+e+'. '+data, 'browserOutput.html', 327);
+			window.onerror('JSON: ' + e + '. ' + data, 'browserOutput.html', 327);
 			return;
 		}
 		data = dataJ;
@@ -563,7 +565,7 @@ function ehjaxCallback(data) {
 				adminMusic = adminMusic.match(/https?:\/\/\S+/) || '';
 				if (data.musicRate) {
 					var newRate = Number(data.musicRate);
-					if(newRate) {
+					if (newRate) {
 						$('#adminMusic').prop('defaultPlaybackRate', newRate);
 					}
 				} else {
@@ -601,14 +603,14 @@ function ehjaxCallback(data) {
 
 function createPopup(contents, width) {
 	opts.popups++;
-	$('body').append('<div class="popup" id="popup'+opts.popups+'" style="width: '+width+'px;">'+contents+' <a href="#" class="close"><i class="icon-remove"></i></a></div>');
+	$('body').append('<div class="popup" id="popup' + opts.popups + '" style="width: ' + width + 'px;">' + contents + ' <a href="#" class="close"><i class="icon-remove"></i></a></div>');
 
 	//Attach close popup event
-	var $popup = $('#popup'+opts.popups);
+	var $popup = $('#popup' + opts.popups);
 	var height = $popup.outerHeight();
-	$popup.css({'height': height+'px', 'margin': '-'+(height/2)+'px 0 0 -'+(width/2)+'px'});
+	$popup.css({ 'height': height + 'px', 'margin': '-' + (height / 2) + 'px 0 0 -' + (width / 2) + 'px' });
 
-	$popup.on('click', '.close', function(e) {
+	$popup.on('click', '.close', function (e) {
 		e.preventDefault();
 		$popup.remove();
 	});
@@ -620,8 +622,8 @@ function toggleWasd(state) {
 
 function sendVolumeUpdate() {
 	opts.volumeUpdating = false;
-	if(opts.updatedVolume) {
-		runByond('?_src_=chat&proc=setMusicVolume&param[volume]='+opts.updatedVolume);
+	if (opts.updatedVolume) {
+		runByond('?_src_=chat&proc=setMusicVolume&param[volume]=' + opts.updatedVolume);
 	}
 }
 
@@ -638,7 +640,7 @@ function adminMusicEndCheck(event) {
 }
 
 function adminMusicLoadedData(event) {
-	if (opts.musicStartAt && ($('#adminMusic').prop('duration') === Infinity || (opts.musicStartAt <= $('#adminMusic').prop('duration'))) ) {
+	if (opts.musicStartAt && ($('#adminMusic').prop('duration') === Infinity || (opts.musicStartAt <= $('#adminMusic').prop('duration')))) {
 		$('#adminMusic').prop('currentTime', opts.musicStartAt);
 	}
 	if (opts.musicEndAt) {
@@ -655,7 +657,7 @@ function startSubLoop() {
 	if (opts.selectedSubLoop) {
 		clearInterval(opts.selectedSubLoop);
 	}
-	return setInterval(function() {
+	return setInterval(function () {
 		if (!opts.suppressSubClose && $selectedSub.is(':visible')) {
 			$selectedSub.slideUp('fast', subSlideUp);
 			clearInterval(opts.selectedSubLoop);
@@ -672,7 +674,7 @@ function handleToggleClick($sub, $toggle) {
 		$selectedSub.slideUp('fast', subSlideUp);
 		clearInterval(opts.selectedSubLoop);
 	} else {
-		$selectedSub.slideDown('fast', function() {
+		$selectedSub.slideDown('fast', function () {
 			var windowHeight = $(window).height();
 			var toggleHeight = $toggle.outerHeight();
 			var priorSubHeight = $selectedSub.outerHeight();
@@ -697,28 +699,23 @@ if (typeof $ === 'undefined') {
 	div += '<br><br>ERROR: Jquery did not load.';
 }
 
-if (typeof DOMPurify === 'undefined') {
-    var div = document.getElementById('loading').childNodes[1];
-    div.innerHTML += '<br><br>ERROR: DOMPurify did not load.';
-}
-
-$(function() {
+$(function () {
 	$messages = $('#messages');
 	$subOptions = $('#subOptions');
 	$subAudio = $('#subAudio');
 	$selectedSub = $subOptions;
 
 	//Hey look it's a controller loop!
-	setInterval(function() {
+	setInterval(function () {
 		if (opts.lastPang + opts.pangLimit < Date.now() && !opts.restarting) { //Every pingLimit
-				if (!opts.noResponse) { //Only actually append a message if the previous ping didn't also fail (to prevent spam)
-					opts.noResponse = true;
-					opts.noResponseCount++;
-					internalOutput('<div class="connectionClosed internal" data-count="'+opts.noResponseCount+'">You are either AFK, experiencing lag or the connection has closed.</div>', 'internal');
-				}
+			if (!opts.noResponse) { //Only actually append a message if the previous ping didn't also fail (to prevent spam)
+				opts.noResponse = true;
+				opts.noResponseCount++;
+				internalOutput('<div class="connectionClosed internal" data-count="' + opts.noResponseCount + '">You are either AFK, experiencing lag or the connection has closed.</div>', 'internal');
+			}
 		} else if (opts.noResponse) { //Previous ping attempt failed ohno
-				$('.connectionClosed[data-count="'+opts.noResponseCount+'"]:not(.restored)').addClass('restored').text('Your connection has been restored (probably)!');
-				opts.noResponse = false;
+			$('.connectionClosed[data-count="' + opts.noResponseCount + '"]:not(.restored)').addClass('restored').text('Your connection has been restored (probably)!');
+			opts.noResponse = false;
 		}
 	}, 2000); //2 seconds
 
@@ -736,17 +733,18 @@ $(function() {
 		'shighlightColor': getCookie('highlightcolor'),
 		'smusicVolume': getCookie('musicVolume'),
 		'smessagecombining': getCookie('messagecombining'),
+		'sdarkmode': getCookie('darkmode'),
 	};
 
 	if (savedConfig.fontsize) {
 		$messages.css('font-size', savedConfig.fontsize);
-		internalOutput('<span class="internal boldnshit">Loaded font size setting of: '+savedConfig.fontsize+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Loaded font size setting of: ' + savedConfig.fontsize + '</span>', 'internal');
 	}
 	if (savedConfig.lineheight) {
 		$("body").css('line-height', savedConfig.lineheight);
-		internalOutput('<span class="internal boldnshit">Loaded line height setting of: '+savedConfig.lineheight+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Loaded line height setting of: ' + savedConfig.lineheight + '</span>', 'internal');
 	}
-	if(savedConfig.sdarkmode == 'true'){
+	if (savedConfig.sdarkmode == 'true') {
 		swap();
 	}
 	if (savedConfig.spingDisabled) {
@@ -754,15 +752,19 @@ $(function() {
 			opts.pingDisabled = true;
 			$('#ping').hide();
 		}
-		internalOutput('<span class="internal boldnshit">Loaded ping display of: '+(opts.pingDisabled ? 'hidden' : 'visible')+'</span>', 'internal');
+		//internalOutput('<span class="internal boldnshit">Loaded ping display of: '+(opts.pingDisabled ? 'hidden' : 'visible')+'</span>', 'internal');
 	}
 	if (savedConfig.shighlightTerms) {
-		var savedTerms = $.parseJSON(savedConfig.shighlightTerms).filter(function (entry) {
-			return entry !== null && /\S/.test(entry);
-		});
-		var actualTerms = savedTerms.length != 0 ? savedTerms.join(', ') : null;
+		var savedTerms = $.parseJSON(savedConfig.shighlightTerms);
+		var actualTerms = '';
+		for (var i = 0; i < savedTerms.length; i++) {
+			if (savedTerms[i]) {
+				actualTerms += savedTerms[i] + ', ';
+			}
+		}
 		if (actualTerms) {
-			internalOutput('<span class="internal boldnshit">Loaded highlight strings of: ' + actualTerms+'</span>', 'internal');
+			actualTerms = actualTerms.substring(0, actualTerms.length - 2);
+			//internalOutput('<span class="internal boldnshit">Loaded highlight strings of: ' + actualTerms+'</span>', 'internal');
 			opts.highlightTerms = savedTerms;
 		}
 	}
@@ -778,10 +780,10 @@ $(function() {
 		sendVolumeUpdate();
 		//internalOutput('<span class="internal boldnshit">Loaded music volume of: '+savedConfig.smusicVolume+'</span>', 'internal');
 	}
-	else{
+	else {
 		$('#adminMusic').prop('volume', opts.defaultMusicVolume / 100);
 	}
-	
+
 	if (savedConfig.smessagecombining) {
 		if (savedConfig.smessagecombining == 'false') {
 			opts.messageCombining = false;
@@ -789,14 +791,14 @@ $(function() {
 			opts.messageCombining = true;
 		}
 	}
-	(function() {
+	(function () {
 		var dataCookie = getCookie('connData');
 		if (dataCookie) {
 			var dataJ;
 			try {
 				dataJ = $.parseJSON(dataCookie);
 			} catch (e) {
-				window.onerror('JSON '+e+'. '+dataCookie, 'browserOutput.html', 434);
+				window.onerror('JSON ' + e + '. ' + dataCookie, 'browserOutput.html', 434);
 				return;
 			}
 			opts.clientData = dataJ;
@@ -810,11 +812,11 @@ $(function() {
 	*
 	******************************************/
 
-	$('body').on('click', 'a', function(e) {
+	$('body').on('click', 'a', function (e) {
 		e.preventDefault();
 	});
 
-	$('body').on('mousedown', function(e) {
+	$('body').on('mousedown', function (e) {
 		var $target = $(e.target);
 
 		if ($contextMenu && opts.hasOwnProperty('contextMenuTarget') && opts.contextMenuTarget) {
@@ -831,14 +833,14 @@ $(function() {
 		}
 	});
 
-	$messages.on('mousedown', function(e) {
+	$messages.on('mousedown', function (e) {
 		if ($selectedSub && $selectedSub.is(':visible')) {
 			$selectedSub.slideUp('fast', subSlideUp);
 			clearInterval(opts.selectedSubLoop);
 		}
 	});
 
-	$('body').on('mouseup', function(e) {
+	$('body').on('mouseup', function (e) {
 		if (!opts.preventFocus &&
 			(e.pageX >= opts.mouseDownX - opts.clickTolerance && e.pageX <= opts.mouseDownX + opts.clickTolerance) &&
 			(e.pageY >= opts.mouseDownY - opts.clickTolerance && e.pageY <= opts.mouseDownY + opts.clickTolerance)
@@ -849,20 +851,19 @@ $(function() {
 		}
 	});
 
-	$messages.on('click', 'a', function(e) {
+	$messages.on('click', 'a', function (e) {
 		var href = $(this).attr('href');
 		$(this).addClass('visited');
-		
-		if (isValidUrl(href)) {
+		if (href[0] == '?' || (href.length >= 8 && href.substring(0, 8) == 'byond://')) {
 			runByond(href);
 		} else {
 			href = escaper(href);
-			runByond('?action=openLink&link='+href);
+			runByond('?action=openLink&link=' + href);
 		}
 	});
 
 	//Fuck everything about this event. Will look into alternatives.
-	$('body').on('keydown', function(e) {
+	$('body').on('keydown', function (e) {
 		if (e.target.nodeName == 'INPUT' || e.target.nodeName == 'TEXTAREA') {
 			return;
 		}
@@ -923,7 +924,7 @@ $(function() {
 			if (!e.shiftKey) {
 				c = c.toLowerCase();
 			}
-			runByond('byond://winset?mapwindow.map.focus=true;mainwindow.input.text='+c);
+			runByond('byond://winset?mapwindow.map.focus=true;mainwindow.input.text=' + c);
 			return false;
 		} else {
 			runByond('byond://winset?mapwindow.map.focus=true');
@@ -932,7 +933,7 @@ $(function() {
 	});
 
 	//Mildly hacky fix for scroll issues on mob change (interface gets resized sometimes, messing up snap-scroll)
-	$(window).on('resize', function(e) {
+	$(window).on('resize', function (e) {
 		if ($(this).height() !== opts.priorChatHeight) {
 			$('body,html').scrollTop($messages.outerHeight());
 			opts.priorChatHeight = $(this).height();
@@ -946,60 +947,60 @@ $(function() {
 	*
 	******************************************/
 
-	$('body').on('click', '#newMessages', function(e) {
+	$('body').on('click', '#newMessages', function (e) {
 		var messagesHeight = $messages.outerHeight();
 		$('body,html').scrollTop(messagesHeight);
 		$('#newMessages').remove();
 		runByond('byond://winset?mapwindow.map.focus=true');
 	});
 
-	$('#toggleOptions').click(function(e) {
+	$('#toggleOptions').click(function (e) {
 		handleToggleClick($subOptions, $(this));
 	});
-	$('#darkmodetoggle').click(function(e) {
+	$('#darkmodetoggle').click(function (e) {
 		swap();
 	});
-	$('#toggleAudio').click(function(e) {
+	$('#toggleAudio').click(function (e) {
 		handleToggleClick($subAudio, $(this));
 	});
 
-	$('.sub, .toggle').mouseenter(function() {
+	$('.sub, .toggle').mouseenter(function () {
 		opts.suppressSubClose = true;
 	});
 
-	$('.sub, .toggle').mouseleave(function() {
+	$('.sub, .toggle').mouseleave(function () {
 		opts.suppressSubClose = false;
 	});
 
-	$('#decreaseFont').click(function(e) {
+	$('#decreaseFont').click(function (e) {
 		savedConfig.fontsize = Math.max(parseInt(savedConfig.fontsize || 13) - 1, 1) + 'px';
-		$messages.css({'font-size': savedConfig.fontsize});
+		$messages.css({ 'font-size': savedConfig.fontsize });
 		setCookie('fontsize', savedConfig.fontsize, 365);
-		internalOutput('<span class="internal boldnshit">Font size set to '+savedConfig.fontsize+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Font size set to ' + savedConfig.fontsize + '</span>', 'internal');
 	});
 
-	$('#increaseFont').click(function(e) {
+	$('#increaseFont').click(function (e) {
 		savedConfig.fontsize = (parseInt(savedConfig.fontsize || 13) + 1) + 'px';
-		$messages.css({'font-size': savedConfig.fontsize});
+		$messages.css({ 'font-size': savedConfig.fontsize });
 		setCookie('fontsize', savedConfig.fontsize, 365);
-		internalOutput('<span class="internal boldnshit">Font size set to '+savedConfig.fontsize+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Font size set to ' + savedConfig.fontsize + '</span>', 'internal');
 	});
 
-	$('#decreaseLineHeight').click(function(e) {
+	$('#decreaseLineHeight').click(function (e) {
 		savedConfig.lineheight = Math.max(parseFloat(savedConfig.lineheight || 1.2) - 0.1, 0.1).toFixed(1);
-		$("body").css({'line-height': savedConfig.lineheight});
+		$("body").css({ 'line-height': savedConfig.lineheight });
 		setCookie('lineheight', savedConfig.lineheight, 365);
-		internalOutput('<span class="internal boldnshit">Line height set to '+savedConfig.lineheight+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Line height set to ' + savedConfig.lineheight + '</span>', 'internal');
 	});
 
-	$('#increaseLineHeight').click(function(e) {
+	$('#increaseLineHeight').click(function (e) {
 		savedConfig.lineheight = (parseFloat(savedConfig.lineheight || 1.2) + 0.1).toFixed(1);
-		$("body").css({'line-height': savedConfig.lineheight});
+		$("body").css({ 'line-height': savedConfig.lineheight });
 		setCookie('lineheight', savedConfig.lineheight, 365);
-		internalOutput('<span class="internal boldnshit">Line height set to '+savedConfig.lineheight+'</span>', 'internal');
+		internalOutput('<span class="internal boldnshit">Line height set to ' + savedConfig.lineheight + '</span>', 'internal');
 	});
 
-	$('#togglePing').click(function(e) {
+	$('#togglePing').click(function (e) {
 		if (opts.pingDisabled) {
 			$('#ping').slideDown('fast');
 			opts.pingDisabled = false;
@@ -1010,116 +1011,74 @@ $(function() {
 		setCookie('pingdisabled', (opts.pingDisabled ? 'true' : 'false'), 365);
 	});
 
-	$('#highlightTerm').click(function(e) {
-		if ($('.popup .highlightTerm').is(':visible')) {return;}
-		var termInputs = '';
-		for (var i = 0; i < opts.highlightLimit; i++) {
-			termInputs += '<div><input type="text" name="highlightTermInput'+i+'" id="highlightTermInput'+i+'" class="highlightTermInput'+i+'" maxlength="255" value="'+(opts.highlightTerms[i] ? opts.highlightTerms[i] : '')+'" /></div>';
+	$('#saveLog').click(function (e) {
+		// Requires IE 10+ to issue download commands. Just opening a popup
+		// window will cause Ctrl+S to save a blank page, ignoring innerHTML.
+		if (!window.Blob) {
+			output('<span class="big red">This function is only supported on IE 10 and up. Upgrade if possible.</span>', 'internal');
+			return;
 		}
 
-		var popupContent = '<div class="head" style="color: white;">String Highlighting</div>' + 
-		'<div class="highlightPopup" id="highlightPopup" style="background-color: black;">' + 
-		'<div style="color: white;">Choose up to ' + opts.highlightLimit + ' strings that will highlight the line when they appear in chat.</div>' + 
-		'<form id="highlightTermForm">' + 
-			termInputs + 
-			'<div style="color: white;">' + 
-			'<input type="text" name="highlightColor" id="highlightColor" class="highlightColor" ' + 
-			'style="background-color: '+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" value="'+(opts.highlightColor ? opts.highlightColor : '#FFFF00')+'" maxlength="7" /></div>' +
-			'<div style="color: white;"><input type="submit" name="highlightTermSubmit" id="highlightTermSubmit" class="highlightTermSubmit" value="Save" /></div>' + 
-		'</form>' + 
-	'</div>';
-		
-		createPopup(popupContent, 250);
-	});
-	
-
-	$('#saveLog').click(function(e) {
-		var date = new Date();
-		var fname = 'Azure Peak Chat Log ' + 
-					date.getFullYear() + '-' + 
-					(date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) + '-' + 
-					(date.getDate() < 10 ? '0' : '') + date.getDate() + ' ' +
-					(date.getHours() < 10 ? '0' : '') + date.getHours() +
-					(date.getMinutes() < 10 ? '0' : '') + date.getMinutes() +
-					(date.getSeconds() < 10 ? '0' : '') + date.getSeconds() +
-					'.html';
-	
 		$.ajax({
 			type: 'GET',
 			url: 'browserOutput_white.css',
-			success: function(styleData) {
-				var blob = new Blob([
-					'<head><title>Azure Peak Chat Log</title><style>',
-					styleData,
-					'</style></head><body>',
-					$messages.html(),
-					'</body>'
-				], { type: 'text/html;charset=utf-8' });
-	
-				if (window.navigator.msSaveBlob) {
-					window.navigator.msSaveBlob(blob, fname);
-				} else {
-					var link = document.createElement('a');
-					link.href = URL.createObjectURL(blob);
-					link.download = fname;
-					link.click();
-					URL.revokeObjectURL(link.href);
-				}
-			},
+			success: function (styleData) {
+				var blob = new Blob(['<head><title>Chat Log</title><style>', styleData, '</style></head><body>', $messagelog.html(), '</body>']);
+
+				var fname = 'SS13 Chat Log';
+				var date = new Date(), month = date.getMonth(), day = date.getDay(), hours = date.getHours(), mins = date.getMinutes(), secs = date.getSeconds();
+				fname += ' ' + date.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+				fname += ' ' + (hours < 10 ? '0' : '') + hours + (mins < 10 ? '0' : '') + mins + (secs < 10 ? '0' : '') + secs;
+				fname += '.html';
+
+				window.navigator.msSaveBlob(blob, fname);
+			}
 		});
 	});
-	  
-	//clone of above but strips html
-	$('#saveLogTxt').click(function(e) {
-		if (!window.Blob) {
-			output('<span class="big red">This function is only supported on modern browsers. Upgrade if possible.</span>', 'internal');
-			return;
-		}
-	
-		let plainText = '';
-		$messages.children().each(function() {
-			const tempDiv = document.createElement('div');
-			tempDiv.innerHTML = $(this).html(); 
-			const messageText = tempDiv.innerText.replace(/\n+/g, '\n').trim();
-			plainText += messageText + '\n'; //add newline to end
-		});
 
-		var blob = new Blob([plainText], { type: 'text/plain' });
-	
-		var fname = 'Azure Peak Chat Log';
-		var date = new Date(), month = date.getMonth() + 1, day = date.getDate(), hours = date.getHours(), mins = date.getMinutes(), secs = date.getSeconds();
-		fname += ' ' + date.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
-		fname += ' ' + (hours < 10 ? '0' : '') + hours + (mins < 10 ? '0' : '') + mins + (secs < 10 ? '0' : '') + secs;
-		fname += '.txt';
-	
-		if (window.navigator.msSaveBlob) {
-			window.navigator.msSaveBlob(blob, fname);
-		} else {
-			var link = document.createElement('a');
-			link.href = URL.createObjectURL(blob);
-			link.download = fname;
-			link.click();
-			URL.revokeObjectURL(link.href);
+	$('#highlightTerm').click(function (e) {
+		if ($('.popup .highlightTerm').is(':visible')) { return; }
+		var termInputs = '';
+		for (var i = 0; i < opts.highlightLimit; i++) {
+			termInputs += '<div><input type="text" name="highlightTermInput' + i + '" id="highlightTermInput' + i + '" class="highlightTermInput' + i + '" maxlength="255" value="' + (opts.highlightTerms[i] ? opts.highlightTerms[i] : '') + '" /></div>';
 		}
-		internalOutput('<span class="internal boldnshit">Log file saved.</span>', 'internal');
+		var popupContent = '<div class="head">String Highlighting</div>' +
+			'<div class="highlightPopup" id="highlightPopup">' +
+			'<div>Choose up to ' + opts.highlightLimit + ' strings that will highlight the line when they appear in chat.</div>' +
+			'<form id="highlightTermForm">' +
+			termInputs +
+			'<div><input type="text" name="highlightColor" id="highlightColor" class="highlightColor" ' +
+			'style="background-color: ' + (opts.highlightColor ? opts.highlightColor : '#FFFF00') + '" value="' + (opts.highlightColor ? opts.highlightColor : '#FFFF00') + '" maxlength="7" /></div>' +
+			'<div><input type="submit" name="highlightTermSubmit" id="highlightTermSubmit" class="highlightTermSubmit" value="Save" /></div>' +
+			'</form>' +
+			'</div>';
+		createPopup(popupContent, 250);
 	});
 
-	$('body').on('keyup', '#highlightColor', function() {
+	$('body').on('keyup', '#highlightColor', function () {
 		var color = $('#highlightColor').val();
 		color = color.trim();
 		if (!color || color.charAt(0) != '#') return;
 		$('#highlightColor').css('background-color', color);
 	});
 
-	$('body').on('submit', '#highlightTermForm', function(e) {
+	$('body').on('submit', '#highlightTermForm', function (e) {
 		e.preventDefault();
 
-		opts.highlightTerms = [];
-		for (var count = 0; count < opts.highlightLimit; count++) {
-			var term = $('#highlightTermInput'+count).val();
-			if (term !== null && /\S/.test(term)) {
-				opts.highlightTerms.push(term.trim().toLowerCase());
+		var count = 0;
+		while (count < opts.highlightLimit) {
+			var term = $('#highlightTermInput' + count).val();
+			if (term) {
+				term = term.trim();
+				if (term === '') {
+					opts.highlightTerms[count] = null;
+				} else {
+					opts.highlightTerms[count] = term.toLowerCase();
+				}
+			} else {
+				opts.highlightTerms[count] = null;
 			}
+			count++;
 		}
 
 		var color = $('#highlightColor').val();
@@ -1136,42 +1095,40 @@ $(function() {
 		setCookie('highlightcolor', opts.highlightColor, 365);
 	});
 
-
-	$('#clearMessages').click(function() {
+	$('#clearMessages').click(function () {
 		$messages.empty();
 		opts.messageCount = 0;
 	});
-	
-	$('#musicVolumeSpan').hover(function() {
+
+	$('#musicVolumeSpan').hover(function () {
 		$('#musicVolumeText').addClass('hidden');
 		$('#musicVolume').removeClass('hidden');
-	}, function() {
+	}, function () {
 		$('#musicVolume').addClass('hidden');
 		$('#musicVolumeText').removeClass('hidden');
 	});
 
-	$('#musicVolume').change(function() {
+	$('#musicVolume').change(function () {
 		var newVolume = $('#musicVolume').val();
 		newVolume = clamp(newVolume, 0, 100);
 		$('#adminMusic').prop('volume', newVolume / 100);
 		setCookie('musicVolume', newVolume, 365);
 		opts.updatedVolume = newVolume;
-		if(!opts.volumeUpdating) {
+		if (!opts.volumeUpdating) {
 			setTimeout(sendVolumeUpdate, opts.volumeUpdateDelay);
 			opts.volumeUpdating = true;
 		}
 	});
 
-	$('#toggleCombine').click(function(e) {
+	$('#toggleCombine').click(function (e) {
 		opts.messageCombining = !opts.messageCombining;
 		setCookie('messagecombining', (opts.messageCombining ? 'true' : 'false'), 365);
-		internalOutput('<span class="internal boldnshit">Toggled combine to: '+opts.messageCombining+'</span>', 'internal');
 	});
 
 	$('img.icon').error(iconError);
-	
-	
-		
+
+
+
 
 	/*****************************************
 	*
@@ -1186,13 +1143,3 @@ $(function() {
 	$('#userBar').show();
 	opts.priorChatHeight = $(window).height();
 });
-
-function isValidUrl(href) {
-	const allowedProtocols = ['byond:', 'http:', 'https:'];
-	try {
-		const url = new URL(href);
-		return allowedProtocols.includes(url.protocol);
-	} catch (url) {
-		return href[0] === '?';
-	}
-}

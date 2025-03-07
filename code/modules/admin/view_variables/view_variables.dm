@@ -4,8 +4,8 @@
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
-	if(!usr.client || !usr.client.holder) //This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
-		to_chat(usr, span_danger("You need to be an administrator to access this."))
+	if(!usr.client || !usr.client.holder)		//This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
+		to_chat(usr, span_danger("I need to be an administrator to access this."))
 		return
 
 	if(!D)
@@ -38,8 +38,6 @@
 	if(sprite)
 		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
 	var/list/header = islist(D)? list("<b>/list</b>") : D.vv_get_header()
-
-	var/ref_line = "@[copytext(refid, 2, -1)]" // get rid of the brackets, add a @ prefix for copy pasting in asay
 
 	var/marked_line
 	if(holder && holder.marked_datum && holder.marked_datum == D)
@@ -74,7 +72,7 @@
 	if(!islist)
 		for(var/V in D.vars)
 			names += V
-	sleep(1 TICKS)
+	sleep(1)
 
 	var/list/variable_html = list()
 	if(islist)
@@ -94,9 +92,17 @@
 	var/html = {"
 <html>
 	<head>
-		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 		<title>[title]</title>
-		<link rel="stylesheet" type="text/css" href="[SSassets.transport.get_asset_url("view_variables.css")]">
+		<style>
+			body {
+				font-family: Verdana, sans-serif;
+				font-size: 9pt;
+			}
+			.value {
+				font-family: "Courier New", monospace;
+				font-size: 8pt;
+			}
+		</style>
 	</head>
 	<body onload='selectTextField()' onkeydown='return handle_keydown()' onkeyup='handle_keyup()'>
 		<script type="text/javascript">
@@ -116,8 +122,8 @@
 				var ca = document.cookie.split(';');
 				for(var i=0; i<ca.length; i++) {
 					var c = ca\[i];
-					while (c.charAt(0) == ' ') c = c.substring(1,c.length);
-					if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+					while (c.charAt(0)==' ') c = c.substring(1,c.length);
+					if (c.indexOf(name)==0) return c.substring(name.length,c.length);
 				}
 				return "";
 			}
@@ -210,7 +216,6 @@
 						</table>
 						<div align='center'>
 							<b><font size='1'>[formatted_type]</font></b>
-							<br><b><font size='1'>[ref_line]</font></b>
 							<span id='marked'>[marked_line]</span>
 							<span id='varedited'>[varedited_line]</span>
 							<span id='deleted'>[deleted_line]</span>

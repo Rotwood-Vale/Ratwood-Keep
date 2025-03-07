@@ -6,7 +6,6 @@ $include comms.txt
 $include antag_rep.txt
 $include discord.txt
 $include ratwood.txt
-$include resources.txt
 $include config_redmoon.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game

@@ -32,6 +32,8 @@
 			poll_player_rating(poll)
 		if(POLLTYPE_MULTI)
 			poll_player_multi(poll)
+		if(POLLTYPE_IRV)
+			poll_player_irv(poll)
 
 /**
   * Shows voting window for an option type poll, listing its options and relevant details.
@@ -212,6 +214,94 @@
 		output += "<p><input type='submit' value='Vote'></form>"
 	output += "</div>"
 	src << browse(jointext(output, ""),"window=playerpoll;size=500x300")
+
+/**
+  * Shows voting window for an IRV type poll, listing its options and relevant details.
+  *
+  * If already voted on, the options are sorted how a player voted for them, otherwise they are randomly shuffled.
+  *
+  */
+/mob/dead/new_player/proc/poll_player_irv(datum/poll_question/poll)
+	var/datum/asset/irv_assets = get_asset_datum(/datum/asset/group/IRV)
+	irv_assets.send(src)
+	var/datum/DBQuery/query_irv_get_votes = SSdbcore.NewQuery({"
+		SELECT optionid FROM [format_table_name("poll_vote")]
+		WHERE pollid = :pollid AND ckey = :ckey AND deleted = 0
+	"}, list("pollid" = poll.poll_id, "ckey" = ckey))
+	if(!query_irv_get_votes.warn_execute())
+		qdel(query_irv_get_votes)
+		return
+	var/list/voted_for = list()
+	while(query_irv_get_votes.NextRow())
+		voted_for += text2num(query_irv_get_votes.item[1])
+	qdel(query_irv_get_votes)
+	var/list/prepared_options = list()
+	//if they've already voted we use the order they voted in plus a shuffle of any options they haven't voted for, if any
+	if(length(voted_for))
+		for(var/vote_id in voted_for)
+			for(var/o in poll.options)
+				var/datum/poll_option/option = o
+				if(option.option_id == vote_id)
+					prepared_options += option
+		var/list/shuffle_options = poll.options - prepared_options
+		if(length(shuffle_options))
+			shuffle_options = shuffle(shuffle_options)
+			for(var/shuffled in shuffle_options)
+				prepared_options += shuffled
+	//otherwise just shuffle the options
+	else
+		prepared_options = shuffle(poll.options)
+	var/list/output = list({"<html><head><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+	<script src="jquery.min.js"></script>
+	<script src="jquery-ui.custom-core-widgit-mouse-sortable-min.js"></script>
+	<style>
+		#sortable { list-style-type: none; margin: 0; padding: 2em; }
+		#sortable li { min-height: 1em; margin: 0px 1px 1px 1px; padding: 1px; border: 1px solid black; border-radius: 5px; background-color: white; cursor:move;}
+		#sortable .sortable-placeholder-highlight { min-height: 1em; margin: 0 2px 2px 2px; padding: 2px; border: 1px dotted blue; border-radius: 5px; background-color: GhostWhite; }
+		span.grippy { content: '....'; width: 10px; height: 20px; display: inline-block; overflow: hidden; line-height: 5px; padding: 3px 1px; cursor: move; vertical-align: middle; margin-top: -.7em; margin-right: .3em; font-size: 12px; font-family: sans-serif; letter-spacing: 2px; color: #cccccc; text-shadow: 1px 0 1px black; }
+		span.grippy::after { content: '.. .. .. ..';}
+	</style>
+	<script>
+		$(function() {
+			$( "#sortable" ).sortable({
+				placeholder: "sortable-placeholder-highlight",
+				axis: "y",
+				containment: "#ballot",
+				scroll: false,
+				cursor: "ns-resize",
+				tolerance: "pointer"
+			});
+			$( "#sortable" ).disableSelection();
+			$('form').submit(function(){
+				$('#IRVdata').val($( "#sortable" ).sortable("toArray", { attribute: "optionref" }));
+			});
+		});
+	</script>
+	</head>
+	<body>
+	<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>"})
+	if(poll.subtitle)
+		output += "[poll.subtitle]<br>"
+	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	if(poll.allow_revoting)
+		output += "<font size='2'>Revoting is enabled.</font>"
+	output += "Please sort the options in the order of <b>most preferred</b> to <b>least preferred</b><br></div>"
+	if(!length(voted_for) || poll.allow_revoting)
+		output += {"<form action='?src=[REF(src)]' method='POST'>
+		<input type='hidden' name='src' value='[REF(src)]'>
+		<input type='hidden' name='votepollref' value='[REF(poll)]'>
+		<input type='hidden' name='IRVdata' id='IRVdata'>
+		"}
+	output += "<div id='ballot' class='center'><b><center>Most Preferred</center></b><ol id='sortable' class='rankings' style='padding:0px'>"
+	for(var/o in prepared_options)
+		var/datum/poll_option/option = o
+		output += "<li optionref='[REF(option)]' class='ranking'><span class='grippy'></span> [option.text]</li>\n"
+	output += "</ol><b><center>Least Preferred</center></b><br>"
+	if(!length(voted_for) || poll.allow_revoting)
+		output += "<p><input type='submit' value='Vote'></form>"
+	output += "</div>"
+	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
 
 /**
   * Runs some poll validation before a vote is processed.

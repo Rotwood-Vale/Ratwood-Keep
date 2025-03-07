@@ -209,5 +209,5 @@
 /client/proc/genmouseobj()
 	mouseovertext = new /atom/movable/screen/movable/mouseover/maptext
 	mouseoverbox = new /atom/movable/screen/movable/mouseover
-	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/namespaced/roguefonts)
+	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/roguefonts)
 	stuff.send(src)
