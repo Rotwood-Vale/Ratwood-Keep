@@ -198,3 +198,77 @@
 		/obj/item/reagent_containers/food/snacks/fat = 1)
 	result = /obj/item/soap
 	skill_level = 5
+
+/datum/reagent/medicine/caffeine
+	name = "caffeine"
+	description = "No Sleep"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 20 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/stimu
+	name = "Stimu"
+	description = "crit stabalizer and blood restorer painkiller"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/medicine/stimu/on_mob_metabolize(mob/living/carbon/M)
+	..()
+	ADD_TRAIT(M, TRAIT_NOCRITDAMAGE, TRAIT_GENERIC)
+	ADD_TRAIT(M, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+/datum/reagent/medicine/stimu/on_mob_end_metabolize(mob/living/carbon/M)
+	REMOVE_TRAIT(M, TRAIT_NOCRITDAMAGE, TRAIT_GENERIC)
+	REMOVE_TRAIT(M, TRAIT_NOPAIN, TRAIT_GENERIC)
+	..()
+
+/datum/reagent/medicine/stimu/on_mob_life(mob/living/carbon/M)
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.heal_wounds(2) //same as health pot only heal wounds while bleeding. technically.
+		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_NORMAL)
+	if(M.health <= M.crit_threshold)
+		M.adjustToxLoss(-0.5*REM, 0)
+		M.adjustBruteLoss(-0.5*REM, 0)
+		M.adjustFireLoss(-0.5*REM, 0)
+		M.adjustOxyLoss(-0.5*REM, 0)
+	if(M.losebreath >= 4)
+		M.losebreath -= 2
+	if(M.losebreath < 0)
+		M.losebreath = 0
+	..()
+
+/datum/reagent/medicine/purify
+	name = "PURIFY"
+	reagent_state = LIQUID
+	color = "#808080"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
+
+/datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
+	M.adjustFireLoss(0.5*REM, 0)
+	M.heal_wounds(3)
+
+	// Iterate through all body parts
+	for (var/obj/item/bodypart/B in M.bodyparts)
+		// Iterate through wounds on each body part
+		for (var/datum/wound/W in B.wounds)
+			// Check for and remove zombie infection
+			if (W.zombie_infection_timer)
+				deltimer(W.zombie_infection_timer)
+				W.zombie_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+			// Check for and remove werewolf infection
+			if (W.werewolf_infection_timer)
+				deltimer(W.werewolf_infection_timer)
+				W.werewolf_infection_timer = null
+				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+
+			// Handle destruction of the wound
+			W.Destroy(0)
+
+	M.update_damage_overlays()
+

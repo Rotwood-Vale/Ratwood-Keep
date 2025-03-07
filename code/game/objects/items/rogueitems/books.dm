@@ -569,3 +569,10 @@
 	desc = "Apply on a written manuscript to create a book"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "book_crafting_kit"
+
+/obj/item/book/rogue/medical_notebook
+	name = "Medical Notebook"
+	desc = "A quick rundown on medical works."
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "medical.json"

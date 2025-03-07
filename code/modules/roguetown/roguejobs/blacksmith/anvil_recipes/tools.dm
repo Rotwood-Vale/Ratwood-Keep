@@ -150,6 +150,13 @@
 						/obj/item/lockpickring
 						)
 
+
+/datum/anvil_recipe/tools/alembic
+	name = "Alembic"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/reagent_containers/glass/alembic
+	i_type = "Tools"
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steel/hammer
@@ -205,3 +212,4 @@
 	created_item = list(/obj/item/catbell/cow,
 						/obj/item/catbell/cow,
 						/obj/item/catbell/cow)
+

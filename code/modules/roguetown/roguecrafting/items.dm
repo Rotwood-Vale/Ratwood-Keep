@@ -357,6 +357,13 @@
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
 
+/datum/crafting_recipe/roguetown/rucksack
+	name = "Rucksack"
+	result = /obj/item/storage/backpack/rogue/backpack/rucksack
+	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
+	skill_level = 0
+	skillcraft = /datum/skill/craft/crafting
+
 
 /datum/crafting_recipe/roguetown/bait
 	name = "bait"
@@ -556,3 +563,40 @@
 	reqs = list(/obj/item/rogueore/coal = 1,
 				/obj/item/ingot/iron = 1)
 	req_table = TRUE
+
+//Alchemy and med crafts
+
+/datum/crafting_recipe/roguetown/mortar
+	name = "mortar and pestle"
+	result = /obj/item/reagent_containers/glass/mortar
+	reqs = list(/obj/item/grown/log/tree/stick = 1, /obj/item/grown/log/tree/small = 1,)
+	skill_level = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/bandage
+	name = "roll of bandages"
+	result = /obj/item/natural/bundle/cloth/bandage/full
+	reqs = list(/obj/item/natural/cloth = 3, /obj/item/ash = 1,)
+	skill_level = 2
+	skillcraft = /datum/skill/misc/treatment
+
+/datum/crafting_recipe/roguetown/impsaw
+	name = "improvised saw"
+	result = /obj/item/rogueweapon/surgery/saw/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1,)
+	skill_level = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impretra
+	name = "improvised clamp"
+	result = /obj/item/rogueweapon/surgery/hemostat/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
+	skill_level = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/imphemo
+	name = "improvised retractor"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
+	skill_level = 1
+	skillcraft = /datum/skill/craft/crafting
