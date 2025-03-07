@@ -1199,6 +1199,7 @@
 #include "code\modules\cargo\packsrogue\bandit\mage.dm"
 #include "code\modules\cargo\packsrogue\bandit\sawbones.dm"
 #include "code\modules\chatter\chatter.dm"
+#include "code\modules\client\asset_configs.dm"
 #include "code\modules\client\assets_rogue.dm"
 #include "code\modules\client\client_colour.dm"
 #include "code\modules\client\client_defines.dm"

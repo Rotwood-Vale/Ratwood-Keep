@@ -23,7 +23,7 @@
 					. += span_warning("It's a little damaged.")
 
 //	if(has_inspect_verb || (obj_integrity < max_integrity))
-//		. += span_notice("<a href='byond://?src=[REF(src)];inspect=1'>Inspect</a>")
+//		. += span_notice("<a href='?src=[REF(src)];inspect=1'>Inspect</a>")
 
 	var/real_value = get_real_price()
 	if(real_value > 0)

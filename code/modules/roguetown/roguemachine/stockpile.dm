@@ -38,8 +38,8 @@
 	var/contents = "<center>TOWN STOCKPILE<BR>"
 	contents += "--------------<BR>"
 
-	contents += "<a href='byond://?src=[REF(src)];navigate=withdraw'>EXTRACT</a><BR>"
-	contents += "<a href='byond://?src=[REF(src)];navigate=deposit'>FEED</a></center><BR><BR>"
+	contents += "<a href='?src=[REF(src)];navigate=withdraw'>EXTRACT</a><BR>"
+	contents += "<a href='?src=[REF(src)];navigate=deposit'>FEED</a></center><BR><BR>"
 	
 	return contents
 
@@ -48,7 +48,7 @@
 
 /obj/structure/roguemachine/stockpile/proc/get_deposit_contents()
 	var/contents = "<center>FEED THE STOCKPILE<BR>"
-	contents += "<a href='byond://?src=[REF(src)];navigate=directory'>(back)</a><BR>"
+	contents += "<a href='?src=[REF(src)];navigate=directory'>(back)</a><BR>"
 	contents += "----------<BR>"
 	contents += "</center>"
 

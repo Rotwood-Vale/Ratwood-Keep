@@ -170,17 +170,17 @@
     var/contents
     if(canread)
         contents = "<center>PURITY - In the name of pleasure.<BR>"
-        contents += "<a href='byond://?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
+        contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
     else
         contents = "<center>[stars("PURITY - In the name of pleasure.")]<BR>"
-        contents += "<a href='byond://?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
+        contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
 
     var/mob/living/carbon/human/H = user
     if(H.job == "Nightmaster")
         if(canread)
-            contents += "<a href='byond://?src=[REF(src)];secrets=1'>Secrets</a><BR>"
+            contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a><BR>"
         else
-            contents += "<a href='byond://?src=[REF(src)];secrets=1'>[stars("Secrets")]</a><BR>"
+            contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a><BR>"
 
     // Dynamically generate item prices based on tax flag
     for(var/I in held_items)
@@ -198,9 +198,9 @@
             namer = "thing"
 
         if(canread)
-            contents += "[namer] + [full_price] <a href='byond://?src=[REF(src)];buy=[I]'>BUY</a><BR>"
+            contents += "[namer] + [full_price] <a href='?src=[REF(src)];buy=[I]'>BUY</a><BR>"
         else
-            contents += "[stars(namer)] + [stars(full_price)] <a href='byond://?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
+            contents += "[stars(namer)] + [stars(full_price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
 
     var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
     popup.set_content(contents)

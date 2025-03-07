@@ -97,8 +97,8 @@
 
 	if(Adjacent(user))
 		if(has_simple_wounds)
-			. += "<a href='byond://?src=[REF(src)];inspect_animal=1'>Inspect Wounds</a>"
+			. += "<a href='?src=[REF(src)];inspect_animal=1'>Inspect Wounds</a>"
 		if(user != src)
-			. += "<a href='byond://?src=[REF(src)];check_hb=1'>Check Heartbeat</a>"
+			. += "<a href='?src=[REF(src)];check_hb=1'>Check Heartbeat</a>"
 
 	. += "✠ ------------ ✠</span>"

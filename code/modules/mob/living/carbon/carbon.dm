@@ -271,34 +271,34 @@
 	<HR>
 	<B><FONT size=3>[name]</FONT></B>
 	<HR>
-	<BR><B>Head:</B> <A href='byond://?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "Nothing"]</A>"}
+	<BR><B>Head:</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "Nothing"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
 
 	if(SLOT_NECK in obscured)
 		dat += "<BR><B>Neck:</B> Obscured"
 	else
-		dat += "<BR><B>Neck:</B> <A href='byond://?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "Nothing"]</A>"
+		dat += "<BR><B>Neck:</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "Nothing"]</A>"
 
 	if(SLOT_WEAR_MASK in obscured)
 		dat += "<BR><B>Mask:</B> Obscured"
 	else
-		dat += "<BR><B>Mask:</B> <A href='byond://?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "Nothing"]</a>"
+		dat += "<BR><B>Mask:</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "Nothing"]</a>"
 
 	for(var/i in 1 to held_items.len)
 		var/obj/item/I = get_item_for_held_index(i)
-		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='byond://?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "Nothing"]</a>"
+		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "Nothing"]</a>"
 
-	dat += "<BR><B>Back:</B> <A href='byond://?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
+	dat += "<BR><B>Back:</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
 
 	if(handcuffed)
-		dat += "<BR><A href='byond://?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Handcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Handcuffed</A>"
 	if(legcuffed)
-		dat += "<BR><A href='byond://?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Legcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Legcuffed</A>"
 
 	dat += {"
 	<BR>
-	<BR><A href='byond://?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
+	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
 	"}
 	user << browse(dat, "window=mob[REF(src)];size=325x500")
 	onclose(user, "mob[REF(src)]")

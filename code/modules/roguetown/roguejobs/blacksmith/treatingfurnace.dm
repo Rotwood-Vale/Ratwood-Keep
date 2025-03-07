@@ -77,14 +77,14 @@
 		dat += "Nothing inside."
 	else
 		dat += "Item inserted: [inserted]<BR>"
-		dat += "<A href='byond://?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
+		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
 		if(coal_charges <= 0)
 			dat += "No coal inside."
 		else
-			dat += "<A href='byond://?src=\ref[src];select=1'>Choose a temperature.</A><BR>"
+			dat += "<A href='?src=\ref[src];select=1'>Choose a temperature.</A><BR>"
 			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='byond://?src=\ref[src];paint=1'>Heat-treat the armor.</A><BR><BR>"
-			dat += "<A href='byond://?src=\ref[src];clear=1'>Scrape the case-hardened layer off.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];paint=1'>Heat-treat the armor.</A><BR><BR>"
+			dat += "<A href='?src=\ref[src];clear=1'>Scrape the case-hardened layer off.</A><BR><BR>"
 
 	var/datum/browser/menu = new(user, "colormate","heat treatment furnace", 400, 400, src)
 	menu.set_content(dat.Join(""))
