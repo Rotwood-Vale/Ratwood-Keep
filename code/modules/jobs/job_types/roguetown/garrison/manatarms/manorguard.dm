@@ -12,7 +12,7 @@
 	tutorial = "Having proven yourself loyal and capable, you are entrusted to defend the Royal Family and their Court, \
 				trained regularly in combat and siege warfare you stand a small chance of surviving the Duke's reign. \
 				It's an honor to die as part of His Highness' retinue, the Marshal reminds you every night."
-	display_order = JDO_CASTLEGUARD
+	display_order = JDO_MANORGUARD
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/manorguard

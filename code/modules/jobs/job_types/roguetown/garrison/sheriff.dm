@@ -1,5 +1,5 @@
 /datum/job/roguetown/sheriff
-	title = "Town Sheriff"
+	title = "Bailiff"
 	flag = SHERIFF
 	department_flag = GARRISON
 	faction = "Station"
@@ -9,7 +9,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	display_order = JDO_SHERIFF
+	display_order = JDO_BAILIFF
 	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. \
 	You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly. \
 	While you may work under the Mayor, everyone knows the Duke is the true authority, or is he?"
@@ -21,9 +21,8 @@
 
 /datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/citywatch
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	armor = /obj/item/clothing/suit/roguetown/armor/citywatch
+	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

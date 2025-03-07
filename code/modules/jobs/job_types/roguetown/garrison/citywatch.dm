@@ -3,8 +3,8 @@
 	flag = GUARDSMAN
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 11
-	spawn_positions = 11
+	total_positions = 10
+	spawn_positions = 10
 	selection_color = JCOLOR_SOLDIER
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -12,7 +12,7 @@
 	tutorial = "Responsible for the safety of the city and the enforcement of the law, \
 	you walk among the downtrodden, delivering justice and pain. \
 	Your loyalty lies in the Sheriff and the cityfolk, for neither clergy nor nobility understand the hardships of a commoner."
-	display_order = JDO_TOWNGUARD
+	display_order = JDO_TOWNWATCH
 	whitelist_req = TRUE
 
 	outfit = /datum/outfit/job/roguetown/citywatch

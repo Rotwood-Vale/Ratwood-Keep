@@ -740,14 +740,3 @@
 	ADD_TRAIT(character, TRAIT_NOSLEEP, "[type]")
 	character.change_stat("strength", 4)
 	character.change_stat("speed", 3)
-
-
-/datum/special_trait/bailiff
-	name = "Bailiff"
-	greet_text = span_notice("Order! Order! Bailiff?! Smack his nuts!")
-	req_text = "Be a Marshal"
-	allowed_jobs = list(/datum/job/roguetown/marshal)
-	weight = 40
-
-/datum/special_trait/bailiff/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_NUTCRACKER, "[type]")

@@ -1,4 +1,4 @@
-/datum/job/roguetown/marshal
+/* /datum/job/roguetown/marshal
 	title = "Royal Marshal"
 	flag = MARSHAL
 	department_flag = NOBLEMEN
@@ -169,3 +169,4 @@
 			to_chat(marshal, span_warning("The Duke has denied the request for declaring an outlaw!"))
 		return
 	make_outlaw(requested_outlaw)
+ */
