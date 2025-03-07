@@ -111,6 +111,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltl = /obj/item/rogueweapon/huntingknife
