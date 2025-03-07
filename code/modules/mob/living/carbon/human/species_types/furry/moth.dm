@@ -6,7 +6,7 @@
 	id = "moth"
 	desc = "In time you will learn the history of this race"
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_FLUVIAN)
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/mob/species/moth_m.dmi'
 	limbs_icon_f = 'icons/mob/species/moth_f.dmi'

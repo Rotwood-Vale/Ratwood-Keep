@@ -92,6 +92,7 @@
 					H.verbs |= /mob/living/carbon/human/proc/torture_victim
 					H.verbs |= /mob/living/carbon/human/proc/faith_test
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -119,6 +120,7 @@
 					H.change_stat("constitution", 1)
 					H.change_stat("speed", 1)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells(H)
 					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
@@ -153,6 +155,7 @@
 					H.change_stat("strength", 2)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+					ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 					H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -210,5 +213,6 @@
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 
 	H.set_blindness(0)

@@ -26,7 +26,7 @@
 	However, instead of trying to reclaim the glory of the past, Axians embrace their new lifestyle and thrive in the chaos."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
-	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATERBREATHING, TRAIT_AXIAN)
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
