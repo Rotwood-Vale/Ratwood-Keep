@@ -291,7 +291,7 @@
 						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
-					contents += " / <a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='byond://?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
+					contents += " / <a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
 			else
 				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 					if(ishuman(A))
@@ -299,10 +299,10 @@
 						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m<BR>"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
-					contents += "<a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='byond://?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
+					contents += "<a href='byond://?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
 		if(TAB_STOCK)
 			contents += "<a href='byond://?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
-			contents += " <a href='byond://?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
+			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
 			contents += "<center>Stockpile<BR>"
 			contents += "--------------<BR>"
 			if(compact)

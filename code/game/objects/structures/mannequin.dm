@@ -159,11 +159,11 @@
 
 	dat += EquippableSlots()
 	dat += "<BR>---"
-	dat += "<BR>Turn Mannequin:<B><A href='byond://?src=\ref[src];turn=turn'>[dir2text(dir)]</A></B>"
+	dat += "<BR>Turn Mannequin:<B><A href='?src=\ref[src];turn=turn'>[dir2text(dir)]</A></B>"
 	dat += "<BR>"
 	dat += {"
 	<BR>
-	<BR><A href='byond://?src=\ref[user];mach_close=mob\ref[src]'>Close</A>
+	<BR><A href='?src=\ref[user];mach_close=mob\ref[src]'>Close</A>
 	"}
 
 	var/datum/browser/popup = new(user, "mannequin\ref[src]", "[src]", 340, 500)
@@ -173,12 +173,12 @@
 //UI SLOTS
 /obj/structure/mannequin/proc/EquippableSlots()
 	. = ""
-	. += "<BR><B>Head:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_HEAD]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_HEAD])]</A>"
-	. += "<BR><B>Neck:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_NECK]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_CLOAK])]</A>"
-	. += "<BR><B>Mask:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_MOUTH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_MASK])]</A>"
-	. += "<BR><B>Armor:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_CHEST]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_ARMOR])]</A>"
-	. += "<BR><B>Shirt:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_STOMACH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_SHIRT])]</A>"
-	. += "<BR><B>Belt:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_GROIN]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_BELT])]</A>"
+	. += "<BR><B>Head:</B> <A href='?src=\ref[src];item=[BODY_ZONE_HEAD]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_HEAD])]</A>"
+	. += "<BR><B>Neck:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_NECK]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_CLOAK])]</A>"
+	. += "<BR><B>Mask:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_MOUTH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_MASK])]</A>"
+	. += "<BR><B>Armor:</B> <A href='?src=\ref[src];item=[BODY_ZONE_CHEST]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_ARMOR])]</A>"
+	. += "<BR><B>Shirt:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_STOMACH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_SHIRT])]</A>"
+	. += "<BR><B>Belt:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_GROIN]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_BELT])]</A>"
 
 /obj/structure/mannequin/attackby(obj/item/I, mob/user)
 	if(user.cmode || user.a_intent == INTENT_HARM || user.a_intent == INTENT_DISARM)
@@ -665,9 +665,9 @@
 
 /obj/structure/mannequin/male/EquippableSlots()
 	. = ..()
-	. += "<BR><B>Gloves:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_L_HAND]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_GLOVES])]</A>"
-	. += "<BR><B>Shoes:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_PRECISE_L_FOOT]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_FEET])]</A>"
-	. += "<BR><B>Pants:</B> <A href='byond://?src=\ref[src];item=[BODY_ZONE_L_LEG]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_PANTS])]</A>"
+	. += "<BR><B>Gloves:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_L_HAND]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_GLOVES])]</A>"
+	. += "<BR><B>Shoes:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_L_FOOT]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_FEET])]</A>"
+	. += "<BR><B>Pants:</B> <A href='?src=\ref[src];item=[BODY_ZONE_L_LEG]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_PANTS])]</A>"
 
 /obj/structure/mannequin/male/bodypartsNightmare()
 	var/isfemale = (gender == FEMALE ? "f" : "m")

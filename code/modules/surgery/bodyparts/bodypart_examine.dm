@@ -101,7 +101,7 @@
 				var/usedclass = "notice"
 				if(bandage.return_blood_DNA())
 					usedclass = "bloody"
-				bodypart_status += "<a href='byond://?src=[owner_ref];bandage=[REF(bandage)];bandaged_limb=[REF(src)]' class='[usedclass]'>Bandaged</a>"
+				bodypart_status += "<a href='?src=[owner_ref];bandage=[REF(bandage)];bandaged_limb=[REF(src)]' class='[usedclass]'>Bandaged</a>"
 			if(!bandage || observer_privilege)
 				for(var/datum/wound/wound as anything in wounds)
 					bodypart_status += wound.get_visible_name(user)
@@ -112,7 +112,7 @@
 	if(length(embedded_objects))
 		bodypart_status += "<B>Embedded objects:</B>"
 		for(var/obj/item/embedded as anything in embedded_objects)
-			bodypart_status += "<a href='byond://?src=[owner_ref];embedded_object=[REF(embedded)];embedded_limb=[REF(src)]'>[embedded.name]</a>"
+			bodypart_status += "<a href='?src=[owner_ref];embedded_object=[REF(embedded)];embedded_limb=[REF(src)]'>[embedded.name]</a>"
 	
 	return bodypart_status
 
@@ -195,15 +195,15 @@
 	var/owner_ref = owner ? REF(owner) : REF(src)
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if(embedded.embedding?.embedded_bloodloss)
-			status += "<a href='byond://?src=[owner_ref];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='danger'>[uppertext(embedded.name)]</a>"
+			status += "<a href='?src=[owner_ref];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='danger'>[uppertext(embedded.name)]</a>"
 		else
-			status += "<a href='byond://?src=[owner_ref];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='info'>[uppertext(embedded.name)]</a>"
+			status += "<a href='?src=[owner_ref];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='info'>[uppertext(embedded.name)]</a>"
 
 	if(bandage)
 		if(HAS_BLOOD_DNA(bandage))
-			status += "<a href='byond://?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='bloody'>[uppertext(bandage.name)]</a>"
+			status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='bloody'>[uppertext(bandage.name)]</a>"
 		else
-			status += "<a href='byond://?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='info'>[uppertext(bandage.name)]</a>"
+			status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='info'>[uppertext(bandage.name)]</a>"
 
 	if(disabled)
 		status += span_deadsay("CRIPPLED")
@@ -262,7 +262,7 @@
 		to_chat(src, "\t <span class='[no_damage ? "notice" : "warning"]'>My [name][isdisabled][self_aware ? " has " : " is "][status].</span>")
 
 		for(var/obj/item/I in embedded_objects)
-			to_chat(src, "\t <a href='byond://?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] in my [name]!</a>")
+			to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] in my [name]!</a>")
 
 	for(var/t in missing)
 		to_chat(src, span_boldannounce("My [parse_zone(t)] is missing!"))
@@ -415,5 +415,5 @@
 	to_chat(src, "\t <span class='[no_damage ? "notice" : "warning"]'>My [isdisabled][FB.name] [status].</span>")
 
 	for(var/obj/item/I in FB.embedded_objects)
-		to_chat(src, "\t <a href='byond://?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(FB)]' class='warning'>There is \a [I] in my [FB.name]!</a>")
+		to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(FB)]' class='warning'>There is \a [I] in my [FB.name]!</a>")
 */

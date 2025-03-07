@@ -39,7 +39,7 @@
 
 /obj/item/book/examine(mob/user)
 	. = ..()
-	. += "<a href='byond://?src=[REF(src)];read=1'>Read</a>"
+	. += "<a href='?src=[REF(src)];read=1'>Read</a>"
 
 /obj/item/book/Topic(href, href_list)
 	..()
@@ -94,7 +94,7 @@
 		for(var/A in pages)
 			dat += A
 			dat += "<br>"
-		dat += "<a href='byond://?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
+		dat += "<a href='?src=[REF(src)];close=1' style='position:absolute;right:50px'>Close</a>"
 		dat += "</body></html>"
 		user << browse(dat, "window=reading;size=1000x700;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=0;border=0")
 		onclose(user, "reading", src)

@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(vote)
 		if(vote_alert.file)
 			for(var/mob/M in GLOB.player_list)
 				SEND_SOUND(M, vote_alert)
-		to_chat(world, "\n<font color='purple'><b>[text]</b>\nClick <a href='byond://?src=[REF(src)]'>here</a> to place your vote.\nYou have [DisplayTimeText(vp)] to vote.</font>")
+		to_chat(world, "\n<font color='purple'><b>[text]</b>\nClick <a href='?src=[REF(src)]'>here</a> to place your vote.\nYou have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
 //		for(var/c in GLOB.clients)
 //			var/client/C = c
@@ -304,56 +304,56 @@ SUBSYSTEM_DEF(vote)
 			var/votes = choices[choices[i]]
 			if(!votes)
 				votes = 0
-			. += "<li><a href='byond://?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] votepwr)</li>"
+			. += "<li><a href='?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] votepwr)</li>"
 		. += "</ul><hr>"
 		if(admin)
-			. += "(<a href='byond://?src=[REF(src)];vote=cancel'>Cancel Vote</a>) "
+			. += "(<a href='?src=[REF(src)];vote=cancel'>Cancel Vote</a>) "
 	else
 		. += "<h2>Start a vote:</h2><hr><ul><li>"
 		// REDMOON ADD START - votes_for_people - воут на Round End
 		var/round_end_vote_allowed_to_players = CONFIG_GET(flag/allow_vote_round_end)
 		if(trialmin || round_end_vote_allowed_to_players)
-			. += "<a href='byond://?src=[REF(src)];vote=round_end'>End Round (after 15 minutes)</a>"
+			. += "<a href='?src=[REF(src)];vote=round_end'>End Round (after 15 minutes)</a>"
 		else
 			. += "<font color='grey'>End Round (Disallowed)</font>"
 		if(trialmin)
-			. += "\t(<a href='byond://?src=[REF(src)];vote=toggle_round_end'>[round_end_vote_allowed_to_players ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_round_end'>[round_end_vote_allowed_to_players ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 		// REDMOON ADD END
 		//restart
 		var/avr = CONFIG_GET(flag/allow_vote_restart)
 		if(trialmin || avr)
-			. += "<a href='byond://?src=[REF(src)];vote=restart'>Restart</a>"
+			. += "<a href='?src=[REF(src)];vote=restart'>Restart</a>"
 		else
 			. += "<font color='grey'>Restart (Disallowed)</font>"
 		if(trialmin)
-			. += "\t(<a href='byond://?src=[REF(src)];vote=toggle_restart'>[avr ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_restart'>[avr ? "Allowed" : "Disallowed"]</a>)"
 		. += "</li><li>"
 		//gamemode
 		var/avm = CONFIG_GET(flag/allow_vote_mode)
 		if(trialmin || avm)
-			. += "<a href='byond://?src=[REF(src)];vote=gamemode'>GameMode</a>"
+			. += "<a href='?src=[REF(src)];vote=gamemode'>GameMode</a>"
 		else
 			. += "<font color='grey'>GameMode (Disallowed)</font>"
 		if(trialmin)
-			. += "\t(<a href='byond://?src=[REF(src)];vote=toggle_gamemode'>[avm ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_gamemode'>[avm ? "Allowed" : "Disallowed"]</a>)"
 
 		. += "</li>"
 		//map
 		var/avmap = CONFIG_GET(flag/allow_vote_map)
 		if(trialmin || avmap)
-			. += "<a href='byond://?src=[REF(src)];vote=map'>Map</a>"
+			. += "<a href='?src=[REF(src)];vote=map'>Map</a>"
 		else
 			. += "<font color='grey'>Map (Disallowed)</font>"
 		if(trialmin)
-			. += "\t(<a href='byond://?src=[REF(src)];vote=toggle_map'>[avmap ? "Allowed" : "Disallowed"]</a>)"
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_map'>[avmap ? "Allowed" : "Disallowed"]</a>)"
 
 		. += "</li>"
 		//custom
 		if(trialmin)
-			. += "<li><a href='byond://?src=[REF(src)];vote=custom'>Custom</a></li>"
+			. += "<li><a href='?src=[REF(src)];vote=custom'>Custom</a></li>"
 		. += "</ul><hr>"
-	. += "<a href='byond://?src=[REF(src)];vote=close' style='position:absolute;right:50px'>Close</a>"
+	. += "<a href='?src=[REF(src)];vote=close' style='position:absolute;right:50px'>Close</a>"
 	return .
 
 
