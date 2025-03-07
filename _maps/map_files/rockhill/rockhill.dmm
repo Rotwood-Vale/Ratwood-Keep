@@ -264,6 +264,13 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/town/harbor)
+"agu" = (
+/obj/structure/roguemachine/atm{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "agM" = (
 /obj/structure/spider/stickyweb,
 /turf/open/water/sewer,
@@ -11836,7 +11843,7 @@
 /area/rogue/indoors/town/garrison)
 "ggo" = (
 /obj/structure/fluff/statue/gargoyle/candles,
-/turf/open/floor/rogue/blocks/green,
+/turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors)
 "ggB" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
@@ -18908,6 +18915,12 @@
 /obj/item/reagent_containers/glass/cup,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"jSj" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "jSp" = (
 /obj/structure/plasticflaps,
 /turf/open/water/cleanshallow,
@@ -19022,6 +19035,11 @@
 	dir = 10
 	},
 /area/rogue/outdoors/town/roofs)
+"jVw" = (
+/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/rtfield)
 "jVE" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -40702,6 +40720,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/tavern)
+"vJO" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/town/roofs)
 "vKb" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -45203,11 +45227,6 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
-"ybE" = (
-/obj/structure/flora/roguetree/burnt,
-/obj/structure/flora/roguegrass,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "ybT" = (
 /obj/structure/flora/rogueshroom,
 /turf/open/floor/rogue/dirt,
@@ -213798,7 +213817,7 @@ xbD
 xbD
 lbg
 grY
-ybE
+jVw
 qvR
 qvR
 qvR
@@ -225456,11 +225475,11 @@ jiY
 pME
 pAV
 pAV
-jju
+pAV
 ggo
 jBa
 ggo
-jju
+pAV
 pAV
 pAV
 hHI
@@ -225895,7 +225914,7 @@ qvR
 qvR
 qvR
 qvR
-qvR
+agu
 qTK
 uaL
 uaL
@@ -228911,7 +228930,7 @@ ksP
 xxx
 enH
 pAV
-uaL
+jSj
 qvR
 xvN
 xvN
@@ -339071,7 +339090,7 @@ gJG
 gJG
 gJG
 gJG
-nbz
+vJO
 qbG
 qbG
 qbG
