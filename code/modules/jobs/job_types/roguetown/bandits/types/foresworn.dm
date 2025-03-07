@@ -55,4 +55,16 @@
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every refugee gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	var/wanted = list("Not wanted", "Wanted")
+	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
+	switch(wanted_choice)
+		if ("Not wanted")
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
+		if ("Wanted")
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
 	H.ambushable = FALSE

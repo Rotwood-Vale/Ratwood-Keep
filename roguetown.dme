@@ -1264,6 +1264,7 @@
 #include "code\modules\clothing\rogueclothes\robes\robes.dm"
 #include "code\modules\clothing\rogueclothes\shirts\shirts.dm"
 #include "code\modules\clothing\rogueclothes\shoes\shoes.dm"
+#include "code\modules\clothing\rogueclothes\storage\fancy.dm"
 #include "code\modules\clothing\rogueclothes\storage\storage.dm"
 #include "code\modules\clothing\rogueclothes\wrists\wrists.dm"
 #include "code\modules\clothing\shoes\_shoes.dm"
