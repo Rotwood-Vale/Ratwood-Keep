@@ -465,6 +465,12 @@
 	reqs = list(/obj/item/oystershell = 3,
 			/obj/item/natural/fibers = 1)
 
+/datum/crafting_recipe/roguetown/abyssoramulet
+	name = "abyssor amulet"
+	result = /obj/item/clothing/neck/roguetown/psicross/abyssor
+	reqs = list(/obj/item/natural/fibers = 1,
+			/obj/item/pearl/black = 1)
+
 /datum/crafting_recipe/roguetown/mantrap
 	name = "mantrap"
 	result = list(/obj/item/restraints/legcuffs/beartrap,
