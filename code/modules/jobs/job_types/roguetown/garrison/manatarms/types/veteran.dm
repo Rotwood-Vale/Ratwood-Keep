@@ -4,8 +4,8 @@
 	outfit = /datum/outfit/job/roguetown/manorguard/veteran
 	min_pq = 8
 	category_tags = list(CTAG_MAA)
-	allowed_ages = list(AGE_OLD)
-	maximum_possible_slots = 2
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/manorguard/veteran/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -27,8 +27,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.change_stat("strength", 3)
+		H.change_stat("strength", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", 2)
+		H.change_stat("intelligence", 1)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
