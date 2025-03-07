@@ -35,3 +35,5 @@
 			return TRUE
 		if(istype(I, /obj/item/clothing/ring))
 			return TRUE
+		if(istype(I, /obj/item/dildo))
+			return TRUE

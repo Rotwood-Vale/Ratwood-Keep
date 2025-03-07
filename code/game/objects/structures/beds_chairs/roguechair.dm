@@ -59,6 +59,12 @@
 /obj/structure/chair/bench/church/smallbench
 	icon_state = "benchsmall"
 
+/obj/structure/chair/bench/church/smallbench/CanPass(atom/movable/mover, turf/target)
+	return !density
+
+/obj/structure/chair/bench/church/smallbench/CheckExit(atom/movable/O, turf/target)
+	return !density
+
 /obj/structure/chair/bench/couch/r
 	icon_state = "redcouch2"
 

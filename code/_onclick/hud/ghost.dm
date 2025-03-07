@@ -15,7 +15,7 @@
 
 /atom/movable/screen/ghost/orbit
 	name = "Orbit"
-	icon_state = "orbit"
+	icon_state = "astrata_orbit"
 
 /atom/movable/screen/ghost/orbit/Click()
 	var/mob/dead/observer/G = usr
@@ -58,7 +58,7 @@
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
-	icon_state = "reenter_corpse"
+	icon_state = "astrata_reenter_corpse"
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
 	var/mob/dead/observer/G = usr
@@ -66,7 +66,7 @@
 
 /atom/movable/screen/ghost/teleport
 	name = "Teleport"
-	icon_state = "teleport"
+	icon_state = "astrata_teleport"
 
 /atom/movable/screen/ghost/teleport/Click()
 	var/mob/dead/observer/G = usr
@@ -74,7 +74,7 @@
 
 /atom/movable/screen/ghost/moveup
 	name = "move up"
-	icon_state = "pai"
+	icon_state = "astrata_up"
 
 /atom/movable/screen/ghost/moveup/Click()
 	var/mob/dead/observer/G = usr
@@ -82,7 +82,7 @@
 
 /atom/movable/screen/ghost/movedown
 	name = "move down"
-	icon_state = "pai"
+	icon_state = "astrata_down"
 
 /atom/movable/screen/ghost/bigassuselessbutton
 	name = "AFTER LIFE"

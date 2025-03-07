@@ -1,7 +1,7 @@
 #define SPELL_FIREBALL_old							/obj/effect/proc_holder/spell/aimed/fireball
 #define SPELL_BLINDNESS_AOE							/obj/effect/proc_holder/spell/aoe_turf/blindness
 #define SPELL_KNOCK									/obj/effect/proc_holder/spell/aoe_turf/knock
-#define SPELL_REPULSE								/obj/effect/proc_holder/spell/aoe_turf/repulse
+#define SPELL_REPULSE								/obj/effect/proc_holder/spell/aoe_turf/repulse	//This is the one we use.
 #define SPELL_REPULSE_XENO							/obj/effect/proc_holder/spell/aoe_turf/repulse/xeno
 #define SPELL_TIMESTOP								/obj/effect/proc_holder/spell/aoe_turf/timestop
 #define SPELL_BLOODCRAWL							/obj/effect/proc_holder/spell/bloodcrawl
@@ -131,3 +131,11 @@
 #define SPELL_VAMP_REJUV							/obj/effect/proc_holder/spell/targeted/vamp_rejuv
 #define SPELL_VOICE_OF_GOD							/obj/effect/proc_holder/spell/voice_of_god
 #define SPELL_VOICE_OF_GOD_CLOWN					/obj/effect/proc_holder/spell/voice_of_god/clown
+#define SPELL_METEOR								/obj/effect/proc_holder/spell/invoked/meteor_storm
+#define SPELL_SUNDER_LIGHTNING						/obj/effect/proc_holder/spell/invoked/sundering_lightning
+#define SPELL_FROSTBOLT								/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+#define SPELL_LIGHTNINGLURE							/obj/effect/proc_holder/spell/targeted/lightninglure
+#define SPELL_ARCYNE_STORM							/obj/effect/proc_holder/spell/invoked/arcyne_storm
+#define SPELL_SUMMON_WEAPON							/obj/effect/proc_holder/spell/targeted/summonweapon
+#define SPELL_MENDING								/obj/effect/proc_holder/spell/invoked/mending
+#define SPELL_REPEL									/obj/effect/proc_holder/spell/invoked/projectile/repel

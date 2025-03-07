@@ -45,3 +45,9 @@
 	name = "Iron Spear"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/spear)
+
+
+/datum/supply_pack/rogue/bandit/Mage/mercury
+	name = "bottle of mercury"
+	cost = 50
+	contains = list(/obj/item/reagent_containers/glass/bottle/mercury)

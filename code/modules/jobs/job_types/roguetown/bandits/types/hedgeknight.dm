@@ -50,8 +50,8 @@
 	H.change_stat("speed", -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
-	H.verbs |= /mob/proc/haltyell
 	H.ambushable = FALSE
 
 /obj/effect/proc_holder/spell/invoked/joincomrades
