@@ -29,8 +29,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("perception", 3)
-		H.change_stat("endurance", 1)
-		H.change_stat("speed", 2)
+		H.change_stat("endurance", 2)
+		H.change_stat("speed", 1)
 	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
