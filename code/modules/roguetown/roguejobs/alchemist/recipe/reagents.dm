@@ -116,7 +116,7 @@
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 22.5)
-	required_reagents = list(/datum/reagent/medicine/lesserhealthpot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
+	required_reagents = list(/datum/reagent/medicine/lessermanapot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
 
 	
 /datum/chemical_reaction/alch/greatermana
