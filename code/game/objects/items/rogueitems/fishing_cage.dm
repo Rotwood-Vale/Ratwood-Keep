@@ -1,6 +1,6 @@
 /obj/item/fishingcage
 	name = "fishing cage"
-	desc = "A cage used with bait to catch shellfish without much work outside of deploying it."
+	desc = "A miraculous invention. Just place a worm inside after putting it on the water and it will magically turn into a fish. Just don't spend too much time staring at it."
 	icon_state = "fishingcage"
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_BULKY

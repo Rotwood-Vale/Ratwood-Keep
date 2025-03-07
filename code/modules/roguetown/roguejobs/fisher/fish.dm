@@ -110,7 +110,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/shrimp
 	name = "shrimp"
-	desc = "As shrimple as that."
+	desc = "A tiny shellfish, little bigger than your thumb. Often nicknamed butterflies of the sea, they taste great in gumbo when mixed with some cabbage and onion."
 	icon_state = "shrimp"
 	sellprice = 5
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
@@ -118,7 +118,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/oyster
 	name = "oyster"
-	desc = "Description goes here" //Still need description
+	desc = "A stubborn shellfish that MIGHT hide a prize within, they taste great in chowder, mixed with some onion and powder on a bowl."
 	icon_state = "oyster"
 	sellprice = 5
 	var/closed
@@ -181,13 +181,13 @@
 	name = "oyster shell"
 	icon = 'icons/roguetown/misc/fish.dmi'
 	icon_state = "oyster_shell"
-	desc = "" //DESCRIPTION!!
+	desc = ""
 	dropshrink = 0.5
 	sellprice = 3
 
 /obj/item/reagent_containers/food/snacks/fish/crab
 	name = "crab"
-	desc = "Description goes here" //Still need description
+	desc = "A defensive shellfish that's a real hassle to crack open, they taste great when made into cakes with dough."
 	icon_state = "crab"
 	sellprice = 10
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
@@ -196,7 +196,7 @@
 
 /obj/item/reagent_containers/food/snacks/fish/lobster
 	name = "lobster"
-	desc = "Description goes here" //Still need description
+	desc = "An exotic-looking shellfish with entirely too many legs, the best meat is at it's tail."
 	icon_state = "lobster"
 	sellprice = 15
 	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
