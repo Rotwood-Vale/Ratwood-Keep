@@ -181,7 +181,6 @@
 
 	// Finally create bounty
 	add_bounty(target, amount, FALSE, reason, user.real_name, withdrawable, number)
-	ADD_TRAIT(target, TRAIT_WANTED, TRAIT_GENERIC)
 
 	//Announce it locally and on scomm
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
