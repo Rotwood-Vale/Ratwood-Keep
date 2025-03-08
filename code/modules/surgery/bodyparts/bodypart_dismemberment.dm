@@ -287,9 +287,9 @@
 		for(var/obj/item/worn_item in worn_items)
 			owner.dropItemToGround(worn_item, force = TRUE)
 
-	owner.ghostize(1)
-	if(brainmob)
-		brainmob.ghostize(1)
+//	owner.ghostize(can_reenter_corpse = TRUE)
+//	if(brainmob)
+//		brainmob.ghostize(can_reenter_corpse = TRUE)
 
 	qdel(owner.GetComponent(/datum/component/creamed)) //clean creampie overlay
 
