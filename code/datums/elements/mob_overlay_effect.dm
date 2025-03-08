@@ -45,7 +45,7 @@
 	SIGNAL_HANDLER
 	var/mob/mob = target
 	if(mob.get_filter(MOB_MOVING_EFFECT_MASK))
-		animate(mob.get_filter(MOB_MOVING_EFFECT_MASK), y = -32, time = 0)
+		mob.remove_filter(MOB_MOVING_EFFECT_MASK)
 		if(ismob(mob))
 			mob.update_vision_cone()
 		for(var/mob/living/carbon/human/human in view(mob, 7))
