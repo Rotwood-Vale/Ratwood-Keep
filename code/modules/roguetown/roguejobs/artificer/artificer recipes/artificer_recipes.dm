@@ -425,18 +425,18 @@
 	i_type = "Firearms"
 
 /datum/artificer_recipe/guns/barrel
-	name = "Gun Barrel (+1 Steel)"
+	name = "Gun Barrel (+3 Steel)"
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/gunbarrel
-	additional_items = list(/obj/item/ingot/steel = 1)
+	additional_items = list(/obj/item/ingot/steel = 3)
 	hammers_per_item = 5
 	skill_level = 2
 
 /datum/artificer_recipe/guns/parts
-	name = "Gun Lock (+1 Bronze Cog)"
+	name = "Gun Lock (+1 Bronze Cog, +2 Steel)"
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/gunlock
-	additional_items = list(/obj/item/roguegear/bronze = 1)
+	additional_items = list(/obj/item/roguegear/bronze = 1, /obj/item/ingot/steel = 2)
 	hammers_per_item = 5
 	skill_level = 3
 
