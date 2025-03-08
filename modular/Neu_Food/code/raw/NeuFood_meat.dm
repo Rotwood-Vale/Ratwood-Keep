@@ -159,3 +159,23 @@
 	mill_result = /obj/item/reagent_containers/powder/alch/mincef
 	chopping_sound = TRUE
 
+/* .........   Shellfish    ................. */
+/obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
+	name = "shellfish meat"
+	desc = "Chop to create mince, bake or fry to make fried shellfish meat"
+	icon_state = "shellfish_meat"
+	rotprocess = SHELFLIFE_LONG //Fish don't rot
+	mill_result = /obj/item/reagent_containers/powder/alch/mincef
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	slices_num = 1
+	slice_bclass = BCLASS_CHOP
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
+	eat_effect = null
+	slices_num = 0
+	name = "fried shellfish"
+	desc = "Description goes here"
+	icon_state = "shellfish_meat_cooked"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
