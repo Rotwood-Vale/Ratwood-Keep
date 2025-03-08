@@ -80,7 +80,23 @@
 	name = "Smoke bomb"
 	cost = 25
 	contains = list(/obj/item/smokebomb)
+
 /datum/supply_pack/rogue/bandit/Knave/bombpouch
 	name = "Empty bomb pouch"
 	cost = 40
 	contains = list(/obj/item/ammo_holder/bomb)
+
+/datum/supply_pack/rogue/bandit/Knave/arquebus_pistol
+	name = "Arquebus Pistol"
+	cost = 350
+	contains = list(/obj/item/gun/ballistic/firearm/arquebus_pistol)
+
+/datum/supply_pack/rogue/bandit/Knave/powderflask
+	name = "Powderflask"
+	cost = 50
+	contains = list(/obj/item/powderflask)
+
+/datum/supply_pack/rogue/bandit/Knave/bullet_lead
+	name = "Bullet Pouch"
+	cost = 100
+	contains = list(/obj/item/ammo_holder/bullet/lead)
