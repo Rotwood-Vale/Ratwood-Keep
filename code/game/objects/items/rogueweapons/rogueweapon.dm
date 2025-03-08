@@ -22,7 +22,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	obj_flags = CAN_BE_HIT
 	blade_dulling = DULLING_BASH
-	max_integrity = 200
+	max_integrity = 300
 	wdefense = 3
 	experimental_onhip = TRUE
 	experimental_onback = TRUE
