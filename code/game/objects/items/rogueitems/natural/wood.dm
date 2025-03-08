@@ -1,3 +1,7 @@
+/obj/item/grown/log
+	var/sawable = FALSE // Checks for attack_by procs to prevent wood dupe
+	var/biglog = FALSE // Checks if the sawned log is log and not small log or other subsidiary obj 
+
 /obj/item/grown/log/tree
 	icon = 'icons/roguetown/items/natural.dmi'
 	name = "log"
@@ -20,12 +24,18 @@
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
 	var/lumber_amount = 2
 	metalizer_result = /obj/item/rogueore/iron
+	sawable = TRUE
+	biglog = TRUE
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 	var/planking_time = (40 - (skill_level * 5))
 	if(lumber_amount && I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
+		if(!sawable || !biglog)
+			user.visible_message("<span class='notice'>[src] can't be made into something smaller!</span>")
+			get_complex_damage(I, user)
+			return
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
 		user.visible_message("<span class='notice'>[user] starts sawing [src] to smaller pieces.</span>")
 		if(do_after(user, planking_time))
@@ -78,10 +88,10 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 	metalizer_result = /obj/item/rogueore/copper
-
+	biglog = FALSE
 
 /obj/item/grown/log/tree/small/attackby(obj/item/I, mob/living/user, params)
-	if(item_flags & IN_STORAGE)
+	if(item_flags & IN_STORAGE || !sawable)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/carpentry)
@@ -100,7 +110,6 @@
 			return
 	..()
 
-
 //................	Lumber essence	............... //
 /obj/item/grown/log/tree/small/essence
 	name = "essence of lumber"
@@ -110,12 +119,14 @@
 	firefuel = 60 MINUTES // Extremely poweful fuel.
 	w_class = WEIGHT_CLASS_SMALL
 	metalizer_result = /obj/item/rogueore/gold
+	sawable = FALSE
 
 //................	Unstrung bow	............... //
 /obj/item/grown/log/tree/bowpartial
 	name = "unstrung bow"
 	desc = "A partially completed bow, still waiting to be strung."
 	icon_state = "bowpartial"
+	static_debris = list(/obj/item/grown/log/tree/stick = 1)
 	max_integrity = 30
 	firefuel = 10 MINUTES
 	twohands_required = FALSE
@@ -124,6 +135,7 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 	metalizer_result = null
+	sawable = FALSE
 
 //................	Stick	............... //
 /obj/item/grown/log/tree/stick
@@ -141,6 +153,7 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
 	metalizer_result = /obj/item/needle
+	sawable = FALSE
 
 /obj/item/grown/log/tree/stick/Crossed(mob/living/L)
 	. = ..()
@@ -236,9 +249,7 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
 	metalizer_result = /obj/item/ammo_casing/caseless/rogue/arrow/iron
-
-/obj/item/grown/log/tree/stake/attackby(obj/item/I, mob/user, params)
-	return
+	sawable = FALSE
 
 //................	Wooden planks	............... //
 /obj/item/natural/wood/plank
@@ -262,6 +273,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	bundletype = /obj/item/natural/bundle/plank
 	smeltresult = /obj/item/ash
+	metalizer_result = /obj/item/rogueore/tin
+
 /obj/item/natural/wood/plank/attack_right(mob/living/user)
 	if(user.get_active_held_item())
 		return
@@ -310,4 +323,3 @@
 	icon2 = "plankbundle3"
 	icon2step = 5
 	smeltresult = /obj/item/ash
-
