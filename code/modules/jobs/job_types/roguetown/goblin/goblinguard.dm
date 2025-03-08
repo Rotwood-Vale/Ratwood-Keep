@@ -2,6 +2,7 @@
 	title = "Goblin Guard"
 	flag = GOBLINGUARD
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 3//From 6
 	spawn_positions = 3//From 6
@@ -16,6 +17,7 @@
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinguard
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
