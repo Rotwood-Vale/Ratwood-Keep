@@ -8,6 +8,7 @@
 	ADD_TRAIT(src, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DARKVISION_BETTER, TRAIT_GENERIC)
 
+
 /mob/living/simple_animal/hostile/retaliate/rogue/voidstoneobelisk/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the obelisk
 	return
 
@@ -49,6 +50,7 @@
 
 	base_intents = list(/datum/intent/simple/slam)
 	attack_sound = list('sound/combat/hits/onstone/wallhit.ogg')
+	obj_damage = 75
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	STAEND = 20
@@ -324,6 +326,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/proc/unrage()
 	enraged = FALSE
 
+
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon
 	name = "void dragon"
 	desc = "An ancient creature from a bygone age. Now would be a good time to run."
@@ -342,6 +345,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	base_intents = list(/datum/intent/unarmed/dragonclaw)
 	faction = list("abberant")
+	obj_damage = 400	//Behold, nothing shall keep the dragon out
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	retreat_distance = 0
