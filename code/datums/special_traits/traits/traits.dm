@@ -511,6 +511,7 @@
 		if(7)
 			reason = "Robbing a Noble"
 	add_bounty(character.real_name, amount, FALSE, reason, employer)
+	ADD_TRAIT(character, TRAIT_WANTED, TRAIT_GENERIC)
 	if(!silent)
 		to_chat(character, span_notice("Whether I've done it or not, I have been accused of [reason] and the [employer] put a bounty on my head!"))
 

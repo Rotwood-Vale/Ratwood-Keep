@@ -175,7 +175,7 @@
 					commie_text = span_userdanger("BANDIT!")
 
 			if(HAS_TRAIT(src, TRAIT_WANTED))
-				. += span_userdanger("BANDIT!")
+				. += span_userdanger("THERE IS A BOUNTY ON HIS HEAD!")
 
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
