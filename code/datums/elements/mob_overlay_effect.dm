@@ -45,7 +45,7 @@
 	SIGNAL_HANDLER
 	var/mob/mob = target
 	if(mob.get_filter(MOB_MOVING_EFFECT_MASK))
-		animate(mob.get_filter(MOB_MOVING_EFFECT_MASK), y = -32, time = 0)
+		mob.remove_filter(MOB_MOVING_EFFECT_MASK) // REDMOON EDIT - fix_for_mob_legs_in_snow_during_filter_effects - ноги персонажа больше не пропадают в снегу, когда ему дается дополнительный фильтр (например, от лечения) - WAS: animate(mob.get_filter(MOB_MOVING_EFFECT_MASK), y = -32, time = 0)
 		if(ismob(mob))
 			mob.update_vision_cone()
 		for(var/mob/living/carbon/human/human in view(mob, 7))
