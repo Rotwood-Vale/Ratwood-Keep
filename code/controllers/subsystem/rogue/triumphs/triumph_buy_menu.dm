@@ -30,10 +30,12 @@
 	if(!linked_client)
 		return
 	var/data = {"
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<!DOCTYPE html>
+	<html lang='en'>	
 	<html>
 		<head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 			<style>
 				@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
 				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
