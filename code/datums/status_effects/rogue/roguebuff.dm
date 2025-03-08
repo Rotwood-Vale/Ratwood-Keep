@@ -435,3 +435,14 @@
 	name = "Greater Mana use"
 	desc = "My body feels well rested and i feel smarter."
 	icon_state = "muscles"
+
+/datum/status_effect/buff/sermon
+	id = "sermon"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
+	effectedstats = list("fortune" = 1)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/sermon
+	name = "sermon"
+	desc = "You feel inspired by the sermon, your luck increases!"
+	icon_state = "buff"
