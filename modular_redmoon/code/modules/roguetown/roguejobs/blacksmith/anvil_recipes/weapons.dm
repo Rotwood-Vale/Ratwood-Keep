@@ -1,21 +1,8 @@
-/datum/anvil_recipe/weapons/decsword/steel
-	name = "Decorated Sword (+1 Gold)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/gold)
-	created_item = /obj/item/rogueweapon/sword/decorated
+/datum/anvil_recipe/weapons/decsword
 	skill_level = 5
 
-/datum/anvil_recipe/weapons/decsaber/steel
-	name = "Decorated Sabre (+1 Gold)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/gold)
-	created_item = /obj/item/rogueweapon/sword/sabre/dec
+/datum/anvil_recipe/weapons/decsaber
 	skill_level = 5
 
-/datum/anvil_recipe/weapons/decrapier/steel
-	name = "Decorated Rapier (+1 Gold)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/gold)
-	created_item = /obj/item/rogueweapon/sword/rapier/dec
+/datum/anvil_recipe/weapons/decrapier
 	skill_level = 5
-
