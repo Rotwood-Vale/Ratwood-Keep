@@ -126,11 +126,11 @@
 	var/list/sharedSoullinks //soullinks we are a/the sharer of
 
 	/// Long term - Blue bar
-	var/max_energy = 1000
+	var/max_energy = 2600
 	/// Short term - Green bar
-	var/max_stamina = 100
+	var/max_stamina = 2600
 	/// Long term - Blue bar
-	var/energy = 1000
+	var/energy = 2600
 	/// Short term - Green bar
 	var/stamina = 0
 
