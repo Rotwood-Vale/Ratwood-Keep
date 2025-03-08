@@ -41,6 +41,33 @@
 #define TRAIT_GOODRUNNER "Good Runner"
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
+#define TRAIT_DUCAL_FAMILY "Member of local ducal family"
+#define TRAIT_CLERGY_MEMBER "Member of clergy"
+#define TRAIT_FOLLOWER_TEN "Follower of the Four"
+#define TRAIT_INHUMMEN_FOLLOWER "Follower of the Ten"
+#define TRAIT_DARKLEGACY "Dark Legacy"
+#define TRAIT_KOBOLD 
+#define	TRAIT_DRAKIAN
+#define TRAIT_HALFKIN
+#define	TRAIT_WILDKIN
+#define TRAIT_VERMINVOLK
+#define	TRAIT_AXIAN
+#define TRAIT_HUMAN
+#define	TRAIT_TIEFLING
+#define TRAIT_SEELIE
+#define	TRAIT_HALFORC
+#define TRAIT_HALFELF
+#define	TRAIT_AASIMAR
+#define TRAIT_ELF
+#define	TRAIT_DROW
+#define	TRAIT_GOBLIN
+#define TRAIT_SISSEAN
+#define	TRAIT_LUPIAN
+#define TRAIT_FLUVIAN
+#define	TRAIT_TABAXI
+#define TRAIT_VULPKANIN
+#define	TRAIT_KOBOLD
+
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -106,8 +133,6 @@
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
-
-
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),

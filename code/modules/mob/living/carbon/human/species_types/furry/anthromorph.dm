@@ -21,7 +21,7 @@
 		LIPS,
 		HAIR,
 	)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WILDKIN)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	attack_verb = "slash"
 	possible_ages = ALL_AGES_LIST

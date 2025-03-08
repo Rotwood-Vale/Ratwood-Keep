@@ -112,6 +112,7 @@
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_templar(H)

@@ -102,6 +102,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", -1)
+		ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new SPELL_MALUM_FLAME_ROGUE) // weaker astra fire spell. mostly for lighting things.
 

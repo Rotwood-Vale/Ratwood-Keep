@@ -50,6 +50,7 @@
 		H.change_stat("perception", 1)
 		H.change_stat("speed", 2)
 		H.change_stat("endurance", 1)
+		ADD_TRAIT(H, TRAIT_CLERGY_MEMBER, TRAIT_GENERIC)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_churchling(H)

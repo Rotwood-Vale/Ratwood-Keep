@@ -28,7 +28,7 @@
 	However, the rise of humans have caused their ambitions to crumble, forcing them to work with other races, especially at the climax of the Great Sissean Uprising. \
 	Furthermore, dwindling numbers have caused Drakians to increasingly abandon the ways of old, forcing them to adapt to a more modern way of life."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
-	inherent_traits = list(TRAIT_NOMOBSWAP)
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_DRAKIAN)
 	possible_ages = ALL_AGES_LIST
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
