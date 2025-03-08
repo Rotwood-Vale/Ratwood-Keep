@@ -56,7 +56,7 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		H.mind.adjust_spellpoints(1)
+		H.mind.adjust_spellpoints(6) // REDMOON EDIT - добавлено 8 поинтов вместо 1, т.к. у него со старта книга говна и человеку нужно часа 2 дрочить ради получения 2-3 спеллов, а так получается умеренный старт
 		if(H.age == AGE_OLD)
 			H.change_stat("intelligence", 4)
 			H.change_stat("strength", -2)
