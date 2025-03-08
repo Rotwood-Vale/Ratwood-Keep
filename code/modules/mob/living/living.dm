@@ -721,6 +721,9 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal, admin_revive)
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
+		remove_status_effect(/datum/status_effect/debuff/death_weaken)
+		remove_status_effect(/datum/status_effect/debuff/death_embrace)
+		remove_status_effect(/datum/status_effect/debuff/death_claimed)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
 		GLOB.dead_mob_list -= src
 		GLOB.alive_mob_list += src

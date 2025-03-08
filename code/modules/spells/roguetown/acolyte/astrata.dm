@@ -79,8 +79,8 @@
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
-		if(!target.stat == DEAD)
-			to_chat(user, span_warning("Nothing happens, they need to be dead first."))
+		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
 		testing("revived2")
