@@ -68,7 +68,7 @@
 	warming = 5 MINUTES
 	bitesize = 4
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz/plated
 	icon_state = "grenzbun_plated"
@@ -118,6 +118,7 @@
 	name = "fried cackleberries"
 	desc = "Double the yolks, double the fun."
 	icon_state = "seggs"
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
