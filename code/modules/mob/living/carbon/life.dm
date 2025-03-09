@@ -673,10 +673,13 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	var/can_sleep = TRUE
 	var/bleedrate
 	var/cause = "I can't sleep because..."
-	for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
-		if(thing.clothing_flags & CANT_SLEEP_IN)
-			can_sleep = FALSE
-			cause += " \n\The [thing] bothers me..."
+	if(ishuman(src)) // REDMOON ADD - allow_sleeping_with_helmets_on_hip
+		var/mob/living/carbon/human/user = src // REDMOON ADD - allow_sleeping_with_helmets_on_hip
+		for(var/obj/item/clothing/thing in list(user.wear_shirt, user.wear_armor, user.head)) // REDMOON EDIT - allow_sleeping_with_helmets_on_hip - WAS: for(var/obj/item/clothing/thing in get_equipped_items(FALSE))
+			if(thing.clothing_flags & CANT_SLEEP_IN)
+				can_sleep = FALSE
+				cause += " \n\The [thing] bothers me..."
+				break // REDMOON ADD - дальнейшие проверки не имеют смысла
 
 	if(HAS_TRAIT(src, TRAIT_NUDE_SLEEPER))
 		if(length(get_equipped_items()))
