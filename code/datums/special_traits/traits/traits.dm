@@ -431,6 +431,22 @@
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
 
+/datum/special_trait/short // Nuetral because hitting feet and because it's better being next to giant
+	name = "Midget"
+	greet_text = span_notice("I've always been called a midget. I am bullied and pushed around for my lesser stature, and this world made for taller folk doesn't help.")
+	req_text = "Not a kobold, seelie, verminvolk or a dwarf" //already midgets or tiny
+	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
+	weight = 60
+
+/datum/special_trait/short/on_apply(mob/living/carbon/human/character)
+	ADD_TRAIT(character, TRAIT_MIDGET, "[type]")
+	character.mob_size -= 1
+	character.change_stat("strength", -2)
+	character.change_stat("endurance", 1)
+	character.change_stat("speed", 3)
+	character.transform = character.transform.Scale(0.75, 0.75)
+	character.transform = character.transform.Translate(0, (0.05 * 15))
+	character.update_transform()
 
 /datum/special_trait/atheism
 	name = "Atheist"

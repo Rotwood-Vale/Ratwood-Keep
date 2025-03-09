@@ -157,3 +157,8 @@
 	stressadd = -5
 	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES
+
+/datum/stressevent/midget
+	stressadd = -3
+	desc = span_green("Hah. Midget.")
+	timer = 2 MINUTES
