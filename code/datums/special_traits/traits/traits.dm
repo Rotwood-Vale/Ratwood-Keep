@@ -696,7 +696,7 @@
 
 /datum/special_trait/runic_faith
 	name = "Runic Faith"
-	greet_text = span_notice("I keep two runelocks on me at all times. Sadly I forgot to load them today.")
+	greet_text = span_notice("I keep two runelocks on me at all times. Some bullets behind the big clock.")
 	req_text = "Be a Priest or Priestess"
 	allowed_jobs = list(/datum/job/roguetown/priest)
 	weight = 10
@@ -705,6 +705,9 @@
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
 	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+	character.mind.special_items["Ammo"] = /obj/item/ammo_casing/caseless/runelock
+	character.mind.special_items["More Ammo"] = /obj/item/ammo_casing/caseless/runelock
+	character.mind.special_items["Even More Ammo"] = /obj/item/ammo_casing/caseless/runelock
 
 
 /datum/special_trait/thinker
