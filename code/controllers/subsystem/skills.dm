@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(skills)
 	var/list/all_skills = list()
 	///Static assoc list of levels (ints) - strings
 	var/static/list/level_names = list( // Why did I change the level names you ask? It's very shrimple. Because they flow better in a sentence. Like-- "Journeymanly"??? "Apprenticely"???
-		SKILL_LEVEL_NOVICE = span_info(">Beginner"), 
+		SKILL_LEVEL_NOVICE = span_info("Beginner"), 
 		SKILL_LEVEL_APPRENTICE = span_info("Competent"), 
 		SKILL_LEVEL_JOURNEYMAN = span_biginfo("Proficient"), 
 		SKILL_LEVEL_EXPERT = span_biginfo("Expert"), 
