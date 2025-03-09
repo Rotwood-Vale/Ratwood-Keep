@@ -57,7 +57,7 @@
 #define TRAIT_SOUL_EXAMINE "Blessing of Necra" //can check bodies to see if they have departed
 #define TRAIT_ZIZO_MARKED "Blessing of Zizo" //basically just here so that they can avoid a negative moodlet
 #define TRAIT_CRACKHEAD "Blessing of Baotha" //will never overdose
-#define TRAIT_COMMIE "Blessing of Matthios" //recognized by bandits as an ally
+#define TRAIT_MATTHIOS_EYES "Matthios's Sight" //can see most expensive thing on a person
 #define TRAIT_CHOSEN "Consecrated Priest"
 #define TRAIT_NOCTURNAL "Noc's Moonlight" //Grants weak darkvision- lighting alpha 145, amplified for mages using the DV spell- alpha 200
 #define TRAIT_FORGEBLESSED "Malum's Devout" //Reduces the fatigue cost of smithing a bit.
@@ -86,7 +86,8 @@
 #define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
 #define TRAIT_LEPROSY "Leprosy"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
-
+#define TRAIT_WANTED "Wanted Brigand"
+#define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 
@@ -172,6 +173,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BOG_TREKKING = "Expert in navigating these lands.",
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
+	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
 ))
 
 // trait accessor defines

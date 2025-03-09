@@ -29,6 +29,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 		H.change_stat("strength", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 3)
+		H.change_stat("endurance", 2)
+	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
