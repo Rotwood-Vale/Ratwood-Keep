@@ -1,2 +1,2 @@
 /obj/structure/spacevine/dendor
-	max_integrity = 150
+	max_integrity = 50

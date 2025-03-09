@@ -2,7 +2,7 @@
 /obj/effect/proc_holder/spell/invoked/lesser_heal
 	name = "Miracle"
 	overlay_state = "lesserheal"
-	releasedrain = 25
+	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
 	range = 4
@@ -14,7 +14,7 @@
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
 	miracle = TRUE
-	devotion_cost = 10
+	devotion_cost = 25
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	. = ..()
