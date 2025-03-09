@@ -346,7 +346,7 @@ obj/item/hourglass/temporal/stop()
 	desc = "A radiantly shimmering sigil within an amulet, It seems to pulse with intense arcanic flows."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "amulet"
-	var/cdtime = 30 MINUTES
+	var/cdtime = 5 MINUTES
 	var/ready = TRUE
 
 /obj/item/clothing/ring/arcanesigil/attack_self(mob/living/carbon/human/user)
@@ -368,7 +368,7 @@ obj/item/hourglass/temporal/stop()
 		return
 	if(cooldowny)
 		if(world.time < cooldowny + cdtime)
-			to_chat(user, span_warning("Nothing happens."))
+			to_chat(user, span_warning("Pulses weakily-! It must still be gathering arcana."))
 			return
 	user.visible_message(span_warning("[user] looks through the [src]!"))
 	if(activate_sound)
