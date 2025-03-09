@@ -722,7 +722,49 @@
 	return (istype(target) && target.stat == CONSCIOUS)
 
 /mob/living/carbon/human/proc/can_be_firemanned(mob/living/carbon/target)
-	return (ishuman(target) && !(target.mobility_flags & MOBILITY_STAND))
+    return (ishuman(target) && !(target.mobility_flags & MOBILITY_STAND))
+
+/mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
+	if(pulling == target && stat == CONSCIOUS)
+		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
+		if(user == target && can_piggyback(target))
+			piggyback(target)
+			return TRUE
+		//If you dragged them to you and you're aggressively grabbing try to carry them
+		else if(user != target && can_be_firemanned(target))
+			var/obj/G = get_active_held_item()
+			if(G)
+				if(istype(G, /obj/item/grabbing))
+					fireman_carry(target)
+					return TRUE
+	. = ..()
+
+//IM GETTING GAPED AND GAPED MY KEYBOARD WILL NEVER BE THE SAME. PIGGY GRAB FOR NOT SEELIES I STOLE FROM AZURE THANKS TO FreeStylaLT
+/mob/living/carbon/human/proc/can_piggrab(mob/living/carbon/target)
+	return (istype(target) && target.stat == CONSCIOUS)
+
+/mob/living/carbon/human/proc/pig_carry(mob/living/carbon/target)
+	var/carrydelay = 50 //if you have latex you are faster at grabbing
+
+	var/backnotshoulder = FALSE
+	if(r_grab && l_grab)
+		if(r_grab.grabbed == target)
+			if(l_grab.grabbed == target)
+				backnotshoulder = TRUE
+
+	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
+		if(backnotshoulder)
+			visible_message(span_notice("[src] starts lifting [target] onto their back.."))
+		else
+			visible_message(span_notice("[src] starts lifting [target] onto their shoulder.."))
+		if(do_after(src, carrydelay, TRUE, target))
+			//Second check to make sure they're still valid to be carried
+			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
+				buckle_mob(target, TRUE, TRUE, 90, 0, 0)
+				return
+	to_chat(src, span_warning("I fail to carry [target]."))
+
+
 
 /mob/living/carbon/human/proc/fireman_carry(mob/living/carbon/target)
 	var/carrydelay = 50 //if you have latex you are faster at grabbing
