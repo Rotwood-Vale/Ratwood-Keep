@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
 	H.verbs |= /mob/living/carbon/human/proc/churchhereticsbrand
-
+	H.verbs |= /mob/living/carbon/human/proc/completesermon
 
 /datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
 	..()
@@ -240,3 +240,21 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
+
+/mob/living/carbon/human/proc/completesermon()
+    set name = "Sermon"
+    set category = "Priest"
+    if(!mind)
+        return
+    if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+        to_chat(src, span_warning("I need to do this in the chapel."))
+        return FALSE
+    visible_message("<span class='notice'>[src] begins preaching a sermon...</span>")
+    if(!do_after(src, 1200, target = src)) // 120 seconds
+        visible_message("<span class='warning'>[src] stops preaching.</span>")
+        return
+
+    visible_message("<span class='notice'>[src] finishes the sermon, inspiring those nearby!</span>")
+    for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles
+        H.apply_status_effect(/datum/status_effect/buff/sermon)
+        H.add_stress(/datum/stressevent/sermon)
