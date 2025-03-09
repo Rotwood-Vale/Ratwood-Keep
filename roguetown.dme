@@ -1955,6 +1955,7 @@
 #include "code\modules\surgery\surgeries\amputation.dm"
 #include "code\modules\surgery\surgeries\dislocation.dm"
 #include "code\modules\surgery\surgeries\fracture.dm"
+#include "code\modules\surgery\surgeries\hepatectomy.dm"
 #include "code\modules\surgery\surgeries\healing.dm"
 #include "code\modules\surgery\surgeries\limb_replacement.dm"
 #include "code\modules\surgery\surgeries\organ_manipulation.dm"
