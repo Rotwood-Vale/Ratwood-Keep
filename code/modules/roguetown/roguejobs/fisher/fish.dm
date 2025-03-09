@@ -131,13 +131,13 @@
 	var/pearl_weight
 	switch(name) //checks the rarity of the oyster via the name
 		if("legendary oyster")
-			pearl_weight = pickweight(list("bpearl" = 50, "pearl" =160, "nopearl"=25)) //specific weights should be modified due to balance later
+			pearl_weight = pickweight(list("bpearl" = 200, "pearl" =15, "nopearl"=15)) //specific weights should be modified due to balance later
 		if("ultra-rare oyster")
-			pearl_weight = pickweight(list("bpearl" = 20, "pearl" =120, "nopearl"=75))
+			pearl_weight = pickweight(list("bpearl" = 60, "pearl" =120, "nopearl"=35))
 		if("rare oyster")
-			pearl_weight = pickweight(list("bpearl" = 5, "pearl" =80, "nopearl"=150))
+			pearl_weight = pickweight(list("bpearl" = 40, "pearl" =80, "nopearl"=150))
 		if("common oyster")
-			pearl_weight = pickweight(list("bpearl" = 1, "pearl" =40, "nopearl"=200))
+			pearl_weight = pickweight(list("bpearl" = 10, "pearl" =40, "nopearl"=200))
 	switch(pearl_weight)
 		if("nopearl")
 			pearl = null
