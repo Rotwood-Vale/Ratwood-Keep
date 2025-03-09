@@ -13,9 +13,9 @@ SUBSYSTEM_DEF(skills)
 		SKILL_LEVEL_NOVICE = span_info("<span class='small'>Beginner</span>"), 
 		SKILL_LEVEL_APPRENTICE = span_info("Competent"), 
 		SKILL_LEVEL_JOURNEYMAN = span_biginfo("Proficient"), 
-		SKILL_LEVEL_EXPERT = span_biginfo("<span style='color: green;'>Expert</span>"), 
+		SKILL_LEVEL_EXPERT = span_biginfo("Expert"), 
 		SKILL_LEVEL_MASTER = "<b>Master</b>", 
-		SKILL_LEVEL_LEGENDARY = "<b><span style='color: gold;'>Legendary</span></b>",
+		SKILL_LEVEL_LEGENDARY = "<b><span style='color: green;'>Legendary</span></b>",
 	)//This list is already in the right order, due to indexing
 /datum/controller/subsystem/skills/Initialize(timeofday)
 	InitializeSkills()
