@@ -48,7 +48,7 @@
 				situational_bonus = 0
 				// the more natural stuff around US, the more we heal
 				for (var/obj/O in oview(5, user))
-					if (istype(O, /obj/structure/flora) || istype(O, /obj/structure/soil) || istype(O, /obj/structure/glowshroom))
+					if (istype(O, /obj/structure/flora) || istype(O, /obj/structure/soil) || istype(O, /obj/structure/glowshroom) || istype(O, /obj/structure/spacevine))
 						situational_bonus = min(situational_bonus + 0.1, 2)
 				// Healing before the oaken avatar of Dendor in the Druid Grove (exceptionally rare otherwise) supercharges their healing
 				if (situational_bonus > 0)
