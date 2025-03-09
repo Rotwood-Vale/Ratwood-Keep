@@ -170,7 +170,7 @@
 		M.remove_status_effect(/datum/status_effect/buff/t2liver)
 		REMOVE_TRAIT(M, TRAIT_ROT_EATER, TRAIT_GENERIC)
 
-/atom/movable/screen/alert/status_effect/buff/t2liver
+/atom/movable/screen/alert/status_effect/buff/t3liver
 	name = "Corrupted liver"
 	desc = "This cursed thing is inside me now."
 
