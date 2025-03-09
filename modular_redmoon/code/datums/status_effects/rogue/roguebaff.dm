@@ -211,5 +211,5 @@
 		if(H.mind?.has_antag_datum(/datum/antagonist))
 			if(!H.mind?.isactuallygood())
 				continue
-		H.energy_add(1)
-		H.stamina_add(-0.5)
+		H.energy_add(2)
+		H.stamina_add(-1, internal_regen = FALSE)
