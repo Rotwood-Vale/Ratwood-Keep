@@ -102,3 +102,95 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	damage += 100/severity
+
+/obj/item/organ/liver/t1
+	name = "completed liver"
+	icon_state = "liver"
+	desc = "The perfect art of Lady Pestra itself. This must be as she would wish to see it. Good work, student."
+	toxTolerance = 15 //can shrug off up to 15u of toxins
+	sellprice = 100
+
+/obj/item/organ/liver/t2
+	name = "blessed liver"
+	icon_state = "liver"
+	desc = "A liver that has received a blessing. A rare privilege granted only to Her followers."
+	toxTolerance = 35 //can shrug off up to 35u of toxins
+	toxLethality = 0.008 //-20% toxin dmg from sources
+	sellprice = 200
+
+
+/obj/item/organ/liver/t3
+	name = "corrupted liver"
+	icon_state = "liver"
+	desc = "A cursed, perverted artifact. It can serve you well—what sacrifice are you willing to offer to survive?"
+	alcohol_tolerance = 0.001
+	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
+	toxTolerance = 50 //ignore up to 50 tox
+	toxLethality = 0.005 //-50% toxin dmg from sources
+	sellprice = 300
+
+/datum/status_effect/buff/t1liver
+	id = "t1liver"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/t1liver
+
+/atom/movable/screen/alert/status_effect/buff/t1liver
+	name = "Completed liver"
+	desc = "I have better version of liver now "
+
+/obj/item/organ/liver/t1/Insert(mob/living/carbon/M)
+	..()
+	if(M)
+		M.apply_status_effect(/datum/status_effect/buff/t1liver)
+
+/obj/item/organ/liver/t1/Remove(mob/living/carbon/M, special = 0)
+	..()
+	if(M.has_status_effect(/datum/status_effect/buff/t1liver))
+		M.remove_status_effect(/datum/status_effect/buff/t1liver)
+
+/datum/status_effect/buff/t2liver
+	id = "t2liver"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/t2liver
+
+/atom/movable/screen/alert/status_effect/buff/t2liver
+	name = "Blessed liver"
+	desc = "Blessed organ, by Pestra..."
+
+/datum/status_effect/buff/t2liver/tick()
+    owner.adjustToxLoss(-0.1)
+
+/obj/item/organ/liver/t2/Insert(mob/living/carbon/M)
+	..()
+	if(M)
+		M.apply_status_effect(/datum/status_effect/buff/t2liver)
+		ADD_TRAIT(M, TRAIT_ROT_EATER, TRAIT_GENERIC)
+
+/obj/item/organ/liver/t2/Remove(mob/living/carbon/M, special = 0)
+	..()
+	if(M.has_status_effect(/datum/status_effect/buff/t2liver))
+		M.remove_status_effect(/datum/status_effect/buff/t2liver)
+		REMOVE_TRAIT(M, TRAIT_ROT_EATER, TRAIT_GENERIC)
+
+/atom/movable/screen/alert/status_effect/buff/t2liver
+	name = "Corrupted liver"
+	desc = "This cursed thing is inside me now."
+
+/datum/status_effect/buff/t3liver/tick()
+    owner.adjustToxLoss(-0.2)
+
+/obj/item/organ/liver/t3/Insert(mob/living/carbon/M)
+	..()
+	if(M)
+		M.apply_status_effect(/datum/status_effect/buff/t3liver)
+		ADD_TRAIT(M, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
+		ADD_TRAIT(M, TRAIT_CRACKHEAD, TRAIT_GENERIC)
+		ADD_TRAIT(M, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+		ADD_TRAIT(M, TRAIT_ROT_EATER, TRAIT_GENERIC)
+
+/obj/item/organ/liver/t3/Remove(mob/living/carbon/M, special = 0)
+	..()
+	if(M.has_status_effect(/datum/status_effect/buff/t3liver))
+		M.remove_status_effect(/datum/status_effect/buff/t3liver)
+		REMOVE_TRAIT(M, TRAIT_ORGAN_EATER, TRAIT_GENERIC)
+		REMOVE_TRAIT(M, TRAIT_CRACKHEAD, TRAIT_GENERIC)
+		REMOVE_TRAIT(M, TRAIT_NASTY_EATER, TRAIT_GENERIC)
+		REMOVE_TRAIT(M, TRAIT_ROT_EATER, TRAIT_GENERIC)
