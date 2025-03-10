@@ -162,44 +162,41 @@
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
 
-	/datum/subclass/knight/hawk
-		name = "Hawk"
-		tutorial = "You strike down what displeases your lord from a distance. You are gifted with the bow, and tend to support from the safety of a horse."
-		outfit = /datum/outfit/job/roguetown/knight/hawk
+	/datum/subclass/knight/juggernaut
+		name = "Juggernaut"
+		tutorial = "Indomitable. You are hidden beneath so many layers of steel you find it hard to see properly, and have taken up non-traditional weapons in turn."
+		outfit = /datum/outfit/job/roguetown/knight/juggernaut
 		category_tags = list(CTAG_KNIGHT)
 		maximum_possible_slots = 1
 
-/datum/outfit/job/roguetown/knight/hawk/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/knight/juggernaut/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
-	neck = /obj/item/clothing/neck/roguetown/bervor
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1, /obj/item/storage/keyring/knight = 1)
-	beltr = /obj/item/rogueweapon/sword/short
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/cloth, /obj/item/storage/keyring/knight = 1)
+	beltl = /obj/item/rogueweapon/flail/sflail
 
 	
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("perception", 3)
+		H.change_stat("strength", 4)
+		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("speed", 1)
+		H.change_stat("constitution", 3)
+		H.change_stat("endurance", 3)
+		H.change_stat("speed", -2)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
@@ -207,17 +204,15 @@
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
-	var/weapons = list("Longbow", "Crossbow and Buckler")
+	var/weapons = list("Tower Shield and Iron Mace", "Buckler and Steel Mace")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
-		if("Longbow")
-			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			beltl = /obj/item/ammo_holder/quiver/arrows
+		if("Tower Shield and Iron Mace")
+			l_hand = /obj/item/rogueweapon/shield/tower/metal
+			beltr = /obj/item/rogueweapon/mace
 
-		if("Crossbow and Buckler")
-			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+		if("Buckler and Steel Mace")
 			l_hand = /obj/item/rogueweapon/shield/buckler
-			beltl = /obj/item/ammo_holder/quiver/bolts
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, -3, TRUE)
+			beltr = /obj/item/rogueweapon/mace/steel
+			
