@@ -34,6 +34,11 @@
 	cost = 80
 	contains = list(/obj/item/rogueweapon/pick)
 
+/datum/supply_pack/rogue/bandit/Gear/pickaxe
+	name = "Clockwork Drill"
+	cost = 350
+	contains = list(/obj/item/rogueweapon/pick/drill)
+
 /datum/supply_pack/rogue/bandit/Gear/Waterskin
 	name = "Waterskin"
 	cost = 50

@@ -317,10 +317,8 @@
 					return 0
 			if(!(user.mobility_flags & MOBILITY_STAND)) // REDMOON ADD START - economy_fix - копать можно только стоя
 				return FALSE
-			if(user.patron?.type == /datum/patron/inhumen/matthios) // Бандиты и другие маттиоситы презирают подобный тяжёлый труд
-				newforce *= 0.1
-				if(prob(2))
-					to_chat(user, span_warning(pick("Я служу Маттиосу чтобы заниматься этим дерьмом?..", "А я Малума не разгневаю, что в его камнях копаюсь...", "Я что, лох, чтобы этим заниматься?", "Грабануть было бы легче..."))) // REDMOON ADD END
+			if(user.patron?.type == /datum/patron/inhumen/matthios && prob(2))
+				to_chat(user, span_warning(pick("Я служу Маттиосу чтобы заниматься этим дерьмом?..", "А я Малума не разгневаю, что в его камнях копаюсь...", "Я что, лох, чтобы этим заниматься?", "Грабануть было бы легче..."))) // REDMOON ADD END
 			var/mob/living/miner = user
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
 			newforce = newforce * (1.5+(mineskill*3.65)) // REDMOON EDIT - economy_fix - скилл шахтёров влияет в 5 раза сильнее, чем раньше - WAS: newforce = newforce * (8+(mineskill*1.5))
