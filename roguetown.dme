@@ -2143,6 +2143,7 @@
 #include "modular_redmoon\code\datums\status_effects\roguestatus.dm"
 #include "modular_redmoon\code\datums\status_effects\rogue\roguebaff.dm"
 #include "modular_redmoon\code\datums\stress\negative_events.dm"
+#include "modular_redmoon\code\game\fbi_open_up.dm"
 #include "modular_redmoon\code\datums\stress\positive_events.dm"
 #include "modular_redmoon\code\game\objects\effects\music.dm"
 #include "modular_redmoon\code\game\objects\effects\temporary_visual.dm"

@@ -12,3 +12,14 @@
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
 	new /obj/item/reagent_containers/glass/bottle/rogue/healthpot(src)
+
+/datum/roguestock/import/craftsman
+	name = "Crate with Xylix Miracle"
+	desc = "A miracle for opening everything locked up."
+	item_type = /obj/structure/closet/crate/chest/steward/craftsman
+	export_price = 1500
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/craftsman/Initialize()
+	. = ..()
+	new /obj/item/fbi_open_up(src)
