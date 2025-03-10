@@ -227,8 +227,6 @@
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
-	cuckold_check()
-
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
@@ -786,25 +784,6 @@
 			return "<span class='love_high'>[string]</span>"
 		if(SEX_FORCE_EXTREME)
 			return "<span class='love_extreme'>[string]</span>"
-
-/datum/sex_controller/proc/cuckold_check()
-	//First, check if the target has a family.
-	var/datum/family/F = target.getFamily(TRUE)
-	if(!F)
-		return
-
-
-	//Second, check if target has a spouse relation.
-	var/list/rels = F.getRelations(target,REL_TYPE_SPOUSE)
-
-	if(!length(rels))
-		return
-
-	for(var/datum/relation/R in rels) //Loop through all the spouses (Should only be one.)
-		var/mob/living/carbon/human/cuckold = R.target:resolve()
-		if(!cuckold || cuckold == user)
-			continue
-		GLOB.cuckolds |= "[cuckold.job] [cuckold.real_name] (by [user.real_name])"
 
 /datum/sex_controller/proc/try_pelvis_crush(mob/living/carbon/human/target)
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
