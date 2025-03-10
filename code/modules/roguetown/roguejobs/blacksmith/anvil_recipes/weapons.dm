@@ -23,8 +23,8 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/sword/iron/messer
 
-/datum/anvil_recipe/weapons/iron/dagger
-	name = "Dagger"
+/datum/anvil_recipe/weapons/iron/idagger
+	name = "Iron Dagger"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 
@@ -96,8 +96,8 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/iron/messer/steel
 
-/datum/anvil_recipe/weapons/iron/dagger
-	name = "Dagger"
+/datum/anvil_recipe/weapons/iron/sdagger
+	name = "Steel Dagger"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
 
