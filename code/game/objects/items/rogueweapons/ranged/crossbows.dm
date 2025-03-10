@@ -123,11 +123,15 @@
 		spread = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
+		if(user.client.chargedprog < 100)
+			BB.damage = BB.damage - (BB.damage * (user.client.chargedprog / 100))
+			BB.embedchance = 5
+		else
+			if(user.STAPER > 10)
+				BB.damage = BB.damage * (user.STAPER / 10)
+			BB.embedchance = 100
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.1)
-		if(user.STAPER > 10)
-			BB.damage = BB.damage * (user.STAPER / 10)
-		BB.damage *= damfactor // Apply damfactor multiplier regardless of PER.
 	cocked = FALSE
 	. = ..()
 

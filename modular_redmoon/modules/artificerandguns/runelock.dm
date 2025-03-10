@@ -26,7 +26,7 @@
 	/// Reload time, in SECONDS
 	var/reload_time = 10
 	weapon_embed_chance = 100 //this was here to make a weaker version of the gun, didn't do it, still keeping this here to be used
-	damfactor = 5
+	damfactor = 2
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock_rk/getonmobprop(tag)
 	. = ..()
