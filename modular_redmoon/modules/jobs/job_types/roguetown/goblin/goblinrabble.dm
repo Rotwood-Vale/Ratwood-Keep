@@ -13,5 +13,6 @@
 /datum/outfit/job/roguetown/goblinrabble/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE) // economy_fix - рабы гоблинов умеют копать
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 	ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)

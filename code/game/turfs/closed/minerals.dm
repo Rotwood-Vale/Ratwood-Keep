@@ -170,7 +170,7 @@
 
 /turf/closed/mineral/random/Initialize()
 
-	mineralSpawnChanceList = typelist("mineralSpawnChanceList", mineralSpawnChanceList)
+//	mineralSpawnChanceList = typelist("mineralSpawnChanceList", mineralSpawnChanceList) -- REDMOON REMOVAL - economy_fix - не даёт работать функции check_for_bog_area()
 
 	if (display_icon_state)
 		icon_state = display_icon_state

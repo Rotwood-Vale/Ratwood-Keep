@@ -69,6 +69,11 @@
 		if(!hingot.currecipe)
 			if(!choose_recipe(user))
 				return
+		// REDMOON ADD START - economy_fix - проверка на достаточный уровень навыка для продолжения крафта
+		if(user.mind.get_skill_level(/datum/skill/craft/blacksmithing) < hingot.currecipe.skill_level)
+			to_chat(user, span_warning(hingot.currecipe.low_skill_message))
+			return FALSE
+		// REDMOON ADD END
 		advance_multiplier = 1 //Manual striking more effective than manual striking.
 		user.doing = FALSE
 		spawn(1)
@@ -121,7 +126,7 @@
 		return
 	..()
 
-/obj/machinery/anvil/proc/choose_recipe(user)
+/obj/machinery/anvil/proc/choose_recipe(mob/user)
 	if(!hingot || !hott)
 		return
 
@@ -152,7 +157,13 @@
 			appro_recipe -= R
 
 	if(appro_recipe.len)
-		var/datum/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy())
+		var/datum/anvil_recipe/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy()) // REDMOON ADD EDIT - economy_fix - обновлён датум для потребностей следующего изменения - WAS: var/datum/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy())
+		// REDMOON ADD START - economy_fix - проверка на возможность начать крафт с текущми уровнем навыка
+		if(chosen_recipe)
+			if(user.mind.get_skill_level(/datum/skill/craft/blacksmithing) < chosen_recipe.skill_level)
+				to_chat(user, span_warning("This recipe is too hard for me... I need to be more skilled."))
+				return FALSE
+		// REDMOON ADD END
 		if(!hingot.currecipe && chosen_recipe)
 			hingot.currecipe = new chosen_recipe.type(hingot)
 			return TRUE

@@ -41,7 +41,7 @@
 		if(anchored)
 			var/skill_level = user.mind.get_skill_level(/datum/skill/craft/hunting)
 			var/work_time = (120 - (skill_level * 15))
-			var/pieces_to_spawn = rand(1, min(skill_level + 1, 6)) //Random number from 1 to skill level
+			var/pieces_to_spawn = skill_level > 3 ? 2 : 1 // REDMOON EDIT - economy_fix - уменьшаем среднее количество добываемой отчищенной кожи - WAS rand(1, min(skill_level + 1, 6)) //Random number from 1 to skill level
 			var/sound_played = FALSE
 			to_chat(user, span_warning("I begin scraping the hide's skin..."))
 			if(!do_after(user, work_time, target = user))
