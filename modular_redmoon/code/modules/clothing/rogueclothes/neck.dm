@@ -29,3 +29,14 @@
 	sewrepair = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/cloth
+
+/obj/item/clothing/neck/roguetown/bervor/blacksteel
+	name = "Blacksteel Bevor"
+	desc = "A blacksteel bevor that protects the lower part of the head, that being the neck, mouth and nose."
+	icon_state = "bl_bevor"
+	icon = 'modular_redmoon/icons/neck.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/onmob_neck.dmi'
+	armor = list("blunt" = 95, "slash" = 100, "stab" = 95, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	smeltresult = /obj/item/ingot/blacksteel
+	max_integrity = 600
+	resistance_flags = FIRE_PROOF | LAVA_PROOF

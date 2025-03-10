@@ -49,6 +49,11 @@
 	cost = 200
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 
+/datum/supply_pack/rogue/bandit/Knight/Bevor
+	name = "Blacksteel Bevor"
+	cost = 350
+	contains = list(/obj/item/clothing/neck/roguetown/bervor/blacksteel)
+
 /datum/supply_pack/rogue/bandit/Knight/bracers
 	name = "Steel Bracers"
 	cost = 80

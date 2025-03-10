@@ -69,7 +69,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(lastfilechange)
-		if(world.time < lastfilechange + 3 MINUTES)
+		if(world.time < lastfilechange + 1 MINUTES)
 			say("NOT YET!")
 			return
 	if(!loaded)

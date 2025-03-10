@@ -23,6 +23,7 @@
 /datum/outfit/job/roguetown/deathknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	neck = /obj/item/clothing/neck/roguetown/bervor/blacksteel
 	cloak = /obj/item/clothing/cloak/cape/blkknight
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
@@ -110,15 +111,3 @@
 		for(var/obj/item/bodypart/B in H.bodyparts)
 			B.skeletonize(FALSE)
 		H.update_body()
-
-/obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/shoes/roguetown/armor/steel/blkknight/death
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/gloves/roguetown/plate/blk/death
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/under/roguetown/platelegs/blk/death
-	color = CLOTHING_BLACK
