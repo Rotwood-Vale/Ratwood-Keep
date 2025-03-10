@@ -836,13 +836,14 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /mob/proc/death_knight_spawn()
 	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a Death Knight?", ROLE_VAMPIRE, null, null, 10 SECONDS, src, POLL_IGNORE_NECROMANCER_SKELETON)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as a Death Knight?", ROLE_VAMPIRE, null, null, 10 SECONDS, src, POLL_IGNORE_NECROMANCER_SKELETON)
 	if(LAZYLEN(candidates))
+		if(QDELETED(src))
+			return
 		var/mob/dead/observer/C = pick(candidates)
 		log_game("VAMPIRE LOG: [C.ckey] chosen as new death knight.")
-		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern()
-		new_knight.forceMove(usr.loc)
-		new_knight.ckey = C.key
+		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern(get_turf(usr))
+		new_knight.key = C.key
 		new_knight.equipOutfit(/datum/job/roguetown/deathknight)
 		new_knight.regenerate_icons()
 	else

@@ -2161,6 +2161,7 @@
 #include "modular_redmoon\code\modules\antagonists\peasantrebel.dm"
 #include "modular_redmoon\code\modules\antagonists\prisoner.dm"
 #include "modular_redmoon\code\modules\antagonists\_common\antag_datum.dm"
+#include "modular_redmoon\code\modules\antagonists\roguetown\villian\vampirelord.dm"
 #include "modular_redmoon\code\modules\antagonists\purishep.dm"
 #include "modular_redmoon\code\modules\armor\rogueclothes\armor.dm"
 #include "modular_redmoon\code\modules\cargo\packsrogue\food.dm"
