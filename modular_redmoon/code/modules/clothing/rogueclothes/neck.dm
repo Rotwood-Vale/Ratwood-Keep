@@ -30,6 +30,9 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/cloth
 
+/obj/item/clothing/neck/roguetown/bervor
+	armor_class = ARMOR_CLASS_MEDIUM
+
 /obj/item/clothing/neck/roguetown/bervor/blacksteel
 	name = "Blacksteel Bevor"
 	desc = "A blacksteel bevor that protects the lower part of the head, that being the neck, mouth and nose."
