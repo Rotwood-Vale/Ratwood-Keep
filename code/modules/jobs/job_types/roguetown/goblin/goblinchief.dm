@@ -3,6 +3,7 @@
 	f_title = "Goblin Chieftess"
 	flag = GOBLINCHIEF
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -16,6 +17,7 @@
 	display_order = JDO_GOBLINCHIEF
 	min_pq = 6
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinchief
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -38,15 +40,17 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 6)
-		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 3)
+		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 
 //If a non-Goblin or Horc gets control by admin intervention.
