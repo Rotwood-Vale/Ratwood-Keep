@@ -86,10 +86,10 @@
 	cost = 40
 	contains = list(/obj/item/ammo_holder/bomb)
 
-/datum/supply_pack/rogue/bandit/Knave/arquebus_pistol
-	name = "Arquebus Pistol"
+/datum/supply_pack/rogue/bandit/Knave/flintgonne
+	name = "Flintgonne"
 	cost = 350
-	contains = list(/obj/item/gun/ballistic/firearm/arquebus_pistol)
+	contains = list(/obj/item/gun/ballistic/firearm/flintgonne)
 
 /datum/supply_pack/rogue/bandit/Knave/powderflask
 	name = "Powderflask"
