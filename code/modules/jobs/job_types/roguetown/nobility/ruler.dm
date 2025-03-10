@@ -140,6 +140,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/duchess
+		shirt = /obj/item/clothing/suit/roguetown/shirt/vampire
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
 		gloves = /obj/item/clothing/gloves/roguetown/leather/black
 
