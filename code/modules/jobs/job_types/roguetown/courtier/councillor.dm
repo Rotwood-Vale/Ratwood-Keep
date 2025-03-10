@@ -9,10 +9,10 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_COUNCILLOR
-	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the Marshal themselves; \
-			Regardless of origin, you now serve as an assistant, planner, and juror for the Marshal. \
+	tutorial = "You may have inherited this role, bought your way into it, or were appointed by the Duke themselves; \
+			Regardless of origin, you now serve as an assistant, planner, and juror for the Duke. \
 			You help him oversee the taxation, construction, and planning of new laws. \
-			You only answer to the Duke, Marshal, Duchess, Heir, or Heiress. However, your main focus is to assist the Marshal with their duties."
+			You only answer to the Duke, Duchess, Heir, or Heiress. However, your main focus is to assist the Duke with their duties and whatever you are assigned."
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/councillor
 	
@@ -63,4 +63,93 @@
 		H.change_stat("fortune", 1)
 	
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal)
 
+
+/mob/living/carbon/human/proc/request_law()
+	set name = "Request Law"
+	set category = "Council Law"
+	if(stat)
+		return
+	var/inputty = input("Write a new law", "MARTIAL LAW") as text|null
+	if(inputty)
+		if(hasomen(OMEN_NOLORD))
+			make_law(inputty)
+		else
+			var/lord = find_lord()
+			if(lord)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_law_requested), src, lord, inputty)
+			else
+				make_law(inputty)
+
+
+/mob/living/carbon/human/proc/request_law_removal()
+	set name = "Request Law Removal"
+	set category = "Council Law"
+	if(stat)
+		return
+	var/inputty = input("Remove a law", "MARTIAL LAW") as text|null
+	var/law_index = text2num(inputty) || 0
+	if(law_index && GLOB.laws_of_the_land[law_index])
+		if(hasomen(OMEN_NOLORD))
+			remove_law(law_index)
+		else
+			var/lord = find_lord()
+			if(lord)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_law_removal_requested), src, lord, law_index)
+			else
+				remove_law(law_index)
+
+
+/mob/living/carbon/human/proc/request_outlaw()
+	set name = "Request Outlaw"
+	set category = "Council Law"
+	if(stat)
+		return
+	var/inputty = input("Outlaw a person", "COUNCIL LAW") as text|null
+	if(inputty)
+		if(hasomen(OMEN_NOLORD))
+			make_outlaw(inputty)
+		else
+			var/lord = find_lord()
+			if(lord)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
+			else
+				make_outlaw(inputty)
+
+
+/proc/find_lord(required_stat = CONSCIOUS)
+	var/mob/living/lord
+	for(var/mob/living/carbon/human/H in GLOB.human_list)
+		if(!H.mind || H.job != "Duke" || (H.stat > required_stat))
+			continue
+		lord = H
+		break
+	return lord
+
+
+/proc/lord_law_requested(mob/living/councillor, mob/living/carbon/human/lord, requested_law)
+	var/choice = alert(lord, "The Council requests a new law!\n[requested_law]", "COUNCIL LAW REQUEST", "Yes", "No")
+	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+		if(councillor)
+			to_chat(councillor, span_warning("The Duke has denied the request for a new law!"))
+		return
+	make_law(requested_law)
+
+/proc/lord_law_removal_requested(mob/living/councillor, mob/living/carbon/human/lord, requested_law)
+	if(!requested_law || !GLOB.laws_of_the_land[requested_law])
+		return
+	var/choice = alert(lord, "The Council requests the removal of a law!\n[GLOB.laws_of_the_land[requested_law]]", "COUNCIL", "Yes", "No")
+	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+		if(councillor)
+			to_chat(councillor, span_warning("The Duke has denied the request for a law removal!"))
+		return
+	remove_law(requested_law)
+
+/proc/lord_outlaw_requested(mob/living/councillor, mob/living/carbon/human/lord, requested_outlaw)
+	var/choice = alert(lord, "The Council requests to outlaw someone!\n[requested_outlaw]", "COUNCIL OUTLAW REQUEST", "Yes", "No")
+	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+		if(councillor)
+			to_chat(councillor, span_warning("The Duke has denied the request for declaring an outlaw!"))
+		return
+	make_outlaw(requested_outlaw)

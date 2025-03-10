@@ -12,7 +12,7 @@
 	tutorial = "Either a fresh lowborn recruit or a veteran of the now defunct bog guard, you have been assigned to the newly established Vanguard. \
 	You have a roof over your head, coin in your pocket, and a thankless job protecting the outskirts of town against what lurks beyond.\
 	The Bastion must not fall."
-	display_order = JDO_TOWNGUARD
+	display_order = JDO_BOGGUARD
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/bog
 	give_bank_account = 16

@@ -152,9 +152,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Knight"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/sheriff
-	name = "Town Sheriff"
+/obj/effect/landmark/start/bailiff
+	name = "Bailiff"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/guard_captain
 	name = "Retinue Captain"
@@ -216,9 +217,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Gatemaster"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/watchman
-	name = "Watchman"
+/obj/effect/landmark/start/townwatch
+	name = "Town Watch"
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/villager
 	name = "Towner"
