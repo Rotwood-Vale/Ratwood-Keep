@@ -83,7 +83,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 		H.change_stat("strength", 4)
 		H.change_stat("perception", 1)
@@ -173,10 +173,8 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/cloth, /obj/item/storage/keyring/knight = 1)
+	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/cloth = 1, /obj/item/storage/keyring/knight = 1)
 	beltl = /obj/item/rogueweapon/flail/sflail
-
-	
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)

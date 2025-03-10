@@ -1,9 +1,9 @@
 /datum/subclass/grenzelhoft_kommandant
 	name = "Grenzelhoft Kommandant"
-	tutorial = "Unbreakable. Resolute. Master of the field. Fearless. \
-	These are the first words that come to mind when one mentions the Kommandant, the leader of the well reputed, \
-	expensive and noble Grenzelhoft mercenaries of the Free Corps of the Grenzel empire. \
-	The mercenaries of Grenzel rightfully fear and respect their Kommandant, walking to certain death on his one word."
+	tutorial = "You are the leader of the Grenzels of the Free Corps, \
+    expensive and reputable mercenaries. \
+    Be careful with your strategy in leading your men, for the wrong order could lead to their deaths, and remind them not to risk their lives if they aren't getting paid. \
+	Uphold the image of your company, and be fearless in battle, for you are an exemplar of Grenzelhoftian propaganda."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/axian,
