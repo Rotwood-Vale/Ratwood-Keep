@@ -63,7 +63,6 @@
 
 /datum/outfit/job/roguetown/knight/sentinel/pre_equip(mob/living/carbon/human/H)
 	..()
-	r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
