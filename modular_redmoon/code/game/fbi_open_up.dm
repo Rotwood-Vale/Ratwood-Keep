@@ -12,11 +12,11 @@
 	for(var/obj/structure/fluff/traveltile/all_traveltile in shuffle(GLOB.traveltiles))
 		if(all_traveltile == src)
 			continue
-		required_trait = null
-		can_gain_with_sight = TRUE
-		can_gain_by_walking = TRUE
-		check_other_side = TRUE
-		invis_without_trait = TRUE
+		all_traveltile.required_trait = null
+		all_traveltile.can_gain_with_sight = TRUE
+		all_traveltile.can_gain_by_walking = TRUE
+		all_traveltile.check_other_side = TRUE
+		all_traveltile.invis_without_trait = TRUE
 	priority_announce("All traveltiles opened up!", "OPEN THE DOOR", 'sound/misc/kybraxorop.ogg', "Xylix")
 	playsound(src, 'sound/ravein/small/hello_my_friend.ogg', 40, 1)
 	qdel(src)
