@@ -527,23 +527,16 @@ What it does:
 	- [X] Examining the platter tells you what is on the platter
 	- [X] Adds food overlay to the platre
 	- [X] Can remove item with right click
-	- [X] No QDEL
 	- [X] using it will eat the food on it
 	- Add 'smash' option to hit people with platters?
 		- If so does the food fly off it?
-	- [?] Falling with a platter should make the food fall off?
+	- [TO DO] Falling with / throwing a platter should make the food fall off?
 	- [X] Use initial[name] to revert platter back to being its original name once the food is removed
-	- [NO] Gives any food on it SHELFLIFE_LONG (Should it affect shelf life at all?) Seems like cooked food already does it anyway so whatever.
-	- Food might need to update its sprite on the platter. Do a check on whatever rot code is called?
-	- Removing it should remove that?
-	- /obj/item/reagent_containers/food/snacks/proc/become_rotten() <- Add code to make it call update_overlay() for platters!!!
-
 */
 
 // food paths as keys and the platter sprite they use
 // These are listed in the food.dmi (I don't want to have to add icon logic too... just keep it all in food.dmi...)
 // You can name them whatever you want I just did _platter to help distinguish from _plated which uses full sprites
-// Also I am keeping the plated ones in case it causes any conflicts with other shit
 // Keep the list alphabetical if you add to it.
 /datum/platter_sprites/
 	var/list/check_sprite = list(
@@ -576,7 +569,6 @@ What it does:
 		return ..()	
 
 
-//please work....
 /obj/item/cooking/platter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.used_intent.type == INTENT_HARM)
 		return ..()
@@ -628,7 +620,7 @@ What it does:
 			to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
 			if(!usr.put_in_hands(contents[1]))
 				contents[1].forceMove(get_turf(src))
-				
+
 	update_icon()
 	
 
