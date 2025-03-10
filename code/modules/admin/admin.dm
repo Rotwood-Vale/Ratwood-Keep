@@ -692,7 +692,7 @@
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/manage_free_slots()
-	if(!check_rights())
+	if(!check_rights(R_PERMISSIONS))
 		return
 	var/datum/browser/browser = new(usr, "jobmanagement", "Manage Free Slots", 520)
 	var/list/dat = list()
