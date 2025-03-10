@@ -964,7 +964,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		H.adjust_nutrition(-hunger_rate)
 
-		var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
 		if(!isseelie(H))
 			if(H.getorganslot(ORGAN_SLOT_BREASTS))
 				if(H.nutrition > NUTRITION_LEVEL_HUNGRY && H.getorganslot(ORGAN_SLOT_BREASTS).lactating && H.getorganslot(ORGAN_SLOT_BREASTS).milk_max > H.getorganslot(ORGAN_SLOT_BREASTS).milk_stored) //Vrell - numbers may need to be tweaked for balance but hey this works for now.
