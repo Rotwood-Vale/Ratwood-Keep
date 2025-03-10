@@ -9,6 +9,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	display_order = JDO_BAILIFF
 	tutorial = "Crime has always been a constant of your life, and you always chose the side of justice. \
 	You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly. \

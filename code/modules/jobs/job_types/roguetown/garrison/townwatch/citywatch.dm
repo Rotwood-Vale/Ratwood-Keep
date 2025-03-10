@@ -10,6 +10,7 @@
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED)
 	display_order = JDO_TOWNWATCH
+	allowed_patrons = ALL_NON_INHUMEN_PATRONS
 	whitelist_req = TRUE
 	tutorial = "Responsible for the safety of the city and the enforcement of the law, \
 				you walk among the downtrodden, delivering justice and protecting the innocent. \
