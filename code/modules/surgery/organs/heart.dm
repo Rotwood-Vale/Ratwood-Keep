@@ -234,7 +234,6 @@
 	desc = "They accepted this heresy to defeat a greater heresy. They call it a blessing, but we all know it’s not…"
 	sellprice = 200
 
-
 /obj/item/organ/heart/t3
 	name = "corrupted heart"
 	icon_state = "heart"
@@ -297,9 +296,8 @@
 		M.apply_status_effect(/datum/status_effect/buff/t3heart)
 		ADD_TRAIT(M, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 		ADD_TRAIT(M, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
-		ADD_TRAIT(M, TRAIT_TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		ADD_TRAIT(M, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(M, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
-		ADD_TRAIT(M, TRAIT_NORUN, TRAIT_GENERIC) //you are strong enough dude get some limits
 
 /obj/item/organ/heart/t3/Remove(mob/living/carbon/M, special = 0)
 	..()
@@ -307,7 +305,6 @@
 		M.remove_status_effect(/datum/status_effect/buff/t3heart)
 		REMOVE_TRAIT(M, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 		REMOVE_TRAIT(M, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
-		REMOVE_TRAIT(M, TRAIT_TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		REMOVE_TRAIT(M, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 		REMOVE_TRAIT(M, TRAIT_CRITICAL_RESISTANCE , TRAIT_GENERIC)
-		REMOVE_TRAIT(M, TRAIT_NORUN, TRAIT_GENERIC)
 		
