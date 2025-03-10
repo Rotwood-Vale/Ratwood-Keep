@@ -347,7 +347,7 @@
 	target.update_vision_cone()
 	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
 	. = ..()
-	
+
 // Darkling debuffs
 /datum/status_effect/debuff/darkling_glare
 	id = "darkling_glare"
@@ -382,3 +382,22 @@
 	name = "Macabre chill"
 	desc = "I can feel the cold embrace of death seeping into my bones"
 	icon_state = "muscles"
+
+
+/atom/movable/screen/alert/status_effect/debuff/guarddebuff
+	name = "Unfamiliar Terrain"
+	desc = "The terror bog. It's difficult to traverse here."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/guarddebuff
+	id = "guarddebuff"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/guarddebuff
+	effectedstats = list("endurance" = -2, "speed" = -2) //should discourage guards from the bog
+	duration = 5000 SECONDS //essentially permanent, removes when we're out of the area
+
+/datum/status_effect/debuff/guarddebuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.roughterrain))
+		owner.remove_status_effect(/datum/status_effect/debuff/guarddebuff)
