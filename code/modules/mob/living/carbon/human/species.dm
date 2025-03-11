@@ -177,6 +177,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/stress_examine = FALSE
 	var/stress_desc = null
 
+	var/list/halfchild_types //If this species is matched with a different race, determine their offspring species (If any).
+
 ///////////
 // PROCS //
 ///////////
