@@ -10,7 +10,6 @@
 
 /datum/round_event_control/rogue/desecration_dendor/canSpawnEvent()
 	if(hasomen(OMEN_DESECRATE_DENDOR) == 0)
-		message_admins("does not have desecrate dendor omen")
 		return FALSE
 	if(!LAZYLEN(GLOB.hauntstart))
 		return FALSE
