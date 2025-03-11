@@ -168,7 +168,7 @@
 	name = "silk gloves"
 	desc = "Silken gloves, usually used by the wealthy for the material, or by thieves for the light weight and smooth material."
 	icon = 'icons/roguetown/clothing/gloves.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/gloves.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	icon_state = "shadowgloves"
 	resistance_flags = null
