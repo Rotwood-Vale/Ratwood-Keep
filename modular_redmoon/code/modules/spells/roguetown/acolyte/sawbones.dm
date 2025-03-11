@@ -3,3 +3,6 @@
 	if(M.mind.has_antag_datum(/datum/antagonist/werewolf))
 		M.mind.remove_antag_datum(/datum/antagonist/werewolf)
 		to_chat(M, "You feel the drugs burning intensely in [B.name].")
+	if(M.mind.has_antag_datum(/datum/antagonist/werewolf/lesser))
+		M.mind.remove_antag_datum(/datum/antagonist/werewolf/lesser)
+		to_chat(M, "You feel the drugs burning intensely in [B.name].")
