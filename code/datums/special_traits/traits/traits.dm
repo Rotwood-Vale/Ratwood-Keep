@@ -491,7 +491,7 @@
 	else
 		employer = pick(list("Duchess", "Lady", "Noblelady", "Heiress"))
 	employer = "[employer] [random_human_name(employer_gender, FALSE, FALSE)]"
-	var/amount = rand(40,100)
+	var/amount = rand(250,1000)
 	switch(rand(1,7))
 		if(1)
 			reason = "Murder"

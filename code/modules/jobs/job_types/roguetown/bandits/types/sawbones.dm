@@ -63,4 +63,5 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+			apply_special_trait(H, /datum/special_trait/hunted, FALSE)
 	H.ambushable = FALSE
