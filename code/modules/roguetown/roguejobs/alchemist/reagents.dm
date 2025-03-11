@@ -271,4 +271,4 @@
 			W.Destroy(0)
 
 	M.update_damage_overlays()
-
+	..()
