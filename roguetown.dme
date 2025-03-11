@@ -2192,7 +2192,6 @@
 #include "modular_redmoon\code\modules\spells\roguetown\acolyte\xylix.dm"
 #include "modular_redmoon\code\modules\surgery\organs\organ_dna.dm\_organ_dna.dm"
 #include "modular_redmoon\code\modules\surgery\organs\feature_organs\genitals.dm"
-#include "modular_redmoon\code\modules\surgery\organs\feature_organs\tails.dm"
 #include "modular_redmoon\code\modules\tgs\roundspoke.dm"
 #include "modular_redmoon\modules\acolytes_can_coronate\acolytes_can_coronate.dm"
 #include "modular_redmoon\modules\artificerandguns\runelock.dm"
@@ -2411,5 +2410,7 @@
 #include "modular_redmoon\modules\tetris\towercap.dm"
 #include "modular_redmoon\modules\tetris\waterskin.dm"
 #include "modular_redmoon\modules\tetris\weaponry.dm"
+#include "modular_redmoon\modules\venicle\baneblade.dm"
+#include "modular_redmoon\modules\venicle\funny_movement.dm"
 #include "modular_redmoon\modules\tetris\wrists.dm"
 // END_INCLUDE
