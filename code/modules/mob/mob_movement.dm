@@ -235,7 +235,7 @@
 			move_delay = world.time + 10
 			to_chat(src, span_warning("[L] still has footing! I need a stronger grip!"))
 			return TRUE
-		if(L.cmode && !L.resting && !L.incapacitated() && M.buckled)
+		if(M.buckled)
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't be buckled!"))
 			return TRUE
