@@ -32562,10 +32562,8 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "qQY" = (
-/obj/structure/flora/roguetree/wise{
-	pixel_x = -12;
-	name = "Elderbaum";
-	desc = "An old, wicked tree that is in a deep slumber. The druids seem to love it."
+/obj/structure/flora/roguetree/wise/elder{
+	pixel_x = -12
 	},
 /obj/machinery/light/rogue/firebowl/standing/green{
 	pixel_y = 22;

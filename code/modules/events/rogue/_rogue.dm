@@ -47,6 +47,28 @@ GLOBAL_LIST_INIT(badomens, list())
 			used = "Unwelcome visitors!"
 		if("ascend")
 			used = "Zizo will rise once again."
+		if(OMEN_DESECRATE_PSYDON)
+			used = "Zizo will rise once again." //zizo followers gain zizo cultist tab
+		if(OMEN_DESECRATE_ASTRATA)
+			used = "" //permanent night
+		if(OMEN_DESECRATE_NOC)
+			used = ""
+		if(OMEN_DESECRATE_DENDOR)
+			used = "The wind through the tree whistles sharply." //evil trees, wolves, a werewolf or a dryad spawn
+		if(OMEN_DESECRATE_ABYSSOR)
+			used = "Thunder rumbles lowly in the distance for far too long." //permanent rain, lightning strike
+		if(OMEN_DESECRATE_RAVOX)
+			used = "" //
+		if(OMEN_DESECRATE_NECRA)
+			used = "A horrid stench like nothing before looms in the streets." //future deadites are sentient
+		if(OMEN_DESECRATE_XYLIX)
+			used = "" //
+		if(OMEN_DESECRATE_PESTRA)
+			used = "" //a sentient plague infects the city?
+		if(OMEN_DESECRATE_MALUM)
+			used = "The earth quakes beneath the city!" //
+		if(OMEN_DESECRATE_EORA)
+			used = "" //
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
 
