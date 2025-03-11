@@ -1280,10 +1280,10 @@
 /area/rogue/indoors)
 "dv" = (
 /obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "banditexit";
-	aportalid = "banditin"
+	aportalgoesto = "banditexit2";
+	aportalid = "banditin2"
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/woods)
 "dw" = (
 /obj/machinery/light/rogue/torchholder/c,
@@ -2904,6 +2904,9 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors/banditcamp)
+"JS" = (
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/outdoors/woods)
 "Ka" = (
 /obj/item/paper,
 /obj/item/paper,
@@ -2922,6 +2925,13 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/goblin)
+"Kl" = (
+/obj/structure/fluff/traveltile/bandit{
+	aportalgoesto = "banditexit";
+	aportalid = "banditin"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/woods)
 "KN" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -6424,11 +6434,11 @@ bz
 bz
 Te
 Te
-bz
-bz
-bz
-bz
-bz
+Te
+Te
+Te
+Te
+Te
 Te
 Te
 Te
@@ -6652,17 +6662,17 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
 Te
 Te
 Te
 Te
-bz
+Te
+Te
+Te
+Te
+Te
+Te
+Kl
 kB
 "}
 (14,1,1) = {"
@@ -6882,17 +6892,17 @@ Te
 OL
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
 Te
 Te
 Te
 Te
 Te
+Te
+Te
+Te
+Te
+Wp
+Kl
 kB
 "}
 (15,1,1) = {"
@@ -7120,9 +7130,9 @@ Te
 Te
 Te
 WI
-vQ
-vQ
-vQ
+Wp
+Wp
+Kl
 kB
 "}
 (16,1,1) = {"
@@ -7352,7 +7362,7 @@ Wp
 Wp
 Wp
 Wp
-dv
+vQ
 kB
 "}
 (17,1,1) = {"
@@ -7582,7 +7592,7 @@ Wp
 Wp
 Wp
 Wp
-dv
+vQ
 kB
 "}
 (18,1,1) = {"
@@ -7812,7 +7822,7 @@ Wp
 Wp
 Wp
 Wp
-dv
+vQ
 kB
 "}
 (19,1,1) = {"
@@ -8042,7 +8052,7 @@ Yv
 vQ
 vQ
 vQ
-dv
+vQ
 kB
 "}
 (20,1,1) = {"
@@ -8269,8 +8279,8 @@ bz
 bz
 Te
 Te
-UH
 vQ
+UH
 vQ
 vQ
 kB
@@ -8499,10 +8509,10 @@ bz
 bz
 Te
 Te
-Te
-Te
-Te
-Te
+JS
+kB
+kB
+kB
 kB
 "}
 (22,1,1) = {"
@@ -8728,11 +8738,11 @@ Te
 bz
 bz
 Te
-Te
-Te
-Te
-Te
-bz
+JS
+JS
+JS
+kB
+kB
 kB
 "}
 (23,1,1) = {"
@@ -8957,12 +8967,12 @@ Te
 Te
 Te
 Te
-Te
-Te
-Te
-Te
-Te
-bz
+kB
+kB
+JS
+JS
+JS
+kB
 kB
 "}
 (24,1,1) = {"
@@ -9187,12 +9197,12 @@ Te
 Te
 Te
 Te
-Te
-Te
-bz
-bz
-bz
-bz
+kB
+kB
+kB
+JS
+JS
+JS
 kB
 "}
 (25,1,1) = {"
@@ -9417,12 +9427,12 @@ Te
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
+kB
+kB
+kB
+dv
+dv
+dv
 kB
 "}
 (26,1,1) = {"
@@ -9648,11 +9658,11 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
+kB
+kB
+kB
+kB
+kB
 kB
 "}
 (27,1,1) = {"
@@ -9879,10 +9889,10 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
+kB
+kB
+kB
+kB
 kB
 "}
 (28,1,1) = {"
@@ -52399,7 +52409,7 @@ wF
 Jg
 rI
 rI
-rI
+ql
 nW
 nW
 nW
@@ -52629,10 +52639,10 @@ VV
 VV
 VV
 pL
-rI
-rI
-rI
-rI
+ql
+ql
+nW
+nW
 nW
 Kk
 nW
@@ -52859,7 +52869,7 @@ tN
 tN
 VV
 jO
-nW
+Af
 ql
 ql
 jO
