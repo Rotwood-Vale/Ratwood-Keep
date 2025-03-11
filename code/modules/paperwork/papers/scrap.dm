@@ -3,7 +3,7 @@
 
 /obj/item/paper/push_your_luck
 	name = "Guide for Push Your Luck game."
-	info = {"<b>A quick guide for you to play Push Your Luck game!<b><br>
+	info = {"<b>A quick guide for you to play Push Your Luck game!</b><br>
 	First of all you need 6 dice with dots from 1 to 6 on them.<br>
 	The game is turn based and your goal is to earn points by throwing dice.<br>
 	<br>
