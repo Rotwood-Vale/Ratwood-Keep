@@ -7,9 +7,10 @@
 
 /datum/outfit/job/roguetown/longshoreman/pre_equip(mob/living/carbon/human/H)
 	..()
+	backl = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/cutlass
 	beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 	beltl = /obj/item/ammo_holder/bullet/lead
-	backpack_contents = list(/obj/item/storage/keyring/harbormaster = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/powderflask = 1)
+	backpack_contents = list(/obj/item/storage/keyring/harbormaster = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/powderflask/artificer = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 5, TRUE)
