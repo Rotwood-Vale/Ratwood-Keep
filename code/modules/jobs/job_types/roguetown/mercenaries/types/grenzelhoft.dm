@@ -35,7 +35,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel
-
+	backl = /obj/item/gwstrap
 
 	var/weapons = list("billhook", "halberd", "zweihander")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons

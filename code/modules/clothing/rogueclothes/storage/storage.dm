@@ -409,14 +409,13 @@
 	// heldz_items = 1
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
-/* Commented out as this knife belt is for "throwing knives" and I am unsure we have those here.
-
+/obj/item/storage/belt/rogue/leather/knifebelt
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
 	icon_state = "knife"
 	item_state = "knife"
 	strip_delay = 20
-	max_storage = 8
+	var/max_storage = 8
 	var/list/arrows = list()
 	sewrepair = TRUE
 	component_type = /datum/component/storage/concrete/roguetown/belt/knife_belt
@@ -474,7 +473,7 @@
 /obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/huntingknife/throwingknife/iron/A = new()
+		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
 		arrows += A
 	update_icon()
 
@@ -484,10 +483,10 @@
 	icon_state = "blackknife"
 	item_state = "blackknife"
 
-/obj/item/storage/belt/rogue/leather/knifebelt/black/iron/Initialize()
+/obj/item/storage/belt/rogue/leather/knifebelt/black/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/huntingknife/throwingknife/iron/A = new()
+		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
 		arrows += A
 	update_icon()
 
@@ -504,8 +503,6 @@
 		var/obj/item/rogueweapon/huntingknife/throwingknife/psydon/A = new()
 		arrows += A
 	update_icon()
-
-*/
 
 /*
 /obj/item/storage/belt/rogue/pickles

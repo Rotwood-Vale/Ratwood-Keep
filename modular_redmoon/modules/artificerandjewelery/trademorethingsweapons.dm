@@ -285,3 +285,8 @@
 	name = "Bullet Pouch (grape)"
 	cost = 30
 	contains = list(/obj/item/ammo_holder/bullet/grapeshot)
+
+/datum/supply_pack/rogue/weapons/gwstrap
+	name = "Greatweapon Strap"
+	cost = 15
+	contains = list(/obj/item/gwstrap)

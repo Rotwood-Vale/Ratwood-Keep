@@ -22,6 +22,14 @@
 	screen_max_columns = 2
 	max_w_class = WEIGHT_CLASS_SMALL
 
+/datum/component/storage/concrete/roguetown/belt/knife_belt
+	screen_max_rows = 6
+	screen_max_columns = 4
+
+/datum/component/storage/concrete/roguetown/belt/knife_belt/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/storage/belt/rogue/leather/knifebelt/black))
+
 /datum/component/storage/concrete/roguetown/coin_pouch
 	screen_max_rows = 4
 	screen_max_columns = 1

@@ -53,6 +53,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/steel
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backl = /obj/item/gwstrap
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 /datum/subclass/knight/sentinel
 	name = "Sentinel"

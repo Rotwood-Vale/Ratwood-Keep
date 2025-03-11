@@ -539,3 +539,15 @@
 	icon = 'modular_redmoon/icons/hats.dmi'
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "ldgn_shapel"
+
+/obj/item/clothing/head/roguetown/papakha
+	name = "papakha"
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "papakha"
+	item_state = "papakha"
+	sewrepair = TRUE
+	flags_inv = HIDEEARS
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
+	blocksound = SOFTHIT
+	sellprice = 50
