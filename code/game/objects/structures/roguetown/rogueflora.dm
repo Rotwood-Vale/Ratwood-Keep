@@ -127,6 +127,11 @@
 
 /obj/structure/flora/roguetree/wise/elder/obj_destruction(damage_flag)
 	addomen(OMEN_DESECRATE_DENDOR)
+	for(var/mob/living/carbon/human/H in GLOB.human_list)
+		if (H.patron.type == /datum/patron/divine/dendor)
+			to_chat(H, span_userdanger("Your body shudders, and you feel sick to your stomach, your connection to nature seeming to wane for a moment. Something is not right..."))
+	. = ..()
+
 
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"

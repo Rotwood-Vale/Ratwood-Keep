@@ -9,7 +9,7 @@
 
 /datum/round_event_control/rogue/desecration/dendor
 	typepath = /datum/round_event/rogue/desecration_dendor
-	max_occurrences = 3
+	max_occurrences = 2
 	var/specific_omen = OMEN_DESECRATE_DENDOR
 
 /datum/round_event_control/rogue/desecration/dendor/canSpawnEvent()
@@ -23,7 +23,7 @@
 
 /datum/round_event/rogue/desecration_dendor
 	announceWhen	= 50
-	var/spawncount = 8
+	var/spawncount = 5
 	var/list/starts
 	var/specific_omen = OMEN_DESECRATE_DENDOR
 
