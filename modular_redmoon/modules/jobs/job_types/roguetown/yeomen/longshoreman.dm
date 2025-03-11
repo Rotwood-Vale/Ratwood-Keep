@@ -7,8 +7,7 @@
 
 /datum/outfit/job/roguetown/longshoreman/pre_equip(mob/living/carbon/human/H)
 	..()
-	backl = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/sword/cutlass
+	backr = /obj/item/rogueweapon/sword/cutlass
 	beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 	beltl = /obj/item/ammo_holder/bullet/lead
 	backpack_contents = list(/obj/item/storage/keyring/harbormaster = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/powderflask/artificer = 1)
