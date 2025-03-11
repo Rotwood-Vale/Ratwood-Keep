@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(badomens, list())
 		if(OMEN_DESECRATE_NOC)
 			used = ""
 		if(OMEN_DESECRATE_DENDOR)
-			used = "The wind through the tree whistles sharply." //evil trees, wolves, a werewolf or a dryad spawn
+			used = "The wind through the trees whistles sharply." //evil trees, wolves, a werewolf or a dryad spawn
 		if(OMEN_DESECRATE_ABYSSOR)
 			used = "Thunder rumbles lowly in the distance for far too long." //permanent rain, lightning strike
 		if(OMEN_DESECRATE_RAVOX)
