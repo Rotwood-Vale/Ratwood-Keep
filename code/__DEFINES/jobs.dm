@@ -217,6 +217,7 @@
 #define JCOLOR_PEASANT "#b09262"
 #define JCOLOR_MERCENARY "#c86e3a"
 #define JCOLOR_FOREIGNER "#776759"
+#define JCOLOR_GOBLIN "#33CC33"
 
 
 // job display orders //

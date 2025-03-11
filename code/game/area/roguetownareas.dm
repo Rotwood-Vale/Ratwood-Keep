@@ -15,6 +15,13 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambientsounds = null
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 //	var/previous_ambient = ""
+	var/roughterrain = FALSE
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if((src.roughterrain == TRUE) && HAS_TRAIT(guy, TRAIT_BOGVULNERABLE) && !guy.has_status_effect(/datum/status_effect/debuff/guarddebuff)) //guards
+		guy.apply_status_effect(/datum/status_effect/debuff/guarddebuff)
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -223,6 +230,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/deadite/npc/ambush = 50)
 	first_time_text = "THE TERRORBOG"
 	converted_type = /area/rogue/indoors/shelter/bog
+	roughterrain = TRUE
 
 /area/rogue/indoors/shelter/bog
 	icon_state = "bog"
@@ -622,7 +630,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	first_time_text = "Rockhill Harbor"
 	converted_type = /area/rogue/indoors/shelter/town/harbor
-	
+
 /area/rogue/indoors/shelter/town/harbor
 	icon_state = "harbor"
 	droning_sound = 'sound/music/area/harbor.ogg'
