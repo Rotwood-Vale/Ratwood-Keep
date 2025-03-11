@@ -119,6 +119,9 @@
 		to_chat(user, span_warning("They need to be mended more."))
 		revert_cast()
 		return FALSE
+	if(target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+		to_chat(user, span_warning("They are too far gone."))
+		revert_cast()
 
 	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 	//GET OVER HERE!
