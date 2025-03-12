@@ -211,7 +211,6 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			if(H.real_name == inputty)
 				found = TRUE
 				ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-				H.add_stress(/datum/stressevent/excommunicated/)
 			else if(H.patron == /datum/patron/zizo)
 				H.add_stress(/datum/status_effect/buff/gazeuponme)
 				H.apply_status_effect(/datum/stressevent/gazeuponme)

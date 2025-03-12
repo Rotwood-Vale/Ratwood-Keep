@@ -91,7 +91,7 @@
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
-#define TRAIT_EXCOMMUNICATED "Preist's block target to be target of miracles"
+#define TRAIT_EXCOMMUNICATED "excommunicated by the preist" //cannot be target of healing miracles or anastasia or cure rot
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
