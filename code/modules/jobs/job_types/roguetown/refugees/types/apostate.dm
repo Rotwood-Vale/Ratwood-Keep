@@ -7,7 +7,7 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	category_tags = list(CTAG_REFUGEE)
 
-	cmode_music = 'sound/music/combat_clergy.ogg'
+	cmode_music = 'sound/music/combat_cult.ogg'
 
 	maximum_possible_slots = 8
 
