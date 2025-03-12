@@ -49,3 +49,5 @@
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+	if(HAS_TRAIT(H, TRAIT_WANTED))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_special_trait), H, /datum/special_trait/hunted, FALSE), 60 SECONDS)

@@ -53,7 +53,6 @@
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //hey buddy you hear about roleplaying
 	ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC) //Hedgeknights are known around the area
-	apply_special_trait(H, /datum/special_trait/hunted, FALSE)
 	H.ambushable = FALSE
 
 /obj/effect/proc_holder/spell/invoked/joincomrades
