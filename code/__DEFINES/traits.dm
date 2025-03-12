@@ -91,6 +91,7 @@
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+#define TRAIT_EXCOMMUNICATED "Preist's block target to be target of miracles"
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -107,6 +108,7 @@
 #define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+
 
 
 
@@ -176,7 +178,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
-))
+	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
+))	
 
 // trait accessor defines
 #define ADD_TRAIT(target, trait, source) \

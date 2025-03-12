@@ -1,3 +1,4 @@
+GLOBAL_LIST_EMPTY(apostasy_players)
 GLOBAL_LIST_EMPTY(excommunicated_players)
 GLOBAL_LIST_EMPTY(heretical_players)
 
@@ -10,7 +11,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	spawn_positions = 1
 	selection_color = JCOLOR_CHURCH
 	f_title = "Priestess"
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = ALL_AGES_LIST
@@ -22,7 +23,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 8
+	min_pq = 0
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
@@ -83,10 +84,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 	H.verbs |= /mob/living/carbon/human/proc/coronate_lord
-	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
+	H.verbs |= /mob/living/carbon/human/proc/churcheapostasy
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
-	H.verbs |= /mob/living/carbon/human/proc/churchhereticsbrand
-
+	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
+	H.verbs |= /mob/living/carbon/human/proc/completesermon
 
 /datum/outfit/job/roguetown/priest/post_equip(mob/living/carbon/human/H)
 	..()
@@ -139,52 +140,69 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		priority_announce("[real_name] the [dispjob] has named [HU.real_name] the [SSticker.rulertype] of Rockhill!", title = "Long Live [HU.real_name]!", sound = 'sound/misc/bell.ogg')
 		TITLE_LORD = SSticker.rulertype
 
-/mob/living/carbon/human/proc/churchexcommunicate()
-	set name = "Excommunicate"
+/mob/living/carbon/human/proc/churcheapostasy()
+	set name = "Apostasy"
 	set category = "Priest"
 	if(stat)
 		return
-	var/inputty = input("Excommunicate someone, removing their ability to use miracles... (excommunicate them again to remove it)", "Sinner Name") as text|null
+	var/inputty = input("Put an apostasy on someone, removing their ability to use miracles... (apostasy them again to remove it)", "Sinner Name") as text|null
 	if(inputty)
 		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
 			to_chat(src, span_warning("I need to do this from the Church's chapel."))
 			return FALSE
-		if(inputty in GLOB.excommunicated_players)
-			GLOB.excommunicated_players -= inputty
+		if(inputty in GLOB.apostasy_players)
+			GLOB.apostasy_players -= inputty
 			priority_announce("[real_name] has forgiven [inputty]. Their patron hears their prayer once more!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
-					H.remove_stress(/datum/stressevent/psycurse)
+					H.remove_stress(/datum/stressevent/apostasy)
+					H.remove_status_effect (/datum/status_effect/debuff/apostasy)
 					H.devotion.recommunicate()
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H.real_name == inputty)
 				found = TRUE
-				H.add_stress(/datum/stressevent/psycurse)
+				H.add_stress(/datum/stressevent/apostasy)
+				H.apply_status_effect (/datum/status_effect/debuff/apostasy)
 				H.devotion.excommunicate()
 		if(!found)
 			return FALSE
 
-		GLOB.excommunicated_players += inputty
-		priority_announce("[real_name] has excommunicated [inputty] from the Church!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
+		GLOB.apostasy_players += inputty
+		priority_announce("[real_name] has placed apostasy's mark upon [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 
-/mob/living/carbon/human/proc/churchhereticsbrand()
-	set name = "Brand Heretic"
+/mob/living/carbon/human/proc/churchexcommunicate()
+	set name = "Excommunicate"
 	set category = "Priest"
 	if(stat)
 		return
-	var/inputty = input("Brand someone as a foul heretic... (brand them again to remove it)", "Sinner Name") as text|null
+	var/inputty = input("Excommunicate someone, away from the Ten... Or show to their heretical gods that they are worthy... (excommunicate them again to remove it)", "Sinner Name") as text|null
 	if(inputty)
 		if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
 			to_chat(src, span_warning("I need to do this from the Church."))
 			return FALSE
-		if(inputty in GLOB.heretical_players)
-			GLOB.heretical_players -= inputty
-			priority_announce("[real_name] has removed the Heretic's Brand from [inputty]. Once more walk in the light!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
+		if(inputty in GLOB.excommunicated_players)
+			GLOB.excommunicated_players -= inputty
+			priority_announce("[real_name] has forgiven [inputty]. Their patron hears their prayer once more!", title = "Hail the Ten!", sound = 'sound/misc/bell.ogg')
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
-					H.remove_stress(/datum/stressevent/psycurse)
+					REMOVE_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
+				else if(H.patron == /datum/patron/zizo)
+					H.remove_stress(/datum/stressevent/gazeuponme)
+					H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+				else if(H.patron == /datum/patron/inhumen/graggar)
+					H.remove_stress(/datum/stressevent/gazeuponme)
+					H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+				else if(H.patron == /datum/patron/inhumen/matthios)
+					H.remove_stress(/datum/stressevent/gazeuponme)
+					H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+				else if(H.patron == /datum/patron/inhumen/baotha)
+					H.remove_stress(/datum/stressevent/gazeuponme)
+					H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+				else
+					H.remove_stress(/datum/stressevent/excommunicated)
+					H.remove_status_effect(/datum/status_effect/debuff/excomm)
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -192,11 +210,27 @@ GLOBAL_LIST_EMPTY(heretical_players)
 				continue
 			if(H.real_name == inputty)
 				found = TRUE
-				H.add_stress(/datum/stressevent/psycurse)
+				ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
+				H.add_stress(/datum/stressevent/excommunicated/)
+			else if(H.patron == /datum/patron/zizo)
+				H.add_stress(/datum/status_effect/buff/gazeuponme)
+				H.apply_status_effect(/datum/stressevent/gazeuponme)
+			else if(H.patron == /datum/patron/inhumen/graggar)
+				H.add_stress(/datum/status_effect/buff/gazeuponme)
+				H.apply_status_effect(/datum/stressevent/gazeuponme)
+			else if(H.patron == /datum/patron/inhumen/matthios)
+				H.add_stress(/datum/status_effect/buff/gazeuponme)
+				H.apply_status_effect(/datum/stressevent/gazeuponme)
+			else if(H.patron == /datum/patron/inhumen/baotha)
+				H.add_stress(/datum/status_effect/buff/gazeuponme)
+				H.apply_status_effect(/datum/stressevent/gazeuponme)
+			else
+				H.add_stress(/datum/stressevent/excommunicated)
+				H.apply_status_effect(/datum/status_effect/debuff/excomm)
 		if(!found)
 			return FALSE
-		GLOB.heretical_players += inputty
-		priority_announce("[real_name] has placed a Heretic's Brand upon [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
+		GLOB.excommunicated_players += inputty
+		priority_announce("[real_name] has excommunicated [inputty]!", title = "SHAME", sound = 'sound/misc/excomm.ogg')
 
 /mob/living/carbon/human
 	COOLDOWN_DECLARE(church_announcement)
@@ -240,3 +274,21 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	recruitment_message = "Serve the ten, %RECRUIT!"
 	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
+
+/mob/living/carbon/human/proc/completesermon()
+    set name = "Sermon"
+    set category = "Priest"
+    if(!mind)
+        return
+    if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+        to_chat(src, span_warning("I need to do this in the chapel."))
+        return FALSE
+    visible_message("<span class='notice'>[src] begins preaching a sermon...</span>")
+    if(!do_after(src, 1200, target = src)) // 120 seconds 120 seconds ye
+        visible_message("<span class='warning'>[src] stops preaching.</span>")
+        return
+
+    visible_message("<span class='notice'>[src] finishes the sermon, inspiring those nearby!</span>")
+    for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles supposed to be all H!!!
+        H.apply_status_effect(/datum/status_effect/buff/sermon)
+        H.add_stress(/datum/stressevent/sermon)
