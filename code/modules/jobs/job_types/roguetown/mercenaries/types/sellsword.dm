@@ -70,8 +70,8 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
@@ -166,8 +166,8 @@
 				beltr = /obj/item/rogueweapon/stoneaxe/battle
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 			if(selected_weapon_type == "Iron Mace")
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 				beltr = /obj/item/rogueweapon/mace/
 			if(selected_weapon_type == "Spear")
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -177,8 +177,8 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
@@ -256,8 +256,8 @@
 				beltr = /obj/item/rogueweapon/stoneaxe/battle
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 			if(selected_weapon_type == "Iron Mace")
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 				beltr = /obj/item/rogueweapon/mace/
 			if(selected_weapon_type == "Spear")
 				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -267,8 +267,8 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
