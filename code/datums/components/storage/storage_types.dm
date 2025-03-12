@@ -28,7 +28,7 @@
 
 /datum/component/storage/concrete/roguetown/belt/knife_belt/New(datum/P, ...)
 	. = ..()
-	can_hold = typecacheof(list(/obj/item/storage/belt/rogue/leather/knifebelt/black))
+	can_hold = typecacheof(list(/obj/item/rogueweapon/huntingknife/throwingknife))
 
 /datum/component/storage/concrete/roguetown/coin_pouch
 	screen_max_rows = 4
