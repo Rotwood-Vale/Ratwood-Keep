@@ -32,15 +32,15 @@
 	hammers_per_item = 10
 	skill_level = 4
 
-/datum/artificer_recipe/guns/arquebuspistol
-	name = "Arquebus (+1 Stock) (+1 Lock) (+1 Barrel)"
-	required_item = /obj/item/ingot/steel
-	additional_items = list(/obj/item/gunlock = 1,
-							/obj/item/gunstock = 1,
-							/obj/item/gunbarrel = 1)
-	created_item = list(/obj/item/gun/ballistic/firearm/arquebus_pistol)
-	hammers_per_item = 10
-	skill_level = 4
+// /datum/artificer_recipe/guns/arquebuspistol
+// 	name = "Arquebus (+1 Stock) (+1 Lock) (+1 Barrel)"
+// 	required_item = /obj/item/ingot/steel
+// 	additional_items = list(/obj/item/gunlock = 1,
+// 							/obj/item/gunstock = 1,
+// 							/obj/item/gunbarrel = 1)
+// 	created_item = list(/obj/item/gun/ballistic/firearm/arquebus_pistol)
+// 	hammers_per_item = 10
+// 	skill_level = 4
 
 /datum/artificer_recipe/contraptions/engiflask
 	name = "Compact Gunpowderflask (+1 Bronze Cog)"
