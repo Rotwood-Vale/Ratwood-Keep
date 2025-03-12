@@ -13,3 +13,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+
+/obj/item/clothing/suit/roguetown/armor/leather/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
