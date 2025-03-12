@@ -14,7 +14,7 @@
 		TOOL_CUT= 10,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-	time = 30 SECONDS
+	time = 60 SECONDS
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_BROKEN
 	skill_min = SKILL_LEVEL_NOVICE
 	preop_sound = 'sound/surgery/organ2.ogg'
@@ -33,12 +33,12 @@
 		"[user] chops  [target]'s body.")
 		return FALSE
 	else
-	if(target.HAS_TRAIT(TRAIT_MAA))
-		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
-			"[user] cuts a slice from [target]'s body.",
-			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/maa(target.loc)	
-		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
+		if(target.h.mind.job == "Templar")
+			display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
+				"[user] cuts a slice from [target]'s body.",
+				"[user] cuts a slice from  [target]'s body.")
+			new /obj/item/meat/maa(target.loc)	
+			target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
 	return 
 	else
 	if(target.HAS_TRAIT(TRAIT_TEMPLAR))
