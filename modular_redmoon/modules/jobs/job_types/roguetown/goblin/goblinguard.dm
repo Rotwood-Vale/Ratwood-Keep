@@ -5,3 +5,5 @@
 		\"Приглядывайте\" за пленниками и рабами, если это возможно, вместо того, чтобы убивать их."
 	announce_latejoin = FALSE
 	family_blacklisted = TRUE
+	total_positions = 8
+	spawn_positions = 8
