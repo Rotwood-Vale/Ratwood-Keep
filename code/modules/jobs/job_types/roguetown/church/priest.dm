@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	spawn_positions = 1
 	selection_color = JCOLOR_CHURCH
 	f_title = "Priestess"
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = ALL_AGES_LIST
@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 	display_order = JDO_PRIEST
 	give_bank_account = 115
-	min_pq = 0
+	min_pq = 8
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
@@ -267,11 +267,15 @@ GLOBAL_LIST_EMPTY(heretical_players)
         to_chat(src, span_warning("I need to do this in the chapel."))
         return FALSE
     visible_message("<span class='notice'>[src] begins preaching a sermon...</span>")
-    if(!do_after(src, 1200, target = src)) // 120 seconds 120 seconds ye
+    if(!do_after(src, 1200, target = src)) // 120 seconds
         visible_message("<span class='warning'>[src] stops preaching.</span>")
         return
 
     visible_message("<span class='notice'>[src] finishes the sermon, inspiring those nearby!</span>")
-    for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles supposed to be all H!!!
-        H.apply_status_effect(/datum/status_effect/buff/sermon)
-        H.add_stress(/datum/stressevent/sermon)
+    for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles
+        if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
+            H.add_stress(/datum/stressevent/heretic_on_sermon)
+            H.apply_status_effect(/datum/status_effect/debuff/hereticsermon)
+        else
+            H.apply_status_effect(/datum/status_effect/buff/sermon)
+            H.add_stress(/datum/stressevent/sermon)

@@ -362,3 +362,9 @@
 	timer = 999 MINUTES
 	stressadd = 3
 	desc = span_boldred("The apostasy's mark is upon me!")
+
+	/datum/stressevent/heretic_on_sermon
+
+	stressadd = 5
+	desc = span_red("My PATRON is NOT PROUD of ME!")
+	timer = 20 MINUTES

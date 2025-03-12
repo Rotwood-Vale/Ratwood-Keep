@@ -415,7 +415,7 @@
 	color ="#6d1313"
 
 /datum/status_effect/debuff/apostasy
-	id = "Excommunicated follower of Ten!"
+	id = "Apostasy!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/apostasy
 	effectedstats = list("fortune" = -5, "intelligence" = -2, "perception" = -2)
 	duration = 999 MINUTES
@@ -425,3 +425,15 @@
 	desc = "Shame upon the member of clergy!"
 	icon_state = "debuff"
 	color ="#7a0606"
+
+/datum/status_effect/debuff/hereticsermon
+	id = "Heretic on sermon!"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon
+	effectedstats = list("intelligence" = -2, "speed" = -1, "fortune" = -2)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/hereticsermon
+	name = "Heretic on sermon!"
+	desc = "I was on the sermon. My patron is not proud of me."
+	icon_state = "debuff"
+	color ="#af9f9f"
