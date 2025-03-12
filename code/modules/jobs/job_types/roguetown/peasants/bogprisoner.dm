@@ -45,4 +45,6 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+	if(istype(H.dna.species, /datum/species/goblinp))
+		H.set_patron(/datum/patron/inhumen/graggar)
 
