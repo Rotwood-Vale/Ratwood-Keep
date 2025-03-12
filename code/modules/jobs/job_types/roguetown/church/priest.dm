@@ -156,18 +156,18 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					H.devotion.recommunicate()
-				else
-					H.apply_status_effect (/datum/status_effect/debuff/apostasy)
-					H.add_stress(/datum/stressevent/apostasy)
+					spawn(1) //yes lmao. In other cases it will TOSS RECOMMUNICATE AT ANY PLAYER NOT CLERGY
+						H.remove_status_effect (/datum/status_effect/debuff/apostasy)
+						H.remove_stress(/datum/stressevent/apostasy)
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H.real_name == inputty)
 				found = TRUE
-				H.devotion.excommunicate()
-			else
-				H.remove_status_effect (/datum/status_effect/debuff/apostasy)
-				H.remove_stress(/datum/stressevent/apostasy)
+				H.devotion.excommunicate() //and then the game will refuse TO PUT IT AWAY BECAUSE THEY HAVE NO DEVOTION??
+				spawn(1)
+					H.apply_status_effect (/datum/status_effect/debuff/apostasy)
+					H.add_stress(/datum/stressevent/apostasy)
 		if(!found)
 			return FALSE
 
