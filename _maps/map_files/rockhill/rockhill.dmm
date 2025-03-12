@@ -32566,7 +32566,6 @@
 	pixel_x = -12;
 	name = "Elderbaum";
 	desc = "An old, wicked tree that is in a deep slumber. The druids seem to love it."
-	pixel_x = -12
 	},
 /obj/machinery/light/rogue/firebowl/standing/green{
 	pixel_y = 22;
