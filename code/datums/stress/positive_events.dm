@@ -162,7 +162,7 @@
 
 	timer = 999 MINUTES
 	stressadd = -5
-	desc = span_boldred("I have been marked as a heretic upon the eyes of the Gods... My patron is proud of me!")
+	desc = span_green("I am a heretic under Ten's gaze... My patron is proud of me!")
 
 /datum/stressevent/sermon
 	stressadd = -5
