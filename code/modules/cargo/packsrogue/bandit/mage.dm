@@ -20,11 +20,6 @@
 	contains = list(/obj/item/scrying)
 
 //Armour
-/datum/supply_pack/rogue/bandit/Mage/gambeson
-	name = "Gambeson"
-	cost = 50
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
-
 /datum/supply_pack/rogue/bandit/Mage/leather
 	name = "Leather Armor"
 	cost = 50

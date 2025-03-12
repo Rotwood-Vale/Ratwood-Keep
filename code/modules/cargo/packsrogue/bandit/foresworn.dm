@@ -25,11 +25,6 @@
 	contains = list(/obj/item/clothing/head/roguetown/roguehood/shalal)
 
 //Armour
-/datum/supply_pack/rogue/bandit/Mage/gambeson
-	name = "Gambeson"
-	cost = 50
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
-
 /datum/supply_pack/rogue/bandit/foresworn/coif/steel
 	name = "Steel Coif"
 	cost = 80
