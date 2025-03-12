@@ -449,11 +449,11 @@
 
 /datum/status_effect/buff/gazeuponme
 	id = "gazeuponme"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
+	alert_type = /atom/movable/screen/alert/status_effect/buff/gazeuponme
 	effectedstats = list("speed" = 1, "intelligence" = 1)
 	duration = 999 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/gazeuponme
-	name = "Heretic!"
+	name = "Excommunicated heretic"
 	desc = "My PATRON is proud of ME!"
 	icon_state = "buff"

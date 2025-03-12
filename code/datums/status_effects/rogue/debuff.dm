@@ -412,6 +412,7 @@
 	name = "Excommunicated follower of Ten!"
 	desc = "The Ten have forsaken me!"
 	icon_state = "muscles"
+	color ="#6d1313"
 
 /datum/status_effect/debuff/apostasy
 	id = "Excommunicated follower of Ten!"
@@ -422,4 +423,5 @@
 /atom/movable/screen/alert/status_effect/debuff/apostasy
 	name = "Apostasy!"
 	desc = "Shame upon the member of clergy!"
-	icon_state = "muscles"
+	icon_state = "debuff"
+	color ="#7a0606"
