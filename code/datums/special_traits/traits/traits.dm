@@ -256,6 +256,8 @@
 /datum/special_trait/giant // Arguable if this is neutral anyway, think nobody dislikes getting it.
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
+	req_text = "Not a seelie" //Don't remove this
+	restricted_races = list(/datum/species/seelie)
 	weight = 60
 
 /datum/special_trait/giant/on_apply(mob/living/carbon/human/character)
