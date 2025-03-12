@@ -28,15 +28,19 @@
 			if(_T)
 				_T = get_turf(_T)
 				if(isfloorturf(_T))
-					var/random = rand(1, 100)
-					if (random < 50) //spawn an evil tree that makes vines
+					var/random = rand(1, 100)					
+					if (random < 50) //50% spawn an evil tree that makes vines
+						new /datum/spacevine_controller(_T, null)
 						new /obj/structure/flora/roguetree/evil(_T)
-					else if(random < 75) //spawn 3 volfs
+					else if(random < 75) //25% spawn 3 rous
+						new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(_T)
+						new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(_T)
+						new /mob/living/simple_animal/hostile/retaliate/rogue/bigrat(_T)
+					else if(random < 90) //15% spawn a volfs
 						new /mob/living/simple_animal/hostile/retaliate/rogue/wolf(_T)
 						new /mob/living/simple_animal/hostile/retaliate/rogue/wolf(_T)
 						new /mob/living/simple_animal/hostile/retaliate/rogue/wolf(_T)
-					else if(random < 90) //spawn a werewolf
-						new /mob/living/simple_animal/hostile/rogue/werewolf(_T)
-					else //spawn a dryad
-						new /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad(_T)
+					else //10% spawn a dryad
+						new /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor(_T)
+					
 	return
