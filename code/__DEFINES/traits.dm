@@ -47,6 +47,7 @@
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 #define TRAIT_DARKLING "Darkling"
+#define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles or anastasia or cure rot
 
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
@@ -91,7 +92,6 @@
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
-#define TRAIT_EXCOMMUNICATED "excommunicated by the preist" //cannot be target of healing miracles or anastasia or cure rot
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
