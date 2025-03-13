@@ -97,6 +97,32 @@
 	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
 
+/datum/special_trait/duelist
+	name = "Retired duelist"
+	greet_text = span_notice("I used to be a legendary duelist, but I've settled down in Rockhill.")
+	req_text = "Be a towner and be middle aged/old"
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	allowed_jobs = list(/datum/job/roguetown/towner, YEOMEN_ROLES)
+	weight = 10
+
+/datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
+	character.cmode_music = 'sound/music/combat_duelist.ogg'
+	character.change_stat("speed", 2)
+	character.change_stat("endurance", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long
+	to_chat(character, span_notice("I need to get my sword from that tree."))
+
+/datum/special_trait/pineapple
+	name = "The safeword is 'Pineapple'"
+	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I'll need to grab my toy from that one tree.")
+	weight = 10
+
+/datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
+
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
 	greet_text = span_notice("My diet was quite rich in corn.")
