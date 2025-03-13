@@ -92,9 +92,9 @@
 	contains = list(/obj/item/gun/ballistic/firearm/flintgonne)
 
 /datum/supply_pack/rogue/bandit/Knave/powderflask
-	name = "Powderflask"
+	name = "Mechanised Powderflask"
 	cost = 50
-	contains = list(/obj/item/powderflask)
+	contains = list(/obj/item/powderflask/artificer)
 
 /datum/supply_pack/rogue/bandit/Knave/bullet_lead
 	name = "Bullet Pouch"
