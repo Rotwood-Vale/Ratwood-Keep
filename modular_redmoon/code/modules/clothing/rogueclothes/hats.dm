@@ -551,3 +551,7 @@
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
 	blocksound = SOFTHIT
 	sellprice = 50
+
+/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
+	armor_class = ARMOR_CLASS_MEDIUM
+	block2add = FOV_BEHIND

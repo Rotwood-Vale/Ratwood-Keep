@@ -2177,6 +2177,7 @@
 #include "modular_redmoon\code\modules\client\customizer\organ\genitals.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\gloves.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\armor.dm"
+#include "modular_redmoon\code\modules\clothing\rogueclothes\pants.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\hats.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\shoes.dm"
 #include "modular_redmoon\code\modules\clothing\rogueclothes\neck.dm"
