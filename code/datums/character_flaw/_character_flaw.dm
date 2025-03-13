@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Hunted"=/datum/charflaw/dead_or_alive,
 	"Fire Servant"=/datum/charflaw/addiction/pyromaniac,
 	"Ache For Love" = /datum/charflaw/addiction/lovefiend, // REDMOON ADD - love_fiend_back,
+	"No tongue" = /datum/charflaw/notongue, // REDMOON ADD - Добавляем возможность быть с отрезанным языком.
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
