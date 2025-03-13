@@ -10,4 +10,4 @@
 	..()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
-	ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_BARDIC_TRAINING, TRAIT_GENERIC)

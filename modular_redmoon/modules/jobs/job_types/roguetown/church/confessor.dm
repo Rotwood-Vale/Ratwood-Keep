@@ -7,4 +7,5 @@
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
-	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
+	if(H.mind)
+		ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)

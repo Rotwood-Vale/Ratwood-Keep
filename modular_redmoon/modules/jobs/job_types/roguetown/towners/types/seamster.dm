@@ -5,4 +5,5 @@
 
 /datum/outfit/job/roguetown/towner/seamstress/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
+	if(H.mind)
+		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
