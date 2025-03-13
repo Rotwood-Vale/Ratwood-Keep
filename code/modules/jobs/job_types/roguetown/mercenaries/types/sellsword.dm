@@ -32,7 +32,7 @@
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 
 			var/list/weapon_types = list(
-    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Battle Axe",
+    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Steel Axe",
     "Iron Mace", "Spear", "Flail", "Paired Daggers", "Bow", "Crossbow"
 )
 
@@ -55,8 +55,8 @@
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
-			if(selected_weapon_type == "Battle Axe")
-				beltr = /obj/item/rogueweapon/stoneaxe/battle
+			if(selected_weapon_type == "Steel Axe")
+				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 			if(selected_weapon_type == "Iron Mace")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -70,8 +70,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
@@ -139,7 +138,7 @@
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/keyring/mercenary = 1)
 		
 			var/list/weapon_types = list(
-    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Battle Axe",
+    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Steel Axe",
     "Iron Mace", "Spear", "Flail", "Paired Daggers", "Bow", "Crossbow"
 )
 
@@ -162,8 +161,8 @@
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
-			if(selected_weapon_type == "Battle Axe")
-				beltr = /obj/item/rogueweapon/stoneaxe/battle
+			if(selected_weapon_type == "Steel Axe")
+				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 			if(selected_weapon_type == "Iron Mace")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -177,8 +176,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
@@ -230,7 +228,7 @@
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
 
 			var/list/weapon_types = list(
-    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Battle Axe",
+    "Bastard Sword", "Cutlass", "Rapier", "Sabre", "Steel Axe",
     "Iron Mace", "Spear", "Flail", "Paired Daggers", "Bow", "Crossbow"
 )
 			var/selected_weapon_type = input(
@@ -252,8 +250,8 @@
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
-			if(selected_weapon_type == "Battle Axe")
-				beltr = /obj/item/rogueweapon/stoneaxe/battle
+			if(selected_weapon_type == "Steel Axe")
+				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 			if(selected_weapon_type == "Iron Mace")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
@@ -267,8 +265,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 				beltr = /obj/item/rogueweapon/flail/
 			if(selected_weapon_type == "Paired Daggers")
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/huntingknife/idagger
 				beltl = /obj/item/rogueweapon/huntingknife/idagger
 			if(selected_weapon_type == "Bow")
