@@ -62,8 +62,12 @@
 	if(stress != oldstress)
 		if(stress > oldstress)
 			to_chat(src, "<span class='red'>I gain stress.</span>")
+			if(!rogue_sneaking || alpha >= 100)
+				play_stress_indicator()
 		else
 			to_chat(src, "<span class='green'>I gain peace.</span>")
+			if(!rogue_sneaking || alpha >= 100)
+				play_relief_indicator()
 		for(var/datum/status_effect/stress/i in status_effects)
 			remove_status_effect(i)
 		switch(stress)
@@ -75,6 +79,7 @@
 				apply_status_effect(/datum/status_effect/stress/stressvbad)
 			if(STRESS_INSANE to STRESS_MAX)
 				apply_status_effect(/datum/status_effect/stress/stressinsane)
+				play_mental_break_indicator()
 
 		if(hud_used)
 			if(hud_used.stressies)
