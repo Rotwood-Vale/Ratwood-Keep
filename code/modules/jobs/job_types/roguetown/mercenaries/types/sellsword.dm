@@ -47,11 +47,11 @@
 			if(selected_weapon_type == "Cutlass")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/cutlass 
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 			if(selected_weapon_type == "Rapier")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/rapier
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
@@ -134,7 +134,7 @@
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-			pants = /obj/item/clothing/under/roguetown/chainlegs
+			pants = /obj/item/clothing/under/roguetown/tights/black
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/keyring/mercenary = 1)
 		
 			var/list/weapon_types = list(
@@ -153,11 +153,11 @@
 			if(selected_weapon_type == "Cutlass")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/cutlass 
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1, /obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/keyring/mercenary = 1)
 			if(selected_weapon_type == "Rapier")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/rapier
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1, /obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/keyring/mercenary = 1)
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
@@ -218,12 +218,12 @@
 		if("Heavy Armor")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Striding through arrows and bolts like a pleasant summer rain, either through luck in cards, or prudent saving, you wear proper armor and have the training to realize your dream of encasing yourself in metal."))
-			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/keyring/mercenary
-			pants = /obj/item/clothing/under/roguetown/platelegs
+			pants = /obj/item/clothing/under/roguetown/chainlegs
 			belt = /obj/item/storage/belt/rogue/leather/black
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
 			gloves = /obj/item/clothing/gloves/roguetown/leather/black
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
 
@@ -242,11 +242,11 @@
 			if(selected_weapon_type == "Cutlass")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/cutlass 
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/bandana = 1, /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 			if(selected_weapon_type == "Rapier")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/rapier
-				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1)
+				backpack_contents = list(/obj/item/clothing/head/roguetown/helmet/tricorn = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 			if(selected_weapon_type == "Sabre")
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 				beltr = /obj/item/rogueweapon/sword/sabre 
