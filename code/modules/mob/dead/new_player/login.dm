@@ -1,6 +1,5 @@
 /mob/dead/new_player/Login()
-//	winset(client, "outputwindow.output", "max-lines=1")
-//	winset(client, "outputwindow.output", "max-lines=100")
+	winset(client, "outputwindow.output", "max-lines=800") // REDMOON ADD - повышение количества сохраняемых сообщений в чате
 
 	if(CONFIG_GET(flag/use_exp_tracking))
 		client.set_exp_from_db()
