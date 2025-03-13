@@ -470,7 +470,7 @@
 	if(arrows.len)
 		. += span_notice("[arrows.len] inside.")
 
-/obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
+/obj/item/storage/belt/rogue/leather/knifebelt/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/rogueweapon/huntingknife/throwingknife/A = new()
