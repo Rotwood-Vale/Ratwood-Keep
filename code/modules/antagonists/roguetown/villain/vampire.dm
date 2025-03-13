@@ -224,9 +224,6 @@
 		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
 		if(testicles)
 			testicles.accessory_colors = VD.cache_skin
-		var/obj/item/organ/butt/butt = getorganslot(ORGAN_SLOT_BUTT)
-		if(butt)
-			butt.accessory_colors = VD.cache_skin
 		regenerate_icons()
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
@@ -260,9 +257,6 @@
 		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
 		if(testicles)
 			testicles.accessory_colors = "#c9d3de"
-		var/obj/item/organ/butt/butt = getorganslot(ORGAN_SLOT_BUTT)
-		if(butt)
-			butt.accessory_colors = "#c9d3de"
 		regenerate_icons()
 
 /mob/living/carbon/human/proc/blood_strength()
