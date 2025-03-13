@@ -28,7 +28,7 @@
 		if(weps == null)
 			for(var/obj/item/gwstrap/I in user.get_equipped_items(TRUE))
 				to_chat(loc, span_warning("I work the latches of my strap to holster [A]."))
-				if(do_after(user, 250, target = user))
+				if(do_after(user, 125, target = user))
 					user.transferItemToLoc(A, weps)
 					weps = A
 					update_icon()
@@ -44,7 +44,7 @@
 	if(weps != null)
 		if(!user.get_active_held_item())
 			to_chat(loc, span_warning("I work the latches of my strap to unholster [weps]."))
-			if(do_after(user, 500, target = user))
+			if(do_after(user, 250, target = user))
 				user.put_in_active_hand(weps, user.active_hand_index)
 				weps = null
 				update_icon()
