@@ -91,7 +91,7 @@
 					break
 			return
 	if(istype(grindable))
-		if(!grindable.grind_results)
+		if(isnull(grindable.mill_result))
 			to_chat(user, span_warning("I can't grind this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
