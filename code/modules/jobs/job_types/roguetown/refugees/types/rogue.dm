@@ -108,9 +108,9 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			beltl = /obj/item/ammo_holder/quiver/bolts
+			beltl = /obj/item/ammo_holder/quiver/arrows
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
