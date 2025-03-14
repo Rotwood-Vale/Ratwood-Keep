@@ -31839,13 +31839,6 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/hierophant,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/academy)
-"qND" = (
-/obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "banditin2";
-	aportalid = "banditexit2"
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cavewet/bogcaves)
 "qNP" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -264893,9 +264886,9 @@ gxt
 gxt
 gxt
 dVO
-qND
-qND
-qND
+dVO
+dVO
+dVO
 dVO
 gxt
 gxt

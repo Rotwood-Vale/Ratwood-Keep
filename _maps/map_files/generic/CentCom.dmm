@@ -1278,13 +1278,6 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
-"dv" = (
-/obj/structure/fluff/traveltile/bandit{
-	aportalgoesto = "banditexit2";
-	aportalid = "banditin2"
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/outdoors/woods)
 "dw" = (
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/blocks,
@@ -9430,9 +9423,9 @@ bz
 kB
 kB
 kB
-dv
-dv
-dv
+JS
+JS
+JS
 kB
 "}
 (26,1,1) = {"
