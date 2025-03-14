@@ -109,10 +109,21 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			beltl = /obj/item/ammo_holder/quiver/arrows
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+
+			var/weapons = list("crossbow", "bow")
+			var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+			switch(weaponschoice)
+
+				if("bow")
+					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+					beltl = /obj/item/ammo_holder/quiver/arrows
+				if("crossbow")
+					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+					beltl = /obj/item/ammo_holder/quiver/bolts
+
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 1)
