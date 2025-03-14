@@ -99,8 +99,9 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
-			H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
-			H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
+			if(H.mind)
+				H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
+				H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
 		else
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
