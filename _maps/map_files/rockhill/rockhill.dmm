@@ -37409,6 +37409,7 @@
 /area/rogue/outdoors/town)
 "tMK" = (
 /obj/structure/fog_wall,
+/obj/structure/glowshroom,
 /turf/open/water/river{
 	icon_state = "rockwd"
 	},
@@ -114923,9 +114924,9 @@ bpD
 bMj
 bMj
 bMj
+vTW
+vTW
 dFE
-dFE
-rlu
 dFE
 dFE
 dFE
@@ -115788,10 +115789,10 @@ bMj
 bMj
 bMj
 bMj
+vTW
 dFE
 dFE
-dFE
-dFE
+sxv
 pKo
 jFF
 kgg
