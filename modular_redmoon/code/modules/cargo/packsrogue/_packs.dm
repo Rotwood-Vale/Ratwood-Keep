@@ -7,7 +7,7 @@
 					/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 				)
 
-/datum/supply_pack/rogue/food/dragon_ring
+/datum/supply_pack/rogue/apparel/dragon_ring
 	name = "Dragon Ring"
 	cost = 1000
 	contains = list(
