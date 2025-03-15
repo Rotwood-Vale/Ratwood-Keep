@@ -71,6 +71,42 @@
 		//Absolute Rarest: 0.5% - Exclusive to leeches. The real treasures are the friends we made along the way.
 		//NOTE: These values are not used for RINGS, which are being adjusted manually because of potential abuse involving the treasury & bandit mechanics.
 
+	cageloot = list(/obj/item/trash/applecore = 50,
+					/obj/item/trash/pearcore = 25, //Pears, in Rockhill? Perish the thought.
+					/obj/item/grown/log/tree/stick = 2, //Single stick
+					/obj/item/reagent_containers/food/snacks/fish/oyster = 214,
+					/obj/item/reagent_containers/food/snacks/fish/shrimp = 214,
+					/obj/item/reagent_containers/food/snacks/fish/crab = 214,
+					/obj/item/reagent_containers/food/snacks/fish/lobster = 214,
+					/obj/item/natural/bundle/stick = 15, //Bundle of sticks
+					/obj/item/natural/stone = 30, //Easy for stones to trigger the traps accidentally
+					/obj/item/clothing/head/roguetown/helmet/tricorn = 15,
+					/obj/item/clothing/head/roguetown/helmet/bandana = 15,
+					/obj/item/clothing/head/roguetown/roguehood = 15,
+					/obj/item/clothing/under/roguetown/loincloth/brown = 15,
+					/obj/item/clothing/shoes/roguetown/sandals = 15,
+					/obj/item/clothing/shoes/roguetown/simpleshoes = 15,
+					/obj/item/clothing/gloves/roguetown/fingerless = 15,
+					/obj/item/clothing/gloves/roguetown/leather = 15,
+					/obj/item/clothing/shoes/roguetown/armor/leather = 15,
+					/obj/item/reagent_containers/syringe = 1, //These are terrifyingly powerful.
+					/obj/item/reagent_containers/glass/cup/wooden = 27,
+					/obj/item/ammo_casing/caseless/rogue/arrow = 35,
+					/obj/item/leash = 15,
+					/obj/item/customlock = 35,
+					/obj/item/storage/belt/rogue/pouch/coins/poor = 25,
+					/obj/item/shard = 1, //Bait is smaller
+					/obj/item/natural/cloth = 15,
+					/obj/item/kitchen/spoon = 1,
+					/obj/item/restraints/legcuffs/beartrap = 25,
+					/obj/item/clothing/ring/copper = 35, //lowered chance of rings, too small to trigger a trap reliably, but still here for gacha
+					/obj/item/clothing/ring/topazc = 10,
+					/obj/item/clothing/ring/emeraldc = 10,
+					/obj/item/clothing/ring/sapphirec = 10,
+					/obj/item/clothing/ring/silver = 15,
+					/obj/item/clothing/ring/topazs = 3,
+					/obj/item/clothing/ring/emeralds = 3)
+
 	embedding = list(
 		"embed_chance" = 100,
 		"embedded_unsafe_removal_time" = 0,
