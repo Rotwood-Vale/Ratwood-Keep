@@ -32,7 +32,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
 			H.change_stat("strength", 1)
 			H.change_stat("speed", -1)
-			H.change_stat("endurance", -1)
+			H.change_stat("intelligence", -1)
 			ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 		if(/datum/patron/inhumen/matthios)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
