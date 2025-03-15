@@ -39,6 +39,7 @@
 			H.change_stat("fortune", 1)
 			H.change_stat("constitution", -1)
 			H.change_stat("endurance", -1)
+			H.change_stat("perception", 1)
 		if(/datum/patron/inhumen/baotha)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
 			H.change_stat("constitution", 1)
