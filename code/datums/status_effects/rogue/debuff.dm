@@ -41,7 +41,8 @@
 /datum/status_effect/debuff/silver_curse
 	id = "silver_curse"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/silver_curse
-	duration = 5 SECONDS
+	effectedstats = list(STATKEY_STR = -2, STATKEY_PER = -2, STATKEY_INT = -2, STATKEY_CON = -2, STATKEY_END = -2, STATKEY_SPD = -2, STATKEY_LCK = -2)
+	duration = 1 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/silver_curse
 	name = "Silver Curse"
@@ -97,55 +98,55 @@
 
 /////////
 
-/datum/status_effect/debuff/uncookedfood
-	id = "uncookedfood"
-	effectedstats = null
-	duration = 1
+// /datum/status_effect/debuff/uncookedfood
+// 	id = "uncookedfood"
+// 	effectedstats = null
+// 	duration = 1
 
-/datum/status_effect/debuff/uncookedfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
-		return ..()
-	if(iscarbon(owner))
-		var/mob/living/carbon/C = owner
-		C.add_nausea(100)
-	return ..()
+// /datum/status_effect/debuff/uncookedfood/on_apply()
+// 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
+// 		return ..()
+// 	if(iscarbon(owner))
+// 		var/mob/living/carbon/C = owner
+// 		C.add_nausea(100)
+// 	return ..()
 
-/datum/status_effect/debuff/badmeal
-	id = "badmeal"
-	effectedstats = null
-	duration = 1
+// /datum/status_effect/debuff/badmeal
+// 	id = "badmeal"
+// 	effectedstats = null
+// 	duration = 1
 
-/datum/status_effect/debuff/badmeal/on_apply()
-	owner.add_stress(/datum/stressevent/badmeal)
-	return ..()
+// /datum/status_effect/debuff/badmeal/on_apply()
+// 	owner.add_stress(/datum/stressevent/badmeal)
+// 	return ..()
 
-/datum/status_effect/debuff/burnedfood
-	id = "burnedfood"
-	effectedstats = null
-	duration = 1
+// /datum/status_effect/debuff/burnedfood
+// 	id = "burnedfood"
+// 	effectedstats = null
+// 	duration = 1
 
-/datum/status_effect/debuff/burnedfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
-		return ..()
-	owner.add_stress(/datum/stressevent/burntmeal)
-	if(iscarbon(owner))
-		var/mob/living/carbon/C = owner
-		C.add_nausea(100)
-	return ..()
+// /datum/status_effect/debuff/burnedfood/on_apply()
+// 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
+// 		return ..()
+// 	owner.add_stress(/datum/stressevent/burntmeal)
+// 	if(iscarbon(owner))
+// 		var/mob/living/carbon/C = owner
+// 		C.add_nausea(100)
+// 	return ..()
 
-/datum/status_effect/debuff/rotfood
-	id = "rotfood"
-	effectedstats = null
-	duration = 1
+// /datum/status_effect/debuff/rotfood
+// 	id = "rotfood"
+// 	effectedstats = null
+// 	duration = 1
 
-/datum/status_effect/debuff/rotfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
-		return ..()
-	owner.add_stress(/datum/stressevent/rotfood)
-	if(iscarbon(owner))
-		var/mob/living/carbon/C = owner
-		C.add_nausea(200)
-	return ..()
+// /datum/status_effect/debuff/rotfood/on_apply()
+// 	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
+// 		return ..()
+// 	owner.add_stress(/datum/stressevent/rotfood)
+// 	if(iscarbon(owner))
+// 		var/mob/living/carbon/C = owner
+// 		C.add_nausea(200)
+// 	return ..()
 
 /datum/status_effect/debuff/bleeding
 	id = "bleedingt1"
@@ -180,15 +181,15 @@
 	desc = ""
 	icon_state = "bleed3"
 
-/datum/status_effect/debuff/sleepytime
-	id = "sleepytime"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
-	effectedstats = list("speed" = -1, "endurance" = -1)
+// /datum/status_effect/debuff/sleepytime
+// 	id = "sleepytime"
+// 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
+// 	effectedstats = list("speed" = -1, "endurance" = -1)
 
-/atom/movable/screen/alert/status_effect/debuff/sleepytime
-	name = "Tired"
-	desc = "I should get some rest."
-	icon_state = "sleepy"
+// /atom/movable/screen/alert/status_effect/debuff/sleepytime
+// 	name = "Tired"
+// 	desc = "I should get some rest."
+// 	icon_state = "sleepy"
 
 /datum/status_effect/debuff/muscle_sore
 	id = "muscle_sore"

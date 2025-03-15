@@ -17,3 +17,8 @@
 	timer = 1 MINUTES
 	stressadd = 11
 	desc = span_red("The horrid wails of the dead call for relief!")
+
+/datum/stressevent/uncookedfood
+	timer = 2 MINUTES
+	stressadd = 2
+	desc = "<span class='red'>IT'S FUCKING RAW!!</span>"

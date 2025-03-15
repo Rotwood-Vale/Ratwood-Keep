@@ -84,7 +84,7 @@
 			count += objective.triumph_count
 
 	if(!count)
-		count = 5
+		count = 3
 
 	if(traitorwin)
 		owner.adjust_triumphs(count)
