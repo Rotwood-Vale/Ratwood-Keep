@@ -1,10 +1,12 @@
-/mob/living/carbon/human/species/anthromorphsmall
-	race = /datum/species/anthromorphsmall
+/mob/living/carbon/human/species/rat
+	race = /datum/species/rat
 
-/datum/species/anthromorphsmall
-	name = "Verminvolk" 
-	id = "anthromorphsmall"
-	desc = "A race akin to wild-kin, except afflicted with significantly smaller stature. A bit less respected than their kin due to their closer resemblance to vermin, like the dichotomy between Kobold and Sissean."
+/datum/species/rat
+	name = "Raukkis"
+	id = "rat"
+	desc = "The Raukki settled Rockhill thousands of years ago. Their species migrated from the southern lands of what is now Enigma. They were very resistant to joining the empire until several influential elders of their kind converted to Astrarta worship. \
+			They left their underground burrows and joined civilization. Raukki used to worship Dendor and Necra exclusively. They were called The Wild Father and Under Mother in their language. With the assimilation to the ten, they have adopted many of Enigmas traditions.\
+			Raukki would make families with whoever assisted in winter preparations. Permanent marriages were alien to them before becoming civilized. Raukki are very intelligent and are fantastic potion makers." 
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,
@@ -28,23 +30,23 @@
 	offset_features = list(
 		OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,-3), OFFSET_WRISTS = list(0, -3),\
 		OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,-4), OFFSET_HEAD = list(0,-4), \
-		OFFSET_FACE = list(0,-5), OFFSET_BELT = list(0,-4), OFFSET_BACK = list(0,-3), \
+		OFFSET_FACE = list(0,-4), OFFSET_BELT = list(0,-4), OFFSET_BACK = list(0,-3), \
 		OFFSET_NECK = list(0,-4), OFFSET_MOUTH = list(0,-4), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,0), OFFSET_ARMOR = list(0,0), OFFSET_HANDS = list(0,-3), \
 		OFFSET_ID_F = list(0,-4), OFFSET_GLOVES_F = list(0,-4), OFFSET_WRISTS_F = list(0,-4), OFFSET_HANDS_F = list(0,-4), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-5), OFFSET_HEAD_F = list(0,-5), \
-		OFFSET_FACE_F = list(0,-6), OFFSET_BELT_F = list(0,-4), OFFSET_BACK_F = list(0,-4), \
+		OFFSET_FACE_F = list(0,-5), OFFSET_BELT_F = list(0,-4), OFFSET_BACK_F = list(0,-4), \
 		OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-5), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,-4), OFFSET_UNDIES_F = list(0,-4), \
 		)
 	specstats = list(
 		"strength" = -2, 
-		"perception" = 1, 
-		"intelligence" = 1, 
+		"perception" = -2, // replace with bad eyesight trait if a decent, relevant trait that can balance it is added
+		"intelligence" = 2, 
 		"constitution" = -1, 
 		"endurance" = 0, 
-		"speed" = 2, 
-		"fortune" = 0
+		"speed" = 3, 
+		"fortune" = 1
 		)
 	enflamed_icon = "widefire"
 	organs = list(
@@ -72,18 +74,13 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
-		/datum/customizer/organ/tail/anthro,
-		/datum/customizer/organ/tail_feature/anthro,
-		/datum/customizer/organ/snout/anthrosmall,
-		/datum/customizer/organ/ears/anthro,
-		/datum/customizer/organ/horns/anthro,
-		/datum/customizer/organ/frills/anthro,
-		/datum/customizer/organ/wings/anthro,
-		/datum/customizer/organ/neck_feature/anthro,
-		/datum/customizer/organ/testicles/anthro,
-		/datum/customizer/organ/penis/anthro,
+		/datum/customizer/organ/tail/rat,
+		/datum/customizer/organ/snout/rat,
+		/datum/customizer/organ/ears/rat,
+		/datum/customizer/organ/testicles/external,
+		/datum/customizer/organ/penis/rat,
 		/datum/customizer/organ/breasts/animal,
-		/datum/customizer/organ/vagina/anthro,
+		/datum/customizer/organ/vagina/animal,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
@@ -98,12 +95,15 @@
 		/datum/body_marking/small/butt,
 		/datum/body_marking/small/tie,
 		/datum/body_marking/small/tiesmall,
-		/datum/body_marking/small/backspots,
 		/datum/body_marking/small/front,
-		/datum/body_marking/small/spotted,
+	)
+
+	languages = list(
+		/datum/language/common,
+		/datum/language/squeakish
 	)
 	stress_examine = TRUE
-	stress_desc = span_red("Cursed creatures...")
+	stress_desc = span_red("Filthy vermin... I should watch my pockets..")
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
@@ -118,51 +118,39 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
-/datum/species/anthromorphsmall/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/rat/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/anthromorphsmall/on_species_loss(mob/living/carbon/C)
+/datum/species/rat/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/anthromorphsmall/check_roundstart_eligible()
+/datum/species/rat/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/anthromorphsmall/qualifies_for_rank(rank, list/features)
+/datum/species/rat/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/anthromorphsmall/get_random_features()
+/datum/species/rat/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
 	var/third_color
-	var/random = rand(1,6)
+	var/random = rand(1,3)
 	switch(random)
 		if(1)
 			main_color = "FFFFFF"
 			second_color = "333333"
 			third_color = "333333"
 		if(2)
-			main_color = "FFFFDD"
-			second_color = "DD6611"
-			third_color = "AA5522"
+			main_color = "888888"
+			second_color = "666666"
+			third_color = "666666"
 		if(3)
-			main_color = "DD6611"
+			main_color = "44372e"
 			second_color = "FFFFFF"
-			third_color = "DD6611"
-		if(4)
-			main_color = "CCCCCC"
-			second_color = "FFFFFF"
-			third_color = "FFFFFF"
-		if(5)
-			main_color = "AA5522"
-			second_color = "CC8833"
-			third_color = "FFFFFF"
-		if(6)
-			main_color = "FFFFDD"
-			second_color = "FFEECC"
-			third_color = "FFDDBB"
+			third_color = "666666"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color

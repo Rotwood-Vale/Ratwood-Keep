@@ -229,3 +229,13 @@
 		/datum/sprite_accessory/tail/snuppy,
 		/datum/sprite_accessory/tail/lynx,
 		)
+
+/datum/customizer/organ/tail/rat
+	customizer_choices = list(/datum/customizer_choice/organ/tail/rat)
+
+/datum/customizer_choice/organ/tail/rat
+	name = "Rat Tail"
+	organ_type = /obj/item/organ/tail/rat
+	sprite_accessories = list(
+		/datum/sprite_accessory/tail/murid,
+	)
