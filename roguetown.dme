@@ -1248,6 +1248,7 @@
 #include "code\modules\events\ghost_role.dm"
 #include "code\modules\events\spacevine.dm"
 #include "code\modules\events\rogue\_rogue.dm"
+#include "code\modules\events\rogue\desecrations.dm"
 #include "code\modules\events\rogue\goblininvasion.dm"
 #include "code\modules\events\rogue\haunts.dm"
 #include "code\modules\events\rogue\lightsout.dm"
