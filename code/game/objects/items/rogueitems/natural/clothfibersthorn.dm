@@ -148,6 +148,86 @@
 	if(wet)
 		. += span_notice("It's wet!")
 
+
+/obj/item/natural/cloth/bandage //technically goes under cloth
+	name = "bandage"
+	desc = "A simple bandage used to bind wounds. takes longer to apply but is more effective than just cloth. Slowly heals wounds and binded fractures."
+	icon_state = "bandageroll"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	firefuel = 5 MINUTES
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH | ITEM_SLOT_HIP
+	body_parts_covered = null
+	experimental_onhip = TRUE
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	bundletype = /obj/item/natural/bundle/cloth/bandage
+	bandage_effectiveness = 1
+
+/obj/item/natural/cloth/bandage/attack(mob/living/carbon/human/M, mob/user)
+	if (!M.can_inject(user, TRUE)) return
+	if (!ishuman(M)) return
+	var/mob/living/carbon/human/H = M
+	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
+	if (!affecting) return
+	if (affecting.bandage)
+		to_chat(user, "There is already a bandage.")
+		return
+	var/used_time = 100
+	if (H.mind)
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	if (!do_mob(user, M, used_time)) return
+	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	user.dropItemToGround(src)
+	affecting.try_bandage(src)
+	H.update_damage_overlays()
+
+	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
+	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
+	if (M == user)
+		user.visible_message("You bandage your [affecting].")
+	else
+		user.visible_message("You bandage [M]'s [affecting].")
+
+/proc/heal_and_manage_pain_disabling(var/mob/living/carbon/human/H, var/obj/item/bodypart/affecting)
+	if (!affecting) return
+	affecting.heal_wounds(0.5)
+	for (var/datum/wound/W in affecting.wounds)
+		if (W.woundpain > 30)
+			W.woundpain = 30
+
+/obj/item/natural/bundle/cloth/bandage 
+	name = "roll of bandages"
+	desc = "A bundle of bandages used to bind wounds. More effective than just cloth."
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "bandageroll1"
+	possible_item_intents = list(/datum/intent/use)
+	force = 0
+	throwforce = 0
+	maxamount = 3
+	firefuel = 15 MINUTES
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_TINY
+	stacktype = /obj/item/natural/cloth/bandage
+	stackname = "bandages"
+	icon1 = "bandageroll1"
+	icon1step = 2
+	icon2 = "bandageroll2"
+	icon2step = 3
+
+
+
+/obj/item/natural/bundle/cloth/bandage/full
+	icon_state = "bandageroll2"
+	amount = 3
+	firefuel = 60 MINUTES
+
 // CLEANING
 
 /obj/item/natural/cloth/attack_obj(obj/O, mob/living/user)

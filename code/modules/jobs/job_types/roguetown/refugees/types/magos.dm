@@ -74,7 +74,7 @@
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			backpack_contents = list( /obj/item/book/granter/spellbook/adept = 1,/obj/item/chalk = 1)
-			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+			beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
@@ -108,7 +108,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1 )
-			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+			beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/rogueweapon/huntingknife
 			backl = /obj/item/storage/backpack/rogue/satchel
@@ -149,7 +149,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			backpack_contents = list(/obj/item/chalk = 1)
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+			beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 			beltl = /obj/item/rogueweapon/huntingknife
 			r_hand = /obj/item/rogueweapon/woodstaff
 			H.change_stat("strength", -1)
@@ -191,7 +191,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 	beltl = /obj/item/rogueweapon/huntingknife
 	r_hand = /obj/item/rogueweapon/woodstaff
 	H.change_stat("strength", -1)

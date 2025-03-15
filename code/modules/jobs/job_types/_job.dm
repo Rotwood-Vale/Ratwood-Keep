@@ -142,13 +142,6 @@
 */
 	var/PQ_boost_divider = 0
 
-	//Prevents Job from being in families.
-	var/family_blacklisted = FALSE
-
-	//If characters with this job should be added to the Lord's family.
-	var/ruler_family = FALSE
-	var/lord_rel_type = REL_TYPE_RELATIVE
-
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
