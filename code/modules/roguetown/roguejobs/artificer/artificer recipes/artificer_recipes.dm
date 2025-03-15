@@ -86,6 +86,20 @@
 	hammers_per_item = 10
 	skill_level = 3
 
+/datum/artificer_recipe/general/copper/cog
+	name = "Copper Cog"
+	required_item = /obj/item/ingot/copper
+	created_item = /obj/item/roguegear/copper
+	hammers_per_item = 10
+	skill_level = 1
+
+/datum/artificer_recipe/general/tin/cog
+	name = "Tin Cog"
+	required_item = /obj/item/ingot/tin
+	created_item = /obj/item/roguegear/tin
+	hammers_per_item = 10
+	skill_level = 1
+
 /datum/artificer_recipe/bronze
 	name = "Bronze Cog"
 	required_item = /obj/item/ingot/bronze
@@ -93,20 +107,6 @@
 	hammers_per_item = 10
 	skill_level = 1
 	i_type = "General"
-
-/datum/artificer_recipe/general/copper/cog
-	name = "Copper Cog"
-	required_item = /obj/item/ingot/copper
-	created_item = /obj/item/roguegear/bronze
-	hammers_per_item = 10
-	skill_level = 1
-
-/datum/artificer_recipe/general/tin/cog
-	name = "Tin Cog"
-	required_item = /obj/item/ingot/tin
-	created_item = /obj/item/roguegear/bronze
-	hammers_per_item = 10
-	skill_level = 1
 
 /datum/artificer_recipe/bronze/locks
 	name = "Locks 5x"
@@ -119,6 +119,23 @@
 	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank, /obj/item/key_custom_blank)
 	hammers_per_item = 5
 	skill_level = 1
+
+/datum/artificer_recipe/bronze/cl_conjunction
+	name = "Clockwork Conjunction (+1 Copper Cog) (+1 Tin Cog)"
+	additional_items = list(/obj/item/roguegear/copper = 1,
+							/obj/item/roguegear/tin = 1)
+	created_item = /obj/item/roguepart/conjunction
+	hammers_per_item = 4
+	skill_level = 3
+
+/datum/artificer_recipe/general/drill_chassis
+	name = "Drill Chassis (+1 Plank) (+1 Iron)"
+	required_item = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/wood/plank = 1,
+							/obj/item/ingot/iron = 1)
+	created_item = /obj/item/roguepart/drill_chassis
+	hammers_per_item = 5
+	skill_level = 4
 
 // --------- TOOLS -----------
 
@@ -133,6 +150,16 @@
 	created_item = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
 	hammers_per_item = 9
 	skill_level = 3
+	i_type = "Tools"
+
+/datum/artificer_recipe/steel/clock_drill
+	name = "Clockwork Drill (+1 Chassis) (+1 Conjunction)"
+	required_item = /obj/item/ingot/steel
+	additional_items = list(/obj/item/roguepart/drill_chassis = 1,
+							/obj/item/roguepart/conjunction = 1)
+	created_item = /obj/item/rogueweapon/pick/drill
+	hammers_per_item = 8
+	skill_level = 5
 	i_type = "Tools"
 
 // --------- Contraptions -----------
@@ -165,7 +192,7 @@
 	skill_level = 4
 
 /datum/artificer_recipe/contraptions/smokebombs
-	name = "smokebomb(s) (6) (+1 Coal)"
+	name = "Smokebomb(s) (6) (+1 Coal)"
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueore/coal = 1)
 	created_item = list(/obj/item/smokebomb,
@@ -176,6 +203,7 @@
 						/obj/item/smokebomb,)
 	hammers_per_item = 12
 	skill_level = 3
+
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
@@ -334,7 +362,7 @@
 // --------- BRONZE -----------
 
 /datum/artificer_recipe/bronze/prosthetic
-	name = "Bronze Left Arm (+1 Cog)"
+	name = "Bronze Left Arm (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/bronze
 	hammers_per_item = 15
 	skill_level = 4
@@ -342,13 +370,13 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/bronze/prosthetic/arm_right
-	name = "Bronze Right Arm (+1 Cog)"
+	name = "Bronze Right Arm (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/bronze
 
 // --------- GOLD -----------
 
 /datum/artificer_recipe/gold/prosthetic // Guh this need a gold subtype oh well maybe some day there will be a golden cock! COG I MEAN GOD OMG
-	name = "Gold Left Arm (+2 Cog)"
+	name = "Gold Left Arm (+2 Bronze Cog)"
 	required_item = /obj/item/ingot/gold
 	created_item = /obj/item/bodypart/l_arm/prosthetic/gold
 	additional_items = list(/obj/item/roguegear/bronze = 2)
@@ -357,21 +385,21 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/gold/prosthetic/arm_right
-	name = "Gold Right Arm (+2 Cog)"
+	name = "Gold Right Arm (+2 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/gold
 
 /datum/artificer_recipe/gold/prosthetic/leg_left
-	name = "Gold Left Leg (+2 Cog)"
+	name = "Gold Left Leg (+2 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/gold
 
 /datum/artificer_recipe/gold/prosthetic/leg_right
-	name = "Gold Right Leg (+2 Cog)"
+	name = "Gold Right Leg (+2 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/gold
 
 // --------- STEEL -----------
 
 /datum/artificer_recipe/steel/prosthetic
-	name = "Steel Left Arm (+1 Steel, +1 Cog)"
+	name = "Steel Left Arm (+1 Steel, +1 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/steel
 	required_item = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel = 1, /obj/item/roguegear/bronze = 1)
@@ -380,15 +408,15 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/steel/prosthetic/arm_right
-	name = "Steel Right Arm (+1 Steel, +1 Cog)"
+	name = "Steel Right Arm (+1 Steel, +1 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/steel
 
 /datum/artificer_recipe/steel/prosthetic/leg_left
-	name = "Steel Left Leg (+1 Steel, +1 Cog)"
+	name = "Steel Left Leg (+1 Steel, +1 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/steel
 
 /datum/artificer_recipe/steel/prosthetic/leg_right
-	name = "Steel Right Leg (+1 Steel, +1 Cog)"
+	name = "Steel Right Leg (+1 Steel, +1 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/steel
 
 // --------- GUNS -----------
@@ -405,7 +433,7 @@
 	skill_level = 2
 
 /datum/artificer_recipe/guns/parts
-	name = "Gun Lock (+1 Cog)"
+	name = "Gun Lock (+1 Bronze Cog)"
 	required_item = /obj/item/ingot/steel
 	created_item = /obj/item/gunlock
 	additional_items = list(/obj/item/roguegear/bronze = 1)
@@ -442,7 +470,7 @@
 // --------- IRON -----------
 
 /datum/artificer_recipe/iron/prosthetic //These are the inexpensive alternatives
-	name = "Iron Left Arm (+1 Plank) (+1 Cog)"
+	name = "Iron Left Arm (+1 Plank) (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_arm/prosthetic/iron
 	required_item = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/wood/plank = 1, /obj/item/roguegear/bronze = 1)
@@ -451,13 +479,13 @@
 	i_type = "Prosthetics"
 
 /datum/artificer_recipe/iron/prosthetic/arm_right
-	name = "Iron Right Arm (+1 Plank) (+1 Cog)"
+	name = "Iron Right Arm (+1 Plank) (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_left
-	name = "Iron Left Leg (+1 Plank) (+1 Cog)"
+	name = "Iron Left Leg (+1 Plank) (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/l_leg/prosthetic/iron
 
 /datum/artificer_recipe/iron/prosthetic/leg_right
-	name = "Iron Right Leg (+1 Plank) (+1 Cog)"
+	name = "Iron Right Leg (+1 Plank) (+1 Bronze Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron
