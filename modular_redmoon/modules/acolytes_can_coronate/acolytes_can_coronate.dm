@@ -3,7 +3,7 @@
 	H.verbs += list(/mob/living/carbon/human/proc/lesser_coronate_lord)
 
 /mob/living/carbon/human/proc/lesser_coronate_lord()
-	set name = "Coronate Heir"
+	set name = "Coronate"
 	set category = "Cleric"
 	if(!mind)
 		return
@@ -14,7 +14,7 @@
 
 	// Если в раунде была жрица, то коронация силами аколита невозможна
 	if(SSjob.type_occupations[/datum/job/roguetown/priest].current_positions)
-		to_chat(src, span_warning("Our church has the priest... My connection with the Ten is not strong enough for such act."))
+		to_chat(src, span_warning("Our church has the priest... my connection with the Ten is not strong enough for such act."))
 		return FALSE
 
 	for(var/mob/living/carbon/human/HU in get_step(src, src.dir))
@@ -27,9 +27,9 @@
 		if(!istype(HU.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 			continue
 		// коронация возможна только для наследников
-		if(HU.mind.assigned_role != "Heir")
-			to_chat(src, span_warning("Only noble heirs can become new baron!"))
-			continue
+		// if(HU.mind.assigned_role != "Heir")
+		// 	to_chat(src, span_warning("Only noble heirs can become new baron!"))
+		// 	continue
 
 		// Если нет плохого знамения из-за отсутствия лорда или лорд жив, коронация невозможна
 		if(!hasomen(OMEN_NOLORD))
@@ -41,7 +41,7 @@
 							lord_is_dead = FALSE
 							break
 			if(!lord_is_dead)
-				to_chat(src, span_warning("I can only coronate a heir if our ruller will be dead..."))
+				to_chat(src, span_warning("I can only coronate if our ruller will be dead..."))
 				continue
 
 		//Abdicate previous Duke
