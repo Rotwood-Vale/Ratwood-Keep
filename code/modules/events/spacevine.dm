@@ -66,9 +66,6 @@
 /datum/spacevine_mutation/proc/on_spread(obj/structure/spacevine/holder, turf/target)
 	return
 
-/datum/spacevine_mutation/proc/on_buckle(obj/structure/spacevine/holder, mob/living/buckled)
-	return
-
 /datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/holder)
 	return
 
@@ -149,9 +146,6 @@
 /datum/spacevine_mutation/aggressive_spread/on_spread(obj/structure/spacevine/holder, turf/target)
 	target.ex_act(severity, null, src) // vine immunity handled at /mob/ex_act
 
-/datum/spacevine_mutation/aggressive_spread/on_buckle(obj/structure/spacevine/holder, mob/living/buckled)
-	buckled.ex_act(severity, null, src)
-
 /datum/spacevine_mutation/transparency
 	name = "transparent"
 	hue = ""
@@ -225,8 +219,6 @@
 	severity = 10
 
 /datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(10) && !isvineimmune(crosser))
-		holder.entangle(crosser)
 	if(!isvineimmune(crosser))
 		if(crosser.apply_damage(5, BRUTE))
 			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
@@ -265,8 +257,6 @@
 		master.VineDestroyed(src)
 	mutations = list()
 	set_opacity(0)
-	if(has_buckled_mobs())
-		unbuckle_all_mobs(force=1)
 	return ..()
 
 /obj/structure/spacevine/proc/on_chem_effect(datum/reagent/R)
@@ -437,8 +427,6 @@
 		if(SV.energy < 2) //If tile isn't fully grown
 			if(prob(20))
 				SV.grow()
-		else //If tile is fully grown
-			SV.entangle_mob()
 		if(vines.len > 25)
 			break
 		SV.spread()
@@ -465,24 +453,6 @@
 
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_grow(src)
-
-/obj/structure/spacevine/proc/entangle_mob()
-	if(!has_buckled_mobs() && prob(25))
-		for(var/mob/living/V in src.loc)
-			entangle(V)
-			if(has_buckled_mobs())
-				break //only capture one mob at a time
-
-
-/obj/structure/spacevine/proc/entangle(mob/living/V)
-	if(!V || isvineimmune(V))
-		return
-	for(var/datum/spacevine_mutation/SM in mutations)
-		SM.on_buckle(src, V)
-	if((V.stat != DEAD) && (V.buckled != src)) //not dead or captured
-		to_chat(V, span_danger("The vines [pick("wind", "tangle", "tighten")] around me!"))
-		buckle_mob(V, 1)
-	V.adjustOxyLoss(10)
 
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
