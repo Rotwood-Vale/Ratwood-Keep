@@ -24,7 +24,7 @@
 	restricted_jobs = list(INQUISITION_ROLES)
 	weight = 80
 
-/datum/special_trait/aboriginal/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(character, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(character, TRAIT_NOSTINK, "[type]")
@@ -97,6 +97,32 @@
 	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
 
+/datum/special_trait/duelist
+	name = "Retired duelist"
+	greet_text = span_notice("I used to be a legendary duelist, but I've settled down in Rockhill.")
+	req_text = "Be a towner and be middle aged/old"
+	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
+	allowed_jobs = list(/datum/job/roguetown/towner, YEOMEN_ROLES)
+	weight = 10
+
+/datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
+	character.cmode_music = 'sound/music/combat_duelist.ogg'
+	character.change_stat("speed", 2)
+	character.change_stat("endurance", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/athletics, 3, TRUE)
+	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long
+	to_chat(character, span_notice("I need to get my sword from that tree."))
+
+/datum/special_trait/pineapple
+	name = "The safeword is 'Pineapple'"
+	greet_text = span_notice("I enjoy whipping people until they squirm and whine, their pain makes my pleasure. I'll need to grab my toy from that one tree.")
+	weight = 10
+
+/datum/special_trait/pineapple/on_apply(mob/living/carbon/human/character, silent)
+	character.mind.special_items["Whip"] = /obj/item/rogueweapon/whip
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 6, TRUE)
+
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
 	greet_text = span_notice("My diet was quite rich in corn.")
@@ -142,7 +168,7 @@
 /datum/special_trait/packed_lunch
 	name = "Packed Lunch"
 	greet_text = span_notice("I don't like going around hungry so I packed my lunch!")
-	weight = 400
+	weight = 75
 
 /datum/special_trait/packed_lunch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(character))
@@ -256,8 +282,8 @@
 /datum/special_trait/giant // Arguable if this is neutral anyway, think nobody dislikes getting it.
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
-	req_text = "Not a kobold, seelie, verminvolk or a dwarf" // 1984
-	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
+	req_text = "Not a seelie" //Don't remove this
+	restricted_races = list(/datum/species/seelie)
 	weight = 60
 
 /datum/special_trait/giant/on_apply(mob/living/carbon/human/character)
@@ -280,12 +306,11 @@
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
 	character.set_patron(/datum/patron/godless)
 
-
 /datum/special_trait/disfigured
 	name = "Disfigured"
 	greet_text = span_notice("For some reason, no one can recognise my face.")
 	weight = 80
-
+	
 /datum/special_trait/disfigured/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DISFIGURED, "[type]")
 
@@ -391,39 +416,6 @@
 	var/turf/location = get_spawn_turf_for_job("Refugee")
 	character.forceMove(location)
 	grant_lit_torch(character)
-
-
-/datum/special_trait/atrophy
-	name = "Atrophy"
-	greet_text = span_boldwarning("When growing up I could barely feed myself, this left me weak and fragile...")
-	weight = 80
-
-/datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -2)
-	character.change_stat("constitution", -2)
-	character.change_stat("endurance", -1)
-
-
-/datum/special_trait/lazy
-	name = "Lazy"
-	greet_text = span_boldwarning("I don't care, never did.")
-	weight = 80
-
-/datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -1)
-	character.change_stat("constitution", -1)
-	character.change_stat("endurance", -1)
-	character.change_stat("speed", -1)
-	character.change_stat("perception", -1)
-
-
-/datum/special_trait/bad_week
-	name = "Bad Week"
-	greet_text = span_boldwarning("Everything just seems to piss me off!")
-	weight = 100
-
-/datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
 
 
 /datum/special_trait/nude_sleeper
