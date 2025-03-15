@@ -692,7 +692,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		else
 			return
 	..()
-	M.mind.adjust_experience(/datum/skill/misc/riding, M.STAINT, FALSE)
 	update_icon()
 
 /mob/living/simple_animal/hostile/user_buckle_mob(mob/living/M, mob/user)
@@ -718,7 +717,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return
 
 		M.forceMove(get_turf(src))
-		M.mind.adjust_experience(/datum/skill/misc/riding, M.STAINT, FALSE)
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
 	..()
