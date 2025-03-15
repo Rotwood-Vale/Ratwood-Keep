@@ -204,7 +204,7 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be on top of them."))
 					return
-				user.stamina_add(rand(1,3))
+				user.stamina_add(rand(10,15))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 				M.Stun(max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20))
