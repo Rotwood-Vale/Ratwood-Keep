@@ -107,8 +107,10 @@ s
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "manafountain"
 	layer = BELOW_MOB_LAYER
+	max_integrity = 50000	//I need to find a better way to make this unbreakable
 	pixel_x = -16
 	layer = -0.1
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
 	if(isliving(user))
