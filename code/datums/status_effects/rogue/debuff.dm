@@ -401,3 +401,46 @@
 	var/area/rogue/our_area = get_area(owner)
 	if(!(our_area.roughterrain))
 		owner.remove_status_effect(/datum/status_effect/debuff/guarddebuff)
+
+// paralysis drug
+
+/datum/status_effect/debuff/paralysis
+	id = "paralysis"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/paralysis
+	effectedstats = list("strength" = -5, "constitution" = -5, "perception" = -5)
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/paralysis/on_apply()
+	. = ..()
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		C.Paralyze(120)
+	return ..()
+
+/datum/status_effect/debuff/paralysis/on_remove()
+
+/atom/movable/screen/alert/status_effect/debuff/paralysis
+	name = "Drug-Induced Paralysis"
+	icon_state = "muscles"
+	desc = "I can't move, I've been poisoned!"
+
+// blindness drug
+
+/datum/status_effect/debuff/witness
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/witness
+	id = "witness"
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/witness/on_apply()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.blind_eyes(120)
+	return ..()
+
+/datum/status_effect/debuff/witness/on_remove()
+
+/atom/movable/screen/alert/status_effect/debuff/witness
+	name = "Blindness"
+	icon_state = "high"
+	desc = "I can't see, I've been poisoned!"

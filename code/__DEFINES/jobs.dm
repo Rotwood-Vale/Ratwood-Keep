@@ -208,6 +208,22 @@
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
 
+//mulyeog lineage
+#define MULYEOGLINEAGE	(1<<8)
+
+#define MENTOR (1<<0)
+#define BUNSU (1<<2)
+#define SALSU  (1<<4)
+#define SALSUSAWBONES
+
+//ruma clan
+#define RUMACLAN (1<<8)
+
+#define RUMACAPTAIN (1<<0)
+#define KYODAI (1<<2)
+#define WAKASHU (1<<4)
+#define WAKASHUSAWBONES
+
 #define JCOLOR_NOBLE "#aa83b9"
 #define JCOLOR_COURTIER "#81adc8"
 #define JCOLOR_CHURCH "#c0ba8d"
@@ -218,6 +234,8 @@
 #define JCOLOR_MERCENARY "#c86e3a"
 #define JCOLOR_FOREIGNER "#776759"
 #define JCOLOR_GOBLIN "#33CC33"
+#define JCOLOR_MULYEOG "#3a3b83"
+#define JCOLOR_RUMACLAN "#463324"#define JCOLOR_GOBLIN "#33CC33"
 
 
 // job display orders //
@@ -296,7 +314,16 @@
 #define JDO_VET 31.2
 #define JDO_SEELIE 31.3
 
-#define JDO_VAGRANT 33
+#define JDO_MENTOR 32
+#define JDO_BUNYU 32.1
+#define JDO_SALSU 32.2
+#define JDO_SALSUSAWBONES 32.3
+
+#define JDO_RUMACAPTAIN 33
+#define JDO_KYODAI 33.1
+#define JDO_WAKASHU 33.2
+
+#define JDO_VAGRANT 34
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
@@ -408,3 +435,13 @@
 	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/migrant,\
 	/datum/job/roguetown/bandit,
+
+#define MULYEOGLINEAGE_ROLES \
+	/datum/job/roguetown/mentor,\
+	/datum/job/roguetown/mulyeogenforcer,\
+	/datum/job/roguetown/mulyeogenhenchman,\
+
+#define RUMACLAN_ROLES \
+	/datum/job/roguetown/rumacaptain,\
+	/datum/job/roguetown/kyodai,\
+	/datum/job/roguetown/wakashu,\
