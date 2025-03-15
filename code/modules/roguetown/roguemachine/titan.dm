@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Summon Key, Change Position, Make Law, Remove Law, Purge Laws, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message2recognize, "make announcement"))
 				if(nocrown)
@@ -198,6 +198,54 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_tax_popup(H)
 				return
+			if(findtext_char(message2recognize, "change position"))
+				if(notlord || nocrown)
+					say("You are not my master!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
+				give_job_popup(H)
+				return
+			if(findtext(message2recognize, "summon key"))
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!SSroguemachine.key)
+					new /obj/item/key/lord(src.loc)
+					say("The key is summoned!")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				if(SSroguemachine.key)
+					var/obj/item/key/lord/I = SSroguemachine.key
+					var/mob/living/carbon/human/HC = I.loc
+					if(!I)
+						I = new /obj/item/key/lord(src.loc)
+					if(I.item_flags & IN_STORAGE)
+						say("[HC.real_name] holds the key!")
+						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+						return
+					if(I && !ismob(I.loc))
+						I.anti_stall()
+						I = new /obj/item/key/lord(src.loc)
+						H.put_in_hands(I)
+						say("The key is summoned!")
+						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+						playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+						return
+					if(ishuman(I.loc))
+						if(HC.stat != DEAD)
+							if(I in HC.held_items)
+								say("[HC.real_name] holds the key!")
+								playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+								return
+						else
+							HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
+					I.forceMove(src.loc)
+					H.put_in_hands(I)
+					say("The key is summoned!")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		if(1)
 			make_announcement(H, raw_message)
 			COOLDOWN_START(src, king_announcement, 30 SECONDS)
@@ -227,6 +275,32 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 		SStreasury.tax_value = newtax / 100
 		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Generous [TITLE_LORD] Decrees", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
+/obj/structure/roguemachine/titan/proc/give_job_popup(mob/living/carbon/human/user)
+	if(!Adjacent(user))
+		return
+
+	var/list/mob/possible_mobs = orange(2, src)
+	var/mob/victim = input(user, "Who should change their post?", src, null) as null|mob in possible_mobs - user
+	if(isnull(victim) || !Adjacent(user))
+		return
+
+	var/list/possible_positions = GLOB.noble_positions + GLOB.courtier_positions + GLOB.garrison_positions + GLOB.church_positions + GLOB.inquisition_positions + GLOB.yeoman_positions + GLOB.peasant_positions + GLOB.youngfolk_positions + GLOB.mercenary_positions - "Monarch"
+
+	var/new_pos = input(user, "Select their new position", src, null) as anything in possible_positions
+
+	if(isnull(new_pos) || !Adjacent(user))
+		return
+
+	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	victim.job = new_pos
+	victim.migrant_type = null
+	if(ishuman(victim))
+		var/mob/living/carbon/human/human = victim
+		human.advjob = new_pos
+	if(!SScommunications.can_announce(user))
+		return
+
+	say("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos]!")
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
