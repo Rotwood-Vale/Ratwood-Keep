@@ -75,8 +75,8 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			beltr = /obj/item/clothing/mask/cigarette/rollie/cannabis
 			beltl = /obj/item/flint
-			backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
-			
+			backpack_contents = list(/obj/item/storage/pill_bottle/dice = 1, /obj/item/storage/pill_bottle/dice/push_your_luck = 1, /obj/item/toy/cards/deck = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
