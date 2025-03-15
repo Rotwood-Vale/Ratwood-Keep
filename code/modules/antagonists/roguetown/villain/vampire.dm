@@ -214,6 +214,17 @@
 	mob_biotypes &= ~MOB_UNDEAD
 	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = VD.cache_skin
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = VD.cache_skin
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = VD.cache_skin
+		regenerate_icons()
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
 	if(!VD)
@@ -236,7 +247,17 @@
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
-
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = "#c9d3de"
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = "#c9d3de"
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = "#c9d3de"
+		regenerate_icons()
 
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
