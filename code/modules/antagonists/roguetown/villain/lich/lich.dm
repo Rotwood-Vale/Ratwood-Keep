@@ -64,6 +64,12 @@
 	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
 	ADD_TRAIT(L, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
 
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
+
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
 	if(L.charflaw)
