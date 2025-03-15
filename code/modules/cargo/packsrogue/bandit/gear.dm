@@ -48,8 +48,3 @@
 	name = "Handsaw"
 	cost = 80
 	contains = list(/obj/item/rogueweapon/handsaw)
-
-/datum/supply_pack/rogue/bandit/Gear/hammer
-	name = "Hammer"
-	cost = 250
-	contains = list(/obj/item/rogueweapon/hammer/iron)
