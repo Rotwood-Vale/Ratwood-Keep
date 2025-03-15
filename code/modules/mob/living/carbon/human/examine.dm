@@ -140,6 +140,9 @@
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
 
+		if(name in GLOB.apostasy_players)
+			. += span_userdanger("APOSTATE!")	
+
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
 		if(iszizocultist(user) || iszizolackey(user))

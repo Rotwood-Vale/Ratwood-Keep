@@ -33,6 +33,10 @@
 		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
 			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
 			target.cursed_freak_out()
+			return 
+		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
+			to_chat(user, span_warning("The one that walks under such mark, cannot be healed..."))
+			revert_cast()
 			return FALSE
 		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
@@ -127,6 +131,9 @@
 			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
 			target.cursed_freak_out()
 			return FALSE
+		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
+			to_chat(user, span_warning("The one that walks under such mark, cannot be healed..."))
+			return FALSE	
 		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
