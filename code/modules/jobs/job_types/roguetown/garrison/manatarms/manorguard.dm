@@ -3,8 +3,8 @@
 	flag = MANATARMS
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 4
+	spawn_positions = 4
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
@@ -19,7 +19,7 @@
 	give_bank_account = 22
 	min_pq = 6
 	max_pq = null
-	subclass_cat_rolls = list(CTAG_MAA = 6)
+	subclass_cat_rolls = list(CTAG_MAA = 4)
 
 	cmode_music = 'sound/music/combat_guard2.ogg'
 
