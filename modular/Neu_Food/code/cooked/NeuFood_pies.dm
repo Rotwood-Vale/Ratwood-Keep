@@ -412,7 +412,7 @@
 	eat_effect = null
 	foodtype = GRAIN | DAIRY
 	chopping_sound = TRUE
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -458,7 +458,7 @@
 	foodtype = GRAIN | DAIRY
 	warming = 5 MINUTES
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	color = "#e7e2df"
 	rotprocess = SHELFLIFE_LONG
 
@@ -466,7 +466,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat // bae item
 	name = "meat pie"
 	desc = ""
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/meat
@@ -554,7 +554,7 @@
 	name = "Donk-E-Pie"
 	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
 	icon_state = "handpie"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	bitesize = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION, /datum/reagent/medicine/omnizine = 5) // donkpocket
 	tastes = list("crispy dough" = 1)

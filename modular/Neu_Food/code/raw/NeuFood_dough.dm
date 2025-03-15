@@ -437,7 +437,7 @@
 	icon_state = "bread_egg"
 	foodtype = GRAIN | MEAT
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 	tastes = list("salty fat" = 1)
@@ -445,7 +445,7 @@
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /*	.................   Bread bun   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bun
@@ -496,6 +496,7 @@
 	foodtype = GRAIN | DAIRY
 	bitesize = 3
 	rotprocess = SHELFLIFE_DECENT
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
 /*  ..................   Frybread   ......................*/
 /obj/item/reagent_containers/food/snacks/rogue/frybread
@@ -507,7 +508,7 @@
 	foodtype = GRAIN | DAIRY | FRIED
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /*	.................   Pastry   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/pastry
@@ -519,7 +520,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY
 
 /*	.................   Sweetroll   ................... */
@@ -535,7 +536,8 @@
 	tastes = list("sugar and crispy dough" = 1)
 	foodtype = SUGAR | GRAIN | DAIRY
 	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
+	extra_eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/rogue/pastry/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -576,7 +578,7 @@
 	bitesize = 3
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
 
 /*	.................   Prezzel   ................... */
@@ -596,7 +598,7 @@
 	tastes = list("crispy butterdough" = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY
 
 /*	.................   Raisin bread   ................... */
@@ -647,7 +649,7 @@
 	slice_batch = FALSE
 	slice_sound = TRUE 
 	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread/update_icon()
 	if(slices_num)
@@ -678,7 +680,7 @@
 	tastes = list("spelt" = 1,"dried fruit" = 1)
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
 
 /*	.................   Cake   ................... */
@@ -745,7 +747,8 @@
 	slice_batch = TRUE
 	slice_sound = TRUE 
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
@@ -757,7 +760,8 @@
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
@@ -792,7 +796,8 @@
 	slice_batch = TRUE
 	slice_sound = TRUE 
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
@@ -804,7 +809,8 @@
 	cooked_type = null
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 2
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
