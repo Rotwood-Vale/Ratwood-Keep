@@ -319,6 +319,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Nobles			Eventually all of them will get their subclasses
 #define CTAG_HEIR			"CAT_HEIR"			// Heirs
+#define CTAG_KNIGHT			"CAT_KNIGHT"		// Knights
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
