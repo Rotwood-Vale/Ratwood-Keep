@@ -1028,8 +1028,8 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
 		if(L.anti_magic_check())
-			visible_message(span_warning("The blades dispel when they near [target]!"))
-			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			visible_message(span_warning("The blades dispel when they near [L]!"))
+			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
 
@@ -1378,7 +1378,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 		var/dist = get_dist(user, C)
 		if (dist <= range)
-			if(HAS_TRAIT(C, TRAIT_SHOCKIMMUNE)
+			if(HAS_TRAIT(C, TRAIT_SHOCKIMMUNE))
 				return
 			else
 				C.electrocute_act(1, user) //just shock
