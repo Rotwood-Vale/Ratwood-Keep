@@ -206,7 +206,7 @@
 	if(success && deep) // deep is here for no double-message
 		to_chat(user, span_rose("I gain a faint sense of peace.")) // flavor this however you want
 		if(give_pq && user?.ckey && (user.ckey != success))
-			adjust_playerquality(give_pq, user.ckey)
+			user.adjust_triumphs(1) // adjust_playerquality(give_pq, user.ckey)
 	return success
 
 /// Proc that funeralizes a corpse by setting a variable in its mind, for reliable respawns.
@@ -227,7 +227,7 @@
 		if(coin.quantity >= 1) // stuffing their mouth full of a fuck ton of coins wont do shit
 			ADD_TRAIT(human_corpse, TRAIT_BURIED_COIN_GIVEN, TRAIT_GENERIC)
 			if(coin_pq && user?.ckey && (user.ckey != attacker_ckey))
-				adjust_playerquality(coin_pq, user.ckey)
+				user.adjust_triumphs(1) // adjust_playerquality(coin_pq, user.ckey)
 			qdel(human_corpse.mouth)
 			human_corpse.update_inv_mouth()
 			for(var/obj/effect/landmark/underworld/coin_spawn in GLOB.landmarks_list)

@@ -107,7 +107,7 @@
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
 		if(target.mind)
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-				adjust_playerquality(revive_pq, user.ckey)
+				user.adjust_triumphs(1) // adjust_playerquality(revive_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		return TRUE
