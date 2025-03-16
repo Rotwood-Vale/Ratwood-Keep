@@ -93,10 +93,9 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
@@ -109,14 +108,22 @@
 			H.change_stat("intelligence", 3)
 			H.change_stat("speed", 3)
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/push_spell)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/lightninglure)
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/magered
-			l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
-			beltl = /obj/item/rogueweapon/whip
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-
 			H.grant_language(/datum/language/celestial)
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			var/weapons = list("Shamshir","Whips and Knives",)
+			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+			H.set_blindness(0)
+			switch(weapon_choice)
+				if("Shamshir")
+					backl = /obj/item/rogueweapon/sword/long/rider
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+				if("Whips and Knives")
+					beltl = /obj/item/rogueweapon/whip
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
+					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 
 	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal
