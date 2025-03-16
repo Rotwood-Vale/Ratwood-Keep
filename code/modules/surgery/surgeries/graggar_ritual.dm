@@ -37,50 +37,50 @@
 			display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 				"[user] cuts a slice from [target]'s body.",
 				"[user] cuts a slice from  [target]'s body.")
-			new /obj/item/meat/maa(target.loc)	
+			new /obj/item/meat/maa(target.loc)
 			target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	else
 	if(target.HAS_TRAIT(TRAIT_TEMPLAR))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/templar(target.loc)	
+		new /obj/item/meat/templar(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	else
 	if(target.HAS_TRAIT(TRAIT_WATCHMAN))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/watchman(target.loc)	
+		new /obj/item/meat/watchman(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	if(target.HAS_TRAIT(TRAIT_VANGUARD))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/vanguard(target.loc)	
+		new /obj/item/meat/vanguard(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	if(target.HAS_TRAIT(TRAIT_KNIGHT))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/knight(target.loc)	
+		new /obj/item/meat/knight(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	if(target.HAS_TRAIT(TRAIT_PREIST))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/preist(target.loc)	
+		new /obj/item/meat/preist(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
 	if(target.HAS_TRAIT(TRAIT_ROYAL_FAMILY))
 		display_results(user, target, span_notice(" [user] starts to cut some meat from [target]'s spine!."),
 			"[user] cuts a slice from [target]'s body.",
 			"[user] cuts a slice from  [target]'s body.")
-		new /obj/item/meat/royal(target.loc)	
+		new /obj/item/meat/royal(target.loc)
 		target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
-	return 
+	return
