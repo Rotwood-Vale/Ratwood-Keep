@@ -1,23 +1,25 @@
-
-/datum/surgery/graggar_ritual
-    steps = list(
-        /datum/surgery_step/incise,
-        /datum/surgery_step/saw,
-        /datum/surgery_step/graggarritual,
-        /datum/surgery_step/cauterize
-    )
-    target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-    possible_locs = list(BODY_ZONE_CHEST)
+/datum/surgery/graggarritual
+	name = "graggar ritual"
+	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	possible_locs = list(BODY_ZONE_CHEST)
+	steps = list(
+		/datum/surgery_step/incise,
+		/datum/surgery_step/saw,
+		/datum/surgery_step/graggarritual,
+		/datum/surgery_step/cauterize,
+	)
 
 /datum/surgery_step/graggarritual
-    name = "Graggar's ritual"
-    implements = list(
-        TOOL_CUT = 10,
-    )
-    target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
-    time = 30 SECONDS
-    surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_BROKEN
-    skill_min = SKILL_LEVEL_NOVICE
+	name = "Graggar ritual"
+	time = 1 SECONDS
+	accept_hand = TRUE
+	possible_locs = list(BODY_ZONE_CHEST)
+	implements = list(
+		TOOL_SCALPEL = 80,
+		TOOL_SHARP = 60,
+	)
+	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	surgery_flags = SURGERY_INCISED | SURGERY_BROKEN
 
 /datum/surgery_step/graggarritual/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
     if(target.has_status_effect(/datum/status_effect/alreadygraggared))
@@ -25,22 +27,20 @@
             "[user] chops [target]'s body.",
             "[user] chops [target]'s body.")
         return FALSE
-
     var/mob/living/carbon/H = target
     if(!H.mind || !H.mind.assigned_role)
         display_results(user, target, span_notice("[target] is NOT a worthy OPPONENT!"),
             "[user] attempts to cut [target]'s body, but finds nothing special.",
             "[user] attempts to cut [target]'s body.")
         return FALSE
-
-    if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER") || !HAS_TRAIT(user, "TRAIT_MATTHIOS_EYES"))
+    if(HAS_TRAIT(user, "TRAIT_ORGAN_EATER")  || HAS_TRAIT(user, "TRAIT_MATTHIOS_EYES"))
         display_results(user, target, span_notice("You lack the devotion to perform Graggar's ritual!"),
             "[user] attempts to cut [target]'s body, but fails.",
             "[user] attempts to cut [target]'s body.")
         return FALSE
 
     var/chosen_meat = null
-    if(H.mind.assigned_role == "manatarms")  
+    if(H.mind.assigned_role == "Manatarms")  
         chosen_meat = /obj/item/graggarflesh/maa
     else if(H.mind.assigned_role == "Templar")
         chosen_meat = /obj/item/graggarflesh/templar
@@ -52,7 +52,7 @@
         chosen_meat = /obj/item/graggarflesh/knight
     else if(H.mind.assigned_role == "Priest")
         chosen_meat = /obj/item/graggarflesh/priest
-    else if(H.mind.assigned_role == "Duke" || H.mind.assigned_role == "Duchess" || H.mind.assigned_role == "Heir" || H.mind.assigned_role == "Heiress")
+    else if(H.mind.assigned_role == "Duke" || H.mind.assigned_role == "Duke consort" || H.mind.assigned_role == "Heir" || H.mind.assigned_role == "Heiress")
         chosen_meat = /obj/item/graggarflesh/royal
     else
         display_results(user, target, span_notice("[target] is NOT a worthy OPPONENT!"),
@@ -97,7 +97,7 @@
 /obj/item/graggarflesh
     name = "Flesh"
     desc = "A piece of meat harvested from a fallen foe."
-    icon_state = "meatsteak"
+
 
 // Man-at-Arms Flesh
 /obj/item/graggarflesh/maa
@@ -153,7 +153,7 @@
 /obj/item/graggarflesh/watchman
     name = "Watchman's flesh"
     desc = "A lean piece of meat, taken from a vigilant Watchman."
-
+	
     proc/consume_flesh(mob/living/carbon/human/M, mob/user)
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
@@ -202,6 +202,7 @@
 // Knight's Flesh
 /obj/item/graggarflesh/knight
     name = "Knight's flesh"
+
     desc = "A noble cut of meat, harvested from a Knight's frame."
 
     proc/consume_flesh(mob/living/carbon/human/M, mob/user)
@@ -233,7 +234,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/priestmeat))
