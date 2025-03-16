@@ -76,7 +76,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
+			H.change_stat("endurance", 2)	
+			H.change_stat("constitution", 1)
+			H.change_stat("perception", 1)
 			H.change_stat("speed", 2)
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
@@ -96,6 +98,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
