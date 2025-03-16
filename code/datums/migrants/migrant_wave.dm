@@ -38,6 +38,7 @@
 /datum/migrant_wave/refugee
 	name = "Adventure Party"
 	downgrade_wave = /datum/migrant_wave/refugee_down_one
+	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/refugee = 4,
 	)
