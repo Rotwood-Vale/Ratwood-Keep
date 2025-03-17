@@ -9,7 +9,7 @@
 // We fire this on activate, also DAMN is this nasty
 /datum/triumph_buy/remove_special_trait/on_activate(mob/living/carbon/human/H)
 	if(!usr)
-		retur
+		return
 	usr.client.prefs.next_special_trait = null
 	usr.playsound_local(usr, 'sound/misc/alert.ogg', 100)
 	to_chat(usr, span_warning("Special Trait removed."))
