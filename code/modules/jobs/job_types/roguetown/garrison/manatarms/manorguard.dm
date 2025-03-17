@@ -17,7 +17,7 @@
 
 	outfit = /datum/outfit/job/roguetown/manorguard
 	give_bank_account = 22
-	min_pq = 6
+	min_pq = 14
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_MAA = 6)
 
