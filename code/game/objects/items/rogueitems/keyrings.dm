@@ -176,7 +176,7 @@
 	keys = list(/obj/item/key/puritan, /obj/item/key/manor, /obj/item/key/confession, /obj/item/key/church)
 
 /obj/item/storage/keyring/shepherd
-	keys = list(/obj/item/key/confession, /obj/item/key/church)
+	keys = list(/obj/item/key/confession, /obj/item/key/church, /obj/item/key/puritan)
 
 /obj/item/storage/keyring/nightman
 	keys = list(/obj/item/key/nightman)

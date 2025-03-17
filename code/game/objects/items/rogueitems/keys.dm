@@ -364,7 +364,7 @@
 
 /obj/item/key/puritan
 	name = "puritan's key"
-	desc = "This is an intricate key." // i have no idea what is this key about
+	desc = "This is an intricate key." // Is no longer useless!
 	icon_state = "mazekey"
 	lockid = "puritan"
 
