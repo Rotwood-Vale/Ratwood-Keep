@@ -27,20 +27,22 @@
             "[user] chops [target]'s body.",
             "[user] chops [target]'s body.")
         return FALSE
+
     var/mob/living/carbon/H = target
     if(!H.mind || !H.mind.assigned_role)
         display_results(user, target, span_notice("[target] is NOT a worthy OPPONENT!"),
             "[user] attempts to cut [target]'s body, but finds nothing special.",
             "[user] attempts to cut [target]'s body.")
         return FALSE
-    if(HAS_TRAIT(user, "TRAIT_ORGAN_EATER")  || HAS_TRAIT(user, "TRAIT_MATTHIOS_EYES"))
+
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
         display_results(user, target, span_notice("You lack the devotion to perform Graggar's ritual!"),
             "[user] attempts to cut [target]'s body, but fails.",
             "[user] attempts to cut [target]'s body.")
         return FALSE
 
     var/chosen_meat = null
-    if(H.mind.assigned_role == "Manatarms")  
+    if(H.mind.assigned_role == "Manatarms")
         chosen_meat = /obj/item/graggarflesh/maa
     else if(H.mind.assigned_role == "Templar")
         chosen_meat = /obj/item/graggarflesh/templar
@@ -97,6 +99,8 @@
 /obj/item/graggarflesh
     name = "Flesh"
     desc = "A piece of meat harvested from a fallen foe."
+    icon = 'icons/roguetown/items/food.dmi'  
+    icon_state = "meatcutlet"          
 
 
 // Man-at-Arms Flesh
@@ -108,7 +112,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/maameat))
@@ -133,7 +137,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/templarmeat))
@@ -153,12 +157,12 @@
 /obj/item/graggarflesh/watchman
     name = "Watchman's flesh"
     desc = "A lean piece of meat, taken from a vigilant Watchman."
-	
+
     proc/consume_flesh(mob/living/carbon/human/M, mob/user)
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/watchmanmeat))
@@ -183,7 +187,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/vanguardmeat))
@@ -209,7 +213,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/knightmeat))
@@ -234,7 +238,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/priestmeat))
@@ -259,7 +263,7 @@
         if(!isliving(M) || M.stat == DEAD)
             to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
             return FALSE
-        if(!HAS_TRAIT(user, "TRAIT_ORGAN_EATER"))
+        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
         if(M.has_status_effect(/datum/status_effect/royalmeat))
