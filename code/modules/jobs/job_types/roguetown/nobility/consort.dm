@@ -19,10 +19,6 @@
 	min_pq = 0
 	max_pq = null
 
-	family_blacklisted = TRUE
-	ruler_family = TRUE
-	lord_rel_type = REL_TYPE_SPOUSE
-
 // Prevent same sex ruler-consorts
 /datum/job/roguetown/consort/special_job_check(mob/dead/new_player/player)
 	if(!player)

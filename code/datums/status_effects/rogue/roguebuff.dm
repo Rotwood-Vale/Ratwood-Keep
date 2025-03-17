@@ -423,3 +423,15 @@
 	name = "Darkling"
 	desc = "You are at home in the dark. Unbothered. In your lane. Moisturized."
 	icon_state = "stressg"
+
+
+/datum/status_effect/buff/greatermanabuff
+	id = "greatermanabuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/greatermanabuff
+	effectedstats = list("speed" = 2, "intelligence" = 2)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/greatermanabuff
+	name = "Greater Mana use"
+	desc = "My body feels well rested and i feel smarter."
+	icon_state = "muscles"
