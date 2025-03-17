@@ -166,15 +166,6 @@
 )
 
 
-#define RACES_WITH_BEARD_GROWTH list(\
-	/datum/species/human/northern,\
-	/datum/species/human/halfelf,\
-	/datum/species/elf/wood,\
-	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar,\
-	/datum/species/demihuman,\
-	/datum/species/goblinp,\
-)
 
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
@@ -290,12 +281,11 @@ GLOBAL_LIST_INIT(lockhashes, list())
 GLOBAL_LIST_INIT(lockids, list())
 GLOBAL_LIST_EMPTY(credits_icons)
 GLOBAL_LIST_EMPTY(confessors)
-GLOBAL_LIST_EMPTY(cuckolds)
 
 //preference stuff
-#define FAMILY_NONE 0
-#define FAMILY_FULL 1
+#define FAMILY_NONE 1
 #define FAMILY_PARTIAL 2
+#define FAMILY_FULL 3
 
 
 GLOBAL_LIST_EMPTY(head_bounties)
@@ -329,6 +319,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Nobles			Eventually all of them will get their subclasses
 #define CTAG_HEIR			"CAT_HEIR"			// Heirs
+#define CTAG_KNIGHT			"CAT_KNIGHT"		// Knights
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really

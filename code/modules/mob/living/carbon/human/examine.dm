@@ -128,14 +128,8 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.isFamily(src))
-				var/datum/relation/R = H.getRelationship(src)
-				if(R)
-					. += "It's my [R.name]!"
-			else if(family)
-				var/datum/family/F = getFamily()
-				if(F)
-					. += "Ah, they belong to the [F.name] family!"
+			if(H.marriedto == name)
+				. += span_love("It's my spouse.")
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)
@@ -166,6 +160,9 @@
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
 
+			if(HAS_TRAIT(src, TRAIT_WANTED))
+				. += span_userdanger("BANDIT!")
+
 			if(mind.special_role == "Vampire Lord")
 				. += span_userdanger("A MONSTER!")
 
@@ -180,9 +177,15 @@
 
 		if(commie_text)
 			. += commie_text
-		else if(HAS_TRAIT(src, TRAIT_COMMIE) && HAS_TRAIT(user, TRAIT_COMMIE))
-			. += span_notice("Comrade!")
 
+		if(HAS_TRAIT(src, TRAIT_ZIZO_MARKED) && HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
+			. += span_purple("A fellow seeker of Her ascension.")
+
+		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
+			var/atom/item = get_most_expensive()
+			if(item)
+				. += span_notice("You get the feeling [m2] most valuable possession is \a [item.name].")
+				
 	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")
 

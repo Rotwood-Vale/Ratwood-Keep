@@ -2,6 +2,7 @@
 	title = "Goblin Smith"
 	flag = GOBLINSMITH
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -13,6 +14,7 @@
 	outfit = /datum/outfit/job/roguetown/goblinsmith
 	min_pq = 2
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinsmith
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -32,12 +34,13 @@
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, pick(0,0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, pick(1,1,2), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/engineering, pick(2,2,3), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, pick(1,1,2), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
 		H.change_stat("strength", 1)
