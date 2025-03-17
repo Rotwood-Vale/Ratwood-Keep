@@ -211,6 +211,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	desc = "Ксайликса. Или нет?"
 	path = /obj/item/clothing/neck/roguetown/psicross
 
+/datum/loadout_item/woodspectacles
+	name = "Wood Spectacles"
+	desc = "Очки в деревянной оправе"
+	path = /obj/item/clothing/mask/rogue/woodspectacles
+
 //ARMOR
 /datum/loadout_item/ironmask
 	name = "Iron Mask"
