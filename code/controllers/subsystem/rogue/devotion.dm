@@ -21,7 +21,7 @@
 	/// Current devotion we are holding
 	var/devotion = 0
 	/// Maximum devotion we can hold at once
-	var/max_devotion = CLERIC_REQ_3 * 2
+	var/max_devotion = CLERIC_REQ_4 * 2
 	/// Current progression (experience)
 	var/progression = 0
 	/// Maximum progression (experience) we can achieve
@@ -65,7 +65,6 @@
 	return TRUE
 
 /datum/devotion/proc/update_devotion(dev_amt, prog_amt, silent = FALSE)
-	max_devotion = holder.mind.get_skill_level(/datum/skill/magic/holy) * 200
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
 	//Max devotion limit
 	if((devotion >= max_devotion) && !silent)
@@ -135,7 +134,7 @@
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T0
 	update_devotion(50, 50, silent = TRUE)
-	max_devotion = CLERIC_REQ_1 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
+	max_devotion = CLERIC_REQ_2 //Max devotion limit - Paladins are stronger but cannot pray to gain all abilities beyond t1
 	max_progression = CLERIC_REQ_1
 
 /datum/devotion/proc/grant_spells_churchling(mob/living/carbon/human/H)
