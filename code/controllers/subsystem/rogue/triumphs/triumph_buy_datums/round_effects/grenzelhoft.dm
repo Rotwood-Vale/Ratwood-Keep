@@ -28,7 +28,9 @@
 		SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
 /datum/triumph_buy/grenzelhoft_maximum/on_activate(mob/living/carbon/human/H)
-	if(is_species(H, /datum/species/goblin)) // idk this is funny lets have it happen one more time...
+	if(is_species(H, /datum/species/goblin))
+		return
+	if(is_species(H, /datum/species/halforc))
 		return
 	if(is_species(H, /datum/species/human/northern))
 		return

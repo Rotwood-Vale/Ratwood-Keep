@@ -1,7 +1,7 @@
 /datum/triumph_buy/tiny
 	triumph_buy_id = "Tiny"
-	desc = "Tiny! Not working on a kobold, seelie, verminvolk or a dwarf."
-	triumph_cost = 10
+	desc = "Tiny! Not working on a kobold, seelie, verminvolk or a dwarf. Special Trait. Don't use, if you already have Special Trait."
+	triumph_cost = 25
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
@@ -9,6 +9,9 @@
 // We fire this on activate, also DAMN is this nasty
 /datum/triumph_buy/tiny/on_activate(mob/living/carbon/human/H)
 	if(!usr)
+		return
+	if(usr.client.prefs.next_special_trait)
+		print_special_text(usr, usr.client.prefs.next_special_trait)
 		return
 	usr.client.prefs.next_special_trait = /datum/special_trait/tiny
 	if(usr.client.prefs.next_special_trait)
