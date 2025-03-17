@@ -8,7 +8,7 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_VERY_SHUNNED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 
 	tutorial = "Owner of the Whitevein Lounge, you watch over the workers under your care, spread word of the services your lounge offers, and strive to turn a handsome profit."
