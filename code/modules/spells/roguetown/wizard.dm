@@ -172,7 +172,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-		if(isliving(target))
+		if(isliving(target)&& !HAS_TRAIT(M, TRAIT_SHOCKIMMUNE))
 			var/mob/living/L = target
 			L.electrocute_act(1, src, 1, SHOCK_NOSTUN)
 			L.Paralyze(10)
@@ -1027,6 +1027,12 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		if(L.anti_magic_check())
+			visible_message(span_warning("The blades dispel when they near [L]!"))
+			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		L.apply_damage(damage, BRUTE, def_zone)
 
@@ -1373,7 +1379,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 		var/dist = get_dist(user, C)
 		if (dist <= range)
-			C.electrocute_act(1, user) //just shock
+			if(HAS_TRAIT(C, TRAIT_SHOCKIMMUNE))
+				return
+			else
+				C.electrocute_act(1, user) //just shock
 		else
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))

@@ -224,10 +224,12 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = "Issued by the Chancery of the Kingdom to serve as the legal framework for the realm."
+	desc = "Issued by the Chancery of the Kingdom to serve as the legal framework for the realm. Its heft physicalizes a compelling maxim: the application of law should not be taken lightly."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law.json"
+	possible_item_intents = list(/datum/intent/mace/smash/wood)
+	force = 15
 
 /obj/item/book/rogue/cooking
 	name = "Tastes Fit For The Lord"

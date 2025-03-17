@@ -11,8 +11,6 @@
 	var/ambushable = TRUE
 	var/soundpack_m
 	var/soundpack_f
-	var/stored_skills
-	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -42,13 +40,11 @@
 
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
-	if(!zombie)
-		qdel(src)
-		return
-	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
-	if(!head)
-		qdel(src)
-		return
+	if(zombie)
+		var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
+		if(!head)
+			qdel(src)
+			return
 	zombie_start = world.time
 	was_i_undead = zombie.mob_biotypes & MOB_UNDEAD
 	special_role = zombie.mind?.special_role
@@ -61,18 +57,11 @@
 	cmode_music = zombie.cmode_music
 	patron = zombie.patron
 
-	STASTR = zombie.ROUNDSTART_STASTR // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	STASPD = zombie.ROUNDSTART_STASPD // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	STAINT = zombie.ROUNDSTART_STAINT // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	STACON = zombie.ROUNDSTART_STACON // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	STAEND = zombie.ROUNDSTART_STAEND // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-
-	stored_skills = owner.known_skills.Copy()
-	stored_experience = owner.skill_experience.Copy()
-	owner.backup_known_skills = owner.known_skills.Copy() // REDMOON EDIT - after_death_stats_fix - сохранение скиллов погибшего для загробного мира
-	owner.backup_skill_experience = owner.skill_experience.Copy() // REDMOON EDIT - after_death_stats_fix - сохранение скиллов погибшего для загробного мира
-	owner.known_skills = list()
-	owner.skill_experience = list()
+	STASTR = zombie.STASTR
+	STASPD = zombie.STASPD
+	STAINT = zombie.STAINT
+	STACON = zombie.STACON
+	STAEND = zombie.STAEND
 
 
 	return ..()
@@ -92,9 +81,6 @@
 		zombie.cut_overlay(rotflies)
 	zombie.base_intents = base_intents
 
-	owner.known_skills = stored_skills
-	owner.skill_experience = stored_experience
-
 	zombie.can_do_sex = TRUE
 
 	zombie.update_a_intents()
@@ -103,14 +89,13 @@
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
-	zombie.ROUNDSTART_STASTR = STASTR // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	zombie.ROUNDSTART_STASPD = STASPD // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	zombie.ROUNDSTART_STAINT = STAINT // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	zombie.ROUNDSTART_STACON = STACON // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
-	zombie.ROUNDSTART_STAEND = STAEND // REDMOON EDIT - after_death_stats_fix - замена стандартного стата на раундстартовый
+	zombie.STASTR = STASTR
+	zombie.STASPD = STASPD
+	zombie.STAINT = STAINT
+	zombie.STACON = STACON
+	zombie.STAEND = STAEND
 	zombie.cmode_music = cmode_music
 	zombie.set_patron(patron)
-	zombie.recalculate_stats() // REDMOON ADD - after_death_stats_fix
 
 	for(var/trait in GLOB.traits_deadite)
 		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)

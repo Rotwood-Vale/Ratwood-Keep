@@ -9,7 +9,7 @@
 // We fire this on activate, also DAMN is this nasty
 /datum/triumph_buy/giant/on_activate(mob/living/carbon/human/H)
 	if(!usr)
-		retur
+		return
 	if(usr.client.prefs.next_special_trait)
 		print_special_text(usr, usr.client.prefs.next_special_trait)
 		return

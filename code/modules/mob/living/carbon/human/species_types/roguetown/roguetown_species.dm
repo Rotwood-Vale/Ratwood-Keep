@@ -87,6 +87,8 @@
 			return strings("middlespeak.json", "syllable")
 		if("Hissing accent")
 			return strings("hissing_replacement.json", "syllable")
+		if("Growling accent")
+			return strings("growling_replacement.json", "syllable")
 
 #define REGEX_FULLWORD 1
 #define REGEX_STARTWORD 2
