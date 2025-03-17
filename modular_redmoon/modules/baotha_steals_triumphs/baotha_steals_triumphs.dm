@@ -8,20 +8,29 @@
 	var/list/violated_by_baotha = list()
 
 /datum/sex_controller/proc/baotha_invitation(var/mob/living/baotha_cultist, var/mob/living/victim)
-	if(victim.real_name in SSround_end_statistics.violated_by_baotha)
-		return FALSE
-	SSround_end_statistics.violated_by_baotha += victim.real_name
-	baotha_cultist.adjust_triumphs(1)
-	victim.adjust_triumphs(-1)
+	if(!(victim.real_name in SSround_end_statistics.violated_by_baotha))
+		SSround_end_statistics.violated_by_baotha += victim.real_name
+		baotha_cultist.adjust_triumphs(1)
+		victim.adjust_triumphs(-1)
+
 	to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("Я чувствую, как мою душу оскверняют!") : span_userdanger("I feel how my soul is being corrupted by them!"))
-	var/question = alert(victim, "Give up and praise Baotha?...", "Give up to the pleasure!", "No!", "Yes!")
+
+	var/question = alert(victim, victim.client.prefs.be_russian ? "Сдаться и восславить Баоту?..." : "Give up and praise Baotha?...", victim.client.prefs.be_russian ? "Отдаться удовольствию!" : "Give up to the pleasure!", "No!", "Yes!")
 	if(question != "Yes!")
-		to_chat(baotha_cultist, baotha_cultist.client.prefs.be_russian ? span_userdanger("Моя игрушка решила держаться за своего недо-бога до конца... Какая жалость, что от меня это не спасает!") : span_danger("My toy decided to hold on their god to the end... How pitty that is will not save them from me!"))
-		to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("МОЯ ВЕРА - МОЙ ЩИТ! И ДУХ МОЙ СИЛЁН!") : span_userdanger("MY FAITH IS MY SHIELD! AND SPIRIT IS STRONG!"))
+		to_chat(baotha_cultist, baotha_cultist.client.prefs.be_russian ? span_userdanger("Моя игрушка всё ещё сопротивляется... Какая жалость, что от меня это не спасает!") : span_danger("My toy decided to hold on their god... How pitty that is will not save them from me!"))
+		to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("МОЯ ВЕРА — МОЙ ЩИТ! И ДУХ МОЙ СИЛЁН!") : span_userdanger("MY FAITH IS MY SHIELD! AND SPIRIT IS STRONG!"))
 		return FALSE
+
+	question = alert(victim, victim.client.prefs.be_russian ? "Я точно хочу предать своего бога?..." : "Am I truly turn on my patron?", victim.client.prefs.be_russian ? "МОЯ ПЛОТЬ ГОТОВА! ПРИМИ МЕНЯ!" : "MY FLESH IS READY! TAKE ME!", "NO!", "YES!")
+	if(question != "YES!")
+		to_chat(baotha_cultist, baotha_cultist.client.prefs.be_russian ? span_userdanger("Моя игрушка всё ещё сопротивляется... Какая жалость, что от меня это не спасает!") : span_danger("My toy decided to hold on their god... How pitty that is will not save them from me!"))
+		to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("МОЯ ВЕРА — МОЙ ЩИТ! И ДУХ МОЙ СИЛЁН!") : span_userdanger("MY FAITH IS MY SHIELD! AND SPIRIT IS STRONG!"))
+		return FALSE
+
 	to_chat(victim, victim.client.prefs.be_russian ? span_userdanger("Я предаю своего Бога... Я ничтожество. В любом случае, прими меня, Баота!") : span_userdanger("I turned on my God... I am a weakling. Anyway, take me, Baotha!"))
 	victim.set_patron(/datum/patron/inhumen/baotha)
 	victim.whisper("Славься, Баота...!")
+	victim.playsound_local(get_turf(victim), 'sound/misc/hello.ogg', 100, vary = FALSE)
 
 /datum/sex_controller/proc/baotha_process(var/mob/living/baotha_cultist, var/mob/living/victim)
 	if(baotha_cultist == victim)
