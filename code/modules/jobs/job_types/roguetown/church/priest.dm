@@ -250,12 +250,12 @@ GLOBAL_LIST_EMPTY(heretical_players)
     if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
         to_chat(src, span_warning("I need to do this in the chapel."))
         return FALSE
-    to_chat(src, span_notice("[src] begins preaching a sermon..."))
+    visible_message("<span class='notice'>[src] begins preaching a sermon...</span>")
     if(!do_after(src, 1200, target = src)) // 120 seconds
-        to_chat(src, span_warning("[src] stops preaching."))
+        visible_message("<span class='warning'>[src] stops preaching.</span>")
         return
 
-    to_chat(src, span_notice("[src] finishes the sermon, inspiring those nearby!"))
+    visible_message("<span class='notice'>[src] finishes the sermon, inspiring those nearby!</span>")
     for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles
         H.apply_status_effect(/datum/status_effect/buff/sermon)
         H.add_stress(/datum/stressevent/sermon)
