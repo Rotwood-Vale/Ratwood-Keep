@@ -182,3 +182,43 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/chamomile
+	seed_identity = "chamomile seeds"
+	plant_def_type = /datum/plant_def/chamomile
+
+/obj/item/seeds/marigold
+	seed_identity = "marigold seeds"
+	plant_def_type = /datum/plant_def/marigold
+
+/obj/item/seeds/nettle
+	seed_identity = "nettle seeds"
+	plant_def_type = /datum/plant_def/nettle
+
+/obj/item/seeds/sage
+	seed_identity = "sage seeds"
+	plant_def_type = /datum/plant_def/sage
+
+/obj/item/seeds/belladonna
+	seed_identity = "belladonna seeds"
+	plant_def_type = /datum/plant_def/belladonna
+
+/obj/item/seeds/valerian
+	seed_identity = "valerian seeds"
+	plant_def_type = /datum/plant_def/valerian
+
+/obj/item/seeds/herbdrow
+	seed_identity = "herbdrow seeds"
+	plant_def_type = /datum/plant_def/herbdrow
+
+/obj/item/seeds/eyebright
+	seed_identity = "eyebright seeds"
+	plant_def_type = /datum/plant_def/eyebright
+
+/obj/item/seeds/poppy
+	seed_identity = "poppy seeds"
+	plant_def_type = /datum/plant_def/poppy
+
+/obj/item/seeds/thistle
+	seed_identity = "thistle seeds"
+	plant_def_type = /datum/plant_def/thistle

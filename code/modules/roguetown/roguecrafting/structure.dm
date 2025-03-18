@@ -442,6 +442,14 @@
 	verbage_simple = "build"
 	verbage = "builds"
 
+/datum/crafting_recipe/roguetown/structure/cookpit/alchemy
+	name = "alchemical hearth"
+	result = /obj/machinery/light/rogue/hearth/alchemy
+	reqs = list(/obj/item/grown/log/tree/stick = 1,
+				/obj/item/natural/stone = 5)
+	verbage_simple = "build"
+	verbage = "builds"
+
 /datum/crafting_recipe/roguetown/structure/brazier
 	name = "brazier"
 	result = /obj/machinery/light/rogue/firebowl/stump

@@ -600,3 +600,110 @@
 	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2,)
 	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/hourglass
+	name = "alchemical hourglass"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 2, /obj/item/reagent_containers/powder/salt = 1)
+	skill_level = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/poisonarrow/doll
+	name = "dollmaker poison arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
+				/datum/reagent/poison/lullaby = 5
+				)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_stone/doll
+	name = "dollmaker poison stone arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
+				/datum/reagent/poison/lullaby = 5
+				)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_five/doll
+	name = "poisoned arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
+				/datum/reagent/poison/lullaby = 25
+				)
+
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_five_stone/doll
+	name = "poisoned stone arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
+				/datum/reagent/poison/lullaby = 25
+				)
+
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow/doll/ruined
+	name = "dollmaker poison arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
+				/datum/reagent/poison/lullaby/ruined = 10
+				)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_stone/doll/ruined
+	name = "dollmaker poison stone arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
+				/datum/reagent/poison/lullaby/ruined = 10
+				)
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_five/doll/ruined
+	name = "poisoned arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
+				/datum/reagent/poison/lullaby/ruined = 50
+				)
+
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisonarrow_five_stone/doll/ruined
+	name = "poisoned stone arrow (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
+				)
+	reqs = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
+				/datum/reagent/poison/lullaby/ruined = 50
+				)
+
+	req_table = TRUE

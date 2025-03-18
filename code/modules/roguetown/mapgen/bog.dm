@@ -16,8 +16,8 @@
 	allowed_turfs = list(/turf/open/floor/rogue/dirt)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/newtree = 30,
-							/obj/structure/flora/roguegrass/bush = 25,
-							/obj/structure/flora/roguegrass = 26,
+							/obj/structure/flora/roguegrass/bush = 20,
+							/obj/structure/flora/roguegrass = 15,
 							/obj/structure/flora/roguegrass/maneater = 13,
 							/obj/item/natural/stone = 23,
 							/obj/item/natural/rock = 6,
@@ -32,6 +32,16 @@
 							/obj/effect/mob_spawner =5,
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/structure/wild_swampweed = 5,
+							/obj/structure/wild_chamomile = 10,
+							/obj/structure/wild_marigold = 10,
+							/obj/structure/wild_poppy = 10,
+							/obj/structure/wild_nettle = 15,
+							/obj/structure/wild_sage = 7,
+							/obj/structure/wild_belladonna = 5,
+							/obj/structure/wild_valerian = 7,
+							/obj/structure/wild_herbdrow = 5,
+							/obj/structure/wild_eyebright = 7,
+							/obj/structure/wild_thistle = 15,
 							/obj/structure/flora/roguegrass/maneater/real=3)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
@@ -65,4 +75,14 @@
 							/obj/item/natural/rock = 1,
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/table/roguetree/stump/log = 3,
+							/obj/structure/wild_chamomile = 10,
+							/obj/structure/wild_marigold = 10,
+							/obj/structure/wild_poppy = 10,
+							/obj/structure/wild_nettle = 15,
+							/obj/structure/wild_sage = 7,
+							/obj/structure/wild_belladonna = 5,
+							/obj/structure/wild_valerian = 7,
+							/obj/structure/wild_herbdrow = 5,
+							/obj/structure/wild_eyebright = 7,
+							/obj/structure/wild_thistle = 15,
 							/datum/spacevine_controller = 1)

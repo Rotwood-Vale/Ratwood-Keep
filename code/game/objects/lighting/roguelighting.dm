@@ -817,6 +817,10 @@
 					else
 						boilloop.stop()
 		update_icon()
+	else
+		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+			if(attachment.reagents)
+				attachment.reagents.expose_temperature(300, 0.033)
 
 
 /obj/machinery/light/rogue/hearth/onkick(mob/user)
@@ -894,3 +898,146 @@
 	if(locate(/obj/machinery/light/rogue/firebowl) in get_turf(mover))
 		return 1
 	return !density
+
+/obj/machinery/light/rogue/hearth/alchemy
+	name = "Alchemy hearth"
+	icon_state = "heartha1"
+	base_state = "heartha"
+	density = FALSE
+	anchored = TRUE
+	layer = 2.8
+	var/position = TRUE
+
+/obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
+
+	if(!attachment)
+		if(istype(W, /obj/item/reagent_containers/glass/bucket/pot))
+			playsound(get_turf(user), 'sound/foley/dropsound/shovel_drop.ogg', 40, TRUE, -1)
+			attachment = W
+			W.forceMove(src)
+			update_icon()
+			return
+	else
+		if(istype(W, /obj/item/reagent_containers/glass/bowl))
+			to_chat(user, "<span class='notice'>Remove the pot from the hearth first.</span>")
+			return
+		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+			var/obj/item/reagent_containers/glass/bucket/pot = attachment
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/chamomile))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/chamomile, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/marigold))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/marigold, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/nettle))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/nettle, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/sage))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/sage, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/belladonna))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/belladonna, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/valerian))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/valerian, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/herbdrow))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/herbdrow, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/eyebright))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/eyebright, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/poppy))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/poppy, 10)
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/thistle))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/thistle, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/chamomile))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/chamomile/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/marigold))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/marigold/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/belladonna))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/belladonna/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/valerian))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/valerian/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/sage))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/sage/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/eyebright))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/eyebright/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/poppy))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/poppy/ground, 10)
+			if(istype(W, /obj/item/reagent_containers/powder/alch/herbdrow))
+				qdel(W)
+				playsound(src, "bubbles", 30, TRUE)
+				pot.reagents.add_reagent(/datum/reagent/herb/herbdrow/ground, 10)
+				return
+		. = ..()
+
+/obj/machinery/light/rogue/hearth/alchemy/attack_right(mob/user)
+	if(position == FALSE)
+		user.visible_message(span_warning("[user] lifts the pot up."))
+		position = TRUE
+		update_icon()
+	else
+		user.visible_message(span_warning("[user] lowers the pot down."))
+		position = FALSE
+		update_icon()
+
+/obj/machinery/light/rogue/hearth/alchemy/update_icon()
+	cut_overlays()
+	icon_state = "[base_state][on]"
+	if(attachment)
+		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+			if(position == TRUE)
+				var/obj/item/I = attachment
+				I.pixel_x = 0
+				I.pixel_y = 3
+				add_overlay(new /mutable_appearance(I))
+			else
+				var/obj/item/I = attachment
+				I.pixel_x = 0
+				I.pixel_y = -2
+				add_overlay(new /mutable_appearance(I))
+
+/obj/machinery/light/rogue/hearth/alchemy/process()
+	if(isopenturf(loc))
+		var/turf/open/O = loc
+		if(IS_WET_OPEN_TURF(O))
+			extinguish()
+	if(position == FALSE && on == TRUE)
+		attachment.reagents.expose_temperature(400, 0.1) // 20 degrees/10s
+		if(attachment.reagents.chem_temp > 314)
+			boilloop.start()
+		else
+			boilloop.stop()
+	else
+		attachment.reagents.expose_temperature(300, 0.8)
+
+/obj/machinery/light/rogue/hearth/Destroy()
+	QDEL_NULL(boilloop)	
+	. = ..()

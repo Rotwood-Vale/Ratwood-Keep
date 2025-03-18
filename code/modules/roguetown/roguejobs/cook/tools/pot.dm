@@ -13,7 +13,7 @@
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	sharpness = IS_BLUNT
 	w_class = WEIGHT_CLASS_BULKY
-	reagent_flags = OPENCONTAINER
+	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
 	throwforce = 10
 	volume = 300 //100 oz
 	smeltresult = /obj/item/ingot/iron
@@ -32,15 +32,6 @@
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
-
-
-/obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/glass/bowl))
-		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
-		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
-		if(do_after(user,2 SECONDS, target = src))
-			reagents.trans_to(I, reagents.total_volume)
-	return TRUE
 
 /obj/item/reagent_containers/glass/bucket/pot/stone
 	name = "stone pot"

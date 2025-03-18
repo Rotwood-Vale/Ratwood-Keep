@@ -30,3 +30,9 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/milk
 	list_reagents = list(/datum/reagent/consumable/milk = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/marigold
+	list_reagents = list(/datum/reagent/medicine/marigolddec = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/marigold/ruined
+	list_reagents = list(/datum/reagent/medicine/marigolddec/ruined = 45)

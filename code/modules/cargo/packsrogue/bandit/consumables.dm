@@ -9,6 +9,11 @@
 	cost = 50
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
+/datum/supply_pack/rogue/bandit/Consumables/healthpot
+	name = "Marigold Potion"
+	cost = 25
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/marigold/ruined)
+
 /datum/supply_pack/rogue/bandit/Consumables/manapot
 	name = "Mana Potion"
 	cost = 50

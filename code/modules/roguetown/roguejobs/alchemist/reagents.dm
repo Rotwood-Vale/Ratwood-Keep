@@ -272,3 +272,261 @@
 
 	M.update_damage_overlays()
 
+// herbal remedies
+
+	// chamomile dec
+
+/datum/reagent/medicine/chamomiledec
+	name = "Chamomile Decoction"
+	description = "Mends inner damage and ills."
+	reagent_state = LIQUID
+	color = "#f1e896"
+	taste_description = "herbal tea"
+	overdose_threshold = 47 //45 units in a bottle, 2 units to safeguard
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/chamomiledec/on_mob_life(mob/living/carbon/M)
+	var/list/wCount = M.get_wounds()
+	if(wCount.len > 0)	
+		M.heal_wounds(1) 
+		M.update_damage_overlays()
+	M.adjustToxLoss(-1.5*REM, 0)
+	M.adjustBruteLoss(-0.5*REM, 0)
+	M.adjustFireLoss(-0.5*REM, 0)
+	M.adjustOxyLoss(-1.5*REM, 0)
+	M.adjustCloneLoss(-0.5*REM, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_EARS, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_EYES, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_APPENDIX, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_STOMACH, -1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1)
+	switch(rand(1,100))
+		if(1)
+			var/mob/living/carbon/stinky = M
+			for(var/obj/item/bodypart/limb in stinky.bodyparts)
+				limb.rotted = FALSE
+				limb.update_limb()
+				limb.update_disabled()
+	..()
+	. = 1
+	
+/datum/reagent/medicine/chamomiledec/ruined
+	name = "Ruined Chamomile Decoction"
+	description = "Slowly aids ills and damage."
+	reagent_state = LIQUID
+	color = "#f1e896"
+	taste_description = "Watery herbal tea"
+	overdose_threshold = 0
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/chamomiledec/ruined/on_mob_life(mob/living/carbon/M)
+	M.heal_wounds(1) 
+	M.update_damage_overlays()
+	M.adjustToxLoss(-1*REM, 0)
+	M.adjustBruteLoss(-0.25*REM, 0)
+	M.adjustFireLoss(-0.25*REM, 0)
+	M.adjustOxyLoss(-1*REM, 0)
+	M.adjustCloneLoss(-0.5*REM, 0)
+	..()
+	. = 1
+
+	// marigold dec
+
+/datum/reagent/medicine/marigolddec
+	name = "Marigold Decoction"
+	description = "Mends physical damage."
+	reagent_state = LIQUID
+	color = "#c77731"
+	taste_description = "herbal tea"
+	overdose_threshold = 47 //45 units in a bottle, 2 units to safeguard
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/marigolddec/on_mob_life(mob/living/carbon/M)
+	var/list/wCount = M.get_wounds()
+	if(wCount.len > 0)	
+		M.heal_wounds(4)
+		M.update_damage_overlays()
+	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
+	M.adjustFireLoss(-2*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/marigolddec/ruined
+	name = "Ruined Marigold Decoction"
+	description = "Slowly mends physical damage."
+	reagent_state = LIQUID
+	color = "#c77731"
+	taste_description = "Watery herbal tea"
+	overdose_threshold = 0
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	alpha = 210
+
+/datum/reagent/medicine/marigolddec/ruined/on_mob_life(mob/living/carbon/M)
+	M.heal_wounds(1) 
+	M.update_damage_overlays()
+	M.adjustBruteLoss(-1*REM, 0) // 45u = 15 oz = 50 points of healing
+	M.adjustFireLoss(-1*REM, 0)
+	..()
+	. = 1
+
+	// nighthawk
+
+/datum/reagent/medicine/nighthawk
+	name = "Nighthawk Potion"
+	description = "Contains a liquid with a slight blue glow."
+	reagent_state = LIQUID
+	color = "#723fe7"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/nighthawk/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/nighthawk)
+	return ..()
+
+/datum/reagent/medicine/nighthawk/ruined
+	name = "Ruined Nighthawk Potion"
+	description = "Contains a cloudy liquid with a blue tint."
+	reagent_state = LIQUID
+	color = "#6d599b"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/nighthawk/ruined/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/nighthawk/weak)
+	return ..()
+
+	//schanpps
+	
+/datum/reagent/consumable/ethanol/schnapps
+	name = "Schnapps Potion"
+	description = "Contains a clear liquid with a purple tint."
+	boozepwr = 50
+	reagent_state = LIQUID
+	color = "#dffffb"
+	metabolization_rate = 0.1
+
+/datum/reagent/consumable/ethanol/schnapps/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/schnapps)
+	return ..()
+
+/datum/reagent/consumable/ethanol/schnapps/ruined
+	name = "Ruined Schnapps Potion"
+	description = "Contains a cloudy liquid with a purple tint."
+	reagent_state = LIQUID
+	color = "#dffffb"
+	metabolization_rate = 0.1
+
+/datum/reagent/consumable/ethanol/schnapps/ruined/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/schnapps/weak)
+	return ..()
+
+	// quickfinger
+
+/datum/reagent/medicine/quickfinger
+	name = "Quickfinger Potion"
+	description = "Contains a clear liquid with a purple tint."
+	reagent_state = LIQUID
+	color = "#cd98ff"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/quickfinger/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/quickfinger)
+	return ..()
+
+/datum/reagent/medicine/quickfinger/ruined
+	name = "Ruined Quickfinger Potion"
+	description = "Contains a cloudy liquid with a purple tint."
+	reagent_state = LIQUID
+	color = "#cd98ff"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/artemisia/ruined/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/artemisia/weak)
+	return ..()
+
+/datum/reagent/medicine/artemisia
+	name = "Quickfinger Potion"
+	description = "Contains a thick burning red liquid."
+	reagent_state = LIQUID
+	color = "#e7362f"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/artemisia/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/artemisia)
+	return ..()
+
+/datum/reagent/medicine/artemisia/ruined
+	name = "Ruined Quickfinger Potion"
+	description = "Contains a thick red liquid."
+	reagent_state = LIQUID
+	color = "#c05b4e"
+	metabolization_rate = 0.1
+
+/datum/reagent/medicine/artemisia/ruined/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/artemisia/weak)
+	return ..()
+
+//poisons
+
+	// dollmaker
+
+/datum/reagent/poison/dollmaker
+	name = "Dollmaker Poison"
+	description = "Contains a poisonous thick, venomous purple liquid."
+	reagent_state = LIQUID
+	color = "#22831f"
+	metabolization_rate = 0.1
+
+/datum/reagent/poison/dollmaker/on_mob_life(mob/living/carbon/M)
+	M.add_nausea(1)
+	M.adjustToxLoss(1, 0)
+	M.apply_status_effect(/datum/status_effect/debuff/dollmaker)
+	return ..()
+
+/datum/reagent/poison/dollmaker/ruined
+	name = "Ruined Dollmaker Poison"
+	description = "Contains a poisonous thick, purple liquid."
+	reagent_state = LIQUID
+	color = "#426841" 
+	metabolization_rate = 0.1
+
+/datum/reagent/poison/dollmaker/ruined/on_mob_life(mob/living/carbon/M)
+	M.add_nausea(1)
+	M.adjustToxLoss(1, 0)
+	M.apply_status_effect(/datum/status_effect/debuff/dollmaker/weak)
+	return ..()
+
+	// lullaby
+
+/datum/reagent/poison/lullaby
+	name = "Lullaby Poison"
+	description = "Contains a watery, deep purple liquid."
+	reagent_state = LIQUID
+	color = "#5e2e7a"
+	metabolization_rate = 0.1
+
+/datum/reagent/poison/lullaby/on_mob_life(mob/living/carbon/M)
+	M.add_nausea(1)
+	M.Dizzy(10)
+	M.Sleeping(40)
+	M.apply_status_effect(/datum/status_effect/debuff/sleepytime)
+	return ..()
+
+/datum/reagent/poison/lullaby/ruined
+	name = "Ruined Lullaby Poison"
+	description = "Contains a watery, cloudy purple liquid."
+	reagent_state = LIQUID
+	color = "#433949"
+	metabolization_rate = 0.1
+
+/datum/reagent/poison/lullaby/ruined/on_mob_life(mob/living/carbon/M)
+	M.add_nausea(1)
+	M.Dizzy(10)
+	M.adjustToxLoss(1, 0)
+	M.apply_status_effect(/datum/status_effect/debuff/sleepytime)
+	return ..()

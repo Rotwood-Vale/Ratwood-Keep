@@ -435,3 +435,151 @@
 	name = "Greater Mana use"
 	desc = "My body feels well rested and i feel smarter."
 	icon_state = "muscles"
+
+//herbal
+
+/datum/status_effect/buff/chamomile
+	id = "chamomile"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/chamomile
+	effectedstats = list("constitution" = 3, "endurance" = 3)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/chamomile
+	name = "Herbal ease"
+	desc = "I can feel my body relax."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/chamomile/weak
+	id = "chamomileweak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/chamomile/weak
+	effectedstats = list("constitution" = 2, "endurance" = 1)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/chamomile/weak
+	name = "Herbal ease minor"
+	desc = "I feel less stiff."
+	icon_state = "muscles"
+
+// quickfinger
+
+/datum/status_effect/buff/quickfinger
+	id = "quickfinger"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/quickfinger
+	effectedstats = list("speed" = 2, "perception" = 3)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/quickfinger
+	name = "Sharpness"
+	desc = "I can feel my instincts get sharper."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/quickfinger/weak
+	id = "quickfingerweak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/quickfinger/weak
+	effectedstats = list("speed" = 1, "perception" = 1)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/quickfinger/weak
+	name = "Quickness"
+	desc = "I feel slightly faster."
+	icon_state = "muscles"
+
+	//schnapps
+
+/datum/status_effect/buff/schnapps
+	id = "schnapps"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/schnapps
+	effectedstats = list("speed" = 1, "endurance" = 2, "strength" = 1, "constitution" = 2)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/schnapps
+	name = "Courage"
+	desc = "I can feel the fruity courage course through me."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/schnapps/weak
+	id = "schnappsweak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/schnapps/weak
+	effectedstats = list("endurance" = 1, "constitution" = 1)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/schnapps/weak
+	name = "Courage"
+	desc = "I feel tougher."
+	icon_state = "muscles"
+
+	//artemisia
+
+/datum/status_effect/buff/artemisia
+	id = "artemisia"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/artemisia
+	effectedstats = list("strength" = 3)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/artemisia
+	name = "Courage"
+	desc = "I can feel the fruity courage course through me."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/artemisia/weak
+	id = "schnappsweak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/artemisia/weak
+	effectedstats = list("strength" = 1)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/artemisia/weak
+	name = "Courage"
+	desc = "I feel tougher."
+	icon_state = "muscles"
+
+	// nighthawk
+
+/datum/status_effect/buff/nighthawk
+	id = "nighthawk"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/nighthawk
+	effectedstats = list("endurance" = 1, "perception" = 2)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/nighthawk
+	name = "Nighthawk"
+	desc = "I can see in the dark!"
+	icon_state = "muscles"
+
+/datum/status_effect/buff/nighthawk/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("The darkness fades somewhat."))
+	ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+
+/datum/status_effect/buff/nighthawk/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The darkness returns to normal."))
+	REMOVE_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+
+/datum/status_effect/buff/nighthawk/weak
+	id = "nighthawkweak"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/nighthawk
+	effectedstats = list("perception" = 1)
+	duration = 20 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/nighthawk/weak
+	name = "Nighthawk Weak"
+	desc = "I can see in the dark, somewhat!"
+	icon_state = "muscles"
+
+/datum/status_effect/buff/nighthawk/weak/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("The darkness fades somewhat."))
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else if(HAS_TRAIT(owner, TRAIT_NOCTURNAL))
+		ADD_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else
+		ADD_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)
+
+/datum/status_effect/buff/nighthawk/weak/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The darkness returns to normal."))
+	if(HAS_TRAIT(owner, TRAIT_DARKVISION_BETTER))
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION_BETTER, MAGIC_TRAIT)
+	else
+		REMOVE_TRAIT(owner, TRAIT_DARKVISION, MAGIC_TRAIT)

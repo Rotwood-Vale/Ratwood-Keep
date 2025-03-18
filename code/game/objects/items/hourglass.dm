@@ -29,6 +29,15 @@
 		to_chat(user,span_notice("I stop the [src].")) //Sand magically flows back because that's more convinient to use.
 		stop()
 
+/obj/item/hourglass/attack_right/(mob/user) //right clickable for convinience
+	if(!timing_id)
+		to_chat(user,span_notice("I flip the [src]."))
+		start()
+		flick("hourglass_flip",src)
+	else
+		to_chat(user,span_notice("I stop the [src]."))
+		stop()
+
 /obj/item/hourglass/update_icon()
 	if(timing_id)
 		icon_state = "hourglass_active"
@@ -80,3 +89,8 @@
 		toggle(user)
 
 #undef HOURGLASS_STATES
+
+/obj/item/hourglass/alchemy
+	name = "alchemical hourglass"
+	desc = "Measures time in 10-ish second increments"
+	time = 0.1667 MINUTES
