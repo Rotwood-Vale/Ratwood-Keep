@@ -2165,6 +2165,7 @@
 #include "modular_redmoon\code\game\objects\items\rogueitems\flail.dm"
 #include "modular_redmoon\code\game\objects\items\rogueitems\inquisitionrelics.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\integrity.dm"
+#include "modular_redmoon\code\game\objects\items\rogueweapons\melee\flail.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\melee\knives.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\ranged\gunpowder\ammo.dm"
 #include "modular_redmoon\code\game\objects\ligthing\_base_light.dm"
