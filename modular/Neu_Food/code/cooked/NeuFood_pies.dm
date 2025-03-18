@@ -584,7 +584,7 @@
 	name = "crab cake"
 	desc = "A recipe originating from Port Icecube, a variant of the handpie filled with buttery, savory shellfish meat and made with normal dough instead of it's buttered variant."
 	icon_state = "crab_cake"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	bitesize = 4
 	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+MEATSLAB_NUTRITION)
 	tastes = list("crispy dough and sellfish meat" = 1)
