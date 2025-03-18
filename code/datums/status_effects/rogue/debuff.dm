@@ -403,7 +403,6 @@
 		owner.remove_status_effect(/datum/status_effect/debuff/guarddebuff)
 
 /datum/status_effect/debuff/alreadygraggared
-    id = "alreadygraggared"
     alert_type = /atom/movable/screen/alert/status_effect/alreadygraggared
     effectedstats = list("endurance" = -2, "strength" = -2, "constitution", -2)
 	duration = -1 // permanent until removed
