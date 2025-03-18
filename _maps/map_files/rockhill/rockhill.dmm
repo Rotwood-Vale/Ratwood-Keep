@@ -5045,6 +5045,13 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"cBs" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	del_on_deaggro = 0;
+	name = "Rowena"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "cBx" = (
 /obj/structure/stairs/stone{
 	dir = 1
@@ -7908,9 +7915,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/druidgrove)
 "dXZ" = (
-/obj/structure/roguemachine/musicbox{
-	pixel_y = 16
-	},
+/obj/structure/roguemachine/musicbox,
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "tablewood1"
@@ -9982,7 +9987,9 @@
 	},
 /area/rogue/indoors/town/church)
 "eZm" = (
-/obj/structure/table/wood,
+/obj/structure/lever{
+	redstone_id = "thronegrille"
+	},
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors/town/manor)
 "eZp" = (
@@ -10796,13 +10803,14 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/academy)
 "fva" = (
-/obj/structure/mineral_door/bars{
-	locked = 1;
-	lockid = "keep_barracks";
-	name = "Holding Cell"
+/obj/structure/fluff/walldeco/church/line{
+	dir = 8
 	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/basement)
+/obj/structure/roguemachine/musicbox,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
+/area/rogue/indoors/town/manor)
 "fvr" = (
 /obj/structure/roguewindow/openclose/reinforced,
 /turf/open/floor/rogue/ruinedwood{
@@ -17295,10 +17303,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "iNx" = (
-/obj/structure/stairs{
-	dir = 8
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	del_on_deaggro = 0;
+	name = "Beatrix"
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "iNA" = (
 /obj/structure/closet/crate/drawer{
@@ -25870,6 +25879,7 @@
 	keylock = 1;
 	lockid = "keep_dungeon"
 	},
+/obj/item/reagent_containers/food/snacks/butter,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
@@ -26381,12 +26391,9 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
 "nFa" = (
-/obj/structure/roguemachine/scomm/r{
-	pixel_y = -32;
-	pixel_x = 0
-	},
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
+/obj/item/roguegem,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave)
 "nFx" = (
 /obj/structure/table/wood{
 	icon_state = "map6"
@@ -26558,6 +26565,12 @@
 /obj/structure/roguemachine/scomm/r,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/town/magician)
+"nKo" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "nKs" = (
 /obj/structure/roguemachine/mail{
 	mailtag = "Sheriff";
@@ -30272,6 +30285,13 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
+"pCm" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	del_on_deaggro = 0;
+	name = "Aruzhan"
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/town/basement)
 "pCw" = (
 /obj/effect/landmark/start/veteran{
 	dir = 1
@@ -33516,6 +33536,7 @@
 	keylock = 1;
 	lockid = "keep_dungeon"
 	},
+/obj/item/reagent_containers/food/snacks/butter,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
@@ -33954,6 +33975,12 @@
 /obj/structure/fluff/walldeco/stone,
 /turf/closed/wall/mineral/rogue/stone/blue_moss,
 /area/rogue/indoors/town/church)
+"rAT" = (
+/obj/structure/floordoor{
+	redstone_id = "thronegrille"
+	},
+/turf/open/transparent/openspace,
+/area/rogue/indoors/town/manor)
 "rBg" = (
 /turf/open/water/river{
 	dir = 1;
@@ -40816,8 +40843,7 @@
 "vmW" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
-	lockid = "keep_dungeon";
-	name = "Keep Holding Cells"
+	lockid = "keep_dungeon"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -41087,10 +41113,8 @@
 	},
 /area/rogue/indoors)
 "vtm" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 4
-	},
-/turf/open/floor/rogue/blocks,
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/transparent/openspace,
 /area/rogue/under/town/basement)
 "vto" = (
 /obj/structure/fluff/walldeco/customflag{
@@ -220846,7 +220870,7 @@ vRu
 vRu
 vRu
 vRu
-fjw
+nFa
 fjw
 vRu
 vRu
@@ -222589,9 +222613,9 @@ vfH
 iTw
 txa
 iTw
-txa
-txa
-qYu
+iTw
+cBf
+nKo
 txa
 nhC
 lHK
@@ -223021,9 +223045,9 @@ iTw
 cBf
 jyI
 iTw
+iTw
 txa
-hVj
-cBf
+qYu
 txa
 aaI
 icc
@@ -223453,9 +223477,9 @@ qkG
 pRt
 jyI
 iTw
+iTw
 jyI
-iNx
-iNx
+mby
 txa
 rpo
 opv
@@ -223885,9 +223909,9 @@ jyI
 txa
 txa
 cBf
+iTw
 jyI
-fPR
-fPR
+vtm
 txa
 uKD
 opv
@@ -224317,7 +224341,7 @@ xFm
 dXe
 xFm
 cBf
-txa
+cBf
 txa
 txa
 txa
@@ -224735,12 +224759,12 @@ vRu
 vRu
 vRu
 vRu
-cBf
+iTw
+jyI
+jyI
 jyI
 txa
 txa
-jyI
-jyI
 jyI
 jyI
 txa
@@ -225168,11 +225192,11 @@ vRu
 vRu
 jyI
 iTw
+jyI
 iTw
-vtm
+cBf
 iTw
 iTw
-pRt
 txa
 iTw
 kpZ
@@ -225599,9 +225623,9 @@ txa
 jyI
 jyI
 jyI
-ida
-vup
-ida
+iTw
+cBf
+iTw
 iTw
 cBf
 jyI
@@ -226031,9 +226055,9 @@ czb
 iTw
 sTe
 jyI
-syh
 iTw
-ddu
+iTw
+cBf
 iTw
 iTw
 jyI
@@ -226463,9 +226487,9 @@ pUz
 iTw
 oga
 txa
-hsB
+iTw
 cBf
-vup
+pCm
 iTw
 iTw
 ida
@@ -226895,11 +226919,11 @@ dfS
 iTw
 jMA
 txa
-ida
-ida
-ida
 iTw
-nFa
+iTw
+iTw
+iTw
+cBf
 txa
 iTw
 iTw
@@ -227327,9 +227351,9 @@ jRC
 iTw
 nZt
 jyI
-syh
 iTw
-ddu
+iTw
+cBf
 iTw
 iTw
 txa
@@ -227759,9 +227783,9 @@ tHU
 iTw
 wZJ
 txa
-hsB
+iTw
 cBf
-ida
+iTw
 cBf
 iTw
 txa
@@ -228191,11 +228215,11 @@ tnK
 iTw
 pMw
 jyI
-ida
-vup
-ida
+iTw
+cBf
 iTw
 iTw
+cBs
 ida
 iTw
 cBf
@@ -228623,9 +228647,9 @@ aEN
 iTw
 mMO
 jyI
-syh
 iTw
-fva
+iNx
+cBf
 iTw
 iTw
 jyI
@@ -229055,9 +229079,9 @@ nda
 iTw
 vse
 txa
-hsB
-cBf
-txa
+iTw
+iTw
+iTw
 txa
 vmW
 txa
@@ -337057,7 +337081,7 @@ sHm
 kQW
 wxB
 eTM
-wxB
+rAT
 oYO
 miX
 wxB
@@ -338788,7 +338812,7 @@ enF
 amn
 vqv
 tPj
-qcq
+fva
 vqv
 qcq
 qcq
