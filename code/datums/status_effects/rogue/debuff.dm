@@ -303,6 +303,51 @@
 	desc = "Some divine power is straining my mind!"
 	icon_state = "muscles"
 
+/datum/status_effect/debuff/cold
+	id = "Frostveiled"
+	alert_type =  /atom/movable/screen/alert/status_effect/debuff/cold
+	effectedstats = list("speed" = -2)
+	duration = 12 SECONDS
+
+/datum/status_effect/debuff/cold/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 12 SECONDS)
+
+/atom/movable/screen/alert/status_effect/debuff/cold
+	name = "Cold"
+	desc = "Something has chilled me to the bone! It's hard to move."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/frostbite
+	id = "frostbite"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
+	duration = 20 SECONDS
+	effectedstats = list("speed" = -2)
+
+/atom/movable/screen/alert/status_effect/buff/frostbite
+	name = "Frostbite"
+	desc = "I can feel myself slowing down."
+	icon_state = "debuff"
+	color = "#00fffb"
+
+/datum/status_effect/buff/frostbite/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
+	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+
+/datum/status_effect/buff/frostbite/on_remove()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+	. = ..()
+
 // Darkling debuffs
 /datum/status_effect/debuff/darkling_glare
 	id = "darkling_glare"
@@ -337,3 +382,58 @@
 	name = "Macabre chill"
 	desc = "I can feel the cold embrace of death seeping into my bones"
 	icon_state = "muscles"
+
+
+/atom/movable/screen/alert/status_effect/debuff/guarddebuff
+	name = "Unfamiliar Terrain"
+	desc = "The terror bog. It's difficult to traverse here."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/guarddebuff
+	id = "guarddebuff"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/guarddebuff
+	effectedstats = list("endurance" = -2, "speed" = -2) //should discourage guards from the bog
+	duration = 5000 SECONDS //essentially permanent, removes when we're out of the area
+
+/datum/status_effect/debuff/guarddebuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.roughterrain))
+		owner.remove_status_effect(/datum/status_effect/debuff/guarddebuff)
+
+/datum/status_effect/debuff/excomm
+	id = "Excommunicated follower of Ten!"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/excomm
+	effectedstats = list("fortune" = -2, "intelligence" = -2, "perception" = -2)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/excomm
+	name = "Excommunicated follower of Ten!"
+	desc = "The Ten have forsaken me!"
+	icon_state = "muscles"
+	color ="#6d1313"
+
+/datum/status_effect/debuff/apostasy
+	id = "Apostasy!"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/apostasy
+	effectedstats = list("fortune" = -5, "intelligence" = -2, "perception" = -2)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/apostasy
+	name = "Apostasy!"
+	desc = "Shame upon the member of clergy!"
+	icon_state = "debuff"
+	color ="#7a0606"
+
+/datum/status_effect/debuff/hereticsermon
+	id = "Heretic on sermon!"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon
+	effectedstats = list("intelligence" = -2, "speed" = -1, "fortune" = -2)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/hereticsermon
+	name = "Heretic on sermon!"
+	desc = "I was on the sermon. My patron is not proud of me."
+	icon_state = "debuff"
+	color ="#af9f9f"

@@ -59,6 +59,12 @@
 /obj/structure/chair/bench/church/smallbench
 	icon_state = "benchsmall"
 
+/obj/structure/chair/bench/church/smallbench/CanPass(atom/movable/mover, turf/target)
+	return !density
+
+/obj/structure/chair/bench/church/smallbench/CheckExit(atom/movable/O, turf/target)
+	return !density
+
 /obj/structure/chair/bench/couch/r
 	icon_state = "redcouch2"
 
@@ -112,7 +118,7 @@
 /obj/structure/chair/wood/rogue/chair3
 	icon_state = "chair3"
 	icon = 'icons/roguetown/misc/structure.dmi'
-	item_chair = /obj/item/chair/rogue
+	item_chair = /obj/item/chair/rogue/chair3
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
@@ -124,6 +130,12 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
 	item_chair = null
+
+
+/obj/item/chair/rogue/chair3
+	icon_state = "chair3"
+	metalizer_result = null
+	origin_type = /obj/structure/chair/wood/rogue/chair3
 
 /obj/item/chair/rogue
 	name = "chair"

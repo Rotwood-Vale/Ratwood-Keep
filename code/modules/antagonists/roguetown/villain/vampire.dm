@@ -199,29 +199,65 @@
 	VD.disguised = TRUE
 	skin_tone = VD.cache_skin
 	hair_color = VD.cache_hair
-	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new VD.cache_eyes
+	eyes.Insert(src)
+	set_eye_color(src, VD.cache_eye_color, VD.cache_eye_color)
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes &= ~MOB_UNDEAD
+	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = VD.cache_skin
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = VD.cache_skin
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = VD.cache_skin
+		regenerate_icons()
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
 	if(!VD)
 		return
 	VD.disguised = FALSE
-//	VD.cache_skin = skin_tone
-//	VD.cache_eyes = eye_color
-//	VD.cache_hair = hair_color
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
-	eye_color = "ff0000"
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
+	set_eye_color(src, "#FF0000", "#FF0000")
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes |= MOB_UNDEAD
+	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
-
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = "#c9d3de"
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = "#c9d3de"
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = "#c9d3de"
+		regenerate_icons()
 
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"

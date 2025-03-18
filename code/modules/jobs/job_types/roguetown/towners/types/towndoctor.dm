@@ -46,11 +46,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 2)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
-		
-
+		H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
+		H.mind.AddSpell(new SPELL_DOCHEAL)
+		H.mind.AddSpell(new SPELL_STABLE)
+		H.mind.AddSpell(new SPELL_PURGE)
+		H.mind.AddSpell(new SPELL_DEBRIDE)
+		H.mind.AddSpell(new SPELL_CPR)

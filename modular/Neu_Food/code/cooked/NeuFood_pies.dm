@@ -567,3 +567,26 @@
 	if(bitecount == 1)
 		rotprocess = SHELFLIFE_DECENT
 		addtimer(CALLBACK(src, PROC_REF(begin_rotting)), 20, TIMER_CLIENT_TIME) // 
+
+// ---------------- CRAB CAKE -------------------------- //
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
+	name = "raw crab cake"
+	desc = "A recipe originating from Port Icecube, a variant of the handpie filled with buttery, savory shellfish meat and made with normal dough instead of it's buttered variant."
+	icon_state = "crab_cake_raw"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
+	cooked_smell = /datum/pollutant/food/pie_base
+	w_class = WEIGHT_CLASS_NORMAL
+	dropshrink = 0.8
+
+/obj/item/reagent_containers/food/snacks/rogue/crabcake
+	name = "crab cake"
+	desc = "A recipe originating from Port Icecube, a variant of the handpie filled with buttery, savory shellfish meat and made with normal dough instead of it's buttered variant."
+	icon_state = "crab_cake"
+	eat_effect = /datum/status_effect/buff/foodbuff
+	bitesize = 4
+	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+MEATSLAB_NUTRITION)
+	tastes = list("crispy dough and sellfish meat" = 1)
+	rotprocess = null
+	dropshrink = 0.8

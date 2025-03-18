@@ -10,7 +10,7 @@
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
-	maximum_possible_slots = 5
+	maximum_possible_slots = 8
 
 	outfit = /datum/outfit/job/roguetown/refugee/ecclesiast
 
@@ -62,15 +62,15 @@
 
 				if(/datum/patron/psydon)
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
@@ -94,15 +94,15 @@
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -128,12 +128,12 @@
 			switch (H.patron?.type)
 
 				if(/datum/patron/psydon)
-					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 					belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 					pants = /obj/item/clothing/under/roguetown/chainlegs
 					shoes = /obj/item/clothing/shoes/roguetown/armor/steel
@@ -155,10 +155,10 @@
 					ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 					H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 				else
-					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 					belt = /obj/item/storage/belt/rogue/leather/plaquegold
@@ -186,17 +186,17 @@
 					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 		if("Monk")
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/roguehood
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots

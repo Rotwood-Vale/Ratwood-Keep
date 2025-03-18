@@ -36,6 +36,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC) //Given for consistencysake as the idol still provides scalemail.
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) // Vital for any surgical role dealing in potentially decaying bodies.
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	H.change_stat("strength", 2)
 	H.change_stat("intelligence", 3)
 	H.change_stat("speed", 1)
@@ -44,11 +45,22 @@
 		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/docheal)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/stable)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/purge)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/debride)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/cpr)
-	H.verbs |= /mob/proc/haltyell
+	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
+	H.mind.AddSpell(new SPELL_DOCHEAL)
+	H.mind.AddSpell(new SPELL_STABLE)
+	H.mind.AddSpell(new SPELL_PURGE)
+	H.mind.AddSpell(new SPELL_DEBRIDE)
+	H.mind.AddSpell(new SPELL_CPR)
+	var/wanted = list("Not wanted", "Wanted")
+	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
+	switch(wanted_choice)
+		if ("Not wanted")
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
+		if ("Wanted")
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
 	H.ambushable = FALSE

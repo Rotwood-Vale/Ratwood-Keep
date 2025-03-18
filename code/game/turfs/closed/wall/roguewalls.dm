@@ -88,7 +88,6 @@
 	icon = 'icons/turf/walls/stonebrick.dmi'
 	icon_state = "stonebrick"
 	smooth = SMOOTH_MORE
-	wallclimb = FALSE
 	blade_dulling = DULLING_BASH
 	max_integrity = 1500
 	sheet_type = /obj/item/natural/stone
@@ -254,7 +253,6 @@
 	icon = 'icons/turf/roguewall.dmi'
 	icon_state = "decostone-b"
 	smooth = SMOOTH_MORE
-	wallclimb = FALSE
 	blade_dulling = DULLING_BASH
 	max_integrity = 1800
 	sheet_type = /obj/item/natural/stone

@@ -182,12 +182,17 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/turf/open/floor/rogue/grassred, 
+						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grasscold,
+						/turf/open/floor/rogue/snowpatchy,
+						/turf/open/floor/rogue/snow,
+						/turf/open/floor/rogue/snowrough,)
 	neighborlay = "grassedge"
 	max_integrity = 1200
 
 /turf/open/floor/rogue/grass/Initialize()
-	dir = pick(GLOB.cardinals)
-//	GLOB.dirt_list += src
+	dir = pick(GLOB.alldirs)
 	. = ..()
 
 /turf/open/floor/rogue/grass/cardinal_smooth(adjacencies)
@@ -388,12 +393,17 @@
 		return 0
 
 	var/returned = slowdown
+	var/negate_slowdown = FALSE
 	for(var/obj/item/I in user.held_items)
 		if(I.walking_stick)
 			if(!I.wielded)
 				var/mob/living/L = user
 				if(!L.cmode)
-					returned = max(returned-2, 0)
+					negate_slowdown = TRUE
+	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
+		negate_slowdown = TRUE
+	if(negate_slowdown)
+		returned = max(returned-2, 0)
 	return returned
 
 
@@ -697,6 +707,8 @@
 /turf/open/floor/rogue/greenstone/turf_destruction(damage_flag)
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+/turf/open/floor/rogue/greenstone/runed
+	icon_state = "greenstoneruned"
 
 /turf/open/floor/rogue/hexstone
 	icon_state = "hexstone"
@@ -878,7 +890,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
-	neighborlay = "cobbleedge"
+	neighborlay = "mossyedge"
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
 
@@ -904,6 +916,10 @@
 //	neighborlay = "cobblerock"
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/rogue, /turf/closed/mineral, /turf/closed/wall/mineral)
+
+/turf/open/floor/rogue/cobblerock/Initialize()
+	. = ..()
+	dir = pick(GLOB.cardinals)
 
 /turf/open/floor/rogue/cobblerock/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)

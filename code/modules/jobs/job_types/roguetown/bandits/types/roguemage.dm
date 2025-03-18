@@ -13,8 +13,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
@@ -36,7 +36,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)	//Bandit mage. You failed out of mage school/didn't finish your apprenticeship, you get no learning skill boyo
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		if(H.age == AGE_OLD)
@@ -48,11 +48,22 @@
 			H.change_stat("perception", 1)
 			H.mind.adjust_spellpoints(1)
 		H.change_stat("strength", 2)
-		H.change_stat("intelligence", 1)
+		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed",1)
+		ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 		H.mind.adjust_spellpoints(4)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
-		H.verbs |= /mob/proc/haltyell
-		H.ambushable = FALSE
+		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+		H.mind.AddSpell(new SPELL_LEARNSPELL)
+	var/wanted = list("Not wanted", "Wanted")
+	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
+	switch(wanted_choice)
+		if ("Not wanted")
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
+			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1)
+		if ("Wanted")
+			backpack_contents = list(/obj/item/book/granter/spellbook/adept = 1)
+			H.change_stat("intelligence", 2)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+	H.ambushable = FALSE

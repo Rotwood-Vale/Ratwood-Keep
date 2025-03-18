@@ -2,6 +2,7 @@
 	title = "Goblin Guard"
 	flag = GOBLINGUARD
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 3//From 6
 	spawn_positions = 3//From 6
@@ -16,6 +17,7 @@
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinguard
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -59,7 +61,6 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 	r_hand = /obj/item/rogueweapon/mace/spiked
 	l_hand = /obj/item/rogueweapon/shield/wood
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
@@ -90,7 +91,6 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 	r_hand = /obj/item/rogueweapon/spear/stone
 	l_hand = /obj/item/rogueweapon/shield/wood
-	H.verbs |= /mob/proc/haltyell
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3 , TRUE)
@@ -120,7 +120,6 @@
 	. = ..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 	r_hand = /obj/item/rogueweapon/stoneaxe/battle
-	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3 , TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -132,7 +131,7 @@
 		H.change_stat("strength", 4)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 1)
-		H.change_stat("perception", -2)
+		H.change_stat("perception", -1)
 		H.change_stat("intelligence", -4)
 
 /datum/subclass/gob_archer
@@ -151,7 +150,6 @@
 	r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	beltl = /obj/item/ammo_holder/quiver/bolts
-	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

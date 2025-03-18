@@ -178,7 +178,7 @@
 	var/lumber_amount = 1
 	var/lumber = /obj/item/grown/log/tree/small
 
-/obj/structure/table/roguetree/stump/attacked_by(obj/item/I, mob/living/user)
+/obj/structure/table/roguetree/stump/attackby(obj/item/I, mob/living/user)
 	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
 		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (120 - (skill_level * 15))
@@ -202,7 +202,8 @@
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
 		return TRUE
-	..()
+	else
+		..()
 
 /obj/structure/table/roguetree/stump/Initialize()
 	. = ..()

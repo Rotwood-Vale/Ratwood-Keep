@@ -393,18 +393,18 @@
 	description = "Fitting for a peasant."
 	reagent_state = LIQUID
 	color = "#c38553"
-	nutriment_factor = 15
+	nutriment_factor = 7
 	metabolization_rate = 0.5 // half as fast as normal, last twice as long
 	taste_description = "oatmeal"
-	taste_mult = 3
+	taste_mult = 5
 	hydration = 2
 
 /datum/reagent/consumable/soup/veggie
 	name = "vegetable soup"
 	description = ""
 	reagent_state = LIQUID
-	nutriment_factor = 10
-	taste_mult = 4
+	nutriment_factor = 5
+	taste_mult = 6
 	hydration = 8
 
 /datum/reagent/consumable/soup/veggie/potato
@@ -427,8 +427,8 @@
 	name = "thick stew"
 	description = "All manners of edible bits went into this."
 	reagent_state = LIQUID
-	nutriment_factor = 20
-	taste_mult = 4
+	nutriment_factor = 10
+	taste_mult = 8
 
 /datum/reagent/consumable/soup/stew/chicken
 	color = "#baa21c"

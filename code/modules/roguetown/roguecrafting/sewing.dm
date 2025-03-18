@@ -52,7 +52,7 @@
 	reqs = list(/obj/item/natural/fibers = 1,
 				/obj/item/natural/cloth = 1)
 	skill_level = 0
-	
+
 /datum/crafting_recipe/roguetown/sewing/leash
 	name = "rope leash (rope) - (1 rope; NONE)"
 	result = list(/obj/item/leash = 1)
@@ -307,6 +307,27 @@
 /datum/crafting_recipe/roguetown/sewing/wizrobeblue
 	name = "robe (wizard) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/mageadept
+	name = "adept robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/warlock
+	name = "warlock robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/warlock)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/magesorcerer
+	name = "sorcerer robe (mage) - (3 cloths, fiber; JOURNEYMAN)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/newmage/sorcerer)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
