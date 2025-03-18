@@ -296,6 +296,8 @@ SUBSYSTEM_DEF(family)
 
 			//Check species.
 			if(!member.client.prefs.family_species.Find(target.dna.species.id))
+				detailed_log(member, "Попытка добавить в семью [target.dna.species.id]... Не подходит под выборку.")
+				detailed_log(target, "Меня попытались добавить в семью, но моя раса не подходит под выборку.")
 				return FALSE
 			/* REDMOON REMOVAL START - family_changes 
 			- Перенесено в проверку согласия на гениталии
@@ -311,23 +313,31 @@ SUBSYSTEM_DEF(family)
 			REDMOON REMOVAL END */
 
 			if(HAS_TRAIT(target, TRAIT_NOBLE) && !HAS_TRAIT(member, TRAIT_NOBLE))
+				detailed_log(member, "Попытка добавить в семью... Это знать. Общество будет противиться нам...")
+				detailed_log(target, "Меня попытались добавить в семью, но это был простлюдин.")
 				return
 
 			if(HAS_TRAIT(member, TRAIT_NOBLE) && !HAS_TRAIT(target, TRAIT_NOBLE))
+				detailed_log(target, "Меня попытались добавить в семью, но это была знать...")
+				detailed_log(member, "Попытка добавить в семью... Это простлюдин. Общество будет противиться нам...")
 				return
 
 			// REDMOON ADD START - family_changes
 			// Свадьба без возможности деторождения не поддерживается Эорой
 			if((target.getorganslot(ORGAN_SLOT_PENIS) && !target.getorganslot(ORGAN_SLOT_VAGINA)) && (member.getorganslot(ORGAN_SLOT_PENIS) && !member.getorganslot(ORGAN_SLOT_VAGINA)))
+				detailed_log(member, "Попытка добавить в семью... Эора не поддержит союз, не способный породить жизнь.")
 				return FALSE
 			if((target.getorganslot(ORGAN_SLOT_VAGINA) && !target.getorganslot(ORGAN_SLOT_PENIS)) && (member.getorganslot(ORGAN_SLOT_VAGINA) && !member.getorganslot(ORGAN_SLOT_PENIS)))
+				detailed_log(member, "Попытка добавить в семью... Эора не поддержит союз, не способный породить жизнь.")
 				return FALSE
 
 			// только персонажами с нужным CKEY могут быть партнёрами, если он выставлен
 			if(member.client.prefs.spouse_ckey)
 				if(target.client.ckey == lowertext(member.client.prefs.spouse_ckey))
+					detailed_log(member, "Попытка добавить в семью... Это [member.client.prefs.spouse_ckey]?")
 					return TRUE // Обходится проверка на возраст и допустимые гениталии
 				else
+					detailed_log(member, "Попытка добавить в семью... Это не мой партнёр ([member.client.prefs.spouse_ckey]).")
 					return FALSE
 
 			// Проверка на допустимые гениталии у партнёра
@@ -342,12 +352,15 @@ SUBSYSTEM_DEF(family)
 					target_genitals = "Female"
 
 			if(!member.client.prefs.family_genitals.Find(target_genitals))
+				detailed_log(member, "Попытка добавить в семью... Его или её начало не подходят под то, что мне хотелось бы.")
+				detailed_log(target, "Меня попытались добавить в семью, но моё начало не подходит для партнёра.")
 				return FALSE
 
 			var/list/age_values = AGE_VALUES
 			var/target_value = age_values[target.age]
 			var/member_value = age_values[member.age]
 			if(max(member_value,target_value) - min(member_value,target_value) > 1) //Too high an age difference.
+				detailed_log(member, "Попытка добавить в семью... У нас слишком большая разница в возрасте.")
 				return FALSE
 			// REDMOON ADD END
 			return TRUE //suitable.

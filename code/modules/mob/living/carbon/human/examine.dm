@@ -613,6 +613,8 @@
 		. += "<a href='?src=[REF(src)];task=view_headshot;'>View face closely</a>"
 	if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
 		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
+	if(!obscure_name && use_rumors) // REDMOON ADD - rumors_addition
+		. += "<a href='?src=[REF(src)];task=view_rumors;'>Rumors I remember</a>" // REDMOON ADD - rumors_addition
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)

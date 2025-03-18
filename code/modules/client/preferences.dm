@@ -192,8 +192,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		var/datum/species/S = GLOB.species_list[species_name]
 		family_species += S.id
 
-	setup_family_genitals() // REDMOON ADD - family_changes - выставление допустимых партнёров
-
 	family_gender = list(MALE,FEMALE)
 
 	if(!charflaw)
@@ -435,19 +433,50 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<BR>"
 				// REDMOON ADD START - family_changes 
 				if(usr?.client?.prefs?.be_russian)
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=ckey'><b>Душа второй половинки: [spouse_ckey ? spouse_ckey : "(Случайная)"]</b></a></small>"
-					dat += "<BR>"
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=surname'><b>Фамилия семьи: [family_surname ? family_surname : "(Нет)"]</b></a></small>"
-					dat += "<BR>"
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Начало партнёра</b></a></small>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=ckey'><b>Душа второй половинки: [spouse_ckey ? spouse_ckey : "(Случайная)"]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=surname'><b>Фамилия семьи: [family_surname ? family_surname : "(Нет)"]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Начало партнёра</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=latejoin'><b>После начала: [allow_latejoin_family ? "Разрешено" : "Нет"]</b></a></small><BR>"
 				else
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=ckey'><b>Spouse soul: [spouse_ckey ? spouse_ckey : "(Random)"]</b></a></small>"
-					dat += "<BR>"
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=surname'><b>Family surname: [family_surname ? family_surname : "(None)"]</b></a></small>"
-					dat += "<BR>"
-					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Partner's beginning</b></a></small>"
-				dat += "<BR>"
-				// REDMOON ADD END
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=ckey'><b>Spouse soul: [spouse_ckey ? spouse_ckey : "(Random)"]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=surname'><b>Family surname: [family_surname ? family_surname : "(None)"]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=genitals'><b>Partner's beginning</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=familypref;res=latejoin'><b>Latejoin: [allow_latejoin_family ? "Allowed" : "No"]</b></a></small><BR>"
+			// rumors_addition
+			if(usr?.client?.prefs?.be_russian)
+				dat += "<b>Слухи: </b> <a href='?_src_=prefs;preference=rumors'>[use_rumors ? "Ходят" : "Не ходят"]</a><BR>"
+			else
+				dat += "<b>Rumors: </b> <a href='?_src_=prefs;preference=rumors'>[use_rumors ? "Yes!" : "No"]</a><BR>"
+			if(use_rumors)
+				if(usr?.client?.prefs?.be_russian)
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=gender'><b>Фехтование [rumors_prefered_beginnings.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=species'><b>Расы [rumors_prefered_races.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=bed'><b>Постель [rumors_prefered_behavior_in_bed.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=genitals'><b>Иное начало [rumors_genitals ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=problems'><b>Проблемы [rumors_prefered_behavior_with_problems ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=combat'><b>Бой [rumors_prefered_behavior_in_combat ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=relax'><b>Отдых [rumors_prefered_ways_to_relax ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=work'><b>Работа [rumors_prefered_behavior_in_work ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=family'><b>Семья [rumors_family ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=flaws'><b>Недостатки характера [rumors_overal.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=advantages'><b>Преимущества характера [rumors_overal_good.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=dangerous'><b>Опасные [rumors_dangerous.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=secret'><b>Скрытые слухи [rumors_secret ? "(&)" : ""]</b></a></small><BR>"
+				else
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=gender'><b>Fencing [rumors_prefered_beginnings.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=species'><b>Races [rumors_prefered_races.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=bed'><b>Bed [rumors_prefered_behavior_in_bed.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=genitals'><b>Other beginning [rumors_genitals ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=problems'><b>Problems [rumors_prefered_behavior_with_problems ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=combat'><b>Combat [rumors_prefered_behavior_in_combat ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=relax'><b>Relax [rumors_prefered_ways_to_relax ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=work'><b>Work [rumors_prefered_behavior_in_work ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=family'><b>Family [rumors_family ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=flaws'><b>Character's Flaws  [rumors_overal.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=advantages'><b>Character's Advantages [rumors_overal_good.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=dangerous'><b>Dangerous [rumors_dangerous.len ? "(&)" : ""]</b></a></small><BR>"
+					dat += " <small><a href='?_src_=prefs;preference=rumors_prefs;res=secret'><b>Hidden rumors [rumors_secret ? "(&)" : ""]</b></a></small><BR>"
+			// REDMOON ADD END
 			if(usr?.client?.prefs?.be_russian)
 				dat += "<b>Основная Рука:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a>"
 			else
@@ -1436,12 +1465,10 @@ Slots: [job.spawn_positions]</span>
 			if("genitals")
 				if(usr?.client?.prefs?.be_russian)
 					to_chat(usr, span_warning("<hr>\
-					<b>Обязательные условия для пары:</b>\
-					<br>Эора не благословит помолвку, если семья не способна породить жизнь."))
+					Эора не благословит помолвку, если семья не способна породить жизнь."))
 				else
 					to_chat(usr, span_warning("<hr>\
-					<b>Mandatory rules for mates:</b>\
-					<br>The marriage shall not supported by Eora if the mates cannot produce a new life."))
+					The marriage shall not supported by Eora if the mates cannot produce a new life."))
 				var/choice
 				while(choice != "(DONE)")
 					var/list/choices = list()
@@ -1456,8 +1483,208 @@ Slots: [job.spawn_positions]</span>
 							family_genitals -= choices[choice]
 						else
 							family_genitals += choices[choice]
-			// REDMOON ADD END
+			// family_changes - возможнось формирования семьи после начала раунда
+			if("latejoin")
+				if(usr?.client?.prefs?.be_russian)
+					to_chat(usr, span_warning("<hr>\
+					Если выставлено \"Разрешено\", то заходя не с начала раунда, вы всё ещё можете в момент появления быть приписаны к тому, кто ищет семью. Иначе, только с начала недели."))
+				else
+					to_chat(usr, span_warning("<hr>\
+					If set as \"Allowed\", then in case of joining after start of the week you will try to form up a family with anyone who seeks for it. Otherwise, you will seek only at the start of week."))	
+				allow_latejoin_family = !allow_latejoin_family
+	// rumors_addition - выставление слухов
+	else if(href_list["preference"] == "rumors_prefs")
+		switch(href_list["res"])
 
+			if("species")
+				var/choice
+				var/additional_races = list("Werewolf", "Minotaur", "Demon", "Magic Beings", "Wildlife", "Literally Everyone")
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.roundstart_races)
+						var/datum/species/S = GLOB.species_list[A]
+						var/index = "[(S.id in rumors_prefered_races) ? "(+)" : ""][S.name]"
+						choices[index] = S.id
+					for(var/B in additional_races)
+						var/index = "[(B in rumors_prefered_races) ? "(+)" : ""][B]"
+						choices[index] = B
+					choices += "(DONE)"
+					choice = input(usr, "Ходит слух, что я предпочитаю такие расы, как...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_prefered_races)
+							rumors_prefered_races -= choices[choice]
+						else
+							rumors_prefered_races += choices[choice]
+				if(LAZYLEN(rumors_prefered_races) > 7)
+					to_chat(user, span_danger("Не растекайтесь мыслью по древу. Сделайте своего персонажа более структурированным (количество доступных слухов о расах - 7). Слух отчищен."))
+					rumors_prefered_races = list()
+
+			if("gender")
+				var/choice
+				var/beginnings = list("мужчинами", "женщинами", "женщинами с мужским началом", "мужчинами с женским началом")
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in beginnings)
+						var/index = "[(A in rumors_prefered_beginnings) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Ходит слух, что я люблю фехтовать с...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_prefered_beginnings)
+							rumors_prefered_beginnings -= choices[choice]
+						else
+							rumors_prefered_beginnings += choices[choice]
+				for(var/A in rumors_prefered_beginnings)
+					if(!(A in beginnings))
+						rumors_prefered_beginnings -= A
+
+			if("bed")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_prefered_behavior_in_bed_choices)
+						var/index = "[(A in rumors_prefered_behavior_in_bed) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Ходит слух, что в постели я предпочитаю...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_prefered_behavior_in_bed)
+							rumors_prefered_behavior_in_bed -= choices[choice]
+						else
+							rumors_prefered_behavior_in_bed += choices[choice]
+				for(var/A in rumors_prefered_behavior_in_bed)
+					if(!(A in GLOB.rumors_prefered_behavior_in_bed_choices))
+						rumors_prefered_behavior_in_bed -= A
+
+			if("genitals")
+				rumors_genitals = input(usr, "Ходит ли слух, что у меня начало иного пола? (Сейчас - [rumors_genitals ? "Ходит" : "Нет"]).") as anything in list("Да", "Нет")
+				if(rumors_genitals == "Нет")
+					rumors_genitals = null
+
+			if("family")
+				rumors_family = input(usr, "[rumors_family ? "([rumors_family])." : "..."]") as anything in GLOB.rumors_family_choices
+				if(rumors_family == "(Нет слухов)")
+					rumors_family = null
+
+			if("problems")
+				rumors_prefered_behavior_with_problems = input(usr, "Ходит слух, что проблемы решаю [rumors_prefered_behavior_with_problems ? "([rumors_prefered_behavior_with_problems])." : "..."]") as anything in GLOB.rumors_prefered_behavior_with_problems_choices
+				if(rumors_prefered_behavior_with_problems == "(Нет слухов)")
+					rumors_prefered_behavior_with_problems = null
+
+			if("combat")
+				rumors_prefered_behavior_in_combat = input(usr, "Ходит слух, что в бою [rumors_prefered_behavior_in_combat ? "([rumors_prefered_behavior_in_combat])." : "..."]") as anything in GLOB.rumors_prefered_behavior_in_combat_choices
+				if(rumors_prefered_behavior_in_combat == "(Нет слухов)")
+					rumors_prefered_behavior_in_combat = null
+
+			if("work")
+				rumors_prefered_behavior_in_work = input(usr, "Ходит слух, что в труде [rumors_prefered_behavior_in_work ? "([rumors_prefered_behavior_in_work])." : "..."]") as anything in GLOB.rumors_prefered_behavior_in_work_choices
+				if(rumors_prefered_behavior_in_work == "(Нет слухов)")
+					rumors_prefered_behavior_in_work = null
+
+			if("secret")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_secret_choices)
+						var/index = "[(A in rumors_secret) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Слухи о которых никто не знает. Это ООС информация для других игроков.") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_secret)
+							rumors_secret -= choices[choice]
+						else
+							rumors_secret += choices[choice]
+				for(var/A in rumors_secret)
+					if(!(A in GLOB.rumors_secret_choices))
+						rumors_secret -= A
+
+			if("relax")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_prefered_ways_to_relax_choices)
+						var/index = "[(A in rumors_prefered_ways_to_relax) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Ходит слух, что я люблю...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_prefered_ways_to_relax)
+							rumors_prefered_ways_to_relax -= choices[choice]
+						else
+							rumors_prefered_ways_to_relax += choices[choice]
+				for(var/A in rumors_prefered_ways_to_relax)
+					if(!(A in GLOB.rumors_prefered_ways_to_relax_choices))
+						rumors_prefered_ways_to_relax -= A
+				if(LAZYLEN(rumors_prefered_ways_to_relax) > 7)
+					to_chat(user, span_danger("Не растекайтесь мыслью по древу. Сделайте своего персонажа более структурированным (количество доступных слухов об отдыха - 7). Слух отчищен."))
+					rumors_prefered_ways_to_relax = list()
+
+			if("flaws")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_overal_choices)
+						var/index = "[(A in rumors_overal) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Ходят НЕПРАВДИВЕЙШИЕ слухи, что мне причесляют...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_overal)
+							rumors_overal -= choices[choice]
+						else
+							rumors_overal += choices[choice]
+				for(var/A in rumors_overal)
+					if(!(A in GLOB.rumors_overal_choices))
+						rumors_overal -= A
+				if(LAZYLEN(rumors_overal) > 4)
+					to_chat(user, span_danger("Не растекайтесь мыслью по древу. Сделайте своего персонажа более структурированным (количество доступных негативных черт характера - 4). Слух отчищен."))
+					rumors_overal = list()
+
+			if("advantages")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_overal_good_choices)
+						var/index = "[(A in rumors_overal_good) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Некоторые мне причесляют...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_overal_good)
+							rumors_overal_good -= choices[choice]
+						else
+							rumors_overal_good += choices[choice]
+				for(var/A in rumors_overal_good)
+					if(!(A in GLOB.rumors_overal_good_choices))
+						rumors_overal_good -= A
+				if(LAZYLEN(rumors_overal) < 2)
+					to_chat(user, span_danger("Если о вашем персонаже будут добрые слухи, то следовательно, должны быть и негативные (минимум 2). Слух отчищен."))
+					rumors_overal_good = list()
+				if(LAZYLEN(rumors_overal_good) > 4)
+					to_chat(user, span_danger("Не растекайтесь мыслью по древу. Сделайте своего персонажа более структурированным (количество доступных негативных черт характера - 4). Слух отчищен."))
+					rumors_overal_good = list()
+
+			if("dangerous")
+				var/choice
+				while(choice != "(DONE)")
+					var/list/choices = list()
+					for(var/A in GLOB.rumors_dangerous_choice)
+						var/index = "[(A in rumors_dangerous) ? "(+)" : ""][A]"
+						choices[index] = A
+					choices += "(DONE)"
+					choice = input(usr, "Меня подозревают в...") as anything in choices
+					if(choice != "(DONE)")
+						if(choices[choice] in rumors_dangerous)
+							rumors_dangerous -= choices[choice]
+						else
+							rumors_dangerous += choices[choice]
+				for(var/A in rumors_dangerous)
+					if(!(A in GLOB.rumors_dangerous_choice))
+						rumors_dangerous -= A
+				if(LAZYLEN(rumors_dangerous) > 2)
+					to_chat(user, span_danger("Не растекайтесь мыслью по древу. Сделайте своего персонажа более структурированным (количество доступных опасных слухов - 2). Слух отчищен."))
+					rumors_dangerous = list()
 			// REDMOON ADD END
 
 	else if(href_list["preference"] == "keybinds")
@@ -2042,7 +2269,6 @@ Slots: [job.spawn_positions]</span>
 						<br>● Дворяне не могут иметь пару из нижнего сословья и наоборот. \
 						<br><b>Если не выставлена душа второй половинки, то:</b> \
 						<br>● Бандиты, проститутки, заключенные, рабы, гоблины, бездомные и лунатики не могут сформировать семью. \
-						<br>● Для случайной семьи, нужно зайти с начала раунда. Если выставлена душа второй половинки И фамилия, то одинаковые фамилии автоматически формируют семью после начала раунда. \
 						<br>● Молодой и старый персонажи не могут быть парой."))
 					else
 						to_chat(usr, span_warning("<hr>\
@@ -2051,7 +2277,6 @@ Slots: [job.spawn_positions]</span>
 						<br>● You cannot be noble and have your spouse in lower class. \
 						<br><b>If you will not setup Spouse Soul, then:</b> \
 						<br>● Bandits, whores, prisoners, slaves, goblins, beggers and lunatics cannot form up families. \
-						<br>● You can only form up a family at round-start (you have to setup Spouse Soul and Family Surname to form up a family after latejoin).\
 						<br>● You cannot have too much of age difference (adult with old)."))
 					// REDMOON ADD END
 					if(family == FAMILY_NONE)
@@ -2367,6 +2592,14 @@ Slots: [job.spawn_positions]</span>
 					if (href_list["tab"])
 						current_tab = text2num(href_list["tab"])
 
+				// REDMOON ADD START - family_changes - оповещение о правилах семей
+				if("rumors")
+					if(usr?.client?.prefs?.be_russian)
+						to_chat(user, span_warning("<hr>Слухи не имеют механического влияния на персонажа."))
+					else
+						to_chat(user, span_warning("<hr>Rumors have no mechanical power over the character."))	
+					use_rumors = !use_rumors
+				// REDMOON ADD END
 	ShowChoices(user)
 	return 1
 

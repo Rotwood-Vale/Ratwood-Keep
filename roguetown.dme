@@ -2383,6 +2383,8 @@
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\vulpkanin.dm"
 #include "modular_redmoon\modules\notongue\notongue.dm"
 #include "modular_redmoon\modules\ranged_weapon_balancing\ranged_weapon_balancing.dm"
+#include "modular_redmoon\modules\rumors\rumors.dm"
+#include "modular_redmoon\modules\rumors\rumors_glob.dm"
 #include "modular_redmoon\modules\round_end_vote_for_people\round_end_vote_for_people.dm"
 #include "modular_redmoon\modules\scomrings\rings\scomm.dm"
 #include "modular_redmoon\modules\scomrings\rings\startthings.dm"

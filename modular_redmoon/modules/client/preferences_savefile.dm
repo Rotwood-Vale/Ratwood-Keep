@@ -11,11 +11,51 @@
 	S["spouse_ckey"]									>> spouse_ckey
 	S["family_surname"]									>> family_surname
 	S["family_genitals"] 								>> family_genitals
+	S["allow_latejoin_family"] 							>> allow_latejoin_family
+	S["detailed_family_loging"] 						>> detailed_family_loging
+
 
 	S["prefer_old_chat"]								>> prefer_old_chat
 
-	if(!family_genitals)
-		family_genitals = list()
+	if(!islist(family_genitals) || !LAZYLEN(family_genitals))
+		family_genitals = list("Male", "Female")
+
+	// rumors_addition
+	S["use_rumors"]										>> use_rumors
+
+	// String
+	S["rumors_prefered_behavior_in_combat"]				>> rumors_prefered_behavior_in_combat
+	S["rumors_prefered_behavior_with_problems"]			>> rumors_prefered_behavior_with_problems
+	S["rumors_prefered_behavior_in_work"]				>> rumors_prefered_behavior_in_work
+	S["rumors_genitals"]								>> rumors_genitals
+	S["rumors_family"]									>> rumors_family
+
+	// Списки
+	S["rumors_prefered_behavior_in_bed"]				>> rumors_prefered_behavior_in_bed
+	S["rumors_prefered_beginnings"]						>> rumors_prefered_beginnings
+	S["rumors_prefered_races"]							>> rumors_prefered_races
+	S["rumors_prefered_ways_to_relax"]					>> rumors_prefered_ways_to_relax
+	S["rumors_secret"]									>> rumors_secret
+	S["rumors_overal"]									>> rumors_overal
+	S["rumors_overal_good"]								>> rumors_overal_good
+	S["rumors_dangerous"]								>> rumors_dangerous
+
+	if(!islist(rumors_secret))
+		rumors_secret = list()
+	if(!islist(rumors_prefered_beginnings))
+		rumors_prefered_beginnings = list()
+	if(!islist(rumors_prefered_races))
+		rumors_prefered_races = list()
+	if(!islist(rumors_prefered_behavior_in_bed))
+		rumors_prefered_behavior_in_bed = list()
+	if(!islist(rumors_prefered_ways_to_relax))
+		rumors_prefered_ways_to_relax = list()
+	if(!islist(rumors_overal))
+		rumors_overal = list()
+	if(!islist(rumors_overal_good))
+		rumors_overal_good = list()
+	if(!islist(rumors_dangerous))
+		rumors_dangerous = list()
 
 	_load_loadout(S)
 
@@ -38,11 +78,54 @@
 	WRITE_FILE(S["spouse_ckey"] 						, spouse_ckey) // family_changes - ckey второй половинки
 	WRITE_FILE(S["family_surname"] 						, family_surname) // family_changes - фамилия семьи
 	WRITE_FILE(S["family_genitals"] 					, family_genitals) // family_changes - проверка на половые органы партнёра
+	WRITE_FILE(S["allow_latejoin_family"] 				, allow_latejoin_family) // family_changes - разрешение на семью после раундстарта
+	WRITE_FILE(S["detailed_family_loging"] 				, detailed_family_loging) // family_changes - детальный отчёт по поиску семьи
+
+	WRITE_FILE(S["use_rumors"]							, use_rumors) // rumors_addition
+
+	// String
+	WRITE_FILE(S["rumors_prefered_behavior_with_problems"]	, rumors_prefered_behavior_with_problems) // rumors_addition
+	WRITE_FILE(S["rumors_prefered_behavior_in_work"]	, rumors_prefered_behavior_in_work) // rumors_addition
+	WRITE_FILE(S["rumors_prefered_behavior_in_combat"]	, rumors_prefered_behavior_in_combat) // rumors_addition
+	WRITE_FILE(S["rumors_genitals"]						, rumors_genitals) // rumors_addition
+	WRITE_FILE(S["rumors_family"]						, rumors_family) // rumors_addition
+
+	// Списки
+	WRITE_FILE(S["rumors_prefered_beginnings"]			, rumors_prefered_beginnings) // rumors_addition
+	WRITE_FILE(S["rumors_prefered_races"]				, rumors_prefered_races) // rumors_addition
+	WRITE_FILE(S["rumors_prefered_behavior_in_bed"]		, rumors_prefered_behavior_in_bed) // rumors_addition
+	WRITE_FILE(S["rumors_prefered_ways_to_relax"]		, rumors_prefered_ways_to_relax) // rumors_addition
+	WRITE_FILE(S["rumors_secret"]						, rumors_secret) // rumors_addition
+	WRITE_FILE(S["rumors_overal"]						, rumors_overal) // rumors_addition
+	WRITE_FILE(S["rumors_overal_good"]					, rumors_overal_good) // rumors_addition
+	WRITE_FILE(S["rumors_dangerous"]					, rumors_dangerous) // rumors_addition
 
 /datum/preferences/proc/redmoon_copy_character(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE)
-	character.spouse_ckey = spouse_ckey // family_changes
-	character.family_surname = family_surname // family_changes
-	character.family_genitals = family_genitals
+	// family_changes
+	character.spouse_ckey = spouse_ckey
+	character.family_surname = family_surname
+	character.family_genitals = family_genitals 
+	character.allow_latejoin_family = allow_latejoin_family 
+
+ 	// rumors_addition
+	character.use_rumors = use_rumors
+
+	// String
+	character.rumors_prefered_behavior_in_combat = rumors_prefered_behavior_in_combat
+	character.rumors_prefered_behavior_with_problems = rumors_prefered_behavior_with_problems
+	character.rumors_prefered_behavior_in_work = rumors_prefered_behavior_in_work
+	character.rumors_genitals = rumors_genitals
+	character.rumors_family = rumors_family
+
+	// Списки
+	character.rumors_prefered_behavior_in_bed = rumors_prefered_behavior_in_bed
+	character.rumors_prefered_ways_to_relax = rumors_prefered_ways_to_relax
+	character.rumors_prefered_beginnings= rumors_prefered_beginnings
+	character.rumors_prefered_races = rumors_prefered_races
+	character.rumors_secret = rumors_secret
+	character.rumors_overal = rumors_overal
+	character.rumors_overal_good = rumors_overal_good
+	character.rumors_dangerous = rumors_dangerous
 
 /datum/preferences/proc/_load_loadout(S)
 	var/loadout_type
