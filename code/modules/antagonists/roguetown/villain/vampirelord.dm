@@ -94,7 +94,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		equip_spawn()
 		greet()
 		if(!sired)
-			addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, spawn_pick_class), "VAMPIRE SPAWN"), 5 SECONDS)
+			spawn(0)
+				addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, spawn_pick_class), "VAMPIRE SPAWN"), 5 SECONDS)
 	else
 		forge_vampirelord_objectives()
 		finalize_vampire()
@@ -171,6 +172,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			visoptions += pick_n_take(classoptions)
 
 	var/selected = input(src, "Which class was I?", "VAMPIRE SPAWN") as anything in visoptions
+	to_chat(src, span_big("Если вы заспавнились голым, сообщите в канал разработки."))
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.name == selected)
@@ -182,6 +184,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	
 			if(equipOutfit(A.outfit))
 				return
+		to_chat(src, span_big("Что-то пошло не так, рерол."))
+		spawn_pick_class()
+		return
 
 /datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
