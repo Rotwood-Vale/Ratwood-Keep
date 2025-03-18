@@ -134,6 +134,7 @@
 	desc = "A silver opera mask worn by the faithful of Eora, usually during their rituals."
 	icon_state = "eoramask"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HEAD
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	dynamic_hair_suffix = ""
@@ -1702,7 +1703,7 @@
     body_parts_covered = FACE|HEAD|HAIR|EARS|NOSE
     flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
     block2add = FOV_BEHIND
-    slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
+    slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP|ITEM_SLOT_MASK
     sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/overseer/vice
