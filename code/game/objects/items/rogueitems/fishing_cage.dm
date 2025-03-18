@@ -14,10 +14,20 @@
 
 /obj/item/fishingcage/attack_self(mob/user)
 	. = ..()
+
+	var/turf/T = get_step(user, user.dir)
+	if(!istype(T, /turf/open/water))
+		to_chat(user, span_warning("This goes into water!"))
+		return // We don't need to check non water tiles.
+
 	user.visible_message(span_notice("[user] begins deploying the fishing cage..."), \
 						span_notice("I begin deploying the fishing cage..."))
 	var/deploy_speed = 15 SECONDS - (user.mind.get_skill_level(/datum/skill/labor/fishing) * 2 SECONDS)
-	var/turf/T = get_step(user, user.dir)
+
+	if(!is_valid_fishing_spot(T))
+		to_chat(user, span_warning("This body of water seems devoid of aquatic life..."))
+		return
+	
 	if(istype(T, /turf/open/water))
 		if(do_after(user, deploy_speed, target = src))
 			user.transferItemToLoc(src, T)
