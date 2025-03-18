@@ -124,10 +124,10 @@
 	throwforce = 1
 	slot_flags = null
 
-/obj/item/storage/fancy/ifak/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
+// /obj/item/storage/fancy/ifak/PopulateContents()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	for(var/i = 1 to STR.max_items)
+// 		new spawn_type(src)
 
 /obj/item/storage/fancy/ifak/update_icon()
 	if(fancy_open)

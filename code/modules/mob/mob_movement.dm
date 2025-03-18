@@ -696,6 +696,24 @@
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
 					return FALSE
+	if(istype(src.shoes, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.shoes
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+					return FALSE
+	if(istype(src.gloves, /obj/item/clothing))
+		var/obj/item/clothing/CL = src.gloves
+		if(CL.armor_class == ARMOR_CLASS_HEAVY)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				return FALSE
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+					return FALSE
 	return TRUE
 
 /mob/living/proc/check_dodge_skill()
