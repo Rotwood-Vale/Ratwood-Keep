@@ -372,7 +372,7 @@
 	warming = 5 MINUTES
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/mealbuff
+	eat_effect = /datum/status_effect/buff/greatmealbuff
 	trash = /obj/item/reagent_containers/glass/bowl
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/gumbo
