@@ -6,12 +6,16 @@
 	var/datum/species/self_species = dna.species
 	var/datum/species/examiner_species = user.dna.species
 	if(self_species.stress_examine && self_species.type != examiner_species.type)
-		var/event_type = /datum/stressevent/shunned_race
+	// REDMOON EDIT - фикс для рантайма "new() called with an object of type /datum/stressevent/shunned_race instead of the type path itself"
 		if(HAS_TRAIT(user, TRAIT_XENOPHOBIC))
-			event_type = /datum/stressevent/shunned_race_xenophobic
-		var/datum/stressevent/event = new event_type()
-		event.desc = self_species.stress_desc
-		user.add_stress(event)
+			var/datum/stressevent/shunned_race_xenophobic/event = new ()
+			event.desc = self_species.stress_desc
+			user.add_stress(event)
+		else
+			var/datum/stressevent/shunned_race/event = new ()
+			event.desc = self_species.stress_desc
+			user.add_stress(event)
+	// REDMOON EDIT END
 	if(user.has_flaw(/datum/charflaw/paranoid) && (STASTR - user.STASTR) > 1)
 		user.add_stress(/datum/stressevent/parastr)
 	if(HAS_TRAIT(user, TRAIT_JESTERPHOBIA) && job == "Jester")
@@ -142,7 +146,7 @@
 			else if(family)
 				var/datum/family/F = getFamily()
 				if(F)
-					. += "Ah, they belong to the [F.name] family!"
+					. += "Ah, they belong to the [F.name] family!" // TODO  Cannot read null.name
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)

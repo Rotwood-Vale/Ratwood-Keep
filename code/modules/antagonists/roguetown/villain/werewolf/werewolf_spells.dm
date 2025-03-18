@@ -39,7 +39,7 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
 		last_howl_sound_time = current_time
 		player.playsound_local(get_turf(player), pick('sound/vo/mobs/wwolf/howldist (1).ogg','sound/vo/mobs/wwolf/howldist (2).ogg'), 100, FALSE, pressure_affected = FALSE)
 
-	user.log_message("howls: [message] (WEREWOLF)")
+	user.log_message("howls: [message] (WEREWOLF)", LOG_GAME) // REDMOON EDIT - добавлено LOG_GAME в конце для исправления рантайма "Invalid individual logging type: . Defaulting to 4096 (LOG_GAME)."
 
 /obj/effect/proc_holder/spell/self/claws
 	name = "Lupine Claws"

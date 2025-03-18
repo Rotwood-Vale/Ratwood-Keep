@@ -7,6 +7,8 @@
 
 /obj/item/rogueweapon/whip/antique/psywhip/pickup(mob/user)
 	. = ..()
+	if(!user.mind) // REDMOON ADD - добавлена проверка на mind, чтобы dummy не вызывал рантаймы при выборе профессии
+		return
 	var/mob/living/carbon/human/H = user
 	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
@@ -36,7 +38,7 @@
 
 /obj/item/rogueweapon/whip/antique/psywhip/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	. = ..()
-	if(ishuman(M))
+	if(ishuman(M) && M.mind) // REDMOON EDIT - добавлена проверка на mind, чтобы dummy не вызывал рантаймы при выборе профессии
 		var/mob/living/carbon/human/H = M
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)

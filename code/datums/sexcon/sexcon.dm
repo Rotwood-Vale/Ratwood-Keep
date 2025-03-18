@@ -238,7 +238,7 @@
 	// if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 	user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
 	SSticker.cums++
-	cuckold_check()
+//	cuckold_check() // REDMOON REMOVAL - повышаем популярность семьи, убираем сообщения о куколдах в конце раунда
 
 
 /datum/sex_controller/proc/after_milking()
