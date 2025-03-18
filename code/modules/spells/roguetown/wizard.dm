@@ -1239,7 +1239,6 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	associated_skill = /datum/skill/magic/arcane
 	xp_gain = TRUE
 	cost = 3
-	ai_controller = /datum/ai_controller/volf/familiar // REDMOON ADD - ai_fixes - особый паттерн поведения, на атаку ближайшей цели
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar/Initialize(mapload, mob/user)
 	. = ..()

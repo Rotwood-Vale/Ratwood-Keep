@@ -2390,7 +2390,6 @@
 #include "modular_redmoon\modules\scomrings\rings\startthings.dm"
 #include "modular_redmoon\modules\scomrings\rings\storage.dm"
 #include "modular_redmoon\modules\scomrings\rings\trade.dm"
-#include "modular_redmoon\modules\spirit_volf_special_ai_controller\spirit_volf_special_ai_controller.dm"
 #include "modular_redmoon\modules\stat_roundstart\stat_roundstart.dm"
 #include "modular_redmoon\modules\stats_reports_with_gender_list\stats_reports_with_gender_lists.dm"
 #include "modular_redmoon\modules\tetris\_bodyparts.dm"
