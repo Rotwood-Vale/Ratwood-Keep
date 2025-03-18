@@ -92,7 +92,8 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -108,10 +109,23 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
-			beltl = /obj/item/ammo_holder/quiver/bolts
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+
+			var/weapons = list("Crossbow", "Bow")
+			var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+			switch(weaponschoice)
+
+				if("Bow")
+					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+					beltl = /obj/item/ammo_holder/quiver/arrows
+					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+				if("Crossbow")
+					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+					beltl = /obj/item/ammo_holder/quiver/bolts
+					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)
 			H.change_stat("intelligence", 1)
