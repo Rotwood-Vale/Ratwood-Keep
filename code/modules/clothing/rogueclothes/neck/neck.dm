@@ -220,7 +220,32 @@
 	name = "amulet of Malum"
 	icon_state = "malum"
 	desc = "An anvil inlaid with gold, each mark of Malum is a masterwork in earnest. He crafts wonders for gods and men alike, yet seeks neither praise nor devotion - only the perfection of his art. There is virtue in dedication, labor, and toil, for they are the fires that spur the forge of Astrata's civilization."
+
+/obj/item/clothing/neck/roguetown/psicross/pearl //put it as a psycross so it can be used for miracles
+	name = "pearl amulet"
+	icon_state = "pearlcross"
+	desc = "An amulet made of white pearls, usually worn by fishers or sailors."
+	sellprice = 80
+
+/obj/item/clothing/neck/roguetown/psicross/bpearl
+	name = "blue pearl amulet"
+	icon_state = "bpearlcross"
+	desc = "An amulet made of rare blue pearls, usually worn by priests and worshippers of Abyssor, or as lucky charms for captains of ships."
+	sellprice = 220
 	
+/obj/item/clothing/neck/roguetown/psicross/shell
+	name = "oyster shell necklace"
+	icon_state = "oyster_necklace"
+	desc = "A necklace of strung-up sea shells, the calming noise they make when they clack together is reminiscent of a shellfish's claws. They remind you that while men no longer live in water, Abyssor will always remember our origins."
+	sellprice = 25
+
+/obj/item/clothing/neck/roguetown/psicross/shell/bracelet
+	name = "shell bracelet"
+	icon_state = "oyster_bracelet"
+	desc = "A beaded bracelet made from sea shells, their rough exterior and glossy interior reminding you that Abyssor's children hide the best gifts at the deepest spots beneath the waves."
+	sellprice = 15
+	slot_flags = ITEM_SLOT_WRISTS
+
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
 	desc = "A heart, for Eora so loved the world she taught us to love ourselves. Wearing it is to feel the warmth of a lover's embrace, and to carry the weight of a bond that even death cannot sever. In showing kindness, one creates a world - scoured as it is with evil and rot - worth saving."

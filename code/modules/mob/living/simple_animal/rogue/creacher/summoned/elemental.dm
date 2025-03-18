@@ -41,6 +41,7 @@
 		GiveTarget(pulledby)
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/dropcomponents()
 
+
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -115,6 +116,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 120
 	maxHealth = 120
+	obj_damage = 75
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 8
@@ -184,8 +186,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 240
 	maxHealth = 240
-	melee_damage_lower = 15
-	melee_damage_upper = 17
+	obj_damage = 75
+	melee_damage_lower = 20
+	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -203,7 +206,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	rapid = TRUE
@@ -273,8 +276,9 @@
 	projectiletype = /obj/projectile/earthenfist
 	health = 800
 	maxHealth = 800
-	melee_damage_lower = 55
-	melee_damage_upper = 80
+	obj_damage = 75
+	melee_damage_lower = 40
+	melee_damage_upper = 70
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -292,7 +296,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	ranged_message = "sends its fist flying"
 	food = 0
@@ -384,11 +388,12 @@
 		return 1
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/OpenFire()
-	if(!..())	//VERY important. Calls parent and checks if it fails (used to check for binded)
-		return
 	if(world.time >= src.rock_cd + 200)
 		quake(target)
 		src.rock_cd = world.time
+	if(!..())	//VERY important. Calls parent and checks if it fails (used to check for binded)
+		return
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/proc/quake(target)
 	var/turf/focalpoint = get_turf(target)
@@ -452,14 +457,15 @@
 	turns_per_move = 3
 	see_in_dark = 6
 	move_to_delay = 15
+	obj_damage = 150
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 1500
 	maxHealth = 1500
-	melee_damage_lower = 40
-	melee_damage_upper = 70
+	melee_damage_lower = 55
+	melee_damage_upper = 85
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_WALLS
@@ -480,7 +486,7 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
+	del_on_deaggro = 10 SECONDS
 	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/onstone/wallhit.ogg'

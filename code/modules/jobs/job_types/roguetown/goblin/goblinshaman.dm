@@ -2,13 +2,14 @@
 	title = "Goblin Shaman"
 	flag = GOBLINSHAMAN
 	department_flag = GOBLIN
+	selection_color = JCOLOR_GOBLIN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	spells = list(SPELL_FETCH, SPELL_PRESTIDIGITATION,
-	SPELL_MESSAGE, SPELL_LESSER_HEAL, SPELL_DIAGNOSE)
+	SPELL_MESSAGE, SPELL_DIAGNOSE, SPELL_LEARNSPELL, SPELL_CPR, SPELL_LESSER_HEAL)
 	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
 	You're one of Graggar's chosen. A vessel for his power in this world, for better or worse. Serve as a spiritual advisor to your Chief. \
 	Assure he has all he needs to succeed, and, should he fail, take his place."
@@ -16,6 +17,7 @@
 	display_order = JDO_GOBLINSHAMAN
 	min_pq = 5
 	max_pq = null
+	announce_latejoin = FALSE
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -25,15 +27,18 @@
 	H.faction += "orcs"
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather/rope
+	beltr = /obj/item/storage/keyring/goblinchief
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 	backl = /obj/item/storage/backpack/rogue/satchel
-	r_hand = /obj/item/rogueweapon/woodstaff
+	backr = /obj/item/rogueweapon/woodstaff
+	l_hand = /obj/item/chalk
+	r_hand = /obj/item/book/granter/spellbook/apprentice
 	id = /obj/item/clothing/ringP/graggar
-	backpack_contents = list(/obj/item/storage/keyring/goblinchief = 1,
-							/obj/item/storage/fancy/ifak = 1,
+	backpack_contents = list(/obj/item/storage/fancy/ifak = 1,
 							/obj/item/storage/fancy/skit = 1,
-							/obj/item/scrying/eye = 1)
+							/obj/item/scrying/eye = 1,
+							/obj/item/reagent_containers/glass/alembic = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
@@ -42,12 +47,11 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.AddSpell(new SPELL_CPR)
-		H.change_stat("intelligence", 4)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.change_stat("intelligence", 6)
 		H.change_stat("fortune", 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
