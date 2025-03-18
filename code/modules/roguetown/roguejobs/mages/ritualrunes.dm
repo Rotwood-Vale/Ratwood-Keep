@@ -772,6 +772,7 @@ GLOBAL_LIST(teleport_runes)
 		to_chat(user, span_warning("You release the summon from it's containment!"))
 		playsound(usr, 'sound/magic/teleport_diss.ogg', 75, TRUE)
 		do_invoke_glow()
+		clear_obstacles(user)
 		sleep(20)
 		animate(summoned_mob, color = null,time = 5)
 		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
@@ -809,8 +810,12 @@ GLOBAL_LIST(teleport_runes)
 			to_chat(living_invoker,  span_italics("[src] saps your strength!"))
 	do_invoke_glow()
 
-
-
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/proc/clear_obstacles(mob/living/user)
+	for(var/turf/closed/wall/mineral/rogue/anticheese in view(7, src))
+		if(anticheese.type == /turf/closed/wall/mineral/rogue/wood/window || anticheese.type == /turf/closed/wall/mineral/rogue/stone/window)
+			anticheese.visible_message(span_warning("[anticheese] crumbles under the force of the releasing wards."))
+			anticheese.ChangeTurf(/turf/open/floor/rogue/blocks)
+			continue
 
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid// 96x96 rune t2(3x3 tile)
 	name = "sealate confinement matrix"

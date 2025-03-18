@@ -352,6 +352,11 @@
 		. += how_cool_are_your_threads.Join()
 */
 
+/obj/item/clothing/proc/obj_fix(damage_flag)
+	obj_broken = FALSE
+	if(damaged_clothes)
+		update_clothes_damaged_state(FALSE) 
+		
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
