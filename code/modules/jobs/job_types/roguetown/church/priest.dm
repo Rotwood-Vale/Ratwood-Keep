@@ -266,14 +266,14 @@ GLOBAL_LIST_EMPTY(heretical_players)
     if(!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
         to_chat(src, span_warning("I need to do this in the chapel."))
         return FALSE
-    visible_message("<span class='notice'>[src] begins preaching a sermon...</span>")
+    to_chat(src, span_notice("[src] begins preaching a sermon..."))
     if(!do_after(src, 1200, target = src)) // 120 seconds
-        visible_message("<span class='warning'>[src] stops preaching.</span>")
+        to_chat(src, span_warning("[src] stops preaching."))
         return
 
-    visible_message("<span class='notice'>[src] finishes the sermon, inspiring those nearby!</span>")
+    to_chat(src, span_notice("[src] finishes the sermon, inspiring those nearby!"))
     for(var/mob/living/carbon/human/H in view(7, src)) // all mobs within 7 tiles
-        if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
+        if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_MATTHIOS_EYES) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
             H.add_stress(/datum/stressevent/heretic_on_sermon)
             H.apply_status_effect(/datum/status_effect/debuff/hereticsermon)
         else
