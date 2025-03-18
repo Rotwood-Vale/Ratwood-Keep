@@ -22,7 +22,7 @@
 	surgery_flags = SURGERY_INCISED | SURGERY_BROKEN
 
 /datum/surgery_step/graggarritual/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-    if(target.has_status_effect(/datum/status_effect/alreadygraggared))
+    if(target.has_status_effect(/datum/status_effect/debuff/alreadygraggared))
         display_results(user, target, span_notice("The [target]'s most delicious parts are already taken!"),
             "[user] chops [target]'s body.",
             "[user] chops [target]'s body.")
@@ -50,11 +50,11 @@
         chosen_meat = /obj/item/graggarflesh/watchman
     else if(H.mind.assigned_role == "Vanguard")
         chosen_meat = /obj/item/graggarflesh/vanguard
-    else if(H.mind.assigned_role == "Knight")
+    else if(H.mind.assigned_role == "Knight" || H.mind.assigned_role == "Retinue Captain")
         chosen_meat = /obj/item/graggarflesh/knight
     else if(H.mind.assigned_role == "Priest")
         chosen_meat = /obj/item/graggarflesh/priest
-    else if(H.mind.assigned_role == "Duke" || H.mind.assigned_role == "Duke consort" || H.mind.assigned_role == "Heir" || H.mind.assigned_role == "Heiress")
+    else if(H.mind.assigned_role == "Duke" || H.mind.assigned_role == "Duke consort" || H.mind.assigned_role == "Duchess" || H.mind.assigned_role == "Duchess consort" || H.mind.assigned_role == "Heir" || H.mind.assigned_role == "Heiress")
         chosen_meat = /obj/item/graggarflesh/royal
     else
         display_results(user, target, span_notice("[target] is NOT a worthy OPPONENT!"),
@@ -67,34 +67,8 @@
         "[user] cuts a slice from [target]'s body.")
 
     new chosen_meat(target.loc)
-    target.apply_status_effect(/datum/status_effect/alreadygraggared)
+    target.apply_status_effect(/datum/status_effect/debuff/alreadygraggared)
     return TRUE
-
-/datum/status_effect/alreadygraggared
-    id = "alreadygraggared"
-    alert_type = /atom/movable/screen/alert/status_effect/alreadygraggared
-    duration = -1 // permanent until removed
-
-    on_apply()
-        if(ishuman(owner))
-            var/mob/living/carbon/human/H = owner
-            H.change_stat("endurance", -2)
-            H.change_stat("strength", -2)
-            H.change_stat("constitution", -2)
-        return TRUE
-
-    on_remove()
-        if(ishuman(owner))
-            var/mob/living/carbon/human/H = owner
-            H.change_stat("endurance", 2)
-            H.change_stat("strength", 2)
-            H.change_stat("constitution", 2)
-        return TRUE
-
-/atom/movable/screen/alert/status_effect/alreadygraggared
-    name = "Already Graggared"
-    desc = "Your body has been harvested by Graggar's ritual, leaving you weakened."
-    icon_state = "debuff"
 
 /obj/item/graggarflesh
     name = "Flesh"
@@ -115,10 +89,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/maameat))
+        if(M.has_status_effect(/datum/status_effect/buff/maameat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/maameat)
+        M.apply_status_effect(/datum/status_effect/buff/maameat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Man-at-Arms."))
         qdel(src)
         return TRUE
@@ -140,10 +114,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/templarmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/templarmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/templarmeat)
+        M.apply_status_effect(/datum/status_effect/buff/templarmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Templar."))
         qdel(src)
         return TRUE
@@ -165,10 +139,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/watchmanmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/watchmanmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/watchmanmeat)
+        M.apply_status_effect(/datum/status_effect/buff/watchmanmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Watchman."))
         qdel(src)
         return TRUE
@@ -190,10 +164,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/vanguardmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/vanguardmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/vanguardmeat)
+        M.apply_status_effect(/datum/status_effect/buff/vanguardmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Vanguard."))
         qdel(src)
         return TRUE
@@ -216,10 +190,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/knightmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/knightmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/knightmeat)
+        M.apply_status_effect(/datum/status_effect/buff/knightmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Knight."))
         qdel(src)
         return TRUE
@@ -241,10 +215,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/priestmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/priestmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/priestmeat)
+        M.apply_status_effect(/datum/status_effect/buff/priestmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of a Priest."))
         qdel(src)
         return TRUE
@@ -266,10 +240,10 @@
         if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
             to_chat(user, span_warning("Only followers of Graggar can do such things..."))
             return FALSE
-        if(M.has_status_effect(/datum/status_effect/royalmeat))
+        if(M.has_status_effect(/datum/status_effect/buff/royalmeat))
             to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
             return FALSE
-        M.apply_status_effect(/datum/status_effect/royalmeat)
+        M.apply_status_effect(/datum/status_effect/buff/royalmeat)
         to_chat(user, span_notice("[M] now tastes the flesh of royalty."))
         qdel(src)
         return TRUE
@@ -278,81 +252,3 @@
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
-
-// Status Effects for Flesh Consumption
-/datum/status_effect/maameat
-    id = "maameat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/maameat
-    effectedstats = list("endurance" = 1)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/maameat
-    name = "Man-at-Arms Flesh"
-    desc = "The flesh of a Man-at-Arms, granting an increase in endurance."
-    icon_state = "meatsteak"
-
-/datum/status_effect/templarmeat
-    id = "templarmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/templarmeat
-    effectedstats = list("constitution" = 1)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/templarmeat
-    name = "Templar Flesh"
-    desc = "The flesh of a Templar, granting a boost to constitution."
-    icon_state = "meatsteak"
-
-/datum/status_effect/watchmanmeat
-    id = "watchmanmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/watchmanmeat
-    effectedstats = list("perception" = 1)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/watchmanmeat
-    name = "Watchman Flesh"
-    desc = "The flesh of a Watchman, granting an increase in perception."
-    icon_state = "meatsteak"
-
-/datum/status_effect/vanguardmeat
-    id = "vanguardmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/vanguardmeat
-    effectedstats = list("speed" = 1)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/vanguardmeat
-    name = "Vanguard Flesh"
-    desc = "The flesh of a Vanguard, granting a boost in speed."
-    icon_state = "meatsteak"
-
-/datum/status_effect/knightmeat
-    id = "knightmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/knightmeat
-    effectedstats = list("strength" = 1)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/knightmeat
-    name = "Knight Flesh"
-    desc = "The flesh of a Knight, granting an increase in strength."
-    icon_state = "meatsteak"
-
-/datum/status_effect/priestmeat
-    id = "priestmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/priestmeat
-    effectedstats = list("intelligence" = 2)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/priestmeat
-    name = "Priest Flesh"
-    desc = "The flesh of a Priest, granting a boost to intelligence."
-    icon_state = "meatsteak"
-
-/datum/status_effect/royalmeat
-    id = "royalmeat"
-    alert_type = /atom/movable/screen/alert/status_effect/buff/royalmeat
-    effectedstats = list("fortune" = 3)
-    duration = -1 // permanent
-
-/atom/movable/screen/alert/status_effect/buff/royalmeat
-    name = "Royal Flesh"
-    desc = "The flesh of royalty, granting an increase in luck."
-    icon_state = "meatsteak"
