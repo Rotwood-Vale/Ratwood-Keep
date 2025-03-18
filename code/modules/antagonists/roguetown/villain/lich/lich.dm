@@ -11,33 +11,6 @@
 	rogue_enabled = TRUE
 	var/list/phylacteries = list()
 	var/out_of_lives = FALSE
-	var/traits_lich = list(
-		TRAIT_NOSTAMINA,
-		TRAIT_NOHUNGER,
-		TRAIT_NOBREATH,
-		TRAIT_NOPAIN,
-		TRAIT_BLOODLOSS_IMMUNE,
-		TRAIT_NO_BLOOD,
-		TRAIT_TOXIMMUNE,
-		TRAIT_STEELHEARTED,
-		TRAIT_NOSLEEP,
-		TRAIT_LIMPDICK,
-		TRAIT_VAMPMANSION,
-		TRAIT_NOMOOD,
-		TRAIT_NOLIMBDISABLE,
-		TRAIT_SHOCKIMMUNE,
-		TRAIT_LIMBATTACHMENT,
-		TRAIT_SEEPRICES,
-		TRAIT_CRITICAL_RESISTANCE,
-		TRAIT_HEAVYARMOR,
-		TRAIT_SPECIALUNDEAD
-		)
-
-	var/STASTR = 10
-	var/STASPD = 10
-	var/STAINT = 10
-	var/STAEND = 10
-	var/STAPER = 10
 
 /mob/living/carbon/human
 	/// List of minions that this mob has control over. Used for things like the Lich's "Command Undead" spell.
@@ -51,28 +24,12 @@
 	skele_look()
 	equip_lich()
 	greet()
-	save_stats()
-
 	return ..()
 
 /datum/antagonist/lich/greet()
 	to_chat(owner.current, span_userdanger("The secret of immortality is mine, but this is not enough. A thousand lichdoms have risen and fallen over the eras. Mine will be the one to last."))
 	owner.announce_objectives()
 	..()
-
-/datum/antagonist/lich/proc/save_stats()
-	STASTR = owner.current.STASTR
-	STAPER = owner.current.STAPER
-	STAINT = owner.current.STAINT
-	STASPD = owner.current.STASPD
-	STAEND = owner.current.STAEND
-
-/datum/antagonist/lich/proc/set_stats()
-	owner.current.STASTR = src.STASTR
-	owner.current.STAPER = src.STAPER
-	owner.current.STAINT = src.STAINT
-	owner.current.STASPD = src.STASPD
-	owner.current.STAEND = src.STAEND
 
 /datum/antagonist/lich/proc/skele_look()
 	var/mob/living/carbon/human/L = owner.current
@@ -88,26 +45,60 @@
 	for(var/datum/mind/MF in get_minds())
 		owner.become_unknown_to(MF)
 	var/mob/living/carbon/human/L = owner.current
+	ADD_TRAIT(L, TRAIT_NOSTAMINA, "[type]")
+	ADD_TRAIT(L, TRAIT_NOHUNGER, "[type]")
+	ADD_TRAIT(L, TRAIT_NOBREATH, "[type]")
+	ADD_TRAIT(L, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(L, TRAIT_BLOODLOSS_IMMUNE, "[type]")
+	ADD_TRAIT(L, TRAIT_NO_BLOOD, "[type]")
+	ADD_TRAIT(L, TRAIT_TOXIMMUNE, "[type]")
+	ADD_TRAIT(L, TRAIT_STEELHEARTED, "[type]")
+	ADD_TRAIT(L, TRAIT_NOSLEEP, "[type]")
+	ADD_TRAIT(L, TRAIT_LIMPDICK, "[type]")
+	ADD_TRAIT(L, TRAIT_VAMPMANSION, "[type]")
+	ADD_TRAIT(L, TRAIT_NOMOOD, "[type]")
+	ADD_TRAIT(L, TRAIT_NOLIMBDISABLE, "[type]")
+	ADD_TRAIT(L, TRAIT_SHOCKIMMUNE, "[type]")
+	ADD_TRAIT(L, TRAIT_LIMBATTACHMENT, "[type]")
+	ADD_TRAIT(L, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(L, TRAIT_CRITICAL_RESISTANCE, "[type]")
+	ADD_TRAIT(L, TRAIT_HEAVYARMOR, "[type]")
+	ADD_TRAIT(L, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
 
 	L.cmode_music = 'sound/music/combat_cult.ogg'
 	L.faction = list("undead")
 	if(L.charflaw)
 		QDEL_NULL(L.charflaw)
 	L.mob_biotypes |= MOB_UNDEAD
-	replace_eyes(L)
+	var/obj/item/organ/eyes/eyes = L.getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(L,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(L)
 	for(var/obj/item/bodypart/B in L.bodyparts)
 		B.skeletonize(FALSE)
-
-	equip_and_traits()
 	L.equipOutfit(/datum/outfit/job/roguetown/lich)
 	L.set_patron(/datum/patron/zizo)
 
 /datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
 	..()
+	head = /obj/item/clothing/head/roguetown/necromhood
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/roguetown/chain
+	belt = /obj/item/storage/belt/rogue/leather/black
+	backl = /obj/item/storage/backpack/rogue/satchel
+	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
+	r_hand = /obj/item/rogueweapon/woodstaff/wise
 
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 6, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/magic/arcane, 5, TRUE)
-	H.mind.adjust_skillrank_up_to(/datum/skill/magic/blood, 5, TRUE)	// Lich has some bloodmagic spells
 	H.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 4, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/polearms, 1, TRUE)
 	H.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
@@ -143,14 +134,6 @@
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
 
-/datum/antagonist/lich/proc/replace_eyes(mob/living/carbon/human/L)
-	var/obj/item/organ/eyes/eyes = L.getorganslot(ORGAN_SLOT_EYES)
-	if (eyes)
-		eyes.Remove(L, TRUE)
-		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/zombie
-	eyes.Insert(L)
-
 /datum/outfit/job/roguetown/lich/post_equip(mob/living/carbon/human/H)
 	..()
 //	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
@@ -167,12 +150,11 @@
 		return TRUE
 	/ REDMOON REMOVAL END */
 /datum/antagonist/lich/proc/rise_anew()
-	if (!owner.current.mind)
-		CRASH("Lich: rise_anew called with no mind")
+	var/mob/living/carbon/human/bigbad = owner.current
+	bigbad.revive(TRUE, TRUE)
 
-	var/mob/living/carbon/human/old_body = owner.current
-	var/turf/phylactery_turf = get_turf(old_body)
-	var/mob/living/carbon/human/new_body = new /mob/living/carbon/human/species/human/northern(phylactery_turf)
+	for(var/obj/item/bodypart/B in bigbad.bodyparts)
+		B.skeletonize(FALSE)
 
 	bigbad.faction = list("undead")
 	if(bigbad.charflaw)
