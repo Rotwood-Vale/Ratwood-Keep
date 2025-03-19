@@ -1000,11 +1000,11 @@
 
 /obj/machinery/light/rogue/hearth/alchemy/attack_right(mob/user)
 	if(position == FALSE)
-		user.visible_message(span_warning("[user] lifts the pot up."))
+		user.visible_message(span_warning("[user] lifts the aparatus up."))
 		position = TRUE
 		update_icon()
 	else
-		user.visible_message(span_warning("[user] lowers the pot down."))
+		user.visible_message(span_warning("[user] lowers the aparatus down."))
 		position = FALSE
 		update_icon()
 
