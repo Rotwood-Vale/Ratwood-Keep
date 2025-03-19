@@ -88,3 +88,22 @@
 /obj/item/riddleofsteel/Initialize()
 	. = ..()
 	set_light(2, 1, "#ff0d0d")
+
+/obj/item/pearl
+	name = "pearl"
+	icon_state = "pearl"
+	icon = 'icons/roguetown/items/gems.dmi'
+	desc = "Insert description here."
+	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	w_class = WEIGHT_CLASS_TINY
+	slot_flags = ITEM_SLOT_MOUTH
+	dropshrink = 0.4
+	drop_sound = 'sound/items/gem.ogg'
+	sellprice = 20
+
+/obj/item/pearl/black
+	name = "Blue pearl"
+	icon_state = "bpearl"
+	desc = "Insert description here"
+	sellprice = 60

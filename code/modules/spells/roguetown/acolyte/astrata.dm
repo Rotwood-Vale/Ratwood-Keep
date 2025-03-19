@@ -79,10 +79,14 @@
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
-		if(!target.stat == DEAD)
-			to_chat(user, span_warning("Nothing happens, they need to be dead first."))
+		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
+		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
+			to_chat(user, span_warning("Necra will not allow them to return back."))
+			revert_cast()
+			return FALSE	
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 		//GET OVER HERE!
