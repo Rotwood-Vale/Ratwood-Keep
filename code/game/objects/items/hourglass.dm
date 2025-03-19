@@ -93,4 +93,4 @@
 /obj/item/hourglass/alchemy
 	name = "alchemical hourglass"
 	desc = "Measures time in 10-ish second increments"
-	time = 0.1667 MINUTES
+	time = 10 SECONDS

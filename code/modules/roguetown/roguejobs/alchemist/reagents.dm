@@ -403,8 +403,8 @@
 	//schanpps
 	
 /datum/reagent/consumable/ethanol/schnapps
-	name = "Schnapps Potion"
-	description = "Contains a clear liquid with a purple tint."
+	name = "Schnapps"
+	description = "Contains a clear liquid."
 	boozepwr = 50
 	reagent_state = LIQUID
 	color = "#dffffb"
@@ -415,8 +415,8 @@
 	return ..()
 
 /datum/reagent/consumable/ethanol/schnapps/ruined
-	name = "Ruined Schnapps Potion"
-	description = "Contains a cloudy liquid with a purple tint."
+	name = "Ruined Schnapps"
+	description = "Contains a cloudy liquid."
 	reagent_state = LIQUID
 	color = "#dffffb"
 	metabolization_rate = 0.1

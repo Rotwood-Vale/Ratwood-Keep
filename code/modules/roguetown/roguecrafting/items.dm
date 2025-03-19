@@ -613,7 +613,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
-				/datum/reagent/poison/lullaby = 5
+				/datum/reagent/poison/dollmaker = 5
 				)
 	req_table = TRUE
 
@@ -622,7 +622,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
-				/datum/reagent/poison/lullaby = 5
+				/datum/reagent/poison/dollmaker = 5
 				)
 	req_table = TRUE
 
@@ -637,7 +637,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
-				/datum/reagent/poison/lullaby = 25
+				/datum/reagent/poison/dollmaker = 25
 				)
 
 	req_table = TRUE
@@ -653,7 +653,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
-				/datum/reagent/poison/lullaby = 25
+				/datum/reagent/poison/dollmaker = 25
 				)
 
 	req_table = TRUE
@@ -663,7 +663,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
-				/datum/reagent/poison/lullaby/ruined = 10
+				/datum/reagent/poison/dollmaker/ruined = 10
 				)
 	req_table = TRUE
 
@@ -672,7 +672,7 @@
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
-				/datum/reagent/poison/lullaby/ruined = 10
+				/datum/reagent/poison/dollmaker/ruined = 10
 				)
 	req_table = TRUE
 
@@ -687,7 +687,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
-				/datum/reagent/poison/lullaby/ruined = 50
+				/datum/reagent/poison/dollmaker/ruined = 50
 				)
 
 	req_table = TRUE
@@ -703,7 +703,7 @@
 				)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 5,
-				/datum/reagent/poison/lullaby/ruined = 50
+				/datum/reagent/poison/dollmaker/ruined = 50
 				)
 
 	req_table = TRUE
