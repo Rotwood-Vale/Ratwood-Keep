@@ -8,10 +8,10 @@
 	spawn_positions = 1
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP
 	allowed_ages = ALL_AGES_LIST
 
-	tutorial = "Fallen noble and owner of the Whitevein Lounge, you run a decaying bathhouse converted into a den of low-lifes, home to a troublemaking racket that the others hate to tolerate."
+	tutorial = "Owner of the Whitevein Lounge, you watch over the workers under your care, spread word of the services your lounge offers, and strive to turn a handsome profit."
 
 	allowed_ages = ALL_AGES_LIST
 	outfit = /datum/outfit/job/roguetown/nightman
@@ -43,6 +43,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("intelligence", -1)
+		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	if(H.dna?.species)
 		if(H.gender == MALE)
 			H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
