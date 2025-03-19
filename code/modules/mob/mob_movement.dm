@@ -237,7 +237,7 @@
 			return TRUE
 		if(M.buckled)
 			move_delay = world.time + 10
-			to_chat(src, span_warning("I can't be buckled!"))
+			to_chat(src, span_warning("I can't be on a mount!"))
 			return TRUE
 	if(istype(mob.pulling, /mob/living/simple_animal) && isliving(mob.pulling))
 		var/mob/living/simple_animal/bound = mob.pulling
