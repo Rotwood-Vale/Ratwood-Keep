@@ -22,7 +22,7 @@
 	M.adjustBruteLoss(-1*REM, 0) // 45u = 15 oz = 120~ points of healing
 	M.adjustFireLoss(-1*REM, 0)
 	M.adjustOxyLoss(-1, 0)
-	M.adjustToxLoss(-0.5*REM, 0)
+	M.adjustToxLoss(-0.2*REM, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
 	M.adjustCloneLoss(-1*REM, 0)
 	..()
@@ -72,7 +72,7 @@
 	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
 	M.adjustFireLoss(-2*REM, 0)
 	M.adjustOxyLoss(-2, 0)
-	M.adjustToxLoss(-1*REM, 0)
+	M.adjustToxLoss(-0.5*REM, 0)
 	M.adjustCloneLoss(-2*REM, 0) //heals as twice as much as health + every organ
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1)
