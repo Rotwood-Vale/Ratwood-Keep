@@ -341,7 +341,30 @@
 	stressadd = 1
 	desc = span_red("It's too bright, the light hurts my eyes.")
 	timer = 30 SECONDS
+
 /datum/stressevent/darkling_migraine
 	stressadd = 3
 	desc = span_red("My head is pounding, I need to rest in the darkness.")
 	timer = 1 MINUTES
+
+/datum/stressevent/psycurse
+	timer = 999 MINUTES
+	stressadd = 3
+	desc = span_boldred("Oh no! I've received divine punishment!")
+
+/datum/stressevent/excommunicated
+	timer = 999 MINUTES
+	stressadd = 5
+	desc = span_boldred("The Ten have forsaken me!")
+
+/datum/stressevent/apostasy
+
+	timer = 999 MINUTES
+	stressadd = 3
+	desc = span_boldred("The apostasy's mark is upon me!")
+
+/datum/stressevent/heretic_on_sermon
+
+	stressadd = 5
+	desc = span_red("My PATRON is NOT PROUD of ME!")
+	timer = 20 MINUTES
