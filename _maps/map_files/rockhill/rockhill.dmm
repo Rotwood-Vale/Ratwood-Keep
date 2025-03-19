@@ -3728,9 +3728,9 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
 "bWi" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
-/obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/dirt,
+/obj/item/natural/poo/horse,
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
 "bWj" = (
 /obj/structure/fluff/statue/knight/interior/r,
@@ -17362,9 +17362,8 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
 "jaY" = (
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
-/turf/open/floor/rogue/greenstone,
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/turf/open/water/swamp,
 /area/rogue/under/town/sewer)
 "jbc" = (
 /obj/structure/bed/rogue/inn/wool,
@@ -24260,8 +24259,6 @@
 /area/rogue/indoors/shelter/town/harbor)
 "mLk" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
-/obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/town/sewer)
 "mLv" = (
@@ -41338,7 +41335,7 @@
 /area/rogue/indoors)
 "wbU" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "wck" = (
@@ -42087,6 +42084,10 @@
 "wwd" = (
 /turf/open/floor/rogue/rooftop/green/corner1,
 /area/rogue/outdoors/mountains)
+"wwC" = (
+/mob/living/carbon/human/species/human/northern/bum/ambush,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/town/sewer)
 "wxa" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/roguetown/hatfur,
@@ -221929,7 +221930,7 @@ gLf
 mof
 lrs
 lrs
-agM
+wbU
 uEX
 rSC
 uEX
@@ -225790,7 +225791,7 @@ fPR
 sYw
 gMO
 cqB
-czK
+cqB
 gMO
 gMO
 rtV
@@ -228404,7 +228405,7 @@ pVn
 rSC
 otg
 agM
-wbU
+agM
 otg
 otg
 otg
@@ -236159,10 +236160,10 @@ gMO
 gMO
 mVY
 ipb
-jaY
 iCS
 gLf
-iCS
+gLf
+wwC
 gYE
 rSC
 otg
@@ -240492,7 +240493,7 @@ gUu
 iTw
 cBf
 cTA
-iCS
+gLf
 fIL
 uEX
 tTb
@@ -240924,7 +240925,7 @@ iTw
 nCN
 cBf
 cTA
-sjc
+bWi
 uEX
 uEX
 uEX
@@ -241356,9 +241357,9 @@ cTA
 cTA
 cTA
 cTA
-iCS
+gLf
 xTG
-cCr
+cqB
 uEX
 cCr
 rRb
@@ -241791,8 +241792,8 @@ jyI
 mLk
 iCS
 iCS
-uEX
-bWi
+jaY
+cCr
 rRb
 lrs
 lrs
