@@ -4302,14 +4302,6 @@
 	},
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/under/cavewet/bogcaves)
-"cmC" = (
-/obj/structure/flora/roguegrass/bush/wall,
-/obj/structure/glowshroom{
-	pixel_x = -5;
-	pixel_y = 3
-	},
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/druidgrove)
 "cmH" = (
 /turf/open/water/river{
 	dir = 8;
@@ -13230,9 +13222,6 @@
 /obj/structure/flora/rogueshroom{
 	pixel_x = -12
 	},
-/obj/structure/glowshroom{
-	pixel_x = 2
-	},
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/druidgrove)
 "gPW" = (
@@ -20349,10 +20338,6 @@
 /obj/machinery/light/rogue/oven/west,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
-"kAJ" = (
-/obj/structure/glowshroom,
-/turf/open/water/cleanshallow,
-/area/rogue/under/town/sewer)
 "kBs" = (
 /obj/structure/rack/rogue,
 /obj/item/reagent_containers/glass/bucket/wooden,
@@ -25253,26 +25238,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
-"nmV" = (
-/obj/structure/glowshroom{
-	pixel_y = 15;
-	pixel_x = 8
-	},
-/obj/structure/glowshroom{
-	pixel_x = -8;
-	pixel_y = 5
-	},
-/obj/structure/flora/ausbushes/reedbush{
-	pixel_x = 6
-	},
-/obj/structure/flora/ausbushes/reedbush{
-	pixel_x = -8;
-	pixel_y = -3
-	},
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/fluff/railing/border,
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/town/harbor)
 "nmW" = (
 /obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/tile{
@@ -33415,10 +33380,6 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/shelter/town/harbor)
 "rJC" = (
-/obj/structure/glowshroom{
-	pixel_x = -5;
-	pixel_y = 5
-	},
 /obj/machinery/light/roguestreet/orange{
 	dir = 1
 	},
@@ -39002,12 +38963,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-"uMc" = (
-/obj/structure/glowshroom{
-	pixel_y = 5
-	},
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/town)
 "uMk" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_x = -32
@@ -41155,12 +41110,6 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
-"vVy" = (
-/obj/structure/flora/ausbushes/reedbush,
-/obj/structure/glowshroom,
-/obj/structure/flora/roguegrass/water,
-/turf/open/water/cleanshallow,
-/area/rogue/outdoors/town/harbor)
 "vVQ" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -45222,13 +45171,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
-"xYW" = (
-/obj/structure/fog_wall,
-/obj/structure/glowshroom,
-/turf/open/water/river{
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cave)
 "xYY" = (
 /obj/structure/floordoor/gatehatch/outer{
 	redstone_id = "lava_bastion"
@@ -120977,7 +120919,7 @@ bMj
 bMj
 bMj
 bMj
-xYW
+tMK
 dFE
 dFE
 dFE
@@ -233280,7 +233222,7 @@ uEX
 uEX
 rSC
 rSC
-uoQ
+uEX
 rSC
 gLf
 uJF
@@ -233712,7 +233654,7 @@ uEX
 mof
 gLf
 gLf
-gLf
+mof
 gLf
 qDn
 uJF
@@ -237547,7 +237489,7 @@ xRS
 xRS
 xRS
 ouj
-hZk
+aOb
 rCb
 aOb
 hkm
@@ -238413,7 +238355,7 @@ yfZ
 uEx
 hXf
 hkm
-vVy
+ouj
 hkm
 rCb
 bdq
@@ -247977,8 +247919,8 @@ hkm
 ouj
 gMO
 cmH
-uoQ
-gLf
+uEX
+mof
 rRb
 rRb
 iyZ
@@ -333505,7 +333447,7 @@ tEI
 kAj
 pfp
 uwa
-uMc
+mwE
 fwy
 xez
 aOv
@@ -469619,7 +469561,7 @@ hVR
 aIT
 euP
 vpR
-cmC
+vpR
 gRh
 vpR
 aDq
@@ -473075,7 +473017,7 @@ iHa
 tNB
 euP
 vpR
-cmC
+vpR
 gRh
 vpR
 iHa
