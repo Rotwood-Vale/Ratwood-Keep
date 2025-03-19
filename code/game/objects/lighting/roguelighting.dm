@@ -1030,7 +1030,7 @@
 		if(IS_WET_OPEN_TURF(O))
 			extinguish()
 	if(position == FALSE && on == TRUE)
-		attachment.reagents.expose_temperature(400, 0.1) // 20 degrees/10s
+		attachment.reagents.expose_temperature(400, 0.05) // 90 units / 10 seconds / 20 degrees
 		if(attachment.reagents.chem_temp > 314)
 			boilloop.start()
 		else
