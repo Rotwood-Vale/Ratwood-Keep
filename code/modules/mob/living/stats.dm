@@ -135,7 +135,7 @@
 			BUFCON = tempskill.buffer
 
 		if("endurance")
-			tempskill.modifystat(STAINT, BUFINT, amt)
+			tempskill.modifystat(STAEND, BUFEND, amt)
 			STAEND = tempskill.value
 			BUFEND = tempskill.buffer
 
@@ -145,7 +145,7 @@
 			BUFSPE = tempskill.buffer
 
 		if("fortune")
-			tempskill.modifystat(STAINT, BUFINT, amt)
+			tempskill.modifystat(STALUC, BUFLUC, amt)
 			STALUC = tempskill.value
 			BUFLUC = tempskill.buffer
 
