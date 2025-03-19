@@ -157,3 +157,14 @@
 	stressadd = -5
 	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES
+
+/datum/stressevent/gazeuponme
+
+	timer = 999 MINUTES
+	stressadd = -5
+	desc = span_green("I am a heretic under Ten's gaze... My patron is proud of me!")
+
+/datum/stressevent/sermon
+	stressadd = -5
+	desc = span_green("I feel inspired by the sermon.")
+	timer = 20 MINUTES
