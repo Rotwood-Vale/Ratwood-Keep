@@ -18,7 +18,6 @@
 | Strike intent |	small AP
 \--------------*/
 /datum/intent/flail/strike
-	swingdelay = 5
 	misscost = 5
 	penfactor = AP_FLAIL_STRIKE
 
