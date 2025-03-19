@@ -13,11 +13,11 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	armor = /obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept
+	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/book/granter/spellbook/mid = 1)
+	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
@@ -55,4 +55,15 @@
 		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
-		H.ambushable = FALSE
+	var/wanted = list("Not wanted", "Wanted")
+	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
+	switch(wanted_choice)
+		if ("Not wanted")
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
+			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1)
+		if ("Wanted")
+			backpack_contents = list(/obj/item/book/granter/spellbook/adept = 1)
+			H.change_stat("intelligence", 2)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+	H.ambushable = FALSE

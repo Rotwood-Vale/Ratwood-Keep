@@ -172,7 +172,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-		if(isliving(target))
+		if(isliving(target)&& !HAS_TRAIT(M, TRAIT_SHOCKIMMUNE))
 			var/mob/living/L = target
 			L.electrocute_act(1, src, 1, SHOCK_NOSTUN)
 			L.Paralyze(10)
@@ -771,7 +771,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	xp_gain = TRUE
-	cost = 1 //Forcewall sucks actual ass and is not worth a combat spellslot. I'll make a proper bastion spell later that's worth the 3. This will be a minor cantrip in the interim.
+	cost = 2	//Increased to 2, due to integrity being the same as a palisade
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -783,7 +783,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	attacked_sound = list('sound/combat/hits/onstone/wallhit.ogg', 'sound/combat/hits/onstone/wallhit2.ogg', 'sound/combat/hits/onstone/wallhit3.ogg')
 	opacity = 0
 	density = TRUE
-	max_integrity = 80
+	max_integrity = 200	// half the integrity of a palisade
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	climbable = TRUE
 	climb_time = 0
@@ -1027,6 +1027,12 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
 	for(var/mob/living/L in T.contents)
+		if(L.anti_magic_check())
+			visible_message(span_warning("The blades dispel when they near [L]!"))
+			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			continue
+
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		L.apply_damage(damage, BRUTE, def_zone)
 
@@ -1239,8 +1245,17 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	summoner = user
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets, mob/user = usr)
-	var/turf/target_turf = get_turf(targets[1])
-	new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(target_turf, user)
+	. = ..()
+	var/mob/M = new /mob/living/simple_animal/hostile/retaliate/rogue/wolf/familiar(get_turf(user), user)
+	var/atom/A = targets[1]
+	if(isliving(A))
+		M.ai_controller?.set_blackboard_key(BB_BASIC_MOB_PRIORITY_TARGETS, A)
+	else
+		var/turf/target_turf = get_turf(A)
+		var/list/turftargets = list()
+		for(var/mob/living/L in target_turf)
+			turftargets += L
+		M.ai_controller?.set_blackboard_key(BB_BASIC_MOB_PRIORITY_TARGETS, turftargets)
 	return TRUE
 
 /datum/status_effect/buff/frostbite
@@ -1369,10 +1384,16 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 			current_beam = new(user,C,time=50/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
 			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
 			sleep(delay/sprite_changes)
-
+		if(C.anti_magic_check())
+			visible_message(span_warning("The beam of lightning can't seem to shock [C] "))
+			playsound(get_turf(C), 'sound/magic/magic_nulled.ogg', 100)
+			return
 		var/dist = get_dist(user, C)
 		if (dist <= range)
-			C.electrocute_act(1, user) //just shock
+			if(HAS_TRAIT(C, TRAIT_SHOCKIMMUNE))
+				return
+			else
+				C.electrocute_act(1, user) //just shock
 		else
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The lightning lure fizzles out!"), span_warning("[C] is too far away!"))
@@ -1454,6 +1475,8 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	for(var/turf/damage_turf in affected_turfs)
 		new /obj/effect/temp_visual/hierophant/squares(damage_turf)
 		for(var/mob/living/L in damage_turf.contents)
+			if(L.anti_magic_check())
+				continue
 			L.adjustBruteLoss(damage)
 			playsound(damage_turf, "genslash", 40, TRUE)
 			to_chat(L, "<span class='userdanger'>I'm cut by arcyne force!</span>")
@@ -1581,7 +1604,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/obj/marked_item
 
 
-obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = usr)
+/obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = usr)
 	for(var/mob/living/L in targets)
 		var/list/hand_items = list(L.get_active_held_item(),L.get_inactive_held_item())
 		var/message
@@ -1732,6 +1755,8 @@ obj/effect/proc_holder/spell/targeted/summonweapon/cast(list/targets,mob/user = 
 	new /obj/effect/temp_visual/lightning(T)
 
 	for(var/mob/living/L in T.contents)
+		if(L.anti_magic_check())
+			continue
 		L.electrocute_act(50)
 		to_chat(L, span_userdanger("You're hit by lightning!!!"))
 // Noc Spells

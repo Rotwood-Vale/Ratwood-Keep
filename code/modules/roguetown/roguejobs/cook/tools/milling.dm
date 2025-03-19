@@ -25,8 +25,12 @@
 /obj/structure/fluff/millstone/proc/grindUp(list/obj/item/to_grind, mob/user)
 	for(var/obj/item/itemtogrind in to_grind)
 		if(do_after(user, 8, target = src))
-			new itemtogrind.mill_result(src.loc)
 			to_grind -= itemtogrind
+			if (!isnull(itemtogrind.mill_result)) // prevent the millstone breaking if no mill_result is defined
+				new itemtogrind.mill_result(src.loc)
+				qdel(itemtogrind)
+			else
+				itemtogrind.loc = src.loc
 			apply_farming_fatigue(user, 5) //replace with herbalism/alchemy version if/when it's added
 			playsound(src, 'sound/items/wood_sharpen.ogg', 100, TRUE)
 		else
@@ -91,7 +95,7 @@
 					break
 			return
 	if(istype(grindable))
-		if(!grindable.grind_results)
+		if(isnull(grindable.mill_result))
 			to_chat(user, span_warning("I can't grind this into anything."))
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))

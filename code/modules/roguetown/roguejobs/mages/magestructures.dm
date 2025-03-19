@@ -107,8 +107,10 @@ s
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "manafountain"
 	layer = BELOW_MOB_LAYER
+	max_integrity = 50000	//I need to find a better way to make this unbreakable
 	pixel_x = -16
 	layer = -0.1
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
 	if(isliving(user))
@@ -122,7 +124,7 @@ s
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 25, target = src))
-			var/list/waterl = list(/datum/reagent/medicine/manapot = 2)
+			var/list/waterl = list(/datum/reagent/medicine/lessermanapot = 2)
 			var/datum/reagents/reagents = new()
 			reagents.add_reagent_list(waterl)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
@@ -136,7 +138,7 @@ s
 			to_chat(user, span_warning("[W] is full."))
 			return
 		if(do_after(user, 60, target = src))
-			var/list/waterl = list(/datum/reagent/medicine/manapot = 40)
+			var/list/waterl = list(/datum/reagent/medicine/lessermanapot = 40)
 			W.reagents.add_reagent_list(waterl)
 			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")
 			playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 80, FALSE)

@@ -9,14 +9,14 @@
 	name = "amythortz"
 	result = /obj/item/roguegem/amethyst
 	reqs = list(/obj/item/natural/stone = 1,
-				/datum/reagent/medicine/manapot = 15)
+				/datum/reagent/medicine/lessermanapot = 15)
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/arcana/chalk
 	name = "chalk"
 	result = /obj/item/chalk
 	reqs = list(/obj/item/rogueore/cinnabar = 1,
-				/datum/reagent/medicine/manapot = 15)
+				/datum/reagent/medicine/lessermanapot = 15)
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/arcana/infernalfeather

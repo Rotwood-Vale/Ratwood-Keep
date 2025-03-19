@@ -11,8 +11,6 @@
 	var/ambushable = TRUE
 	var/soundpack_m
 	var/soundpack_f
-	var/stored_skills
-	var/stored_experience
 
 	var/STASTR
 	var/STASPD
@@ -65,11 +63,6 @@
 	STACON = zombie.STACON
 	STAEND = zombie.STAEND
 
-	stored_skills = owner.known_skills.Copy()
-	stored_experience = owner.skill_experience.Copy()
-	owner.known_skills = list()
-	owner.skill_experience = list()
-
 
 	return ..()
 
@@ -87,9 +80,6 @@
 		zombie.dna.species.soundpack_f = soundpack_f
 		zombie.cut_overlay(rotflies)
 	zombie.base_intents = base_intents
-
-	owner.known_skills = stored_skills
-	owner.skill_experience = stored_experience
 
 	zombie.can_do_sex = TRUE
 
