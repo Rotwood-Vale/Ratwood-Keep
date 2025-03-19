@@ -33387,6 +33387,7 @@
 	dir = 1;
 	pixel_y = 6
 	},
+/obj/structure/glowshroom,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "rJL" = (
@@ -33502,6 +33503,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church/chapel)
+"rMR" = (
+/obj/structure/glowshroom,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/town)
 "rMU" = (
 /obj/structure/roguemachine/vendor{
 	lockid = "tavern"
@@ -333447,7 +333452,7 @@ tEI
 kAj
 pfp
 uwa
-mwE
+rMR
 fwy
 xez
 aOv
