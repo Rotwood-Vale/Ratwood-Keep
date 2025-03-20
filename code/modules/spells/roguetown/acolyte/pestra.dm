@@ -160,6 +160,10 @@
 		if(target == user)
 			revert_cast()
 			return FALSE
+		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
+			to_chat(user, span_warning("Pestra gives no answer back to clean their body from the rot."))
+			revert_cast()
+			return FALSE	
 		// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
 		if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
 			to_chat(user, span_warning("It's of an incurable evil, I can't."))

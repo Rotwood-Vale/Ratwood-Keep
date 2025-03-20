@@ -344,7 +344,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	prefs.prefer_old_chat = TRUE
 	prefs.save_preferences()
 	to_chat(src, "Going back to old chat.")
-
 	winset(src, "output", "is-visible=true;is-disabled=false")
 	winset(src, "browseroutput", "is-visible=false")
 

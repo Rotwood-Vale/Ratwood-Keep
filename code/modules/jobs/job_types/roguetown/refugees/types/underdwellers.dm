@@ -93,8 +93,7 @@
 			beltr = /obj/item/rogueweapon/huntingknife
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			backl = /obj/item/storage/backpack/rogue/satchel
-			backr = /obj/item/rogueweapon/hammer/steel
-			backpack_contents = list(/obj/item/rogueweapon/chisel = 1, /obj/item/flint = 1, /obj/item/rogueore/coal = 1, /obj/item/rogueore/iron = 1)
+			backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/flint = 1, /obj/item/rogueore/coal = 1, /obj/item/rogueore/iron = 1)
 			H.change_stat("intelligence", 2)
 			H.change_stat("strength", -1)
 			H.change_stat("fortune", 1)

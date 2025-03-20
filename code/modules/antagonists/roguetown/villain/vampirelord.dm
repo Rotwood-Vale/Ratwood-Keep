@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.ambushable = FALSE
 
 /mob/living/carbon/human/proc/spawn_pick_class()
-	var/list/classoptions = list( // REDMOON EDIT - vampires_fixes - заменяем ненадёжный массив из букв в массив из путей, которые сломаются, если сделать что-то не так
+	var/list/classoptions = list(
 		/datum/subclass/hunter,
 		/datum/subclass/miner,
 		/datum/subclass/healer,
@@ -160,12 +160,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		/datum/subclass/deserter)
 	var/list/visoptions = list()
 
-	// REDMOON ADD START - vampires_fixes - удаяем из списка classoptions пути и заменяем их на буквы, чтобы не нагружать игрока
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
 		if(A.type in classoptions)
 			classoptions += A.name
 			classoptions -= A.type
-	// REDMOON ADD END
 
 	for(var/T in 1 to 5) // leave as length(classoptions) for testing if you want all classes to show up.
 		if(length(classoptions))
@@ -379,8 +377,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	V.mob_biotypes |= MOB_UNDEAD
 	V.faction = list("undead")
 	// Cycles through disguises to properly get eye color and other factions set.
-	V.vampire_disguise(src) // REDMOON EDIT - vampires_fixes - функция не выполняется без src
-	V.vampire_undisguise(src) // REDMOON EDIT - vampires_fixes - функция не выполняется без src
+	V.vampire_disguise(src)
+	V.vampire_undisguise(src)
 
 /datum/antagonist/vampirelord/on_life(mob/user)
 	if(!user)
