@@ -18,7 +18,7 @@
 	min_pq = 5
 	max_pq = null
 
-	subclass_cat_rolls = list(CTAG_BANDIT = 20)
+	subclass_cat_rolls = list(CTAG_BANDIT = 3)
 	PQ_boost_divider = 10
 
 	wanderer_examine = TRUE
