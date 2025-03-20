@@ -14,9 +14,6 @@
 	S["allow_latejoin_family"] 							>> allow_latejoin_family
 	S["detailed_family_loging"] 						>> detailed_family_loging
 
-
-	S["prefer_old_chat"]								>> prefer_old_chat
-
 	if(!islist(family_genitals) || !LAZYLEN(family_genitals))
 		family_genitals = list("Male", "Female")
 
@@ -67,8 +64,6 @@
 	WRITE_FILE(S["bark_speed"]							, bark_speed)
 	WRITE_FILE(S["bark_pitch"]							, bark_pitch)
 	WRITE_FILE(S["bark_variance"]						, bark_variance)
-
-	WRITE_FILE(S["prefer_old_chat"]						, prefer_old_chat)
 
 	if(loadout)
 		WRITE_FILE(S["loadout"] 						, loadout.type)

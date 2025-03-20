@@ -7,5 +7,4 @@
 	var/bark_pitch = 1
 	var/bark_variance = 0.2
 	COOLDOWN_DECLARE(bark_previewing)
-	var/prefer_old_chat = FALSE
 	var/datum/loadout_item/loadout
