@@ -599,7 +599,8 @@ What it does:
 		name = "platter of [contents[1].name]"
 		desc = contents[1].desc
 		//Need something better than this in future like a buff
-		contents[1].bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+		if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
+			contents[1].bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	else
 		vis_contents = 0
 		name = initial(name)
