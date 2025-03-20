@@ -145,6 +145,7 @@
 			used_title = "unknown"
 		known_people[H.real_name]["FJOB"] = used_title
 		known_people[H.real_name]["FGENDER"] = H.gender
+		known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 		known_people[H.real_name]["FAGE"] = H.age
 
 /datum/mind/proc/person_knows_me(person) //we are added to their lists
@@ -173,6 +174,7 @@
 					used_title = "unknown"
 				M.known_people[H.real_name]["FJOB"] = used_title
 				M.known_people[H.real_name]["FGENDER"] = H.gender
+				M.known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 				M.known_people[H.real_name]["FAGE"] = H.age
 
 /datum/mind/proc/do_i_know(datum/mind/person, name)
@@ -217,9 +219,10 @@
 			continue
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
+		var/fspecies = known_people[P]["FSPECIES"]
 		var/fage = known_people[P]["FAGE"]
 		if(fcolor && fjob)
-			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [capitalize(fgender)], [fage]"
+			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage]"
 			contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "PEOPLEIKNOW", "", 260, 400)

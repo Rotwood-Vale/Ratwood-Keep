@@ -394,7 +394,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
-	name = "Exotic Silks"
+	name = "exotic silks"
 	desc = "Fanciful gold laced silks barely able to conceal what little it covers."
 	icon_state = "exoticsilkbra"
 	item_state = "exoticsilkbra"
@@ -537,3 +537,9 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+/obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+    icon_state = "overseershirt"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    color = null

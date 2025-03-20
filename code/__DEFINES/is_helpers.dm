@@ -38,6 +38,8 @@ GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
 
 #define isintown(A) (is_type_in_typecache(A, GLOB.areas_in_town))
 
+#define isclient(A) istype(A, /client)
+
 #define isforestsex(A) (is_type_in_typecache(A, GLOB.our_forest_sex))
 
 #define isgroundlessturf(A) (is_type_in_typecache(A, GLOB.turfs_without_ground))

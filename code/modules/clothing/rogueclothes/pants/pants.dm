@@ -205,8 +205,11 @@
 	item_state = "grenzelpants"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	detail_tag = "_detail"
-	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT)
+	armor = list("blunt" = 45, "slash" = 30, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	blocksound = SOFTUNDERHIT
+	blade_dulling = DULLING_BASHCHOP
+	armor_class = ARMOR_CLASS_LIGHT
 	colorgrenz = TRUE
 
 /obj/item/clothing/under/roguetown/grenzelpants/update_icon()
@@ -240,7 +243,7 @@
 //----------------- BLACKSTEEL---------------------
 
 /obj/item/clothing/under/roguetown/blacksteel/platelegs
-	name = "Blacksteel Plate Chausses"
+	name = "blacksteel plate chausses"
 	desc = "Reinforced leg plates forged of durable blacksteel."
 	gender = PLURAL
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
@@ -400,3 +403,16 @@
 
 /obj/item/clothing/under/roguetown/skirt/red
 	color = CLOTHING_RED
+
+
+/obj/item/clothing/under/roguetown/trou/overseer
+    name = "heavy trousers"
+    desc = "A pair of washed-out heavy trousers in grey colors."
+    icon_state = "overseerpants"
+    item_state = "overseerpants"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    max_integrity = 110
+    armor = list("blunt" = 35, "slash" = 25, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+    prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)

@@ -5,40 +5,30 @@
 		return
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
-		if (!held_item.get_sharpness())
-			return
-		if (held_item.wlength != WLENGTH_SHORT)
-			return
-		var/datum/bodypart_feature/hair/facial/beard = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-		if (!beard)
-			user.show_message("Already clean shaven.")
-			return
-		if (beard.accessory_type == /datum/sprite_accessory/hair/facial/shaved)
-			user.show_message("Already clean shaven.")
-			return
-		if (beard.accessory_type == /datum/sprite_accessory/hair/facial/stubble)
-			if(user == src)
-				user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
-			else
-				user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
-			if(do_after(user, 50, needhand = 1, target = src))
-				beard.accessory_type = /datum/sprite_accessory/hair/facial/shaved
-				update_hair()
-			else
-				held_item.melee_attack_chain(user, src, params)
-		else
-			if(user == src)
-				user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
-			else
-				user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
-			if(do_after(user, 50, needhand = 1, target = src))
-				beard.accessory_type = /datum/sprite_accessory/hair/facial/shaved
-				update_hair()
-				if(dna?.species)
-					if(dna.species.id == "dwarfm")
-						add_stress(/datum/stressevent/dwarfshaved)
-			else
-				held_item.melee_attack_chain(user, src, params)
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if(has_stubble)
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
+				if(do_after(user, 50, needhand = 1, target = src))
+					has_stubble = FALSE
+					update_hair()
+				else
+					held_item.melee_attack_chain(user, src, params)
+			else if(facial_hairstyle != "None")
+				if(user == src)
+					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
+				else
+					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
+				if(do_after(user, 50, needhand = 1, target = src))
+					facial_hairstyle = "None"
+					update_hair()
+					if(dna?.species)
+						if(dna.species.id == "dwarf")
+							add_stress(/datum/stressevent/dwarfshaved)
+				else
+					held_item.melee_attack_chain(user, src, params)
 		return
 	if(user == src)
 		if(get_num_arms(FALSE) < 1)

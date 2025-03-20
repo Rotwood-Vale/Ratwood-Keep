@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-
+	selection_color = JCOLOR_YEOMAN
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)

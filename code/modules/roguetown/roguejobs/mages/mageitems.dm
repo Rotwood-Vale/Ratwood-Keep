@@ -161,7 +161,7 @@
 
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
-	name = "glowing purple silver dagger"
+	name = "arcyne silver dagger"
 	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
 	var/is_bled = FALSE
 	var/obj/effect/decal/cleanable/roguerune/rune_to_scribe = null
@@ -346,7 +346,7 @@ obj/item/hourglass/temporal/stop()
 	desc = "A radiantly shimmering sigil within an amulet, It seems to pulse with intense arcanic flows."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "amulet"
-	var/cdtime = 30 MINUTES
+	var/cdtime = 5 MINUTES
 	var/ready = TRUE
 
 /obj/item/clothing/ring/arcanesigil/attack_self(mob/living/carbon/human/user)
@@ -368,7 +368,7 @@ obj/item/hourglass/temporal/stop()
 		return
 	if(cooldowny)
 		if(world.time < cooldowny + cdtime)
-			to_chat(user, span_warning("Nothing happens."))
+			to_chat(user, span_warning("Pulses weakily-! It must still be gathering arcana."))
 			return
 	user.visible_message(span_warning("[user] looks through the [src]!"))
 	if(activate_sound)
@@ -449,7 +449,8 @@ obj/item/hourglass/temporal/stop()
 	var/tier = 1
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
-
+	var/chosen_name
+	var/binding = FALSE
 /obj/item/rope/chain/bindingshackles/Initialize()
 	.=..()
 	src.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
@@ -556,26 +557,31 @@ obj/item/hourglass/temporal/stop()
 		return
 
 	var/mob/living/simple_animal/hostile/retaliate/rogue/target = captive
-	target.visible_message(span_warning("[target.real_name]'s body is entangled by glowing chains..."), runechat_message = TRUE)
+	target.visible_message(span_warning("[src] is trying to bind [target.real_name]"))
+	if(do_after(user, 50, target = src) && binding == FALSE)
+		if(!target.ckey) //player is not inside body or has refused, poll for candidates
+			to_chat(user, span_notice("You attempt to bind the targetted summon to this plane."))
+			binding = TRUE
+			target.visible_message(span_warning("[target.real_name]'s body is entangled by glowing chains..."), runechat_message = TRUE)
+			var/list/candidates = pollCandidatesForMob("Do you want to play as a Mage's summon?", null, null, null, 100, target, POLL_IGNORE_MAGE_SUMMON)
 
-	if(!target.ckey) //player is not inside body or has refused, poll for candidates
-
-		var/list/candidates = pollCandidatesForMob("Do you want to play as a Mage's summon?", null, null, null, 100, target, POLL_IGNORE_MAGE_SUMMON)
-
-		// theres at least one candidate
-		if(LAZYLEN(candidates))
-			var/mob/C = pick(candidates)
-			target.awaken_summon(user, C.ckey)
-			target.visible_message(span_warning("[target.real_name]'s eyes light up with an intelligence as it awakens fully on this plane."), runechat_message = TRUE)
-			custom_name(user,target)
-
-		//no candidates, raise as npc
+			// theres at least one candidate
+			if(LAZYLEN(candidates))
+				var/mob/C = pick(candidates)
+				target.awaken_summon(user, C.ckey)
+				target.visible_message(span_warning("[target.real_name]'s eyes light up with an intelligence as it awakens fully on this plane."), runechat_message = TRUE)
+				custom_name(user,target)
+				target.name = chosen_name
+				binding = FALSE
+			//no candidates, raise as npc
+			else
+				to_chat(user, span_notice("The [captive] stares at you with mindless hate. The binding attempt failed to draw out it's intelligence!"))
+				binding = FALSE
 		else
-			to_chat(user, span_notice("The [captive] stares at you with mindless hate. The binding attempt failed to draw out it's intelligence!"))
-
+			target.visible_message(span_notice("This summon is already bound to this plane."))
+			return FALSE
 		return FALSE
 	return FALSE
-
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/awaken_summon(mob/living/carbon/human/master, ckey)
 	if(!master)
 		return FALSE
@@ -583,16 +589,16 @@ obj/item/hourglass/temporal/stop()
 		src.ckey = ckey
 
 	to_chat(src, span_userdanger("My summoner is [master.real_name]. They will need to convince me to obey them."))
-	to_chat(src, span_warning("[summon_primer]"))
+	to_chat(src, span_notice("[summon_primer]"))
 
 
 
 /obj/item/rope/chain/bindingshackles/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
 	if(iteration > 5)
 		return  // The spirit of indecision
-	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))
+	chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))
 	if(!chosen_name) // with the way that sanitize_name works, it'll actually send the error message to the awakener as well.
-		to_chat(awakener, span_warning("Your weapon did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
+		to_chat(awakener, span_warning("Your summon did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
 		return custom_name(awakener, iteration++)
 	return chosen_name
 
@@ -605,7 +611,7 @@ obj/item/hourglass/temporal/stop()
 	icon = 'icons/obj/shards.dmi'
 	icon_state = "obsidian"
 	desc = "Volcanic glass cooled from molten lava rapidly."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/leyline
@@ -613,7 +619,7 @@ obj/item/hourglass/temporal/stop()
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "leyline"
 	desc = "A shard of a fractured leyline, it glows with lost power."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
@@ -646,7 +652,7 @@ obj/item/hourglass/temporal/stop()
 	name = "runed artifact"
 	icon_state = "runedartifact"
 	desc = "an old stone from age long ago, marked with glowing sigils."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/artifact/Initialize()
@@ -659,14 +665,14 @@ obj/item/hourglass/temporal/stop()
 	name = "crystalized mana"
 	icon_state = "manacrystal"
 	desc = "A crystal made of mana, woven into an artifical structure."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/voidstone
 	name = "Voidstone"
 	icon_state = "voidstone"
 	desc = "A piece of blackstone, it feels disconcerting to stare at it for long."
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
 //combined items
@@ -675,7 +681,7 @@ obj/item/hourglass/temporal/stop()
 	icon_state = "wessence"
 	icon = 'icons/roguetown/items/natural.dmi'
 	desc = "You should not be seeing this"
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 

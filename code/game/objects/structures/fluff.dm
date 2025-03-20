@@ -911,55 +911,73 @@ obj/structure/bars/steel
 	if(user.mind)
 		if((user.mind.assigned_role == "Priest") || ((user.mind.assigned_role == "Acolyte") && (user.patron.type == /datum/patron/divine/eora)))
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
-
 				var/marriage
 				var/obj/item/reagent_containers/food/snacks/grown/apple/A = W
-				
 				if(A.bitten_names.len)
 					if(A.bitten_names.len == 2)
-						var/mob/living/carbon/human/thegroom
-						var/mob/living/carbon/human/thebride
-						
+						var/list/found_mobs = list()
 						for(var/mob/M in viewers(src, 7))
-							if(thegroom && thebride)
+							testing("check [M]")
+							if(found_mobs.len >= 2)
 								break
 							if(!ishuman(M))
 								continue
 							var/mob/living/carbon/human/C = M
-							if(C.stat == DEAD)
-								continue
-							if(!C.client)
-								continue
-							if(C.family)
-								continue
-
-							if(C.real_name in A.bitten_names)
-								if(!thegroom)
-									thegroom = C
-								else if(!thebride)
-									thebride = C
-
-						if(!thegroom || !thebride)
-							return
-						
-						var/datum/family/F = SSfamily.makeFamily(thegroom)
-						if(!F)
-							return
-
-						F.addMember(thebride)
-						F.addRel(thegroom,thebride,REL_TYPE_SPOUSE)
-						F.addRel(thebride,thegroom,REL_TYPE_SPOUSE)
-
-						thegroom.adjust_triumphs(1)
-						thebride.adjust_triumphs(1)
-						priority_announce("[thegroom.real_name] has married [thebride.real_name]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
-						marriage = TRUE
-						qdel(A)
+							for(var/X in A.bitten_names)
+								if(C.real_name == X)
+									testing("foundbiter [C.real_name]")
+									found_mobs += C
+						testing("foundmobslen [found_mobs.len]")
+						if(found_mobs.len == 2)
+							var/mob/living/carbon/human/FirstPerson
+							var/mob/living/carbon/human/SecondPerson
+							for(var/mob/living/carbon/human/M in found_mobs)
+								if(M.marriedto)
+									continue
+								if(!FirstPerson)
+									FirstPerson = M
+								else
+									if(!SecondPerson)
+										SecondPerson = M
+							if(!FirstPerson || !SecondPerson)
+								testing("fail22")
+								return
+							var/surname2use
+							var/index = findtext(FirstPerson.real_name, " ")
+							var/SecondPersonFirstName
+							FirstPerson.original_name = FirstPerson.real_name
+							SecondPerson.original_name = SecondPerson.real_name
+							if(!index)
+								surname2use = FirstPerson.dna.species.random_surname()
+							else
+								if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
+									surname2use = FirstPerson.dna.species.random_surname()
+									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+								else
+									surname2use = copytext(FirstPerson.real_name, index)
+									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+							index = findtext(SecondPerson.real_name, " ")
+							if(index)
+								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
+							SecondPersonFirstName = SecondPerson.real_name
+							FirstPerson.change_name(FirstPerson.real_name + surname2use)
+							SecondPerson.change_name(SecondPerson.real_name + surname2use)
+							FirstPerson.marriedto = SecondPerson.real_name
+							SecondPerson.marriedto = FirstPerson.real_name
+							FirstPerson.adjust_triumphs(1)
+							SecondPerson.adjust_triumphs(1)
+							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPersonFirstName] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							marriage = TRUE
+							qdel(A)
+//							if(FirstPerson.has_stress(/datum/stressevent/nobel))
+//								SecondPerson.add_stress(/datum/stressevent/nobel)
+//							if(SecondPerson.has_stress(/datum/stressevent/nobel))
+//								FirstPerson.add_stress(/datum/stressevent/nobel)
 
 				if(!marriage)
 					A.burn()
 					return
-	return ..()
+	. = ..()
 
 /obj/structure/fluff/psycross/proc/check_prayer(mob/living/L,message)
 	if(!L || !message)

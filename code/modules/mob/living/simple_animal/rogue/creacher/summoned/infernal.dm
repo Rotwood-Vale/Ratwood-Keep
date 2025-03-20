@@ -1,13 +1,55 @@
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/AIShouldSleep(list/possible_targets)
+	if(!FindTarget(possible_targets, 1))
+		addtimer(CALLBACK(src,PROC_REF(despawncheck)), del_on_deaggro)
+		return TRUE
+	else
+		return FALSE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/proc/despawncheck()
+	if(nearbyhumanpresent(5))	//check for humans in range
+		return	//return if humans in range
+	if(AIStatus == AI_IDLE)
+		new /obj/effect/particle_effect/smoke/bad(src.loc)
+		src.visible_message(span_notice("[src] returns to it's plane of origin."))
+		dropcomponents()
+		qdel(src)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/Move(newloc)
+	if(binded)
+		to_chat(src,span_warning("You're currently bound and unable to move!"))
+		return
+	.=..()
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Initialize()
 	. = ..()
 	ADD_TRAIT(src,TRAIT_NOFIRE, "[type]")
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/Life()
 	..()
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/DestroyObjectsInDirection(direction)
+	var/turf/T = get_step(targets_from, direction)
+	if(QDELETED(T))
+		return
+	if(T.Adjacent(targets_from))
+		if(CanSmashTurfs(T))
+			T.attack_animal(src)
+			return
+	for(var/obj/O in T.contents)
+		if(!O.Adjacent(targets_from))
+			continue
+		if((ismachinery(O) || isstructure(O)) && environment_smash >= ENVIRONMENT_SMASH_STRUCTURES && !O.IsObscured())
+			O.attack_animal(src)
+			return
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/simple_limb_hit(zone)
 	if(!zone)
@@ -72,6 +114,7 @@
 	maxHealth = 70
 	ranged = TRUE
 	projectiletype = /obj/projectile/magic/firebolt
+	obj_damage = 75
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 8
@@ -91,7 +134,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 	attack_verb_continuous = "claws"
@@ -124,6 +167,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/obsidian(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/death(gibbed)
 	..()
@@ -164,18 +211,19 @@
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 6
+	move_to_delay = 4
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 170
 	maxHealth = 170
-	melee_damage_lower = 15
-	melee_damage_upper = 17
+	obj_damage = 75
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 0
 	minimum_distance = 0
@@ -190,7 +238,7 @@
 	defprob = 40
 	defdrain = 10
 	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
 	dodgetime = 30
@@ -201,6 +249,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/Initialize()
 	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t1(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/death(gibbed)
 	..()
@@ -252,11 +304,12 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 600
 	maxHealth = 600
+	obj_damage = 75
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	simple_detect_bonus = 20
 	retreat_distance = 4
 	minimum_distance = 3
@@ -270,8 +323,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 10 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
 	dodgetime = 30
@@ -300,6 +353,10 @@
 		AttackingTarget()
 	if(patience)
 		GainPatience()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t2(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/death(gibbed)
 	..()
@@ -338,11 +395,12 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 700
 	maxHealth = 700
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	obj_damage = 75
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	vision_range = 7
 	aggro_vision_range = 9
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	simple_detect_bonus = 20
 	retreat_distance = 4
 	minimum_distance = 4
@@ -357,8 +415,8 @@
 	deaggroprob = 0
 	defprob = 40
 	defdrain = 10
-	del_on_deaggro = 44 SECONDS
-	retreat_health = 0.3
+	del_on_deaggro = 10 SECONDS
+	retreat_health = 0
 	food = 0
 	attack_sound = list('sound/misc/lava_death.ogg')
 	dodgetime = 30
@@ -371,6 +429,10 @@
 	var/summon_cd = 0
 	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	tier = 4
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+	new /obj/item/natural/melded/t3(leavespot)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/death(gibbed)
 	..()

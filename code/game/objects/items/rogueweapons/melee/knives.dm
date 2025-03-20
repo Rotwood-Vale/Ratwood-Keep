@@ -29,6 +29,29 @@
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
 
+/obj/item/rogueweapon/huntingknife/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/idaggerherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/idaggerherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/idaggerherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Hunting Knives...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/idaggerherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/idaggerherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/idaggerherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Hunting Knife"
+	else
+		..()
+
 /obj/item/rogueweapon/huntingknife/Initialize()
 	. = ..()
 	AddElement(/datum/element/tipped_item)
