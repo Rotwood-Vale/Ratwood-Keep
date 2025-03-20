@@ -32542,13 +32542,6 @@
 /obj/structure/flora/roguegrass/maneater/real,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
-"rlu" = (
-/obj/structure/glowshroom,
-/turf/open/water/river{
-	dir = 4;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cave)
 "rlK" = (
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -106182,7 +106175,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -107914,7 +107907,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -108782,7 +108775,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -129077,7 +129070,7 @@ bpD
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -134693,7 +134686,7 @@ bpD
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -140743,7 +140736,7 @@ dFE
 dFE
 dFE
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
@@ -145923,7 +145916,7 @@ bpD
 bpD
 bpD
 dFE
-rlu
+dFE
 dFE
 dFE
 dFE
