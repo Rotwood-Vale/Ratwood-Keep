@@ -436,9 +436,6 @@
 	desc = "My body feels well rested and i feel smarter."
 	icon_state = "muscles"
 
-
-// Buffs related to Graggar rework
-
 /datum/status_effect/buff/sermon
 	id = "sermon"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
