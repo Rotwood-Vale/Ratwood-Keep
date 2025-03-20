@@ -616,7 +616,9 @@ What it does:
 			contents[1].vis_flags = 0
 			//No need to change scale since and pixel_y I think all food already resets that when you grab it
 			contents[1].icon_state = initial(contents[1].icon_state)
-			contents[1].bonus_reagents = list()
+			//sometimes food puts an item in its place!!
+			if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
+				contents[1].bonus_reagents = list()
 			to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
 			if(!usr.put_in_hands(contents[1]))
 				contents[1].forceMove(get_turf(src))
