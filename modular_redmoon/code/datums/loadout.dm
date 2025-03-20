@@ -80,9 +80,9 @@ GLOBAL_LIST_EMPTY(loadout_items)
 
 //SHOES
 /datum/loadout_item/darkboots
-	name = "Dark Boots"
+	name = "Funny Boots"
 	desc = "Сапоги."
-	path = /obj/item/clothing/shoes/roguetown/boots
+	path = /obj/item/clothing/shoes/roguetown/jester
 
 /datum/loadout_item/nobleboots
 	name = "Noble Boots"

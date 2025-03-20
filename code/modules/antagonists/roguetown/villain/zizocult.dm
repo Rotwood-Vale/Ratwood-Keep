@@ -35,6 +35,7 @@
 	var/mob/living/carbon/human/H = owner.current
 	C.cultists |= owner
 	H.patron = GLOB.patronlist[/datum/patron/zizo]
+	H.faction += "undead"
 
 	owner.special_role = "Cultist"
 	H.cmode_music = 'sound/music/combatcult.ogg'
