@@ -100,7 +100,7 @@
 /datum/special_trait/duelist
 	name = "Legendary duelist"
 	greet_text = span_notice("I used to be a legendary swordsmaster until I settled down in Rockhill after a life of duelling.")
-	req_text = "Be a town role."
+	req_text = "Be a town role and old."
 	weight = 10
 	allowed_ages = list(AGE_OLD)
 	allowed_jobs = list(/datum/job/roguetown/towner, YEOMEN_ROLES , /datum/job/roguetown/nightmaiden, /datum/job/roguetown/butcher, /datum/job/roguetown/cook, /datum/job/roguetown/nightman, /datum/job/roguetown/farmer, /datum/job/roguetown/shophand)
@@ -272,12 +272,13 @@
 /datum/special_trait/giant // Arguable if this is neutral anyway, think nobody dislikes getting it.
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
-	req_text = "Not a kobold, seelie, verminvolk or a dwarf" // 1984
-	restricted_races = list(/datum/species/anthromorphsmall, /datum/species/dwarf/mountain, /datum/species/kobold, /datum/species/seelie)
+	req_text = "Not a seelie" //Don't remove this
+	restricted_races = list(/datum/species/seelie)
 	weight = 60
 
 /datum/special_trait/giant/on_apply(mob/living/carbon/human/character)
 	character.mob_size += 1
+	ADD_TRAIT(character, TRAIT_DEATHBYSNUSNU, "[type]")
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)
@@ -295,16 +296,6 @@
 
 /datum/special_trait/atheism/on_apply(mob/living/carbon/human/character, silent)
 	character.set_patron(/datum/patron/godless)
-
-
-/datum/special_trait/disfigured
-	name = "Disfigured"
-	greet_text = span_notice("For some reason, no one can recognise my face.")
-	weight = 80
-
-/datum/special_trait/disfigured/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_DISFIGURED, "[type]")
-
 
 //Negative Specials
 /datum/special_trait/nimrod
@@ -407,40 +398,6 @@
 	var/turf/location = get_spawn_turf_for_job("Refugee")
 	character.forceMove(location)
 	grant_lit_torch(character)
-
-
-/datum/special_trait/atrophy
-	name = "Atrophy"
-	greet_text = span_boldwarning("When growing up I could barely feed myself, this left me weak and fragile...")
-	weight = 80
-
-/datum/special_trait/atrophy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -2)
-	character.change_stat("constitution", -2)
-	character.change_stat("endurance", -1)
-
-
-/datum/special_trait/lazy
-	name = "Lazy"
-	greet_text = span_boldwarning("I don't care, never did.")
-	weight = 80
-
-/datum/special_trait/lazy/on_apply(mob/living/carbon/human/character)
-	character.change_stat("strength", -1)
-	character.change_stat("constitution", -1)
-	character.change_stat("endurance", -1)
-	character.change_stat("speed", -1)
-	character.change_stat("perception", -1)
-
-
-/datum/special_trait/bad_week
-	name = "Bad Week"
-	greet_text = span_boldwarning("Everything just seems to piss me off!")
-	weight = 100
-
-/datum/special_trait/bad_week/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_BAD_MOOD, "[type]")
-
 
 /datum/special_trait/nude_sleeper
 	name = "Nude Sleeper"
