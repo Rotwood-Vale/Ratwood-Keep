@@ -22,8 +22,7 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	min_pq = 0
 	max_pq = null
 
-	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
-	PQ_boost_divider = 10
+	subclass_cat_rolls = list(CTAG_REFUGEE = 12)
 
 	wanderer_examine = TRUE
 	foreign_examine = TRUE
