@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Change Position, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message2recognize, "make announcement"))
 				if(nocrown)
@@ -198,6 +198,14 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_tax_popup(H)
 				return
+			if(findtext_char(message2recognize, "change position"))
+				if(notlord || nocrown)
+					say("You are not my master!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
+				give_job_popup(H)
+				return			
 		if(1)
 			make_announcement(H, raw_message)
 			COOLDOWN_START(src, king_announcement, 30 SECONDS)
@@ -315,3 +323,34 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 /proc/purge_laws()
 	GLOB.laws_of_the_land = list()
 	priority_announce("All laws of the land have been purged!", "LAWS PURGED", 'sound/misc/lawspurged.ogg', "Captain")
+
+/obj/structure/roguemachine/titan/proc/give_job_popup(mob/living/carbon/human/user)
+	if(!Adjacent(user))
+		return
+
+	var/list/mob/possible_mobs = orange(2, src)
+	var/mob/victim = input(user, "Who should change their post?", src, null) as null|mob in possible_mobs - user
+	if(isnull(victim) || !Adjacent(user))
+		return
+
+	var/list/possible_positions = GLOB.noble_positions + GLOB.courtier_positions + GLOB.garrison_positions + GLOB.yeoman_positions + GLOB.peasant_positions + GLOB.youngfolk_positions - "Monarch"
+
+	var/new_pos = input(user, "Select their new position", src, null) as anything in possible_positions
+
+	if(isnull(new_pos) || !Adjacent(user))
+		return
+
+	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	victim.job = new_pos
+	victim.migrant_type = null
+	if(ishuman(victim))
+		var/mob/living/carbon/human/human = victim
+		human.advjob = new_pos
+	if(!SScommunications.can_announce(user))
+		return
+
+	if(alert("Do you want to announce this action to all of Rockhill?",,"Yes","No") != "Yes")
+		say("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos]!")
+		return
+	else
+		priority_announce("Henceforth, the vassal known as [victim.real_name] shall have the title of [new_pos].", "The [user.get_role_title()] Decrees", 'sound/misc/alert.ogg', "Captain")
