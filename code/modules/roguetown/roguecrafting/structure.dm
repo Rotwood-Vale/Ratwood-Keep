@@ -162,7 +162,6 @@
 	name = "anvil"
 	result = /obj/machinery/anvil
 	reqs = list(/obj/item/ingot/iron = 1)
-	skillcraft = /datum/skill/craft/blacksmithing
 	verbage_simple = "forge"
 	verbage = "forges"
 	skill_level = 2
@@ -205,7 +204,6 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skillcraft = /datum/skill/craft/blacksmithing
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/sharpwheel
@@ -213,7 +211,6 @@
 	result = /obj/structure/fluff/grindwheel
 	reqs = list(/obj/item/ingot/iron = 1,
 				/obj/item/natural/stone = 1)
-	skillcraft = /datum/skill/craft/blacksmithing
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
