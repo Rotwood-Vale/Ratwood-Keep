@@ -379,6 +379,210 @@
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
 	M.adjustToxLoss(10, 0)
 
+// stundust
+/obj/item/reagent_containers/powder/paralysis
+	name = "stundust"
+	desc = "Best used during dates with the missus."
+	icon_state = "spicenew"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/paralysis = 15)
+	grind_results = list(/datum/reagent/paralysis = 15)
+	sellprice = 5
+
+/datum/reagent/paralysis
+	name = "Stundust"
+	description = ""
+	color = "#898b6b"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/paralysis/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/paralysis/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
+	M.Paralyze(180)
+
+/datum/reagent/paralysis/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/debuff/paralysis)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/debuff/paralysis)
+
+// 2 minute blindness stew
+
+/obj/item/reagent_containers/powder/witness
+	name = "WITNESS"
+	desc = "See the truth of reality."
+	icon_state = "flour"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/witness = 15)
+	grind_results = list(/datum/reagent/witness = 15)
+	sellprice = 5
+
+/datum/reagent/witness
+	name = "WITNESS"
+	description = ""
+	color = "#898b6b"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/witness/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/witness/on_mob_life(mob/living/carbon/M)
+	narcolepsy_drug_up(M)
+	M.blind_eyes(120)
+
+/datum/reagent/witness/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/debuff/witness)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/debuff/witness)
+
+// stat swap drugs
+
+/obj/item/reagent_containers/powder/hardballz
+	name = "hardballz"
+	desc = "Endurance enhancing powder."
+	icon_state = "spicenew"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/hardballz = 15)
+	grind_results = list(/datum/reagent/hardballz = 15)
+	sellprice = 5
+
+/datum/reagent/hardballz
+	name = "hardballz"
+	description = ""
+	color = "#643b36"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/hardballz/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/hardballz/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/hardballz)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/hardballz)
+
+//hawkeyes
+
+/obj/item/reagent_containers/powder/hawkeyes
+	name = "hawkeyes"
+	desc = "Perception enhancing powder."
+	icon_state = "flour"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/hawkeyes = 15)
+	grind_results = list(/datum/reagent/hawkeyes = 15)
+	sellprice = 5
+
+/datum/reagent/hawkeyes
+	name = "hawkeyes"
+	description = ""
+	color = "#884137"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/hawkeyes/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/hawkeyes/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/hawkeyes)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/hawkeyes)
+
+//stoneskin
+
+/obj/item/reagent_containers/powder/stoneskin
+	name = "stoneskin"
+	desc = "Rumors say that it just numbs your nerves."
+	icon_state = "spice"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/stoneskin = 15)
+	grind_results = list(/datum/reagent/stoneskin = 15)
+	sellprice = 5
+
+/datum/reagent/stoneskin
+	name = "stoneskin"
+	description = ""
+	color = "#443c3b"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/stone/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/stoneskin/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/stoneskin)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/stoneskin)
+
+// salvation
+
+/obj/item/reagent_containers/powder/salvation
+	name = "SALVATION"
+	desc = "Used best in emergencies."
+	icon_state = "spicenew"
+	possible_transfer_amounts = list()
+	volume = 15
+	list_reagents = list(/datum/reagent/stoneskin = 15)
+	grind_results = list(/datum/reagent/stoneskin = 15)
+	sellprice = 5
+
+/datum/reagent/salvation
+	name = "salvation"
+	description = ""
+	color = "#4d4d4d"
+	overdose_threshold = 16
+	metabolization_rate = 0.2
+
+/datum/reagent/stone/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.25*REM, 0)
+	..()
+	. = 1
+
+/datum/reagent/salvation/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
+	var/mob/living/carbon/C = A
+	if(method == INJECT && iscarbon(A))
+		if(trans_volume >= 4) 
+			C.apply_status_effect(/datum/status_effect/buff/salvation)
+	else if(method == "swallow" && iscarbon(A))
+		if(trans_volume >= 10) 
+			C.apply_status_effect(/datum/status_effect/buff/salvation)
 
 //SEELIE DRUGS
 
