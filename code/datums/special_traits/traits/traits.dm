@@ -24,7 +24,7 @@
 	restricted_jobs = list(INQUISITION_ROLES)
 	weight = 80
 
-/datum/special_trait/aboriginal/on_apply(mob/living/carbon/human/character, silent)
+/datum/special_trait/curseofcain/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOHUNGER, "[type]")
 	ADD_TRAIT(character, TRAIT_NOBREATH, "[type]")
 	ADD_TRAIT(character, TRAIT_NOSTINK, "[type]")
@@ -96,6 +96,22 @@
 /datum/special_trait/beautiful/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BEAUTIFUL, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODLOVER, "[type]")
+
+/datum/special_trait/duelist
+	name = "Legendary duelist"
+	greet_text = span_notice("I used to be a legendary swordsmaster until I settled down in Rockhill after a life of duelling.")
+	req_text = "Be a town role."
+	weight = 10
+	allowed_ages = list(AGE_OLD)
+	allowed_jobs = list(/datum/job/roguetown/towner, YEOMEN_ROLES , /datum/job/roguetown/nightmaiden, /datum/job/roguetown/butcher, /datum/job/roguetown/cook, /datum/job/roguetown/nightman, /datum/job/roguetown/farmer, /datum/job/roguetown/shophand)
+
+/datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
+	character.cmode_music = 'sound/music/combat_duelist.ogg'
+	character.change_stat("speed", 2)
+	character.change_stat("endurance", 2)
+	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
+	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long
+	to_chat(character, span_notice("I need to get my sword from that tree."))
 
 /datum/special_trait/corn_fed
 	name = "Corn Fed"
