@@ -158,7 +158,7 @@
 /datum/special_trait/packed_lunch
 	name = "Packed Lunch"
 	greet_text = span_notice("I don't like going around hungry so I packed my lunch!")
-	weight = 400
+	weight = 75
 
 /datum/special_trait/packed_lunch/on_apply(mob/living/carbon/human/character, silent)
 	var/obj/item/bag = new /obj/item/storage/roguebag/lunch(get_turf(character))
