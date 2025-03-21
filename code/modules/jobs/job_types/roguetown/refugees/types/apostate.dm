@@ -64,6 +64,7 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 					H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
 					H.mind.AddSpell(new SPELL_SICKNESS)
 					H.mind.AddSpell(new SPELL_EYEBITE)
@@ -102,6 +103,7 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -114,8 +116,8 @@
 					beltr = /obj/item/rogueweapon/stoneaxe/handaxe
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					H.change_stat("strength", 1)
-					H.change_stat("endurance", 1)
-					H.change_stat("constitution", 1)
+					H.change_stat("endurance", 2)
+					H.change_stat("constitution", 2)
 					H.change_stat("speed", 1)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
@@ -133,6 +135,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -146,8 +149,9 @@
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
+					H.change_stat("perception", 1)
 					H.change_stat("constitution", 1)
-					H.change_stat("speed", 1)
+					H.change_stat("speed", 2)
 					ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
@@ -164,6 +168,7 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
 					belt = /obj/item/storage/belt/rogue/leather
@@ -177,7 +182,7 @@
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
 					H.change_stat("constitution", 1)
-					H.change_stat("speed", 1)
+					H.change_stat("speed", 2)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
@@ -187,17 +192,14 @@
 
 
 			if(/datum/patron/inhumen/graggar)
-				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 				head = /obj/item/clothing/head/roguetown/roguehood
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe
@@ -205,8 +207,9 @@
 				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 				backl = /obj/item/storage/backpack/rogue/backpack
 				r_hand = /obj/item/rogueweapon/woodstaff
-				H.change_stat("strength", 2)
-				H.change_stat("constitution", 3)
+				l_hand = /obj/item/flashlight/flare/torch
+				H.change_stat("strength", 3)
+				H.change_stat("constitution", 2)
 				H.change_stat("intelligence", -1)
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 			else
@@ -221,7 +224,7 @@
 				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 				H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 				head = /obj/item/clothing/head/roguetown/roguehood
 				shoes = /obj/item/clothing/shoes/roguetown/shortboots
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe
@@ -229,7 +232,8 @@
 				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 				backl = /obj/item/storage/backpack/rogue/backpack
 				r_hand = /obj/item/rogueweapon/woodstaff
-				H.change_stat("strength", 2)
+				l_hand = /obj/item/flashlight/flare/torch
+				H.change_stat("strength", 3)
 				H.change_stat("constitution", 1)
 				H.change_stat("speed", 2)
 				H.change_stat("intelligence", 1)
