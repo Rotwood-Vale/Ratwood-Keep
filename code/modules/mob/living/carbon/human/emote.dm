@@ -134,10 +134,10 @@
 		return
 	if(!H.dna.species.is_wagging_tail(H))
 		H.dna.species.start_wagging_tail(H)
-		message = "stops wagging their tail."
+		message = "wags their tail."
 	else
 		H.dna.species.stop_wagging_tail(H)
-		message = "wags their tail."
+		message = "stops wagging their tail."
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
