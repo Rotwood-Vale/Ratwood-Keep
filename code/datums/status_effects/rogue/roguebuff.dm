@@ -436,28 +436,6 @@
 	desc = "My body feels well rested and i feel smarter."
 	icon_state = "muscles"
 
-/datum/status_effect/buff/sermon
-	id = "sermon"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
-	effectedstats = list("fortune" = 1, "constitution" = 1)
-	duration = 20 MINUTES
-
-/atom/movable/screen/alert/status_effect/buff/sermon
-	name = "sermon"
-	desc = "I feel inspired by the sermon!"
-	icon_state = "buff"
-
-/datum/status_effect/buff/gazeuponme
-	id = "gazeuponme"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/gazeuponme
-	effectedstats = list("speed" = 1, "intelligence" = 1)
-	duration = 999 MINUTES
-
-/atom/movable/screen/alert/status_effect/buff/gazeuponme
-	name = "Excommunicated heretic"
-	desc = "My PATRON is proud of ME!"
-	icon_state = "buff"
-
 /datum/status_effect/buff/maameat
     id = "maameat"
     alert_type = /atom/movable/screen/alert/status_effect/buff/maameat
@@ -534,4 +512,28 @@
     name = "Royal Flesh"
     desc = "The flesh of royalty, granting an increase in luck."
     icon_state = "meatsteak"
+
+
+/datum/status_effect/buff/sermon
+	id = "sermon"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
+	effectedstats = list("fortune" = 1, "constitution" = 1)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/sermon
+	name = "sermon"
+	desc = "I feel inspired by the sermon!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/gazeuponme
+	id = "gazeuponme"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/gazeuponme
+	effectedstats = list("speed" = 1, "intelligence" = 1)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/gazeuponme
+	name = "Excommunicated heretic"
+	desc = "My PATRON is proud of ME!"
+	icon_state = "buff"
+
 
