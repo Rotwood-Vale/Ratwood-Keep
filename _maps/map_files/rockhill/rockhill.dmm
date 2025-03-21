@@ -8085,12 +8085,6 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
-"eem" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
-	dir = 8
-	},
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/town)
 "eep" = (
 /obj/structure/bars/steel,
 /turf/open/floor/rogue/blocks,
@@ -342845,7 +342839,7 @@ wbg
 wVI
 rfx
 rfx
-eem
+jHc
 vJO
 wbg
 wbg
@@ -343283,7 +343277,7 @@ bwe
 wbg
 iYJ
 jHc
-eem
+jHc
 rfx
 rfx
 xAt
@@ -344572,7 +344566,7 @@ wbg
 wVI
 wbg
 rfx
-eem
+jHc
 jHc
 bwe
 pgI
@@ -344580,7 +344574,7 @@ wyQ
 glb
 usq
 jHc
-eem
+jHc
 rfx
 xAt
 xAt
@@ -345876,7 +345870,7 @@ wbg
 wbg
 jhH
 jHc
-eem
+jHc
 rfx
 xAt
 xAt
@@ -346300,7 +346294,7 @@ wbg
 wVI
 wVI
 rfx
-eem
+jHc
 oRS
 bwe
 wbg
