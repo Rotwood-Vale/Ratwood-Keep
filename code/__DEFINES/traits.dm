@@ -42,11 +42,13 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_MIDGET "Small"
 #define TRAIT_STUDENT "Student"
+#define TRAIT_BOGVULNERABLE "Bog Vulnerable"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 #define TRAIT_DARKLING "Darkling"
+#define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles or anastasia or cure rot
 
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
@@ -110,9 +112,11 @@
 
 
 
+
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_CHOSEN = "Appointed by the Church of the Successors, you hold authority over all spiritual matters in the City.",
+	TRAIT_BOGVULNERABLE = span_info("I am used to steady ground. The Terrorbog is unfamiliar terrain."),
 	TRAIT_WEBWALK = "I can move freely between webs.",
 	TRAIT_NOSTINK = span_dead("My nose is numb to the smell of decay."),
 	TRAIT_ZJUMP = "Time to reach a new high.",
@@ -176,7 +180,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEATHBYSNUSNU = "With strong intent, I can shatter pelvises.", // Ham change
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
-))
+	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
+))	
 
 // trait accessor defines
 #define ADD_TRAIT(target, trait, source) \

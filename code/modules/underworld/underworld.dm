@@ -35,6 +35,8 @@
 	icon_state = "carriage_normal"
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
+	bound_width = 160
+	bound_height = 96
 	anchored = TRUE
 	density = TRUE
 

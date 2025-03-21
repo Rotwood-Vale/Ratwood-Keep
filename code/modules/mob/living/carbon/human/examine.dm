@@ -130,14 +130,8 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.isFamily(src))
-				var/datum/relation/R = H.getRelationship(src)
-				if(R)
-					. += "It's my [R.name]!"
-			else if(family)
-				var/datum/family/F = getFamily()
-				if(F)
-					. += "Ah, they belong to the [F.name] family!"
+			if(H.marriedto == name)
+				. += span_love("It's my spouse.")
 
 		if(display_as_foreign && user != src)
 			if(are_mercenary && am_mercenary)
@@ -147,6 +141,9 @@
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
+
+		if(name in GLOB.apostasy_players)
+			. += span_userdanger("APOSTATE!")	
 
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
