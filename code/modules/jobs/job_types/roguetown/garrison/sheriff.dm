@@ -16,7 +16,7 @@
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/sheriff
 	give_bank_account = 26
-	min_pq = 8
+	min_pq = 20
 	max_pq = null
 
 /datum/outfit/job/roguetown/sheriff/pre_equip(mob/living/carbon/human/H)
