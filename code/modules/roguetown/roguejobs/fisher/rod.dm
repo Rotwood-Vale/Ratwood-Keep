@@ -63,6 +63,11 @@
 		return ..()
 
 	var/mob/living/current_fisherman = user
+	
+	if(!is_valid_fishing_spot(target))
+		to_chat(current_fisherman, span_warning("This body of water seems devoid of aquatic life..."))
+		return
+	
 	current_fisherman.visible_message(span_warning("[current_fisherman] casts a line!"), \
 						span_notice("I cast a line."))
 	playsound(loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
