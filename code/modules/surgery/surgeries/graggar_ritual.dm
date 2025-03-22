@@ -63,18 +63,17 @@
     name = "Flesh"
     desc = "A piece of meat harvested from a fallen foe."
     icon = 'icons/roguetown/items/food.dmi'  
-    icon_state = "meatcutlet"          
+    icon_state = "meatcutlet"    
 
+    attack(mob/M, mob/user)
+        if(ishuman(M))
+            consume_flesh(M, user)
+        return ..()      
 
 // Man-at-Arms Flesh
 /obj/item/graggarflesh/maa
     name = "Manatarms's flesh"
     desc = "A tough, sinewy piece of meat from a Man-at-Arms."
-
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
 
 /obj/item/graggarflesh/maa/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
@@ -96,11 +95,6 @@
     name = "Templar's flesh"
     desc = "A sanctified cut from a Templar's body, radiating faint warmth."
 
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
-
 /obj/item/graggarflesh/templar/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
         to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
@@ -120,11 +114,6 @@
 /obj/item/graggarflesh/watchman
     name = "Watchman's flesh"
     desc = "A lean piece of meat, taken from a vigilant Watchman."
-
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
 
 /obj/item/graggarflesh/watchman/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
@@ -146,11 +135,6 @@
     name = "Vanguard's flesh"
     desc = "A sturdy chunk of flesh from a Vanguard, brimming with resilience."
 
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
-
 /obj/item/graggarflesh/vanguard/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
         to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
@@ -170,11 +154,6 @@
 /obj/item/graggarflesh/knight
     name = "Knight's flesh"
     desc = "A noble cut of meat, harvested from a Knight's frame."
-
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
 
 /obj/item/graggarflesh/knight/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
@@ -196,11 +175,6 @@
     name = "Priest's flesh"
     desc = "A tender piece of meat, infused with a hint of divine essence."
 
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
-
 /obj/item/graggarflesh/priest/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
         to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
@@ -220,11 +194,6 @@
 /obj/item/graggarflesh/royal
     name = "Royal flesh"
     desc = "An exquisite piece of meat from royalty, rich and succulent."
-
-    attack(mob/M, mob/user)
-        if(ishuman(M))
-            consume_flesh(M, user)
-        return ..()
 
 /obj/item/graggarflesh/royal/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
     if(!isliving(M) || M.stat == DEAD)
