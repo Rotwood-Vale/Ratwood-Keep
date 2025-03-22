@@ -135,7 +135,6 @@
 
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC)
 
-	ADD_TRAIT(W, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_STRONGBITE, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_ZJUMP, TRAIT_GENERIC)
 	ADD_TRAIT(W, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
@@ -184,7 +183,6 @@
 	W.copy_known_languages_from(WA.stored_language)
 	W.mind.known_skills = WA.stored_skills.Copy()
 	W.mind.skill_experience = WA.stored_experience.Copy()
-	W.dodgetime = 12
 
 	if(isseelie(W.stored_mob))
 		W.change_stat("speed", 3)
