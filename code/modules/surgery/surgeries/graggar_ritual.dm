@@ -63,12 +63,12 @@
     name = "Flesh"
     desc = "A piece of meat harvested from a fallen foe."
     icon = 'icons/roguetown/items/food.dmi'  
-    icon_state = "meatcutlet"    
+    icon_state = "meatcutlet"     
 
-    attack(mob/M, mob/user)
+	attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
-        return ..()      
+        return ..()     
 
 // Man-at-Arms Flesh
 /obj/item/graggarflesh/maa
