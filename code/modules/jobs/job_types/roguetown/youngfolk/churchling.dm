@@ -1,5 +1,5 @@
 /datum/job/roguetown/churchling
-	title = "Novitiate"
+	title = "Churchling"
 	flag = CHURCHLING
 	department_flag = YOUNGFOLK
 	faction = "Station"
