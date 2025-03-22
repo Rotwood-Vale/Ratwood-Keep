@@ -71,173 +71,172 @@
     name = "Manatarms's flesh"
     desc = "A tough, sinewy piece of meat from a Man-at-Arms."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/maameat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/maameat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Man-at-Arms."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/maa/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/maameat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/maameat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Man-at-Arms."))
+    qdel(src)
+    return TRUE
 
 // Templar's Flesh
 /obj/item/graggarflesh/templar
     name = "Templar's flesh"
     desc = "A sanctified cut from a Templar's body, radiating faint warmth."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/templarmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/templarmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Templar."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/templar/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/templarmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/templarmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Templar."))
+    qdel(src)
+    return TRUE
 
 // Watchman's Flesh
 /obj/item/graggarflesh/watchman
     name = "Watchman's flesh"
     desc = "A lean piece of meat, taken from a vigilant Watchman."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/watchmanmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/watchmanmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Watchman."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/watchman/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/watchmanmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/watchmanmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Watchman."))
+    qdel(src)
+    return TRUE
 
 // Vanguard's Flesh
 /obj/item/graggarflesh/vanguard
     name = "Vanguard's flesh"
     desc = "A sturdy chunk of flesh from a Vanguard, brimming with resilience."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/vanguardmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/vanguardmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Vanguard."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/vanguard/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/vanguardmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/vanguardmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Vanguard."))
+    qdel(src)
+    return TRUE
 
 // Knight's Flesh
 /obj/item/graggarflesh/knight
     name = "Knight's flesh"
-
     desc = "A noble cut of meat, harvested from a Knight's frame."
-
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/knightmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/knightmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Knight."))
-        qdel(src)
-        return TRUE
 
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/knight/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/knightmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/knightmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Knight."))
+    qdel(src)
+    return TRUE
 
 // Priest's Flesh
 /obj/item/graggarflesh/priest
     name = "Priest's flesh"
     desc = "A tender piece of meat, infused with a hint of divine essence."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/priestmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/priestmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of a Priest."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/priest/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/priestmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/priestmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Priest."))
+    qdel(src)
+    return TRUE
 
 // Royal Flesh
 /obj/item/graggarflesh/royal
     name = "Royal flesh"
     desc = "An exquisite piece of meat from royalty, rich and succulent."
 
-    proc/consume_flesh(mob/living/carbon/human/M, mob/user)
-        if(!isliving(M) || M.stat == DEAD)
-            to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
-            return FALSE
-        if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
-            to_chat(user, span_warning("Only followers of Graggar can do such things..."))
-            return FALSE
-        if(M.has_status_effect(/datum/status_effect/buff/royalmeat))
-            to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
-            return FALSE
-        M.apply_status_effect(/datum/status_effect/buff/royalmeat)
-        to_chat(user, span_notice("[M] now tastes the flesh of royalty."))
-        qdel(src)
-        return TRUE
-
     attack(mob/M, mob/user)
         if(ishuman(M))
             consume_flesh(M, user)
         return ..()
+
+/obj/item/graggarflesh/royal/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/royalmeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/royalmeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of royalty."))
+    qdel(src)
+    return TRUE
