@@ -15,9 +15,9 @@
 	var/BUFEND = 0
 	var/BUFSPE = 0
 	var/BUFLUC = 0
+	var/statbuf = FALSE
 	var/list/statindex = list()
 	var/datum/patron/patron = /datum/patron/godless
-	var/obj/statdata/tempskill = new()
 
 /mob/living/proc/init_faith()
 	set_patron(/datum/patron/godless)
@@ -89,6 +89,7 @@
 			set_eye_color(H, "#c71d76", "#c71d76")
 		if(isseelie(src))	//Check necessary to prevent seelie getting default stats when no other changes apply
 			change_stat("strength", -9)
+	save_stats_as_roundstarted() // REDMOON ADD - after_death_stats_fix
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
@@ -107,47 +108,167 @@
 			statindex[index] = list("stat" = stat, "amt" = amt)
 //			statindex[index]["stat"] = stat
 //			statindex[index]["amt"] = amt
+//	var/newamt = 0 - REDMOON REMOVAL - не востребованная переменная
 	switch(stat)
 		if("strength")
 			if(isseelie(src))
 				STASTR = 1
 				return
-			tempskill.modifystat(STASTR, BUFSTR, amt)
-			STASTR = tempskill.value
-			BUFSTR = tempskill.buffer
+/*			newamt = STASTR + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFSTR < 0)
+				BUFSTR = BUFSTR + amt
+				if(BUFSTR > 0)
+					newamt = STASTR + BUFSTR
+					BUFSTR = 0
+			if(BUFSTR > 0)
+				BUFSTR = BUFSTR + amt
+				if(BUFSTR < 0)
+					newamt = STASTR + BUFSTR
+					BUFSTR = 0
+			while(newamt < 1)
+				newamt++
+				BUFSTR--
+			while(newamt > 20)
+				newamt--
+				BUFSTR++
+			STASTR = newamt - REDMOON REMOVAL END*/
+			BUFSTR += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STASTR = CLAMP(ROUNDSTART_STASTR + BUFSTR, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 		if("perception")
-			tempskill.modifystat(STAPER, BUFPER, amt)
-			STAPER = tempskill.value
-			BUFPER = tempskill.buffer
+/*			newamt = STAPER + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFPER < 0)
+				BUFPER = BUFPER + amt
+				if(BUFPER > 0)
+					newamt = STAPER + BUFPER
+					BUFPER = 0
+			if(BUFPER > 0)
+				BUFPER = BUFPER + amt
+				if(BUFPER < 0)
+					newamt = STAPER + BUFPER
+					BUFPER = 0
+			while(newamt < 1)
+				newamt++
+				BUFPER--
+			while(newamt > 20)
+				newamt--
+				BUFPER++
+			STAPER = newamt	- REDMOON REMOVAL END*/
+			BUFPER += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STAPER = CLAMP(ROUNDSTART_STAPER + BUFPER, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 			see_override = initial(src.see_invisible) + (STAPER/2.78) // This may be a mistake.
 			update_sight() //Needed.
 			update_fov_angles()
 
 		if("intelligence")
-			tempskill.modifystat(STAINT, BUFINT, amt)
-			STAINT = tempskill.value
-			BUFINT = tempskill.buffer
+/*			newamt = STAINT + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFINT < 0)
+				BUFINT = BUFINT + amt
+				if(BUFINT > 0)
+					newamt = STAINT + BUFINT
+					BUFINT = 0
+			if(BUFINT > 0)
+				BUFINT = BUFINT + amt
+				if(BUFINT < 0)
+					newamt = STAINT + BUFINT
+					BUFINT = 0
+			while(newamt < 1)
+				newamt++
+				BUFINT--
+			while(newamt > 20)
+				newamt--
+				BUFINT++
+			STAINT = newamt - REDMOON REMOVAL END*/
+			BUFINT += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STAINT = CLAMP(ROUNDSTART_STAINT + BUFINT, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 		if("constitution")
-			tempskill.modifystat(STACON, BUFCON, amt)
-			STACON = tempskill.value
-			BUFCON = tempskill.buffer
+/*			newamt = STACON + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFCON < 0)
+				BUFCON = BUFCON + amt
+				if(BUFCON > 0)
+					newamt = STACON + BUFCON
+					BUFCON = 0
+			if(BUFCON > 0)
+				BUFCON = BUFCON + amt
+				if(BUFCON < 0)
+					newamt = STACON + BUFCON
+					BUFCON = 0
+			while(newamt < 1)
+				newamt++
+				BUFCON--
+			while(newamt > 20)
+				newamt--
+				BUFCON++
+			STACON = newamt - REDMOON REMOVAL END*/
+			BUFCON += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STACON = CLAMP(ROUNDSTART_STACON + BUFCON, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 		if("endurance")
-			tempskill.modifystat(STAEND, BUFEND, amt)
-			STAEND = tempskill.value
-			BUFEND = tempskill.buffer
+/*			newamt = STAEND + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFEND < 0)
+				BUFEND = BUFEND + amt
+				if(BUFEND > 0)
+					newamt = STAEND + BUFEND
+					BUFEND = 0
+			if(BUFEND > 0)
+				BUFEND = BUFEND + amt
+				if(BUFEND < 0)
+					newamt = STAEND + BUFEND
+					BUFEND = 0
+			while(newamt < 1)
+				newamt++
+				BUFEND--
+			while(newamt > 20)
+				newamt--
+				BUFEND++
+			STAEND = newamt - REDMOON REMOVAL END*/
+			BUFEND += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STAEND = CLAMP(ROUNDSTART_STAEND + BUFEND, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 		if("speed")
-			tempskill.modifystat(STASPD, BUFSPE, amt)
-			STASPD = tempskill.value
-			BUFSPE = tempskill.buffer
+/*			newamt = STASPD + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFSPE < 0)
+				BUFSPE = BUFSPE + amt
+				if(BUFSPE > 0)
+					newamt = STASPD + BUFSPE
+					BUFSPE = 0
+			if(BUFSPE > 0)
+				BUFSPE = BUFSPE + amt
+				if(BUFSPE < 0)
+					newamt = STASPD + BUFSPE
+					BUFSPE = 0
+			while(newamt < 1)
+				newamt++
+				BUFSPE--
+			while(newamt > 20)
+				newamt--
+				BUFSPE++
+			STASPD = newamt - REDMOON REMOVAL END*/
+			BUFSPE += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STASPD = CLAMP(ROUNDSTART_STASPD + BUFSPE, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 		if("fortune")
-			tempskill.modifystat(STALUC, BUFLUC, amt)
-			STALUC = tempskill.value
-			BUFLUC = tempskill.buffer
+/*			newamt = STALUC + amt - REDMOON REMOVAL START - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			if(BUFLUC < 0)
+				BUFLUC = BUFLUC + amt
+				if(BUFLUC > 0)
+					newamt = STALUC + BUFLUC
+					BUFLUC = 0
+			if(BUFLUC > 0)
+				BUFLUC = BUFLUC + amt
+				if(BUFLUC < 0)
+					newamt = STALUC + BUFLUC
+					BUFLUC = 0
+			while(newamt < 1)
+				newamt++
+				BUFLUC--
+			while(newamt > 20)
+				newamt--
+				BUFLUC++
+			STALUC = newamt - REDMOON REMOVAL END*/
+			BUFLUC += amt // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
+			STALUC = CLAMP(ROUNDSTART_STALUC + BUFLUC, 1, 20) // REDMOON ADD - after_death_stats_fix - фикс для статов после смерти и оверкапа статов
 
 /proc/generic_stat_comparison(userstat as num, targetstat as num)
 	var/difference = userstat - targetstat
@@ -163,37 +284,3 @@
 /mob/living/proc/goodluck(multi = 3)
 	if(STALUC > 10)
 		return prob((STALUC - 10) * multi)
-
-// Helper object, so we don't need to duplicate the stat change code for every stat...
-/obj/statdata
-	var/value
-	var/buffer
-
-/obj/statdata/proc/modifystat(statvalue, statbuffer, amt)
-	var/tempbuffer = statbuffer
-	var/newamt = statvalue
-
-	if (tempbuffer > 0 && amt < 0) // If the buffer is positive, it absorbs reductions until it's negative
-		tempbuffer += amt
-		if (tempbuffer < 0)
-			newamt += tempbuffer // Add the excess back to the stat and reset the buffer
-			tempbuffer = 0
-	else if (tempbuffer < 0 && amt > 0) // Same with boosts if it's negative
-		tempbuffer += amt
-		if (tempbuffer > 0)
-			newamt += tempbuffer
-			tempbuffer = 0
-	else // Otherwise, we don't need to worry about the buffer right away
-		newamt += amt
-	
-	// Finally, if newamt over/underflows the limits, add the excess to the buffer for later
-	if (newamt > 20)
-		tempbuffer += newamt - 20
-		newamt = 20
-	else if (newamt < 1)
-		// Need to subtract 1 from the amount since our minimum is 1, rather than 0
-		tempbuffer += newamt - 1
-		newamt = 1
-
-	value = newamt
-	buffer = tempbuffer
