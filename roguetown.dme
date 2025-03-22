@@ -2424,6 +2424,7 @@
 #include "modular_redmoon\modules\tetris\natural.dm"
 #include "modular_redmoon\modules\tetris\needle.dm"
 #include "modular_redmoon\modules\tetris\organ_internal.dm"
+#include "modular_redmoon\modules\tetris\pill_bottle.dm"
 #include "modular_redmoon\modules\tetris\reagent_containers.dm"
 #include "modular_redmoon\modules\tetris\rod.dm"
 #include "modular_redmoon\modules\tetris\rogueores.dm"
