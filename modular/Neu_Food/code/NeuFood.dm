@@ -553,6 +553,12 @@ What it does:
 
 
 /obj/item/cooking/platter/attackby(obj/item/I, mob/living/user, params)
+	
+	if(istype(I, /obj/item/kitchen/fork/) || istype(I, /obj/item/kitchen/ironfork/))
+		if(do_after(user, 0.5 SECONDS))
+			attack(user, user, user.zone_selected)
+			return ..()
+
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/))
 		if(isturf(loc)&& (found_table))

@@ -357,6 +357,12 @@ All foods are distributed among various categories. Use common sense.
 				. += "[src] was bitten multiple times!"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
+
+	if(istype(W, /obj/item/kitchen/fork/) || istype(W, /obj/item/kitchen/ironfork/)) //why is this a different type????
+		if(do_after(user, 0.5 SECONDS))
+			attack(user, user, user.zone_selected)
+			return ..()
+
 	if(istype(W, /obj/item/storage))
 		..() // -> item/attackby()
 		return 0
