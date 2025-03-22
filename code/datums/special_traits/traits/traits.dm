@@ -110,7 +110,7 @@
 	character.change_stat("speed", 2)
 	character.change_stat("endurance", 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
-	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long
+	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long/heirloom
 	to_chat(character, span_notice("I need to get my sword from that tree."))
 
 /datum/special_trait/corn_fed
