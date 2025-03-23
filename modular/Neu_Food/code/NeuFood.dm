@@ -285,6 +285,7 @@
 	resistance_flags = NONE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	experimental_inhand = FALSE
+	var/datum/platter_sprites/sprite_choice = new /datum/platter_sprites/
 
 /obj/item/cooking/platter/pewter
 	name = "pewter platter"
@@ -519,7 +520,114 @@
 	qdel(src)
 
 /*	..................   Food platter   ................... */
+/*
+NEW SYSTEM
+What it does:
+	- [X] The platter stays intact, adds object on top of it. 
+	- [X] Examining the platter tells you what is on the platter
+	- [X] Adds food overlay to the platre
+	- [X] Can remove item with right click
+	- [X] using it will eat the food on it
+	- Add 'smash' option to hit people with platters?
+		- If so does the food fly off it?
+	- [TO DO] Falling with / throwing a platter should make the food fall off?
+	- [X] Use initial[name] to revert platter back to being its original name once the food is removed
+*/
+
+// food paths as keys and the platter sprite they use
+// These are listed in the food.dmi (I don't want to have to add icon logic too... just keep it all in food.dmi...)
+// You can name them whatever you want I just did _platter to help distinguish from _plated which uses full sprites
+// Keep the list alphabetical if you add to it.
+/datum/platter_sprites/
+	var/list/check_sprite = list(
+		/obj/item/reagent_containers/food/snacks/rogue/bun_grenz = "grenzbun_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian = "omelette_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/frybirdtato = "frybirdtato_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/friedrat = "cookedrat_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked = "roastchicken_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/peppersteak = "peppersteak_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienercabbage = "wienercabbage_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienerpotato = "wienerpotato_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions = "wpotonion_platter",
+		 )
+
+
 /obj/item/cooking/platter/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/))
+		if(isturf(loc)&& (found_table))
+			if (contents.len == 0)
+				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+				if(do_after(user,2 SECONDS, target = src))
+					user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.4)
+					to_chat(user, span_info("I add \the [I.name] to \the [name]."))
+					I.forceMove(src)
+				update_icon()
+			else
+				to_chat(user, span_info("Something is already on this [initial(name)]! Remove it first."))
+		else
+			return ..()	
+
+
+/obj/item/cooking/platter/attack(mob/living/M, mob/living/user, def_zone)
+	if(user.used_intent.type == INTENT_HARM)
+		return ..()
+	if(contents.len > 0)
+		contents[1].attack(M,user,def_zone)
+		update_icon()
+
+
+/obj/item/cooking/platter/update_icon()
+	if(contents.len >0)
+		var/i
+		var/has_sprite = FALSE
+		// Checks the datum list for any sprite states.
+		for(i = 1, i <= sprite_choice.check_sprite.len, i++ )
+			if(sprite_choice.check_sprite[i] == contents[1].type) //Does this have to use type? Not sure but it works.
+				contents[1].icon_state = sprite_choice.check_sprite[contents[1].type]
+				has_sprite = TRUE
+				break
+
+		if (!has_sprite) // If we don't have a platter sprite shrink sprite down and move it up a bit on the platter
+			var/matrix/M = new
+			M.Scale(0.8,0.8)
+			contents[1].transform = M
+			contents[1].pixel_y = 3
+
+		contents[1].vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+		vis_contents += contents[1]
+		name = "platter of [contents[1].name]"
+		desc = contents[1].desc
+		//Need something better than this in future like a buff
+		if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
+			contents[1].bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	else
+		vis_contents = 0
+		name = initial(name)
+		desc = initial(desc)
+
+
+/obj/item/cooking/platter/attack_right(mob/user)
+	if(user.get_active_held_item())
+		to_chat(user, span_info("I can't do that with my hand full!"))
+		return
+
+	if(contents.len >0)
+		if(do_after(user,2 SECONDS, target = src))
+			contents[1].vis_flags = 0
+			//No need to change scale since and pixel_y I think all food already resets that when you grab it
+			contents[1].icon_state = initial(contents[1].icon_state)
+			//sometimes food puts an item in its place!!
+			if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
+				contents[1].bonus_reagents = list()
+			to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
+			if(!usr.put_in_hands(contents[1]))
+				contents[1].forceMove(get_turf(src))
+
+	update_icon()
+
+
+/*
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked))
 		if(isturf(loc)&& (found_table))
@@ -693,7 +801,7 @@
 			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
 	else
 		return ..()	
-
+*/
 /* ###########################################
 		Silver Cutlery interactions with deadites
    ########################################### */
