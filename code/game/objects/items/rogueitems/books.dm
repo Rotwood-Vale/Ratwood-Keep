@@ -224,7 +224,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = "Issued by the Chancery of the Kingdom to serve as the legal framework for the realm. Its heft physicalizes a compelling maxim: the application of law should not be taken lightly."
+	desc = "Issued by the Chancery of the Kingdom of Ferentia to serve as the legal framework for the realm. Its heft physicalizes a compelling maxim: the application of law should not be taken lightly."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law.json"
