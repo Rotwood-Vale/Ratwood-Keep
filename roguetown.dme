@@ -869,6 +869,8 @@
 #include "code\game\objects\items\toys.dm"
 #include "code\game\objects\items\trash.dm"
 #include "code\game\objects\items\weaponry.dm"
+#include "code\game\objects\items\church_items\ritechalk.dm"
+#include "code\game\objects\items\church_items\ritualcircles.dm"
 #include "code\game\objects\items\devices\flashlight.dm"
 #include "code\game\objects\items\devices\reverse_bear_trap.dm"
 #include "code\game\objects\items\melee\misc.dm"
