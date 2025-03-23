@@ -4315,13 +4315,9 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/town/harbor)
 "cls" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid"
-	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/tavern)
+/obj/structure/reliquarybox,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/basement)
 "clE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
@@ -17915,6 +17911,7 @@
 /area/rogue/indoors/town/shop)
 "jlY" = (
 /obj/structure/table/vtable/v2,
+/obj/item/roguekey/psydonkey,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/town/basement)
 "jma" = (
@@ -35943,13 +35940,6 @@
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
-"sXU" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
 "sYi" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/floor/rogue/blocks,
@@ -38018,14 +38008,6 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/druidgrove)
-"tZH" = (
-/obj/structure/table/wood{
-	dir = 9;
-	icon_state = "largetable"
-	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors)
 "tZJ" = (
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /turf/open/floor/carpet/royalblack,
@@ -252500,7 +252482,7 @@ qpb
 myB
 txa
 sGZ
-iTw
+cls
 iSR
 gSK
 cTA
