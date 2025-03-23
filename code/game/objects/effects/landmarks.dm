@@ -403,7 +403,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Servant"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/novitiate
+/obj/effect/landmark/start/churchling
 	name = "Novitiate"
 	icon_state = "arrow"
 
