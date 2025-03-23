@@ -6,9 +6,6 @@
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/lich/on_buy()
-	SStriumphs.post_equip_calls[triumph_buy_id] = src
-
 /datum/triumph_buy/werewolf
 	triumph_buy_id = "Antagcoin: Werewolf"
 	desc = "Antagcoin: Werewolf!"
@@ -16,9 +13,6 @@
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
-
-/datum/triumph_buy/werewolf/on_buy()
-	SStriumphs.post_equip_calls[triumph_buy_id] = src
 
 /datum/triumph_buy/maniac
 	triumph_buy_id = "Antagcoin: Maniac"
@@ -28,9 +22,6 @@
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/maniac/on_buy()
-	SStriumphs.post_equip_calls[triumph_buy_id] = src
-
 /datum/triumph_buy/cult
 	triumph_buy_id = "Antagcoin: Cult"
 	desc = "Antagcoin: Cult!"
@@ -39,9 +30,6 @@
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/cult/on_buy()
-	SStriumphs.post_equip_calls[triumph_buy_id] = src
-
 /datum/triumph_buy/revolution
 	triumph_buy_id = "Antagcoin: Revolution"
 	desc = "Antagcoin: Revolution!"
@@ -49,9 +37,6 @@
 	category = TRIUMPH_CAT_ROUND_EFX
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
-
-/datum/triumph_buy/revolution/on_buy()
-	SStriumphs.post_equip_calls[triumph_buy_id] = src
 
 /datum/triumph_buy/triumph
 	triumph_buy_id = "Antagcoin: 50 Triumphs"

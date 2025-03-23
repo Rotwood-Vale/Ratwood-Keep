@@ -3,7 +3,6 @@
 	desc = "Every species can be in any job and class!"
 	triumph_cost = 30
 	category = TRIUMPH_CAT_CHARACTER
-	visible_on_active_menu = TRUE
 
 /datum/triumph_buy/race_all_jobs/on_buy()
 	if(usr && usr.client)
