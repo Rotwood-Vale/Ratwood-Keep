@@ -11,7 +11,7 @@
 	if(launched)
 		playsound(get_turf(src), pick(incoming), 100, FALSE)
 		spawn(travel_time * 6)
-			explosion(get_turf(src), 1, -1, 2, 0)
+			explosion(get_turf(src), 2, 3, 4, 0)
 			do_shrapnel_effect(get_turf(src))
 			qdel(src)
 
@@ -19,7 +19,7 @@
 	if(launched)
 		playsound(get_turf(src), pick(incoming), 100, FALSE)
 		spawn(travel_time * 6)
-			explosion(get_turf(src), 1, -1, 2, 0)
+			explosion(get_turf(src), 2, 3, 4, 0)
 			do_shrapnel_effect(get_turf(src))
 
 			qdel(src)
@@ -29,7 +29,7 @@
 		if(!istype(hit_atom, /turf/open/transparent/openspace))
 			playsound(get_turf(src), pick(incoming), 100, FALSE)
 			spawn(travel_time * 6)
-				explosion(get_turf(src), 1, -1, 2, 0)
+				explosion(get_turf(src), 2, 3, 4, 0)
 				do_shrapnel_effect(get_turf(src))
 				qdel(src)
 
@@ -42,16 +42,16 @@
 	var/sound/far_explosion_sound = sound(pick('sound/catapult/explosion_distant.ogg',
 	'sound/catapult/explosion_distant2.ogg','sound/catapult/explosion_distant3.ogg', 'sound/catapult/explosion_distant4.ogg'))
 	shrapnel_effect.projectile_type = /obj/projectile/rock_shard // Define the type of shrapnel
-	shrapnel_effect.radius = 3 // Define the explosion radius
-	shrapnel_effect.override_projectile_range = 5 // Optional: specify the max range of each projectile
+	shrapnel_effect.radius = 6 // Define the explosion radius
+	shrapnel_effect.override_projectile_range = 10 // Optional: specify the max range of each projectile
 	shrapnel_effect.do_shrapnel(src, target) // Activate shrapnel
 	for(var/mob/M in urange(20, src))
 		if(!M.stat)
 			shake_camera(M, 3, 1)
 	for(var/mob/living/L in range(6, src))
 		if(!L.stat)
-			L.Knockdown(1)
-			L.Jitter(30)
+			L.Knockdown(2)
+			L.Jitter(60)
 	for(var/mob/living/player in GLOB.player_list)
 		var/distance = get_dist(player, origin_turf)
 		if(player.stat == DEAD)
