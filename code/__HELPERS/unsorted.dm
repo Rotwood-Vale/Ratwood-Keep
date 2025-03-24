@@ -1548,6 +1548,17 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return FALSE
 
 
+#define VALID_HUNTING_AREAS list(\
+	/area/rogue/outdoors/bog )
+
+proc/is_valid_hunting_area(area/A)
+	for(var/i in VALID_HUNTING_AREAS)
+		if(istype(A, i))
+			return TRUE
+	return FALSE
+
+
+
 /proc/minone(input)
 	if(!input)
 		return FALSE
