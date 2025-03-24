@@ -10,7 +10,7 @@
 
 /datum/status_effect/stress/stressinsane
 	id = "insane"
-	effectedstats = list("fortune" = -4)
+	effectedstats = list("constitution" = -2, "endurance" = -2, "speed" = -2, "fortune" = -20)
 	alert_type = /atom/movable/screen/alert/status_effect/stress/stressinsane
 
 /atom/movable/screen/alert/status_effect/stress/stressinsane
@@ -24,7 +24,7 @@
 
 /datum/status_effect/stress/stressvbad
 	id = "stressvbad"
-	effectedstats = list("fortune" = -2)
+	effectedstats = list("constitution" = -1,"endurance" = -2, "speed" = -2, "fortune" = -1)
 	alert_type = /atom/movable/screen/alert/status_effect/stress/stressvbad
 
 /atom/movable/screen/alert/status_effect/stress/stressvbad
@@ -38,7 +38,7 @@
 
 /datum/status_effect/stress/stressbad
 	id = "stressbad"
-	effectedstats = list() // Предупреждение для игрока
+	effectedstats = list("speed" = -1)
 	alert_type = /atom/movable/screen/alert/status_effect/stress/stressbad
 
 /atom/movable/screen/alert/status_effect/stress/stressbad
@@ -52,7 +52,7 @@
 
 /datum/status_effect/stress/stressvgood
 	id = "stressvgood"
-	effectedstats = list("fortune" = 1)
+	effectedstats = list("fortune" = 5)
 	alert_type = /atom/movable/screen/alert/status_effect/stress/good/stressvgood
 
 /atom/movable/screen/alert/status_effect/stress/good/stressvgood

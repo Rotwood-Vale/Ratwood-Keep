@@ -5,7 +5,7 @@
 /datum/status_effect/debuff/hungryt1
 	id = "hungryt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
-	effectedstats = list(STATKEY_END = -1)
+	effectedstats = list(STATKEY_END = -2, STATKEY_INT = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt1
@@ -38,7 +38,7 @@
 /datum/status_effect/debuff/hungryt2
 	id = "hungryt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt2
-	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -1, STATKEY_INT = -1, STATKEY_PER = -1)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -1, STATKEY_INT = -1, STATKEY_PER = -1, STATKEY_INT = -4)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt2
@@ -71,7 +71,7 @@
 /datum/status_effect/debuff/hungryt3
 	id = "hungryt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt3
-	effectedstats = list(STATKEY_STR = -3, STATKEY_CON = -3, STATKEY_END = -5, STATKEY_SPD = -4, STATKEY_INT = -3, STATKEY_PER = -3)
+	effectedstats = list(STATKEY_STR = -3, STATKEY_CON = -3, STATKEY_END = -5, STATKEY_SPD = -4, STATKEY_INT = -6, STATKEY_PER = -3)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt3
@@ -101,6 +101,12 @@
  * THIRST 1
  */
 
+/datum/status_effect/debuff/thirstyt1
+	id = "thirsty1"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt1
+	effectedstats = list(STATKEY_END = -1, STATKEY_SPD = -1, STATKEY_INT = -2)
+	duration = 100
+
 /atom/movable/screen/alert/status_effect/debuff/thirstyt1
 	name = "Getting thirsty"
 	desc = "<span class='warning'>I could use a drink.</span>\n"
@@ -125,7 +131,7 @@
 /datum/status_effect/debuff/thirstyt2
 	id = "thirsty2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt2
-	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -1)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_END = -2, STATKEY_SPD = -1, STATKEY_INT = -4)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt2
@@ -158,7 +164,7 @@
 /datum/status_effect/debuff/thirstyt3
 	id = "thirsty3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt3
-	effectedstats = list(STATKEY_STR = -3, STATKEY_CON = -3, STATKEY_END = -5, STATKEY_SPD = -4, STATKEY_INT = -3, STATKEY_PER = -3)
+	effectedstats = list(STATKEY_STR = -3, STATKEY_CON = -3, STATKEY_END = -5, STATKEY_SPD = -4, STATKEY_INT = -6, STATKEY_PER = -3)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt3
