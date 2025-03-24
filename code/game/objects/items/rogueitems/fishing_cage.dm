@@ -33,6 +33,7 @@
 			user.transferItemToLoc(src, T)
 			deployed = 1
 			icon_state = "fishingcage_deployed"
+			anchored = 1
 	else
 		to_chat(user, span_warning("I'm not catching anything if i don't put this on water"))
 		return
@@ -59,6 +60,7 @@
 				QDEL_NULL(bait) //you lose the bait if you take out the cage without catching anything
 				desc = initial(desc)
 				icon_state = initial(icon_state)
+				anchored = 0
 				..()
 	else
 		..()
