@@ -21,7 +21,7 @@
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Preacher", "Returning Crusader", "Monk")
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	var/classchoice = input(H, "Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(H.patron?.type)
 
