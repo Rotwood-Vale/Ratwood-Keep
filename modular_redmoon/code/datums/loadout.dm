@@ -216,6 +216,11 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	desc = "Очки в деревянной оправе"
 	path = /obj/item/clothing/mask/rogue/woodspectacles
 
+/datum/loadout_item/collarbell //REDMOON ADD
+	name = "Jingly leather collar"
+	desc = "Кожаный ошейник. С колкольчиком!"
+	path = /obj/item/clothing/neck/roguetown/collar/leather/bell
+
 //ARMOR
 /datum/loadout_item/ironmask
 	name = "Iron Mask"

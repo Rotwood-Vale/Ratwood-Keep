@@ -27,7 +27,7 @@
 	else
 		classes = list("Widowed Lady")
 
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	var/classchoice = input(H, "Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
 

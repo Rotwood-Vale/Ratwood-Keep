@@ -14,7 +14,7 @@
 	..()
 	H.adjust_blindness(-3)
 	var/classes = list("Swordsman","Fencer", "Cutthroat")
-	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
+	var/classchoice = input(H, "Choose your archetypes", "Available archetypes") as anything in classes
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
