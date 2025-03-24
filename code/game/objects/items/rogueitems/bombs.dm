@@ -99,12 +99,12 @@
 	..()
 	explodes()
 
-/obj/item/tntstick
+/obj/item/tntbomb
 	name = "Blackpowder stick"
 	desc = "A bit of gunpodwer in paper shell..."
 	icon_state = "tnt_stick"
 	var/lit_state = "tnt_stick_lit"
-	icon = 'icons/roguetown/items/cooking.dmi'
+	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
@@ -155,7 +155,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, light_impact_range = 4, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
 				
 		else
@@ -180,7 +180,7 @@
 	desc = "A satchel full of gunpowder..."
 	icon_state = "satchel_bomb"
 	var/lit_state = "satchel_bomb_lit"
-	icon = 'icons/roguetown/items/cooking.dmi'
+	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
@@ -231,7 +231,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, heavy_impact_range = 2, light_impact_range = 7, hotspot_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, light_impact_range = 7, heavy_impact_range = 2, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
 				
 		else
