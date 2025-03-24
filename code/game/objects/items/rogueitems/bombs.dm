@@ -155,15 +155,11 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, light_impact_range = 4, heavy_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, heavy_impact_range = 2, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
 		else
 			if(prob(prob2fail))
 				snuff()
-			else
-				playsound(T, 'sound/items/firesnuff.ogg', 100)
-				new /obj/item/tntstick (T)
-				qdel(src)
 
 /obj/item/tntstick/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
@@ -231,16 +227,12 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, light_impact_range = 10, heavy_impact_range = 3, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, devastation_range = 1, light_impact_range = 10, heavy_impact_range = 2, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
 				
 		else
 			if(prob(prob2fail))
 				snuff()
-			else
-				playsound(T, 'sound/items/firesnuff.ogg', 100)
-				new /obj/item/satchel_bomb (T)
-				qdel(src)
 
 /obj/item/satchel_bomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
