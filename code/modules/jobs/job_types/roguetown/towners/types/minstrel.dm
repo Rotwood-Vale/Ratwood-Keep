@@ -1,6 +1,6 @@
 /datum/subclass/minstrel
     name = "Minstrel"
-    tutorial = "The people love music, they crave entertainment as much as they crave food and luckly for them \
+    tutorial = "The people love music, they crave entertainment as much as they crave food and luckily for them \
     you have always been there to provide such songs to soothe sore ears."
     allowed_sexes = list(MALE, FEMALE)
     allowed_races = RACES_ALL_KINDS
