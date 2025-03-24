@@ -21,3 +21,11 @@
 		user.remove_curse(/datum/curse/zizo, TRUE)
 	if(target.has_curse(/datum/curse/zizo))
 		target.remove_curse(/datum/curse/zizo, TRUE)
+
+/datum/sex_action/anal_ride_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
+	user.mind.adjust_experience(/datum/skill/misc/riding, user.STAINT / 8, FALSE)
+
+/datum/sex_action/vaginal_ride_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	..()
+	user.mind.adjust_experience(/datum/skill/misc/riding, user.STAINT / 8, FALSE)
