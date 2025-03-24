@@ -99,9 +99,9 @@
 	..()
 	explodes()
 
-/obj/item/tntbomb
+/obj/item/tntstick
 	name = "Blackpowder stick"
-	desc = "A bit of gunpodwer in paper shell..."
+	desc = "A bit of gunpowder in paper shell..."
 	icon_state = "tnt_stick"
 	var/lit_state = "tnt_stick_lit"
 	icon = 'icons/roguetown/items/misc.dmi'
@@ -111,7 +111,7 @@
 	throw_speed = 0.5
 	var/fuze = 50
 	var/lit = FALSE
-	var/prob2fail = 1 //23 was lunacy
+	var/prob2fail = 1 
 
 /obj/item/tntstick/spark_act()
 	light()
@@ -157,7 +157,6 @@
 			else
 				explosion(T, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 				qdel(src)
-				
 		else
 			if(prob(prob2fail))
 				snuff()
@@ -187,7 +186,7 @@
 	throw_speed = 0.1
 	var/fuze = 50
 	var/lit = FALSE
-	var/prob2fail = 1 //23 was lunacy
+	var/prob2fail = 1 
 
 /obj/item/satchel_bomb/spark_act()
 	light()
@@ -195,10 +194,10 @@
 /obj/item/satchel_bomb/fire_act()
 	light()
 
-/obj/item/tntstick/ex_act()
-	if(!QDELETED(src))
-		lit = TRUE
-		explode(TRUE)
+/obj/item/satchel_bomb/ex_act()
+    if(!QDELETED(src))
+        lit = TRUE
+        explode(TRUE)
 
 /obj/item/satchel_bomb/proc/light()
 	if(!lit)
