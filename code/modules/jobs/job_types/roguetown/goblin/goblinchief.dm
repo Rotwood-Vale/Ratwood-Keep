@@ -25,8 +25,8 @@
 /datum/outfit/job/roguetown/goblinchief/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.faction += "orcs"
-	//H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	//H.verbs |= /mob/living/carbon/human/proc/goblinopenslot
+	H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
@@ -58,7 +58,6 @@
 		H.grant_language(/datum/language/orcish)
 		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
 
-/*
 /mob/living/carbon/human/proc/goblinannouncement()
 	set name = "Announcement"
 	set category = "Goblin Chief"
@@ -70,7 +69,7 @@
 			to_chat(src, span_warning("I need to do this from the encampment."))
 			return FALSE
 		priority_announce("[inputty]", title = "The Goblin Chief Speaks", sound = 'sound/misc/dun.ogg')
-*/
+
 /*
 /mob/living/carbon/human/proc/goblinopenslot()
 	set name = "Open Slot"
@@ -98,5 +97,3 @@
 			smithjob.total_positions += 1
 			priority_announce("Goblin Smith shall join our Kingdom", title = "The Goblin King Hires", sound = 'sound/misc/dun.ogg')
 */
-
-
