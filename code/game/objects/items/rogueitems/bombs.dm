@@ -156,6 +156,9 @@
 				snuff()
 			else
 				explosion(T, heavy_impact_range = 2, light_impact_range = 4, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				
+				for(var/turf/closed/wall/R in range(2, T)) // additional dmg to walls
+				R.take_damage(500) // 500 dmg
 				qdel(src)
 		else
 			if(prob(prob2fail))
@@ -228,6 +231,10 @@
 				snuff()
 			else
 				explosion(T, devastation_range = 1, light_impact_range = 10, heavy_impact_range = 2, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				
+				for(var/turf/closed/wall/mineral/rogue/R in range(4, T)) // additional dmg to walls
+				R.take_damage(1000) // 1000 dmg
+
 				qdel(src)
 				
 		else
