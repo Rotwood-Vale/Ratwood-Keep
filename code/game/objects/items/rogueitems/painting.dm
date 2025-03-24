@@ -47,13 +47,13 @@
 	..()
 
 /obj/structure/fluff/walldeco/painting/queen
-	desc = "It's Duchess Samantha I of Rockhill. Her late husband would be so proud of what she has accomplished in his realm."
+	desc = "It's Queen Alexia I 'the Righteous' Valmont of Ferentia. Twenty years ago she rebelled against her father, King Mattimeo, and had him burned on a cross for heresy after he was seduced by a Baothan succubus."
 	icon_state = "queenpainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/queen
 
 /obj/item/rogue/painting/queen
 	icon_state = "queenpainting"
-	desc = "It's Duchess Samantha I of Rockhill. Her late husband would be so proud of what she has accomplished in his realm. These mass-reproduced paintings are unfortunately devalued."
+	desc = "It's Queen Alexia I 'the Righteous' Valmont of Ferentia. Twenty years ago she rebelled against her father, King Mattimeo, and had him burned on a cross for heresy after he was seduced by a Baothan succubus. These mass-reproduced paintings have been devalued."
 	dropshrink = 0.5
 	sellprice = 40
 	deployed_structure = /obj/structure/fluff/walldeco/painting/queen

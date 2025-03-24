@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/atm
 	name = "NERVELOCK"
-	desc = "Stores and withdraws currency for accounts managed by the Kingdom of Rockhill."
+	desc = "Stores and withdraws currency for accounts managed by the Duchy of Rockhill."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "atm"
 	density = FALSE
