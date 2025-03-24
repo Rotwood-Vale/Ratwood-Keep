@@ -50,6 +50,15 @@
 /datum/outfit/job/roguetown/ranger
 	name = "Vanguard archer"
 
+/datum/outfit/job/roguetown/maceman //REDMOON ADD
+	name = "Vanguard maceman"
+
+/datum/outfit/job/roguetown/axeman //REDMOON ADD
+	name = "Vanguard axeman"
+
+/datum/outfit/job/roguetown/spearman //REDMOON ADD
+	name = "Vanguard spearman"
+
 /datum/subclass/bogguard
 	name = "Vanguard footman"
 	allowed_sexes = list(MALE, FEMALE)
@@ -66,6 +75,36 @@
 	outfit = /datum/outfit/job/roguetown/ranger
 	tutorial = "You are well versed in the ways of handling a bow. \
 	You will stand in the back, and protect the front with arrows."
+	category_tags = list(CTAG_BOG)
+	maximum_possible_slots = 3
+
+/datum/subclass/maceman //REDMOON ADD
+	name = "Vanguard maceman"
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_VERY_SHUNNED_UP
+	outfit = /datum/outfit/job/roguetown/maceman
+	tutorial = "You are well versed in the ways of handling a mace. \
+	You will stand in the front, and protect."
+	category_tags = list(CTAG_BOG)
+	maximum_possible_slots = 3 //Оставлю лимитированные слоты, как минимум на время теста. А там может и навсегда, а может и уберу/уберёт кто-нибудь.
+
+/datum/subclass/axeman //REDMOON ADD
+	name = "Vanguard axeman"
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_VERY_SHUNNED_UP
+	outfit = /datum/outfit/job/roguetown/axeman
+	tutorial = "You are well versed in the ways of handling a axe. \
+	You will stand in the front, and protect."
+	category_tags = list(CTAG_BOG)
+	maximum_possible_slots = 3
+
+/datum/subclass/spearman //REDMOON ADD
+	name = "Vanguard spearman"
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_VERY_SHUNNED_UP
+	outfit = /datum/outfit/job/roguetown/spearman
+	tutorial = "You are well versed in the ways of handling a spear. \
+	You will stand behind, and support."
 	category_tags = list(CTAG_BOG)
 	maximum_possible_slots = 3
 
@@ -96,6 +135,36 @@
 /datum/outfit/job/roguetown/bogguardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	beltr = /obj/item/rogueweapon/sword
+	backr = /obj/item/storage/backpack/rogue/satchel
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
+	if(H.mind)
+		assign_skills(H)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
+/datum/outfit/job/roguetown/maceman/pre_equip(mob/living/carbon/human/H) //REDMOON ADD
+	. = ..()
+	beltr = /obj/item/rogueweapon/mace/steel
+	backr = /obj/item/storage/backpack/rogue/satchel
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
+	if(H.mind)
+		assign_skills(H)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
+/datum/outfit/job/roguetown/axeman/pre_equip(mob/living/carbon/human/H) //REDMOON ADD
+	. = ..()
+	beltr = /obj/item/rogueweapon/stoneaxe/battle
+	backr = /obj/item/storage/backpack/rogue/satchel
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
+	if(H.mind)
+		assign_skills(H)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+
+/datum/outfit/job/roguetown/spearman/pre_equip(mob/living/carbon/human/H) //REDMOON ADD
+	. = ..()
+	r_hand = /obj/item/rogueweapon/spear/billhook //Вот бы сделали стальное копьё. Из стали подходящее есть столько биллхук.
 	backr = /obj/item/storage/backpack/rogue/satchel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1, /obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1)
@@ -146,3 +215,78 @@
 	bogger.change_stat("perception", 3)
 	bogger.change_stat("speed", 2)
 	bogger.change_stat("endurance", 2)
+
+/datum/outfit/job/roguetown/maceman //Чтобы не влиять на баланс - возьму всё от мечника. //REDMOON ADD
+	name = "Bog Maceman"
+
+/datum/outfit/job/roguetown/maceman/proc/assign_skills(mob/living/carbon/human/bogger)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	bogger.change_stat("strength", 2)
+	bogger.change_stat("constitution", 1)
+	bogger.change_stat("endurance", 2)
+	bogger.change_stat("speed", 1)
+
+/datum/outfit/job/roguetown/axeman //REDMOON ADD
+	name = "Bog Axeman"
+
+/datum/outfit/job/roguetown/axeman/proc/assign_skills(mob/living/carbon/human/bogger)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	bogger.change_stat("strength", 2)
+	bogger.change_stat("constitution", 1)
+	bogger.change_stat("endurance", 2)
+	bogger.change_stat("speed", 1)
+
+/datum/outfit/job/roguetown/spearman //REDMOON ADD
+	name = "Bog Spearman"
+
+/datum/outfit/job/roguetown/spearman/proc/assign_skills(mob/living/carbon/human/bogger)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	bogger.change_stat("strength", 2)
+	bogger.change_stat("constitution", 1)
+	bogger.change_stat("endurance", 2)
+	bogger.change_stat("speed", 1)
