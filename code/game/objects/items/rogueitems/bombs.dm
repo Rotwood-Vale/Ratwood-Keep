@@ -98,3 +98,155 @@
 /obj/item/smokebomb/attack_self(mob/user)
 	..()
 	explodes()
+
+/obj/item/tntstick
+	name = "Blackpowder stick"
+	desc = "A bit of gunpodwer in paper shell..."
+	icon_state = "tnt_stick"
+	var/lit_state = "tnt_stick_lit"
+	icon = 'icons/roguetown/items/cooking.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 0
+	slot_flags = ITEM_SLOT_HIP
+	throw_speed = 0.5
+	var/fuze = 50
+	var/lit = FALSE
+	var/prob2fail = 1 //23 was lunacy
+
+/obj/item/tntstick/spark_act()
+	light()
+
+/obj/item/tntstick/fire_act()
+	light()
+
+/obj/item/tntstick/ex_act()
+	if(!QDELETED(src))
+		lit = TRUE
+		explode(TRUE)
+
+/obj/item/tntstick/proc/light()
+	if(!lit)
+		START_PROCESSING(SSfastprocess, src)
+		icon_state = lit_state
+		lit = TRUE
+		playsound(src.loc, 'sound/items/firelight.ogg', 100)
+		if(ismob(loc))
+			var/mob/M = loc
+			M.update_inv_hands()
+
+/obj/item/tntstick/extinguish()
+	snuff()
+
+/obj/item/tntstick/proc/snuff()
+	if(lit)
+		lit = FALSE
+		STOP_PROCESSING(SSfastprocess, src)
+		playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
+		icon_state = initial(icon_state)
+		if(ismob(loc))
+			var/mob/M = loc
+			M.update_inv_hands()
+
+/obj/item/tntstick/proc/explode(skipprob)
+	STOP_PROCESSING(SSfastprocess, src)
+	var/turf/T = get_turf(src)
+	if(T)
+		if(lit)
+			if(!skipprob && prob(prob2fail))
+				snuff()
+			else
+				explosion(T, light_impact_range = 4, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				qdel(src)
+				
+		else
+			if(prob(prob2fail))
+				snuff()
+			else
+				playsound(T, 'sound/items/firesnuff.ogg', 100)
+				new /obj/item/tntstick (T)
+				qdel(src)
+
+/obj/item/tntstick/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	..()
+	explode()
+
+/obj/item/tntstick/process()
+	fuze--
+	if(fuze <= 0)
+		explode(TRUE)
+
+/obj/item/satchel_bomb
+	name = "Bomb satchel"
+	desc = "A satchel full of gunpowder..."
+	icon_state = "satchel_bomb"
+	var/lit_state = "satchel_bomb_lit"
+	icon = 'icons/roguetown/items/cooking.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 0
+	slot_flags = ITEM_SLOT_HIP
+	throw_speed = 0.1
+	var/fuze = 50
+	var/lit = FALSE
+	var/prob2fail = 1 //23 was lunacy
+
+/obj/item/satchel_bomb/spark_act()
+	light()
+
+/obj/item/satchel_bomb/fire_act()
+	light()
+
+/obj/item/tntstick/ex_act()
+	if(!QDELETED(src))
+		lit = TRUE
+		explode(TRUE)
+
+/obj/item/satchel_bomb/proc/light()
+	if(!lit)
+		START_PROCESSING(SSfastprocess, src)
+		icon_state = lit_state
+		lit = TRUE
+		playsound(src.loc, 'sound/items/firelight.ogg', 100)
+		if(ismob(loc))
+			var/mob/M = loc
+			M.update_inv_hands()
+
+/obj/item/satchel_bomb/extinguish()
+	snuff()
+
+/obj/item/satchel_bomb/proc/snuff()
+	if(lit)
+		lit = FALSE
+		STOP_PROCESSING(SSfastprocess, src)
+		playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
+		icon_state = initial(icon_state)
+		if(ismob(loc))
+			var/mob/M = loc
+			M.update_inv_hands()
+
+/obj/item/satchel_bomb/proc/explode(skipprob)
+	STOP_PROCESSING(SSfastprocess, src)
+	var/turf/T = get_turf(src)
+	if(T)
+		if(lit)
+			if(!skipprob && prob(prob2fail))
+				snuff()
+			else
+				explosion(T, heavy_impact_range = 2, light_impact_range = 7, hotspot_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				qdel(src)
+				
+		else
+			if(prob(prob2fail))
+				snuff()
+			else
+				playsound(T, 'sound/items/firesnuff.ogg', 100)
+				new /obj/item/satchel_bomb (T)
+				qdel(src)
+
+/obj/item/satchel_bomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	..()
+	explode()
+
+/obj/item/satchel_bomb/process()
+	fuze--
+	if(fuze <= 0)
+		explode(TRUE)		
