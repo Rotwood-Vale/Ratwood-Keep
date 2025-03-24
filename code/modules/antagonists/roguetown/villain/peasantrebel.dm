@@ -117,8 +117,8 @@
 		return FALSE
 	if(candidate.mind.assigned_role in GLOB.noble_positions)
 		return FALSE
-	if(candidate.mind.assigned_role in GLOB.garrison_positions)
-		return FALSE
+	// if(candidate.mind.assigned_role in GLOB.garrison_positions)
+	// 	return FALSE
 	var/mob/living/carbon/C = candidate //Check to see if the potential rev is implanted
 	if(!istype(C)) //Can't convert simple animals
 		return FALSE
