@@ -56,10 +56,10 @@
 
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
-			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+			brute_loss = ((1000+250 * ddist) - (250 * fodist) * dmgmod) //we are not supposed to use it A LOT. Devastate is supposed to be LOW in your BOMBS 
 
 		if (EXPLODE_HEAVY)
-			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)
+			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod) 
 
 		if(EXPLODE_LIGHT)
 			brute_loss = ((25 * ldist) - (25 * fodist) * dmgmod)
