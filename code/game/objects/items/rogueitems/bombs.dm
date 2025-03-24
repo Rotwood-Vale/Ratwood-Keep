@@ -162,15 +162,6 @@
 			if(prob(prob2fail))
 				snuff()
 
-/obj/item/tntstick/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
-	explode()
-
-/obj/item/tntstick/process()
-	fuze--
-	if(fuze <= 0)
-		explode(TRUE)
-
 /obj/item/satchel_bomb
 	name = "Bomb satchel"
 	desc = "A satchel full of gunpowder..."
@@ -228,7 +219,7 @@
 			if(!skipprob && prob(prob2fail))
 				snuff()
 			else
-				explosion(T, devastation_range = 2, light_impact_range = 10, heavy_impact_range = 3, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+				explosion(T, devastation_range = 3, light_impact_range = 10, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 
 				qdel(src)
 				
@@ -236,11 +227,3 @@
 			if(prob(prob2fail))
 				snuff()
 
-/obj/item/satchel_bomb/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
-	explode()
-
-/obj/item/satchel_bomb/process()
-	fuze--
-	if(fuze <= 0)
-		explode(TRUE)		
