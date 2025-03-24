@@ -188,6 +188,7 @@
 					reagents.add_reagent(/datum/reagent/water/gross, amount_to_dirty)
 			update_icon()
 			return
+	update_icon()
 	. = ..()
 
 /obj/item/roguebin/trash

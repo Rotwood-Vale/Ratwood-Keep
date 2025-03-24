@@ -120,6 +120,7 @@
 		testing("attackobj2")
 		if(!reagents.total_volume)
 			to_chat(user, span_warning("[src] is empty!"))
+			update_icon()
 			return
 
 		if(target.reagents.holder_full())
@@ -138,8 +139,12 @@
 					break
 				if(!reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user))
 					reagents.reaction(target, TOUCH, amount_per_transfer_from_this)
+				update_icon()
+				target.update_icon()
+
 			else
 				break
+		update_icon()
 		return
 
 	if(target.is_drainable() && (user.used_intent.type == /datum/intent/fill)) //A dispenser. Transfer FROM it TO us.
@@ -163,10 +168,13 @@
 				if(!target.reagents.total_volume)
 					break
 				target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
+				update_icon()
+				target.update_icon()
+				
 			else
 				break
 
-
+		update_icon()
 		return
 
 	if(reagents.total_volume && user.used_intent.type == INTENT_SPLASH)
@@ -174,6 +182,7 @@
 							span_notice("I splash the contents of [src] onto [target]."))
 		reagents.reaction(target, TOUCH)
 		reagents.clear_reagents()
+		update_icon()
 		return
 
 /obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
