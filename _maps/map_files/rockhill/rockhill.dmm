@@ -559,10 +559,14 @@
 /area/rogue/indoors/town/tavern)
 "aoN" = (
 /obj/structure/fluff/railing/border{
-	dir = 10
+	dir = 1
 	},
-/obj/structure/fluff/walldeco/church/line,
-/turf/open/floor/rogue/hexstone,
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
 /area/rogue/indoors/town/bath)
 "apc" = (
 /obj/structure/fluff/statue/gargoyle/candles,
@@ -4314,14 +4318,6 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/water/swamp,
 /area/rogue/outdoors/town/harbor)
-"cls" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "longtable_mid"
-	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/tavern)
 "clE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/mountains)
@@ -4871,6 +4867,9 @@
 "cAc" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
+	},
+/obj/structure/fluff/railing/border{
+	dir = 6
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -6062,7 +6061,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
 	},
-/obj/item/storage/pill_bottle/dice,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "det" = (
@@ -7444,7 +7443,7 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/item/storage/pill_bottle/dice{
+/obj/item/storage/dice{
 	pixel_y = 5;
 	pixel_x = 15
 	},
@@ -10712,12 +10711,18 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "fxr" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
-	},
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8;
 	layer = 2
+	},
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/obj/structure/fluff/railing/border{
+	dir = 10
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
@@ -11809,7 +11814,7 @@
 	icon_state = "largetable";
 	pixel_x = -5
 	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "gaL" = (
@@ -12782,16 +12787,6 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/bath)
-"gCs" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/obj/structure/fluff/walldeco/maidendrape{
-	pixel_x = 32;
-	pixel_y = 4
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/bath)
 "gDa" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -13535,7 +13530,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/structure/fluff/wallclock,
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "gXd" = (
@@ -15996,6 +15991,9 @@
 /area/rogue/outdoors/town)
 "imx" = (
 /obj/structure/fluff/railing/border,
+/obj/structure/fluff/railing/border{
+	dir = 5
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "imW" = (
@@ -16701,10 +16699,9 @@
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/academy)
 "iFf" = (
-/obj/structure/stairs{
-	dir = 8
+/obj/structure/fluff/railing/border{
+	dir = 10
 	},
-/obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "iFj" = (
@@ -17097,7 +17094,7 @@
 	dir = 5;
 	icon_state = "largetable"
 	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor)
 "iQM" = (
@@ -18343,6 +18340,9 @@
 /area/rogue/indoors/town/church/chapel)
 "jBS" = (
 /obj/structure/fluff/railing/border,
+/obj/structure/stairs{
+	dir = 8
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
 "jCh" = (
@@ -18609,15 +18609,6 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors)
-"jHO" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/turf/open/floor/rogue/churchrough,
-/area/rogue/indoors/town/bath)
 "jHS" = (
 /obj/structure/bed/rogue/inn,
 /obj/item/bedsheet/rogue/pelt,
@@ -20340,13 +20331,10 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/tavern)
 "kyJ" = (
-/obj/structure/stairs{
-	dir = 8
-	},
 /obj/structure/fluff/railing/border{
-	dir = 1
+	dir = 10
 	},
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "kyX" = (
 /obj/structure/table/wood{
@@ -27179,7 +27167,7 @@
 	},
 /obj/item/storage/keyring,
 /obj/item/storage/keyring,
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "olT" = (
@@ -29111,7 +29099,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/toy/cards/deck/syndicate,
-/obj/item/storage/pill_bottle/dice,
+/obj/item/storage/dice,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "pkS" = (
@@ -29934,10 +29922,10 @@
 /area/rogue/indoors/town/magician)
 "pGh" = (
 /obj/structure/fluff/railing/border{
-	dir = 6
+	dir = 9
 	},
 /obj/structure/fluff/railing/border{
-	dir = 9
+	dir = 10
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -34523,7 +34511,7 @@
 /area/rogue/outdoors/rtfield)
 "sjW" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cave)
 "sjX" = (
@@ -35944,12 +35932,13 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "sXU" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
+/obj/structure/fluff/railing/border{
+	dir = 4
 	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/rogue/blocks,
-/area/rogue/under/town/basement)
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
+	},
+/area/rogue/indoors/town/bath)
 "sYi" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/floor/rogue/blocks,
@@ -36487,7 +36476,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "tkQ" = (
-/obj/item/storage/pill_bottle/dice,
+/obj/item/storage/dice,
 /obj/item/storage/roguebag{
 	pixel_x = 9
 	},
@@ -38018,14 +38007,6 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/outdoors/druidgrove)
-"tZH" = (
-/obj/structure/table/wood{
-	dir = 9;
-	icon_state = "largetable"
-	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors)
 "tZJ" = (
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /turf/open/floor/carpet/royalblack,
@@ -38320,8 +38301,8 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/storage/pill_bottle/dice/push_your_luck,
-/obj/item/storage/pill_bottle/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
+/obj/item/storage/dice/push_your_luck,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "ujF" = (
@@ -38823,9 +38804,6 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "uyU" = (
-/obj/structure/fluff/railing/border{
-	dir = 10
-	},
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
 	pixel_y = 0
@@ -38941,6 +38919,9 @@
 "uCM" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
+	},
+/obj/structure/stairs{
+	dir = 8
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
@@ -40268,11 +40249,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/harbor)
 "vrf" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 8
-	},
 /obj/structure/fluff/railing/border{
-	dir = 10
+	dir = 9
+	},
+/obj/structure/stairs/stone{
+	dir = 1
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
@@ -45557,7 +45538,12 @@
 	pass_flags = 1;
 	pixel_y = 32
 	},
-/turf/closed/wall/mineral/rogue/decostone,
+/obj/structure/mineral_door/wood/red{
+	locked = 1;
+	lockid = "nightman";
+	name = "Employee Quarters"
+	},
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
 "ycX" = (
 /obj/structure/chair/wood/rogue/fancy{
@@ -45813,10 +45799,10 @@
 /area/rogue/under/cavewet/bogcaves)
 "yjd" = (
 /obj/structure/fluff/railing/border{
-	dir = 5
+	dir = 10
 	},
 /obj/structure/fluff/railing/border{
-	dir = 10
+	dir = 9
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -107335,9 +107321,9 @@ scK
 cQX
 hCX
 idl
+xrC
+xrC
 dOe
-xrC
-xrC
 vXL
 idl
 cWN
@@ -107767,9 +107753,9 @@ xrC
 vMY
 hCX
 vXL
-vXL
 xrC
 cAm
+vXL
 idl
 vXL
 cWN
@@ -108199,9 +108185,9 @@ gwe
 cQX
 hCX
 idl
-vXL
 scK
 cAm
+vXL
 vXL
 idl
 cWN
@@ -108631,8 +108617,8 @@ scK
 scK
 soz
 ycM
-sIL
 scK
+eFJ
 eFJ
 sIL
 alL
@@ -217495,8 +217481,8 @@ imx
 vbX
 cAc
 uCM
-eNa
-xCt
+aoN
+sXU
 pwW
 scK
 gLf
@@ -217921,15 +217907,15 @@ lNS
 nvH
 rhw
 ueZ
-qfF
+kyJ
 iFf
 yjd
 mCY
 pGh
-kyJ
+tcZ
 fxr
 vrf
-gZt
+njY
 scK
 uoQ
 rSC
@@ -218353,15 +218339,15 @@ qVP
 wYA
 rhw
 tmF
-aoN
-dyT
-kAa
+nfP
+sIR
+sIR
 cnb
 uyU
-gCs
-jHO
-pQc
+cnb
+qUr
 rvT
+njY
 scK
 uEX
 rSC
