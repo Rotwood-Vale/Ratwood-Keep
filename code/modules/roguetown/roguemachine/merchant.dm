@@ -307,14 +307,13 @@
 	contents = "<center>GOLDFACE - In the name of greed.<BR>"
 	contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
 
-	/*var/mob/living/carbon/human/H = user
-	if(H.job == "Merchant")
+	var/mob/living/carbon/human/H = user
+	if(H.job == "Merchant" || H.job == "Shophand")
 		if(canread)
-		contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
+			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
 			contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
-	*/
-	contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
+
 	contents += "</center><BR>"
 
 	var/list/unlocked_cats = list("Apparel","Tools","Seeds","Luxury")
