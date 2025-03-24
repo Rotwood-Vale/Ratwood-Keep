@@ -165,16 +165,33 @@
 	return ..()
 
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
-	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
-		if(do_after(user, 50, target = src))
-			user.visible_message(span_warning("[user] consumes [src]!"),\
-							span_notice("I consume [src]!"))
-			playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
-			new /obj/effect/gibspawner/generic(get_turf(src), user)
-			user.fully_heal()
-			qdel(src)
-		return
-	return ..()
+    if ((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
+        if (do_after(user, 50, target = src))
+            user.visible_message(
+                span_warning("[user] consumes [src]!"),
+                span_notice("I consume [src]!")
+            )
+            playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
+            new /obj/effect/gibspawner/generic(get_turf(src), user)
+            user.fully_heal()
+
+            if (istype(user.dna.species, /datum/species/werewolf))
+                var/obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin/skin = null
+                // yes their armor is HERE
+                for (var/obj/item/item in user.contents)
+                    if (istype(item, /obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin))
+                        skin = item
+                        break
+
+                if (!skin)
+                    to_chat(user, "You do consume the flesh!")
+                else
+                    to_chat(user, "Your skin goes thicker...")
+                    skin.obj_integrity = skin.max_integrity
+
+            qdel(src)
+        return
+    return ..()
 
 /obj/item/bodypart/MiddleClick(mob/user, params)
 	var/obj/item/held_item = user.get_active_held_item()

@@ -21,6 +21,16 @@
 /datum/outfit/job/roguetown/mercenary/desert_rider/pre_equip(mob/living/carbon/human/H)
 	..()
 
+	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
+	head = /obj/item/clothing/head/roguetown/roguehood/shalal
+	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
+	belt = /obj/item/storage/belt/rogue/leather/shalal
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	neck = /obj/item/clothing/neck/roguetown/shalal
+	backpack_contents = list(/obj/item/storage/keyring/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja)
+
 	// CLASS ARCHETYPES
 	H.adjust_blindness(-3)
 	var/classes = list("Janissary","Blade Dancer","Blade Caster")
@@ -127,15 +137,3 @@
 					beltl = /obj/item/rogueweapon/whip
 					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-
-	shoes = /obj/item/clothing/shoes/roguetown/armor/shalal
-	head = /obj/item/clothing/head/roguetown/roguehood/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/leather/angle
-	belt = /obj/item/storage/belt/rogue/leather/shalal
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backr = /obj/item/storage/backpack/rogue/satchel/black
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	neck = /obj/item/clothing/neck/roguetown/shalal
-
-
-	backpack_contents = list(/obj/item/storage/keyring/mercenary, /obj/item/rogueweapon/huntingknife/idagger/navaja)
