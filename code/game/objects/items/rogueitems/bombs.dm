@@ -162,6 +162,11 @@
 			if(prob(prob2fail))
 				snuff()
 
+/obj/item/tntstick/process()
+	fuze--
+	if(fuze <= 0)
+		explode(TRUE)
+
 /obj/item/satchel_bomb
 	name = "Bomb satchel"
 	desc = "A satchel full of gunpowder..."
@@ -227,3 +232,7 @@
 			if(prob(prob2fail))
 				snuff()
 
+/obj/item/satchel_bomb/process()
+	fuze--
+	if(fuze <= 0)
+		explode(TRUE)		
