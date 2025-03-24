@@ -697,6 +697,7 @@
 #include "code\datums\sexcon\sex_actions\oral\suck_nipples.dm"
 #include "code\datums\sexcon\sex_actions\sex\anal_ride_sex.dm"
 #include "code\datums\sexcon\sex_actions\sex\anal_sex.dm"
+#include "code\datums\sexcon\sex_actions\sex\mating_press.dm"
 #include "code\datums\sexcon\sex_actions\sex\throat_sex.dm"
 #include "code\datums\sexcon\sex_actions\sex\vaginal_ride_sex.dm"
 #include "code\datums\sexcon\sex_actions\sex\vaginal_sex.dm"
