@@ -622,11 +622,6 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
-"aro" = (
-/obj/structure/fog_wall,
-/obj/structure/fog_wall,
-/turf/open/floor/rogue/cobblerock,
-/area/rogue/outdoors/rtfield)
 "arC" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/harbor)
@@ -5373,11 +5368,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
-"cNX" = (
-/obj/structure/fog_wall,
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/open/water/swamp,
-/area/rogue/outdoors/bog)
 "cNY" = (
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor)
@@ -12940,10 +12930,6 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
-"gIc" = (
-/obj/structure/fog_wall,
-/turf/closed/mineral/random/rogue,
-/area/rogue/under/cavewet/bogcaves)
 "gIg" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
@@ -13506,12 +13492,6 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
-"gXF" = (
-/obj/structure/fog_wall,
-/obj/structure/fog_wall,
-/obj/structure/flora/newtree,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "gXU" = (
 /obj/structure/chair/stool/rogue{
 	pixel_y = 5
@@ -15325,10 +15305,6 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"hVi" = (
-/obj/structure/fog_wall,
-/turf/open/water/swamp,
-/area/rogue/outdoors/bog)
 "hVj" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
@@ -17040,13 +17016,6 @@
 "iRR" = (
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/bog)
-"iSc" = (
-/obj/structure/fog_wall,
-/turf/open/water/river{
-	dir = 4;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cavewet/bogcaves)
 "iSj" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -23851,11 +23820,6 @@
 /obj/structure/rack/rogue/shelf/big,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
-"mzU" = (
-/obj/structure/fog_wall,
-/obj/structure/fog_wall,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "mAN" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -23958,11 +23922,6 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
-"mEf" = (
-/obj/structure/fog_wall,
-/obj/structure/fog_wall,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
 "mEk" = (
 /obj/item/reagent_containers/powder/spice{
 	pixel_y = 14
@@ -26212,13 +26171,6 @@
 /obj/item/flint,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
-"nQe" = (
-/obj/structure/fog_wall,
-/turf/open/water/river{
-	dir = 4;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cave)
 "nQg" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
@@ -35255,10 +35207,6 @@
 "sKd" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
-"sKg" = (
-/obj/structure/fog_wall,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/bog)
 "sKx" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -40689,10 +40637,6 @@
 "vJv" = (
 /turf/open/floor/rogue/grasscold,
 /area/rogue/indoors/town/magician)
-"vJw" = (
-/obj/structure/fog_wall,
-/turf/closed/mineral/random/rogue/med,
-/area/rogue/under/cavewet/bogcaves)
 "vJx" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/tile/masonic/spiral,
@@ -41544,10 +41488,6 @@
 /obj/item/book/rogue/beardling,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/academy)
-"whm" = (
-/obj/structure/fog_wall,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "whU" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -45132,12 +45072,6 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
-"xYW" = (
-/obj/structure/fog_wall,
-/turf/open/water/river{
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cave)
 "xYY" = (
 /obj/structure/floordoor/gatehatch/outer{
 	redstone_id = "lava_bastion"
@@ -45492,13 +45426,6 @@
 "yhZ" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
-"yiB" = (
-/obj/structure/fog_wall,
-/turf/open/water/river{
-	dir = 1;
-	icon_state = "rockwd"
-	},
-/area/rogue/under/cavewet/bogcaves)
 "yjd" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -46688,7 +46615,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -47120,7 +47047,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -47552,7 +47479,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -47984,7 +47911,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -48416,7 +48343,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -48848,7 +48775,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -49280,7 +49207,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -49712,7 +49639,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -50144,7 +50071,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -50576,7 +50503,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -51008,7 +50935,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -51440,7 +51367,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -51872,7 +51799,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -52304,7 +52231,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -52736,7 +52663,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -53168,7 +53095,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -53600,7 +53527,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -54032,7 +53959,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -54464,7 +54391,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -54896,7 +54823,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -55328,7 +55255,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -55760,7 +55687,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -56192,7 +56119,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -56624,7 +56551,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -57056,7 +56983,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -57488,7 +57415,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -57920,7 +57847,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -58352,7 +58279,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -58784,7 +58711,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -59216,7 +59143,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -59648,7 +59575,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -60080,7 +60007,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -60512,7 +60439,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -60944,7 +60871,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -61376,7 +61303,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -61808,7 +61735,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -62240,7 +62167,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -62672,7 +62599,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -63104,7 +63031,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -63536,7 +63463,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -63968,7 +63895,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -64400,7 +64327,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -64832,7 +64759,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -65264,7 +65191,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -65696,7 +65623,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -66128,7 +66055,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -66560,7 +66487,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -66992,7 +66919,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -67424,7 +67351,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -67856,7 +67783,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -68288,7 +68215,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -68720,7 +68647,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -69152,7 +69079,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -69584,7 +69511,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -70016,7 +69943,7 @@ xaf
 xaf
 xaf
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -70448,7 +70375,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 xaf
@@ -70880,7 +70807,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -71312,7 +71239,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -71744,7 +71671,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -72176,7 +72103,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -72608,7 +72535,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -73040,7 +72967,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -73472,7 +73399,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -73904,7 +73831,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -74336,7 +74263,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -74768,7 +74695,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -75200,7 +75127,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -75632,7 +75559,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -76064,7 +75991,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -76496,7 +76423,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -76928,7 +76855,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -77360,7 +77287,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -77792,7 +77719,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -78224,7 +78151,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -78656,7 +78583,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -79088,7 +79015,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -79520,7 +79447,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -79952,7 +79879,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -80384,7 +80311,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -80816,7 +80743,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -81248,7 +81175,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -81680,7 +81607,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -82112,7 +82039,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -82544,7 +82471,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -82976,7 +82903,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -83408,7 +83335,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -83840,7 +83767,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -84272,7 +84199,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -84704,7 +84631,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -85136,7 +85063,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -85568,7 +85495,7 @@ whb
 whb
 whb
 xaf
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -86000,7 +85927,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -86432,7 +86359,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -86864,7 +86791,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -87296,7 +87223,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -87728,7 +87655,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -88160,7 +88087,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -88592,7 +88519,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -89024,7 +88951,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -89456,7 +89383,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -89888,7 +89815,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -90320,7 +90247,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -90752,7 +90679,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -91184,7 +91111,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -91616,7 +91543,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -92048,7 +91975,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -92480,7 +92407,7 @@ iad
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -92912,7 +92839,7 @@ iad
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -93344,7 +93271,7 @@ iad
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -93776,7 +93703,7 @@ iad
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -94208,7 +94135,7 @@ iad
 iad
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -94640,7 +94567,7 @@ iad
 iad
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -95072,7 +94999,7 @@ iad
 iad
 iad
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -95504,7 +95431,7 @@ iad
 iad
 iad
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -95936,7 +95863,7 @@ iad
 iad
 iad
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -96368,7 +96295,7 @@ iad
 iad
 iad
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -96800,7 +96727,7 @@ iad
 iad
 iad
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -97232,7 +97159,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -97664,7 +97591,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -98096,7 +98023,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -98528,7 +98455,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -98960,7 +98887,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -99392,7 +99319,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -99824,7 +99751,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -100256,7 +100183,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -100688,7 +100615,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -101120,7 +101047,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -101552,7 +101479,7 @@ iad
 iad
 iad
 iad
-gIc
+whb
 whb
 whb
 whb
@@ -101962,29 +101889,29 @@ bQB
 bzm
 ihE
 dlR
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-iSc
-iSc
-iSc
-iSc
-iSc
-iSc
-yiB
-gIc
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+iad
+iad
+iad
+iad
+iad
+iad
+rBg
+whb
 whb
 whb
 whb
@@ -106702,7 +106629,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 dlR
 lDr
 nWY
@@ -107134,7 +107061,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 ezT
@@ -107566,7 +107493,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -107980,25 +107907,25 @@ whb
 whb
 whb
 whb
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
 whb
 whb
 whb
@@ -108411,7 +108338,7 @@ whb
 whb
 whb
 whb
-gIc
+whb
 whb
 whb
 whb
@@ -108835,14 +108762,14 @@ bpD
 bpD
 bpD
 bpD
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
-gIc
+whb
+whb
+whb
+whb
+whb
+whb
+whb
+whb
 whb
 whb
 whb
@@ -110131,7 +110058,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -110563,7 +110490,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -110995,7 +110922,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -111427,7 +111354,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -111859,7 +111786,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -112291,7 +112218,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -112723,7 +112650,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -113155,7 +113082,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -113587,7 +113514,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -114019,7 +113946,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -114451,7 +114378,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -114883,7 +114810,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -115315,7 +115242,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -115747,7 +115674,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -116179,7 +116106,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -116611,7 +116538,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -117043,7 +116970,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -117475,7 +117402,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -117907,7 +117834,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -118339,7 +118266,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -118771,7 +118698,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -119203,7 +119130,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -119635,7 +119562,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -120067,7 +119994,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -120499,7 +120426,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -120889,7 +120816,7 @@ bMj
 bMj
 bMj
 bMj
-xYW
+vTW
 dFE
 dFE
 dFE
@@ -120931,7 +120858,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -121321,7 +121248,7 @@ pKo
 pKo
 pKo
 vTW
-nQe
+dFE
 dFE
 dFE
 dFE
@@ -121363,7 +121290,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -121795,7 +121722,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -122227,7 +122154,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -122659,7 +122586,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -123091,7 +123018,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -123523,7 +123450,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -123955,7 +123882,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -124387,7 +124314,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -124819,7 +124746,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -125251,7 +125178,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -125683,7 +125610,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -126115,7 +126042,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -126547,7 +126474,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -126979,7 +126906,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -127411,7 +127338,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -127843,7 +127770,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -128275,7 +128202,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -128707,7 +128634,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -129139,7 +129066,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -129571,7 +129498,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -130003,7 +129930,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -130435,7 +130362,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -130867,7 +130794,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -131299,7 +131226,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -131731,7 +131658,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -132163,7 +132090,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -132595,7 +132522,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -133027,7 +132954,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -133459,7 +133386,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -133891,7 +133818,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -134323,7 +134250,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -134755,7 +134682,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -135187,7 +135114,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -135619,7 +135546,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -136051,7 +135978,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -136483,7 +136410,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -136915,7 +136842,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -137347,7 +137274,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -137779,7 +137706,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -138211,7 +138138,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 whb
@@ -138643,7 +138570,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 whb
 whb
 xaf
@@ -139075,7 +139002,7 @@ bpD
 bpD
 bpD
 bpD
-gIc
+whb
 xaf
 xaf
 xaf
@@ -139507,7 +139434,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -139939,7 +139866,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -140371,7 +140298,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -140803,7 +140730,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -141235,7 +141162,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -141667,7 +141594,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -142099,7 +142026,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -142531,7 +142458,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -142963,7 +142890,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -143395,7 +143322,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -143827,7 +143754,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -144259,7 +144186,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -144691,7 +144618,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -145123,7 +145050,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -145555,7 +145482,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -145987,7 +145914,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -146419,7 +146346,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -146851,7 +146778,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -147283,7 +147210,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -147715,7 +147642,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -148147,7 +148074,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -148579,7 +148506,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -149011,7 +148938,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -149443,7 +149370,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -149875,7 +149802,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -150307,7 +150234,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -150739,7 +150666,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -151171,7 +151098,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -151603,7 +151530,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -152035,7 +151962,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -152467,7 +152394,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -152899,7 +152826,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -153331,7 +153258,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -153763,7 +153690,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -154195,7 +154122,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -154627,7 +154554,7 @@ bpD
 bpD
 bpD
 bpD
-vJw
+xaf
 xaf
 xaf
 xaf
@@ -189709,7 +189636,7 @@ gxt
 gBA
 gBA
 gBA
-sKg
+wGD
 wGD
 sYx
 kDc
@@ -190141,7 +190068,7 @@ gxt
 gxt
 gxt
 gxt
-sKg
+wGD
 wGD
 wGD
 odi
@@ -190573,7 +190500,7 @@ gxt
 gxt
 gxt
 gxt
-sKg
+wGD
 wGD
 sYx
 odi
@@ -191005,7 +190932,7 @@ gxt
 gxt
 gxt
 gxt
-cNX
+hvB
 lvq
 odi
 odi
@@ -191437,7 +191364,7 @@ gxt
 gxt
 gxt
 gxt
-hVi
+wLx
 hvB
 lOV
 odi
@@ -212138,13 +212065,13 @@ eQu
 teW
 uaL
 uaL
-whm
-whm
-whm
-whm
-whm
-whm
-whm
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
+qbG
 gxt
 gxt
 gxt
@@ -219045,7 +218972,7 @@ fxx
 fxx
 fxx
 fxx
-aro
+fxx
 fxx
 fxx
 iAh
@@ -219477,7 +219404,7 @@ fxx
 fxx
 fxx
 fxx
-aro
+fxx
 fxx
 fxx
 rdX
@@ -219909,7 +219836,7 @@ fxx
 fxx
 fxx
 fxx
-aro
+fxx
 fxx
 fxx
 rdX
@@ -220341,7 +220268,7 @@ uaL
 uaL
 fxx
 qvR
-aro
+fxx
 fxx
 fxx
 rdX
@@ -220773,7 +220700,7 @@ uaL
 uaL
 uaL
 qvR
-mEf
+qvR
 uaL
 fxx
 tgw
@@ -221205,7 +221132,7 @@ wSn
 uaL
 uaL
 qvR
-gXF
+spp
 uaL
 uaL
 uaL
@@ -221637,7 +221564,7 @@ uaL
 xvN
 uaL
 qvR
-mzU
+uaL
 uaL
 efg
 uaL
@@ -548664,7 +548591,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -549096,7 +549023,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -549528,7 +549455,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -549960,7 +549887,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -550392,7 +550319,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -550824,7 +550751,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -551256,7 +551183,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -551688,7 +551615,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
@@ -552120,7 +552047,7 @@ qbG
 qbG
 qbG
 qbG
-whm
+qbG
 qbG
 qbG
 qbG
