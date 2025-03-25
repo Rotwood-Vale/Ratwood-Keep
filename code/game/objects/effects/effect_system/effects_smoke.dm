@@ -264,8 +264,8 @@
 
 /obj/effect/particle_effect/smoke/blind_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
-		M.adjust_blurriness(2)
-		M.adjust_blindness(2)
+		M.adjust_blurriness(3)
+		M.adjust_blindness(3)
 		M.emote("cry")
 		return 1
 
@@ -283,7 +283,7 @@
 
 /obj/effect/particle_effect/smoke/mute_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
-		M.silent = max(M.silent, 10)
+		M.silent = max(M.silent, 8)
 		return 1
 
 /datum/effect_system/smoke_spread/mute_gas

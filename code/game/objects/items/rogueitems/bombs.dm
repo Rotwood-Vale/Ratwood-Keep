@@ -247,24 +247,24 @@
 	throwforce = 0
 	throw_speed = 1
 
-	// Define a base explodes() proc that subtypes can override
+	// Define a base explodes() proc that subtypes can override because its now explodes proc
 	proc/explodes()
 		STOP_PROCESSING(SSfastprocess, src)
-		qdel(src) // Default behavior: just delete the grenade
+		qdel(src) // Delete the grenade after use boy (ALWAYS USE IT)
 
 /obj/item/impact_grenade/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
-	explodes() // Call the base or overridden explodes()
+	explodes() //
 
 /obj/item/impact_grenade/attack_self(mob/user)
 	..()
-	explodes() // Call the base or overridden explodes()
+	explodes() 
 
 /obj/item/impact_grenade/explosion
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. This one sparks..."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		if(T)
@@ -275,7 +275,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. This one emits clouds of harmless smoke..."
 
-	explodes() // Override the base explodes()
+	explodes()
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
@@ -287,7 +287,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. The smell of this one makes you to gasp..."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
@@ -299,7 +299,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. The smell of this one reminds you the taste of red..."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
@@ -311,7 +311,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. Smells like a chicken and burns your hand..."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
@@ -323,7 +323,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. The smell that comes from this one makes your eyes to cry."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
@@ -335,7 +335,7 @@
 	name = "Impact grenade"
 	desc = "Some substance, hidden under some paper and skin. Smell of this one makes your mind clean and not able to say a word."
 
-	explodes() // Override the base explodes()
+	explodes() 
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
