@@ -174,6 +174,123 @@
 /datum/effect_system/smoke_spread/sleeping
 	effect_type = /obj/effect/particle_effect/smoke/sleeping
 
+
+
+/////////////////////////////////////////////
+// Poison gas
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/poison_gas
+	color = "#369c50"
+	lifetime = 10
+
+/obj/effect/particle_effect/smoke/poison_gas/smoke_mob(mob/living/carbon/M)
+	if(..())
+		M.adjustToxLoss(10, 0)
+		M.emote("cough")
+		return 1
+
+/datum/effect_system/smoke_spread/poison_gas
+	effect_type = /obj/effect/particle_effect/smoke/poison_gas
+
+/////////////////////////////////////////////
+// HEALING_GAS
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/healing_gas
+	color = "#da4011"
+	lifetime = 15
+
+/obj/effect/particle_effect/smoke/healing_gas/smoke_mob(mob/living/carbon/M)
+	if(..())
+		M.adjustBruteLoss(-3, 0)
+		M.adjustFireLoss(-3, 0)
+		M.adjustOxyLoss(-3, 0)
+		M.adjustToxLoss(-3, 0)
+		M.emote("cough")
+		return 1
+
+/datum/effect_system/smoke_spread/healing_gas
+	effect_type = /obj/effect/particle_effect/smoke/healing_gas
+
+
+/////////////////////////////////////////////
+// HEALING_GAS
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/healing_gas
+	color = "#da4011"
+	lifetime = 15
+
+/obj/effect/particle_effect/smoke/healing_gas/smoke_mob(mob/living/carbon/M)
+	if(..())
+		M.adjustBruteLoss(-3, 0)
+		M.adjustFireLoss(-3, 0)
+		M.adjustOxyLoss(-3, 0)
+		M.adjustToxLoss(-3, 0)
+		M.emote("cough")
+		return 1
+
+/datum/effect_system/smoke_spread/healing_gas
+	effect_type = /obj/effect/particle_effect/smoke/healing_gas
+
+
+/////////////////////////////////////////////
+// FIRE_GAS
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/fire_gas
+	color = "#d1b411"
+	lifetime = 10
+
+/obj/effect/particle_effect/smoke/healing_gas/fire_mob(mob/living/carbon/M)
+	if(..())
+		M.adjustFireLoss(-3, 0)
+		M.adjust_fire_stacks(10)
+		M.IgniteMob()
+		M.emote("scream")
+		return 1
+
+/datum/effect_system/smoke_spread/fire_gas
+	effect_type = /obj/effect/particle_effect/smoke/fire_gas
+
+
+/////////////////////////////////////////////
+// BLIND_GAS
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/blind_gas
+	color = "#292822"
+	lifetime = 5
+
+/obj/effect/particle_effect/smoke/blind_gas/fire_mob(mob/living/carbon/M)
+	if(..())
+		M.adjust_blurriness(5)
+		M.adjust_blindness(5)
+		M.emote("cry")
+		return 1
+
+/datum/effect_system/smoke_spread/blind_gas
+	effect_type = /obj/effect/particle_effect/smoke/blind_gas
+
+
+/////////////////////////////////////////////
+// MUTE_GAS
+/////////////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/mute_gas
+	color = "#529bfc"
+	lifetime = 10
+
+/obj/effect/particle_effect/smoke/mute_gas/fire_mob(mob/living/carbon/M)
+	if(..())
+		M.silent = max(M.silent, 5)
+		return 1
+
+/datum/effect_system/smoke_spread/mute_gas
+	effect_type = /obj/effect/particle_effect/smoke/mute_gas
+
+
 /////////////////////////////////////////////
 // Chem smoke
 /////////////////////////////////////////////
