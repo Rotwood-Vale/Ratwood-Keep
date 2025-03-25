@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/refugee/magos/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Battle Magos", "Arcanist","Sorcerer", "Occultist")
+	var/classes = list("Battle Magos", "Arcanist","Sorcerer",)
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
