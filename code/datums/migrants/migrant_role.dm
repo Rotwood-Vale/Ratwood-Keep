@@ -36,6 +36,6 @@
 /datum/migrant_role/bandit
 	name = "Bandit"
 	antag_datum = /datum/antagonist/bandit
-	subclass_cat_rolls = list(CTAG_BANDIT = 20)
+	subclass_cat_rolls = list(CTAG_BANDIT = 3)
 	grant_lit_torch = TRUE
 

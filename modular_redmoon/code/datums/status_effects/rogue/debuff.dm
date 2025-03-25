@@ -206,7 +206,7 @@
 	icon_state = "uncookedfood"
 
 /datum/status_effect/debuff/uncookedfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER))
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ORGAN_EATER) || HAS_TRAIT(owner, TRAIT_WILD_EATER))
 		return FALSE
 	. = ..()
 	if(iscarbon(owner))
@@ -247,6 +247,8 @@
 
 /datum/status_effect/debuff/burnedfood/on_apply()
 	. = ..()
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER))
+		return ..()
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.add_stress(/datum/stressevent/burntmeal)
@@ -273,7 +275,7 @@
 	icon_state = "burntmeal"
 
 /datum/status_effect/debuff/rotfood/on_apply()
-	if(HAS_TRAIT(owner, TRAIT_ROT_EATER))
+	if(HAS_TRAIT(owner, TRAIT_NASTY_EATER) || HAS_TRAIT(owner, TRAIT_ROT_EATER))
 		return FALSE
 	. = ..()
 	if(iscarbon(owner))
