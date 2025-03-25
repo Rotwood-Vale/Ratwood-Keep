@@ -1744,6 +1744,8 @@
 #include "code\modules\rituals\_ritual.dm"
 #include "code\modules\rituals\_sigil.dm"
 #include "code\modules\rituals\draw.dm"
+#include "code\modules\rituals\ritechalk.dm"
+#include "code\modules\rituals\ritualcircles.dm"
 #include "code\modules\rituals\ritual_types\divine\resurrection.dm"
 #include "code\modules\rituals\ritual_types\zizo\fleshcrafting.dm"
 #include "code\modules\rituals\ritual_types\zizo\servantry.dm"
