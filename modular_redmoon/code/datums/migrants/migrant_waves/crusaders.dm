@@ -1,5 +1,5 @@
 /datum/migrant_wave/templars
-	name = "The Three Templars"
+	name = "The Three Templars of Ravox"
 	max_spawns = 1
 	weight = 60
 	downgrade_wave = /datum/migrant_wave/templar_down_one
@@ -9,7 +9,7 @@
 	greet_text = "The merry band of three saints."
 
 /datum/migrant_wave/templar_down_one
-	name = "The Two Templars"
+	name = "The Two Templars of Ravox"
 	shared_wave_type = /datum/migrant_wave/templars
 	downgrade_wave = /datum/migrant_wave/templar_down_two
 	can_roll = FALSE
@@ -19,7 +19,7 @@
 	greet_text = "The merry band of two saints."
 
 /datum/migrant_wave/templar_down_two
-	name = "The One Templar"
+	name = "The One Templar of Ravox"
 	shared_wave_type = /datum/migrant_wave/templars
 	can_roll = FALSE
 	roles = list(
