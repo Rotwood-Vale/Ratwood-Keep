@@ -50,7 +50,7 @@
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
 		if(istype(hitby, /obj/projectile))
 			var/obj/projectile/P = hitby
-			if(P.armor_penetration >= 50)
+			if(P.armor_penetration >= 60)
 				owner.visible_message("<span class='danger'>The [hitby] pierces [owner]'s [src]!</span>")
 				take_damage((damage/2), BRUTE)
 				return FALSE
