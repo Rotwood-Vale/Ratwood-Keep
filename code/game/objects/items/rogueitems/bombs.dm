@@ -340,5 +340,5 @@
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/misc/explode/incendiary (1).ogg', 100)
 		for(T in view(2, T))
-			new effect_type = /obj/effect/particle_effect/smoke/mute_gas(T)
+			new /obj/effect/particle_effect/smoke/mute_gas(T)
 		qdel(src)				

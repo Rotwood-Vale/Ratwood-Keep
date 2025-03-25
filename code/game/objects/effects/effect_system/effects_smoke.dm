@@ -243,7 +243,7 @@
 	color = "#d1b411"
 	lifetime = 10
 
-/obj/effect/particle_effect/smoke/healing_gas/fire_mob(mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/fire_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
 		M.adjustFireLoss(-3, 0)
 		M.adjust_fire_stacks(10)
@@ -254,7 +254,6 @@
 /datum/effect_system/smoke_spread/fire_gas
 	effect_type = /obj/effect/particle_effect/smoke/fire_gas
 
-
 /////////////////////////////////////////////
 // BLIND_GAS
 /////////////////////////////////////////////
@@ -263,7 +262,7 @@
 	color = "#292822"
 	lifetime = 5
 
-/obj/effect/particle_effect/smoke/blind_gas/fire_mob(mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/blind_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
 		M.adjust_blurriness(5)
 		M.adjust_blindness(5)
@@ -282,7 +281,7 @@
 	color = "#529bfc"
 	lifetime = 10
 
-/obj/effect/particle_effect/smoke/mute_gas/fire_mob(mob/living/carbon/M)
+/obj/effect/particle_effect/smoke/mute_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
 		M.silent = max(M.silent, 5)
 		return 1
