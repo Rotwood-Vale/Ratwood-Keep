@@ -1,84 +1,114 @@
-/datum/triumph_buy/lich
+/datum/triumph_buy/antagcoin
+	var/owner_ckey
+
+/datum/triumph_buy/antagcoin/lich
 	triumph_buy_id = "Antagcoin: Lich"
 	desc = "Antagcoin: Lich!"
 	triumph_cost = 150
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/werewolf
+/datum/triumph_buy/antagcoin/lich/on_buy()
+	owner_ckey = usr.ckey
+	SStriumphs.post_equip_calls[triumph_buy_id] = src
+
+/datum/triumph_buy/antagcoin/werewolf
 	triumph_buy_id = "Antagcoin: Werewolf"
 	desc = "Antagcoin: Werewolf!"
 	triumph_cost = 75
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/maniac
+/datum/triumph_buy/antagcoin/werewolf/on_buy()
+	owner_ckey = usr.ckey
+	SStriumphs.post_equip_calls[triumph_buy_id] = src
+
+/datum/triumph_buy/antagcoin/maniac
 	triumph_buy_id = "Antagcoin: Maniac"
 	desc = "Antagcoin: Maniac!"
 	triumph_cost = 50
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/cult
+/datum/triumph_buy/antagcoin/maniac/on_buy()
+	owner_ckey = usr.ckey
+	SStriumphs.post_equip_calls[triumph_buy_id] = src
+
+/datum/triumph_buy/antagcoin/cult
 	triumph_buy_id = "Antagcoin: Cult"
 	desc = "Antagcoin: Cult!"
 	triumph_cost = 25
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/revolution
+/datum/triumph_buy/antagcoin/cult/on_buy()
+	owner_ckey = usr.ckey
+	SStriumphs.post_equip_calls[triumph_buy_id] = src
+
+/datum/triumph_buy/antagcoin/revolution
 	triumph_buy_id = "Antagcoin: Revolution"
 	desc = "Antagcoin: Revolution!"
 	triumph_cost = 10
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/triumph
+/datum/triumph_buy/antagcoin/revolution/on_buy()
+	owner_ckey = usr.ckey
+	SStriumphs.post_equip_calls[triumph_buy_id] = src
+
+/datum/triumph_buy/antagcoin/triumph
 	triumph_buy_id = "Antagcoin: 50 Triumphs"
 	desc = "Antagcoin: 50 Triumphs!"
 	triumph_cost = 50
-	category = TRIUMPH_CAT_ROUND_EFX
+	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
 	visible_on_active_menu = FALSE
 
-/datum/triumph_buy/triumph/on_buy()
+/datum/triumph_buy/antagcoin/triumph/on_buy()
+	owner_ckey = usr.ckey
 	SStriumphs.post_equip_calls[triumph_buy_id] = src
 
 // We fire this on activate, also DAMN is this nasty
-/datum/triumph_buy/lich/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/lich/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: Lich"] = /obj/item/antagcoin/lich
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
-/datum/triumph_buy/werewolf/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/werewolf/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: Werewolf"] = /obj/item/antagcoin/werewolf
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
-/datum/triumph_buy/maniac/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/maniac/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: Maniac"] = /obj/item/antagcoin/maniac
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
-/datum/triumph_buy/cult/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/cult/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: Cult"] = /obj/item/antagcoin/zizocultist
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
-/datum/triumph_buy/revolution/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/revolution/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: Revolution"] = /obj/item/antagcoin/revolution
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
-/datum/triumph_buy/triumph/on_activate(mob/living/carbon/human/H)
-	if(!usr)
+/datum/triumph_buy/antagcoin/triumph/on_activate(mob/living/carbon/human/H)
+	if(H.ckey != owner_ckey)
 		return
 	H.mind.special_items["Antagcoin: 50 Triumphs"] = /obj/item/antagcoin/triumph
+	SStriumphs.post_equip_calls.Remove(triumph_buy_id)
 
 /obj/item/antagcoin
 	name = "Flip Me"

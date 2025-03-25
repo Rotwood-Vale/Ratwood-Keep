@@ -6,12 +6,9 @@
 	pre_round_only = TRUE
 	visible_on_active_menu = TRUE
 
-	// When the goblin buy was enabled this actually worked to stop it from being buyable
-	//conflicts_with = list(/datum/triumph_buy/goblin_class)
-
 /datum/triumph_buy/grenzelhoft_maximum/on_buy()
 	SStriumphs.post_equip_calls[triumph_buy_id] = src
-	to_chat(world, span_redtext("Благодаря усилиям [usr] остров Энигма наконец-то переходит во владения Королевства Гренцельхофт. И первым же решением оказалось выселение абсолютно всех нелюдей в Зибантию. Удивительно"))
+	to_chat(world, span_redtext("Благодаря усилиям [usr] остров Энигма наконец-то переходит во владения Королевства Гренцельхофт. И первым же решением оказалось выселение абсолютно всех нелюдей в Зибантию. Удивительно."))
 
 /datum/triumph_buy/grenzelhoft_maximum/on_removal()
 	var/found_duplicate = FALSE
