@@ -63,12 +63,11 @@
 				if(/datum/patron/psydon)
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
@@ -102,14 +101,14 @@
 					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
@@ -142,15 +141,13 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 					belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 					pants = /obj/item/clothing/under/roguetown/chainlegs
 					shoes = /obj/item/clothing/shoes/roguetown/armor/steel
@@ -176,6 +173,7 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
@@ -185,9 +183,6 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 					belt = /obj/item/storage/belt/rogue/leather/plaquegold
 					pants = /obj/item/clothing/under/roguetown/chainlegs
 					shoes = /obj/item/clothing/shoes/roguetown/armor/steel
