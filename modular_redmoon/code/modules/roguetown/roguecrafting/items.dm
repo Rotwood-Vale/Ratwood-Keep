@@ -98,3 +98,23 @@
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 4
+
+/datum/crafting_recipe/roguetown/pyro_arrow
+	name = "Pyroclastic Arrow"
+	reqs = list(
+		/obj/item/ammo_casing/caseless/bolt = 2,
+		/obj/item/ash = 2,
+		/obj/item/natural/cloth = 2,
+	)
+	result = /obj/item/ammo_casing/caseless/arrow/pyro
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/pyro_bolt
+	name = "Pyroclastic Bolt"
+	reqs = list(
+		/obj/item/ammo_casing/caseless/bolt = 2,
+		/obj/item/ash = 2,
+		/obj/item/natural/cloth = 2,
+	)
+	result = /obj/item/ammo_casing/caseless/bolt/pyro
+	skill_level = 3
