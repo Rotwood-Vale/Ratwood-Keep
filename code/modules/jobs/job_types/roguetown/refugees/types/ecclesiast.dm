@@ -76,9 +76,9 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-					shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
-					pants = /obj/item/clothing/under/roguetown/tights/black
-					armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+					pants = /obj/item/clothing/under/roguetown/trou/overseer
+					armor = /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
 					shoes = /obj/item/clothing/shoes/roguetown/armor/inqboots
 					belt = /obj/item/storage/belt/rogue/leather
 					cloak = /obj/item/clothing/cloak/cape/inquisitor
@@ -87,7 +87,7 @@
 					gloves = /obj/item/clothing/gloves/roguetown/inqgloves
 					beltl = /obj/item/rogueweapon/sword/rapier
 					backl = /obj/item/storage/backpack/rogue/satchel
-					backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/helmet/overseer/vice = 1)
+					backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/puritan = 1)
 					H.change_stat("intelligence", 2)
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
