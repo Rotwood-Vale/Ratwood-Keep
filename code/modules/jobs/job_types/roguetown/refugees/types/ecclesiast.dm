@@ -88,7 +88,7 @@
 					gloves = /obj/item/clothing/gloves/roguetown/inqgloves
 					beltl = /obj/item/rogueweapon/sword/rapier
 					backl = /obj/item/storage/backpack/rogue/satchel
-					backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/helmet/overseer/vice)
+					backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/silver = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/helmet/overseer/vice = 1)
 					H.change_stat("intelligence", 2)
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
