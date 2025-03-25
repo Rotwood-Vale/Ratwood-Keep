@@ -19324,6 +19324,10 @@
 "kbY" = (
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/druidgrove)
+"kce" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/rogue/grass,
+/area/rogue/outdoors/bog)
 "kcm" = (
 /obj/structure/fluff/statue/knightalt,
 /obj/structure/fluff/walldeco/customflag{
@@ -42090,6 +42094,10 @@
 "wwd" = (
 /turf/open/floor/rogue/rooftop/green/corner1,
 /area/rogue/outdoors/mountains)
+"wwq" = (
+/obj/structure/flora/roguetree/burnt,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/bog)
 "wwC" = (
 /mob/living/carbon/human/species/human/northern/bum/ambush,
 /turf/open/floor/rogue/greenstone,
@@ -218628,7 +218636,7 @@ rln
 uNl
 sYx
 odi
-odi
+kce
 odi
 sYx
 odi
@@ -218644,7 +218652,7 @@ wLx
 wLx
 wLx
 odi
-odi
+kce
 wGD
 lOV
 lOV
@@ -218988,7 +218996,7 @@ qvR
 uaL
 wSn
 wSn
-wSn
+xqL
 wSn
 fxx
 sjP
@@ -219843,7 +219851,7 @@ uaL
 qvR
 qvR
 xvN
-qvR
+aPR
 qvR
 qvR
 qvR
@@ -220266,7 +220274,7 @@ qvR
 uaL
 uaL
 qvR
-uaL
+efg
 qvR
 uaL
 qvR
@@ -221224,7 +221232,7 @@ odi
 wLx
 kWT
 odi
-sYx
+wwq
 sYx
 wLx
 uRH
@@ -221631,7 +221639,7 @@ uaL
 qvR
 mzU
 uaL
-uaL
+efg
 uaL
 uaL
 mQY
@@ -221987,7 +221995,7 @@ qvR
 fxx
 sjP
 uaL
-qvR
+aPR
 qvR
 qvR
 spp
@@ -224138,7 +224146,7 @@ qbG
 uHB
 qvR
 qvR
-qvR
+aPR
 qvR
 spp
 qvR
@@ -225062,7 +225070,7 @@ hHI
 xvN
 qvR
 qvR
-qvR
+aPR
 rBC
 qvR
 fxx
@@ -225903,7 +225911,7 @@ qvR
 uaL
 qvR
 uaL
-qvR
+aPR
 uaL
 uaL
 qvR
@@ -228075,7 +228083,7 @@ pOX
 qvR
 xvN
 qvR
-qvR
+aPR
 xvN
 qvR
 qvR
