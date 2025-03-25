@@ -123,11 +123,11 @@
 	icon_state = null
 	body_parts_covered = FULL_BODY
 	armor = list("blunt" = 80, "slash" = 60, "stab" = 60, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
-	max_integrity = 250
+	max_integrity = 500
 	item_flags = DROPDEL
 
 /datum/intent/simple/werewolf
@@ -137,7 +137,7 @@
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 30
+	penfactor = 50
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
