@@ -246,7 +246,7 @@
 /obj/effect/particle_effect/smoke/fire_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
 		M.adjustFireLoss(-3, 0)
-		M.adjust_fire_stacks(10)
+		M.adjust_fire_stacks(3)
 		M.IgniteMob()
 		M.emote("scream")
 		return 1
@@ -264,8 +264,8 @@
 
 /obj/effect/particle_effect/smoke/blind_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
-		M.adjust_blurriness(5)
-		M.adjust_blindness(5)
+		M.adjust_blurriness(2)
+		M.adjust_blindness(2)
 		M.emote("cry")
 		return 1
 
@@ -283,7 +283,7 @@
 
 /obj/effect/particle_effect/smoke/mute_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
-		M.silent = max(M.silent, 5)
+		M.silent = max(M.silent, 10)
 		return 1
 
 /datum/effect_system/smoke_spread/mute_gas
