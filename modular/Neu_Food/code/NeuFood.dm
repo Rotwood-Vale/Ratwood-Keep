@@ -237,9 +237,9 @@
 	if(istype(I, /obj/item/kitchen/spoon))
 		if(reagents.total_volume > 0 && !in_use)
 			beingeaten()
-			playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
-			visible_message("<span class='info'>[user] eats from [src].</span>")
 			if(do_after(user,1 SECONDS, target = src))
+				playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
+				visible_message("<span class='info'>[user] eats from [src].</span>")
 				addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 		return TRUE
 				
