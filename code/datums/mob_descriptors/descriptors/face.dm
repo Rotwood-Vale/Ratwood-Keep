@@ -156,3 +156,15 @@
 
 /datum/mob_descriptor/face_exp/curious
 	name = "Curious"
+
+/datum/mob_descriptor/face_exp/anxious
+	name = "Anxious"
+
+/datum/mob_descriptor/face_exp/stressed
+	name = "Stressed"
+
+/datum/mob_descriptor/face_exp/miserable
+	name = "Miserable"
+
+/datum/mob_descriptor/face_exp/deranged
+	name = "Deranged"
