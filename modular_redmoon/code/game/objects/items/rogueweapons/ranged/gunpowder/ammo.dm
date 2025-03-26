@@ -51,14 +51,14 @@
 	speed = 2
 
 //................ Pyro Bolt ............... //
-/obj/item/ammo_casing/caseless/bolt/pyro
+/obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	name = "pyroclastic bolt"
 	desc = "A bolt smeared with a flammable tincture."
 	projectile_type = /obj/projectile/bullet/bolt/pyro
 	possible_item_intents = list(/datum/intent/mace/strike)
 	icon_state = "bolt_pyroclastic"
 
-/obj/item/ammo_casing/caseless/bolt/pyro/Initialize()
+/obj/item/ammo_casing/caseless/rogue/bolt/pyro/Initialize()
 	. = ..()
 	RemoveElement(/datum/element/tipped_item)
 	qdel(reagents)

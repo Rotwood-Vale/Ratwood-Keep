@@ -102,7 +102,7 @@
 /datum/crafting_recipe/roguetown/pyro_arrow
 	name = "Pyroclastic Arrow"
 	reqs = list(
-		/obj/item/ammo_casing/caseless/bolt = 2,
+		/obj/item/ammo_casing/caseless/rogue/bolt = 2,
 		/obj/item/ash = 2,
 		/obj/item/natural/cloth = 2,
 	)
@@ -112,9 +112,9 @@
 /datum/crafting_recipe/roguetown/pyro_bolt
 	name = "Pyroclastic Bolt"
 	reqs = list(
-		/obj/item/ammo_casing/caseless/bolt = 2,
+		/obj/item/ammo_casing/caseless/rogue/bolt = 2,
 		/obj/item/ash = 2,
 		/obj/item/natural/cloth = 2,
 	)
-	result = /obj/item/ammo_casing/caseless/bolt/pyro
+	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	skill_level = 3
