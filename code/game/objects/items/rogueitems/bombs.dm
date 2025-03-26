@@ -268,7 +268,7 @@
 		STOP_PROCESSING(SSfastprocess, src)
 		var/turf/T = get_turf(src)
 		if(T)
-			explosion(T, heavy_impact_range = 1, light_impact_range = 1, hotspot_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			explosion(T, heavy_impact_range = 1, light_impact_range = 2, hotspot_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 			qdel(src)
 
 /obj/item/impact_grenade/smoke
