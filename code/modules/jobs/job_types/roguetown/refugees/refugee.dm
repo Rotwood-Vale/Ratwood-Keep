@@ -33,8 +33,6 @@ GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 	same_job_respawn_delay = 15 MINUTES
 	announce_latejoin = FALSE
 
-	family_blacklisted = TRUE //we should have refugee-only families
-
 
 /datum/job/roguetown/refugee/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

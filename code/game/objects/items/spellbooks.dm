@@ -101,9 +101,8 @@
 /obj/item/book/granter/spellbook/attack_right(mob/user)
 	if(!picked)
 		var/list/designlist = list("green", "yellow", "brown")
-		var/mob/living/carbon/human/gamer = user
-		if(gamer.job == "Court Magician")
-			designlist = list("steel", "gem", "skin", "mimic")
+		if(src.bookquality >=6)
+			designlist.Add("steel", "gem", "skin", "mimic")
 		var/the_time = world.time
 		var/design = input(user, "Select a design.","Spellbook Design") as null|anything in designlist
 		if(!design)
@@ -145,7 +144,7 @@
 	if(reader.has_status_effect(/datum/status_effect/buff/weed))
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
 		qualityoflearn += 10
-	var/obj/effect/decal/cleanable/roguerune/rune = (locate(/obj/effect/decal/cleanable/roguerune) in range(1, user))
+	var/obj/effect/decal/cleanable/roguerune/rune = (locate(/obj/effect/decal/cleanable/roguerune/arcyne/knowledge) in range(1, user))
 	if(rune)
 		to_chat(user, span_cultsmall("The rune beneath my feet glows..."))
 		qualityoflearn += rune.spellbonus
@@ -167,6 +166,8 @@
 	user.visible_message(span_warning("[user] is filled with arcyne energy! You witness [user.p_their()] body convulse and spark brightly."), \
 	span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, this tome's mysteries unveiled one at a time."))
 	qualityoflearn = qualityoflearn / 100
+	if(qualityoflearn > 1)	//Prevents getting more then the maximum from spellbook
+		qualityoflearn = 1
 	var/spellpoints = (src.bookquality * qualityoflearn)
 	spellpoints = round(spellpoints)	//Rounds. 2.4 spellpoint level? too bad. You get 2, not 3.
 	user.mind.adjust_spellpoints(spellpoints)
@@ -251,7 +252,7 @@
 /// Book slapcrafting
 
 /obj/item/spellbook_unfinished
-	var/pages_left = 4
+	var/pages_left = 3
 	name = "bound scrollpaper"
 	dropshrink = 0.6
 	icon = 'icons/roguetown/items/books.dmi'

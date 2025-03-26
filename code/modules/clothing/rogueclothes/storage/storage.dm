@@ -350,12 +350,46 @@
 		STR.not_while_equipped = TRUE
 		STR.allow_dump_out = TRUE
 
+/obj/item/storage/backpack/rogue/backpack/rucksack
+	name = "rucksack"
+	desc = "A bulky backpack worn on the back which can store many items."
+	icon_state = "rucksack"
+	item_state = "rucksack"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	resistance_flags = NONE
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	sewrepair = TRUE
+
+/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 10
+		STR.not_while_equipped = TRUE
+
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
-	name = "Exotic Silk Belt"
+	name = "exotic silk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1
 	sewrepair = TRUE
+
+
+/obj/item/storage/belt/rogue/leather/overseer
+    name = "belt with pouches"
+    desc = "Leather belt with some pouches attached."
+    icon_state = "overseerbelt"
+    item_state = "overseerbelt"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sellprice = 15
+    w_class = WEIGHT_CLASS_BULKY
 
 //----------------- MORE AZURE SPRITEWORK ---------------------
 

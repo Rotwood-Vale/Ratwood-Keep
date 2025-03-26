@@ -117,34 +117,6 @@
 	. = ..()
 	name = get_visible_name()
 
-/mob/living/carbon/human/proc/try_grow_beard()
-
-	if(!(dna?.species))
-		return
-
-	// Certain races dont grow beards
-	if(!(dna.species in RACES_WITH_BEARD_GROWTH))
-		return
-
-	if(!(STUBBLE in dna.species.species_traits))
-		return
-
-	if(mob_biotypes & MOB_UNDEAD)
-		return
-
-	// Change this if you want female dwarves with beard growth
-	if(gender != MALE)
-		return
-
-	var/datum/bodypart_feature/hair/facial/beard = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	if(!beard)
-		return
-
-	if(beard.accessory_type == /datum/sprite_accessory/hair/facial/shaved)
-		beard.accessory_type = /datum/sprite_accessory/hair/facial/stubble
-		to_chat(src, span_warning("My face itches."))
-		update_hair()
-
 
 /mob/living/carbon/human/handle_traits()
 	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 60)

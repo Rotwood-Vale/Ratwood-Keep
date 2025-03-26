@@ -44,6 +44,8 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/swordherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
+		bigboy = 0
+		gripsprite = TRUE
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/swordherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
