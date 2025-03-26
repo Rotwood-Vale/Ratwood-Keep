@@ -47,7 +47,6 @@
 	src.shown_difficulty = shown_difficulty
 
 	RegisterSignal(target, COMSIG_PARENT_ATTACKBY, PROC_REF(check_pick))
-	RegisterSignal(target, COMSIG_LOCKPICK_ATTACKBY, PROC_REF(pick_info))
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 
 
@@ -66,15 +65,14 @@
 	mutable_lockpicks += list(lockpicks)
 	mutable_wedges += list(wedges)
 	mutable_difficulty += difficulty
-	return COMPONENT_BLOCK_LOCKPICK
 
 /datum/element/lockpickable/proc/check_pick(obj/source, obj/item/L, mob/living/user)
 	SIGNAL_HANDLER
 	if(!source.can_be_picked)
-		return COMPONENT_BLOCK_LOCKPICK
-	user.try_pick(source, L, lockpicks, wedges, user, difficulty, shown_difficulty)
-	return COMPONENT_BLOCK_LOCKPICK
-
+		return NONE
+	if(user.try_pick(source, L, lockpicks, wedges, user, difficulty, shown_difficulty))
+		return COMPONENT_NO_AFTERATTACK
+	return NONE
 //user is told its picking
 
 /mob/living/proc/try_pick(obj/P, obj/item/L, list/obj/lockpicks, list/obj/wedges, mob/living/user, difficulty, shown_difficulty)
