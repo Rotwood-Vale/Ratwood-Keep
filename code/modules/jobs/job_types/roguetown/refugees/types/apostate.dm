@@ -45,6 +45,7 @@
 			H.change_stat("constitution", 1)
 			H.change_stat("endurance", 1)
 			H.change_stat("strength", -1)
+			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 
 	switch(classchoice)
