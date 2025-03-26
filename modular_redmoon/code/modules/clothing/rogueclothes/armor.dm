@@ -218,3 +218,45 @@
 	icon = 'modular_redmoon/icons/armor.dmi'
 	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
 	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
+
+//GAMBESON
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/doublet
+	name = "doublet"
+	desc = "A quilted doublet will fit into the image of a wealthy person"
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	icon_state = "doublet"
+	item_state = "doublet"
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
+	l_sleeve_status = SLEEVE_NORMAL
+	r_sleeve_status = SLEEVE_NORMAL
+	armor = list("blunt" = 25, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	sellprice = 37
+	prevent_crits = null
+	boobed = TRUE
+	allowed_race = list(
+			/datum/species/human/northern,
+			/datum/species/human/halfelf,
+			/datum/species/elf/dark,
+			/datum/species/elf/wood,
+			/datum/species/tieberian,
+			/datum/species/aasimar,
+			/datum/species/lizardfolk,
+			/datum/species/lupian,
+			/datum/species/tabaxi,
+			/datum/species/vulpkanin,
+			/datum/species/axian,
+			/datum/species/moth,
+			/datum/species/dracon,
+			/datum/species/anthromorph,
+			/datum/species/demihuman,
+			/datum/species/halforc,
+			/datum/species/anthromorphsmall,
+			/datum/species/kobold
+	)
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/doublet/random/Initialize()
+	color = pick(CLOTHING_BLACK, CLOTHING_DARK_GREEN, CLOTHING_MAJENTA, CLOTHING_RED)
+	return ..()

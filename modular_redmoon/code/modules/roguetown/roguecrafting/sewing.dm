@@ -23,6 +23,8 @@
 				/obj/item/natural/silk = 1)
 	skill_level = 3
 
+/* craftdif of 4 = EXPERT */
+
 /datum/crafting_recipe/roguetown/sewing/abyssorrobe
 	name = "robes (Abyssor) - (3 cloths, silk; LOOM, EXPERT)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/abyssor)
@@ -35,4 +37,11 @@
 	result = list(/obj/item/clothing/neck/roguetown/cloth)
 	reqs = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/silk = 2)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/doublet
+	name = "doublet - (4 cloths, 2 fibers; EXPERT)"
+	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/doublet)
+	reqs = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 2)
 	skill_level = 4
