@@ -240,7 +240,7 @@
 		subjugating = FALSE
 		return
 	playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
-	var/to_distribute = round(payout/bandits_to_benefit.len)
+	var/to_distribute = round(payout/bandits_to_benefit.len, 0.1)
 	for(var/datum/antagonist/bandit/bandit_player in bandits_to_benefit)
 		bandit_player.favor += to_distribute
 		bandit_player.totaldonated += payout

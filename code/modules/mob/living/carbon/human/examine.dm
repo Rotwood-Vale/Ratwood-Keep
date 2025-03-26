@@ -146,6 +146,9 @@
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")
 
+		if(HAS_TRAIT(user, TRAIT_MATTHIOS_BRAND))
+			. += span_phobia("A shameful Matthiosian sigil on their temple!")
+
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
 		if(iszizocultist(user) || iszizolackey(user))
