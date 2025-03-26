@@ -9,7 +9,7 @@
 		/datum/migrant_role/hammerhold/karl = 3,
 		/datum/migrant_role/hammerhold/thrall = 2
 	)
-	greet_text = "Having disembarked your longship, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
+	greet_text = "Having disembarked your longship after a voyage from Hammerhold, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
 
 /datum/migrant_wave/hammerhold_down_one
 	name = "Hammerhold Sea-Raiders"
@@ -21,7 +21,7 @@
 		/datum/migrant_role/hammerhold/karl = 3,
 		/datum/migrant_role/hammerhold/thrall = 1
 	)
-	greet_text = "Having disembarked your longship, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
+	greet_text = "Having disembarked your longship after a voyage from Hammerhold, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
 
 /datum/migrant_wave/hammerhold_down_two
 	name = "Hammerhold Sea-Raiders"
@@ -33,7 +33,7 @@
 		/datum/migrant_role/hammerhold/karl = 2,
 		/datum/migrant_role/hammerhold/thrall = 1
 	)
-	greet_text = "Having disembarked your longship, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
+	greet_text = "Having disembarked your longship after a voyage from Hammerhold, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
 
 /datum/migrant_wave/hammerhold_down_three
 	name = "Hammerhold Sea-Raiders"
@@ -44,4 +44,4 @@
 		/datum/migrant_role/hammerhold/jarl = 1,
 		/datum/migrant_role/hammerhold/karl = 2,
 	)
-	greet_text = "Having disembarked your longship, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."
+	greet_text = "Having disembarked your longship after a voyage from Hammerhold, the land of Rockhill lies open to you. Under the leadership of your Jarl, here you shall find your fortune or your demise."

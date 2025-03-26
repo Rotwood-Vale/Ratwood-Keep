@@ -822,6 +822,9 @@
 /obj/item/clothing/cloak/raincloak/furcloak/black
 	color = "#66564d"
 
+/obj/item/clothing/cloak/raincloak/furcloak/blue
+	color = "#395480"
+
 /obj/item/clothing/head/hooded/rainhood/furhood
 	icon_state = "fur_hood"
 	block2add = FOV_BEHIND

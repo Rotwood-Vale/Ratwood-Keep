@@ -13,18 +13,31 @@
 	head = /obj/item/clothing/head/roguetown/helmet/winged
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
-	cloak = /obj/item/clothing/cloak/raincloak/furcloak
+	cloak = /obj/item/clothing/cloak/volfmantle
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/shield/wood
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
-	beltr = /obj/item/rogueweapon/sword/short
+	if(prob(50))
+		beltr = /obj/item/rogueweapon/sword/decorated
+	else
+		beltr = /obj/item/rogueweapon/stoneaxe/battle
 	id = /obj/item/clothing/ring/sapphires
 	r_hand = /obj/item/rogueweapon/halberd/bardiche
+
+	if(ishumannorthern(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Hammerhold"]
+		H.update_body()
+	if(isdemihuman(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Hammerhold"]
+		H.update_body()
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -48,6 +61,7 @@
 		H.cmode_music = 'sound/music/combat_hammerhold.ogg'
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
@@ -66,26 +80,39 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/shield/wood
 	beltl = /obj/item/rogueweapon/huntingknife/idagger
-	beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 	r_hand = /obj/item/rogueweapon/spear
-	if(prob(60))
+	if(prob(50))
+		beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
+	else
+		beltr = /obj/item/rogueweapon/sword/short
+	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/helmet
 	else
 		head = /obj/item/clothing/head/roguetown/helmet/horned
+
+	if(ishumannorthern(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Hammerhold"]
+		H.update_body()
+	if(isdemihuman(H))
+		var/list/skin_slop = H.dna.species.get_skin_list()
+		H.skin_tone = skin_slop["Hammerhold"]
+
+		H.update_body()
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -114,15 +141,19 @@
 
 /datum/outfit/job/roguetown/hammerhold/thrall/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/hatfur
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	if(H.gender == MALE)
+		head = /obj/item/clothing/head/roguetown/hatfur
+		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+	else
+		head = /obj/item/clothing/head/roguetown/roguehood/random
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
