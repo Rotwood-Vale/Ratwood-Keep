@@ -384,8 +384,6 @@
 		else
 			trykeylock(I, user)
 			return
-//	else if(user.used_intent.type != INTENT_HARM)
-//		return attack_hand(user)
 	if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
 		repairdoor(I,user)
 	else
