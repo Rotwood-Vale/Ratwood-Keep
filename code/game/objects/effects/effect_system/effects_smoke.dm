@@ -203,10 +203,10 @@
 
 /obj/effect/particle_effect/smoke/healing_gas/smoke_mob(mob/living/carbon/M)
 	if(..())
-		M.adjustBruteLoss(-3, 0)
-		M.adjustFireLoss(-3, 0)
-		M.adjustOxyLoss(-3, 0)
-		M.adjustToxLoss(-3, 0)
+		M.adjustBruteLoss(-0.5, 0)
+		M.adjustFireLoss(-0.5, 0)
+		M.adjustOxyLoss(-0.5, 0)
+		M.adjustToxLoss(-0.5, 0)
 		M.emote("cough")
 		return 1
 
