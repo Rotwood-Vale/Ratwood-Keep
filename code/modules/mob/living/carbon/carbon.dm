@@ -739,7 +739,10 @@
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
 
-	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER) || HAS_TRAIT(src, TRAIT_DARKLING))
+	if(HAS_TRAIT(src, TRAIT_DARKLING) && !src.get_eye_protection())
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+
+	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION_BETTER)
 
 	if(HAS_TRAIT(src, TRAIT_DARKVISION)) //DV special prioritized over Noc's boon because DV special is better
