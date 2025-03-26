@@ -89,6 +89,8 @@
 				if(P.get_real_price() >= debt)
 					REMOVE_TRAIT(H, TRAIT_MATTHIOS_BRAND, TRAIT_GENERIC)
 					H.remove_status_effect(/datum/status_effect/matthiosbrand)
+					ADD_TRAIT(H, TRAIT_MATTHIOS_BRAND_OLD, TRAIT_GENERIC)
+					to_chat(H, span_warning("The inhumen sigil on my temple slowly fades away, but not completely."))
 					say("Debt has been sated. Society welcomes you once more.")
 					qdel(P)
 					return
