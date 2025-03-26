@@ -39,7 +39,6 @@
 	name = "Hammerhold Sea-Raiders"
 	shared_wave_type = /datum/migrant_wave/hammerhold
 	can_roll = FALSE
-	downgrade_wave = /datum/migrant_wave/hammerhold_down_four
 	roles = list(
 		/datum/migrant_role/hammerhold/jarl = 1,
 		/datum/migrant_role/hammerhold/karl = 2,
