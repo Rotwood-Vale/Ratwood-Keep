@@ -17,7 +17,7 @@
 	var/admin_spawned = FALSE
 	var/small_item = FALSE //Small items can be grouped into a single crate.
 	var/time_lock = FALSE //How much time before this becomes purchaseable
-
+/*
 /datum/supply_pack/New()
 	..()
 	var/lim = round(cost * 0.3)
@@ -30,7 +30,7 @@
 //	if(amt > 1)
 //		name = "[name] x[amt]"
 //	name = "[name] ([cost])"
-
+*/
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
 	var/obj/structure/closet/crate/C
 	if(paying_account)

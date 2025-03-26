@@ -130,7 +130,7 @@
 		for(var/datum/supply_pack/PA in sortList(pax))
 			var/unlock_time = SSticker.round_start_time + PA.time_lock
 			if(world.time < unlock_time) // Not enough time has passed
-				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")]<BR>"
+				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
 			else // Item is available for purchase
 				contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
@@ -196,7 +196,7 @@
 	subjugating = TRUE
 	say("AN ACCEPTABLE OFFERING.")
 
-	var/payout = 100
+	var/payout = 400
 
 	sleep(2 SECONDS)
 
@@ -209,7 +209,7 @@
 	H.emote("scream")
 	if(HAS_TRAIT(H, TRAIT_NOBLE))
 		say("NOW YOU WILL KNOW TRUE SUBJUGATION.")
-		payout = 200
+		payout = 800
 	else
 		say("A MARK OF SHAME.")
 	ADD_TRAIT(H, TRAIT_MATTHIOS_BRAND, TRAIT_GENERIC)

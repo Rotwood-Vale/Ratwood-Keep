@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue
 	var/static_cost = FALSE
-	var/randomprice_factor = 0.07
+	var/randomprice_factor = 0.3
 
 /datum/supply_pack/rogue/New()
 	. = ..()
