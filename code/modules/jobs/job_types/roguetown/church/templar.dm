@@ -110,6 +110,7 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/transmutation, 1, TRUE) //church's unique to craft organs, make artefacts, gunpowder things, research leeches and create engraves
 		switch(H.patron.name)
 			if("Malum")
 				H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
