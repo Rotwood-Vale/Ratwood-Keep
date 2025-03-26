@@ -8805,12 +8805,19 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "ezy" = (
-/obj/structure/fluff/railing/wood{
-	dir = 4;
-	pixel_x = 6
+/obj/structure/fluff/railing/border{
+	dir = 6;
+	pixel_x = 4
 	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/outdoors/town)
+/obj/structure/lever/wall{
+	dir = 4;
+	name = "Artificer Shutters";
+	redstone_id = "artificer_shutter"
+	},
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/indoors/town/dwarfin)
 "ezJ" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -20654,10 +20661,11 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/town/harbor)
 "kMC" = (
-/obj/structure/mannequin/male/female,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
+/obj/structure/fluff/railing/border{
+	dir = 1
 	},
+/obj/structure/mannequin/male,
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "kMH" = (
 /obj/structure/fluff/railing/border{
@@ -25223,6 +25231,19 @@
 /obj/structure/spacevine/dendor,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"noZ" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/fluff/canopy,
+/obj/structure/bars/passage/shutter{
+	redstone_id = "artificer_shutter";
+	name = "Artificer"
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/indoors/town/dwarfin)
 "npj" = (
 /obj/effect/wisp/prestidigitation,
 /turf/open/water/swamp,
@@ -29418,6 +29439,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
+/obj/structure/mannequin/male/female,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "pzl" = (
@@ -33326,8 +33348,17 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/town/harbor)
 "rKk" = (
-/obj/structure/roguewindow/curtain,
-/turf/open/floor/rogue/blocks,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81
+	},
+/obj/structure/table/wood,
+/obj/structure/bars/passage/shutter{
+	redstone_id = "artificer_shutter";
+	name = "Artificer"
+	},
+/obj/structure/fluff/canopy/green,
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "rKy" = (
 /obj/machinery/light/rogue/torchholder{
@@ -37227,10 +37258,10 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors)
 "tJv" = (
-/obj/structure/mannequin/male,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
+/obj/structure/fluff/walldeco/artificerflag{
+	name = "artificer's guild"
 	},
+/turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/indoors/town/dwarfin)
 "tJU" = (
 /obj/structure/table/wood{
@@ -342844,7 +342875,7 @@ ftG
 aOv
 wbg
 fCu
-dMn
+tJv
 tvR
 tvR
 sco
@@ -343707,7 +343738,7 @@ ccz
 oZC
 wdG
 wbg
-ezy
+wbg
 cKx
 dMk
 dMk
@@ -344139,7 +344170,7 @@ rLD
 wbg
 wbg
 wbg
-gbo
+wbg
 msH
 mZP
 tLF
@@ -344571,9 +344602,9 @@ qEP
 xez
 wbg
 hDn
-gbo
+yht
 rKk
-kMC
+dMk
 dMk
 dMk
 dMk
@@ -345003,15 +345034,15 @@ xif
 kqC
 loh
 oIh
-gbo
-rKk
-tJv
-sju
+yht
+noZ
+dMk
+ezy
 wCO
 cXr
 nhJ
 aqE
-pzi
+kMC
 jYx
 wnm
 sCn
@@ -345435,7 +345466,7 @@ xAt
 kxd
 aOv
 wbg
-bcC
+wbg
 sco
 ouf
 sco
