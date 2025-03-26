@@ -197,27 +197,6 @@
 
 
 /////////////////////////////////////////////
-// HEALING_GAS
-/////////////////////////////////////////////
-
-/obj/effect/particle_effect/smoke/healing_gas
-	color = "#da4011"
-	lifetime = 15
-
-/obj/effect/particle_effect/smoke/healing_gas/smoke_mob(mob/living/carbon/M)
-	if(..())
-		M.adjustBruteLoss(-3, 0)
-		M.adjustFireLoss(-3, 0)
-		M.adjustOxyLoss(-3, 0)
-		M.adjustToxLoss(-3, 0)
-		M.emote("cough")
-		return 1
-
-/datum/effect_system/smoke_spread/healing_gas
-	effect_type = /obj/effect/particle_effect/smoke/healing_gas
-
-
-/////////////////////////////////////////////
 // FIRE_GAS
 /////////////////////////////////////////////
 
