@@ -5589,7 +5589,7 @@
 	locked = 1;
 	lockid = "bog_gatehouse";
 	name = "Gatehouse";
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -7190,7 +7190,7 @@
 	locked = 1;
 	lockid = "bog_gatehouse";
 	name = "Barracks";
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/indoors)
@@ -32175,7 +32175,7 @@
 	locked = 1;
 	lockid = "bog_gatehouse";
 	name = "Stables";
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -33200,7 +33200,8 @@
 	lockdiff = 2;
 	locked = 1;
 	lockid = "bog_gatehouse";
-	name = "Armory"
+	name = "Armory";
+	dir = 1
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
