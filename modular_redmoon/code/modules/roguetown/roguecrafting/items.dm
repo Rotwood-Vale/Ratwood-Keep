@@ -106,7 +106,7 @@
 		/obj/item/ash = 2,
 		/obj/item/natural/cloth = 2,
 	)
-	result = /obj/item/ammo_casing/caseless/arrow/pyro
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/pyro_bolt

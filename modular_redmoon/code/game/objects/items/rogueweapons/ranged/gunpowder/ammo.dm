@@ -95,7 +95,7 @@
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
 
 //................ Pyro Arrow ............... //
-/obj/item/ammo_casing/caseless/arrow/pyro
+/obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	name = "pyroclastic arrow"
 	desc = "An arrow with its tip smeared with a flammable tincture."
 	projectile_type = /obj/projectile/bullet/arrow/pyro
@@ -104,7 +104,7 @@
 	max_integrity = 10
 	force = 8
 
-/obj/item/ammo_casing/caseless/arrow/pyro/Initialize()
+/obj/item/ammo_casing/caseless/rogue/arrow/pyro/Initialize()
 	. = ..()
 	RemoveElement(/datum/element/tipped_item)
 	qdel(reagents)
