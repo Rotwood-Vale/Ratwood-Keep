@@ -119,7 +119,7 @@
 			dat += "<A href='?src=\ref[src];paint=1'>(Rub the dyes in)</A>--"
 			dat += "<font color='#EFEFEF'><A href='?src=\ref[src];clear=1'>(Bleach it)</A></font>"
 	dat += "</center>"
-	var/datum/browser/menu = new(user, "colormate","<center> Dye Bucket</center>", 400, 250, src)
+	var/datum/browser/menu = new(user, "colormate","<center> Dye Bucket</center>", 400, 170, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 
