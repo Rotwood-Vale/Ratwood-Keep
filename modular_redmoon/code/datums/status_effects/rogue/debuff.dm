@@ -5,7 +5,7 @@
 /datum/status_effect/debuff/hungryt1
 	id = "hungryt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
-	effectedstats = list(STATKEY_END = -2, STATKEY_INT = -2)
+	effectedstats = list(STATKEY_END = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt1
@@ -104,7 +104,7 @@
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt1
-	effectedstats = list(STATKEY_END = -1, STATKEY_SPD = -1, STATKEY_INT = -2)
+	effectedstats = list(STATKEY_END = -1, STATKEY_SPD = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt1
