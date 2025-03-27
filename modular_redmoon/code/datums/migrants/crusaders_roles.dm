@@ -10,6 +10,7 @@
 /datum/outfit/job/roguetown/migrant_templar/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
+	H.set_patron(/datum/patron/divine/ravox)
 	wrists = /obj/item/clothing/neck/roguetown/psicross/ravox
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/ravox
 	cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
