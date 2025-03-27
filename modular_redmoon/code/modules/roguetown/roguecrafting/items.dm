@@ -102,7 +102,7 @@
 /datum/crafting_recipe/roguetown/pyro_arrow
 	name = "Pyroclastic Arrow"
 	reqs = list(
-		/obj/item/ammo_casing/caseless/rogue/bolt = 2,
+		/obj/item/ammo_casing/caseless/rogue/arrow = 2,
 		/obj/item/ash = 2,
 		/obj/item/natural/cloth = 2,
 	)
