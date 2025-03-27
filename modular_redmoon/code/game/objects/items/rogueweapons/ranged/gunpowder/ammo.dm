@@ -77,9 +77,9 @@
 
 //explosion values
 	var/exp_heavy = 0
-	var/exp_light = 0
-	var/exp_flash = 0
-	var/exp_fire = 1
+	var/exp_light = 1
+	var/exp_flash = 4
+	var/exp_fire = 2
 
 /obj/projectile/bullet/bolt/pyro/on_hit(target)
 	. = ..()
@@ -123,9 +123,9 @@
 
 //explosion values
 	var/exp_heavy = 0
-	var/exp_light = 0
-	var/exp_flash = 0
-	var/exp_fire = 1
+	var/exp_light = 1
+	var/exp_flash = 4
+	var/exp_fire = 2
 
 /obj/projectile/bullet/arrow/pyro/on_hit(target)
 	. = ..()
