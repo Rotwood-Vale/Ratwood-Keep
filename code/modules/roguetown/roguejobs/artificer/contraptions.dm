@@ -205,8 +205,10 @@
 			new_door.lockid = I.lockid
 		qdel(I)
 	else
+		var/newdir = O.dir
 		var/obj/I = O
-		new I.metalizer_result(get_turf(I))
+		var/obj/result = new I.metalizer_result(get_turf(I))
+		result.dir = newdir
 		qdel(I)
 	flick(on_icon, src)
 	charge_deduction(O, user, 1)
@@ -251,7 +253,7 @@
 				addtimer(CALLBACK(I, PROC_REF(misfire_result)), rand(5))
 				continue
 			object.popcorn_smelt()
-            
+
 	explosion(src, flame_range = 3, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 	qdel(src)
 

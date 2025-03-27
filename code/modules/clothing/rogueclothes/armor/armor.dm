@@ -1063,8 +1063,9 @@
 	name = "artificer jacket"
 	icon_state = "artijacket"
 	desc = "A thick leather jacket adorned with fur and cog decals. The height of Heartfelt fashion."
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
-/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for. 
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for.
 	name = "winter jacket"
 	desc = "The most elegant of furs and vivid of royal dyes combined together into a most classy jacket."
 	icon_state = "winterjacket"

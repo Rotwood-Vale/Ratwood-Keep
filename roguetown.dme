@@ -1771,6 +1771,7 @@
 #include "code\modules\roguetown\roguejobs\alchemist\recipe\reagents.dm"
 #include "code\modules\roguetown\roguejobs\artificer\artificer_table.dm"
 #include "code\modules\roguetown\roguejobs\artificer\contraptions.dm"
+#include "code\modules\roguetown\roguejobs\artificer\gadgets.dm"
 #include "code\modules\roguetown\roguejobs\artificer\handsaw_chisel.dm"
 #include "code\modules\roguetown\roguejobs\artificer\artificer recipes\artificer_recipes.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil.dm"
