@@ -1,8 +1,12 @@
 /datum/class_select_handler/proc/ru_class_select_slop()
 
 	var/data = {"
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<!DOCTYPE html>
+	<html lang='en'>
+	<html>
+		<head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<html>
 		<head>
 			<style>
