@@ -49,7 +49,7 @@
 	current_light_stress = clamp(current_light_stress + 5, 0, max_light_stress)
 	darkling.blur_eyes(15)
 	next_blind = world.time + (rand(30 SECONDS, 60 SECONDS) * (darkling.STACON/10)) //Con determines how frequently you can get blinded
-	to_chat(parent, span_danger("My eyes water at the sudden exposure to bright light! Maybe I should "))
+	to_chat(parent, span_danger("My eyes water at the sudden exposure to bright light!"))
 
 //Applies the effects of our current light stress accumulation threshold
 /datum/component/darkling/proc/apply_stress_effects(var/mob/living/carbon/darkling)
