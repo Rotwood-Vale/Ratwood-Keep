@@ -1120,15 +1120,13 @@
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "artificer armor"
-	desc = "[base_desc]"
-	var/base_desc = "lightweight Armor made of copper by an artificer"
+	desc = "Lightweight Armor made of copper by an artificer"
 	body_parts_covered = CHEST|VITALS|GROIN|NECK
 	icon_state = "artificerplate"
 	item_state = "artificerplate"
 	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
-	do_sound = FALSE
 	max_integrity = 350 //Might be copper, but it's reinforced with an arcane meld and bronze
 	smeltresult = /obj/item/ingot/copper
 	armor_class = ARMOR_CLASS_LIGHT //copper plating, fairly light.
@@ -1162,7 +1160,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/equipped(mob/living/user, slot)
 	. = ..()
 	if(!powered || active_item || slot != SLOT_ARMOR)
-        return
+		return
 	if(mode == 1)
 		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
 			active_item = TRUE
@@ -1213,6 +1211,6 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/proc/update_description()
 	if(mode == 1)
-		desc = "[base_desc] It hums with arcane power, enhancing magical prowess."
+		desc = "Lightweight Armor made of copper by an artificer. It hums with arcane power, enhancing magical prowess."
 	else
-		desc = "[base_desc] It radiates raw strength, reinforcing the wearer's physical might."
+		desc = "Lightweight Armor made of copper by an artificer. It radiates raw strength, reinforcing the wearer's physical might."

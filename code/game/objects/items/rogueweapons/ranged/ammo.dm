@@ -39,6 +39,7 @@
 	name = "pyroclastic bolt"
 	desc = "A bolt smeared with a flammable tincture."
 	damage = 35
+	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "boltpyro_proj"
 	range = 15
 	hitsound = 'sound/blank.ogg'
@@ -173,6 +174,7 @@
 /obj/projectile/bullet/arrow/pyro
 	name = "pyroclastic arrow"
 	desc = "An arrow with its tip drenched in a flammable tincture."
+	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrowpyro_proj"
 	damage = 35
 	range = 15

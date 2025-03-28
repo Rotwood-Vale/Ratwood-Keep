@@ -191,6 +191,23 @@
 						/obj/item/smokebomb,)
 	hammers_per_item = 12
 	skill_level = 3
+
+/datum/artificer_recipe/contraptions/artificerarmor
+	name = "Artificer armor (+3 Copper ingot)(+1 Bronze gear)"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/ingot/copper,/obj/item/ingot/copper, /obj/item/ingot/copper, /obj/item/roguegear/bronze)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor
+	hammers_per_item = 12
+	skill_level = 3
+
+/datum/artificer_recipe/contraptions/volticgauntlet
+	name = "Voltic Gauntlet (+1 Tin ingot)(+2 Bronze gear)(+1 cinnabar ore)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/ingot/tin, /obj/item/rogueore/cinnabar)
+	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
+	hammers_per_item = 12
+	skill_level = 3
+
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
