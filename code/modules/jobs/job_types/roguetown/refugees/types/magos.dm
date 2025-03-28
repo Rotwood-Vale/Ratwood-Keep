@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/refugee/magos/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Battle Magos", "Arcanist","Sorcerer", "Occultist")
+	var/classes = list("Battle Magos", "Arcanist","Sorcerer")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -124,46 +124,7 @@
 			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
-
-		if("Occultist")
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-			H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
-			H.mind.AddSpell(new SPELL_SICKNESS)
-			H.mind.AddSpell(new SPELL_EYEBITE)
-			H.mind.AddSpell(new SPELL_RAISE_UNDEAD_LESSER)
-			H.mind.AddSpell(new SPELL_REVOKE_UNLIFE)
-			head = /obj/item/clothing/head/roguetown/necromhood
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
-			belt = /obj/item/storage/belt/rogue/leather/rope
-			backpack_contents = list(/obj/item/chalk = 1)
-			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
-			beltl = /obj/item/rogueweapon/huntingknife
-			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("strength", -1)
-			H.change_stat("intelligence", 3)
-			H.change_stat("constitution", -2)
-			H.change_stat("endurance", -1)
-			H.change_stat("speed", -1)
-			H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
-			H.mind.AddSpell(new SPELL_LEARNSPELL)
-			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.set_patron(/datum/patron/zizo)
-			H.faction += "undead"
-
-	H.set_blindness(0)
+		
 
 //Decoupled occultist. For admin use.
 
