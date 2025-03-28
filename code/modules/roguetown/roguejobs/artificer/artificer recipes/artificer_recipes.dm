@@ -138,7 +138,7 @@
 
 
 /datum/artificer_recipe/bronze/tools/waterpurifier
-	name = "Self-Purifying Waterskin"
+	name = "Self-Purifying Waterskin (+1 waterskin)"
 	required_item = /obj/item/ingot/bronze
 	created_item = /obj/item/reagent_containers/glass/bottle/waterskin/purifier
 	additional_items = list(/obj/item/reagent_containers/glass/bottle/waterskin)
@@ -305,7 +305,6 @@
 /datum/artificer_recipe/ammunition/musket
 	name = "Musket balls 8x "
 	required_item = /obj/item/ingot/tin		//more uses for tin, and historically some musketballs were lead-tin alloys.
-	additional_items = null
 	created_item = list(/obj/item/ammo_casing/caseless/lead,
 						/obj/item/ammo_casing/caseless/lead,
 						/obj/item/ammo_casing/caseless/lead,
@@ -321,7 +320,6 @@
 /datum/artificer_recipe/ammunition/grapeshot
 	name = "Grapeshot 8x "
 	required_item = /obj/item/ingot/tin
-	additional_items = null
 	created_item = list(/obj/item/ammo_casing/caseless/grapeshot,
 						/obj/item/ammo_casing/caseless/grapeshot,
 						/obj/item/ammo_casing/caseless/grapeshot,
@@ -332,6 +330,35 @@
 						/obj/item/ammo_casing/caseless/grapeshot
 					)
 	hammers_per_item = 10
+	skill_level = 2
+
+/datum/artificer_recipe/ammunition/pyrobolt_five
+	name = "pyroclastic bolt x5 (+1 iron) (+1 fyritius)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
+	created_item = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+				)
+	hammers_per_item = 6
+	skill_level = 2
+
+
+/datum/artificer_recipe/ammunition/pyroarrow_five
+	name = "pyroclastic arrow x5 (+1 iron) (+1 fyritius)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
+	created_item = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+				)
+	hammers_per_item = 6
 	skill_level = 2
 
 // --------- PROSTHETICS -----------
