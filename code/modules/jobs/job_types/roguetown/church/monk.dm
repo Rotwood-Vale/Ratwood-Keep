@@ -36,11 +36,11 @@
 	
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.virginity = TRUE
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
 	switch(H.patron?.type)
-		H.virginity = TRUE
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
