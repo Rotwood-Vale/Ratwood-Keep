@@ -148,6 +148,7 @@
 					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 					beltr = /obj/item/ammo_holder/quiver/arrows
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
 					H.change_stat("strength", 1)
 					H.change_stat("endurance", 1)
 					H.change_stat("perception", 1)
@@ -208,7 +209,6 @@
 				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 				backl = /obj/item/storage/backpack/rogue/backpack
 				r_hand = /obj/item/rogueweapon/woodstaff
-				l_hand = /obj/item/flashlight/flare/torch
 				H.change_stat("strength", 3)
 				H.change_stat("constitution", 2)
 				H.change_stat("intelligence", -1)
@@ -233,7 +233,6 @@
 				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 				backl = /obj/item/storage/backpack/rogue/backpack
 				r_hand = /obj/item/rogueweapon/woodstaff
-				l_hand = /obj/item/flashlight/flare/torch
 				H.change_stat("strength", 3)
 				H.change_stat("constitution", 1)
 				H.change_stat("speed", 2)
