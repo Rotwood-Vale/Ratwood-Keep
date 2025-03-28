@@ -196,6 +196,7 @@
 
 /obj/item/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
+	icon_state = "bowl" //reset this every time I guess.
 	if(reagents)
 		if(reagents.total_volume > 0) 
 			if(reagents.total_volume <= 11) 
