@@ -418,10 +418,16 @@ All foods are distributed among various categories. Use common sense.
 		return FALSE
 
 	if(slice_batch)
-		if(!do_after(user, 30, target = src))
+		var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.5, 3)
+		if(!do_after(user, delay, target = src))
 			return FALSE
 		var/reagents_per_slice = reagents.total_volume/slices_num
-		for(var/i in 1 to slices_num)
+		//Now being good at cooking really matters!
+		var/additional = user.mind.get_skill_level(/datum/skill/craft/cooking) > SKILL_LEVEL_JOURNEYMAN ? 1 : 0
+		if(istype(user, /mob/living))
+			var/mob/living/L = user
+			L.mind.add_sleep_experience(/datum/skill/craft/cooking, L.STAINT * 0.6) //you do this a lot so I lowered it a bit.
+		for(var/i in 1 to slices_num + additional)
 			var/obj/item/reagent_containers/food/snacks/slice = new slice_path(loc)
 			slice.filling_color = filling_color
 			initialize_slice(slice, reagents_per_slice)
