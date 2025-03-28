@@ -1,7 +1,7 @@
 /datum/surgery_step/graggarritual
 	name = "Graggar ritual"
 	time = 45 SECONDS
-	accept_hand = TRUE
+	accept_hand = FALSE
 	possible_locs = list(BODY_ZONE_CHEST)
 	implements = list(
 		TOOL_SCALPEL = 80,
