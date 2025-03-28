@@ -828,6 +828,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				HTML += "<b><span class='dark'><a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a></span></b>"
 			else
 				HTML += span_dark("<a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a>")*/
+			var/add = ""
+			switch(rank)
+				if("Acolyte")
+					add = "(ASTRATA, PESTRA, MALUM, EORA ONLY)"
+				if("Druid")
+					add = "(DENDOR ONLY)"
+				if("Mortician")
+					add = "(NECRA ONLY)"
+				if("Priest")
+					add = "(ASTRATA ONLY)"
 
 			HTML += {"
 
@@ -864,7 +874,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 </style>
 
 <div class="tutorialhover"><font>[used_name]</font>
-<span class="tutorial">[job.tutorial]<br>
+<span class="tutorial"><font color='red'>[add]</font> [job.tutorial]<br>
 Slots: [job.spawn_positions]</span>
 </div>
 
