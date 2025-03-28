@@ -437,3 +437,36 @@
 	desc = "I was on the sermon. My patron is not proud of me."
 	icon_state = "debuff"
 	color ="#af9f9f"
+
+/datum/status_effect/debuff/lobotomy
+	id = "Lobotomized"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/lobotomy
+	effectedstats = list("intelligence" = -5, "speed" = -2, "constitution" = 1, "endurance" = 1) // your brain is potato now. You are not smart but there is less fear pain and stress
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/lobotomized
+	name = "Lobotomized!"
+	desc = "They stuck a needle in my eye!"
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/soultaken
+	id = "Soultaken"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/soultaken
+	effectedstats = list("fortune" = -1) 
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/soultaken
+	name = "Lost part of soul"
+	desc = "They took a part of my soul!"
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/bloodtaken
+	id = "bloodtaken"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/bloodtaken 
+	effectedstats = list("speed" = -1)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/bloodtaken
+	name = "Used as a donor for blood concentrate"
+	desc = "Concentration of my blood been taken..."
+	icon_state = "debuff"

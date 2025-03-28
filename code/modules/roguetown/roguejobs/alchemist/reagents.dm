@@ -23,7 +23,6 @@
 	M.adjustFireLoss(-1*REM, 0)
 	M.adjustOxyLoss(-1, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM)
-	M.adjustCloneLoss(-1*REM, 0)
 	..()
 	. = 1
 //super and minor health potions
@@ -43,7 +42,6 @@
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
 	M.adjustOxyLoss(-0.5, 0)
-	M.adjustCloneLoss(-0.5*REM, 0) //heals as half as health
 	..()
 	. = 1
 
@@ -70,7 +68,6 @@
 	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
 	M.adjustFireLoss(-2*REM, 0)
 	M.adjustOxyLoss(-2, 0)
-	M.adjustCloneLoss(-2*REM, 0) //heals as twice as much as health + every organ
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -1)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, -1)
 	M.adjustOrganLoss(ORGAN_SLOT_TONGUE, -1)
