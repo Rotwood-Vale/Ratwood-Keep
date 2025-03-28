@@ -37,3 +37,10 @@
 	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
 	icon_state = "maiddress"
 	item_state = "maiddress"
+
+/obj/item/clothing/suit/roguetown/shirt/undershirt/fancy
+	name = "Fancy Shirt"
+	icon_state = "fancyshirt"
+	icon = 'modular_redmoon/icons/noble.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/noble_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/noble_onmob.dmi'

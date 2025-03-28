@@ -7,12 +7,14 @@
 
 /obj/item/clothing/under/roguetown/platelegs/blk
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/gloves/roguetown/plate/blk
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/leather/ComponentInitialize()
 	. = ..()

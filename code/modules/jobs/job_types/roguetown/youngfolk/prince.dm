@@ -50,13 +50,15 @@
 /datum/outfit/job/roguetown/prince/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heir
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
-		pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/under/roguetown/tights/black
+		shoes = /obj/item/clothing/shoes/roguetown/nobleboot/thighboots
 	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heiress
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		pants = /obj/item/clothing/under/roguetown/tights/stockings/white
+		shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 	beltl = /obj/item/storage/keyring/royal
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backr = /obj/item/storage/backpack/rogue/satchel

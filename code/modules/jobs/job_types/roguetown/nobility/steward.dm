@@ -34,19 +34,22 @@
 
 /datum/outfit/job/roguetown/steward/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/steward
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
-	pants = /obj/item/clothing/under/roguetown/tights/black
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	head = /obj/item/clothing/head/roguetown/stewardtophat
+	mask = /obj/item/clothing/mask/rogue/spectacles
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/handjacket
+	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/steward
-	backr = /obj/item/storage/backpack/rogue/satchel
-	mask = /obj/item/clothing/mask/rogue/spectacles
 	backpack_contents = list(/obj/item/clothing/mask/rogue/spectacles = 1)
-
-	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
-
-
+	if(H.gender == MALE)
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/steward
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+		pants = /obj/item/clothing/under/roguetown/tights/black
+		shoes = /obj/item/clothing/shoes/roguetown/nobleboot/thighboots
+	else
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/stewarddress
+		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
+		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)

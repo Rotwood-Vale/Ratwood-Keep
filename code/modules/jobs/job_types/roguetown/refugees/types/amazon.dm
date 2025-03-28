@@ -29,15 +29,16 @@
 	beltl = /obj/item/rogueweapon/huntingknife
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator
 	backl = /obj/item/storage/backpack/rogue/satchel
-	H.change_stat("strength", 3)
-	H.change_stat("intelligence", -2)
-	H.change_stat("constitution", 3)
-	H.change_stat("perception", 2)
-	H.change_stat("endurance", 3)
-	H.change_stat("speed", 3)
+	H.change_stat("strength", 2)
+	H.change_stat("intelligence", -1)
+	H.change_stat("constitution", 1)
+	H.change_stat("perception", 1)
+	H.change_stat("endurance", 2)
+	H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	var/weapons = list("Sword","Spear")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)

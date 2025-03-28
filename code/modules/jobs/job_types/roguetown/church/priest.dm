@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	min_pq = 8
 	max_pq = null
 
-	cmode_music = 'sound/music/combat_clergy.ogg'
+	// cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/job/roguetown/priest/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

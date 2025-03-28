@@ -476,47 +476,22 @@
 	edelay_type = 1
 
 /obj/item/clothing/head/roguetown/helmet/heavy/royalknight
-	name = "royal guard's helmet"
+	name = "Royal Guard's Helmet"
 	desc = "A helmet worn by those in the royal guard. Decorated with gold, its white feathers a sign of the oath made to protect the royals until death."
-	icon_state = "royalh"
-	item_state = "royalh"
-	icon = 'modular_redmoon/icons/hats.dmi'
-	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "capbarbute"
+	icon = 'modular_redmoon/icons/captain.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/captain_onmob.dmi'
 	adjustable = CAN_CADJUST
+	body_parts_covered = FULL_HEAD
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	block2add = FOV_BEHIND
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	block2add = FOV_RIGHT|FOV_LEFT
 	smeltresult = /obj/item/ingot/steel
+	max_integrity = 425
 
-/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/black
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/AdjustClothes(mob/user)
-	if(loc == user)
-		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
-		if(adjustable == CAN_CADJUST)
-			adjustable = CADJUSTED
-			icon_state = "royalhum"
-			body_parts_covered = HEAD|HAIR|EARS
-			flags_inv = HIDEHAIR
-			flags_cover = null
-			emote_environment = 0
-			update_icon()
-			if(ishuman(user))
-				var/mob/living/carbon/H = user
-				H.update_inv_head()
-			block2add = null
-		else if(adjustable == CADJUSTED)
-			ResetAdjust(user)
-			emote_environment = 3
-			update_icon()
-			if(user)
-				if(ishuman(user))
-					var/mob/living/carbon/H = user
-					H.update_inv_head()
-		user.update_fov_angles()
-
-/obj/item/clothing/head/roguetown/helmet/heavy/royalknight/update_icon()
+/obj/item/clothing/head/roguetown/helmet/heavy/captain/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
@@ -524,6 +499,35 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/helmet/heavy/captain/AdjustClothes(mob/user)
+	if(loc == user)
+		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "[initial(icon_state)]_raised"
+			body_parts_covered = HEAD|EARS|HAIR
+			flags_inv = HIDEEARS
+			flags_cover = null
+			prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST) // Vulnerable to eye stabbing while visor is open
+			block2add = null
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_head()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			body_parts_covered = FULL_HEAD
+			prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
+			flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+			flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_head()
+		user.update_fov_angles()
+	else // Failsafe.
+		to_chat(user, "<span class='warning'>Наденьте шлем на голову, чтобы открыть/закрыть забрало.</span>")
+		return
 
 /obj/item/clothing/head/roguetown/maidhead
 	name = "maid headdress"
@@ -555,3 +559,16 @@
 /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
 	armor_class = ARMOR_CLASS_MEDIUM
 	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/crown/sparrowcrown
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+
+/obj/item/clothing/head/roguetown/stewardtophat
+	name = "Steward Tophat"
+	desc = "A cylinder hat of strong, oiled leather, decorated with a bronze hoop."
+	icon_state = "stewardtophat"
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head_64x64.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64

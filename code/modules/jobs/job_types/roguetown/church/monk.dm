@@ -40,12 +40,14 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
 	switch(H.patron?.type)
+		H.virginity = TRUE
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/noc) //Nocalytes aren't real. Play Cleric.
 			head = /obj/item/clothing/head/roguetown/roguehood/nochood
 			neck = /obj/item/clothing/neck/roguetown/psicross/noc
@@ -53,16 +55,19 @@
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/dendor) //Dendorites all busted. Play Druid.
 			head = /obj/item/clothing/head/roguetown/dendormask
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+			H.cmode_music = 'sound/music/cmode/garrison/CombatForestGarrison.ogg'
 		if(/datum/patron/divine/necra) //disabled and moved unto gravedigger, but code supports it
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 		if(/datum/patron/divine/pestra) //PLEASE add leper gear later, this SUCKS dude
 			head = /obj/item/clothing/head/roguetown/roguehood/black
 			mask = /obj/item/clothing/mask/rogue/pestra
@@ -70,28 +75,35 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/malum) //Will need their own gear.
 			head = /obj/item/clothing/head/roguetown/roguehood/black
 			neck = /obj/item/clothing/neck/roguetown/psicross/malum
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 			cloak = /obj/item/clothing/cloak/apron/blacksmith
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/eora)
 			head = /obj/item/clothing/head/roguetown/eoramask
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+			H.virginity = FALSE
+			H.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 		if(/datum/patron/divine/xylix)
 			head = /obj/item/clothing/head/roguetown/roguehood/random
 			neck = /obj/item/clothing/neck/roguetown/psicross/xylix
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/roguetown/roguehood/flagellanthood
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
 			pants = /obj/item/clothing/under/roguetown/loincloth
 			shoes = shoes = /obj/item/clothing/shoes/roguetown/sandals
 			shirt =	/obj/item/clothing/suit/roguetown/shirt/undershirt/ravoxrobe
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 		if(/datum/patron/divine/abyssor)
 			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
@@ -99,6 +111,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 			pants = /obj/item/clothing/under/roguetown/tights/purple
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			if(H.mind)
 				H.mind.adjust_skillrank_up_to(/datum/skill/labor/fishing, 3, TRUE)
 				H.mind.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
@@ -108,6 +121,7 @@
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
@@ -129,7 +143,3 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
-/datum/outfit/job/roguetown/monk/post_equip(mob/living/carbon/human/H)
-	..()
-	H.virginity = TRUE

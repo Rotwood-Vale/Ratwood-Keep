@@ -22,7 +22,7 @@
 	advjob_examine = TRUE
 	always_show_on_latechoices = TRUE
 
-	cmode_music = 'sound/music/combat_bog.ogg'
+	// cmode_music = 'sound/music/combat_bog.ogg'
 
 /datum/job/roguetown/bogguardsman/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()

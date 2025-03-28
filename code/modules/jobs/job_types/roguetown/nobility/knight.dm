@@ -20,8 +20,6 @@
 	min_pq = 10
 	max_pq = null
 
-	cmode_music = 'sound/music/cmode/antag/CombatSausageMaker.ogg'
-
 /datum/job/roguetown/knight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
