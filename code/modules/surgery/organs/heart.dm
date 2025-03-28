@@ -267,6 +267,10 @@
 	name = "Blessed heart"
 	desc = "A blessed heart... Maybe"
 
+/datum/status_effect/buff/t2heart/tick()
+	owner.adjustBruteLoss(-0.2, 0)
+	owner.adjustFireLoss(-0.2, 0)	
+
 /obj/item/organ/heart/t2/Insert(mob/living/carbon/M)
 	..()
 	if(M)
@@ -285,6 +289,8 @@
 
 /datum/status_effect/buff/t3heart/tick()
     owner.adjustOxyLoss(-3)
+	owner.adjustBruteLoss(-0.5, 0)
+	owner.adjustFireLoss(-0.5, 0)
 
 /obj/item/organ/heart/t3/Insert(mob/living/carbon/M)
 	..()

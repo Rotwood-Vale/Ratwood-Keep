@@ -102,13 +102,12 @@
 		REMOVE_TRAIT(M, TRAIT_T2_LUNGS , TRAIT_GENERIC)
 
 
-
 /atom/movable/screen/alert/status_effect/buff/t3lungs
 	name = "Corrupted lungs"
-	desc = "Tte cursed thing is inside me now."
+	desc = "The cursed thing is inside me now."
 
 /datum/status_effect/buff/t3lungs/tick()
-    owner.adjustOxyLoss(-3)
+    owner.adjustOxyLoss(-2)
 
 /obj/item/organ/lungs/t3/Insert(mob/living/carbon/M)
 	..()

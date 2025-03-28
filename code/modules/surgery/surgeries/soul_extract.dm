@@ -27,6 +27,12 @@
 	if(target.stat == DEAD)
 		to_chat(user, "They're dead!")
 		return FALSE
+	if(!HAS_TRAIT(user, TRAIT_ILLEGAL_SURGEON)) 
+        display_results(user, target, span_notice("You are not skilled enough to perform such surgery."),
+            "[user] attempts to cut [target]'s body, but fails.",
+            "[user] attempts to cut [target]'s body.")
+        return FALSE
+
 
 /datum/surgery_step/lobotomy/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("I begin to start to put my tools deeper into [target]'s head.."),

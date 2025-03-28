@@ -156,7 +156,7 @@
 	desc = "Blessed organ, by Pestra..."
 
 /datum/status_effect/buff/t2liver/tick()
-    owner.adjustToxLoss(-0.2)
+    owner.adjustToxLoss(-0.3)
 
 /obj/item/organ/liver/t2/Insert(mob/living/carbon/M)
 	..()
@@ -172,10 +172,10 @@
 
 /atom/movable/screen/alert/status_effect/buff/t3liver
 	name = "Corrupted liver"
-	desc = "This cursed thing is inside me now."
+	desc = "The cursed thing is inside me now."
 
 /datum/status_effect/buff/t3liver/tick()
-    owner.adjustToxLoss(-0.5)
+    owner.adjustToxLoss(-1)
 
 /obj/item/organ/liver/t3/Insert(mob/living/carbon/M)
 	..()
