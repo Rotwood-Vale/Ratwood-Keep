@@ -9,7 +9,7 @@
 		"Asmodeus": "eora",
 		"satan": "zizo",
 		"ERP": "bush whacking",
-	    "day": "dae",
+		"day": "dae",
 		"monday": "moonsdae",
 		"tuesday": "tiwsdae",
 		"wednesday": "weddingsdae",
@@ -107,6 +107,9 @@
 		"wolves": "volfs",
 		"lolth": "graggar",
 		"wolfpit": "volfpit",
-		"PQ": "reputation"
+		"PQ": "reputation",
+		"дробовик": "бландербусс",
+		"дробовика": "бландербусса",
+		"дробовики": "бландербуссы"
 	}
 }
