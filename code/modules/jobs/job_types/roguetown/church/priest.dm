@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron) // This creates the cleric holder used for devotion spells
 	C.grant_spells_priest(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/cure_rot)
 	H.verbs |= /mob/living/carbon/human/proc/coronate_lord
 	H.verbs |= /mob/living/carbon/human/proc/churcheapostasy
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
