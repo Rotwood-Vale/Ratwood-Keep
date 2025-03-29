@@ -15,7 +15,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	volume = 300 //100 oz
+	volume = 200 //66 oz
 	smeltresult = /obj/item/ingot/iron
 	
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()

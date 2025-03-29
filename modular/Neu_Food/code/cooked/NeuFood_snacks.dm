@@ -213,7 +213,7 @@
 	icon_state = "cabbage_fried"
 	desc = "A peasant's delight."
 	bitesize = 2
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	tastes = list("warm cabbage" = 1)
 	rotprocess = SHELFLIFE_LONG
 /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried/attackby(obj/item/I, mob/living/user, params)
@@ -275,7 +275,7 @@
 	desc = "Seared onions roasted to a delicious set of rings."
 	icon_state = "onion_fried"
 	bitesize = 2
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	tastes = list("savoury morsel" = 1)
 	rotprocess = SHELFLIFE_DECENT
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried/attackby(obj/item/I, mob/living/user, params)
@@ -301,7 +301,7 @@
 	desc = "Potato bits, well roasted."
 	icon_state = "potato_fried"
 	bitesize = 2
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	tastes = list("warm potato" = 1)
 	rotprocess = SHELFLIFE_LONG
 	
