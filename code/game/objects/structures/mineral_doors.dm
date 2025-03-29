@@ -908,6 +908,10 @@
 	resident_subclass = /datum/subclass/miner
 	lockid = "towner_miner"
 
+/obj/structure/mineral_door/wood/towner/minstrel
+	resident_subclass = /datum/subclass/minstrel
+	lockid = "towner_minstrel"
+
 /obj/structure/mineral_door/wood/towner/farmer
 	resident_subclass = /datum/subclass/farmer
 	lockid = "towner_farmer"
