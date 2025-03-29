@@ -270,5 +270,6 @@
 	name = "blacksteeltongs"
 	desc = "A pair of blacksteel jaws almost certainly used as a sign of prestige."
 	icon_state = "bs_tongs"
+	wdefense = 2
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
