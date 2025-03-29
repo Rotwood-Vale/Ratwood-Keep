@@ -17,6 +17,8 @@
 	min_pq = 0
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/job/roguetown/monk/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
@@ -39,6 +41,8 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/ritechalk = 1)
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -97,11 +101,14 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/transmutation, 2, TRUE) //church's unique to craft organs, make artefacts, gunpowder things, research leeches and create engraves 
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", -1)
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_ILLEGAL_SURGEON, TRAIT_GENERIC)
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new SPELL_MALUM_FLAME_ROGUE) // weaker astra fire spell. mostly for lighting things.
 
