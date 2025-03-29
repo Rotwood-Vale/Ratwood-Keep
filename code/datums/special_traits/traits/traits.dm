@@ -24,7 +24,7 @@
 	ADD_TRAIT(character, TRAIT_BREADY, "[type]")
 
 
-/datum/special_trait/curseofcain
+/datum/special_trait/aboriginal
 	name = "Flawed Immortality"
 	greet_text = span_notice("I've never needed to eat, drink or even breathe... In fact the stench of death does not bother me.")
 	restricted_jobs = list(INQUISITION_ROLES)
