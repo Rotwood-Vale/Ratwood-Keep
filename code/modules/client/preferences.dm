@@ -738,6 +738,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
+/datum/preferences/proc/get_allowed_patrons(datum/outfit/job/roguetown/J)
+	var/data = "("
+	var/datum/outfit/job/roguetown/undertaker/U = new J
+	for(var/I = 1, I <= U.allowed_patrons.len, I++)
+		var/datum/patron/divine/E = U.allowed_patrons[I]
+		data += "[E.name]"
+		if(I != U.allowed_patrons.len)
+			data += ", "
+	data += " only)"
+	return data
+
 /datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Court Magos", "Retinue Captain", "Priest", "Merchant", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 670) //295 620
 	if(!SSjob)
 		return
@@ -828,16 +839,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				HTML += "<b><span class='dark'><a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a></span></b>"
 			else
 				HTML += span_dark("<a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a>")*/
-			var/add = ""
+			var/limitations = ""
 			switch(rank)
 				if("Acolyte")
-					add = "(ASTRATA, PESTRA, MALUM, EORA ONLY)"
+					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/monk)
 				if("Druid")
-					add = "(DENDOR ONLY)"
+					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/druid)
 				if("Mortician")
-					add = "(NECRA ONLY)"
+					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/undertaker)
 				if("Priest")
-					add = "(ASTRATA ONLY)"
+					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/priest)
 
 			HTML += {"
 
@@ -874,7 +885,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 </style>
 
 <div class="tutorialhover"><font>[used_name]</font>
-<span class="tutorial"><font color='red'>[add]</font> [job.tutorial]<br>
+<span class="tutorial"><font color='red'>[limitations]</font> [job.tutorial]<br>
 Slots: [job.spawn_positions]</span>
 </div>
 
