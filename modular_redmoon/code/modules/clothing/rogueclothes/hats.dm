@@ -475,7 +475,7 @@
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 
-/obj/item/clothing/head/roguetown/helmet/heavy/royalknight
+/obj/item/clothing/head/roguetown/helmet/heavy/captain
 	name = "Royal Guard's Helmet"
 	desc = "A helmet worn by those in the royal guard. Decorated with gold, its white feathers a sign of the oath made to protect the royals until death."
 	icon_state = "capbarbute"

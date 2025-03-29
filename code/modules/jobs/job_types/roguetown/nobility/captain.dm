@@ -47,9 +47,9 @@
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/royalknight
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/captain
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/halfplateroyalguard
+	armor = /obj/item/clothing/suit/roguetown/armor/captain
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	pants = /obj/item/clothing/under/roguetown/platelegs/captain
 	gloves = /obj/item/clothing/gloves/roguetown/plate
