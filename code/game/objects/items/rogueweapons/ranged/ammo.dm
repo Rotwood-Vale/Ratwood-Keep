@@ -94,6 +94,18 @@
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
 	icon_state = "stonearrow_poison"
 
+/obj/item/ammo_casing/caseless/rogue/arrow/poisondoll
+	name = "poisoned arrow"
+	desc = "A wooden shaft with a pointy iron end. This one is stained green with floral toxins."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
+	icon_state = "arrow_poison_doll"
+
+/obj/item/ammo_casing/caseless/rogue/arrow/stone/poisondoll
+	name = "poisoned stone arrow"
+	desc = "A wooden shaft with a jagged rock on the end. This one is stained green with floral toxins."
+	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
+	icon_state = "stonearrow_poison_doll"
+
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "poison arrow"
 	damage = 35
@@ -108,6 +120,15 @@
 	poisonamount = 2 //Support and balance for bodkins, which will hold less poison due to how
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
+	name = "stone arrow"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+
+/obj/projectile/bullet/reusable/arrow/poison/doll
+	name = "dollmaker poison arrow"
+	poisontype = /datum/reagent/poison/dollmaker
+	poisonfeel = "weakness" 
+
+/obj/projectile/bullet/reusable/arrow/poison/doll/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 

@@ -620,3 +620,82 @@
 	color = "#61DE2A"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null
+
+// herbs
+
+/obj/item/reagent_containers/powder/alch/chamomile
+	name = "ground up chamomile"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#e7bc53"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/chamomile/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/marigold
+	name = "ground up marigold"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#E4A234"
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/marigold/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/belladonna
+	name = "ground up belladonna"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#371648"
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/belladonna/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/valerian
+	name = "ground up valerian"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#f0dafb"
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/valerian/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/sage
+	name = "ground up sage"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#c698dc"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/sage/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/eyebright
+	name = "ground up eyebright"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#f6eafd"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/eyebright/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/poppy
+	name = "ground up poppy"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#de5673"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/poppy/ground = 10)
+	volume = 10
+
+/obj/item/reagent_containers/powder/alch/herbdrow
+	name = "ground up herb drow"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#23142b"
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = list(/datum/reagent/herb/herbdrow/ground = 10)
+	volume = 10

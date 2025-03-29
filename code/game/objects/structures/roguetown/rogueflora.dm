@@ -580,3 +580,195 @@
     dir = SOUTH
     debris = list(/obj/item/natural/thorn = 3, /obj/item/grown/log/tree/stick = 1)
 //WIP
+
+//herbs
+
+/obj/structure/wild_chamomile
+	name = "flowers"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "chamomile2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/chamomile = 2)
+/obj/structure/wild_chamomile/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/chamomile (get_turf(src))
+		qdel(src)
+/obj/structure/wild_chamomile/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_marigold
+	name = "flowers"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "marigold2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/marigold = 1)
+/obj/structure/wild_marigold/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/marigold (get_turf(src))
+		qdel(src)
+/obj/structure/wild_marigold/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_nettle
+	name = "grass"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "nettle2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 3, /obj/item/reagent_containers/food/snacks/grown/nettle = 1)
+/obj/structure/wild_nettle/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/nettle (get_turf(src))
+		qdel(src)
+/obj/structure/wild_nettle/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_sage
+	name = "herbs"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "sage2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/sage = 1)
+/obj/structure/wild_sage/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/sage (get_turf(src))
+		qdel(src)
+/obj/structure/wild_sage/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_belladonna
+	name = "brush"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "belladonna2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/belladonna = 1)
+/obj/structure/wild_belladonna/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/belladonna (get_turf(src))
+		qdel(src)
+/obj/structure/wild_belladonna/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_valerian
+	name = "herbs"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "valerian2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/valerian = 1)
+/obj/structure/wild_valerian/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/valerian (get_turf(src))
+		qdel(src)
+/obj/structure/wild_valerian/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_herbdrow
+	name = "odd bush"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "herbdrow2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/herbdrow = 1)
+/obj/structure/wild_herbdrow/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/herbdrow (get_turf(src))
+		qdel(src)
+/obj/structure/wild_herbdrow/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_eyebright
+	name = "flower"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "eyebright2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/eyebright = 1)
+/obj/structure/wild_eyebright/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/eyebright (get_turf(src))
+		qdel(src)
+/obj/structure/wild_eyebright/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_poppy
+	name = "flowers"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "poppy2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/poppy = 1)
+/obj/structure/wild_poppy/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/poppy (get_turf(src))
+		qdel(src)
+/obj/structure/wild_poppy/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+
+/obj/structure/wild_thistle
+	name = "weeds"
+	desc = ""
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "weed2"
+	color = "#d2d1ce"
+	layer = BELOW_MOB_LAYER
+	max_integrity = 60
+	density = FALSE
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/thistle = 1)
+/obj/structure/wild_thistle/attack_hand(mob/living/carbon/human/user)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
+	user.visible_message(span_warning("[user] harvests [src]."))
+	if(do_after(user, 3 SECONDS, target = src))
+		new /obj/item/reagent_containers/food/snacks/grown/thistle (get_turf(src))
+		qdel(src)
+/obj/structure/wild_thistle/Crossed(mob/living/carbon/human/H)
+	playsound(src.loc, "plantcross", 80, FALSE, -1)
