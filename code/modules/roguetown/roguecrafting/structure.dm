@@ -198,7 +198,7 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skill_level = 1
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/treatingfurnace
 	name = "heat treatment furnace"
@@ -211,7 +211,7 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skill_level = 1
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/sharpwheel
 	name = "sharpening wheel"
@@ -223,7 +223,7 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skill_level = 1
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/art_table
 	name = "artificer table"
