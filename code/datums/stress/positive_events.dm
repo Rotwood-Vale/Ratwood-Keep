@@ -183,8 +183,12 @@
 	desc = span_green("A nice modern entertainmant.")
 	timer = 10 MINUTES
 
+/datum/stressevent/midget
+	stressadd = -3
+	desc = span_green("Hah. Midget.")
+	timer = 2 MINUTES
+  
 /datum/stressevent/gazeuponme
-
 	timer = 999 MINUTES
 	stressadd = -5
 	desc = span_green("I am a heretic under Ten's gaze... My patron is proud of me!")
