@@ -461,3 +461,23 @@
 	tint = INFINITY
 	sight_flags = BLIND
 	metalizer_result = /obj/item/ammo_casing/caseless/lead
+
+
+/obj/item/organ/eyes/t1
+	name = "Blessed dendorite eyes"
+	desc = "Eyes, that will allow you to see your prey... Be blessed, hunter..."
+	color = "#c2ae40"
+	eye_color = "#864896"
+	see_in_dark = 5
+	sight_flags = SEE_MOBS 
+
+/obj/item/organ/eyes/t2
+	name = "Cursed necran eyes"
+	desc = "Pair of eyes that been stolen from one of Her hounds..."
+	icon_state = "burning_eyes"	
+	color = "#c2ae40"
+	eye_color = "#3c6696"
+	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	see_in_dark = 10
+
