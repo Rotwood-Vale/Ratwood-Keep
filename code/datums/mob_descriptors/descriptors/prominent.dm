@@ -168,6 +168,11 @@
 	verbage = "%HAVE%"
 	prefix = "a"
 
+/datum/mob_descriptor/prominent/prominent_beard
+	name = "Prominent Beard"
+	verbage = "%HAVE%"
+	prefix = "a"
+
 /datum/mob_descriptor/prominent/cold_gaze
 	name = "Cold Gaze"
 	verbage = "%HAVE%"
@@ -342,3 +347,33 @@
 /datum/mob_descriptor/prominent/vulpine_features
 	name = "Vulpine Features"
 	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/dueling_scar
+	name = "Dueling Scar"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/kempt_moustache
+	name = "Well-Kempt Moustache"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/knobby_nose
+	name = "Knobby Nose"
+	verbage = "%HAVE%"
+	prefix = "a"
+
+/datum/mob_descriptor/prominent/alcohol_breath
+	name = "Stinks like Alcohol"
+
+/datum/mob_descriptor/prominent/smoker
+	name = "Reeks of Zigarettes"
+
+/datum/mob_descriptor/prominent/shaky_hands
+	name = "Shaky Hands"
+	verbage = "%HAVE%"
+
+/datum/mob_descriptor/prominent/disquieting_stare
+	name = "Disquieting Stare"
+	verbage = "%HAVE%"
+	prefix = "a"

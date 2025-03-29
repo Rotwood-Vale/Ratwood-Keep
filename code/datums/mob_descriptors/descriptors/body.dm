@@ -88,3 +88,9 @@
 
 /datum/mob_descriptor/body/burly
 	name = "Burly"
+
+/datum/mob_descriptor/body/stout
+	name = "Stout"
+
+/datum/mob_descriptor/body/wiry
+	name = "Wiry"

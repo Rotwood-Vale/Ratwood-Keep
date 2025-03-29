@@ -62,6 +62,11 @@
 		/datum/mob_descriptor/face_exp/humble,
 		/datum/mob_descriptor/face_exp/smug,
 		/datum/mob_descriptor/face_exp/curious,
+		/datum/mob_descriptor/face_exp/anxious,
+		/datum/mob_descriptor/face_exp/stressed,
+		/datum/mob_descriptor/face_exp/miserable,
+		/datum/mob_descriptor/face_exp/deranged,
+		/datum/mob_descriptor/face_exp/composed,
 	)
 
 /datum/descriptor_choice/body
@@ -97,6 +102,8 @@
 		/datum/mob_descriptor/body/broadshoulder,
 		/datum/mob_descriptor/body/waspwaist,
 		/datum/mob_descriptor/body/burly,
+		/datum/mob_descriptor/body/stout,
+		/datum/mob_descriptor/body/wiry,
 	)
 
 /datum/descriptor_choice/stature
@@ -115,6 +122,10 @@
 		/datum/mob_descriptor/stature/bookworm,
 		/datum/mob_descriptor/stature/lowlife,
 		/datum/mob_descriptor/stature/dignitary,
+		/datum/mob_descriptor/stature/lunatic,
+		/datum/mob_descriptor/stature/ruffian,
+		/datum/mob_descriptor/stature/vagabond,
+		/datum/mob_descriptor/stature/hedgie,
 	)
 
 /datum/descriptor_choice/voice
@@ -149,6 +160,8 @@
 		/datum/mob_descriptor/voice/snide,
 		/datum/mob_descriptor/voice/smoker,
 		/datum/mob_descriptor/voice/venomous,
+		/datum/mob_descriptor/voice/silvery,
+		/datum/mob_descriptor/voice/accented,
 	)
 
 /datum/descriptor_choice/skin
@@ -277,7 +290,9 @@
 	/datum/mob_descriptor/prominent/lazy_eye,\
 	/datum/mob_descriptor/prominent/bloodshot_eye,\
 	/datum/mob_descriptor/prominent/baggy_eye,\
+	/datum/mob_descriptor/prominent/knobby_nose,\
 	/datum/mob_descriptor/prominent/twitchy,\
+	/datum/mob_descriptor/prominent/shaky_hands,\
 	/datum/mob_descriptor/prominent/clumsy,\
 	/datum/mob_descriptor/prominent/unkempt,\
 	/datum/mob_descriptor/prominent/tidy,\
@@ -286,6 +301,7 @@
 	/datum/mob_descriptor/prominent/cleft_lip,\
 	/datum/mob_descriptor/prominent/physically_deformed,\
 	/datum/mob_descriptor/prominent/extensive_scars,\
+	/datum/mob_descriptor/prominent/dueling_scar,\
 	/datum/mob_descriptor/prominent/move_strange,\
 	/datum/mob_descriptor/prominent/ghoulish_appearance,\
 	/datum/mob_descriptor/prominent/prominent_chest,\
@@ -294,9 +310,11 @@
 	/datum/mob_descriptor/prominent/prominent_jawline,\
 	/datum/mob_descriptor/prominent/prominent_bottom,\
 	/datum/mob_descriptor/prominent/prominent_potbelly,\
+	/datum/mob_descriptor/prominent/prominent_beard,\
 	/datum/mob_descriptor/prominent/cold_gaze,\
 	/datum/mob_descriptor/prominent/piercing_gaze,\
 	/datum/mob_descriptor/prominent/innocent_gaze,\
+	/datum/mob_descriptor/prominent/disquieting_stare,\
 	/datum/mob_descriptor/prominent/promiscuous_mannerisms,\
 	/datum/mob_descriptor/prominent/intimidating_presence,\
 	/datum/mob_descriptor/prominent/meek_presence,\
@@ -314,10 +332,13 @@
 	/datum/mob_descriptor/prominent/haughty_atmosphere,\
 	/datum/mob_descriptor/prominent/untrustworthy,\
 	/datum/mob_descriptor/prominent/ratty_hair,\
+	/datum/mob_descriptor/prominent/kempt_moustache,\
 	/datum/mob_descriptor/prominent/predatory_look,\
 	/datum/mob_descriptor/prominent/chaste_mannerism,\
 	/datum/mob_descriptor/prominent/whimsy,\
 	/datum/mob_descriptor/prominent/dim_look,\
+	/datum/mob_descriptor/prominent/alcohol_breath,\
+	/datum/mob_descriptor/prominent/smoker,\
 	/datum/mob_descriptor/prominent/custom/one,\
 	/datum/mob_descriptor/prominent/custom/two
 

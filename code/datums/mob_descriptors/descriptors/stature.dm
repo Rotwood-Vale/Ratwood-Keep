@@ -49,3 +49,18 @@
 
 /datum/mob_descriptor/stature/dignitary
 	name = "Dignitary"
+
+/datum/mob_descriptor/stature/lunatic
+	name = "Lunatic"
+
+/datum/mob_descriptor/stature/scholar
+	name = "Scholar"
+
+/datum/mob_descriptor/stature/ruffian
+	name = "Ruffian"
+
+/datum/mob_descriptor/stature/vagabond
+	name = "Vagabond"
+
+/datum/mob_descriptor/stature/hedgie
+	name = "Hedge-Birth"

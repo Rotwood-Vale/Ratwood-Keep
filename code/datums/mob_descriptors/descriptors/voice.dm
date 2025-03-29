@@ -90,3 +90,10 @@
 
 /datum/mob_descriptor/voice/venomous
 	name = "Venomous"
+
+/datum/mob_descriptor/voice/silvery
+	name = "Silvery"
+
+/datum/mob_descriptor/voice/accented
+	name = "Accented"
+	prefix = "an"
