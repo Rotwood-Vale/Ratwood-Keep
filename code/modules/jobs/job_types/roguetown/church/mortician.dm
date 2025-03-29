@@ -17,6 +17,8 @@
 	min_pq = -5
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_clergy.ogg'
+
 /datum/job/roguetown/undertaker/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
@@ -46,7 +48,7 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backr = /obj/item/rogueweapon/shovel
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/natural/bundle/stick = 1)
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/natural/bundle/stick = 1, /obj/item/ritechalk = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
@@ -68,6 +70,7 @@
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
