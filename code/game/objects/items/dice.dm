@@ -1,6 +1,6 @@
 /*****************************Dice Bags********************************/
 
-/obj/item/storage/pill_bottle/dice
+/obj/item/storage/dice
 	name = "bag of dice"
 	desc = ""
 	icon = 'icons/obj/dice.dmi'
@@ -17,7 +17,19 @@
 				/obj/item/dice/d100
 				)
 
-/obj/item/storage/pill_bottle/dice/PopulateContents()
+/obj/item/storage/dice/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.collection_mode = COLLECT_EVERYTHING
+	STR.click_gather = TRUE
+	STR.dump_time = 0
+	STR.allow_quick_gather = TRUE
+	STR.allow_quick_empty = TRUE
+	STR.allow_look_inside = TRUE
+	STR.allow_dump_out = TRUE
+	STR.set_holdable(list(/obj/item/dice, /obj/item/paper))
+
+/obj/item/storage/dice/PopulateContents()
 	new /obj/item/dice/d4(src)
 	new /obj/item/dice/d6(src)
 	new /obj/item/dice/d6(src)
@@ -28,13 +40,13 @@
 //	var/picked = pick(special_die)
 //	new picked(src)
 
-/obj/item/storage/pill_bottle/dice/suicide_act(mob/user)
+/obj/item/storage/dice/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (OXYLOSS)
 
-/obj/item/storage/pill_bottle/dice/hazard
+/obj/item/storage/dice/hazard
 
-/obj/item/storage/pill_bottle/dice/hazard/PopulateContents()
+/obj/item/storage/dice/hazard/PopulateContents()
 	new /obj/item/dice/d6(src)
 	new /obj/item/dice/d6(src)
 	new /obj/item/dice/d6(src)
@@ -44,11 +56,11 @@
 		else
 			new /obj/item/dice/d6(src)
 
-/obj/item/storage/pill_bottle/dice/push_your_luck
+/obj/item/storage/dice/push_your_luck
 	name = "Push Your Luck game set"
 	desc = "A bag with 6 dice and a guide to play your favorite game!"
 
-/obj/item/storage/pill_bottle/dice/push_your_luck/PopulateContents()
+/obj/item/storage/dice/push_your_luck/PopulateContents()
 	new /obj/item/dice/d6(src)
 	new /obj/item/dice/d6(src)
 	new /obj/item/dice/d6(src)
