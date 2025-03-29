@@ -50,10 +50,12 @@
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
 		if(owner.used_intent?.tranged)
 			owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
+			src.take_damage(damage)
 			return 1
 		else
 			if(prob(coverage))
 				owner.visible_message(span_danger("[owner] blocks [hitby] with [src]!"))
+				src.take_damage(damage)
 				return 1
 	return 0
 

@@ -13,6 +13,7 @@
 	randomspread = 0
 	spread = 0
 	can_parry = TRUE
+	damfactor = 1 	//Technically 1 in the parent, but keeping this here for readability.
 	force = 15
 	verbage = "nock"
 	cartridge_wording = "arrow"
@@ -67,6 +68,7 @@
 		else
 			BB.damage = BB.damage * (user.STAPER / 10)
 			BB.embedchance = 100
+		BB.damage = BB.damage * damfactor
 		if(HAS_TRAIT(user, TRAIT_TINY))
 			BB.damage = (BB.damage * 0.1)
 	. = ..()
