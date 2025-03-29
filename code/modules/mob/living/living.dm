@@ -574,17 +574,17 @@
 
 // MOB PROCS //END
 
-/mob/living/proc/mob_sleep()
-	set name = "Sleep"
-	set category = "IC"
-	set hidden = 1
-	if(IsSleeping())
-		to_chat(src, span_warning("I am already sleeping!"))
-		return
-	else
-		if(alert(src, "You sure you want to sleep for a while?", "Sleep", "Yes", "No") == "Yes")
-			SetSleeping(400) //Short nap
-	update_mobility()
+// /mob/living/proc/mob_sleep()
+// 	set name = "Sleep"
+// 	set category = "IC"
+// 	set hidden = 1
+// 	if(IsSleeping())
+// 		to_chat(src, span_warning("I am already sleeping!"))
+// 		return
+// 	else
+// 		if(alert(src, "You sure you want to sleep for a while?", "Sleep", "Yes", "No") == "Yes")
+// 			SetSleeping(400) //Short nap
+// 	update_mobility()
 
 /mob/proc/get_contents()
 	return

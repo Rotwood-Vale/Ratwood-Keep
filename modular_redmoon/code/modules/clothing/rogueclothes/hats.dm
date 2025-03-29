@@ -557,7 +557,9 @@
 	sellprice = 50
 
 /obj/item/clothing/head/roguetown/helmet/blacksteel/bucket
-	armor_class = ARMOR_CLASS_MEDIUM
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/helmet/heavy/blkknight
 	block2add = FOV_BEHIND
 
 /obj/item/clothing/head/roguetown/crown/sparrowcrown
