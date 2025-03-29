@@ -171,8 +171,12 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("strength", -2)
 		H.change_stat("endurance", -2)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		backpack_contents = list(/obj/item/book/granter/spellbook/apprentice = 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	
+	
 
 /datum/subclass/prince/inbred
 	name = "Inbred"
