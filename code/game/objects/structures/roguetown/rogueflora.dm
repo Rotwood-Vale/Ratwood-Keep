@@ -120,6 +120,21 @@
 	user.play_priomusic('sound/music/tree.ogg', MUSIC_PRIO_DEFAULT)
 */
 
+/obj/structure/flora/roguetree/wise/elder
+	name = "Elderbaum";
+	desc = "An old, wicked tree that is in a deep slumber. The druids seem to love it."
+	max_integrity = 1000 // 5 times mightier than your average tree!
+
+/obj/structure/flora/roguetree/wise/elder/obj_destruction(damage_flag)
+	. = ..()
+	for(var/mob/living/carbon/human/H in GLOB.human_list)
+		if (H.patron.type == /datum/patron/divine/dendor)
+			to_chat(H, span_userdanger("Your body shudders, and you feel sick to your stomach, your connection to nature seeming to wane for a moment. Something is not right..."))
+			H.add_nausea(300)
+
+	message_admins("The elder tree has been destroyed")
+	addomen(OMEN_DESECRATE_DENDOR)	
+
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"
 	desc = "Maybe lightning, maybe war took the life of this once lively tree."
