@@ -487,7 +487,8 @@
 		return TRUE
 	to_chat(user, "<span class='notice'>Adding water, now its time to knead it...</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
-	if(do_after(user,2 SECONDS, target = src))
+	var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.5, 2)
+	if(do_after(user, delay, target = src))
 		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 		name = "wet powder"
 		desc = "Destined for greatness, at your hands."
@@ -499,7 +500,8 @@
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
 	if(water_added)
 		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
-		if(do_after(user,3 SECONDS, target = src))
+		var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.5, 3)
+		if(do_after(user,delay, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
 			qdel(src)
@@ -563,9 +565,16 @@ What it does:
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/))
 		if(isturf(loc)&& (found_table))
-			if (contents.len == 0)
+			if (contents.len == 0)				
+				//Need something better than this in future like a buff
+				if(istype(I,  /obj/item/reagent_containers/food/snacks/))
+					var/obj/item/reagent_containers/food/snacks/S = I
+					S.bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+					if(user.mind.get_skill_level(/datum/skill/craft/cooking) > SKILL_LEVEL_JOURNEYMAN)
+						S.eat_effect = /datum/status_effect/buff/greatsnackbuff
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				if(do_after(user,2 SECONDS, target = src))
+				var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.5, 3)
+				if(do_after(user,delay, target = src))
 					user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.4)
 					to_chat(user, span_info("I add \the [I.name] to \the [name]."))
 					I.forceMove(src)
@@ -605,9 +614,7 @@ What it does:
 		vis_contents += contents[1]
 		name = "platter of [contents[1].name]"
 		desc = contents[1].desc
-		//Need something better than this in future like a buff
-		if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
-			contents[1].bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+
 	else
 		vis_contents = 0
 		name = initial(name)
@@ -620,13 +627,18 @@ What it does:
 		return
 
 	if(contents.len >0)
-		if(do_after(user,2 SECONDS, target = src))
+		var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.5, 3)
+		if(do_after(user,delay, target = src))
 			contents[1].vis_flags = 0
 			//No need to change scale since and pixel_y I think all food already resets that when you grab it
 			contents[1].icon_state = initial(contents[1].icon_state)
 			//sometimes food puts an item in its place!!
 			if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
-				contents[1].bonus_reagents = list()
+				var/obj/item/reagent_containers/food/snacks/S = contents[1]
+				S.eat_effect = initial(S.eat_effect) // you ruined the meal! No bonus!
+				S.bonus_reagents = list()
+
+
 			to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
 			if(!usr.put_in_hands(contents[1]))
 				contents[1].forceMove(get_turf(src))
