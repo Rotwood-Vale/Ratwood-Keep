@@ -160,6 +160,8 @@
 		/datum/mob_descriptor/voice/snide,
 		/datum/mob_descriptor/voice/smoker,
 		/datum/mob_descriptor/voice/venomous,
+		/datum/mob_descriptor/voice/silvery,
+		/datum/mob_descriptor/voice/accented,
 	)
 
 /datum/descriptor_choice/skin

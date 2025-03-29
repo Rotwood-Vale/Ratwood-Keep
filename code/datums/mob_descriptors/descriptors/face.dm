@@ -168,3 +168,6 @@
 
 /datum/mob_descriptor/face_exp/deranged
 	name = "Deranged"
+
+/datum/mob_descriptor/face_exp/composed
+	name = "Composed"
