@@ -40,6 +40,21 @@
 		take_damage(11, BRUTE, "blunt", 1)
 	..()
 
+
+/obj/item/clothing/mask/rogue/spectacles/delf
+	name = "dark elf sunshields"
+	desc = "A pair of dark elven sunshields: Deeply tinted glass designed to protect sensitive eyes from the wretched sun. Quite delicate, and usually only worn by the wealthy who have business aboveground."
+	flash_protect = FLASH_PROTECTION_WELDER
+	tint = 1
+
+/obj/item/clothing/mask/rogue/spectacles/delf/equipped(mob/user, slot)
+	. = ..()
+	user.update_sight()
+
+/obj/item/clothing/mask/rogue/spectacles/delf/dropped(mob/user)
+	. = ..()
+	user.update_sight()
+
 /obj/item/clothing/mask/rogue/equipped(mob/user, slot)
 	. = ..()
 	user.update_fov_angles()

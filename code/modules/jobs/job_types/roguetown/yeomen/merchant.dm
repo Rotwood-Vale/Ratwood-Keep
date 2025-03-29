@@ -51,7 +51,8 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold
 	backpack_contents = list(/obj/item/storage/keyring/merchant)
-
+	if(isdarkelf(H))
+		backpack_contents.Add(/obj/item/clothing/mask/rogue/spectacles/delf)
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 		H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
