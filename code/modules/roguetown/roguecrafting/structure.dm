@@ -198,7 +198,7 @@
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skill_level = 2
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/structure/treatingfurnace
 	name = "heat treatment furnace"
