@@ -209,8 +209,7 @@
 			used_title = f_title
 
 		// Migrant_type isn't used, job titles apply to all, and by this point in the code
-		// you don't have access to their job/outfit. This is the only thing
-		// I can think of that distinguishes towners from all outside forces...
+		// This is the only thing I can think of that distinguishes towners from all outside forces...
 		if(peopleknowme.len) 
 			scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 
