@@ -132,6 +132,10 @@
 		to_chat(user, span_warning("I need to cast this spell on a corpse."))
 		return FALSE
 
+	if(!istype(obj, /mob/living/simple_animal/hostile/rogue/skeleton))
+		to_chat(user, span_warning("I need to cast this spell on a living skeletons."))
+		return FALSE
+
 	// bandaid until goblin skeleton immortality is fixed
 	if(istype(obj, /mob/living/carbon/human/species/goblin))
 		to_chat(user, span_warning("I cannot raise goblins."))
