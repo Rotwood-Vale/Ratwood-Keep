@@ -199,6 +199,22 @@
 	color_index = "bad"
 	mill_result = /obj/item/reagent_containers/powder/alch/berryp
 
+//pyroclastic flowers - stonekeep port
+/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+	name = "fyritius flower"
+	seed = /obj/item/seeds/fyritius
+	desc = "A delicate orange flower that radiates warmth."
+	icon_state = "fyritius"
+	filling_color = "#ff5e00"
+	tastes = list("tastes like a burning coal and fire" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
+	dropshrink = 0.8
+	rotprocess = null
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
 	name = "swampweed"
