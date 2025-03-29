@@ -49,7 +49,8 @@
 			L.adjustFireLoss(50)
 			if(L.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 				L.visible_message(span_danger("[L] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
-				L.gib()
+				L.adjust_fire_stacks(12)
+				L.adjustFireLoss(100)
 		return TRUE
 	else
 		return FALSE

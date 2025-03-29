@@ -77,7 +77,9 @@
 			S.AOE_flash(user, range = 8)
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
-			target.gib()
+			target.adjust_fire_stacks(6)
+			target.IgniteMob()
+			target.adjustFireLoss(30)
 			return TRUE
 		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
 			to_chat(user, span_warning("Nothing happens."))
