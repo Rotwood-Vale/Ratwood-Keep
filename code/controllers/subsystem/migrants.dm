@@ -283,6 +283,8 @@ SUBSYSTEM_DEF(migrants)
 		return FALSE
 	if(role.banned_lunatic && is_misc_banned(player.ckey, BAN_MISC_LUNATIC))
 		return FALSE
+	if(get_playerquality(player.ckey) < 0)
+		return FALSE
 	if(!player.prefs.allowed_respawn())
 		return FALSE
 	if(is_migrant_banned(player.ckey, role.name))
