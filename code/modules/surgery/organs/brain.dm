@@ -78,8 +78,6 @@
 		if(!brainmob.stored_dna)
 			brainmob.stored_dna = new /datum/dna/stored(brainmob)
 		C.dna.copy_dna(brainmob.stored_dna)
-	if(L.mind?.current)
-		L.mind.transfer_to(brainmob)
 //	to_chat(brainmob, "<span class='notice'>I feel slightly disoriented. That's normal when you're just a brain.</span>")
 
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
