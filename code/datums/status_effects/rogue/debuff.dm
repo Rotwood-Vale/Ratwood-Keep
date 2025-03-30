@@ -437,3 +437,28 @@
 	desc = "I was on the sermon. My patron is not proud of me."
 	icon_state = "debuff"
 	color ="#af9f9f"
+
+//herbal
+
+/datum/status_effect/debuff/dollmaker
+	id = "dollmaker"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/dollmaker
+	effectedstats = list("strength" = -2, "intelligence" = -2, "endurance" = -5)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/dollmaker
+	name = "Poisoned"
+	desc = "I.. Don't feel quite good.."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/dollmaker/weak
+	id = "dollmaker"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/dollmaker
+	effectedstats = list("strength" = -1, "intelligence" = -1, "endurance" = -3)
+	duration = 40 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/dollmaker/weak
+	name = "Poisoned"
+	desc = "I.. Don't feel quite good.."
+	icon_state = "debuff"
+

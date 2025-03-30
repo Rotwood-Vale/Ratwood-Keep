@@ -374,3 +374,133 @@
 	produce_time = 2 MINUTES
 	weed_immune = TRUE
 	can_grow_underground = TRUE
+
+/datum/plant_def/chamomile
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "chamomile"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/chamomile
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/marigold
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "marigold"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/marigold
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/nettle
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "nettle"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/nettle
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/sage
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "sage"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/sage
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/belladonna
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "belladonna"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/belladonna
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/valerian
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "valerian"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/valerian
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/herbdrow
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "herbdrow"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/herbdrow
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/eyebright
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "eyebright"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/eyebright
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/poppy
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "poppy"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/poppy
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES
+
+/datum/plant_def/thistle
+	name = "flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "thistle"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/thistle
+	produce_amount_min = 3
+	produce_amount_max = 4
+	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers)
+	maturation_nutrition = 20
+	produce_nutrition = 10
+	maturation_time = 5 MINUTES
+	produce_time = 2 MINUTES

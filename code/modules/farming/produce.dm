@@ -503,3 +503,120 @@
 	tastes = list("numb" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
 	grind_results = list(/datum/reagent/toxin/amanitin = 6)
+
+/obj/item/reagent_containers/food/snacks/grown/chamomile
+	seed = /obj/item/seeds/chamomile
+	name = "chamomile"
+	desc = ""
+	icon_state = "chamomile"
+	tastes = list("flowers" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/chamomile = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/chamomile
+
+/obj/item/reagent_containers/food/snacks/grown/marigold
+	seed = /obj/item/seeds/marigold
+	name = "marigold"
+	desc = ""
+	icon_state = "marigold"
+	tastes = list("flowers" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/marigold = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/nettle
+	seed = /obj/item/seeds/nettle
+	name = "nettle"
+	desc = ""
+	icon_state = "nettle"
+	tastes = list("flowers" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/nettle = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+
+/obj/item/reagent_containers/food/snacks/grown/sage
+	seed = /obj/item/seeds/sage
+	name = "sage"
+	desc = ""
+	icon_state = "sage"
+	tastes = list("flowers" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/sage = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/sage
+
+/obj/item/reagent_containers/food/snacks/grown/belladonna
+	seed = /obj/item/seeds/belladonna
+	name = "belladonna"
+	desc = ""
+	icon_state = "belladonna"
+	tastes = list("death" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/belladonna = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/belladonna
+
+/obj/item/reagent_containers/food/snacks/grown/valerian
+	seed = /obj/item/seeds/valerian
+	name = "valerian"
+	desc = ""
+	icon_state = "valerian"
+	tastes = list("flowers" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/valerian = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/valerian
+
+/obj/item/reagent_containers/food/snacks/grown/herbdrow
+	seed = /obj/item/seeds/herbdrow
+	name = "herb drow"
+	desc = ""
+	icon_state = "herbdrow"
+	tastes = list("death" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/herbdrow = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/herbdrow
+
+/obj/item/reagent_containers/food/snacks/grown/eyebright
+	seed = /obj/item/seeds/eyebright
+	name = "eyebright"
+	desc = ""
+	icon_state = "eyebright"
+	tastes = list("weed" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/eyebright = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/eyebright
+
+/obj/item/reagent_containers/food/snacks/grown/poppy
+	seed = /obj/item/seeds/poppy
+	name = "poppy"
+	desc = ""
+	icon_state = "poppy"
+	tastes = list("weed" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/poppy = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
+	mill_result = /obj/item/reagent_containers/powder/alch/poppy
+
+/obj/item/reagent_containers/food/snacks/grown/thistle
+	seed = /obj/item/seeds/thistle
+	name = "thistle"
+	desc = ""
+	icon_state = "thistle"
+	tastes = list("weed" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/herb/thistle = 3)
+	dropshrink = 0.75
+	rotprocess = 15 MINUTES
