@@ -368,3 +368,4 @@
 	stressadd = 5
 	desc = span_red("My PATRON is NOT PROUD of ME!")
 	timer = 20 MINUTES
+
