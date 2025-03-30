@@ -1,6 +1,6 @@
 /datum/triumph_buy/giant
 	triumph_buy_id = "Giant"
-	desc = "Giant! Not working on a kobold, seelie, verminvolk or a dwarf. Special Trait. Don't use, if you already have Special Trait."
+	desc = "Giant! Not working on a seelie. Special Trait. Don't use, if you already have Special Trait."
 	triumph_cost = 25
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
