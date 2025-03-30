@@ -84,7 +84,7 @@
 				display_as_foreign = TRUE
 			if(J.mercenary_examine)
 				are_mercenary = TRUE
-			if(islatejoin && !are_mercenary)
+			if(islatejoin && !are_mercenary && !granted_citizenship) // REDMOON EDIT - mayor_update - чтобы новых граждан не прописывало как returning - WAS f(islatejoin && !are_mercenary)
 				is_returning = TRUE
 		if(user.migrant_type)
 			var/datum/migrant_role/am_migrant = MIGRANT_ROLE(user.migrant_type)
@@ -153,6 +153,11 @@
 				. += span_notice("A Mercenary")
 			else if(!am_foreign)
 				. += span_phobia("A Foreigner...")
+		// REDMOON ADD START - mayor_update - отображение гражданства для бывших мигрантов/бандитов
+		else if(user != src)
+			if(granted_citizenship)
+				. += span_notice("A new Citizen")
+		// REDMOON ADD END
 
 		if(name in GLOB.excommunicated_players)
 			. += span_userdanger("EXCOMMUNICATED!")

@@ -150,6 +150,10 @@
 	//need to see their damn face
 	if(!recruit.get_face_name(null))
 		return FALSE
+	// REDMOON ADD START - mayor_update - специальная проверка на рекрутирование от БМ
+	if(!redmoon_special_check(recruit))
+		return FALSE
+	// REDMOON ADD END
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/convertrole/proc/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)
