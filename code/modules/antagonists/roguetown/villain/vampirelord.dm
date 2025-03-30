@@ -592,15 +592,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /obj/structure/vampire/portal/Crossed(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living))
-		for(var/obj/effect/landmark/vteleport/dest in GLOB.landmarks_list)
-			playsound(loc, 'sound/misc/portalenter.ogg', 100, FALSE, pressure_affected = FALSE)
-			AM.forceMove(dest.loc)
-			break
+		playsound(loc, 'sound/misc/portalenter.ogg', 100, FALSE, pressure_affected = FALSE)
+		AM.forceMove(pick(GLOB.vteleportsenddest))
 
 /obj/structure/vampire/portal/sending/Crossed(atom/movable/AM)
 	if(istype(AM, /mob/living))
-		for(var/obj/effect/landmark/vteleportsenddest/V in GLOB.landmarks_list)
-			AM.forceMove(V.loc)
+		playsound(loc, 'sound/misc/portalenter.ogg', 100, FALSE, pressure_affected = FALSE)
+		AM.forceMove(pick(GLOB.vteleportsenddest))
 
 /obj/structure/vampire/portal/sending/Destroy()
 	for(var/obj/effect/landmark/vteleportsenddest/V in GLOB.landmarks_list)
@@ -1167,9 +1165,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "x2"
 	var/amuletname
 
+GLOBAL_LIST_EMPTY(vteleportsenddest)
+
 /obj/effect/landmark/vteleportsenddest
 	name = "Sending Destination"
 	icon_state = "x2"
+
+/obj/effect/landmark/vteleportsenddest/Initialize()
+	. = ..()
+	GLOB.vteleportsenddest += loc
+
 // SCRYING Since it has so many unique procs
 /mob/dead/observer/rogue/arcaneeye
 	sight = 0
