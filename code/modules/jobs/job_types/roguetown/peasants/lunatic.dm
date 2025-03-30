@@ -25,11 +25,11 @@
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+		H.change_stat("strength", -4)
+		H.change_stat("intelligence", -4)
+		H.change_stat("constitution", -4)
+		H.change_stat("endurance", -4)
+		H.change_stat("speed", -4)
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	pants = /obj/item/clothing/under/roguetown/tights/vagrant
-	H.change_stat("strength", -4)
-	H.change_stat("intelligence", -4)
-	H.change_stat("constitution", -4)
-	H.change_stat("endurance", -4)
-	H.change_stat("speed", -4)

@@ -42,15 +42,15 @@
 	var/sound/far_explosion_sound = sound(pick('sound/catapult/explosion_distant.ogg',
 	'sound/catapult/explosion_distant2.ogg','sound/catapult/explosion_distant3.ogg', 'sound/catapult/explosion_distant4.ogg'))
 	shrapnel_effect.projectile_type = /obj/projectile/rock_shard // Define the type of shrapnel
-	shrapnel_effect.radius = 6 // Define the explosion radius
-	shrapnel_effect.override_projectile_range = 10 // Optional: specify the max range of each projectile
+	shrapnel_effect.radius = 9 // Define the explosion radius
+	shrapnel_effect.override_projectile_range = 12 // Optional: specify the max range of each projectile
 	shrapnel_effect.do_shrapnel(src, target) // Activate shrapnel
 	for(var/mob/M in urange(20, src))
 		if(!M.stat)
 			shake_camera(M, 3, 1)
 	for(var/mob/living/L in range(6, src))
 		if(!L.stat)
-			L.Knockdown(2)
+			L.Knockdown(10)
 			L.Jitter(60)
 	for(var/mob/living/player in GLOB.player_list)
 		var/distance = get_dist(player, origin_turf)
@@ -64,15 +64,15 @@
 /obj/projectile/rock_shard
 	name = "rock shard"
 	icon_state = "bullet"
-	damage = 150
-	range = 8
+	damage = 200
+	range = 16
 	pass_flags = PASSTABLE | PASSGRILLE
-	armor_penetration = 15
+	armor_penetration = 30
 	damage_type = BRUTE
 	nodamage = FALSE
-	embedchance = 20
+	embedchance = 40
 	woundclass = BCLASS_BLUNT
 	flag = "bullet"
 	hitsound_wall = "ricochet"
-	speed = 2
+	speed = 3
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
