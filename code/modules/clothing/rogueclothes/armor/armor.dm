@@ -456,7 +456,7 @@
 /obj/item/clothing/suit/roguetown/armor/blacksteel/halfplate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "blacksteel half-plate"
-	desc = "A refugee-fit plate armor with pauldrons.."
+	desc = "A sturdy set of plate armor protecting only the chest and groin, smithed of rare blacksteel. This prestigious set of armor has a set of pauldrons."
 	body_parts_covered = CHEST|GROIN|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
