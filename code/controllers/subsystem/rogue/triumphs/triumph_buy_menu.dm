@@ -27,6 +27,9 @@
 
 // TRIUMPH BUY MENU SIDED PROC
 /datum/triumph_buy_menu/proc/show_menu()
+	if(get_playerquality(usr.ckey) < 0)
+		to_chat(usr, span_redtext("Триумфальный магазин недоступен игрокам с отрицательным количеством PQ."))
+		return FALSE
 	if(!linked_client)
 		return
 	var/data = {"
