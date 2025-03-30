@@ -193,3 +193,8 @@
 	stressadd = -5
 	desc = span_green("I feel inspired by the sermon.")
 	timer = 20 MINUTES
+
+/datum/stressevent/lobotomized
+	stressadd = -15
+	desc = span_green("Why would I care about... Anything?")
+	timer = 999 MINUTES
