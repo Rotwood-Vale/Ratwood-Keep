@@ -307,7 +307,7 @@
 /datum/crafting_recipe/roguetown/sewing/wizrobeblue
 	name = "robe (wizard) - (3 cloths, fiber; JOURNEYMAN)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/wizard)
-	reqs = list(/obj/item/natural/cloth = 3,
+	reqs = list(/obj/item/natural/silk = 3,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
 
