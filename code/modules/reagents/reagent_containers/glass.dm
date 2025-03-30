@@ -244,8 +244,8 @@
 	item_state = "woodbucket"
 	max_integrity = 300
 	w_class = WEIGHT_CLASS_BULKY
-	amount_per_transfer_from_this = 9
-	possible_transfer_amounts = list(9)
+	amount_per_transfer_from_this = 18
+	possible_transfer_amounts = list(18)
 	volume = 198
 	flags_inv = HIDEHAIR
 	reagent_flags = OPENCONTAINER
