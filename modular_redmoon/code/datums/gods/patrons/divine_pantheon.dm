@@ -52,7 +52,7 @@
 	ru_domain = "Бог Войны, Правосудия и Силы"
 	ru_desc = "Бог войны, справедливости и силы. Сильнейший из детей Псайдона, он следит за каждым человеком издали, что бы осудить его за грехи, когда настанет время."
 	ru_worshippers = "Воины и те, кто ищет Правосудие"
-	mob_traits = list(TRAIT_SHARPER_BLADES)
+	mob_traits = list(TRAIT_SHARPER_BLADES, TRAIT_STEELHEARTED)
 	t1 = /obj/effect/proc_holder/spell/self/call_to_arms
 	t2 = /obj/effect/proc_holder/spell/self/divine_strike
 	t3 = /obj/effect/proc_holder/spell/invoked/persistence
