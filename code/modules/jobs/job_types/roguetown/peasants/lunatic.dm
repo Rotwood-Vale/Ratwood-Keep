@@ -30,6 +30,8 @@
 		H.change_stat("constitution", -4)
 		H.change_stat("endurance", -4)
 		H.change_stat("speed", -4)
+	ADD_TRAIT(H, TRAIT_SOFTHEARTED, TRAIT_GENERIC)
+	head  = /obj/item/clothing/head/peaceflower
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	pants = /obj/item/clothing/under/roguetown/tights/vagrant
