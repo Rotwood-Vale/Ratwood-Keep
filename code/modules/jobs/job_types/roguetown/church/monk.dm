@@ -140,6 +140,7 @@
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new SPELL_MALUM_FLAME_ROGUE) // weaker astra fire spell. mostly for lighting things.
 
+	ADD_TRAIT(H, TRAIT_SOFTHEARTED, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

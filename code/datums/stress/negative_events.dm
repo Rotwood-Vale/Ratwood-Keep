@@ -78,6 +78,10 @@
 /datum/stressevent/viewdismember/can_apply(mob/living/user)
 	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_SOFTHEARTED))
+		stressadd = 4
+		stressadd_per_extra_stack = 4
+		return TRUE
 	return TRUE
 
 /datum/stressevent/fviewdismember
@@ -90,6 +94,10 @@
 /datum/stressevent/fviewdismember/can_apply(mob/living/user)
 	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_SOFTHEARTED))
+		stressadd = 4
+		stressadd_per_extra_stack = 4
+		return TRUE
 	return TRUE
 
 /datum/stressevent/viewgib
@@ -247,13 +255,19 @@
 	desc = span_red("There are too many people who don't look like me here.")
 
 /datum/stressevent/parablood
-	timer = 15 SECONDS
-	stressadd = 3
+	timer = 15 MINUTES
+	max_stacks = 5
+	stressadd = 2
+	stressadd_per_extra_stack = 2
 	desc = span_red("There is so much blood here.. it's like a battlefield!")
 
 /datum/stressevent/viewdismember/can_apply(mob/living/user)
 	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_SOFTHEARTED))
+		stressadd = 4
+		stressadd_per_extra_stack = 4
+		return TRUE
 	return TRUE
 
 /datum/stressevent/parastr
