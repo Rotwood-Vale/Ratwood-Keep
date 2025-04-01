@@ -30,10 +30,10 @@
 	icon_state = "pillory_reinforced"
 	base_icon = "pillory_reinforced"
 
-/obj/structure/pillory/town_square
+/obj/structure/pillory/bounty/town_square
 	accepted_id = list("keep_dungeon", "keep_barracks", "town_dungeon", "town_barracks", "bog_dungeon", "bog_barracks", "church")
 
-/obj/structure/pillory/reinforced/keep_dungeon
+/obj/structure/pillory/bounty/keep_dungeon
 	accepted_id = list("keep_dungeon")
 
 /obj/structure/pillory/reinforced/town_dungeon
@@ -291,16 +291,16 @@
 	if(victim.has_flaw(/datum/charflaw/dead_or_alive))
 		say("Unable to redeem bounty, only their head shall be satisfactory.")
 		return
-	if(!(hunter in SStreasury.bank_accounts))
-		say("No account found, unable to redeem bounty. Submit your fingers to a shylock for inspection.")
-		return
 
 	for(var/datum/bounty/bounty as anything in GLOB.head_bounties)
 		if(bounty.target == victim.real_name)
 			found_bounty = bounty
 			break
 	if(!found_bounty) return
-	
+
+	if(!(hunter in SStreasury.bank_accounts))
+		say("No account found, unable to redeem bounty. Submit your fingers to a shylock for inspection.")
+		return
 	say("Detected a bounty of [found_bounty.amount] mammons on [victim.real_name]!")
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty redemption to [hunter] starts now, reward in [DisplayTimeText(bounty_redemption_time)]."))
 	bounty_hunter = hunter
