@@ -91,7 +91,14 @@
 			STR.handle_item_insertion(P, prevent_warning=TRUE)
 			X.new_mail=TRUE
 			X.update_icon()
-			send_ooc_note(span_userdanger("New letter from <b>[sentfrom].</b>"), name = send2place)
+			//There's a right hand version of this letter stuff too???
+			for(var/mob/living/carbon/human/H in GLOB.human_list)
+				if(P.mailedto == H.real_name)
+					//OOC note was not a good place to try to send this chat message
+					to_chat(H, span_danger("A new letter has arrived! From: <font color='grey'><b>[sentfrom].</b></font>"))
+					H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE)
+
+			
 		else
 			to_chat(user, span_warning("The master of mails has perished?"))
 			return
@@ -173,7 +180,13 @@
 				else
 					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-					send_ooc_note(span_boldwarning("New letter from <b>[sentfrom].</b>"), name = send2place)
+
+					//Is there a better way to get this to send the noise?
+					for(var/mob/living/carbon/human/H in GLOB.human_list)
+						if(P.mailedto == H.real_name)
+							//OOC note was not a good place to try to send this chat message
+							to_chat(H, span_danger("A new letter has arrived! From: <font color='grey'><b>[sentfrom].</b></font>"))
+							H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE)
 					return
 	if(istype(P, /obj/item/roguecoin))
 		if(coin_loaded)
