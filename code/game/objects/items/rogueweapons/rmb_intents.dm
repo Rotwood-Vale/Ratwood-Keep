@@ -31,33 +31,39 @@
 		perc += (user.STASPD - L.STASPD)*5 	//yet a speedy feint is hard to counter
 		
 
-
+	var/feint_fail_message = null // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
 	if(L.d_intent == INTENT_DODGE)
 		perc = 0
+		feint_fail_message = user.client.prefs.be_russian ? span_biginfo("[L] уворачивается, финты не открывают [L.gender == MALE ? "его" : "её"] для удара!") : span_biginfo("[L] are dodging, I cannot feint dodge!") // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
 	if(!L.cmode)
 		perc = 0
+		feint_fail_message = user.client.prefs.be_russian ? span_biginfo("[L] не защищается от ударов, финт был бессмысленен!") : span_biginfo("[L] were not prepared to act against my feint!") // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
 		perc = 0
+		feint_fail_message = user.client.prefs.be_russian ? span_biginfo("[L] не может так быстро реагировать на мои финты!") : span_biginfo("[L] are already feinted and did not had enough time to act for new feint!") // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
 	if(user.has_status_effect(/datum/status_effect/debuff/feintcd))
 		perc -= rand(10,30)
+		feint_fail_message = user.client.prefs.be_russian ? span_biginfo("[L] более подготовлен[L.gender == MALE ? "" : "а "] к новому финту!") : span_biginfo("[L] are more prepared to act against my feints!") // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
 	user.apply_status_effect(/datum/status_effect/debuff/feintcd)
 	perc = CLAMP(perc, 0, 90) //no zero risk superfeinting
+	if(feint_fail_message) // REDMOON ADD - feint_update - вывод сообщения о провале финта
+		to_chat(user, feint_fail_message) // REDMOON ADD - feint_update - вывод сообщения о провале финта
 	if(prob(perc)) //feint intent increases the immobilize duration significantly
 		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
 			L.changeNext_move(10)
 			L.Immobilize(12)
-			to_chat(user, span_notice("[L] fell for my feint attack!"))
-			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
+			to_chat(user, user.client.prefs.be_russian ? span_boldgreen("[L] попал[L.gender == MALE ? "ся" : "ась"] на мой финт!") : span_boldgreen("[L] fell for my feint attack!")) // REDMOON EDIT - feint_update - перевод
+			to_chat(L, L.client?.prefs?.be_russian ? span_biginfo("Я попал[L.gender == MALE ? "ся" : "ась"] на финт [user]!") : span_biginfo("I fall for [user]'s feint attack!")) // REDMOON EDIT - feint_update - перевод
 		else
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
 			L.changeNext_move(4)
 			L.Immobilize(5)
-			to_chat(user, span_notice("[L] fell for my feint attack!"))
-			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
+			to_chat(user, user.client.prefs.be_russian ? span_boldgreen("[L] попал[L.gender == MALE ? "ся" : "ась"] на мой финт!") : span_boldgreen("[L] fell for my feint attack!")) // REDMOON EDIT - feint_update - перевод
+			to_chat(L, L.client?.prefs?.be_russian ? span_biginfo("Я попал[L.gender == MALE ? "ся" : "ась"] на финт [user]!") : span_biginfo("I fall for [user]'s feint attack!")) // REDMOON EDIT - feint_update - перевод
 	else
-		if(user.client?.prefs.showrolls)
-			to_chat(user, span_warning("[L] did not fall for my feint... [perc]%"))
+		if(user.client?.prefs.showrolls && !feint_fail_message) // REDMOON EDIT - feint_update - WAS: if(user.client?.prefs.showrolls)
+			to_chat(user, user.client.prefs.be_russian ? span_biginfo("[L] не попал[L.gender == MALE ? "ся" : "ась"] на мой финт... [perc]%") : span_biginfo("[L] did not fall for my feint... [perc]%")) // REDMOON EDIT - feint_update - перевод
 
 /datum/rmb_intent/aimed
 	name = "aimed"
@@ -87,10 +93,20 @@
 /datum/status_effect/debuff/feinted
 	id = "nofeint"
 	duration = 50
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/feinted // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
+
+/atom/movable/screen/alert/status_effect/debuff/feinted // REDMOON ADD - feint_update
+	name = "FEINTED!"
+	desc = "IT WAS FEINT!"
 
 /datum/status_effect/debuff/feintcd
 	id = "feintcd"
 	duration = 100
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/feinted_cooldown // REDMOON ADD - feint_update - больше информативности по поводу провала финтов
+
+/atom/movable/screen/alert/status_effect/debuff/feinted_cooldown // REDMOON ADD - feint_update
+	name = "Feint Done"
+	desc = "My enemy is more prepared to act for my feint!"
 
 /datum/status_effect/debuff/riposted
 	id = "riposted"
