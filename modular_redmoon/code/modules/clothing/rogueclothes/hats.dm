@@ -574,3 +574,39 @@
 	mob_overlay_icon = 'modular_redmoon/icons/head_64x64.dmi'
 	worn_x_dimension = 64
 	worn_y_dimension = 64
+
+/obj/item/clothing/head/roguetown/helmet/zybantian
+	name = "Turban helmet"
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "hlwrg"
+	desc = "A Byzantine lightweight helmet with a turban that protects against dust, as well as provides head protection."
+	smeltresult = /obj/item/ingot/bronze
+	body_parts_covered = HEAD|HAIR|EARS
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/head/roguetown/helmet/medium/zybantian
+	name = "Zybantine Lanzierer helmet with chain mail"
+	desc = "The helmet of the Zybantine riders has excellent protection and bronze coating."
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "helch"
+	max_integrity = 350
+	flags_inv = HIDEFACE|HIDEEARS
+	flags_cover = HEADCOVERSEYES
+	armor_class = ARMOR_CLASS_MEDIUM
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/roguetown/helmet/medium/snout/zybantian
+	name = "Zybantine Lanzierer snout helmet with chain mail"
+	desc = "The helmet of the Zybantine riders has excellent protection and bronze coating."
+	icon = 'modular_redmoon/icons/hats.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
+	icon_state = "helchsnoot"
+	max_integrity = 350
+	flags_inv = HIDEFACE|HIDEEARS
+	flags_cover = HEADCOVERSEYES
+	armor_class = ARMOR_CLASS_MEDIUM
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
+	block2add = FOV_BEHIND

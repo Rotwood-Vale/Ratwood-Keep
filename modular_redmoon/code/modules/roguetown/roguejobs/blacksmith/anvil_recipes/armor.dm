@@ -70,3 +70,42 @@
 	name = "Blacksteel Bevor"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/neck/roguetown/bervor/blacksteel
+
+/datum/anvil_recipe/armor/lamellar_zybantian
+	name = "Lamellar armor (+1 Bronze)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/scale/zybantian
+
+/datum/anvil_recipe/armor/hauberk_zybantian
+	name = "Hauberk with a mirror (+1 Steel, +1 Bronze)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zybantian
+
+/datum/anvil_recipe/armor/mirror_zybantian
+	name = "Mirror armor (+1 Bronze)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/light/zybantian
+
+/datum/anvil_recipe/armor/light_zybantian_helmet
+	name = "Turban helmet (+1 Cloth)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/head/roguetown/helmet/zybantian
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/medium_zybantian_helmet
+	name = "Zybantine Lanzierer helmet with chain mail (+1 Steel, +1 Bronze)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/head/roguetown/helmet/medium/zybantian
+	i_type = "Armor"
+
+/datum/anvil_recipe/armor/medium_zybantian_helmet
+	name = "Zybantine Lanzierer snout helmet with chain mail (+1 Steel, +1 Bronze)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/head/roguetown/helmet/medium/snout/zybantian
+	i_type = "Armor"

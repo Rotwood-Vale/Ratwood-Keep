@@ -362,3 +362,56 @@
 	icon_state = "stewarddress"
 	sleeved = FALSE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+
+/obj/item/clothing/suit/roguetown/armor/plate/scale/zybantian
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Lamellar armor"
+	desc = "Steel lamellar armor with bronze coating. Protects the body and legs without reducing mobility."
+	body_parts_covered = CHEST|VITALS|GROIN|LEGS
+	allowed_sex = list(MALE, FEMALE)
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
+	icon_state = "brsclarm"
+	max_integrity = 275
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	equip_delay_self = 40
+	armor_class = ARMOR_CLASS_MEDIUM
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zybantian
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
+	name = "Hauberk with a mirror"
+	desc = "A long chain mail made of small rings, in order to successfully protect the wearer from arrows and pricks, is also convenient for sleeping in it. It has a special mirror on the chest for additional protection."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
+	icon_state = "zrch"
+	item_state = "zrch"
+	max_integrity = 255
+	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	do_sound_chain = TRUE
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/light/zybantian
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "Mirror armor"
+	desc = "Mirror armor, light enough, but provides good chest protection."
+	icon = 'modular_redmoon/icons/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/armor_onmob.dmi'
+	sleeved = 'modular_redmoon/icons/sleeves_armor.dmi'
+	icon_state = "zr"
+	max_integrity = 400
+	blocksound = SOFTHIT
+	body_parts_covered = CHEST|VITALS
+	armor = list("blunt" = 60, "slash" = 70, "stab" = 70, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	smeltresult = /obj/item/ingot/iron
+	equip_delay_self = 40
+	armor_class = ARMOR_CLASS_LIGHT
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
+	resistance_flags = FIRE_PROOF
