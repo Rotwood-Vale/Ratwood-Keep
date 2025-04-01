@@ -338,7 +338,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_NOEMBED			"noembed"
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
-#define TRAIT_NO_SELF_UNEQUIP			"no-self-unequip" // For items you can't remove on wearing but can still hold freely
+// #define TRAIT_NO_SELF_UNEQUIP	"no-self-unequip" // ALREADY A VAR, SEE: allow_self_unequip
 
 // common trait sources
 #define TRAIT_GENERIC "generic"

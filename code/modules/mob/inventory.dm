@@ -313,19 +313,6 @@
 	if(HAS_TRAIT(I, TRAIT_NODROP) && !force)
 		return FALSE
 	
-	// Can't take it out of your equipment, can still hold and pick it up, put in and out of storage.
-	// Other people have to remove this from you.
-	if(HAS_TRAIT(I, TRAIT_NO_SELF_UNEQUIP) && !force)
-		if(istype(src, /mob/living/carbon/human))
-			// Putting things into hands is a null loc ref why? no idea! But this works for now...
-			// Because the only alternative is removing something from someone, which puts it on the floor.
-			if(newloc == null) 
-				var/mob/living/carbon/human/H = src
-				for(var/Item in H.get_equipped_items()) // Find this item
-					if(Item == I)
-						to_chat(src, span_warn("I can't remove \the [I.name]!"))
-						return FALSE
-
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
 		held_items[hand_index] = null
