@@ -15,6 +15,10 @@
 	config_entry_value = "test"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/string/feedback_database_whitelist
+	default = "test"
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
 /datum/config_entry/string/feedback_login
 	config_entry_value = "root"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN

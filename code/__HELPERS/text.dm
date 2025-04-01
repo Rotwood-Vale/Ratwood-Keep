@@ -11,7 +11,10 @@
 
 
 /proc/format_table_name(table as text)
-	return CONFIG_GET(string/feedback_tableprefix) + table
+	return CONFIG_GET(string/feedback_database) + "." + CONFIG_GET(string/feedback_tableprefix) + table
+
+/proc/format_table_name_whitelist(table as text)
+	return CONFIG_GET(string/feedback_database_whitelist) + "." + CONFIG_GET(string/feedback_tableprefix) + table
 
 /*
  * Text sanitization
