@@ -35,6 +35,48 @@
 	BUFLUC = 0
 
 	statindex = list()
+	recalculate_stats()
+
+// Использовать следует только там, где есть риск появления дополнительных отрицательных буферов. Например, при выборе класса в начале раунда
+/mob/living/proc/save_stats_as_roundstarted_with_buffers()
+	ROUNDSTART_STASTR = STASTR
+	if(BUFSTR < 0)
+		ROUNDSTART_STASTR += abs(BUFSTR)
+
+	ROUNDSTART_STAPER = STAPER
+	if(BUFPER < 0)
+		ROUNDSTART_STAPER += abs(BUFPER)
+
+	ROUNDSTART_STAINT = STAINT
+	if(BUFINT < 0)
+		ROUNDSTART_STAINT += abs(BUFINT)
+
+	ROUNDSTART_STACON = STACON
+	if(BUFCON < 0)
+		ROUNDSTART_STACON += abs(BUFCON)
+
+	ROUNDSTART_STAEND = STAEND
+	if(BUFEND < 0)
+		ROUNDSTART_STAEND += abs(BUFEND)
+
+	ROUNDSTART_STASPD = STASPD
+	if(BUFSPE < 0)
+		ROUNDSTART_STASPD += abs(BUFSPE)
+
+	ROUNDSTART_STALUC = STALUC
+	if(BUFLUC < 0)
+		ROUNDSTART_STALUC += abs(BUFLUC)
+
+	BUFSTR = 0
+	BUFPER = 0
+	BUFINT = 0
+	BUFCON = 0
+	BUFEND = 0
+	BUFSPE = 0
+	BUFLUC = 0
+
+	statindex = list()
+	recalculate_stats()
 
 /// Проклятое. Написано так, чтобы не нужно было переписывать код change_stat. 
 /// Нужно добавлять везде, где фигурирует изменение раундстартовых статов (в т.ч. воскрешение, иначе учитываются значения дебафов, которые были ПРИ смерти и ПОСЛЕ смерти)
