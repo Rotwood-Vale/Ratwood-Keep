@@ -105,7 +105,7 @@
 		has_opaque_atom = TRUE
 
 	ComponentInitialize()
-
+	ImmediateCalculateAdjacentTurfs()
 	queue_smooth_neighbors(src)
 
 	return INITIALIZE_HINT_NORMAL
