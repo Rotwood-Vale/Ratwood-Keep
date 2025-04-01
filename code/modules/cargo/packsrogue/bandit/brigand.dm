@@ -4,36 +4,42 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //helmet
-/datum/supply_pack/rogue/bandit/Brigand/helmet/kettle
+/datum/supply_pack/rogue/bandit/Brigand/helmetkettle
 	name = "Kettle Helmet"
 	cost = 35
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmet/sallet
+/datum/supply_pack/rogue/bandit/Brigand/helmetsallet
 	name = "Sallet"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmet/winged
+/datum/supply_pack/rogue/bandit/Brigand/helmetwinged
 	name = "Winged Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmet/horned
+/datum/supply_pack/rogue/bandit/Brigand/helmethorned
 	name = "Horned Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmet/visoredsallet
+/datum/supply_pack/rogue/bandit/Brigand/kettlehelmet
+	name = "Kettle Helmet"
+	cost = 35
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
+
+/datum/supply_pack/rogue/bandit/Brigand/helmetvisoredsallet
 	name = "Visored Sallet"
 	cost = 70
 	time_lock = 1.5 HOURS
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmet/volfhelmet
+/datum/supply_pack/rogue/bandit/Brigand/helmetvolfhelmet
 	name = "Volf Face Helmet"
 	cost = 70
 	time_lock = 1.5 HOURS
@@ -46,7 +52,7 @@
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
-/datum/supply_pack/rogue/bandit/Brigand/coif/steel
+/datum/supply_pack/rogue/bandit/Brigand/coifsteel
 	name = "Steel Coif"
 	cost = 35
 	time_lock = 45 MINUTES
@@ -59,25 +65,25 @@
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 //wrist
 
-/datum/supply_pack/rogue/bandit/Brigand/bracers/leather
+/datum/supply_pack/rogue/bandit/Brigand/bracersleather
 	name = "Leather Bracers"
 	cost = 15
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/bandit/Brigand/bracers/steel
+/datum/supply_pack/rogue/bandit/Brigand/bracerssteel
 	name = "Steel Bracers"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 //pants
 
-/datum/supply_pack/rogue/bandit/Brigand/chainlegs/iron
+/datum/supply_pack/rogue/bandit/Brigand/chainlegsiron
 	name = "Iron Chain Chausses"
 	cost = 25
-	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
+	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron)
 
 /datum/supply_pack/rogue/bandit/Brigand/chainlegs
-	name = "Chain Chausses"
+	name = "Steel Chain Chausses"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
@@ -95,7 +101,7 @@
 	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 //boots
 
-/datum/supply_pack/rogue/bandit/Brigand/boots
+/datum/supply_pack/rogue/bandit/Brigand/bootssteel
 	name = "Steel Boots"
 	cost = 50
 	time_lock = 45 MINUTES
@@ -104,7 +110,7 @@
 
 /datum/supply_pack/rogue/bandit/Brigand/gambeson
 	name = "Gambeson"
-	cost = 20
+	cost = 18
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/bandit/Brigand/Haubergeon

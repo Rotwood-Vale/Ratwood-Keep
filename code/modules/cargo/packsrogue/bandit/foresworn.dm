@@ -15,36 +15,42 @@
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/kettle
+/datum/supply_pack/rogue/bandit/Foresworn/helmetkettle
 	name = "Kettle Helmet"
 	cost = 35
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/sallet
+/datum/supply_pack/rogue/bandit/Foresworn/helmetsallet
 	name = "Sallet"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/winged
+/datum/supply_pack/rogue/bandit/Foresworn/helmetwinged
 	name = "Winged Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/horned
+/datum/supply_pack/rogue/bandit/Foresworn/helmethorned
 	name = "Horned Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/visoredsallet
+/datum/supply_pack/rogue/bandit/Foresworn/kettlehelmet
+	name = "Kettle Helmet"
+	cost = 35
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
+
+/datum/supply_pack/rogue/bandit/Foresworn/helmetvisoredsallet
 	name = "Visored Sallet"
 	cost = 70
 	time_lock = 1.5 HOURS
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
-/datum/supply_pack/rogue/bandit/Foresworn/helmet/volfhelmet
+/datum/supply_pack/rogue/bandit/Foresworn/helmetvolfhelmet
 	name = "Volf Face Helmet"
 	cost = 70
 	time_lock = 1.5 HOURS
@@ -69,7 +75,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 //wrist
 
-/datum/supply_pack/rogue/bandit/Foresworn/bracers/leather
+/datum/supply_pack/rogue/bandit/Foresworn/bracersleather
 	name = "Leather Bracers"
 	cost = 15
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
@@ -89,7 +95,7 @@
 /datum/supply_pack/rogue/bandit/Foresworn/chainlegsiron
 	name = "Iron Chain Chausses"
 	cost = 25
-	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
+	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron)
 
 /datum/supply_pack/rogue/bandit/Foresworn/chainlegs
 	name = "Steel Chain Chausses"
@@ -123,7 +129,7 @@
 
 /datum/supply_pack/rogue/bandit/Foresworn/gambeson
 	name = "Gambeson"
-	cost = 20
+	cost = 18
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/bandit/Foresworn/haubergeon
@@ -167,53 +173,53 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron)
 
-/datum/supply_pack/rogue/bandit/Foresworn/onehanded/sword
+/datum/supply_pack/rogue/bandit/Foresworn/onehandedsword
 	name = "Short Sword"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron/short)
 
-/datum/supply_pack/rogue/bandit/Foresworn/onehanded/Messer
+/datum/supply_pack/rogue/bandit/Foresworn/onehandedMesser
 	name = "Messer"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron/messer)
 
-/datum/supply_pack/rogue/bandit/Foresworn/onehanded/armingsword
+/datum/supply_pack/rogue/bandit/Foresworn/onehandedarmingsword
 	name = "Arming Sword"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/sword/short)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/steel
+/datum/supply_pack/rogue/bandit/Foresworn/swordsteel
 	name = "Steel Sword"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/sword)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/gladius
+/datum/supply_pack/rogue/bandit/Foresworn/swordgladius
 	name = "Gladius"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/gladius)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/rapier
+/datum/supply_pack/rogue/bandit/Foresworn/swordrapier
 	name = "Rapier"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/cutlass
+/datum/supply_pack/rogue/bandit/Foresworn/swordcutlass
 	name = "Cutlass"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/cutlass)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/katar
+/datum/supply_pack/rogue/bandit/Foresworn/swordkatar
 	name = "Katar"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/katar)
 
-/datum/supply_pack/rogue/bandit/Foresworn/sword/sabre
+/datum/supply_pack/rogue/bandit/Foresworn/swordsabre
 	name = "Sabre"
 	cost = 35
 	time_lock = 1.2 HOURS
@@ -235,7 +241,7 @@
 	name = "Bastard Sword"
 	cost = 70
 	time_lock = 1.2 HOURS
-	contains = list(/obj/item/rogueweapon/sword/long/exe)
+	contains = list(/obj/item/rogueweapon/sword/long)
 
 //spears
 
@@ -244,22 +250,22 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/spear)
 
-/datum/supply_pack/rogue/bandit/Foresworn/bardiche
-	name = "Bardiche"
-	cost = 55
-	time_lock = 45 MINUTES
-	contains = list(/obj/item/rogueweapon/halberd/bardiche)
-
 /datum/supply_pack/rogue/bandit/Foresworn/billhook
 	name = "Billhook"
 	cost = 40
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/spear/billhook)
 
+/datum/supply_pack/rogue/bandit/Foresworn/bardiche
+	name = "Bardiche"
+	cost = 55
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/rogueweapon/halberd/bardiche)
+
 /datum/supply_pack/rogue/bandit/Foresworn/Lucerne
 	name = "Lucerne"
 	cost = 65
-	time_lock = 1.2 HOURS
+	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/eaglebeak/lucerne)
 
 /datum/supply_pack/rogue/bandit/Foresworn/halberd
@@ -294,7 +300,7 @@
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
-/datum/supply_pack/rogue/bandit/Foresworn/quivers/bolts
+/datum/supply_pack/rogue/bandit/Foresworn/quiversbolts
 	name = "Quiver of Bolts"
 	cost = 15
 	contains = list(/obj/item/ammo_holder/quiver/bolts)

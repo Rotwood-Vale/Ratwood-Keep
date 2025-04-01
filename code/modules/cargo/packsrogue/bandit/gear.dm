@@ -7,7 +7,6 @@
 /datum/supply_pack/rogue/bandit/Gear/zenarii
 	name = "Zenar"
 	cost = 11
-	static_cost = TRUE
 	contains = list(/obj/item/roguecoin/gold)
 
 /datum/supply_pack/rogue/bandit/Gear/chain
@@ -47,7 +46,7 @@
 
 /datum/supply_pack/rogue/bandit/Gear/cloth
 	name = "Cloth"
-	cost = 10
+	cost = 5
 	contains = list(/obj/item/natural/cloth)
 
 /datum/supply_pack/rogue/bandit/Gear/hknife
@@ -79,6 +78,11 @@
 	name = "Rolled bedroll"
 	cost = 25
 	contains = list(/obj/item/bedroll)
+
+/datum/supply_pack/rogue/bandit/Gear/saiga
+	name = "Saiga"
+	cost = 100
+	contains = list(/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled)
 
 /datum/supply_pack/rogue/bandit/Gear/belt
 	name = "Leather Belt"

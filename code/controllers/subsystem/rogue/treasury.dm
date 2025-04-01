@@ -80,14 +80,16 @@ SUBSYSTEM_DEF(treasury)
 		amt_to_generate = amt_to_generate - (amt_to_generate * queens_tax)
 		amt_to_generate = round(amt_to_generate)
 		give_money_treasury(amt_to_generate, "wealth horde")
-		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
-			switch(X.job)
-				if("Duke", "Steward", "Clerk")
-					people_told += 1
-					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-					if(people_told > 3)
-						return
+			if(!(X.mind && X.stat != DEAD))
+				continue
+			if(X.job in list("Duke", "Steward", "Clerk"))
+				send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
+			else if(X.mind.has_antag_datum(/datum/antagonist/bandit))
+				var/datum/antagonist/bandit/bandit_player = X.mind.has_antag_datum(/datum/antagonist/bandit)
+				var/to_give = 20
+				bandit_player.favor += to_give
+				to_chat(bandit_player.owner, ("<font color='yellow'>Matthios empowers you with [to_give] favor.</font>"))
 
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)

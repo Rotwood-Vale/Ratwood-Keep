@@ -30,7 +30,7 @@
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
-/datum/supply_pack/rogue/bandit/Knight/coif/steel
+/datum/supply_pack/rogue/bandit/Knight/coifsteel
 	name = "Steel Coif"
 	cost = 35
 	time_lock = 45 MINUTES
@@ -43,12 +43,12 @@
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 //wrist
 
-/datum/supply_pack/rogue/bandit/Knight/bracers/leather
+/datum/supply_pack/rogue/bandit/Knight/bracersleather
 	name = "Leather Bracers"
 	cost = 15
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/bandit/Knight/bracers/steel
+/datum/supply_pack/rogue/bandit/Knight/bracerssteel
 	name = "Steel Bracers"
 	cost = 35
 	time_lock = 45 MINUTES
@@ -81,6 +81,11 @@
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail)
 
+/datum/supply_pack/rogue/bandit/Knight/brigandineheavy
+	name = "Brigandine"
+	cost = 45
+	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine)
+
 /datum/supply_pack/rogue/bandit/Knight/hauberk
 	name = "Hauberk"
 	cost = 70
@@ -89,13 +94,13 @@
 
 /datum/supply_pack/rogue/bandit/Knight/halfplate
 	name = "Steel half plate"
-	cost = 130
+	cost = 117
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate)
 
 /datum/supply_pack/rogue/bandit/Knight/fullplate
 	name = "Steel Full plate"
-	cost = 350
+	cost = 164
 	time_lock = 1.5 HOURS
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 //swords
@@ -114,13 +119,13 @@
 /datum/supply_pack/rogue/bandit/Knight/estoc
 	name = "Estoc"
 	cost = 105
-	time_lock = 1.5 HOURS
+	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/estoc)
 
 /datum/supply_pack/rogue/bandit/Knight/greatsword
 	name = "Greatsword"
 	cost = 105
-	time_lock = 1.5 HOURS
+	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/greatsword)
 
 //spears
@@ -168,11 +173,5 @@
 /datum/supply_pack/rogue/bandit/Knight/Tshield
 	name = "Tower Shield"
 	cost = 30
-	time_lock = 1.2 MINUTES
+	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/shield/tower)
-
-//Horse
-/datum/supply_pack/rogue/bandit/Knight/saiga
-	name = "Saiga"
-	cost = 150
-	contains = list(/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled)

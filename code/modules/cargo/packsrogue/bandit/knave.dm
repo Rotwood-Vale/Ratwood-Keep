@@ -6,22 +6,28 @@
 
 //helmet
 
-/datum/supply_pack/rogue/bandit/Knave/leather/Lhelmet
+/datum/supply_pack/rogue/bandit/Knave/Lhelmet
 	name = "Leather Helmet"
-	cost = 15
+	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
-/datum/supply_pack/rogue/bandit/Knave/helmet/winged
+/datum/supply_pack/rogue/bandit/Knave/winged
 	name = "Winged Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
 
-/datum/supply_pack/rogue/bandit/Knave/helmet/hhelmet
+/datum/supply_pack/rogue/bandit/Knave/hhelmet
 	name = "Horned Cap"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
+
+/datum/supply_pack/rogue/bandit/Knave/kettlehelmet
+	name = "Kettle Helmet"
+	cost = 35
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 //neck
 
 /datum/supply_pack/rogue/bandit/Knave/gorget
@@ -30,6 +36,12 @@
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
+/datum/supply_pack/rogue/bandit/Knave/coifsteel
+	name = "Steel Coif"
+	cost = 35
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
+
 /datum/supply_pack/rogue/bandit/Knave/bevor
 	name = "Bevor"
 	cost = 35
@@ -37,47 +49,66 @@
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 //wrist
 
-/datum/supply_pack/rogue/bandit/Knave/leather/Lbracers
+/datum/supply_pack/rogue/bandit/Knave/Lbracers
 	name = "Leather Bracers"
-	cost = 15
+	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/bandit/Knave/leather/AdvancedLbracers
+/datum/supply_pack/rogue/bandit/Knave/AdvancedLbracers
 	name = "Hardened Leather Bracers"
-	cost = 25
+	cost = 15
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/advanced)
+//gauntlets
+
+/datum/supply_pack/rogue/bandit/Knave/Lgloves
+	name = "Hardened Leather Gloves"
+	cost = 15
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 //pants
 
 /datum/supply_pack/rogue/bandit/Knave/leatherpantsadvanced
 	name = "Hardened Leather Chausses"
-	cost = 45
+	cost = 30
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
-//gauntlets
 
-/datum/supply_pack/rogue/bandit/Knave/leather/Lgloves
-	name = "Hardened Leather Gloves"
-	cost = 25
-	time_lock = 45 MINUTES
-	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
 //armor
 
 /datum/supply_pack/rogue/bandit/Knave/gambeson
 	name = "Gambeson"
-	cost = 20
+	cost = 18
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
-/datum/supply_pack/rogue/bandit/Knave/leather
+/datum/supply_pack/rogue/bandit/Knave/leatherarmor
 	name = "Leather Armor"
-	cost = 30
+	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
-/datum/supply_pack/rogue/bandit/Knave/leather/studded
+/datum/supply_pack/rogue/bandit/Knave/leathercoat
+	name = "Leather Coat"
+	cost = 20
+	contains = list(/obj/item/clothing/suit/roguetown/armor/leathercoat)
+
+/datum/supply_pack/rogue/bandit/Knave/paddedgambeson
+	name = "Padded Gambeson"
+	cost = 40
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
+
+/datum/supply_pack/rogue/bandit/Knave/leatherstudded
 	name = "Studded Leather Armor"
-	cost = 55
+	cost = 50
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
+
+/datum/supply_pack/rogue/bandit/Knave/leathercoatheavy
+	name = "heavy leather coat"
+	cost = 60
+	time_lock = 45 MINUTES
+	contains = list(/obj/item/clothing/suit/roguetown/armor/leathercoat/heavy)
+
 //daggers
 
 /datum/supply_pack/rogue/bandit/Knave/dagger
@@ -103,53 +134,53 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron)
 
-/datum/supply_pack/rogue/bandit/Knave/onehanded/sword
+/datum/supply_pack/rogue/bandit/Knave/onehandedsword
 	name = "Short Sword"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron/short)
 
-/datum/supply_pack/rogue/bandit/Knave/onehanded/Messer
+/datum/supply_pack/rogue/bandit/Knave/onehandedMesser
 	name = "Messer"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron/messer)
 
-/datum/supply_pack/rogue/bandit/Knave/onehanded/armingsword
+/datum/supply_pack/rogue/bandit/Knave/onehandedarmingsword
 	name = "Arming Sword"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/sword/short)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/steel
+/datum/supply_pack/rogue/bandit/Knave/swordsteel
 	name = "Steel Sword"
 	cost = 35
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/rogueweapon/sword)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/gladius
+/datum/supply_pack/rogue/bandit/Knave/swordgladius
 	name = "Gladius"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/gladius)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/Rapier
+/datum/supply_pack/rogue/bandit/Knave/swordRapier
 	name = "Rapier"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/Cutlass
+/datum/supply_pack/rogue/bandit/Knave/swordCutlass
 	name = "Cutlass"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/sword/cutlass)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/katar
+/datum/supply_pack/rogue/bandit/Knave/swordkatar
 	name = "Katar"
 	cost = 35
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/katar)
 
-/datum/supply_pack/rogue/bandit/Knave/sword/sabre
+/datum/supply_pack/rogue/bandit/Knave/swordsabre
 	name = "Sabre"
 	cost = 35
 	time_lock = 1.2 HOURS
@@ -168,7 +199,7 @@
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 //bow arrows
 
-/datum/supply_pack/rogue/bandit/Knave/quivers/arrows
+/datum/supply_pack/rogue/bandit/Knave/quiversarrows
 	name = "Quiver of Arrows"
 	cost = 15
 	contains = list(/obj/item/ammo_holder/quiver/arrows)
@@ -191,7 +222,7 @@
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
-/datum/supply_pack/rogue/bandit/Knave/quivers/bolts
+/datum/supply_pack/rogue/bandit/Knave/quiversbolts
 	name = "Quiver of Bolts"
 	cost = 15
 	contains = list(/obj/item/ammo_holder/quiver/bolts)

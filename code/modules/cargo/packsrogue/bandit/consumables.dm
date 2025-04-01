@@ -27,17 +27,17 @@
 
 /datum/supply_pack/rogue/bandit/Consumables/bandages
 	name = "Bandages"
-	cost = 25
+	cost = 15
 	contains = list(/obj/item/natural/bundle/cloth/bandage/full)
 
 /datum/supply_pack/rogue/bandit/Consumables/westleach
 	name = "Shhig Brand Zigs"
-	cost = 40
+	cost = 10
 	contains = list(/obj/item/storage/fancy/shhig)
 
 /datum/supply_pack/rogue/bandit/Consumables/swampweed
 	name = "Swampweed Zig"
-	cost = 20
+	cost = 15
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
 /datum/supply_pack/rogue/bandit/Consumables/ozium
@@ -47,12 +47,12 @@
 
 /datum/supply_pack/rogue/bandit/Consumables/moondust
 	name = "Moon Dust"
-	cost = 45
+	cost = 35
 	contains = list(/obj/item/reagent_containers/powder/moondust)
 
 /datum/supply_pack/rogue/bandit/Consumables/spice
 	name = "Spice"
-	cost = 40
+	cost = 35
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
 /datum/supply_pack/rogue/bandit/Consumables/wienerpotato

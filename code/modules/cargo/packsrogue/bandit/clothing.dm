@@ -36,7 +36,7 @@
 
 /datum/supply_pack/rogue/bandit/Clothing/bandithood
 	name = "Bandit hood"
-	cost = 25
+	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/menacing/bandit)
 
 /datum/supply_pack/rogue/bandit/Clothing/jesterhat
@@ -166,7 +166,7 @@
 
 /datum/supply_pack/rogue/bandit/Clothing/hidearmor
 	name = "Hide armor"
-	cost = 37
+	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide)
 
 /datum/supply_pack/rogue/bandit/Clothing/halfmasks

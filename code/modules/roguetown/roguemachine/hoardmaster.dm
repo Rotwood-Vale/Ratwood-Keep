@@ -36,7 +36,7 @@
 /obj/structure/roguemachine/Hoardmaster/examine(mob/user)
 	. = ..()
 	if(user.mind?.has_antag_datum(/datum/antagonist/bandit))
-		. += "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor. Its maw looks big enough for one to stick their head in."
+		. += "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor. Its maw looks big enough for one to stick their head in. (Drag and drop a victim into it, then RMB to ransom them)"
 		return
 	else
 		. += "Some mean looking statue of a dragon. Something about it makes me uneasy, like its eyes are following me."
