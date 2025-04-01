@@ -263,11 +263,19 @@
 	name = "Excidium Pillory"
 	desc = "Make the criminals pay for their crimes!"
 	icon_state = "pillory_device"
+	base_icon = "pillory_device"
 	var/mob/living/carbon/human/bounty_hunter
 	var/datum/bounty/active_bounty
 	var/bounty_redemption_time = 5 MINUTES
 	var/bounty_step_reward = 50
 	var/bounty_timer
+
+/obj/structure/pillory/bounty/Destroy()
+	. = ..()
+	if(bounty_timer)
+		deltimer(bounty_timer)
+		bounty_timer = null
+	bounty_hunter = null
 
 /obj/structure/pillory/bounty/post_buckle_mob(mob/living/M)
 	if(!istype(M, /mob/living/carbon/human))
@@ -293,7 +301,7 @@
 		return
 
 	for(var/datum/bounty/bounty as anything in GLOB.head_bounties)
-		if(bounty.target == victim.real_name)
+		if(bounty?.target == victim.real_name)
 			found_bounty = bounty
 			break
 	if(!found_bounty) return
@@ -302,7 +310,7 @@
 		say("No account found, unable to redeem bounty. Submit your fingers to a shylock for inspection.")
 		return
 	say("Detected a bounty of [found_bounty.amount] mammons on [victim.real_name]!")
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty redemption to [hunter] starts now, reward in [DisplayTimeText(bounty_redemption_time)]."))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty redemption to [hunter] starts now, reward in [DisplayTimeText(bounty_redemption_time)]."), 2 SECONDS)
 	bounty_hunter = hunter
 	active_bounty = found_bounty
 	bounty_timer(victim, found_bounty)
