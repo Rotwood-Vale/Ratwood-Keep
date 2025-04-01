@@ -348,7 +348,8 @@
 	/datum/job/roguetown/priest,\
 	/datum/job/roguetown/consort,\
 	/datum/job/roguetown/ruler,\
-	/datum/job/roguetown/prince
+	/datum/job/roguetown/prince,\
+	/datum/job/roguetown/hand
 
 #define CHURCH_ROLES \
 	/datum/job/roguetown/novitiate,\
