@@ -5,7 +5,7 @@
 		CONFIG_SET(flag/usewhitelist, FALSE)
 		return TRUE
 
-	var/datum/db_query/query_get_whitelist = SSdbcore.NewQuery({"
+	var/datum/DBQuery/query_get_whitelist = SSdbcore.NewQuery({"
 		SELECT id FROM [format_table_name_whitelist("whitelist")]
 		WHERE ckey = :ckey and deleted = 0
 	"}, list("ckey" = key)
@@ -69,7 +69,7 @@
 				var/pos = findtext(params, all_params[2]) + length(all_params[2]) + 1
 				comment = copytext(params, pos)
 
-			var/datum/db_query/query_get_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_whitelist = SSdbcore.NewQuery({"
 				SELECT id FROM [format_table_name_whitelist("whitelist")]
 				WHERE ckey = :ckey
 			"}, list("ckey" = key)
@@ -83,7 +83,7 @@
 			if(query_get_whitelist.NextRow())
 				qdel(query_get_whitelist)
 
-				var/datum/db_query/query_update_whitelist = SSdbcore.NewQuery({"
+				var/datum/DBQuery/query_update_whitelist = SSdbcore.NewQuery({"
 					UPDATE [format_table_name_whitelist("whitelist")]
 					SET deleted = 0, manager = :manager, manager_id = :manager_id, comment = :comment
 					WHERE ckey = :ckey
@@ -102,7 +102,7 @@
 
 			qdel(query_get_whitelist)
 
-			var/datum/db_query/query_add_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_add_whitelist = SSdbcore.NewQuery({"
 				INSERT INTO [format_table_name_whitelist("whitelist")] (ckey, manager, manager_id, comment)
 				VALUES (:ckey, :manager, :manager_id, :comment)
 			"}, list("ckey" = key, "manager" = sender.friendly_name, "manager_id" = sender.id, "comment" = comment))
@@ -131,7 +131,7 @@
 				var/pos = findtext(params, all_params[2]) + length(all_params[2]) + 1
 				comment = copytext(params, pos)
 
-			var/datum/db_query/query_remove_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_remove_whitelist = SSdbcore.NewQuery({"
 				UPDATE [format_table_name_whitelist("whitelist")]
 				SET deleted = 1, manager = :manager, manager_id = :manager_id, comment = :comment
 				WHERE ckey = :ckey
@@ -155,7 +155,7 @@
 				if(!limit || limit <= 0)
 					limit = default_limit
 
-			var/datum/db_query/query_get_all_whitelist = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_all_whitelist = SSdbcore.NewQuery({"
 				SELECT ckey FROM [format_table_name_whitelist("whitelist")] WHERE deleted = 0 ORDER BY last_modified DESC LIMIT :limit
 			"}, list("limit" = limit))
 
@@ -179,7 +179,7 @@
 				if(!limit || limit <= 0)
 					limit = default_limit
 
-			var/datum/db_query/query_get_logs = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_logs = SSdbcore.NewQuery({"
 				SELECT ckey, manager, manager_id, action, date, comment FROM [format_table_name_whitelist("whitelist_log")]
 				ORDER BY date DESC
 				LIMIT :limit
@@ -220,7 +220,7 @@
 				if(!limit || limit <= 0)
 					limit = default_limit
 
-			var/datum/db_query/query_get_logs = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_logs = SSdbcore.NewQuery({"
 				SELECT ckey, manager, manager_id, action, date, comment FROM [format_table_name_whitelist("whitelist_log")]
 				WHERE manager_id =  REPLACE(REPLACE(:manager_id, '<@', ''), '>', '')
 				ORDER BY date DESC
@@ -262,7 +262,7 @@
 				if(!limit || limit <= 0)
 					limit = default_limit
 
-			var/datum/db_query/query_get_logs = SSdbcore.NewQuery({"
+			var/datum/DBQuery/query_get_logs = SSdbcore.NewQuery({"
 				SELECT ckey, manager, manager_id, action, date, comment FROM [format_table_name_whitelist("whitelist_log")]
 				WHERE ckey = :ckey
 				ORDER BY date DESC
