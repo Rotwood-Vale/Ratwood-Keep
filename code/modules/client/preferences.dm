@@ -904,11 +904,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
 	if(usr?.client?.prefs?.be_russian)
+		dat += "<b>Детальная Семья:</b> <a href='?_src_=prefs;preference=detailed_family'>[(detailed_family_loging) ? "Yes":"No"]</a><br>" // REDMOON ADD - family_changes
 		dat += "<b>Русскоязычность:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
 		dat += "<b>Давать отпор:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 		dat += "<b>Девственность:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
 		dat += "<b>Быть Голосом:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	else
+		dat += "<b>Detailed Family:</b> <a href='?_src_=prefs;preference=detailed_family'>[(detailed_family_loging) ? "Yes":"No"]</a><br>" // REDMOON ADD - family_changes
 		dat += "<b>Be Russian:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
 		dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 		dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
@@ -2495,6 +2497,13 @@ Slots: [job.spawn_positions]</span>
 							to_chat(user, span_notice("Выписан из Русских. Не поздравляю."))
 						else
 							to_chat(user, span_boldwarning("You have disable Russian and it is still under development."))
+
+				// REDMOON ADD START - family_changes
+				if("detailed_family")
+					detailed_family_loging = !detailed_family_loging
+					if(detailed_family_loging)
+						to_chat(user, user.client.prefs?.be_russian ? span_notice("Детальная Семья включена. Вы будете получать подробные сообщения при попытке формирования семьи. Эта функция нужна для демонстрации работы подбора партнёра.") : span_notice("Detailed family log turned on."))
+				// REDMOON ADD END
 
 				if("be_virgin")
 					virginity = !virginity

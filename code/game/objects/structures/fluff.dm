@@ -957,6 +957,8 @@ obj/structure/bars/steel
 						thebride.adjust_triumphs(1)
 						priority_announce("[thegroom.real_name] has married [thebride.real_name]!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 						marriage = TRUE
+						SSfamily.family_candidates -= thegroom // REDMOON ADD - family_changes - убираем из пулла ищущих семью
+						SSfamily.family_candidates -= thebride // REDMOON ADD - family_changes - убираем из пулла ищущих семью
 						qdel(A)
 
 				if(!marriage)

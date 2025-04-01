@@ -38,7 +38,7 @@
 		if(F.checkFamilyCompat(candidate,newcomer,REL_TYPE_SPOUSE) && F.checkFamilyCompat(newcomer,candidate,REL_TYPE_SPOUSE))
 			var/mob/family_head = candidate
 			var/mob/family_member = newcomer
-			if(candidate.getorganslot(ORGAN_SLOT_PENIS) && candidate.family_surname)
+			if(candidate.family_surname)
 				for(var/datum/mind/MF in get_minds()) // Т.к. со старта раунд известны под другим именем, удаляем его
 					newcomer.mind.become_unknown_to(MF)
 				
@@ -68,28 +68,15 @@
 	if(user.isFamily(target))
 		if(!target.mob_timers["cumfamily"])
 			target.mob_timers["cumfamily"] = world.time
-			to_chat(target, "I have had sex with my spouse!")
+			to_chat(target, "I have been with my spouse!")
 			target.adjust_triumphs(3)
 		if(!user.mob_timers["cumfamily"])
 			user.mob_timers["cumfamily"] = world.time
-			to_chat(user, "I have had sex with my spouse!")
+			to_chat(user, "I have been with my spouse!")
 			user.adjust_triumphs(3)
 
 // Детальный отчёт о причинах провала подбора семьи
 /datum/family/proc/detailed_log(var/mob/living/carbon/human/target, var/message)
 	if(!target.client?.prefs?.detailed_family_loging)
 		return
-	to_chat(target, span_small("[message] (Options > Detailed Family Log)"))
-
-// Детальный отчёт о причинах провала подбора семьи
-/client/verb/show_detailed_family_log()
-	set category = "Options"
-	set name = "Detailed Family Log"
-
-	if(prefs)
-		prefs.detailed_family_loging = !prefs.detailed_family_loging
-		prefs.save_preferences()
-		if(prefs.detailed_family_loging)
-			to_chat(src, "Detailed Family Log включен. Вы будете получать подробные сообщения при попытке формирования семьи. Эта функция нужна для демонстрации работы подбора партнёра.")
-		else
-			to_chat(src, "Detailed Family Log отключён.")
+	to_chat(target, span_small("Family Log: [message]"))

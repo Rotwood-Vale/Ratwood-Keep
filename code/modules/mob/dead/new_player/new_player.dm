@@ -703,8 +703,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	new_character = .
 
 	// REDMOON ADD START - family_changes - фамилии для семей
+	H.old_real_name = H.real_name
 	if(client.prefs.family_surname && client.prefs.family == FAMILY_FULL)
-		H.old_real_name = H.real_name
 		H.real_name = "[H.real_name] [client.prefs.family_surname]"
 	// REDMOON ADD END
 	H.after_creation()
