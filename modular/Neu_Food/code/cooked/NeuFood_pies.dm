@@ -289,7 +289,7 @@
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
+			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
 			process_step += 1
 			poisoning = TRUE	
 			update_icon()
@@ -297,7 +297,7 @@
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
+			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			poisoning = TRUE	
 			update_icon()
@@ -412,7 +412,7 @@
 	eat_effect = null
 	foodtype = GRAIN | DAIRY
 	chopping_sound = TRUE
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -458,7 +458,7 @@
 	foodtype = GRAIN | DAIRY
 	warming = 5 MINUTES
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	color = "#e7e2df"
 	rotprocess = SHELFLIFE_LONG
 
@@ -466,7 +466,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat // bae item
 	name = "meat pie"
 	desc = ""
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/meat
@@ -532,12 +532,12 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | VEGETABLES
-	tastes = list("meat" = 1)
+	tastes = list("mushrooms" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mince
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | MEAT
-	tastes = list("mushrooms" = 1)
+	tastes = list("meat" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
 	w_class = WEIGHT_CLASS_NORMAL
@@ -554,9 +554,9 @@
 	name = "Donk-E-Pie"
 	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
 	icon_state = "handpie"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	bitesize = 4
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION, /datum/reagent/medicine/omnizine = 5) // donkpocket
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION+MINCE_NUTRITION, /datum/reagent/medicine/omnizine = 5) // donkpocket
 	tastes = list("crispy dough" = 1)
 	rotprocess = null
 	dropshrink = 0.8
@@ -567,3 +567,26 @@
 	if(bitecount == 1)
 		rotprocess = SHELFLIFE_DECENT
 		addtimer(CALLBACK(src, PROC_REF(begin_rotting)), 20, TIMER_CLIENT_TIME) // 
+
+// ---------------- CRAB CAKE -------------------------- //
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
+	name = "raw crab cake"
+	desc = "A recipe originating from Port Icecube, a variant of the handpie filled with buttery, savory shellfish meat and made with normal dough instead of it's buttered variant."
+	icon_state = "crab_cake_raw"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/crabcake
+	cooked_smell = /datum/pollutant/food/pie_base
+	w_class = WEIGHT_CLASS_NORMAL
+	dropshrink = 0.8
+
+/obj/item/reagent_containers/food/snacks/rogue/crabcake
+	name = "crab cake"
+	desc = "A recipe originating from Port Icecube, a variant of the handpie filled with buttery, savory shellfish meat and made with normal dough instead of it's buttered variant."
+	icon_state = "crab_cake"
+	eat_effect = /datum/status_effect/buff/mealbuff
+	bitesize = 4
+	list_reagents = list(/datum/reagent/consumable/nutriment = SMALLDOUGH_NUTRITION+MEATSLAB_NUTRITION)
+	tastes = list("crispy dough and sellfish meat" = 1)
+	rotprocess = null
+	dropshrink = 0.8

@@ -335,7 +335,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "spliffoff"
 	icon_on = "spliffon"
 	icon_off = "spliffoff"
-	type_butt = /obj/item/cigbutt
+	type_butt = /obj/item/cigbutt/zig
 	throw_speed = 0.5
 	item_state = "spliffoff"
 	smoketime = 120 // four minutes
@@ -362,17 +362,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
 
 /obj/item/cigbutt
-	name = "roach"
-	desc = ""
-	icon_state = "roach"
-	muteinmouth = FALSE
-
-/obj/item/cigbutt/Initialize()
-	. = ..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
-
-/obj/item/cigbutt
 	name = "cigarette butt"
 	desc = ""
 	icon = 'icons/roguetown/items/lighting.dmi'
@@ -382,6 +371,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	grind_results = list(/datum/reagent/carbon = 2)
 	slot_flags = ITEM_SLOT_MOUTH
 	spitoutmouth = TRUE
+
+/obj/item/cigbutt/Initialize()
+	. = ..()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
+
+/obj/item/cigbutt/zig
+	name = "roach"
+	desc = "Seems to be a roach of some spent zig"
+	icon_state = "roach"
+	muteinmouth = FALSE
 
 /////////////////
 //SMOKING PIPES//

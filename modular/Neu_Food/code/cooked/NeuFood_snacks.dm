@@ -11,7 +11,7 @@
 	eat_effect = null
 	slices_num = 0
 	name = "frysteak"
-	desc = "A slab of beastflesh, fried to a perfect medium-rare(Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
+	desc = "A slab of beastflesh, fried to a perfect medium-rare (Serve as is or add Pepper, Onion or use with salt to make a Coppiette)"
 	icon_state = "frysteak"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
 	rotprocess = SHELFLIFE_DECENT
@@ -66,8 +66,9 @@
 	icon_state = "grenzbun"
 	foodtype = GRAIN | MEAT
 	warming = 5 MINUTES
+	bitesize = 4
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz/plated
 	icon_state = "grenzbun_plated"
@@ -112,11 +113,12 @@
 
 /*	.............   Twin fried cackleberries   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	tastes = list("fried cackleberries" = 1)
 	name = "fried cackleberries"
 	desc = "Double the yolks, double the fun."
 	icon_state = "seggs"
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -210,8 +212,8 @@
 	name = "cooked cabbage"
 	icon_state = "cabbage_fried"
 	desc = "A peasant's delight."
-	bitesize = 6
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("warm cabbage" = 1)
 	rotprocess = SHELFLIFE_LONG
 /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried/attackby(obj/item/I, mob/living/user, params)
@@ -272,8 +274,8 @@
 	name = "fried onion"
 	desc = "Seared onions roasted to a delicious set of rings."
 	icon_state = "onion_fried"
-	bitesize = 6
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("savoury morsel" = 1)
 	rotprocess = SHELFLIFE_DECENT
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried/attackby(obj/item/I, mob/living/user, params)
@@ -298,8 +300,8 @@
 	name = "fried potato"
 	desc = "Potato bits, well roasted."
 	icon_state = "potato_fried"
-	bitesize = 3
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	bitesize = 2
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("warm potato" = 1)
 	rotprocess = SHELFLIFE_LONG
 	
@@ -328,3 +330,77 @@
 				qdel(src)
 	else
 		return ..()
+
+/* ............ Shellfish ................... */
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(user.mind)
+		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal(loc)
+				qdel(I)
+				qdel(src)
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION+BUTTERSLICE_NUTRITION + 1)
+	tastes = list("lobster" = 1, "butter" = 1)
+	name = "lobster meal"
+	desc = "Lobster is somewhat bland on it's own and doesn't pair well with many seasonings, so people have taken to smothering it in butter for extra taste instead. Lobster prepared in this way is popular among high-society types for it's exotic appearance."
+	icon_state = "lobster_meal"
+	icon = 'modular/Neu_Food/icons/food.dmi'
+	foodtype = MEAT
+	warming = 5 MINUTES
+	bitesize = 5
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/mealbuff
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/chowder
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	tastes = list("oyster chowder" = 1)
+	name = "oyster chowder"
+	icon_state = "chowder"
+	icon = 'modular/Neu_Food/icons/food.dmi'
+	foodtype = MEAT
+	warming = 5 MINUTES
+	bitesize = 5
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/greatmealbuff
+	trash = /obj/item/reagent_containers/glass/bowl
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/gumbo
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	tastes = list("shrimp" = 1, "cabbage and onion" = 1)
+	name = "shrimp gumbo"
+	icon_state = "gumbo"
+	icon = 'modular/Neu_Food/icons/food.dmi'
+	foodtype = MEAT
+	warming = 5 MINUTES
+	bitesize = 5
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/greatmealbuff
+	trash = /obj/item/reagent_containers/glass/bowl
+
+/datum/crafting_recipe/roguetown/cooking/gumbo
+	name = "shrimp gumbo"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp = 2,
+		/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1,
+		/obj/item/reagent_containers/glass/bowl = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/fryfish/gumbo
+
+/datum/crafting_recipe/roguetown/cooking/chowder
+	name = "oyster chowder"
+	reqs = list(/obj/item/reagent_containers/food/snacks/fish/oyster = 1,
+			/obj/item/reagent_containers/powder/flour = 1,
+			/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1,
+			/obj/item/reagent_containers/glass/bowl = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/fryfish/chowder

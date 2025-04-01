@@ -64,6 +64,8 @@
 
 #define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
+#define RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE, RACES_GOBLIN)
+
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
@@ -166,15 +168,6 @@
 )
 
 
-#define RACES_WITH_BEARD_GROWTH list(\
-	/datum/species/human/northern,\
-	/datum/species/human/halfelf,\
-	/datum/species/elf/wood,\
-	/datum/species/dwarf/mountain,\
-	/datum/species/aasimar,\
-	/datum/species/demihuman,\
-	/datum/species/goblinp,\
-)
 
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
@@ -226,6 +219,16 @@
 	/datum/patron/inhumen/baotha,\
 	/datum/patron/inhumen/graggar\
 )
+
+
+#define NON_DIVINE_PATRONS list(\
+	/datum/patron/zizo,\
+	/datum/patron/inhumen/matthios,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/graggar\
+)
+
+
 
 #define TEN_CURSES list(\
 	/datum/curse/astrata,\
@@ -290,12 +293,11 @@ GLOBAL_LIST_INIT(lockhashes, list())
 GLOBAL_LIST_INIT(lockids, list())
 GLOBAL_LIST_EMPTY(credits_icons)
 GLOBAL_LIST_EMPTY(confessors)
-GLOBAL_LIST_EMPTY(cuckolds)
 
 //preference stuff
-#define FAMILY_NONE 0
-#define FAMILY_FULL 1
+#define FAMILY_NONE 1
 #define FAMILY_PARTIAL 2
+#define FAMILY_FULL 3
 
 
 GLOBAL_LIST_EMPTY(head_bounties)
@@ -329,6 +331,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Nobles			Eventually all of them will get their subclasses
 #define CTAG_HEIR			"CAT_HEIR"			// Heirs
+#define CTAG_KNIGHT			"CAT_KNIGHT"		// Knights
 
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
@@ -356,16 +359,19 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define SNACK_DECENT 6
 #define SNACK_POOR 3
 
+//DOUGH
 #define DOUGH_NUTRITION MEAL_MEAGRE
-#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2
-#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION
-#define BUTTERDOUGHSLICE_NUTRITION BUTTERDOUGH_NUTRITION/2
+#define SMALLDOUGH_NUTRITION MEAL_MEAGRE/2 //7.5
+#define BUTTERDOUGH_NUTRITION DOUGH_NUTRITION+BUTTERSLICE_NUTRITION //17
+#define BUTTERDOUGHSLICE_NUTRITION 8.5 //This should be butterdough_nutrition/2, but for some reason it returns 16 if you do that. So...
+//DAIRY
 #define BUTTER_NUTRITION SNACK_CHUNKY
-#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6
+#define BUTTERSLICE_NUTRITION BUTTER_NUTRITION/6 //2
+#define FRESHCHEESE_NUTRITION SNACK_DECENT
+//MEAT
 #define MEATSLAB_NUTRITION SNACK_NUTRITIOUS
 #define SAUSAGE_NUTRITION SNACK_NUTRITIOUS
-#define MINCE_NUTRITION MEATSLAB_NUTRITION/2
-#define FRESHCHEESE_NUTRITION SNACK_DECENT
+#define MINCE_NUTRITION MEATSLAB_NUTRITION/2 //4.5
 
 /*	........   Rotting defines   ................ */
 #define SHELFLIFE_EXTREME 270 MINUTES

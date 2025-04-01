@@ -155,6 +155,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 	var/ignore_sleeves_code = FALSE // Use for clothing which has cropped parts for hands and doesn't use sleeved system. They will have layer under gloves
+	var/sleeves_state_override = FALSE // If you want to use sleeves that are different from the object's icon_state (to don't copy many similar states)
 	var/sleeved = null
 	var/sleevetype = null
 	var/nodismemsleeves = FALSE
@@ -205,7 +206,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit
-	var/list/blocksound 
+	var/list/blocksound
 
 	// played when item is placed on hip_r or hip_l, the belt side slots
 	var/sheathe_sound
@@ -224,6 +225,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	/// Number of torn sleves, important for salvaging calculations and examine text
 	var/torn_sleeve_number = 0
+	var/enchanted = FALSE
 
 /obj/item/Initialize()
 	. = ..()
@@ -346,7 +348,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int) 
+	if(max_blade_int)
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
@@ -460,16 +462,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		if(istype(src,/obj/item/clothing))
 			var/obj/item/clothing/C = src
+			inspec += "<br>"
+			inspec += C.defense_examine()
+			if(C.body_parts_covered)
+				inspec += "\n<b>COVERAGE: <br></b>"
+				inspec += " | "
+				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
+					inspec += "<b>[capitalize(zone)]</b> | "
+				inspec += "<br>"
 			if(C.prevent_crits)
 				if(C.prevent_crits.len)
-					inspec += "\n<b>DEFENSE:</b>"
+					inspec += "\n<b>PREVENTS CRITS:</b>"
 					for(var/X in C.prevent_crits)
-						inspec += "\n<b>[X] damage</b>"
-
-			if(C.body_parts_covered)
-				inspec += "\n<b>COVERAGE:</b>"
-				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-					inspec += "\n<b>[zone]</b>"
+						inspec += ("\n<b>[capitalize(X)]</b>")
+				inspec += "<br>"
 
 //**** General durability
 
@@ -623,6 +629,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
 		return 1
 	return 0
+
+/obj/item/proc/hit_response(mob/living/carbon/human/owner, mob/living/carbon/human/attacker)
+	SEND_SIGNAL(src, COMSIG_ITEM_HIT_RESPONSE, owner, attacker)		//sends signal for Magic_items. Used to call enchantments effects for worn items
+
 
 /obj/item/proc/talk_into(mob/M, input, channel, spans, datum/language/language)
 	return ITALICS | REDUCE_RANGE
@@ -1237,3 +1247,55 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			ungrip(M, FALSE)
 
 
+/obj/item/proc/defense_examine()
+	var/list/str = list()
+	if(istype(src, /obj/item/clothing))
+		var/obj/item/clothing/C = src
+		if(C.armor)
+			var/defense = "<u><b>ABSORPTION: </b></u><br>"
+			var/datum/armor/def_armor = C.armor
+			defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] | "
+			defense += "[colorgrade_rating("SLASH", def_armor.slash)] | "
+			defense += "[colorgrade_rating("STAB", def_armor.stab)] | "
+			defense += "[colorgrade_rating("PROJECTILE", def_armor.bullet)] "
+			str += "[defense]<br>"
+		else
+			str += "NO DEFENSE"
+	return str
+
+/proc/colorgrade_rating(input, rating)
+	var/str
+	switch(rating)
+		if(0)
+			var/color = "#f81a1a"
+			str = "<font color = '[color]'>[input] (F)</font>"
+		if(1 to 19)
+			var/color = "#680d0d"
+			str = "<font color = '[color]'>[input] (D)</font>"
+		if(20 to 39)
+			var/color = "#753e11"
+			str = "<font color = '[color]'>[input] (D+)</font>" 
+		if(40 to 49)
+			var/color = "#c0a739"
+			str = "<font color = '[color]'>[input] (C)</font>" 
+		if(50 to 59)
+			var/color = "#e3e63c"
+			str = "<font color = '[color]'>[input] (C+)</font>" 
+		if(60 to 69)
+			var/color = "#425c33"
+			str = "<font color = '[color]'>[input] (B)</font>" 
+		if(70 to 79)
+			var/color = "#1a9c00"
+			str = "<font color = '[color]'>[input] (B+)</font>"
+		if(80 to 89)
+			var/color = "#0fe021"
+			str = "<font color = '[color]'>[input] (A)</font>"
+		if(90 to 99)
+			var/color = "#ffffff"
+			str = "<font color = '[color]'>[input] (A+)</font>"
+		if(100)
+			var/color = "#339dff"
+			str = "<font color = '[color]'>[input] (S)</font>"
+		else
+			str = "[input] (Above 100 or under 0! Contact coders.)"
+	return str

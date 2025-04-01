@@ -25,6 +25,7 @@
 	var/skill_level = 1
 	var/sellprice = 0
 	//crafting diff, every diff removes 25% chance to craft
+	var/xpgain = TRUE //Most recipes should return xp
 
 /datum/crafting_recipe/pin_removal
 	name = "Pin Removal"

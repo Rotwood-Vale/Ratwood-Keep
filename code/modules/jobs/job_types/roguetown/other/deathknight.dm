@@ -12,7 +12,7 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = ""
 
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+	spells = list(SPELL_LIGHTNINGBOLT, SPELL_FETCH)
 	outfit = /datum/outfit/job/roguetown/deathknight
 
 	show_in_credits = FALSE

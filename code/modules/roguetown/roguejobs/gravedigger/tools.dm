@@ -25,6 +25,22 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 50
 
+/obj/item/rogueweapon/shovel/pre_attack(atom/A, mob/living/user, params)
+	. = ..()
+	if(user.used_intent.type != /datum/intent/shovelscoop)
+		return
+	if(!istype(A, /obj/structure/snow))
+		return
+	var/turf/target_turf = get_turf(A)
+	playsound(A,'sound/items/dig_shovel.ogg', 100, TRUE)
+	qdel(A)
+	for(var/dir in GLOB.cardinals)
+		var/turf/card = get_step(target_turf, dir)
+		if(card.snow)
+			card.snow.update_corners()
+	user.changeNext_move(CLICK_CD_MELEE)
+	return TRUE
+
 /obj/item/rogueweapon/shovel/Destroy()
 	if(heldclod)
 		QDEL_NULL(heldclod)

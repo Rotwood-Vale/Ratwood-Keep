@@ -594,6 +594,7 @@
 		/datum/sprite_accessory/hair/head/ponytail5,
 		/datum/sprite_accessory/hair/head/ponytail6,
 		/datum/sprite_accessory/hair/head/ponytail7,
+		/datum/sprite_accessory/hair/head/ponytail8,
 		/datum/sprite_accessory/hair/head/highponytail,
 		/datum/sprite_accessory/hair/head/longponytail,
 		/datum/sprite_accessory/hair/head/stail,

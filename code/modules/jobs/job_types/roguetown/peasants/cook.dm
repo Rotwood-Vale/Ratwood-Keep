@@ -33,7 +33,7 @@
 	beltl = /obj/item/key/tavern
 	beltr = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/flint,/obj/item/natural/cloth/)
+	backpack_contents = list(/obj/item/flint,/obj/item/natural/cloth/,/obj/item/key/nightman)
 	if(H.gender == MALE)
 
 		pants = /obj/item/clothing/under/roguetown/tights/random

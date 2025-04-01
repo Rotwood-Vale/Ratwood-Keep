@@ -255,6 +255,7 @@
 	on = FALSE
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_HIP
+	obj_flags = CAN_BE_HIT
 	force = 15
 	on_damage = 15
 	fuel = 9999 MINUTES

@@ -9,7 +9,7 @@
 	chargetime = 1.5
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = 30
 	item_d_type = "stab"
 
 /datum/intent/spear/bash
@@ -230,6 +230,8 @@
 	desc = "A neat, steel hook."
 	icon_state = "billhook"
 	force_wielded = 30
+	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/steel, SPEAR_CUT, SPEAR_BASH)
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
@@ -273,8 +275,8 @@
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
-	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
+	gripped_intents = list(/datum/intent/spear/thrust/steel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
 	desc = "A steel halberd, mostly used by town guards."
 	icon_state = "halberd"
@@ -295,6 +297,29 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 6
+
+/obj/item/rogueweapon/halberd/attack_right(mob/user)
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/halberdherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/halberdherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Halberds...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/halberdherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/halberdherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		bigboy = 0
+		gripsprite = FALSE
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/halberdherald.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = "Regular Halberd"
+	else
+		..()
 
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
@@ -317,6 +342,9 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+
+/datum/intent/spear/thrust/steel
+	penfactor = 50
 
 /datum/intent/spear/cut/halberd
 	damfactor = 0.9

@@ -44,6 +44,19 @@
 		else
 			new /obj/item/dice/d6(src)
 
+/obj/item/storage/pill_bottle/dice/push_your_luck
+	name = "Push Your Luck game set"
+	desc = "A bag with 6 dice and a guide to play your favorite game!"
+
+/obj/item/storage/pill_bottle/dice/push_your_luck/PopulateContents()
+	new /obj/item/dice/d6(src)
+	new /obj/item/dice/d6(src)
+	new /obj/item/dice/d6(src)
+	new /obj/item/dice/d6(src)
+	new /obj/item/dice/d6(src)
+	new /obj/item/dice/d6(src)
+	new /obj/item/paper/push_your_luck(src)
+
 /*****************************Dice********************************/
 
 /obj/item/dice //depreciated d6, use /obj/item/dice/d6 if you actually want a d6

@@ -58,7 +58,7 @@
 	equip_sound = 'sound/foley/equip/rummaging-01.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	throw_range = 4
-	slot_flags = ITEM_SLOT_BELT|ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_HIP
 	force = 1
 	throwforce = 1
 	w_class = WEIGHT_CLASS_SMALL

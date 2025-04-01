@@ -69,7 +69,7 @@
 #define CLOTHING_BROWN			"#61462c"
 #define CLOTHING_GREEN			"#428138"
 #define CLOTHING_DARK_GREEN		"#264d26"
-#define CLOTHING_BLUE			"#173266"
+#define CLOTHING_BLUE			"#537bc6"
 #define CLOTHING_YELLOW			"#ffcd43"
 #define CLOTHING_TEAL			"#249589"
 #define CLOTHING_WHITE			"#ffffff"

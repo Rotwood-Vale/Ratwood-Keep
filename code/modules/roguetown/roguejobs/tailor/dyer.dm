@@ -12,34 +12,18 @@
 	var/berry_charges = 0
 	var/atom/movable/inserted
 	var/list/allowed_types = list(
-			/obj/item/clothing/suit/roguetown/shirt/robe,
-			/obj/item/clothing/suit/roguetown/shirt/dress,
-			/obj/item/clothing/suit/roguetown/shirt/undershirt,
-			/obj/item/clothing/suit/roguetown/shirt/shortshirt,
-			/obj/item/clothing/under/roguetown/tights,
-			/obj/item/clothing/cloak/raincloak,
-			/obj/item/clothing/cloak/cape,
-			/obj/item/clothing/cloak/half,
-			/obj/item/clothing/cloak/fauld,
-			/obj/item/clothing/cloak/fauld/battleskirt,
-			/obj/item/clothing/head/roguetown/roguehood,
-			/obj/item/clothing/head/roguetown/headband,
-			/obj/item/clothing/head/roguetown/armingcap,
-			/obj/item/clothing/head/roguetown/chaperon,
-			/obj/item/storage/belt/rogue/leather/rope,
-			/obj/item/storage/belt/rogue/leather/cloth,
-			/obj/item/clothing/shoes/roguetown/simpleshoes,
-			/obj/item/clothing/suit/roguetown/armor/gambeson,
-			/obj/item/clothing/suit/roguetown/armor/armordress,
+			/obj/item/clothing,
 			/obj/item/storage,
 			/obj/item/bedroll,
-			/obj/item/clothing/under/roguetown/loincloth
 			)
+
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
-		"White" = "#ffffff",
+	"Royal White" = "#ffffff",
 		"Black" = "#414143",
+		"Royal Black"="#2b292e",
 		"Light Grey" = "#999999",
+		"Dark Grey" = "#505050",
 		"Mage Grey" = "#6c6c6c",
 		"Mage Red" = "#b8252c",
 		"Mage Blue" = "#4756d8",
@@ -49,28 +33,35 @@
 		"Dunked in Water" = "#bbbbbb",
 		"Cream" = "#fffdd0",
 		"Orange" = "#bd6606",
+		"Royal Orange"="#df8405",
 		"Gold" = "#f9a602",
 		"Yarrow" = "#f0cb76",
 		"Yellow Weld" = "#f4c430",
 		"Yellow Ochre" = "#cb9d06",
+		"Royal Yellow"="#ffcd43",
 		"Baby Puke" = "#b5b004",
 		"Olive" = "#98bf64",
 		"Green" = "#428138",
+		"Royal Green"="#264d26",
 		"Dark Green" = "#264d26",
-		"Teal" = "#249589",
+		"Royal Teal" = "#249589",
 		"Periwinkle Blue" = "#8f99fb",
 		"Woad Blue" = "#597fb9",
+		"Royal Blue"="#173266",
+		"Royal Azure"="#007fff",
 		"Royal Purple" = "#8747b1",
 		"Magenta" = "#962e5c",
 		"Orchil" = "#66023C",
 		"Red Ochre" = "#913831",
 		"Red" = "#a32121",
+		"Royal Red"="#8b2323",
 		"Maroon" = "#550000",
+		"Royal Majenta"="#962e5c",
 		"Peasant Brown" = "#685542",
 		"Dirt" = "#7c6d5c",
 		"Chestnut" = "#613613",
-		"Russet" = "#7f461b"
-		)
+		"Russet" = "#7f461b",
+		"Royal Brown"="#61462c")
 
 /obj/structure/dye_bin/examine(mob/user)
 	. = ..()
@@ -98,6 +89,9 @@
 		qdel(I)
 		return
 	if(is_type_in_list(I, allowed_types))
+		if(contents.len)
+			to_chat(user, "<span class='warning'>Something is in \the [name]!</span>")
+			return
 		if(!user.transferItemToLoc(I, src))
 			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
 			return
@@ -111,21 +105,21 @@
 	return FALSE
 
 /obj/structure/dye_bin/ui_interact(mob/user)
-	var/list/dat = list("<TITLE>dye bucket</TITLE><BR>")
+	var/list/dat = list("<center>")
 	if(!inserted)
-		dat += "Nothing inside."
+		dat += "<font color='#D25050'>Nothing is inside the bin.</font>"
 	else
-		dat += "Item inserted: [inserted]<BR>"
-		dat += "<A href='?src=\ref[src];eject=1'>Take [inserted] out.</A><BR><BR>"
+		dat += "<font color='#777777'> Item inserted:</font> <i><font color='#C3C3C3'<i>[inserted.name]</i></font> "
+		dat += "<A href='?src=\ref[src];eject=1'>(Remove)</A><BR><BR>"
 		if(berry_charges <= 0)
-			dat += "No dye inside."
+			dat += "<font color='#D25050'>There's no dye...</font>"
 		else
-			dat += "<A href='?src=\ref[src];select=1'>Mix a color.</A><BR>"
-			dat += "Color: <font color='[activecolor]'>&#9899;</font>"
-			dat += "<A href='?src=\ref[src];paint=1'>Rub the dyes in.</A><BR><BR>"
-			dat += "<A href='?src=\ref[src];clear=1'>Bleach it.</A><BR><BR>"
-
-	var/datum/browser/menu = new(user, "colormate","dye bucket", 400, 400, src)
+			dat += "<b> <font color='[activecolor]'>&#10070 ACTIVE COLOR &#10070</font></b><BR>"
+			dat += "<A href='?src=\ref[src];select=1'>(Mix a color)</A> -- "
+			dat += "<A href='?src=\ref[src];paint=1'>(Rub the dyes in)</A>--"
+			dat += "<font color='#EFEFEF'><A href='?src=\ref[src];clear=1'>(Bleach it)</A></font>"
+	dat += "</center>"
+	var/datum/browser/menu = new(user, "colormate","<center> Dye Bucket</center>", 400, 170, src)
 	menu.set_content(dat.Join(""))
 	menu.open()
 

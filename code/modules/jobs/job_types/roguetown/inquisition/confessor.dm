@@ -34,19 +34,21 @@ Please do not confuse the two.
 
 /datum/outfit/job/roguetown/shepherd/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/puritan
-	cloak = /obj/item/clothing/cloak/cape/puritan
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/rogue/leather/black
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/under/roguetown/trou/overseer
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	mask = /obj/item/clothing/mask/rogue/rag
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+	head = /obj/item/clothing/head/roguetown/helmet/overseer
+	mask = /obj/item/clothing/mask/rogue/overseer
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
+	cloak = /obj/item/clothing/cloak/cape/inquisitor
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
 	beltl = /obj/item/rogueweapon/mace/cudgel
+	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/lockpick = 1)
+	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/puritan = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)

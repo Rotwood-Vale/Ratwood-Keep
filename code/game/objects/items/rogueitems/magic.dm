@@ -17,7 +17,7 @@
 	var/mob/current_owner
 	var/last_scry
 	w_class = WEIGHT_CLASS_SMALL
-	var/cooldown = 30 SECONDS	
+	var/cooldown = 30 SECONDS
 
 /obj/item/scrying/eye
 	name = "accursed eye"

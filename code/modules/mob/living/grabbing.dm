@@ -204,11 +204,14 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be on top of them."))
 					return
-				user.stamina_add(rand(1,3))
+				user.stamina_add(rand(10,15))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
 				M.Stun(max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20))
 				user.Immobilize(20 - skill_diff)
+			if(usr.buckled)
+				to_chat(user, span_warning("I can't be riding a mount."))
+				return
 			else
 				user.stamina_add(rand(5,15))
 				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
@@ -514,6 +517,12 @@
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
+			if(HAS_TRAIT(user, TRAIT_POISONBITE))
+				if(C.reagents)
+					var/poison = user.STACON/4 //more peak species level, more poison
+					C.reagents.add_reagent(/datum/reagent/toxin/venom, poison)
+					//C.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
+					to_chat(user, span_warning("You inject venom into [C]!"))
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \
@@ -621,5 +630,6 @@
 							C.mind.add_antag_datum(new_antag)
 							sleep(20)
 							C.fully_heal()
+							VDrinker.handle_vitae(0) // Updates pool max.
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))
