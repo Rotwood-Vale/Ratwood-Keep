@@ -66,4 +66,3 @@
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
 		H.mind.AddSpell(new SPELL_SUMMON_WEAPON)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-	ADD_TRAIT(H, TRAIT_GENERIC)
