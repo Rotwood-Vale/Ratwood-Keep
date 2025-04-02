@@ -25,6 +25,7 @@
 							/obj/structure/leyline = 1,
 							/obj/structure/voidstoneobelisk = 1,
 							/obj/structure/manaflower = 4,
+							/obj/structure/flora/grass/pyroclasticflowers = 20,
 							/obj/item/natural/manacrystal = 1,
 							/obj/item/grown/log/tree/stick = 16,
 							/obj/structure/table/roguetree/stump/log = 3,
