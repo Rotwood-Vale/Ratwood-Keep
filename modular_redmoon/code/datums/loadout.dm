@@ -222,13 +222,8 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/neck/roguetown/collar/leather/bell
 
 //ARMOR
-/datum/loadout_item/ironmask
-	name = "Iron Mask"
-	desc = "Маска."
-	path = /obj/item/clothing/mask/rogue/facemask
-
-/datum/loadout_item/ironmask
-	name = "Iron coif"
+/datum/loadout_item/rag
+	name = "Rag Mask"
 	desc = "Койф."
 	path = /obj/item/clothing/neck/roguetown/chaincoif/iron
 
@@ -289,3 +284,13 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Hunting Knife"
 	desc = "НОЖЫК."
 	path = /obj/item/rogueweapon/huntingknife
+
+/datum/loadout_item/waterskin
+	name = "Waterskin"
+	desc = "Бурдюк."
+	path = /obj/item/reagent_containers/glass/bottle/waterskin
+
+/datum/loadout_item/gwstrap
+	name = "Greatweapon Strap"
+	desc = "Ножны для великого оружия."
+	path = /obj/item/gwstrap
