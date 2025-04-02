@@ -79,14 +79,18 @@
 			target.visible_message(span_danger("[target] is unmade by holy light!"), span_userdanger("I'm unmade by holy light!"))
 			target.gib()
 			return TRUE
-		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_weaken))
 			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
 		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
 			to_chat(user, span_warning("Necra will not allow them to return back."))
 			revert_cast()
-			return FALSE	
+			return FALSE
+		if(HAS_TRAIT(target, TRAIT_ASTRATARISEN))
+			to_chat(user, span_warning("This mortal form can not take more of Astrata's light."))
+			revert_cast()
+			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 		//GET OVER HERE!
@@ -96,6 +100,7 @@
 			ghost.mind.transfer_to(target, TRUE)
 		target.grab_ghost(force = TRUE) // even suicides
 		target.revive(admin_revive = TRUE)
+		target.adjustOxyLoss(-100)
 		target.emote("breathgasp")
 		target.Jitter(100)
 		if(isseelie(target))
@@ -108,6 +113,7 @@
 				new_wings.Insert(fairy_target)
 		target.update_body()
 		target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+		ADD_TRAIT(target, TRAIT_ASTRATARISEN, "[type]")	//A mortal frame can only take so much of astrata's light.
 		if(target.mind)
 			if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 				adjust_playerquality(revive_pq, user.ckey)

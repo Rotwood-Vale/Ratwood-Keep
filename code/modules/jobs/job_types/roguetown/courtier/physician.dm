@@ -61,7 +61,7 @@
 	id = /obj/item/clothing/ring/quartzs
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/clothing/mask/rogue/pestra/court = 1, /obj/item/thermometer = 1)
+	backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1, /obj/item/clothing/mask/rogue/pestra/court = 1, /obj/item/thermometer = 1, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele)
 	ADD_TRAIT(H, TRAIT_NOBLE, "[type]")
 	ADD_TRAIT(H, TRAIT_EMPATH, "[type]")
 	ADD_TRAIT(H, TRAIT_NOSTINK, "[type]")
@@ -76,11 +76,6 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 6, TRUE)
 		H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-		H.mind.AddSpell(new SPELL_DOCHEAL)
-		H.mind.AddSpell(new SPELL_STABLE)
-		H.mind.AddSpell(new SPELL_PURGE)
-		H.mind.AddSpell(new SPELL_DEBRIDE)
-		H.mind.AddSpell(new SPELL_CPR)
 		H.change_stat("strength", -1)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 3)
