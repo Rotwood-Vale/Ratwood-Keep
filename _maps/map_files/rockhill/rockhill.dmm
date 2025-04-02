@@ -31646,6 +31646,10 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"qEb" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/druid,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/druidgrove)
 "qEu" = (
 /obj/structure/stairs{
 	dir = 8
@@ -45778,6 +45782,10 @@
 "yhZ" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
+"yiq" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/druid,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/druidgrove)
 "yiB" = (
 /obj/structure/fog_wall,
 /turf/open/water/river{
@@ -583002,7 +583010,7 @@ vAW
 vAW
 rXZ
 vpR
-vAW
+qEb
 vpR
 vpR
 nex
@@ -585163,7 +585171,7 @@ swU
 ovk
 anm
 rXZ
-rXZ
+yiq
 crC
 cAj
 iHa

@@ -100,7 +100,7 @@
 				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
 				// pestra always heals a little more toxin damage and restores a bit more blood
 				target.adjustToxLoss(-situational_bonus)
-				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+				target.blood_volume += BLOOD_VOLUME_SURVIVE
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 				var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/wallfire, /obj/machinery/light/rogue/wallfire/candle, /obj/machinery/light/rogue/forge)
@@ -220,7 +220,7 @@
 			target.adjustFireLoss(-50)
 		target.adjustToxLoss(-50)
 		target.adjustOxyLoss(-50)
-		target.blood_volume += BLOOD_VOLUME_SURVIVE
+		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 		return TRUE
 	revert_cast()
 	return FALSE
