@@ -1,6 +1,6 @@
 /datum/job/roguetown/hospitaller
 	title = "Hospitaller"
-	f_title = "Hospitaler"
+	f_title = "Hospitaller"
 	department_flag = CHURCHMEN
 	faction = "Station"
 	total_positions = 2
