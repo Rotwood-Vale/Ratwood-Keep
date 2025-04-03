@@ -4315,11 +4315,12 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/town/harbor)
 "cls" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 1;
 	locked = 1;
 	lockid = "manor";
-	name = "Sally port"
+	name = "sally port";
+	desc = "sally port"
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
@@ -4717,8 +4718,8 @@
 "cwL" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
-	lockid = "manor";
-	name = "Gatekeep"
+	name = "Gatekeep";
+	lockid = "keep_gatehouse"
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
@@ -35945,11 +35946,13 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "sXU" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
+/obj/structure/mineral_door/wood/donjon{
+	dir = 8;
+	lockdiff = 2;
 	locked = 1;
 	lockid = "manor";
-	name = "Sally port"
+	name = "sally port";
+	desc = "sally port"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
