@@ -56,8 +56,8 @@
 	
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		//Always impregnate after ejac, its a MATING press after all
-		user.visible_message(span_lovebold("[user] impregnates [target]!"))
+		//No more guaranteed preggers....
+		user.visible_message(span_lovebold("[user] cums deep into [target]'s womb!"))
 		user.sexcon.cum_into()
 		user.impregnate(target)
 		user.virginity = FALSE
