@@ -3,6 +3,7 @@
 	name = "fyritius flower"
 	seed = /obj/item/seeds/fyritius // if mass producing these breaks shit just comment it out
 	desc = ""
+	icon = 'modular_redmoon/icons/items/fyritius.dmi'
 	icon_state = "fyritius"
 	tastes = list("tastes like a burning coal and fire" = 1)
 	bitesize = 1
