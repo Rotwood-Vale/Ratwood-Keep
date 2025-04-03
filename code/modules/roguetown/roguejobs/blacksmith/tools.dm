@@ -68,7 +68,7 @@
 
 	if(isitem(attacked_object) && !user.cmode)
 		var/obj/item/attacked_item = attacked_object
-		
+
 		//Blacksmith only mod menu goes here?
 		if(attacked_item.obj_integrity >= attacked_item.max_integrity)
 			var/choices = list("name item")
@@ -80,9 +80,9 @@
 					to_chat(user, span_notice("You need to name it properly!"))
 					return
 
-				attacked_item.name = t
 				log_admin("[user]([user.ckey]) just named [attacked_item]: [t]")
 				message_admins("[key_name_admin(user)] just named [attacked_item]: [t]")
+				attacked_item.name = t
 				playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 				user.say("I dub thee [t]!")
 				return
