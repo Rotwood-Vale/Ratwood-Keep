@@ -372,4 +372,4 @@
 /datum/stressevent/rottouched
 	timer = 1 MINUTES
 	stressadd = 8
-	desc = span_red("The Rot plague spreads even here...Better stay away.")
+	desc = span_red("The Rot plague spreads even here... Better stay away.")
