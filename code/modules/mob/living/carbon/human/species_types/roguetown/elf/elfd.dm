@@ -167,3 +167,7 @@
 /datum/species/elf/dark/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	C.AddComponent(/datum/component/darkling)
+
+/datum/species/elf/dark/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	C.GetComponent(/datum/component/darkling).Destroy()			//Cleanup, in case you somehow change species. Like becoming a skeleton.
