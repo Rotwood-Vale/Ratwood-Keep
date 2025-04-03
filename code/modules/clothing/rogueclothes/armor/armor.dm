@@ -1124,10 +1124,10 @@
 	body_parts_covered = CHEST|VITALS|GROIN|NECK
 	icon_state = "artificerplate"
 	item_state = "artificerplate"
-	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "bullet" = 50, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 45, "slash" = 45, "stab" = 45, "bullet" = 45, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
-	max_integrity = 350 //Might be copper, but it's reinforced with an arcane meld and bronze
+	max_integrity = 300 //Might be copper, but it's reinforced with an arcane meld and bronze
 	smeltresult = /obj/item/ingot/copper
 	armor_class = ARMOR_CLASS_LIGHT //copper plating, fairly light.
 	var/powered = FALSE

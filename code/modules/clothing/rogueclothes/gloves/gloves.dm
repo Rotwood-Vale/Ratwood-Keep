@@ -279,29 +279,7 @@
 	var/delay = 5 SECONDS
 	var/sprite_changes = 10
 	var/datum/beam/current_beam = null
-	/*
-/obj/item/clothing/gloves/roguetown/active/voltic/activate
-	for(var/mob/living/carbon/C in view(2, user))
-		user.visible_message(span_warning("[C] is connected to [user] with a voltic link!"), span_warning("You create a static link with [C]."))
-		var/x
-		for(x=1; x < sprite_changes; x++)
-			current_beam = new(user,C,time=50/sprite_changes,beam_icon_state="lightning[rand(1,12)]",btype=/obj/effect/ebeam, maxdistance=10)
-			INVOKE_ASYNC(current_beam, TYPE_PROC_REF(/datum/beam, Start))
-			sleep(delay/sprite_changes)
-		if(C.anti_magic_check())
-			visible_message(span_warning("The beam of lightning can't seem to shock [C] "))
-			playsound(get_turf(C), 'sound/magic/magic_nulled.ogg', 100)
-			return
-		var/dist = get_dist(user, C)
-		if (dist <= 2)
-			if(HAS_TRAIT(C, TRAIT_SHOCKIMMUNE))
-				return
-			else
-				C.electrocute_act(1, user) //just shock
-		else
-			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
-			user.visible_message(span_warning("The voltaic link fizzles out!"), span_warning("[C] is too far away!"))
-			*/
+
 /obj/item/clothing/gloves/roguetown/active/voltic/activate(mob/user)
 	if (!user)
 		return

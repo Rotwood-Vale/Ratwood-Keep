@@ -178,6 +178,13 @@
 	created_item = /obj/item/contraption/lock_imprinter
 	hammers_per_item = 12
 	skill_level = 4
+/datum/artificer_recipe/contraptions/whisperer
+	name = "Bronze Whisperer (+1 bronze gear +1 tin ingot)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/contraption/whisper
+	additional_items = list(/obj/item/roguegear/bronze,/obj/item/ingot/tin)
+	hammers_per_item = 10
+	skill_level = 3
 
 /datum/artificer_recipe/contraptions/smokebombs
 	name = "smokebomb(s) (6) (+1 Coal)"
@@ -208,6 +215,12 @@
 	hammers_per_item = 12
 	skill_level = 3
 
+/datum/artificer_recipe/contraptions/coolingbackpack
+	name = "Cooling Backpack (+1 bronze gear, +Backpack)" // why are these recipes capitalized differently than every other crafting recipe my ocddddddddddd
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/storage/backpack/rogue/backpack/artibackpack
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/storage/backpack/rogue/backpack)
+	skill_level = 5
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
@@ -248,6 +261,13 @@
 
 /obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
+
+/datum/artificer_recipe/wood/weapons/steamshield
+	name = "Steam Shield (+1 wood plank)(+2 Bronze gear)(+2 bronze ingot)"
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/natural/wood/plank, /obj/item/ingot/bronze,/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
+	hammers_per_item = 12
+	skill_level = 3
 
 /// CROSSBOW
 
