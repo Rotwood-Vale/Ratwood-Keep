@@ -65,7 +65,11 @@
 
 /obj/structure/carriagedoor/attack_hand(mob/user)
 	. = ..()
-	
+
+	var/mob/living/carbon/human/H
+	if(ishuman(user))
+		H = user
+
 	if(!isliving(user) || user.incapacitated())
 		return //No ghosts or incapacitated folk allowed to do this.
 
@@ -79,29 +83,35 @@
 			to_chat(user, span_warning("You are too important to leave!!"))
 			return
 
-	//This check tree is the face of hell. If someone knows how to clean this up please help.
-	var/mob/living/carbon/human/H
-	if(ishuman(user))
-		H = user
-		//Get everything (YES EVEN INSIDE ITEMS, HANDS TOO!)
-		var/list/user_items = H.get_equipped_items()
-		user_items += H.held_items 
-		for(var/obj/item/i in user_items)
-			for(var/j in list(CANT_LEAVE_ITEMS))
-				if(istype(i, j))
-					to_chat(user, span_notice("You can't leave with \the [i.name]!!"))
+	// No important antags can leave!
+	if(H.mind && H.mind.antag_datums)
+		var/datum/mind/M = H.mind
+		for(var/a in M.antag_datums)
+			for(var/b in ALL_ANTAG_TYPES)
+				if(istype(a, b)) 
+					to_chat(user, span_warning("I still have work to do here..."))
 					return
-					
-			if(SEND_SIGNAL(i, COMSIG_CONTAINS_STORAGE))
-				var/list/inv = list()
 
-				SEND_SIGNAL(i, COMSIG_TRY_STORAGE_RETURN_INVENTORY, inv, FALSE)
+	//This check tree is the face of hell. If someone knows how to clean this up please help.
+	//Get everything (YES EVEN INSIDE ITEMS, HANDS TOO!)
+	var/list/user_items = H.get_equipped_items()
+	user_items += H.held_items 
+	for(var/obj/item/i in user_items)
+		for(var/j in list(CANT_LEAVE_ITEMS))
+			if(istype(i, j))
+				to_chat(user, span_notice("You can't leave with \the [i.name]!!"))
+				return
+				
+		if(SEND_SIGNAL(i, COMSIG_CONTAINS_STORAGE))
+			var/list/inv = list()
 
-				for(var/obj/item/L in inv)
-					for(var/M in list(CANT_LEAVE_ITEMS))
-						if(istype(L, M))
-							to_chat(user, span_notice("You can't leave with \the [L.name]!!"))
-							return
+			SEND_SIGNAL(i, COMSIG_TRY_STORAGE_RETURN_INVENTORY, inv, FALSE)
+
+			for(var/obj/item/L in inv)
+				for(var/M in list(CANT_LEAVE_ITEMS))
+					if(istype(L, M))
+						to_chat(user, span_notice("You can't leave with \the [L.name]!!"))
+						return
 
 
 	switch(alert("Do you wish to leave town? (You cannot return.)",,"Yes","No"))
