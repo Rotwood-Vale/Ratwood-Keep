@@ -59,7 +59,7 @@
 		//No more guaranteed preggers....
 		user.visible_message(span_lovebold("[user] cums deep into [target]'s womb!"))
 		user.sexcon.cum_into()
-		user.impregnate(target)
+		user.try_impregnate(target)
 		user.virginity = FALSE
 		target.virginity = FALSE
 	//Limp dick sex...
