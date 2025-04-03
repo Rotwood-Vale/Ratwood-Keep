@@ -149,6 +149,7 @@
 /datum/status_effect/debuff/death_embrace
 	id = "death_embrace"
 	alert_type = null
+	examine_text = span_notice("They look like a shade of their former selves.")
 	effectedstats = list("strength" = -3, "perception" = -3, "intelligence" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
 
 /datum/status_effect/debuff/death_claimed

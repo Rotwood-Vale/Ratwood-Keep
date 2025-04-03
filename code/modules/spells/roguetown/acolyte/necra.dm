@@ -71,7 +71,6 @@
 				iszombie = TRUE
 			if(L.mind.special_role == "Vampire Lord")
 				user.visible_message(span_warning("[L] overpowers being churned!"), span_userdanger("[L] is too strong, I am churned!"))
-				user.Stun(50)
 				user.throw_at(get_ranged_target_turf(user, get_dir(user,L), 7), 7, 1, L, spin = FALSE)
 				return
 		if((L.mob_biotypes & MOB_UNDEAD) || isvampire || iszombie)

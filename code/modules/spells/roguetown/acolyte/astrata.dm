@@ -133,3 +133,80 @@
 		to_chat(user, span_warning("I need a holy cross."))
 		return FALSE
 	return TRUE
+
+/obj/effect/proc_holder/spell/targeted/smite	//Smite targets all excommunicated and apostates in view, providing a chance to stun based on holy level, and sets them on fire w/ a debuff effect applied.
+	name = "Smite Unfaithful"				//Smite is twice as strong during the dae, and will even target undead/vampires during the day.
+	range = 8
+	overlay_state = "astrata"
+	releasedrain = 30
+	charge_max = 30 SECONDS
+	max_targets = 0
+	cast_without_targets = TRUE
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	sound = 'sound/magic/ahh2.ogg'
+	associated_skill = /datum/skill/magic/holy
+	invocation = "The Firstborn smites thee!"
+	invocation_type = "shout" //can be none, whisper, emote and shout
+	miracle = TRUE
+	devotion_cost = 30
+	var/smitelevel = 1
+	var/prob2smite = 0
+
+/obj/effect/proc_holder/spell/targeted/smite/cast(list/targets, mob/living/user = usr)
+	prob2smite = 0
+
+	if (GLOB.tod == "dawn"|| GLOB.tod == "day"||GLOB.tod == "dusk")
+		smitelevel = 2
+	else
+		smitelevel = 1
+	if(user && user.mind)
+		for(var/i in 1 to user.mind.get_skill_level(/datum/skill/magic/holy))
+			prob2smite += 20
+	for(var/mob/living/L in targets)
+		if(L.stat == DEAD)
+			continue
+		if(HAS_TRAIT(L, TRAIT_EXCOMMUNICATED) || L.has_status_effect(/datum/status_effect/debuff/apostasy))
+			user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
+			smite_effect(L)
+			..()
+			return TRUE
+		if(L.mind)
+			var/datum/antagonist/vampirelord/lesser/V = L.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+			if(V)
+				if(!V.disguised && smitelevel == 2) // Being disguised makes you immune to being smited. If you can hide from astrata's rays in dae, you can hide from the smite.
+					user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
+					smite_effect(V)
+					return
+				else
+					continue
+
+			if(L.mind.special_role == "Vampire Lord" && smitelevel == 2)
+				var/datum/antagonist/vampirelord/V_lord = L.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+				if(V_lord.vamplevel < 4)
+					user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
+					smite_effect(L)
+					return
+				else
+					user.visible_message(span_warning("[L] rebukes [usr]'s smite!"))
+					user.throw_at(get_ranged_target_turf(user, get_dir(user,L), 7), 7, 1, L, spin = FALSE)
+			var/datum/antagonist/zombie/Z =L.mind.has_antag_datum(/datum/antagonist/zombie)
+			if(Z)
+				user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
+				smite_effect(L)
+				return
+		if(L.mob_biotypes & MOB_UNDEAD && smitelevel == 2)
+			user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
+			smite_effect(L)
+			return
+		..()
+	return TRUE
+
+/obj/effect/proc_holder/spell/targeted/smite/proc/smite_effect(var/mob/living/carbon/L)
+	var/stuntime = 25 * smitelevel
+	var/fireamount = 5 * smitelevel
+	if(prob(prob2smite))
+		L.Stun(stuntime)
+	L.adjust_fire_stacks(fireamount)
+	L.IgniteMob()
+	L.apply_status_effect (/datum/status_effect/debuff/smited)
+	to_chat(L, span_warning("Astrata's divine light smites me!"))

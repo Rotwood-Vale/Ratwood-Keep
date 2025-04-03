@@ -1,6 +1,6 @@
 // Lesser miracle
 /obj/effect/proc_holder/spell/invoked/lesser_heal
-	name = "Lesser Miracle"
+	name = "Miracle"
 	overlay_state = "lesserheal"
 	releasedrain = 30
 	chargedrain = 0
@@ -161,66 +161,6 @@
 				H.adjustBruteLoss(20)
 				playsound(target, 'sound/combat/dismemberment/dismem (2).ogg', 100)
 				H.emote("agony")
-		return TRUE
-	revert_cast()
-	return FALSE
-// Miracle
-/obj/effect/proc_holder/spell/invoked/heal
-	name = "Miracle"
-	overlay_state = "astrata"
-	releasedrain = 30
-	chargedrain = 0
-	chargetime = 0
-	range = 7
-	warnie = "sydwarning"
-	movement_interrupt = FALSE
-//	chargedloop = /datum/looping_sound/invokeholy
-	chargedloop = null
-	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
-	sound = 'sound/magic/heal.ogg'
-	invocation_type = "whisper"
-	associated_skill = /datum/skill/magic/holy
-	antimagic_allowed = TRUE
-	charge_max = 20 SECONDS
-	miracle = TRUE
-	devotion_cost = 20
-
-/obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/datum/antagonist/vampirelord/VD = target.mind?.has_antag_datum(/datum/antagonist/vampirelord)
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && (VD && !VD.disguised)) //positive energy harms the undead, disguised vampires are healed.
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(25)
-			target.fire_act(1,10)
-			return TRUE
-		if(HAS_TRAIT(target, TRAIT_ASTRATA_CURSE))
-			target.visible_message(span_danger("[target] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
-			target.cursed_freak_out()
-			return FALSE
-		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
-			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
-			target.cursed_freak_out()
-			return FALSE
-		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
-			to_chat(user, span_warning("The one that walks under such mark, cannot be healed..."))
-			return FALSE
-		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
-		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
-			if(affecting)
-				if(affecting.heal_damage(50, 50))
-					C.update_damage_overlays()
-				if(affecting.heal_wounds(50))
-					C.update_damage_overlays()
-		else
-			target.adjustBruteLoss(-50)
-			target.adjustFireLoss(-50)
-		target.adjustToxLoss(-50)
-		target.adjustOxyLoss(-50)
-		target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 		return TRUE
 	revert_cast()
 	return FALSE
