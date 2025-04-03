@@ -1,4 +1,5 @@
 //used in various places
+// REDMOON ADD - avian_addition
 #define ALL_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -21,8 +22,10 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/kraukalee,\
 )
 
+// REDMOON ADD - avian_addition
 #define RACES_RESPECTED \
 	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
@@ -32,6 +35,7 @@
 	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
+	/datum/species/kraukalee,\
 	/datum/species/dracon,
 
 #define RACES_TOLERATED \
@@ -77,6 +81,7 @@
 
 #define RACES_TOLERATED_UP_PLUS_SMOLFOLK list(RACES_TOLERATED, RACES_SMOLFOLK, RACES_RESPECTED)
 
+// REDMOON ADD - avian_addition
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -98,8 +103,10 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/kraukalee,\
 )
 
+// REDMOON ADD - avian_addition
 #define CLOTHED_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -122,8 +129,10 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/seelie,\
+	/datum/species/kraukalee,\
 )
 // Non-dwarf non-kobold non-goblin mostly
+// REDMOON ADD - avian_addition
 #define NON_DWARVEN_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -142,8 +151,10 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/seelie,\
+	/datum/species/kraukalee,\
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
+// REDMOON ADD - avian_addition
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/tieberian,\
@@ -157,6 +168,7 @@
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
+	/datum/species/kraukalee,\
 )
 // For their armour sets. Shouldn't need to define the sub species, but oh well.
 #define GOBLIN_RACE_TYPES list(\
