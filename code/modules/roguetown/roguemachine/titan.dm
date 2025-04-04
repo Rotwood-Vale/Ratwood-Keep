@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 					return
 				say("Old decrees shall be invalidated!")
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
-				purge_decrees()
+				invalidate_decrees()
 				return
 			if(findtext(message2recognize, "make law"))
 				if(!SScommunications.can_announce(H))
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 
 	SScommunications.make_announcement(user, TRUE, raw_message)
 
-/obj/structure/roguemachine/titan/proc/purge_decrees()
+/obj/structure/roguemachine/titan/proc/invalidate_decrees()
 	GLOB.lord_decrees = list()
 	priority_announce("Old decrees of the land have been invalidated!", "OLD DECREES INVALIDATED", 'sound/misc/royal_decree.ogg', "Captain")
 
