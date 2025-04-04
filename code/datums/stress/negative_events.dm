@@ -368,3 +368,8 @@
 	stressadd = 5
 	desc = span_red("My PATRON is NOT PROUD of ME!")
 	timer = 20 MINUTES
+
+/datum/stressevent/rottouched
+	timer = 1 MINUTES
+	stressadd = 8
+	desc = span_red("The Rot plague spreads even here... Better stay away.")

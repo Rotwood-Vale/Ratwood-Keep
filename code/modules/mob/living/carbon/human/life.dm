@@ -69,6 +69,14 @@
 					if(part)
 						part.add_wound(/datum/wound/slash)
 			adjustToxLoss(0.3)
+		if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))	//shamelessly copied leper code. But if we're dealing with an apocalyptic rot...
+			if((!mob_timers["rot_bleed"] || mob_timers["rot_bleed"] + 15 MINUTES < world.time)&& patron.type != /datum/patron/divine/pestra )
+				if(prob(10))
+					to_chat(src, span_warning("My rot-scarred skin opens and bleeds..."))
+					mob_timers["rot_bleed"] = world.time
+					var/obj/item/bodypart/part = pick(bodyparts)
+					if(part)
+						part.add_wound(/datum/wound/slash)
 		//heart attack stuff
 		handle_curses()
 		handle_heart()
