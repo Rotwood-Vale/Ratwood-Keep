@@ -1328,6 +1328,7 @@
 #include "code\modules\jobs\job_types\roguetown\goblin\goblin.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\goblinchief.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\types\goblinrabble.dm"
+#include "code\modules\jobs\job_types\roguetown\goblin\types\goblinguard.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\types\goblinshaman.dm"
 #include "code\modules\jobs\job_types\roguetown\goblin\types\goblinsmith.dm"
 #include "code\modules\jobs\job_types\roguetown\inquisition\confessor.dm"
