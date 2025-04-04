@@ -14,15 +14,26 @@
 
 /obj/item/fishingcage/attack_self(mob/user)
 	. = ..()
+
+	var/turf/T = get_step(user, user.dir)
+	if(!istype(T, /turf/open/water))
+		to_chat(user, span_warning("This goes into water!"))
+		return // We don't need to check non water tiles.
+
 	user.visible_message(span_notice("[user] begins deploying the fishing cage..."), \
 						span_notice("I begin deploying the fishing cage..."))
 	var/deploy_speed = 15 SECONDS - (user.mind.get_skill_level(/datum/skill/labor/fishing) * 2 SECONDS)
-	var/turf/T = get_step(user, user.dir)
+
+	if(!is_valid_fishing_spot(T))
+		to_chat(user, span_warning("This body of water seems devoid of aquatic life..."))
+		return
+	
 	if(istype(T, /turf/open/water))
 		if(do_after(user, deploy_speed, target = src))
 			user.transferItemToLoc(src, T)
 			deployed = 1
 			icon_state = "fishingcage_deployed"
+			anchored = 1
 	else
 		to_chat(user, span_warning("I'm not catching anything if i don't put this on water"))
 		return
@@ -49,6 +60,7 @@
 				QDEL_NULL(bait) //you lose the bait if you take out the cage without catching anything
 				desc = initial(desc)
 				icon_state = initial(icon_state)
+				anchored = 0
 				..()
 	else
 		..()

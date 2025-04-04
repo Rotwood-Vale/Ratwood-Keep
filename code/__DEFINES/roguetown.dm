@@ -64,6 +64,8 @@
 
 #define RACES_NEARLY_ALL_PLUS_SEELIE list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE)
 
+#define RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED, RACES_SEELIE, RACES_GOBLIN)
+
 #define RACES_VERY_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_VERY_SHUNNED, RACES_RESPECTED)
 
 #define RACES_SHUNNED_UP list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED)
@@ -217,6 +219,16 @@
 	/datum/patron/inhumen/baotha,\
 	/datum/patron/inhumen/graggar\
 )
+
+
+#define NON_DIVINE_PATRONS list(\
+	/datum/patron/zizo,\
+	/datum/patron/inhumen/matthios,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/graggar\
+)
+
+
 
 #define TEN_CURSES list(\
 	/datum/curse/astrata,\

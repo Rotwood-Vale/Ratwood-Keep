@@ -228,16 +228,19 @@
 	icon_state = "eelcooked"
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/blessed
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/blessed
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
-
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/blessed
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
-	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/blessed
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
 	icon_state = "shrimpcooked"

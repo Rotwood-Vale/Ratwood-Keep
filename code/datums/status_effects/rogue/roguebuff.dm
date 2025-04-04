@@ -13,17 +13,89 @@
 	desc = ""
 	icon_state = "drunk"
 
+/datum/status_effect/buff/snackbuff
+	id = "snack"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/snackbuff
+	effectedstats = list("endurance" = 1)
+	duration = 8 MINUTES
 
-/datum/status_effect/buff/foodbuff
-	id = "foodbuff"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
+/atom/movable/screen/alert/status_effect/buff/snackbuff
+	name = "Good snack"
+	desc = "Better than plain bread. Tasty."
+	icon_state = "foodbuff"
+
+/datum/status_effect/buff/snackbuff/on_apply() //can't stack two snack buffs, it'll keep the highest one
+	. = ..()
+	owner.add_stress(/datum/stressevent/goodsnack)
+	if(owner.has_status_effect(/datum/status_effect/buff/greatsnackbuff))
+		owner.remove_status_effect(/datum/status_effect/buff/snackbuff)
+	
+
+/datum/status_effect/buff/greatsnackbuff
+	id = "greatsnack"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/greatsnackbuff
 	effectedstats = list("constitution" = 1,"endurance" = 1)
 	duration = 10 MINUTES
 
-/atom/movable/screen/alert/status_effect/buff/foodbuff
-	name = "Great Meal"
-	desc = ""
+/atom/movable/screen/alert/status_effect/buff/greatsnackbuff
+	name = "Great Snack!"
+	desc = "Nothing like a great and nutritious snack to help you on that final strech. I feel invigorated."
 	icon_state = "foodbuff"
+
+/datum/status_effect/buff/greatsnackbuff/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/greatsnack)
+	if(owner.has_status_effect(/datum/status_effect/buff/snackbuff)) //most of the time you technically shouldn't need to check this, but otherwise you get runtimes, so keep it
+		owner.remove_status_effect(/datum/status_effect/buff/snackbuff)
+
+/datum/status_effect/buff/mealbuff
+	id = "meal"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/mealbuff
+	effectedstats = list("constitution" = 1)
+	duration = 30 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/mealbuff
+	name = "Good meal"
+	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier." 
+	icon_state = "foodbuff"
+
+/datum/status_effect/buff/mealbuff/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/goodmeal)
+	if(owner.has_status_effect(/datum/status_effect/buff/greatmealbuff))
+		owner.remove_status_effect(/datum/status_effect/buff/mealbuff)
+
+/datum/status_effect/buff/greatmealbuff
+	id = "greatmeal"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/greatmealbuff
+	effectedstats = list("constitution" = 1, "endurance" = 1)
+	duration = 30 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/greatmealbuff
+	name = "Great meal!"
+	desc = "That meal was something akin to a noble's feast! It's bound to keep me energized for an entire day."
+	icon_state = "foodbuff"
+
+/datum/status_effect/buff/greatmealbuff/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/greatmeal)
+	if(owner.has_status_effect(/datum/status_effect/buff/mealbuff))
+		owner.remove_status_effect(/datum/status_effect/buff/mealbuff) //can't stack two meal buffs, it'll keep the highest one
+
+/datum/status_effect/buff/sweet
+	id = "sugar"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sweet
+	effectedstats = list("fortune" = 1)
+	duration = 8 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/sweet
+	name = "Sweet embrace"
+	desc = "Sweets are always a sign of good luck, everything goes well when you eat some of them."
+	icon_state = "foodbuff"
+
+/datum/status_effect/buff/sweet/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/sweet)
 
 /datum/status_effect/buff/druqks
 	id = "druqks"
@@ -435,3 +507,102 @@
 	name = "Greater Mana use"
 	desc = "My body feels well rested and i feel smarter."
 	icon_state = "muscles"
+
+/datum/status_effect/buff/sermon
+	id = "sermon"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/sermon
+	effectedstats = list("fortune" = 1, "constitution" = 1)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/sermon
+	name = "sermon"
+	desc = "I feel inspired by the sermon!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/gazeuponme
+	id = "gazeuponme"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/gazeuponme
+	effectedstats = list("speed" = 1, "intelligence" = 1)
+	duration = 999 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/gazeuponme
+	name = "Excommunicated heretic"
+	desc = "My PATRON is proud of ME!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/maameat
+    id = "maameat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/maameat
+    effectedstats = list("endurance" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/maameat
+    name = "Man-at-Arms Flesh"
+    desc = "The flesh of a Man-at-Arms, granting an increase in endurance."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/templarmeat
+    id = "templarmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/templarmeat
+    effectedstats = list("constitution" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/templarmeat
+    name = "Templar Flesh"
+    desc = "The flesh of a Templar, granting a boost to constitution."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/watchmanmeat
+    id = "watchmanmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/watchmanmeat
+    effectedstats = list("perception" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/watchmanmeat
+    name = "Watchman Flesh"
+    desc = "The flesh of a Watchman, granting an increase in perception."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/vanguardmeat
+    id = "vanguardmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/vanguardmeat
+    effectedstats = list("speed" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/vanguardmeat
+    name = "Vanguard Flesh"
+    desc = "The flesh of a Vanguard, granting a boost in speed."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/knightmeat
+    id = "knightmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/knightmeat
+    effectedstats = list("strength" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/knightmeat
+    name = "Knight Flesh"
+    desc = "The flesh of a Knight, granting an increase in strength."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/priestmeat
+    id = "priestmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/priestmeat
+    effectedstats = list("intelligence" = 2)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/priestmeat
+    name = "Priest Flesh"
+    desc = "The flesh of a Priest, granting a boost to intelligence."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/royalmeat
+    id = "royalmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/royalmeat
+    effectedstats = list("fortune" = 3)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/royalmeat
+    name = "Royal Flesh"
+    desc = "The flesh of royalty, granting an increase in luck."
+    icon_state = "meatsteak"

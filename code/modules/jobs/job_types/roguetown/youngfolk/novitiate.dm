@@ -1,6 +1,6 @@
-/datum/job/roguetown/churchling
+/datum/job/roguetown/novitiate
 	title = "Novitiate"
-	flag = CHURCHLING
+	flag = NOVITIATE
 	department_flag = YOUNGFOLK
 	faction = "Station"
 	total_positions = 2
@@ -13,13 +13,13 @@
 	tutorial = "It doesnt matter if you are an orphan, your family were zealots so they sent you here, or you just decided to follow the path of the Gods yourself. \
 	You ended up in the Rockhillian Church, given a shelter and food, submitting to the will of Their eminence. You have faith, and the rest is meaningless."
 
-	outfit = /datum/outfit/job/roguetown/churchling
-	display_order = JDO_CHURCHLING
+	outfit = /datum/outfit/job/roguetown/novitiate
+	display_order = JDO_NOVITIATE
 	give_bank_account = TRUE
 	min_pq = -10
 	max_pq = null
 
-/datum/outfit/job/roguetown/churchling/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/novitiate/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/psicross
 	if(H.gender == MALE)
