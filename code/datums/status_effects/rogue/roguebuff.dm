@@ -305,7 +305,7 @@
 	effectedstats = list("speed" = 3)
 	duration = 1.5 MINUTES
 
-/atom/movable/screen/alert/status_effect/buff/haste
+/atom/movable/screen/alert/status_effect/buff/enlarge
 	name = "Enlarged"
 	desc = "I am magically enlarged."
 	icon_state = "buff"
