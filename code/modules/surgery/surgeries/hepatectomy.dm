@@ -6,7 +6,7 @@
 		/datum/surgery_step/incise,
 		/datum/surgery_step/clamp,
 		/datum/surgery_step/retract,
-		/datum/surgery_step/saw,
+		/datum/surgery_step/incise,
 		/datum/surgery_step/resection,
 		/datum/surgery_step/cauterize,
 	)

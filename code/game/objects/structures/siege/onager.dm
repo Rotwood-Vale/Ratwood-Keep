@@ -158,7 +158,7 @@
 /obj/structure/onager/proc/ready()
 
 	visible_message(span_notice("[usr] cranks the catapult's arm back into position."))
-	playsound(src, "sound/catapult/adjusting.ogg", 100)
+	playsound(src, "sound/catapult/adjusting.ogg", 50)
 
 	if(do_after(usr, 30, src))
 		set_ready()
@@ -195,7 +195,7 @@
 			T = O
 			continue
 
-	playsound(src, pick(launch_sounds), 100)
+	playsound(src, pick(launch_sounds), 50)
 	spawn(10)
 		var/obj/item/boulder/P = /obj/item/boulder
 		visible_message(span_notice("[usr] fires the onager!"))
@@ -232,7 +232,7 @@
 		B.loc = src 
 		
 		user.visible_message(span_notice("[user] loads \a [B.name] into the catapult."))
-		playsound(src, 'sound/foley/hit_rock.ogg', 100)
+		playsound(src, 'sound/foley/hit_rock.ogg', 70)
 		set_loaded()
 
 	else
@@ -252,7 +252,7 @@
 		to_chat(usr, span_warning("The [src] is already facing [direction]."))
 		return
 
-	playsound(src, pick(aim_sounds),  100)
+	playsound(src, pick(aim_sounds),  60)
 	visible_message(span_notice("[usr] tries to turn the [src] to face [direction]."))
 
 	being_used = TRUE
@@ -278,7 +278,7 @@
 		return
 
 	being_used = TRUE
-	playsound(src, pick(aim_sounds),  100)
+	playsound(src, pick(aim_sounds),  60)
 	visible_message(span_notice("[usr] begins to set the [src]'s firing distance."))
 
 	if(do_after(usr, 30, src))
@@ -291,7 +291,7 @@
 /obj/structure/onager/proc/unpack()
 
 	visible_message(span_notice("[usr] sets up the [src]."))
-	playsound(src, "sound/catapult/adjusting.ogg",  100)
+	playsound(src, "sound/catapult/adjusting.ogg",  50)
 
 	if(do_after(usr, 10 SECONDS, target = src))
 		set_idle()
@@ -302,7 +302,7 @@
 	being_used = TRUE
 
 	visible_message(span_notice("[usr] begins to pack the catapult up."))
-	playsound(src, "sound/catapult/adjusting.ogg", 100)
+	playsound(src, "sound/catapult/adjusting.ogg", 50)
 
 	if(do_after(usr, 10 SECONDS, target = src))
 		visible_message(span_notice("[usr] has packed the catapult up for moving."))

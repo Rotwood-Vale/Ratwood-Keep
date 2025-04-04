@@ -105,6 +105,11 @@
 	cost = 40
 	contains = list(/obj/item/clothing/ringP)
 
+/datum/supply_pack/rogue/luxury/talkstone
+	name = "Talkstone"
+	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300
