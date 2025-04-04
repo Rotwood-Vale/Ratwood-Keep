@@ -82,7 +82,7 @@
 
 				log_admin("[user]([user.ckey]) just named [attacked_item]: [t]")
 				message_admins("[key_name_admin(user)] just named [attacked_item]: [t]")
-				attacked_item.name = t
+				attacked_item.name = "[t] ([initial(attacked_item.name)])"
 				playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 				user.say("I dub thee [t]!")
 				return
