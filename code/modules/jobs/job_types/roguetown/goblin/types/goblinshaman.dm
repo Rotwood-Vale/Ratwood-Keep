@@ -1,23 +1,14 @@
-/datum/job/roguetown/goblinshaman
-	title = "Goblin Shaman"
-	flag = GOBLINSHAMAN
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
-	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
-	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp)
-	spells = list(SPELL_FETCH, SPELL_PRESTIDIGITATION,
-	SPELL_MESSAGE, SPELL_DIAGNOSE, SPELL_LEARNSPELL, SPELL_CPR, SPELL_LESSER_HEAL)
+/datum/subclass/goblinshaman
+	name = "Goblin Shaman"
 	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
 	You're one of Graggar's chosen. A vessel for his power in this world, for better or worse. Serve as a spiritual advisor to your Chief. \
 	Assure he has all he needs to succeed, and, should he fail, take his place."
+	maximum_possible_slots = 1
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = list(/datum/species/goblinp)
 	outfit = /datum/outfit/job/roguetown/goblinshaman
-	display_order = JDO_GOBLINSHAMAN
-	min_pq = 5
-	max_pq = null
-	announce_latejoin = FALSE
+	min_pq = 0
+	category_tags = list(CTAG_GOBLIN)
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -51,8 +42,16 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 		H.change_stat("intelligence", 6)
 		H.change_stat("fortune", 2)
+		H.mind.AddSpell(new SPELL_LEARNSPELL)
+		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+		H.mind.AddSpell(new SPELL_FETCH)
+		H.mind.AddSpell(new SPELL_MESSAGE)
+		H.mind.AddSpell(new SPELL_LESSER_HEAL)
+		H.mind.AddSpell(new SPELL_CPR)
+		H.mind.AddSpell(new SPELL_DIAGNOSE)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)//No real spells of Graggar, yet.

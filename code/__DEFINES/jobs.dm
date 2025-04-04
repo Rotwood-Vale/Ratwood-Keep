@@ -196,6 +196,7 @@
 #define GOBLINSMITH	(1<<3)
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
+#define GOBLIN	(1<<6)
 
 #define SLOP		(1<<10)
 
@@ -323,7 +324,6 @@
 	/datum/job/roguetown/wapprentice,\
 	/datum/job/roguetown/servant,\
 	/datum/job/roguetown/squire,\
-	/datum/job/roguetown/butler
 
 #define NOBLE_ROLES \
 	/datum/job/roguetown/prince,\
@@ -373,7 +373,6 @@
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/mayor,\
 	/datum/job/roguetown/archivist,\
-	/datum/job/roguetown/architect,\
 	/datum/job/roguetown/barkeep,\
 	/datum/job/roguetown/guildsmith,\
 	/datum/job/roguetown/artificer,\

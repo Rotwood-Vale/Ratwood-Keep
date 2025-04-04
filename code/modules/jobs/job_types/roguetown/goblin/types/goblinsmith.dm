@@ -1,20 +1,13 @@
-/datum/job/roguetown/goblinsmith
-	title = "Goblin Smith"
-	flag = GOBLINSMITH
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
-	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+/datum/subclass/goblinsmith
+	name = "Goblin Smith"
+	maximum_possible_slots = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
 	tutorial = "You're an accomplished smith in your own right, chosen by your lord, the Chief, to supply the camp with fresh material. \
 	Try not to fail him, or the many subjects that you're to service by extension with your trade."
-	display_order = JDO_GOBLINSMITH
 	outfit = /datum/outfit/job/roguetown/goblinsmith
-	min_pq = 2
-	max_pq = null
-	announce_latejoin = FALSE
+	min_pq = 0
+	category_tags = list(CTAG_GOBLIN)
 
 /datum/outfit/job/roguetown/goblinsmith
 	allowed_patrons = list(/datum/patron/inhumen/graggar)

@@ -336,7 +336,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 //Antags
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_ANTAG			"CAT_ANTAG"			// Antag class - results in an antag
-#define CTAG_GOBS			"CAT_GOBS"			// Goblin Guards
+#define CTAG_GOBLIN			"CAT_GOBLIN"		// Goblins
 
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
