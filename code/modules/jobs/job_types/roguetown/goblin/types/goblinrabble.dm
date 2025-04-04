@@ -1,20 +1,14 @@
-/datum/job/roguetown/goblinrabble
-	title = "Goblin Rabble"
-	flag = GOBLINRABBLE
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
-	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+/datum/subclass/goblinrabble
+	name = "Goblin Rabble"
+	maximum_possible_slots = 6
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
-	tutorial = "You're the lowest of the low. A goblin among many other goblins. \
-	There's little to say about you, aside from your Chief deeming you less than fit for service."
+	tutorial = "You're the hand of the Chief. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
+	Do what the Chief insists, while keeping order in the fort. Try not to venture out without the Chief's say-so. \
+	'Tend' to captives when possible, instead of outright killing them."
 	outfit = /datum/outfit/job/roguetown/goblinrabble
-	display_order = JDO_GOBLINRABBLE
 	min_pq = 0
-	max_pq = null
-	announce_latejoin = FALSE
+	category_tags = list(CTAG_GOBLIN)
 
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)

@@ -432,34 +432,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Goblin Chief")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/goblincook
-	name = "Goblin Cook"
+/obj/effect/landmark/start/goblin
+	name = "Goblin"
 	icon_state = "arrow"
-	jobspawn_override = list("Goblin Cook")
-	delete_after_roundstart = FALSE
-
-/obj/effect/landmark/start/goblinguard
-	name = "Goblin Guard"
-	icon_state = "arrow"
-	jobspawn_override = list("Goblin Guard")
-	delete_after_roundstart = FALSE
-
-/obj/effect/landmark/start/goblinsmith
-	name = "Goblin Smith"
-	icon_state = "arrow"
-	jobspawn_override = list("Goblin Smith")
-	delete_after_roundstart = FALSE
-
-/obj/effect/landmark/start/goblinrabble
-	name = "Goblin Rabble"
-	icon_state = "arrow"
-	jobspawn_override = list("Goblin Rabble")
-	delete_after_roundstart = FALSE
-
-/obj/effect/landmark/start/goblinshaman
-	name = "Goblin Shaman"
-	icon_state = "arrow"
-	jobspawn_override = list("Goblin Shaman")
+	jobspawn_override = list("Goblins")
 	delete_after_roundstart = FALSE
 
 

@@ -1574,12 +1574,6 @@
 "hQ" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue)
-"hV" = (
-/obj/effect/landmark/start/goblinguard,
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
-	},
-/area/rogue/under/town/goblin)
 "ie" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -1626,9 +1620,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
 "iW" = (
-/obj/effect/landmark/start/goblinrabble{
-	dir = 1
-	},
+/obj/effect/landmark/start/goblin,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "jb" = (
@@ -2064,9 +2056,6 @@
 /obj/structure/fluff/railing/border{
 	dir = 9
 	},
-/obj/effect/landmark/start/goblinrabble{
-	dir = 1
-	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
 "ro" = (
@@ -2240,12 +2229,14 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "uF" = (
-/obj/effect/landmark/start/goblinsmith,
-/turf/open/floor/carpet/royalblack,
+/obj/effect/landmark/start/goblin,
+/turf/open/floor/rogue/blocks{
+	icon_state = "paving"
+	},
 /area/rogue/under/town/goblin)
 "uW" = (
-/obj/effect/landmark/start/goblinshaman,
-/turf/open/floor/carpet/royalblack,
+/obj/effect/landmark/start/goblin,
+/turf/open/floor/carpet/red,
 /area/rogue/under/town/goblin)
 "vl" = (
 /obj/structure/table/wood{
@@ -2723,9 +2714,7 @@
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors)
 "Gw" = (
-/obj/effect/landmark/start/goblincook{
-	dir = 4
-	},
+/obj/effect/landmark/start/goblin,
 /turf/open/floor/rogue/metal,
 /area/rogue/under/town/goblin)
 "Gz" = (
@@ -2737,9 +2726,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/banditcamp)
 "GG" = (
-/obj/effect/landmark/start/goblinrabble{
-	dir = 1
-	},
+/obj/effect/landmark/start/goblin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "GY" = (
@@ -3438,9 +3425,6 @@
 	pixel_x = 3
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/start/goblinrabble{
-	dir = 1
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "TV" = (
@@ -47579,12 +47563,12 @@ lu
 lu
 Bf
 yK
-tq
-DK
-rG
+uW
+uF
+Gw
 Gw
 hI
-Af
+GG
 Af
 yK
 yK
@@ -47809,13 +47793,13 @@ KO
 lu
 zX
 yK
-uF
+zw
 NN
-hV
+DK
 Nb
 rm
 iW
-GG
+Af
 yK
 Nb
 xd
@@ -48041,11 +48025,11 @@ Af
 yK
 ZB
 zw
-hV
+DK
 Hf
-GG
-GG
-GG
+Af
+Af
+Af
 YL
 Nb
 xd
@@ -48269,13 +48253,13 @@ Af
 Af
 Af
 yK
-uW
+zw
 tq
-hV
+DK
 Hf
 TQ
 GG
-iW
+xd
 yK
 Nb
 xd
@@ -48499,12 +48483,12 @@ Af
 VM
 HC
 yK
-tq
-DK
-DK
-DK
+uW
+uF
+uF
+uF
 WP
-xd
+iW
 xd
 yK
 yK

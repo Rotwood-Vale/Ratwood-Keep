@@ -1,23 +1,14 @@
-/datum/job/roguetown/goblinguard
-	title = "Goblin Guard"
-	flag = GOBLINGUARD
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
-	faction = "Station"
-	total_positions = 3//From 6
-	spawn_positions = 3//From 6
+/datum/subclass/goblinguard
+	name = "Goblin Guard"
+	maximum_possible_slots = 3
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
+	outfit = /datum/outfit/job/roguetown/goblinguard
+	min_pq = 0
 	tutorial = "You're the hand of the Chief. He's an individual of higher power than any mortal. At least, that's what you've been taught. \
 	Do what the Chief insists, while keeping order in the fort. Try not to venture out without the Chief's say-so. \
 	'Tend' to captives when possible, instead of outright killing them."
-	display_order = JDO_GOBLINGUARD
-	outfit = /datum/outfit/job/roguetown/goblinguard
-	min_pq = 4
-	max_pq = null
-	subclass_cat_rolls = list(CTAG_GOBS = 20)
-	advjob_examine = TRUE
-	announce_latejoin = FALSE
+	category_tags = list(CTAG_GOBLIN)
 
 /datum/outfit/job/roguetown/goblinguard
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -32,7 +23,6 @@
 	backpack_contents = list(/obj/item/rope/chain = 2, /obj/item/storage/keyring/goblinguard = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
-
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))
 		H.grant_language(/datum/language/orcish)
