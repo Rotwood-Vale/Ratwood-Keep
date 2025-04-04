@@ -15,9 +15,9 @@
 	var/BUFEND = 0
 	var/BUFSPE = 0
 	var/BUFLUC = 0
-	var/statbuf = FALSE
 	var/list/statindex = list()
 	var/datum/patron/patron = /datum/patron/godless
+	var/obj/statdata/tempskill = new()
 
 /mob/living/proc/init_faith()
 	set_patron(/datum/patron/godless)
@@ -107,153 +107,47 @@
 			statindex[index] = list("stat" = stat, "amt" = amt)
 //			statindex[index]["stat"] = stat
 //			statindex[index]["amt"] = amt
-	var/newamt = 0
 	switch(stat)
 		if("strength")
 			if(isseelie(src))
 				STASTR = 1
 				return
-			newamt = STASTR + amt
-			if(BUFSTR < 0)
-				BUFSTR = BUFSTR + amt
-				if(BUFSTR > 0)
-					newamt = STASTR + BUFSTR
-					BUFSTR = 0
-			if(BUFSTR > 0)
-				BUFSTR = BUFSTR + amt
-				if(BUFSTR < 0)
-					newamt = STASTR + BUFSTR
-					BUFSTR = 0
-			while(newamt < 1)
-				newamt++
-				BUFSTR--
-			while(newamt > 20)
-				newamt--
-				BUFSTR++
-			STASTR = newamt
+			tempskill.modifystat(STASTR, BUFSTR, amt)
+			STASTR = tempskill.value
+			BUFSTR = tempskill.buffer
 
 		if("perception")
-			newamt = STAPER + amt
-			if(BUFPER < 0)
-				BUFPER = BUFPER + amt
-				if(BUFPER > 0)
-					newamt = STAPER + BUFPER
-					BUFPER = 0
-			if(BUFPER > 0)
-				BUFPER = BUFPER + amt
-				if(BUFPER < 0)
-					newamt = STAPER + BUFPER
-					BUFPER = 0
-			while(newamt < 1)
-				newamt++
-				BUFPER--
-			while(newamt > 20)
-				newamt--
-				BUFPER++
-			STAPER = newamt
+			tempskill.modifystat(STAPER, BUFPER, amt)
+			STAPER = tempskill.value
+			BUFPER = tempskill.buffer
 			see_override = initial(src.see_invisible) + (STAPER/2.78) // This may be a mistake.
 			update_sight() //Needed.
 			update_fov_angles()
 
 		if("intelligence")
-			newamt = STAINT + amt
-			if(BUFINT < 0)
-				BUFINT = BUFINT + amt
-				if(BUFINT > 0)
-					newamt = STAINT + BUFINT
-					BUFINT = 0
-			if(BUFINT > 0)
-				BUFINT = BUFINT + amt
-				if(BUFINT < 0)
-					newamt = STAINT + BUFINT
-					BUFINT = 0
-			while(newamt < 1)
-				newamt++
-				BUFINT--
-			while(newamt > 20)
-				newamt--
-				BUFINT++
-			STAINT = newamt
+			tempskill.modifystat(STAINT, BUFINT, amt)
+			STAINT = tempskill.value
+			BUFINT = tempskill.buffer
 
 		if("constitution")
-			newamt = STACON + amt
-			if(BUFCON < 0)
-				BUFCON = BUFCON + amt
-				if(BUFCON > 0)
-					newamt = STACON + BUFCON
-					BUFCON = 0
-			if(BUFCON > 0)
-				BUFCON = BUFCON + amt
-				if(BUFCON < 0)
-					newamt = STACON + BUFCON
-					BUFCON = 0
-			while(newamt < 1)
-				newamt++
-				BUFCON--
-			while(newamt > 20)
-				newamt--
-				BUFCON++
-			STACON = newamt
+			tempskill.modifystat(STACON, BUFCON, amt)
+			STACON = tempskill.value
+			BUFCON = tempskill.buffer
 
 		if("endurance")
-			newamt = STAEND + amt
-			if(BUFEND < 0)
-				BUFEND = BUFEND + amt
-				if(BUFEND > 0)
-					newamt = STAEND + BUFEND
-					BUFEND = 0
-			if(BUFEND > 0)
-				BUFEND = BUFEND + amt
-				if(BUFEND < 0)
-					newamt = STAEND + BUFEND
-					BUFEND = 0
-			while(newamt < 1)
-				newamt++
-				BUFEND--
-			while(newamt > 20)
-				newamt--
-				BUFEND++
-			STAEND = newamt
+			tempskill.modifystat(STAEND, BUFEND, amt)
+			STAEND = tempskill.value
+			BUFEND = tempskill.buffer
 
 		if("speed")
-			newamt = STASPD + amt
-			if(BUFSPE < 0)
-				BUFSPE = BUFSPE + amt
-				if(BUFSPE > 0)
-					newamt = STASPD + BUFSPE
-					BUFSPE = 0
-			if(BUFSPE > 0)
-				BUFSPE = BUFSPE + amt
-				if(BUFSPE < 0)
-					newamt = STASPD + BUFSPE
-					BUFSPE = 0
-			while(newamt < 1)
-				newamt++
-				BUFSPE--
-			while(newamt > 20)
-				newamt--
-				BUFSPE++
-			STASPD = newamt
+			tempskill.modifystat(STASPD, BUFSPE, amt)
+			STASPD = tempskill.value
+			BUFSPE = tempskill.buffer
 
 		if("fortune")
-			newamt = STALUC + amt
-			if(BUFLUC < 0)
-				BUFLUC = BUFLUC + amt
-				if(BUFLUC > 0)
-					newamt = STALUC + BUFLUC
-					BUFLUC = 0
-			if(BUFLUC > 0)
-				BUFLUC = BUFLUC + amt
-				if(BUFLUC < 0)
-					newamt = STALUC + BUFLUC
-					BUFLUC = 0
-			while(newamt < 1)
-				newamt++
-				BUFLUC--
-			while(newamt > 20)
-				newamt--
-				BUFLUC++
-			STALUC = newamt
+			tempskill.modifystat(STALUC, BUFLUC, amt)
+			STALUC = tempskill.value
+			BUFLUC = tempskill.buffer
 
 /proc/generic_stat_comparison(userstat as num, targetstat as num)
 	var/difference = userstat - targetstat
@@ -269,3 +163,37 @@
 /mob/living/proc/goodluck(multi = 3)
 	if(STALUC > 10)
 		return prob((STALUC - 10) * multi)
+
+// Helper object, so we don't need to duplicate the stat change code for every stat...
+/obj/statdata
+	var/value
+	var/buffer
+
+/obj/statdata/proc/modifystat(statvalue, statbuffer, amt)
+	var/tempbuffer = statbuffer
+	var/newamt = statvalue
+
+	if (tempbuffer > 0 && amt < 0) // If the buffer is positive, it absorbs reductions until it's negative
+		tempbuffer += amt
+		if (tempbuffer < 0)
+			newamt += tempbuffer // Add the excess back to the stat and reset the buffer
+			tempbuffer = 0
+	else if (tempbuffer < 0 && amt > 0) // Same with boosts if it's negative
+		tempbuffer += amt
+		if (tempbuffer > 0)
+			newamt += tempbuffer
+			tempbuffer = 0
+	else // Otherwise, we don't need to worry about the buffer right away
+		newamt += amt
+	
+	// Finally, if newamt over/underflows the limits, add the excess to the buffer for later
+	if (newamt > 20)
+		tempbuffer += newamt - 20
+		newamt = 20
+	else if (newamt < 1)
+		// Need to subtract 1 from the amount since our minimum is 1, rather than 0
+		tempbuffer += newamt - 1
+		newamt = 1
+
+	value = newamt
+	buffer = tempbuffer

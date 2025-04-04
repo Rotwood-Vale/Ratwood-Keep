@@ -164,8 +164,8 @@
 	name = "plated chausses"
 	desc = "Plated armor to protect the legs, especially against arrows."
 	gender = PLURAL
-	icon_state = "chain_legs"
-	item_state = "chain_legs"
+	icon_state = "plate_legs"
+	item_state = "plate_legs"
 //	adjustable = CAN_CADJUST
 	armor_class = ARMOR_CLASS_HEAVY
 	sewrepair = FALSE
