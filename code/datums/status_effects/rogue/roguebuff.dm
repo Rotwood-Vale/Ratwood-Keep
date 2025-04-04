@@ -529,3 +529,80 @@
 	name = "Excommunicated heretic"
 	desc = "My PATRON is proud of ME!"
 	icon_state = "buff"
+
+/datum/status_effect/buff/maameat
+    id = "maameat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/maameat
+    effectedstats = list("endurance" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/maameat
+    name = "Man-at-Arms Flesh"
+    desc = "The flesh of a Man-at-Arms, granting an increase in endurance."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/templarmeat
+    id = "templarmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/templarmeat
+    effectedstats = list("constitution" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/templarmeat
+    name = "Templar Flesh"
+    desc = "The flesh of a Templar, granting a boost to constitution."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/watchmanmeat
+    id = "watchmanmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/watchmanmeat
+    effectedstats = list("perception" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/watchmanmeat
+    name = "Watchman Flesh"
+    desc = "The flesh of a Watchman, granting an increase in perception."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/vanguardmeat
+    id = "vanguardmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/vanguardmeat
+    effectedstats = list("speed" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/vanguardmeat
+    name = "Vanguard Flesh"
+    desc = "The flesh of a Vanguard, granting a boost in speed."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/knightmeat
+    id = "knightmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/knightmeat
+    effectedstats = list("strength" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/knightmeat
+    name = "Knight Flesh"
+    desc = "The flesh of a Knight, granting an increase in strength."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/priestmeat
+    id = "priestmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/priestmeat
+    effectedstats = list("intelligence" = 2)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/priestmeat
+    name = "Priest Flesh"
+    desc = "The flesh of a Priest, granting a boost to intelligence."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/royalmeat
+    id = "royalmeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/royalmeat
+    effectedstats = list("fortune" = 3)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/royalmeat
+    name = "Royal Flesh"
+    desc = "The flesh of royalty, granting an increase in luck."
+    icon_state = "meatsteak"
