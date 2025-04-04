@@ -519,7 +519,7 @@
 
 // -------------- HANDPIE (dwarven pie on the go, good shelflife until bitten, made from pie dough and mince, truffles or jacksberries) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw
-	name = "raw Donk-E-Pie"
+	name = "raw Rockhill pasty"
 	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
 	icon_state = "handpie_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/handpie
@@ -551,7 +551,7 @@
 	tastes = list("bitter berry" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/handpie
-	name = "Donk-E-Pie"
+	name = "Rockhill pasty"
 	desc = "The dwarven take on pies, called pierogi in their dialect. A fistfull of food to stand the test of time."
 	icon_state = "handpie"
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
