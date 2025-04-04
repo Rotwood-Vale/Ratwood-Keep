@@ -18,9 +18,10 @@
 
 /obj/item/seeds/Crossed(mob/living/L)
 	. = ..()
-	// Chance to destroy the seed as it's being stepped on
-	if(prob(35) && istype(L))
+	// Chance to destroy the seed as it's being stepped on if the mob is human-sized or larger
+	if(prob(35) && istype(L) && L.mob_size >= MOB_SIZE_HUMAN)
 		qdel(src)
+
 
 /obj/item/seeds/examine(mob/user)
 	. = ..()
