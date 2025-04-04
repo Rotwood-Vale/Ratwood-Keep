@@ -220,6 +220,16 @@
 	/datum/patron/inhumen/graggar\
 )
 
+
+#define NON_DIVINE_PATRONS list(\
+	/datum/patron/zizo,\
+	/datum/patron/inhumen/matthios,\
+	/datum/patron/inhumen/baotha,\
+	/datum/patron/inhumen/graggar\
+)
+
+
+
 #define TEN_CURSES list(\
 	/datum/curse/astrata,\
 	/datum/curse/noc,\

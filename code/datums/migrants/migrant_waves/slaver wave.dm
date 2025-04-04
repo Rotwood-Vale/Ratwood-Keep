@@ -10,7 +10,7 @@
 		/datum/migrant_role/slaver/slavemercbow = 1,
 		/datum/migrant_role/slaver/slavez = 2
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_one
 	name = "The Zybantine Slavers"
@@ -24,7 +24,7 @@
 		/datum/migrant_role/slaver/slavemercbow = 1,
 		/datum/migrant_role/slaver/slavez = 2
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_two
 	name = "The Zybantine Slavers"
@@ -38,7 +38,7 @@
 		/datum/migrant_role/slaver/slavemercbow = 1,
 		/datum/migrant_role/slaver/slavez = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_three
 	name = "The Zybantine Slavers"
@@ -52,7 +52,7 @@
 		/datum/migrant_role/slaver/slavemercbow = 1,
 		/datum/migrant_role/slaver/slavez = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_four
 	name = "The Zybantine Slavers"
@@ -65,7 +65,7 @@
 		/datum/migrant_role/slaver/slavemercbow = 1,
 		/datum/migrant_role/slaver/slavez = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_five
 	name = "The Zybantine Slavers"
@@ -77,7 +77,7 @@
 		/datum/migrant_role/slaver/slavemercwhip = 1,
 		/datum/migrant_role/slaver/slavez = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_six
 	name = "The Zybantine Slavers"
@@ -88,7 +88,7 @@
 		/datum/migrant_role/slaver/master = 1,
 		/datum/migrant_role/slaver/slavez = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
 
 /datum/migrant_wave/slaver_down_seven
 	name = "The Zybantine Slavers"
@@ -97,4 +97,4 @@
 	roles = list(
 		/datum/migrant_role/slaver/master = 1
 	)
-	greet_text = "A group of slavers coming to the Isle of Enigma from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."
+	greet_text = "A group of slavers coming to the Kingdom of Ferentia from the western deserts of Zybantine in the hopes of gathering wealth through the trade unfortunate laborers."

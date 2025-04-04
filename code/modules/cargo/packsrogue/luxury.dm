@@ -95,10 +95,20 @@
 	cost = 15
 	contains = list(/obj/item/storage/pill_bottle/dice)
 
+/datum/supply_pack/rogue/luxury/push_your_luck
+	name = "Bag of 6 dice, ideal for the Push Your Luck game"
+	cost = 15
+	contains = list(/obj/item/storage/pill_bottle/dice/push_your_luck)
+
 /datum/supply_pack/rogue/luxury/psiring
 	name = "Blessed Ring"
 	cost = 40
 	contains = list(/obj/item/clothing/ringP)
+
+/datum/supply_pack/rogue/luxury/talkstone
+	name = "Talkstone"
+	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
 
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"

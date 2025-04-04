@@ -47,6 +47,13 @@
 				/obj/item/kitchen/spoon)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/datum/crafting_recipe/roguetown/forks
+	name = "fork (x3)"
+	result = list(/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork,
+				/obj/item/kitchen/fork)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+
 /datum/crafting_recipe/roguetown/platter
 	name = "plater (x3)"
 	result = list(/obj/item/cooking/platter,
@@ -125,7 +132,6 @@
 	name = "strung bow"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	reqs = list(/obj/item/natural/bowstring = 1, /obj/item/grown/log/tree/bowpartial = 1)
-	skillcraft = /datum/skill/combat/bows
 	verbage_simple = "string together"
 	verbage = "strings together"
 	skill_level = 2

@@ -312,7 +312,7 @@
 
 	if(HAS_TRAIT(I, TRAIT_NODROP) && !force)
 		return FALSE
-
+	
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
 		held_items[hand_index] = null

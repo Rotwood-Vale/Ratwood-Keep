@@ -95,3 +95,8 @@
 	name = "Crossbow"
 	cost = 150
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
+
+/datum/supply_pack/rogue/bandit/foresworn/saiga
+	name = "Saiga"
+	cost = 300
+	contains = list(/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled)
