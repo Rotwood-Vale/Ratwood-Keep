@@ -234,15 +234,18 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Goblin Shaman")
 	var/num_bandits = 0
 	var/limit_bandits = 8
-	if(num_players() >= 12)
-		// 1 bandit per 12 players,
-		num_bandits = round(num_players() / 12)
+	if(num_players() >= 10)
+		// 1 bandit and 1 mercenary per 10 players,
+		num_bandits = round(num_players() / 10)
 		if(num_bandits >= limit_bandits)	//caps bandits at 8
 			num_bandits = limit_bandits
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
 		bandit_job.spawn_positions = num_bandits
 		banditgoal += (num_bandits * rand(200,400))
+		var/datum/job/mercenary_job = SSjob.GetJob("Mercenary")
+		mercenary_job.total_positions = num_bandits
+		mercenary_job.spawn_positions = num_bandits
 
 
 	if(num_bandits)
