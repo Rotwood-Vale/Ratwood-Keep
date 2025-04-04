@@ -316,6 +316,20 @@
 	effectedstats = list("strength" = 2,"constitution" = 2, "speed" = -2)
 	duration = 1.5 MINUTES
 
+/datum/status_effect/buff/enlarge/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("I feel myself growing leaps and bounds!"))
+	owner.transform = target.transform.Scale(1.25, 1.25)
+	owner.transform = target.transform.Translate(0, (0.25 * 16))
+	owner.update_transform()
+
+/datum/status_effect/buff/enlarge/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("I feel myself shrinking again.."))
+	target.transform = target.transform.Translate(0, -(0.25 * 16))
+	target.transform = target.transform.Scale(1/1.25, 1/1.25)      
+	target.update_transform()
+
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
