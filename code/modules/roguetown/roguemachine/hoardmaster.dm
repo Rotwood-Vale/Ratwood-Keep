@@ -36,7 +36,7 @@
 /obj/structure/roguemachine/Hoardmaster/examine(mob/user)
 	. = ..()
 	if(user.mind?.has_antag_datum(/datum/antagonist/bandit))
-		. += "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor. Its maw looks big enough for one to stick their head in. (Drag and drop a victim into it, then RMB to ransom them)"
+		. += "Formerly a covetous creature, this one now shares its Hoard with the Freefolk. Protecting the transactor's Hoard, and trading it for Favor. The dragon is humming with ancient magic, for anyone that comes close to it. (Drag and drop a victim into it, then RMB to ransom them)"
 		return
 	else
 		. += "Some mean looking statue of a dragon. Something about it makes me uneasy, like its eyes are following me."
@@ -65,6 +65,11 @@
 		else
 			say("Earn your keep first!")
 			return
+		if(PA.purchases_per_player)
+			if(PA.purchasers[M.mind])
+				PA.purchasers[M.mind]++
+			else
+				PA.purchasers[M.mind] = 1
 		var/shoplength = PA.contains.len
 		var/l
 		for(l=1,l<=shoplength,l++)
@@ -110,7 +115,7 @@
 			unlocked_cats+="Mage"
 		if("Sawbones")
 			unlocked_cats+="Sawbones"
-	
+
 	if(!(current_cat in unlocked_cats))
 		current_cat = "1"
 
@@ -128,6 +133,9 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
+			if(PA.purchases_per_player && usr.mind in PA.purchasers)
+				if(PA.purchasers[usr.mind] >= PA.purchases_per_player)
+					continue
 			var/unlock_time = SSticker.round_start_time + PA.time_lock
 			if(world.time < unlock_time) // Not enough time has passed
 				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
@@ -144,7 +152,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(H, TRAIT_COMMIE))
-		to_chat(usr, span_warning("The Hoardmaster does not hunger enough to devour one of its own."))
+		to_chat(usr, span_warning("The Hoardmaster does not unleash their magic upon one of its own."))
 		return FALSE
 
 	if(HAS_TRAIT(H, TRAIT_MATTHIOS_BRAND) || HAS_TRAIT(H, TRAIT_MATTHIOS_BRAND_OLD))
@@ -167,7 +175,7 @@
 /obj/structure/roguemachine/Hoardmaster/attack_right(mob/living/carbon/human/user)
 	set waitfor = FALSE
 
-	if(!user || !ishuman(user)) 
+	if(!user || !ishuman(user))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
@@ -178,7 +186,7 @@
 	for(var/l in buckled_mobs)
 		H = l
 	if(!H)
-		to_chat(user, span_notice("The Hoardmaster's maw is empty."))
+		to_chat(user, span_notice("The Hoardmaster await its sacrifice."))
 		return
 	if(!H.buckled)
 		to_chat(user, span_notice("The Deposed is not secure."))
@@ -201,11 +209,11 @@
 	sleep(2 SECONDS)
 
 	playsound(src.loc, 'sound/items/beartrap.ogg', 100, TRUE, -1)
-	visible_message(span_warning("The Hoardmaster's maw closes around [H]'s head!"))
+	visible_message(span_warning("The Hoardmaster's invisible coils of sorcery tighten around [H]'s mind!"))
 
 	sleep(2 SECONDS)
 
-	visible_message(span_warning("Jagged teeth find purchase on [H]'s temple!"))
+	visible_message(span_warning("Runes of binding ignite on [H]'s temples, each sigil a searing brand of agony!"))
 	H.emote("scream")
 	if(HAS_TRAIT(H, TRAIT_NOBLE))
 		say("NOW YOU WILL KNOW TRUE SUBJUGATION.")
@@ -217,7 +225,7 @@
 
 	sleep(3 SECONDS)
 
-	visible_message(span_warning("The Dragon begins to swallow [H] whole!"))
+	visible_message(span_warning("Ancient power floods forth at the Hoardmaster's command. An inexorable curse engulfs [H]'s very essence!"))
 	H.flash_fullscreen("whiteflash3")
 	H.Unconscious(15 SECONDS)
 
@@ -228,7 +236,7 @@
 	if(SSjob.latejoin_trackers.len)
 		destination = pick(SSjob.latejoin_trackers)
 		H.forceMove(destination)
-		to_chat(H, span_warning("You are whisked away elsewhere... changed. Your forehead itches."))
+		to_chat(H, span_warning("The Dragon's shadow envelops you completely, drawing your soul into an abyss... For a while. As you are whisked away elsewhere... changed. Your forehead itches from ancient magic."))
 
 	var/list/bandits_to_benefit = list()
 	for(var/mob/player in GLOB.player_list)

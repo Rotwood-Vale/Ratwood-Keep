@@ -184,99 +184,99 @@
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/book/granter/spellbook/adept)
 
-/datum/supply_pack/rogue/bandit/Mage/expertspellbook
-	name = "Expert Spellbook"
-	cost = 200
-	time_lock = 45 MINUTES
-	contains = list(/obj/item/book/granter/spellbook/expert)
-
 /datum/supply_pack/rogue/bandit/Mage/mercury
 	name = "bottle of mercury"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/mercury)
 
-/datum/supply_pack/rogue/bandit/Mage/unyieldinglight
+/datum/supply_pack/rogue/bandit/Mage/badenchant/unyieldinglight
 	name = "Enchantment of unyield light"
 	cost = 50
 	contains = list(/obj/item/enchantmentscroll/light)
 
-/datum/supply_pack/rogue/bandit/Mage/compactstorage
+/datum/supply_pack/rogue/bandit/Mage/badenchant/compactstorage
 	name = "Enchantment of compact storage"
 	cost = 50
 	contains = list(/obj/item/enchantmentscroll/holding)
 
-/datum/supply_pack/rogue/bandit/Mage/revealing
+/datum/supply_pack/rogue/bandit/Mage/badenchant/revealing
 	name = "Enchanting scroll of revealing"
 	cost = 50
 	contains = list(/obj/item/enchantmentscroll/revealing)
 
-/datum/supply_pack/rogue/bandit/Mage/darkvision
+/datum/supply_pack/rogue/bandit/Mage/goodenchant
+	purchases_per_player = 2
+
+/datum/supply_pack/rogue/bandit/Mage/goodenchant/darkvision
 	name = "Enchantment of dark vision"
 	cost = 100
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/nightvision)
 
-/datum/supply_pack/rogue/bandit/Mage/lightstep
+/datum/supply_pack/rogue/bandit/Mage/goodenchant/lightstep
 	name = "Enchantment of featherstep"
 	cost = 100
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/featherstep)
 
-/datum/supply_pack/rogue/bandit/Mage/fireresist
+/datum/supply_pack/rogue/bandit/Mage/goodenchant/fireresist
 	name = "Enchanting scroll of fire-resistance"
 	cost = 100
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/fireresist)
 
-/datum/supply_pack/rogue/bandit/Mage/nimblefingers
+/datum/supply_pack/rogue/bandit/Mage/goodenchant/nimblefingers
 	name = "Enchantment of nimble fingers"
 	cost = 100
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/thievery)
 
-/datum/supply_pack/rogue/bandit/Mage/swamptrekking
+/datum/supply_pack/rogue/bandit/Mage/goodenchant/swamptrekking
 	name = "Enchantment of swamp trekking"
 	cost = 100
 	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/trekk)
 
-/datum/supply_pack/rogue/bandit/Mage/lyfestealing
+/datum/supply_pack/rogue/bandit/Mage/greatenchant
+	purchases_per_player = 1
+
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/lyfestealing
 	name = "Enchantment of lyfestealing"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/lifesteal)
 
-/datum/supply_pack/rogue/bandit/Mage/frostveil
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/frostveil
 	name = "Enchantment of frostveil"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/frostveil)
 
-/datum/supply_pack/rogue/bandit/Mage/phoenixguard
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/phoenixguard
 	name = "Enchantment of phoenix guard"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/phoenixguard)
 
-/datum/supply_pack/rogue/bandit/Mage/woundclosing
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/woundclosing
 	name = "Enchantment of wound closing"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/woundclosing)
 
-/datum/supply_pack/rogue/bandit/Mage/returningweapon
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/returningweapon
 	name = "Enchantment of returning weapon"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/returningweapon)
 
-/datum/supply_pack/rogue/bandit/Mage/archery
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/archery
 	name = "Enchantment of archery"
 	cost = 200
 	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/archery)
 
-/datum/supply_pack/rogue/bandit/Mage/leaping
+/datum/supply_pack/rogue/bandit/Mage/greatenchant/leaping
 	name = "Enchantment of leaping"
 	cost = 200
 	time_lock = 1.2 HOURS

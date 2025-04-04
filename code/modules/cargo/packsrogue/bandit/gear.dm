@@ -131,6 +131,6 @@
 
 /datum/supply_pack/rogue/bandit/Gear/Dragonscale
 	name = "Dragonscale Necklace"
-	cost = 666
+	cost = 999
 	time_lock = 1.5 HOURS
 	contains = list(/obj/item/clothing/neck/roguetown/blkknight)

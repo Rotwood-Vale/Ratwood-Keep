@@ -189,7 +189,7 @@
 	contains = list(/obj/item/bomb)
 
 /datum/supply_pack/rogue/bandit/Sawbones/poison
-	name = "High-Potency poison"
-	cost = 150
+	name = "Poison bottle"
+	cost = 35
 	time_lock = 1.2 HOURS
-	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/poison)
+	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/berrypoison)
