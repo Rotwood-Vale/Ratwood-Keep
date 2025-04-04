@@ -1220,7 +1220,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	return TRUE
 
 
-	/obj/effect/proc_holder/spell/invoked/enlarge
+/obj/effect/proc_holder/spell/invoked/enlarge
 	name = "Enlarge"
 	desc = "Cause a target to be magically enlarged."
 	cost = 2
@@ -1239,7 +1239,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	invocation = "Su Magnus!"
 	invocation_type = "shout"
 
-	/obj/effect/proc_holder/spell/invoked/enlarge/cast(list/targets, mob/user)
+/obj/effect/proc_holder/spell/invoked/enlarge/cast(list/targets, mob/user)
 	var/atom/A = targets[1]
 	if(!isliving(A))
 		revert_cast()
