@@ -305,6 +305,17 @@
 	effectedstats = list("speed" = 3)
 	duration = 1.5 MINUTES
 
+/atom/movable/screen/alert/status_effect/buff/haste
+	name = "Enlarged"
+	desc = "I am magically enlarged."
+	icon_state = "buff"
+
+/datum/status_effect/buff/enlarge
+	id = "enlarge"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/enlarge
+	effectedstats = list("strength" = 2,"constitution" = 2, "speed" = -2)
+	duration = 1.5 MINUTES
+
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
