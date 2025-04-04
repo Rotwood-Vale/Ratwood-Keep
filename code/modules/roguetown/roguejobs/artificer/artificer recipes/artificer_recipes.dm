@@ -93,7 +93,8 @@
 	hammers_per_item = 10
 	skill_level = 1
 	i_type = "General"
-
+/*
+//Copper and Tin cogs make sense, but for some reason we're making bronze cogs? And we have no copper or tin cogs yet, nor uses. Commented out for later.
 /datum/artificer_recipe/general/copper/cog
 	name = "Copper Cog"
 	required_item = /obj/item/ingot/copper
@@ -107,7 +108,7 @@
 	created_item = /obj/item/roguegear/bronze
 	hammers_per_item = 10
 	skill_level = 1
-
+*/
 /datum/artificer_recipe/bronze/locks
 	name = "Locks 5x"
 	created_item = list(/obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock)
@@ -134,6 +135,20 @@
 	hammers_per_item = 9
 	skill_level = 3
 	i_type = "Tools"
+
+
+/datum/artificer_recipe/bronze/tools/waterpurifier
+	name = "Self-Purifying Waterskin (+1 waterskin)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/reagent_containers/glass/bottle/waterskin/purifier
+	additional_items = list(/obj/item/reagent_containers/glass/bottle/waterskin)
+
+/datum/artificer_recipe/bronze/tools/grappler
+	name = "Grappler (+1 ironpick)(+2 bronze gears)(+1 rope)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/grapplinghook
+	additional_items = list(/obj/item/rogueweapon/pick, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/rope)
+	skill_level = 4
 
 // --------- Contraptions -----------
 
@@ -163,6 +178,13 @@
 	created_item = /obj/item/contraption/lock_imprinter
 	hammers_per_item = 12
 	skill_level = 4
+/datum/artificer_recipe/contraptions/whisperer
+	name = "Bronze Whisperer (+1 bronze gear +1 tin ingot)"
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/contraption/whisper
+	additional_items = list(/obj/item/roguegear/bronze,/obj/item/ingot/tin)
+	hammers_per_item = 10
+	skill_level = 3
 
 /datum/artificer_recipe/contraptions/smokebombs
 	name = "smokebomb(s) (6) (+1 Coal)"
@@ -176,6 +198,29 @@
 						/obj/item/smokebomb,)
 	hammers_per_item = 12
 	skill_level = 3
+
+/datum/artificer_recipe/contraptions/artificerarmor
+	name = "Artificer armor (+3 Copper ingot)(+1 Bronze gear)"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/ingot/copper,/obj/item/ingot/copper, /obj/item/ingot/copper, /obj/item/roguegear/bronze)
+	created_item = /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor
+	hammers_per_item = 12
+	skill_level = 3
+
+/datum/artificer_recipe/contraptions/volticgauntlet
+	name = "Voltic Gauntlet (+1 Tin ingot)(+2 Bronze gear)(+1 cinnabar ore)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/ingot/tin, /obj/item/rogueore/cinnabar)
+	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
+	hammers_per_item = 12
+	skill_level = 3
+
+/datum/artificer_recipe/contraptions/coolingbackpack
+	name = "Cooling Backpack (+1 bronze gear, +Backpack)" // why are these recipes capitalized differently than every other crafting recipe my ocddddddddddd
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/storage/backpack/rogue/backpack/artibackpack
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/storage/backpack/rogue/backpack)
+	skill_level = 5
 // --------- WEAPON -----------
 
 /datum/artificer_recipe/wood/weapons //Again, a bit silly, but is important
@@ -217,6 +262,13 @@
 /obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
 
+/datum/artificer_recipe/wood/weapons/steamshield
+	name = "Steam Shield (+1 wood plank)(+2 Bronze gear)(+2 bronze ingot)"
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/natural/wood/plank, /obj/item/ingot/bronze,/obj/item/ingot/bronze)
+	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
+	hammers_per_item = 12
+	skill_level = 3
+
 /// CROSSBOW
 
 /datum/artificer_recipe/wood/weapons/crossbow
@@ -232,58 +284,117 @@
 	i_type = "Ammunition"
 
 /datum/artificer_recipe/ammunition/bolts
-	name = "Crossbow Bolts 20x (+3 planks, +2 Iron)"
+	name = "Crossbow Bolts 20x (+2 planks, +1 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron)
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
 						/obj/item/ammo_casing/caseless/rogue/bolt
 					)
 	hammers_per_item = 6
 	skill_level = 2
 
 /datum/artificer_recipe/ammunition/arrows
-	name = "Arrows 20x (+3 Planks, +2 Iron)"
+	name = "Arrows 20x (+2 Planks, +1 Iron)"
 	required_item = /obj/item/natural/wood/plank
-	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank,  /obj/item/ingot/iron)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron
 					)
+	hammers_per_item = 6
+	skill_level = 2
+
+/datum/artificer_recipe/ammunition/musket
+	name = "Musket balls 8x "
+	required_item = /obj/item/ingot/tin		//more uses for tin, and historically some musketballs were lead-tin alloys.
+	created_item = list(/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead,
+						/obj/item/ammo_casing/caseless/lead
+					)
+	hammers_per_item = 10
+	skill_level = 2
+
+/datum/artificer_recipe/ammunition/grapeshot
+	name = "Grapeshot 8x "
+	required_item = /obj/item/ingot/tin
+	created_item = list(/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot,
+						/obj/item/ammo_casing/caseless/grapeshot
+					)
+	hammers_per_item = 10
+	skill_level = 2
+
+/datum/artificer_recipe/ammunition/pyrobolt_five
+	name = "pyroclastic bolt x5 (+1 iron) (+1 fyritius)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
+	created_item = list(
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
+				/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+				)
+	hammers_per_item = 6
+	skill_level = 2
+
+
+/datum/artificer_recipe/ammunition/pyroarrow_five
+	name = "pyroclastic arrow x5 (+1 iron) (+1 fyritius)"
+	required_item = /obj/item/natural/wood/plank
+	additional_items = list(/obj/item/ingot/iron, /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
+	created_item = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
+				/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+				)
 	hammers_per_item = 6
 	skill_level = 2
 

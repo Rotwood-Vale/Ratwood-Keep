@@ -363,7 +363,7 @@
 
 /datum/crafting_recipe/roguetown/structure/headstake
 	name = "head stake"
-	result = /obj/structure/fluff/headstake	
+	result = /obj/structure/fluff/headstake
 	reqs = list(/obj/item/grown/log/tree/stake = 1,
 				/obj/item/bodypart/head = 1)
 	parts = list(/obj/item/bodypart/head = 1,
@@ -371,7 +371,7 @@
 	verbage_simple = "set up"
 	verbage = "sets up"
 	skill_level = 0
-	
+
 
 /datum/crafting_recipe/roguetown/structure/fencealt
 	name = "palisade (small log)"
@@ -500,7 +500,7 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	skill_level = 2
-	
+
 /datum/crafting_recipe/roguetown/structure/doublebed
 	name = "double bed"
 	result = /obj/structure/bed/rogue/inn/wooldouble
@@ -655,6 +655,17 @@
 	if(istype(T,/turf/open/water))
 		return FALSE
 	return ..()
+
+/datum/crafting_recipe/roguetown/structure/coolingtable
+	name = "Cooling Table"
+	result = /obj/structure/table/cooling
+	reqs = list(/obj/item/grown/log/tree/small = 1,
+				/obj/item/ingot/iron = 1,
+				/obj/item/roguegear/bronze = 1)
+	verbage_simple = "engineer"
+	verbage = "engineers"
+	skillcraft = /datum/skill/craft/engineering
+	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/wallladder
 	name = "wall ladder"
