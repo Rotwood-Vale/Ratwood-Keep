@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: "[BUG] Unexpected Behavior for X"
-labels: unconfirmed
+labels: "Bug"
 ---
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable -->
 
