@@ -21,6 +21,7 @@
 /datum/plant_def/fyritiusflower
 	name = "fyritius flowers"
 	icon_state = "fyritius"
+	icon = 'modular_redmoon/icons/items/fyritius_48.dmi'
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/fyritius
 	produce_amount_min = 1
 	produce_amount_max = 3

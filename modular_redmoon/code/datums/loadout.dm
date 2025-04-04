@@ -213,18 +213,18 @@ GLOBAL_LIST_EMPTY(loadout_items)
 
 /datum/loadout_item/woodspectacles
 	name = "Wood Spectacles"
-	desc = "Очки в деревянной оправе"
+	desc = "Очки в деревянной оправе."
 	path = /obj/item/clothing/mask/rogue/woodspectacles
 
 /datum/loadout_item/collarbell //REDMOON ADD
 	name = "Jingly leather collar"
-	desc = "Кожаный ошейник. С колкольчиком!"
+	desc = "Кожаный ошейник. С колокольчиком!"
 	path = /obj/item/clothing/neck/roguetown/collar/leather/bell
 
 //ARMOR
 /datum/loadout_item/rag
 	name = "Rag Mask"
-	desc = "Койф."
+	desc = "Маска."
 	path = /obj/item/clothing/neck/roguetown/chaincoif/iron
 
 /datum/loadout_item/lbracers
