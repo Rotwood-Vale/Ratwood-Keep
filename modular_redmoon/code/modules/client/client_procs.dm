@@ -24,7 +24,9 @@
 			
 	if(!is_donor)
 		return
-	
+
+	if(prefs.donator_bonus_received)
+		return
 
 	adjust_playerquality(15, ckey, "SYSTEM", "Donator bonus")
 
