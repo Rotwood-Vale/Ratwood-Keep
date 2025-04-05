@@ -225,7 +225,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/rag
 	name = "Rag Mask"
 	desc = "Маска."
-	path = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	path = /obj/item/clothing/mask/rogue/rag
 
 /datum/loadout_item/lbracers
 	name = "Leather Bracers"
