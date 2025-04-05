@@ -38,7 +38,7 @@
 
 	//Move the user over the target
 	if(user.loc != target.loc)
-		user.forceMove(target)
+		user.forceMove(get_turf(target))
 
 
 /datum/sex_action/mating_press/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
