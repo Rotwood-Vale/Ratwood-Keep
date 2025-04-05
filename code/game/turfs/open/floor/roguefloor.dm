@@ -182,8 +182,8 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/grassred, 
-						/turf/open/floor/rogue/grassyel, 
+	canSmoothWith = list(/turf/open/floor/rogue/grassred,
+						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
 						/turf/open/floor/rogue/snowpatchy,
 						/turf/open/floor/rogue/snow,
@@ -301,7 +301,7 @@
 	slowdown = 0
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(
-						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
 						/turf/open/floor/rogue/snowpatchy,
 						/turf/open/floor/rogue/snow,
@@ -600,6 +600,21 @@
 	neighborlay = "dirtedge"
 	slowdown = 0
 	muddy = FALSE
+
+/turf/open/floor/rogue/dirt/npoor
+	name = "weak dirt"
+	desc = "The dirt is pocked with the scars of countless wars, It lacks much fertility."
+	icon_state = "dirt"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	slowdown = 2
+	smooth = SMOOTH_TRUE
+	neighborlay = "dirtedge"
+
 
 /turf/open/floor/rogue/underworld/road
 	name = "ash"

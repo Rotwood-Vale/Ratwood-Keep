@@ -44,13 +44,36 @@
 	if(soil)
 		try_plant_seed(user, soil)
 		return
+	else if(istype(T, /turf/open/floor/rogue/dirt/nrich))
+		if(!(user.mind.get_skill_level(/datum/skill/labor/farming) >= 2))
+			to_chat(user, span_notice("I don't know enough to work without a tool."))
+		to_chat(user, span_notice("I begin making a mound for the seeds..."))
+		if(do_after(user, get_farming_do_time(user, 10 SECONDS), target = src))
+			apply_farming_fatigue(user, 30)
+			soil = get_soil_on_turf(T)
+			if(!soil)
+				soil = new /obj/structure/soil/great(T)
+
+	else if(istype(T, /turf/open/floor/rogue/dirt/npoor))
+		if(!(user.mind.get_skill_level(/datum/skill/labor/farming) >= 2))
+			to_chat(user, span_notice("I don't know enough to work without a tool."))
+		to_chat(user, span_notice("I begin making a mound for the seeds..."))
+		if(do_after(user, get_farming_do_time(user, 10 SECONDS), target = src))
+			apply_farming_fatigue(user, 30)
+			soil = get_soil_on_turf(T)
+			if(!soil)
+				soil = new /obj/structure/soil/poor(T)
+
 	else if(istype(T, /turf/open/floor/rogue/dirt))
+		if(!(user.mind.get_skill_level(/datum/skill/labor/farming) >= 2))
+			to_chat(user, span_notice("I don't know enough to work without a tool."))
 		to_chat(user, span_notice("I begin making a mound for the seeds..."))
 		if(do_after(user, get_farming_do_time(user, 10 SECONDS), target = src))
 			apply_farming_fatigue(user, 30)
 			soil = get_soil_on_turf(T)
 			if(!soil)
 				soil = new /obj/structure/soil(T)
+
 		return
 	. = ..()
 
