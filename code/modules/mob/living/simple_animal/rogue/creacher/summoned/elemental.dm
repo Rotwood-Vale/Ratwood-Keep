@@ -319,6 +319,8 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/elementalfragment(deathspot)
 	new /obj/item/natural/elementalfragment(deathspot)
+	new /obj/item/natural/elementalfragment(deathspot)
+	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
