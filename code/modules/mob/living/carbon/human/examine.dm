@@ -208,6 +208,15 @@
 		if(HAS_TRAIT(src, TRAIT_ZIZO_MARKED) && HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 			. += span_purple("A fellow seeker of Her ascension.")
 
+		if(HAS_TRAIT(src, TRAIT_MATTHIOS_EYES) && HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
+			. += span_purple("COMRADE!")
+
+		if(HAS_TRAIT(src, TRAIT_CRACKHEAD) && HAS_TRAIT(user, TRAIT_CRACKHEAD))
+			. += span_purple("FOLLOWER OF PLEASURE!")
+
+		if(HAS_TRAIT(src, TRAIT_ORGAN_EATER) && HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+			. += span_purple("ANOTHER ORGAN EATER!")
+
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
 			var/atom/item = get_most_expensive()
 			if(item)
