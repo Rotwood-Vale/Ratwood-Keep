@@ -363,6 +363,8 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/moltencore(deathspot)
 	new /obj/item/natural/moltencore(deathspot)
+	new /obj/item/natural/moltencore(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
