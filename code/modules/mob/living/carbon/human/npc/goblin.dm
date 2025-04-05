@@ -285,31 +285,31 @@
 
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.STASTR = 8
+	H.STASTR = 15
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STASPD = 16
 	else
 		H.STASPD = 14
-	H.STACON = 6
+	H.STACON = 15
 	H.STAEND = 15
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STAINT = 8
 	else
 		H.STAINT = 4
-	var/loadout = rand(1,5)
+	var/loadout = rand(1,2)
 	switch(loadout)
-		if(1) //tribal spear
-			r_hand = /obj/item/rogueweapon/spear/stone
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-		if(2) //tribal axe
-			r_hand = /obj/item/rogueweapon/stoneaxe
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-		if(3) //tribal club
-			r_hand = /obj/item/rogueweapon/mace/woodclub
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-			if(prob(10))
-				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-		if(4) //lightly armored sword/flail/daggers
+		// if(1) //tribal spear
+		// 	r_hand = /obj/item/rogueweapon/spear/stone
+		// 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+		// if(2) //tribal axe
+		// 	r_hand = /obj/item/rogueweapon/stoneaxe
+		// 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+		// if(3) //tribal club
+		// 	r_hand = /obj/item/rogueweapon/mace/woodclub
+		// 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+		// 	if(prob(10))
+		// 		head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+		if(1) //lightly armored sword/flail/daggers
 			if(prob(50))
 				r_hand = /obj/item/rogueweapon/sword/iron
 			else
@@ -322,7 +322,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
-		if(5) //heavy armored sword/flail/shields
+		if(2) //heavy armored sword/flail/shields
 			if(prob(30))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 			else
@@ -357,10 +357,9 @@
 	density = FALSE
 	layer = BELOW_OBJ_LAYER
 	var/gobs = 0
-	var/maxgobs = 3
+	var/maxgobs = 9
 	var/datum/looping_sound/boneloop/soundloop
 	var/spawning = FALSE
-	var/moon_goblins = 0
 	attacked_sound = 'sound/vo/mobs/ghost/skullpile_hit.ogg'
 
 /obj/structure/gob_portal/Initialize()
@@ -389,17 +388,11 @@
 	if(!spawning)
 		return
 	spawning = FALSE
-	if(moon_goblins == 0)
-		if(GLOB.tod == "night")
-			if(prob(30))
-				moon_goblins = 1
-			else
-				moon_goblins = 2
-	if(moon_goblins == 1)
-		new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
-	else
-		new /mob/living/carbon/human/species/goblin/npc(get_turf(src))
-	gobs++
+	if(GLOB.tod == "night")
+		if(prob(30))
+			new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
+		else
+			new /mob/living/carbon/human/species/goblin/npc(get_turf(src))
 	update_icon()
 	if(gobs < maxgobs)
 		spawn_gob()
