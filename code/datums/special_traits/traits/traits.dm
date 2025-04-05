@@ -298,6 +298,8 @@
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
 	character.grant_language(/datum/language/faexin)
+	character.grant_language(/datum/language/canilunzt)
+	character.grant_language(/datum/language/felid)
 
 
 /datum/special_trait/tavernbrawler
