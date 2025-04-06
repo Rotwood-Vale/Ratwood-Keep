@@ -9,7 +9,7 @@
 	earliest_start = 3 MINUTES
 
 /datum/round_event_control/rogue/ascension_baotha/canSpawnEvent()
-	if(hasomen(OMEN_CURSE_BAOTHA) == 0)
+	if(hasomen(OMEN_ASCENSION_BAOTHA) == 0)
 		return FALSE
 	. = ..()
 
