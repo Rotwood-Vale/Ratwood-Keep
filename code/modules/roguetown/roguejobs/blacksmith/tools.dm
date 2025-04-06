@@ -71,7 +71,8 @@
 		if(attacked_item.obj_integrity >= 0)
 			if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 				return
-		if(attacked_item.obj_integrity <= 0)
+		//Changed from being 0 because some items do not hit zero before being 'broken'
+		if(attacked_item.obj_integrity < attacked_item.max_integrity)
 			if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) >= 4)
 				if(attacked_item.obj_broken && istype(attacked_item, /obj/item/clothing))
 					var/obj/item/clothing/clothing = attacked_item
