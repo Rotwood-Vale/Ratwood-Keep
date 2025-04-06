@@ -61,13 +61,22 @@
 		playsound(src, pick('sound/misc/mat/guymouth (1).ogg','sound/misc/mat/guymouth (2).ogg','sound/misc/mat/guymouth (3).ogg','sound/misc/mat/guymouth (4).ogg','sound/misc/mat/guymouth (5).ogg'), 35, TRUE, ignore_walls = FALSE)
 
 /mob/living/carbon/human/proc/try_impregnate(mob/living/carbon/human/wife)
+	var/mob/living/carbon/human/M = src
+	var/mob/living/carbon/human/F = wife
+
 	var/obj/item/organ/testicles/testes = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(!testes)
 		return
 	var/obj/item/organ/vagina/vag = wife.getorganslot(ORGAN_SLOT_VAGINA)
 	if(!vag)
 		return
-	if(prob(33)) // 1/3rd chance. If possible, add 20% after second or third round of intercourse.
+
+	var/double_chance = FALSE
+
+	if(HAS_TRAIT(M, TRAIT_CRACKHEAD) || HAS_TRAIT(F, TRAIT_CRACKHEAD)) // Increase pregnancy chance if Baotha-affiliated
+		double_chance = TRUE
+
+	if(double_chance ? prob(66) : prob(33)) // 1/3rd chance. If possible, add 20% after second or third round of intercourse.
 		vag.be_impregnated(src)
 
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)

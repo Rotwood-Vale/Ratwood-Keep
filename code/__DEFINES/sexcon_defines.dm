@@ -55,6 +55,7 @@ GLOBAL_LIST_INIT(sex_actions, build_sex_actions())
 #define PAIN_DAMAGE_DIVISOR 50
 
 #define VIOLATED_ALLOWED_TIME (10 MINUTES)
+#define BAOTHA_CUM_THRESHOLD 69
 
 /proc/build_sex_actions()
 	. = list()

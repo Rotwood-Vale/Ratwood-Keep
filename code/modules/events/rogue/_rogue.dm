@@ -69,6 +69,14 @@ GLOBAL_LIST_INIT(badomens, list())
 			used = "The earth quakes beneath the city!" //
 		if(OMEN_DESECRATE_EORA)
 			used = "" //
+		if(OMEN_ASCENSION_ZIZO)
+			used = "" //
+		if(OMEN_ASCENSION_BAOTHA)
+			used = "The air is wet with longing." //choose random impregnated player to spawn mob
+		if(OMEN_ASCENSION_GRAGGAR)
+			used = "" //
+		if(OMEN_ASCENSION_MATTHIOS)
+			used = "" //
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
 

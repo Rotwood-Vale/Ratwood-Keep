@@ -80,6 +80,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/cuckers = list()
 	var/cums = 0
+	var/cums_baothan = 0
 
 	var/end_party = FALSE
 	var/last_lobby = 0
@@ -642,6 +643,16 @@ SUBSYSTEM_DEF(ticker)
 			Master.SetRunLevel(RUNLEVEL_GAME)
 		if(GAME_STATE_FINISHED)
 			Master.SetRunLevel(RUNLEVEL_POSTGAME)
+
+/datum/controller/subsystem/ticker/proc/add_cums(amount, premarital)
+	SSticker.cums += amount
+	if(premarital)
+		SSticker.cums_baothan += amount
+
+	if(SSticker.cums_baothan >= BAOTHA_CUM_THRESHOLD)
+		if(!hasomen(OMEN_ASCENSION_BAOTHA))
+			message_admins("Baothan sex threshold has been reached. Spawning Baothan flesh monster.")
+			addomen(OMEN_ASCENSION_BAOTHA)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message

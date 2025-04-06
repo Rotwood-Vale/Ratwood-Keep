@@ -16,3 +16,8 @@
 #define OMEN_DESECRATE_PESTRA "desecrate_pestra"
 #define OMEN_DESECRATE_MALUM "desecrate_malum"
 #define OMEN_DESECRATE_EORA "desecrate_eora"
+
+#define OMEN_ASCENSION_ZIZO "ascension_zizo"
+#define OMEN_ASCENSION_BAOTHA "ascension_baotha"
+#define OMEN_ASCENSION_GRAGGAR "ascension_graggar"
+#define OMEN_ASCENSION_MATTHIOS "ascension_matthios"

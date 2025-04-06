@@ -214,7 +214,10 @@
 	log_combat(user, user, "Ejaculated into a container")
 	user.visible_message(span_lovebold("[user] spills into [C]!"))
 	playsound(user, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
-	C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD)) //double erp juice if baothan
+		C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 6)
+	else
+		C.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
 
 /datum/sex_controller/proc/after_ejaculation()
@@ -224,9 +227,16 @@
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
+	var/cum_amount = 1
 	if(HAS_TRAIT(user, TRAIT_BAOTHA_CURSE))
 		user.apply_status_effect(/datum/status_effect/debuff/cumbrained)
-	SSticker.cums++
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
+		cum_amount = 2
+	var/premarital = TRUE
+	if(user.marriedto && target)
+		if(user.marriedto == target)
+			premarital = FALSE
+	SSticker.add_cums(cum_amount, premarital)
 
 /datum/sex_controller/proc/after_milking()
 	set_arousal(80)
