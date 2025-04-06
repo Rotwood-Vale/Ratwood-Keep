@@ -1,6 +1,6 @@
-/datum/round_event_control/rogue/curse_baotha
+/datum/round_event_control/rogue/ascension_baotha
 	name = "Ascended Baotha"
-	typepath = /datum/round_event/rogue/curse_baotha
+	typepath = /datum/round_event/rogue/ascension_baotha
 	weight = 1000
 	max_occurrences = 2
 	min_players = 0
@@ -8,18 +8,18 @@
 	todreq = list("night", "dawn", "day", "dusk")
 	earliest_start = 3 MINUTES
 
-/datum/round_event_control/rogue/curse_baotha/canSpawnEvent()
+/datum/round_event_control/rogue/ascension_baotha/canSpawnEvent()
 	if(hasomen(OMEN_CURSE_BAOTHA) == 0)
 		return FALSE
 	. = ..()
 
-/datum/round_event/rogue/curse_baotha
+/datum/round_event/rogue/ascension_baotha
 	announceWhen = 1
 	var/mob/living/carbon/human/target
 	var/birthing_time
 	var/to_birth = 1
 
-/datum/round_event/rogue/curse_baotha/start()
+/datum/round_event/rogue/ascension_baotha/start()
 	var/list/impregnated_targets = list()
 
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -36,7 +36,7 @@
 		birthing_time = world.time
 
 // Add this proc to handle progression
-/datum/round_event/rogue/curse_baotha/process()
+/datum/round_event/rogue/ascension_baotha/process()
 	if(!target || !birthing_time)
 		return
 
