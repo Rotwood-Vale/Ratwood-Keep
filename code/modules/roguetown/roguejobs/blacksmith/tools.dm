@@ -68,6 +68,25 @@
 
 	if(isitem(attacked_object) && !user.cmode)
 		var/obj/item/attacked_item = attacked_object
+
+		//Blacksmith only mod menu goes here?
+		if(attacked_item.obj_integrity >= attacked_item.max_integrity)
+			var/choices = list("name item")
+			var/action =input(user, "CHOOSE ACTION") as null|anything in choices
+			if(pick(action) == "name item")
+				var/t = ""
+				t = stripped_input(user,"Name this item.", ,"", 40) // So you can make a funny long title but not too insane
+				if(!reject_bad_name(t))
+					to_chat(user, span_notice("You need to name it properly!"))
+					return
+
+				log_admin("[user]([user.ckey]) just named [attacked_item]: [t]")
+				message_admins("[key_name_admin(user)] just named [attacked_item]: [t]")
+				attacked_item.name = "[t] ([initial(attacked_item.name)])"
+				playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+				user.say("I dub thee [t]!")
+				return
+
 		if(attacked_item.obj_integrity >= 0)
 			if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 				return
@@ -79,10 +98,6 @@
 			else
 				user.visible_message(span_warning("[attacked_item] is broken! I am not skilled enough to fix it..."))
 				return
-				
-		
-			
-			
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
 			if(prob(30))
@@ -156,6 +171,15 @@
 			return
 	..()
 */
+/obj/item/rogueweapon/hammer/blacksteel
+	force = 25
+	name = "blacksteel hammer"
+	desc = "BlackSteel to drive even the hardest metal into submission."
+	icon = 'icons/roguetown/weapons/tools.dmi'
+	icon_state = "bs_masterhammer"
+	item_state = "bs_masterhammer"
+	quality = 2
+	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/hammer/wood
 	name = "wooden mallet"
@@ -201,12 +225,12 @@
 /obj/item/rogueweapon/tongs/update_icon()
 	. = ..()
 	if(!hingot)
-		icon_state = "tongs"
+		icon_state = "[initial(icon_state)]"
 	else
 		if(hott)
-			icon_state = "tongsi1"
+			icon_state = "[initial(icon_state)]i1"
 		else
-			icon_state = "tongsi0"
+			icon_state = "[initial(icon_state)]i0"
 
 /obj/item/rogueweapon/tongs/proc/make_unhot(input)
 	if(hott == input)
@@ -256,3 +280,11 @@
 "eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/tongs/blacksteel
+	name = "blacksteel tongs"
+	desc = "A pair of blacksteel jaws almost certainly used as a sign of prestige."
+	icon_state = "bs_tongs"
+	wdefense = 2
+	icon = 'icons/roguetown/weapons/tools.dmi'
+	smeltresult = /obj/item/ingot/blacksteel

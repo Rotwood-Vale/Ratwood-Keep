@@ -163,9 +163,10 @@
 	result = /obj/machinery/anvil
 	reqs = list(/obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/blacksmithing
+	xpgain = FALSE
 	verbage_simple = "forge"
 	verbage = "forges"
-	skill_level = 2
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/structure/smelter
 	name = "ore furnace"
@@ -192,9 +193,12 @@
 	result = /obj/machinery/light/rogue/forge
 	reqs = list(/obj/item/natural/stone = 4,
 				/obj/item/rogueore/coal = 1)
+	skillcraft = /datum/skill/craft/blacksmithing
+	xpgain = FALSE
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
+	skill_level = 1
 
 /datum/crafting_recipe/roguetown/structure/treatingfurnace
 	name = "heat treatment furnace"
@@ -202,10 +206,11 @@
 	reqs = list(/obj/item/natural/stone = 4,
 				/obj/item/ingot/steel = 2,
 				/obj/item/rogueore/coal = 1)
+	skillcraft = /datum/skill/craft/blacksmithing
+	xpgain = FALSE
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	skillcraft = /datum/skill/craft/blacksmithing
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/sharpwheel
@@ -214,9 +219,11 @@
 	reqs = list(/obj/item/ingot/iron = 1,
 				/obj/item/natural/stone = 1)
 	skillcraft = /datum/skill/craft/blacksmithing
+	xpgain = FALSE
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/art_table
 	name = "artificer table"

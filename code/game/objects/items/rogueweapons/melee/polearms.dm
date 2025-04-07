@@ -9,7 +9,7 @@
 	chargetime = 1.5
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = 30
 	item_d_type = "stab"
 
 /datum/intent/spear/bash
@@ -230,6 +230,8 @@
 	desc = "A neat, steel hook."
 	icon_state = "billhook"
 	force_wielded = 30
+	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/steel, SPEAR_CUT, SPEAR_BASH)
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
@@ -273,8 +275,8 @@
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
-	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
+	gripped_intents = list(/datum/intent/spear/thrust/steel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
 	desc = "A steel halberd, mostly used by town guards."
 	icon_state = "halberd"
@@ -340,6 +342,9 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+
+/datum/intent/spear/thrust/steel
+	penfactor = 50
 
 /datum/intent/spear/cut/halberd
 	damfactor = 0.9

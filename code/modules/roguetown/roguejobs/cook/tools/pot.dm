@@ -16,7 +16,7 @@
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
 	volume = 300 //100 oz
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = null
 	
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
