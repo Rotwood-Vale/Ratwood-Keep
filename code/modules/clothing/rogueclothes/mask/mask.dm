@@ -47,7 +47,7 @@
 	flash_protect = FLASH_PROTECTION_WELDER
 	tint = 1
 
-/obj/item/clothing/mask/rogue/spectacles/delf/equipped(mob/user, slot)
+/obj/item/clothing/mask/rogue/spectacles/delf/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	user.update_sight()
 
@@ -55,7 +55,7 @@
 	. = ..()
 	user.update_sight()
 
-/obj/item/clothing/mask/rogue/equipped(mob/user, slot)
+/obj/item/clothing/mask/rogue/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	user.update_fov_angles()
 
