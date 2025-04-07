@@ -8,7 +8,7 @@
 	var/list/friends = list()
 	var/mob/living/target
 	var/obj/item/pickupTarget
-	var/mode = AI_OFF
+	var/mode = NPC_AI_OFF
 	var/list/myPath = list()
 	var/list/blacklistItems = list()
 	var/maxStepsTick = 6
@@ -62,7 +62,7 @@
 			else
 				stand_attempts = max(stand_attempts-1, 0)
 				if(!handle_combat())
-					if(mode == AI_IDLE && !pickupTarget)
+					if(mode == NPC_AI_IDLE && !pickupTarget)
 						npc_idle()
 						if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
 							if(deaggrodel())
@@ -252,7 +252,7 @@
 
 /mob/living/carbon/human/proc/handle_combat()
 	switch(mode)
-		if(AI_IDLE)		// idle
+		if(NPC_AI_IDLE)		// idle
 			if(world.time >= next_seek)
 				next_seek = world.time + 3 SECONDS
 				for(var/mob/living/L in view(7, src)) // scan for enemies
@@ -262,7 +262,7 @@
 						if (!npc_detect_sneak(L, -20)) // attempt a passive detect with 20% increased difficulty
 							next_passive_detect = world.time + STAPER SECONDS
 
-		if(AI_HUNT)		// hunting for attacker
+		if(NPC_AI_HUNT)		// hunting for attacker
 			if(target != null)
 				if(!should_target(target))
 					if (target.alpha == 0 && target.rogue_sneaking) // attempt one detect since we were just fighting them and have lost them
@@ -296,13 +296,13 @@
 				if(flee_in_pain && (target.stat == CONSCIOUS))
 					var/paine = get_complex_pain()
 					if(paine >= ((STAEND * 10)*0.9))
-//						mode = AI_FLEE
+//						mode = NPC_AI_FLEE
 						walk_away(src, target, 5, update_movespeed())
 				return TRUE
 			else								// not next to perp
 				frustration++
 
-		if(AI_FLEE)
+		if(NPC_AI_FLEE)
 			back_to_idle()
 			return TRUE
 
@@ -314,7 +314,7 @@
 	if(pulling)
 		stop_pulling()
 	myPath = list()
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	target = null
 	a_intent = INTENT_HELP
 	frustration = 0
@@ -371,7 +371,7 @@
 		wander = TRUE
 	if(L == src)
 		return
-	if(mode != AI_OFF)
+	if(mode != NPC_AI_OFF)
 		if(L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))
@@ -379,7 +379,7 @@
 			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
 			if (!npc_detect_sneak(L, extra_chance))
 				return
-		mode = AI_HUNT
+		mode = NPC_AI_HUNT
 		last_aggro_loss = null
 		face_atom(L)
 		if(!target)
