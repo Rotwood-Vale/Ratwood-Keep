@@ -8,8 +8,6 @@
 	sewn_clotting_rate = 0.01
 	clotting_threshold = 0.2
 	sewn_clotting_threshold = 0.1
-	woundpain = 0
-	sewn_woundpain = 0
 	sew_threshold = 75
 	mob_overlay = "cut"
 	can_sew = TRUE
