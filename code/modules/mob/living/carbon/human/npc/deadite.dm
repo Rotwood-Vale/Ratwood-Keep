@@ -11,7 +11,7 @@
 
 /mob/living/carbon/human/species/deadite/npc
 	aggressive = 1
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	wander = FALSE
 
 /mob/living/carbon/human/species/deadite/npc/ambush
@@ -70,7 +70,7 @@
 	base_intents = GLOB.intents_deadite
 	update_a_intents()
 	aggressive = TRUE
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	handle_ai()
 	ambushable = FALSE
 	mob_biotypes |= MOB_UNDEAD

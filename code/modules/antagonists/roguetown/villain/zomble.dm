@@ -85,7 +85,7 @@
 
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
-	zombie.mode = AI_OFF
+	zombie.mode = NPC_AI_OFF
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
