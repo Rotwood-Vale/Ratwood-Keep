@@ -1,11 +1,11 @@
 /obj/item/rogue/instrument
 	name = ""
 	desc = ""
-	icon = 'icons/roguetown/items/music.dmi'
+	icon = 'modular_redmoon/icons/items/music.dmi'
 	icon_state = ""
-	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
-	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
-	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/onmob/onmob.dmi'
+	lefthand_file = 'modular_redmoon/icons/onmob/lefthand.dmi'
+	righthand_file = 'modular_redmoon/icons/onmob/righthand.dmi'
 	experimental_inhand = FALSE
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK_R|ITEM_SLOT_BACK_L
@@ -37,7 +37,10 @@
 	extra_range = 5
 	var/stress2give = /datum/stressevent/music
 	persistent_loop = TRUE
-	channel = CHANNEL_INSTRUMENTAL
+	sound_group = /datum/sound_group/instruments
+
+/datum/sound_group/instruments
+	channel_count = 20 // definitely more than enough
 
 /datum/looping_sound/instrument/on_hear_sound(mob/M)
 	. = ..()
@@ -149,9 +152,7 @@
 	if(playing)
 		terminate_playing(user)
 		return
-	var/music_level = 0
-	if(user.mind)
-		music_level = user.mind.get_skill_level(/datum/skill/misc/music)
+	var/music_level = user.mind?.get_skill_level(/datum/skill/misc/music)
 	if(user.get_inactive_held_item() && music_level < 4) //DUAL WIELDING BARDS
 		return
 	for(var/obj/item/rogue/instrument/I in user.held_items) //sorry it's too annoying
@@ -164,6 +165,13 @@
 	curfile = song_list[curfile]
 	if(!curfile)
 		return
+	if(!user.is_holding(src))
+		return
+	if(user.get_inactive_held_item() && music_level < 4) //DUAL WIELDING BARDS
+		return
+	for(var/obj/item/rogue/instrument/I in user.held_items) //sorry it's too annoying
+		if(I.playing)
+			return
 
 	var/note_color = "#7f7f7f" // uses MMO item rarity color grading
 	var/stressevent = /datum/stressevent/music
@@ -253,6 +261,7 @@
 	icon_state = "lute"
 	item_state = "lute"
 	song_list = list(
+	"Abyssor's Second Shanty" = 'sound/music/instruments/band/lute (b1).ogg',
 	"A Knight's Return" = 'sound/music/instruments/lute (1).ogg',
 	"Amongst Fare Friends" = 'sound/music/instruments/lute (2).ogg',
 	"The Road Traveled by Few" = 'sound/music/instruments/lute (3).ogg',
@@ -314,6 +323,7 @@
 	icon_state = "harp"
 	item_state = "harp"
 	song_list = list(
+	"Abyssor's Second Shanty" = 'sound/music/instruments/band/harp (b1).ogg',
 	"Through Thine Window, He Glanced" = 'sound/music/instruments/harp (1).ogg',
 	"The Lady of Red Silks" = 'sound/music/instruments/harp (2).ogg',
 	"Eora Doth Watches" = 'sound/music/instruments/harp (3).ogg',
@@ -335,6 +345,7 @@
 	dropshrink = 0.6
 	w_class = WEIGHT_CLASS_SMALL
 	song_list = list(
+	"Abyssor's Second Shanty" = 'sound/music/instruments/band/flute (b1).ogg',
 	"Half-Dragon's Ten Mammon" = 'sound/music/instruments/flute (1).ogg',
 	"The Local Favorite" = 'sound/music/instruments/flute (2).ogg',
 	"Rous in the Cellar" = 'sound/music/instruments/flute (3).ogg',
@@ -375,7 +386,9 @@
 	name = "viola"
 	desc = "The prim and proper Viola, often the first instrument nobles are taught."
 	icon_state = "viola"
-	song_list = list("Far Flung Tale" = 'sound/music/instruments/viola (1).ogg',
+	song_list = list(
+	"Abyssor's Second Shanty" = 'sound/music/instruments/band/viola (b1).ogg',
+	"Far Flung Tale" = 'sound/music/instruments/viola (1).ogg',
 	"G Major Cello Suite No. 1" = 'sound/music/instruments/viola (2).ogg',
 	"Ursine's Home" = 'sound/music/instruments/viola (3).ogg',
 	"Mead, Gold and Blood" = 'sound/music/instruments/viola (4).ogg',
