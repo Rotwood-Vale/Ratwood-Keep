@@ -11,7 +11,6 @@
 /datum/supply_pack/rogue/bandit/Consumables/healthpot
 	name = "Health Potion"
 	cost = 25
-	time_lock = 30 MINUTES
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 
 /datum/supply_pack/rogue/bandit/Consumables/lessermanapot
@@ -22,7 +21,6 @@
 /datum/supply_pack/rogue/bandit/Consumables/manapot
 	name = "Mana Potion"
 	cost = 25
-	time_lock = 30 MINUTES
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/manapot)
 
 /datum/supply_pack/rogue/bandit/Consumables/bandages

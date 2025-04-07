@@ -206,78 +206,58 @@
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant
 	purchases_per_player = 2
+	cost = 200
+	time_lock = 45 MINUTES
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant/darkvision
 	name = "Enchantment of dark vision"
-	cost = 100
-	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/nightvision)
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant/lightstep
 	name = "Enchantment of featherstep"
-	cost = 100
-	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/featherstep)
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant/fireresist
 	name = "Enchanting scroll of fire-resistance"
-	cost = 100
-	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/fireresist)
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant/nimblefingers
 	name = "Enchantment of nimble fingers"
-	cost = 100
-	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/thievery)
 
 /datum/supply_pack/rogue/bandit/Mage/goodenchant/swamptrekking
 	name = "Enchantment of swamp trekking"
-	cost = 100
-	time_lock = 45 MINUTES
 	contains = list(/obj/item/enchantmentscroll/trekk)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant
 	purchases_per_player = 1
+	cost = 400
+	time_lock = 1.2 HOURS
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/lyfestealing
 	name = "Enchantment of lyfestealing"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/lifesteal)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/frostveil
 	name = "Enchantment of frostveil"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/frostveil)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/phoenixguard
 	name = "Enchantment of phoenix guard"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/phoenixguard)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/woundclosing
 	name = "Enchantment of wound closing"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/woundclosing)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/returningweapon
 	name = "Enchantment of returning weapon"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/returningweapon)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/archery
 	name = "Enchantment of archery"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/archery)
 
 /datum/supply_pack/rogue/bandit/Mage/greatenchant/leaping
 	name = "Enchantment of leaping"
-	cost = 200
-	time_lock = 1.2 HOURS
 	contains = list(/obj/item/enchantmentscroll/leaping)
