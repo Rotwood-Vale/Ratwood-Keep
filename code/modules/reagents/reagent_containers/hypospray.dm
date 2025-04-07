@@ -149,7 +149,7 @@
 		if(has_cap)
 			to_chat(user, span_warning("[src] has a cap still! You need to remove it first."))
 			return
-		inject(user, user)
+		inject(M, user)
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
