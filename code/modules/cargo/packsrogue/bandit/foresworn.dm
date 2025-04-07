@@ -291,13 +291,14 @@
 /datum/supply_pack/rogue/bandit/Foresworn/Tshield
 	name = "Tower Shield"
 	cost = 30
-	time_lock = 1.2 MINUTES
+	time_lock = 1.2 HOURS
 	contains = list(/obj/item/rogueweapon/shield/tower)
 //crossbow
 
 /datum/supply_pack/rogue/bandit/Foresworn/crossbow
 	name = "Crossbow"
 	cost = 40
+	time_lock = 1.2 HOURS
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/bandit/Foresworn/quiversbolts
