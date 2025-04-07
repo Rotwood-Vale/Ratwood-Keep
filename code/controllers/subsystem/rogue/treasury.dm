@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(treasury)
 				var/datum/antagonist/bandit/bandit_player = X.mind.has_antag_datum(/datum/antagonist/bandit)
 				var/to_give = 20
 				bandit_player.favor += to_give
-				to_chat(bandit_player.owner, ("<font color='yellow'>Matthios empowers you with [to_give] favor.</font>"))
+				to_chat(bandit_player.owner, ("<font color='yellow'>The Hoardmaster bestows you with [to_give] favor.</font>"))
 
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)

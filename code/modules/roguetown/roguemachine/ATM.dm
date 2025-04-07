@@ -27,7 +27,6 @@
 
 	if(H in SStreasury.bank_accounts)
 		var/amt = SStreasury.bank_accounts[H]
-		return
 		if(!amt)
 			say("Your balance is nothing.")
 			return
