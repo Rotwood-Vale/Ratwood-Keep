@@ -213,3 +213,23 @@
 						/obj/item/catbell/cow,
 						/obj/item/catbell/cow)
 
+//black steel tools
+/datum/anvil_recipe/tools/blacksteel
+	skill_level = 5
+
+/datum/anvil_recipe/tools/blacksteel/hammer
+	name = "Blacksteel hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/blacksteel
+
+/datum/anvil_recipe/tools/blacksteel/pick
+	name = "Blacksteel Pickaxe (+1 Stick)"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/pick/blacksteel
+
+/datum/anvil_recipe/tools/blacksteel/tongs
+	name = "Blacksteel Tongs"
+	req_bar = /obj/item/ingot/blacksteel
+	created_item = /obj/item/rogueweapon/tongs/blacksteel
