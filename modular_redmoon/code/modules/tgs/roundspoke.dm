@@ -171,6 +171,7 @@
 	Дракониды: [SSround_end_statistics.species_dracon] | \
 	Дроу: [SSround_end_statistics.species_drow] | \
 	Кобольды: [SSround_end_statistics.species_kobold] | \
+	Краукали: [SSround_end_statistics.species_kraukalee] | \
 	Люпины: [SSround_end_statistics.species_lupian] | \
 	Люди: [SSround_end_statistics.species_humen] | \
 	Моли: [SSround_end_statistics.species_moth] | \

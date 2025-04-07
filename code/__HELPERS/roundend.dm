@@ -305,6 +305,7 @@
 	if(SSround_end_statistics.species_dracon)			shit += "<br><font color='#36693c'><span class='italics'>Дракониды: </span></font>[SSround_end_statistics.species_dracon]"
 	if(SSround_end_statistics.species_drow)				shit += "<br><font color='#36693c'><span class='italics'>Дроу: </span></font>[SSround_end_statistics.species_drow]"
 	if(SSround_end_statistics.species_kobold)			shit += "<br><font color='#36693c'><span class='italics'>Кобольды: </span></font>[SSround_end_statistics.species_kobold]"
+	if(SSround_end_statistics.species_kraukalee)		shit += "<br><font color='#36693c'><span class='italics'>Краукали: </span></font>[SSround_end_statistics.species_kraukalee]"
 	if(SSround_end_statistics.species_lupian)			shit += "<br><font color='#36693c'><span class='italics'>Люпины: </span></font>[SSround_end_statistics.species_lupian]"
 	if(SSround_end_statistics.species_humen)			shit += "<br><font color='#36693c'><span class='italics'>Люди: </span></font>[SSround_end_statistics.species_humen]"
 	if(SSround_end_statistics.species_moth)				shit += "<br><font color='#36693c'><span class='italics'>Моли: </span></font>[SSround_end_statistics.species_moth]"

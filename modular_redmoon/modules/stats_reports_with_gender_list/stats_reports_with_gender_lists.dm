@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(round_end_statistics)
 	var/species_halfork = 0
 	var/species_humen = 0 
 	var/species_kobold = 0
+	var/species_kraukalee = 0
 	var/species_lizardfolk = 0
 	var/species_lupian = 0
 	var/species_moth = 0
@@ -57,6 +58,7 @@ SUBSYSTEM_DEF(round_end_statistics)
 		if(/datum/species/human/halfelf) SSround_end_statistics.species_halfelf++
 		if(/datum/species/human/northern) SSround_end_statistics.species_humen++
 		if(/datum/species/kobold) SSround_end_statistics.species_kobold++
+		if(/datum/species/kraukalee) SSround_end_statistics.species_kraukalee++
 		if(/datum/species/lizardfolk) SSround_end_statistics.species_lizardfolk++
 		if(/datum/species/lupian) SSround_end_statistics.species_lupian++
 		if(/datum/species/moth) SSround_end_statistics.species_moth++
