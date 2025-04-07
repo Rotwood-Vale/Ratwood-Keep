@@ -400,7 +400,7 @@
   * Produces a signal COMSIG_PARENT_EXAMINE
   */
 /atom/proc/examine(mob/user)
-	. = list("[icon2html(src, user)] [get_examine_string(user, TRUE)].[get_inspect_button()]")
+	. = list("[get_examine_string(user, TRUE)].[get_inspect_button()]")
 
 	if(desc)
 		. += span_info("[desc]")
