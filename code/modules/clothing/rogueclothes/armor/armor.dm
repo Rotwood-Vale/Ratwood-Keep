@@ -1127,7 +1127,7 @@
 	armor = list("blunt" = 45, "slash" = 45, "stab" = 45, "bullet" = 45, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
-	max_integrity = 300 //Might be copper, but it's reinforced with an arcane meld and bronze
+	max_integrity = 300 //Might be copper, but it's reinforced with an arcane meld and bronze plating
 	smeltresult = /obj/item/ingot/copper
 	armor_class = ARMOR_CLASS_LIGHT //copper plating, fairly light.
 	var/powered = FALSE
@@ -1154,7 +1154,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/proc/toggle_mode(mob/user)
 	mode = (mode == 1) ? 2 : 1
-	user.visible_message(span_notice("[user] tinkers with the [src], adjusting its enhancements."))
+	user.visible_message(span_notice("[user] tinkers with [src], adjusting its enhancements."))
 	update_description()
 
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/equipped(mob/living/user, slot)
@@ -1169,7 +1169,7 @@
 			user.change_stat("intelligence", 3)
 			return
 		else
-			to_chat(user, span_warning("The curiass feels cold and dead."))
+			to_chat(user, span_warning("The curiass feels cold and dead to the non-arcane."))
 	if(mode == 2)
 		if(slot != SLOT_ARMOR)
 			return

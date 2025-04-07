@@ -317,17 +317,17 @@
 				var/mob/living/M = AM
 				M.Paralyze(10)
 				M.adjustFireLoss(25)
-				to_chat(M, "<span class='danger'>You're slammed into the floor by [user]!</span>")
+				to_chat(M, span_danger("You're slammed into the floor by [user]!"))
 		else
 			if(isliving(AM))
 				var/mob/living/M = AM
 				M.adjustFireLoss(25)
-				to_chat(M, "<span class='danger'>You're thrown back by [user]!</span>")
+				to_chat(M, span_danger( "You're thrown back by [user]!"))
 			AM.throw_at(throwtarget, 4, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING)
 
 /obj/item/rogueweapon/shield/artificer/proc/steamready(mob/user)
 	playsound(user, 'sound/items/steamcreation.ogg', 100, FALSE, -1)
-	to_chat(user, span_warning("[src] is ready to be used againc!"))
+	to_chat(user, span_warning("[src] is ready to be used again!"))
 /obj/item/rogueweapon/shield/artificer/getonmobprop(tag)
 	. = ..()
 	if(tag)
