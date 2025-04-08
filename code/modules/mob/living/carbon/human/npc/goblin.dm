@@ -388,6 +388,7 @@
 	if(!spawning)
 		return
 	spawning = FALSE
+	gobs++
 	if(GLOB.tod == "night")
 		if(prob(30))
 			new /mob/living/carbon/human/species/goblin/npc/moon(get_turf(src))
