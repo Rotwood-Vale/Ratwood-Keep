@@ -532,6 +532,7 @@
 	for(var/A in neighborlay_list)
 		cut_overlay("[A]")
 		neighborlay_list -= A
+	LAZYINITLIST(neighborlay_list)
 	var/usedturf
 	if(adjacencies & N_NORTH)
 		usedturf = get_step(src, NORTH)
