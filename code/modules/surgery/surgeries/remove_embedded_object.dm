@@ -50,11 +50,11 @@
 
 	var/s = (objects > 1 ? "s" : "")
 	if(objects > 0)
-		display_results(user, target, span_notice("I successfully remove [objects] object[s] from [target]'s [bodypart]."),
-			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"),
-			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart]!"))
+		display_results(user, target, span_notice("I successfully remove [objects] object[s] from [target]'s [bodypart.name]."),
+			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart.name]!"),
+			span_notice("[user] successfully removes [objects] object[s] from [target]'s [bodypart.name]!"))
 	else if(bodypart)
-		to_chat(user, span_warning("I find no objects embedded in [target]'s [bodypart]!"))
+		to_chat(user, span_warning("I find no objects embedded in [target]'s [bodypart.name]!"))
 	else
 		to_chat(user, span_warning("I find no objects embedded in [target]!"))
 	return TRUE
