@@ -17,7 +17,7 @@
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
 	anvilrepair = /datum/skill/craft/blacksmithing
-//	block2add = FOV_BEHIND
+	var/cured_eyesight = FALSE
 
 /obj/item/clothing/mask/rogue/spectacles/golden
 	name = "golden spectacles"
@@ -40,6 +40,19 @@
 		take_damage(11, BRUTE, "blunt", 1)
 	..()
 
+/obj/item/clothing/mask/rogue/spectacles/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK && user.STAPER < 5)
+		user.STAPER += 4
+		cured_eyesight = TRUE
+	user.update_fov_angles()
+
+/obj/item/clothing/mask/rogue/spectacles/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(cured_eyesight)
+		user.STAPER -= 4
+		cured_eyesight = FALSE
+	user.update_fov_angles()
 
 /obj/item/clothing/mask/rogue/spectacles/delf
 	name = "dark elf sunshields"
