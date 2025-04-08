@@ -144,12 +144,12 @@
 	playsound(src, 'modular/Smoker/sound/inject.ogg', 100, TRUE)
 	return TRUE
 
-/obj/item/reagent_containers/hypospray/medipen/sty/attack(mob/living/M, mob/user)
+/obj/item/reagent_containers/hypospray/medipen/sty/attack(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		if(has_cap)
 			to_chat(user, span_warning("[src] has a cap still! You need to remove it first."))
 			return
-		inject(M, user)
+		inject(user, user)
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"
