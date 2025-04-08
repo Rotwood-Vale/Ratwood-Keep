@@ -149,7 +149,7 @@
 	id = "death_embrace"
 	alert_type = null
 	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
-	effectedstats = list("strength" = -3, "perception" = -3, "intelligence" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
+	effectedstats = list("strength" = -1, "perception" = -1, "intelligence" = -2, "constitution" = -1, "endurance" = -1, "speed" = -1)
 
 /datum/status_effect/debuff/death_claimed
 	id = "death_claimed"
