@@ -47,7 +47,14 @@
 		var/datum/tgs_revision_information/test_merge/tm = line
 		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
-		. += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number][details]</a><br>"
+		. += "<a href='?src=[REF(src)];open_testmerge=[tm.number]'>#[tm.number][details]</a><br>"
+
+/datum/getrev/Topic(href, list/href_list)
+	. = ..()
+	
+	// Open a test merge PR in a new window due to 516 behavior.
+	if(href_list["open_testmerge"])
+		usr << link("[CONFIG_GET(string/githuburl)]/pull/[href_list["open_testmerge"]]")
 
 /*
 /client/verb/showrevinfo()

@@ -82,5 +82,7 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	if(!isseelie(H))	//Only give heavy armor trait for non-seelie hands
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		if(isdarkelf(H))
+			backpack_contents.Add(/obj/item/clothing/mask/rogue/spectacles/delf)
 	else if(isseelie(H))	//Since seelie hands no longer get heavy armor, giving them dodge expert instead
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
