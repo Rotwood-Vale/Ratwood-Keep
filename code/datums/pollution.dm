@@ -20,7 +20,7 @@
 	/// Reference to the turf we're on
 	var/turf/open/my_turf
 	/// List of all pollutant types to their amount
-	var/list/pollutants = list()
+	var/list/pollutants
 	/// Total amount
 	var/total_amount = 0
 	/// Height of the pollution, used to create a sandpiling effect
@@ -126,6 +126,7 @@
 		my_turf.update_adjacent_pollutants()
 
 /datum/pollution/proc/add_pollutant(polutant_type, amount)
+	LAZYINITLIST(pollutants)
 	if(!pollutants[polutant_type])
 		pollutants[polutant_type] = 0
 	pollutants[polutant_type] += amount
