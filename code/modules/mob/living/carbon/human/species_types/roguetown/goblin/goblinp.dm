@@ -72,7 +72,6 @@
 		/datum/customizer/organ/vagina/human,
 		)
 	languages = list(
-		/datum/language/common,
 		/datum/language/orcish
 	)
 
