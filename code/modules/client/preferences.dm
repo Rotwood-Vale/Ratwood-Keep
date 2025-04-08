@@ -739,8 +739,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	onclose(user, "capturekeypress", src)
 
 /datum/preferences/proc/get_allowed_patrons(datum/outfit/job/roguetown/J)
+	if(J == null)
+		return ""
 	var/data = "("
-	var/datum/outfit/job/roguetown/undertaker/U = new J
+	var/datum/outfit/job/roguetown/U = new J
+	if(!U.allowed_patrons)
+		return ""
+	if(!U.allowed_patrons.len)
+		return ""
 	for(var/I = 1, I <= U.allowed_patrons.len, I++)
 		var/datum/patron/divine/E = U.allowed_patrons[I]
 		data += "[E.name]"
@@ -840,15 +846,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			else
 				HTML += span_dark("<a href='?_src_=prefs;preference=job;task=tutorial;tut='[job.tutorial]''>[used_name]</a>")*/
 			var/limitations = ""
-			switch(rank)
-				if("Acolyte")
-					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/monk)
-				if("Druid")
-					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/druid)
-				if("Mortician")
-					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/undertaker)
-				if("Priest")
-					limitations = get_allowed_patrons(/datum/outfit/job/roguetown/priest)
+			limitations = get_allowed_patrons(job.outfit)
 
 			HTML += {"
 
