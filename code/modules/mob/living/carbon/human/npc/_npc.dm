@@ -3,6 +3,7 @@
 /mob/living/carbon/human
 	var/aggressive=0 //0= retaliate only
 	var/frustration=0
+	var/pathing_frustration=0
 	var/pickupTimer=0
 	var/list/enemies = list()
 	var/list/friends = list()
@@ -29,7 +30,7 @@
 	var/returning_home = FALSE
 
 /mob/living/carbon/human/proc/IsStandingStill()
-	return resisting || pickpocketing
+	return doing || resisting || pickpocketing
 
 /mob/living/carbon/human/proc/handle_ai()
 	if(client)
@@ -120,50 +121,66 @@
 		qdel(src)
 		return TRUE
 
-// blocks
-// taken from /mob/living/carbon/human/interactive/
-/mob/living/carbon/human/proc/walk2derpless(target)
-	if(!target || IsStandingStill())
+/// unsets my_path if it's not valid. that's it that's the proc
+/mob/living/carbon/human/proc/validate_path()
+	if(pathing_frustration > 8) // failed for 8 attempts in a row
+		myPath = list()
+		pathing_frustration = 0
+
+/// progress along an existing path or cancel it
+/// returns # of steps taken
+/mob/living/carbon/human/proc/move_along_path()
+	if(!length(myPath))
+		// no path, quit early
+		return 0
+	if(get_dist(src, myPath[1]) > 3) // too far away from our current path to continue
+		pathing_frustration++
+		return 0
+	var/move_started = world.time
+	for(var/i = 0; i < maxStepsTick; i++)
+		var/movespeed = update_movespeed()
+		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill())
+			sleep(movespeed) // wait one movement tick to see if we're finished/recovered
+			continue
+		if(world.time > (move_started + /datum/controller/subsystem/humannpc::wait))
+			// we ran out of time and started the next tick!
+			break
+		if(length(myPath))
+			var/turf/next_step = get_step_to(src,myPath[1])
+			if(!step(src,get_dir(src, next_step))) // try to move onto or along our path
+				for(var/obj/structure/O in next_step)
+					if(O.density && O.climbable)
+						O.climb_structure(src)
+						break
+			if(loc != next_step) // movement failed and so did climb_structure
+				pathing_frustration++
+			else if(loc == myPath[1]) // if we made it to the right part of our path
+				.++
+				myPath -= myPath[1]
+			sleep(movespeed) // wait until next move
+
+// blocks, but only while path is being calculated
+/mob/living/carbon/human/proc/start_pathing_to(new_target)
+	if(!new_target)
 		back_to_idle()
 		return 0
 
-	var/dir_to_target = get_dir(src, target)
-	var/turf/turf_of_target = get_turf(target)
+	var/turf/turf_of_target = get_turf(new_target)
 	if(!turf_of_target)
 		back_to_idle()
-		return 0
-	var/target_z = turf_of_target.z
+		return FALSE
+	if(turf_of_target?.z < z)
+		turf_of_target = get_step_multiz(turf_of_target, DOWN)
+	else if(turf_of_target?.z > z)
+		turf_of_target = get_step_multiz(turf_of_target, UP)
 	if(turf_of_target?.z == z)
-		if(myPath.len <= 0)
-			for(var/obj/structure/O in get_step(src,dir_to_target))
-				if(O.density && O.climbable)
-					O.climb_structure(src)
-					myPath = list()
-					break
-			myPath = get_path_to(src, turf_of_target, /turf/proc/Distance, MAX_RANGE_FIND + 1, 250,1)
-
-		if(myPath)
-			if(myPath.len > 0)
-				for(var/i = 0; i < maxStepsTick; ++i)
-					if(!IsDeadOrIncap())
-						if(myPath.len >= 1)
-							walk_to(src,myPath[1],0,update_movespeed())
-							myPath -= myPath[1]
-				return 1
-	else
-		if(turf_of_target?.z < z)
-			turf_of_target = get_step_multiz(turf_of_target, DOWN)
-		else
-			turf_of_target = get_step_multiz(turf_of_target, UP)
-		if(turf_of_target?.z != target_z) //too far away
-			back_to_idle()
-			return 0
-	// failed to path correctly so just try to head straight for a bit
-	walk_to(src,turf_of_target,0,update_movespeed())
-	sleep(1)
-	walk_to(src,0)
-
-	return 0
+		if(!length(myPath)) // need a new path
+			myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal), MAX_RANGE_FIND + 1, 250,1)
+			pathing_frustration = 0
+		return TRUE
+	//too far away or pathing failed
+	back_to_idle()
+	return FALSE
 
 // taken from /mob/living/carbon/human/interactive/
 /mob/living/carbon/human/proc/IsDeadOrIncap(checkDead = TRUE)
@@ -263,7 +280,8 @@
 							next_passive_detect = world.time + STAPER SECONDS
 
 		if(NPC_AI_HUNT)		// hunting for attacker
-			if(target != null)
+			// basic behavior chain: targeting > fleeing > picking up a weapon > attacking
+			if(target)
 				if(!should_target(target))
 					if (target.alpha == 0 && target.rogue_sneaking) // attempt one detect since we were just fighting them and have lost them
 						if (npc_detect_sneak(target))
@@ -272,7 +290,21 @@
 						back_to_idle()
 						return TRUE
 				m_intent = MOVE_INTENT_WALK
-				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target)
+				validate_path()
+				if(!length(myPath)) // create a new path to the target
+					start_pathing_to(target)
+				if(length(myPath)) // move along the existing path if we have one
+					move_along_path()
+
+			// Flee before trying to pick up a weapon.
+			if(flee_in_pain && target && (target.stat == CONSCIOUS))
+				var/paine = get_complex_pain()
+				if(paine >= ((STAEND * 10)*0.9))
+					// mode = NPC_AI_FLEE
+					walk_away(src, target, 5, update_movespeed())
+					m_intent = MOVE_INTENT_RUN
+					myPath = list() // cancel chasing our target
+					return TRUE
 
 			if(!get_active_held_item() && !get_inactive_held_item() && !mind?.has_antag_datum(/datum/antagonist/zombie))
 				// pickup any nearby weapon
@@ -293,11 +325,6 @@
 				frustration = 0
 				face_atom(target)
 				monkey_attack(target)
-				if(flee_in_pain && (target.stat == CONSCIOUS))
-					var/paine = get_complex_pain()
-					if(paine >= ((STAEND * 10)*0.9))
-//						mode = NPC_AI_FLEE
-						walk_away(src, target, 5, update_movespeed())
 				return TRUE
 			else								// not next to perp
 				frustration++
