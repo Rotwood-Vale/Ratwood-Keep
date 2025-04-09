@@ -487,6 +487,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			owner.current.visible_message("<font color='red'>[owner.current] is enveloped in dark crimson, a horrific sound echoing in the area. They are evolved.</font>","<font color='red'>I AM ANCIENT, I AM THE LAND. EVEN THE SUN BOWS TO ME.</font>")
 			ascended = TRUE
 			C.ascended = TRUE
+			REMOVE_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]")
 			for(var/datum/mind/thrall in C.vampires)
 				if(thrall.special_role == "Vampire Spawn")
 					thrall.current.verbs |= /mob/living/carbon/human/proc/blood_strength
