@@ -1249,9 +1249,15 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	spelltarget.apply_status_effect(/datum/status_effect/buff/enlarge)
 
 	if(spelltarget != user)
-		user.visible_message("[user] mutters an incantation and [spelltarget] starts to rapidly grow in size.")
+		if(!(isseelie(spelltarget)))
+			user.visible_message("[user] mutters an incantation and [spelltarget] starts to rapidly grow in size.")
+		else
+			user.visible_message("[user] mutters an incantation and [spelltarget]'s muscles bulge and grow on their tiny frame.")
 	else
-		user.visible_message("[user] mutters an incantation and they rapidly start to grow in size.")
+		if(!(isseelie(spelltarget)))
+			user.visible_message("[user] mutters an incantation and they rapidly start to grow in size.")
+		else
+			user.visible_message("[user] mutters an incantation and their muscles bulge and grow on their tiny frame.")
 
 	return TRUE
 
