@@ -10,8 +10,8 @@
 	display_order = JDO_MERCENARY
 	selection_color = JCOLOR_MERCENARY
 	faction = "Station"
-	total_positions = 10
-	spawn_positions = 10 //subject to change, was originally 6
+	total_positions = 3
+	spawn_positions = 3 //subject to change, was originally 6
 	min_pq = 0
 	max_pq = null
 	subclass_cat_rolls = list(CTAG_MERCENARY = 20)
