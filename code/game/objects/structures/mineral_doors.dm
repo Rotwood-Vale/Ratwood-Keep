@@ -277,6 +277,13 @@
 		return !opacity
 	return !density
 
+/obj/structure/mineral_door/CanAStarPass(ID, to_dir, caller)
+	. = ..()
+	if(.) // we can already go through it
+		return TRUE
+	// it's openable
+	return ishuman(caller) && anchored && !locked // only humantype mobs can open doors, as funny as it'd be for a volf to walk in on you ERPing
+
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates || !anchored)
 		return
@@ -284,16 +291,16 @@
 		var/mob/living/M = user
 		if(world.time - M.last_bumped <= 60)
 			return //NOTE do we really need that?
-		if(M.client)
-			if(iscarbon(M))
-				var/mob/living/carbon/C = M
-				if(!C.handcuffed)
-					if(C.m_intent == MOVE_INTENT_SNEAK)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.client || length(H.myPath)) // if we have a client or are trying to pass through the door
+				if(!H.handcuffed)
+					if(H.m_intent == MOVE_INTENT_SNEAK)
 						SwitchState(TRUE)
 					else
 						SwitchState()
-			else
-				SwitchState()
+		else if(M.client)
+			SwitchState()
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)
