@@ -27,13 +27,11 @@
 - Will expand eventually.
 */
 /obj/item/rogueweapon/hammer/proc/modify_item(obj/item/I, mob/living/user)
-	if(user.cmode)
-		return
 	if(I == null)
 		return
 
 	//Must be at full health.
-	if(I.obj_integrity <= I.max_integrity)
+	if(I.obj_integrity < I.max_integrity)
 		return
 	var/choices = list("name item")
 	var/action =input(user, "CHOOSE ACTION") as null|anything in choices
