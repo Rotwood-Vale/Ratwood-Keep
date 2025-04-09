@@ -247,6 +247,19 @@
 	return
 
 
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor
+	del_on_deaggro = 999 MINUTES
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor/dropcomponents()
+	var/turf/leavespot = get_turf(src)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/dendor/death(gibbed)
+	..()
+	var/turf/deathspot = get_turf(src)
+	spill_embedded_objects()
+	update_icon()
+	qdel(src)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad
 	icon = 'icons/mob/summonable/32x64.dmi'
 	name = "dryad"

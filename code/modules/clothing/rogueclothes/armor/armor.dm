@@ -453,6 +453,30 @@
 	equip_delay_other = 3 SECONDS
 	strip_delay = 6 SECONDS
 
+/obj/item/clothing/suit/roguetown/armor/blacksteel/halfplate
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "blacksteel half-plate"
+	desc = "A sturdy set of plate armor protecting only the chest and groin, smithed of rare blacksteel. This prestigious set of armor has a set of pauldrons."
+	body_parts_covered = CHEST|GROIN|VITALS
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
+	icon_state = "bs_halfplate"
+	item_state = "bs_halfplate"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	do_sound_plate = TRUE
+	blocking_behavior = null
+	max_integrity = 600
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	equip_delay_self = 40
+	unequip_delay_self = 40
+	armor_class = ARMOR_CLASS_HEAVY
+	w_class = WEIGHT_CLASS_BULKY
+	clothing_flags = CANT_SLEEP_IN
+
 /obj/item/clothing/suit/roguetown/armor/blacksteel/cuirass
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "blacksteel cuirass"
@@ -1064,7 +1088,7 @@
 	icon_state = "artijacket"
 	desc = "A thick leather jacket adorned with fur and cog decals. The height of Heartfelt fashion."
 
-/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for. 
+/obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for.
 	name = "winter jacket"
 	desc = "The most elegant of furs and vivid of royal dyes combined together into a most classy jacket."
 	icon_state = "winterjacket"
