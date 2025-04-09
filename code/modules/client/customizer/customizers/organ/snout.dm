@@ -205,24 +205,6 @@
 		/datum/sprite_accessory/snout/front/roundlight,
 		)
 
-/datum/customizer/organ/snout/akula
-	customizer_choices = list(/datum/customizer_choice/organ/snout/akula)
-
-/datum/customizer_choice/organ/snout/akula
-	name = "Axian Snout"
-	organ_type = /obj/item/organ/snout/akula
-	sprite_accessories = list(
-		/datum/sprite_accessory/snout/shark,
-		/datum/sprite_accessory/snout/sergal,
-		/datum/sprite_accessory/snout/sharp,
-		/datum/sprite_accessory/snout/round,
-		/datum/sprite_accessory/snout/sharplight,
-		/datum/sprite_accessory/snout/roundlight,
-		/datum/sprite_accessory/snout/front/sharp,
-		/datum/sprite_accessory/snout/front/round,
-		/datum/sprite_accessory/snout/front/sharplight,
-		/datum/sprite_accessory/snout/front/roundlight,
-		)
 
 /datum/customizer/organ/snout/tabaxi
 	customizer_choices = list(/datum/customizer_choice/organ/snout/tabaxi)

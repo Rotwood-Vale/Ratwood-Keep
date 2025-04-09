@@ -63,9 +63,6 @@
 	accessory_type =  /datum/sprite_accessory/tail/tiefling
 	can_penetrate = TRUE
 
-/obj/item/organ/tail/akula
-	name = "axian tail"
-	accessory_type =  /datum/sprite_accessory/tail/shark
 
 /obj/item/organ/tail/kobold
 	name = "kobold tail"

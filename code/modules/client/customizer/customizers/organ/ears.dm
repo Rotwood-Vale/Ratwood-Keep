@@ -49,16 +49,6 @@
 		/datum/sprite_accessory/ears/lynx,
 		)
 
-/datum/customizer/organ/ears/axian
-	customizer_choices = list(/datum/customizer_choice/organ/ears/axian)
-
-/datum/customizer_choice/organ/ears/axian
-	name = "Axian Ears"
-	organ_type = /obj/item/organ/ears/akula
-	sprite_accessories = list(
-		/datum/sprite_accessory/ears/shark,
-		/datum/sprite_accessory/ears/sergal,
-		)
 
 /datum/customizer/organ/ears/cat
 	customizer_choices = list(/datum/customizer_choice/organ/ears/cat)

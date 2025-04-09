@@ -72,20 +72,6 @@
 		/datum/sprite_accessory/tail/lizard/kobold,
 		)
 
-/datum/customizer/organ/tail/axian
-	customizer_choices = list(/datum/customizer_choice/organ/tail/axian)
-
-/datum/customizer_choice/organ/tail/axian
-	name = "Axian Tail"
-	organ_type = /obj/item/organ/tail/akula
-	sprite_accessories = list(
-		/datum/sprite_accessory/tail/data_shark,
-		/datum/sprite_accessory/tail/akulashark,
-		/datum/sprite_accessory/tail/shark,
-		/datum/sprite_accessory/tail/sharknofin,
-		/datum/sprite_accessory/tail/fshark
-		)
-
 /datum/customizer/organ/tail/tiefling
 	customizer_choices = list(/datum/customizer_choice/organ/tail/tiefling)
 

@@ -6,7 +6,6 @@
 	You are expected to provide the Guild with your expertise in tracking, and scouting. Alongside your marksmanship."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
-		/datum/species/axian,
 		/datum/species/vulpkanin,
 		/datum/species/lupian,
 		/datum/species/moth, //grenzelmoft?

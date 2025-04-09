@@ -1,7 +1,7 @@
 /obj/item/organ/snout
 	name = "snout"
 	desc = "A severed snout. What did you cut this off of?"
-	icon_state = "snout" 
+	icon_state = "snout"
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_SNOUT
@@ -34,6 +34,3 @@
 /obj/item/organ/snout/synth
 	name = "synthetic snout"
 
-/obj/item/organ/snout/akula
-	name = "axian snout"
-	accessory_type = /datum/sprite_accessory/snout/sergal

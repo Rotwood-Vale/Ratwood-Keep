@@ -31,8 +31,8 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 	)))
 
 GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
-	/area/rogue/outdoors/town, 
-	/area/rogue/indoors/town, 
+	/area/rogue/outdoors/town,
+	/area/rogue/indoors/town,
 	/area/rogue/indoors/shelter/town
 	)))
 
@@ -94,7 +94,6 @@ GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
 #define isseelie(A) (is_species(A, /datum/species/seelie))
 
 //furry species
-#define isaxian(A) (is_species(A, /datum/species/axian))
 #define isanthromorph(A) (is_species(A, /datum/species/anthromorph))
 #define isanthromorphsmall(A) (is_species(A, /datum/species/anthromorphsmall))
 #define isdemihuman(A) (is_species(A, /datum/species/demihuman))
@@ -138,7 +137,7 @@ GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
 
 #define isadminobserver(A) (istype(A, /mob/dead/observer/admin))
 
-#define isroguespirit(A) (istype(A, /mob/living/carbon/spirit)) //underworld spirit 
+#define isroguespirit(A) (istype(A, /mob/living/carbon/spirit)) //underworld spirit
 
 #define isdead(A) (istype(A, /mob/dead))
 
