@@ -42,9 +42,10 @@
 
 /obj/item/clothing/mask/rogue/spectacles/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == SLOT_WEAR_MASK && user.STAPER < 5)
-		user.STAPER += 4
-		cured_eyesight = TRUE
+	if(!user.has_flaw(/datum/charflaw/badsight))
+		if(slot == SLOT_WEAR_MASK && user.STAPER < 5)
+			user.STAPER += 4
+			cured_eyesight = TRUE
 	user.update_fov_angles()
 
 /obj/item/clothing/mask/rogue/spectacles/dropped(mob/living/carbon/human/user)
