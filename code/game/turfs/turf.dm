@@ -432,20 +432,37 @@
 	return TRUE
 
 //////////////////////////////
-//Distance procs
+//A* Distance procs
 //////////////////////////////
 
 //Distance associates with all directions movement
-/turf/proc/Distance(turf/T)
+/turf/proc/Distance(turf/T, mob/traverser)
 	return get_dist(src,T)
 
 //  This Distance proc assumes that only cardinal movement is
 //  possible. It results in more efficient (CPU-wise) pathing
 //  for bots and anything else that only moves in cardinal dirs.
-/turf/proc/Distance_cardinal(turf/T)
+/turf/proc/Distance_cardinal(turf/T, mob/traverser)
 	if(!src || !T)
 		return FALSE
 	return abs(x - T.x) + abs(y - T.y)
+
+/// Returns an additional distance factor based on slowdown and other factors.
+/turf/proc/get_heuristic_slowdown(mob/traverser, travel_dir)
+	. = get_slowdown(traverser)
+	// add cost from climbable obstacles
+	for(var/obj/structure/some_object in src)
+		if(some_object.density && some_object.climbable)
+			. += 1 // extra tile penalty
+			break
+	var/obj/structure/mineral_door/door = locate() in src
+	if(door && door.density && !door.locked && door.anchored) // door will have to be opened
+		. += 2 // try to avoid closed doors where possible
+
+// Like Distance_cardinal, but includes additional weighting to make A* prefer turfs that are easier to pass through.
+/turf/proc/Heuristic_cardinal(turf/T, mob/traverser)
+	var/travel_dir = get_dir(src, T)
+	. = Distance_cardinal(T, traverser) + get_heuristic_slowdown(traverser, travel_dir) + T.get_heuristic_slowdown(traverser, travel_dir)
 
 ////////////////////////////////////////////////////
 

@@ -218,7 +218,7 @@
 		return 0
 
 	var/returned = slowdown
-	if(user.mind && swim_skill)
+	if(user?.mind && swim_skill)
 		returned = returned - (user.mind.get_skill_level(/datum/skill/misc/swimming))
 	return returned
 
@@ -353,6 +353,13 @@
 	swim_skill = TRUE
 	var/river_processing
 	swimdir = TRUE
+
+/turf/open/water/river/get_heuristic_slowdown(mob/traverser, travel_dir)
+	. = ..()
+	if(travel_dir & dir) // downriver
+		. -= 2 // faster!
+	else // upriver
+		. += 2 // slower
 
 /turf/open/water/river/update_icon()
 	if(water_overlay)

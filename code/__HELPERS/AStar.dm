@@ -35,30 +35,26 @@ Actual Adjacent procs :
 /datum/PathNode
 	var/turf/source //turf associated with the PathNode
 	var/datum/PathNode/prevNode //link to the parent PathNode
-	var/f		//A* Node weight (f = g + h)
+	var/f		//A* Node weight (f = g + heuristic)
 	var/g		//A* movement cost variable
-	var/h		//A* heuristic variable
-	var/nt		//count the number of Nodes traversed
+	var/heuristic		//A* heuristic variable
+	var/nodes_traversed //count the number of Nodes traversed
 	var/bf		//bitflag for dir to expand.Some sufficiently advanced motherfuckery
 
 /datum/PathNode/New(s,p,pg,ph,pnt,_bf)
 	source = s
-	prevNode = p
-	g = pg
-	h = ph
-	f = g + h*(1+ PF_TIEBREAKER)
-	nt = pnt
+	setp(p, pg, ph, pnt)
 	bf = _bf
 
 /datum/PathNode/proc/setp(p,pg,ph,pnt)
 	prevNode = p
 	g = pg
-	h = ph
-	f = g + h*(1+ PF_TIEBREAKER)
-	nt = pnt
+	heuristic = ph
+	calc_f()
+	nodes_traversed = pnt
 
 /datum/PathNode/proc/calc_f()
-	f = g + h
+	f = g + heuristic*(1 + PF_TIEBREAKER)
 
 //////////////////////
 //A* procs
@@ -73,30 +69,30 @@ Actual Adjacent procs :
 	return b.f - a.f
 
 //wrapper that returns an empty list if A* failed to find a path
-/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
+/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null)
 	var/l = SSpathfinder.mobs.getfree(caller)
 	while(!l)
 		stoplag(3)
 		l = SSpathfinder.mobs.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude, simulated_only)
+	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude)
 
 	SSpathfinder.mobs.found(l)
 	if(!path)
 		path = list()
 	return path
 
-/proc/cir_get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
+/proc/cir_get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null)
 	var/l = SSpathfinder.circuits.getfree(caller)
 	while(!l)
 		stoplag(3)
 		l = SSpathfinder.circuits.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude, simulated_only)
+	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude)
 	SSpathfinder.circuits.found(l)
 	if(!path)
 		path = list()
 	return path
 
-/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
+/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null)
 	//sanitation
 	var/turf/end = get_turf(_end)
 	var/turf/start = get_turf(caller)
@@ -107,14 +103,14 @@ Actual Adjacent procs :
 		return FALSE
 	if(maxnodes)
 		//if start turf is farther than maxnodes from end turf, no need to do anything
-		if(call(start, dist)(end) > maxnodes)
+		if(call(start, dist)(end, caller) > maxnodes)
 			return FALSE
 		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
 	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare) //the open list
 	var/list/openc = new() //open list for node check
 	var/list/path = null //the returned path, if any
 	//initialization
-	var/datum/PathNode/cur = new /datum/PathNode(start,null,0,call(start,dist)(end),0,15,1)//current processed turf
+	var/datum/PathNode/cur = new /datum/PathNode(start,null,0,call(start,dist)(end, caller),0,15,1)//current processed turf
 	open.Insert(cur)
 	openc[start] = cur
 	//then run the main loop
@@ -124,40 +120,40 @@ Actual Adjacent procs :
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
 		if(mintargetdist)
-			closeenough = call(cur.source,dist)(end) <= mintargetdist
-
+			closeenough = call(cur.source,dist)(end, caller) <= mintargetdist
 
 		//found the target turf (or close enough), let's create the path to it
 		if(cur.source == end || closeenough)
-			path = new()
-			path.Add(cur.source)
+			path = list(cur.source)
 			while(cur.prevNode)
 				cur = cur.prevNode
 				path.Add(cur.source)
 			break
+		if(maxnodedepth && (cur.nodes_traversed > maxnodedepth)) //if too many steps, don't process that path
+			cur.bf = 0
+			CHECK_TICK
+			continue
 		//get adjacents turfs using the adjacent proc, checking for access with id
-		if((!maxnodedepth)||(cur.nt <= maxnodedepth))//if too many steps, don't process that path
-			for(var/i = 0 to 3)
-				var/f= 1<<i //get cardinal directions.1,2,4,8
-				if(cur.bf & f)
-					var/T = get_step(cur.source,f)
-					if(T != exclude)
-						var/datum/PathNode/CN = openc[T]  //current checking turf
-						var/r=((f & MASK_ODD)<<1)|((f & MASK_EVEN)>>1) //getting reverse direction throught swapping even and odd bits.((f & 01010101)<<1)|((f & 10101010)>>1)
-						var/newg = cur.g + call(cur.source,dist)(T)
-						if(CN)
-						//is already in open list, check if it's a better way from the current turf
-							CN.bf &= 15^r //we have no closed, so just cut off exceed dir.00001111 ^ reverse_dir.We don't need to expand to checked turf.
-							if((newg < CN.g) )
-								if(call(cur.source,adjacent)(caller, T, id, simulated_only))
-									CN.setp(cur,newg,CN.h,cur.nt+1)
-									open.ReSort(CN)//reorder the changed element in the list
-						else
-						//is not already in open list, so add it
-							if(call(cur.source,adjacent)(caller, T, id, simulated_only))
-								CN = new(T,cur,newg,call(T,dist)(end),cur.nt+1,15^r)
-								open.Insert(CN)
-								openc[T] = CN
+		for(var/dir_to_check in GLOB.cardinals)
+			if(cur.bf & dir_to_check)
+				var/T = get_step(cur.source,dir_to_check)
+				if(T != exclude)
+					var/datum/PathNode/CN = openc[T]  //current checking turf
+					var/reverse = GLOB.reverse_dir[dir_to_check]
+					var/newg = cur.g + call(cur.source,dist)(T, caller) // add the travel distance between these two tiles to the distance so far
+					if(CN)
+					//is already in open list, check if it's a better way from the current turf
+						CN.bf &= 15^reverse //we have no closed, so just cut off exceed dir.00001111 ^ reverse_dir.We don't need to expand to checked turf.
+						if((newg < CN.g) )
+							if(call(cur.source,adjacent)(caller, T, id))
+								CN.setp(cur,newg,CN.heuristic,cur.nodes_traversed+1)
+								open.ReSort(CN)//reorder the changed element in the list
+					else
+					//is not already in open list, so add it
+						if(call(cur.source,adjacent)(caller, T, id))
+							CN = new(T,cur,newg,call(T,dist)(end, caller),cur.nodes_traversed+1,15^reverse)
+							open.Insert(CN)
+							openc[T] = CN
 		cur.bf = 0
 		CHECK_TICK
 	//reverse the path to get it from start to finish
@@ -169,8 +165,6 @@ Actual Adjacent procs :
 	return path
 
 //Returns adjacent turfs in cardinal directions that are reachable
-//simulated_only controls whether only simulated turfs are considered or not
-
 /turf/proc/reachableAdjacentTurfs(caller, ID)
 	var/list/L = new()
 	var/turf/T
@@ -189,7 +183,7 @@ Actual Adjacent procs :
 
 /turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
 	var/adir = get_dir(src, T)
-	var/rdir = ((adir & MASK_ODD)<<1)|((adir & MASK_EVEN)>>1)
+	var/rdir = GLOB.reverse_dir[adir]
 	for(var/obj/O in T)
 		if(!O.CanAStarPass(ID, rdir, caller))
 			return TRUE
