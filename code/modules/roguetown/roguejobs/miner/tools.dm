@@ -35,6 +35,21 @@
 	. = ..()
 	icon_state = "steelpick[rand(1,2)]"
 
+/obj/item/rogueweapon/pick/blacksteel
+	name = "blacksteel pick"
+	desc = "Glimmering with silver-y black, this is a pretigious tool for miners delving in the darkness."
+	force_wielded = 28
+	icon_state = "blacksteelpick"
+	item_state = "blacksteelpick"
+	possible_item_intents = list(/datum/intent/pick)
+	gripped_intents = list(/datum/intent/pick)
+	max_integrity = 800
+	smeltresult = /obj/item/ingot/blacksteel
+
+/obj/item/rogueweapon/pick/blacksteel/New()
+	. = ..()
+	icon_state = "blacksteelpick[rand(1,2)]"
+
 /obj/item/rogueweapon/pick/drill
 	name = "clockwork drill"
 	desc = "A wonderfully complex work of engineering capable of shredding walls in seconds as opposed to hours."
