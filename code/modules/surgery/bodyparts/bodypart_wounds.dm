@@ -143,6 +143,10 @@
 			dam += 10
 		if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 			do_crit = FALSE
+
+	if(istype(user, /mob/living/simple_animal))
+		do_crit = FALSE // no more mob crits!!
+		
 	testing("bodypart_attacked_by() dam [dam]")
 	var/added_wound
 	switch(bclass) //do stuff but only when we are a blade that adds wounds
