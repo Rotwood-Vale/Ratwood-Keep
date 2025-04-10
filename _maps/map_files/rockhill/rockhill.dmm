@@ -44745,6 +44745,7 @@
 	dir = 9;
 	pixel_x = -7
 	},
+/obj/effect/landmark/start/hospitaller,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
 "xPD" = (
@@ -45041,6 +45042,7 @@
 	dir = 5;
 	pixel_x = 4
 	},
+/obj/effect/landmark/start/hospitaller,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/church)
 "xWm" = (
