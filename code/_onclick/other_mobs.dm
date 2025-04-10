@@ -476,7 +476,7 @@
 								if (length(stealpos) > 0)
 									var/obj/item/picked = pick(stealpos)
 									V.dropItemToGround(picked)
-									put_in_active_hand(picked)
+									put_in_active_hand(picked, silent = TRUE)
 									to_chat(src, span_green("I stole [picked]!"))
 									V.log_message("has had \the [picked] stolen by [key_name(U)]", LOG_ATTACK, color="black")
 									U.log_message("has stolen \the [picked] from [key_name(V)]", LOG_ATTACK, color="black")
