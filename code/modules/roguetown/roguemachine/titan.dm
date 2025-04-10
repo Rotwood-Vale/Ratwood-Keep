@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				say("My commands are: Make Decree, Invalidate Decrees, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message2recognize, "make announcement"))
 				if(nocrown)
@@ -135,6 +135,19 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				say("Speak and they will obey.")
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 2
+				return
+			if(findtext(message2recognize, "invalidate decrees"))
+				if(!SScommunications.can_announce(H))
+					say("I must gather my strength!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(notlord || nocrown)
+					say("You are not my master!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				say("Old decrees shall be invalidated!")
+				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
+				invalidate_decrees()
 				return
 			if(findtext(message2recognize, "make law"))
 				if(!SScommunications.can_announce(H))
@@ -267,6 +280,10 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	try_make_rebel_decree(user)
 
 	SScommunications.make_announcement(user, TRUE, raw_message)
+
+/obj/structure/roguemachine/titan/proc/invalidate_decrees()
+	GLOB.lord_decrees = list()
+	priority_announce("Old decrees of the land have been invalidated!", "OLD DECREES INVALIDATED", 'sound/misc/royal_decree.ogg', "Captain")
 
 /obj/structure/roguemachine/titan/proc/declare_outlaw(mob/living/user, raw_message)
 	if(!SScommunications.can_announce(user))
