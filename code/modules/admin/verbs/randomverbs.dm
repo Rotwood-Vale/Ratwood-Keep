@@ -365,6 +365,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/player_key = G_found.key
 
 	SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)//Or we simply equip them.
+	SSjob.initialise_memories(new_character, new_character.mind.assigned_role, 1)
 
 	var/msg = span_adminnotice("[admin] has respawned [player_key] as [new_character.real_name].")
 	message_admins(msg)
