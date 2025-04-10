@@ -131,7 +131,7 @@
 		for(var/datum/status_effect/bardicbuff/b in L.status_effects)
 			buffed.remove_status_effect(b) // All applicable bard buffs stopped
 
-/obj/item/rogue/instrument/equipped(mob/living/user, slot)
+/obj/item/rogue/instrument/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!playing)
 		return
