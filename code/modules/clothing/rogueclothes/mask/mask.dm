@@ -37,7 +37,13 @@
 
 /obj/item/clothing/mask/rogue/spectacles/Crossed(mob/crosser)
 	if(isliving(crosser) && !obj_broken)
-		take_damage(11, BRUTE, "blunt", 1)
+		// take_damage seems more like it's for items that when they hit 0 integrity they die
+		// I don't know what else to do so I just manually coded this here
+		// Does everything it needs to, I think since they only ever break?
+		obj_integrity = 0
+		obj_broken = TRUE
+		update_clothes_damaged_state(TRUE)
+		playsound(src.loc, break_sound, 60, 1)
 	..()
 
 
