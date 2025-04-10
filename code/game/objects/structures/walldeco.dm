@@ -56,7 +56,7 @@
 				return
 			. += span_bold("I now know the faces of the local bandits.")
 			ADD_TRAIT(user, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
-			addtimer(CALLBACK(user, /mob/proc/forget_wanted, user), 15 MINUTES)
+			addtimer(CALLBACK(user, /mob/proc/forget_wanted, user), 20 MINUTES)
 			user.playsound_local(user, 'sound/misc/notice (2).ogg', 100, FALSE)
 		else
 			. += span_bold("There doesn't seem to be any reports of bandit activity.")
