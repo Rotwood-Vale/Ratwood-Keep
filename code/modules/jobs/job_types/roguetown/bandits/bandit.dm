@@ -47,3 +47,17 @@
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+
+
+/*BANDIT DESIGN GOALS:
+
+Minor antagonist meant to abduct, ransom, pillage and steal from the people. Fill in periods of calm with trouble, giving work to guards.
+Main points: 5 stat total, Journeyman skill for main weapons (Bow/crossbows get expert until bow draw time is rebalanced properly.)
+
+Brigand:3 str, 2 end, 2 con 1 per, -3 INT
+Foresworn: 2 str, 2 end 2 con, 2 spd -3 INT
+Hedgeknight: 4 str, 2 end 2 con -1 spd
+Knave: 1 str, 1 con 2 per 2 spd, -3 INT
+Sawbones:
+Bandit Mage: 2 str, 2 int, 1 end, 1 spd
+*/
