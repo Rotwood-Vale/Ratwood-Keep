@@ -56,7 +56,6 @@
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
