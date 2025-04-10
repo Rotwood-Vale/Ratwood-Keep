@@ -1340,7 +1340,6 @@
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\forlorn.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft_jager.dm"
-#include "code\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft_kommandant.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\newmoon.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\types\sellsword.dm"
 #include "code\modules\jobs\job_types\roguetown\nobility\captain.dm"
@@ -1995,4 +1994,5 @@
 #include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
 #include "modular\Smoker\code\Smoker.dm"
 #include "modular\ze_genesis_call\genesis_call.dm"
+#include "code\modules\jobs\job_types\roguetown\towners\types\thug.dm"
 // END_INCLUDE
