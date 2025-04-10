@@ -15,7 +15,7 @@
 		var/status = !CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
 		to_chat(user, span_notice("I turn the voice box in [src] [status ? "on" : "off"]."))
 
-/obj/item/clothing/mask/equipped(mob/M, slot)
+/obj/item/clothing/mask/equipped(mob/M, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if (slot == SLOT_WEAR_MASK && modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))

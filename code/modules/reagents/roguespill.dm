@@ -1,4 +1,4 @@
-/obj/item/storage/equipped(mob/user, slot)
+/obj/item/storage/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!istype(src, /obj/item/storage/bag/tray))
 		for(var/obj/item/reagent_containers/I in contents)

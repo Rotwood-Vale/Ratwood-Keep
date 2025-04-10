@@ -192,51 +192,51 @@
 
 		if("Dualist")
 
-
-			if(/datum/patron/inhumen/graggar)
-				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-				head = /obj/item/clothing/head/roguetown/roguehood
-				shoes = /obj/item/clothing/shoes/roguetown/shortboots
-				armor = /obj/item/clothing/suit/roguetown/shirt/robe
-				belt = /obj/item/storage/belt/rogue/leather/rope
-				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-				backl = /obj/item/storage/backpack/rogue/backpack
-				r_hand = /obj/item/rogueweapon/woodstaff
-				H.change_stat("strength", 3)
-				H.change_stat("constitution", 2)
-				H.change_stat("intelligence", -1)
-				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			else
-				H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-				head = /obj/item/clothing/head/roguetown/roguehood
-				shoes = /obj/item/clothing/shoes/roguetown/shortboots
-				armor = /obj/item/clothing/suit/roguetown/shirt/robe
-				belt = /obj/item/storage/belt/rogue/leather/rope
-				beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-				backl = /obj/item/storage/backpack/rogue/backpack
-				r_hand = /obj/item/rogueweapon/woodstaff
-				H.change_stat("strength", 3)
-				H.change_stat("constitution", 1)
-				H.change_stat("speed", 2)
-				H.change_stat("intelligence", 1)
-				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-
+			switch (H.patron?.type)
+				
+				if(/datum/patron/inhumen/graggar)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+					head = /obj/item/clothing/head/roguetown/roguehood
+					shoes = /obj/item/clothing/shoes/roguetown/shortboots
+					armor = /obj/item/clothing/suit/roguetown/shirt/robe
+					belt = /obj/item/storage/belt/rogue/leather/rope
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					backl = /obj/item/storage/backpack/rogue/backpack
+					r_hand = /obj/item/rogueweapon/woodstaff
+					H.change_stat("strength", 3)
+					H.change_stat("constitution", 2)
+					H.change_stat("intelligence", -1)
+					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+				else
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+					head = /obj/item/clothing/head/roguetown/roguehood
+					shoes = /obj/item/clothing/shoes/roguetown/shortboots
+					armor = /obj/item/clothing/suit/roguetown/shirt/robe
+					belt = /obj/item/storage/belt/rogue/leather/rope
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					backl = /obj/item/storage/backpack/rogue/backpack	
+					r_hand = /obj/item/rogueweapon/woodstaff
+					H.change_stat("strength", 3)
+					H.change_stat("constitution", 1)
+					H.change_stat("speed", 2)
+					H.change_stat("intelligence", 1)
+					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.set_blindness(0)
