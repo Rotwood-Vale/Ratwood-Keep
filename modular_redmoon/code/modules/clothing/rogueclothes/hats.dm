@@ -592,7 +592,7 @@
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "helch"
 	max_integrity = 350
-	flags_inv = HIDEFACE|HIDEEARS
+	flags_inv = HIDEFACE|HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor_class = ARMOR_CLASS_MEDIUM
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
@@ -605,7 +605,7 @@
 	mob_overlay_icon = 'modular_redmoon/icons/head.dmi'
 	icon_state = "helchsnoot"
 	max_integrity = 350
-	flags_inv = HIDEFACE|HIDEEARS
+	flags_inv = HIDEFACE|HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor_class = ARMOR_CLASS_MEDIUM
 	body_parts_covered = HEAD|EARS|HAIR|NOSE|EYES
