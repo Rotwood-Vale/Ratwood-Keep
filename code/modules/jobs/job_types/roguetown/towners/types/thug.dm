@@ -1,5 +1,5 @@
 /datum/subclass/thug
-	name = "thug"
+	name = "Thug"
 	tutorial = "You are a lowly thug, selling your brawn to the first bidder you can fine. Maybe you convince the merchant to hire you, or maybe you are a guard for the whitevein. \
 	It is entirely up to you"
 	allowed_sexes = list(MALE, FEMALE)
@@ -31,8 +31,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.change_stat("strength", 1)
+		H.change_stat("strength", 2)
+		H.change_stat("constitution", 2)
 		H.change_stat("endurance", 1)
-		H.change_stat("constitution", 1)
 		H.change_stat("intelligence", -1)
 	
