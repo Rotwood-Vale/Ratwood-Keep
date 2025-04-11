@@ -26,14 +26,18 @@
 		return ELEMENT_INCOMPATIBLE
 
 	switch(difficulty)
-		if(4)
+		if(5)
 			shown_difficulty = "LEGENDARY"
-		if(3)
+		if(4)
 			shown_difficulty = "MASTER"
+		if(3)
+			shown_difficulty = "EXPERT"
 		if(2)
 			shown_difficulty = "SKILLED"
 		if(1)
 			shown_difficulty = "NOVICE"
+		if(0)
+			shown_difficulty = "BASIC"
 
 	if(!src.lockpicks)
 		src.lockpicks = lockpicks.Copy()

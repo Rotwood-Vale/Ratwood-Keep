@@ -185,7 +185,7 @@
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
-		AddElement(/datum/element/lockpickable, list(/obj/item/lockpick), list(/obj/item/lockpick), 1)
+		AddElement(/datum/element/lockpickable, list(/obj/item/lockpick), list(/obj/item/lockpick), lockdiff)
 		if(lockid)
 			if(GLOB.lockids[lockid])
 				lockhash = GLOB.lockids[lockid]
