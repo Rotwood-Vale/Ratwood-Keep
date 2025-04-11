@@ -112,7 +112,7 @@
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
 
-/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_WEAR_MASK)
 		user.become_blind("blindfold_[REF(src)]")

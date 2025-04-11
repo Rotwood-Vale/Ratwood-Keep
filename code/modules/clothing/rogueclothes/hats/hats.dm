@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sewrepair = TRUE
 
-/obj/item/clothing/head/roguetown/equipped(mob/user, slot)
+/obj/item/clothing/head/roguetown/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	user.update_fov_angles()
 
@@ -1130,7 +1130,7 @@
 	sellprice = 100
 	desc = "Only the wisest of nimrods wear this."
 
-/obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot)
+/obj/item/clothing/head/roguetown/wizhat/gen/wise/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -1201,7 +1201,7 @@
 	throw_speed = 1
 	throw_range = 3
 
-/obj/item/clothing/head/peaceflower/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/head/peaceflower/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "peaceflower_[REF(src)]")

@@ -829,6 +829,7 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	clothing_flags = CANT_SLEEP_IN
 	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
 	sewrepair = FALSE
 	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
 
