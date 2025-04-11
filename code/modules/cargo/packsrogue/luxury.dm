@@ -93,12 +93,12 @@
 /datum/supply_pack/rogue/luxury/dice
 	name = "Full bag of dice"
 	cost = 15
-	contains = list(/obj/item/storage/pill_bottle/dice)
+	contains = list(/obj/item/storage/dice)
 
 /datum/supply_pack/rogue/luxury/push_your_luck
 	name = "Bag of 6 dice, ideal for the Push Your Luck game"
 	cost = 15
-	contains = list(/obj/item/storage/pill_bottle/dice/push_your_luck)
+	contains = list(/obj/item/storage/dice/push_your_luck)
 
 /datum/supply_pack/rogue/luxury/psiring
 	name = "Blessed Ring"
