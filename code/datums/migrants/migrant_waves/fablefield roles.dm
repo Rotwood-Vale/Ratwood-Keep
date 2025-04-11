@@ -8,7 +8,6 @@
 	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/goliard
-	allowed_patrons = list(/datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/fablefield/goliard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,7 +24,7 @@
 	backr = /obj/item/rogue/instrument/guitar
 	beltl = /obj/item/rogueweapon/sword/rapier/dec
 	beltr = /obj/item/rogueweapon/huntingknife/elvish
-	backpack_contents = list(/obj/item/book/rogue/tales1, /obj/item/book/rogue/blackmountain, /obj/item/book/rogue/tales3)
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -60,7 +59,6 @@
 	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/troubadour
-	allowed_patrons = list(/datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/fablefield/troubadour/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -77,7 +75,7 @@
 	backr = /obj/item/rogue/instrument/lute
 	beltl = /obj/item/rogueweapon/sword/rapier
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	backpack_contents = list(/obj/item/book/rogue/nitebeast, /obj/item/flashlight/flare/torch/lantern, /obj/item/flint)
+	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
