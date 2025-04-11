@@ -34,7 +34,7 @@
     neck = /obj/item/storage/belt/rogue/pouch/coins/poor
     shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
     shoes = /obj/item/clothing/shoes/roguetown/shortboots
-    backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
+    backpack_contents = list(/obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
     var/instrument = pick(0,1,2,3,4,5)
     switch(instrument)
         if(0)
