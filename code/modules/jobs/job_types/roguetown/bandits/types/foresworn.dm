@@ -18,7 +18,7 @@
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -44,6 +44,8 @@
 	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+	H.ambushable = FALSE
 	H.adjust_blindness(-3)
 	var/weapons = list("Spear","Sword & Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
@@ -56,16 +58,4 @@
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/sword/iron //iron sword like literally every refugee gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-	var/wanted = list("Not wanted", "Wanted")
-	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
-	switch(wanted_choice)
-		if ("Not wanted")
-			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
-		if ("Wanted")
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
-	H.ambushable = FALSE
+
