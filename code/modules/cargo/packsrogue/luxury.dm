@@ -5,41 +5,6 @@
 	crate_name = "merchant guild's crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-/datum/supply_pack/rogue/luxury/sigs
-	name = "Pipe Weed Zig"
-	cost = 3
-	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
-
-/datum/supply_pack/rogue/luxury/coolersigs
-	name = "Swamp Weed Zig"
-	cost = 8
-	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
-
-/datum/supply_pack/rogue/luxury/sshigs
-	name = "Sshig Brand Zigs"
-	cost = 25
-	contains = list(/obj/item/storage/fancy/shhig)
-
-/datum/supply_pack/rogue/luxury/perfume
-	name = "Perfume"
-	cost = 10 //steward can get these in bulk for 12 per
-	contains = list(/obj/item/perfume/random)
-
-/datum/supply_pack/rogue/luxury/ozium
-	name = "Ozium"
-	cost = 5
-	contains = list(/obj/item/reagent_containers/powder/ozium)
-
-/datum/supply_pack/rogue/luxury/moondust
-	name = "Moon Dust"
-	cost = 30
-	contains = list(/obj/item/reagent_containers/powder/moondust)
-
-/datum/supply_pack/rogue/luxury/spice
-	name = "Spice"
-	cost = 20
-	contains = list(/obj/item/reagent_containers/powder/spice)
-
 /*/datum/supply_pack/rogue/luxury/westspice
 	name = "Western Herbs"
 	cost = 50
