@@ -149,6 +149,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	///convenience var for forcibly waking up an idling AI on next check.
 	var/shouldwakeup = FALSE
 
+	///Awakened
+	var/awakened = FALSE
 	///Domestication.
 	var/tame = FALSE
 	///What the mob eats, typically used for taming or animal husbandry.

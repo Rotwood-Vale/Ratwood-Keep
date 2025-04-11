@@ -32,7 +32,7 @@
 
 /obj/effect/proc_holder/spell/invoked/beasttame
 	name = "Tame Beast"
-	range = 7
+	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
 	chargetime = 15
@@ -43,8 +43,8 @@
 	charge_max = 15 SECONDS
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
-	invocation = "Rise, brotherbeast, and be free!"
-	invocation_type = "shout" // can be none, whisper, emote, or shout
+	invocation = "Be still and calm, brotherbeast."
+	invocation_type = "none" // can be none, whisper, emote, or shout
 	miracle = TRUE
 	// Making this cost 0 just for testing purposes
 	//devotion_cost = 80
@@ -52,7 +52,7 @@
 
 /obj/effect/proc_holder/spell/invoked/beasttame/cast(list/targets, mob/user = usr)
 	. = ..()
-	visible_message(span_green("[usr] awakens the beastblood with Dendor's blessing."))
+	visible_message(span_green("[usr] calms the beastblood with Dendor's blessing."))
 
 	// This list should contain all the creatures that can be tamed with this spell.
 	var/list/tame_types = list(
@@ -73,23 +73,25 @@
 		to_chat(user, span_warning("You cannot tame that!"))
 		return FALSE
 
-	else if(target.tame)
-		to_chat(user, span_warning("This creature is already tamed!"))
+	else if(target.awakened)
+		to_chat(user, span_warning("This creature is awakened!"))
 		return FALSE
 
 	target.visible_message(span_warning("The [target.real_name]'s body is engulfed by a calming aura..."), runechat_message = TRUE)
+	// Kind of a hacky fix to make sure the ai doesn't attack people, but it works. 
 	target.faction = list("neutral")
-	target.tame = TRUE
+	target.tamed = TRUE
+	
 
 	// Poll for candidates to control the tamed animal
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a tamed [target.real_name]?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
+	var/list/candidates = pollCandidatesForMob("Do you want to play as an awakened [target.real_name]?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
 
 	// If there are candidates, assign control to a player
 	if(LAZYLEN(candidates))
 		var/mob/C = pick(candidates)
 		target.awaken_beast(user, C.ckey)
 		target.visible_message(span_warning("The [target.real_name]'s eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
-		to_chat(C, span_notice("You have been chosen to control the [target.real_name]."))
+		target.awakened = TRUE
 		return TRUE
 	// If there are no candidates, the animal will have been calmed but not controlled
 	else
@@ -102,8 +104,7 @@
 /mob/living/simple_animal/proc/awaken_beast(mob/living/carbon/human/master, ckey = null)
 	if(ckey) // If a player is controlling the animal
 		src.ckey = ckey
-		to_chat(src, span_userdanger("My master is [master.real_name]."))
-		to_chat(master, span_notice("You have tamed the [src.real_name]."))
+		to_chat(src, span_userdanger("I was once a creature of instinct, but now... completely new thoughts and ideas flood my mind! I can think! I am free!"))
 	if(ai_controller) // Disable AI controller if it exists
 		ai_controller = new /datum/ai_controller/basic_controller(src)
 

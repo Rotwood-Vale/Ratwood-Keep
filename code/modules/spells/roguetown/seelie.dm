@@ -238,8 +238,8 @@
 		to_chat(user, span_warning("You cannot tame that!"))
 		return FALSE
 
-	else if(target.tame)
-		to_chat(user, span_warning("This creature is already tamed!"))
+	else if(target.awakened)
+		to_chat(user, span_warning("This creature is awakened!"))
 		return FALSE
 	
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
@@ -258,6 +258,7 @@
 	if(LAZYLEN(candidates))
 		var/mob/C = pick(candidates)
 		target.awaken_rous(user, C.ckey)
+		target.awakened = TRUE
 		target.visible_message(span_warning("The rous' eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
 		to_chat(C, span_notice("You have been chosen to control the rous."))
 		return TRUE
@@ -273,6 +274,7 @@
 		src.ckey = ckey
 		to_chat(src, span_userdanger("My master is [master.real_name]."))
 		to_chat(master, span_notice("You have tamed the [src.real_name]."))
+		
 	if(ai_controller) // Disable AI controller if it exists
 		ai_controller = new /datum/ai_controller/basic_controller(src)
 
