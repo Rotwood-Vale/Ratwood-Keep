@@ -32,8 +32,6 @@
 		
 
 
-	if(L.d_intent == INTENT_DODGE)
-		perc = 0
 	if(!L.cmode)
 		perc = 0
 	if(L.has_status_effect(/datum/status_effect/debuff/feinted))
@@ -45,8 +43,8 @@
 	if(prob(perc)) //feint intent increases the immobilize duration significantly
 		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
-			L.changeNext_move(10)
-			L.Immobilize(12)
+			L.changeNext_move(20)
+			L.Immobilize(20)
 			to_chat(user, span_notice("[L] fell for my feint attack!"))
 			to_chat(L, span_danger("I fall for [user]'s feint attack!"))
 		else
