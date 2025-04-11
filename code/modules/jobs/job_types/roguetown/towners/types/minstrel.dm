@@ -31,7 +31,7 @@
     //beltl = /obj/item/ammo_holder/bomb/smokebombs
     beltr = /obj/item/rogueweapon/huntingknife/idagger
     head = /obj/item/clothing/head/roguetown/bardhat //with this hat, they will get all the pussy(or dick depending on preference(or both ig))
-    neck = /obj/item/storage/belt/rogue/pouch/coins/poor = 1
+    neck = /obj/item/storage/belt/rogue/pouch/coins/poor
     shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
     shoes = /obj/item/clothing/shoes/roguetown/shortboots
     backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/flint = 1, /obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
