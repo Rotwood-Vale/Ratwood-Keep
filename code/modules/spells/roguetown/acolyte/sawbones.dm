@@ -58,7 +58,7 @@
 	miracle = FALSE
 	devotion_cost = 0
 
-/obj/effect/proc_holder/spell/targeted/debride // Cure rot if has weak liver debuff
+/obj/effect/proc_holder/spell/targeted/debride // delays rotting
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Tissue Debridement"
 	overlay_state = "unrot"
@@ -67,106 +67,17 @@
 	sound = 'sound/combat/newstuck.ogg'
 	associated_skill = /datum/skill/misc/treatment
 	antimagic_allowed = TRUE
-	charge_max = 1 MINUTES
+	charge_max = 2 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
 	/// Amount of PQ gained for curing zombos
 	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
-/obj/effect/proc_holder/spell/targeted/cpr
-	action_icon = 'icons/mob/actions/roguespells.dmi'
-	name = "Cardiac Massage"
-	overlay_state = "cpr"
-	range = 1
-	include_user = FALSE
-	sound = 'sound/combat/newstuck.ogg'
-	associated_skill = /datum/skill/misc/treatment
-	antimagic_allowed = TRUE
-	charge_max = 1 MINUTES
-	miracle = FALSE
-	devotion_cost = 0
-	/// Amount of PQ gained for reviving
-	var/revive_pq = PQ_GAIN_REVIVE
-
-/obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
-	. = ..()
-
-	if(!isliving(targets[1]))
-		revert_cast()
-		return FALSE
-
-	var/mob/living/target = targets[1]
-	if(target == user)
-		revert_cast()
-		return FALSE
-	if(target.stat < DEAD)
-		to_chat(user, span_warning("Nothing happens."))
-		revert_cast()
-		return FALSE
-	if(HAS_TRAIT(target, TRAIT_RITUALIZED))
-		to_chat(user, span_warning("The life essence was sucked out of this body."))
-		revert_cast()
-		return FALSE
-	if(world.time > target.mob_timers["lastdied"] + 10 MINUTES)
-		to_chat(user, span_warning("It's too late."))
-		revert_cast()
-		return FALSE
-	if(target.mob_biotypes & MOB_UNDEAD)
-		to_chat(user, span_warning("It's undead, I can't."))
-		revert_cast()
-		return FALSE
-	if(!target.revive(full_heal = FALSE))
-		to_chat(user, span_warning("They need to be mended more."))
-		revert_cast()
-		return FALSE
-	if(target.has_status_effect(/datum/status_effect/debuff/death_claimed))
-		to_chat(user, span_warning("They are too far gone."))
-		revert_cast()
-
-	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-	//GET OVER HERE!
-	if(underworld_spirit)
-		var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-		qdel(underworld_spirit)
-		ghost.mind.transfer_to(target, TRUE)
-	target.grab_ghost(force = TRUE)
-	target.emote("breathgasp")
-	target.Jitter(100)
-	if(isseelie(target))
-		var/mob/living/carbon/human/fairy_target = target
-		fairy_target.set_heartattack(FALSE)
-		var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
-		if(Wing == null)
-			var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
-			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
-			new_wings.Insert(fairy_target)
-	target.update_body()
-	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
-	target.mind?.remove_antag_datum(/datum/antagonist/zombie)
-	return TRUE
-
-/obj/effect/proc_holder/spell/targeted/cpr/cast_check(skipcharge = 0,mob/user = usr)
-	if(!..())
-		revert_cast()
-		return FALSE
-	var/found = null
-	for(var/obj/structure/bed/rogue/S in oview(5, user))
-		found = S
-	if(!found)
-		to_chat(user, span_warning("I need them on a bed."))
-		revert_cast()
-		return FALSE
-	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/debride/cast(list/targets, mob/living/user)
 
 	if(!isliving(targets[1]))
 		revert_cast()
-		return FALSE
-
-	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
-		to_chat(user, span_warning("I need to prime their liver first"))
-		revert_cast() // No need to consume the spell if it isn't properly cast.
 		return FALSE
 
 	var/mob/living/target = targets[1]
@@ -184,44 +95,16 @@
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
 
 	if(was_zombie)
-		target.mind.remove_antag_datum(/datum/antagonist/zombie)
-		target.Unconscious(20 SECONDS)
-		target.emote("breathgasp")
-		target.Jitter(100)
-		if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-			adjust_playerquality(unzombification_pq, user.ckey)
-			ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, TRAIT_GENERIC)
+		revert_cast()
+		return FALSE
 
 	var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 
 	if(rot)
-		rot.amount = 0
+		rot.amount -= 500
 
-	if(iscarbon(target))
-		var/mob/living/carbon/stinky = target
-		for(var/obj/item/bodypart/limb in stinky.bodyparts)
-			limb.rotted = FALSE
-			limb.skeletonized = FALSE
-			limb.update_limb()
-			limb.update_disabled()
 
-	// Specific edge-case where a body rots without a head or rots after a head is placed back on. We always want this gone so we can at least revive the person even if there is no mind, this is caused by the failure to remove the zombie antag datum.
-	// un-deadite'ing process
-	target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
-
-	for(var/trait in GLOB.traits_deadite)
-		REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
-
-	if(target.stat < DEAD) // Drag and shove ghost back in.
-		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			ghost.mind.transfer_to(target, TRUE)
-			qdel(underworld_spirit)
-	target.grab_ghost(force = TRUE) // even suicides
-
-	target.update_body()
-	target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
+	target.visible_message(span_notice("Some of the rot leaves [target]'s body, yet more will soon fester!"), span_green("I feel some of the rot leave my body, yet more will soon fester!"))
 
 	return TRUE
 

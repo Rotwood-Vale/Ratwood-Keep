@@ -4,6 +4,7 @@
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
+	mob_biotypes = MOB_UNDEAD
 	var/outfit = /datum/outfit/job/roguetown/npc/deadite
 	ambushable = FALSE
 	possible_rmb_intents = list()
@@ -25,13 +26,13 @@
 
 /mob/living/carbon/human/species/deadite/after_creation()
 	..()
-	make_deadite()
 	gender = pick(MALE, FEMALE)
 	set_species(/datum/species/human/northern)
 	if(outfit)
 		var/datum/outfit/Outfit = new outfit
 		if(Outfit)
 			equipOutfit(Outfit)
+	make_deadite()
 	update_body()
 
 /datum/outfit/job/roguetown/npc/deadite/pre_equip(mob/living/carbon/human/H)
@@ -79,7 +80,7 @@
 
 	dna.species.soundpack_m = new /datum/voicepack/zombie/m()
 	dna.species.soundpack_f = new /datum/voicepack/zombie/f()
-	
+
 	for(var/obj/item/bodypart/part as anything in bodyparts)
 		if(!part.rotted && !part.skeletonized)
 			part.rotted = TRUE
@@ -87,7 +88,7 @@
 
 	for(var/trait_applied in GLOB.traits_deadite)
 		ADD_TRAIT(src, trait_applied, TRAIT_GENERIC)
-	
+
 	STASTR = rand(6,13)
 	STASPD = rand(6,13)
 	STACON = rand(6,13)
@@ -130,7 +131,7 @@
 
 	mob_timers["deadite_idle"] = world.time
 	emote("idle")
-	
+
 /// Use this to attempt to add the zombie antag datum to a human
 /mob/living/carbon/human/proc/zombie_check()
 	if(!mind)

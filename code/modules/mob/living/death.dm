@@ -10,7 +10,7 @@
 		gib_animation()
 
 	spill_embedded_objects()
-	
+
 	spill_organs(no_brain, no_organs, no_bodyparts)
 
 	if(!no_bodyparts)
@@ -42,7 +42,7 @@
 
 	if(drop_items)
 		unequip_everything()
-	
+
 	if(buckled)
 		buckled.unbuckle_mob(src, force = TRUE)
 
@@ -93,13 +93,6 @@
 	update_damage_hud()
 	update_health_hud()
 	update_mobility()
-	if(!gibbed && !QDELETED(src))
-		if(src.has_status_effect(/datum/status_effect/debuff/death_embrace))
-			apply_status_effect(/datum/status_effect/debuff/death_claimed)
-		if(src.has_status_effect(/datum/status_effect/debuff/death_weaken))
-			apply_status_effect(/datum/status_effect/debuff/death_embrace)
-		else
-			apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()

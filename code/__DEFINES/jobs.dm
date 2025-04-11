@@ -123,6 +123,7 @@
 #define MONK		(1<<1)
 #define GRAVEDIGGER	(1<<2)
 #define DRUID		(1<<3)
+#define HOSPITALLER	(1<<4)
 
 /// INQUISITION
 #define INQUISITION		(1<<3)
@@ -257,6 +258,7 @@
 #define JDO_DRUID 10.3
 #define JDO_NOVITIATE 10.4
 #define JDO_GRAVEMAN 10.5
+#define JDO_HOSPITALLER 10.6
 
 #define JDO_PURITAN 11
 #define JDO_SHEPHERD 11.1
@@ -345,6 +347,7 @@
 #define CHURCH_ROLES \
 	/datum/job/roguetown/novitiate,\
 	/datum/job/roguetown/druid,\
+	/datum/job/roguetown/hospitaller,\
 	/datum/job/roguetown/monk,\
 	/datum/job/roguetown/undertaker,\
 	/datum/job/roguetown/priest,\

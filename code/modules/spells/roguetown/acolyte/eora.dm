@@ -14,6 +14,8 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/holy
 	charge_max = 60 SECONDS
+	miracle = TRUE
+	devotion_cost = 20
 
 /obj/effect/proc_holder/spell/invoked/bud/cast(list/targets, mob/living/user)
 	var/turf/T = get_turf(targets[1])
@@ -39,7 +41,8 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 30 SECONDS
-	miracle = FALSE
+	miracle = TRUE
+	devotion_cost = 30
 
 /obj/effect/proc_holder/spell/invoked/eoracurse/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -52,9 +55,9 @@
 
 /obj/effect/proc_holder/spell/invoked/eoracharm
 	name = "Charm"
-	overlay_state = "love" 
+	overlay_state = "love"
 	releasedrain = 60
-	chargetime = 60 
+	chargetime = 60
 	range = 7
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
@@ -65,16 +68,15 @@
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 45 SECONDS 
+	charge_max = 45 SECONDS
 	miracle = TRUE
-	devotion_cost = 100 
+	devotion_cost = 100
 
 /obj/effect/proc_holder/spell/invoked/eoracharm/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
-		var/charm_to_public = pick("<b style='color:pink'>[user] is influenced by the beauty of Eora's follower.</b>", "<b style='color:pink'>[target] stares mesmerized at [user] and does not move.</b>")
+		var/charm_to_public = pick("<b style='color:pink'>[user] is influenced by the beauty of Eora's follower.</b>", "<b style='color:pink'>[target] stares mesmerized at [user].</b>")
 		var/charm_to_target = pick("<b style='color:pink'>Your eyes cannot move away from [user].</b>", "<b style='color:pink'>You are enchanted by the beauty of the follower of Eora.</b>")
 		target.visible_message(span_warning("[charm_to_public]"), span_warning("[charm_to_target]"))
 		target.apply_status_effect(/datum/status_effect/eorapacify)
-		target.Immobilize(85)
 	return FALSE

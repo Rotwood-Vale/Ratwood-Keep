@@ -46,11 +46,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
 	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-	H.mind.AddSpell(new SPELL_DOCHEAL)
-	H.mind.AddSpell(new SPELL_STABLE)
-	H.mind.AddSpell(new SPELL_PURGE)
-	H.mind.AddSpell(new SPELL_DEBRIDE)
-	H.mind.AddSpell(new SPELL_CPR)
+
 	var/wanted = list("Not wanted", "Wanted")
 	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
 	switch(wanted_choice)
