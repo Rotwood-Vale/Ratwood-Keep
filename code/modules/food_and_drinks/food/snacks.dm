@@ -76,7 +76,7 @@ All foods are distributed among various categories. Use common sense.
 
 
 	var/fertamount = 50
-	
+
 	var/can_distill = FALSE //If FALSE, this object cannot be distilled into an alcohol.
 	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
 	var/distill_amt = 12
@@ -121,8 +121,14 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/process()
 	..()
 	if(rotprocess)
-		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter) && ! (locate(/obj/structure/table) in loc) && !istype(loc, /obj/structure/roguemachine/vendor))
-			warming -= 20 //ssobj processing has a wait of 20
+		if(!istype(loc, /obj/structure/closet/crate/chest) && ! istype(loc, /obj/item/cooking/platter)  && !istype(loc, /obj/structure/roguemachine/vendor) && !istype (loc, /obj/item/storage/backpack/rogue/backpack/artibackpack)&& !istype (loc, /obj/structure/table/cooling))
+			if(!locate(/obj/structure/table) in loc)
+				warming -= 20 //ssobj processing has a wait of 20
+			else
+				if(locate(/obj/structure/table/cooling) in loc)
+					warming -= 0
+				else
+					warming -= 10
 			if(warming < (-1*rotprocess))
 				if(become_rotten())
 					STOP_PROCESSING(SSobj, src)

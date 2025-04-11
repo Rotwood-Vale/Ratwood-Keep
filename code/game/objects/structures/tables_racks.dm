@@ -352,6 +352,15 @@
 	debris = list(/obj/item/grown/log/tree/small = 2)
 	climb_offset = 10
 
+/obj/structure/table/cooling //cooling table made by artificers
+	name = "Cooling Table"
+	desc = "Used to keep your food cool and rot free"
+	icon = 'icons/roguetown/misc/tables.dmi'
+	icon_state = "coolingtable"
+	resistance_flags = FLAMMABLE
+	max_integrity = 40 //making this weak, its fragile
+	smooth = 0
+
 /obj/structure/table/finer
 	name = "wooden table"
 	desc = ""

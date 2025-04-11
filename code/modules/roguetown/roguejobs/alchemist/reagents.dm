@@ -15,8 +15,8 @@
 	else
 		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
-		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep. 
+	if(wCount.len > 0)
+		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
 		M.heal_wounds(2) //at a motabalism of .5 U a tick this translates to 80WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-1*REM, 0) // 45u = 15 oz = 120~ points of healing
@@ -38,7 +38,7 @@
 	alpha = 210
 
 /datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
-	M.heal_wounds(1) 
+	M.heal_wounds(1)
 	M.update_damage_overlays()
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
@@ -47,7 +47,7 @@
 	..()
 	. = 1
 
-	
+
 /datum/reagent/medicine/greaterhealthpot
 	name = "Greater Health Potion"
 	description = "Greatly heals all types of damage."
@@ -64,7 +64,7 @@
 		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
 	else
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
+	if(wCount.len > 0)
 		M.heal_wounds(4)
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
@@ -272,3 +272,19 @@
 
 	M.update_damage_overlays()
 
+
+//pyro flower nectar
+/datum/reagent/toxin/fyritiusnectar
+	name = "fyritius nectar"
+	description = "A powerful toxin that sets any whom injest it on fire."
+	reagent_state = LIQUID
+	color = "#ffc400"
+	metabolization_rate = 0.5
+
+/datum/reagent/toxin/fyritiusnectar/on_mob_life(mob/living/carbon/M)
+	if(volume > 0.99)
+		M.add_nausea(9)
+		M.adjustFireLoss(2, 0)
+		M.adjust_fire_stacks(1)
+		M.IgniteMob()
+	return ..()
