@@ -31,6 +31,8 @@
 	wdefense = 4
 
 /obj/item/rogueweapon/sword/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/swordherald.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/swordherald.dmi')
@@ -447,6 +449,8 @@
 	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/iswordherald.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/iswordherald.dmi')

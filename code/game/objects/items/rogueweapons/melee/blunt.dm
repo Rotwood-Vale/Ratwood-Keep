@@ -27,6 +27,8 @@
 	blade_dulling = DULLING_BASHCHOP
 
 /obj/item/rogueweapon/mace/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/maceherald.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/maceherald.dmi')
@@ -72,6 +74,8 @@
 	wdefense = 3
 
 /obj/item/rogueweapon/mace/steel/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/smaceherald.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/smaceherald.dmi')

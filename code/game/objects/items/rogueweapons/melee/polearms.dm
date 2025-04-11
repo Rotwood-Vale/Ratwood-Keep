@@ -299,6 +299,8 @@
 	wdefense = 6
 
 /obj/item/rogueweapon/halberd/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/halberdherald.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/halberdherald.dmi')

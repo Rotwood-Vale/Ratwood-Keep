@@ -13,6 +13,21 @@
 		inhand_x_dimension = 32
 		inhand_y_dimension = 32
 
+// This can't be where /item types root from is it??
+/* Allows modifying items by calling the hammer's proc.
+Not the best place for it but right clicking is based on the item you click
+And not the item you are using in your hand. It'd be nice if it were not the case... */
+obj/item/attack_right(mob/user)
+	var/hasanvil = locate(/obj/machinery/anvil) in (loc)
+	if(!hasanvil)
+		return ..()
+	if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer/))
+		var/obj/item/rogueweapon/hammer/H = user.get_active_held_item()
+		if(obj_integrity >= max_integrity)
+			H.modify_item(src, user)
+	. = ..()
+
+
 // Helper items for spriters so they can see how in-hands look in game.
 // They're basically red square sprites placed on the floor so spriters can adjust their sprites properly
 // Used on admin testing area only.
