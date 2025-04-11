@@ -167,7 +167,17 @@
 	/datum/species/goblin/moon,\
 )
 
-
+//I guess a list like this didn't exist until now?
+#define ALL_ANTAG_TYPES list(\
+	/datum/antagonist/maniac, \
+	/datum/antagonist/prebel, \
+	/datum/antagonist/bandit, \
+	/datum/antagonist/aspirant, \
+	/datum/antagonist/werewolf, \
+	/datum/antagonist/zizocultist, \
+	/datum/antagonist/vampirelord, \
+	/datum/antagonist/lich, \
+)
 
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
