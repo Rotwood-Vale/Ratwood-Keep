@@ -305,6 +305,45 @@
 	effectedstats = list("speed" = 3)
 	duration = 1.5 MINUTES
 
+/atom/movable/screen/alert/status_effect/buff/enlarge
+	name = "Enlarged"
+	desc = "I am magically enlarged."
+	icon_state = "buff"
+
+/datum/status_effect/buff/enlarge
+	id = "enlarge"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/enlarge
+	effectedstats = list("strength" = 2,"constitution" = 2, "speed" = -2)
+	duration = 1.5 MINUTES
+
+/datum/status_effect/buff/enlarge/on_apply()
+	. = ..()
+	if(!(isseelie(owner)))
+		to_chat(owner, span_warning("I feel myself growing leaps and bounds!"))
+		ADD_TRAIT(owner, TRAIT_DEATHBYSNUSNU, MAGIC_TRAIT)
+		owner.transform = owner.transform.Scale(1.25, 1.25)
+		owner.transform = owner.transform.Translate(0, (0.25 * 16))
+		owner.mob_size += 1
+		owner.update_transform()
+	else
+		to_chat(owner, span_warning("I can feel arcyne magick supplement my tiny frame!"))
+		
+	
+
+
+/datum/status_effect/buff/enlarge/on_remove()
+	. = ..()   
+	if(!(isseelie(owner)))
+		to_chat(owner, span_warning("I feel myself shrinking again.."))
+		REMOVE_TRAIT(owner, TRAIT_DEATHBYSNUSNU, MAGIC_TRAIT) 
+		owner.transform = owner.transform.Translate(0, -(0.25 * 16))
+		owner.transform = owner.transform.Scale(1/1.25, 1/1.25)
+		owner.mob_size -= 1  
+		owner.update_transform()
+	else
+		to_chat(owner, span_warning("I can feel the strengthening magicks fade from my small body.."))
+	
+
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
