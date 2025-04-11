@@ -196,12 +196,6 @@
 		for(var/S in jobstats)
 			H.change_stat(S, jobstats[S])
 
-	for(var/X in peopleknowme)
-		for(var/datum/mind/MF in get_minds(X))
-			H.mind.person_knows_me(MF)
-	for(var/X in peopleiknow)
-		for(var/datum/mind/MF in get_minds(X))
-			H.mind.i_know_person(MF)
 
 	if(H.islatejoin && show_in_credits)
 		var/used_title = title
@@ -227,6 +221,14 @@
 	
 	if(GLOB.hugbox_duration)
 		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
+
+/datum/job/proc/initialise_memories(mob/living/H)
+	for(var/X in peopleknowme)
+		for(var/datum/mind/MF in get_minds(X))
+			H.mind.person_knows_me(MF)
+	for(var/X in peopleiknow)
+		for(var/datum/mind/MF in get_minds(X))
+			H.mind.i_know_person(MF)
 
 /mob/living/carbon/human/proc/hugboxing_start()
 	to_chat(src, span_warning("I will be in danger once I start moving."))
