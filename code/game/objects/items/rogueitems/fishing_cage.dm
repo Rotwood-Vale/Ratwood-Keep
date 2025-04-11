@@ -10,7 +10,9 @@
 	var/deployed = 0
 	var/obj/item/caught
 	var/obj/item/bait
-	var/time2catch = 20 MINUTES
+	// Until crabs and lobsters can be caught in other ways
+	// This taking any length of time is insane
+	var/time2catch = 20 SECONDS 
 
 /obj/item/fishingcage/attack_self(mob/user)
 	. = ..()
@@ -22,7 +24,7 @@
 
 	user.visible_message(span_notice("[user] begins deploying the fishing cage..."), \
 						span_notice("I begin deploying the fishing cage..."))
-	var/deploy_speed = 15 SECONDS - (user.mind.get_skill_level(/datum/skill/labor/fishing) * 2 SECONDS)
+	var/deploy_speed = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 
 	if(!is_valid_fishing_spot(T))
 		to_chat(user, span_warning("This body of water seems devoid of aquatic life..."))
@@ -40,10 +42,10 @@
 
 /obj/item/fishingcage/attack_hand(mob/user)
 	if(deployed)
-		var/deploy_speed = 15 SECONDS - (user.mind.get_skill_level(/datum/skill/labor/fishing) * 2 SECONDS)
+		var/deploy_speed = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 		if(caught)
-			user.visible_message(span_notice("[user] begins to harvest the shellfish from the cage..."), \
-								span_notice("I begin harvesting the shellfish from the cage..."))
+			user.visible_message(span_notice("[user] begins to harvest from the cage..."), \
+								span_notice("I begin harvesting the from the cage..."))
 			if(do_after(user, deploy_speed, target = src))
 				STOP_PROCESSING(SSobj, src)
 				icon_state = "fishingcage_deployed"
@@ -77,13 +79,7 @@
 			I.forceMove(src)
 			bait = I
 			check_counter = world.time
-			var/skill = user.mind.get_skill_level(/datum/skill/labor/fishing)
-			if(skill > 1) //novice and no skill are both 20 minutes
-				time2catch = 25 MINUTES - 5 MINUTES * skill 
-			if(skill == 5)
-				time2catch = 3 MINUTES 
-			if(skill == 6)
-				time2catch = 90 SECONDS 
+			time2catch = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 5, slowest = 40) //in seconds
 			icon_state = "fishingcage_ready"
 			START_PROCESSING(SSobj, src)
 			return
@@ -97,3 +93,9 @@
 			icon_state = "fishingcage_caught"
 			QDEL_NULL(bait)
 	..()
+
+/obj/item/fishingcage/examine(mob/user)
+	. = ..()
+	if(icon_state == "fishingcage_caught")
+		. += span_warning("Something seems to be inside...")
+	
