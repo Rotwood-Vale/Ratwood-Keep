@@ -36,7 +36,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff
-	backpack_contents = list(/obj/item/clothing/mask/rogue/pestra, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele)
+	backpack_contents = list(/obj/item/clothing/mask/rogue/pestra, /obj/item/needle/pestra, /obj/item/natural/worms/leech/cheele, /obj/item/reagent_containers/lux)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)	//average wrestling, for wrestling down deadites
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)	//More treatment then acolytes

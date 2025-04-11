@@ -16931,6 +16931,8 @@
 /obj/item/reagent_containers/glass/alembic,
 /obj/item/reagent_containers/hypospray/medipen/sealbottle/purify,
 /obj/item/storage/fancy/skit,
+/obj/item/reagent_containers/lux,
+/obj/item/storage/fancy/skit,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church)
 "iOF" = (
@@ -30882,6 +30884,9 @@
 /area/rogue/indoors/town/bath)
 "qoM" = (
 /obj/structure/table/vtable,
+/obj/item/reagent_containers/lux,
+/obj/item/reagent_containers/lux,
+/obj/item/reagent_containers/lux,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "qoN" = (
