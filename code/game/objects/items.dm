@@ -677,7 +677,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 // for items that can be placed in multiple slots
 // The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
-/obj/item/proc/equipped(mob/user, slot, initial = FALSE)
+/obj/item/proc/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 	for(var/X in actions)
@@ -685,7 +685,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
-	if(!initial)
+	if(!initial && !silent) // Only non initial, non silent play (silent is false by default)
 		var/slotbit = slotdefine2slotbit(slot)
 		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)

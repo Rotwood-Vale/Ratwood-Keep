@@ -238,7 +238,7 @@
 	sellprice = 666
 	var/active_item
 
-/obj/item/clothing/ring/dragon_ring/equipped(mob/living/user)
+/obj/item/clothing/ring/dragon_ring/equipped(mob/living/user, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(active_item)
 		return

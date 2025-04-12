@@ -16,7 +16,7 @@
 	if(contents.len)
 		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
 
-/obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
+/obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		user.become_blind("blindfold_[REF(src)]")
