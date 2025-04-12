@@ -1532,6 +1532,33 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 // Roguetown
 
+#define VALID_FISHING_SPOTS list(\
+	/turf/open/water/river,\
+	/turf/open/water/cleanshallow,\
+	/turf/open/water/sea,\
+	/turf/open/water/sea/deep,\
+	/turf/open/water/swamp,\
+	/turf/open/water/swamp/deep )
+
+//Valid spots for fishing add to it if there's more.
+/proc/is_valid_fishing_spot(turf/T)
+	for(var/i in VALID_FISHING_SPOTS)
+		if(istype(T, i))
+			return TRUE
+	return FALSE
+
+
+#define VALID_HUNTING_AREAS list(\
+	/area/rogue/outdoors/bog )
+
+proc/is_valid_hunting_area(area/A)
+	for(var/i in VALID_HUNTING_AREAS)
+		if(istype(A, i))
+			return TRUE
+	return FALSE
+
+
+
 /proc/minone(input)
 	if(!input)
 		return FALSE
