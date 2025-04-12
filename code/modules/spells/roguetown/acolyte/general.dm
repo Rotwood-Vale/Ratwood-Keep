@@ -99,7 +99,11 @@
 			if(/datum/patron/divine/pestra)
 				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
 				// pestra always heals a little more toxin damage and restores a bit more blood
-				target.adjustToxLoss(-situational_bonus)
+				var/list/wCount = target.get_wounds()
+				if(wCount.len > 0)
+					conditional_buff = TRUE
+					situational_bonus = 1.5
+				target.adjustToxLoss(-10)
 				target.blood_volume += BLOOD_VOLUME_SURVIVE
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
@@ -117,7 +121,7 @@
 				situational_bonus = 0
 				if (HAS_TRAIT(target, TRAIT_PACIFISM))
 					conditional_buff = TRUE
-					situational_bonus = 2.5
+					situational_bonus = 1.5
 				if (HAS_TRAIT(user, TRAIT_PACIFISM))
 					conditional_buff = TRUE
 					situational_bonus += 1.5
