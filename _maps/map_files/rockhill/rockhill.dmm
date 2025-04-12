@@ -27065,9 +27065,7 @@
 /area/rogue/indoors/town/manor)
 "nYg" = (
 /obj/structure/roguewindow/stained/silver,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
+/turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/church)
 "nYt" = (
 /obj/structure/closet/crate/chest{
