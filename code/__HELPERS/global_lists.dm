@@ -22,6 +22,8 @@
 	// Keybindings
 	init_keybindings()
 
+	initialize_anvil_recipe_prices() // Precompute recipe prices on startup
+
 	GLOB.emote_list = init_emote_list()
 
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
