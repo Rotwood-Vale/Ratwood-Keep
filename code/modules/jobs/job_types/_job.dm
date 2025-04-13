@@ -82,6 +82,8 @@
 
 	var/job_greet_text = TRUE
 	var/tutorial = null
+	/// If non-null, will be used instead of the tutorial variable for Seelie characters.
+	var/seelie_tutorial = null
 
 	var/whitelist_req = FALSE
 
@@ -156,21 +158,13 @@
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
-	if(tutorial)
-		if(isseelie(player))		//If player is a Seelie
-			change_tutorial(player)	//Check if job flavortext needs changed (hand and maid currently)
+	// If we're a Seelie, use the seelie tutorial if it exists.
+	// Otherwise, use the normal tutorial.
+	// TODO: Add a general system for species-specific tutorial overrides?
+	var/use_tutorial = (isseelie(player) && seelie_tutorial) || tutorial
+	if(use_tutorial)
 		to_chat(player, span_notice("*-----------------*"))
-		to_chat(player, span_notice(tutorial))
-
-//Custom join messages for SEELIE ONLY, will not trigger for other races unless explicitly called to
-/datum/job/proc/change_tutorial(mob/player)
-	if(title == "Hand")		//Change tutorial message for Seelie Hand
-		tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion- now you are one of the highest status fae within the realm itself. It's come at a cost, youve lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
-	else if(title == "Servant")		//Change tutorial message for Seelie maids
-		tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but youve allowed the more chaotic ones to fade to memory."
-	else if(title == "Prisoner (Rockhill)" || title == "Prisoner (Bog)")
-		tutorial = "Thrown in this accursed place, the colar around your neck prevents any and all magic you mightve had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
-	return
+		to_chat(player, span_notice(use_tutorial))
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it

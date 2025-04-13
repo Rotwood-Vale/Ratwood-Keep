@@ -88,7 +88,8 @@
 		if(pulling != src)
 			if(isliving(pulling))
 				var/mob/living/L = pulling
-				if((!slowed_by_drag || (L.mobility_flags & MOBILITY_STAND) || L.buckled || grab_state >= GRAB_AGGRESSIVE) && !(isseelie(src)))
+				// Seelies are always slowed by dragging mobs, unless they're dragging another seelie.
+				if((!slowed_by_drag || (L.mobility_flags & MOBILITY_STAND) || L.buckled || grab_state >= GRAB_AGGRESSIVE) && (!isseelie(src) || isseelie(L)))
 					remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
 					return
 				add_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING, multiplicative_slowdown = PULL_PRONE_SLOWDOWN)

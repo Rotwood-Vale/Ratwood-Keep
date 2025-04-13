@@ -48,13 +48,8 @@
 
 	// Seelie stuff
 	if(isseelie(Dead))
-		var/mob/living/carbon/human/fairy_target = Dead
-		fairy_target.set_heartattack(FALSE)
-		var/obj/item/organ/wings/Wing = fairy_target.getorganslot(ORGAN_SLOT_WINGS)
-		if(Wing == null)
-			var/wing_type = fairy_target.dna.species.organs[ORGAN_SLOT_WINGS]
-			var/obj/item/organ/wings/seelie/new_wings = new wing_type()
-			new_wings.Insert(fairy_target)
+		var/datum/species/seelie/seelie = Dead.dna.species
+		seelie.regenerate_wings()
 
 	Dead.update_body()
 	Dead.visible_message(span_notice("[Dead] is revived!"), span_green("I awake from the void."))

@@ -47,7 +47,7 @@
 			H.STASTR = clamp(roll("4d6-4"), 1, 20)
 			H.STAINT = clamp(roll("4d6-4"), 1, 20)
 			H.STALUC = clamp(roll("4d6-4"), 1, 20)
-		else if(isseelie(H))
+		else
 			H.mind.AddSpell(new SPELL_SEELIE_DUST)
 			H.mind.AddSpell(new SPELL_SUMMON_RAT)
 			H.mind.AddSpell(new SPELL_STRIP)
