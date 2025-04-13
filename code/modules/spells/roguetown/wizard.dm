@@ -916,9 +916,12 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		if(HL.real_name == input)
 			var/message = stripped_input(user, "You make a connection. What are you trying to say?")
 			if(!message)
+				revert_cast()
 				return
 			to_chat(HL, "Arcyne whispers fill the back of my head, resolving into a clear, if distant, voice: </span><font color=#7246ff>\"[message]\"</font>")
+			HL.playsound_local(HL, 'sound/magic/message.ogg', 100)
 			log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
+			to_chat(user, span_notice("I close my eyes and focus my mind towards [HL.real_name]... The words I speak enter their head."))
 			// maybe an option to return a message, here?
 			return TRUE
 	to_chat(user, span_warning("I seek a mental connection, but can't find [input]."))

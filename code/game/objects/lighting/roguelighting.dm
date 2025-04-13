@@ -238,6 +238,14 @@
 			return
 		if(!W)
 			return
+
+		// Simple way to check if the item is no longer in the players hand
+		// Even if it somehow isn't deleted yet, this will stop the infinite fuel bug.
+		if(user.get_active_held_item() != W)
+			to_chat(user, span_warning("That item is no longer in my hand..."))
+			return
+
+		user.dropItemToGround(W)
 		qdel(W)
 		user.visible_message(span_warning("[user] feeds [W] to [src]."))
 		if(initial(fueluse))

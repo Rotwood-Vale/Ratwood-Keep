@@ -100,7 +100,7 @@
 	. = ..()
 
 //stops TK grabs being equipped anywhere but into hands
-/obj/item/tk_grab/equipped(mob/user, slot)
+/obj/item/tk_grab/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HANDS)
 		return

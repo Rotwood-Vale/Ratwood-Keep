@@ -60,6 +60,7 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)
+
 		if(num_players_in_round() <= 25)
 			for(var/datum/roguestock/stockpile/A in stockpile_datums) //Generate some remote resources
 				A.held_items[2] += A.passive_generation
