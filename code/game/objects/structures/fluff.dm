@@ -82,7 +82,7 @@
 		if(!(M.mobility_flags & MOBILITY_STAND))
 			if(passcrawl)
 				return TRUE
-	if(icon_state == "woodrailing" && dir in CORNERDIRS)
+	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)
 			if(SOUTHEAST)
@@ -113,7 +113,7 @@
 		if(!(M.mobility_flags & MOBILITY_STAND))
 			if(passcrawl)
 				return TRUE
-	if(icon_state == "woodrailing" && dir in CORNERDIRS)
+	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)
 			if(SOUTHEAST)
