@@ -7,7 +7,7 @@ dreamchecker = true
 use_typepath_names = true
 
 [code_standards]
-disallow_relative_type_definitions = false
+disallow_relative_type_definitions = true
 disallow_relative_proc_definitions = true
 
 [diagnostics]
