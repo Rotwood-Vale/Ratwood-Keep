@@ -510,7 +510,7 @@
 		else
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
-proc/get_attack_flavor_text(mob/user, obj/item/I) // Arguments very important. The name comes from the fact that if you don't add the right arguments, then arguments break out between you and your screen. You start screaming, "WHY DOESN'T IT WOOOOORK?!!!".
+/proc/get_attack_flavor_text(mob/user, obj/item/I) // Arguments very important. The name comes from the fact that if you don't add the right arguments, then arguments break out between you and your screen. You start screaming, "WHY DOESN'T IT WOOOOORK?!!!".
 	if(!I) // If no item, return blank.
 		return ""
 
