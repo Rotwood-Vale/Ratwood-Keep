@@ -260,7 +260,7 @@
 				W.zombie_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
 				B.burn_dam = 20
-				W.Destroy(0)																// Handle destruction of the wound
+				qdel(W) // Handle destruction of the wound
 
 			// Check for and remove werewolf infection
 			if (W.werewolf_infection_timer)
