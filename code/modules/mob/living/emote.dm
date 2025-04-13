@@ -741,6 +741,13 @@
 	message = "stares blankly."
 	message_param = "looks at %t."
 
+/datum/emote/living/lower	// the emote that signals an animal is tamed. Previously smile was used. The chicken smiles. The pig smiles. Wut.
+	key = "lower_head"
+	key_third_person = "lowers_head"
+	message = "lowers its head."
+	message_param = "lowers its head."
+	emote_type = EMOTE_VISIBLE
+
 /datum/emote/living/nod
 	key = "nod"
 	key_third_person = "nods"
