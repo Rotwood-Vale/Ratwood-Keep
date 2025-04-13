@@ -4,7 +4,7 @@
  */
 
 /// Takes a recipe and a key-type list and checks if said recipe can be done with available stuff.
-proc/check_contents(datum/crafting_recipe/R, list/contents)
+/proc/check_contents(datum/crafting_recipe/R, list/contents)
 	contents = contents["other"]
 	main_loop:
 		for(var/A in R.reqs)
@@ -32,7 +32,7 @@ proc/check_contents(datum/crafting_recipe/R, list/contents)
 	return TRUE
 
 /// Gets a list of things accessable for crafting by user.
-proc/get_environment(mob/user)
+/proc/get_environment(mob/user)
 	var/enviroment = list()
 	for(var/obj/item/I in user.held_items)
 		enviroment += I
@@ -52,7 +52,7 @@ proc/get_environment(mob/user)
 	return enviroment
 
 /// Takes a list of things and makes a list of key-types to values-amounts of said type in the list.
-proc/get_surroundings(mob/user)
+/proc/get_surroundings(mob/user)
 	var/surroundings = list()
 	surroundings["tool_behaviour"] = list()
 	surroundings["other"] = list()
@@ -80,7 +80,7 @@ proc/get_surroundings(mob/user)
 	return surroundings
 
 /// Takes recipe, a key-type list, and a user and checks if there are enough tools to do the stuff, checks bugs one level deep.
-proc/check_tools(mob/user, datum/crafting_recipe/R, list/contents)
+/proc/check_tools(mob/user, datum/crafting_recipe/R, list/contents)
 	if(!R.tools.len)
 		return TRUE
 	var/list/possible_tools = list()
@@ -112,7 +112,7 @@ proc/check_tools(mob/user, datum/crafting_recipe/R, list/contents)
 	return TRUE
 
 /// Attempts to build the result of a recipe.
-proc/construct_item(mob/user, datum/crafting_recipe/R)
+/proc/construct_item(mob/user, datum/crafting_recipe/R)
 	if(user.doing)
 		return
 	var/list/contents = get_surroundings(user)
@@ -235,7 +235,7 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 
 // Used for multi-stage structures.
 /// Checks if the user can craft the given recipe.
-proc/check_constructability(mob/user, datum/crafting_recipe/R)
+/proc/check_constructability(mob/user, datum/crafting_recipe/R)
 
 	R = new R()
 
@@ -322,7 +322,7 @@ proc/check_constructability(mob/user, datum/crafting_recipe/R)
 */
 
 /// Takes recipe and a user, loops over the recipes reqs var and tries to find everything in the list make by get_environment and delete it/add to parts list, then returns the said list.
-proc/del_reqs(datum/crafting_recipe/R, mob/user)
+/proc/del_reqs(datum/crafting_recipe/R, mob/user)
 	var/list/surroundings
 	var/list/Deletion = list()
 	. = list()
@@ -448,7 +448,7 @@ proc/del_reqs(datum/crafting_recipe/R, mob/user)
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-proc/roguecraft(location, control, params, mob/user)
+/proc/roguecraft(location, control, params, mob/user)
 	if(user.doing)
 		return
 	var/area/A = get_area(user)
