@@ -252,7 +252,7 @@
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
 
-obj/structure/bars/steel
+/obj/structure/bars/steel
 	name = "steel bars"
 	max_integrity = 2000
 
