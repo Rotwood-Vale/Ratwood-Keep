@@ -39,6 +39,21 @@ GLOBAL_LIST_EMPTY(biggates)
 	. = ..()
 	open()
 
+/obj/structure/gate/church1
+	name = "gate"
+	desc = "A steel, strong gate."
+	icon = 'icons/roguetown/misc/churchgates.dmi'
+	icon_state = "gates1"
+	bound_width = 32
+	bound_height = 32
+
+/obj/structure/gate/church1/preopen
+	icon_state = "gates0"
+
+/obj/structure/gate/church1/preopen/Initialize()
+	. = ..()
+	open()
+
 /obj/gblock
 	name = ""
 	desc = ""
@@ -181,3 +196,15 @@ GLOBAL_LIST_EMPTY(biggates)
 		if(do_after(user, used_time, target = user))
 			attached_gate.toggle()
 
+/obj/structure/gate/church2
+	name = "gate"
+	desc = "A steel, strong gate."
+	icon = 'icons/roguetown/misc/churchgates.dmi'
+	icon_state = "Gates2"	
+
+/obj/structure/gate/preopen
+	icon_state = "gate0"
+
+/obj/structure/gate/preopen/Initialize()
+	. = ..()
+	open()

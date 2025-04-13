@@ -954,6 +954,7 @@
 #include "code\game\objects\structures\fence.dm"
 #include "code\game\objects\structures\fireaxe.dm"
 #include "code\game\objects\structures\fluff.dm"
+#include "code\game\objects\structures\gods_statues.dm"
 #include "code\game\objects\structures\guillotine.dm"
 #include "code\game\objects\structures\hell.dm"
 #include "code\game\objects\structures\kitchen_spike.dm"
