@@ -2,7 +2,7 @@
 	var/name
 	var/list/additional_items = list()
 	var/appro_skill = /datum/skill/craft/blacksmithing
-	var/req_bar
+	var/obj/item/ingot/req_bar
 	var/created_item
 	var/skill_level = 2
 	var/obj/item/needed_item
