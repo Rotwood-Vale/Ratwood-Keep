@@ -149,8 +149,31 @@
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			if (do_after(user, 3 SECONDS, target = src))
 				apply_farming_fatigue(user, 10)
-				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
+				T.ChangeTurf(/turf/open/floor/rogue/dirt/npoor, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			return
+
+		if(istype(T, /turf/open/floor/rogue/dirt/nrich))
+			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			if(do_after(user, 2 SECONDS, target = src))
+				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+				var/obj/structure/soil/soil = get_soil_on_turf(T)
+				if(soil)
+					soil.user_till_soil(user)
+				else
+					apply_farming_fatigue(user, 8)
+					new /obj/structure/soil/great(T)
+			return
+		if(istype(T, /turf/open/floor/rogue/dirt/npoor))
+			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			if(do_after(user, 2 SECONDS, target = src))
+				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+				var/obj/structure/soil/soil = get_soil_on_turf(T)
+				if(soil)
+					soil.user_till_soil(user)
+				else
+					apply_farming_fatigue(user, 8)
+					new /obj/structure/soil/poor(T)
 			return
 		if(istype(T, /turf/open/floor/rogue/dirt))
 			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
@@ -233,7 +256,7 @@
 		playsound(loc,"plantcross", 80, FALSE)
 		return
 	..()
-		
+
 /obj/item/rogueweapon/pitchfork/ungrip(mob/living/carbon/user, show_message = TRUE)
 	if(forked.len)
 		var/turf/T = get_turf(user)
