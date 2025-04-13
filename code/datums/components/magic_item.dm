@@ -18,7 +18,8 @@
 
 /datum/component/magic_item/proc/add_enchantment(var/datum/magic_item/magical_item_effect)
 	if(islist(magical_item_effect))
-		for(var/datum/magic_item/effect in magical_item_effect)
+		var/list/magical_item_effects = magical_item_effect
+		for(var/datum/magic_item/effect in magical_item_effects)
 			if(!istype(effect, /datum/magic_item))
 				continue
 			if(effect in magical_effects)
