@@ -39,7 +39,7 @@
 		"[user] works the lux into [target]'s innards.",
 		"[user] works the lux into [target]'s innards.")
 		return FALSE
-	if(target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+	if(target.has_status_effect(/datum/status_effect/debuff/death_embrace))
 		display_results(user, target, span_notice("[target]'s soul is barely intact! They can not be brought back a third time."),
 		"[user] works the lux into [target]'s innards.",
 		"[user] works the lux into [target]'s innards.")
@@ -47,6 +47,7 @@
 	display_results(user, target, span_notice("You succeed in restarting [target]'s hearth with the infusion of lux."),
 		"[user] works the lux into [target]'s innards.",
 		"[user] works the lux into [target]'s innards.")
+	target.adjustOxyLoss(-100)
 	if(!target.revive(full_heal = FALSE))
 		to_chat(user, span_warning("Nothing happens."))
 		return FALSE
@@ -58,11 +59,10 @@
 	target.grab_ghost(force = TRUE) // even suicides
 	target.emote("breathgasp")
 	target.Jitter(100)
-	target.adjustOxyLoss(-100)
-	if(target.has_status_effect(/datum/status_effect/debuff/death_embrace))
-		target.apply_status_effect(/datum/status_effect/debuff/death_claimed)	//revived twice by a physician without divine help? Soul nearly torn apart.
+	if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
+		target.apply_status_effect(/datum/status_effect/debuff/death_embrace)	//revived twice by a physician without divine help? Soul nearly torn apart.
 	else
-		target.apply_status_effect(/datum/status_effect/debuff/death_embrace)	//revived once by a physician without divine help? Soul damaged.
+		target.apply_status_effect(/datum/status_effect/debuff/death_weaken)	//revived once by a physician without divine help? Soul damaged.
 	target.update_body()
 	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
 	qdel(tool)
