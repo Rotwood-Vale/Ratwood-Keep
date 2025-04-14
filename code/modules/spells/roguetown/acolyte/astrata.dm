@@ -173,12 +173,11 @@
 		if(L.mind)
 			var/datum/antagonist/vampirelord/lesser/V = L.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
 			if(V)
-				if(!V.disguised && smitelevel == 2) // Being disguised makes you immune to being smited. If you can hide from astrata's rays in dae, you can hide from the smite.
-					user.visible_message(span_warning("[usr] brings forth the Firstborn's power and smites [L]!"))
-					smite_effect(V)
-					return
-				else
+				if(V.disguised || smitelevel != 2) // Being disguised makes you immune to being smited. If you can hide from astrata's rays in dae, you can hide from the smite.
 					continue
+				user.visible_message(span_warning("[user] brings forth the Firstborn's power and smites [L]!"))
+				smite_effect(V)
+				return
 
 			if(L.mind.special_role == "Vampire Lord" && smitelevel == 2)
 				var/datum/antagonist/vampirelord/V_lord = L.mind.has_antag_datum(/datum/antagonist/vampirelord/)

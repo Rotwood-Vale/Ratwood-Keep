@@ -1684,7 +1684,7 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/head/roguetown/roguehood/bloodred
-	name = "bloodred hood"
+	name = "blood-red hood"
 	desc = "My cure is most effective."
 	icon_state = "feldhood"
 	item_state = "feldhood"

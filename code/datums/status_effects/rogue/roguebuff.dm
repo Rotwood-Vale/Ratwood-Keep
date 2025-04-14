@@ -56,7 +56,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/mealbuff
 	name = "Good meal"
-	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier."
+	desc = "A meal a day keeps the barber away, or at least it makes it slightly easier."
 	icon_state = "foodbuff"
 
 /datum/status_effect/buff/mealbuff/on_apply()
@@ -626,10 +626,9 @@
 /datum/status_effect/buff/healing/tick()
 	var/obj/effect/temp_visual/heal_rogue/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
 	H.color = "#FFD700"
-	var/list/wCount = owner.get_wounds()
 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
 		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
-	if(wCount.len > 0)
+	if(length(owner.get_wounds()))
 		owner.heal_wounds(healing_on_tick)
 		owner.update_damage_overlays()
 	owner.adjustBruteLoss(-healing_on_tick, 0)

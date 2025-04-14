@@ -28,7 +28,7 @@
 	return ..(M, user, src, drinking = TRUE)  // Call parent, but mark as drinking
 
 /obj/item/reagent_containers/hypospray/medipen/sty/inject(mob/living/M, mob/user)
-	return ..(M, user, src, drinking = FALSE)  // Call parent with normal injection behavior
+	return ..(M, user, src)  // Call parent with normal injection behavior
 
 /obj/item/reagent_containers/hypospray/proc/inject(mob/living/M, mob/user, obj/item/reagent_containers/hypospray/this, drinking = FALSE)
 	if(!this.reagents.total_volume)
