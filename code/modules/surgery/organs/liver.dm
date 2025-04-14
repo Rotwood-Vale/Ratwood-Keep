@@ -5,7 +5,7 @@
 	name = "liver"
 	icon_state = "liver"
 	w_class = WEIGHT_CLASS_SMALL
-	zone = BODY_ZONE_CHEST
+	zone = BODY_ZONE_PRECISE_STOMACH
 	slot = ORGAN_SLOT_LIVER
 	desc = ""
 

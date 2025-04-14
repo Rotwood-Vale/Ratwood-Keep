@@ -207,7 +207,11 @@
 		var/used_title = title
 		if((H.gender == FEMALE) && f_title)
 			used_title = f_title
-		scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
+
+		// Migrant_type isn't used, job titles apply to all, and by this point in the code
+		// This is the only thing I can think of that distinguishes towners from all outside forces...
+		if(peopleknowme.len) 
+			scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
 
 	if(give_bank_account)
 		if(give_bank_account > 1)

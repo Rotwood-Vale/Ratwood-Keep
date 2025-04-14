@@ -44,7 +44,7 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
-	chargedrain = 1
+	chargedrain = 0.9
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
@@ -85,7 +85,7 @@
 
 
 /obj/item/rogueweapon/flail/sflail
-	force = 20
+	force = 21
 	icon_state = "flail"
 	desc = "This is a swift, steel flail. Strikes hard and fast."
 	smeltresult = /obj/item/ingot/steel

@@ -329,7 +329,7 @@
 		UnregisterSignal(leash_master, COMSIG_MOVABLE_MOVED)
 		leash_master = null
 
-/obj/item/leash/equipped(mob/user)
+/obj/item/leash/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!leash_pet) //Don't apply statuses with a petless leash.
 		return

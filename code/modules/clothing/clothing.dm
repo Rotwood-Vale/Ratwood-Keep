@@ -311,7 +311,7 @@
 					user.vars[variable] = user_vars_remembered[variable]
 		user_vars_remembered = initial(user_vars_remembered) // Effectively this sets it to null.
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if (!istype(user))
 		return

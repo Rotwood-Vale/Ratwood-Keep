@@ -59,7 +59,7 @@
 			var/mob/M = loc
 			to_chat(M,span_warning("The sensors on the [src] change rapidly!"))
 
-/obj/item/clothing/under/equipped(mob/user, slot)
+/obj/item/clothing/under/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if(adjusted)
 		adjusted = NORMAL_STYLE
