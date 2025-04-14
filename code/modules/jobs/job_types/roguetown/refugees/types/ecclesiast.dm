@@ -46,6 +46,7 @@
 			cloak = /obj/item/clothing/cloak/templar/malummite
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
+			cloak = /obj/item/clothing/tabard/crusader/ravox
 		if(/datum/patron/divine/eora)
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
@@ -92,32 +93,215 @@
 					H.verbs |= /mob/living/carbon/human/proc/torture_victim
 					H.verbs |= /mob/living/carbon/human/proc/faith_test
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-				else
-					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+				if(/datum/patron/divine/astrata)
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
 					belt = /obj/item/storage/belt/rogue/leather
 					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-					armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-					wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					backr = /obj/item/rogueweapon/shield/wood
+					beltr = /obj/item/rogueweapon/sword/short
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("strength", 2)
+					H.change_stat("endurance", 2)
+					H.change_stat("constitution", 2)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/pestra)
+					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
 					backl = /obj/item/storage/backpack/rogue/satchel
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/mace
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					H.change_stat("strength", 2)
+					H.change_stat("endurance", 1)
+					H.change_stat("constitution", 3)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/noc)
+					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					r_hand = /obj/item/rogueweapon/halberd/bardiche
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("strength", 1)
 					H.change_stat("endurance", 2)
+					H.change_stat("intelligence", 3)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/dendor)
+					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					r_hand = /obj/item/rogueweapon/spear
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("endurance", 3)
+					H.change_stat("constitution", 3)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/ravox)
+					H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					beltr = /obj/item/rogueweapon/sword/iron
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("strength", 4)
+					H.change_stat("endurance", 1)
 					H.change_stat("constitution", 1)
-					H.change_stat("speed", 1)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/necra)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/plate
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("strength", 2)
+					H.change_stat("endurance", 2)
+					H.change_stat("constitution", 2)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/malum)
+					H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 4, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					beltr = /obj/item/rogueweapon/mace
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					backpack_contents = list(/obj/item/rogueweapon/hammer/iron = 1)
+					H.change_stat("strength", 2)
+					H.change_stat("endurance", 2)
+					H.change_stat("constitution", 2)
+					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+				if(/datum/patron/divine/eora)
+					H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+					pants = /obj/item/clothing/under/roguetown/tights/black
+					shoes = /obj/item/clothing/shoes/roguetown/armor
+					gloves = /obj/item/clothing/gloves/roguetown/leather
+					belt = /obj/item/storage/belt/rogue/leather
+					shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+					armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+					neck = /obj/item/clothing/neck/roguetown/gorget
+					backl = /obj/item/storage/backpack/rogue/satchel
+					beltr = /obj/item/rogueweapon/mace
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					H.change_stat("endurance", 3) //enough endurance to sex all day
+					H.change_stat("constitution", 3)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells(H)
