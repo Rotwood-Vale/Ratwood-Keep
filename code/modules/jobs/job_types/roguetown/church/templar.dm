@@ -135,12 +135,10 @@
 
 	if (ishuman(src))
 		var/mob/living/carbon/human/H = src
-
-		var/list/helmet_types = list("Visored", "Bucket Helm")
-		var/selected_helmet
 		
 		if (H.patron.name == "Astrata" || H.patron.name == "Necra")
-			selected_helmet = input(src, "Choose a helmet...", "Helmet") as anything in helmet_types
+			var/list/helmet_types = list("Visored", "Bucket Helm")
+			var/selected_helmet = input(src, "Choose a helmet...", "Helmet") as anything in helmet_types
 
 			// Redundant checks to avoid duplicating the list/prompt logic
 			if (H.patron.name == "Astrata")
