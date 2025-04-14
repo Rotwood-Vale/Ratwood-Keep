@@ -91,11 +91,18 @@
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,
-		/datum/body_marking_set/bellyscale,
-		/datum/body_marking_set/belly,
+		/datum/body_marking/tips,
+		/datum/body_marking/bellyscale,
+		/datum/body_marking/bellyscaleslim,
+		/datum/body_marking/bellyscalesmooth,
+		/datum/body_marking/bellyscaleslimsmooth,
+		/datum/body_marking/buttscale,
+		/datum/body_marking/backspots,
 		/datum/body_marking_set/bellysocks,
 		/datum/body_marking_set/tiger,
 		/datum/body_marking_set/tiger_dark,
+		/datum/body_marking/tonage,
+		/datum/body_marking/spotted,
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
