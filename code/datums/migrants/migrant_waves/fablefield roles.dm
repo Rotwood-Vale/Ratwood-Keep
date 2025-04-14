@@ -8,6 +8,7 @@
 	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/goliard
+	allowed_patrons = list(/datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/fablefield/goliard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -59,6 +60,7 @@
 	show_foreign_examine = TRUE
 
 /datum/outfit/job/roguetown/fablefield/troubadour
+	allowed_patrons = list(/datum/patron/divine/xylix)
 
 /datum/outfit/job/roguetown/fablefield/troubadour/pre_equip(mob/living/carbon/human/H)
 	..()
