@@ -260,7 +260,7 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 4, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 					pants = /obj/item/clothing/under/roguetown/tights/black
 					shoes = /obj/item/clothing/shoes/roguetown/armor
 					gloves = /obj/item/clothing/gloves/roguetown/leather
