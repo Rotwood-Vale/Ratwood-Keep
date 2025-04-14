@@ -304,7 +304,7 @@
 					backl = /obj/item/storage/backpack/rogue/satchel
 					beltr = /obj/item/rogueweapon/mace
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-					H.change_stat("endurance", 3) //enough endurance to sex all day
+					H.change_stat("endurance", 3) //enough endurance to sex all day (joke)
 					H.change_stat("constitution", 3)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
