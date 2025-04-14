@@ -30,6 +30,8 @@
 		/datum/sprite_accessory/frills/earlike,
 		/datum/sprite_accessory/frills/earlike_thick,
 		/datum/sprite_accessory/frills/earlike_angled,
+		/datum/sprite_accessory/frills/cobrahood,
+		/datum/sprite_accessory/frills/cobrahood_ears,
 		)
 
 /datum/customizer/organ/frills/anthro
