@@ -2124,6 +2124,7 @@
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\crotch_nuzzle.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\cunnilingus.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\foot_lick.dm"
+#include "modular_redmoon\code\datums\sexcon\sex_actions\oral\kissing.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\nuzzle_armpit.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\rimming.dm"
 #include "modular_redmoon\code\datums\sexcon\sex_actions\oral\suck_balls.dm"
