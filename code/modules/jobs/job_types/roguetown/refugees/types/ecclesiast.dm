@@ -46,7 +46,7 @@
 			cloak = /obj/item/clothing/cloak/templar/malummite
 		if(/datum/patron/divine/ravox)
 			neck = /obj/item/clothing/neck/roguetown/psicross/ravox
-			cloak = /obj/item/clothing/tabard/crusader/ravox
+			cloak = /obj/item/clothing/cloak/tabard/crusader/ravox
 		if(/datum/patron/divine/eora)
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora
 			cloak = /obj/item/clothing/cloak/tabard/crusader/eora
@@ -168,10 +168,10 @@
 					neck = /obj/item/clothing/neck/roguetown/gorget
 					backl = /obj/item/storage/backpack/rogue/satchel
 					r_hand = /obj/item/rogueweapon/halberd/bardiche
-					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+					beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 					H.change_stat("strength", 1)
-					H.change_stat("endurance", 2)
-					H.change_stat("intelligence", 3)
+					H.change_stat("endurance", 1)
+					H.change_stat("intelligence", 4)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells(H)
@@ -286,7 +286,7 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
