@@ -225,7 +225,7 @@
 			var/obj/item/I
 			if(sublimb_grabbed == BODY_ZONE_PRECISE_L_HAND && M.active_hand_index == 1)
 				I = M.get_active_held_item()
-			else 
+			else
 				if(sublimb_grabbed == BODY_ZONE_PRECISE_R_HAND && M.active_hand_index == 2)
 					I = M.get_active_held_item()
 				else
@@ -544,6 +544,10 @@
 		to_chat(user, span_warning("Sigh. It's not bleeding."))
 		return
 	var/mob/living/carbon/C = grabbed
+	if(istype(C, /mob/living/carbon/human/species/goblin)|| istype(C, /mob/living/carbon/human/species/goblinp))
+		to_chat(user, span_warning("You recoil at the foul taste of graggar corrupted blood."))
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
+		return
 	if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
 		to_chat(user, span_warning("Sigh. No blood."))
 		return
