@@ -48,12 +48,13 @@
 	if(prob(chance2hit))
 		return zone
 	else
-		if(prob(chance2hit+25))
+		var/accuracy2hit = chance2hit+25
+		if(prob(accuracy2hit))
 			if(check_zone(zone) == zone)
 				return zone
 			else
 				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
+					to_chat(user, span_warning("Accuracy fail! [accuracy2hit]%"))
 				return check_zone(zone)
 		else
 			if(user.client?.prefs.showrolls)
