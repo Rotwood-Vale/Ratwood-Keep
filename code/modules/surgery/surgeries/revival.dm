@@ -60,6 +60,7 @@
 	target.emote("breathgasp")
 	target.Jitter(100)
 	if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
+		target.remove_status_effect(/datum/status_effect/debuff/death_weaken)
 		target.apply_status_effect(/datum/status_effect/debuff/death_embrace)	//revived twice by a physician without divine help? Soul nearly torn apart.
 	else
 		target.apply_status_effect(/datum/status_effect/debuff/death_weaken)	//revived once by a physician without divine help? Soul damaged.
