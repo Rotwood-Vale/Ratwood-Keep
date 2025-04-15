@@ -33,7 +33,7 @@
 		H.real_name = "[title] [prev_real_name]"
 		H.name = "[title] [prev_name]"
 		
-		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, templar_helmet_choice)), 50)
+		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H), 50)
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -128,26 +128,23 @@
 	..()
 	H.virginity = TRUE
 
-/mob/proc/templar_helmet_choice()
-	if(!client)
-		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice)))
+/datum/job/roguetown/templar/proc/templar_helmet_choice(mob/living/carbon/human/H)
+	if(!H.client)
+		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H))
 		return
 
-	if (ishuman(src))
-		var/mob/living/carbon/human/H = src
-		
-		if (H.patron.name == "Astrata" || H.patron.name == "Necra")
-			var/list/helmet_types = list("Visored", "Bucket Helm")
-			var/selected_helmet = input(src, "Choose a helmet...", "Helmet") as anything in helmet_types
+	if (H.patron.name == "Astrata" || H.patron.name == "Necra")
+		var/list/helmet_types = list("Visored", "Bucket Helm")
+		var/selected_helmet = input(H, "Choose a helmet...", "Helmet") as anything in helmet_types
 
-			// Redundant checks to avoid duplicating the list/prompt logic
-			if (H.patron.name == "Astrata")
-				if (selected_helmet == "Visored")
-					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata(H), SLOT_HEAD)
-				else
-					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt(H), SLOT_HEAD)
-			else if (H.patron.name == "Necra")
-				if (selected_helmet == "Visored")
-					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra(H), SLOT_HEAD)
-				else
-					H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt(H), SLOT_HEAD)
+		// Redundant checks to avoid duplicating the list/prompt logic
+		if (H.patron.name == "Astrata")
+			if (selected_helmet == "Visored")
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata(H), SLOT_HEAD)
+			else
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt(H), SLOT_HEAD)
+		else if (H.patron.name == "Necra")
+			if (selected_helmet == "Visored")
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra(H), SLOT_HEAD)
+			else
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt(H), SLOT_HEAD)
