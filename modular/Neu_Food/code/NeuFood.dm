@@ -74,6 +74,71 @@
 	icon_state = "tomato_floor1"
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
+
+/*
+handle_interaction
+	- Takes the current item in your active hand, and everything in the location of the
+	  item you hit (so everything on the table) and runs through it all to find out what to do.
+	- Feeds it thou
+*/
+/obj/item/reagent_containers/food/snacks/proc/handle_interaction(mob/user, list/items)
+	//var/datum/cooking_method/c_method
+	var/obj/method_result
+	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items)
+
+	if (!recipe)
+		to_chat(user, "I can't make anything with these two items...")
+	else
+		for(var/I in items)
+			world.log << "[I]"
+		var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
+		method_result = recipe.result
+		to_chat(user, span_warning("[recipe.crafting_message]"))
+		playsound(user.loc, recipe.craftsound, 100)
+		var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
+		if(do_after(user, delay, src))
+			new method_result(src.loc) // Should always be on the table
+			var/list/player_items = list(user.get_active_held_item(), user.get_inactive_held_item())
+			user.drop_all_held_items()
+			for(var/obj/item/I in player_items)
+				I.forceMove(loc)
+			recipe.clear_items(items)
+
+					
+		//var/obj/item/I = user.get_active_held_item()
+		//user.dropItemToGround(I)
+		//qdel(I)
+
+// Attackby uses the item you touched so that's why it has to be on the table.
+// It's the easiest way to ensure this always happens on a table, which it probably should.
+// While I would usually call the parent procs food doesn't seem to benefit at all 
+// from doing this so I will try it without any calls. I check all the parent procs
+// There's nothing from what I can tell that matters
+/obj/item/reagent_containers/food/snacks/attackby(obj/item/I, mob/living/user, params)
+	
+	if(user.used_intent.blade_class == slice_bclass && I.wlength == WLENGTH_SHORT)
+		if(slice_bclass == BCLASS_CHOP)
+			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
+			slice(I, user)
+			return 1
+		else if(slice(I, user))
+			return 1
+
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		//to_chat(user, span_warning("I need a table to work with these."))
+		return 
+	
+	// We do the item that hits first in case it's
+	// A knife or rolling pin
+	var/obj/item/inactiveitem = user.get_inactive_held_item()
+	var/list/to_check = list(I, src) 
+	if(inaciveitem)
+		to_check += inactiveitem
+	//for(var/obj/item/J in loc)
+	//	to_check += J //includes self
+	handle_interaction(user, to_check)
+/*
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
@@ -83,7 +148,7 @@
 		else if(slice(W, user))
 			return 1
 	..()
-
+*/
 /*	........   Kitchen tools / items   ................ */
 /obj/item/kitchen/spoon
 	name = "wooden spoon"
