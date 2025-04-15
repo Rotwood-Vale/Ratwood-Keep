@@ -11,8 +11,51 @@ on:
 env:
   BYOND_MAJOR: 515
   BYOND_MINOR: 1636
+  SPACEMAN_DMM_VERSION: suite-1.9
 
 jobs:
+  run-linters:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    name: Run Linters
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup cache
+        uses: actions/cache@v4
+        with:
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-spacemandmm-
+      - name: Restore Rust cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ hashFiles('tools/ci/ci_dependencies.sh')}}
+          restore-keys: |
+            ${{ runner.os }}-rust-
+      - name: Install Tools
+        run: |
+          pip3 install setuptools
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          bash tools/ci/install_ripgrep.sh
+          tools/bootstrap/python -c ''
+      - name: Run Linters
+        run: |
+          bash tools/ci/check_filedirs.sh roguetown.dme
+          bash tools/ci/check_changelogs.sh
+          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+          # bash tools/ci/check_grep.sh # TODO: fix indentation etc
+          # tools/bootstrap/python tools/ci/validate_dme.py < roguetown.dme # TODO: fix unincluded files
+          tools/bootstrap/python -m dmi.test
+          tools/bootstrap/python -m mapmerge2.dmm_test
+          ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+      - name: Annotate Lints
+        uses: yogstation13/DreamAnnotate@v2
+        if: always()
+        with:
+          outputFile: output-annotations.txt
   build:
     runs-on: ubuntu-latest
     steps:
@@ -29,16 +72,15 @@ jobs:
 
       - name: Compile BYOND project
         run: |
-          ls -h $HOME/
           source $HOME/BYOND/byond/bin/byondsetup
-          DreamMaker roguetown.dme
+          DreamMaker roguetown.dme > compile.log
 
-      - name: Check for errors
+      - name: Check for warnings or errors
         id: check-errors
         run: |
-          if grep -q "error" *.log; then
-            echo "::error ::Compilation failed with errors."
-            exit 1
+          if grep -q " 0 errors, 0 warnings" compile.log; then
+            echo "Compilation succeeded."
           else
-            echo "Compilation succeeded without critical errors."
+            echo "::error:: Compilation failed."
+            exit 1
           fi

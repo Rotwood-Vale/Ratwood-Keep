@@ -164,12 +164,12 @@
 		revert_cast()
 		return FALSE
 
-	if(!targets[1].has_status_effect(/datum/status_effect/debuff/wliver))
+	var/mob/living/target = targets[1]
+
+	if(!target.has_status_effect(/datum/status_effect/debuff/wliver))
 		to_chat(user, span_warning("I need to prime their liver first"))
 		revert_cast() // No need to consume the spell if it isn't properly cast.
 		return FALSE
-
-	var/mob/living/target = targets[1]
 
 	if(target == user)
 		revert_cast()

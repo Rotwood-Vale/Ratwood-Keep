@@ -13,6 +13,7 @@
 	var/list/misc
 
 /datum/role_ban_instance/proc/get_ban_string_list()
+	RETURN_TYPE(/list)
 	var/list/strings = list()
 	strings += "Applied by [applied_by], on date: [time2text(apply_date, "DD,MM,YYYY")]; Duration: [permanent ? "Permanent" : "[duration / (24 HOURS)] days"]"
 	strings += "Round ID: [round_id];Reason: [reason]"
@@ -80,7 +81,7 @@
 	permanent = json["permanent"]
 	applied_by = json["applied_by"]
 	reason = json["reason"]
-	var/list/ban_data = json["bans"]
+	var/list/list/ban_data = json["bans"]
 	if(ban_data["roles"])
 		roles = ban_data["roles"].Copy()
 	if(ban_data["migrants"])

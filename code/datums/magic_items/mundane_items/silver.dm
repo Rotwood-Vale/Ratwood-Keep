@@ -57,7 +57,7 @@
 				to_chat(H, span_userdanger("I'm hit by my BANE!"))
 				src.last_used = world.time
 
-/datum/magic_item/mundane/silver/on_equip(var/item/i, var/mob/living/user)
+/datum/magic_item/mundane/silver/on_equip(var/obj/item/i, var/mob/living/user)
 	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -82,7 +82,7 @@
 				H.adjustFireLoss(25)
 				H.fire_act(1,10)
 
-/datum/magic_item/mundane/silver/on_pickup(var/item/i, var/mob/living/user)
+/datum/magic_item/mundane/silver/on_pickup(var/obj/item/i, var/mob/living/user)
 	var/mob/living/carbon/human/H = user
 	if(H.mind)
 		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
