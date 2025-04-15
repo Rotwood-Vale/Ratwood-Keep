@@ -42,10 +42,11 @@
 	aggressive = TRUE
 	stat_attack = UNCONSCIOUS
 	body_eater = TRUE
-
+/*										///Disables new AI for spiders till we can have them able to respect being friendly to player and tameable.
 	ai_controller = /datum/ai_controller/spider
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
+*/
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
@@ -59,15 +60,26 @@
 
 	base_intents = list(/datum/intent/simple/bite)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/spider/druid
+	icon = 'icons/roguetown/mob/monster/spider.dmi'
+	name = "tamed honey spider"
+	desc = "Swamp-lurking creachers with a wicked bite."
+	icon_state = "honeys"
+	icon_living = "honeys"
+	icon_dead = "honeys-dead"
+
+	faction = list("bugs", "Station")
+	aggressive = FALSE
+
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/Initialize()
 	. = ..()
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
-
+/*
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)*/
 	ADD_TRAIT(src, TRAIT_WEBWALK, TRAIT_GENERIC)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/AttackingTarget()
