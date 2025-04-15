@@ -1322,6 +1322,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	Moved(oldloc, direct)
 
+/proc/stakecheck(mob/living/user)
+	var/datum/antagonist/vampirelord/VL = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
+	if(VL.staked == TRUE)
+		to_chat(user, span_userdanger("The stake is making it impossible to use my bloodmagic!"))
+		return FALSE
 // Spells
 /obj/effect/proc_holder/spell/targeted/transfix
 	name = "Transfix"
@@ -1341,6 +1346,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_targets = 1
 
 /obj/effect/proc_holder/spell/targeted/transfix/cast(list/targets, mob/user = usr)
+	stakecheck(usr)
 	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
@@ -1426,6 +1432,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_targets = 0
 
 /obj/effect/proc_holder/spell/targeted/transfix/master/cast(list/targets, mob/user = usr)
+	stakecheck(usr)
 	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
@@ -1512,6 +1519,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	vitaedrain = 250
 
 /obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
+	stakecheck(usr)
 	if(user && iscarbon(user))
 		var/mob/living/carbon/vampire = user
 		var/silver_curse_status = FALSE // Fail to cast condition.
