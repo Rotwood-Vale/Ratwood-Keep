@@ -320,6 +320,7 @@
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
 	character.devotion?.excommunicate()
+	ADD_TRAIT(character, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
 
 /datum/special_trait/hunted
 	name = "Hunted"

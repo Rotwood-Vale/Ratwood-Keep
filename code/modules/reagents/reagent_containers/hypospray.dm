@@ -16,44 +16,87 @@
 	var/infinite = FALSE
 	var/has_cap = TRUE
 
+
 /obj/item/reagent_containers/hypospray/attack(mob/living/M, mob/user)
 	if(has_cap)
 		to_chat(user, span_warning("[src] has a cap on! You need to remove it first."))
 		return FALSE
-		playsound(src, 'modular/Smoker/sound/inject.ogg')
 	inject(M, user)
+	..()
 
-///Handles all injection checks, injection and logging.
-/obj/item/reagent_containers/hypospray/proc/inject(mob/living/M, mob/user)
-	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src] is empty!"))
+/obj/item/reagent_containers/hypospray/medipen/sealbottle/inject(mob/living/M, mob/user)
+	return ..(M, user, src, drinking = TRUE)  // Call parent, but mark as drinking
+
+/obj/item/reagent_containers/hypospray/medipen/sty/inject(mob/living/M, mob/user)
+	return ..(M, user, src)  // Call parent with normal injection behavior
+
+/obj/item/reagent_containers/hypospray/proc/inject(mob/living/M, mob/user, obj/item/reagent_containers/hypospray/this, drinking = FALSE)
+	if(!this.reagents.total_volume)
+		to_chat(user, span_warning("[this] is empty!"))
 		return FALSE
 	if(!iscarbon(M))
+		to_chat(user, span_warning("You can't use that on this!"))
 		return FALSE
-
-	//Always log attemped injects for admins
+	if(!M)
+		return FALSE
 	var/list/injected = list()
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R in this.reagents.reagent_list)
 		injected += R.name
 	var/contained = english_list(injected)
-	log_combat(user, M, "attempted to inject", src, "([contained])")
 
-	if(reagents.total_volume && (ignore_flags || M.can_inject(user, 1))) // Ignore flag should be checked first or there will be an error message.
-		to_chat(M, span_warning("I feel a tiny prick!"))
-		to_chat(user, span_notice("I inject [M] with [src]."))
-		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
-		reagents.reaction(M, INJECT, fraction)
+	log_combat(user, M, "attempted to [drinking ? "force-feed" : "inject"]", this, "([contained])")
+	log_admin(user, M, "attempted to [drinking ? "force-feed" : "inject"]", this, "([contained])")
+
+	if(!do_after(user, 2 SECONDS, M))  // Can be interrupted if user moves, gets stunned, etc.
+		to_chat(user, span_warning("Your [drinking ? "feeding" : "injection"] attempt was interrupted!"))
+		return FALSE
+
+	if(this.reagents.total_volume && (this.ignore_flags || !M.stat || M.can_inject(user, 1)))
+		to_chat(M, span_warning("I feel a [drinking ? "bit of liquid forced into my mouth" : "tiny prick"]!"))
+		to_chat(user, span_notice("You [drinking ? "force [M] to drink" : "inject[M] with"]  [this]."))
+
+		var/fraction = min(this.amount_per_transfer_from_this / this.reagents.total_volume, 1)
+		this.reagents.reaction(M, INJECT, fraction)
 
 		if(M.reagents)
 			var/trans = 0
-			if(!infinite)
-				trans = reagents.trans_to(M, amount_per_transfer_from_this, transfered_by = user)
+			if(!this.infinite)
+				trans = this.reagents.trans_to(M, this.amount_per_transfer_from_this, transfered_by = user)
 			else
-				trans = reagents.copy_to(M, amount_per_transfer_from_this)
-			to_chat(user, span_notice("[trans] unit\s injected. [reagents.total_volume] unit\s remaining in [src]."))
-			log_combat(user, M, "injected", src, "([contained])")
+				trans = this.reagents.copy_to(M, this.amount_per_transfer_from_this)
+
+			to_chat(user, span_notice("[trans] unit\s [drinking ? "swallowed" : "injected"]. [this.reagents.total_volume] unit\s remaining in [this]."))
+
+			log_combat(user, M, "[drinking ? "force-fed" : "successfully injected"]", this, "([contained])")
+			log_admin(user, M, "[drinking ? "force-fed" : "successfully injected"]", this, "([contained])")
+
+		// **Play correct sound**
+		var/sound = drinking ? 'modular/Smoker/sound/chug.ogg' : 'modular/Smoker/sound/inject.ogg'
+		playsound(src, sound, 100, TRUE)
+
 		return TRUE
 	return FALSE
+
+/obj/item/reagent_containers/hypospray/medipen/attack_self(mob/user)
+	if(!has_cap)
+		to_chat(user, span_warning("[src] doesn't have a [istype(src, /obj/item/reagent_containers/hypospray/medipen/sealbottle) ? "cork" : "cap"]."))
+		return
+
+	has_cap = FALSE
+	icon_state = "[icon_state]_nocap"  // Update icon state for no cap
+
+	if(istype(src, /obj/item/reagent_containers/hypospray/medipen/sealbottle))
+		to_chat(user, span_notice("You thumb off the cork from [src]."))
+		playsound(src, 'modular/Smoker/sound/corkpop.ogg', 100, TRUE)
+	else
+		to_chat(user, span_notice("You bite the cap off [src] and spit it out."))
+		playsound(src, 'modular/Smoker/sound/capoff.ogg', 100, TRUE)
+
+/obj/item/reagent_containers/hypospray/medipen/update_icon()
+	if(reagents.total_volume > 0)
+		icon_state = initial(icon_state)
+	else
+		icon_state = "[initial(icon_state)]0"
 
 
 /obj/item/reagent_containers/hypospray/medipen/sealbottle
@@ -62,94 +105,11 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "THEbottle"
 
-/obj/item/reagent_containers/hypospray/medipen/sealbottle/attack_self(mob/user)
-	if(has_cap)
-		has_cap = FALSE
-		icon_state = "[icon_state]_nocap"  // Update icon state for no cap
-		to_chat(user, span_notice("You thumb off the cork from [src]."))
-		playsound(src, 'modular/Smoker/sound/corkpop.ogg', 100, TRUE)
-	else
-		to_chat(user, span_warning("[src] doesn't have a cork."))
-
-/obj/item/reagent_containers/hypospray/medipen/sealbottle/update_icon()
-	if(reagents.total_volume > 0)
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]0"
-
-/obj/item/reagent_containers/hypospray/medipen/sealbottle/inject(mob/living/M, mob/user)
-	if(reagents.total_volume <= 0)
-		return FALSE
-	if(!M)
-		return FALSE
-	if(user == M)
-		to_chat(user, span_danger("You chug [src]!"))
-	else
-		to_chat(user, span_danger("You force [M] to swallow [src]."))
-	reagents.trans_to(M, reagents.total_volume, transfered_by = user)  // Transfer all remaining reagents
-	reagents.maximum_volume = 0  // Makes them useless afterwards
-	reagents.flags = NONE  // Ensure reagents are deactivated
-	update_icon()
-	playsound(src, 'modular/Smoker/sound/chug.ogg', 100, TRUE)
-	return TRUE
-
-/obj/item/reagent_containers/hypospray/medipen/sealbottle/attack(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		if(has_cap)
-			to_chat(user, span_warning("[src] has a cork still! You need to remove it first."))
-			return
-		inject(user, user)
-
-/obj/item/reagent_containers/hypospray/medipen/sealbottle/attack(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		if(has_cap)
-			to_chat(user, span_warning("[src] has a cork still! You need to remove it first."))
-			return
-		inject(user, user)
-
 /obj/item/reagent_containers/hypospray/medipen/sty
 	name = "sealed sty"
 	desc = "If you see this, call an admin."
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "sty"
-
-/obj/item/reagent_containers/hypospray/medipen/sty/attack_self(mob/user)
-	if(has_cap)
-		has_cap = FALSE
-		icon_state = "[icon_state]_nocap"  // Update icon state for no cap
-		to_chat(user, span_notice("You bite the cap off [src] and spit it out."))
-		playsound(src, 'modular/Smoker/sound/capoff.ogg', 100, TRUE)
-	else
-		to_chat(user, span_warning("[src] doesn't have a cap."))
-
-/obj/item/reagent_containers/hypospray/medipen/sty/update_icon()
-	if(reagents.total_volume > 0)
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]0"
-
-/obj/item/reagent_containers/hypospray/medipen/sty/inject(mob/living/M, mob/user)
-	if(reagents.total_volume <= 0)
-		return FALSE
-	if(!M)
-		return FALSE
-	if(user == M)
-		to_chat(user, span_danger("You inject yourself with [src]."))
-	else
-		to_chat(user, span_danger("You inject [M] with [src]!"))
-	reagents.trans_to(M, reagents.total_volume, transfered_by = user)  // Transfer all remaining reagents
-	reagents.maximum_volume = 0  // Makes them useless afterwards
-	reagents.flags = NONE  // Ensure reagents are deactivated
-	update_icon()
-	playsound(src, 'modular/Smoker/sound/inject.ogg', 100, TRUE)
-	return TRUE
-
-/obj/item/reagent_containers/hypospray/medipen/sty/attack(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		if(has_cap)
-			to_chat(user, span_warning("[src] has a cap still! You need to remove it first."))
-			return
-		inject(user, user)
 
 /obj/item/reagent_containers/hypospray/medipen/sty/detox
 	name = "DETOX"

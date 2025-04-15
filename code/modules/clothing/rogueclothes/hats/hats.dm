@@ -1495,7 +1495,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 	name = "psydonian armet"
-	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'" 
+	desc = "An ornate helmet, whose visor has been bound shut with blacksteel chains. The Order of Saint Eora often decorates these armets with flowers - not only as a lucky charm gifted to them by fair maidens and family, but also as a vibrant reminder that 'happiness has to be fought for.'"
 	icon_state = "psydonarmet"
 	item_state = "psydonarmet"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
@@ -1683,12 +1683,12 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/clothing/head/roguetown/roguehood/feld
-	name = "feldsher's hood"
+/obj/item/clothing/head/roguetown/roguehood/bloodred
+	name = "blood-red hood"
 	desc = "My cure is most effective."
 	icon_state = "feldhood"
 	item_state = "feldhood"
-	body_parts_covered = HEAD|HAIR|EARS|NOSE
+	body_parts_covered = HEAD|HAIR|EARS
 	color = null
 
 /obj/item/clothing/head/roguetown/helmet/overseer
