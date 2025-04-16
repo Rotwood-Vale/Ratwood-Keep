@@ -148,10 +148,9 @@
 		return FALSE
 	return !held_items[hand_index]
 
-/mob/proc/put_in_hand(obj/item/I, hand_index, forced = FALSE, ignore_anim = TRUE)
+/mob/proc/put_in_hand(obj/item/I, hand_index, forced = FALSE, ignore_anim = TRUE, silent = FALSE)
 	if(hand_index == null || (!forced && !can_put_in_hand(I, hand_index)))
 		return FALSE
-
 	if(isturf(I.loc) && !ignore_anim)
 		I.do_pickup_animation(src)
 	if(get_item_for_held_index(hand_index) != null)
@@ -161,7 +160,7 @@
 	held_items[hand_index] = I
 	I.layer = ABOVE_HUD_LAYER
 	I.plane = ABOVE_HUD_PLANE
-	I.equipped(src, ITEM_SLOT_HANDS)
+	I.equipped(src, ITEM_SLOT_HANDS, silent = silent)
 	if(QDELETED(I)) // this is here because some ABSTRACT items like slappers and circle hands could be moved from hand to hand then delete, which meant you'd have a null in your hand until you cleared it (say, by dropping it)
 		held_items[hand_index] = null
 		return FALSE
@@ -197,19 +196,19 @@
 	return FALSE
 
 //Puts the item into our active hand if possible. returns TRUE on success.
-/mob/proc/put_in_active_hand(obj/item/I, forced = FALSE, ignore_animation = TRUE)
-	return put_in_hand(I, active_hand_index, forced, ignore_animation)
+/mob/proc/put_in_active_hand(obj/item/I, forced = FALSE, ignore_animation = TRUE, silent = FALSE)
+	return put_in_hand(I, active_hand_index, forced, ignore_animation, silent = silent)
 
 
 //Puts the item into our inactive hand if possible, returns TRUE on success
-/mob/proc/put_in_inactive_hand(obj/item/I, forced = FALSE, ignore_animation = TRUE)
-	return put_in_hand(I, get_inactive_hand_index(), forced, ignore_animation)
+/mob/proc/put_in_inactive_hand(obj/item/I, forced = FALSE, ignore_animation = TRUE, silent = FALSE)
+	return put_in_hand(I, get_inactive_hand_index(), forced, ignore_animation, silent = silent)
 
 
 //Puts the item our active hand if possible. Failing that it tries other hands. Returns TRUE on success.
 //If both fail it drops it on the floor and returns FALSE.
 //This is probably the main one you need to know :)
-/mob/proc/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
+/mob/proc/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE, silent = FALSE)
 	if(!I)
 		return FALSE
 
@@ -233,7 +232,7 @@
 						to_chat(usr, span_notice("My [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
 						return TRUE
 
-	if(put_in_active_hand(I, forced))
+	if(put_in_active_hand(I, forced, silent = silent))
 		return TRUE
 
 	var/hand = get_empty_held_index_for_side(LEFT_HANDS)

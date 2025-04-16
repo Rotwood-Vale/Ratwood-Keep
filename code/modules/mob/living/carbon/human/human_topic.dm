@@ -73,6 +73,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/obj/item/bodypart/L = locate(href_list["bandaged_limb"]) in bodyparts
 		if(!L)
 			return
+
+		if(!usr.Adjacent(src))
+			to_chat(usr, span_warning("I need to be closer to remove that!"))
+			return
+
 		var/obj/item/I = L.bandage
 		if(!I)
 			return

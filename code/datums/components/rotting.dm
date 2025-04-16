@@ -27,6 +27,11 @@
 
 /datum/component/rot/process()
 	var/amt2add = 10 //1 second
+	var/mob/living/carbon/C = parent
+	if(C && C.reagents && C.reagents.has_reagent(/datum/reagent/medicine/enbalming, 1))
+		C.reagents.remove_reagent(/datum/reagent/medicine/enbalming, 15)
+		amount = 0
+		return
 	if(last_process)
 		amt2add = ((world.time - last_process)/10) * amt2add
 	last_process = world.time
@@ -45,6 +50,7 @@
 	..()
 	var/mob/living/carbon/C = parent
 	var/is_zombie
+
 	if(C.mind)
 		if(C.mind.has_antag_datum(/datum/antagonist/zombie))
 			is_zombie = TRUE
@@ -57,7 +63,7 @@
 	if(!(C.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD)))
 		qdel(src)
 		return
-	
+
 	if(amount > 4 MINUTES)
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
