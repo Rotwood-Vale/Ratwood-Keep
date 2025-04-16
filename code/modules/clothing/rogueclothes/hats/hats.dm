@@ -1622,7 +1622,7 @@
 	sellprice = 50
 
 /obj/item/clothing/head/roguetown/helmet/otavan
-	name = "otavan helmet"
+	name = "captain helmet"
 	desc = ""
 	icon_state = "otavahelm"
 	item_state = "otavahelm"
