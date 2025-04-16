@@ -75,12 +75,14 @@
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
 
-/*
-handle_interaction
-	- Takes the current item in your active hand, and everything in the location of the
-	  item you hit (so everything on the table) and runs through it all to find out what to do.
-	- Feeds it thou
-*/
+
+/*================
+handle interaction
+================*/
+/*	- Takes the current item in your active hand, inactive hand, and what was hit (the src)
+	  and feeds it through the food_interaction recipes to determine what to do. This way
+	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
+
 /obj/item/reagent_containers/food/snacks/proc/handle_interaction(mob/user, list/items)
 	//var/datum/cooking_method/c_method
 	var/obj/method_result
@@ -114,8 +116,14 @@ handle_interaction
 // While I would usually call the parent procs food doesn't seem to benefit at all 
 // from doing this so I will try it without any calls. I check all the parent procs
 // There's nothing from what I can tell that matters
+
+/*======
+attackby
+======*/
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/I, mob/living/user, params)
-	
+
+	/* Special code for slicing because right now I don't want to deal with this
+	   and it's already Done in a way I can toelrate */
 	if(user.used_intent.blade_class == slice_bclass && I.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
 			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
@@ -138,15 +146,7 @@ handle_interaction
 	//for(var/obj/item/J in loc)
 	//	to_check += J //includes self
 	handle_interaction(user, to_check)
-/*
-/obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
-	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
-		if(slice_bclass == BCLASS_CHOP)
-			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
-			slice(W, user)
-			return 1
-		else if(slice(W, user))
-			return 1
+
 	..()
 */
 /*	........   Kitchen tools / items   ................ */
