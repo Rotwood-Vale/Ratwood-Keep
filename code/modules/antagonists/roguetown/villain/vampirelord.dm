@@ -499,14 +499,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
         return
     staked = TRUE
     to_chat(owner, "<span class='danger'>You feel your unholy power slipping away... you have been staked!</span>")
-    disable_vampire_powers()
 
 /datum/antagonist/vampirelord/proc/unstake()
     if(!staked)
         return
     staked = FALSE
     to_chat(owner, "<span class='notice'>The stake is removed... your power returns.</span>")
-    enable_vampire_powers()
 
 // SPAWN
 /datum/antagonist/vampirelord/lesser
@@ -551,7 +549,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /mob/living/carbon/human/proc/vampire_telepathy()
 	set name = "Telepathy"
 	set category = "VAMPIRE"
-
+	if(!stakecheck(usr))
+		return
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	var/msg = input("Send a message.", "Command") as text|null
 	if(!msg)
@@ -566,7 +565,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /mob/living/carbon/human/proc/punish_spawn()
 	set name = "Punish Minion"
 	set category = "VAMPIRE"
-
+	if(!stakecheck(usr))
+		return
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	var/list/possible = list()
 	for(var/datum/mind/V in C.vampires)
@@ -1346,7 +1346,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_targets = 1
 
 /obj/effect/proc_holder/spell/targeted/transfix/cast(list/targets, mob/user = usr)
-	stakecheck(usr)
+	if(!stakecheck(usr))
+		return
 	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
@@ -1432,7 +1433,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	max_targets = 0
 
 /obj/effect/proc_holder/spell/targeted/transfix/master/cast(list/targets, mob/user = usr)
-	stakecheck(usr)
+	if(!stakecheck(usr))
+		return
 	var/msg = input("Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as text|null
 	if(length(msg) < 10)
 		to_chat(user, span_userdanger("This is not enough!"))
@@ -1519,7 +1521,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	vitaedrain = 250
 
 /obj/effect/proc_holder/spell/targeted/vamp_rejuv/cast(list/targets, mob/user = usr)
-	stakecheck(usr)
+	if(!stakecheck(usr))
+		return
 	if(user && iscarbon(user))
 		var/mob/living/carbon/vampire = user
 		var/silver_curse_status = FALSE // Fail to cast condition.

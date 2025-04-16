@@ -1274,16 +1274,16 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			str = "<font color = '[color]'>[input] (D)</font>"
 		if(20 to 39)
 			var/color = "#753e11"
-			str = "<font color = '[color]'>[input] (D+)</font>" 
+			str = "<font color = '[color]'>[input] (D+)</font>"
 		if(40 to 49)
 			var/color = "#c0a739"
-			str = "<font color = '[color]'>[input] (C)</font>" 
+			str = "<font color = '[color]'>[input] (C)</font>"
 		if(50 to 59)
 			var/color = "#e3e63c"
-			str = "<font color = '[color]'>[input] (C+)</font>" 
+			str = "<font color = '[color]'>[input] (C+)</font>"
 		if(60 to 69)
 			var/color = "#425c33"
-			str = "<font color = '[color]'>[input] (B)</font>" 
+			str = "<font color = '[color]'>[input] (B)</font>"
 		if(70 to 79)
 			var/color = "#1a9c00"
 			str = "<font color = '[color]'>[input] (B+)</font>"
