@@ -206,6 +206,8 @@
 	character.grant_language(/datum/language/beast)
 	character.grant_language(/datum/language/draconic)
 	character.grant_language(/datum/language/faexin)
+	character.grant_language(/datum/language/canilunzt)
+	character.grant_language(/datum/language/felid)
 
 
 /datum/special_trait/tavernbrawler
@@ -318,6 +320,7 @@
 	GLOB.excommunicated_players += character.real_name
 	character.add_stress(/datum/stressevent/psycurse)
 	character.devotion?.excommunicate()
+	ADD_TRAIT(character, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
 
 /datum/special_trait/hunted
 	name = "Hunted"

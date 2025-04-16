@@ -179,7 +179,7 @@
 	flags_inv = HIDEBOOB|HIDETAIL //DO NOT CHANGE THIS, I WILL THROW HANDS WITH YOU IDIOTS
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	
+
 /obj/item/clothing/suit/roguetown/shirt/robe/eora
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "eoran robe"
@@ -265,7 +265,15 @@
 	item_state = "feldrobe"
 
 /obj/item/clothing/suit/roguetown/shirt/robe/phys
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
 	name = "Physician's Robe"
 	desc = "Part robe, part butcher's apron."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "surgrobe"
 	item_state = "surgrobe"
+	sleeved = null
+	boobed = TRUE
+	color = null
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite

@@ -55,7 +55,7 @@
 //		if(bloody)
 //			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
 
-/obj/item/clothing/shoes/equipped(mob/user, slot)
+/obj/item/clothing/shoes/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(offset && slot_flags & slotdefine2slotbit(slot))
 		user.pixel_y += offset
