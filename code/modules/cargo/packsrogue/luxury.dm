@@ -105,6 +105,11 @@
 	cost = 40
 	contains = list(/obj/item/clothing/ringP)
 
+/datum/supply_pack/rogue/luxury/talkstone
+	name = "Talkstone"
+	cost = 150
+	contains = list(/obj/item/clothing/neck/roguetown/talkstone)
+
 /datum/supply_pack/rogue/luxury/nomag
 	name = "Ring of Null Magic"
 	cost = 300
@@ -129,3 +134,31 @@
 	name = "Love Potion"
 	cost = 300
 	contains = list(/obj/item/lovepotion)
+
+/datum/supply_pack/rogue/luxury/obsidianfragment
+	name = "Obsidian Fragments"
+	cost = 55
+	contains = list(	
+			/obj/item/natural/obsidian,
+			/obj/item/natural/obsidian,
+			/obj/item/natural/obsidian,
+			)
+
+/datum/supply_pack/rogue/luxury/manaflower
+	name = "Manabloom Flowers"
+	cost = 55
+	contains = list(	
+			/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+			/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+			/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+			)
+
+/datum/supply_pack/rogue/luxury/manacrystal
+	name = "Mana Crystals"
+	cost = 55
+	contains = list(	
+			/obj/item/natural/manacrystal,
+			/obj/item/natural/manacrystal,
+			/obj/item/natural/manacrystal,
+			)
+

@@ -46,7 +46,7 @@
 	block2add = initial(block2add)
 	body_parts_covered = initial(body_parts_covered)
 
-/obj/item/clothing/equipped(mob/user, slot)
+/obj/item/clothing/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	if(hoodtype && slot != SLOT_ARMOR|SLOT_CLOAK)
 		RemoveHood()
 	if(adjustable > 0)
@@ -133,7 +133,7 @@
 	if(connectedc)
 		connectedc.RemoveHood()
 
-/obj/item/clothing/head/hooded/equipped(mob/user, slot)
+/obj/item/clothing/head/hooded/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if(slot != SLOT_HEAD)
 		if(connectedc)

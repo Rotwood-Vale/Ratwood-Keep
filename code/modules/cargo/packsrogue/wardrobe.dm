@@ -98,6 +98,12 @@
 	contains = list(
 					/obj/item/clothing/mask/rogue/spectacles,
 				)
+/datum/supply_pack/rogue/wardrobe/spectaclesDelf
+	name = "Dark Elf Sunshields"
+	cost = 150
+	contains = list(
+					/obj/item/clothing/mask/rogue/spectacles/delf,
+				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/shalal
 	name = "Shalal Shoes"

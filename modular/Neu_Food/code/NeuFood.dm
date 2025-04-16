@@ -321,8 +321,9 @@
 
 /obj/item/storage/foodbag/examine(mob/user)
 	. = ..()
-	if(contents.len)
-		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+	var/amount = length(contents)
+	if(amount)
+		. += span_notice("[amount] thing\s in the sack.")
 
 /obj/item/storage/foodbag/attack_right(mob/user)
 	. = ..()
@@ -550,66 +551,72 @@ What it does:
 		/obj/item/reagent_containers/food/snacks/rogue/wienercabbage = "wienercabbage_platter",
 		/obj/item/reagent_containers/food/snacks/rogue/wienerpotato = "wienerpotato_platter",
 		/obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions = "wpotonion_platter",
-		 )
+	)
 
 
 /obj/item/cooking/platter/attackby(obj/item/I, mob/living/user, params)
-	
-	if(istype(I, /obj/item/kitchen/fork/) || istype(I, /obj/item/kitchen/ironfork/))
+	if(istype(I, /obj/item/kitchen/fork) || istype(I, /obj/item/kitchen/ironfork))
 		if(do_after(user, 0.5 SECONDS))
 			attack(user, user, user.zone_selected)
-			return ..()
+			return TRUE
 
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/))
-		if(isturf(loc)&& (found_table))
-			if (contents.len == 0)
-				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				if(do_after(user,2 SECONDS, target = src))
-					user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.4)
-					to_chat(user, span_info("I add \the [I.name] to \the [name]."))
-					I.forceMove(src)
-				update_icon()
-			else
+	var/found_table = locate(/obj/structure/table) in get_turf(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks))
+		if(isturf(loc) && found_table)
+			var/obj/item/first_item = locate() in src
+			if (first_item)
 				to_chat(user, span_info("Something is already on this [initial(name)]! Remove it first."))
-		else
-			return ..()	
+				return TRUE
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			if(do_after(user, 2 SECONDS, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.4)
+				to_chat(user, span_info("I add \the [I] to \the [src]."))
+				I.forceMove(src)
+				update_icon()
+			return TRUE
+	return ..()	
 
 
 /obj/item/cooking/platter/attack(mob/living/M, mob/living/user, def_zone)
 	if(user.used_intent.type == INTENT_HARM)
 		return ..()
-	if(contents.len > 0)
-		contents[1].attack(M,user,def_zone)
+	var/obj/item/first_item = locate() in src
+	if(first_item)
+		first_item.attack(M,user,def_zone)
 		update_icon()
 
 
 /obj/item/cooking/platter/update_icon()
-	if(contents.len >0)
+	var/obj/item/first_item = locate() in src
+	if(first_item)
 		var/i
 		var/has_sprite = FALSE
 		// Checks the datum list for any sprite states.
 		for(i = 1, i <= sprite_choice.check_sprite.len, i++ )
-			if(sprite_choice.check_sprite[i] == contents[1].type) //Does this have to use type? Not sure but it works.
-				contents[1].icon_state = sprite_choice.check_sprite[contents[1].type]
+			if(sprite_choice.check_sprite[i] == first_item.type) //Does this have to use type? Not sure but it works.
+				first_item.icon_state = sprite_choice.check_sprite[first_item.type]
 				has_sprite = TRUE
 				break
 
 		if (!has_sprite) // If we don't have a platter sprite shrink sprite down and move it up a bit on the platter
 			var/matrix/M = new
 			M.Scale(0.8,0.8)
-			contents[1].transform = M
-			contents[1].pixel_y = 3
+			first_item.transform = M
+			first_item.pixel_y = 3
 
-		contents[1].vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
-		vis_contents += contents[1]
-		name = "platter of [contents[1].name]"
-		desc = contents[1].desc
-		//Need something better than this in future like a buff
-		if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
-			contents[1].bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
+		first_item.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_LAYER | VIS_INHERIT_PLANE
+		vis_contents += first_item
+		name = "platter of [first_item.name]"
+		desc = first_item.desc
+		// Sometimes food that's been eaten produces an item, so we have to typecast
+		if(istype(first_item,  /obj/item/reagent_containers/food/snacks))
+			var/obj/item/reagent_containers/food/snacks/first_snack = first_item
+			//Need something better than this in future like a buff
+			//NOTE: This may actually lower the bonus reagents of some foods, but
+			//I'm not sure this even works currently? Won't this only work if it hasn't been cooked yet?
+			first_snack.bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	else
-		vis_contents = 0
+		vis_contents.Cut()
 		name = initial(name)
 		desc = initial(desc)
 
@@ -619,17 +626,20 @@ What it does:
 		to_chat(user, span_info("I can't do that with my hand full!"))
 		return
 
-	if(contents.len >0)
-		if(do_after(user,2 SECONDS, target = src))
-			contents[1].vis_flags = 0
+	var/obj/item/first_item = locate() in src
+	if(first_item)
+		if(do_after(user, 2 SECONDS, target = src))
+			first_item.vis_flags = 0
 			//No need to change scale since and pixel_y I think all food already resets that when you grab it
-			contents[1].icon_state = initial(contents[1].icon_state)
+			first_item.icon_state = initial(first_item.icon_state)
 			//sometimes food puts an item in its place!!
-			if(istype(contents[1],  /obj/item/reagent_containers/food/snacks/))
-				contents[1].bonus_reagents = list()
-			to_chat(user, span_info("I remove \the [contents[1].name] from \the [initial(name)]"))
-			if(!usr.put_in_hands(contents[1]))
-				contents[1].forceMove(get_turf(src))
+			if(istype(first_item, /obj/item/reagent_containers/food/snacks))
+				var/obj/item/reagent_containers/food/snacks/first_snack = first_item
+				// Does this even do anything if the food's been cooked?
+				first_snack.bonus_reagents = list()
+			to_chat(user, span_info("I remove \the [first_item] from \the [initial(name)]"))
+			if(!user.put_in_hands(first_item))
+				first_item.forceMove(get_turf(src))
 
 	update_icon()
 

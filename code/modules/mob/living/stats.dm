@@ -78,6 +78,8 @@
 			change_stat("constitution", -2)
 			change_stat("intelligence", -5)
 			change_stat("fortune", -5)
+		if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))
+			change_stat("fortune", -3)
 		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 			change_stat("strength", -3)
 			change_stat("speed", -3)
@@ -185,7 +187,7 @@
 			tempbuffer = 0
 	else // Otherwise, we don't need to worry about the buffer right away
 		newamt += amt
-	
+
 	// Finally, if newamt over/underflows the limits, add the excess to the buffer for later
 	if (newamt > 20)
 		tempbuffer += newamt - 20

@@ -612,7 +612,6 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 		index += 1
 
-#undef NO_MOVEMENT_IDLE_MAX
 #undef TRACK_AI_DATUM_TARGET
 #undef CLEAR_AI_DATUM_TARGET
 #undef TRAIT_AI_TRACKING

@@ -17,36 +17,23 @@
 
 /mob/living/carbon/ZImpactDamage(turf/T, levels)
 	var/obj/item/bodypart/affecting
-	if(prob(66))
-		affecting = get_bodypart("[pick("r","l")]_leg")
-		to_chat(src, span_warning("I land on my leg!"))
-		if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+	switch(rand(1,9))
+		if(1)
+			affecting = get_bodypart(pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
+		if(2)
+			affecting = get_bodypart(BODY_ZONE_CHEST)
+			adjustOxyLoss(50)
+			emote("breathgasp")
+		if(3)
+			affecting = get_bodypart(BODY_ZONE_HEAD)
+			if(levels > 2)
+				AdjustUnconscious(levels * 100)
+		if(4 to 9)
+			affecting = get_bodypart(pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+	if(affecting)
+		to_chat(src, span_warning("I land on my [affecting.name]!"))
+		if(apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 			update_damage_overlays()
-	else
-		switch(rand(1,3))
-			if(1)
-				affecting = get_bodypart("[pick("r","l")]_arm")
-				to_chat(src, span_warning("I land on my arm!"))
-				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
-					update_damage_overlays()
-			if(2)
-				affecting = get_bodypart("chest")
-				to_chat(src, span_warning("I land on my chest!"))
-				adjustOxyLoss(50)
-				emote("breathgasp")
-				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
-					update_damage_overlays()
-			if(3)
-				affecting = get_bodypart("head")
-				to_chat(src, span_warning("I land on my head!"))
-				if(levels > 2)
-					AdjustUnconscious(levels * 100)
-					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
-						update_damage_overlays()
-				else
-					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
-						update_damage_overlays()
-
 	AdjustStun(levels * 20)
 	AdjustKnockdown(levels * 20)
 
@@ -739,7 +726,10 @@
 		if(!isnull(G.lighting_alpha))
 			lighting_alpha = min(lighting_alpha, G.lighting_alpha)
 
-	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER) || HAS_TRAIT(src, TRAIT_DARKLING))
+	if(HAS_TRAIT(src, TRAIT_DARKLING) && !src.get_eye_protection())
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+
+	if(HAS_TRAIT(src, TRAIT_DARKVISION_BETTER))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION_BETTER)
 
 	if(HAS_TRAIT(src, TRAIT_DARKVISION)) //DV special prioritized over Noc's boon because DV special is better
