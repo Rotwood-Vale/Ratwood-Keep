@@ -143,6 +143,13 @@
 				/obj/item/natural/fibers = 1)
 	skill_level = 1
 
+/datum/crafting_recipe/roguetown/sewing/lowcut
+	name = "lowcut shirt - (2 cloths, fiber; NOVICE)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers= 1)
+	skill_level = 1
+
 /datum/crafting_recipe/roguetown/sewing/tunic
 	name = "tunic (cloth) - (2 cloths, fiber; NOVICE)"
 	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic)
@@ -1016,6 +1023,13 @@
 	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/noc)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/nobletunic
+	name = "fancy coat - (4 silks, fiber; LOOM, EXPERT)"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat)
+	reqs = list(/obj/item/natural/silk = 4,
+				/obj/item/natural/fibers = 1)
 	skill_level = 4
 
 /* craftdif of 5 = MASTER */

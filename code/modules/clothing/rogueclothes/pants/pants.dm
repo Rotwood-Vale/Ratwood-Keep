@@ -349,10 +349,10 @@
 	desc = "padded leather armor made by the most skilled of kingsfield's tailors, its quality is remarkable."
 	icon_state = "fencerpants"
 	resistance_flags = FIRE_PROOF
-	armor = list("blunt" = 85, "slash" = 75, "stab" = 70, "bullet" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 60, "slash" = 65, "stab" = 85, "bullet" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
-	max_integrity = 300
+	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	allowed_race = NON_DWARVEN_RACE_TYPES
