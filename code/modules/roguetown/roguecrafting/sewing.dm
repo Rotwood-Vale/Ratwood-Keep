@@ -751,7 +751,7 @@
 	result = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fur = 1,
-				obj/item/natural/fibers = 2)
+				/obj/item/natural/fibers = 2)
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/sewing/leatherkini
