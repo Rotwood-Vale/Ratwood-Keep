@@ -50,7 +50,6 @@
 		H.mind.AddSpell(new SPELL_FETCH)
 		H.mind.AddSpell(new SPELL_MESSAGE)
 		H.mind.AddSpell(new SPELL_LESSER_HEAL)
-		H.mind.AddSpell(new SPELL_CPR)
 		H.mind.AddSpell(new SPELL_DIAGNOSE)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
