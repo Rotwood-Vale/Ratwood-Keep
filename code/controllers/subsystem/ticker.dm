@@ -249,13 +249,12 @@ SUBSYSTEM_DEF(ticker)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
 			if(!player)
 				continue
-			if(player.client.prefs.job_preferences[V] == JP_HIGH)
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					if(player.client.prefs.lastclass == V)
-						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
-							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
-							continue
-					readied_jobs.Add(V)
+			if(player.ready == PLAYER_READY_TO_PLAY)
+				if(player.client.prefs.lastclass == V)
+					if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
+						to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
+						continue
+				readied_jobs.Add(V)
 
 #ifndef FASTLOAD
 	if(!("Duke" in readied_jobs))
