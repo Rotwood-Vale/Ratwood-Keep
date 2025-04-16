@@ -124,7 +124,7 @@
 
 /proc/check_pq_menu(ckey)
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
-		to_chat(src, span_boldwarning("User does not exist."))
+		to_chat(usr, span_boldwarning("User does not exist."))
 		return
 	var/popup_window_data = "<center>[ckey]</center>"
 	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
