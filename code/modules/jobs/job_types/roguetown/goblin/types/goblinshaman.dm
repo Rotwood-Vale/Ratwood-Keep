@@ -9,6 +9,8 @@
 	outfit = /datum/outfit/job/roguetown/goblinshaman
 	min_pq = 0
 	category_tags = list(CTAG_GOBLIN)
+	spells = list(SPELL_FETCH, SPELL_PRESTIDIGITATION,
+	SPELL_MESSAGE, SPELL_DIAGNOSE, SPELL_LEARNSPELL, SPELL_LESSER_HEAL)
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -45,12 +47,6 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 		H.change_stat("intelligence", 6)
 		H.change_stat("fortune", 2)
-		H.mind.AddSpell(new SPELL_LEARNSPELL)
-		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-		H.mind.AddSpell(new SPELL_FETCH)
-		H.mind.AddSpell(new SPELL_MESSAGE)
-		H.mind.AddSpell(new SPELL_LESSER_HEAL)
-		H.mind.AddSpell(new SPELL_DIAGNOSE)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)//No real spells of Graggar, yet.
