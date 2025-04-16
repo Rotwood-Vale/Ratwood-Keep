@@ -510,6 +510,13 @@
                 /obj/item/natural/fibers = 4)
     skill_level = 4
 
+/datum/crafting_recipe/roguetown/sewing/fancygamb
+	name = "fencer gambeson (6 cloths, 2 fibers, 2 silk; EXPERT)"
+	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/otavan)
+	reqs = list(/obj/item/natural/cloth = 6,
+				/obj/item/natural/fibers = 2,
+				/obj/item/natural/silk = 2)
+	skill_level = 4
 /datum/crafting_recipe/roguetown/sewing/armordress
 	name = "dress (padded) - (6 cloths, 4 fibers; EXPERT)"
 	result = /obj/item/clothing/suit/roguetown/armor/armordress
