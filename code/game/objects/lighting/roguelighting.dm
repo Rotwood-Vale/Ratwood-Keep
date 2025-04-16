@@ -238,6 +238,14 @@
 			return
 		if(!W)
 			return
+
+		// Simple way to check if the item is no longer in the players hand
+		// Even if it somehow isn't deleted yet, this will stop the infinite fuel bug.
+		if(user.get_active_held_item() != W)
+			to_chat(user, span_warning("That item is no longer in my hand..."))
+			return
+
+		user.dropItemToGround(W)
 		qdel(W)
 		user.visible_message(span_warning("[user] feeds [W] to [src]."))
 		if(initial(fueluse))
@@ -298,7 +306,7 @@
 			H.visible_message(span_info("[H] warms \his hand over the fire."))
 
 			if(do_after(H, 15, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				var/obj/item/bodypart/affecting = H.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				to_chat(H, span_warning("HOT!"))
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					H.update_damage_overlays()
@@ -785,7 +793,7 @@
 			if(istype(H))
 				H.visible_message(span_info("[H] warms \his hand over the embers."))
 				if(do_after(H, 50, target = src))
-					var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+					var/obj/item/bodypart/affecting = H.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 					to_chat(H, span_warning("HOT!"))
 					if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 						H.update_damage_overlays()
@@ -866,7 +874,7 @@
 			H.visible_message(span_info("[H] warms \his hand near the fire."))
 
 			if(do_after(H, 100, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				var/obj/item/bodypart/affecting = H.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				to_chat(H, span_warning("HOT!"))
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					H.update_damage_overlays()

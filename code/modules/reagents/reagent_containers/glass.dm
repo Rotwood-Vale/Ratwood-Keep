@@ -212,7 +212,7 @@
 			return
 	..()
 
-/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
+/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if (slot == SLOT_HEAD)
 		if(reagents.total_volume)
