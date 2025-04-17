@@ -80,6 +80,7 @@
 #define TRAIT_SEXPASS "sexpass"
 #define TRAIT_STEELHEARTED "steelhearted" //no bad mood from dismembering or seeing this
 #define TRAIT_IWASREVIVED "iwasrevived" //prevents PQ gain from reviving the same person twice
+#define TRAIT_ASTRATARISEN "astratarisen" //Astratan revivals only work once on someone.
 #define TRAIT_IWASUNZOMBIFIED "iwasunzombified" //prevents PQ gain from curing a zombie twice
 #define TRAIT_IWASHAUNTED "iwashaunted" //prevents spawning a haunt from a decapitated body twice
 #define TRAIT_SCHIZO_AMBIENCE "schizo_ambience" //replaces all ambience with creepy shit
@@ -87,6 +88,7 @@
 #define TRAIT_NORUN "Decayed Flesh"
 #define TRAIT_PUNISHMENT_CURSE "PunishmentCurse"
 #define TRAIT_LEPROSY "Leprosy"
+#define TRAIT_ROTTOUCHED "Rot Touched"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 #define TRAIT_WANTED "Wanted Brigand"
 #define TRAIT_WANTED_POSTER_READ "Read Wanted Poster"
@@ -115,6 +117,7 @@
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
+	TRAIT_ROTTOUCHED = span_necrosis("I've recovered from the rot plague, though it's taint is evident..."),
 	TRAIT_CHOSEN = "Appointed by the Church of the Successors, you hold authority over all spiritual matters in the City.",
 	TRAIT_BOGVULNERABLE = span_info("I am used to steady ground. The Terrorbog is unfamiliar terrain."),
 	TRAIT_WEBWALK = "I can move freely between webs.",

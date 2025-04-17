@@ -17,7 +17,8 @@
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
-
+	if(HAS_TRAIT(src, TRAIT_ROTTOUCHED) && src != user)
+		user.add_stress(/datum/stressevent/rottouched)
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
 	var/aghost_privilege = isadminobserver(user)
@@ -192,6 +193,8 @@
 	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")
 
+	if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))
+		. += span_necrosis("A ROT TOUCHED...")
 	if(user != src)
 		var/datum/mind/Umind = user.mind
 		if(Umind && mind)

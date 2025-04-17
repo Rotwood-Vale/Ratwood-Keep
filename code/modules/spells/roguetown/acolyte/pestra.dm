@@ -131,6 +131,67 @@
 	revert_cast()
 	return FALSE
 
+/obj/effect/proc_holder/spell/invoked/mercy
+	name = "Pestra's Mercy"
+	desc = "Call upon Pestra's mercy to shield your fellow man from the Undermaiden's gaze, preventing them from slipping into death for as long as your faith and fatigue may muster."
+	overlay_state = "limb_attach"
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	associated_skill = /datum/skill/magic/holy
+	miracle = TRUE
+	no_early_release = TRUE
+	movement_interrupt = TRUE
+	devotion_cost = 10
+	var/list/near_death_lines = list(
+		"A haze begins to envelop me, but then suddenly recedes, as if warded back by some great light...",
+		"A terrible weight bears down upon me, as if the wyrld itself were crushing me with its heft...",
+		"The sound of a placid river drifts into hearing, followed by the ominous toll of a ferryman's bell...",
+		"Some vast, immeasurably distant figure looms beyond my perception - I feel it, more than I see. It waits. It watches.",
+	)
+
+/obj/effect/proc_holder/spell/invoked/mercy/cast(list/targets, mob/living/carbon/human/user)
+	. = ..()
+	var/atom/target = targets[1]
+	if (!isliving(target))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/living_target = target
+	if (!user.Adjacent(target))
+		to_chat(user, span_warning("I must be beside [living_target] to avert Her gaze from [living_target.p_them()]!"))
+		revert_cast()
+		return FALSE
+
+	// add the no-death trait to them....
+	user.visible_message(span_notice("Whispering motes gently bead from [user]'s fingers as [user.p_they()] place a hand near [living_target], scriptures of the Pestra spilling from their lips..."), span_notice("I stand beside [living_target] and utter the hallowed words, staying The undermaidens grasp for just a little while longer..."))
+	to_chat(user, span_small("I must remain still and at [living_target]'s side..."))
+	to_chat(living_target, span_warning("An odd sensation blossoms in my chest, cold and unknown..."))
+
+	ADD_TRAIT(living_target, TRAIT_NODEATH, "avert_spell")
+
+	var/our_holy_skill = user.mind?.get_skill_level(associated_skill)
+	var/tickspeed = 30 + (5 * our_holy_skill)
+
+	while (do_after(user, tickspeed, target = living_target))
+		user.stamina_add(-2.5)
+
+		living_target.adjustOxyLoss(-10)
+		living_target.blood_volume = max((BLOOD_VOLUME_SURVIVE * 1.5), living_target.blood_volume)
+
+		if (living_target.health <= 5)
+			if (prob(5))
+				to_chat(living_target, span_small(pick(near_death_lines)))
+
+		if (user.devotion?.check_devotion(src))
+			user.devotion?.update_devotion(-10)
+		else
+			to_chat(span_warning("My devotion runs dry - the Intercession fades from my lips!"))
+			break
+
+	REMOVE_TRAIT(living_target, TRAIT_NODEATH, "avert_spell")
+
+	user.visible_message(span_danger("[user]'s concentration breaks, the motes receding from [living_target] and into [user.p_their()] hand once more."), span_danger("My concentration breaks, and the Intercession falls silent."))
+
+
 // Cure rot
 /obj/effect/proc_holder/spell/invoked/cure_rot
 	name = "Cure Rot"
@@ -160,34 +221,28 @@
 		if(target == user)
 			revert_cast()
 			return FALSE
+		if(HAS_TRAIT(target, TRAIT_ROTTOUCHED))
+			to_chat(user, span_warning("The Rot has spread too deeply for even Pestra to clean."))
+			revert_cast()
+			return FALSE
 		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
 			to_chat(user, span_warning("Pestra gives no answer back to clean their body from the rot."))
 			revert_cast()
-			return FALSE	
+			return FALSE
 		// If, for whatever reason, someone manages to capture a vampire with (somehow) rot??? This prevents them from losing their undead biotype.
 		if(target.mind?.has_antag_datum(/datum/antagonist/vampire) || target.mind?.has_antag_datum(/datum/antagonist/vampire/lesser) || target.mind?.has_antag_datum(/datum/antagonist/vampirelord))
 			to_chat(user, span_warning("It's of an incurable evil, I can't."))
 			revert_cast()
 			return FALSE
-		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
 
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
-		if(was_zombie)
-			target.mind.remove_antag_datum(/datum/antagonist/zombie)
-			target.Unconscious(20 SECONDS)
-			target.emote("breathgasp")
-			target.Jitter(100)
-
-			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
-				adjust_playerquality(unzombification_pq, user.ckey)
-				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
 
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
 		if(rot)
 			rot.amount = 0
-
+		ADD_TRAIT(target, TRAIT_ROTTOUCHED, "[type]")
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target
 			for(var/obj/item/bodypart/limb in stinky.bodyparts)
@@ -195,13 +250,13 @@
 				limb.skeletonized = FALSE
 				limb.update_limb()
 				limb.update_disabled()
-		
+
 		// un-deadite'ing process
 		target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
-		
+
 		for(var/trait in GLOB.traits_deadite)
 			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
-	
+
 		if(target.stat < DEAD) // Drag and shove ghost back in.
 			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
 			if(underworld_spirit)
@@ -210,12 +265,21 @@
 				qdel(underworld_spirit)
 		target.grab_ghost(force = TRUE) // even suicides
 
+		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)	//This should be after putting the mind back into the target
+		if(was_zombie)
+			target.death()
+			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
+				adjust_playerquality(unzombification_pq, user.ckey)
+				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
+
 		target.update_body()
 		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))
 		if(target.mind?.funeral && (target.stat != DEAD) && !CONFIG_GET(flag/force_respawn_on_funeral))
 			to_chat(target, span_warning("My funeral rites are undone!"))
 			target.mind.funeral = FALSE
 		return TRUE
+
 	revert_cast()
 	return FALSE
 

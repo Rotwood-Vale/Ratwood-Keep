@@ -45,9 +45,4 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
 	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-	H.mind.AddSpell(new SPELL_DOCHEAL)
-	H.mind.AddSpell(new SPELL_STABLE)
-	H.mind.AddSpell(new SPELL_PURGE)
-	H.mind.AddSpell(new SPELL_DEBRIDE)
-	H.mind.AddSpell(new SPELL_CPR)
 	H.ambushable = FALSE

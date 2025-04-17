@@ -26,7 +26,7 @@
 	description = "It almost seems to give off the faint sound of laughter."
 	var/active_item = FALSE
 
-/datum/magic_item/mundane/xylix/on_equip(var/item/i, var/mob/living/user, slot)
+/datum/magic_item/mundane/xylix/on_equip(var/obj/item/i, var/mob/living/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_HANDS)
 		return
@@ -37,7 +37,7 @@
 		to_chat(user, span_notice("I feel rather lucky"))
 		active_item = TRUE
 
-/datum/magic_item/mundane/xylix/on_drop(var/item/i, var/mob/living/user)
+/datum/magic_item/mundane/xylix/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
 		user.STALUC -= 1
