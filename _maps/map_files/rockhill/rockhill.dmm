@@ -2919,16 +2919,6 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
-"byR" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	layer = 2.7;
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/item/roguebin/water,
-/turf/open/floor/rogue/dirt,
-/area/rogue/indoors)
 "bzm" = (
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
@@ -11847,6 +11837,9 @@
 "gcH" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
+	},
+/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
+	dir = 4
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
@@ -31151,13 +31144,11 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "qvU" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
-	dir = 4
-	},
 /obj/structure/fluff/railing/border{
 	dir = 4;
 	layer = 2.05
 	},
+/obj/item/roguebin/water,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "qwa" = (
@@ -224224,7 +224215,7 @@ xbD
 pAV
 pAV
 jHe
-byR
+jHe
 pAV
 pAV
 pAV
