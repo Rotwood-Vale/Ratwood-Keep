@@ -430,12 +430,12 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			to_chat(owner, span_userdanger("I starve, my power dwindles! I am so weak!"))
 			starved = TRUE
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, -5)
+				owner.current.change_stat(S, -5, "vlstarve")
 	else
 		if(starved)
 			starved = FALSE
 			for(var/S in MOBSTATS)
-				owner.current.change_stat(S, 5)
+				owner.current.change_stat(S, 0, "vlstarve") // unset the starvation debuff
 	vitae = mypool.current
 
 /datum/antagonist/vampirelord/proc/move_to_spawnpoint()
