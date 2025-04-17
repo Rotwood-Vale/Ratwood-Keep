@@ -470,6 +470,7 @@
 	slot_flags = ITEM_SLOT_MOUTH
 	bleed_suppressing = 1
 	var/last_drink
+	var/memorylost = FALSE
 
 /obj/item/grabbing/bite/Click(location, control, params)
 	var/list/modifiers = params2list(params)
@@ -579,6 +580,9 @@
 				else if (C.vitae_bank > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
 					C.vitae_bank -= 500
+					if(!memorylost)	//has the person already gotten the memory loss callback?
+						addtimer(CALLBACK(src, /obj/item/grabbing/bite/proc/apply_memory_loss, C, VDrinker), 15 SECONDS)
+						memorylost = TRUE	//memory loss callback applied, skip applying on next drink
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)
@@ -637,3 +641,11 @@
 							VDrinker.handle_vitae(0) // Updates pool max.
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))
+
+
+/obj/item/grabbing/bite/proc/apply_memory_loss(mob/living/target, mob/living/user)
+	to_chat(target, span_notice("You feel... something slipping away. You can't remember who bit you!"))
+	target.visible_message(span_notice("[target] looks rather confused!"))
+	target.drowsyness = min(target.drowsyness + 50, 150)
+	log_game("[key_name(target)] has lost memory due to [key_name(user)]'s vampiric bite.")
+	memorylost = FALSE	//after this proc is ran, it can be ran again

@@ -418,9 +418,9 @@
 		embedder = has_embedded_object(embedder)
 	if(!istype(embedder) || !is_object_embedded(embedder))
 		return FALSE
-	if(istype(embedder, /obj/item/grown/log/tree/stake)) // or your actual stake path
+	if(istype(embedder, /obj/item/grown/log/tree/stake))
 		var/mob/living/L = owner
-		var/datum/antagonist/vampirelord/lesser/vampire = L.mind?.get_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/vampire = L.mind?.has_antag_datum(/datum/antagonist/vampirelord)
 		if(vampire)
 			vampire.unstake()
 	LAZYREMOVE(embedded_objects, embedder)

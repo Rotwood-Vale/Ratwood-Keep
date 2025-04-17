@@ -152,10 +152,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		/datum/subclass/healer,
 		/datum/subclass/woodcutter,
 		/datum/subclass/blacksmith,
-		/datum/subclass/rogue,
-		/datum/subclass/magos,
-		/datum/subclass/vagabond,
-		/datum/subclass/scavenger)
+		/datum/subclass/vampirerogue,
+		/datum/subclass/vampiremagos)
 	var/list/visoptions = list()
 
 	for(var/datum/subclass/A in SSrole_class_handler.sorted_class_categories[CTAG_ALLCLASS])
@@ -1327,6 +1325,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	if(VL.staked == TRUE)
 		to_chat(user, span_userdanger("The stake is making it impossible to use my bloodmagic!"))
 		return FALSE
+	else
+		return TRUE
 // Spells
 /obj/effect/proc_holder/spell/targeted/transfix
 	name = "Transfix"

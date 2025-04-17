@@ -255,6 +255,7 @@
 			clamp_limbs = FALSE
 		)
 	. = ..()
+
 /obj/item/grown/log/tree/stake/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
@@ -265,7 +266,7 @@
 	if(!istype(M))
 		return
 
-	if(M.checkcritarmor(BODY_ZONE_CHEST, BCLASS_STAB))
+	if(M.checkarmor(BODY_ZONE_CHEST, BCLASS_STAB))
 		to_chat(user, "The stake can't pierce through [M]'s armor!")
 		return FALSE
 

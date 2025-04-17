@@ -214,6 +214,9 @@
 	mob_biotypes &= ~MOB_UNDEAD
 	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
+	var/datum/antagonist/vampirelord/lesser/vampirespawn = mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+	if(vampirespawn)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "DISGUISE"), 1 SECONDS)
 	if(dna.species.use_skintones)
 		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
 		if(breasts)
@@ -262,7 +265,8 @@
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
 	set category = "VAMPIRE"
-	stakecheck(src)
+	if(!stakecheck(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -294,7 +298,8 @@
 /mob/living/carbon/human/proc/blood_celerity()
 	set name = "Quickening"
 	set category = "VAMPIRE"
-	stakecheck(src)
+	if(!stakecheck(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -329,7 +334,8 @@
 /mob/living/carbon/human/proc/blood_fortitude()
 	set name = "Armor of Darkness"
 	set category = "VAMPIRE"
-	stakecheck(src)
+	if(!stakecheck(usr))
+		return
 	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!VD)
 		return
