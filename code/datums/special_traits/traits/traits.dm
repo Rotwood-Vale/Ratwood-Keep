@@ -380,7 +380,7 @@
 	weight = 60
 
 /datum/special_trait/unlucky/on_apply(mob/living/carbon/human/character, silent)
-	character.STALUC -= rand(1, 10)
+	character.change_stat(STAT_STRING_LUC, -rand(1,10), "[type]")
 
 
 /datum/special_trait/jesterphobia

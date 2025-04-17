@@ -33,15 +33,15 @@
 	if(active_item)
 		return
 	else
-		user.STALUC += 1
-		to_chat(user, span_notice("I feel rather lucky"))
+		user.change_stat(STAT_STRING_LUC, 1, "xylixboon")
+		to_chat(user, span_notice("I feel rather lucky."))
 		active_item = TRUE
 
 /datum/magic_item/mundane/xylix/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		user.STALUC -= 1
-		to_chat(user, span_notice("I feel mundane once more"))
+		user.change_stat(STAT_STRING_LUC, 0, "xylixboon") // unset the buff
+		to_chat(user, span_notice("I feel mundane once more."))
 
 /datum/magic_item/mundane/unyieldinglight
 	name = "unyielding light"
