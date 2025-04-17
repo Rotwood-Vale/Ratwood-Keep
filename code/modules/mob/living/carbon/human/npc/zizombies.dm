@@ -67,8 +67,8 @@
 	icon_state = ""
 	var/list/standing = list()
 	var/mutable_appearance/body_overlay
-	var/obj/item/bodypart/chesty = get_bodypart("chest")
-	var/obj/item/bodypart/headdy = get_bodypart("head")
+	var/obj/item/bodypart/chesty = get_bodypart(BODY_ZONE_CHEST)
+	var/obj/item/bodypart/headdy = get_bodypart(BODY_ZONE_HEAD)
 	if(!headdy)
 		if(chesty && chesty.skeletonized)
 			body_overlay = mutable_appearance(icon, "zizombie_head_s", -BODY_LAYER)
@@ -138,7 +138,7 @@
 	gender = MALE
 	if(src.dna && src.dna.species)
 		src.dna.species.soundpack_m = new /datum/voicepack/zombie/m()
-		var/obj/item/headdy = get_bodypart("head")
+		var/obj/item/headdy = get_bodypart(BODY_ZONE_HEAD)
 		if(headdy)
 			headdy.icon = 'icons/roguetown/mob/monster/zizombie.dmi'
 			headdy.icon_state = "[src.dna.species.id]_head"
