@@ -49,6 +49,5 @@
 		H.change_stat("intelligence", 3)
 		H.change_stat("strength", -1)
 	if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
-		message_admins("if kobold:")
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
