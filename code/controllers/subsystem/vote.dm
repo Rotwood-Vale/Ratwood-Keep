@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(vote)
 						continue
 					choices.Add(VM.map_name)
 			if("custom")
-				var/doiweight = alert(usr,"Do you want the vote to be weighted?\nThis grants extra \"vote power\" based on characters being alive, important roles, and antagonists. It also gives more vote power to admins.\n\nIf you select \"No\", one player will each get 1 single vote.", "", "Yes", "No", "CANCEL")
+				var/doiweight = alert(usr,"Do you want the vote to be weighted?\nThis grants extra \"vote power\" based on characters being alive, important roles, and antagonists. It also gives more vote power to admins.\n\nIf you select \"No\", each player will each get 1 single vote.", "", "Yes", "No", "CANCEL")
 				switch(doiweight)
 					if("Yes")
 						weighted = TRUE
