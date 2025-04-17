@@ -51,8 +51,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-		H.change_stat("intelligence", 6)
-		H.change_stat("fortune", 2)
+		H.change_stat(STAT_STRING_INT, 6)
+		H.change_stat(STAT_STRING_LUC, 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)//No real spells of Graggar, yet.

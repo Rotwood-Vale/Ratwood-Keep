@@ -54,11 +54,11 @@
 		H.skin_tone = skin_slop["Grenzelhoft"]
 		H.update_body()
 	if(iswoodelf(H))
-		H.change_stat("strength", 1)
-		H.change_stat("speed", -1)
+		H.change_stat(STAT_STRING_STR, 1)
+		H.change_stat(STAT_STRING_SPD, -1)
 	if(isdwarfmountain(H))
-		H.change_stat("speed", 1)
-		H.change_stat("endurance", -1)
+		H.change_stat(STAT_STRING_SPD, 1)
+		H.change_stat(STAT_STRING_END, -1)
 
 
 	if(H.mind)
@@ -78,8 +78,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 2)
-		H.change_stat("speed", 3)
-		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1) // 9 Points with no armor skill.
+		H.change_stat(STAT_STRING_STR, 1)
+		H.change_stat(STAT_STRING_END, 2)
+		H.change_stat(STAT_STRING_SPD, 3)
+		H.change_stat(STAT_STRING_PER, 2)
+		H.change_stat(STAT_STRING_CON, 1) // 9 Points with no armor skill.

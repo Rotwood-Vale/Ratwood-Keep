@@ -61,11 +61,11 @@
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-	guard.change_stat("strength", 2)
-	guard.change_stat("perception", 1)
-	guard.change_stat("constitution", 1)
-	guard.change_stat("endurance", 1)
-	guard.change_stat("speed", 1)
+	guard.change_stat(STAT_STRING_STR, 2)
+	guard.change_stat(STAT_STRING_PER, 1)
+	guard.change_stat(STAT_STRING_CON, 1)
+	guard.change_stat(STAT_STRING_END, 1)
+	guard.change_stat(STAT_STRING_SPD, 1)
 
 /mob/proc/haltyell()
 	set name = "HALT!"

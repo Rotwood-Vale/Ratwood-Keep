@@ -28,12 +28,12 @@
 	beltr = /obj/item/flint
 	beltl = /obj/item/rogueweapon/huntingknife
 	backpack_contents = list(/obj/item/cooking/pan = 1, /obj/item/reagent_containers/food/snacks/rogue/cheddar = 1, /obj/item/reagent_containers/glass/bottle/rogue/milk = 3, /obj/item/natural/cloth = 1, /obj/item/reagent_containers/powder/salt = 4)
-	H.change_stat("strength", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("endurance", 1)
-	H.change_stat("intelligence", 2)
-	H.change_stat("perception", -1)
-	H.change_stat("speed", -2)
+	H.change_stat(STAT_STRING_STR, 2)
+	H.change_stat(STAT_STRING_CON, 2)
+	H.change_stat(STAT_STRING_END, 1)
+	H.change_stat(STAT_STRING_INT, 2)
+	H.change_stat(STAT_STRING_PER, -1)
+	H.change_stat(STAT_STRING_SPD, -2)
 	if(H.age == AGE_MIDDLEAGED)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)

@@ -14,7 +14,7 @@
 	weight = 100
 
 /datum/special_trait/alert/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("perception", 2)
+	character.change_stat(STAT_STRING_PER, 2)
 	ADD_TRAIT(character, TRAIT_BREADY, "[type]")
 
 
@@ -60,9 +60,9 @@
 
 /datum/special_trait/assassin/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
-	character.change_stat("strength", -1)
-	character.change_stat("endurance", 2)
-	character.change_stat("speed", 2)
+	character.change_stat(STAT_STRING_STR, -1)
+	character.change_stat(STAT_STRING_END, 2)
+	character.change_stat(STAT_STRING_SPD, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
@@ -75,7 +75,7 @@
 
 /datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
-	character.change_stat("speed", 1)
+	character.change_stat(STAT_STRING_SPD, 1)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 
@@ -107,8 +107,8 @@
 
 /datum/special_trait/duelist/on_apply(mob/living/carbon/human/character, silent)
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
-	character.change_stat("speed", 2)
-	character.change_stat("endurance", 2)
+	character.change_stat(STAT_STRING_SPD, 2)
+	character.change_stat(STAT_STRING_END, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
 	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long/heirloom
 	to_chat(character, span_notice("I need to get my sword from that tree."))
@@ -119,7 +119,7 @@
 	weight = 100
 
 /datum/special_trait/corn_fed/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("constitution", 2)
+	character.change_stat(STAT_STRING_CON, 2)
 
 /datum/special_trait/bookworm
 	name = "Bookworm"
@@ -127,7 +127,7 @@
 	weight = 100
 
 /datum/special_trait/bookworm/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("intelligence", 2)
+	character.change_stat(STAT_STRING_INT, 2)
 	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
 
 /datum/special_trait/arsonist
@@ -238,7 +238,7 @@
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
-	character.change_stat("speed", 3)
+	character.change_stat(STAT_STRING_SPD, 3)
 
 
 /datum/special_trait/gourmand
@@ -281,9 +281,9 @@
 /datum/special_trait/giant/on_apply(mob/living/carbon/human/character)
 	character.mob_size += 1
 	ADD_TRAIT(character, TRAIT_DEATHBYSNUSNU, "[type]")
-	character.change_stat("strength", 2)
-	character.change_stat("constitution", 2)
-	character.change_stat("speed", -2)
+	character.change_stat(STAT_STRING_STR, 2)
+	character.change_stat(STAT_STRING_CON, 2)
+	character.change_stat(STAT_STRING_SPD, -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
 	character.update_transform()
@@ -306,8 +306,8 @@
 	weight = 80
 
 /datum/special_trait/nimrod/on_apply(mob/living/carbon/human/character, silent)
-	character.change_stat("speed", -2)
-	character.change_stat("intelligence", -4)
+	character.change_stat(STAT_STRING_SPD, -2)
+	character.change_stat(STAT_STRING_INT, -4)
 
 /datum/special_trait/heretic
 	name = "Known Heretic"
@@ -479,9 +479,9 @@
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
 	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	character.change_stat("strength", 2)
-	character.change_stat("constitution", 2)
-	character.change_stat("speed", -2)
+	character.change_stat(STAT_STRING_STR, 2)
+	character.change_stat(STAT_STRING_CON, 2)
+	character.change_stat(STAT_STRING_SPD, -2)
 
 
 /datum/special_trait/seed_feed

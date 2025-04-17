@@ -51,11 +51,11 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("speed", -1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_INT, 1)
+			H.change_stat(STAT_STRING_SPD, -1)
 
 		if("Harvester")
 			head = /obj/item/clothing/head/roguetown/strawhat
@@ -88,10 +88,10 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
 
 		if("Tracker")
 			neck = /obj/item/clothing/neck/roguetown/coif
@@ -123,9 +123,9 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 2)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_INT, 1)
+			H.change_stat(STAT_STRING_PER, 2)
+			H.change_stat(STAT_STRING_SPD, 1)
 
 
 		if("Camp Follower")
@@ -151,10 +151,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", -1)
-			H.change_stat("speed", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, -1)
+			H.change_stat(STAT_STRING_SPD, 1)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 
 	H.set_blindness(0)

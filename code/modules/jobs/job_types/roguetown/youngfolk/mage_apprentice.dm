@@ -46,8 +46,8 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)	//they get potion crafting round start now.
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_spellpoints(3)
-		H.change_stat("intelligence", 3)
-		H.change_stat("strength", -1)
+		H.change_stat(STAT_STRING_INT, 3)
+		H.change_stat(STAT_STRING_STR, -1)
 	if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage

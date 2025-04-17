@@ -39,11 +39,11 @@
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	H.change_stat("strength", 3)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("perception", 1)
-	H.change_stat("intelligence", -2)
+	H.change_stat(STAT_STRING_STR, 3)
+	H.change_stat(STAT_STRING_END, 2)
+	H.change_stat(STAT_STRING_CON, 2)
+	H.change_stat(STAT_STRING_PER, 1)
+	H.change_stat(STAT_STRING_INT, -2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	H.adjust_blindness(-3)

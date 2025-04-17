@@ -1265,7 +1265,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	id = "frostbite"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
 	duration = 20 SECONDS
-	effectedstats = list("speed" = -2)
+	effectedstats = list(STAT_STRING_SPD = -2)
 
 /atom/movable/screen/alert/status_effect/buff/frostbite
 	name = "Frostbite"

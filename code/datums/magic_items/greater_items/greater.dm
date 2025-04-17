@@ -122,7 +122,7 @@
 	if(active_item)
 		return
 	else
-		user.change_stat("perception", 2)
+		user.change_stat(STAT_STRING_PER, 2)
 		user.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		user.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		to_chat(user, span_notice("I feel more dexterious!"))
@@ -131,7 +131,7 @@
 /datum/magic_item/greater/archery/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		user.change_stat("perception", -2)
+		user.change_stat(STAT_STRING_PER, -2)
 		user.mind.adjust_skillrank_down_to(/datum/skill/combat/bows, 2, TRUE)
 		user.mind.adjust_skillrank_down_to(/datum/skill/combat/crossbows, 2, TRUE)
 		to_chat(user, span_notice("I feel mundane once more"))

@@ -120,10 +120,10 @@
 	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	bogger.change_stat("strength", 2)
-	bogger.change_stat("constitution", 1)
-	bogger.change_stat("endurance", 2)
-	bogger.change_stat("speed", 1)
+	bogger.change_stat(STAT_STRING_STR, 2)
+	bogger.change_stat(STAT_STRING_CON, 1)
+	bogger.change_stat(STAT_STRING_END, 2)
+	bogger.change_stat(STAT_STRING_SPD, 1)
 
 /datum/outfit/job/roguetown/ranger
 	name = "Bog Ranger"
@@ -143,6 +143,6 @@
 	bogger.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	bogger.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	bogger.change_stat("perception", 3)
-	bogger.change_stat("speed", 2)
-	bogger.change_stat("endurance", 2)
+	bogger.change_stat(STAT_STRING_PER, 3)
+	bogger.change_stat(STAT_STRING_SPD, 2)
+	bogger.change_stat(STAT_STRING_END, 2)

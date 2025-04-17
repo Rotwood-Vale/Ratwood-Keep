@@ -47,8 +47,8 @@
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
 				pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/random
 				belt =	/obj/item/storage/belt/rogue/leather/cloth
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_END, 2)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 		if("Minstrel")
@@ -93,9 +93,9 @@
 					backr = /obj/item/rogue/instrument/flute
 				if(5)
 					backr = /obj/item/rogue/instrument/drum
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 2)
-			H.change_stat("speed", 2)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, 2)
+			H.change_stat(STAT_STRING_SPD, 2)
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 
 		if("Harlequin")
@@ -120,9 +120,9 @@
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			head = /obj/item/clothing/head/roguetown/jester
 			neck = /obj/item/clothing/neck/roguetown/coif
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", -1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, -1)
+			H.change_stat(STAT_STRING_SPD, 1)
 			ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 

@@ -28,8 +28,8 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	pants = /obj/item/clothing/under/roguetown/tights/vagrant
-	H.change_stat("strength", -4)
-	H.change_stat("intelligence", -4)
-	H.change_stat("constitution", -4)
-	H.change_stat("endurance", -4)
-	H.change_stat("speed", -4)
+	H.change_stat(STAT_STRING_STR, -4)
+	H.change_stat(STAT_STRING_INT, -4)
+	H.change_stat(STAT_STRING_CON, -4)
+	H.change_stat(STAT_STRING_END, -4)
+	H.change_stat(STAT_STRING_SPD, -4)

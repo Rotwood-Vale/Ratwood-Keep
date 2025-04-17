@@ -40,6 +40,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-		H.change_stat("intelligence", 2)
-		H.change_stat("fortune", 2)
+		H.change_stat(STAT_STRING_INT, 2)
+		H.change_stat(STAT_STRING_LUC, 2)
 		H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)

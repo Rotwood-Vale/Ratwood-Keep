@@ -56,9 +56,9 @@
 			cloak = /obj/item/clothing/cloak/half
 			head = /obj/item/clothing/head/roguetown/fancyhat
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_INT, 1)
+			H.change_stat(STAT_STRING_PER, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
@@ -89,9 +89,9 @@
 			head = /obj/item/clothing/head/roguetown/hatblu
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			beltl = /obj/item/storage/belt/rogue/pouch/food
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
 		if("Failed Condottiero")
@@ -120,11 +120,11 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("speed", -1)
-			H.change_stat("perception", 2)
-			H.change_stat("fortune", -1)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_SPD, -1)
+			H.change_stat(STAT_STRING_PER, 2)
+			H.change_stat(STAT_STRING_LUC, -1)
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

@@ -47,11 +47,11 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 
-		H.change_stat("strength", 1)
-		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", -1)
-		H.change_stat("endurance", 1)
+		H.change_stat(STAT_STRING_STR, 1)
+		H.change_stat(STAT_STRING_INT, 2)
+		H.change_stat(STAT_STRING_CON, 1)
+		H.change_stat(STAT_STRING_SPD, -1)
+		H.change_stat(STAT_STRING_END, 1)
 
 
 

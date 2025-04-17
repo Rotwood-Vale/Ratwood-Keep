@@ -30,9 +30,9 @@
 	cloak = /obj/item/clothing/cloak/apron/waist
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/natural/cloth/)
-	H.change_stat("strength", 1)
-	H.change_stat("constitution", 2)
-	H.change_stat("endurance", 2)
+	H.change_stat(STAT_STRING_STR, 1)
+	H.change_stat(STAT_STRING_CON, 2)
+	H.change_stat(STAT_STRING_END, 2)
 	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
