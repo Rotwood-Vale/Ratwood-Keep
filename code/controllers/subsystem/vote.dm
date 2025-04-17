@@ -304,6 +304,9 @@ SUBSYSTEM_DEF(vote)
 	voting |= C
 
 	if(mode)
+		var/weighttext = "votepwr"
+		if(!weighted)
+			weighttext = "votes"
 		if(question)
 			. += "<h2>Vote: '[question]'</h2>"
 		else
@@ -313,7 +316,7 @@ SUBSYSTEM_DEF(vote)
 			var/votes = choices[choices[i]]
 			if(!votes)
 				votes = 0
-			. += "<li><a href='?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] [weighted ? "votepwr" : "votes"])</li>"
+			. += "<li><a href='?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] [weighttext])</li>"
 		. += "</ul><hr>"
 		if(admin)
 			. += "(<a href='?src=[REF(src)];vote=cancel'>Cancel Vote</a>) "
