@@ -95,6 +95,8 @@
 			return
 	else
 		if(lastminer.mind?.has_antag_datum(/datum/antagonist/bandit))
+			ScrapeAway()
+			queue_smooth_neighbors(src)
 			return
 		if(lastminer.goodluck(2) && mineralType)
 	//		to_chat(lastminer, span_notice("Bonus ducks!"))
