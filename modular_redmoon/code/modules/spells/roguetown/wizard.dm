@@ -24,3 +24,62 @@
 		priority_announce("[inputty]", title = "The Magician Speaks", sound = 'sound/misc/surrender.ogg')
 	else
 		revert_cast()
+/obj/effect/proc_holder/spell/targeted/lightninglure
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "lure"
+/obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "frostbolt"
+/obj/effect/proc_holder/spell/invoked/findfamiliar
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "familiar"
+/obj/effect/proc_holder/spell/invoked/mending
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "mend"
+/obj/effect/proc_holder/spell/invoked/sundering_lightning
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "lightning"
+/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "lightningbolt"
+/obj/effect/proc_holder/spell/invoked/haste
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "haste"
+/obj/effect/proc_holder/spell/invoked/meteor_storm
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "meteorstorm"
+/obj/effect/proc_holder/spell/targeted/touch/darkvision
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "darkvision"
+/obj/effect/proc_holder/spell/targeted/summonweapon
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "summonweapon"
+/obj/effect/proc_holder/spell/invoked/projectile/repel
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "repel"
+/obj/effect/proc_holder/spell/targeted/touch/nondetection
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "nondetection"
+/obj/effect/proc_holder/spell/invoked/push_spell
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "repulsewiz"
+/obj/projectile/magic/frostbolt
+	range = 20
+	speed = 3 
+/obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe
+	charge_max = 40 SECONDS
+	duration = 10 SECONDS
+/obj/effect/temp_visual/slowdown_spell_aoe/long
+	duration = 10 SECONDS
+/obj/effect/proc_holder/spell/invoked/mageblindness
+	charge_max = 30 SECONDS
+/obj/effect/proc_holder/spell/invoked/mageblindness/cast(list/targets, mob/user = usr)
+	if(isliving(targets[1]))
+		var/mob/living/target = targets[1]
+		if(target.anti_magic_check(TRUE, TRUE))
+			return FALSE
+		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))
+		target.blind_eyes(6)
+		return TRUE
+	revert_cast()
+	return FALSE
