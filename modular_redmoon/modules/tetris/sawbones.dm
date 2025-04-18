@@ -11,8 +11,8 @@
 		/obj/item/rogueweapon/surgery/retractor,
 		/obj/item/rogueweapon/surgery/bonesetter,
 		/obj/item/rogueweapon/surgery/cautery,
-		/obj/item/natural/worms/leech/cheele,
-		/obj/item/needle/pestra
+		/obj/item/natural/worms/leech,
+		/obj/item/needle
 	)
 
 /obj/item/storage/fancy/ifak
@@ -23,7 +23,8 @@
 		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
 		/obj/item/reagent_containers/pill/pnkpill,
 		/obj/item/candle/yellow,
-		/obj/item/needle
+		/obj/item/needle,
+		/obj/item/reagent_containers/glass/bottle/rogue/embalm
 	)
 
 /obj/item/storage/fancy/pilltin

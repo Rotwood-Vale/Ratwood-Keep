@@ -59,18 +59,14 @@
 	target.grab_ghost(force = TRUE) // even suicides
 	target.emote("breathgasp")
 	target.Jitter(100)
-	if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
-		target.remove_status_effect(/datum/status_effect/debuff/death_weaken)
-		target.apply_status_effect(/datum/status_effect/debuff/death_embrace)	//revived twice by a physician without divine help? Soul nearly torn apart.
-	else
-		target.apply_status_effect(/datum/status_effect/debuff/death_weaken)	//revived once by a physician without divine help? Soul damaged.
 	target.update_body()
 	target.visible_message(span_notice("[target] is dragged back from Necra's hold!"), span_green("I awake from the void."))
 	qdel(tool)
 	if(target.mind)
 		target.mind.remove_antag_datum(/datum/antagonist/zombie)
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
-			adjust_playerquality(revive_pq, user.ckey)
+			// adjust_triumph(revive_pq, user.ckey)
+			user.adjust_triumphs(1)
 			ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
 	return TRUE
 

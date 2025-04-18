@@ -81,10 +81,13 @@
 			target.IgniteMob()
 			target.adjustFireLoss(30)
 			return TRUE
-		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_weaken))
+		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
 			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
+		target.remove_status_effect(/datum/status_effect/debuff/death_weaken)
+		target.remove_status_effect(/datum/status_effect/debuff/death_embrace)
+		target.remove_status_effect(/datum/status_effect/debuff/death_claimed)
 		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
 			to_chat(user, span_warning("Necra will not allow them to return back."))
 			revert_cast()

@@ -2164,7 +2164,6 @@
 #include "modular_redmoon\code\datums\stress\positive_events.dm"
 #include "modular_redmoon\code\game\fbi_open_up.dm"
 #include "modular_redmoon\code\game\objects\effects\music.dm"
-#include "modular_redmoon\code\game\objects\effects\temporary_visual.dm"
 #include "modular_redmoon\code\game\objects\items\beartraps.dm"
 #include "modular_redmoon\code\game\objects\items\dice.dm"
 #include "modular_redmoon\code\game\objects\items\gwstrap.dm"

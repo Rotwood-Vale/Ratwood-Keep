@@ -126,6 +126,7 @@
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
+			H.mind.AddSpell(new SPELL_CPR)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.mind.adjust_spellpoints(1)
 			H.mind.AddSpell(new SPELL_LEARNSPELL)

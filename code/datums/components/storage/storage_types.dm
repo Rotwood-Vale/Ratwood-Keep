@@ -151,16 +151,11 @@
 /datum/component/storage/concrete/roguetown/ifak/New(datum/P, ...)
 	. = ..()
 	set_holdable(
-		typecacheof(list(/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
-						/obj/item/reagent_containers/hypospray/medipen/sty/detox,
-						/obj/item/natural/cloth/bandage,
-						/obj/item/natural/bundle/cloth/bandage,
-						/obj/item/natural/bundle/cloth/bandage/full,
-						/obj/item/reagent_containers/pill/pnkpill,
+		typecacheof(list(/obj/item/natural/cloth,
+						/obj/item/natural/bundle/cloth,
+						/obj/item/reagent_containers,
 						/obj/item/candle,
-						/obj/item/needle,
-						/obj/item/needle/thorn,
-						/obj/item/needle/pestra)
+						/obj/item/needle)
 					))
 
 /datum/component/storage/concrete/grid/bin

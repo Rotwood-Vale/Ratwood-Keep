@@ -93,6 +93,13 @@
 	update_damage_hud()
 	update_health_hud()
 	update_mobility()
+	if(!gibbed && !QDELETED(src))
+		if(src.has_status_effect(/datum/status_effect/debuff/death_embrace))
+			apply_status_effect(/datum/status_effect/debuff/death_claimed)
+		if(src.has_status_effect(/datum/status_effect/debuff/death_weaken))
+			apply_status_effect(/datum/status_effect/debuff/death_embrace)
+		else
+			apply_status_effect(/datum/status_effect/debuff/death_weaken)
 	stop_pulling()
 
 	. = ..()

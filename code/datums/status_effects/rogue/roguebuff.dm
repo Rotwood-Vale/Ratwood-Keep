@@ -607,36 +607,36 @@
     desc = "The flesh of royalty, granting an increase in luck."
     icon_state = "meatsteak"
 
-/atom/movable/screen/alert/status_effect/buff/healing
-	name = "Healing Miracle"
-	desc = "Divine intervention relieves me of my ailments."
-	icon_state = "buff"
+// /atom/movable/screen/alert/status_effect/buff/healing
+// 	name = "Healing Miracle"
+// 	desc = "Divine intervention relieves me of my ailments."
+// 	icon_state = "buff"
 
-/datum/status_effect/buff/healing
-	id = "healing"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
-	duration = 10 SECONDS
-	examine_text = "They are bathed in a restorative aura!"
-	var/healing_on_tick = 1
+// /datum/status_effect/buff/healing
+// 	id = "healing"
+// 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
+// 	duration = 10 SECONDS
+// 	examine_text = "They are bathed in a restorative aura!"
+// 	var/healing_on_tick = 1
 
-/datum/status_effect/buff/healing/on_creation(mob/living/new_owner, new_healing_on_tick)
-	healing_on_tick = new_healing_on_tick
-	return ..()
+// /datum/status_effect/buff/healing/on_creation(mob/living/new_owner, new_healing_on_tick)
+// 	healing_on_tick = new_healing_on_tick
+// 	return ..()
 
-/datum/status_effect/buff/healing/tick()
-	var/obj/effect/temp_visual/heal_rogue/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
-	H.color = "#FFD700"
-	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
-		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
-	if(length(owner.get_wounds()))
-		owner.heal_wounds(healing_on_tick)
-		owner.update_damage_overlays()
-	owner.adjustBruteLoss(-healing_on_tick, 0)
-	owner.adjustFireLoss(-healing_on_tick, 0)
-	owner.adjustOxyLoss(-healing_on_tick, 0)
-	owner.adjustToxLoss(-healing_on_tick, 0)
-	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
-	owner.adjustCloneLoss(-healing_on_tick, 0)
+// /datum/status_effect/buff/healing/tick()
+// 	var/obj/effect/temp_visual/heal_rogue/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
+// 	H.color = "#FFD700"
+// 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+// 		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
+// 	if(length(owner.get_wounds()))
+// 		owner.heal_wounds(healing_on_tick)
+// 		owner.update_damage_overlays()
+// 	owner.adjustBruteLoss(-healing_on_tick, 0)
+// 	owner.adjustFireLoss(-healing_on_tick, 0)
+// 	owner.adjustOxyLoss(-healing_on_tick, 0)
+// 	owner.adjustToxLoss(-healing_on_tick, 0)
+// 	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+// 	owner.adjustCloneLoss(-healing_on_tick, 0)
 
 /datum/status_effect/buff/vitae
 	id = "druqks"

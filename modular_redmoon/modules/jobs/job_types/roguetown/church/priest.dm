@@ -8,7 +8,7 @@
 	ужасные публичные порицания и неортодоксальный фанатизм привели к тому, что церковь балансирует \
 	на грани ереси по мнению Верховного Жреца Святого Престола. Несмотря на вызывающие действия, люди терпимы, \
 	поскольку церковь часто вмешивается в несправедливости, вызванные бессердечными институтами, что терзают Рокхилл."
-	spells = list(/obj/effect/proc_holder/spell/self/convertrole/templar, /obj/effect/proc_holder/spell/self/convertrole/monk, /obj/effect/proc_holder/spell/invoked/solar_smite)
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/templar, /obj/effect/proc_holder/spell/self/convertrole/monk, /obj/effect/proc_holder/spell/invoked/heal, /obj/effect/proc_holder/spell/invoked/solar_smite)
 	cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 
 /obj/effect/proc_holder/spell/invoked/solar_smite
