@@ -89,8 +89,6 @@ Within this file:
 	UnregisterSignal(owner, COMSIG_MOB_ATTACK_HAND)
 	if(buffed_item)
 		var/obj/item/I = buffed_item.resolve()
-		if(istype(I))
-			//this is where overlay removal code would go?
 		UnregisterSignal(I, COMSIG_ITEM_AFTERATTACK)
 
 /datum/status_effect/divine_strike/proc/item_afterattack(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
