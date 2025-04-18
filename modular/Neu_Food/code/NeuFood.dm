@@ -83,33 +83,31 @@ handle interaction
 	  and feeds it through the food_interaction recipes to determine what to do. This way
 	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
 
-/obj/item/reagent_containers/food/snacks/proc/handle_interaction(mob/user, list/items)
-	//var/datum/cooking_method/c_method
+proc/food_handle_interaction(obj/item/source, mob/user, list/items, interaction_type)
 	var/obj/method_result
-	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items)
+	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items, interaction_type)
 
 	if (!recipe)
-		to_chat(user, "I can't make anything with these two items...")
-	else
-		for(var/I in items)
-			world.log << "[I]"
-		var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
-		method_result = recipe.result
-		to_chat(user, span_warning("[recipe.crafting_message]"))
-		playsound(user.loc, recipe.craftsound, 100)
-		var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
-		if(do_after(user, delay, src))
-			new method_result(src.loc) // Should always be on the table
-			var/list/player_items = list(user.get_active_held_item(), user.get_inactive_held_item())
-			user.drop_all_held_items()
-			for(var/obj/item/I in player_items)
-				I.forceMove(loc)
-			recipe.clear_items(items)
+		to_chat(user, "I can't make anything with these two items.")
+		return FALSE
 
-					
-		//var/obj/item/I = user.get_active_held_item()
-		//user.dropItemToGround(I)
-		//qdel(I)
+	for(var/I in items)
+		world.log << "[I]" // REMOVE WHEN DEBUGGING FINISHED
+
+	method_result = recipe.result
+
+	if(recipe.pre_check(user, items) == FALSE)
+		return FALSE //We can't do it!
+
+	to_chat(user, span_warning("[recipe.crafting_message]"))
+	playsound(user.loc, recipe.craftsound, 100)
+	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
+	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
+	if(do_after(user, delay, src))
+		new method_result(source.loc) // Always be on the table
+		recipe.clear_items(items)
+		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
+	return TRUE
 
 // Attackby uses the item you touched so that's why it has to be on the table.
 // It's the easiest way to ensure this always happens on a table, which it probably should.
@@ -121,9 +119,12 @@ handle interaction
 attackby
 ======*/
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		return //tables are needed for now.
 
 	/* Special code for slicing because right now I don't want to deal with this
-	   and it's already Done in a way I can toelrate */
+	   right now and it's already done in a way I can tolerate */
 	if(user.used_intent.blade_class == slice_bclass && I.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
 			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
@@ -132,23 +133,30 @@ attackby
 		else if(slice(I, user))
 			return 1
 
+	//Otherwise we try to get an interaction
+	var/obj/item/inactive = user.get_inactive_held_item()
+	var/list/to_check = list(I, src) 
+	if(inactive)
+		to_check += inactive
+	world.log << "Checking interaction"
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_ITEM)
+	if(!interaction_status)
+		world.log << "Failed! (attackby)"
+		..() //If we failed everything see what parent procs think.
+
+/obj/item/reagent_containers/food/snacks/attack_hand(mob/user)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!found_table)
-		//to_chat(user, span_warning("I need a table to work with these."))
-		return 
+		return ..()
 	
-	// We do the item that hits first in case it's
-	// A knife or rolling pin
-	var/obj/item/inactiveitem = user.get_inactive_held_item()
-	var/list/to_check = list(I, src) 
-	if(inaciveitem)
-		to_check += inactiveitem
-	//for(var/obj/item/J in loc)
-	//	to_check += J //includes self
-	handle_interaction(user, to_check)
+	var/list/to_check = list(src) 
+	world.log << "Checking interaction"
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_HAND)
+	if(!interaction_status)
+		world.log << "failed!"
+		..() //If we failed everything see what parent procs think.
+	
 
-	..()
-*/
 /*	........   Kitchen tools / items   ................ */
 /obj/item/kitchen/spoon
 	name = "wooden spoon"
@@ -538,6 +546,18 @@ attackby
 	qdel(src)
 
 /obj/item/reagent_containers/powder/flour/attackby(obj/item/I, mob/living/user, params)
+	//Otherwise we try to get an interaction
+	var/obj/item/inactive = user.get_inactive_held_item()
+	var/list/to_check = list(I, src) 
+	if(inactive)
+		to_check += inactive
+	world.log << "Checking interaction"
+	var/interaction_status = food_handle_interaction(src, user, to_check)
+	if(!interaction_status)
+		world.log << "Failed! (attackby)"
+		..() //If we failed everything see what parent procs think.
+/*
+	food_handle_interaction(obj/source, mob/user, list/items)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	var/obj/item/reagent_containers/R = I
 	if(user.mind)
@@ -561,8 +581,19 @@ attackby
 		water_added = TRUE
 		color = "#d9d0cb"	
 	return TRUE
-
+*/
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		return ..()
+
+	var/list/to_check = list(src) 
+	world.log << "Checking interaction"
+	var/interaction_status = food_handle_interaction(src, user, to_check)
+	if(!interaction_status)
+		world.log << "failed!"
+		..() //If we failed everything see what parent procs think.
+	/*
 	if(water_added)
 		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
 		if(do_after(user,3 SECONDS, target = src))
@@ -570,7 +601,7 @@ attackby
 			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
 			qdel(src)
 	else ..()
-
+*/
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
 	name = "salt"

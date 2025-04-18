@@ -143,13 +143,69 @@ COOKED MEALS
 DOUGH RECIPES
 ============*/
 
+/* Wet Dough */
+/datum/food_handle_recipes/dough_wet
+	items = list(
+		/obj/item/reagent_containers/powder/flour,
+		/obj/item/reagent_containers )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough
+	craftsound = 'modular/Neu_Food/sound/splishy.ogg'
+
+/datum/food_handle_recipes/dough_wet/pre_check(user, to_check)
+	for(var/obj/item/reagent_containers/R in to_check)
+		if(!R.reagents.has_reagent(/datum/reagent/water), 10)
+			to_chat(user, "<span class='notice'>You need more water to work the flour.</span>")
+			return FALSE
+	return TRUE 
+
+/datum/food_handle_recipes/dough_wet/post_handle(user, to_check)
+	for(var/obj/item/reagent_containers/food/snacks/rogue/flour/F in to_check)
+		name = "wet powder"
+		desc = "Destined for greatness, at your hands."
+		water_added = TRUE
+		color = "#d9d0cb"	
+
+	for(var/obj/item/reagent_containers/R in to_check)
+		if(!istype(R, /obj/item/reagent_containers/food/snacks/rogue/flour))
+			R.reagents.remove_reagent(/datum/reagent/water, 10)
+			break
+	..()
+
+
+/* Dough base */
+/datum/food_handle_recipes/dough_base
+	items = list(
+		/obj/item/reagent_containers/powder/flour,
+	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
+	craftsound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+
+
 /* Dough */
 /datum/food_handle_recipes/dough
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/dough_base,
-		/obj/item/reagent_containers/powder/flour )
+		/obj/item/reagent_containers/powder/flour,
+		/obj/item/reagent_containers/powder/flour ) 
 
-	result = /obj/item/reagent_containers/food/snacks/rogue/dough
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
+	craftsound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+
+
+/datum/food_handle_recipes/dough/pre_check(user, to_check)
+	var/water = FALSE
+	var/dry = FALSE
+	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
+		//Kind of goofy but a way to find out if we have both a dry and wet flour
+		if(F.water_added)
+			water = TRUE
+		if(!F.water_added)
+			dry = TRUE
+		
+		if(!water || !dry)
+			return FALSE
+
+	return TRUE 
 
 /* Butterdough */
 /datum/food_handle_recipes/butterdough
@@ -281,6 +337,20 @@ HAND PIES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/poison
 
+/*==
+MISC
+==*/
+// If enough show up for a category, set it.
+//candy base
+
+//TO DO: Figure out how to make this stuff work because it uses attackhand.
+/datum/food_handle_recipes/candy_base
+	items = list(
+		/obj/item/reagent_containers/powder/sugar,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
+
 /*======
 PASTRIES
 ======*/
@@ -290,6 +360,28 @@ PASTRIES
 		/obj/item/reagent_containers/powder/sugar )
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
+
+/*========
+RAW COMBOS
+========*/
+
+/* Sausage */
+/datum/food_handle_recipes/sausage
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
+
+/* Sausage fat */
+/datum/food_handle_recipes/sausage_fat
+	items = list(
+		/obj/item/reagent_containers/food/snacks/fat/,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
+
+/* Sausage fish */
+
 
 /*=====
 SAMMICH
