@@ -133,11 +133,12 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
+	var/do_crit = TRUE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
-			return FALSE
-	var/do_crit = TRUE
+			do_crit = FALSE
+			dam -= 10
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
