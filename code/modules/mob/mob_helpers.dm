@@ -105,7 +105,7 @@
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,3)==3)
+		if(prob(33))
 			if(lowertext(newletter)=="o")
 				newletter="u"
 			if(lowertext(newletter)=="s")
@@ -116,18 +116,19 @@
 				newletter="oo"
 			if(lowertext(newletter)=="c")
 				newletter="k"
-		if(rand(1,20)==20)
+		if(prob(5))
 			if(newletter==" ")
 				newletter="...huuuhhh..."
 			if(newletter==".")
 				newletter=" *BURP*."
-		switch(rand(1,20))
-			if(1)
-				newletter+="'"
-			if(10)
-				newletter+="[newletter]"
-			if(20)
-				newletter+="[newletter][newletter]"
+		if(prob(15))
+			switch(rand(1,3))
+				if(1)
+					newletter+="'"
+				if(2)
+					newletter+="[newletter]"
+				if(3)
+					newletter+="[newletter][newletter]"
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -140,7 +141,7 @@
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext_char(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,2)==2)
+		if(prob(50))
 			if(lowertext(newletter)=="o")
 				newletter="u"
 			if(lowertext(newletter)=="t")
@@ -153,23 +154,24 @@
 				newletter=" NAR "
 			if(lowertext(newletter)=="s")
 				newletter=" SIE "
-		if(rand(1,4)==4)
+		if(prob(25))
 			if(newletter==" ")
 				newletter=" no hope... "
 			if(newletter=="H")
 				newletter=" IT COMES... "
 
-		switch(rand(1,15))
-			if(1)
-				newletter="'"
-			if(2)
-				newletter+="agn"
-			if(3)
-				newletter="fth"
-			if(4)
-				newletter="nglu"
-			if(5)
-				newletter="glor"
+		if(prob(33))
+			switch(rand(1,5))
+				if(1)
+					newletter="'"
+				if(2)
+					newletter+="agn"
+				if(3)
+					newletter="fth"
+				if(4)
+					newletter="nglu"
+				if(5)
+					newletter="glor"
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 

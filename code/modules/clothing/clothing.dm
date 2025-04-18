@@ -360,20 +360,17 @@
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
-	var/brokemessage = FALSE
-	// So, what this does is it iterates over all vars on the object, and then it sets them to zero.
-	// Including the ones that don't represent armor values. This is BAD. 
-	// Also, accessing a type's variables with [] will stop working in 1641. You can do the same with .vars[] there but please don't
-	// Frankly just rewrite armor entirely. This system just sucks. This proc in particular should probably just set a broken flag,
-	// and code taking into account armor should check if an armor piece is not broken.
-
-	for(var/x in armor)
-		if(armor[x] > 0)
-			brokemessage = TRUE
-			armor[x] = 0
-	if(ismob(loc) && brokemessage)
-		var/mob/M = loc
-		to_chat(M, "ARMOR BROKEN..!")
+	var/broken = FALSE
+	var/list/armorlist = armor.getList()
+	for(var/key in armorlist)
+		if(armorlist[key] > 0)
+			broken = TRUE
+			break
+	if(broken)
+		armor = armor.detachArmor(armor) // Unset everything!
+		if(ismob(loc))
+			var/mob/M = loc
+			to_chat(M, "ARMOR BROKEN...!")
 	..()
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)

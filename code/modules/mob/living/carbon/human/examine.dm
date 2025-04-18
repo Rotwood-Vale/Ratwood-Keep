@@ -22,7 +22,8 @@
 		user.add_stress(/datum/stressevent/jesterphobia)
 	if(HAS_TRAIT(src, TRAIT_BEAUTIFUL))
 		user.add_stress(/datum/stressevent/beautiful)
-
+	if(HAS_TRAIT(src, TRAIT_ROTTOUCHED) && src != user)
+		user.add_stress(/datum/stressevent/rottouched)
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
 	var/aghost_privilege = isadminobserver(user)
@@ -163,7 +164,7 @@
 			. += span_userdanger("EXCOMMUNICATED!")
 
 		if(name in GLOB.apostasy_players)
-			. += span_userdanger("APOSTATE!")	
+			. += span_userdanger("APOSTATE!")
 
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
@@ -221,10 +222,12 @@
 			var/atom/item = get_most_expensive()
 			if(item)
 				. += span_notice("You get the feeling [m2] most valuable possession is \a [item.name].")
-				
+
 	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")
 
+	if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))
+		. += span_necrosis("A ROT TOUCHED...")
 	if(user != src)
 		var/datum/mind/Umind = user.mind
 		if(Umind && mind)

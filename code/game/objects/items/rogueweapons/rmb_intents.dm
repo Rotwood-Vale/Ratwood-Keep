@@ -51,8 +51,8 @@
 	if(prob(perc)) //feint intent increases the immobilize duration significantly
 		if(istype(user.rmb_intent, /datum/rmb_intent/feint))
 			L.apply_status_effect(/datum/status_effect/debuff/feinted)
-			L.changeNext_move(10)
-			L.Immobilize(12)
+			L.changeNext_move(20)
+			L.Immobilize(20)
 			to_chat(user, user.client.prefs.be_russian ? span_boldgreen("[L] попал[L.gender == MALE ? "ся" : "ась"] на мой финт!") : span_boldgreen("[L] fell for my feint attack!")) // REDMOON EDIT - feint_update - перевод
 			to_chat(L, L.client?.prefs?.be_russian ? span_biginfo("Я попал[L.gender == MALE ? "ся" : "ась"] на финт [user]!") : span_biginfo("I fall for [user]'s feint attack!")) // REDMOON EDIT - feint_update - перевод
 		else

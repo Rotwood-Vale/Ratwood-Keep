@@ -78,6 +78,8 @@
 			change_stat("constitution", -2)
 			change_stat("intelligence", -5)
 			change_stat("fortune", -5)
+		if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))
+			change_stat("fortune", -3)
 		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 			change_stat("strength", -3)
 			change_stat("speed", -3)

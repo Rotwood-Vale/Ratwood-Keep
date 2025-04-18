@@ -32,14 +32,14 @@
 		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
 			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
 			target.cursed_freak_out()
-			return 
+			return
 		if(HAS_TRAIT(target, TRAIT_EXCOMMUNICATED))
 			to_chat(user, span_warning("The one that walks under such mark, cannot be healed..."))
 			revert_cast()
 			return FALSE
+		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		var/conditional_buff = FALSE
 		var/situational_bonus = 1
-		//this if chain is stupid, replace with variables on /datum/patron when possible?
 		switch(user.patron.type)
 			if(/datum/patron/godless)
 				target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_notice("Sentimental thoughts drive away my pains!"))
@@ -61,7 +61,7 @@
 				// the more natural stuff around US, the more we heal
 				for (var/obj/O in oview(5, user))
 					if (istype(O, /obj/structure/flora) || istype(O, /obj/structure/soil) || istype(O, /obj/structure/glowshroom) || istype(O, /obj/structure/spacevine))
-						situational_bonus = min(situational_bonus + 0.1, 2)
+						situational_bonus = min(situational_bonus + 0.2, 4)
 				// Healing before the oaken avatar of Dendor in the Druid Grove (exceptionally rare otherwise) supercharges their healing
 				if (situational_bonus > 0)
 					conditional_buff = TRUE
@@ -93,10 +93,14 @@
 					conditional_buff = TRUE
 					situational_bonus = rand(1, 5)
 			if(/datum/patron/divine/pestra)
-				target.visible_message(span_info("An aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
+				target.visible_message(span_info("A aura of clinical care encompasses [target]!"), span_notice("I'm sewn back together by sacred medicine!"))
 				// pestra always heals a little more toxin damage and restores a bit more blood
-				target.adjustToxLoss(-situational_bonus)
-				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+				var/list/wCount = target.get_wounds()
+				if(wCount.len > 0)
+					conditional_buff = TRUE
+					situational_bonus = 1.5
+				target.adjustToxLoss(-10)
+				target.blood_volume += BLOOD_VOLUME_SURVIVE
 			if(/datum/patron/divine/malum)
 				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
 				var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/wallfire, /obj/machinery/light/rogue/wallfire/candle, /obj/machinery/light/rogue/forge)
@@ -160,11 +164,29 @@
 			to_chat(user, "Channeling my patron's power is easier in these conditions!")
 			healing += situational_bonus
 
-		target.apply_status_effect(/datum/status_effect/buff/healing, healing)
+		if(ishuman(target))
+			var/mob/living/carbon/human/H = target
+			var/no_embeds = TRUE
+			var/list/embeds = H.get_embedded_objects()
+			if(length(embeds))
+				for(var/object in embeds)
+					if(!istype(object, /obj/item/natural/worms/leech))	//Leeches and surgical cheeles are made an exception.
+						no_embeds = FALSE
+			else
+				no_embeds = TRUE
+			if(no_embeds)
+				target.apply_status_effect(/datum/status_effect/buff/healing, healing)
+			else
+				target.visible_message(span_warning("The wounds tear and rip around the embedded objects!"))
+				to_chat(target, span_warning("Agonising pain shoots through your body as magycks try to sew around the embedded objects!"))
+				H.adjustBruteLoss(20)
+				playsound(target, 'sound/combat/dismemberment/dismem (2).ogg', 100)
+				H.emote("agony")
+		else
+			target.apply_status_effect(/datum/status_effect/buff/healing, healing)
 		return TRUE
 	revert_cast()
 	return FALSE
-
 // Miracle
 /obj/effect/proc_holder/spell/invoked/heal
 	name = "Fortify"

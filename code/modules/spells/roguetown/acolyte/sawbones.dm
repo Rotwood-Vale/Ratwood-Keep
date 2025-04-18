@@ -58,7 +58,7 @@
 	miracle = FALSE
 	devotion_cost = 0
 
-/obj/effect/proc_holder/spell/targeted/debride // Cure rot if has weak liver debuff
+/obj/effect/proc_holder/spell/targeted/debride // delays rotting
 	action_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "Tissue Debridement"
 	overlay_state = "unrot"
@@ -85,8 +85,6 @@
 	charge_max = 1 MINUTES
 	miracle = FALSE
 	devotion_cost = 0
-	/// Amount of PQ gained for reviving
-	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/targeted/cpr/cast(list/targets, mob/living/user)
 	. = ..()
