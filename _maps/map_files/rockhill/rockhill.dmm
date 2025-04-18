@@ -35169,6 +35169,10 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/manor)
+"sHo" = (
+/obj/structure/reliquarybox,
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/under/town/basement)
 "sHG" = (
 /obj/structure/table/wood{
 	dir = 10;
@@ -257783,7 +257787,7 @@ txa
 txa
 buR
 jtg
-jtg
+sHo
 txa
 wde
 kwZ
