@@ -1227,14 +1227,14 @@
 	else if(href_list["add_stat"])
 		var/mob/living/M = locate(href_list["add_stat"])
 		var/statkey = href_list["stat"]
-		M.change_stat(1)
+		M.change_stat(statkey, 1)
 		log_admin("[usr] increased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
 
 	else if(href_list["lower_stat"])
 		var/mob/living/M = locate(href_list["lower_stat"])
 		var/statkey = href_list["stat"]
-		M.change_stat(-1)
+		M.change_stat(statkey, -1)
 		log_admin("[usr] decreased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
 
