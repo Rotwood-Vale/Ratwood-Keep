@@ -231,6 +231,20 @@
 				/obj/item/natural/silk = 1)
 	skill_level = 2
 
+/datum/crafting_recipe/roguetown/sewing/apron
+	name = "apron (2 cloths, fibers; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/apron)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/sewing/waistapron
+	name = "waist apron (cloth, fibers; APPRENTICE)"
+	result = list(/obj/item/clothing/cloak/apron/waist)
+	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 1)
+	skill_level = 2
+
 /* craftdif of 3 = JOURNEYMAN */
 
 /datum/crafting_recipe/roguetown/sewing/armingjacket
