@@ -112,9 +112,9 @@ Within this file:
 		return
 	if(!istype(M.used_intent, INTENT_HARM))
 		return
-	living_target.adjust_fire_stacks(5)
-	living_target.IgniteMob()
-	addtimer(CALLBACK(living_target, TYPE_PROC_REF(/mob/living, ExtinguishMob)), 5 SECONDS)
+	H.adjust_fire_stacks(5)
+	H.IgniteMob()
+	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living, ExtinguishMob)), 5 SECONDS)
 	H.visible_message(span_warning("The strike from [M]'s fist causes [H] to ignite with holy flame!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	qdel(src)
 
