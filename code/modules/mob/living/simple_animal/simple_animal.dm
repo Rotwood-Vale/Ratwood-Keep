@@ -27,6 +27,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/list/emote_hear = list()
 	///Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps
 	var/list/emote_see = list()
+	
+	// Languages the simplemob can and cannot speak or understand.
+	var/list/language_known = list()
+	var/list/language_not_known = list()
 
 	var/move_skip = FALSE
 	var/action_skip = FALSE
@@ -145,6 +149,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	///convenience var for forcibly waking up an idling AI on next check.
 	var/shouldwakeup = FALSE
 
+	///Awakened
+	var/awakened = FALSE
 	///Domestication.
 	var/tame = FALSE
 	///What the mob eats, typically used for taming or animal husbandry.
@@ -187,6 +193,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(!loc)
 		stack_trace("Simple animal being instantiated in nullspace")
 	update_simplemob_varspeed()
+
+	//Sets languages
+	for(var/language_type in language_known)
+		grant_language(language_type)
+	for(var/language_type in language_not_known)
+		remove_language(language_type)
+	
 //	if(dextrous)
 //		AddComponent(/datum/component/personal_crafting)
 
@@ -842,3 +855,4 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(isturf(loc))
 			playsound(src, "fart", 50, TRUE)
 			new pooptype(loc)
+
