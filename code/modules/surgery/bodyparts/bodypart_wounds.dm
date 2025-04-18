@@ -138,7 +138,7 @@
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			do_crit = FALSE
-			dam -= 10
+			dam *= 0.5
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
