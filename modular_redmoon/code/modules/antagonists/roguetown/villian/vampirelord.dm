@@ -37,3 +37,5 @@
 // 	if(creator_op)
 // 		M.mind.add_antag_datum(new_op,creator_op.nuke_team)
 // 		M.mind.special_role = "Nuclear Operative"
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire
+	icon = 'modular_redmoon/icons/armor.dmi'
