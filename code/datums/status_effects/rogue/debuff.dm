@@ -6,7 +6,7 @@
 /datum/status_effect/debuff/hungryt1
 	id = "hungryt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
-	effectedstats = list("constitution" = -1)
+	effectedstats = list(STAT_STRING_CON = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt1
@@ -17,7 +17,7 @@
 /datum/status_effect/debuff/hungryt2
 	id = "hungryt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt2
-	effectedstats = list("strength" = -2, "constitution" = -2, "endurance" = -1)
+	effectedstats = list(STAT_STRING_STR = -2, STAT_STRING_CON = -2, STAT_STRING_END = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt2
@@ -28,7 +28,7 @@
 /datum/status_effect/debuff/hungryt3
 	id = "hungryt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt3
-	effectedstats = list("strength" = -5, "constitution" = -3, "endurance" = -2)
+	effectedstats = list(STAT_STRING_STR = -5, STAT_STRING_CON = -3, STAT_STRING_END = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt3
@@ -53,7 +53,7 @@
 /datum/status_effect/debuff/moondust_crash
 	id = "moondust_crash"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/moondust_crash
-	effectedstats = list("speed" = -3, "endurance" = -3)
+	effectedstats = list(STAT_STRING_SPD = -3, STAT_STRING_END = -3)
 	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/moondust_crash
@@ -65,7 +65,7 @@
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt1
-	effectedstats = list("endurance" = -1)
+	effectedstats = list(STAT_STRING_END = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt1
@@ -76,7 +76,7 @@
 /datum/status_effect/debuff/thirstyt2
 	id = "thirsty2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt2
-	effectedstats = list("speed" = -1, "endurance" = -2)
+	effectedstats = list(STAT_STRING_SPD = -1, STAT_STRING_END = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt2
@@ -87,7 +87,7 @@
 /datum/status_effect/debuff/thirstyt3
 	id = "thirsty3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt3
-	effectedstats = list("strength" = -1, "speed" = -2, "endurance" = -3)
+	effectedstats = list(STAT_STRING_STR = -1, STAT_STRING_SPD = -2, STAT_STRING_END = -3)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt3
@@ -150,7 +150,7 @@
 /datum/status_effect/debuff/bleeding
 	id = "bleedingt1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt1
-	effectedstats = list("speed" = -1)
+	effectedstats = list(STAT_STRING_SPD = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt1
@@ -161,7 +161,7 @@
 /datum/status_effect/debuff/bleedingworse
 	id = "bleedingt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt2
-	effectedstats = list("strength" = -1, "speed" = -2)
+	effectedstats = list(STAT_STRING_STR = -1, STAT_STRING_SPD = -2)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt2
@@ -172,7 +172,7 @@
 /datum/status_effect/debuff/bleedingworst
 	id = "bleedingt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/bleedingt3
-	effectedstats = list("strength" = -3, "speed" = -4)
+	effectedstats = list(STAT_STRING_STR = -3, STAT_STRING_SPD = -4)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/bleedingt3
@@ -183,7 +183,7 @@
 /datum/status_effect/debuff/sleepytime
 	id = "sleepytime"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/sleepytime
-	effectedstats = list("speed" = -1, "endurance" = -1)
+	effectedstats = list(STAT_STRING_SPD = -1, STAT_STRING_END = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/sleepytime
 	name = "Tired"
@@ -193,7 +193,7 @@
 /datum/status_effect/debuff/muscle_sore
 	id = "muscle_sore"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/muscle_sore
-	effectedstats = list("strength" = -1, "endurance" = -1)
+	effectedstats = list(STAT_STRING_STR = -1, STAT_STRING_END = -1)
 
 /atom/movable/screen/alert/status_effect/debuff/muscle_sore
 	name = "Muscle Soreness"
@@ -203,7 +203,7 @@
 /datum/status_effect/debuff/goblingas
 	id = "goblingas"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/goblingas
-	effectedstats = list("intelligence" = -3, "endurance" = -3)
+	effectedstats = list(STAT_STRING_INT = -3, STAT_STRING_END = -3)
 	duration = 40 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/goblingas
@@ -223,7 +223,7 @@
 /datum/status_effect/debuff/cumbrained
 	id = "cumbrained"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/cumbrained
-	effectedstats = list("intelligence" = -10, "strength" = -6, "speed" = -6)
+	effectedstats = list(STAT_STRING_INT = -10, STAT_STRING_STR = -6, STAT_STRING_SPD = -6)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/cumbrained
@@ -272,7 +272,7 @@
 /datum/status_effect/buff/seelie/sad
 	id = "Seelie Curse"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/seelie/sad
-	effectedstats = list("fortune" = -2)
+	effectedstats = list(STAT_STRING_LUC = -2)
 	duration = 60 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/seelie/sad
@@ -283,7 +283,7 @@
 /datum/status_effect/debuff/seelie_wing_curse
 	id = "seelie_wing_curse"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
-	effectedstats = list("fortune" = -2)
+	effectedstats = list(STAT_STRING_LUC = -2)
 	duration = 4 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/seelie_wing_curse
@@ -295,7 +295,7 @@
 /datum/status_effect/debuff/ravox_burden
 	id = "ravox_burden"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ravox_burden
-	effectedstats = list("speed" = -2, "endurance" = -3)
+	effectedstats = list(STAT_STRING_SPD = -2, STAT_STRING_END = -3)
 	duration = 12 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/ravox_burden
@@ -306,7 +306,7 @@
 /datum/status_effect/debuff/cold
 	id = "Frostveiled"
 	alert_type =  /atom/movable/screen/alert/status_effect/debuff/cold
-	effectedstats = list("speed" = -2)
+	effectedstats = list(STAT_STRING_SPD = -2)
 	duration = 12 SECONDS
 
 /datum/status_effect/debuff/cold/on_apply()
@@ -325,7 +325,7 @@
 	id = "frostbite"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
 	duration = 20 SECONDS
-	effectedstats = list("speed" = -2)
+	effectedstats = list(STAT_STRING_SPD = -2)
 
 /atom/movable/screen/alert/status_effect/buff/frostbite
 	name = "Frostbite"
@@ -352,7 +352,7 @@
 /datum/status_effect/debuff/darkling_glare
 	id = "darkling_glare"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_glare
-	effectedstats = list("perception" = -1)
+	effectedstats = list(STAT_STRING_PER = -1)
 	duration = 10 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/darkling_glare
@@ -363,7 +363,7 @@
 /datum/status_effect/debuff/darkling_migraine
 	id = "darkling_migraine"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
-	effectedstats = list("endurance" = -1, "intelligence" = -1) //Will basically always be stacked with the eye strain penalty
+	effectedstats = list(STAT_STRING_END = -1, STAT_STRING_INT = -1) //Will basically always be stacked with the eye strain penalty
 	duration = 20 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/darkling_migraine
@@ -375,7 +375,7 @@
 /datum/status_effect/debuff/weaken_living
 	id = "weaken_living"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/weaken_living
-	effectedstats = list("speed" = -3, "constitution" = -3)
+	effectedstats = list(STAT_STRING_SPD = -3, STAT_STRING_CON = -3)
 	duration = 25 SECONDS
 
 /atom/movable/screen/alert/status_effect/debuff/weaken_living
@@ -392,7 +392,7 @@
 /datum/status_effect/debuff/guarddebuff
 	id = "guarddebuff"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/guarddebuff
-	effectedstats = list("endurance" = -2, "speed" = -2) //should discourage guards from the bog
+	effectedstats = list(STAT_STRING_END = -2, STAT_STRING_SPD = -2) //should discourage guards from the bog
 	duration = 5000 SECONDS //essentially permanent, removes when we're out of the area
 
 /datum/status_effect/debuff/guarddebuff/process()
@@ -405,7 +405,7 @@
 /datum/status_effect/debuff/excomm
 	id = "Excommunicated follower of Ten!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/excomm
-	effectedstats = list("fortune" = -2, "intelligence" = -2, "perception" = -2)
+	effectedstats = list(STAT_STRING_LUC = -2, STAT_STRING_INT = -2, STAT_STRING_PER = -2)
 	duration = 999 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/excomm
@@ -417,7 +417,7 @@
 /datum/status_effect/debuff/apostasy
 	id = "Apostasy!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/apostasy
-	effectedstats = list("fortune" = -5, "intelligence" = -2, "perception" = -2)
+	effectedstats = list(STAT_STRING_LUC = -5, STAT_STRING_INT = -2, STAT_STRING_PER = -2)
 	duration = 999 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/apostasy
@@ -429,7 +429,7 @@
 /datum/status_effect/debuff/hereticsermon
 	id = "Heretic on sermon!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon
-	effectedstats = list("intelligence" = -2, "speed" = -1, "fortune" = -2)
+	effectedstats = list(STAT_STRING_INT = -2, STAT_STRING_SPD = -1, STAT_STRING_LUC = -2)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/debuff/hereticsermon
@@ -441,7 +441,7 @@
 /datum/status_effect/debuff/alreadygraggared
 	id = "alreadygraggared"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/alreadygraggared
-	effectedstats = list("endurance" = -2, "strength" = -2, "constitution" = -2)
+	effectedstats = list(STAT_STRING_END = -2, STAT_STRING_STR = -2, STAT_STRING_CON = -2)
 	duration = -1 // permanent until removed
 
 /atom/movable/screen/alert/status_effect/debuff/alreadygraggared
@@ -452,7 +452,7 @@
 /datum/status_effect/debuff/smited
 	id = "Apostasy!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/apostasy
-	effectedstats = list("strength" = -2)
+	effectedstats = list(STAT_STRING_STR = -2)
 	duration = 2 MINUTES
 
 /atom/movable/screen/alert/status_effect/smited/apostasy

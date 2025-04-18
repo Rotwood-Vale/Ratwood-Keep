@@ -41,10 +41,10 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
 			cloak = /obj/item/clothing/cloak/tribal
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
-			H.change_stat("intelligence", -2)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
+			H.change_stat(STAT_STRING_INT, -2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
@@ -69,9 +69,9 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			l_hand = /obj/item/ammo_holder/quiver/arrows
 			cloak = /obj/item/clothing/cloak/volfmantle
-			H.change_stat("strength", 1)
-			H.change_stat("perception", 2) // 3 more statpoints than the others since they don't get dodge expert/anything too unique
-			H.change_stat("fortune", 2)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_PER, 2) // 3 more statpoints than the others since they don't get dodge expert/anything too unique
+			H.change_stat(STAT_STRING_LUC, 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 		if("Caveling Tinkerer")
@@ -94,9 +94,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/flint = 1, /obj/item/rogueore/coal = 1, /obj/item/rogueore/iron = 1)
-			H.change_stat("intelligence", 2)
-			H.change_stat("strength", -1)
-			H.change_stat("fortune", 1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_STR, -1)
+			H.change_stat(STAT_STRING_LUC, 1)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 		if("Caveling Shaman")
@@ -121,9 +121,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/tribal
 			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1)
-			H.change_stat("strength", -1)
-			H.change_stat("speed", 1)
-			H.change_stat("intelligence", 2)
+			H.change_stat(STAT_STRING_STR, -1)
+			H.change_stat(STAT_STRING_SPD, 1)
+			H.change_stat(STAT_STRING_INT, 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.mind.adjust_spellpoints(1)

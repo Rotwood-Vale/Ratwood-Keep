@@ -44,7 +44,7 @@
 	if(H.age == AGE_OLD)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 
-	H.change_stat("strength", 3)
-	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 1)
-	H.change_stat("intelligence", 1)
+	H.change_stat(STAT_STRING_STR, 3)
+	H.change_stat(STAT_STRING_CON, 1)
+	H.change_stat(STAT_STRING_END, 1)
+	H.change_stat(STAT_STRING_INT, 1)

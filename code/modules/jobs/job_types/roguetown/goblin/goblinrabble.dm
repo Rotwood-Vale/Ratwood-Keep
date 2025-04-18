@@ -48,9 +48,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		H.change_stat("strength", -1)
-		H.change_stat("perception", 2)
-		H.change_stat("speed", 2)
+		H.change_stat(STAT_STRING_STR, -1)
+		H.change_stat(STAT_STRING_PER, 2)
+		H.change_stat(STAT_STRING_SPD, 2)
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 
 //If a non-Goblin gets control by admin intervention.

@@ -111,11 +111,11 @@
 			else
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 				beltr = /obj/item/rogueweapon/sword/long
-		H.change_stat("strength", 3)
-		H.change_stat("perception", 2)
-		H.change_stat("intelligence", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat(STAT_STRING_STR, 3)
+		H.change_stat(STAT_STRING_PER, 2)
+		H.change_stat(STAT_STRING_INT, 2)
+		H.change_stat(STAT_STRING_CON, 2)
+		H.change_stat(STAT_STRING_END, 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOGVULNERABLE, TRAIT_GENERIC)	//applies debuff of -2end -2 spd when in the bog

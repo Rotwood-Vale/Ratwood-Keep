@@ -25,26 +25,26 @@
 		
 		if(/datum/patron/zizo)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
-			H.change_stat("intelligence", 1)
-			H.change_stat("constitution", -1)
+			H.change_stat(STAT_STRING_INT, 1)
+			H.change_stat(STAT_STRING_CON, -1)
 			H.faction += "undead"
 		if(/datum/patron/inhumen/graggar)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
-			H.change_stat("strength", 1)
-			H.change_stat("speed", -1)
-			H.change_stat("intelligence", -1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_SPD, -1)
+			H.change_stat(STAT_STRING_INT, -1)
 			ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 		if(/datum/patron/inhumen/matthios)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
-			H.change_stat("fortune", 1)
-			H.change_stat("constitution", -1)
-			H.change_stat("endurance", -1)
-			H.change_stat("perception", 1)
+			H.change_stat(STAT_STRING_LUC, 1)
+			H.change_stat(STAT_STRING_CON, -1)
+			H.change_stat(STAT_STRING_END, -1)
+			H.change_stat(STAT_STRING_PER, 1)
 		if(/datum/patron/inhumen/baotha)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
-			H.change_stat("constitution", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
 
@@ -82,11 +82,11 @@
 					beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
 					beltl = /obj/item/rogueweapon/huntingknife
 					r_hand = /obj/item/rogueweapon/woodstaff
-					H.change_stat("strength", -1)
-					H.change_stat("intelligence", 3)
-					H.change_stat("constitution", -2)
-					H.change_stat("endurance", -1)
-					H.change_stat("speed", -1)
+					H.change_stat(STAT_STRING_STR, -1)
+					H.change_stat(STAT_STRING_INT, 3)
+					H.change_stat(STAT_STRING_CON, -2)
+					H.change_stat(STAT_STRING_END, -1)
+					H.change_stat(STAT_STRING_SPD, -1)
 					H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
 					H.mind.AddSpell(new SPELL_LEARNSPELL)
 					H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
@@ -116,10 +116,10 @@
 					backr = /obj/item/rogueweapon/shield/wood
 					beltr = /obj/item/rogueweapon/stoneaxe/handaxe
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-					H.change_stat("strength", 1)
-					H.change_stat("endurance", 2)
-					H.change_stat("constitution", 2)
-					H.change_stat("speed", 1)
+					H.change_stat(STAT_STRING_STR, 1)
+					H.change_stat(STAT_STRING_END, 2)
+					H.change_stat(STAT_STRING_CON, 2)
+					H.change_stat(STAT_STRING_SPD, 1)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
@@ -149,11 +149,11 @@
 					beltr = /obj/item/ammo_holder/quiver/arrows
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
-					H.change_stat("strength", 1)
-					H.change_stat("endurance", 1)
-					H.change_stat("perception", 1)
-					H.change_stat("constitution", 1)
-					H.change_stat("speed", 2)
+					H.change_stat(STAT_STRING_STR, 1)
+					H.change_stat(STAT_STRING_END, 1)
+					H.change_stat(STAT_STRING_PER, 1)
+					H.change_stat(STAT_STRING_CON, 1)
+					H.change_stat(STAT_STRING_SPD, 2)
 					ADD_TRAIT(H, TRAIT_COMMIE, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
@@ -181,10 +181,10 @@
 					backr = /obj/item/rogueweapon/shield/buckler
 					beltr = /obj/item/rogueweapon/whip
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-					H.change_stat("strength", 1)
-					H.change_stat("endurance", 1)
-					H.change_stat("constitution", 1)
-					H.change_stat("speed", 2)
+					H.change_stat(STAT_STRING_STR, 1)
+					H.change_stat(STAT_STRING_END, 1)
+					H.change_stat(STAT_STRING_CON, 1)
+					H.change_stat(STAT_STRING_SPD, 2)
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
@@ -210,9 +210,9 @@
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					backl = /obj/item/storage/backpack/rogue/backpack
 					r_hand = /obj/item/rogueweapon/woodstaff
-					H.change_stat("strength", 3)
-					H.change_stat("constitution", 2)
-					H.change_stat("intelligence", -1)
+					H.change_stat(STAT_STRING_STR, 3)
+					H.change_stat(STAT_STRING_CON, 2)
+					H.change_stat(STAT_STRING_INT, -1)
 					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
@@ -234,9 +234,9 @@
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					backl = /obj/item/storage/backpack/rogue/backpack	
 					r_hand = /obj/item/rogueweapon/woodstaff
-					H.change_stat("strength", 3)
-					H.change_stat("constitution", 1)
-					H.change_stat("speed", 2)
-					H.change_stat("intelligence", 1)
+					H.change_stat(STAT_STRING_STR, 3)
+					H.change_stat(STAT_STRING_CON, 1)
+					H.change_stat(STAT_STRING_SPD, 2)
+					H.change_stat(STAT_STRING_INT, 1)
 					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	H.set_blindness(0)

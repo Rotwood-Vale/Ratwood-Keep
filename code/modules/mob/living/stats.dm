@@ -62,35 +62,35 @@
 					change_stat(S, H.dna.species.specstats_m[S])
 		switch(H.age)
 			if(AGE_MIDDLEAGED)
-				change_stat("speed", -1)
-				change_stat("endurance", 1)
+				change_stat(STAT_STRING_SPD, -1)
+				change_stat(STAT_STRING_END, 1)
 			if(AGE_OLD)
-				change_stat("strength", -1)
-				change_stat("speed", -2)
-				change_stat("perception", -1)
-				change_stat("constitution", -2)
-				change_stat("intelligence", 3)
-				change_stat("fortune", 1)
+				change_stat(STAT_STRING_STR, -1)
+				change_stat(STAT_STRING_SPD, -2)
+				change_stat(STAT_STRING_PER, -1)
+				change_stat(STAT_STRING_CON, -2)
+				change_stat(STAT_STRING_INT, 3)
+				change_stat(STAT_STRING_LUC, 1)
 		if(HAS_TRAIT(src, TRAIT_LEPROSY))
-			change_stat("strength", -5)
-			change_stat("speed", -5)
-			change_stat("endurance", -2)
-			change_stat("constitution", -2)
-			change_stat("intelligence", -5)
-			change_stat("fortune", -5)
+			change_stat(STAT_STRING_STR, -5)
+			change_stat(STAT_STRING_SPD, -5)
+			change_stat(STAT_STRING_END, -2)
+			change_stat(STAT_STRING_CON, -2)
+			change_stat(STAT_STRING_INT, -5)
+			change_stat(STAT_STRING_LUC, -5)
 		if(HAS_TRAIT(src, TRAIT_ROTTOUCHED))
-			change_stat("fortune", -3)
+			change_stat(STAT_STRING_LUC, -3)
 		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
-			change_stat("strength", -3)
-			change_stat("speed", -3)
-			change_stat("endurance", -3)
-			change_stat("constitution", -3)
-			change_stat("intelligence", -3)
-			change_stat("fortune", -3)
+			change_stat(STAT_STRING_STR, -3)
+			change_stat(STAT_STRING_SPD, -3)
+			change_stat(STAT_STRING_END, -3)
+			change_stat(STAT_STRING_CON, -3)
+			change_stat(STAT_STRING_INT, -3)
+			change_stat(STAT_STRING_LUC, -3)
 			H.voice_color = "c71d76"
 			set_eye_color(H, "#c71d76", "#c71d76")
 		if(isseelie(src))	//Check necessary to prevent seelie getting default stats when no other changes apply
-			change_stat("strength", -9)
+			change_stat(STAT_STRING_STR, -9)
 
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
@@ -110,7 +110,7 @@
 //			statindex[index]["stat"] = stat
 //			statindex[index]["amt"] = amt
 	switch(stat)
-		if("strength")
+		if(STAT_STRING_STR)
 			if(isseelie(src))
 				STASTR = 1
 				return
@@ -118,7 +118,7 @@
 			STASTR = tempskill.value
 			BUFSTR = tempskill.buffer
 
-		if("perception")
+		if(STAT_STRING_PER)
 			tempskill.modifystat(STAPER, BUFPER, amt)
 			STAPER = tempskill.value
 			BUFPER = tempskill.buffer
@@ -126,27 +126,27 @@
 			update_sight() //Needed.
 			update_fov_angles()
 
-		if("intelligence")
+		if(STAT_STRING_INT)
 			tempskill.modifystat(STAINT, BUFINT, amt)
 			STAINT = tempskill.value
 			BUFINT = tempskill.buffer
 
-		if("constitution")
+		if(STAT_STRING_CON)
 			tempskill.modifystat(STACON, BUFCON, amt)
 			STACON = tempskill.value
 			BUFCON = tempskill.buffer
 
-		if("endurance")
+		if(STAT_STRING_END)
 			tempskill.modifystat(STAEND, BUFEND, amt)
 			STAEND = tempskill.value
 			BUFEND = tempskill.buffer
 
-		if("speed")
+		if(STAT_STRING_SPD)
 			tempskill.modifystat(STASPD, BUFSPE, amt)
 			STASPD = tempskill.value
 			BUFSPE = tempskill.buffer
 
-		if("fortune")
+		if(STAT_STRING_LUC)
 			tempskill.modifystat(STALUC, BUFLUC, amt)
 			STALUC = tempskill.value
 			BUFLUC = tempskill.buffer

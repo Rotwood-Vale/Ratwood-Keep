@@ -54,9 +54,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.change_stat("strength", 3)
-		H.change_stat("perception", 2)
-		H.change_stat("constitution", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat(STAT_STRING_STR, 3)
+		H.change_stat(STAT_STRING_PER, 2)
+		H.change_stat(STAT_STRING_CON, 2)
+		H.change_stat(STAT_STRING_END, 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOGVULNERABLE, TRAIT_GENERIC)	//applies debuff of -2end -2 spd when in the bog

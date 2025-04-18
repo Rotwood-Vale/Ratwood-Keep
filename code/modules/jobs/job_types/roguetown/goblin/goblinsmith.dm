@@ -43,9 +43,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("speed", -2)
+		H.change_stat(STAT_STRING_STR, 1)
+		H.change_stat(STAT_STRING_END, 1)
+		H.change_stat(STAT_STRING_SPD, -2)
 
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))

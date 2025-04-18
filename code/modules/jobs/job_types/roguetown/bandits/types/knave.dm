@@ -35,11 +35,11 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	H.change_stat("strength", 1)
-	H.change_stat("constitution", 1)
-	H.change_stat("intelligence", -3)
-	H.change_stat("perception", 2)
-	H.change_stat("speed", 2) //It's all about speed and perception
+	H.change_stat(STAT_STRING_STR, 1)
+	H.change_stat(STAT_STRING_CON, 1)
+	H.change_stat(STAT_STRING_INT, -3)
+	H.change_stat(STAT_STRING_PER, 2)
+	H.change_stat(STAT_STRING_SPD, 2) //It's all about speed and perception
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC) //gets dodge expert but no medium armor training - gotta stay light
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	H.adjust_blindness(-3)
@@ -54,7 +54,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.change_stat("speed", 2)
+			H.change_stat(STAT_STRING_SPD, 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltr = /obj/item/rogueweapon/sword/iron // sword like literally every refugee gets
@@ -64,16 +64,16 @@
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 1)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_PER, 1)
 	var/wanted = list("Not wanted", "Wanted")
 	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
 	switch(wanted_choice)
 		if ("Not wanted")
 			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if ("Wanted")
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)

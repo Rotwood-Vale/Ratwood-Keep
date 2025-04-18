@@ -58,21 +58,21 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0,
-		"perception" = -1,
-		"intelligence" = 0,
-		"constitution" = 0,
-		"endurance" = 1,
-		"speed" = 1,
-		"fortune" = 0
+		STAT_STRING_STR = 0,
+		STAT_STRING_PER = -1,
+		STAT_STRING_INT = 0,
+		STAT_STRING_CON = 0,
+		STAT_STRING_END = 1,
+		STAT_STRING_SPD = 1,
+		STAT_STRING_LUC = 0
 		)
 	specstats_m = list(
-		"strength" = -1,
-		"speed" = 1,
+		STAT_STRING_STR = -1,
+		STAT_STRING_SPD = 1,
 	)
 	specstats_f = list(
-		"constitution" = 1,
-		"intelligence" = -1,
+		STAT_STRING_CON = 1,
+		STAT_STRING_INT = -1,
 	)
 	enflamed_icon = "widefire"
 	organs = list(

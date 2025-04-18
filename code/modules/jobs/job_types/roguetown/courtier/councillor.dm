@@ -58,9 +58,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.change_stat("intelligence", 3)
-		H.change_stat("constitution", 1)
-		H.change_stat("fortune", 1)
+		H.change_stat(STAT_STRING_INT, 3)
+		H.change_stat(STAT_STRING_CON, 1)
+		H.change_stat(STAT_STRING_LUC, 1)
 	
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 

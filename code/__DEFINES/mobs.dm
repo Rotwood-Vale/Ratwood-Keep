@@ -1,7 +1,16 @@
 /*ALL MOB-RELATED DEFINES THAT DON'T BELONG IN ANOTHER FILE GO HERE*/
 
+// these exist for compile-time checks to make sure no one types "sterngth" or "luck" on accident
+#define STAT_STRING_STR "strength"
+#define STAT_STRING_PER "perception"
+#define STAT_STRING_INT "intelligence"
+#define STAT_STRING_CON "constitution"
+#define STAT_STRING_END "endurance"
+#define STAT_STRING_SPD "speed"
+#define STAT_STRING_LUC "fortune"
+
 //This was previously in vampirelord.dm and mob/living/stats.dm, the person defined it twice because vampirelord came in below that stats file, so now both of them can get it here.
-#define MOBSTATS list("strength", "perception", "intelligence", "constitution", "endurance", "speed", "fortune")
+#define MOBSTATS list(STAT_STRING_STR, STAT_STRING_PER, STAT_STRING_INT, STAT_STRING_CON, STAT_STRING_END, STAT_STRING_SPD, STAT_STRING_LUC)
 
 //Misc mob defines
 

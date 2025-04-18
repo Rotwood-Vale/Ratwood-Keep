@@ -43,9 +43,9 @@
 			backr = /obj/item/rogueweapon/woodstaff
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list( /obj/item/reagent_containers/glass/bottle = 2, /obj/item/reagent_containers/glass/mortar = 1,  /obj/item/reagent_containers/glass/alembic = 1, /obj/item/thermometer, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
-			H.change_stat("intelligence", 2)
-			H.change_stat("fortune", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_LUC, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 
 		if("War Surgeon")
 			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)	//in line with town physicians and can now revive
@@ -67,9 +67,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/bottle/rogue/lesserhealthpot = 1, /obj/structure/bed/rogue/sleepingbag = 1)
-			H.change_stat("strength", -1)
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 1)
+			H.change_stat(STAT_STRING_STR, -1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, 1)
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 
 	H.set_blindness(0)

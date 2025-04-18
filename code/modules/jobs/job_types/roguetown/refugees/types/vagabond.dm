@@ -57,12 +57,12 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backpack_contents = list(/obj/item/lockpick = 1)
-			H.change_stat("strength", 1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("perception", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 1)
-			H.change_stat("fortune", -1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_INT, 1)
+			H.change_stat(STAT_STRING_PER, 1)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
+			H.change_stat(STAT_STRING_LUC, -1)
 
 		if("Drunkard")
 			pants = /obj/item/clothing/under/roguetown/tights/vagrant
@@ -85,10 +85,10 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-			H.change_stat("intelligence", -2)
-			H.change_stat("constitution", 1)
-			H.change_stat("strength", 1)
-			H.change_stat("fortune", 2)
+			H.change_stat(STAT_STRING_INT, -2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_LUC, 2)
 
 		if("Gravedigger")
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -117,10 +117,10 @@
 			beltl = /obj/item/rogueweapon/sword/iron/short
 			backl = /obj/item/rogueweapon/shovel
 			head = /obj/item/clothing/head/roguetown/puritan
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 1)
-			H.change_stat("speed", 2) 
-			H.change_stat("endurance", 1)
-			H.change_stat("fortune", 1)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_PER, 1)
+			H.change_stat(STAT_STRING_SPD, 2) 
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_LUC, 1)
 
 	H.set_blindness(0)

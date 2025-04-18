@@ -175,11 +175,11 @@
 
 /datum/curse/xylix/on_gain(mob/living/carbon/human/owner)
 	. = ..()
-	owner.STALUC -= 10
+	owner.change_stat(STAT_STRING_LUC, -10, "xylixcurse")
 
 /datum/curse/xylix/on_loss(mob/living/carbon/human/owner)
 	. = ..()
-	owner.STALUC += 10
+	owner.change_stat(STAT_STRING_LUC, 0, "xylixcurse") // unset existing debuff
 
 
 //////////////////////

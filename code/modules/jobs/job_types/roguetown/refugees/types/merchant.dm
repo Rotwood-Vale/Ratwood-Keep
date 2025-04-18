@@ -42,9 +42,9 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			// TODO: randomized content table
 			backl = /obj/item/storage/backpack/rogue/backpack
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 1)
-			H.change_stat("strength", -1)
+			H.change_stat(STAT_STRING_INT, 2)
+			H.change_stat(STAT_STRING_PER, 1)
+			H.change_stat(STAT_STRING_STR, -1)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 			switch(rand(1,20)) //not exactly a content table but it's better than nothing
@@ -83,9 +83,9 @@
 			head = /obj/item/clothing/head/roguetown/chaperon
 			backpack_contents = list(/obj/item/reagent_containers/powder/spice = 2, /obj/item/reagent_containers/powder/ozium = 1, /obj/item/reagent_containers/powder/moondust = 2)
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
-			H.change_stat("endurance", 1)
-			H.change_stat("speed", 2)
-			H.change_stat("fortune", 2)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_SPD, 2)
+			H.change_stat(STAT_STRING_LUC, 2)
 		// TODO: add useless trinkets before this class makes sense
 		// if("Hoaxer")
 		// 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)

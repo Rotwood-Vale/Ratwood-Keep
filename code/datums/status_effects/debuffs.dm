@@ -144,13 +144,13 @@
 	id = "death_weaken"
 	alert_type = null
 	examine_text = span_notice("They appear not entirely whole, as if some part of them was left behind.")
-	effectedstats = list("strength" = -1, "perception" = -1, "constitution" = -1, "endurance" = -1, "speed" = -1)
+	effectedstats = list(STAT_STRING_STR = -1, STAT_STRING_PER = -1, STAT_STRING_CON = -1, STAT_STRING_END = -1, STAT_STRING_SPD = -1)
 
 /datum/status_effect/debuff/death_embrace
 	id = "death_embrace"
 	alert_type = null
 	examine_text = span_notice("They look like a shade of their former selves.")
-	effectedstats = list("strength" = -3, "perception" = -3, "intelligence" = -3, "constitution" = -3, "endurance" = -3, "speed" = -3)
+	effectedstats = list(STAT_STRING_STR = -3, STAT_STRING_PER = -3, STAT_STRING_INT = -3, STAT_STRING_CON = -3, STAT_STRING_END = -3, STAT_STRING_SPD = -3)
 
 /datum/status_effect/debuff/death_claimed
 	id = "death_claimed"

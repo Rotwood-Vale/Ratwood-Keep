@@ -46,10 +46,10 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			beltl = /obj/item/rogueweapon/huntingknife
 			beltr = /obj/item/rogueweapon/sword/iron/messer
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if("Crossbowman")
@@ -74,10 +74,10 @@
 			beltl = /obj/item/ammo_holder/quiver/bolts
 			beltr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1)
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		
 		if("Pikeman")	
@@ -100,10 +100,10 @@
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
-			H.change_stat("strength", 2)
-			H.change_stat("endurance", 2)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 1)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_END, 2)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_SPD, 1)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		
 		if("Handgonner")
@@ -129,10 +129,10 @@
 			shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 			gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
-			H.change_stat("strength", 1)
-			H.change_stat("endurance", 1)
-			H.change_stat("constitution", 1)
-			H.change_stat("speed", 2)
-			H.change_stat("intelligence", 2)
+			H.change_stat(STAT_STRING_STR, 1)
+			H.change_stat(STAT_STRING_END, 1)
+			H.change_stat(STAT_STRING_CON, 1)
+			H.change_stat(STAT_STRING_SPD, 2)
+			H.change_stat(STAT_STRING_INT, 2)
 
 	H.set_blindness(0)

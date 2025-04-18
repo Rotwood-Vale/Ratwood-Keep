@@ -72,9 +72,9 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		if(!isseelie(H))	//No stat changes for Seelie hands
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 3)
-			H.change_stat("intelligence", 3)
+			H.change_stat(STAT_STRING_STR, 2)
+			H.change_stat(STAT_STRING_PER, 3)
+			H.change_stat(STAT_STRING_INT, 3)
 		else if(isseelie(H)) //Could just be an else, but prefer the extra layer
 			H.mind.AddSpell(new SPELL_PUSH_SPELL)			//Repulse, good for getting people away from the King
 			H.mind.AddSpell(new SPELL_ROUSTAME)			//Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
