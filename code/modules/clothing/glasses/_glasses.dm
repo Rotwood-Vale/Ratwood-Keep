@@ -50,7 +50,7 @@
 	darkness_view = 1
 	dog_fashion = /datum/dog_fashion/head
 
-/obj/item/clothing/glasses/blindfold/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/glasses/blindfold/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_GLASSES)
 		user.become_blind("blindfold_[REF(src)]")
@@ -66,7 +66,7 @@
 	item_state = "blindfoldwhite"
 	var/colored_before = FALSE
 
-/obj/item/clothing/glasses/blindfold/white/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/glasses/blindfold/white/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	if(ishuman(user) && slot == SLOT_GLASSES)
 		update_icon(user)
 		user.update_inv_glasses() //Color might have been changed by update_icon.

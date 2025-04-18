@@ -116,7 +116,7 @@
 	name = "archery"
 	description = "It has the imprint of a bowstring."
 	var/active_item = FALSE
-/datum/magic_item/greater/archery/on_equip(var/item/i, var/mob/living/user, slot)
+/datum/magic_item/greater/archery/on_equip(var/obj/item/i, var/mob/living/user, slot)
 	if(slot == ITEM_SLOT_HANDS)
 		return
 	if(active_item)
@@ -128,7 +128,7 @@
 		to_chat(user, span_notice("I feel more dexterious!"))
 		active_item = TRUE
 
-/datum/magic_item/greater/archery/on_drop(var/item/i, var/mob/living/user)
+/datum/magic_item/greater/archery/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
 		user.change_stat("perception", -2)
@@ -141,7 +141,7 @@
 	description = "It vibrates faintly with bound movement."
 	var/active_item
 
-/datum/magic_item/greater/leaping/on_equip(var/item/i, var/mob/living/user, slot)
+/datum/magic_item/greater/leaping/on_equip(var/obj/item/i, var/mob/living/user, slot)
 	.=..()
 	if(slot == ITEM_SLOT_HANDS)
 		return
@@ -153,7 +153,7 @@
 		ADD_TRAIT(user, TRAIT_LEAPER, TRAIT_GENERIC)
 		to_chat(user, span_notice("My legs feel much stronger."))
 
-/datum/magic_item/greater/leaping/on_drop(var/item/i, var/mob/living/user)
+/datum/magic_item/greater/leaping/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
 		REMOVE_TRAIT(user, TRAIT_ZJUMP, TRAIT_GENERIC)

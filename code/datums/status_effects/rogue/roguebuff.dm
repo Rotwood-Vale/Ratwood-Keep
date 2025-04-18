@@ -29,7 +29,7 @@
 	owner.add_stress(/datum/stressevent/goodsnack)
 	if(owner.has_status_effect(/datum/status_effect/buff/greatsnackbuff))
 		owner.remove_status_effect(/datum/status_effect/buff/snackbuff)
-	
+
 
 /datum/status_effect/buff/greatsnackbuff
 	id = "greatsnack"
@@ -56,7 +56,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/mealbuff
 	name = "Good meal"
-	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier." 
+	desc = "A meal a day keeps the barber away, or at least it makes it slightly easier."
 	icon_state = "foodbuff"
 
 /datum/status_effect/buff/mealbuff/on_apply()
@@ -606,3 +606,52 @@
     name = "Royal Flesh"
     desc = "The flesh of royalty, granting an increase in luck."
     icon_state = "meatsteak"
+
+/atom/movable/screen/alert/status_effect/buff/healing
+	name = "Healing Miracle"
+	desc = "Divine intervention relieves me of my ailments."
+	icon_state = "buff"
+
+/datum/status_effect/buff/healing
+	id = "healing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/healing
+	duration = 10 SECONDS
+	examine_text = "They are bathed in a restorative aura!"
+	var/healing_on_tick = 1
+
+/datum/status_effect/buff/healing/on_creation(mob/living/new_owner, new_healing_on_tick)
+	healing_on_tick = new_healing_on_tick
+	return ..()
+
+/datum/status_effect/buff/healing/tick()
+	var/obj/effect/temp_visual/heal_rogue/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
+	H.color = "#FFD700"
+	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
+		owner.blood_volume = min(owner.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	if(length(owner.get_wounds()))
+		owner.heal_wounds(healing_on_tick)
+		owner.update_damage_overlays()
+	owner.adjustBruteLoss(-healing_on_tick, 0)
+	owner.adjustFireLoss(-healing_on_tick, 0)
+	owner.adjustOxyLoss(-healing_on_tick, 0)
+	owner.adjustToxLoss(-healing_on_tick, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
+
+/datum/status_effect/buff/vitae
+	id = "druqks"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/vitae
+	effectedstats = list("fortune" = 2)
+	duration = 10 SECONDS
+
+/datum/status_effect/buff/vitae/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/high)
+
+/datum/status_effect/buff/vitae/on_remove()
+	owner.remove_stress(/datum/stressevent/high)
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/vitae
+	name = "Invigorated"
+	desc = "I have supped on the finest of delicacies: life!"

@@ -126,7 +126,7 @@
 		H.dropItemToGround(H.head)
 		return 0
 
-/obj/item/reagent_containers/food/snacks/grown/apple/equipped(mob/M)
+/obj/item/reagent_containers/food/snacks/grown/apple/equipped(mob/M, slot, initial = FALSE, silent = FALSE)
 	..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

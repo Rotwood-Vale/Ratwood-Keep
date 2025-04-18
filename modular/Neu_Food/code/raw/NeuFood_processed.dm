@@ -88,7 +88,7 @@
 		return ..()
 	if(isturf(loc)&& (!found_table))
 		to_chat(user, "<span class='notice'>Need a table...</span>")
-		return ..()	
+		return ..()
 	if(!R.reagents.has_reagent(/datum/reagent/water, 10))
 		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
 		return TRUE
@@ -100,7 +100,7 @@
 		desc = "Destined for greatness, at your hands."
 		R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE
-		color = "#d9d0cb"	
+		color = "#d9d0cb"
 	return TRUE
 
 /obj/item/reagent_containers/powder/sugar/attack_hand(mob/living/user)
@@ -147,7 +147,7 @@
 				qdel(I)
 				qdel(src)
 	else
-		return ..()	
+		return ..()
 
 /obj/item/reagent_containers/food/snacks/rogue/applecandy
 	name = "apple candy"
@@ -209,6 +209,7 @@
 	icon_state = "spiderhoney"
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	mill_result = /obj/item/reagent_containers/powder/alch/honey
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("sweetness and spiderwebs" = 1)
 	eat_effect = /datum/status_effect/buff/sweet
@@ -285,7 +286,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
 	tastes = list("salted meat" = 1)
 	rotprocess = null
-	slice_sound = TRUE 
+	slice_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami/update_icon()
 	if(slices_num)
@@ -368,7 +369,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/fat/salo/slice
 	slices_num = 4
 	slice_batch = FALSE
-	slice_sound = TRUE 
+	slice_sound = TRUE
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/fat/salo/update_icon()
@@ -422,13 +423,13 @@
 		if(do_after(user,2 SECONDS, target = src))
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			reagents.remove_reagent(/datum/reagent/consumable/milk, 12)
-			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 12)		
+			reagents.add_reagent(/datum/reagent/consumable/milk/salted, 12)
 			qdel(I)
 
 /*	............   Churning butter   ................ */
 /obj/item/reagent_containers/glass/bucket/wooden/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
-		long_cooktime = (200 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*20))	
+		long_cooktime = (200 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*20))
 	if(istype(I, /obj/item/kitchen/spoon))
 		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 12))
 			to_chat(user, "<span class='warning'>Not enough salted milk.</span>")
@@ -454,7 +455,7 @@
 	slices_num = 6
 	slice_batch = FALSE
 	bitesize = 6
-	slice_sound = TRUE 
+	slice_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/butter/update_icon()
 	if(slices_num)
@@ -501,7 +502,7 @@
 		var/obj/item/natural/cloth/T = I
 		if(T.wet && !T.return_blood_DNA())
 			return
-		else 
+		else
 			var/removereg = /datum/reagent/water
 			if(!reagents.has_reagent(/datum/reagent/water, 5))
 				removereg = /datum/reagent/water/gross
@@ -539,7 +540,7 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_1"
 	w_class = WEIGHT_CLASS_BULKY
-	
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_start/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -643,7 +644,7 @@
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
-	slice_sound = TRUE 
+	slice_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	name = "wheel of aged cheese"

@@ -112,7 +112,7 @@
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
 
-/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_WEAR_MASK)
 		user.become_blind("blindfold_[REF(src)]")
@@ -235,6 +235,7 @@
 	if(user.client && ((O in user.client.screen) && !user.is_holding(O)))
 		to_chat(user, span_warning("I need to take that [O.name] off before cleaning it!"))
 		return
+
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/cleanme = TRUE
 		if(istype(O, /obj/effect/decal/cleanable/blood))
@@ -267,6 +268,9 @@
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 		wet = max(wet-1, 0)
+
+		for(var/obj/effect/decal/remains/R in T)
+			qdel(R) //clean remains up
 
 		to_chat(user, span_info("I wipe \the [T.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)

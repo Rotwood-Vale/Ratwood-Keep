@@ -39,7 +39,7 @@
 
 /datum/objective/werewolf
 	name = "conquer"
-	explanation_text = "Put an end to the vampire scourge in Rockhill, or unite with them against the forces of the Nine."
+	explanation_text = "Put an end to the vampire scourge in Rockhill, or unite with them against the forces of the Successors."
 	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rockhill together?"
 	triumph_count = 5
 
@@ -51,7 +51,7 @@
 
 /datum/objective/vampire
 	name = "conquer"
-	explanation_text = "Put an end to the werewolf menace in Rockhill, or unite with them against the forces of the Nine."
+	explanation_text = "Put an end to the werewolf menace in Rockhill, or unite with them against the forces of the Successors."
 	team_explanation_text = "The feud between werewolves and vampires reaches back to the dawn of time. Will the two factions destroy each other, or find a way to coexist and face the mortals of Rockhill together?"
 	triumph_count = 5
 
