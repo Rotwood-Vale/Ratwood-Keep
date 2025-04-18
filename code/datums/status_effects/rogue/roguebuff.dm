@@ -299,6 +299,11 @@
 	desc = "I am magically hastened."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/divine_strike
+	name = "Divine Strike"
+	desc = "Ravox fury builds within my chosen weapon."
+	icon_state = "buff"
+
 /datum/status_effect/buff/haste
 	id = "haste"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/haste

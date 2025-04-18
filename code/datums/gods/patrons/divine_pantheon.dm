@@ -63,6 +63,7 @@
 	desc = "The strongest of Psydon's children, he watches man from afar."
 	worshippers = "Warriors, Sellswords & those who seek Justice"
 	t1 = /obj/effect/proc_holder/spell/invoked/burden
+	t2 = /obj/effect/proc_holder/spell/self/divine_strike
 	confess_lines = list(
 		"RAVOX IS JUSTICE!",
 		"THROUGH STRIFE, GRACE!",
