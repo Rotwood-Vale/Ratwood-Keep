@@ -133,7 +133,7 @@
 			H.add_nausea(300)
 
 	message_admins("The elder tree has been destroyed")
-	addomen(OMEN_DESECRATE_DENDOR)	
+	addomen(OMEN_DESECRATE_DENDOR)
 
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"
@@ -619,7 +619,6 @@
 		bushtype2 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
 	loot_replenish2()
 	pixel_x += rand(-3,3)
-	return ..()
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/proc/loot_replenish2()
 	if(bushtype2)

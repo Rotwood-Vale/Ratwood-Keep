@@ -60,12 +60,7 @@
 		var/mob/living/M = target
 		M.adjust_fire_stacks(6)
 		M.IgniteMob()
-	var/turf/T
-	if(isturf(target))
-		T = target
-	else
-		T = get_turf(target)
-	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+	explosion(get_turf(target), -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
 
 
 /obj/item/ammo_casing/caseless/rogue/arrow
@@ -196,9 +191,4 @@
 		var/mob/living/M = target
 		M.adjust_fire_stacks(6)
 		M.IgniteMob()
-	var/turf/T
-	if(isturf(target))
-		T = target
-	else
-		T = get_turf(target)
-	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+	explosion(get_turf(target), -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)

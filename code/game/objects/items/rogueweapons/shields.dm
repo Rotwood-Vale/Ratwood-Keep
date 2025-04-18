@@ -299,16 +299,12 @@
 	playsound(user, 'sound/items/steamrelease.ogg', 100, FALSE, -1)
 	cooldowny = world.time
 	addtimer(CALLBACK(src,PROC_REF(steamready), user), cdtime)
-	for(var/turf/T in view(1, user))
-		for(var/atom/movable/AM in T)
-			thrownatoms += AM
-	for(var/turf/T in view(2, user))
-		if(T == user.loc)
-			continue
+	for(var/atom/movable/AM in view(1, user))
+		thrownatoms += AM
+	for(var/turf/T in oview(2, user))
 		new smoke_path(T) //smoke everywhere!
 
-	for(var/am in thrownatoms)
-		var/atom/movable/AM = am
+	for(var/atom/movable/AM as anything in thrownatoms)
 		if(AM == user || AM.anchored)
 			continue
 		throwtarget = get_edge_target_turf(user, get_dir(user, get_step_away(AM, user)))
