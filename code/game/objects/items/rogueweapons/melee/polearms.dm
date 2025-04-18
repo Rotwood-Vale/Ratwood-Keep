@@ -322,7 +322,7 @@
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/halberdherald.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_bigboy
+			icon_state = old_icon_state
 			gripsprite = old_gripsprite
 			bigboy = old_bigboy
 	else
