@@ -2285,6 +2285,7 @@
 #include "modular_redmoon\modules\jobs\job_types\roguetown\bandits\types\sawbones.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\church\confessor.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\church\druid.dm"
+#include "modular_redmoon\modules\jobs\job_types\roguetown\church\hospitaller.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\church\monk.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\church\mortician.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\church\priest.dm"

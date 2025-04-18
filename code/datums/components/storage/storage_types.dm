@@ -144,7 +144,7 @@
 	))
 
 /datum/component/storage/concrete/roguetown/ifak
-	screen_max_rows = 3
+	screen_max_rows = 4
 	screen_max_columns = 4
 	max_w_class = WEIGHT_CLASS_NORMAL
 
