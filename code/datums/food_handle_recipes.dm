@@ -181,6 +181,11 @@ DOUGH RECIPES
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
 	craftsound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 
+/datum/food_handle_recipes/dough/pre_check(user, to_check)
+	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
+		if(!F.water_added)
+			return FALSE
+	return TRUE
 
 /* Dough */
 /datum/food_handle_recipes/dough
