@@ -205,7 +205,7 @@
 	additional_items = list(/obj/item/ingot/copper,/obj/item/ingot/copper, /obj/item/ingot/copper, /obj/item/roguegear/bronze)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor
 	hammers_per_item = 12
-	skill_level = 3
+	skill_level = 4
 
 /datum/artificer_recipe/contraptions/volticgauntlet
 	name = "Voltic Gauntlet (+1 Tin ingot)(+2 Bronze gear)(+1 cinnabar ore)"
@@ -213,7 +213,7 @@
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/ingot/tin, /obj/item/rogueore/cinnabar)
 	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
 	hammers_per_item = 12
-	skill_level = 3
+	skill_level = 4
 
 /datum/artificer_recipe/contraptions/coolingbackpack
 	name = "Cooling Backpack (+1 bronze gear, +Backpack)" // why are these recipes capitalized differently than every other crafting recipe my ocddddddddddd
@@ -265,7 +265,7 @@
 /datum/artificer_recipe/wood/weapons/steamshield
 	name = "Steam Shield (+1 wood plank)(+2 Bronze gear)(+2 bronze ingot)"
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/natural/wood/plank, /obj/item/ingot/bronze,/obj/item/ingot/bronze)
-	created_item = /obj/item/clothing/gloves/roguetown/active/voltic
+	created_item = /obj/item/rogueweapon/shield/artificer
 	hammers_per_item = 12
 	skill_level = 3
 
