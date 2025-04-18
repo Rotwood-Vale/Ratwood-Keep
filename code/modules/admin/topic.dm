@@ -1195,6 +1195,48 @@
 			to_chat(usr, "This can only be used on instances on mindless mobs")
 			return
 		M.mind_initialize()
+	
+	else if(href_list["increase_skill"])
+		var/mob/M = locate(href_list["increase_skill"])
+		var/datum/skill/skill = href_list["skill"]
+		M.mind?.adjust_skillrank(text2path(skill), 1)
+		log_admin("[usr] increased [M]'s [initial(skill.name)] skill.")
+		show_player_panel_next(M, "skills")
+
+	else if(href_list["decrease_skill"])
+		var/mob/M = locate(href_list["decrease_skill"])
+		var/datum/skill/skill = href_list["skill"]
+		M.mind?.adjust_skillrank(text2path(skill), -1)
+		log_admin("[usr] decreased [M]'s [initial(skill.name)] skill.")
+		show_player_panel_next(M, "skills")
+
+	else if(href_list["add_language"])
+		var/mob/M = locate(href_list["add_language"])
+		var/datum/language/lang = text2path(href_list["language"])
+		M.grant_language(lang)
+		log_admin("[usr] added [lang] to [M].")
+		show_player_panel_next(M, "languages")
+
+	else if(href_list["remove_language"])
+		var/mob/M = locate(href_list["remove_language"])
+		var/datum/language/lang = text2path(href_list["language"])
+		M.remove_language(lang)
+		log_admin("[usr] removed [lang] to [M].")
+		show_player_panel_next(M, "languages")
+
+	else if(href_list["add_stat"])
+		var/mob/living/M = locate(href_list["add_stat"])
+		var/statkey = href_list["stat"]
+		M.change_stat(1)
+		log_admin("[usr] increased [M]'s [statkey].")
+		show_player_panel_next(M, "stats")
+
+	else if(href_list["lower_stat"])
+		var/mob/living/M = locate(href_list["lower_stat"])
+		var/statkey = href_list["stat"]
+		M.change_stat(-1)
+		log_admin("[usr] decreased [M]'s [statkey].")
+		show_player_panel_next(M, "stats")
 
 	else if(href_list["create_object"])
 		if(!check_rights(R_SPAWN))
