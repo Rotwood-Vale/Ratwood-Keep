@@ -55,7 +55,7 @@
 	sound = 'sound/items/beartrap.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	charge_max = 25 SECONDS
 	miracle = FALSE
 	cost = 3
 	xp_gain = TRUE
@@ -67,7 +67,7 @@
 		var/mob/living/carbon/target = targets[1]
 		target.visible_message(span_info("A loud crunching sound has come from [target]!"), span_userdanger("I feel arcane teeth biting into my eyes!"))
 		target.adjustBruteLoss(30)
-		target.blind_eyes(2)
+		target.blind_eyes(6)
 		target.blur_eyes(10)
 		return TRUE
 	return FALSE

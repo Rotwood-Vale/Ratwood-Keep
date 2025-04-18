@@ -836,7 +836,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	releasedrain = 20
 	chargedrain = 1
 	chargetime = 20
-	charge_max = 25 SECONDS
+	charge_max = 40 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -848,7 +848,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	invocation_type = "shout"
 	overlay_state = "ensnare"
 	var/area_of_effect = 1
-	var/duration = 4 SECONDS
+	var/duration = 10 SECONDS
 	var/delay = 0.8 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/slowdown_spell_aoe/cast(list/targets, mob/user = usr)
@@ -880,7 +880,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	duration = 1 SECONDS
 
 /obj/effect/temp_visual/slowdown_spell_aoe/long
-	duration = 3 SECONDS
+	duration = 10 SECONDS
 
 /obj/effect/proc_holder/spell/invoked/message
 	name = "Message"
@@ -1321,8 +1321,8 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	nodamage = FALSE
 	damage_type = BURN
 	flag = "magic"
-	range = 10
-	speed = 8 //higher is slower
+	range = 20
+	speed = 3 //higher is slower
 	var/aoe_range = 0
 
 /obj/projectile/magic/frostbolt/on_hit(target)
@@ -1778,7 +1778,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	invocation = "Aras'Noc'Esri!"
 	invocation_type = "shout"
 	associated_skill = /datum/skill/magic/arcane
-	charge_max = 15 SECONDS
+	charge_max = 30 SECONDS
 	xp_gain = TRUE
 	cost = 2 //Weaker than Eyebite and thus 2 not 3
 
@@ -1789,7 +1789,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
 		target.visible_message(span_warning("[user] points at [target]'s eyes!"),span_warning("My eyes are covered in darkness!"))
-		target.blind_eyes(2)
+		target.blind_eyes(6)
 		return TRUE
 	revert_cast()
 	return FALSE
