@@ -81,7 +81,7 @@
 			target.IgniteMob()
 			target.adjustFireLoss(30)
 			return TRUE
-		if(target.stat < DEAD || target.has_status_effect(/datum/status_effect/debuff/death_claimed))
+		if(target.stat < DEAD)
 			to_chat(user, span_warning("Nothing happens."))
 			revert_cast()
 			return FALSE
