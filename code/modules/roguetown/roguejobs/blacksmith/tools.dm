@@ -20,6 +20,37 @@
 	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ash
 
+
+/*The modification code for hammers
+- Call it from other objects with right click
+- Currently opens to allow naming
+- Will expand eventually.
+*/
+/obj/item/rogueweapon/hammer/proc/modify_item(obj/item/I, mob/living/user)
+	if(I == null)
+		return
+
+	//Must be at full health.
+	if(I.obj_integrity < I.max_integrity)
+		return
+	var/choices = list("name item")
+	var/action =input(user, "CHOOSE ACTION") as null|anything in choices
+	if(pick(action) == "name item")
+		var/t = ""
+		t = stripped_input(user,"Name this item.", ,"", 40) // So you can make a funny long title but not too insane
+
+		if(!reject_bad_name(t))
+			to_chat(user, span_notice("You need to name it properly!"))
+			return
+
+		log_admin("[user]([user.ckey]) just named [I]: [t]")
+		message_admins("[key_name_admin(user)] just named [I]: [t]")
+		I.name = "[t] ([initial(I.name)])"
+		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+		user.say("I dub thee [t]!")
+		return
+
+
 /obj/item/rogueweapon/hammer/attack_obj(obj/attacked_object, mob/living/user)
 	if(!isliving(user) || !user.mind)
 		return

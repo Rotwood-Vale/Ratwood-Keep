@@ -15,8 +15,8 @@
 	else
 		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
-		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep. 
+	if(wCount.len > 0)
+		//some peeps dislike the church, this allows an alternative thats not a doctor or sleep.
 		M.heal_wounds(2) //at a motabalism of .5 U a tick this translates to 80WHP healing with 20 U Most wounds are unsewn 15-100. This is powerful on single wounds but rapidly weakens at multi wounds.
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-1*REM, 0) // 45u = 15 oz = 120~ points of healing
@@ -38,7 +38,7 @@
 	alpha = 210
 
 /datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
-	M.heal_wounds(1) 
+	M.heal_wounds(1)
 	M.update_damage_overlays()
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
@@ -47,7 +47,7 @@
 	..()
 	. = 1
 
-	
+
 /datum/reagent/medicine/greaterhealthpot
 	name = "Greater Health Potion"
 	description = "Greatly heals all types of damage."
@@ -64,7 +64,7 @@
 		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
 	else
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
+	if(wCount.len > 0)
 		M.heal_wounds(4)
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-2*REM, 0) // 45u = 15 oz = 240 points of healing
@@ -246,11 +246,9 @@
 	color = "#808080"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	overdose_threshold = null
-	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
+	description = "A powerful drug that burns out infected wounds on the body."
 
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
-	M.adjustFireLoss(0.5*REM, 0)
-	M.heal_wounds(3)
 
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
@@ -261,14 +259,30 @@
 				deltimer(W.zombie_infection_timer)
 				W.zombie_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+				B.burn_dam = 20
+				qdel(W) // Handle destruction of the wound
+
 			// Check for and remove werewolf infection
 			if (W.werewolf_infection_timer)
 				deltimer(W.werewolf_infection_timer)
 				W.werewolf_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
-
-			// Handle destruction of the wound
-			W.Destroy(0)
+				B.burn_dam = 20
+				qdel(W) // Handle destruction of the wound
 
 	M.update_damage_overlays()
+	..()
 
+
+/datum/reagent/medicine/enbalming
+	name = "Enbalming Fluid"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	description = "An embalming agent used to delay the dreaded rot"
+
+/datum/reagent/medicine/enbalming/on_mob_life(mob/living/carbon/human/M)
+	M.adjustToxLoss(0.5*REM, 0)
+	..()
+	. = 1

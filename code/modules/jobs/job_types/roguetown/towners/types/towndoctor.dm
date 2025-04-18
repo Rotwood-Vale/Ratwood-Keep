@@ -11,7 +11,6 @@
 /datum/outfit/job/roguetown/towner/doctor/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/spectacles
-	neck = /obj/item/clothing/neck/roguetown/psicross/wood
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/rogueweapon/huntingknife/idagger
@@ -33,10 +32,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -47,8 +43,3 @@
 		H.change_stat("intelligence", 2)
 		H.change_stat("fortune", 2)
 		H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-		H.mind.AddSpell(new SPELL_DOCHEAL)
-		H.mind.AddSpell(new SPELL_STABLE)
-		H.mind.AddSpell(new SPELL_PURGE)
-		H.mind.AddSpell(new SPELL_DEBRIDE)
-		H.mind.AddSpell(new SPELL_CPR)

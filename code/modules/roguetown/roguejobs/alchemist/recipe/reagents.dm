@@ -104,21 +104,21 @@
 	results = list(/datum/reagent/medicine/greaterhealthpot = 22.5) //about 7.5 oz
 	required_reagents = list(/datum/reagent/medicine/healthpot = 45, /datum/reagent/alch/syrum_poison_berry = 24)
 
-	
+
 /datum/chemical_reaction/alch/lessermana
 	name = "lesser mana pot"
 	id = /datum/reagent/medicine/lessermanapot
 	results = list(/datum/reagent/medicine/lessermanapot = 45)
 	required_reagents = list(/datum/reagent/alch/syrum_fish = 24, /datum/reagent/alch/syrum_ash = 24)
 
-	
+
 /datum/chemical_reaction/alch/mana
 	name = "mana pot"
 	id = /datum/reagent/medicine/manapot
 	results = list(/datum/reagent/medicine/manapot = 22.5)
 	required_reagents = list(/datum/reagent/medicine/lessermanapot = 45, /datum/reagent/alch/syrum_swamp_weed = 24)
 
-	
+
 /datum/chemical_reaction/alch/greatermana
 	name = "greater mana pot"
 	id = /datum/reagent/medicine/greatermanapot
@@ -196,3 +196,10 @@ end recipe count: 8 ash, 8 minced meat or fish, 4 swampweed, 2 poisonberry to ma
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/powder/moondust_purest(location)
+
+
+/datum/chemical_reaction/alch/embalm
+	name = "embalming fluidification"
+	id = "embalmify"
+	results = list(/datum/reagent/medicine/enbalming = 45)
+	required_reagents = list(/datum/reagent/alch/syrum_stone = 24, /datum/reagent/alch/syrum_honey = 24)
