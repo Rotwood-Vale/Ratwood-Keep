@@ -246,11 +246,9 @@
 	color = "#808080"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	overdose_threshold = null
-	description = "A powerful drug that purifies the blood and seals wounds painfully on the body."
+	description = "A powerful drug that burns out infected wounds on the body."
 
 /datum/reagent/medicine/purify/on_mob_life(mob/living/carbon/human/M)
-	M.adjustFireLoss(0.5*REM, 0)
-	M.heal_wounds(3)
 
 	// Iterate through all body parts
 	for (var/obj/item/bodypart/B in M.bodyparts)
@@ -261,16 +259,19 @@
 				deltimer(W.zombie_infection_timer)
 				W.zombie_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
+				B.burn_dam = 20
+				qdel(W) // Handle destruction of the wound
+
 			// Check for and remove werewolf infection
 			if (W.werewolf_infection_timer)
 				deltimer(W.werewolf_infection_timer)
 				W.werewolf_infection_timer = null
 				to_chat(M, "You feel the drugs burning intensely in [B.name].")
-
-			// Handle destruction of the wound
-			W.Destroy(0)
+				B.burn_dam = 20
+				qdel(W) // Handle destruction of the wound
 
 	M.update_damage_overlays()
+	..()
 
 
 //pyro flower nectar
@@ -288,3 +289,16 @@
 		M.adjust_fire_stacks(1)
 		M.IgniteMob()
 	return ..()
+	
+/datum/reagent/medicine/enbalming
+	name = "Enbalming Fluid"
+	reagent_state = LIQUID
+	color = "#D2FFFA"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = null
+	description = "An embalming agent used to delay the dreaded rot"
+
+/datum/reagent/medicine/enbalming/on_mob_life(mob/living/carbon/human/M)
+	M.adjustToxLoss(0.5*REM, 0)
+	..()
+	. = 1

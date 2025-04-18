@@ -15,7 +15,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 
-/obj/item/rogue/instrument/equipped(mob/living/user, slot)
+/obj/item/rogue/instrument/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(playing && user.get_active_held_item() != src)
 		playing = FALSE

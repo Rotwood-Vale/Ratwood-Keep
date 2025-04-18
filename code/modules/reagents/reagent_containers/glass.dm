@@ -216,7 +216,7 @@
 // Called whenever this container is successfully filled via the target.
 /obj/item/reagent_containers/glass/proc/onfill(obj/target, mob/user, silent = FALSE)
 
-/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
+/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if (slot == SLOT_HEAD)
 		if(reagents.total_volume)
