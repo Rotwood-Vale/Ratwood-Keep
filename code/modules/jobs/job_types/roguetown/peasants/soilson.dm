@@ -48,7 +48,7 @@
 	beltr = /obj/item/key/farm
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/rogueweapon/huntingknife/idagger)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
 	if(H.gender == MALE)
 		head = /obj/item/clothing/head/roguetown/roguehood/random
 		if(prob(50))
