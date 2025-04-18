@@ -11,8 +11,8 @@
 		/obj/item/rogueweapon/surgery/retractor,
 		/obj/item/rogueweapon/surgery/bonesetter,
 		/obj/item/rogueweapon/surgery/cautery,
-		/obj/item/natural/worms/leech,
-		/obj/item/needle
+		/obj/item/natural/worms/leech/cheele,
+		/obj/item/needle/pestra
 	)
 
 /obj/item/storage/fancy/ifak
