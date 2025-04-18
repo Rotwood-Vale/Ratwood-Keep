@@ -38,7 +38,7 @@
 	worshippers = "Druids, Beasts, Madmen"
 	mob_traits = list(TRAIT_VINE_WALKER)
 	t1 = /obj/effect/proc_holder/spell/targeted/blesscrop
-	t2 = /obj/effect/proc_holder/spell/targeted/beasttame
+	t2 = /obj/effect/proc_holder/spell/invoked/beasttame
 	t3 = /obj/effect/proc_holder/spell/targeted/conjure_vines
 	confess_lines = list(
 		"DENDOR PROVIDES!",

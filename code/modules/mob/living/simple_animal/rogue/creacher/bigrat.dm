@@ -55,6 +55,9 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/big_rat
 
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
+
 /obj/effect/decal/remains/bigrat
 	name = "remains"
 	gender = PLURAL
