@@ -201,6 +201,7 @@ SUBSYSTEM_DEF(migrants)
 
 	character.islatejoin = TRUE
 	SSjob.EquipRank(character, rank, TRUE)
+	SSjob.initialise_memories(character, rank, TRUE)
 
 	var/datum/migrant_role/role = MIGRANT_ROLE(assignment.role_type)
 	character.migrant_type = assignment.role_type
