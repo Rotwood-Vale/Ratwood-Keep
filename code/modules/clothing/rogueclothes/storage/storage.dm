@@ -398,7 +398,7 @@
 	desc = "A dark belt with real gold making up the buckle and highlights. How bougie."
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
-	heldz_items = 1
+	heldz_items = 3
 
 /* Commented out as this knife belt is for "throwing knives" and I am unsure we have those here.
 

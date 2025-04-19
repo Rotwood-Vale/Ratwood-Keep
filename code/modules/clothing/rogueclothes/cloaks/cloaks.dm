@@ -1365,7 +1365,7 @@
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
 /obj/item/clothing/cloak/hierophant
-	name = "hierophant's sash"
+	name = "silk sash"
 	icon_state = "naledisash"
 	item_state = "naledisash"
 	desc = "A limp piece of fabric traditionally used to fasten bags that are too baggy, but in modern days has become more of a fashion statement than anything."
