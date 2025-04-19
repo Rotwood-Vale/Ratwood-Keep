@@ -295,7 +295,6 @@
 
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
-	slot_flags = ITEM_SLOT_ARMOR
 	name = "dress"
 	desc = ""
 	body_parts_covered = null

@@ -199,9 +199,9 @@
 		playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
 	else
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+	target.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
-	if(!oral)
-		after_intimate_climax()
+	after_intimate_climax()
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Ejaculated")
@@ -245,12 +245,14 @@
 			user.adjust_triumphs(1)
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
 			user.add_stress(/datum/stressevent/cumgood)
+			user.apply_status_effect(/datum/status_effect/buff/goodloving)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
-			user.add_stress(/datum/stressevent/cumgood)
+			target.add_stress(/datum/stressevent/cumgood)
+			target.apply_status_effect(/datum/status_effect/buff/goodloving)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)
