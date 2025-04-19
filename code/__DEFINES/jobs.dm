@@ -197,7 +197,6 @@
 #define GOBLINSMITH	(1<<3)
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
-#define GOBLIN	(1<<6)
 
 #define SLOP		(1<<10)
 
