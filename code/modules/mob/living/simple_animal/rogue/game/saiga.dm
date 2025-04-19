@@ -80,6 +80,8 @@
 	can_saddle = TRUE
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /obj/effect/decal/remains/saiga
 	name = "remains"
@@ -212,6 +214,8 @@
 	bonus_tame_chance = 15
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/update_icon()
 	cut_overlays()

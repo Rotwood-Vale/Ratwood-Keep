@@ -83,6 +83,8 @@
 	if(src.mind)
 		if(src.mind.boneboy == TRUE)
 			handle_necromancy()
+		else if(src.mind.awaken_caster)
+			src.handle_awakening()
 	set_drugginess(0)
 	set_disgust(0)
 	cure_holdbreath()

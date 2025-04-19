@@ -6,7 +6,7 @@
 	icon_living = "vv"
 	icon_dead = "vvd"
 
-	faction = list("orcs")
+	faction = list("orcs", "wolfs")
 	emote_hear = null
 	emote_see = null
 	turns_per_move = 5
@@ -53,6 +53,9 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/volf
+
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /obj/effect/decal/remains/wolf
 	name = "remains"
@@ -105,7 +108,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/Life()
 	..()
-	if(pulledby)
+	if(pulledby && !tame)
 		Retaliate()
 		GiveTarget(pulledby)
 
