@@ -71,8 +71,8 @@
 		to_chat(user, span_warning("You cannot tame that!"))
 		return FALSE
 
-	else if(target.awakened)
-		to_chat(user, span_warning("This creature is awakened!"))
+	else if(target.mind != null && target.mind.awakened == TRUE)
+		target.unawaken_beast(target, user.ckey)
 		return FALSE
 
 	target.visible_message(span_warning("The [target.real_name]'s body is engulfed by a calming aura..."), runechat_message = TRUE)
@@ -80,24 +80,35 @@
 	target.faction = list("neutral")
 	target.tame = TRUE
 
+	if(user.mind.awakened_animals < user.mind.awakened_max)
+		to_chat(user, span_warning("I have the capacity to sustain another awakened beast!"))
 
-	// Poll for candidates to control the tamed animal
-	var/list/candidates = pollCandidatesForMob("Do you want to play as an awakened [target.real_name]?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
+		// Ask the caster if they want to awaken the animal
+		var/awaken_choice = alert(user, "Do you want to awaken the [target.real_name]?", "Awaken Beast", "Yes", "No")
+		
+		if(awaken_choice == "Yes")
+			// Poll for candidates to control the tamed animal
+			var/list/candidates = pollCandidatesForMob("Do you want to play as an awakened [target.real_name]?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
 
-	// If there are candidates, assign control to a player
-	if(LAZYLEN(candidates))
-		var/mob/C = pick(candidates)
-		target.awaken_beast(user, C.ckey)
-		target.visible_message(span_warning("The [target.real_name]'s eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
-		target.awakened = TRUE
+			// If there are candidates, assign control to a player
+			if(LAZYLEN(candidates))
+				var/mob/C = pick(candidates)
+				target.awaken_beast(user, C.ckey)
+				user.mind.adjust_awakened(1)
+				target.mind.set_awaken_caster(user)
+				target.visible_message(span_warning("The [target.real_name]'s eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
+				target.mind.set_awakened(TRUE)
+				return TRUE
+			// If there are no candidates, the animal will have been calmed but not controlled
+			else
+				target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
+
+				return TRUE
+		else
+			target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
 		return TRUE
-	// If there are no candidates, the animal will have been calmed but not controlled
-	else
-		target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
-
-		return TRUE
-
-	return FALSE
+	else if(user.mind.awakened_animals >= user.mind.awakened_max)
+		to_chat(user, span_warning("I cannot sustain another awakened beast.."))
 
 /mob/living/simple_animal/proc/awaken_beast(mob/living/carbon/human/master, ckey = null)
 	if(ckey) // If a player is controlling the animal
@@ -107,6 +118,37 @@
 		ai_controller = new /datum/ai_controller/basic_controller(src)
 
 	return TRUE
+
+/mob/living/simple_animal/proc/unawaken_beast(mob/living/carbon/human/master, ckey = null)
+	to_chat(src, span_userdanger("Your connection to the [src.real_name] has been severed."))
+	
+	// Revert AI controller based on the type of simple mob
+	switch(type)
+		if(/mob/living/simple_animal/hostile/retaliate/rogue/wolf)
+			ai_controller = new /datum/ai_controller/volf(src)
+		if(/mob/living/simple_animal/hostile/retaliate/rogue/bigrat)
+			ai_controller = new /datum/ai_controller/big_rat(src)
+		if(/mob/living/simple_animal/hostile/retaliate/rogue/spider)
+			ai_controller = new /datum/ai_controller/spider(src)
+		else
+			ai_controller = new /datum/ai_controller/basic_controller(src) // Default fallback AI
+
+	src.visible_message(span_warning("The [src.real_name] loses its awakened intelligence and returns to its natural state."), runechat_message = TRUE)
+	src.handle_awakening()
+	src.returntolobby()
+	src.ckey = null
+	return TRUE
+
+/mob/living/proc/handle_awakening()
+	if(src.mind.awakened == FALSE)
+		return
+	if(src.mind.awaken_caster == null)
+		return
+	var/mob/living/carbon/human/user = src.mind.awaken_caster
+	user.mind.adjust_awakened(-1)
+	to_chat(user, span_warning("One of my awakened beasts have fallen, I may now awaken another."))
+	src.mind.set_awakened(FALSE)
+	src.mind.set_awaken_caster(null)
 
 /obj/effect/proc_holder/spell/targeted/conjure_vines
 	name = "Vine Sprout"

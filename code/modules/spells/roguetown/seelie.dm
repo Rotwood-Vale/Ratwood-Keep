@@ -225,7 +225,7 @@
 	var/list/tame_types = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 	)
-	var/tamed = FALSE
+
 	if(!targets.len || !istype(targets[1], /mob/living/simple_animal))
 		to_chat(user, span_warning("You must target a valid creature!"))
 		return FALSE
@@ -236,9 +236,10 @@
 		to_chat(user, span_warning("You cannot tame that!"))
 		return FALSE
 
-	else if(target.awakened)
-		to_chat(user, span_warning("This creature is awakened!"))
+	else if(target.mind != null && target.mind.awakened == TRUE)
+		target.unawaken_beast(target, user.ckey)
 		return FALSE
+
 	for(var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/B in oview(2))
 		if(!B.tame)
 			B.tame = TRUE
@@ -247,30 +248,39 @@
 		B.enemies = list()
 		B.aggressive = 0
 		B.LoseTarget()
-		tamed = B.tame
 
-	// Poll for candidates to control the tamed animal
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a tamed rous?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
-	// If there are candidates, assign control to a player
-	if(LAZYLEN(candidates))
-		var/mob/C = pick(candidates)
-		target.awaken_rous(user, C.ckey)
-		target.awakened = TRUE
-		target.visible_message(span_warning("The rous' eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
-		to_chat(C, span_notice("You have been chosen to control the rous."))
-		return TRUE
-	// If there are no candidates, the animal will have been calmed but not controlled
-	else
-		target.visible_message(span_warning("The rous seems calmer but remains mindless."), runechat_message = TRUE)
-		return TRUE
-	user.log_message("has tamed a rous via the spell", LOG_GAME)
-	return tamed
+	if(user.mind.awakened_animals < 1)
+		// Ask the caster if they want to awaken the animal
+		var/awaken_choice = alert(user, "Do you want to awaken the [target.real_name]?", "Awaken Beast", "Yes", "No")
+		if(awaken_choice == "Yes")
+			// Poll for candidates to control the tamed animal
+			var/list/candidates = pollCandidatesForMob("Do you want to play as a tamed rous?", null, null, null, 100, target, POLL_IGNORE_TAMED_BEAST)
+			// If there are candidates, assign control to a player
+			if(LAZYLEN(candidates))
+				var/mob/C = pick(candidates)
+				target.awaken_rous(user, C.ckey)
+				target.mind.awakened = TRUE
+				target.visible_message(span_warning("The rous' eyes light up with intelligence as it awakens!"), runechat_message = TRUE)
+				to_chat(C, span_notice("You have been chosen to control the rous."))
+				return TRUE
+			// If there are no candidates, the animal will have been calmed but not controlled
+			else
+				target.visible_message(span_warning("The rous seems calmer but remains mindless."), runechat_message = TRUE)
+				return TRUE
+			user.log_message("has tamed a rous via the spell", LOG_GAME)
+			return TRUE
+		else
+			target.visible_message(span_warning("The [target.real_name] seems calmer but remains mindless."), runechat_message = TRUE)
+	else if(user.mind.awakened_animals >= user.mind.awakened_max)
+		to_chat(user, span_warning("I cannot sustain another awakened beast.."))
+		return FALSE
+
 
 /mob/living/simple_animal/proc/awaken_rous(mob/living/carbon/human/master, ckey = null)
 	if(ckey) // If a player is controlling the animal
 		src.ckey = ckey
-		to_chat(src, span_userdanger("My master is [master.real_name]."))
-		to_chat(master, span_notice("You have tamed the [src.real_name]."))
+		to_chat(src, span_userdanger("I was once a creature of instinct, but now... completely new thoughts and ideas flood my mind! I can think! I am free!"))
+		to_chat(master, span_notice("You have awakened the [src.real_name]."))
 
 	if(ai_controller) // Disable AI controller if it exists
 		ai_controller = new /datum/ai_controller/basic_controller(src)
