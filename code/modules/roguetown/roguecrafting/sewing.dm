@@ -782,21 +782,6 @@
 				/obj/item/natural/fibers = 2)
 	skill_level = 3
 
-/datum/crafting_recipe/roguetown/sewing/leatherkini
-	name = "Leather Bikini (3 Leather, 2 Cloth; EXPERT)"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	reqs = list(/obj/item/natural/hide/cured = 3,
-				/obj/item/natural/cloth = 2)
-	skill_level = 4
-
-/datum/crafting_recipe/roguetown/sewing/hidearmorkini
-	name = "Hide Bikini (2 Fur, 1 Leather, 2 Cloth; EXPERT)"
-	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-	reqs = list(/obj/item/natural/fur = 2,
-				/obj/item/natural/hide/cured = 1,
-				/obj/item/natural/cloth = 2)
-	skill_level = 4
-
 /datum/crafting_recipe/roguetown/sewing/fencerpants
 	name = "fencer leather pants (4 leather, 3 fibers; EXPERT)"
 	result = /obj/item/clothing/under/roguetown/trou/otavan

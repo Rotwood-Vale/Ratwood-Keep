@@ -80,12 +80,6 @@
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded
 
-/datum/anvil_recipe/armor/iron/studdedkini
-	name = "Studded Leather Bikini (+1 Leather Bikini)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini)
-	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-
 /datum/anvil_recipe/armor/iron/lbrigandine
 	name = "Light Brigandine (+1 Cloth)"
 	req_bar = /obj/item/ingot/iron
@@ -156,26 +150,12 @@
 	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate
 
-/datum/anvil_recipe/armor/steel/halfplatekini
-	name = "Half-Plate Bikini (+1 Steel +1 Cured Hide)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/bikini
-	skill_level = 6
-
 /datum/anvil_recipe/armor/steel/fullplate
 	name = "Full-Plate Armour (+3 Steel, +2 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full
 	skill_level = 5
-
-/datum/anvil_recipe/armor/steel/fullplatekini
-	name = "Full-Plate Bikini (+2 Steel, +2 Cured Hide)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
-	created_item =  /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
-	skill_level = 6
 
 /datum/anvil_recipe/armor/steel/coatplates
 	name = "Coat Of Plates (+1 Cloth)"
