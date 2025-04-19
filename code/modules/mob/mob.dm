@@ -408,7 +408,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 
-	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK)
+	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK && src.stat != DEAD)
 		var/target = "\the [A]"
 		var/message = "[src] looks at"
 		if(A.loc == src)
