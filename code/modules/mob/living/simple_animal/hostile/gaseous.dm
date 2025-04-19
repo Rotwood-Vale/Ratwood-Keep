@@ -30,6 +30,7 @@
 	movement_type = FLYING
 	gold_core_spawnable = NO_SPAWN //too spooky for science
 	var/random = TRUE //if you want random names for ghosts or not
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 /mob/living/simple_animal/hostile/retaliate/gaseousform/Initialize()
 	. = ..()

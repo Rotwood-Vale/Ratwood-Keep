@@ -106,6 +106,7 @@
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+			armor = /obj/item/clothing/suit/roguetown/shirt/robe/newmage/sorcerer
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1 )
 			beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
@@ -124,7 +125,7 @@
 			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
-		
+
 
 //Decoupled occultist. For admin use.
 
