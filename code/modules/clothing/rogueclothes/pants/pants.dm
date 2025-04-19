@@ -368,6 +368,7 @@
 	desc = "Thick leather trousers to protect from sparks or stray gear projectiles. Judging by the wear, its had plenty of use."
 	icon_state = "artipants"
 	item_state = "artipants"
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/under/roguetown/trou/leathertights
 	name = "leather tights"

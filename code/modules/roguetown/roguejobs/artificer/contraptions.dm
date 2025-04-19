@@ -205,8 +205,10 @@
 			new_door.lockid = I.lockid
 		qdel(I)
 	else
+		var/newdir = O.dir
 		var/obj/I = O
-		new I.metalizer_result(get_turf(I))
+		var/obj/result = new I.metalizer_result(get_turf(I))
+		result.dir = newdir
 		qdel(I)
 	flick(on_icon, src)
 	charge_deduction(O, user, 1)
@@ -251,7 +253,7 @@
 				addtimer(CALLBACK(I, PROC_REF(misfire_result)), rand(5))
 				continue
 			object.popcorn_smelt()
-            
+
 	explosion(src, flame_range = 3, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 	qdel(src)
 
@@ -434,3 +436,42 @@
 			mode = "Unlocker"
 		if("Unlocker")
 			mode = "Examiner"
+
+/obj/item/contraption/whisper
+	name = "bronze whisperer"
+	desc = "Whisperers come from this strange device."
+	icon_state = "whisper"
+	on_icon = "whisper_flick"
+	off_icon = "whisper_off"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
+	misfire_chance = 15
+	charge_per_source = 5
+
+/obj/item/contraption/whisper/attack_self(mob/living/user)
+	..()
+	if(!current_charge)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	var/input_text = input(user, "Enter your message:", "Message")
+	if(input_text)
+		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
+			S.repeat_message(input_text)
+		for(var/obj/item/scomstone/S in SSroguemachine.scomm_machines)
+			S.repeat_message(input_text)
+		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
+			S.repeat_message(input_text)
+	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+
+	flick(on_icon, src)
+	charge_deduction(src, user, 1)
+	shake_camera(user, 1, 1)
+	playsound(src, 'sound/misc/beep.ogg', 100, TRUE)
+	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
+		misfire(src, user)
+	return
+
+/obj/item/contraption/whisper/misfire_result()
+	misfiring = TRUE
+	explosion(src, light_impact_range = 3, flame_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+	qdel(src)

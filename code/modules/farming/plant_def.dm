@@ -103,6 +103,14 @@
 	icon_state = "weed"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 
+/datum/plant_def/fyritiusflower
+	name = "fyritius flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "fyritius"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+	produce_amount_min = 1
+	produce_amount_max = 3
+
 /datum/plant_def/berry
 	name = "berry bush"
 	icon = 'icons/roguetown/misc/crops.dmi'
