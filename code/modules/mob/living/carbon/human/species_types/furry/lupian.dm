@@ -148,14 +148,6 @@
 /datum/species/lupian/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/lupian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-
-/datum/species/lupian/on_species_loss(mob/living/carbon/C)
-	. = ..()
-	UnregisterSignal(C, COMSIG_MOB_SAY)
-
 /datum/species/lupian/get_skin_list()
 	return list(
 		"Vakran" = "271f1b",
@@ -207,6 +199,7 @@
         /mob/proc/howl,
         /mob/proc/growl,
         /mob/proc/whine,
+		/mob/proc/bark,
     )
 
 /datum/species/lupian/on_species_loss(mob/living/carbon/C)
@@ -217,6 +210,7 @@
         /mob/proc/howl,
         /mob/proc/growl,
         /mob/proc/whine,
+		/mob/proc/bark,
     )
 
 /mob/proc/howl()
