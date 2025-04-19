@@ -579,7 +579,7 @@
 
 /datum/reagent/alch/syrum_swamp_weed
 	name = "swamp syrum"
-	description = "refined berry poison"
+	description = "refined swamp weed"
 	reagent_state = LIQUID
 	color = "#61DE2A"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
