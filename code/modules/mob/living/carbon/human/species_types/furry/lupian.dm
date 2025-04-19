@@ -198,3 +198,54 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = "373330"
 	return returned
+
+/datum/species/lupian/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+    . = ..()
+    RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+    // Add Lupian-specific emotes
+    C.verbs += list(
+        /mob/proc/howl,
+        /mob/proc/growl,
+        /mob/proc/whine,
+    )
+
+/datum/species/lupian/on_species_loss(mob/living/carbon/C)
+    . = ..()
+    UnregisterSignal(C, COMSIG_MOB_SAY)
+    // Remove Lupian-specific emotes
+    C.verbs -= list(
+        /mob/proc/howl,
+        /mob/proc/growl,
+        /mob/proc/whine,
+    )
+
+/mob/proc/howl()
+    set name = "Howl"
+    set category = "Noises"
+    if(stat != CONSCIOUS)
+        return
+    if(next_move > world.time)
+        return
+    emote("howl")
+    next_move = world.time + 9 // 0.9 second cooldown
+
+/mob/proc/growl()
+    set name = "Growl"
+    set category = "Noises"
+    if(stat != CONSCIOUS)
+        return
+    if(next_move > world.time)
+        return
+    emote("growl")
+    next_move = world.time + 3
+
+/mob/proc/whine()
+    set name = "Whine"
+    set category = "Noises"
+    if(stat != CONSCIOUS)
+        return
+    if(next_move > world.time)
+        return
+    emote("whine")
+    next_move = world.time + 3
+
