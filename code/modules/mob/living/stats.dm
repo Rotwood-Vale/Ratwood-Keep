@@ -95,6 +95,11 @@
 /mob/living/proc/change_stat(stat, amt, index)
 	if(!stat)
 		return
+
+// DEBUG MESSAGE -- REMOVE AFTER
+	message_admins(span_danger("Changing [stat] for [src] by [amt]."))
+// 
+
 	if(amt == 0 && index)
 		if(statindex[index])
 			change_stat(statindex[index]["stat"], -1*statindex[index]["amt"])
@@ -151,13 +156,6 @@
 			STALUC = tempskill.value
 			BUFLUC = tempskill.buffer
 
-		else if(href_list["add_stat"])
-			var/mob/living/M = locate(href_list["add_stat"])
-			var/statkey = href_list["stat"]
-			message_admins(span_danger("Admin [key_name_admin(usr)] added [statkey] to [key_name_admin(M)]"))
-				M.change_stat(statkey, 1)
-				log_admin("[usr] increased [M]'s [statkey].")
-			show_player_panel_next(M, "stats")
 
 /proc/generic_stat_comparison(userstat as num, targetstat as num)
 	var/difference = userstat - targetstat
@@ -183,6 +181,10 @@
 	var/tempbuffer = statbuffer
 	var/newamt = statvalue
 
+	// DEBUG MESSAGE -- REMOVE AFTER
+	message_admins(span_danger("Before value: [statvalue]"))
+	// 
+
 	if (tempbuffer > 0 && amt < 0) // If the buffer is positive, it absorbs reductions until it's negative
 		tempbuffer += amt
 		if (tempbuffer < 0)
@@ -204,6 +206,10 @@
 		// Need to subtract 1 from the amount since our minimum is 1, rather than 0
 		tempbuffer += newamt - 1
 		newamt = 1
+
+	// DEBUG MESSAGE -- REMOVE AFTER
+	message_admins(span_danger("After value: [newamt]"))
+	// 
 
 	value = newamt
 	buffer = tempbuffer
