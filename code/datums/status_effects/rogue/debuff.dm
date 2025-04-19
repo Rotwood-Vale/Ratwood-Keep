@@ -3,37 +3,53 @@
 
 ///////////////////////////
 
-/datum/status_effect/debuff/hungryt1
-	id = "hungryt1"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
-	effectedstats = list("constitution" = -1)
+/atom/movable/screen/alert/status_effect/debuff/hungryt0
+	name = "Peckish"
+	desc = "I'm getting a little peckish. A small meal wouldn't hurt."
+	icon_state = "hunger0"
+
+/datum/status_effect/debuff/hungryt0
+	id = "hungryt0"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt0
+	effectedstats = list()
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt1
 	name = "Hungry"
-	desc = "Hunger weakens this living body."
+	desc = "There's a gnawing emptiness in my stomach... I should eat something..."
+	icon_state = "hunger1"
+
+/datum/status_effect/debuff/hungryt1
+	id = "hungryt1"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt1
+	effectedstats = list()
+	duration = 100
+
+/atom/movable/screen/alert/status_effect/debuff/hungryt1
+	name = "Hungry"
+	desc = "There's a gnawing emptiness in my stomach... I should eat something..."
 	icon_state = "hunger1"
 
 /datum/status_effect/debuff/hungryt2
 	id = "hungryt2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt2
-	effectedstats = list("strength" = -2, "constitution" = -2, "endurance" = -1)
+	effectedstats = list("strength" = -1, "constitution" = -1, "endurance" = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt2
-	name = "Hungry"
-	desc = "This living body suffers heavily from hunger."
+	name = "Very Hungry"
+	desc = "My energy feels like it's being sapped away... I need to eat something..."
 	icon_state = "hunger2"
 
 /datum/status_effect/debuff/hungryt3
 	id = "hungryt3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hungryt3
-	effectedstats = list("strength" = -5, "constitution" = -3, "endurance" = -2)
+	effectedstats = list("strength" = -4, "constitution" = -4, "endurance" = -4, "intelligence" = -2, "speed" = -2, "perception" = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/hungryt3
-	name = "Hungry"
-	desc = "My body can barely hold it!"
+	name = "Starving"
+	desc = "My body feels weak... My mind feels foggy... I can't keep this up... I NEED TO EAT SOMETHING!"
 	icon_state = "hunger3"
 
 //SILVER DAGGER EFFECT
@@ -61,38 +77,48 @@
 	desc = "My body feels sluggish and strained."
 	icon_state = "muscles"
 
+/datum/status_effect/debuff/thirstyt0
+	id = "thirsty0"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt0
+	effectedstats = list()
+	duration = 100
+
+/atom/movable/screen/alert/status_effect/debuff/thirstyt0
+	name = "Slightly Thirsty"
+	desc = "My mouth feels a little dry. A small sip of something wouldn't hurt."
+	icon_state = "thirst0"
 
 /datum/status_effect/debuff/thirstyt1
 	id = "thirsty1"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt1
-	effectedstats = list("endurance" = -1)
+	effectedstats = list()
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt1
 	name = "Thirsty"
-	desc = "I need water."
+	desc = "My mouth feels dry. I should drink something."
 	icon_state = "thirst1"
 
 /datum/status_effect/debuff/thirstyt2
 	id = "thirsty2"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt2
-	effectedstats = list("speed" = -1, "endurance" = -2)
+	effectedstats = list("constitution" = -1, "endurance" = -1, "strength" = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt2
-	name = "Thirsty"
-	desc = "My mouth feels much drier."
+	name = "Very Thirsty"
+	desc = "My throat is so dry... My body feels ill... I need to find something to drink..."
 	icon_state = "thirst2"
 
 /datum/status_effect/debuff/thirstyt3
 	id = "thirsty3"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/thirstyt3
-	effectedstats = list("strength" = -1, "speed" = -2, "endurance" = -3)
+	effectedstats = list("constitution" = -4, "endurance" = -4, "strength" = -2, "intelligence" = -2, "speed" = -2, "perception" = -1)
 	duration = 100
 
 /atom/movable/screen/alert/status_effect/debuff/thirstyt3
-	name = "Thirsty"
-	desc = "I urgently need water!"
+	name = "Dehydrated"
+	desc = "My entire body feels drained... Even moving my arms feels like a monumental effort... I need to drink something... NOW!"
 	icon_state = "thirst3"
 
 /////////
