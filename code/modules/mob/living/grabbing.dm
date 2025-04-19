@@ -88,6 +88,17 @@
 	if(ismob(grabbed))
 		var/mob/M = grabbed
 		M.grabbedby -= src
+		if (iscarbon(M) && sublimb_grabbed)
+			var/mob/living/carbon/carbonmob = M
+			var/obj/item/bodypart/part = carbonmob.get_bodypart(sublimb_grabbed)
+
+			// Edge case: if a weapon becomes embedded in a mob, our "grab" will be destroyed...
+			// In this case, grabbed will be the mob, and sublimb_grabbed will be the weapon, rather than a bodypart
+			// This means we should skip any further processing for the bodypart
+			if (part)
+				part.grabbedby -= src
+				part = null
+				sublimb_grabbed = null
 	if(isturf(grabbed))
 		var/turf/T = grabbed
 		T.grabbedby -= src
