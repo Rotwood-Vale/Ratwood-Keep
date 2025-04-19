@@ -170,4 +170,7 @@
 
 /datum/species/elf/dark/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	C.GetComponent(/datum/component/darkling).Destroy()			//Cleanup, in case you somehow change species. Like becoming a skeleton.
+	var/datum/component/darkling/darkling_component = C.GetComponent(__IMPLIED_TYPE__)
+	if(darkling_component)
+		//Cleanup, in case you somehow change species. Like becoming a skeleton.
+		darkling_component.RemoveComponent()
