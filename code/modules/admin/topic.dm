@@ -1541,6 +1541,55 @@
 					T.admin_remove_member(usr,M)
 		check_teams()
 
+	else if(href_list["editpq"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
+		var/client/mob_client = M.client
+		var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
+		if(!check_rights(R_ADMIN,0))
+			amt2change = CLAMP(amt2change, -20, 20)
+		var/raisin = stripped_input("State a short reason for this change", "Game Master", "", null)
+		if(!amt2change && !raisin)
+			return
+		adjust_playerquality(amt2change, mob_client.ckey, usr.ckey, raisin)
+		for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
+			if(lowertext(C.key) == lowertext(mob_client.ckey))
+				to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [usr.key] for reason: [raisin]</span></span>")
+				return
+	else if(href_list["showpq"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
+		var/client/mob_client = M.client
+		check_pq_menu(mob_client.key)
+
+	else if(href_list["edittriumphs"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = (locate(href_list["mob"]) in GLOB.mob_list)
+		if(!M?.key)
+			alert(usr, "[M] does not have a key.")
+			return
+
+		var/amt2change = input(usr, "How much to modify the Triumphs by? (100 to -100)") as null|num
+		amt2change = clamp(amt2change, -100, 100)
+		if(!amt2change)
+			return
+
+		var/raisin = stripped_input(usr, "State a short reason for this change", "Game Master", null, null)
+		M.adjust_triumphs(amt2change, FALSE, raisin)
+		message_admins("[usr.key] adjusted [M.key]'s triumphs by [amt2change] with [!raisin ? "no reason given" : "reason: [raisin]"].")
+		log_admin("[usr.key] adjusted [M.key]'s triumphs by [amt2change] with [!raisin ? "no reason given" : "reason: [raisin]"].")
+
+	else if(href_list["roleban"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
+		var/client/mob_client = M.client
+		role_ban_panel.show_ui(usr, mob_client.key)
+
+
 	else if(href_list["newbankey"])
 		var/player_key = href_list["newbankey"]
 		var/player_ip = href_list["newbanip"]
