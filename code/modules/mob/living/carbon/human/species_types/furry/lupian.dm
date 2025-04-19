@@ -249,3 +249,12 @@
     emote("whine")
     next_move = world.time + 3
 
+/mob/proc/bark()
+    set name = "Bark"
+    set category = "Noises"
+    if(stat != CONSCIOUS)
+        return
+    if(next_move > world.time)
+        return
+    emote("bark")
+    next_move = world.time + 3

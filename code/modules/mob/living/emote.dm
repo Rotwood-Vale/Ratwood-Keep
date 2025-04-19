@@ -227,6 +227,15 @@
 	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
+
+/datum/emote/living/bark
+	key = "bark"
+	key_third_person = "barks"
+	message = "barks."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
 	
 /datum/emote/living/cross
 	key = "crossarms"
