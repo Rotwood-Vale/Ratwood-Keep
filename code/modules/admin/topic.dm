@@ -1132,7 +1132,7 @@
 		M.mind?.adjust_skillrank(text2path(skill), 1)
 		message_admins(span_danger("Admin [key_name_admin(usr)] increased [key_name_admin(M)]'s [skill]"))
 		log_admin("[usr] increased [M]'s [initial(skill.name)] skill.")
-		show_super_player_panel_next(M, "skills")
+		show_player_panel_next(M, "skills")
 
 	else if(href_list["decrease_skill"])
 		var/mob/M = locate(href_list["decrease_skill"])
@@ -1140,7 +1140,7 @@
 		M.mind?.adjust_skillrank(text2path(skill), -1)
 		message_admins(span_danger("Admin [key_name_admin(usr)] decreased [key_name_admin(M)]'s [skill]"))
 		log_admin("[usr] decreased [M]'s [initial(skill.name)] skill.")
-		show_super_player_panel_next(M, "skills")
+		show_player_panel_next(M, "skills")
 
 	else if(href_list["add_language"])
 		var/mob/M = locate(href_list["add_language"])
@@ -1148,7 +1148,7 @@
 		M.grant_language(lang)
 		message_admins(span_danger("Admin [key_name_admin(usr)] added [lang] to [key_name_admin(M)]"))
 		log_admin("[usr] added [lang] to [M].")
-		show_super_player_panel_next(M, "languages")
+		show_player_panel_next(M, "languages")
 
 	else if(href_list["remove_language"])
 		var/mob/M = locate(href_list["remove_language"])
@@ -1156,7 +1156,7 @@
 		M.remove_language(lang)
 		message_admins(span_danger("Admin [key_name_admin(usr)] removed [lang] from [key_name_admin(M)]"))
 		log_admin("[usr] removed [lang] to [M].")
-		show_super_player_panel_next(M, "languages")
+		show_player_panel_next(M, "languages")
 
 	else if(href_list["add_stat"])
 		var/mob/living/M = locate(href_list["add_stat"])
@@ -1164,7 +1164,7 @@
 		message_admins(span_danger("Admin [key_name_admin(usr)] added [statkey] to [key_name_admin(M)]"))
 		M.change_stat(statkey, 1)
 		log_admin("[usr] increased [M]'s [statkey].")
-		show_super_player_panel_next(M, "stats")
+		show_player_panel_next(M, "stats")
 
 	else if(href_list["lower_stat"])
 		var/mob/living/M = locate(href_list["lower_stat"])
@@ -1172,7 +1172,7 @@
 		message_admins(span_danger("Admin [key_name_admin(usr)] lowered [statkey] from [key_name_admin(M)]"))
 		M.change_stat(statkey, -1)
 		log_admin("[usr] decreased [M]'s [statkey].")
-		show_super_player_panel_next(M, "stats")
+		show_player_panel_next(M, "stats")
 
 	else if(href_list["sendmob"])
 		if(!check_rights(R_ADMIN))
