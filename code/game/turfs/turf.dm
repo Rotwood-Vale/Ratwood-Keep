@@ -236,8 +236,8 @@
 		return
 	if(zFall(A, ++levels))
 		return FALSE
-	var/mob/living/carbon/human/FM = A
-	if(isseelie(FM) && !FM.resting)	//Add wingcheck
+	var/mob/falling_mob = A
+	if(istype(falling_mob) && falling_mob.is_floor_hazard_immune()) // TODO: Separate this into its own proc?
 		A.visible_message(span_danger("[A] floats gently onto [src]!"))
 	else
 		A.visible_message(span_danger("[A] crashes into [src]!"))

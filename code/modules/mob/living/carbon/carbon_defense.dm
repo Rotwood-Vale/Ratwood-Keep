@@ -389,10 +389,11 @@
 	AdjustSleeping(-100)
 	AdjustParalyzed(-60)
 	AdjustImmobilized(-60)
+	// TODO: Move this to a help_shake_act proc on species?
 	if(isseelie(src))
-		var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
-		if(Wing == null)
-			to_chat(M, span_warning("They cant stand without their wings!"))
+		var/datum/species/seelie/seelie = dna.species
+		if(!seelie.has_wings(src))
+			to_chat(M, span_warning("[src] cannot stand without [p_their()] wings!"))
 			return
 
 	set_resting(FALSE)

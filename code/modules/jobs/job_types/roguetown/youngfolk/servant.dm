@@ -12,6 +12,7 @@
 	subclass_cat_rolls = list(CTAG_SERVANT = 20)
 
 	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
+	seelie_tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but you've allowed the more chaotic ones to fade to memory."
 
 	outfit = /datum/outfit/job/roguetown/servant
 	display_order = JDO_SERVANT
@@ -76,7 +77,7 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 1)
-		else if(isseelie(H))
+		else
 			H.mind.AddSpell(new SPELL_SPLASH)	//Splash now waters crops AND cleans blood, in a 3x3 area but only IF the water bolt hits something
 			H.mind.AddSpell(new SPELL_SUMMON_RAT)			//Good for meat for cooking
 			H.mind.AddSpell(new SPELL_ROUSTAME)			//Good for meat for cooking
@@ -114,7 +115,7 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
 			H.change_stat("speed", 1)
-		else if(isseelie(H))
+		else
 			H.mind.AddSpell(new SPELL_SPLASH)
 			H.mind.AddSpell(new SPELL_SUMMON_RAT)
 			H.mind.AddSpell(new SPELL_ROUSTAME)

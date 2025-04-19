@@ -206,15 +206,9 @@
 		if(!lying_attack_check(user))
 			return FALSE
 	
-	if(isseelie(src))
-		if(user.patron.type == /datum/patron/inhumen/graggar)
-			if(user.pulling == src)
-				if(user.grab_state == GRAB_AGGRESSIVE)
-					visible_message(span_danger("[user] is putting [src]'s head in their mouth!"), \
-									span_userdanger("[user] is putting my head in their mouth!"))
-					if(do_after(user, 8 SECONDS, target = src))
-						var/obj/item/bodypart/head/head = src.get_bodypart("head")
-						head.dismember()
+	// Handle species-specific bite effects.
+	if(dna?.species?.on_bitten(src, user))
+		return
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
@@ -283,10 +277,8 @@
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
 			return
-		if(isseelie(A) && !(isseelie(src)))
-			var/mob/living/carbon/human/target = A
-			if(target.pulledby == src)
-				target.dna.species.on_wing_removal(A, src)
+		var/mob/living/carbon/human/target = A
+		if(ishuman(target) && target.dna.species.on_middle_click(A, src))
 			return
 		A.MiddleClick(src, params)
 	else

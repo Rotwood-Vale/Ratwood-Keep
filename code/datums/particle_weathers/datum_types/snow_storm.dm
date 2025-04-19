@@ -186,7 +186,9 @@
 /obj/structure/snow/process(delta_time)
 	update_overlays()
 
-/obj/structure/snow/proc/get_slowdown()
+/obj/structure/snow/proc/get_slowdown(mob/user)
+	if(user.is_floor_hazard_immune())
+		return 0
 	return 1.5 * bleed_layer
 
 /obj/structure/snow/proc/update_visuals_effects(datum/source, replace = TRUE, first = FALSE)

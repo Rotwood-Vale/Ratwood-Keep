@@ -165,8 +165,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
-	if(!islist(ignored_mobs))
-		ignored_mobs = list(ignored_mobs)
+	// This doesn't seem to be necessary, hearers -= ignored_mobs works just fine if it isn't a list.
+	// if(!islist(ignored_mobs))
+	// 	ignored_mobs = list(ignored_mobs)
 	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
 	hearers -= ignored_mobs
 	if(self_message)
@@ -1360,12 +1361,3 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(customsayverb)
 		input = capitalize(copytext_char(input, customsayverb+1))
 	return "[message_spans_start(spans)][input]</span>"
-
-/mob/proc/haswings(mob/living/carbon/human/Target)
-	if(!ishuman(Target))
-		return FALSE
-	var/obj/item/organ/wings/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
-	if(Wing == null)
-		return FALSE
-	else
-		return TRUE

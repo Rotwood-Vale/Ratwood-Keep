@@ -255,12 +255,12 @@
 
 /datum/component/riding/human/get_offsets(pass_index, mob/living/user)
 	var/mob/living/carbon/human/H = parent
-	if(H.buckle_lying && !HAS_TRAIT(user, TRAIT_TINY))
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
-	else if(!HAS_TRAIT(user, TRAIT_TINY))
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
-	else
+	if(HAS_TRAIT(user, TRAIT_TINY))
 		return list(TEXT_NORTH = list(5, 6), TEXT_SOUTH = list(5, 6), TEXT_EAST = list(-2, 6), TEXT_WEST = list( 2, 6))
+	else if(H.buckle_lying)
+		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
+	else
+		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
 
 
 /datum/component/riding/human/force_dismount(mob/living/user)
