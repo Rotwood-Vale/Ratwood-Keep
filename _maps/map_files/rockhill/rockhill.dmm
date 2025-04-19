@@ -39222,11 +39222,6 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
-"uRK" = (
-/obj/structure/roguewindow/stained/silver,
-/obj/structure/roguewindow/stained/yellow,
-/turf/closed/wall/mineral/rogue/decostone,
-/area/rogue/indoors/town/church)
 "uRY" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/cobble/mossy,
@@ -40404,11 +40399,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-"vCv" = (
-/obj/structure/roguewindow/stained/silver,
-/obj/structure/roguewindow/stained/zizo,
-/turf/closed/wall/mineral/rogue/decostone/mossy/red,
-/area/rogue/indoors/town/church)
 "vCE" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 9
@@ -471200,7 +471190,7 @@ pNF
 rXQ
 ydl
 dGr
-uRK
+tPT
 qmq
 uNw
 fof
@@ -583089,7 +583079,7 @@ wJI
 wJI
 tkX
 wfQ
-vCv
+jEH
 eMX
 eBN
 mQM
