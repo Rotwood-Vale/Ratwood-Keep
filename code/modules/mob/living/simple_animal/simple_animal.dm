@@ -235,6 +235,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	stop_automated_movement_when_pulled = TRUE
 	if(user)
 		owner = user
+		// Add the user's ref-faction to our factions list so they don't attack us.
+		faction |= "[REF(owner)]"
 	return
 
 /mob/living/simple_animal/updatehealth()
