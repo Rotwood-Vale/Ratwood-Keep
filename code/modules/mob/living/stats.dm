@@ -151,14 +151,6 @@
 			STALUC = tempskill.value
 			BUFLUC = tempskill.buffer
 
-		else if(href_list["add_stat"])
-			var/mob/living/M = locate(href_list["add_stat"])
-			var/statkey = href_list["stat"]
-			message_admins(span_danger("Admin [key_name_admin(usr)] added [statkey] to [key_name_admin(M)]"))
-				M.change_stat(statkey, 1)
-				log_admin("[usr] increased [M]'s [statkey].")
-			show_player_panel_next(M, "stats")
-
 /proc/generic_stat_comparison(userstat as num, targetstat as num)
 	var/difference = userstat - targetstat
 	if(difference > 1 || difference < -1)
