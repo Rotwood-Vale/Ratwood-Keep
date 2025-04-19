@@ -7,10 +7,6 @@ Food Handle Recipes
    like it would make more sense to base it all off skill levels for now.
 */
 
-// Checking for interaction types? (attackby and attackhand, both procs feed their own proc)
-// Will make getting this all into the same datum easier to read maybe.
-#define FOOD_INTERACTION_ITEM 1 // use for attackby proc
-#define FOOD_INTERACTION_HAND 2 // use for attack_hand proc
 
 
 /*============
@@ -25,7 +21,7 @@ handle_recipes
 	var/required_skill_level = 0 // Skill for attempting recipe
 	var/interaction_type = FOOD_INTERACTION_ITEM 
 	var/slices = 0 //How many slices this interaction returns if any. (may be useless eventually)
-	var/craftsound = 'sound/foley/bandage.ogg'
+	var/craft_sound = 'sound/foley/bandage.ogg'
 	var/crafting_message = "You start combining the items..." // example: "I start rolling the flour into the dough..."
 
 //This initializes the whole list of food combination
@@ -35,26 +31,22 @@ var/list/datum/food_combinations = init_subtypes(/datum/food_handle_recipes/)
 /*=========
 Clear_items
 =========*/
-// By this point you KNOW you have all the items exist and will finish this loop
-// This for loop should never break... if it does something terrible happened.
 datum/food_handle_recipes/proc/clear_items(list/itemlist)
 	var/I = 1
 	if(!items.len)
 		return
 	if(!itemlist.len)
 		return
-	while(I < items.len)
-		for(var/obj/item/J in itemlist)
-			if(istype(J, items[I]))
-				if(istype(J, /obj/item/reagent_containers/food/snacks/rogue))
-					world.log << "deleting the [J]"
-					qdel(J) //only food items should delete
-				I += 1 // This means that and interactions via knives has to be something else it can't be listed...
-					//check for required item (sharpness) in the uh 
-			if(I > items.len)
-				break
-		
-
+	// By this point you KNOW you have all the items exist and will finish this loop
+	// And it would only delete things from the recipe's list (You should have them)
+	// This for loop should never break... if it does something terrible happened.
+	for(var/obj/item/J in itemlist)
+		world.log << "found: [J.name]"
+		if(istype(J, /obj/item/reagent_containers/food))
+			qdel(J)
+		if(istype(J, /obj/item/reagent_containers/powder))
+			qdel(J)
+	
 /*=================
 check_items_in_list
 =================*/
@@ -104,18 +96,15 @@ NOTE! This is a global level proc: you can call it from anything if you need. Yo
 expand this to be more generic for other crafting methods in future if you want
 but for now I'm mostly just checking food.
 */
-/proc/select_interaction_recipe(list/datum/recipe/avaiable_recipes, list/items, interaction_type, exact = 1)
-	world.log << "I fired interactio"
+/proc/select_interaction_recipe(list/datum/recipe/avaiable_recipes, list/items, interaction_type = FOOD_INTERACTION_ITEM , exact = 1)
 	// List of recipes to check.
 	var/list/datum/food_handle_recipes/possible_recipes = new
 	var/target = exact ? 1 : 0 
 	// Checks through all possible recipes in the daturm
-	for (var/datum/food_handle_recipes/recipe in avaiable_recipes)
-		if((recipe.check_items_in_list(items) < target))
-			world.log << "Failed count: [recipe]"
+	for(var/datum/food_handle_recipes/recipe in avaiable_recipes)
+		if(recipe.check_items_in_list(items) < target)
 			continue // Stops recipes with not enough items
 		if(recipe.interaction_type != interaction_type)
-			world.log << "Failed check: [recipe]"
 			continue // Stops wrong interaction attempts
 
 		// Shorthand for adding to list

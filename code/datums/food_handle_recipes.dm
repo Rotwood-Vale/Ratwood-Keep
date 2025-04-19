@@ -15,17 +15,8 @@ CAKES
 	crafting_message = ""
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 
-/*Cake base elaborate*/
-// skips the butterdough step
-/datum/food_handle_recipes/cake_base_elaborate
-	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/butterdough,
-		/obj/item/reagent_containers/food/snacks/egg ) 
-
-	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
-
 /*Cake base full */
-// Does the whole thing from a dough base, use butter, egg,
+// Does the whole thing from a dough,  butter, egg,
 /datum/food_handle_recipes/cake_base_full
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
@@ -71,6 +62,12 @@ COOKED MEALS
 
     result = /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
 
+/datum/food_handle_recipes/friedeggs/pre_check(user, to_check)
+	for(var/obj/I in to_check)
+		if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/friedegg/two))
+			return FALSE
+	return TRUE
+
 /* Grenzelbun */
 /datum/food_handle_recipes/hotdog
 	items = list(
@@ -104,6 +101,17 @@ COOKED MEALS
         /obj/item/reagent_containers/peppermill )
         
     result = /obj/item/reagent_containers/food/snacks/rogue/peppersteak
+
+/datum/food_handle_recipes/peppersteak/pre_check(user, to_check)
+	for(var /obj/item/reagent_containers/peppermill/P in to_check)
+		if(!P.reagents.has_reagent(/datum/reagent/consumable/blackpepper. 1))
+			return FALSE
+	return TRUE
+
+/datum/food_handle_recipes/peppersteak/post_handle(user, to_check)
+	for(var /obj/item/reagent_containers/peppermill/P in to_check)
+		P.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
+
 
 /* Wiener cabbage */
 /datum/food_handle_recipes/wienercabbage
@@ -144,73 +152,73 @@ DOUGH RECIPES
 ============*/
 
 /* Wet Dough */
+// This was the most insane use case
+// On one end I'm mad, on the other end this
+// Probably solved any and all edge cases
+// Thank you crazy person who made dough the way it is. - Fridge
 /datum/food_handle_recipes/dough_wet
 	items = list(
 		/obj/item/reagent_containers/powder/flour,
 		/obj/item/reagent_containers )
 
-	result = /obj/item/reagent_containers/food/snacks/rogue/dough
-	craftsound = 'modular/Neu_Food/sound/splishy.ogg'
+	result = null
+	craft_sound = 'modular/Neu_Food/sound/splishy.ogg'
 
 /datum/food_handle_recipes/dough_wet/pre_check(user, to_check)
 	for(var/obj/item/reagent_containers/R in to_check)
-		if(!R.reagents.has_reagent(/datum/reagent/water), 10)
-			to_chat(user, "<span class='notice'>You need more water to work the flour.</span>")
-			return FALSE
-	return TRUE 
+		if(!istype(R, /obj/item/reagent_containers/powder/flour))
+			if((R.reagents.has_reagent(/datum/reagent/water, 10)))
+				return TRUE
+	return FALSE
 
 /datum/food_handle_recipes/dough_wet/post_handle(user, to_check)
-	for(var/obj/item/reagent_containers/food/snacks/rogue/flour/F in to_check)
-		name = "wet powder"
-		desc = "Destined for greatness, at your hands."
-		water_added = TRUE
-		color = "#d9d0cb"	
+	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
+		F.name = "wet powder"
+		F.desc = "Destined for greatness, at your hands."
+		F.water_added = TRUE
+		F.color = "#d9d0cb"	
 
 	for(var/obj/item/reagent_containers/R in to_check)
-		if(!istype(R, /obj/item/reagent_containers/food/snacks/rogue/flour))
+		if(!istype(R, /obj/item/reagent_containers/powder/flour))
 			R.reagents.remove_reagent(/datum/reagent/water, 10)
 			break
 	..()
+
+// Specific code again to show overriding
+// This dough code has been the gold standard.
+// Please consult this when understanding how to deal with special cases.
+datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
+	return
 
 
 /* Dough base */
 /datum/food_handle_recipes/dough_base
 	items = list(
-		/obj/item/reagent_containers/powder/flour,
+		/obj/item/reagent_containers/powder/flour, )
 	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
-	craftsound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 
-/datum/food_handle_recipes/dough/pre_check(user, to_check)
+/datum/food_handle_recipes/dough_base/pre_check(user, to_check)
 	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
 		if(!F.water_added)
 			return FALSE
 	return TRUE
 
+//
+/datum/food_handle_recipes/dough_base/post_handle(user, to_check)
+	for(var/obj/I in to_check)
+		qdel(I)
+
 /* Dough */
 /datum/food_handle_recipes/dough
 	items = list(
 		/obj/item/reagent_containers/powder/flour,
-		/obj/item/reagent_containers/powder/flour ) 
+		/obj/item/reagent_containers/food/snacks/rogue/dough_base ) 
 
-	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
-	craftsound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough
+	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 
-
-/datum/food_handle_recipes/dough/pre_check(user, to_check)
-	var/water = FALSE
-	var/dry = FALSE
-	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
-		//Kind of goofy but a way to find out if we have both a dry and wet flour
-		if(F.water_added)
-			water = TRUE
-		if(!F.water_added)
-			dry = TRUE
-		
-		if(!water || !dry)
-			return FALSE
-
-	return TRUE 
 
 /* Butterdough */
 /datum/food_handle_recipes/butterdough
@@ -227,6 +235,15 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbread_half
+
+/* Raisinbread full */
+/datum/food_handle_recipes/rbread_half
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
+		/obj/item/reagent_containers/food/snacks/rogue/raisins )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
+
 
 /* Hardtack raw*/
 /datum/food_handle_recipes/hardtack_raw
@@ -282,14 +299,19 @@ DOUGH RECIPES
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
 
 
-//if(I.get_sharpness())
 /datum/food_handle_recipes/pretzel
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice)
-
+	crafting_message = "You start slicing the dough into strips to make a prezzel..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw
 
-
+/datum/food_handle_recipes/pretzel/pre_check(user, to_check)
+	for(var/obj/item/I in to_check)
+		if(I.get_sharpness())
+			return TRUE
+	return FALSE
+	
 
 
 /datum/food_handle_recipes/rasinbread
@@ -351,10 +373,32 @@ MISC
 //TO DO: Figure out how to make this stuff work because it uses attackhand.
 /datum/food_handle_recipes/candy_base
 	items = list(
-		/obj/item/reagent_containers/powder/sugar,
-		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison )
+		/obj/item/reagent_containers/powder/sugar )
+		interaction_type = FOOD_INTERACTION_HAND //uses attackhand
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
+
+/datum/food_handle_recipes/candy_base/pre_check(user, to_check)
+	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
+		if(!F.water_added)
+			return FALSE
+	return TRUE
+
+
+/datum/food_handle_recipes/candy_apple
+	items = list(
+		/obj/item/reagent_containers/powder/sugar,
+		/obj/item/reagent_containers/food/snacks/grown/apple )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/applecandy
+
+
+/datum/food_handle_recipes/candy_berry
+	items = list(
+		/obj/item/reagent_containers/powder/sugar,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/berrycandy
 
 /*======
 PASTRIES

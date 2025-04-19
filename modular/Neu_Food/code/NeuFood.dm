@@ -91,20 +91,18 @@ proc/food_handle_interaction(obj/item/source, mob/user, list/items, interaction_
 		to_chat(user, "I can't make anything with these two items.")
 		return FALSE
 
-	for(var/I in items)
-		world.log << "[I]" // REMOVE WHEN DEBUGGING FINISHED
-
 	method_result = recipe.result
 
 	if(recipe.pre_check(user, items) == FALSE)
 		return FALSE //We can't do it!
 
 	to_chat(user, span_warning("[recipe.crafting_message]"))
-	playsound(user.loc, recipe.craftsound, 100)
+	playsound(user.loc, recipe.craft_sound, 100)
 	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
 	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
 	if(do_after(user, delay, src))
-		new method_result(source.loc) // Always be on the table
+		if(method_result != null)
+			new method_result(source.loc) // Always be on the table
 		recipe.clear_items(items)
 		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
 	return TRUE
@@ -114,7 +112,6 @@ proc/food_handle_interaction(obj/item/source, mob/user, list/items, interaction_
 // While I would usually call the parent procs food doesn't seem to benefit at all 
 // from doing this so I will try it without any calls. I check all the parent procs
 // There's nothing from what I can tell that matters
-
 /*======
 attackby
 ======*/
@@ -138,10 +135,8 @@ attackby
 	var/list/to_check = list(I, src) 
 	if(inactive)
 		to_check += inactive
-	world.log << "Checking interaction"
 	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_ITEM)
 	if(!interaction_status)
-		world.log << "Failed! (attackby)"
 		..() //If we failed everything see what parent procs think.
 
 /obj/item/reagent_containers/food/snacks/attack_hand(mob/user)
@@ -150,10 +145,8 @@ attackby
 		return ..()
 	
 	var/list/to_check = list(src) 
-	world.log << "Checking interaction"
 	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_HAND)
 	if(!interaction_status)
-		world.log << "failed!"
 		..() //If we failed everything see what parent procs think.
 	
 
@@ -551,57 +544,20 @@ attackby
 	var/list/to_check = list(I, src) 
 	if(inactive)
 		to_check += inactive
-	world.log << "Checking interaction"
-	var/interaction_status = food_handle_interaction(src, user, to_check)
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_ITEM)
 	if(!interaction_status)
-		world.log << "Failed! (attackby)"
 		..() //If we failed everything see what parent procs think.
-/*
-	food_handle_interaction(obj/source, mob/user, list/items)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	var/obj/item/reagent_containers/R = I
-	if(user.mind)
-		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
-	if(!istype(R) || (water_added))
-		return ..()
-	if(isturf(loc)&& (!found_table))
-		to_chat(user, "<span class='notice'>Need a table...</span>")
-		return ..()	
-	if(!R.reagents.has_reagent(/datum/reagent/water, 10))
-		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
-		return TRUE
-	to_chat(user, "<span class='notice'>Adding water, now its time to knead it...</span>")
-	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
-	if(do_after(user,2 SECONDS, target = src))
-		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-		name = "wet powder"
-		desc = "Destined for greatness, at your hands."
-		R.reagents.remove_reagent(/datum/reagent/water, 10)
-		water_added = TRUE
-		color = "#d9d0cb"	
-	return TRUE
-*/
+
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(!found_table)
 		return ..()
 
 	var/list/to_check = list(src) 
-	world.log << "Checking interaction"
-	var/interaction_status = food_handle_interaction(src, user, to_check)
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_HAND)
 	if(!interaction_status)
-		world.log << "failed!"
 		..() //If we failed everything see what parent procs think.
-	/*
-	if(water_added)
-		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
-		if(do_after(user,3 SECONDS, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
-			qdel(src)
-	else ..()
-*/
+
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt
 	name = "salt"
