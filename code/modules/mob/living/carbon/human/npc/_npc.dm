@@ -24,7 +24,8 @@
 	var/next_stand = 0
 	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
-	var/stand_attempts = 0
+	/// How many ticks until our next stand attempt?
+	var/stand_cooldown = 0
 	var/ai_currently_active = FALSE
 
 	var/returning_home = FALSE
@@ -39,58 +40,59 @@
 	START_PROCESSING(SShumannpc,src)
 
 /mob/living/carbon/human/proc/process_ai()
-	if(stat == DEAD)
+	if(IsDeadOrIncap())
 		walk_to(src,0)
 		return TRUE
+	// we assume we're conscious after this point since we aren't dead or incapacitated
 	if(client)
 		if(!ai_when_client)
+			walk_to(src,0)
 			return TRUE //remove us from processing
-//	if(world.time < next_ai_tick)
-//		return
-//	next_ai_tick = world.time + rand(10,20)
 	cmode = 1
 	update_cone_show()
-	if(stat == CONSCIOUS)
-		if(on_fire || buckled || restrained() || pulledby)
-			resisting = TRUE
-			walk_to(src,0)
-			resist()
-			resisting = FALSE
-		if(!resisting)
-			if(!(mobility_flags & MOBILITY_STAND) && !stand_attempts)
-				resisting = TRUE
-				npc_stand()
-			else
-				stand_attempts = max(stand_attempts-1, 0)
-				if(!handle_combat())
-					if(mode == NPC_AI_IDLE && !pickupTarget)
-						npc_idle()
-						if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
-							if(deaggrodel())
-								return TRUE
-	else
+	if(resisting) // already busy from a prior turn! stop!
+		walk_to(src, 0)
+		return // Your turn is already being used to continue a resist.
+	if(on_fire || buckled || restrained() || pulledby)
+		resisting = TRUE
 		walk_to(src,0)
-		return TRUE
+		resist()
+		resisting = FALSE
+		return // Resisting passes your turn, you can't attack.
+	if(!(mobility_flags & MOBILITY_STAND) && stand_cooldown <= 0)
+		resisting = TRUE
+		npc_stand()
+		return // Standing passes your turn, you can't attack.
+	stand_cooldown = max(stand_cooldown-1, 0)
+	if(!handle_combat())
+		if(mode == NPC_AI_IDLE && !pickupTarget)
+			npc_idle()
+			if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
+				if(deaggrodel())
+					return TRUE
 
 /mob/living/carbon/human/proc/npc_stand()
+	if(next_move > world.time)
+		return
+	walk_to(src, 0) // no walking while you stand up
 	if(stand_up())
-		stand_attempts = 0
+		stand_cooldown = 0
 		resisting = FALSE
 	else
-		stand_attempts = rand(10,120)
+		stand_cooldown = rand(10,120) // 10 to 120 ticks, 5 to 60 seconds
 		resisting = FALSE
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
 		return
-	if(world.time < next_idle + rand(30,50))
+	if(world.time < next_idle + rand(3 SECONDS, 5 SECONDS))
 		return
-	next_idle = world.time + rand(30,50)
+	next_idle = world.time + rand(3 SECONDS, 5 SECONDS)
 	if((mobility_flags & MOBILITY_MOVE) && isturf(loc))
 		if(wander)
 			if(prob(50))
 				var/turf/T = get_step(loc,pick(GLOB.cardinals))
-				if(!istype(T, /turf/open/transparent/openspace))
+				if(!isgroundlessturf(T)) // Don't move into flowing water, lava, or open space.
 					Move(T)
 			else
 				setDir(turn(dir, pick(90,-90)))
@@ -139,15 +141,20 @@
 	var/move_started = world.time
 	for(var/i = 0; i < maxStepsTick; i++)
 		var/movespeed = update_movespeed()
-		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill())
+		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill() || is_move_blocked_by_grab())
 			sleep(movespeed) // wait one movement tick to see if we're finished/recovered
 			continue
 		if(world.time > (move_started + /datum/controller/subsystem/humannpc::wait))
 			// we ran out of time and started the next tick!
 			break
 		if(length(myPath))
-			var/turf/next_step = get_step_to(src,myPath[1])
-			if(!step(src,get_dir(src, next_step))) // try to move onto or along our path
+			var/move_dir = get_dir(src, myPath[1])
+			var/turf/next_step = get_step(src, move_dir)
+			if(!next_step)
+				pathing_frustration++
+				myPath -= myPath[1]
+				continue
+			if(!step(src, move_dir)) // try to move onto or along our path
 				for(var/obj/structure/O in next_step)
 					if(O.density && O.climbable)
 						O.climb_structure(src)
@@ -156,6 +163,7 @@
 				pathing_frustration++
 			else if(loc == myPath[1]) // if we made it to the right part of our path
 				.++
+				pathing_frustration = 0
 				myPath -= myPath[1]
 			sleep(movespeed) // wait until next move
 
@@ -176,6 +184,8 @@
 	if(turf_of_target?.z == z)
 		if(!length(myPath)) // need a new path
 			myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal), MAX_RANGE_FIND + 1, 250,1)
+			if(length(myPath))
+				myPath -= get_turf(src) // remove the turf we start on
 			pathing_frustration = 0
 		return TRUE
 	//too far away or pathing failed
@@ -185,16 +195,12 @@
 // taken from /mob/living/carbon/human/interactive/
 /mob/living/carbon/human/proc/IsDeadOrIncap(checkDead = TRUE)
 	if(!(mobility_flags & MOBILITY_FLAGS_INTERACTION))
-		return 1
+		return TRUE
 	if(health <= 0 && checkDead)
-		return 1
-	if(IsUnconscious())
-		return 1
-	if(IsStun() || IsParalyzed())
-		return 1
-	if(stat)
-		return 1
-	return 0
+		return TRUE
+	if(incapacitated(ignore_restraints = TRUE))
+		return TRUE
+	return FALSE
 
 
 /mob/living/carbon/human/proc/equip_item(obj/item/I)
@@ -300,8 +306,7 @@
 			if(flee_in_pain && target && (target.stat == CONSCIOUS))
 				var/paine = get_complex_pain()
 				if(paine >= ((STAEND * 10)*0.9))
-					// mode = NPC_AI_FLEE
-					walk_away(src, target, 5, update_movespeed())
+					mode = NPC_AI_FLEE
 					m_intent = MOVE_INTENT_RUN
 					myPath = list() // cancel chasing our target
 					return TRUE
@@ -330,7 +335,27 @@
 				frustration++
 
 		if(NPC_AI_FLEE)
-			back_to_idle()
+			var/const/NPC_FLEE_DISTANCE = 8
+			var/flee_target = target
+			if(!flee_target)
+				// try to flee from any enemies who aren't incapacitated
+				for(var/mob/living/bystander in view(src))
+					if(enemies[bystander])
+						if(ishuman(bystander))
+							var/mob/living/carbon/human/human_bystander = bystander
+							if(human_bystander.IsDeadOrIncap())
+								continue
+						else if(stat != CONSCIOUS)
+							continue
+						// found an enemy who might be able to hurt us
+						flee_target = bystander
+			if(!flee_target || get_dist(src, flee_target) >= NPC_FLEE_DISTANCE)
+				back_to_idle()
+			else if(!is_move_blocked_by_grab()) // try to run offscreen if we aren't being grabbed by someone else
+				// todo: use A* to find the shortest path to the farthest tile away from the flee target?
+				walk_away(src, target, NPC_FLEE_DISTANCE, update_movespeed())
+			else // can't flee and can't move, stop walking!
+				walk(src, 0)
 			return TRUE
 
 	return IsStandingStill()
@@ -342,6 +367,7 @@
 		stop_pulling()
 	myPath = list()
 	mode = NPC_AI_IDLE
+	m_intent = MOVE_INTENT_WALK
 	target = null
 	a_intent = INTENT_HELP
 	frustration = 0
