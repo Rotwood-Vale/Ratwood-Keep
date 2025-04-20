@@ -15,16 +15,11 @@
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
 	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
 	var/mob/living/carbon/grabbee
-	var/list/dependents = list()
-	var/handaction
 	var/bleed_suppressing = 0.5 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
 	var/chokehold = FALSE
 
 /atom/movable //reference to all obj/item/grabbing
-	var/list/grabbedby = list()
-
-/turf
-	var/list/grabbedby = list()
+	var/list/grabbedby
 
 /obj/item/grabbing/Initialize()
 	. = ..()
@@ -67,41 +62,13 @@
 			else
 				C.l_grab = src
 
-/datum/proc/grabdropped(obj/item/grabbing/G)
-	if(G)
-		for(var/datum/D in G.dependents)
-			if(D == src)
-				G.dependents -= D
-
-/obj/item/grabbing/proc/relay_cancel_action()
-	if(handaction)
-		for(var/datum/D in dependents) //stop fapping
-			if(handaction == D)
-				D.grabdropped(src)
-		handaction = null
-
 /obj/item/grabbing/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
-	if(isobj(grabbed))
-		var/obj/I = grabbed
-		I.grabbedby -= src
-	if(ismob(grabbed))
-		var/mob/M = grabbed
-		M.grabbedby -= src
-		if (iscarbon(M) && sublimb_grabbed)
-			var/mob/living/carbon/carbonmob = M
-			var/obj/item/bodypart/part = carbonmob.get_bodypart(sublimb_grabbed)
-
-			// Edge case: if a weapon becomes embedded in a mob, our "grab" will be destroyed...
-			// In this case, grabbed will be the mob, and sublimb_grabbed will be the weapon, rather than a bodypart
-			// This means we should skip any further processing for the bodypart
-			if (part)
-				part.grabbedby -= src
-				part = null
-				sublimb_grabbed = null
-	if(isturf(grabbed))
-		var/turf/T = grabbed
-		T.grabbedby -= src
+	LAZYREMOVE(grabbed.grabbedby, src)
+	if(limb_grabbed)
+		LAZYREMOVE(limb_grabbed.grabbedby, src)
+		limb_grabbed = null
+		sublimb_grabbed = null
 	if(grabbee)
 		if(grabbee.r_grab == src)
 			grabbee.r_grab = null
@@ -109,8 +76,6 @@
 			grabbee.l_grab = null
 		if(grabbee.mouth == src)
 			grabbee.mouth = null
-	for(var/datum/D in dependents)
-		D.grabdropped(src)
 	return ..()
 
 /obj/item/grabbing/dropped(mob/living/user, show_message = TRUE)
