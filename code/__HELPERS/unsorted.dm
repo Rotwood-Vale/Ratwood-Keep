@@ -1627,7 +1627,6 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 				contained_atom.flags_1 |= HOLOGRAM_1
 	return O
 
-
 /*================
 handle interaction
 ================*/
@@ -1651,7 +1650,7 @@ proc/food_handle_interaction(obj/item/source, mob/living/user, list/items, inter
 	playsound(user.loc, recipe.craft_sound, 100)
 	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
 	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
-	if(do_after(user, delay, src))
+	if(do_after(user, delay, source))
 		if(method_result != null)
 			new method_result(source.loc) // Always be on the table
 		recipe.clear_items(items)

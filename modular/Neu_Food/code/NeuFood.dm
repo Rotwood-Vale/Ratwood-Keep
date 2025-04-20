@@ -76,7 +76,7 @@
 
 
 // While I would usually call the parent procs food doesn't seem to benefit at all 
-// I checked all the parent procs...There's nothing from what I can tell that matters.
+// I checked all the parent procs...There's nothing from what I can tell that matters
 /*======
 attackby
 ======*/

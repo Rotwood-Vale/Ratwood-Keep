@@ -32,12 +32,15 @@ datum/food_handle_recipes/proc/clear_items(list/itemlist)
 	// Delete only items in the recipe list. In case you have
 	// 2 of the same thing in your hand when making the food.
 	var/I = 1
-	while(I < itemlist.len)
+	while(I <= itemlist.len)
 		for(var/obj/item/J in itemlist)
 			if(istype(J, itemlist[I]))
-				qdel(J)
-				I += 1
+				if(istype(J, /obj/item/reagent_containers/food/snacks))
+					qdel(J)
+				if(istype(J, /obj/item/reagent_containers/powder))
+					qdel(J)
 				break 
+		I += 1 // in case we somehow got here might prevent infinite loops?
 		
 /*=================
 check_items_in_list
