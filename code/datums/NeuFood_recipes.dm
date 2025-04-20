@@ -1,13 +1,3 @@
-/*
-===================
-Food Handle Recipes
-===================
- - The base datums for the food interactions you can do with food.
- - Uses cooking skill. We could add location based cusine but it seems
-   like it would make more sense to base it all off skill levels for now.
-*/
-
-
 
 /*============
 handle_recipes
@@ -32,9 +22,8 @@ var/list/datum/food_combinations = init_subtypes(/datum/food_handle_recipes/)
 Clear_items
 =========*/
 // By this point you KNOW you have all the items exist and will finish this loop
-// And it would only delete things from the recipe's list (You should have them)
-// This for loop should never break... if it does something terrible happened.
-// Feel free to override this too if you have some special need to.
+// This for loop should never break... if it does something terrible happened with your items
+// or you may have overridden this proc by mistake.
 datum/food_handle_recipes/proc/clear_items(list/itemlist)
 	if(!items.len)
 		return
@@ -78,8 +67,7 @@ check_items_in_list
 pre_check
 =======*/
 // Will be used to check specific things on certain codes
-// e.g. maybe if the item you hit has sharpness and intent on certain
-// cutting interactions
+// e.g. maybe if the item you hit has sharpness and cutting interactions
 /datum/food_handle_recipes/proc/pre_check(user, to_check = list())
 	return TRUE
 
@@ -92,13 +80,12 @@ post_handle
 	//user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 	return TRUE
 
-/*
-The recipe list to look through when directly using slap crafting.
 
-NOTE! This is a global level proc: you can call it from anything if you need. You can
+/* NOTE! This is a global level proc: you can call it from anything if you need. You can
 expand this to be more generic for other crafting methods in future if you want
-but for now I'm mostly just checking food.
-*/
+but for now I'm mostly just checking food. */
+
+/* selection_interaction_recipe */
 /proc/select_interaction_recipe(list/datum/recipe/avaiable_recipes, list/items, interaction_type = FOOD_INTERACTION_ITEM , exact = 1)
 	// List of recipes to check.
 	var/list/datum/food_handle_recipes/possible_recipes = new

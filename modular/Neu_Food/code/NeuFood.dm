@@ -75,42 +75,8 @@
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
 
-
-/*================
-handle interaction
-================*/
-/*	- Takes the current item in your active hand, inactive hand, and what was hit (the src)
-	  and feeds it through the food_interaction recipes to determine what to do. This way
-	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
-
-proc/food_handle_interaction(obj/item/source, mob/user, list/items, interaction_type)
-	var/obj/method_result
-	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items, interaction_type)
-
-	if (!recipe)
-		return FALSE
-
-	method_result = recipe.result
-
-	if(recipe.pre_check(user, items) == FALSE)
-		return FALSE //We can't do it!
-
-	to_chat(user, span_warning("[recipe.crafting_message]"))
-	playsound(user.loc, recipe.craft_sound, 100)
-	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
-	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
-	if(do_after(user, delay, src))
-		if(method_result != null)
-			new method_result(source.loc) // Always be on the table
-		recipe.clear_items(items)
-		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
-	return TRUE
-
-// Attackby uses the item you touched so that's why it has to be on the table.
-// It's the easiest way to ensure this always happens on a table, which it probably should.
 // While I would usually call the parent procs food doesn't seem to benefit at all 
-// from doing this so I will try it without any calls. I check all the parent procs
-// There's nothing from what I can tell that matters
+// I checked all the parent procs...There's nothing from what I can tell that matters.
 /*======
 attackby
 ======*/

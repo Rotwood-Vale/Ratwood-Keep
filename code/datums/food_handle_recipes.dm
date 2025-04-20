@@ -199,10 +199,20 @@ DOUGH RECIPES
 	craft_sound = 'modular/Neu_Food/sound/splishy.ogg'
 
 /datum/food_handle_recipes/dough_wet/pre_check(user, to_check)
+	var/wet = 0
+	var/water = 0
 	for(var/obj/item/reagent_containers/R in to_check)
+		if(istype(R, /obj/item/reagent_containers/powder/flour))
+			var/obj/item/reagent_containers/powder/flour/F = R
+			if(F.water_added)
+				wet = 1
 		if(!istype(R, /obj/item/reagent_containers/powder/flour))
 			if((R.reagents.has_reagent(/datum/reagent/water, 10)))
-				return TRUE
+				water = 1
+	if(wet)
+		return FALSE // There might be a better way to do this but it should work
+	if(water)
+		return TRUE
 	return FALSE
 
 /datum/food_handle_recipes/dough_wet/post_handle(user, to_check)
