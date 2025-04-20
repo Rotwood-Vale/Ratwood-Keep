@@ -403,6 +403,9 @@
 			if (!npc_detect_sneak(L, extra_chance))
 				return
 		mode = NPC_AI_HUNT
+		// Interrupt ongoing actions on-hit, except for standing up or resisting.
+		if(!resisting && (mobility_flags & MOBILITY_STAND))
+			doing = FALSE
 		last_aggro_loss = null
 		face_atom(L)
 		if(!target)
