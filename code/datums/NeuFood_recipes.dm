@@ -31,22 +31,25 @@ var/list/datum/food_combinations = init_subtypes(/datum/food_handle_recipes/)
 /*=========
 Clear_items
 =========*/
+// By this point you KNOW you have all the items exist and will finish this loop
+// And it would only delete things from the recipe's list (You should have them)
+// This for loop should never break... if it does something terrible happened.
+// Feel free to override this too if you have some special need to.
 datum/food_handle_recipes/proc/clear_items(list/itemlist)
-	var/I = 1
 	if(!items.len)
 		return
 	if(!itemlist.len)
 		return
-	// By this point you KNOW you have all the items exist and will finish this loop
-	// And it would only delete things from the recipe's list (You should have them)
-	// This for loop should never break... if it does something terrible happened.
-	for(var/obj/item/J in itemlist)
-		world.log << "found: [J.name]"
-		if(istype(J, /obj/item/reagent_containers/food))
-			qdel(J)
-		if(istype(J, /obj/item/reagent_containers/powder))
-			qdel(J)
-	
+	// Delete only items in the recipe list. In case you have
+	// 2 of the same thing in your hand when making the food.
+	var/I = 1
+	while(I < itemlist.len)
+		for(var/obj/item/J in itemlist)
+			if(istype(J, itemlist[I]))
+				qdel(J)
+				I += 1
+				break 
+		
 /*=================
 check_items_in_list
 =================*/

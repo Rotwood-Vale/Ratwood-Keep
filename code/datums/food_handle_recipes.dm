@@ -103,13 +103,32 @@ COOKED MEALS
     result = /obj/item/reagent_containers/food/snacks/rogue/peppersteak
 
 /datum/food_handle_recipes/peppersteak/pre_check(user, to_check)
-	for(var /obj/item/reagent_containers/peppermill/P in to_check)
-		if(!P.reagents.has_reagent(/datum/reagent/consumable/blackpepper. 1))
+	for(var/obj/item/reagent_containers/peppermill/P in to_check)
+		if(!P.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
 			return FALSE
 	return TRUE
 
 /datum/food_handle_recipes/peppersteak/post_handle(user, to_check)
-	for(var /obj/item/reagent_containers/peppermill/P in to_check)
+	for(var/obj/item/reagent_containers/peppermill/P in to_check)
+		P.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
+
+
+/* Spicy bird */
+/datum/food_handle_recipes/spicybird
+    items = list(
+        /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/,
+        /obj/item/reagent_containers/peppermill )
+        
+    result = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
+
+/datum/food_handle_recipes/spicybird/pre_check(user, to_check)
+	for(var/obj/item/reagent_containers/peppermill/P in to_check)
+		if(!P.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
+			return FALSE
+	return TRUE
+
+/datum/food_handle_recipes/spicybird/post_handle(user, to_check)
+	for(var/obj/item/reagent_containers/peppermill/P in to_check)
 		P.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
 
 
@@ -134,9 +153,17 @@ COOKED MEALS
 /datum/food_handle_recipes/wieneronions
     items = list(
         /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried, 
-        /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
-    )
+        /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked 
+		)
     result = /obj/item/reagent_containers/food/snacks/rogue/wieneronions
+
+/* Wiener onions to meal */
+/datum/food_handle_recipes/wieneronionstomeal
+    items = list(
+        /obj/item/reagent_containers/food/snacks/rogue/wieneronions, 
+        /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked 
+		)
+    result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 
 /* Wiener potato */
 /datum/food_handle_recipes/wienerpotato
@@ -146,6 +173,13 @@ COOKED MEALS
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotato
 
+/* Wiener potato to meal */
+/datum/food_handle_recipes/wienerpotatotomeal
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/wienerpotato,
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 
 /*============
 DOUGH RECIPES
@@ -205,7 +239,6 @@ datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 			return FALSE
 	return TRUE
 
-//
 /datum/food_handle_recipes/dough_base/post_handle(user, to_check)
 	for(var/obj/I in to_check)
 		qdel(I)
@@ -237,7 +270,7 @@ datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbread_half
 
 /* Raisinbread full */
-/datum/food_handle_recipes/rbread_half
+/datum/food_handle_recipes/rbread_full
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
@@ -277,13 +310,7 @@ datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
 
-/datum/food_handle_recipes/pie_dough
-	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/butterdough,
-		/obj/item/reagent_containers/food/snacks/egg ) 
-
-	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
-
+/* Pie dough */
 /datum/food_handle_recipes/pie_dough
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
@@ -291,6 +318,7 @@ datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
 
+/* Raw biscuit */
 /datum/food_handle_recipes/raisin_biscuit_raw
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
@@ -298,37 +326,20 @@ datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
 
-
-/datum/food_handle_recipes/pretzel
+/* Prezzel */
+/datum/food_handle_recipes/prezzel
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice)
 	crafting_message = "You start slicing the dough into strips to make a prezzel..."
 	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw
 
-/datum/food_handle_recipes/pretzel/pre_check(user, to_check)
+/datum/food_handle_recipes/prezzel/pre_check(user, to_check)
 	for(var/obj/item/I in to_check)
 		if(I.get_sharpness())
 			return TRUE
 	return FALSE
 	
-
-
-/datum/food_handle_recipes/rasinbread
-	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
-		/obj/item/reagent_containers/food/snacks/rogue/raisins )
-
-	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
-
-/datum/food_handle_recipes/rasinbread
-	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
-		/obj/item/reagent_containers/food/snacks/rogue/raisins )
-
-	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
-
-
 
 /*=======
 HAND PIES
@@ -343,6 +354,8 @@ HAND PIES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mushroom
 */
+
+/* Handpie meat */
 /datum/food_handle_recipes/handpie_meat
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
@@ -350,6 +363,7 @@ HAND PIES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mince
 
+/* Handpie berries */
 /datum/food_handle_recipes/handpie_berries
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
@@ -357,6 +371,7 @@ HAND PIES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
 
+/* Handpie poison */
 /datum/food_handle_recipes/handpie_berries_poison
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
@@ -368,13 +383,13 @@ HAND PIES
 MISC
 ==*/
 // If enough show up for a category, set it.
-//candy base
 
-//TO DO: Figure out how to make this stuff work because it uses attackhand.
+
+/* Candy base */
 /datum/food_handle_recipes/candy_base
 	items = list(
 		/obj/item/reagent_containers/powder/sugar )
-		interaction_type = FOOD_INTERACTION_HAND //uses attackhand
+	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
 
@@ -384,18 +399,18 @@ MISC
 			return FALSE
 	return TRUE
 
-
+/* Candy apple */
 /datum/food_handle_recipes/candy_apple
 	items = list(
-		/obj/item/reagent_containers/powder/sugar,
+		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/apple )
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/applecandy
 
-
+/* Candy berry */
 /datum/food_handle_recipes/candy_berry
 	items = list(
-		/obj/item/reagent_containers/powder/sugar,
+		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue )
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/berrycandy
@@ -403,6 +418,7 @@ MISC
 /*======
 PASTRIES
 ======*/
+/* Sweet roll */
 /datum/food_handle_recipes/sweetroll
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/pastry/,
@@ -430,11 +446,16 @@ RAW COMBOS
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 
 /* Sausage fish */
-
+/datum/food_handle_recipes/sausage_fish
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish,
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish )
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 
 /*=====
 SAMMICH
 =====*/
+/* Sammich salami */
 /datum/food_handle_recipes/sammich_salami
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
@@ -442,6 +463,7 @@ SAMMICH
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
 
+/* Sammich cheese */
 /datum/food_handle_recipes/sammich_cheese
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
@@ -449,6 +471,7 @@ SAMMICH
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
 
+/* Sammich egg */
 /datum/food_handle_recipes/sammich_egg
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
@@ -456,6 +479,7 @@ SAMMICH
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 
+/* Sammich salo */
 /datum/food_handle_recipes/sammich_salo
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
@@ -463,7 +487,7 @@ SAMMICH
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 
-
+/* Sammich buttered toast */
 /datum/food_handle_recipes/sammich
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast,
@@ -474,6 +498,7 @@ SAMMICH
 /*======
 SEA FOOD
 ======*/
+
 /* Lobster meal */
 /datum/food_handle_recipes/lobster_meal
 	items = list(
@@ -481,36 +506,3 @@ SEA FOOD
 		/obj/item/reagent_containers/food/snacks/butterslice )
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
-
-
-/*
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
-	if(istype(I, /obj/item/reagent_containers/food/snacks/fat))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
-	else
-		return ..()
-*/

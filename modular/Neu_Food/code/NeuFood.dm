@@ -88,7 +88,6 @@ proc/food_handle_interaction(obj/item/source, mob/user, list/items, interaction_
 	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items, interaction_type)
 
 	if (!recipe)
-		to_chat(user, "I can't make anything with these two items.")
 		return FALSE
 
 	method_result = recipe.result
