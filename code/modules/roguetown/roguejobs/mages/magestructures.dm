@@ -27,7 +27,7 @@
 
 /obj/structure/arcyne_wall/caster
 	var/mob/caster
-s
+
 /obj/structure/arcyne_wall/caster/Initialize(mapload, mob/summoner)
 	. = ..()
 	caster = summoner
