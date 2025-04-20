@@ -139,7 +139,7 @@
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			return FALSE
 		if(owner.mind && get_damage() < max_damage/2) //No crits except if it hits a damage threshold on players.
-			if(owner.mobility_flags & MOBILITY_STAND && !owner.buckled) //Unless they're buckled or lying down.
+			if(owner.mobility_flags & MOBILITY_STAND && !owner.buckled && !owner.has_healthpotion_active()) //Unless they're buckled or lying down.
 				do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
@@ -188,6 +188,9 @@
 		if(crit_attempt)
 			return crit_attempt
 	return added_wound
+
+/mob/living/proc/has_healthpotion_active()
+	return reagents?.has_reagent(/datum/reagent/medicine/lesserhealthpot) || reagents?.has_reagent(/datum/reagent/medicine/healthpot) || reagents?.has_reagent(/datum/reagent/medicine/greaterhealthpot)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
