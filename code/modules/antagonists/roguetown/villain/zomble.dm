@@ -43,11 +43,11 @@
 /datum/antagonist/zombie/on_gain()
 	var/mob/living/carbon/human/zombie = owner?.current
 	if(!zombie)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!head)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 	zombie_start = world.time
 	was_i_undead = zombie.mob_biotypes & MOB_UNDEAD
@@ -148,13 +148,13 @@
 
 	var/mob/living/carbon/human/zombie = owner.current
 	if(!zombie)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 
 	// decapitated corpses wont transform
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!head)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 
 	revived = TRUE //so we can die for real later
@@ -202,13 +202,13 @@
 		return
 	var/obj/item/bodypart/head = zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!head)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 	if(zombie.stat != DEAD && !infected_wake)
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 	if(istype(zombie.loc, /obj/structure/closet/dirthole) || istype(zombie.loc, /obj/structure/closet/crate/coffin))
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
 		return
 
 	zombie.can_do_sex = FALSE
@@ -229,4 +229,4 @@
 	zombie.make_deadite()
 	if(zombie.stat >= DEAD)
 		//could not revive
-		qdel(src)
+		on_removal() // REDMOON EDIT - after_death_stats_fix - удаление датума не вызывает on_removal, что ломает возвращение скиллов - WAS: qdel(src)
