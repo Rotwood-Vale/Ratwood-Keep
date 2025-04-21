@@ -93,4 +93,5 @@
 	. = ..()
 	if(!.)
 		return
+	recruit.advjob = new_role // REDMOON ADD - исправляет, что при выдачи роли авангарда у человека в описании пишется только раса
 	recruit.verbs |= /mob/proc/haltyell
