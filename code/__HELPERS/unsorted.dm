@@ -1634,9 +1634,9 @@ handle interaction
 	  and feeds it through the food_interaction recipes to determine what to do. This way
 	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
 
-proc/food_handle_interaction(obj/item/source, mob/living/user, list/items, interaction_type)
+/proc/food_handle_interaction(obj/item/source, mob/living/user, list/items, interaction_type)
 	var/obj/method_result
-	var/datum/food_handle_recipes/recipe = select_interaction_recipe(food_combinations, items, interaction_type)
+	var/datum/food_handle_recipes/recipe = select_interaction_recipe(GLOB.food_combinations, items, interaction_type)
 
 	if (!recipe)
 		return FALSE

@@ -14,9 +14,8 @@ handle_recipes
 	var/craft_sound = 'sound/foley/bandage.ogg'
 	var/crafting_message = "You start combining the items..." // example: "I start rolling the flour into the dough..."
 
-//This initializes the whole list of food combination
-// I forgot what it does exactly, but it's important!
-var/list/datum/food_combinations = init_subtypes(/datum/food_handle_recipes/)
+//Make the whole list of these recipes.
+GLOBAL_LIST_INIT(food_combinations, init_subtypes(/datum/food_handle_recipes))
 
 /*=========
 Clear_items
@@ -24,8 +23,8 @@ Clear_items
 // By this point you KNOW you have all the items exist and will finish this loop
 // This for loop should never break... if it does something terrible happened with your items
 // or you may have overridden this proc by mistake.
-datum/food_handle_recipes/proc/clear_items(list/itemlist)
-	if(!items.len)
+/datum/food_handle_recipes/proc/clear_items(list/itemlist)
+	if(!length(items))
 		return
 	if(!itemlist.len)
 		return

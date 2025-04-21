@@ -231,7 +231,7 @@ DOUGH RECIPES
 // Specific code again to show overriding
 // This dough code has been the gold standard.
 // Please consult this when understanding how to deal with special cases.
-datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
+/datum/food_handle_recipes/dough_wet/clear_items(list/itemlist)
 	return
 
 
