@@ -146,6 +146,14 @@
 	dissolvable = FALSE
 	grind_results = null
 
+/obj/item/reagent_containers/pill/caffpill/attack(mob/M, mob/user, def_zone)
+	if(istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		H.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		H.remove_stress(/datum/stressevent/sleepytime)
+	. = ..()
+	
+
 /obj/item/reagent_containers/pill/pnkpill
 	name = "PNKBAWLS"
 	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."

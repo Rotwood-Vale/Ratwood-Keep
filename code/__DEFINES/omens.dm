@@ -4,3 +4,5 @@
 #define OMEN_NOBLEDEATH "nobledeath"
 #define OMEN_SUNSTEAL "sunsteal"
 #define OMEN_SKELETONSIEGE "skeletonsiege"
+
+#define OMEN_DESECRATE_DENDOR "desecrate_dendor"

@@ -32,18 +32,15 @@
 			title = "Sister"
 		H.real_name = "[title] [prev_real_name]"
 		H.name = "[title] [prev_name]"
+		
+		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H), 50)
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 	cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 	switch(H.patron.name)
 		if("Astrata")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
-			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata
-			else
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt
 			cloak = /obj/item/clothing/cloak/templar/astratan
 		if("Noc")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc
@@ -55,14 +52,11 @@
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
 		if("Necra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra
-			if(prob(50))
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra
-			else
-				head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt
 			cloak = /obj/item/clothing/cloak/templar/necran
 		if("Pestra")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra
 			cloak = /obj/item/clothing/cloak/tabard/crusader/pestra
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 		if("Malum")
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/templar/malum
@@ -133,3 +127,24 @@
 /datum/outfit/job/roguetown/templar/post_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
+
+/datum/job/roguetown/templar/proc/templar_helmet_choice(mob/living/carbon/human/H)
+	if(!H.client)
+		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H))
+		return
+
+	if (H.patron.name == "Astrata" || H.patron.name == "Necra")
+		var/list/helmet_types = list("Visored", "Bucket Helm")
+		var/selected_helmet = input(H, "Choose a helmet...", "Helmet") as anything in helmet_types
+
+		// Redundant checks to avoid duplicating the list/prompt logic
+		if (H.patron.name == "Astrata")
+			if (selected_helmet == "Visored")
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata(H), SLOT_HEAD)
+			else
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/astrata/alt(H), SLOT_HEAD)
+		else if (H.patron.name == "Necra")
+			if (selected_helmet == "Visored")
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra(H), SLOT_HEAD)
+			else
+				H.equip_to_slot(new /obj/item/clothing/head/roguetown/helmet/heavy/templar/necra/alt(H), SLOT_HEAD)

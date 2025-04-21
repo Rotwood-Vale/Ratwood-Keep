@@ -794,7 +794,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
 	block2add = FOV_BEHIND
 
-/obj/item/clothing/head/hooded/equipped(mob/user, slot)
+/obj/item/clothing/head/hooded/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	user.update_fov_angles()
 
@@ -1070,7 +1070,7 @@
 	var/active_item = FALSE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user)
+/obj/item/clothing/neck/roguetown/blkknight/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(active_item)
 		return

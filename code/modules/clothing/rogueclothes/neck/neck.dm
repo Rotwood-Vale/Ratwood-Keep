@@ -377,8 +377,8 @@
 	. = ..()
 	name = "cursed collar"
 	resistance_flags = FIRE_PROOF
-	ADD_TRAIT(src, TRAIT_NO_SELF_UNEQUIP, CURSED_ITEM_TRAIT)
 	clothing_flags = ITEM_SLOT_NECK
+	allow_self_unequip = FALSE
 	icon = 'modular/icons/obj/items/leashes_collars.dmi'
 	mob_overlay_icon = 'modular/icons/mob/collars_leashes.dmi'
 	icon_state = "leathercollar"

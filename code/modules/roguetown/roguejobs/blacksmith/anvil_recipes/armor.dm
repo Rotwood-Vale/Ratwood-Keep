@@ -389,6 +389,13 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/platechest
 	skill_level = 6
 
+/datum/anvil_recipe/armor/blacksteel/halfplatechest
+	name = "Blacksteel Half Plate Armor (+2 Blacksteel, +1 Cured Hide)"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/suit/roguetown/armor/blacksteel/halfplate
+	skill_level = 6
+
 /datum/anvil_recipe/armor/blacksteel/platelegs
 	name = "Blacksteel Plate Chausses (+1 Blacksteel)"
 	req_bar = /obj/item/ingot/blacksteel
