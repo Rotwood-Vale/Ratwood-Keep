@@ -171,12 +171,15 @@
 			if(!isturf(used_turf))
 				used_turf = get_turf(src)
 			var/datum/anvil_recipe/R = T.hingot.currecipe
+			var/obj/item/created_item // REDMOON ADD - prices_fix
 			if(islist(R.created_item))
 				var/list/L = R.created_item
 				for(var/IT in L)
-					new IT(used_turf)
+					created_item = new IT(used_turf) // REDMOON EDIT - prices_fix - добавлено created_item =
+					created_item.Get_Anvil_Production_Sellprice(R) // REDMOON ADD - prices_fix
 			else
-				new R.created_item(used_turf)
+				created_item = new R.created_item(used_turf) // REDMOON EDIT - prices_fix - добавлено created_item =
+				created_item.Get_Anvil_Production_Sellprice(R) // REDMOON ADD - prices_fix
 			playsound(src,pick('sound/items/quench_barrel1.ogg','sound/items/quench_barrel2.ogg'), 100, FALSE)
 			QDEL_NULL(T.hingot)
 			T.update_icon()
