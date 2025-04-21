@@ -60,7 +60,7 @@
 		if(bp && istype(bp , /obj/item/clothing))
 			var/obj/item/clothing/C = bp
 			if(zone2covered(def_zone, C.body_parts_covered))
-				if(C.obj_integrity > 1)
+				if(!C.obj_broken)
 					if(d_type in C.prevent_crits)
 						return TRUE
 /*
