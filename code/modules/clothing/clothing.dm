@@ -360,17 +360,6 @@
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
-	var/broken = FALSE
-	var/list/armorlist = armor.getList()
-	for(var/key in armorlist)
-		if(armorlist[key] > 0)
-			broken = TRUE
-			break
-	if(broken)
-		armor = armor.detachArmor(armor) // Unset everything!
-		if(ismob(loc))
-			var/mob/M = loc
-			to_chat(M, "ARMOR BROKEN...!")
 	..()
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
