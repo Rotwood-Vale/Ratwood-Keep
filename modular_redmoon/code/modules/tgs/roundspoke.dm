@@ -184,8 +184,13 @@
 	Феи: [SSround_end_statistics.species_seelie] | \
 	Эльфы: [SSround_end_statistics.species_elf] | \
 	")
+	var/round_occupations = ""
+	for(var/datum/job/roguetown/target_job in SSjob.occupations)
+		if(target_job.current_positions > 0)
+			round_occupations += "[target_job.title] - [target_job.current_positions] | "
+	var/datum/tgs_chat_embed/field/jobs = new (":briefcase: Уделы: ", round_occupations)
 
-	embed.fields = list(deaths, bloodspilled, triumphgained, triumphslost, pleasures, violated_by_baotha, confessors, families, families_failed, players, men, women, cuntboys, futas, species)
+	embed.fields = list(deaths, bloodspilled, triumphgained, triumphslost, pleasures, violated_by_baotha, confessors, families, families_failed, players, men, women, cuntboys, futas, species, jobs)
 
 	send2chat(message, "status")
 

@@ -317,6 +317,14 @@
 	if(SSround_end_statistics.species_tiefling)			shit += "<br><font color='#36693c'><span class='italics'>Тифлинги: </span></font>[SSround_end_statistics.species_tiefling]"
 	if(SSround_end_statistics.species_seelie)			shit += "<br><font color='#36693c'><span class='italics'>Феи: </span></font>[SSround_end_statistics.species_seelie]"
 	if(SSround_end_statistics.species_elf)				shit += "<br><font color='#36693c'><span class='italics'>Эльфы: </span></font>[SSround_end_statistics.species_elf]"
+	// jobs_statistics
+	shit += "<br><span class='bold'>⇕--------------------⇕</span>"
+	shit += "<br><font color='#9b6937'><span class='bold'>Псайдон распорядился, чтоб был у каждого свой удел:</span></font> "
+	var/round_occupations = "<br>"
+	for(var/datum/job/roguetown/target_job in SSjob.occupations)
+		if(target_job.current_positions > 0)
+			round_occupations += "<font color='#b18254'><span class='italics'>[target_job.title]</span></font> - [target_job.current_positions]<br>"
+	shit += round_occupations
 	// REDMOON ADD END
 	shit += "<br><span class='bold'>∇--------------------∇</span>"
 	to_chat(world, "[shit.Join()]")
