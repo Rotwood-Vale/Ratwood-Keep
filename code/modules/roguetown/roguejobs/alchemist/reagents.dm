@@ -11,7 +11,7 @@
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+		M.blood_volume = min(M.blood_volume+40, BLOOD_VOLUME_MAXIMUM)
 	else
 		//can overfill you with blood, but at a slower rate
 		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
@@ -38,8 +38,14 @@
 	alpha = 210
 
 /datum/reagent/medicine/lesserhealthpot/on_mob_life(mob/living/carbon/M)
-	M.heal_wounds(1)
-	M.update_damage_overlays()
+	var/list/wCount = M.get_wounds()
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+16, BLOOD_VOLUME_MAXIMUM) //weak health potions should be properly abysmal compared to the real thing. Particularly since they can be casually imported. Find an alchemist for the real panacea.
+	else
+		M.blood_volume = min(M.blood_volume+4, BLOOD_VOLUME_MAXIMUM)
+	if(wCount.len > 0)	
+		M.heal_wounds(1)
+		M.update_damage_overlays()
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
 	M.adjustOxyLoss(-0.5, 0)
@@ -61,9 +67,9 @@
 /datum/reagent/medicine/greaterhealthpot/on_mob_life(mob/living/carbon/M)
 	var/list/wCount = M.get_wounds()
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+50, BLOOD_VOLUME_MAXIMUM)
+		M.blood_volume = min(M.blood_volume+60, BLOOD_VOLUME_MAXIMUM)
 	else
-		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
+		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_MAXIMUM)
 	if(wCount.len > 0)
 		M.heal_wounds(4)
 		M.update_damage_overlays()
