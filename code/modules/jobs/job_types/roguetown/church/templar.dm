@@ -20,9 +20,11 @@
 	allowed_patrons = ALL_CLERIC_PATRONS
 
 /datum/job/roguetown/templar/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
+//	..() - REDMOON REMOVAL - fixes_for_characters_memory
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
+		for(var/datum/mind/MF in get_minds()) // REDMOON ADD - fixes_for_characters_memory - удаление из памяти всех, кто успел запомнить имя без титула
+			H.mind.become_unknown_to(MF)
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/title = "Brother"
@@ -30,8 +32,9 @@
 			title = "Sister"
 		H.real_name = "[title] [prev_real_name]"
 		H.name = "[title] [prev_name]"
-		
 		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H), 50)
+	..() // REDMOON ADD - fixes_for_characters_memory - исправление, что персонажи запоминают имена без титулов
+
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
 	..()

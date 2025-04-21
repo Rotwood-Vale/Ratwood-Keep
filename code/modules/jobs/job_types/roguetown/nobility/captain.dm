@@ -28,7 +28,7 @@
 	// cmode_music = 'sound/music/combat_guard2.ogg'
 
 /datum/job/roguetown/captain/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	. = ..()
+//	. = ..() - REDMOON REMOVAL - fixes_for_characters_memory
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(istype(H.cloak, /obj/item/clothing/cloak/cape/guard))
@@ -39,11 +39,14 @@
 			if(!index)
 				index = H.real_name
 			S.name = "captain's cape ([index])"
+		for(var/datum/mind/MF in get_minds()) // REDMOON ADD - fixes_for_characters_memory - удаление из памяти всех, кто успел запомнить имя без титула
+			H.mind.become_unknown_to(MF)
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Knight-Captain"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
+	..() // REDMOON ADD - fixes_for_characters_memory - исправление, что персонажи запоминают имена без титулов
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()

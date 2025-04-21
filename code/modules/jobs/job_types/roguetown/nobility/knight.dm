@@ -21,7 +21,7 @@
 	max_pq = null
 
 /datum/job/roguetown/knight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
+//	..() - REDMOON REMOVAL - fixes_for_characters_memory
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
@@ -35,6 +35,8 @@
 			if(!index)
 				index = H.real_name
 			S.name = "knight tabard ([index])"
+		for(var/datum/mind/MF in get_minds()) // REDMOON ADD - fixes_for_characters_memory - удаление из памяти всех, кто успел запомнить имя без титула
+			H.mind.become_unknown_to(MF)
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Ser"
@@ -42,6 +44,7 @@
 			honorary = "Dame"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
+	..() // REDMOON ADD - fixes_for_characters_memory - исправление, что персонажи запоминают имена без титулов
 
 /datum/outfit/job/roguetown/knight/pre_equip(mob/living/carbon/human/H)
 	..()
