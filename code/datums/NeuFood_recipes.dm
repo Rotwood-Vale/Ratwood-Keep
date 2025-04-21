@@ -26,7 +26,7 @@ Clear_items
 /datum/food_handle_recipes/proc/clear_items(list/itemlist)
 	if(!length(items))
 		return
-	if(!itemlist.len)
+	if(!length(itemlist))
 		return
 	// Delete only items in the recipe list. In case you have
 	// 2 of the same thing in your hand when making the food.
