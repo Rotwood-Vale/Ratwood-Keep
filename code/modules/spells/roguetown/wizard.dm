@@ -1029,13 +1029,14 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	sleep(delay)
 	new /obj/effect/temp_visual/blade_burst(T)
 	playsound(T,'sound/magic/charged.ogg', 80, TRUE)
-	for(var/mob/living/L in T.contents)
-		if(L.anti_magic_check())
-			visible_message(span_warning("The blades dispel when they near [L]!"))
-			playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
-			qdel(src)
-			continue
+	for(var/mob/living/target in T.contents) // REDMOON EDIT - fixes_for_blade_burst - L заменён на target
+		if(target.anti_magic_check()) // REDMOON EDIT - fixes_for_blade_burst - L заменён на target
+			T.visible_message(span_warning("The blades dispel when they near [target]!")) // REDMOON EDIT - fixes_for_blade_burst - добавлено T. в начале
+			playsound(T, 'sound/magic/magic_nulled.ogg', 100) // REDMOON EDIT - fixes_for_blade_burst - get_turf(L) заменён на T
+//			qdel(src) - REDMOON REMOVAL - fixes_for_blade_burst - удаляет сам спелл, что явно не задумано
+			return FALSE // REDMOON EDIT - fixes_for_blade_burst WAS: continue
 
+	for(var/mob/living/L in T.contents) // REDMOON ADD - fixes_for_blade_burst - добавлено дополнительное for, чтобы избежать ситуации, когда сначала проходит удар по мобу без защиты от деспела, а потом по мобу с деспелом и заклинание обрывается
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		L.apply_damage(damage, BRUTE, def_zone)
 
