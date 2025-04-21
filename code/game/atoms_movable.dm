@@ -622,7 +622,8 @@
 
 		if (user_momentum)
 			//first lets add that momentum to range.
-			range *= (user_momentum / speed) + 1
+			if(!isliving(src))
+				range *= (user_momentum / speed) + 1
 			//then lets add it to speed
 			speed += user_momentum
 			if (speed <= 0)
