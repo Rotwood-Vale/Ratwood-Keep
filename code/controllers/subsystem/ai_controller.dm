@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(ai_controllers)
 		if(ai_controller.inactive_timestamp + AI_STATUS_OFF_MAX_TIME < world.time)
 			var/mob/living/mob_pawn = ai_controller.pawn
 			if(mob_pawn.stat != DEAD) // We don't remove it from the inactive controller in the case it's revived yada yada.
-				mob_pawn.ai_controller.set_ai_status(AI_STATUS_ON) // Adds it back to the active AI controllers on next fire.
+				mob_pawn.ai_controller.reset_ai_status() // Adds it back to the active AI controllers on next fire. // REDMOON EDIT - исправляет, что мобы под контролем игрока возвращают себе контроль ИИ спустя 5 секунд
 				continue
 			ai_controller.inactive_timestamp = world.time // Acts as a cooldown.
 
