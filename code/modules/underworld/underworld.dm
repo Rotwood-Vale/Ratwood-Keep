@@ -74,7 +74,7 @@
 		return //No ghosts or incapacitated folk allowed to do this.
 
 	if(user.get_active_held_item())
-		to_chat(user, span_warn("I cant turn the handle. My hand has something in it!"))
+		to_chat(user, span_warn("I can't turn the handle. My hand has something in it!"))
 		return
 
 	var/datum/job/J = SSjob.name_occupations[user.job]
@@ -89,30 +89,18 @@
 		for(var/a in M.antag_datums)
 			for(var/b in ALL_ANTAG_TYPES)
 				if(istype(a, b)) 
-					to_chat(user, span_warning("I still have work to do here..."))
+					to_chat(user, span_warning("I still have work to do here...")) // TO DO antag and job can leave variable
 					return
 
 	//This check tree is the face of hell. If someone knows how to clean this up please help.
 	//Get everything (YES EVEN INSIDE ITEMS, HANDS TOO!)
-	var/list/user_items = H.get_equipped_items()
-	user_items += H.held_items 
-	for(var/obj/item/i in user_items)
-		for(var/j in list(CANT_LEAVE_ITEMS))
-			if(istype(i, j))
-				to_chat(user, span_notice("You can't leave with \the [i.name]!!"))
-				return
-				
-		if(SEND_SIGNAL(i, COMSIG_CONTAINS_STORAGE))
-			var/list/inv = list()
-
-			SEND_SIGNAL(i, COMSIG_TRY_STORAGE_RETURN_INVENTORY, inv, FALSE)
-
-			for(var/obj/item/L in inv)
-				for(var/M in list(CANT_LEAVE_ITEMS))
-					if(istype(L, M))
-						to_chat(user, span_notice("You can't leave with \the [L.name]!!"))
-						return
-
+	var/list/user_items = H.get_all_gear()
+	for(var/forbidden_type in list(CANT_LEAVE_ITEMS))
+		var/obj/item/forbidden_item = locate(forbidden_type) in user_items
+		if(forbidden_item)
+			to_chat(user, span_notice("You can't leave with \the [forbidden_item]."))
+			return
+		return
 
 	switch(alert("Do you wish to leave town? (You cannot return.)",,"Yes","No"))
 		if("Yes")
@@ -121,17 +109,11 @@
 				// Thank you Azure <3 I did not want to have to write this.
 				// Logs everything on the mob
 				var/dat = "[key_name(user)] has departed town via the carriage. job [user.job], at [AREACOORD(src)]. They had:"
-				if(!length(user.contents))
+				var/list/contained_items = H.get_all_gear()
+				if(!length(contained_items))
 					dat += " Nothing on them."
 				else
-					// WARNING: This doesn't currently list items in the storage
-					// But since we checked for shit that matters before already do we really care?
-					var/atom/movable/content = user.contents[1]
-					dat += " [content.name]"
-					for(var/i in 2 to length(user.contents))
-						content = user.contents[i]
-						dat += ", [content.name]"
-						dat += "."
+					dat += " [english_list(H.get_all_gear())]"
 
 				// Remove known person
 				if(user.mind)
