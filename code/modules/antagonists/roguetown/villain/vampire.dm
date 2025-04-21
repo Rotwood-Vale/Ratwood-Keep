@@ -214,20 +214,46 @@
 	mob_biotypes &= ~MOB_UNDEAD
 	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
+	// REDMOON ADD START - vampire_skin_color_fix - чинит неправильный цвет особых органов при маскировке
 	if(!(MUTCOLORS in dna.species.species_traits))
 		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
 		if(breasts)
-			breasts.accessory_colors = VD.cache_skin
+			breasts.accessory_colors = VD.cache_breasts
 		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
 		if(penis)
-			penis.accessory_colors = VD.cache_skin
+			penis.accessory_colors = VD.cache_penis
 		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
 		if(testicles)
-			testicles.accessory_colors = VD.cache_skin
+			testicles.accessory_colors = VD.cache_testicles
 		var/obj/item/organ/butt/butt = getorganslot(ORGAN_SLOT_BUTT)
 		if(butt)
-			butt.accessory_colors = VD.cache_skin
-		regenerate_icons()
+			butt.accessory_colors = VD.cache_butt
+		var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
+		if(ears)
+			ears.accessory_colors = VD.cache_ears
+		var/obj/item/organ/tail/tail = getorganslot(ORGAN_SLOT_TAIL)
+		if(tail)
+			tail.accessory_colors = VD.cache_tail
+		var/obj/item/organ/tail_feature/tail_feature = getorganslot(ORGAN_SLOT_TAIL_FEATURE)
+		if(tail_feature)
+			tail_feature.accessory_colors = VD.cache_tail_feature
+		var/obj/item/organ/head_feature/head_feature = getorganslot(ORGAN_SLOT_HEAD_FEATURE)
+		if(head_feature)
+			head_feature.accessory_colors = VD.cache_head_feature
+		var/obj/item/organ/frills/frills = getorganslot(ORGAN_SLOT_FRILLS)
+		if(frills)
+			frills.accessory_colors = VD.cache_frills
+		var/obj/item/organ/antennas/antennas = getorganslot(ORGAN_SLOT_ANTENNAS)
+		if(antennas)
+			antennas.accessory_colors = VD.cache_antennas
+		var/obj/item/organ/wings/wings = getorganslot(ORGAN_SLOT_WINGS)
+		if(wings)
+			wings.accessory_colors = VD.cache_wings
+		var/obj/item/organ/snout/snout = getorganslot(ORGAN_SLOT_SNOUT)
+		if(snout)
+			snout.accessory_colors = VD.cache_snout
+		update_body()
+	// REDMOON ADD END
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
 	if(!VD)
@@ -250,6 +276,7 @@
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
+	// REDMOON ADD START - vampire_skin_color_fix чинит неправильный цвет особых органов при маскировке
 	if(!(MUTCOLORS in dna.species.species_traits))
 		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
 		if(breasts)
@@ -263,7 +290,32 @@
 		var/obj/item/organ/butt/butt = getorganslot(ORGAN_SLOT_BUTT)
 		if(butt)
 			butt.accessory_colors = "#c9d3de"
-		regenerate_icons()
+		var/obj/item/organ/ears/ears = getorganslot(ORGAN_SLOT_EARS)
+		if(ears)
+			ears.accessory_colors = "#c9d3de"
+		var/obj/item/organ/tail/tail = getorganslot(ORGAN_SLOT_TAIL)
+		if(tail)
+			tail.accessory_colors = "#c9d3de"
+		var/obj/item/organ/tail_feature/tail_feature = getorganslot(ORGAN_SLOT_TAIL_FEATURE)
+		if(tail_feature)
+			tail_feature.accessory_colors = "#c9d3de"
+		var/obj/item/organ/head_feature/head_feature = getorganslot(ORGAN_SLOT_HEAD_FEATURE)
+		if(head_feature)
+			head_feature.accessory_colors = "#c9d3de"
+		var/obj/item/organ/frills/frills = getorganslot(ORGAN_SLOT_FRILLS)
+		if(frills)
+			frills.accessory_colors = "#c9d3de"
+		var/obj/item/organ/antennas/antennas = getorganslot(ORGAN_SLOT_ANTENNAS)
+		if(antennas)
+			antennas.accessory_colors = "#c9d3de"
+		var/obj/item/organ/wings/wings = getorganslot(ORGAN_SLOT_WINGS)
+		if(wings)
+			wings.accessory_colors = "#c9d3de"
+		var/obj/item/organ/snout/snout = getorganslot(ORGAN_SLOT_SNOUT)
+		if(snout)
+			snout.accessory_colors = "#c9d3de"
+		update_body()
+	// REDMOON ADD END
 
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"

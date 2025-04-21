@@ -37,5 +37,75 @@
 // 	if(creator_op)
 // 		M.mind.add_antag_datum(new_op,creator_op.nuke_team)
 // 		M.mind.special_role = "Nuclear Operative"
+
+// vampire_skin_color_fix
+/datum/antagonist/vampirelord
+	var/cache_breasts // Нужно для запоминания цветов
+	var/cache_penis
+	var/cache_testicles
+	var/cache_butt
+	var/cache_ears
+	var/cache_tail
+	var/cache_tail_feature
+	var/cache_head_feature
+	var/cache_frills
+	var/cache_antennas
+	var/cache_wings
+	var/cache_snout
+
+// vampire_skin_color_fix
+/datum/antagonist/vampirelord/vamp_look()
+	var/mob/living/carbon/human/vampire = owner.current
+
+	var/obj/item/organ/breasts/breasts = vampire.getorganslot(ORGAN_SLOT_BREASTS)
+	if(breasts)
+		cache_breasts = breasts.accessory_colors
+
+	var/obj/item/organ/penis/penis = vampire.getorganslot(ORGAN_SLOT_PENIS)
+	if(penis)
+		cache_penis = penis.accessory_colors
+
+	var/obj/item/organ/testicles/testicles = vampire.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(testicles)
+		cache_testicles = testicles.accessory_colors
+
+	var/obj/item/organ/butt/butt = vampire.getorganslot(ORGAN_SLOT_BUTT)
+	if(butt)
+		cache_butt = butt.accessory_colors
+
+	var/obj/item/organ/ears/ears = vampire.getorganslot(ORGAN_SLOT_EARS)
+	if(ears)
+		cache_ears = ears.accessory_colors
+
+	var/obj/item/organ/tail/tail = vampire.getorganslot(ORGAN_SLOT_TAIL)
+	if(tail)
+		cache_tail = tail.accessory_colors
+
+	var/obj/item/organ/tail_feature/tail_feature = vampire.getorganslot(ORGAN_SLOT_TAIL_FEATURE)
+	if(tail_feature)
+		cache_tail_feature = tail_feature.accessory_colors
+
+	var/obj/item/organ/head_feature/head_feature = vampire.getorganslot(ORGAN_SLOT_HEAD_FEATURE)
+	if(head_feature)
+		cache_head_feature = head_feature.accessory_colors
+
+	var/obj/item/organ/frills/frills = vampire.getorganslot(ORGAN_SLOT_FRILLS)
+	if(frills)
+		cache_frills = frills.accessory_colors
+
+	var/obj/item/organ/antennas/antennas = vampire.getorganslot(ORGAN_SLOT_ANTENNAS)
+	if(antennas)
+		cache_antennas = antennas.accessory_colors
+
+	var/obj/item/organ/wings/wings = vampire.getorganslot(ORGAN_SLOT_WINGS)
+	if(wings)
+		cache_wings = wings.accessory_colors
+
+	var/obj/item/organ/snout/snout = vampire.getorganslot(ORGAN_SLOT_SNOUT)
+	if(snout)
+		cache_snout = snout.accessory_colors
+
+	..()
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire
 	icon = 'modular_redmoon/icons/armor.dmi'

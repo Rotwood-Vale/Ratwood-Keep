@@ -180,6 +180,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	
 			if(equipOutfit(A.outfit))
 				return
+	set_patron(/datum/patron/zizo) // REDMOON ADD - выдача патрона зизо, т.к. он даётся при заражении лордом в процессе раунда
 
 /datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
