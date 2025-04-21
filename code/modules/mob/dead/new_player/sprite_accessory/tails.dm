@@ -40,7 +40,8 @@
 /datum/sprite_accessory/tail/cat
 	name = "Cat"
 	icon_state = "cat"
-	relevant_layers = list(BODY_FRONT_LAYER)
+	icon = 'modular_redmoon/icons/sprite_accessory/fixes_for_legacy_files/tails.dmi' // REDMOON ADD - добавление хвосту стейта BEHIND
+//	relevant_layers = list(BODY_FRONT_LAYER) // REDMOON REMOVAL
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/monkey
