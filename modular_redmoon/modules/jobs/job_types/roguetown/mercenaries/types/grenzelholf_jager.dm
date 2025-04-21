@@ -1,11 +1,5 @@
-/datum/subclass/grenzelhoft_kommandant
-	ru_name = "Командант Гренцельхофтских Наёмников"
-	ru_tutorial = "Эксперты, профессионалы, дорогие. Это первые слова, \
-	которые приходят на ум, когда говорят про наёмников из Гренцельхофта - гильдии профессионалов. \
-	Хоть вы можете работать за деньги, как и любой обычный вышибала, поддержание престижа гильдии будет для вас на первом месте."
-
 // fixes_for_ancestory_skintones
-/datum/outfit/job/roguetown/mercenary/grenzelhoft_kommandant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/mercenary/grenzelhoft_jager/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/accessories_color_changing = 0
 
@@ -15,7 +9,6 @@
 
 	if(isdemihuman(H))
 		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Grenzelhoft"]
 		accessories_color_changing = skin_slop["Grenzelhoft"]
 
 	if(accessories_color_changing)

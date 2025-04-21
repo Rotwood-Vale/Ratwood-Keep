@@ -2321,6 +2321,7 @@
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\forlorn.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\grenzelhoft_kommandant.dm"
+#include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\grenzelholf_jager.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\newmoon.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\sellsword.dm"
 #include "modular_redmoon\modules\jobs\job_types\roguetown\mercenaries\types\steppesman.dm"
