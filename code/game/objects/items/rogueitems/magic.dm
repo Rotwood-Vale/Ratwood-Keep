@@ -142,6 +142,9 @@ Necra's Censer
 	desc = "A small bronze censer that expels an otherworldly mist."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state ="necra_censer"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	item_state = "necra_censer"
 	throw_speed = 3
 	throw_range = 7
 	throwforce = 4
