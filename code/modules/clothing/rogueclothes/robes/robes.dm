@@ -230,6 +230,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
 	name = "desert gown"
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	desc = "A thin piece of fabric worn under a robe to stop chafing and keep ones dignity if a harsh blow of wind comes through."
 	icon_state = "desertgown"
 	item_state = "desertgown"
