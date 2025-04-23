@@ -29291,7 +29291,8 @@
 "pAt" = (
 /obj/structure/mineral_door/wood/red{
 	lockid = "butcher";
-	name = "Butcher"
+	name = "Butcher";
+	locked = 1
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors)
