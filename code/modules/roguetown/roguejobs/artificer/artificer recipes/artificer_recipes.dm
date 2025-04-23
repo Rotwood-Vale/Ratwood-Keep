@@ -572,3 +572,122 @@
 /datum/artificer_recipe/iron/prosthetic/leg_right
 	name = "Iron Right Leg (+1 Plank) (+1 Cog)"
 	created_item = /obj/item/bodypart/r_leg/prosthetic/iron
+
+
+// ------------ Explosives expansion----------
+/datum/artificer_recipe/general
+	i_type = "General"
+
+/datum/artificer_recipe/general/coaldust
+	name = "Coal dust"
+	required_item = /obj/item/rogueore/coal
+	created_item = list(/obj/item/rogueore/coaldust, /obj/item/rogueore/sulfur, /obj/item/rogueore/selitre)
+	hammers_per_item = 5
+	skill_level = 2
+
+/datum/artificer_recipe/general/tntbomb
+	name = "Gun powder sticks"
+	required_item = /obj/item/rogueore/coal
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre,
+						 	/obj/item/rogueore/selitre)
+	created_item = /obj/item/tntstick
+	hammers_per_item = 5
+	skill_level = 4
+
+/datum/artificer_recipe/general/satchelbomb
+	name = "Gun powder satchel"
+	required_item = /obj/item/storage/backpack/rogue/satchel
+	additional_items = list(/obj/item/tntstick,
+							/obj/item/tntstick,
+							/obj/item/tntstick)
+	created_item = /obj/item/satchel_bomb
+	hammers_per_item = 5
+	skill_level = 5
+
+/datum/artificer_recipe/general/impactexplosive
+	name = "Explosive Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre)
+	created_item = /obj/item/impact_grenade/explosion
+	hammers_per_item = 5
+	skill_level = 4
+
+/datum/artificer_recipe/general/impactsmoke
+	name = "Smoke Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre)
+	created_item = /obj/item/impact_grenade/smoke
+	hammers_per_item = 5
+	skill_level = 4
+
+/datum/artificer_recipe/general/impactpoisonsmoke
+	name = "Poison Smoke Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre,
+						 	/obj/item/reagent_containers/powder/alch/berryp = 3)
+	created_item = /obj/item/impact_grenade/smoke
+	hammers_per_item = 5
+	skill_level = 4
+
+/* // To do- Find something that will work as an ingredient without being a region for healing
+/datum/artificer_recipe/general/impacthealingsmoke
+	name = "Healing Smoke Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll = 1,
+							/obj/item/rogueore/coaldust = 3,
+							/obj/item/rogueore/sulfur = 1,
+						 	/obj/item/rogueore/selitre = 1)
+	created_item = /obj/item/impact_grenade/smoke
+	hammers_per_item = 5
+	skill_level = 4
+*/
+
+/datum/artificer_recipe/general/impactfiresmoke
+	name = "Conflagaration Smoke Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre,
+						 	/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
+	created_item = /obj/item/impact_grenade/smoke
+	hammers_per_item = 5
+	skill_level = 4
+
+
+/datum/artificer_recipe/general/impactblindingsmoke
+	name = "Blinding Smoke Grenade"
+	required_item = /obj/item/ingot/copper
+	additional_items = list(/obj/item/paper/scroll,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/coaldust,
+							/obj/item/rogueore/sulfur,
+						 	/obj/item/rogueore/selitre,
+						 	/obj/item/ash,
+						 	/obj/item/ash,
+						 	/obj/item/ash)
+	created_item = /obj/item/impact_grenade/smoke
+	hammers_per_item = 5
+	skill_level = 4
+

@@ -905,6 +905,7 @@
 #include "code\game\objects\items\rogueitems\util.dm"
 #include "code\game\objects\items\rogueitems\waterskin.dm"
 #include "code\game\objects\items\rogueitems\natural\animals.dm"
+#include "code\game\objects\items\rogueitems\natural\artificed.dm"
 #include "code\game\objects\items\rogueitems\natural\ash.dm"
 #include "code\game\objects\items\rogueitems\natural\clothfibersthorn.dm"
 #include "code\game\objects\items\rogueitems\natural\dirtclod.dm"
