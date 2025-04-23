@@ -4487,6 +4487,15 @@
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
+"cqU" = (
+/obj/structure/closet/crate/chest,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/berryrogue,
+/obj/item/seeds/berryrogue,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "cqV" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -9081,6 +9090,22 @@
 /obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
+"eGh" = (
+/obj/structure/closet/crate/chest,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/rice,
+/obj/item/seeds/rice,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/cabbage,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/rtfield)
 "eGj" = (
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/bath)
@@ -16346,6 +16371,16 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement)
+"iBm" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 4
+	},
+/obj/structure/closet/crate/chest,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "iBH" = (
 /obj/structure/fluff/railing/fence{
 	dir = 4;
@@ -29363,6 +29398,14 @@
 /obj/structure/table/wood,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
+"pCQ" = (
+/obj/structure/closet/crate/chest,
+/obj/item/seeds/beet,
+/obj/item/seeds/beet,
+/obj/item/seeds/onion,
+/obj/item/seeds/onion,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "pCR" = (
 /obj/structure/stairs{
 	dir = 8
@@ -229354,10 +229397,10 @@ waw
 vtZ
 jcp
 sjP
-uaL
-wSn
-tmw
-uaL
+pCQ
+eGh
+iBm
+cqU
 wKg
 nqU
 irt
