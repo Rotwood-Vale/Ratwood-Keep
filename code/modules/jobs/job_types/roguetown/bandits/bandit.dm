@@ -46,6 +46,8 @@
 	..()
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
+	if(!SSrole_class_handler.bandits_in_round)
+		SSrole_class_handler.bandits_in_round = TRUE
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
 
 
