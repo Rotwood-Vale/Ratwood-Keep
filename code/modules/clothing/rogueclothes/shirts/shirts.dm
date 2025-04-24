@@ -243,7 +243,7 @@
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
 
-// 
+//
 //   Velvet Dress
 //
 
@@ -268,7 +268,7 @@
 	. = ..()
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
 
-// 
+//
 //   Noble dress
 //
 
@@ -459,6 +459,7 @@
 	name = "tinker suit"
 	desc = "Typical fashion of the best engineers."
 	icon_state = "artishirt"
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/suit/roguetown/shirt/apothshirt
 	name = "apothecary shirt"

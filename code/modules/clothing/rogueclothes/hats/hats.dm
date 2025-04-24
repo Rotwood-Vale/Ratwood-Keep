@@ -1596,6 +1596,7 @@
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
 	icon_state = "articap"
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/head/roguetown/brimmed
 	desc = "A simple brimmed hat that provides some relief from the sun."

@@ -183,3 +183,7 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/fyritius
+	seed_identity = "fyritius seeds"
+	plant_def_type = /datum/plant_def/fyritiusflower
