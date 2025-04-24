@@ -384,7 +384,7 @@
 	if(STASTR > 10)
 		cuff_break = FAST_CUFFBREAK
 		breakouttime = I.breakouttime
-	if(STASTR > 15 || (mind && mind.has_antag_datum(/datum/antagonist/zombie)) )
+	if(STASTR >= 15 || (mind && mind.has_antag_datum(/datum/antagonist/zombie))) // REDMOON EDIT - вырывание из цепей от 15 силы и более
 		cuff_break = INSTANT_CUFFBREAK
 	if(!cuff_break)
 		to_chat(src, span_notice("I try to get out of \the [I]\s..."))
