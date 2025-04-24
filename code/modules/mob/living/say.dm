@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return
-	
+
 	var/static/regex/ooc_regex = regex(@"^(?=.*[\(\)\[\]\<\>\{\}]).*$") //Yes, i know.
 	if(findtext_char(message, ooc_regex))
 		emote("me", 1, "mumbles incoherently.")
@@ -280,13 +280,44 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
 	var/eavesdrop_range = 0
 	var/Zs_too = FALSE
-	var/is_yell = (say_test(message) == "2")
+	// REDMOON ADD START - multi-Z_fix - портировано с Azure-Peak
+	var/Zs_all = FALSE 
+	var/Zs_yell = FALSE
+	var/listener_has_ceiling	= TRUE
+	var/speaker_has_ceiling		= TRUE
+
+	var/turf/speaker_turf = get_turf(src)
+	var/turf/speaker_ceiling = get_step_multiz(speaker_turf, UP)
+	if(speaker_ceiling)
+		if(istransparentturf(speaker_ceiling))
+			speaker_has_ceiling = FALSE
+	// REDMOON ADD END
 	if(eavesdropping_modes[message_mode])
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
 	if(message_mode != MODE_WHISPER)
-		if(is_yell)	//CIT CHANGE - ditto
+		// REDMOON ADD START - multi-Z_fix - портировано с Azure-Peak
+		Zs_too = TRUE
+		if(say_test(message) == "2")	//CIT CHANGE - ditto
 			message_range += 10
-			Zs_too = TRUE
+			Zs_yell = TRUE
+		if(say_test(message) == "3")	//Big "!!" shout
+			Zs_all = TRUE
+
+	if (has_status_effect(/datum/status_effect/thaumaturgy))
+		spans |= SPAN_REALLYBIG
+		var/datum/status_effect/thaumaturgy/buff = locate() in status_effects
+		message_range += (5 + buff.potency) // maximum 12 tiles extra, which is a lot!
+		for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
+			if (prob(buff.potency * 3) && S.speaking) // 3% chance per holy level, per SCOM for it to shriek your message in town wherever you are
+				S.verb_say = "shrieks in terror"
+				S.verb_exclaim = "shrieks in terror"
+				S.verb_yell = "shrieks in terror"
+				S.say(message, spans = list("info", "reallybig"))
+				S.verb_say = initial(S.verb_say)
+				S.verb_exclaim = initial(S.verb_exclaim)
+				S.verb_yell = initial(S.verb_yell)
+		remove_status_effect(/datum/status_effect/thaumaturgy)
+	// REDMOON ADD END
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
 //	var/list/yellareas	//CIT CHANGE - adds the ability for yelling to penetrate walls and echo throughout areas
@@ -324,14 +355,52 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesrendered = compose_message(src, message_language, eavesdropping, , spans, message_mode)
 
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
-	var/turf/self_turf = get_turf(src)
-	var/self_z = self_turf.z
+/*	var/turf/self_turf = get_turf(src) - REDMOON REMOVAL - multi-Z_fix - порт фикса с Azure-Peak
+	var/self_z = self_turf.z */
 	for(var/_AM in listening)
 		var/atom/movable/AM = _AM
-		var/turf/movable_turf = get_turf(AM)
+
+/*		var/turf/movable_turf = get_turf(AM) - REDMOON REMOVAL - multi-Z_fix - порт фикса с Azure-Peak
 		if(!Zs_too && !isobserver(AM))
 			if(movable_turf.z != self_z)
+				continue */
+		// REDMOON ADD START - multi-Z_fix - портировано с Azure-Peak
+		var/turf/listener_turf = get_turf(AM)
+		var/turf/listener_ceiling = get_step_multiz(listener_turf, UP)
+		if(listener_ceiling)
+			listener_has_ceiling = TRUE
+			if(istransparentturf(listener_ceiling))
+				listener_has_ceiling = FALSE
+		if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
+			if(AM.z != src.z)
 				continue
+		if(Zs_too && AM.z != src.z && !Zs_all)
+			if(!Zs_yell)
+				if(listener_turf.z < speaker_turf.z && listener_has_ceiling)	//Listener is below the speaker and has a ceiling above them
+					continue
+				if(listener_turf.z > speaker_turf.z && speaker_has_ceiling)		//Listener is above the speaker and the speaker has a ceiling above
+					continue
+				if(listener_has_ceiling && speaker_has_ceiling)	//Both have a ceiling, on different z-levels -- no hearing at all
+					continue
+			else
+				if(abs((listener_turf.z - speaker_turf.z)) >= 2)	//We're yelling with only one "!", and the listener is 2 or more z levels above or below us.
+					continue
+			var/listener_obstructed = TRUE
+			var/speaker_obstructed = TRUE
+			if(src != AM && !Zs_yell)	//We always hear ourselves. Zs_yell will allow a "!" shout to bypass walls one z level up or below.
+				if(!speaker_has_ceiling && isliving(AM))
+					var/mob/living/M = AM
+					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
+						if(M == MH && MH.z == speaker_ceiling?.z)
+							speaker_obstructed = FALSE
+					
+				if(!listener_has_ceiling)
+					for(var/mob/living/ML in viewers(world.view, listener_ceiling))
+						if(ML == src && ML.z == listener_ceiling?.z)
+							listener_obstructed = FALSE
+				if(listener_obstructed && speaker_obstructed)
+					continue
+		// REDMOON ADD END
 		if(eavesdrop_range && get_dist(source, AM) > message_range && !(the_dead[AM]))
 			AM.Hear(eavesrendered, src, message_language, eavesdropping, , spans, message_mode, original_message)
 		else
@@ -359,8 +428,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		for(var/i in 1 to barks)
 			if(total_delay > BARK_MAX_TIME)
 				break
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, bark), listening, (message_range * (is_yell ? 4 : 1)), (vocal_volume * (is_yell ? 1.5 : 1)), BARK_DO_VARY(vocal_pitch, vocal_pitch_range), vocal_current_bark), total_delay)
-			total_delay += rand(DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE), DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE) + DS2TICKS((max(vocal_speed, 1) / BARK_SPEED_BASELINE) * (is_yell ? 0.5 : 1))) TICKS
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, bark), listening, (message_range * (Zs_yell ? 4 : 1)), (vocal_volume * (Zs_yell ? 1.5 : 1)), BARK_DO_VARY(vocal_pitch, vocal_pitch_range), vocal_current_bark), total_delay)
+			total_delay += rand(DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE), DS2TICKS(max(vocal_speed, 1) / BARK_SPEED_BASELINE) + DS2TICKS((max(vocal_speed, 1) / BARK_SPEED_BASELINE) * (Zs_yell ? 0.5 : 1))) TICKS
 
 /mob/proc/binarycheck()
 	return FALSE
