@@ -100,19 +100,19 @@
 	skill_level = 4
 
 /datum/crafting_recipe/roguetown/pyro_arrow
-	name = "Pyroclastic Arrow"
+	name = "Pyroclastic Arrow x1 (+1 Arrow) (+1 Fyritius)"
 	reqs = list(
 		/obj/item/ammo_casing/caseless/rogue/arrow = 2,
-		/obj/item/reagent_containers/food/snacks/grown/fyritius = 2,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 2,
 	)
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/pyro_bolt
-	name = "Pyroclastic Bolt"
+	name = "Pyroclastic Bolt x1 (+1 Bolt) (+1 Fyritius)"
 	reqs = list(
 		/obj/item/ammo_casing/caseless/rogue/bolt = 2,
-		/obj/item/reagent_containers/food/snacks/grown/fyritius = 2,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 2,
 	)
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	skill_level = 3
