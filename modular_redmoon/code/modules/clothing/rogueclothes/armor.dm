@@ -284,7 +284,8 @@
 			/datum/species/demihuman,
 			/datum/species/halforc,
 			/datum/species/anthromorphsmall,
-			/datum/species/kobold
+			/datum/species/kobold,
+			/datum/species/kraukalee // REDMOON ADD - kraukalee_addition
 	)
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/doublet/random/Initialize()

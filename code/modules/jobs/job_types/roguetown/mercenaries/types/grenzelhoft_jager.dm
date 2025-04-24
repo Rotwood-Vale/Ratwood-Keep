@@ -16,6 +16,7 @@
 		/datum/species/anthromorph,
 		/datum/species/tabaxi,
 		/datum/species/kobold,
+		/datum/species/kraukalee, // REDMOON ADD - kraukalee_addition
 		/datum/species/elf/wood,
 		/datum/species/elf/dark,
 	)

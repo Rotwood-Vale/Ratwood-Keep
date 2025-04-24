@@ -10,6 +10,7 @@
 		/datum/species/demihuman,
 		/datum/species/anthromorph,
 		/datum/species/elf/dark,
+		/datum/species/kraukalee // REDMOON ADD - kraukalee_addition
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider
 	maximum_possible_slots = 10

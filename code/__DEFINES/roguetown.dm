@@ -1,5 +1,5 @@
 //used in various places
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define ALL_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -25,7 +25,7 @@
 	/datum/species/kraukalee,\
 )
 
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define RACES_RESPECTED \
 	/datum/species/human/northern,\
 	/datum/species/elf/wood,\
@@ -81,7 +81,7 @@
 
 #define RACES_TOLERATED_UP_PLUS_SMOLFOLK list(RACES_TOLERATED, RACES_SMOLFOLK, RACES_RESPECTED)
 
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define NOBLE_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -106,7 +106,7 @@
 	/datum/species/kraukalee,\
 )
 
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define CLOTHED_RACES_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -132,7 +132,7 @@
 	/datum/species/kraukalee,\
 )
 // Non-dwarf non-kobold non-goblin mostly
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define NON_DWARVEN_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/human/halfelf,\
@@ -154,7 +154,7 @@
 	/datum/species/kraukalee,\
 )
 // Non-elf non-dwarf non-kobold non-goblin mostly
-// REDMOON ADD - avian_addition
+// REDMOON ADD - kraukalee_addition
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\
 	/datum/species/tieberian,\
