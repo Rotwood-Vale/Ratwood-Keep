@@ -405,15 +405,23 @@
 	swingdelay = 12
 	clickcd = 14
 
+// BRONZE SPEARS
+//Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
+
 /obj/item/rogueweapon/spear/bronze
 	name = "Bronze Spear"
 	desc = "A spear forged of bronze. Expensive but more durable than a regular iron one."
 	icon_state = "bronzespear"
-	max_blade_int = 200
+	max_blade_int = 100
+	possible_item_intents = list(/datum/intent/spear/thrust/bronze, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
 	smeltresult = /obj/item/ingot/bronze
 	force = 20
 	force_wielded = 25
 	gripsprite = FALSE //someone really should make a grip sprite
+	wdefense = 2
+
+/datum/intent/spear/thrust/bronze
+	penfactor = 60
 
 /obj/item/rogueweapon/greatsword
 	force = 12
