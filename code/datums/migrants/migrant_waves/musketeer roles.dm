@@ -23,6 +23,7 @@
 	backr = /obj/item/gun/ballistic/firearm/arquebus
 	beltr = /obj/item/rogueweapon/sword/rapier
 	beltl = /obj/item/ammo_holder/bullet/lead
+	backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/flint = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)

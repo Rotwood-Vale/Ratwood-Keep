@@ -679,6 +679,22 @@ SUBSYSTEM_DEF(job)
 
 	return H
 
+// For late joiners, this should be called immediately after EquipRank.
+// For joins on round start, this should be called after all required calls to EquipRank
+// have already been made.
+/datum/controller/subsystem/job/proc/initialise_memories(mob/M, rank, joined_late)
+	var/mob/dead/new_player/N
+	var/mob/living/H
+	if(!joined_late)
+		N = M
+		H = N.new_character
+	else
+		H = M
+	
+	var/datum/job/job = GetJob(rank)
+	if (job && H)
+		job.initialise_memories(H)
+
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
 		return TRUE

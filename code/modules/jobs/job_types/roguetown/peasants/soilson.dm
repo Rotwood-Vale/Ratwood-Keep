@@ -46,6 +46,9 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/key/farm
+	backr = /obj/item/storage/backpack/rogue/satchel
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 	if(H.gender == MALE)
 		head = /obj/item/clothing/head/roguetown/roguehood/random
 		if(prob(50))
