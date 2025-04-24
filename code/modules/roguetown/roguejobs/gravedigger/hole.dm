@@ -309,7 +309,7 @@
 	// TO DO: figure out how to either make jumping its own special proc
 	// Or read throw_at to understand how to parse it here to allow jumping
 	
-	if(is_living(AM))
+	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.movement_type & (FLYING|FLOATING)) //don't close the trap if they're flying/floating over it.
 			return ..()
