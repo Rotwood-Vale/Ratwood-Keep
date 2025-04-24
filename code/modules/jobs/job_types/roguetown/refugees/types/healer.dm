@@ -57,11 +57,6 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-			H.mind.AddSpell(new SPELL_DOCHEAL)
-			H.mind.AddSpell(new SPELL_STABLE)
-			H.mind.AddSpell(new SPELL_PURGE)
-			H.mind.AddSpell(new SPELL_DEBRIDE)
-			H.mind.AddSpell(new SPELL_CPR)
 			head = /obj/item/clothing/head/roguetown/nightman
 			neck = /obj/item/clothing/neck/roguetown/coif
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest

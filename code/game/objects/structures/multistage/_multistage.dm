@@ -48,7 +48,7 @@
 	if(stage == stages.len)
 		if(check_constructability(user, stages[stage].recipe))
 			final_product = new final_product(user.loc)
-			del(src)
+			qdel(src)
 			return TRUE
 
 /obj/structure/multistage/attackby(obj/item/I, mob/living/carbon/user)

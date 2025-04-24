@@ -245,10 +245,10 @@
 /datum/reagent/ozium/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
 	var/mob/living/carbon/C = A
 	if(method == INJECT && iscarbon(A))
-		if(trans_volume >= 4) 
+		if(trans_volume >= 4)
 			C.apply_status_effect(/datum/status_effect/buff/ozium)
 	else if(method == "swallow" && iscarbon(A))
-		if(trans_volume >= 10) 
+		if(trans_volume >= 10)
 			C.apply_status_effect(/datum/status_effect/buff/ozium)
 
 /datum/reagent/ozium/overdose_start(mob/living/M)
@@ -306,10 +306,10 @@
 /datum/reagent/moondust/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
 	var/mob/living/carbon/C = A
 	if(method == INJECT && iscarbon(A))
-		if(trans_volume >= 4) 
+		if(trans_volume >= 4)
 			C.apply_status_effect(/datum/status_effect/buff/moondust)
 	else if(method == "swallow" && iscarbon(A))
-		if(trans_volume >= 10) 
+		if(trans_volume >= 10)
 			C.apply_status_effect(/datum/status_effect/buff/moondust)
 
 /datum/reagent/moondust/overdose_start(mob/living/M)
@@ -334,7 +334,7 @@
 	name = "Purest Moondust"
 	description = ""
 	color = "#bfc3b5"
-	overdose_threshold = 19 
+	overdose_threshold = 19
 	metabolization_rate = 0.2
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
@@ -366,10 +366,10 @@
 /datum/reagent/moondust_purest/on_transfer(atom/A, method=INJECT, trans_volume) //prevents cheesing with ultralow doses.
 	var/mob/living/carbon/C = A
 	if(method == INJECT && iscarbon(A))
-		if(trans_volume >= 4) 
+		if(trans_volume >= 4)
 			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 	else if(method == "swallow" && iscarbon(A))
-		if(trans_volume >= 10) 
+		if(trans_volume >= 10)
 			C.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 
 /datum/reagent/moondust_purest/overdose_start(mob/living/M)
@@ -541,6 +541,18 @@
 	grind_results = null
 	volume = 10
 
+/obj/item/reagent_containers/powder/alch/honey
+	name = "essence of honey"
+	gender = PLURAL
+	icon_state = "salt"
+	color = "#FFC30B"
+	brew_reagent = /datum/reagent/alch/syrum_honey
+	brew_amt = 24
+	can_brew = TRUE
+	list_reagents = null
+	grind_results = null
+	volume = 10
+
 /datum/reagent/alch
 	name = "hmm"
 	description = "shouldnt see this"
@@ -567,7 +579,7 @@
 
 /datum/reagent/alch/syrum_swamp_weed
 	name = "swamp syrum"
-	description = "refined berry poison"
+	description = "refined swamp weed"
 	reagent_state = LIQUID
 	color = "#61DE2A"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
@@ -618,5 +630,13 @@
 	description = "refined berry essence"
 	reagent_state = LIQUID
 	color = "#61DE2A"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = null
+
+/datum/reagent/alch/syrum_honey
+	name = "honeysyrum"
+	description = "refined honey essence"
+	reagent_state = LIQUID
+	color = "#FFC30B"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = null

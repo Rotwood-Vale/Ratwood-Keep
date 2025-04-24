@@ -112,8 +112,8 @@
 	new /obj/item/rogueweapon/surgery/retractor(src)
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/natural/worms/leech/cheele(src)
-	new /obj/item/needle/pestra(src)
+	new /obj/item/natural/worms/leech(src)
+	new /obj/item/needle(src)
 
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
@@ -176,12 +176,11 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 42
 	STR.set_holdable(list(
-		/obj/item/natural/cloth/,
-		/obj/item/natural/bundle/cloth/,
-		/obj/item/reagent_containers/,
-		/obj/item/candle/,
-		/obj/item/needle/,
-		/obj/item/book/rogue/medical_notebook,
+		/obj/item/natural/cloth,
+		/obj/item/natural/bundle/cloth,
+		/obj/item/reagent_containers,
+		/obj/item/candle,
+		/obj/item/needle,
 	))
 
 /obj/item/storage/fancy/ifak/PopulateContents()
@@ -191,4 +190,4 @@
 	new /obj/item/reagent_containers/pill/pnkpill(src)
 	new /obj/item/candle/yellow(src)
 	new /obj/item/needle(src)
-	new /obj/item/book/rogue/medical_notebook(src)
+	new /obj/item/reagent_containers/glass/bottle/rogue/embalm(src)
