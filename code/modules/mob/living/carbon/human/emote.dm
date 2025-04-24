@@ -130,14 +130,12 @@
 	if(!.)
 		return
 	var/mob/living/carbon/human/H = user
-	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
-		return
 	if(!H.dna.species.is_wagging_tail(H))
 		H.dna.species.start_wagging_tail(H)
-		message = "wags their tail."
+		message = "stops wagging their tail."
 	else
 		H.dna.species.stop_wagging_tail(H)
-		message = "stops wagging their tail."
+		message = "wags their tail."
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
@@ -148,8 +146,6 @@
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(!H.dna || !H.dna.species)
-		return
 	if(H.dna.species.is_wagging_tail(H))
 		. = null
 
@@ -169,8 +165,6 @@
 	if(!.)
 		return
 	var/mob/living/carbon/human/H = user
-	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_flare_wings(H))
-		return
 	if(!H.dna.species.is_flaring_wings(H))
 		H.dna.species.start_flaring_wings(H)
 		message = "folds their wings."
@@ -187,8 +181,6 @@
 /datum/emote/living/carbon/human/wing/select_message_type(mob/user, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(!H.dna || !H.dna.species)
-		return
 	if(H.dna.species.is_flaring_wings(H))
 		. = null
 

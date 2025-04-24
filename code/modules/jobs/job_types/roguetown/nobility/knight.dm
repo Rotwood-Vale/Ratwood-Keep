@@ -161,12 +161,12 @@
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
 
-	/datum/subclass/knight/juggernaut
-		name = "Juggernaut"
-		tutorial = "Indomitable. You are hidden beneath so many layers of steel you find it hard to see properly, and have taken up non-traditional weapons in turn."
-		outfit = /datum/outfit/job/roguetown/knight/juggernaut
-		category_tags = list(CTAG_KNIGHT)
-		maximum_possible_slots = 1
+/datum/subclass/knight/juggernaut
+	name = "Juggernaut"
+	tutorial = "Indomitable. You are hidden beneath so many layers of steel you find it hard to see properly, and have taken up non-traditional weapons in turn."
+	outfit = /datum/outfit/job/roguetown/knight/juggernaut
+	category_tags = list(CTAG_KNIGHT)
+	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/knight/juggernaut/pre_equip(mob/living/carbon/human/H)
 	..()
