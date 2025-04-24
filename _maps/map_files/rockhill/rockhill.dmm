@@ -1918,10 +1918,6 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/druidgrove)
-"aYt" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/dirt/nrich,
-/area/rogue/indoors/shelter/mountains)
 "aZa" = (
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
@@ -2416,10 +2412,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/cow,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
-"bkT" = (
-/obj/machinery/tanningrack,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/rtfield)
 "bkZ" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -2702,9 +2694,8 @@
 /area/rogue/indoors/town/church)
 "bsU" = (
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -4757,6 +4748,18 @@
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"cvv" = (
+/obj/structure/closet/crate/chest{
+	lockid = "farm"
+	},
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "cvA" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -6245,6 +6248,9 @@
 "dhF" = (
 /obj/structure/fluff/railing/fence{
 	dir = 1
+	},
+/obj/structure/fluff/railing/fence{
+	dir = 4
 	},
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 8
@@ -8471,9 +8477,8 @@
 /area/rogue/indoors)
 "eox" = (
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -8681,9 +8686,8 @@
 /area/rogue/outdoors/druidgrove)
 "euV" = (
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -10283,9 +10287,8 @@
 /area/rogue/outdoors/rtfield)
 "fiG" = (
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -12533,16 +12536,12 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "gtc" = (
-/obj/structure/closet/crate/chest{
-	lockid = "farm"
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
 	},
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/obj/item/seeds/apple,
-/turf/open/floor/rogue/twig,
+/obj/item/needle/thorn,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "gtf" = (
 /obj/structure/fluff/railing/border{
@@ -13926,9 +13925,8 @@
 	pixel_y = -15
 	},
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/flora/roguetree/wise/elder{
 	pixel_x = -12
@@ -14799,6 +14797,18 @@
 /obj/item/flint,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
+"hCW" = (
+/obj/structure/closet/crate/chest{
+	lockid = "farm"
+	},
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/obj/item/seeds/apple,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "hCX" = (
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/cobble,
@@ -15828,16 +15838,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
-/obj/structure/closet/crate/chest{
-	lockid = "farm"
-	},
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/obj/item/seeds/potato,
-/turf/open/floor/rogue/twig,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "ida" = (
 /obj/structure/bars,
@@ -22770,12 +22771,6 @@
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
-"lTM" = (
-/obj/machinery/light/rogue/torchholder{
-	dir = 8
-	},
-/turf/open/floor/rogue/dirt/npoor,
-/area/rogue/outdoors/rtfield)
 "lTU" = (
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/rogue/grass,
@@ -28160,16 +28155,22 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/sewer)
 "oMa" = (
-/obj/structure/closet/crate/chest{
-	lockid = "farm"
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "tablewood1"
 	},
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/obj/item/seeds/pipeweed,
-/turf/open/floor/rogue/twig,
+/obj/item/storage/roguebag,
+/obj/item/storage/roguebag{
+	pixel_x = 9
+	},
+/obj/item/storage/roguebag{
+	pixel_x = 9
+	},
+/obj/item/storage/roguebag,
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "oMj" = (
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -29830,6 +29831,9 @@
 "pEF" = (
 /obj/structure/fluff/railing/fence{
 	dir = 1
+	},
+/obj/structure/fluff/railing/fence{
+	dir = 8
 	},
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 4
@@ -31979,7 +31983,7 @@
 /area/rogue/indoors/town/shop)
 "qSd" = (
 /obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/dirt/npoor,
+/turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "qSg" = (
 /obj/structure/fluff/statue/knightalt/r,
@@ -32671,6 +32675,21 @@
 	},
 /turf/closed/mineral/rogue,
 /area/rogue/under/town/sewer)
+"riZ" = (
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/obj/structure/closet/crate/chest{
+	lockid = "farm"
+	},
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/obj/item/seeds/potato,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "rjS" = (
 /obj/structure/closet/crate/chest{
 	lockid = "blacksmith"
@@ -37361,7 +37380,7 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
-/turf/open/floor/rogue/dirt/nrich,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "tFB" = (
 /obj/structure/stairs/stone{
@@ -38997,6 +39016,13 @@
 /obj/structure/roguewindow/stained/zizo,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/church/chapel)
+"uEl" = (
+/obj/structure/mineral_door/wood/red{
+	locked = 1;
+	lockid = "farm"
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/rtfield)
 "uEx" = (
 /obj/structure/bars/grille{
 	dir = 1
@@ -41332,9 +41358,8 @@
 /area/rogue/outdoors/town)
 "vSJ" = (
 /obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
+	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/closet/crate/roguecloset/crafted{
 	keylock = 1;
@@ -41469,22 +41494,30 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "vWF" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
+/obj/structure/closet/crate/chest{
+	lockid = "farm"
 	},
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag{
-	pixel_x = 9
-	},
-/obj/item/storage/roguebag{
-	pixel_x = 9
-	},
-/obj/item/storage/roguebag,
-/obj/machinery/light/rogue/torchholder{
-	dir = 8
-	},
-/turf/open/floor/rogue/twig,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/obj/item/seeds/wheat/oat,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "vXe" = (
 /obj/structure/fluff/railing/wood{
@@ -42944,14 +42977,6 @@
 /obj/item/paper,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
-"wKg" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "tablewood1"
-	},
-/obj/item/needle/thorn,
-/turf/open/floor/rogue/twig,
-/area/rogue/outdoors/rtfield)
 "wKp" = (
 /obj/structure/mineral_door/wood/towner/generic,
 /turf/open/floor/rogue/sand,
@@ -44979,30 +45004,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
 "xKQ" = (
-/obj/structure/closet/crate/chest{
-	lockid = "farm"
-	},
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/obj/item/seeds/wheat/oat,
-/turf/open/floor/rogue/twig,
+/obj/machinery/tanningrack,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "xKS" = (
 /obj/structure/fluff/railing/border{
@@ -211977,18 +211980,18 @@ nRa
 vJz
 aXY
 avX
-hkd
+hUD
 vIa
 vIa
 vIa
 vIa
-hkd
-aYt
-vIa
-vIa
-vIa
-vIa
-vIa
+hUD
+avX
+uaL
+aXY
+hCW
+hUD
+aXY
 vIa
 vIa
 vIa
@@ -212402,25 +212405,25 @@ qbG
 qbG
 vIa
 vIa
+qvR
 pwh
 pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-bkT
-hkd
-vIa
-vIa
+wSn
+wSn
+wSn
+wSn
+wSn
+wSn
+wSn
+uaL
+uaL
+fOc
+uaL
+cvv
+mqi
 vIa
 vIa
 vIa
@@ -212833,26 +212836,26 @@ qbG
 qbG
 qbG
 qbG
+qvR
+pwh
+qvR
+pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-pwh
-pwh
-pwh
-kpk
+wSn
 hXi
 kpk
 hXi
 kpk
-hXi
 kpk
-kpk
-kpk
-kpk
-wKg
+wSn
+uaL
+uaL
+uEl
+uaL
 vWF
-vIa
+mqi
 vIa
 vIa
 vIa
@@ -213265,26 +213268,26 @@ qbG
 qbG
 qbG
 qbG
+qvR
+spp
 pwh
 pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-pwh
+wSn
 kpk
 kpk
 kpk
 kpk
 kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-hkd
+wSn
+uaL
+wSn
+fOc
+uaL
+riZ
+hUD
 vIa
 vIa
 vIa
@@ -213697,26 +213700,26 @@ qbG
 qbG
 qbG
 qbG
+qvR
+qvR
+qvR
+pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-pwh
-pwh
-pwh
-kpk
+wSn
 hXi
 kpk
 hXi
 kpk
-hXi
 kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-vIa
+wSn
+uaL
+wSn
+aXY
+lNI
+lNI
+aXY
 vIa
 vIa
 vIa
@@ -214129,25 +214132,25 @@ qbG
 qbG
 qbG
 qbG
+qvR
+qvR
+qvR
+pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-pwh
-pwh
-pwh
+wSn
 kpk
 kpk
 kpk
 kpk
 kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
-kpk
+wSn
+uaL
+uaL
+uaL
+uaL
+uaL
 vIa
 vIa
 vIa
@@ -214562,24 +214565,24 @@ qbG
 qbG
 qbG
 qSd
+qvR
+qvR
+pwh
+uaL
 pwh
 pwh
-pwh
-pwh
-pwh
-pwh
-kpk
+wSn
 hXi
 kpk
 hXi
 kpk
-hXi
 kpk
-kpk
-kpk
-kpk
-kpk
-kpk
+wSn
+uaL
+uaL
+uaL
+uaL
+uaL
 vIa
 vIa
 vIa
@@ -214997,22 +215000,22 @@ dij
 dij
 dij
 lNI
-pwh
 uaL
-pwh
-kpk
-kpk
-kpk
+uaL
+uaL
+uaL
+uaL
+uaL
 tFq
-kpk
-kpk
-kpk
-kpk
+uaL
+uaL
+uaL
+uaL
 icO
 xKQ
 gtc
 oMa
-vIa
+hUD
 vIa
 vIa
 vIa
@@ -215429,8 +215432,8 @@ qvR
 ldD
 qvR
 pEo
-pwh
-pwh
+uaL
+uaL
 uaL
 ryI
 nqU
@@ -215861,7 +215864,7 @@ qvR
 qvR
 qvR
 phg
-pwh
+uaL
 uaL
 uaL
 nag
@@ -216293,7 +216296,7 @@ xvN
 obE
 qvR
 pEo
-pwh
+uaL
 uaL
 uaL
 nqU
@@ -216725,9 +216728,9 @@ qvR
 qvR
 qvR
 mqi
-pwh
-lTM
-pwh
+uaL
+tFq
+uaL
 nqU
 bzm
 bzm
@@ -217159,7 +217162,7 @@ pOX
 mqi
 uaL
 siE
-pwh
+uaL
 nqU
 cdY
 bzm
@@ -217589,7 +217592,7 @@ ddv
 dlQ
 pOX
 pwh
-pwh
+uaL
 tmw
 uaL
 ryI
@@ -218023,7 +218026,7 @@ pOX
 pOX
 ryI
 uaL
-pwh
+uaL
 ryI
 ryI
 nqU
@@ -218455,8 +218458,8 @@ wlD
 wlD
 wOD
 uaL
-pwh
-pwh
+uaL
+uaL
 qvR
 qvR
 fxx
@@ -218886,9 +218889,9 @@ ddv
 wlD
 faB
 vuM
-pwh
 uaL
-pwh
+uaL
+uaL
 qvR
 qvR
 qvR
@@ -219320,7 +219323,7 @@ dQP
 jNw
 uaL
 uaL
-pwh
+uaL
 onO
 bSe
 kpk
@@ -219752,7 +219755,7 @@ pOX
 ryI
 uaL
 uaL
-pwh
+uaL
 sun
 kpk
 kpk
@@ -221048,7 +221051,7 @@ uaL
 uaL
 eLE
 uaL
-pwh
+uaL
 aSE
 kpk
 kpk
@@ -221480,7 +221483,7 @@ uaL
 qvR
 hxD
 eaG
-pwh
+uaL
 iBx
 kpk
 kpk
@@ -221912,7 +221915,7 @@ uaL
 bkB
 qvR
 eaG
-pwh
+uaL
 ixu
 kpk
 kpk
@@ -222344,7 +222347,7 @@ aXY
 qvR
 uaL
 eaG
-pwh
+uaL
 sun
 kpk
 kpk
@@ -222776,7 +222779,7 @@ mqi
 qvR
 qvR
 eaG
-pwh
+uaL
 mKd
 tgC
 kpk
@@ -222789,7 +222792,7 @@ fiF
 sjP
 sjP
 uaL
-pwh
+uaL
 lNI
 uaL
 iJt
@@ -223642,18 +223645,18 @@ qvR
 eaG
 uaL
 uaL
-pwh
 uaL
-pwh
 uaL
-pwh
+uaL
+uaL
+uaL
 uaL
 fxx
 fxx
 sjP
 fxx
 uaL
-pwh
+uaL
 lNI
 uaL
 uaL
@@ -335578,7 +335581,7 @@ pAV
 pAV
 wlD
 wlD
-wlD
+mow
 wlD
 wlD
 wlD
