@@ -280,6 +280,22 @@
 	..()
 
 
+//pyro flower nectar
+/datum/reagent/toxin/fyritiusnectar
+	name = "fyritius nectar"
+	description = "A powerful toxin that sets any whom injest it on fire."
+	reagent_state = LIQUID
+	color = "#ffc400"
+	metabolization_rate = 0.5
+
+/datum/reagent/toxin/fyritiusnectar/on_mob_life(mob/living/carbon/M)
+	if(volume > 0.99)
+		M.add_nausea(9)
+		M.adjustFireLoss(2, 0)
+		M.adjust_fire_stacks(1)
+		M.IgniteMob()
+	return ..()
+	
 /datum/reagent/medicine/enbalming
 	name = "Enbalming Fluid"
 	reagent_state = LIQUID

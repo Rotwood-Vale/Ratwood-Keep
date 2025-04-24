@@ -48,7 +48,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting) return
-	if(affecting.bandage) 
+	if(affecting.bandage)
 		to_chat(user, "There is already a dressing.")
 		return
 
@@ -64,7 +64,7 @@
 	if(affecting.bleeding)
 		affecting.try_bandage(src) // Handle standard wound bandaging
 
-	if(affecting.artery_bleed) 
+	if(affecting.artery_bleed)
 		affecting.artery_bleed = FALSE
 		artery_wound = affecting.get_wound(/datum/wound/artery) // Store the artery wound
 
@@ -373,6 +373,28 @@
 		STR.max_items = 10
 		STR.not_while_equipped = TRUE
 
+/obj/item/storage/backpack/rogue/backpack/artibackpack
+	name = "Cooling backpack"
+	desc = "A leather backpack with complex pipework coursing through it. It hums and vibrates constantly."
+	icon_state = "artibackpack"
+	item_state = "artibackpack"
+	icon = 'icons/roguetown/clothing/storage.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK_L
+	resistance_flags = FIRE_PROOF
+	max_integrity = 300
+	equip_sound = 'sound/blank.ogg'
+	bloody_icon_state = "bodyblood"
+	sewrepair = FALSE
+
+/obj/item/storage/backpack/rogue/backpack/artibackpack/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 42
+		STR.max_w_class = WEIGHT_CLASS_NORMAL
+		STR.max_items = 10
+		STR.not_while_equipped = TRUE
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	name = "exotic silk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
