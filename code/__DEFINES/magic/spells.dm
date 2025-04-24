@@ -24,6 +24,7 @@
 #define SPELL_FORCEWALL_WEAK						/obj/effect/proc_holder/spell/invoked/forcewall_weak
 #define SPELL_HAMMERFALL							/obj/effect/proc_holder/spell/invoked/hammerfall
 #define SPELL_HASTE									/obj/effect/proc_holder/spell/invoked/haste
+#define SPELL_ENLARGE								/obj/effect/proc_holder/spell/invoked/enlarge
 #define SPELL_HEAL									/obj/effect/proc_holder/spell/invoked/heal
 #define SPELL_HEATMETAL								/obj/effect/proc_holder/spell/invoked/heatmetal
 #define SPELL_INVISIBILITY							/obj/effect/proc_holder/spell/invoked/invisibility

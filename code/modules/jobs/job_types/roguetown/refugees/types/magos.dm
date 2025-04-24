@@ -86,7 +86,11 @@
 			H.change_stat("endurance", -1)
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.set_patron(/datum/patron/divine/noc)
+			switch (H.patron?.type)
+				if(/datum/patron/zizo)
+					H.set_patron(/datum/patron/zizo)
+				else
+					H.set_patron(/datum/patron/divine/noc)
 			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
@@ -120,7 +124,11 @@
 			H.change_stat("endurance", -1)
 			H.mind.AddSpell(new SPELL_LEARNSPELL)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.set_patron(/datum/patron/divine/noc)
+			switch (H.patron?.type)
+				if(/datum/patron/zizo)
+					H.set_patron(/datum/patron/zizo)
+				else
+					H.set_patron(/datum/patron/divine/noc)
 			if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage

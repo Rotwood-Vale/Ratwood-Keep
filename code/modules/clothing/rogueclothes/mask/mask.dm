@@ -17,7 +17,7 @@
 	resistance_flags = FIRE_PROOF
 	body_parts_covered = EYES
 	anvilrepair = /datum/skill/craft/blacksmithing
-//	block2add = FOV_BEHIND
+	var/cured_eyesight = FALSE
 
 /obj/item/clothing/mask/rogue/spectacles/golden
 	name = "golden spectacles"
@@ -46,6 +46,17 @@
 		playsound(src.loc, break_sound, 60, 1)
 	..()
 
+/obj/item/clothing/mask/rogue/spectacles/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(!user.has_flaw(/datum/charflaw/badsight) && slot == SLOT_WEAR_MASK && user.STAPER < 5)
+		user.change_stat("perception", 4, "spectacles")
+		cured_eyesight = TRUE
+
+/obj/item/clothing/mask/rogue/spectacles/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(cured_eyesight)
+		user.change_stat("perception", 0, "spectacles")
+		cured_eyesight = FALSE
 
 /obj/item/clothing/mask/rogue/spectacles/delf
 	name = "dark elf sunshields"
