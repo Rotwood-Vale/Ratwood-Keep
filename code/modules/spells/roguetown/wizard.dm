@@ -1782,7 +1782,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	charge_max = 30 SECONDS
 	xp_gain = TRUE
 	cost = 2 //Weaker than Eyebite and thus 2 not 3
-
+	devotion_cost = 30 // REDMOON ADD - noc_blindness_spell_fix - исправление 0 цены за спелл; выставил 30, т.к. в бою эти секунды критически сильны
 
 /obj/effect/proc_holder/spell/invoked/mageblindness/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
