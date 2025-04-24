@@ -305,12 +305,14 @@
 	layer = 2.8
 
 /obj/structure/spike_pit/Crossed(atom/movable/AM)
-	. = ..()
 	var/hitsound = pick('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	// TO DO: figure out how to either make jumping its own special proc
 	// Or read throw_at to understand how to parse it here to allow jumping
-	if(isseelie(AM))
-		return // Assume they all fly over it.
+	
+	if(is_living(AM))
+		var/mob/living/L = AM
+		if(L.movement_type & (FLYING|FLOATING)) //don't close the trap if they're flying/floating over it.
+			return ..()
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -347,6 +349,8 @@
 		L.get_sound("pain")
 		playsound(src.loc, hitsound, 100)
 		return
+
+	. = ..()
 
 /obj/structure/spike_pit/attackby(obj/item/I, mob/user, params)
 	
