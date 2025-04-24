@@ -29,6 +29,7 @@
 	minstr = 7
 	sellprice = 30
 	wdefense = 4
+	var/accuracy_bonus = 20
 
 /obj/item/rogueweapon/sword/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))
@@ -121,6 +122,7 @@
 	minstr = 6
 	wdefense = 4
 	can_cdg = TRUE
+	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -148,6 +150,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
+	accuracy_bonus = 5	//large swords are unwieldy
 
 /obj/item/rogueweapon/sword/long/death
 	color = CLOTHING_BLACK
@@ -481,6 +484,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 3
+	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
@@ -526,6 +530,7 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
+	accuracy_bonus = 10
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
@@ -557,6 +562,7 @@
 	minstr = 6
 	wdefense = 7
 	wbalance = 1
+	accuracy_bonus = 5	//Rapiers are already wildly accurate due to stab bonus
 
 /obj/item/rogueweapon/sword/rapier/getonmobprop(tag)
 	. = ..()
