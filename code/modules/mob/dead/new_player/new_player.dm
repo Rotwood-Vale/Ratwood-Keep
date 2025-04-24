@@ -709,6 +709,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		H.real_name = "[H.real_name] [client.prefs.family_surname]"
 	// REDMOON ADD END
 	H.after_creation()
+	H.apply_status_effect(STATUS_EFFECT_STASIS, null, TRUE) // REDMOON ADD - after_death_stats_fix - исправляет, что при спавне у персонажа имеются дебафы, которые записываются в раундстартовые
 
 	if(transfer_after)
 		transfer_character()
@@ -722,7 +723,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/living/carbon/human/after_creation()
 	if(dna?.species)
 		dna.species.after_creation(src)
-	apply_status_effect(STATUS_EFFECT_STASIS, null, TRUE) // REDMOON ADD - after_death_stats_fix - исправляет, что при спавне у персонажа имеются дебафы, которые записываются в раундстартовые
 	roll_stats()
 
 /mob/dead/new_player/proc/transfer_character()
