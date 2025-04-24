@@ -155,13 +155,13 @@
 		if(mover.throwing)
 			if(!climbable)
 				take_damage(10)
-			if(brokenstate)
+			if(brokenstate || climbable) // REDMOON EDIT - openclose_windows_fix - позволяем прыгать через открытые окна - WAS: if(brokenstate)
 				return 1
 	else if(isitem(mover))
 		var/obj/item/I = mover
 		if(I.throwforce >= 10)
 			take_damage(10)
-			if(brokenstate)
+			if(brokenstate || climbable) // REDMOON EDIT - openclose_windows_fix - позволяем кидать предметы через открытые окна - WAS: if(brokenstate)
 				return 1
 		else
 			return !density
