@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_ALL_KINDS // REDMOON EDIT - goblins_jobs_changes - WAS: RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 
 	tutorial = "Hidden in the depths are ancient mechanical secrets, something your creed has taken it upon themselves to studying and understanding. To some, these mechanical wonders may seem like magic, but you know their inner workings as well as you do stone, down to the last cog."
@@ -51,6 +51,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+	// REDMOON ADD START - goblins_jobs_changes
+	if(isgoblinp(H) || ishalforc(H))
+		H.change_stat("intelligence", 3) // Перекрывает расовый дебаф + 1
+	// REDMOON ADD END
 
 	H.change_stat("strength", 1)
 	H.change_stat("intelligence", 2)

@@ -176,7 +176,7 @@
 	Люди: [SSround_end_statistics.species_humen] | \
 	Моли: [SSround_end_statistics.species_moth] | \
 	Полукровки: [SSround_end_statistics.species_demihuman] | \
-	Полуорки: [SSround_end_statistics.species_halfork] | \
+	Полуорки: [SSround_end_statistics.species_halforc] | \
 	Полуэльфы: [SSround_end_statistics.species_halfelf] | \
 	Сиссеане: [SSround_end_statistics.species_lizardfolk] | \
 	Табакси: [SSround_end_statistics.species_tabaxi] | \

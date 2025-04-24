@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(round_end_statistics)
 	var/species_elf = 0
 	var/species_goblinp = 0
 	var/species_halfelf = 0
-	var/species_halfork = 0
+	var/species_halforc = 0
 	var/species_humen = 0 
 	var/species_kobold = 0
 	var/species_kraukalee = 0
@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(round_end_statistics)
 		if(/datum/species/elf/dark) SSround_end_statistics.species_drow++
 		if(/datum/species/elf/wood) SSround_end_statistics.species_elf++
 		if(/datum/species/goblinp) SSround_end_statistics.species_goblinp++
-		if(/datum/species/halforc) SSround_end_statistics.species_halfork++
+		if(/datum/species/halforc) SSround_end_statistics.species_halforc++
 		if(/datum/species/human/halfelf) SSround_end_statistics.species_halfelf++
 		if(/datum/species/human/northern) SSround_end_statistics.species_humen++
 		if(/datum/species/kobold) SSround_end_statistics.species_kobold++

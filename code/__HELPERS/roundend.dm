@@ -310,7 +310,7 @@
 	if(SSround_end_statistics.species_humen)			shit += "<br><font color='#36693c'><span class='italics'>Люди: </span></font>[SSround_end_statistics.species_humen]"
 	if(SSround_end_statistics.species_moth)				shit += "<br><font color='#36693c'><span class='italics'>Моли: </span></font>[SSround_end_statistics.species_moth]"
 	if(SSround_end_statistics.species_demihuman)		shit += "<br><font color='#36693c'><span class='italics'>Полукровки: </span></font>[SSround_end_statistics.species_demihuman]"
-	if(SSround_end_statistics.species_halfork)			shit += "<br><font color='#36693c'><span class='italics'>Полуорки: </span></font>[SSround_end_statistics.species_halfork]"
+	if(SSround_end_statistics.species_halforc)			shit += "<br><font color='#36693c'><span class='italics'>Полуорки: </span></font>[SSround_end_statistics.species_halforc]"
 	if(SSround_end_statistics.species_halfelf)			shit += "<br><font color='#36693c'><span class='italics'>Полуэльфы: </span></font>[SSround_end_statistics.species_halfelf]"
 	if(SSround_end_statistics.species_lizardfolk)		shit += "<br><font color='#36693c'><span class='italics'>Сиссеане: </span></font>[SSround_end_statistics.species_lizardfolk]"
 	if(SSround_end_statistics.species_tabaxi)			shit += "<br><font color='#36693c'><span class='italics'>Табакси: </span></font>[SSround_end_statistics.species_tabaxi]"
