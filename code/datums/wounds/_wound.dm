@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			else if(owner)
 				remove_from_mob(src)
 			else if (iteration < 4)
-				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/wound, heal_wound)), wait = 10 SECONDS, 0, iteration + 1)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/wound, heal_wound), 0, iteration + 1), 10 SECONDS)
 			else
 				qdel(src)
 	return amount_healed

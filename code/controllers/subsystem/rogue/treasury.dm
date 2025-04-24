@@ -60,7 +60,8 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)
-		if(num_players() <= 25)
+
+		if(num_players_in_round() <= 25)
 			for(var/datum/roguestock/stockpile/A in stockpile_datums) //Generate some remote resources
 				A.held_items[2] += A.passive_generation
 				A.held_items[2] = min(A.held_items[2],10) //To a maximum of 10
@@ -90,6 +91,8 @@ SUBSYSTEM_DEF(treasury)
 					if(people_told > 3)
 						return
 
+/proc/num_players_in_round()
+	return LAZYLEN(GLOB.joined_player_list)
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)
 	if(!name)

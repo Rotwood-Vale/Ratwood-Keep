@@ -30,3 +30,7 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/milk
 	list_reagents = list(/datum/reagent/consumable/milk = 45)
+
+/obj/item/reagent_containers/glass/bottle/rogue/embalm
+	name = "bottle of embalming fluid"
+	list_reagents = list(/datum/reagent/medicine/enbalming = 20)

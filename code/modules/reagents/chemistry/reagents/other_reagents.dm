@@ -221,16 +221,18 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
-	if(!data)
-		data = 1
-	data++
+	if(!data?["holy"])
+		LAZYSET(data, "holy", 1)
+	else
+		data["holy"]++
+	var/holy = data["holy"]
 	M.jitteriness = min(M.jitteriness+4,10)
-	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
+	if(holy >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
 		M.stuttering = min(M.stuttering+4, 10)
 		M.Dizzy(5)
-	if(data >= 60)	// 30 units, 135 seconds
+	if(holy >= 60)	// 30 units, 135 seconds
 		M.jitteriness = 0
 		M.stuttering = 0
 		holder.remove_reagent(type, volume)	// maybe this is a little too perfect and a max() cap on the statuses would be better??

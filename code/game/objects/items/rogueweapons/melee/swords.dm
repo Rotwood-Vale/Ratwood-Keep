@@ -795,19 +795,6 @@
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
 
-/obj/item/rogueweapon/sword/gladius
-	force = 22
-	name = "Gladius"
-	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
-	icon_state = "gladius"
-	gripped_intents = null
-	smeltresult = /obj/item/ingot/bronze
-	max_blade_int = 100
-	max_integrity = 200
-	dropshrink = 0.80
-	wdefense = 2
-	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
-
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
 	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
@@ -864,3 +851,22 @@
 		if(istype(I))
 			I.afterchange()
 	update_icon()
+
+// BRONZE SWORDS
+//Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
+
+/obj/item/rogueweapon/sword/gladius
+	force = 22
+	name = "Gladius"
+	desc = "An artificed bronze short sword with no guard. Meant to slash through armor, compliments a shield."
+	icon_state = "gladius"
+	possible_item_intents = list(/datum/intent/sword/cut/bronze, /datum/intent/sword/thrust)
+	gripped_intents = null
+	smeltresult = /obj/item/ingot/bronze
+	max_blade_int = 100
+	max_integrity = 150
+	dropshrink = 0.80
+	wdefense = 2
+
+/datum/intent/sword/cut/bronze
+	penfactor = 60

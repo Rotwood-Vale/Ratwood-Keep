@@ -223,6 +223,9 @@
 				else
 					to_chat(owner, span_danger("I feel my heart lurching in my chest..."))
 					owner.adjustOxyLoss(8)
+		else
+			//No effect
+			return
 
 /datum/brain_trauma/severe/discoordination
 	name = "Discoordination"
