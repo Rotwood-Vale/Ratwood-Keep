@@ -34,9 +34,9 @@
 				H.adjust_triumphs(-1)
 				H.visible_message(span_danger("\The [H] thrashes around, unyielding!"))
 				to_chat(H.mind, span_danger("\"Yield.\""))
-				if(H.electrocute_act(10, src))
+				if(H.electrocute_act(10, user))
 					H.emote("painscream")
-				sleep(20)
+				sleep(2 SECONDS)
 				H.anchored = FALSE
 
 /datum/ritual/zizo/skeletaljaunt

@@ -47,8 +47,8 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	var/list/allocated
 	var/list/fail_reasons
 
-	/// Do not instantiate if type matches this
-	var/abstract_type = /datum/unit_test
+	// Do not instantiate if type matches this
+	abstract_type = /datum/unit_test
 
 	/// List of atoms that we don't want to ever initialize in an agnostic context, like for Create and Destroy. Stored on the base datum for usability in other relevant tests that need this data.
 	var/static/list/uncreatables = null
@@ -226,18 +226,12 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	returnable_list = list(
 		//Never meant to be created, errors out the ass for mobcode reasons
 		/mob/living/carbon,
-		//And another
-		/obj/item/slimecross/recurring,
-		//This should be obvious
-		/obj/machinery/doomsday_device,
 		//Template type
 		/obj/effect/mob_spawn,
 		//Singleton
 		/mob/dview,
 		//Template type
 		/obj/item/bodypart,
-		//briefcase launchpads erroring
-		/obj/machinery/launchpad/briefcase,
 	)
 
 	// Everything that follows is a typesof() check.
@@ -247,40 +241,20 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	//This turf existing is an error in and of itself
 	returnable_list += typesof(/turf/baseturf_skipover)
 	returnable_list += typesof(/turf/baseturf_bottom)
-	//This one demands a computer, ditto
-	returnable_list += typesof(/obj/item/modular_computer/processor)
-	//Very finiky, blacklisting to make things easier
-	returnable_list += typesof(/obj/item/poster/wanted)
-	//Same to above. Needs a client / mob / hallucination to observe it to exist.
-	returnable_list += typesof(/obj/projectile/hallucination)
 	//We have a baseturf limit of 10, adding more than 10 baseturf helpers will kill CI, so here's a future edge case to fix.
 	returnable_list += typesof(/obj/effect/baseturf_helper)
 	//No tauma to pass in
 	returnable_list += typesof(/mob/camera/imaginary_friend)
-	//No pod to gondola
-	returnable_list += typesof(/mob/living/simple_animal/pet/gondola/gondolapod)
-	//Hangs a ref post invoke async, which we don't support. Could put a qdeleted check but it feels hacky
-	returnable_list += typesof(/obj/effect/anomaly/grav/high)
 	//See above
 	returnable_list += typesof(/obj/effect/timestop)
-	//This lad also sleeps
-	returnable_list += typesof(/obj/item/hilbertshotel)
-	//this boi spawns turf changing stuff, and it stacks and causes pain. Let's just not
-	returnable_list += typesof(/obj/effect/sliding_puzzle)
 	//these can explode and cause the turf to be destroyed at unexpected moments
 	returnable_list += typesof(/obj/effect/mine)
 	//Stacks baseturfs, can't be tested here
 	returnable_list += typesof(/obj/effect/temp_visual/lava_warning)
-	//Our system doesn't support it without warning spam from unregister calls on things that never registered
-	returnable_list += typesof(/obj/docking_port)
-	//Asks for a shuttle that may not exist, let's leave it alone
-	returnable_list += typesof(/obj/item/pinpointer/shuttle)
 	//Expects a mob to holderize, we have nothing to give
 	returnable_list += typesof(/obj/item/clothing/head/mob_holder)
 	//Needs cards passed into the initilazation args
 	returnable_list += typesof(/obj/item/toy/cards/cardhand)
-	//Needs a holodeck area linked to it which is not guarenteed to exist and technically is supposed to have a 1:1 relationship with computer anyway.
-	returnable_list += typesof(/obj/machinery/computer/holodeck)
 
 	return returnable_list
 

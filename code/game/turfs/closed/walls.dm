@@ -56,7 +56,7 @@
 
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
-			brute_loss = ((250 * ddist) - (250 * fodist) * dmgmod)
+			brute_loss = ((1500+250 * ddist) - (250 * fodist) * dmgmod) // Majorly increased; Anything doing Devastation damage should be tearing holes in structures
 
 		if (EXPLODE_HEAVY)
 			brute_loss = ((100 * hdist) - (100 * fodist) * dmgmod)

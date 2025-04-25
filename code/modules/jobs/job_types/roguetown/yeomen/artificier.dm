@@ -19,25 +19,24 @@
 
 /datum/outfit/job/roguetown/artificer/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/hatfur
-	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
+	head = /obj/item/clothing/head/roguetown/articap
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
-	cloak = /obj/item/clothing/cloak/apron/waist/brown
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/key/blacksmith
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/rogueweapon/handsaw = 1, /obj/item/rogueweapon/chisel = 1, /obj/item/key/artificer)
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/under/roguetown/trou/artipants
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)	//artificer is primary produce of both fire arms and crossbows. Thus, journeyman (All combat roles primarily have expert crossbow and bows)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE)
@@ -52,8 +51,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 
-	H.change_stat("strength", 1)
+	H.change_stat("perception", 2)
 	H.change_stat("intelligence", 2)
 	H.change_stat("endurance", 1)
-	H.change_stat("constitution", 1)
 	H.change_stat("speed", -1)

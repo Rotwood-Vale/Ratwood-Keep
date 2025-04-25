@@ -99,11 +99,10 @@
 
 	if(isitem(attacked_object) && !user.cmode)
 		var/obj/item/attacked_item = attacked_object
-		if(attacked_item.obj_integrity >= 0)
-			if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
-				return
-		if(attacked_item.obj_integrity <= 0)
-			if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) >= 4)
+		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
+			return
+		if(attacked_item.obj_broken)
+			if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) >= SKILL_LEVEL_EXPERT)
 				if(attacked_item.obj_broken && istype(attacked_item, /obj/item/clothing))
 					var/obj/item/clothing/clothing = attacked_item
 					clothing.obj_fix()
@@ -115,7 +114,7 @@
 
 
 
-		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= 0)
+		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= SKILL_LEVEL_NONE)
 			if(prob(30))
 				repair_percent = 0.01
 			else
@@ -143,7 +142,7 @@
 		var/obj/structure/attacked_structure = attacked_object
 		if(!attacked_structure.hammer_repair || !attacked_structure.max_integrity)
 			return
-		if(blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) <= 0)
+		if(blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) <= SKILL_LEVEL_NONE)
 			to_chat(user, span_warning("I don't know how to repair this.."))
 			return
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
