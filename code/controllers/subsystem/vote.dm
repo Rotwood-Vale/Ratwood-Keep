@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(vote)
 	var/time_remaining = 0
 	var/mode = null
 	var/question = null
+	var/weighted = TRUE
 	var/list/choices = list()
 	var/list/voted = list()
 	var/list/voting = list()
@@ -39,6 +40,7 @@ SUBSYSTEM_DEF(vote)
 	time_remaining = 0
 	mode = null
 	question = null
+	weighted = TRUE
 	choices.Cut()
 	voted.Cut()
 	voting.Cut()
@@ -178,21 +180,22 @@ SUBSYSTEM_DEF(vote)
 			if(vote && 1<=vote && vote<=choices.len)
 				voted += usr.ckey
 				var/vote_power = 1
-				if(usr.client.holder)
-					vote_power += 5
-				if(ishuman(usr))
-					var/mob/living/carbon/H = usr
-					if(H.stat != DEAD)
-						vote_power += 3
-					if(H.job)
-						var/list/list_of_powerful = list("Duke", "Duke Consort", "Priest", "Steward", "Hand")
-						if(H.job in list_of_powerful)
-							vote_power += 5
-						else
-							if(H.mind)
-								for(var/datum/antagonist/D in H.mind.antag_datums)
-									if(D.increase_votepwr)
-										vote_power += 3
+				if(weighted)
+					if(usr.client.holder)
+						vote_power += 5
+					if(ishuman(usr))
+						var/mob/living/carbon/H = usr
+						if(H.stat != DEAD)
+							vote_power += 3
+						if(H.job)
+							var/list/list_of_powerful = list("Duke", "Duke Consort", "Priest", "Steward", "Hand")
+							if(H.job in list_of_powerful)
+								vote_power += 5
+							else
+								if(H.mind)
+									for(var/datum/antagonist/D in H.mind.antag_datums)
+										if(D.increase_votepwr)
+											vote_power += 3
 				choices[choices[vote]] += vote_power //check this
 				return vote
 	return 0
@@ -242,8 +245,17 @@ SUBSYSTEM_DEF(vote)
 						continue
 					choices.Add(VM.map_name)
 			if("custom")
+				var/doiweight = alert(usr,"Do you want the vote to be weighted?\nThis grants extra \"vote power\" based on characters being alive, important roles, and antagonists. It also gives more vote power to admins.\n\nIf you select \"No\", players will each get 1 single vote.", "", "Yes", "No", "CANCEL")
+				switch(doiweight)
+					if("Yes")
+						weighted = TRUE
+					if("No")
+						weighted = FALSE
+					if("CANCEL")
+						return 0
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
+					weighted = TRUE // properly reset the earlier choice
 					return 0
 				for(var/i=1,i<=10,i++)
 					var/option = capitalize(stripped_input(usr,"Please enter an option or hit cancel to finish"))
@@ -292,6 +304,9 @@ SUBSYSTEM_DEF(vote)
 	voting |= C
 
 	if(mode)
+		var/weighttext = "votepwr"
+		if(!weighted)
+			weighttext = "votes"
 		if(question)
 			. += "<h2>Vote: '[question]'</h2>"
 		else
@@ -301,7 +316,7 @@ SUBSYSTEM_DEF(vote)
 			var/votes = choices[choices[i]]
 			if(!votes)
 				votes = 0
-			. += "<li><a href='?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] votepwr)</li>"
+			. += "<li><a href='?src=[REF(src)];vote=[i]'>[choices[i]]</a> ([votes] [weighttext])</li>"
 		. += "</ul><hr>"
 		if(admin)
 			. += "(<a href='?src=[REF(src)];vote=cancel'>Cancel Vote</a>) "
