@@ -235,6 +235,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
 
+	redmoon_load_preferences(S)
 	return TRUE
 
 /datum/preferences/proc/save_preferences()
@@ -295,6 +296,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["defiant"], defiant)
 	WRITE_FILE(S["prefer_old_chat"], prefer_old_chat)
+
+	redmoon_save_preferences(S)
 	return TRUE
 
 

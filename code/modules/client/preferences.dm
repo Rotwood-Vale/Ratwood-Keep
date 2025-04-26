@@ -908,13 +908,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		dat += "<b>Русскоязычность:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
 		dat += "<b>Давать отпор:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 		dat += "<b>Девственность:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
-		dat += "<b>Быть Голосом:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
+		dat += "<b>Быть Голосом:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a><br>"
+		dat += "<b>Эффекты стресса:</b> <a href='?_src_=prefs;preference=stress_indicator'>[(redmoon_toggles & STRESS_EFFECTS) ? "Disabled":"Enabled"]</a>"
 	else
 		dat += "<b>Detailed Family:</b> <a href='?_src_=prefs;preference=detailed_family'>[(detailed_family_loging) ? "Yes":"No"]</a><br>" // REDMOON ADD - family_changes
 		dat += "<b>Be Russian:</b> <a href='?_src_=prefs;preference=be_russian'>[(be_russian) ? "Yes":"No"]</a><br>"
 		dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 		dat += "<b>Be a virgin:</b> <a href='?_src_=prefs;preference=be_virgin'>[(virginity) ? "Yes":"No"]</a><br>"
-		dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
+		dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a><br>"
+		dat += "<b>Stress effects:</b> <a href='?_src_=prefs;preference=stress_indicator'>[(redmoon_toggles & STRESS_EFFECTS) ? "Disabled":"Enabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
 	dat += "</table>"
@@ -2522,6 +2524,12 @@ Slots: [job.spawn_positions]</span>
 					detailed_family_loging = !detailed_family_loging
 					if(detailed_family_loging)
 						to_chat(user, user.client.prefs?.be_russian ? span_notice("Детальная Семья включена. Вы будете получать подробные сообщения при попытке формирования семьи. Эта функция нужна для демонстрации работы подбора партнёра.") : span_notice("Detailed family log turned on."))
+
+				// disable_stress_indicator
+				if("stress_indicator")
+					redmoon_toggles ^= STRESS_EFFECTS
+					if(redmoon_toggles & STRESS_EFFECTS)
+						to_chat(user, span_notice("Индикатор стресса отключён. Вы не будете получать звуковое оповещение и иконку над персонажем, когда у него портится настроение (кроме критического падения морали)."))
 				// REDMOON ADD END
 
 				if("be_virgin")
