@@ -60,9 +60,13 @@
 	return
 
 /mob/living/proc/play_stress_indicator()
+	if(client?.prefs.redmoon_toggles & STRESS_EFFECTS)
+		return
 	play_overhead_indicator('icons/mob/overhead_effects.dmi', "stress", 15, OBJ_LAYER, private = TRUE, soundin = 'sound/ddstress.ogg')
 
 /mob/living/proc/play_relief_indicator()
+	if(client?.prefs.redmoon_toggles & STRESS_EFFECTS)
+		return
 	play_overhead_indicator('icons/mob/overhead_effects.dmi', "relief", 15, OBJ_LAYER, private = TRUE, soundin = 'sound/ddrelief.ogg')
 
 /mob/living/proc/play_mental_break_indicator()

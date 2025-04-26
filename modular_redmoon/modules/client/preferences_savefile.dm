@@ -1,7 +1,4 @@
 /datum/preferences/proc/redmoon_character_pref_load(savefile/S)
-	S["be_russian"]										>> be_russian
-	S["donator_bonus_received"]    						>> donator_bonus_received
-
 	S["bark_id"] 										>> bark_id
 	S["bark_speed"] 									>> bark_speed
 	S["bark_pitch"] 									>> bark_pitch
@@ -12,7 +9,6 @@
 	S["family_surname"]									>> family_surname
 	S["family_genitals"] 								>> family_genitals
 	S["allow_latejoin_family"] 							>> allow_latejoin_family
-	S["detailed_family_loging"] 						>> detailed_family_loging
 
 	if(!islist(family_genitals) || !LAZYLEN(family_genitals))
 		family_genitals = list("Male", "Female")
@@ -57,9 +53,6 @@
 	_load_loadout(S)
 
 /datum/preferences/proc/redmoon_character_pref_save(savefile/S)
-	WRITE_FILE(S["be_russian"]							, be_russian)
-	WRITE_FILE(S["donator_bonus_received"]				, donator_bonus_received)
-
 	WRITE_FILE(S["bark_id"]								, bark_id)
 	WRITE_FILE(S["bark_speed"]							, bark_speed)
 	WRITE_FILE(S["bark_pitch"]							, bark_pitch)
@@ -74,7 +67,6 @@
 	WRITE_FILE(S["family_surname"] 						, family_surname) // family_changes - фамилия семьи
 	WRITE_FILE(S["family_genitals"] 					, family_genitals) // family_changes - проверка на половые органы партнёра
 	WRITE_FILE(S["allow_latejoin_family"] 				, allow_latejoin_family) // family_changes - разрешение на семью после раундстарта
-	WRITE_FILE(S["detailed_family_loging"] 				, detailed_family_loging) // family_changes - детальный отчёт по поиску семьи
 
 	WRITE_FILE(S["use_rumors"]							, use_rumors) // rumors_addition
 
@@ -127,3 +119,21 @@
 	S["loadout"] >> loadout_type
 	if (loadout_type)
 		loadout = new loadout_type()
+
+/datum/preferences/proc/redmoon_save_preferences(savefile/S)
+	WRITE_FILE(S["redmoon_toggles"] 					, redmoon_toggles) // gain_stress_indicator
+	WRITE_FILE(S["detailed_family_loging"] 				, detailed_family_loging) // family_changes
+	WRITE_FILE(S["be_russian"]							, be_russian) // translation
+	WRITE_FILE(S["donator_bonus_received"]				, donator_bonus_received) // PQ bonus for supporters
+
+/datum/preferences/proc/redmoon_load_preferences(savefile/S)
+	S["redmoon_toggles"] 								>> redmoon_toggles
+
+	// family_changes
+	S["detailed_family_loging"] 						>> detailed_family_loging
+
+	// translation
+	S["be_russian"]										>> be_russian
+
+	// PQ bonus for supporters
+	S["donator_bonus_received"]    						>> donator_bonus_received

@@ -1135,8 +1135,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	return TRUE
 
 /client/proc/commendsomeone(var/forced = FALSE)
-	if(!can_commend(forced))
-		return
+/*	if(!can_commend(forced)) - REDMOON REMOVAL - uncommend_removal
+		return */
 	if(usr?.client?.prefs?.be_russian)
 		if(alert(src,"Был ли в этом раунде персонаж, действия которого вы хотели бы оценить?", "Оценка", "ДА", "НЕТ") != "ДА")
 			return
@@ -1180,11 +1180,13 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		else
 			to_chat(src,"You can't commend yourself.")
 		return
-	if(!can_commend(forced))
-		return
+/*		if(!can_commend(forced)) - REDMOON REMOVAL - перенесено вниз - WAS: prefs.commendedsomeone = TRUE 
+			return */
 	if(theykey)
-		// REDMOON REMOVAL - перенесено вниз - WAS: prefs.commendedsomeone = TRUE 
+//		prefs.commendedsomeone = TRUE - REDMOON REMOVAL - перенесено вниз - WAS: prefs.commendedsomeone = TRUE 
 		if(action == "Похвалить" || action == "Commend")
+			if(!can_commend(forced))
+				return
 			if(add_commend(theykey, ckey))
 				to_chat(src,"[selection] получит похвалу (или даже \"спасибо\", если это первый commend).")
 				prefs.commendedsomeone = TRUE // REDMOON ADD
@@ -1194,6 +1196,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			message_admins("[ckey] commends [theykey].")
 			REDMOON REMOVAL END */
 		else if(action == "Поругать" || action == "Uncommend")
+			if(!can_uncommend(forced))
+				return
 			if(get_playerquality(key) < 0) // Игроки с отрицательным PQ не могут снижать чужое PQ
 				to_chat(src, span_danger("У тебя слишком плохая репутация, чтобы обвинять кого-то."))
 				return FALSE
@@ -1201,8 +1205,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 				to_chat(src, span_danger("Подожди конца раунда и лучше осмысли ситуацию."))
 				return FALSE
 			if(add_uncommend(theykey, ckey))
-				to_chat(src,"[selection] получит негативный комментарий (или даже -PQ, если это первый uncommend).")
-				prefs.commendedsomeone = TRUE // REDMOON ADD
+				to_chat(src,"[selection] получит негативный комментарий, видимый только ему (без снятия PQ).")
+				prefs.negative_commented_someone = TRUE // REDMOON ADD
 	return
 
 // Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
