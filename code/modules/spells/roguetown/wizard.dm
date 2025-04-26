@@ -47,6 +47,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		SPELL_ENLARGE,				// 2 cost 	utility/combatbuff, less spd more str and con
 		SPELL_SUMMON_WEAPON,		// 2 cost	utility/combat, summons a marked weapon to caster.
 		SPELL_MENDING,				// 2 cost	utility, repairs items
+		SPELL_GLOBAL_MESSAGE,		// 6 cost	utility, messages anyone you know the name of.
 		SPELL_MESSAGE,				// 2 cost	utility, messages anyone you know the name of.
 		SPELL_BLADE_BURST,			// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
 		SPELL_FETCH,				// 2 cost	utility/combat, pulls single target closer

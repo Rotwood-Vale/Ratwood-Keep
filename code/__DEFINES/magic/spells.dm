@@ -34,6 +34,7 @@
 #define SPELL_MAGEBLINDNESS							/obj/effect/proc_holder/spell/invoked/mageblindness
 #define SPELL_MAGEINVISIBILITY						/obj/effect/proc_holder/spell/invoked/mageinvisibility
 #define SPELL_MALUM_FLAME_ROGUE						/obj/effect/proc_holder/spell/invoked/malum_flame_rogue
+#define SPELL_GLOBAL_MESSAGE						/obj/effect/proc_holder/spell/invoked/global_message
 #define SPELL_MESSAGE								/obj/effect/proc_holder/spell/invoked/message
 #define SPELL_PREPARE_FEAST							/obj/effect/proc_holder/spell/invoked/prepare_feast
 #define SPELL_ANIMATE_OBJECT						/obj/effect/proc_holder/spell/invoked/projectile/animate_object
