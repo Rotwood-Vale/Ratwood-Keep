@@ -102,5 +102,12 @@
 				used = list('sound/vo/hiss.ogg','sound/vo/hiss (2).ogg')
 			if("purr")
 				used = 'sound/vo/purr.ogg'
-
+			if("moth_chitter")
+				used = 'sound/vo/mothchitter.ogg'
+			if("moth_laugh")
+				used = 'sound/vo/mothlaugh.ogg'
+			if("moth_scream")
+				used = 'sound/vo/moth_scream.ogg'
+			if("mothsqueak")
+				used = 'sound/vo/mothsqueak.ogg'
 	return used

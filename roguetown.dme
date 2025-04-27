@@ -1621,6 +1621,8 @@
 #include "code\modules\mob\living\carbon\human\voicepacks\other\skeleton.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\other\werewolf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\other\zombie.dm"
+#include "code\modules\mob\living\carbon\human\voicepacks\male\moth.dm"
+#include "code\modules\mob\living\carbon\human\voicepacks\female\moth.dm"
 #include "code\modules\mob\living\carbon\monkey\combat.dm"
 #include "code\modules\mob\living\carbon\monkey\death.dm"
 #include "code\modules\mob\living\carbon\monkey\inventory.dm"

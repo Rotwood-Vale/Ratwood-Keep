@@ -201,6 +201,15 @@
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
+/datum/emote/living/chitter
+	key = "chitter"
+	key_third_person = "chitter"
+	message = "chitters"
+	message_muffled = "make a chitters noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = TRUE
+
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"

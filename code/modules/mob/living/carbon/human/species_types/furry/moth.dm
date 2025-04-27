@@ -12,8 +12,8 @@
 	limbs_icon_f = 'icons/mob/species/moth_f.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
-	soundpack_m = /datum/voicepack/male/elf
-	soundpack_f = /datum/voicepack/female/elf
+	soundpack_m = /datum/voicepack/male/moth
+	soundpack_f = /datum/voicepack/female/moth
 	offset_features = list(
 		OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_WRISTS = list(0,0),\
 		OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,0), OFFSET_HEAD = list(0,0), \
@@ -144,3 +144,30 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
 	return returned
+
+/datum/species/moth/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	// Add Moth-specific emotes
+	C.verbs += list(
+		/mob/proc/chitter
+		
+	)
+
+/datum/species/moth/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
+	// Remove Moth-specific emotes
+	C.verbs -= list(
+		/mob/proc/chitter,
+	)
+
+/mob/proc/chitter()
+	set name = "Chitter"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("chitter")
+	next_move = world.time + 3 // 0.3 second cooldown
