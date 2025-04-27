@@ -150,18 +150,18 @@
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	// Add Moth-specific emotes
 	C.verbs += list(
-		/mob/proc/chitter
+		/mob/proc/chitter,
+		/mob/proc/flutter,
 		
 	)
-
-/datum/species/moth/on_species_loss(mob/living/carbon/C)
+/datum/species/tabaxi/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 	// Remove Moth-specific emotes
 	C.verbs -= list(
 		/mob/proc/chitter,
+		/mob/proc/flutter,
 	)
-
 /mob/proc/chitter()
 	set name = "Chitter"
 	set category = "Noises"
@@ -170,4 +170,14 @@
 	if(next_move > world.time)
 		return
 	emote("chitter")
+	next_move = world.time + 3 // 0.3 second cooldown
+
+/mob/proc/flutter()
+	set name = "Flutter"
+	set category = "Noises"
+	if(stat != CONSCIOUS)
+		return
+	if(next_move > world.time)
+		return
+	emote("flutts wings")
 	next_move = world.time + 3 // 0.3 second cooldown

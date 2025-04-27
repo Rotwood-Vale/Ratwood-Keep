@@ -202,10 +202,19 @@
 	show_runechat = FALSE
 
 /datum/emote/living/chitter
-	key = "chitter"
+	key = "Chitter"
 	key_third_person = "chitter"
 	message = "chitters"
 	message_muffled = "make a chitters noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = TRUE
+
+/datum/emote/living/flutter
+	key = "Flutter"
+	key_third_person = "Flutter"
+	message = "flutts wings"
+	message_muffled = "flutts wings."
 	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
