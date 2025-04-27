@@ -107,4 +107,8 @@
 				used = 'sound/vo/mothlaugh.ogg'
 			if("mothsqueak")
 				used = 'sound/vo/mothsqueak.ogg'
+			if("flutter")
+				used = 'sound/vo/moth_flutter.ogg'
+			if("chitter")
+				used = 'sound/vo/mothchitter.ogg'
 	return used

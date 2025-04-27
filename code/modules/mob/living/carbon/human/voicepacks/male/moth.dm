@@ -9,6 +9,8 @@
 			used = getmsilenced(soundin)
 	if(!used)
 		switch(soundin)
+			if("deathgurgle")
+				used = pick('sound/vo/moth_death.ogg')
 			if("agony")
 				used = 'sound/vo/male/elf/agony.ogg'
 			if("chuckle")
@@ -41,7 +43,10 @@
 				used = list('sound/vo/male/elf/rage (1).ogg','sound/vo/male/elf/rage (2).ogg')
 			if("scream")
 				used = 'sound/vo/moth_scream.ogg'
-
+			if("flutter")
+				used = 'sound/vo/moth_flutter.ogg'
+			if("chitter")
+				used = 'sound/vo/mothchitter.ogg'
 	if(!used)
 		used = ..(soundin)
 	return used
