@@ -99,5 +99,12 @@
 				used = list('sound/vo/hiss.ogg','sound/vo/hiss (2).ogg')
 			if("purr")
 				used = 'sound/vo/purr.ogg'
-
+			if("howl")
+				used = list('sound/vo/howl.ogg')
+			if("growl")
+				used = list('sound/vo/mobs/vw/idle (1).ogg','sound/vo/mobs/vw/idle (2).ogg','sound/vo/mobs/vw/idle (3).ogg','sound/vo/mobs/vw/idle (4).ogg')
+			if("whine")
+				used = list('sound/vo/whine (1).ogg','sound/vo/whine (2).ogg')
+			if("bark")
+				used = list('sound/vo/bwark.ogg','sound/vo/bwark (2).ogg','sound/vo/bwark (3).ogg')			
 	return used
