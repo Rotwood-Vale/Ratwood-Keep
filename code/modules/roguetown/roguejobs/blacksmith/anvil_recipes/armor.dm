@@ -26,6 +26,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/gorget
 
+/datum/anvil_recipe/armor/iron/fencerguard
+	name = "Fencer Neckguard (+2 silk)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/neck/roguetown/fencerguard
+
 /datum/anvil_recipe/armor/iron/ogorg
 	name = "Ringed Gorget"
 	req_bar = /obj/item/ingot/iron
@@ -46,6 +52,12 @@
 	name = "Chain Chausses"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron
+
+/datum/anvil_recipe/armor/iron/ironplateboots
+	name = "Plated Boots"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/hide)
+	created_item = /obj/item/clothing/shoes/roguetown/boots/armor/iron
 
 /datum/anvil_recipe/armor/iron/mask
 	name = "Mask"
@@ -120,6 +132,18 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 
+/datum/anvil_recipe/armor/steel/flutedhauberk
+	name = "Fluted Hauberk (+1 Steel, +2 Iron)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
+
+/datum/anvil_recipe/armor/steel/corsethalfplate
+	name = "Corset Half-Plate (+2 Steel, +3 Silk)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/silk, /obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/suit/roguetown/armor/otavan
+	
 /datum/anvil_recipe/armor/steel/halfplate
 	name = "Half-Plate Armour (+2 Steel, +1 Cured Hide)"
 	req_bar = /obj/item/ingot/steel
@@ -276,6 +300,12 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/shoes/roguetown/armor/steel
+
+/datum/anvil_recipe/armor/steel/fencerboots
+	name = "Fencer Boots (+1 Leather Boots)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/clothing/shoes/roguetown/armor/leather)
+	created_item = /obj/item/clothing/shoes/roguetown/otavan
 
 /datum/anvil_recipe/armor/platemask/steel
 	name = "Mask"
