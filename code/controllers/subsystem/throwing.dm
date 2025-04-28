@@ -153,15 +153,12 @@ SUBSYSTEM_DEF(throwing)
 		return
 	thrownthing.throwing = null
 	if (!hit)
-		for (var/thing in get_turf(thrownthing)) //looking for our target on the turf we land on.
-			var/atom/A = thing
-			if (A == target)
-				hit = TRUE
-				thrownthing.throw_impact(A, src)
-				if(QDELETED(thrownthing)) //throw_impact can delete things, such as glasses smashing
-					return //deletion should already be handled by on_thrownthing_qdel()
-				break
-		if (!hit)
+		if(target in get_turf(thrownthing)) //looking for our target on the turf we land on.
+			hit = TRUE
+			thrownthing.throw_impact(target, src)
+			if(QDELETED(thrownthing)) //throw_impact can delete things, such as glasses smashing
+				return //deletion should already be handled by on_thrownthing_qdel()
+		else
 			thrownthing.throw_impact(get_turf(thrownthing), src)  // we haven't hit something yet and we still must, let's hit the ground.
 			if(QDELETED(thrownthing)) //throw_impact can delete things, such as glasses smashing
 				return //deletion should already be handled by on_thrownthing_qdel()

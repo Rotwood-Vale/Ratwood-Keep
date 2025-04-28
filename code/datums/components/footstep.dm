@@ -43,9 +43,7 @@
 		return
 
 	var/mob/living/LM = parent
-	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.throwing || LM.movement_type & (VENTCRAWLING | FLYING))
-		if (LM.lying && !LM.buckled && !(!T.footstep || LM.movement_type & (VENTCRAWLING | FLYING))) //play crawling sound if we're lying
-			playsound(T, 'sound/blank.ogg', 15 * volume)
+	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.is_floor_hazard_immune() || (LM.movement_type & VENTCRAWLING))
 		return
 
 	if(iscarbon(LM))
@@ -97,7 +95,7 @@
 		return
 	var/mob/living/carbon/human/H = parent
 	//TODO: Look into implementing soft fluttering sounds instead, and prevent this check that will happen for every footstep ever
-	if(isseelie(H))	//Need to look into a wing check for wingless seelie too
+	if(H.is_floor_hazard_immune())
 		return
 	if(HAS_TRAIT(H,TRAIT_LIGHT_STEP)) //TODO, do the above.
 		return

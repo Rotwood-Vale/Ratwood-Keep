@@ -69,17 +69,15 @@
 
 /obj/structure/Crossed(atom/movable/AM)
 	. = ..()
-	if(isliving(AM) && !AM.throwing && !isseelie(AM))	//Need to look into a wing check here for wingless seelie
-		var/mob/living/user = AM
-		if(climb_offset)
-			user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
+	var/mob/living/user = AM
+	if(climb_offset && isliving(user) && !user.is_floor_hazard_immune())
+		user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
 
 /obj/structure/Uncrossed(atom/movable/AM)
 	. = ..()
-	if(isliving(AM) && !AM.throwing && !isseelie(AM))	//Need to look into a wing check here for wingless seelie
-		var/mob/living/user = AM
-		if(climb_offset)
-			user.reset_offsets("structure_climb")
+	var/mob/living/user = AM
+	if(climb_offset && isliving(user) && !user.is_floor_hazard_immune())
+		user.reset_offsets("structure_climb")
 
 /obj/structure/ui_act(action, params)
 	..()
