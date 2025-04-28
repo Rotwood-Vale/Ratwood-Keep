@@ -17,7 +17,7 @@
 
 	//gender = FEMALE
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)	//Default shit that ever race gets
-	inherent_traits = list(TRAIT_NOMOBSWAP)	//Use this to add custom Fae traits
+	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_NOFALLDAMAGE2, TRAIT_TINY)	//Use this to add custom Fae traits
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
@@ -144,15 +144,15 @@
 	)
 	stress_examine = TRUE
 	stress_desc = span_red("A tiny seelie, mischievous in nature.")
+	default_scale_x = 0.5
+	default_scale_y = 0.5
 
 /datum/species/seelie/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	ADD_TRAIT(C, TRAIT_TINY, "[type]")
-	ADD_TRAIT(C, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
-	C.transform = C.transform.Scale(0.5, 0.5)
-	C.update_transform()
-	C.pass_flags = PASSTABLE | PASSMOB
+	RegisterSignal(C, COMSIG_LIVING_MOBILITY_UPDATED, PROC_REF(handle_mobility_update))
+	passtable_on(C, SPECIES_TRAIT)
+	C.pass_flags |= PASSMOB
 	//C.movement_type = FLYING
 	C.set_mob_offsets("pixie_hover", _x = 0, _y = 10)
 	C.set_light(3, 1, "#d4fcac")
@@ -166,11 +166,10 @@
 /datum/species/seelie/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	REMOVE_TRAIT(C, TRAIT_TINY, "[type]")
-	REMOVE_TRAIT(C, TRAIT_NOFALLDAMAGE1, TRAIT_GENERIC)
-	C.transform = C.transform.Scale(2, 2)
+	UnregisterSignal(C, COMSIG_LIVING_MOBILITY_UPDATED)
 	C.update_transform()
-	C.pass_flags = 0
+	passtable_off(C, SPECIES_TRAIT)
+	C.pass_flags &= ~PASSMOB
 	C.reset_offsets("pixie_hover")
 	//C.movement_type = (C.movement_type | ~FLYING)
 	//C.Jitter(0)
@@ -222,3 +221,138 @@
 
 /datum/species/seelie/random_surname()
 	return " [pick(world.file2list("strings/rt/names/other/fairyf.txt"))]"
+
+/datum/species/seelie/on_bitten(mob/living/carbon/human/victim, mob/living/carbon/human/biter)
+	// Only Graggarites can bite a Seelie's head off.
+	if(biter.patron.type != /datum/patron/inhumen/graggar)
+		return FALSE
+	// And the biter must have an aggressive grab on the Seelie.
+	if(victim.pulledby != biter && biter.grab_state != GRAB_AGGRESSIVE)
+		return FALSE
+	victim.visible_message(span_danger("[biter] is putting [victim]'s head in [biter.p_their()] mouth!"), \
+					span_userdanger("[biter] is putting my head in [biter.p_their()] mouth!"))
+	if(do_mob(biter, victim, 8 SECONDS))
+		var/obj/item/bodypart/head/head = victim.get_bodypart(BODY_ZONE_HEAD)
+		head.dismember()
+	return TRUE // Either way, cancel normal on-bite logic at this point, since we tried to bite their head off.
+
+/datum/species/seelie/on_middle_click(mob/living/carbon/human/Target, mob/Ripper)
+	if(isseelie(Ripper) || Target.pulledby != Ripper)
+		return FALSE // Seelies can't rip other seelies' wings, and you have to be pulling someone to rip their wings.
+	if(!has_wings(Target))
+		to_chat(Ripper, span_notice("[Target] is missing their wings."))
+		return FALSE
+	Ripper.visible_message(span_danger("[Ripper] begins to rip [Target]'s wings..."), \
+						span_danger("I begin to rip [Target]'s wings..."), ignored_mobs = Target)
+	to_chat(Target, span_userdanger("[Ripper] begins to rip your wings off..."))
+	if(!do_mob(Ripper, Target, 8 SECONDS))
+		return TRUE // cancel base middle-click functionality
+	//if(length(Target.grabbedby) != 0)
+	// Make sure our grab wasn't interrupted.
+	if(Target.pulledby != Ripper)
+		to_chat(Ripper, span_notice("I have to keep ahold of [Target] to rip their wings off!"))
+		return TRUE
+	if(!has_wings(Target))
+		to_chat(Ripper, span_notice("[Target] is already missing their wings."))
+		return FALSE
+	var/obj/item/organ/wings/seelie/Wing = Target.getorganslot(ORGAN_SLOT_WINGS)
+	Wing.Remove(Target)
+	Wing.forceMove(Target.drop_location())
+	Ripper.put_in_hands(Wing)
+	Target.update_body_parts(TRUE)
+	//var/fracture_type = /datum/wound/fracture/neck
+	var/obj/item/bodypart/BP = Target.get_bodypart(BODY_ZONE_PRECISE_NECK)
+	BP.add_wound(/datum/wound/fracture/neck)
+	Target.apply_damage(70, BRUTE, Target.get_bodypart(BODY_ZONE_CHEST))
+	//var/datum/disease/Disease = new /datum/disease/heart_failure
+	//Target.ForceContractDisease(Disease)	//Disease removed in favor of simply stopping the heart via heart attack
+	Target.set_heartattack(TRUE)
+	Target.visible_message(span_danger("[Target] clutches at [Target.p_their()] chest as if [Target.p_their()] heart stopped!"))
+	Ripper.log_message("[key_name(Ripper)] ripped [key_name(Target)]'s wings.")
+	Target.log_message("[key_name(Target)]'s wings got ripped by [key_name(Ripper)].")
+
+	//CURSE OF THE SEELIE
+	if(!isdead(Target))
+		playsound(Target, 'sound/vo/female/gen/scream (2).ogg', 140)
+		var/const/SEELIE_SCREAM_RANGE = 4
+		Target.audible_message(span_userdanger("[Target] screams in agony, inflicting a curse on you for the vile deed done to [Target.p_them()]!"), null,
+			SEELIE_SCREAM_RANGE, \
+			span_danger("You scream in agony, inflicting a curse on those around you as punishment for their vile deeds!")
+		)
+		for(var/mob/living/carbon/C in view(SEELIE_SCREAM_RANGE, Target))
+			if(C == Target)
+				continue
+			C.adjustEarDamage(0, 35)
+			C.confused += 40
+			C.Jitter(50)
+			C.apply_status_effect(/datum/status_effect/debuff/seelie_wing_curse)
+
+/datum/species/seelie/proc/has_wings(mob/living/carbon/human/owner)
+	return !!owner?.getorganslot(ORGAN_SLOT_WINGS)
+
+/datum/species/seelie/proc/regenerate_wings(mob/living/carbon/human/owner)
+	owner.set_heartattack(FALSE)
+	var/obj/item/organ/wings/wing = owner.getorganslot(ORGAN_SLOT_WINGS)
+	if(!wing)
+		var/wing_type = owner.dna.species.organs[ORGAN_SLOT_WINGS]
+		var/obj/item/organ/wings/new_wings = new wing_type()
+		new_wings.Insert(owner)
+
+/// Apply the Seelie hovering animation
+/datum/species/seelie/proc/fairy_hover(mob/living/carbon/human/owner)
+	if(!owner.resting && !owner.wallpressed)
+		animate(owner, pixel_y = owner.pixel_y + 2, time = 0.5 SECONDS, loop = -1)
+	sleep(0.5 SECONDS)
+	if(!owner.resting && !owner.wallpressed)
+		animate(owner, pixel_y = owner.pixel_y - 2, time = 0.5 SECONDS, loop = -1)
+
+/datum/species/seelie/spec_life(mob/living/carbon/human/owner)
+	. = ..()
+	if(is_seelie_floating(owner))
+		fairy_hover(owner)
+
+	if(!owner.IsSleeping())	
+		//Seelie luck aura
+		for(var/mob/living/carbon/human/victim in view(1, src))
+			if(isseelie(victim))
+				continue
+			if(owner.aura)
+				victim.apply_status_effect(/datum/status_effect/buff/seelie/happy)
+				victim.remove_status_effect(/datum/status_effect/buff/seelie/sad)
+			else
+				victim.apply_status_effect(/datum/status_effect/buff/seelie/sad)
+				victim.remove_status_effect(/datum/status_effect/buff/seelie/happy)
+
+/datum/species/seelie/proc/is_seelie_floating(mob/living/carbon/human/owner)
+	return !owner.incapacitated(ignore_restraints = TRUE) && (owner.mobility_flags & MOBILITY_STAND) && has_wings(owner) && !owner.buckled
+
+/datum/species/seelie/is_floor_hazard_immune(mob/living/carbon/human/owner)
+	return is_seelie_floating(owner)
+
+/datum/species/seelie/proc/handle_mobility_update(mob/living/carbon/human/seelie)
+	SIGNAL_HANDLER
+	if(is_seelie_floating(seelie)) //Shift Seelie back 'up' from lying down on the ground
+		seelie.set_mob_offsets("pixie_hover", _x = 0, _y = 10)
+	else // If buckled or unable to stand, Seelies need to 'fall' to the ground by resetting position
+		seelie.reset_offsets("pixie_hover")
+
+/mob/living/carbon/human/proc/Turnlight()
+	set name = "Seelie Glow"
+	set category = "Seelie"
+	if(light_power)
+		set_light(0, 0, null)
+		to_chat(src, span_notice("I stop glowing."))
+	else
+		to_chat(src, span_notice("I begin to glow once more."))
+		set_light(3, 1, "#d4fcac")
+
+/mob/living/carbon/proc/switchaura()
+	set name = "Luck Aura"
+	set category = "Seelie"
+	aura = !aura
+	if(aura)
+		to_chat(src, span_warning("My aura is now one of blessing."))
+		log_message("[key_name(src)] has switched their aura to apply good luck.", LOG_GAME)
+	else
+		to_chat(src, span_warning("My aura is now one of misery."))
+		log_message("[key_name(src)] has switched their aura to apply bad luck.", LOG_GAME)

@@ -24,9 +24,8 @@
 				if(do_after(user, 50, needhand = 1, target = src))
 					facial_hairstyle = "None"
 					update_hair()
-					if(dna?.species)
-						if(dna.species.id == "dwarf")
-							add_stress(/datum/stressevent/dwarfshaved)
+					if(dna?.species?.id == "dwarf")
+						add_stress(/datum/stressevent/dwarfshaved)
 				else
 					held_item.melee_attack_chain(user, src, params)
 		return
