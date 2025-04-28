@@ -19,7 +19,7 @@
 		character.equip_to_slot_if_possible(hood, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
 
 //Proc used for updating light stress, occurs every health update so around once every 2 seconds
-/datum/component/darkling/proc/update_light_stress(var/mob/living/carbon/darkling)\
+/datum/component/darkling/proc/update_light_stress(var/mob/living/carbon/darkling)
 	//Closing our eyes or being blind/blindfolded lets us recovery very quickly
 	if(darkling.eyesclosed || darkling.eye_blind)
 		src.current_light_stress -= 1.5
