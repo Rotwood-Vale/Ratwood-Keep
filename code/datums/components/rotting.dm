@@ -64,7 +64,7 @@
 		qdel(src)
 		return
 
-	if(amount > 4 MINUTES)
+	if(amount > 10 MINUTES) // REDMOON EDIT - время становления зомби увеличено с 4 минут до 10 минут
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
