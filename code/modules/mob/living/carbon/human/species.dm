@@ -941,6 +941,22 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //			H.update_inv_w_uniform()
 //			H.update_inv_wear_suit()
 
+	// REDMOON ADD START - comfy_state - порт со сплюрта. Если персонаж не двигается N-ое количество минут, то у него не снижается жажда, голод и порок.
+	if(H.ckey) // Хитрый способ. У обычного моба сикея нет. Если такой игрок выйдет из игры,  его кукла не подохнет от голода.
+		if((world.time - H.last_move_time) > 3 MINUTES)
+			if(!H.insanelycomfy)
+				H.insanelycomfy = TRUE
+				H.apply_status_effect(/datum/status_effect/buff/comfy)
+			else
+				if(istype(H.charflaw, /datum/charflaw/addiction))
+					var/datum/charflaw/addiction/A = H.charflaw
+					A.next_sate += 1 SECONDS // Очень примерно
+				return ///////////// ДАЛЬШЕ ФУНКЦИЯ НЕ ОБРАБАТЫВАЕТСЯ, ЕСЛИ ПЕРСОНАЖУ КОМФОРТНО!
+		else if(H.insanelycomfy)
+			H.remove_status_effect(/datum/status_effect/buff/comfy)
+			H.insanelycomfy = FALSE
+	// REDMOON ADD END
+
 	// nutrition decrease and satiety
 	if (H.nutrition > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
 		// THEY HUNGER
