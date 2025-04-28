@@ -162,9 +162,9 @@
 	var/mouse_status = LOCKPICK_MOUSEUP
 
 	//the lockpick being used
-	var/the_lockpick
+	var/obj/the_lockpick
 	//the wedge being used
-	var/the_wedge
+	var/obj/the_wedge
 
 	var/obj/picking_object
 
@@ -349,7 +349,7 @@
 	if(failing)
 		if(break_checking_cooldown <= world.time)
 			if(prob(50 - (skill_level * 10) - (living_picker.STALUC) + (difficulty * 10)))
-				to_chat(picker, span_warning("Your [the_lockpick] broke!"))
+				to_chat(picker, span_warning("Your [the_lockpick.name] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 				qdel(the_lockpick)
 			break_checking_cooldown = world.time + 7 SECONDS

@@ -1703,7 +1703,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 							var/obj/item/bodypart/part = X
 							if(item_to_retrieve in part.embedded_objects)
 								part.remove_embedded_object(item_to_retrieve)
-								to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [L] has mysteriously vanished. How fortunate!"))
+								to_chat(C, span_warning("The [item_to_retrieve] that was embedded in your [part.name] has mysteriously vanished. How fortunate!"))
 								break
 					if(!isturf(item_to_retrieve.loc))
 						item_to_retrieve = item_to_retrieve.loc

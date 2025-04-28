@@ -184,9 +184,9 @@
 		if(completely_silent)
 			return
 		if(M == user)
-			user.visible_message(span_notice("[user] places [src] on [user.p_their()] [affecting]."), span_notice("I place a leech on my [affecting]."))
+			user.visible_message(span_notice("[user] places \a [src] on [user.p_their()] [affecting.name]."), span_notice("I place \a [src] on my [affecting.name]."))
 		else
-			user.visible_message(span_notice("[user] places [src] on [M]'s [affecting]."), span_notice("I place a leech on [M]'s [affecting]."))
+			user.visible_message(span_notice("[user] places \a [src] on [M]'s [affecting.name]."), span_notice("I place \a [src] on [M]'s [affecting.name]."))
 		return
 	return ..()
 
