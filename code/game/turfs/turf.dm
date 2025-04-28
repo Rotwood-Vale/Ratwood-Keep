@@ -48,7 +48,7 @@
 	var/break_message = null
 
 	var/neighborlay
-	var/neighborlay_list = list()
+	var/neighborlay_list
 	var/neighborlay_override
 
 	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID
