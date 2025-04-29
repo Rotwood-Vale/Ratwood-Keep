@@ -1,0 +1,12 @@
+/obj/item/clothing/glasses
+/obj/item/clothing/glasses/blindfold
+/obj/item/clothing/glasses/blindfold/white
+/obj/item/clothing/wrists/roguetown
+/obj/item/clothing/wrists/roguetown/bracers
+/obj/item/clothing/wrists/roguetown/bracers/leather
+/obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+/obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
+/obj/item/clothing/wrists/roguetown/nocwrappings
+/obj/item/clothing/wrists/roguetown/royalsleeves
+/obj/item/clothing/wrists/roguetown/splintarms
+/obj/item/clothing/wrists/roguetown/wrappings
