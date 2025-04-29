@@ -486,6 +486,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		"reptile",
 		"lupian",
 		//"cat"
+		"moth",
 
 	)
 

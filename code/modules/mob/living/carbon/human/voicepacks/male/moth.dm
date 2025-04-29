@@ -1,12 +1,5 @@
-/datum/voicepack/male/moth/get_sound(soundin, modifiers)
+/datum/voicepack/male/moth/get_sound(soundin)
 	var/used
-	switch(modifiers)
-		if("old")
-			used = getmold(soundin)
-		if("young")
-			used = getmyoung(soundin)
-		if("silenced")
-			used = getmsilenced(soundin)
 	if(!used)
 		switch(soundin)
 			if("deathgurgle")

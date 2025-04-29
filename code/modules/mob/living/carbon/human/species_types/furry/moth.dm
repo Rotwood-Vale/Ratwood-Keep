@@ -100,6 +100,11 @@
 		/datum/body_marking/moth/grayscale/witchwing,
 		/datum/body_marking/moth/grayscale/lovers,
 	)
+	languages = list(
+		/datum/language/common,
+		/datum/language/moth,
+	)
+	
 	descriptor_choices = list(
 		/datum/descriptor_choice/height,
 		/datum/descriptor_choice/body,
