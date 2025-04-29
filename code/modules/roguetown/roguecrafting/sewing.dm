@@ -668,6 +668,13 @@
 				/obj/item/natural/fur = 1)
 	skill_level = 3
 
+/datum/crafting_recipe/roguetown/sewing/hidekini
+	name = "hide bikini (2 leather, fur; JOURNEYMAN)"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 1)
+	skill_level = 3
+
 /datum/crafting_recipe/roguetown/sewing/heavygloves
 	name = "hide gloves (fur; JOURNEYMAN)"
 	result = /obj/item/clothing/gloves/roguetown/leather/angle
