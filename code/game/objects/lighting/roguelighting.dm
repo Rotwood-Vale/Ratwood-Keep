@@ -635,7 +635,10 @@
 					playsound(src.loc, 'sound/misc/frying.ogg', 80, FALSE, extrarange = 5)
 					return
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
-			var/obj/item/reagent_containers/glass/bucket/pot = attachment
+			var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
+				P.check_for_recipe(W, user)
+			/*
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/oat))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 51))
 					to_chat(user, "<span class='notice'>Not enough water.</span>")
@@ -727,9 +730,22 @@
 						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/meat, 18)
 						pot.reagents.remove_reagent(/datum/reagent/water, 1)
 				return
+				*/
 	. = ..()
 
 
+
+/*
+Pot shit:
+- feed item to pot
+- get recipe type
+- add recipe type
+- cycle through them
+- update pot here?
+- When they finish kill that datum
+- update pot here?
+- Sounds?
+*/
 
 
 
