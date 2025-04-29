@@ -110,13 +110,6 @@
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/iron/goblin
 
-/datum/anvil_recipe/armor/iron/chainkini
-	name = "Chainkini (+1 Cured Leather)"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/hide/cured)
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
-	skill_level = 6
-
 // --------- STEEL -----------
 /datum/anvil_recipe/armor/steel
 	skill_level = 4
@@ -125,6 +118,11 @@
 	name = "Haubergeon"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail
+
+/datum/anvil_recipe/armor/steel/chainkini
+	name = "Chainkini"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 
 /datum/anvil_recipe/armor/steel/hauberk
 	name = "Hauberk (+1 Steel)"
