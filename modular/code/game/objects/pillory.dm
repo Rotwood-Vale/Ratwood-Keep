@@ -315,29 +315,29 @@
 	active_bounty = found_bounty
 	bounty_timer(victim, found_bounty)
 
-/obj/structure/pillory/bounty/proc/bounty_timer(mob/living/carbon/human/victim, datum/bounty/redeem_bounty)
+/obj/structure/pillory/bounty/proc/bounty_timer(mob/living/carbon/human/victim)
 	bounty_timer = addtimer(CALLBACK(src, PROC_REF(bounty_redeem), victim), bounty_redemption_time, TIMER_STOPPABLE)
 
 /obj/structure/pillory/bounty/proc/bounty_redeem(mob/living/carbon/human/victim)
 	pay_bounty(bounty_step_reward, victim, active_bounty)
 
-/obj/structure/pillory/bounty/proc/pay_bounty(amount = 0, mob/living/carbon/human/victim, datum/bounty/redeem_bounty)
-	if(amount <= 0 || !redeem_bounty) return 0
-	var/reward_amount = min(redeem_bounty.amount, amount)
+/obj/structure/pillory/bounty/proc/pay_bounty(amount = 0, mob/living/carbon/human/victim)
+	if(amount <= 0 || !active_bounty) return 0
+	var/reward_amount = min(active_bounty.amount, amount)
 
 	if(reward_amount <= 0 && !(victim in buckled_mobs)) return 0
 
-	if(!SStreasury.give_money_account(reward_amount, bounty_hunter, "+[reward_amount] from [redeem_bounty.target] bounty"))
+	if(!SStreasury.give_money_account(reward_amount, bounty_hunter, "+[reward_amount] from [active_bounty.target] bounty"))
 		say("Treasury empty, unable to redeem bounty!")
 		return 0
-	redeem_bounty.amount -= reward_amount
-	if(redeem_bounty.amount <= 0)
-		GLOB.head_bounties -= redeem_bounty
-		qdel(redeem_bounty)
+	active_bounty.amount -= reward_amount
+	if(active_bounty.amount <= 0)
+		GLOB.head_bounties -= active_bounty
+		qdel(active_bounty)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, say), "Bounty has been exhausted!"), 1 SECONDS)
 		if(reward_amount < 0)
 			return 0
 	say("Rewarded [bounty_hunter] with [reward_amount] mammon!")
-	bounty_timer(bounty_hunter, victim, redeem_bounty)
+	bounty_timer(bounty_hunter, victim)
 
 	return reward_amount
