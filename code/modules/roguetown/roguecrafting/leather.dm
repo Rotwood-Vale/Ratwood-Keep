@@ -56,6 +56,11 @@
 	result = /obj/item/clothing/suit/roguetown/armor/leather
 	reqs = list(/obj/item/natural/hide/cured = 2)
 
+/datum/crafting_recipe/roguetown/hunting/bikini
+	name = "leather bikini"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+	reqs = list(/obj/item/natural/hide/cured = 2)
+
 /datum/crafting_recipe/roguetown/hunting/pouch
 	name = "leather pouch"
 	result = list(/obj/item/storage/belt/rogue/pouch)
