@@ -101,6 +101,7 @@ SUBSYSTEM_DEF(family)
 						// BLUEMOON ADD START - family_changes - присвоение фамилий
 						H.real_name = "[H.client.prefs.real_name] [connecting_member.family_surname]"
 						if(H.family)
+							current_families -= H.family
 							qdel(H.family)
 						family_candidates -= connecting_member
 						// REDMOON ADD END
@@ -110,6 +111,7 @@ SUBSYSTEM_DEF(family)
 
 						current_families -= F
 						family_candidates -= H // Remove the matched candidate
+						head_candidates -= H // REDMOON ADD - family_changes
 						reserved_family_candidates -= H // REDMOON ADD - family_changes
 						reserved_family_candidates -= connecting_member // REDMOON ADD - family_changes
 						continue can_loop // Continue to next candidate instead of breaking completely
