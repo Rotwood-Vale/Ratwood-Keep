@@ -102,12 +102,12 @@
 			if("purr")
 				used = 'sound/vo/purr.ogg'
 			if("bark")
-				used = list('sound/vo/mobs/vw/bark (1).ogg', 'sound/vo/mobs/vw/bark (2).ogg', 'sound/vo/mobs/vw/bark (3).ogg', 'sound/vo/mobs/vw/bark (4).ogg', 'sound/vo/mobs/vw/bark (5).ogg', 'sound/vo/mobs/vw/bark (6).ogg', 'sound/vo/mobs/vw/bark (7).ogg')
+				used = list('sound/vo/bwark.ogg','sound/vo/bwark (2).ogg','sound/vo/bwark (3).ogg', 'sound/vo/mobs/vw/bark (1).ogg', 'sound/vo/mobs/vw/bark (2).ogg', 'sound/vo/mobs/vw/bark (3).ogg', 'sound/vo/mobs/vw/bark (4).ogg', 'sound/vo/mobs/vw/bark (5).ogg', 'sound/vo/mobs/vw/bark (6).ogg', 'sound/vo/mobs/vw/bark (7).ogg')
 			if("growl")
 				used = list('sound/vo/mobs/vw/idle (1).ogg', 'sound/vo/mobs/vw/idle (2).ogg', 'sound/vo/mobs/vw/idle (3).ogg', 'sound/vo/mobs/vw/idle (4).ogg')
 			// REDMOON ADD START
 			if("whine")
-				used = 'sound/vo/whine.ogg'
+				used = list('sound/vo/whine.ogg', 'sound/vo/whine (1).ogg','sound/vo/whine (2).ogg')
 			if("chirp")
 				used = 'modular_redmoon/sounds/voices/chirp.ogg'
 			if("caw")
@@ -123,5 +123,7 @@
 			if("bawk")
 				used = 'modular_redmoon/sounds/voices/bawk.ogg'
 			// REDMOON ADD END
+			if("howl")
+				used = list('sound/vo/howl.ogg')
 
 	return used

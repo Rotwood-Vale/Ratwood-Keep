@@ -959,6 +959,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	name = "studded leather bikini"
 	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
+	armor = list("blunt" = 55, "slash" = 35, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN
 	icon_state = "studleatherkini"
 	item_state = "studleatherkini"
@@ -977,6 +978,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "half-plate bikini"
 	desc = "Half plate in bikini form, still just as protective somehow. Save for the stomach."
+	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
@@ -987,6 +989,7 @@
 	name = "fullplate bikini"
 	desc = "Full plate in bikini form, full package and full exposure."
 	icon_state = "platekini"
+	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_sex = list(FEMALE)
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	equip_delay_self = 8 SECONDS
@@ -1005,14 +1008,16 @@
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "hierophant's shawl"
+	name = "desert robe"
 	icon_state = "desertrobe"
 	item_state = "desertrobe"
-	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the daemons, yet still allowing one to cast spells aptly."
+	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = CHEST|GROIN|VITALS
+	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the beasts in it."
 //	naledicolor = TRUE   //Azure specific most-likely will need someone to double check
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "pontifex's kaftan"
+	name = "leather monk robes"
 	icon_state = "monkleather"
 	item_state = "monkleather"
 	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
@@ -1020,18 +1025,26 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
 	name = "fluted hauberk"
 	desc = "An ornate cuirass, flanked with sleeves of steel maille."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "flutedhauberk"
 	item_state = "flutedhauberk"
+	max_integrity = 260
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 90, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	do_sound_chain = TRUE
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/suit/roguetown/armor/otavan  //Be aware this item is clearly made for an Azure specific role, may require renaming.
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "otavan half-plate"
+	name = "corset half-plate"
 	desc = "half-plate armor with pauldrons."
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "corsethalfplate"
 	item_state = "corsethalfplate"
 	adjustable = CAN_CADJUST
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = 500
@@ -1072,7 +1085,7 @@
 	desc = "A large shirt with heavy padding meant to be used below armor."
 	icon_state = "fancygamb"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "piercing" = 25, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 50, "slash" = 45, "stab" = 60, "bullet" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP

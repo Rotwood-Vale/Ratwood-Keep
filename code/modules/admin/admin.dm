@@ -13,21 +13,50 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
-/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
-	set category = "GameMaster"
-	set name = "Show Player Panel"
-	set desc="Edit player (respawn, ban, heal, etc)"
-
-	if(!check_rights())
-		return
-
+/datum/admins/proc/show_player_panel_next(mob/M, clicked_flag = null)
 	log_admin("[key_name(usr)] checked the individual player panel for [key_name(M)][isobserver(usr)?"":" while in game"].")
 
 	if(!M)
-		to_chat(usr, span_warning("I seem to be selecting a mob that doesn't exist anymore."))
+		to_chat(usr, "<span class='warning'>I seem to be selecting a mob that doesn't exist anymore.</span>")
 		return
 
-	var/body = "<html><head><title>Options for [M.key]</title></head>"
+	var/body = "<html><head><title>Options for [M.key]</title><style>"
+	body += "<style>"
+	body += "html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden; }"
+	body += "#container { display: flex; flex-direction: row; align-items: flex-start; width: 100%; overflow-x: hidden; flex-wrap: nowrap; }"
+	body += "#left { flex: 2; padding-right: 10px; min-width: 0; }"
+	body += "#skills-section, #languages-section, #stats-section { display: none; background: white; border: 1px solid black; padding: 10px; width: 100%; box-sizing: border-box; max-width: 100%; overflow-x: hidden; word-wrap: break-word; }"
+	body += "#right { flex: 1; border-left: 2px solid black; padding-left: 10px; max-height: 500px; overflow-y: auto; width: 250px; min-width: 250px; box-sizing: border-box; position: relative; }"
+	body += "#right-header { display: flex; justify-content: space-around; padding: 5px; background: white; border-bottom: 2px solid black; position: sticky; top: 0; z-index: 10; }"
+	body += "#right-header button { flex: 1; margin: 2px; padding: 5px; cursor: pointer; font-weight: bold; border: none; background-color: #ddd; border-radius: 5px; }"
+	body += "#right-header button:hover { background-color: #ccc; }"
+
+	body += "</style>"
+
+	body += "<script>"
+	body += "function toggleSection(section) {"
+	body += "    localStorage.setItem('activeSection', section);"
+	body += "    document.getElementById('skills-section').style.display = (section === 'skills') ? 'block' : 'none';"
+	body += "    document.getElementById('languages-section').style.display = (section === 'languages') ? 'block' : 'none';"
+	body += "	 document.getElementById('stats-section').style.display = (section === 'stats') ? 'block' : 'none';"
+	body += "}"
+
+	body += "function refreshAndKeepSection(section) {"
+	body += "    localStorage.setItem('activeSection', section);"
+	body += "    location.reload();"
+	body += "}"
+
+	body += "window.onload = function() {"
+	body += "    var activeSection = \"[clicked_flag]\";"
+	body += "    if (activeSection !== \"0\" && activeSection !== \"\") {"
+	body += "        toggleSection(activeSection);"
+	body += "    }"
+	body += "}"
+	body += "</script>"
+
+	body +="</head>"
+	body += "<body><div id='container'>"
+	body += "<div id='left'>"
 	body += "<body>Options panel for <b>[M]</b>"
 	if(M.client)
 		body += " played by <b>[M.client]</b> "
@@ -41,17 +70,33 @@
 		body += " \[<A href='?_src_=holder;[HrefToken()];revive=[REF(M)]'>Heal</A>\] "
 
 	if(M.client)
-		body += "<br>\[<b>First Seen:</b> [M.client.player_join_date]\]\[<b>Byond account registered on:</b> [M.client.account_join_date]\]"
+		body += "<br>\[<b>First Seen:</b> [M.client.player_join_date]\]\[<b>Byond account registered on:</b> [M.client.account_join_date]\] IP: [M.client.address]"
 		body += "<br><br><b>Show related accounts by:</b> "
 		body += "\[ <a href='?_src_=holder;[HrefToken()];showrelatedacc=cid;client=[REF(M.client)]'>CID</a> | "
 		body += "<a href='?_src_=holder;[HrefToken()];showrelatedacc=ip;client=[REF(M.client)]'>IP</a> \]"
-		var/rep = 0
-		rep += SSpersistence.antag_rep[M.ckey]
-		body += "<br><br>Antagonist reputation: [rep]"
-		body += "<br><a href='?_src_=holder;[HrefToken()];modantagrep=add;mob=[REF(M)]'>\[increase\]</a> "
-		body += "<a href='?_src_=holder;[HrefToken()];modantagrep=subtract;mob=[REF(M)]'>\[decrease\]</a> "
-		body += "<a href='?_src_=holder;[HrefToken()];modantagrep=set;mob=[REF(M)]'>\[set\]</a> "
-		body += "<a href='?_src_=holder;[HrefToken()];modantagrep=zero;mob=[REF(M)]'>\[zero\]</a>"
+
+		var/pq = get_playerquality(M.ckey, TRUE)
+		var/pq_num = get_playerquality(M.ckey, FALSE)
+		body += "<br><br>Player Quality: [pq] ([pq_num])"
+		body += "<br><a href='?_src_=holder;[HrefToken()];editpq=add;mob=[REF(M)]'>\[Modify PQ\]</a> "
+		body += "<a href='?_src_=holder;[HrefToken()];showpq=add;mob=[REF(M)]'>\[Check PQ\]</a> "
+		body += "<br><a href='?_src_=holder;[HrefToken()];edittriumphs=add;mob=[REF(M)]'>\[Modify Triumphs\]</a> "
+		body += "<br>"
+		body += "<a href='?_src_=holder;[HrefToken()];roleban=add;mob=[REF(M)]'>\[Role Ban Panel\]</a> "
+
+		var/patron = "NA"
+		if(isliving(M))
+			var/mob/living/living = M
+			patron = initial(living.patron.name)
+		body += "<br><br>Current Patron: [patron]"
+
+		var/curse_string = ""
+		if(ishuman(M))
+			var/mob/living/carbon/human/living = M
+			for(var/datum/curse/curse in living.curses)
+				curse_string += "<br> - [curse.name]"
+		body += "<br>Curses: [curse_string]"
+
 		var/full_version = "Unknown"
 		if(M.client.byond_version)
 			full_version = "[M.client.byond_version].[M.client.byond_build ? M.client.byond_build : "xxx"]"
@@ -66,8 +111,6 @@
 		body += "<a href='?_src_=holder;[HrefToken()];initmind=[REF(M)]'>Init Mind</a> - "
 	body += "<a href='?priv_msg=[M.ckey]'>PM</a> - "
 	body += "<a href='?_src_=holder;[HrefToken()];subtlemessage=[REF(M)]'>SM</a> - "
-	if (ishuman(M) && M.mind)
-		body += "<a href='?_src_=holder;[HrefToken()];HeadsetMessage=[REF(M)]'>HM</a> - "
 	body += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</a> - "
 	//Default to client logs if available
 	var/source = LOGSRC_MOB
@@ -85,7 +128,6 @@
 
 	body += "<A href='?_src_=holder;[HrefToken()];showmessageckey=[M.ckey]'>Notes | Messages | Watchlist</A> | "
 	if(M.client)
-		body += "| <A href='?_src_=holder;[HrefToken()];sendtoprison=[REF(M)]'>Prison</A> | "
 		body += "\ <A href='?_src_=holder;[HrefToken()];sendbacktolobby=[REF(M)]'>Send back to Lobby</A> | "
 		var/muted = M.client.prefs.muted
 		body += "<br><b>Mute: </b> "
@@ -93,7 +135,7 @@
 		body += "<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> | "
 		body += "<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> | "
 		body += "<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> | "
-		body += "<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]"
+		body += "<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a> | "
 		body += "(<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)"
 
 	body += "<br><br>"
@@ -105,83 +147,85 @@
 	body += "<A href='?_src_=holder;[HrefToken()];traitor=[REF(M)]'>Traitor panel</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];narrateto=[REF(M)]'>Narrate to</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];subtlemessage=[REF(M)]'>Subtle message</A> | "
-	body += "<A href='?_src_=holder;[HrefToken()];languagemenu=[REF(M)]'>Language Menu</A>"
+	//body += "<A href='?_src_=holder;[HrefToken()];languagemenu=[REF(M)]'>Language Menu</A>"
 
-	if (M.client)
-		if(!isnewplayer(M))
-			body += "<br><br>"
-			body += "<b>Transformation:</b>"
-			body += "<br>"
+	body += "</div>"
 
-			//Human
-			if(ishuman(M))
-				body += "<B>Human</B> | "
+	body += "<div id='right'>"
+	body += "<div id='right-header'>"
+	body += "<button onclick=\"toggleSection('skills')\">Skills</button>"
+	body += "<button onclick=\"toggleSection('languages')\">Languages</button>"
+	body += "<button onclick=\"toggleSection('stats')\">WIP</button>"
+	body += "</div>"
+
+
+	body += "<div id='skills-section'>"
+	body += "<h3>Skills</h3><ul>"
+	if(M.mind)
+		for(var/skill_type in SSskills.all_skills)
+			var/datum/skill/skill = GetSkillRef(skill_type)
+			if(skill in M.mind.known_skills)
+				body += "<li>[initial(skill.name)]: [M.mind.known_skills[skill]] "
 			else
-				body += "<A href='?_src_=holder;[HrefToken()];humanone=[REF(M)]'>Humanize</A> | "
+				body += "<li>[initial(skill.name)]: 0"
+			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];increase_skill=[REF(M)];skill=[skill.type]'>+</a> "
+			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];decrease_skill=[REF(M)];skill=[skill.type]'>-</a></li>"
+	body += "</ul></div>"
 
-			//Monkey
-			if(ismonkey(M))
-				body += "<B>Monkeyized</B> | "
-			else
-				body += "<A href='?_src_=holder;[HrefToken()];monkeyone=[REF(M)]'>Monkeyize</A> | "
+	body += "<div id='languages-section'>"
+	body += "<h3>Languages</h3><ul>"
+	for(var/datum/language/ld as anything in GLOB.all_languages)
+		body += "<li>[initial(ld.name)] - "
+		if (M.mind?.language_holder?.has_language(ld))
+			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];remove_language=[REF(M)];language=[ld]'>Remove</a></li>"
+		else
+			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_language=[REF(M)];language=[ld]'>Grant</a></li>"
+	body += "</ul></div>"
 
-			//Corgi
-			if(iscorgi(M))
-				body += "<B>Corgized</B> | "
-			else
-				body += "<A href='?_src_=holder;[HrefToken()];corgione=[REF(M)]'>Corgize</A> | "
+	body += "<div id='stats-section'>"
+	// Stats Section
+	body += "<h3>Stats</h3><ul>"
+	if(isliving(M)) // Ensure M is a living mob
+		var/mob/living/living = M // Explicitly cast M to /mob/living
+		body += "<li>Strength: [living.STASTR] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"strength\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"strength\"'>-</a></li>"
 
-			if(ishuman(M))
-				body += "<A href='?_src_=holder;[HrefToken()];makeslime=[REF(M)]'>Make Slime</A> | "
+		body += "<li>Perception: [living.STAPER] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"perception\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"perception\"'>-</a></li>"
 
-			//Simple Animals
-			if(isanimal(M))
-				body += "<A href='?_src_=holder;[HrefToken()];makeanimal=[REF(M)]'>Re-Animalize</A> | "
-			else
-				body += "<A href='?_src_=holder;[HrefToken()];makeanimal=[REF(M)]'>Animalize</A> | "
+		body += "<li>Endurance: [living.STAEND] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"endurance\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"endurance\"'>-</a></li>"
 
-			body += "<br><br>"
-			body += "<b>Rudimentary transformation:</b><font size=2><br>These transformations only create a new mob type and copy stuff over. They do not take into account MMIs and similar mob-specific things. The buttons in 'Transformations' are preferred, when possible.</font><br>"
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=observer;mob=[REF(M)]'>Observer</A> | "
-			body += "\[ Alien: <A href='?_src_=holder;[HrefToken()];simplemake=drone;mob=[REF(M)]'>Drone</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=hunter;mob=[REF(M)]'>Hunter</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=sentinel;mob=[REF(M)]'>Sentinel</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=praetorian;mob=[REF(M)]'>Praetorian</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=queen;mob=[REF(M)]'>Queen</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=larva;mob=[REF(M)]'>Larva</A> \] "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=human;mob=[REF(M)]'>Human</A> "
-			body += "\[ slime: <A href='?_src_=holder;[HrefToken()];simplemake=slime;mob=[REF(M)]'>Baby</A>, "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=adultslime;mob=[REF(M)]'>Adult</A> \] "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=monkey;mob=[REF(M)]'>Monkey</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=robot;mob=[REF(M)]'>Cyborg</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=cat;mob=[REF(M)]'>Cat</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=runtime;mob=[REF(M)]'>Runtime</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=corgi;mob=[REF(M)]'>Corgi</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=ian;mob=[REF(M)]'>Ian</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=crab;mob=[REF(M)]'>Crab</A> | "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=coffee;mob=[REF(M)]'>Coffee</A> | "
-			body += "\[ Construct: <A href='?_src_=holder;[HrefToken()];simplemake=constructarmored;mob=[REF(M)]'>Juggernaut</A> , "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=constructbuilder;mob=[REF(M)]'>Artificer</A> , "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=constructwraith;mob=[REF(M)]'>Wraith</A> \] "
-			body += "<A href='?_src_=holder;[HrefToken()];simplemake=shade;mob=[REF(M)]'>Shade</A>"
-			body += "<br>"
+		body += "<li>Constitution: [living.STACON] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"constitution\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"constitution\"'>-</a></li>"
 
-	if (M.client)
-		body += "<br><br>"
-		body += "<b>Other actions:</b>"
+		body += "<li>Intelligence: [living.STAINT] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"intelligence\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"intelligence\"'>-</a></li>"
+
+		body += "<li>Speed: [living.STASPD] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"speed\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"speed\"'>-</a></li>"
+
+		body += "<li>Luck: [living.STALUC] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"fortune\"'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"fortune\"'>-</a></li>"
+		body += "</ul>"
+
+
+		body += "</div>"
+		body += "</div>"
+
+
 		body += "<br>"
-		body += "<A href='?_src_=holder;[HrefToken()];forcespeech=[REF(M)]'>Forcesay</A> | "
-		body += "<A href='?_src_=holder;[HrefToken()];tdome1=[REF(M)]'>Thunderdome 1</A> | "
-		body += "<A href='?_src_=holder;[HrefToken()];tdome2=[REF(M)]'>Thunderdome 2</A> | "
-		body += "<A href='?_src_=holder;[HrefToken()];tdomeadmin=[REF(M)]'>Thunderdome Admin</A> | "
-		body += "<A href='?_src_=holder;[HrefToken()];tdomeobserve=[REF(M)]'>Thunderdome Observer</A> | "
+		body += "</body></html>"
 
-	body += "<br>"
-	body += "</body></html>"
-
-	usr << browse(body, "window=adminplayeropts-[REF(M)];size=550x515")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+		usr << browse(body, "window=adminplayeropts-[REF(M)];size=800x600")
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/admin_heal(mob/living/M in GLOB.mob_list)
 	set name = "Heal Mob"
@@ -869,3 +913,16 @@
 	epicenter.pollute_turf(choice, amount_choice)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] spawned pollution at [epicenter.loc] ([choice] - [amount_choice]).")
 	log_admin("[key_name(usr)] spawned pollution at [epicenter.loc] ([choice] - [amount_choice]).")
+
+/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
+	set category = "GameMaster"
+	set name = "Show Player Panel"
+	set desc="Edit player (respawn, ban, heal, etc)"
+
+	if(!check_rights())
+		return
+
+	show_player_panel_next(M)
+
+/client/proc/show_player_panel_next(mob/M)
+	holder?.show_player_panel_next(M)
