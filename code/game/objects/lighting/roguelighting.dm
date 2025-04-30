@@ -646,21 +646,6 @@
 	. = ..()
 
 
-
-/*
-Pot shit:
-- feed item to pot
-- get recipe type
-- add recipe type
-- cycle through them
-- update pot here?
-- When they finish kill that datum
-- update pot here?
-- Sounds?
-*/
-
-
-
 /* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.
 
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour)
