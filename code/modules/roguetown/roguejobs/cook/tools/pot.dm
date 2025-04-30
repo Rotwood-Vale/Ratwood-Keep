@@ -169,7 +169,6 @@ Meats
 	for(var/obj/item/reagent_containers/food/snacks/rogue/meat/M in dont_use)
 		if(istype(I, M))
 			return FALSE
-			break
 	return TRUE
 
 /datum/pot_recipe/fish_stew
