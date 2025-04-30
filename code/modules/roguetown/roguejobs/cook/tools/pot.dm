@@ -94,7 +94,7 @@ Pot Recipe
 	abstract_type = /datum/pot_recipe
 	var/input = null
 	var/water_conversion = 1
-	var/volume_to_replace = 33 // How many regents you get from it (third of 66oz, should fill a bowl, makes 3 bowls.)
+	var/volume_to_replace = 33 // How many regents you get from it (1/6th of a pot, 6 items makes 6 bowls of stew)
 	var/datum/reagent/output = null // reagents you get
 	var/cooking_time = 60 SECONDS //for the callback delay
 
