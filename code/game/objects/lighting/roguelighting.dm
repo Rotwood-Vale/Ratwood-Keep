@@ -637,8 +637,8 @@
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
 
-			if(P.reagents.chem_temp < 374)
-				to_chat(user, "<span class='notice'>The pot isn't boiling yet.</span>")
+			if(P.reagents.chem_temp < T100C)
+				to_chat(user, span_notice("The pot isn't boiling yet."))
 				return TRUE
 			
 			P.check_for_recipe(W, user)

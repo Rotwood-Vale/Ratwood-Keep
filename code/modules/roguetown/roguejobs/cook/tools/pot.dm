@@ -78,7 +78,6 @@
 
 // TO DO: Find a better place for this stuff eventually
 GLOBAL_LIST_INIT(pot_recipes, init_subtypes(/datum/pot_recipe))
-#define STEW_COOKING_TIME 60 SECONDS
 
 /* Select pot recipe */ //probably doesn't need to be a global proc but it's here if it's ever needed for other things.
 /proc/select_pot_recipe(list/datum/recipe/available_recipes, obj/item/I )
@@ -92,13 +91,12 @@ GLOBAL_LIST_INIT(pot_recipes, init_subtypes(/datum/pot_recipe))
 Pot Recipe
 ========*/
 /datum/pot_recipe
-	var/obj/item/reagent_containers/glass/bucket/pot/cooking_pot
 	abstract_type = /datum/pot_recipe
 	var/input = null
 	var/water_conversion = 1
 	var/volume_to_replace = 33 // How many regents you get from it (third of 66oz, should fill a bowl, makes 3 bowls.)
 	var/datum/reagent/output = null // reagents you get
-	var/cooking_time = STEW_COOKING_TIME //for the callback delay
+	var/cooking_time = 60 SECONDS //for the callback delay
 
 /* Check can cook */
 // Might only need to exist to do subtype checks (e.g. meat/mince versus meat/mince/fish)
@@ -130,10 +128,7 @@ Pot Recipe
 		return
 
 	// One final sanity check in case some lunatic empties some water but still keeps cooking and didn't hit 0 water or null reagents
-	var/true_volume_to_remove = volume_to_replace
-	var/checker = pot.reagents.get_reagent_amount(/datum/reagent/water)
-	if(checker < volume_to_replace)
-		true_volume_to_remove = checker
+	var/true_volume_to_remove =  min(volume_to_replace, pot.reagents.get_reagent_amount(/datum/reagent/water))
 
 	var/temp = pot.reagents.chem_temp
 	pot.reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
@@ -158,6 +153,7 @@ Meats
 /datum/pot_recipe/meat_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince
 	output = /datum/reagent/consumable/soup/stew/meat
+	cooking_time = 90 SECONDS
 
 // So subtypes don't fire this... kind of annoying but oh well.
 /datum/pot_recipe/meat_stew/check_can_cook(obj/item/I)
@@ -174,14 +170,17 @@ Meats
 /datum/pot_recipe/fish_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	output = /datum/reagent/consumable/soup/stew/fish 
+	cooking_time = 90 SECONDS
 
 /datum/pot_recipe/chicken_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
 	output =  /datum/reagent/consumable/soup/stew/chicken
+	cooking_time = 90 SECONDS
 
 /datum/pot_recipe/spider_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/spider
 	output = /datum/reagent/consumable/soup/stew/yucky
+	cooking_time = 100 SECONDS
 
 /*========
 Vegetables
@@ -189,6 +188,7 @@ Vegetables
 /datum/pot_recipe/potato_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced
 	output = /datum/reagent/consumable/soup/veggie/potato
+	cooking_time = 80 SECONDS
 
 /datum/pot_recipe/onion_stew
 	input =  /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
@@ -197,6 +197,7 @@ Vegetables
 /datum/pot_recipe/cabbage_stew
 	input =  /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
 	output = /datum/reagent/consumable/soup/veggie/cabbage
+	cooking_time = 70 SECONDS
 
 /datum/pot_recipe/beet_stew
 	input = /obj/item/reagent_containers/food/snacks/grown/beet
@@ -208,12 +209,11 @@ MISC
 /datum/pot_recipe/oatmeal
 	input =  /obj/item/reagent_containers/food/snacks/grown/oat
 	output = /datum/reagent/consumable/soup/oatmeal
+	cooking_time = 40 SECONDS
 
 /datum/pot_recipe/poo
 	input =  /obj/item/natural/poo
 	output = /datum/reagent/consumable/soup/poo
-
-#undef STEW_COOKING_TIME
 
 
 /*
