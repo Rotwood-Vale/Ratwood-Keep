@@ -80,8 +80,8 @@ GLOBAL_VAR_INIT(mobids, 1)
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-	set_nutrition(rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX))
-	set_hydration(rand(HYDRATION_LEVEL_START_MIN, HYDRATION_LEVEL_START_MAX))
+	set_nutrition(800) // REDMOON EDIT - removing_hunger_and_thirst_at_roundstart - WAS: rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX)
+	set_hydration(800) // REDMOON EDIT - removing_hunger_and_thirst_at_roundstart - WAS: rand(HYDRATION_LEVEL_START_MIN, HYDRATION_LEVEL_START_MAX)
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
