@@ -1,0 +1,17 @@
+{
+    "map_name": "Rockhill_Redmoon",
+    "map_path": "map_files/rockhill_redmoon",
+    "map_file": "rockhill_redmoon.dmm",
+
+	"traits": [
+				{"Up": true, "Turf Weather Effects": true},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"}
+			],
+
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}
