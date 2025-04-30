@@ -52,6 +52,7 @@
 	name = "stone pot"
 	desc = "A pot made out of stone"
 
+
 /* Handle recipes */
 /obj/item/reagent_containers/glass/bucket/pot/proc/check_for_recipe(obj/item/input, mob/living/user)
 	var/datum/pot_recipe/recipe = select_pot_recipe(GLOB.pot_recipes, input)
@@ -59,13 +60,30 @@
 		return FALSE
 	if(!recipe.output)
 		return FALSE
-	qdel(input)
-	recipe.start_cooking()
 
+	var/reserve_water = 0
+	for(var/datum/pot_recipe/R in active_recipes)
+		reserve_water += R.volume_to_replace
+	
+	var/amount_of_water = reagents.get_reagent_amount(/datum/reagent/water)
+	if(amount_of_water - reserve_water >= recipe.volume_to_replace)
+		var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.3, 2)
+		if(do_after(user,delay, target = src))
+			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+			qdel(input)
+			recipe.start_cooking(src, user)
+	else
+		to_chat(user, span_warning("There is not enough water in the pot."))
+
+
+// TO DO: Find a better place for this stuff eventually
 GLOBAL_LIST_INIT(pot_recipes, init_subtypes(/datum/pot_recipe))
+#define STEW_COOKING_TIME 60 SECONDS
+
+/* Select pot recipe */ //probably doesn't need to be a global proc but it's here if it's ever needed for other things.
 /proc/select_pot_recipe(list/datum/recipe/available_recipes, obj/item/I )
 	for(var/datum/pot_recipe/R in available_recipes)
-		if(istype(R.input, I))
+		if(istype(I, R.input))
 			if(R.check_can_cook())
 				return R
 	return FALSE
@@ -76,54 +94,59 @@ Pot Recipe
 /datum/pot_recipe
 	var/obj/item/reagent_containers/glass/bucket/pot/cooking_pot
 	abstract_type = /datum/pot_recipe
-	var/input = list()
+	var/input = null
 	var/water_conversion = 1
-	var/volume_to_replace = 33 //how much water you remove and put reagents you put in
-	var/absorption_rate = 11 // how fast the thing gets absorbed into the pot per tick
+	var/volume_to_replace = 33 // How many regents you get from it (third of 66oz, should fill a bowl, makes 3 bowls.)
 	var/datum/reagent/output = null // reagents you get
-	var/cooking_time = 5 SECONDS // Does this in sections
+	var/cooking_time = STEW_COOKING_TIME //for the callback delay
 
 /* Check can cook */
-// Might only need to exist to do type checks to make sure it's not
-// a subtype (e.g. meat versus mince)
+// Might only need to exist to do subtype checks (e.g. meat/mince versus meat/mince/fish)
 /datum/pot_recipe/proc/check_can_cook()
 	return TRUE
 
 /* Start cooking */
 /datum/pot_recipe/proc/start_cooking(obj/item/reagent_containers/glass/bucket/pot/P, mob/living/user)
-	cooking_pot = P
-	P.active_recipes += src
+	P.active_recipes.Add(src)
 	var/real_cooking_time = cooking_time 
 	if(user.mind)
 		real_cooking_time /= 1 + (user.mind.get_skill_level(/datum/skill/craft/cooking) * 0.5)
 		real_cooking_time = round(real_cooking_time)
-	cook()
+	addtimer(CALLBACK(src, PROC_REF(cook), P), cooking_time)
 
 /* Cook */
-/datum/pot_recipe/proc/cook()
-	if(!cooking_pot)
-		world.log << " I have no pot! Deleting..."
-		qdel(src)
-
+/datum/pot_recipe/proc/cook(obj/item/reagent_containers/glass/bucket/pot/pot)
+	if(!pot)
+		end_cooking()
+		return
 	if(volume_to_replace <= 0)
 		end_cooking()
-	
-	var/temp = cooking_pot.reagents.chem_temp
-	volume_to_replace = absorption_rate
-	cooking_pot.reagents.remove_reagent(/datum/reagent/water, volume_to_replace)
-	cooking_pot.reagents.add_reagent(output, volume_to_replace, list(), temp) //last value should stop pot losing temp.
+		return
+	if(!pot.reagents) // If we somehow lost all our reagents (either deleted or emptied before we finished)
+		end_cooking()
+		return
+	if(!pot.reagents.has_reagent(/datum/reagent/water, volume_to_replace)) //if we somehow snuck in or some water level changed before we fired just fucking DIE
+		end_cooking()
+		return
 
-	var/turf/pot_turf = get_turf(cooking_pot)
-	world.log << "[src] is cooking"
+	// One final sanity check in case some lunatic empties some water but still keeps cooking and didn't hit 0 water or null reagents
+	var/true_volume_to_remove = volume_to_replace
+	var/checker = pot.reagents.get_reagent_amount(/datum/reagent/water)
+	if(checker < volume_to_replace)
+		true_volume_to_remove = checker
+
+	var/temp = pot.reagents.chem_temp
+	pot.reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
+	pot.reagents.add_reagent(output, true_volume_to_remove, list(), temp) //last value should stop pot losing temp.
+
+	var/turf/pot_turf = get_turf(pot)
 	playsound(pot_turf, "bubbles", 30, TRUE)
-
-	addtimer(CALLBACK(src, PROC_REF(cook)), cooking_time)
+	end_cooking(pot) //we just finish for now...
 
 /* End cooking */
 //Probably never needs to do more than this but here if you wanna do something special on ending
-/datum/pot_recipe/proc/end_cooking()
-	cooking_pot.active_recipes -= src
-	qdel(src)
+/datum/pot_recipe/proc/end_cooking(obj/item/reagent_containers/glass/bucket/pot/P)
+	P.active_recipes.Remove(src)
 
 /*===========
 Stew Variants
@@ -133,72 +156,81 @@ Stew Variants
 Meats
 ===*/
 /datum/pot_recipe/meat_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat)
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince
 	output = /datum/reagent/consumable/soup/stew/meat
 
+// So subtypes don't fire this... kind of annoying but oh well.
+/datum/pot_recipe/meat_stew/check_can_cook(obj/item/I)
+	var/list/dont_use = list(
+		 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet,
+		 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish,
+		 /obj/item/reagent_containers/food/snacks/rogue/meat/spider )
+
+	for(var/obj/item/reagent_containers/food/snacks/rogue/meat/M in dont_use)
+		if(istype(I, M))
+			return FALSE
+			break
+	return TRUE
+
 /datum/pot_recipe/fish_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish)
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	output = /datum/reagent/consumable/soup/stew/fish 
 
 /datum/pot_recipe/chicken_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet)
-	output = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
+	output =  /datum/reagent/consumable/soup/stew/chicken
 
 /datum/pot_recipe/spider_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider)
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/spider
 	output = /datum/reagent/consumable/soup/stew/yucky
-
-/datum/pot_recipe/fish_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish)
-	output = /datum/reagent/consumable/soup/stew/fish 
 
 /*========
 Vegetables
 ========*/
 /datum/pot_recipe/potato_stew
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced)
+	input = /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced
 	output = /datum/reagent/consumable/soup/veggie/potato
 
 /datum/pot_recipe/onion_stew
-	input = list( /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced)
+	input =  /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
 	output = /datum/reagent/consumable/soup/veggie/onion
 
 /datum/pot_recipe/cabbage_stew
-	input = list( /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced)
+	input =  /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
 	output = /datum/reagent/consumable/soup/veggie/cabbage
 
 /datum/pot_recipe/beet_stew
-	input = list(/obj/item/reagent_containers/food/snacks/grown/beet)
+	input = /obj/item/reagent_containers/food/snacks/grown/beet
 	output = /datum/reagent/consumable/soup/veggie/beet
 
 /*==
 MISC
 ==*/
 /datum/pot_recipe/oatmeal
-	input = list( /obj/item/reagent_containers/food/snacks/grown/oat)
+	input =  /obj/item/reagent_containers/food/snacks/grown/oat
 	output = /datum/reagent/consumable/soup/oatmeal
 
+/datum/pot_recipe/poo
+	input =  /obj/item/natural/poo
+	output = /datum/reagent/consumable/soup/poo
 
-			/*
-			/obj/item/reagent_containers/food/snacks/grown/oat
-				pot.reagents.add_reagent(/datum/reagent/consumable/soup/oatmeal, 50)
+#undef STEW_COOKING_TIME
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/potato, 16)
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/onion, 16)
-					if(istype(W, /obj/item/reagent_containers/food/snacks/grown/beet))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/beet, 16)
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/cabbage, 16)
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/meat))
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/fish, 18)
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/spider))
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/yucky, 18)
-					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet) || istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry))
-					else
-						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/meat, 18)
-				*/
+/*
+new reagent groups
+- I put them here just so there's no potential conflicts
+- TO DO: move these somewhere better perhaps
+*/
+
+/datum/reagent/consumable/soup/poo
+	name = "Shit"
+	color = "#5e3534"
+	taste_description = "something disgusting"
+	nutriment_factor = 0
+
+//Like murky water but slightly stronger
+/datum/reagent/consumable/soup/poo/on_mob_life(mob/living/carbon/M)
+	M.adjustToxLoss(2)
+	M.add_nausea(80)
+	return ..()
