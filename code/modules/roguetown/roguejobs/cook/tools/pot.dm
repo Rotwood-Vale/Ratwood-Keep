@@ -15,7 +15,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
-	//volume is same as pots now, 198. (66oz) (whoever changed this to 300 before caused a lot of headaches)
+	//volume is same as buckets now, 198. (66oz) (whoever changed this to 300 before caused a lot of headaches)
 	smeltresult = null
 	var/list/active_recipes = list() //all current cooking things in the pot.
 
@@ -54,7 +54,7 @@
 
 /* Handle recipes */
 /obj/item/reagent_containers/glass/bucket/pot/proc/check_for_recipe(obj/item/input, mob/living/user)
-	var/datum/pot_recipe/recipe = select_interacselect_pot_recipe(GLOB.pot_recipes, input)
+	var/datum/pot_recipe/recipe = select_pot_recipe(GLOB.pot_recipes, input)
 	if(!recipe)
 		return FALSE
 	if(!recipe.output)
@@ -63,26 +63,17 @@
 	recipe.start_cooking()
 
 GLOBAL_LIST_INIT(pot_recipes, init_subtypes(/datum/pot_recipe))
-/proc/select_interacselect_pot_recipe(list/datum/recipe/available_recipes, obj/item/I )
+/proc/select_pot_recipe(list/datum/recipe/available_recipes, obj/item/I )
 	for(var/datum/pot_recipe/R in available_recipes)
 		if(istype(R.input, I))
 			if(R.check_can_cook())
 				return R
 	return FALSE
 
-/*=======
-PROBLEM:
-100 units of pot
-We need to find a way to make this seem fair
-Considering that 
-*/
-
-
 /*========
 Pot Recipe
 ========*/
 /datum/pot_recipe
-	var/name = "Pot recipe"
 	var/obj/item/reagent_containers/glass/bucket/pot/cooking_pot
 	abstract_type = /datum/pot_recipe
 	var/input = list()
@@ -134,13 +125,80 @@ Pot Recipe
 	cooking_pot.active_recipes -= src
 	qdel(src)
 
-/datum/pot_recipe/meat_stew
-	name = "meat stew"
-	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat)
-	water_conversion = 1
-	volume_to_replace = 33 //how much water you remove and put reagents you put in
-	absorption_rate = 11 // how fast the thing gets absorbed into the pot per tick
-	output = /datum/reagent/consumable/soup/stew/meat // reagents you get
-	cooking_time = 5 SECONDS // Does this in sections
+/*===========
+Stew Variants
+===========*/
 
+/*===
+Meats
+===*/
 /datum/pot_recipe/meat_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat)
+	output = /datum/reagent/consumable/soup/stew/meat
+
+/datum/pot_recipe/fish_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish)
+	output = /datum/reagent/consumable/soup/stew/fish 
+
+/datum/pot_recipe/chicken_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet)
+	output = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
+
+/datum/pot_recipe/spider_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider)
+	output = /datum/reagent/consumable/soup/stew/yucky
+
+/datum/pot_recipe/fish_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish)
+	output = /datum/reagent/consumable/soup/stew/fish 
+
+/*========
+Vegetables
+========*/
+/datum/pot_recipe/potato_stew
+	input = list(/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced)
+	output = /datum/reagent/consumable/soup/veggie/potato
+
+/datum/pot_recipe/onion_stew
+	input = list( /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced)
+	output = /datum/reagent/consumable/soup/veggie/onion
+
+/datum/pot_recipe/cabbage_stew
+	input = list( /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced)
+	output = /datum/reagent/consumable/soup/veggie/cabbage
+
+/datum/pot_recipe/beet_stew
+	input = list(/obj/item/reagent_containers/food/snacks/grown/beet)
+	output = /datum/reagent/consumable/soup/veggie/beet
+
+/*==
+MISC
+==*/
+/datum/pot_recipe/oatmeal
+	input = list( /obj/item/reagent_containers/food/snacks/grown/oat)
+	output = /datum/reagent/consumable/soup/oatmeal
+
+
+			/*
+			/obj/item/reagent_containers/food/snacks/grown/oat
+				pot.reagents.add_reagent(/datum/reagent/consumable/soup/oatmeal, 50)
+
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/potato, 16)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/onion, 16)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/grown/beet))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/beet, 16)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/cabbage, 16)
+
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/meat))
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/fish, 18)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/spider))
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/yucky, 18)
+					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet) || istype(W, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry))
+					else
+						pot.reagents.add_reagent(/datum/reagent/consumable/soup/stew/meat, 18)
+				*/
