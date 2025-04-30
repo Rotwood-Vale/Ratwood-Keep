@@ -403,6 +403,12 @@
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/clothing/mask/rogue/facemask/goldmask
 
+/datum/anvil_recipe/armor/gold/goldanklet
+	name = "Exotic Gold Anklets"
+	req_bar =  /obj/item/ingot/gold
+	created_item = list (/obj/item/clothing/shoes/roguetown/anklets)
+	skill_level = 4
+
 // --------- BLACKSTEEL RECIPES-----------
 
 /datum/anvil_recipe/armor/blacksteel/cuirass
