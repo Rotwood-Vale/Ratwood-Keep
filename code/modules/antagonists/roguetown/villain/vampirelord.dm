@@ -86,6 +86,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
 	owner.current.verbs |= /mob/living/carbon/human/proc/vampire_telepathy
 	if(isspawn)
+		owner.current.verbs |= /mob/living/carbon/human/proc/alter_button
 		owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 		add_objective(/datum/objective/vlordserve)
 		finalize_vampire_lesser()

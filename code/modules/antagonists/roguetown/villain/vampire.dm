@@ -175,7 +175,8 @@
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
 	set category = "VAMPIRE"
-
+	if(!stakecheck(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -214,9 +215,6 @@
 	mob_biotypes &= ~MOB_UNDEAD
 	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
-	var/datum/antagonist/vampirelord/lesser/vampirespawn = mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-	if(vampirespawn)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "DISGUISE"), 1 SECONDS)
 	if(dna.species.use_skintones)
 		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
 		if(breasts)
@@ -261,6 +259,25 @@
 		if(testicles)
 			testicles.accessory_colors = "#c9d3de"
 		regenerate_icons()
+
+/mob/living/carbon/human/proc/alter_button()
+	set name = "Alter Appearance"
+	set category = "VAMPIRE"
+	if(!stakecheck(usr))
+		return
+	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
+	if(!VD)
+		return
+	if(world.time < VD.last_transform + 30 SECONDS)
+		var/timet2 = (VD.last_transform + 30 SECONDS) - world.time
+		to_chat(src, span_warning("No.. not yet. [round(timet2/10)]s"))
+		return
+	else
+		if(VD.vitae < 100)
+			to_chat(src, span_warning("I don't have enough Vitae!"))
+			return
+		VD.last_transform = world.time
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "Altered Appearance"), 1 SECONDS)
 
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
