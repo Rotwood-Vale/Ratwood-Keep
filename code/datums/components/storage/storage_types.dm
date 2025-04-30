@@ -62,7 +62,7 @@
 
 
 /datum/component/storage/concrete/roguetown/belt/cloth
-	screen_max_columns = 1
+	screen_max_columns = 3
 
 /datum/component/storage/concrete/roguetown/belt/assassin
 	max_w_class = WEIGHT_CLASS_NORMAL

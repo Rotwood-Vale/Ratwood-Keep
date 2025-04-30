@@ -200,7 +200,7 @@
         /mob/proc/howl,
         /mob/proc/growl,
         /mob/proc/whine,
-		/mob/proc/bark,
+		/mob/proc/barks,
     )
 
 /datum/species/lupian/on_species_loss(mob/living/carbon/C)
@@ -211,7 +211,7 @@
         /mob/proc/howl,
         /mob/proc/growl,
         /mob/proc/whine,
-		/mob/proc/bark,
+		/mob/proc/barks,
     )
 
 /mob/proc/howl()
@@ -244,7 +244,7 @@
     emote("whine")
     next_move = world.time + 3
 
-/mob/proc/bark()
+/mob/proc/barks()
     set name = "Bark"
     set category = "Noises"
     if(stat != CONSCIOUS)
