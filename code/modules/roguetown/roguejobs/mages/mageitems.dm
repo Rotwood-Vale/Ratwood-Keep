@@ -108,7 +108,7 @@
 	if(istype(M,/obj/item/rogueore/cinnabar))
 		if(amount < 8)
 			amount = 8
-			to_chat(user, span_notice("I press acryne magic into the [M] and the red crystals within melt into quicksilver, quickly sinking into the [src]."))
+			to_chat(user, span_notice("I press arcyne magic into the [M] and the red crystals within melt into quicksilver, quickly sinking into the [src]."))
 	else
 		return ..()
 
@@ -134,11 +134,11 @@
 		return
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 
-	user.visible_message(span_notice("I start drag the blade in the shape of symbols and sigils"))
+	user.visible_message(span_notice("\The [user] begins to drag [user.p_their()] [name] over \the [Turf], inscribing intricate symbols and sigils inside a circle."), span_notice("I start to drag my [name] over \the [Turf], inscribing intricate symbols and sigils on a circle."))
 	playsound(loc, 'sound/misc/chalkdraw.ogg', 100, TRUE)
 	if(do_after(user, crafttime, target = src))
-		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
-		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
+		user.visible_message(span_warning("[user] draws an arcyne rune with [user.p_their()] [name]!"), \
+		span_notice("I finish tracing ornate symbols and circles with my [name], leaving behind a ritual rune."))
 		src.amount --
 		new rune_to_scribe(Turf)
 	if(amount == 0)
@@ -173,10 +173,10 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/attackby(obj/item/M, mob/user, params)
 	if(istype(M,/obj/item/rogueore/cinnabar))
-		var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+		var/crafttime = (6 SECONDS - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))* 0.5 SECONDS))
 		if(do_after(user, crafttime, target = src))
 			playsound(loc, 'sound/magic/scrapeblade.ogg', 100, TRUE)
-			to_chat(user, span_notice("I press acryne magic into the blade and it throbs in a deep purple..."))
+			to_chat(user, span_notice("I press arcyne magic into the blade and it throbs in a deep purple..."))
 			var/obj/arcyne_knife = new /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
 			qdel(M)
 			qdel(src)
@@ -209,7 +209,7 @@
 		to_chat(user, span_cult("There is already a rune here."))
 		return
 	var/structures_in_way = check_for_structures_and_closed_turfs(loc, rune_to_scribe)
-	if(structures_in_way == TRUE)
+	if(structures_in_way)
 		to_chat(user, span_cult("There is a structure, rune or wall in the way."))
 		return
 	if(initial(rune_to_scribe.req_keyword))
@@ -218,11 +218,14 @@
 			return FALSE
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 
-	user.visible_message(span_notice("I start drag the blade in the shape of symbols and sigils"))
+	user.visible_message(span_notice("[user] starts to carve an arcyne rune with [user.p_their()] [name]."), \
+		span_notice("I start drag the blade in the shape of symbols and sigils."))
 	playsound(loc, 'sound/magic/bladescrape.ogg', 100, TRUE)
 	if(do_after(user, crafttime, target = src))
-		user.visible_message(span_warning("[user] carves an arcyne rune with [user.p_their()] [src]!"), \
-		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
+		user.visible_message(
+			span_warning("[user] carves an arcyne rune with [user.p_their()] [name]!"), \
+			span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune")
+		)
 		new rune_to_scribe(Turf, chosen_keyword)
 
 /obj/item/rogueweapon/huntingknife/idagger/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)

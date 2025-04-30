@@ -6,7 +6,7 @@
 	blocks_air = TRUE
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	rad_insulation = RAD_MEDIUM_INSULATION
-	baseturfs = list(/turf/open/floor/rogue/naturalstone, /turf/open/transparent/openspace)
+	baseturfs = /turf/open/floor/rogue/naturalstone
 	var/above_floor
 	var/leanable = TRUE
 	var/wallclimb = FALSE
