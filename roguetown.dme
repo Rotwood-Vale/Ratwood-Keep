@@ -2469,8 +2469,6 @@
 #include "modular_redmoon\modules\tetris\weaponry.dm"
 #include "modular_redmoon\modules\tetris\wrists.dm"
 #include "modular_redmoon\modules\translation\translation.dm"
-#include "modular_redmoon\modules\translation\obj\item\food.dm"
-#include "modular_redmoon\modules\translation\obj\item\rogueweapon.dm"
 #include "modular_redmoon\modules\unbreakable_castle_underwalls\unbreakable_castle_underwalls.dm"
 #include "modular_redmoon\modules\venicle\baneblade.dm"
 #include "modular_redmoon\modules\venicle\funny_movement.dm"
