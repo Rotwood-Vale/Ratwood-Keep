@@ -1,269 +1,1461 @@
 /obj/item/reagent_containers/food/snacks/egg
 	name = "куриное яйцо" // Именительный
+	desc = "Надеюсь не стухшее." // Описание
 	name_gen = "куриного яйца" // Родительный
 	name_accu = "куриное яйцо" // Винительный
 	name_dat = "куриному яйцу" // Дательный
 	name_inst = "куриным яйцом" // Творительный
 	name_prep = "курином яйце" // Предложный
-
-/obj/item/reagent_containers/food/snacks/grown
 /obj/item/reagent_containers/food/snacks/grown/wheat
+	name = "зёрна" // Именительный
+	desc = "Можно перемолоть в муку или подготовить к засеиванию." // Описание
+	name_gen = "зёрен" // Родительный
+	name_accu = "зёрна" // Винительный
+	name_dat = "зёрнам" // Дательный
+	name_inst = "зёрнами" // Творительный
+	name_prep = "зёрнах" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/oat
+	name = "овёс" // Именительный
+	desc = "Можно перемолоть в муку или подготовить к засеиванию." // Описание
+	name_gen = "овса" // Родительный
+	name_accu = "овёс" // Винительный
+	name_dat = "овсу" // Дательный
+	name_inst = "овсом" // Творительный
+	name_prep = "овсе" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/rice
+	name = "рис" // Именительный
+	name_gen = "рис" // Родительный
+	name_accu = "рис" // Винительный
+	name_dat = "рису" // Дательный
+	name_inst = "рисом" // Творительный
+	name_prep = "рисе" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/apple
+	name = "яблоко" // Именительный
+	desc = "Ароматный и спелый плод." // Описание
+	name_gen = "яблока" // Родительный
+	name_accu = "яблоко" // Винительный
+	name_dat = "яблоку" // Дательный
+	name_inst = "яблоком" // Творительный
+	name_prep = "яблоке" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue
+	name = "ягоды" // Именительный
+	desc = "Аппетитные на вид ягоды. Надеюсь не ядовитые..." // Описание
+	name_gen = "ягод" // Родительный
+	name_accu = "ягодам" // Винительный
+	name_dat = "ягодам" // Дательный
+	name_inst = "ягодами" // Творительный
+	name_prep = "ягодах" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison
+	name = "ягоды" // Именительный
+	desc = "Аппетитные на вид ягоды. Надеюсь не ядовитые..." // Описание
+	name_gen = "ягод" // Родительный
+	name_accu = "ягодам" // Винительный
+	name_dat = "ягодам" // Дательный
+	name_inst = "ягодами" // Творительный
+	name_prep = "ягодах" // Предложный
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
+	name = "болотник" // Именительный (Кто? Что? Есть)
+	desc = "Туманящая разум трава." // Описание
+	name_gen = "болотника" // Родительный (Кого? Чего? нет)
+	name_accu = "болотник" // Винительный (Кого? Что? вижу)
+	name_dat = "болотнику" // Дательный (Кому? Чему? рад)
+	name_inst = "болотником" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "болотнике" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
+	name = "табак" // Именительный (Кто? Что? Есть)
+	desc = "Свежий лист табака. Стоит его высушить..." // Описание
+	name_gen = "табака" // Родительный (Кого? Чего? нет)
+	name_accu = "табак" // Винительный (Кого? Что? вижу)
+	name_dat = "табаку" // Дательный (Кому? Чему? рад)
+	name_inst = "табаком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "табаке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
+	name = "сушёный табак" // Именительный (Кто? Что? Есть)
+	desc = "Ароматный лист сушёного табака." // Описание
+	name_gen = "сушйного табака" // Родительный (Кого? Чего? нет)
+	name_accu = "сушёный табак" // Винительный (Кого? Что? вижу)
+	name_dat = "сушёному табаку" // Дательный (Кому? Чему? рад)
+	name_inst = "сушёным табаком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сушёном табаке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
+	name = "сушёный болотник" // Именительный (Кто? Что? Есть)
+	desc = "Сушеная трава со специфичным запахом. Готова к употреблению." // Описание
+	name_gen = "сушшёного болотника" // Родительный (Кого? Чего? нет)
+	name_accu = "сушёный болотник" // Винительный (Кого? Что? вижу)
+	name_dat = "сушёным болотнику" // Дательный (Кому? Чему? рад)
+	name_inst = "сушёным болотником" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сушёном болотнике" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/cabbage
+	name = "капуста" // Именительный (Кто? Что? Есть)
+	desc = "Зеленеющий, хрустящий кочан капусты. Эльфы почитают её как символ процветания." // Описание
+	name_gen = "капусты" // Родительный (Кого? Чего? нет)
+	name_accu = "капусту" // Винительный (Кого? Что? вижу)
+	name_dat = "капусте" // Дательный (Кому? Чему? рад)
+	name_inst = "капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "капусте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/pear
+	name = "груша" // Именительный (Кто? Что? Есть)
+	name_gen = "груши" // Родительный (Кого? Чего? нет)
+	name_accu = "грушу" // Винительный (Кого? Что? вижу)
+	name_dat = "груше" // Дательный (Кому? Чему? рад)
+	name_inst = "грушей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "груше" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/cherry
+	name = "вишня" // Именительный (Кто? Что? Есть)
+	name_gen = "вишни" // Родительный (Кого? Чего? нет)
+	name_accu = "вишню" // Винительный (Кого? Что? вижу)
+	name_dat = "вишне" // Дательный (Кому? Чему? рад)
+	name_inst = "вишней" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "вишне" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/olive
+	name = "оливка" // Именительный (Кто? Что? Есть)
+	name_gen = "оливки" // Родительный (Кого? Чего? нет)
+	name_accu = "оливку" // Винительный (Кого? Что? вижу)
+	name_dat = "оливке" // Дательный (Кому? Чему? рад)
+	name_inst = "оливкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "оливке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/nut
+	name = "орех" // Именительный (Кто? Что? Есть)
+	name_gen = "ореха" // Родительный (Кого? Чего? нет)
+	name_accu = "орех" // Винительный (Кого? Что? вижу)
+	name_dat = "ореху" // Дательный (Кому? Чему? рад)
+	name_inst = "орехом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "орехе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/tomato
+	name = "помидор" // Именительный (Кто? Что? Есть)
+	name_gen = "помидора" // Родительный (Кого? Чего? нет)
+	name_accu = "помидор" // Винительный (Кого? Что? вижу)
+	name_dat = "помидору" // Дательный (Кому? Чему? рад)
+	name_inst = "помидором" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "помидоре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/onion
+	name = "лук" // Именительный (Кто? Что? Есть)
+	desc = "При его виде у вас наворачиваются слёзы счастья." // Описание
+	name_gen = "лука" // Родительный (Кого? Чего? нет)
+	name_accu = "лук" // Винительный (Кого? Что? вижу)
+	name_dat = "луку" // Дательный (Кому? Чему? рад)
+	name_inst = "луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "луке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/garlic
+	name = "чеснок" // Именительный (Кто? Что? Есть)
+	desc = "Зубчики чеснока, усиливающие ваш аппетит. А еще ходит поверье, что он отгоняет вампиров!" // Описание
+	name_gen = "чеснока" // Родительный (Кого? Чего? нет)
+	name_accu = "чеснок" // Винительный (Кого? Что? вижу)
+	name_dat = "чесноку" // Дательный (Кому? Чему? рад)
+	name_inst = "чесноком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "чесноке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/carrot
+	name = "морковь" // Именительный (Кто? Что? Есть)
+	desc = "Продолговатая и острая." // Описание
+	name_gen = "моркови" // Родительный (Кого? Чего? нет)
+	name_accu = "морковь" // Винительный (Кого? Что? вижу)
+	name_dat = "моркови" // Дательный (Кому? Чему? рад)
+	name_inst = "морковью" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "моркови" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/potato
+	name = "картофель" // Именительный (Кто? Что? Есть)
+	desc = "Плотный и крепкий плод картофеля. Дворфы обожают его и почитают как символ роста и развития." // Описание
+	name_gen = "картофеля" // Родительный (Кого? Чего? нет)
+	name_accu = "картофель" // Винительный (Кого? Что? вижу)
+	name_dat = "картофелю" // Дательный (Кому? Чему? рад)
+	name_inst = "картофелем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картофеле" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/eggplant
+	name = "баклажан" // Именительный (Кто? Что? Есть)
+	name_gen = "баклажана" // Родительный (Кого? Чего? нет)
+	name_accu = "баклажан" // Винительный (Кого? Что? вижу)
+	name_dat = "баклажану" // Дательный (Кому? Чему? рад)
+	name_inst = "баклажаном" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "баклажане" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/bean
+	name = "бобы" // Именительный (Кто? Что? Есть)
+	name_gen = "бобов" // Родительный (Кого? Чего? нет)
+	name_accu = "бобы" // Винительный (Кого? Что? вижу)
+	name_dat = "бобам" // Дательный (Кому? Чему? рад)
+	name_inst = "бобами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "бобах" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/radish
+	name = "редис" // Именительный (Кто? Что? Есть)
+	name_gen = "редиса" // Родительный (Кого? Чего? нет)
+	name_accu = "редис" // Винительный (Кого? Что? вижу)
+	name_dat = "редису" // Дательный (Кому? Чему? рад)
+	name_inst = "редисом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "редисе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/beet
+	name = "сахарная свекла" // Именительный (Кто? Что? Есть)
+	desc = "Не такая уж и сахарная на вид. Можно перемолоть чтобы получить сахар." // Описание
+	name_gen = "сахарной свеклы" // Родительный (Кого? Чего? нет)
+	name_accu = "сахарную свеклу" // Винительный (Кого? Что? вижу)
+	name_dat = "сахарной свекле" // Дательный (Кому? Чему? рад)
+	name_inst = "сахарной свеклой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сахарной свекле" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/bellpepper
+	name = "сладкий перец" // Именительный (Кто? Что? Есть)
+	name_gen = "сладкого перца" // Родительный (Кого? Чего? нет)
+	name_accu = "сладкий перец" // Винительный (Кого? Что? вижу)
+	name_dat = "сладкому перцу" // Дательный (Кому? Чему? рад)
+	name_inst = "сладким перцем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сладком перце" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/peas
+	name = "горох" // Именительный (Кто? Что? Есть)
+	desc = "Зеленый и круглый." // Описание
+	name_gen = "гороха" // Родительный (Кого? Чего? нет)
+	name_accu = "горох" // Винительный (Кого? Что? вижу)
+	name_dat = "гороху" // Дательный (Кому? Чему? рад)
+	name_inst = "горохом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "горохе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/cucumber
+	name = "огурец" // Именительный (Кто? Что? Есть)
+	desc = "Хрустящий и продолговатый. С пупырышками." // Описание
+	name_gen = "огурца" // Родительный (Кого? Чего? нет)
+	name_accu = "огурец" // Винительный (Кого? Что? вижу)
+	name_dat = "огурцу" // Дательный (Кому? Чему? рад)
+	name_inst = "огурцом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "огурце" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/tea
-/obj/item/reagent_containers/food/snacks/grown/plumphelmet
-/obj/item/reagent_containers/food/snacks/grown/trippy
-/obj/item/reagent_containers/food/snacks/grown/amanita
-/obj/item/reagent_containers/food/snacks/meat
-/obj/item/reagent_containers/food/snacks/meat/slab
-/obj/item/reagent_containers/food/snacks/meat/slab/human
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/shadow
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/skeleton
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ethereal
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat
-/obj/item/reagent_containers/food/snacks/meat/slab/meatproduct
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey
-/obj/item/reagent_containers/food/snacks/meat/slab/mouse
-/obj/item/reagent_containers/food/snacks/meat/slab/corgi
-/obj/item/reagent_containers/food/snacks/meat/slab/pug
-/obj/item/reagent_containers/food/snacks/meat/steak
-/obj/item/reagent_containers/food/snacks/meat/steak/plain
-/obj/item/reagent_containers/food/snacks/meat/steak/plain/human
-/obj/item/reagent_containers/food/snacks/meat/steak/killertomato
-/obj/item/reagent_containers/food/snacks/meat/steak/bear
-/obj/item/reagent_containers/food/snacks/meat/steak/xeno
-/obj/item/reagent_containers/food/snacks/meat/steak/goliath
-/obj/item/reagent_containers/food/snacks/meat/steak/gondola
-/obj/item/reagent_containers/food/snacks/meat/steak/penguin
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet/plain
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet/plain/human
-/obj/item/reagent_containers/food/snacks/meat/cutlet
-/obj/item/reagent_containers/food/snacks/meat/cutlet/plain
-/obj/item/reagent_containers/food/snacks/meat/cutlet/plain/human
-/obj/item/reagent_containers/food/condiment
-/obj/item/reagent_containers/food/condiment/enzyme
-/obj/item/reagent_containers/food/condiment/sugar
-/obj/item/reagent_containers/food/condiment/saltshaker		//separate from above since it's a small shaker rather then
-/obj/item/reagent_containers/food/condiment/peppermill
-/obj/item/reagent_containers/food/condiment/milk
-/obj/item/reagent_containers/food/condiment/flour
-/obj/item/reagent_containers/food/condiment/soymilk
-/obj/item/reagent_containers/food/condiment/rice
-/obj/item/reagent_containers/food/condiment/soysauce
-/obj/item/reagent_containers/food/condiment/mayonnaise
-/obj/item/reagent_containers/food/condiment/pack
-/obj/item/reagent_containers/food/condiment/pack/ketchup
-/obj/item/reagent_containers/food/condiment/pack/hotsauce
-/obj/item/reagent_containers/food/condiment/pack/astrotame
-/obj/item/reagent_containers/food/condiment/pack/bbqsauce
-/obj/item/reagent_containers/food/snacks/xenoburger			//identification path for the object.
-/obj/item/reagent_containers/food/snacks
-/obj/item/reagent_containers/food/snacks/store
-/obj/item/reagent_containers/food/snacks/badrecipe
-/obj/item/reagent_containers/food
-/obj/item/reagent_containers/food/snacks/deadmouse
-/obj/item/reagent_containers/food/snacks/crow
-/obj/item/reagent_containers/food/snacks/rogue/friedcrow
-/obj/item/reagent_containers/food/snacks/crow/dead
-/obj/item/reagent_containers/food/snacks/smallrat
-/obj/item/reagent_containers/food/snacks/rogue/friedrat
-/obj/item/reagent_containers/food/snacks/smallrat/dead
-/obj/item/reagent_containers/food/snacks/fish
-/obj/item/reagent_containers/food/snacks/fish/dead
-/obj/item/reagent_containers/food/snacks/fish/carp
-/obj/item/reagent_containers/food/snacks/fish/clownfish
-/obj/item/reagent_containers/food/snacks/fish/angler
-/obj/item/reagent_containers/food/snacks/fish/eel
-/obj/item/reagent_containers/food/snacks/fish/shrimp
-/obj/item/reagent_containers/food/snacks/fish/oyster
-/obj/item/reagent_containers/food/snacks/fish/crab
-/obj/item/reagent_containers/food/snacks/fish/lobster
+	name = "чайные листья" // Именительный (Кто? Что? Есть)
+	desc = "Ароматные листья чая." // Описание
+	name_gen = "чайных листьев" // Родительный (Кого? Чего? нет)
+	name_accu = "чайные листья" // Винительный (Кого? Что? вижу)
+	name_dat = "чайным листьям" // Дательный (Кому? Чему? рад)
+	name_inst = "чайными листьями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "чайных листьях" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
+	name = "жареная рыба" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная рыба, доведенная до идеальной хрустящей корочки." // Описание
+	name_gen = "жареной рыбы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную рыбу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной рыбе" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной рыбой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной рыбе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
+	name = "жареный карп" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный карп, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного карпа" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного карпа" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному карпу" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным карпом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном карпе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
+	name = "жареная пятнистая рыба" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная пятнистая рыба, доведенная до идеальной хрустящей корочки." // Описание
+	name_gen = "жареной пятнистой рыбы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную пятнистую рыбу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной пятнистой рыбе" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной пятнистой рыбой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной пятнистой рыбе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
+	name = "жареный удильщик" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный удильщик, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного удильщика" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного удильщика" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному удильщику" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным удильщиком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном удильщике" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
+	name = "жареный угорь" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный угорь, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного угря" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного угря" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному угрю" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным угрём" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном угре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
+	name = "жареный карп" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный карп, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного карпа" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного карпа" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному карпу" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным карпом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном карпе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
+	name = "жареная пятнистая рыба" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная пятнистая рыба, доведенная до идеальной хрустящей корочки." // Описание
+	name_gen = "жареной пятнистой рыбы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную пятнистую рыбу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной пятнистой рыбе" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной пятнистой рыбой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной пятнистой рыбе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
+	name = "жареный удильщик" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный удильщик, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного удильщика" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного удильщика" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному удильщику" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным удильщиком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном удильщике" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
+	name = "жареный угорь" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный угорь, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного угря" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного угря" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному угрю" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным угрём" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном угре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+	name = "жареная креветка" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная креветка, доведенная до идеальной хрустящей корочки." // Описание
+	name_gen = "жареной креветки" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную креветку" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной креветке" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной креветкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной креветке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/crab
+	name = "жареный краб" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный краб, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного краба" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного краба" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному крабу" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным крабом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном крабе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
+	name = "жареный омар" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный омар, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного омара" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного омара" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному омару" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным омаром" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном омаре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
-/obj/item/reagent_containers/food/snacks/organ
+	name = "манацветок" // Именительный (Кто? Что? Есть)
+	desc = "Яркий голубой цветок, от которого так и веет магической аурой." // Описание
+	name_gen = "манацветка" // Родительный (Кого? Чего? нет)
+	name_accu = "манацветок" // Винительный (Кого? Что? вижу)
+	name_dat = "манацветку" // Дательный (Кому? Чему? рад)
+	name_inst = "манацветком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "манацветке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak
+	name = "приправленный стейк" // Именительный (Кто? Что? Есть)
+	desc = "Сочный жареный стейк, щедро приправленный перцем для остроты." // Описание
+	name_gen = "приправленного стейка" // Родительный (Кого? Чего? нет)
+	name_accu = "приправленный стейк" // Винительный (Кого? Что? вижу)
+	name_dat = "приправленному стейку" // Дательный (Кому? Чему? рад)
+	name_inst = "приправленным стейком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "приправленном стейке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak/plated
+	name = "приправленный стейк" // Именительный (Кто? Что? Есть)
+	desc = "Сочный жареный стейк, щедро приправленный перцем для остроты." // Описание
+	name_gen = "приправленного стейка" // Родительный (Кого? Чего? нет)
+	name_accu = "приправленный стейк" // Винительный (Кого? Что? вижу)
+	name_dat = "приправленному стейку" // Дательный (Кому? Чему? рад)
+	name_inst = "приправленным стейком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "приправленном стейке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/onionsteak
+	name = "стейк с луком" // Именительный (Кто? Что? Есть)
+	desc = "Сочное мясо с жареными луковыми кольцами. Ароматное и пропитанное соками обоих ингредиентов, оно сводит вас с ума." // Описание
+	name_gen = "стейка с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "стейк с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "стейку с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "стейком с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "стейке с луком" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/onionsteak/plated
+	name = "стейк с луком" // Именительный (Кто? Что? Есть)
+	desc = "Сочное мясо с жареными луковыми кольцами. Ароматное и пропитанное соками обоих ингредиентов, оно сводит вас с ума." // Описание
+	name_gen = "стейка с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "стейк с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "стейку с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "стейком с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "стейке с луком" // Предложный (О ком? О чем? думаю)
+/obj/item/reagent_containers/food/snacks/rogue/onionsteak
+	name = "стейк с луком" // Именительный (Кто? Что? Есть)
+	desc = "Сочное мясо с жареными луковыми кольцами. Ароматное и пропитанное соками обоих ингредиентов, оно сводит вас с ума." // Описание
+	name_gen = "стейка с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "стейк с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "стейку с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "стейком с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "стейке с луком" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienercabbage
+	name = "сосиска с капустой" // Именительный (Кто? Что? Есть)
+	desc = "Вкусное и сытное блюдо, идеальное для солдата на походе." // Описание
+	name_gen = "сосиски с капустой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с капустой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с капустой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с капустой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienercabbage/plated
+	name = "сосиска с капустой" // Именительный (Кто? Что? Есть)
+	desc = "Вкусное и сытное блюдо, идеальное для солдата на походе." // Описание
+	name_gen = "сосиски с капустой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с капустой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с капустой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с капустой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotato
+	name = "сосиска с картошкой" // Именительный (Кто? Что? Есть)
+	desc = "Сытное и невообразимо вкусное сочетание картошки и мяса." // Описание
+	name_gen = "сосиски с картошкой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с картошкой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с картошкой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с картошкой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated
+	name = "сосиска с картошкой" // Именительный (Кто? Что? Есть)
+	desc = "Сытное и невообразимо вкусное сочетание картошки и мяса." // Описание
+	name_gen = "сосиски с картошкой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с картошкой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с картошкой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с картошкой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions
+	name = "сосиска с луком" // Именительный (Кто? Что? Есть)
+	desc = "Вкусно и точка." // Описание
+	name_gen = "сосиски с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с луком" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated
+	name = "сосиска с луком" // Именительный (Кто? Что? Есть)
+	desc = "Вкусно и точка." // Описание
+	name_gen = "сосиски с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с луком" // Предложный (О ком? О чем? думаю)
+/obj/item/reagent_containers/food/snacks/rogue/wieneronions
+	name = "сосиска с луком" // Именительный (Кто? Что? Есть)
+	desc = "Вкусно и точка." // Описание
+	name_gen = "сосиски с луком" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с луком" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с луком" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с луком" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
+	name = "сосиска с луком и картошкой" // Именительный (Кто? Что? Есть)
+	desc = "Отменное сочетание трёх ингридиентов, мечта любого бродяги." // Описание
+	name_gen = "сосиски с луком и картошкой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с луком и картошкой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с луком и картошкой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с луком и картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с луком и картошкой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated
+	name = "сосиска с луком и картошкой" // Именительный (Кто? Что? Есть)
+	desc = "Отменное сочетание трёх ингридиентов, мечта любого бродяги." // Описание
+	name_gen = "сосиски с луком и картошкой" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску с луком и картошкой" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске с луком и картошкой" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской с луком и картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске с луком и картошкой" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato
+	name = "картошка с курятиной" // Именительный (Кто? Что? Есть)
+	desc = "Сытная, вкусная и питательная - любимое блюдо почитателей Равокса." // Описание
+	name_gen = "картошки с курятиной" // Родительный (Кого? Чего? нет)
+	name_accu = "картошку с курятиной" // Винительный (Кого? Что? вижу)
+	name_dat = "картошке с курятиной" // Дательный (Кому? Чему? рад)
+	name_inst = "картошкой с курятиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картошке с курятиной" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/frybirdtato/plated
+	name = "картошка с курятиной" // Именительный (Кто? Что? Есть)
+	desc = "Сытная, вкусная и питательная - любимое блюдо почитателей Равокса." // Описание
+	name_gen = "картошки с курятиной" // Родительный (Кого? Чего? нет)
+	name_accu = "картошку с курятиной" // Винительный (Кого? Что? вижу)
+	name_dat = "картошке с курятиной" // Дательный (Кому? Чему? рад)
+	name_inst = "картошкой с курятиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картошке с курятиной" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian
+	name = "омлет по валериански" // Именительный (Кто? Что? Есть)
+	desc = "Омлет, обёрнутый в корочку из полурасплавленного сыра. Блюдо из далёких земель." // Описание
+	name_gen = "картошки с курятиной" // Родительный (Кого? Чего? нет)
+	name_accu = "картошку с курятиной" // Винительный (Кого? Что? вижу)
+	name_dat = "картошке с курятиной" // Дательный (Кому? Чему? рад)
+	name_inst = "картошкой с курятиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картошке с курятиной" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian/plated
+	name = "омлет по валериански" // Именительный (Кто? Что? Есть)
+	desc = "Омлет, обёрнутый в корочку из полурасплавленного сыра. Блюдо из далёких земель." // Описание
+	name_gen = "картошки с курятиной" // Родительный (Кого? Чего? нет)
+	name_accu = "картошку с курятиной" // Винительный (Кого? Что? вижу)
+	name_dat = "картошке с курятиной" // Дательный (Кому? Чему? рад)
+	name_inst = "картошкой с курятиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картошке с курятиной" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/plated
+	name = "жареный карп" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная карп, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного карпа" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного карпа" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному карпу" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным карпом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном карпе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/plated
+	name = "жареная пятнистая рыба" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренная пятнистая рыба, доведенная до идеальной хрустящей корочки." // Описание
+	name_gen = "жареной пятнистой рыбы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную пятнистую рыбу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной пятнистой рыбе" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной пятнистой рыбой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной пятнистой рыбе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/plated
+	name = "жареный удильщик" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный удильщик, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного удильщика" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного удильщика" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному удильщику" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным удильщиком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном удильщике" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/plated
+	name = "жареный угорь" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный угорь, доведенный до идеальной хрустящей корочки." // Описание
+	name_gen = "жареного угря" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного угря" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному угрю" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным угрём" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном угре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked
+	name = "жареная курица" // Именительный (Кто? Что? Есть)
+	desc = "Тушка упитанной птицы, зажаренная до превосходной хрустящей корочки." // Описание
+	name_gen = "жареной курицы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную курицу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной курице" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной курицей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной курице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
+	name = "жареная курица" // Именительный (Кто? Что? Есть)
+	desc = "Тушка упитанной птицы, зажаренная до превосходной хрустящей корочки и щедро приправленной перцем." // Описание
+	name_gen = "жареной курицы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную курицу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной курице" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной курицей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной курице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/plated
+	name = "жареная курица" // Именительный (Кто? Что? Есть)
+	desc = "Тушка упитанной птицы, зажаренная до превосходной хрустящей корочки." // Описание
+	name_gen = "жареной курицы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную курицу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной курице" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной курицей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной курице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/friedrat/plated
+	name = "жареная крыса" // Именительный (Кто? Что? Есть)
+	desc = "Скрючившаяся в предсмертной агонии жареная тушка грызуна. Любимая еда гоблинов." // Описание
+	name_gen = "жареной курицы" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную курицу" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной курице" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной курицей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной курице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom
+	name = "заготовка пирога" // Именительный (Кто? Что? Есть)
+	desc = "Это будет что-то с чем-то..." // Описание
+	name_gen = "заготовка пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "заготовка пирога" // Винительный (Кого? Что? вижу)
+	name_dat = "заготовка пирога" // Дательный (Кому? Чему? рад)
+	name_inst = "заготовка пирога" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "заготовка пирога" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie
+	name = "пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked
+	name = "пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pieslice
-/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat // bae item
+	name = "кусок пирога" // Именительный (Кто? Что? Есть)
+	name_gen = "куска пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "куску пирога" // Дательный (Кому? Чему? рад)
+	name_inst = "кусокм пирога" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске пирога" // Предложный (О ком? О чем? думаю)
+/obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat
+	name = "мясной пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "мясного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "мясной пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "мясному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "мясным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "мясном пироге" // Предложный (О ком? О чем? думаю) // bae item
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/meat
+	name = "мясной пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "мясного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "мясной пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "мясному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "мясным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "мясном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish
+	name = "рыбный пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "рыбного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "рыбный пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "рыбному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "рыбным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "рыбном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pot
+	name = "сырный пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "сырного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "сырный пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "сырному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "сырным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/berry
+	name = "ягодный пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "ягодного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "ягодный пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "ягодному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "ягодным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "ягодном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison
+	name = "ягодный пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "ягодного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "ягодный пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "ягодному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "ягодным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "ягодном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple
+	name = "яблочный пирог" // Именительный (Кто? Что? Есть)
+	name_gen = "яблочного пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "яблочный пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "яблочному пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "яблочным пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "яблочном пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw
+	name = "сырой пирожок" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого пирожка" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой пирожок" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому пирожку" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым пирожком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром пирожке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mushroom
+	name = "сырой пирожок c грибами" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого пирожка с грибами" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой пирожок c грибами" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому пирожку c грибами" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым пирожком c грибами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром пирожке c грибами" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mince
+	name = "сырой пирожок с мясом" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого пирожка с мясом" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой пирожок с мясом" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому пирожку с мясом" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым пирожком с мясом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром пирожке с мясом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
+	name = "сырой пирожок с ягодами" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого пирожка с ягодами" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой пирожок с ягодами" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому пирожку с ягодами" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым пирожком с ягодами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром пирожке с ягодами" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/poison
+	name = "сырой пирожок с ягодами" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого пирожка с ягодами" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой пирожок с ягодами" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому пирожку с ягодами" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым пирожком с ягодами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром пирожке с ягодами" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/handpie
+	name = "пирожок" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "пирожка" // Родительный (Кого? Чего? нет)
+	name_accu = "пирожок" // Винительный (Кого? Что? вижу)
+	name_dat = "пирожку" // Дательный (Кому? Чему? рад)
+	name_inst = "пирожком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "пирожке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
+	name = "сырой крабовый пирог" // Именительный (Кто? Что? Есть)
+	desc = "Сытная и вкусная закуска придуманная дворфами, рецепт которой прошел через века." // Описание
+	name_gen = "сырого крабового пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой крабовый пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому крабовому пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым крабовым пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром крабовом пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/crabcake
+	name = "крабовый пирог" // Именительный (Кто? Что? Есть)
+	desc = "Пирог начинённый нежным крабовым мясом." // Описание
+	name_gen = "крабового пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "крабовый пирог" // Винительный (Кого? Что? вижу)
+	name_dat = "крабовому пирогу" // Дательный (Кому? Чему? рад)
+	name_inst = "крабовым пирогом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "крабовом пироге" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried
+	name = "жареный стейк" // Именительный (Кто? Что? Есть)
+	desc = "Кусок стейка средней прожарки. Можно добавить еще чего-нибудь или же засолить." // Описание
+	name_gen = "жареного стейка" // Родительный (Кого? Чего? нет)
+	name_accu = "жареный стейк" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному стейку" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным стейком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном стейке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
+	name = "Гренцельхофтская булка" // Именительный (Кто? Что? Есть)
+	desc = "Издревле - эльфийская кухня, только вместо сосиски использовалось мясо смертных рас. Теперь немного в измененном виде, хрустящая булочка с жареной сосиской - известное произведение Гренцельхофтской кухни." // Описание
+	name_gen = "Гренцельхофтская булка" // Родительный (Кого? Чего? нет)
+	name_accu = "Гренцельхофтскую булку" // Винительный (Кого? Что? вижу)
+	name_dat = "Гренцельхофтской булке" // Дательный (Кому? Чему? рад)
+	name_inst = "Гренцельхофтской булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "Гренцельхофтской булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/bun_grenz/plated
+	name = "Гренцельхофтская булка" // Именительный (Кто? Что? Есть)
+	desc = "Издревле - эльфийская кухня, только вместо сосиски использовалось мясо смертных рас. Теперь немного в измененном виде, хрустящая булочка с жареной сосиской - известное произведение Гренцельхофтской кухни." // Описание
+	name_gen = "Гренцельхофтская булка" // Родительный (Кого? Чего? нет)
+	name_accu = "Гренцельхофтскую булку" // Винительный (Кого? Что? вижу)
+	name_dat = "Гренцельхофтской булке" // Дательный (Кому? Чему? рад)
+	name_inst = "Гренцельхофтской булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "Гренцельхофтской булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/friedegg
+	name = "яичница" // Именительный (Кто? Что? Есть)
+	desc = "Яичница. Излюбленная еда почитателей Астраты." // Описание
+	name_gen = "яичницы" // Родительный (Кого? Чего? нет)
+	name_accu = "яичницу" // Винительный (Кого? Что? вижу)
+	name_dat = "яичнице" // Дательный (Кому? Чему? рад)
+	name_inst = "яичницей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "яичнице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
+	name = "двойная яичница" // Именительный (Кто? Что? Есть)
+	desc = "В два раза сытнее. В два раза вкуснее." // Описание
+	name_gen = "двойной яичницы" // Родительный (Кого? Чего? нет)
+	name_accu = "двойную яичницу" // Винительный (Кого? Что? вижу)
+	name_dat = "двойной яичнице" // Дательный (Кому? Чему? рад)
+	name_inst = "двойной яичницей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "двойной яичнице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
+	name = "жареный окорок" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренный до аппетитной корочки окорок, лоснящийся в своем соку." // Описание
+	name_gen = "жареного окорока" // Родительный (Кого? Чего? нет)
+	name_accu = "жареный окорок" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному окороку" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным окороком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном окороке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried
+	name = "жареный бекон" // Именительный (Кто? Что? Есть)
+	desc = "Ароматный кусочек жареного бекона. У свиньи с которой его срезали день явно не задался." // Описание
+	name_gen = "жареного бекона" // Родительный (Кого? Чего? нет)
+	name_accu = "жареный бекон" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному бекону" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным беконом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном беконе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
+	name = "приготовленная паучатина" // Именительный (Кто? Что? Есть)
+	desc = "Специфичное на вкус, но лучше чем ничего." // Описание
+	name_gen = "приготовленной паучатины" // Родительный (Кого? Чего? нет)
+	name_accu = "приготовленную паучатину" // Винительный (Кого? Что? вижу)
+	name_dat = "приготовленной паучатине" // Дательный (Кому? Чему? рад)
+	name_inst = "приготовленной паучатиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "приготовленной паучатине" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked
+	name = "жареная сосиска" // Именительный (Кто? Что? Есть)
+	desc = "Вкуснейшее мясо в обжаренной оболочке." // Описание
+	name_gen = "жареной сосиски" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную сосиску" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной сосиске" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной сосиской" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной сосиске" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked/wiener // wiener meant to be made from beef or maybe mince + bacon, luxury sausage, not implemented yet
+	name = "жареная сосиска" // Именительный (Кто? Что? Есть)
+	desc = "Вкуснейшее мясо в обжаренной оболочке." // Описание
+	name_gen = "жареной сосиски" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную сосиску" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной сосиске" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной сосиской" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной сосиске" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried
+	name = "приготовленная капуста" // Именительный (Кто? Что? Есть)
+	desc = "Радость крестьянина." // Описание
+	name_gen = "приготовленной капусты" // Родительный (Кого? Чего? нет)
+	name_accu = "приготовленную капусту" // Винительный (Кого? Что? вижу)
+	name_dat = "приготовленной капусте" // Дательный (Кому? Чему? рад)
+	name_inst = "приготовленной капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "приготовленной капусте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked
+	name = "запеченная картошка" // Именительный (Кто? Что? Есть)
+	desc = "Дворфы обожают её не только есть, но и играть в горячую картошку." // Описание
+	name_gen = "запеченной картошки" // Родительный (Кого? Чего? нет)
+	name_accu = "запеченную картошку" // Винительный (Кого? Что? вижу)
+	name_dat = "запеченной картошке" // Дательный (Кому? Чему? рад)
+	name_inst = "запеченной картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "запеченной картошке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried
+	name = "жареный лук" // Именительный (Кто? Что? Есть)
+	desc = "Ароматные, золотистые кольца обжаренного лука." // Описание
+	name_gen = "жареного лука" // Родительный (Кого? Чего? нет)
+	name_accu = "жареный лук" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному луку" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном луке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried
+	name = "жареная картошка" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренные куски картошки с незабываемым ароматом." // Описание
+	name_gen = "жареной картошки" // Родительный (Кого? Чего? нет)
+	name_accu = "жареную картошку" // Винительный (Кого? Что? вижу)
+	name_dat = "жареной картошке" // Дательный (Кому? Чему? рад)
+	name_inst = "жареной картошкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареной картошке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
+	name = "жареный омар с маслом" // Именительный (Кто? Что? Есть)
+	desc = "Сам по себе омар довольно пресный, но масло исправляет этот недостаток. Популярен среди знати благодаря своему экзотическому виду." // Описание
+	name_gen = "жареного омара с маслом" // Родительный (Кого? Чего? нет)
+	name_accu = "жареного омара с маслом" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному омару с маслом" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным омаром с маслом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном омаре с маслом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/chowder
+	name = "похлёбка с моллюсками" // Именительный (Кто? Что? Есть)
+	name_gen = "похлёбки с моллюском" // Родительный (Кого? Чего? нет)
+	name_accu = "похлёбку с моллюском" // Винительный (Кого? Что? вижу)
+	name_dat = "похлёбке с моллюском" // Дательный (Кому? Чему? рад)
+	name_inst = "похлёбкой с моллюском" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "похлёбке с моллюском" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/gumbo
+	name = "похлёбка с креветками" // Именительный (Кто? Что? Есть)
+	name_gen = "похлёбки с креветками" // Родительный (Кого? Чего? нет)
+	name_accu = "похлёбку с креветками" // Винительный (Кого? Что? вижу)
+	name_dat = "похлёбке с креветками" // Дательный (Кому? Чему? рад)
+	name_inst = "похлёбкой с креветками" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "похлёбке с креветками" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/dough_base
+	name = "заготовка теста" // Именительный (Кто? Что? Есть)
+	desc = "Еще немного муки и замешать." // Описание
+	name_gen = "заготовки теста" // Родительный (Кого? Чего? нет)
+	name_accu = "заготовку теста" // Винительный (Кого? Что? вижу)
+	name_dat = "заготовке теста" // Дательный (Кому? Чему? рад)
+	name_inst = "заготовкой теста" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "заготовке теста" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/dough
+	name = "тесто" // Именительный (Кто? Что? Есть)
+	desc = "Триумф всех пекарей. (В печь, чтобы получился хлеб, добавьте масло, чтобы получилось тесто с маслом, нарежьте, чтобы получить куски теста поменьше, добавьте изюм, чтобы получился хлеб с юзюмом, раскатайте, чтобы сделать сухари)" // Описание
+	name_gen = "теста" // Родительный (Кого? Чего? нет)
+	name_accu = "тесто" // Винительный (Кого? Что? вижу)
+	name_dat = "тесту" // Дательный (Кому? Чему? рад)
+	name_inst = "тестом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тесте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/doughslice
+	name = "кусок теста" // Именительный (Кто? Что? Есть)
+	desc = "Небольшой кусок теста, используемый для приготовления вкусной выпечки (испеките, чтобы получилась булочка, добавьте сыр, чтобы получилась сырная булочка, либо же слепите куски обратно в тесто)" // Описание
+	name_gen = "куска теста" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок тесто" // Винительный (Кого? Что? вижу)
+	name_dat = "куску теста" // Дательный (Кому? Чему? рад)
+	name_inst = "куском тестом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске тесте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/butterdough
+	name = "тесто с маслом" // Именительный (Кто? Что? Есть)
+	desc = "Что такое триумф по сравнению с наследием? (Нарежьте на тесто для пирожков, добавьте яйцо чтобы сделать основу для торта)" // Описание
+	name_gen = "теста с маслом" // Родительный (Кого? Чего? нет)
+	name_accu = "тесто с маслом" // Винительный (Кого? Что? вижу)
+	name_dat = "тесту с маслом" // Дательный (Кому? Чему? рад)
+	name_inst = "тестом с маслом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тесте с маслом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice
+	name = "кусок теста с маслом" // Именительный (Кто? Что? Есть)
+	desc = "Часть наследия, что породит новое будущее. (Поместите в печь, чтобы испечь печенье, раскатайте чтобы получить тесто для пирога, обжарьте чтобы сделать лепешку, добавьте изюм, чтобы получился кекс, нарежьте, чтобы получился крендель.)" // Описание
+	name_gen = "куска теста с маслом" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок теста с маслом" // Винительный (Кого? Что? вижу)
+	name_dat = "куску теста с маслом" // Дательный (Кому? Чему? рад)
+	name_inst = "куском теста с маслом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске теста с маслом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/piedough
+	name = "тесто для пирога" // Именительный (Кто? Что? Есть)
+	desc = "Начало чего-то великого. (Добавьте мясо или ягод чтобы сделать пирожок. Запечь в печи чтобы получить заготовку пирога.)" // Описание
+	name_gen = "теста для пирога" // Родительный (Кого? Чего? нет)
+	name_accu = "тесто для пирога" // Винительный (Кого? Что? вижу)
+	name_dat = "тесту для пирога" // Дательный (Кому? Чему? рад)
+	name_inst = "тестом для пирога" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тесте для пирога" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
+	name = "сырые сухари" // Именительный (Кто? Что? Есть)
+	desc = "Мягкие и сырые. Неприемлемо" // Описание
+	name_gen = "сырых сухарей" // Родительный (Кого? Чего? нет)
+	name_accu = "сырые сухари" // Винительный (Кого? Что? вижу)
+	name_dat = "сырым сухарям" // Дательный (Кому? Чему? рад)
+	name_inst = "сырыми сухарями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырых сухарях" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
+	name = "сухари" // Именительный (Кто? Что? Есть)
+	desc = "Очень жесткие и сухие. Можно зубы обломать." // Описание
+	name_gen = "сухарей" // Родительный (Кого? Чего? нет)
+	name_accu = "сухари" // Винительный (Кого? Что? вижу)
+	name_dat = "сухарям" // Дательный (Кому? Чему? рад)
+	name_inst = "сухарями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сухарях" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/bread
+	name = "хлеб" // Именительный (Кто? Что? Есть)
+	desc = "Основа цивилизации. Без него до сих пор бы бегали за дикой дичью. Разделяй и властвуй - разрежь!" // Описание
+	name_gen = "хлеба" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/breadslice
+	name = "кусок хлеба" // Именительный (Кто? Что? Есть)
+	desc = "Слегка поменьше, но всё такая же основа цивилизации. Подавайте подавайте на стол, либо же сервируйте яичнией, маслом, салом, салями. Поместите в печь чтобы получился тост." // Описание
+	name_gen = "куска хлеба" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок хлеб" // Винительный (Кого? Что? вижу)
+	name_dat = "куску хлебу" // Дательный (Кому? Чему? рад)
+	name_inst = "куском хлебом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске хлебе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast
+	name = "тост" // Именительный (Кто? Что? Есть)
+	desc = "Отличный способ начать свое утро на Энигме. Подавайте на стол, либо же сервируйте яичнией, маслом, салом, салями." // Описание
+	name_gen = "тоста" // Родительный (Кого? Чего? нет)
+	name_accu = "тост" // Винительный (Кого? Что? вижу)
+	name_dat = "тосту" // Дательный (Кому? Чему? рад)
+	name_inst = "тостом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тосте" // Предложный (О ком? О чем? думаю)
+/obj/item/reagent_containers/food/snacks/rogue/breadslice
+	name = "кусок хлеба" // Именительный (Кто? Что? Есть)
+	desc = "Слегка поменьше, но всё такая же основа цивилизации. Подавайте на стол, либо же сервируйте яичнией, маслом, салом, салями. Поместите в печь чтобы получился тост." // Описание
+	name_gen = "куска хлеба" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок хлеб" // Винительный (Кого? Что? вижу)
+	name_dat = "куску хлебу" // Дательный (Кому? Чему? рад)
+	name_inst = "куском хлебом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске хлебе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/buttered
+	name = "тост с маслом" // Именительный (Кто? Что? Есть)
+	desc = "Отличный способ начать свое утро на Энигме. Подавайте на стол, либо же сервируйте яичнией, маслом, салом, салями." // Описание
+	name_gen = "тоста с маслом" // Родительный (Кого? Чего? нет)
+	name_accu = "тост с маслом" // Винительный (Кого? Что? вижу)
+	name_dat = "тосту с маслом" // Дательный (Кому? Чему? рад)
+	name_inst = "тостом  с маслом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тосте с маслом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/sandwich
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
+	name = "хлеб с салями" // Именительный (Кто? Что? Есть)
+	desc = "Прекрасный во всех смыслах." // Описание
+	name_gen = "хлеба с салями" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб с салями" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу с салями" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом с салями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе с салями" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
+	name = "хлеб с сыром" // Именительный (Кто? Что? Есть)
+	desc = "Прекрасный во всех смыслах." // Описание
+	name_gen = "хлеба с сыром" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб с сыром" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу с сыром" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом с сыром" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе с сыром" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
+	name = "хлеб с яичницей" // Именительный (Кто? Что? Есть)
+	desc = "Прекрасный во всех смыслах." // Описание
+	name_gen = "хлеба с яичницей" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб с яичницей" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу с яичницей" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом с яичницей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе с яичницей" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
-/obj/item/reagent_containers/food/snacks/rogue/bun
+	name = "хлеб с салом" // Именительный (Кто? Что? Есть)
+	desc = "Прекрасный во всех смыслах." // Описание
+	name_gen = "хлеба с салом" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб с салом" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу с салом" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом с салом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе с салом" // Предложный (О ком? О чем? думаю)
+/obj/item/reagent_containers/food/snacks/rogue/
+	name = "булка" // Именительный (Кто? Что? Есть)
+	desc = "Маленькая, сытная и вкусная. (Подавайте к столу или добавьте жареную сосиску чтобы получилась гренцельхофтская булка.)." // Описание
+	name_gen = "булки" // Родительный (Кого? Чего? нет)
+	name_accu = "булку" // Винительный (Кого? Что? вижу)
+	name_dat = "булке" // Дательный (Кому? Чему? рад)
+	name_inst = "булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw
+	name = "сырая сырная булка" // Именительный (Кто? Что? Есть)
+	desc = "Лакомство родом из Гренцельхофта. Нужно приготовить." // Описание
+	name_gen = "сырой сырной булки" // Родительный (Кого? Чего? нет)
+	name_accu = "сырую сырную булку" // Винительный (Кого? Что? вижу)
+	name_dat = "сырой сырной булке" // Дательный (Кому? Чему? рад)
+	name_inst = "сырой сырной булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырой сырной булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheesebun
+	name = "сырная булка" // Именительный (Кто? Что? Есть)
+	desc = "Лакомство родом из Гренцельхофта." // Описание
+	name_gen = "сырной булки" // Родительный (Кого? Чего? нет)
+	name_accu = "сырную булку" // Винительный (Кого? Что? вижу)
+	name_dat = "сырной булке" // Дательный (Кому? Чему? рад)
+	name_inst = "сырной булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырной булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/frybread
+	name = "лепешка" // Именительный (Кто? Что? Есть)
+	desc = "Тесто обжаренное на масле до хрустящей корочки. Эльфийская кухня." // Описание
+	name_gen = "сырной булки" // Родительный (Кого? Чего? нет)
+	name_accu = "сырную булку" // Винительный (Кого? Что? вижу)
+	name_dat = "сырной булке" // Дательный (Кому? Чему? рад)
+	name_inst = "сырной булкой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырной булке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/pastry
+	name = "печенье" // Именительный (Кто? Что? Есть)
+	desc = "Любимое лакомство детей и любителей сладкого. Добавьте сахар чтобы получился сладкий рулет." // Описание
+	name_gen = "печенья" // Родительный (Кого? Чего? нет)
+	name_accu = "печенье" // Винительный (Кого? Что? вижу)
+	name_dat = "печенью" // Дательный (Кому? Чему? рад)
+	name_inst = "печеньем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "печенье" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/sweetroll
+	name = "сладкий рулет" // Именительный (Кто? Что? Есть)
+	desc = "Сладкий и аппетитный рулет. Чаще всего донимают стражу из за его кражи." // Описание
+	name_gen = "сладкого рулета" // Родительный (Кого? Чего? нет)
+	name_accu = "сладкий рулет" // Винительный (Кого? Что? вижу)
+	name_dat = "сладкому рулету" // Дательный (Кому? Чему? рад)
+	name_inst = "сладким рулетом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сладком рулете" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
+	name = "сырой кекс" // Именительный (Кто? Что? Есть)
+	desc = "Лакомство для кексика вроде тебя. Нужно приготовить." // Описание
+	name_gen = "сырого кекса" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой кекс" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому кексу" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым кексом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром кексе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/biscuit
+	name = "кекс" // Именительный (Кто? Что? Есть)
+	desc = "Лакомство для кексика вроде тебя." // Описание
+	name_gen = "кекса" // Родительный (Кого? Чего? нет)
+	name_accu = "кекс" // Винительный (Кого? Что? вижу)
+	name_dat = "кексу" // Дательный (Кому? Чему? рад)
+	name_inst = "кексом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "кексе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw
+	name = "сырой крендель" // Именительный (Кто? Что? Есть)
+	desc = "Лучшее, что можно придумать после хлеба. Дворфийская кухня. Нужно приготовить." // Описание
+	name_gen = "сырого кренделя" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой крендель" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому кренделю" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым кренделем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром кренделе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/prezzel
+	name = "крендель" // Именительный (Кто? Что? Есть)
+	desc = "Лучшее, что можно придумать после хлеба. Дворфийская кухня." // Описание
+	name_gen = "кренделя" // Родительный (Кого? Чего? нет)
+	name_accu = "крендель" // Винительный (Кого? Что? вижу)
+	name_dat = "кренделю" // Дательный (Кому? Чему? рад)
+	name_inst = "кренделем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "кренделе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/rbread_half
+	name = "тесто с изюмом" // Именительный (Кто? Что? Есть)
+	desc = "Не хватает изюма. Добавь еще!" // Описание
+	name_gen = "теста с изюмом" // Родительный (Кого? Чего? нет)
+	name_accu = "тесто с изюмом" // Винительный (Кого? Что? вижу)
+	name_dat = "тесту с изюмом" // Дательный (Кому? Чему? рад)
+	name_inst = "тестом с изюмом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тесте с изюмом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
+	name = "тесто с изюмом" // Именительный (Кто? Что? Есть)
+	desc = "Готово! Осталось запечь." // Описание
+	name_gen = "теста с изюмом" // Родительный (Кого? Чего? нет)
+	name_accu = "тесто с изюмом" // Винительный (Кого? Что? вижу)
+	name_dat = "тесту с изюмом" // Дательный (Кому? Чему? рад)
+	name_inst = "тестом с изюмом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "тесте с изюмом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/raisinbread
+	name = "хлеб с изюмом" // Именительный (Кто? Что? Есть)
+	desc = "Хлеб с вкраплениями сладкого изюма - лучшее дополнение к любому блюду." // Описание
+	name_gen = "хлеба с изюмом" // Родительный (Кого? Чего? нет)
+	name_accu = "хлеб с изюмом" // Винительный (Кого? Что? вижу)
+	name_dat = "хлебу с изюмом" // Дательный (Кому? Чему? рад)
+	name_inst = "хлебом с изюмом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "хлебе с изюмом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice
+	name = "кусок хлеб с изюмом" // Именительный (Кто? Что? Есть)
+	desc = "Кусок хлеба с вкраплениями сладкого изюма - лучшее дополнение к любому блюду." // Описание
+	name_gen = "куска хлеба с изюмом" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок хлеб с изюмом" // Винительный (Кого? Что? вижу)
+	name_dat = "куску хлебу с изюмом" // Дательный (Кому? Чему? рад)
+	name_inst = "куском хлеба с изюмом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске хлебе с изюмом" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cake_base
+	name = "основа торта" // Именительный (Кто? Что? Есть)
+	desc = "Это прекрасное творение и вы можете сделать его ещё лучше! (Добавьте мёд или сыр и поместите в печь.)" // Описание
+	name_gen = "основы торта" // Родительный (Кого? Чего? нет)
+	name_accu = "основу торта" // Винительный (Кого? Что? вижу)
+	name_dat = "основе торта" // Дательный (Кому? Чему? рад)
+	name_inst = "основой торта" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "основе торта" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
+	name = "сырой зибантийский торт" // Именительный (Кто? Что? Есть)
+	desc = "Глазурированный мёдом торт, сладкий и чудесный представитель Зибантийской кухни. Нужно запечь." // Описание
+	name_gen = "сырого зибантийского торта" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой зибантийский торт" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому зибантийскому торту" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым зибантийскийким тортом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром зибантийском торте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/hcake
+	name = "зибантийский торт" // Именительный (Кто? Что? Есть)
+	desc = "Глазурированный мёдом торт, сладкий и чудесный представитель Зибантийской кухни." // Описание
+	name_gen = "зибантийского торта" // Родительный (Кого? Чего? нет)
+	name_accu = "зибантийский торт" // Винительный (Кого? Что? вижу)
+	name_dat = "зибантийскому торту" // Дательный (Кому? Чему? рад)
+	name_inst = "зибантийскийким тортом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "зибантийском торте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice
+	name = "кусок зибантийского торта" // Именительный (Кто? Что? Есть)
+	desc = "Глазурированный мёдом торт, сладкий и чудесный представитель Зибантийской кухни. " // Описание
+	name_gen = "куска зибантийского торта" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок зибантийского торта" // Винительный (Кого? Что? вижу)
+	name_dat = "куску зибантийскому торта" // Дательный (Кому? Чему? рад)
+	name_inst = "куском зибантийскийкого торта" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске зибантийского торта" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/hcakeslice/plated
+	name = "кусок зибантийского торта" // Именительный (Кто? Что? Есть)
+	desc = "Глазурированный мёдом торт, сладкий и чудесный представитель Зибантийской кухни. " // Описание
+	name_gen = "куска зибантийского торта" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок зибантийского торта" // Винительный (Кого? Что? вижу)
+	name_dat = "куску зибантийскому торта" // Дательный (Кому? Чему? рад)
+	name_inst = "куском зибантийскийкого торта" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске зибантийского торта" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
+	name = "сырой сырный торт" // Именительный (Кто? Что? Есть)
+	desc = "Сырный торт - лучшее, что придумало человечество. Нужно запечь." // Описание
+	name_gen = "сырого сырного торта" // Родительный (Кого? Чего? нет)
+	name_accu = "сырой сырный торт" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому сырному торту" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым сырным тортом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром сырном торте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/ccake
+	name = "сырный торт" // Именительный (Кто? Что? Есть)
+	desc = "Сырный торт - лучшее, что придумало человечество." // Описание
+	name_gen = "сырного торта" // Родительный (Кого? Чего? нет)
+	name_accu = "сырный торт" // Винительный (Кого? Что? вижу)
+	name_dat = "сырному торту" // Дательный (Кому? Чему? рад)
+	name_inst = "сырным тортом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сырном торте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice
+	name = "кусок сырного торта" // Именительный (Кто? Что? Есть)
+	desc = "Сырный торт - лучшее, что придумало человечество." // Описание
+	name_gen = "куска сырного торта" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок сырного торта" // Винительный (Кого? Что? вижу)
+	name_dat = "куску сырного торта" // Дательный (Кому? Чему? рад)
+	name_inst = "куском сырного торта" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске сырного тортае" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/ccakeslice/plated
-/obj/item/reagent_containers/food/snacks/rogue/meat
+	name = "кусок сырного торта" // Именительный (Кто? Что? Есть)
+	desc = "Сырный торт - лучшее, что придумало человечество." // Описание
+	name_gen = "куска сырного торта" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок сырного торта" // Винительный (Кого? Что? вижу)
+	name_dat = "куску сырного торта" // Дательный (Кому? Чему? рад)
+	name_inst = "куском сырного торта" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске сырного тортае" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince
+	name = "сырое мясо" // Именительный (Кто? Что? Есть)
+	desc = "Кусок сырого мяса. Лучше не узнавать, чье. Можно порубить. Запечь или зажарить чтобы получить стейк." // Описание
+	name_gen = "сырого мяса" // Родительный (Кого? Чего? нет)
+	name_accu = "сырое мясо" // Винительный (Кого? Что? вижу)
+	name_dat = "сырому мясу" // Дательный (Кому? Чему? рад)
+	name_inst = "сырым мясом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыром мясе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
+	name = "рублёная говядины" // Именительный (Кто? Что? Есть)
+	desc = "Мелко порубленное мясо говядины, почти фарш. Можно добавить в суп или же смешать с жиром или другой кучкой рублёного мяса чтобы сделать сосиску." // Описание
+	name_gen = "рублёного мяса" // Родительный (Кого? Чего? нет)
+	name_accu = "рублёное мясо" // Винительный (Кого? Что? вижу)
+	name_dat = "рублёному мясу" // Дательный (Кому? Чему? рад)
+	name_inst = "рублёным мясом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "рублёном мясе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	name = "рублёная рыба" // Именительный (Кто? Что? Есть)
+	desc = "Мелко порубленное рыба, почти фарш. Можно добавить в суп или же смешать с жиром или другой кучкой рублёного мяса чтобы сделать сосиску." // Описание
+	name_gen = "рублёной рыбы" // Родительный (Кого? Чего? нет)
+	name_accu = "рублёную рыбу" // Винительный (Кого? Что? вижу)
+	name_dat = "рублёной рыбе" // Дательный (Кому? Чему? рад)
+	name_inst = "рублёной рыбой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "рублёной рыбе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty //pork
+	name = "рублёная курятина" // Именительный (Кто? Что? Есть)
+	desc = "Мелко порубленное мясо птицы, почти фарш. Можно добавить в суп или же смешать с жиром или другой кучкой рублёного мяса чтобы сделать сосиску." // Описание
+	name_gen = "рублёной курятина" // Родительный (Кого? Чего? нет)
+	name_accu = "рублёную курятину" // Винительный (Кого? Что? вижу)
+	name_dat = "рублёной курятине" // Дательный (Кому? Чему? рад)
+	name_inst = "рублёной курятиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "рублёной курятине" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/bacon
+	name = "бекон" // Именительный (Кто? Что? Есть)
+	desc = "Кусок сырой свинины. Стоит пожарить." // Описание
+	name_gen = "бекона" // Родительный (Кого? Чего? нет)
+	name_accu = "бекон" // Винительный (Кого? Что? вижу)
+	name_dat = "бекону" // Дательный (Кому? Чему? рад)
+	name_inst = "беконом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "беконе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider // low-nutrient, kind of gross. survival food.
+	name = "паучатина" // Именительный (Кто? Что? Есть)
+	desc = "Выглядит мерзко. Только отчаявшиеся от голода будут это есть." // Описание
+	name_gen = "паучатины" // Родительный (Кого? Чего? нет)
+	name_accu = "паучатину" // Винительный (Кого? Что? вижу)
+	name_dat = "паучатине" // Дательный (Кому? Чему? рад)
+	name_inst = "паучатиной" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "паучатине" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
+	name = "курица" // Именительный (Кто? Что? Есть)
+	desc = "Тушка упитанной птицы, зажаренная до превосходной хрустящей корочки." // Описание
+	name_gen = "курицы" // Родительный (Кого? Чего? нет)
+	name_accu = "курицу" // Винительный (Кого? Что? вижу)
+	name_dat = "курице" // Дательный (Кому? Чему? рад)
+	name_inst = "курицей" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "курице" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet
+	name = "окорок" // Именительный (Кто? Что? Есть)
+	desc = "Ножка курицы, которой явно не понравился процесс четвертования её тела." // Описание
+	name_gen = "окорока" // Родительный (Кого? Чего? нет)
+	name_accu = "окорок" // Винительный (Кого? Что? вижу)
+	name_dat = "окороку" // Дательный (Кому? Чему? рад)
+	name_inst = "окороком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "окороке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
+	name = "сосиска" // Именительный (Кто? Что? Есть)
+	desc = "Мелко нарубленное, почти превращенное в фарш мясо, плотно набитое в кишечную оболочку." // Описание
+	name_gen = "сосиски" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/wiener
+	name = "сосиска" // Именительный (Кто? Что? Есть)
+	desc = "Мелко нарубленное, почти превращенное в фарш мясо, плотно набитое в кишечную оболочку." // Описание
+	name_gen = "сосиски" // Родительный (Кого? Чего? нет)
+	name_accu = "сосиску" // Винительный (Кого? Что? вижу)
+	name_dat = "сосиске" // Дательный (Кому? Чему? рад)
+	name_inst = "сосиской" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сосиске" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish
+	name = "мясо моллюска" // Именительный (Кто? Что? Есть)
+	desc = "Старательно выковырянное из раковины мясо моллюска. Можно порубить на фарш или запечь." // Описание
+	name_gen = "мяса моллюска" // Родительный (Кого? Чего? нет)
+	name_accu = "мясо моллюска" // Винительный (Кого? Что? вижу)
+	name_dat = "мясу моллюска" // Дательный (Кому? Чему? рад)
+	name_inst = "мясом моллюска" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "мясе моллюска" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
+	name = "жареное мясо моллюска" // Именительный (Кто? Что? Есть)
+	desc = "Обжаренное мясо моллюска. Вкуснятина!" // Описание
+	name_gen = "жареного мяса моллюска" // Родительный (Кого? Чего? нет)
+	name_accu = "жареное мясо моллюска" // Винительный (Кого? Что? вижу)
+	name_dat = "жареному мясу моллюска" // Дательный (Кому? Чему? рад)
+	name_inst = "жареным мясом моллюска" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жареном мясе моллюска" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/fat
+	name = "жир" // Именительный (Кто? Что? Есть)
+	desc = "Животный жир, полученный в процессе разделки. Добавьте рублёного мяса чтобы сделать сосиску, посолите и высушите чтобы получить сало." // Описание
+	name_gen = "жира" // Родительный (Кого? Чего? нет)
+	name_accu = "жир" // Винительный (Кого? Что? вижу)
+	name_dat = "жиру" // Дательный (Кому? Чему? рад)
+	name_inst = "жиром" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "жире" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/raisins
+	name = "изюм" // Именительный (Кто? Что? Есть)
+	desc = "Сушёные ягоды, столь обожаемые путниками. Можно добавить во всевозможные блюда." // Описание
+	name_gen = "изюма" // Родительный (Кого? Чего? нет)
+	name_accu = "изюм" // Винительный (Кого? Что? вижу)
+	name_dat = "изюму" // Дательный (Кому? Чему? рад)
+	name_inst = "изюмом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "изюме" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/candybase
+	name = "основа для конфет" // Именительный (Кто? Что? Есть)
+	desc = "Из этого получится нечто прекрасное. Добавьте яблоко или ягоды." // Описание
+	name_gen = "основы для конфет" // Родительный (Кого? Чего? нет)
+	name_accu = "основу для конфет" // Винительный (Кого? Что? вижу)
+	name_dat = "основе для конфет" // Дательный (Кому? Чему? рад)
+	name_inst = "основой для конфет" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "основе для конфет" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/applecandy
+	name = "яблочные конфеты" // Именительный (Кто? Что? Есть)
+	desc = "Сладкие и вкусные!" // Описание
+	name_gen = "яблочных конфет" // Родительный (Кого? Чего? нет)
+	name_accu = "яблочные конфеты" // Винительный (Кого? Что? вижу)
+	name_dat = "яблочным конфетам" // Дательный (Кому? Чему? рад)
+	name_inst = "яблочными конфетами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "яблочных конфетах" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/berrycandy
+	name = "ягодные конфеты" // Именительный (Кто? Что? Есть)
+	desc = "Сладкие и вкусные!" // Описание
+	name_gen = "ягодных конфет" // Родительный (Кого? Чего? нет)
+	name_accu = "ягодные конфеты" // Винительный (Кого? Что? вижу)
+	name_dat = "ягодным конфетам" // Дательный (Кому? Чему? рад)
+	name_inst = "ягодными конфетами" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "ягодных конфетах" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/honey
+	name = "паучий мёд" // Именительный (Кто? Что? Есть)
+	desc = "На удивление вкусный и съедобный." // Описание
+	name_gen = "паучий мёд" // Родительный (Кого? Чего? нет)
+	name_accu = "паучий мёд" // Винительный (Кого? Что? вижу)
+	name_dat = "паучьему мёду" // Дательный (Кому? Чему? рад)
+	name_inst = "паучьим мёдом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "паучьем мёде" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami
+	name = "салями" // Именительный (Кто? Что? Есть)
+	desc = "Рецепт придуманный дворфами, для того чтобы мясо хранилось дольше. Говорят такая солёная колбаска может храниться 10 дэц." // Описание
+	name_gen = "салями" // Родительный (Кого? Чего? нет)
+	name_accu = "салями" // Винительный (Кого? Что? вижу)
+	name_dat = "салями" // Дательный (Кому? Чему? рад)
+	name_inst = "салями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "салями" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice
+	name = "кусочек салями" // Именительный (Кто? Что? Есть)
+	desc = "Рецепт придуманный дворфами, для того чтобы мясо хранилось дольше. Говорят такая солёная колбаска может храниться 10 дэц." // Описание
+	name_gen = "кусочка салями" // Родительный (Кого? Чего? нет)
+	name_accu = "кусочек салями" // Винительный (Кого? Что? вижу)
+	name_dat = "кусочку салями" // Дательный (Кому? Чему? рад)
+	name_inst = "кусочком салями" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "кусочке салями" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
-/obj/item/reagent_containers/food/snacks/rogue/saltfish
+	name = "вяленое мясо" // Именительный (Кто? Что? Есть)
+	desc = "Грубое, солёное и горькое. Вкус знакомый многим путникам." // Описание
+	name_gen = "вяленого мяса" // Родительный (Кого? Чего? нет)
+	name_accu = "вяленое мясо" // Винительный (Кого? Что? вижу)
+	name_dat = "вяленому мясу" // Дательный (Кому? Чему? рад)
+	name_inst = "вяленым мясом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "вяленом мясе" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/fat/salo
+	name = "сало" // Именительный (Кто? Что? Есть)
+	desc = "Солёный жир, столь любимый многими жителями Энигмы." // Описание
+	name_gen = "сала" // Родительный (Кого? Чего? нет)
+	name_accu = "сало" // Винительный (Кого? Что? вижу)
+	name_dat = "салу" // Дательный (Кому? Чему? рад)
+	name_inst = "салом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сале" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/fat/salo/slice
+	name = "кусочек сала" // Именительный (Кто? Что? Есть)
+	desc = "Солёный жир, столь любимый многими жителями Энигмы." // Описание
+	name_gen = "кусочка сала" // Родительный (Кого? Чего? нет)
+	name_accu = "кусочек сала" // Винительный (Кого? Что? вижу)
+	name_dat = "кусочку сала" // Дательный (Кому? Чему? рад)
+	name_inst = "кусочком сала" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "кусочке сала" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/butter
+	name = "масло" // Именительный (Кто? Что? Есть)
+	desc = "Ингридиент, без которого не получится ни одно стоящее блюдо. Идеально подходит для тоста." // Описание
+	name_gen = "масла" // Родительный (Кого? Чего? нет)
+	name_accu = "масло" // Винительный (Кого? Что? вижу)
+	name_dat = "маслу" // Дательный (Кому? Чему? рад)
+	name_inst = "маслом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "масле" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/butterslice
+	name = "кусочек масла" // Именительный (Кто? Что? Есть)
+	desc = "Ингридиент, без которого не получится ни одно стоящее блюдо. Идеально подходит для тоста." // Описание
+	name_gen = "кусочка масла" // Родительный (Кого? Чего? нет)
+	name_accu = "кусочек масла" // Винительный (Кого? Что? вижу)
+	name_dat = "кусочку масла" // Дательный (Кому? Чему? рад)
+	name_inst = "кусочком масла" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "кусочке масла" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_start
+	name = "заготовка головки сыра" // Именительный (Кто? Что? Есть)
+	desc = "Нужно еще сыра." // Описание
+	name_gen = "заготовки головки сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "заготовку головки сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "заготовке головки сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "заготовкой головки сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "заготовке головки сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_two
+	name = "заготовка головки сыра" // Именительный (Кто? Что? Есть)
+	desc = "Нужно еще сыра. Еще!" // Описание
+	name_gen = "заготовки головки сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "заготовку головки сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "заготовке головки сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "заготовкой головки сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "заготовке головки сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_three
+	name = "заготовка головки сыра" // Именительный (Кто? Что? Есть)
+	desc = "Нужно еще больше сыра. Еще! Еще!!!" // Описание
+	name_gen = "заготовки головки сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "заготовку головки сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "заготовке головки сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "заготовкой головки сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "заготовке головки сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheese
+	name = "сыр" // Именительный (Кто? Что? Есть)
+	desc = "Свежая порция восхитительного сыра, отлично подойдет для булочки или в качестве начинки для торта! (Используйте вместе с тканью и 3 другими сырами, чтобы сделать сырную головку)" // Описание
+	name_gen = "сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "сыр" // Винительный (Кого? Что? вижу)
+	name_dat = "сыру" // Дательный (Кому? Чему? рад)
+	name_inst = "сыром" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "сыре" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddar
+	name = "головка сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "головки сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "головку сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "головке сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "головкой сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "головке сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
+	name = "старая головка сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "старой головки сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "старую головку сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "старой головке сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "старой головкой сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "старой головке сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
+	name = "кусок сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "куска сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "куску сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "куском сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
+	name = "кусок старого сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "куска старого сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "кусок старого сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "куску старого сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "куском старого сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "куске старого сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
+	name = "ломтик сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "ломтика сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "ломтик сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "ломтику сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "ломтиком сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "ломтике сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
+	name = "ломтик старого сыра" // Именительный (Кто? Что? Есть)
+	name_gen = "ломтика старого сыра" // Родительный (Кого? Чего? нет)
+	name_accu = "ломтик старого сыра" // Винительный (Кого? Что? вижу)
+	name_dat = "ломтику старого сыра" // Дательный (Кому? Чему? рад)
+	name_inst = "ломтиком старого сыра" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "ломтике старого сыра" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/onion/rogue
+	name = "лук" // Именительный (Кто? Что? Есть)
+	desc = "При его виде у вас наворачиваются слёзы счастья." // Описание
+	name_gen = "лука" // Родительный (Кого? Чего? нет)
+	name_accu = "лук" // Винительный (Кого? Что? вижу)
+	name_dat = "луку" // Дательный (Кому? Чему? рад)
+	name_inst = "луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "луке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced
+	name = "нарезанный лук" // Именительный (Кто? Что? Есть)
+	desc = "Слёзы счастья от предвкушения вкусного будущего." // Описание
+	name_gen = "нарезанного лука" // Родительный (Кого? Чего? нет)
+	name_accu = "нарезанный лук" // Винительный (Кого? Что? вижу)
+	name_dat = "нарезанному луку" // Дательный (Кому? Чему? рад)
+	name_inst = "нарезанным луком" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "нарезанном луке" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/cabbage/rogue
+	name = "капуста" // Именительный (Кто? Что? Есть)
+	desc = "Зеленеющий, хрустящий кочан капусты. Эльфы почитают её как символ процветания." // Описание
+	name_gen = "капусты" // Родительный (Кого? Чего? нет)
+	name_accu = "капусту" // Винительный (Кого? Что? вижу)
+	name_dat = "капусте" // Дательный (Кому? Чему? рад)
+	name_inst = "капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "капусте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
+	name = "измельченная капуста" // Именительный (Кто? Что? Есть)
+	desc = "Старательно порубленная капуста, ждущая своего часа." // Описание
+	name_gen = "измельченной капусты" // Родительный (Кого? Чего? нет)
+	name_accu = "измельченную капусту" // Винительный (Кого? Что? вижу)
+	name_dat = "измельченной капусте" // Дательный (Кому? Чему? рад)
+	name_inst = "измельенной капустой" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "измельченной капусте" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
+	name = "картофель" // Именительный (Кто? Что? Есть)
+	desc = "Плотный и крепкий плод картофеля. Дворфы обожают его и почитают как символ роста и развития." // Описание
+	name_gen = "картофеля" // Родительный (Кого? Чего? нет)
+	name_accu = "картофель" // Винительный (Кого? Что? вижу)
+	name_dat = "картофелю" // Дательный (Кому? Чему? рад)
+	name_inst = "картофелем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "картофеле" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced
-/obj/item/reagent_containers/food/snacks/rogue/foodbase // root item for uncooked food thats disgusting when raw
-/obj/item/reagent_containers/food/snacks/rogue/preserved // just convenient way to group food with long rotprocess
+	name = "нарезанный картофель" // Именительный (Кто? Что? Есть)
+	desc = "Нарезанный на куски картофель. Дворфы обожают его и почитают как символ роста и развития." // Описание
+	name_gen = "нарезанного картофеля" // Родительный (Кого? Чего? нет)
+	name_accu = "нарезанный картофель" // Винительный (Кого? Что? вижу)
+	name_dat = "нарезанному картофелю" // Дательный (Кому? Чему? рад)
+	name_inst = "нарезанным картофелем" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "нарезанном картофеле" // Предложный (О ком? О чем? думаю)
 /obj/item/reagent_containers/food/snacks/grown/fyritius
+	name = "Фирит" // Именительный (Кто? Что? Есть)
+	desc = "Нежный оранжевый цветок, излучающий тепло." // Описание
+	name_gen = "Фирита" // Родительный (Кого? Чего? нет)
+	name_accu = "Фирит" // Винительный (Кого? Что? вижу)
+	name_dat = "Фириту" // Дательный (Кому? Чему? рад)
+	name_inst = "Фиритом" // Творительный (Кем? Чем? любуюсь)
+	name_prep = "Фирите" // Предложный (О ком? О чем? думаю)
