@@ -9455,6 +9455,10 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/bath)
+"eNn" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/town/roofs)
 "eNv" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/transparent/openspace,
@@ -23477,6 +23481,10 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
+"mmE" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/ruinedwood/turned,
+/area/rogue/outdoors/town/roofs)
 "mmV" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -27841,6 +27849,10 @@
 "oBX" = (
 /obj/structure/mineral_door/bars,
 /turf/open/floor/rogue/cobble,
+/area/rogue/outdoors/town/roofs)
+"oCd" = (
+/obj/machinery/light/rogue/torchholder/c,
+/turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "oCg" = (
 /obj/structure/bookcase/random,
@@ -44465,6 +44477,10 @@
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
+"xwh" = (
+/obj/machinery/light/rogue/torchholder/c,
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/outdoors/town/roofs)
 "xwi" = (
 /obj/structure/chair/wood/rogue{
 	dir = 8;
@@ -217217,11 +217233,11 @@ hHC
 hHC
 rZQ
 pAV
-pAV
-pAV
-rDt
-pAV
-pAV
+hHI
+hHI
+xRl
+xRl
+hHI
 qvR
 qvR
 fxx
@@ -217653,8 +217669,8 @@ pAV
 ggS
 xyn
 gEI
-pAV
-pAV
+hHI
+hHI
 fUM
 fxx
 sjP
@@ -218063,11 +218079,11 @@ fxx
 fxx
 uaL
 xvN
-pAV
-pAV
-pAV
-pAV
-pAV
+hHI
+hHI
+hHI
+hHI
+hHI
 ezT
 ezT
 vMG
@@ -218086,7 +218102,7 @@ xbD
 xbD
 xbD
 xbD
-rDt
+xRl
 qvR
 fxx
 fxx
@@ -218495,7 +218511,7 @@ fxx
 fxx
 fxx
 xvN
-pAV
+hHI
 crL
 wIy
 heq
@@ -218518,7 +218534,7 @@ xbD
 xbD
 xbD
 xbD
-rDt
+xRl
 qvR
 fxx
 sjP
@@ -218927,7 +218943,7 @@ pwh
 fxx
 sjP
 xvN
-pAV
+hHI
 scj
 scj
 scj
@@ -218950,7 +218966,7 @@ pAV
 pAV
 whr
 xbD
-rDt
+xRl
 qvR
 fxx
 fxx
@@ -219358,8 +219374,8 @@ lNt
 pwh
 fxx
 sjP
-pAV
-pAV
+hHI
+hHI
 scj
 ajB
 ngr
@@ -219382,7 +219398,7 @@ qvR
 pAV
 pAV
 rDt
-pAV
+hHI
 xwg
 fxx
 sjP
@@ -219790,7 +219806,7 @@ qvR
 qvR
 fxx
 fxx
-pAV
+hHI
 woG
 scj
 ygS
@@ -220222,7 +220238,7 @@ qvR
 xvN
 fxx
 fxx
-pAV
+hHI
 sUo
 scj
 scj
@@ -220654,7 +220670,7 @@ qvR
 spp
 fxx
 fxx
-pAV
+hHI
 tQI
 scj
 scj
@@ -221086,7 +221102,7 @@ qvR
 qvR
 fxx
 fxx
-pAV
+hHI
 llE
 scj
 slM
@@ -221518,7 +221534,7 @@ qvR
 qvR
 fxx
 fxx
-pAV
+hHI
 dqp
 scj
 hqL
@@ -221541,7 +221557,7 @@ czv
 czv
 qvR
 qvR
-fDB
+hUD
 hUD
 uaL
 fxx
@@ -221950,8 +221966,8 @@ qvR
 uaL
 sjP
 fxx
-pAV
-pAV
+hHI
+hHI
 scj
 qGD
 cYN
@@ -221973,7 +221989,7 @@ czv
 czv
 qvR
 hUD
-fDB
+hUD
 uaL
 uaL
 fxx
@@ -222383,11 +222399,11 @@ uaL
 sjP
 fxx
 uaL
-pAV
-pAV
-pAV
-pAV
-pAV
+hHI
+hHI
+hHI
+hHI
+hHI
 hHI
 hHI
 pAV
@@ -222404,7 +222420,7 @@ uaL
 fxx
 uaL
 uaL
-fDB
+hUD
 efg
 uaL
 sjP
@@ -222836,7 +222852,7 @@ pAV
 sqT
 pAV
 pAV
-pAV
+hHI
 uaL
 qvR
 sjP
@@ -223268,7 +223284,7 @@ eHK
 wlD
 wlD
 bTf
-pAV
+hHI
 uaL
 qvR
 sjP
@@ -223700,7 +223716,7 @@ hHI
 efH
 wlD
 kBs
-pAV
+hHI
 qvR
 qvR
 qvR
@@ -224132,7 +224148,7 @@ pAV
 dhq
 mow
 cWK
-pAV
+hHI
 qvR
 qvR
 fxx
@@ -224562,9 +224578,9 @@ nFb
 far
 pAV
 pAV
-pAV
-pAV
-pAV
+hHI
+hHI
+hHI
 qvR
 qvR
 fxx
@@ -327378,11 +327394,11 @@ nkj
 hIr
 que
 pAV
-rTC
-xNa
-xNa
-xNa
-xNa
+oCd
+qsx
+qsx
+qsx
+qsx
 wOU
 nYP
 qbG
@@ -327814,8 +327830,8 @@ fvO
 qsx
 qsx
 qsx
-xNa
-xNa
+qsx
+gJG
 kFX
 qbG
 qbG
@@ -328247,7 +328263,7 @@ iSj
 qsx
 qsx
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -328677,9 +328693,9 @@ bKz
 sBw
 eZV
 qsx
-qsx
+mmE
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -329111,7 +329127,7 @@ qsx
 qsx
 qsx
 gJG
-rTC
+gJG
 kFX
 qbG
 qbG
@@ -329543,7 +329559,7 @@ sgT
 qsx
 qsx
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -329975,7 +329991,7 @@ hrc
 sgT
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -330407,7 +330423,7 @@ qbG
 hcg
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -330839,7 +330855,7 @@ qbG
 hcg
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -331271,7 +331287,7 @@ fTt
 vbF
 gJG
 gJG
-rTC
+gJG
 kFX
 qbG
 qbG
@@ -331702,8 +331718,8 @@ qbG
 hcg
 gJG
 gJG
-xNa
-xNa
+gJG
+gJG
 kFX
 qbG
 qbG
@@ -332132,9 +332148,9 @@ qbG
 qbG
 qbG
 hcg
+eNn
 gJG
-xNa
-xNa
+gJG
 jKg
 xwf
 qbG
@@ -332565,7 +332581,7 @@ qbG
 fTt
 vbF
 gJG
-xNa
+gJG
 jKg
 xwf
 qbG
@@ -332997,7 +333013,7 @@ pAV
 pAV
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -333429,7 +333445,7 @@ wSQ
 pAV
 gJG
 gJG
-rTC
+gJG
 kFX
 qbG
 qbG
@@ -333861,7 +333877,7 @@ kQa
 rDt
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -334293,7 +334309,7 @@ sUL
 pAV
 gJG
 gJG
-xNa
+gJG
 kFX
 qbG
 qbG
@@ -334723,9 +334739,9 @@ ntO
 wlD
 pAV
 pAV
-xNa
-xNa
-xNa
+xwh
+gJG
+gJG
 kFX
 qbG
 qbG
