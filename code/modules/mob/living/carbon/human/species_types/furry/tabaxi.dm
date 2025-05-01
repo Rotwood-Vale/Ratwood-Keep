@@ -203,7 +203,7 @@
 	)
 
 /mob/proc/purr()
-	set name = "Purr"
+	set name = "Мурчать"
 	set category = "Noises"
 	if(stat != CONSCIOUS)
 		return
@@ -213,7 +213,7 @@
 	next_move = world.time + 3 // 0.3 second cooldown
 
 /mob/proc/hiss()
-	set name = "Hiss"
+	set name = "Шипеть"
 	set category = "Noises"
 	if(stat != CONSCIOUS)
 		return
@@ -223,7 +223,7 @@
 	next_move = world.time + 3
 
 /mob/proc/meow()
-	set name = "Meow"
+	set name = "Мяукать"
 	set category = "Noises"
 	if(stat != CONSCIOUS)
 		return
@@ -233,7 +233,7 @@
 	next_move = world.time + 3
 
 /mob/proc/trill()
-	set name = "Trill"
+	set name = "Трелль"
 	set category = "Noises"
 	if(stat != CONSCIOUS)
 		return

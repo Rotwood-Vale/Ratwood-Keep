@@ -8,7 +8,7 @@
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_cry()
-	set name = "Cry"
+	set name = "Заплакать"
 	set category = "Noises"
 
 	emote("cry", intentional = TRUE)
@@ -53,7 +53,7 @@
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_eyebrow()
-	set name = "Raise Eyebrow"
+	set name = "Бровь"
 	set category = "Emotes"
 
 	emote("eyebrow", intentional = TRUE)
@@ -65,7 +65,7 @@
 	nomsg = TRUE
 
 /mob/living/carbon/human/verb/emote_psst()
-	set name = "Psst"
+	set name = "Псст"
 	set category = "Noises"
 
 	emote("psst", intentional = TRUE)
@@ -78,7 +78,7 @@
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_grumble()
-	set name = "Grumble"
+	set name = "Ворчать"
 	set category = "Noises"
 
 	emote("grumble", intentional = TRUE)

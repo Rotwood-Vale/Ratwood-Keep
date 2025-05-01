@@ -33,7 +33,7 @@
 
 /datum/emote/New()
 	if(!runechat_msg)
-		runechat_msg = strip_punctuation(message)
+		runechat_msg = message // REDMOON EDIT - убрана пунктация, т.к. ломает инициализацию в текущем виде
 	if (ispath(mob_type_allowed_typecache))
 		switch (mob_type_allowed_typecache)
 			if (/mob)
