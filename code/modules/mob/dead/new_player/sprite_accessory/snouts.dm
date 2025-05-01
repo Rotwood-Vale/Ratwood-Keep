@@ -276,10 +276,6 @@
 	color_keys = 2
 	color_key_names = list("Snout", "Inner")
 
-/datum/sprite_accessory/snout/fshortt
-	name = "Feline, short"
-	icon_state = "fshortt"
-
 /******************************************
 **************** Snouts *******************
 *************but higher up*****************/

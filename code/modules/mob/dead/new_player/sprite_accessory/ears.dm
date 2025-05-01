@@ -37,10 +37,6 @@
 	color_keys = 2
 	color_key_names = list("Ears", "Inner")
 
-/datum/sprite_accessory/ears/cabbit
-	name = "Broad Ears"
-	icon_state = "broad"
-
 /datum/sprite_accessory/ears/bigwolf_inner
 	name = "Big Wolf (Inner)"
 	icon_state = "bigwolf_inner"
