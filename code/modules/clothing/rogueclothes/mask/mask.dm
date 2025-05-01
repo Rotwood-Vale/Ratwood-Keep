@@ -46,7 +46,7 @@
 		playsound(src.loc, break_sound, 60, 1)
 	..()
 
-/obj/item/clothing/mask/rogue/spectacles/equipped(mob/living/carbon/human/user, slot)
+/obj/item/clothing/mask/rogue/spectacles/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(!user.has_flaw(/datum/charflaw/badsight) && slot == SLOT_WEAR_MASK && user.STAPER < 5)
 		user.change_stat("perception", 4, "spectacles")
