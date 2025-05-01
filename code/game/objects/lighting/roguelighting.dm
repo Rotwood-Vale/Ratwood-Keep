@@ -602,10 +602,9 @@
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
 	cookonme = TRUE
-	var/datum/looping_sound/boilloop/boilloop
+
 
 /obj/machinery/light/rogue/hearth/Initialize()
-	boilloop = new(src, FALSE)
 	. = ..()
 
 /obj/machinery/light/rogue/hearth/attackby(obj/item/W, mob/living/user, params)
@@ -636,15 +635,23 @@
 					return
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
+			P.attackby(W, user, params)
 
-			if(P.reagents.chem_temp < T100C)
-				to_chat(user, span_notice("The pot isn't boiling yet."))
-				return TRUE
-			
-			P.check_for_recipe(W, user)
-			return
 	. = ..()
 
+//If you know what I have to do to make this work let me know!!
+/*
+/obj/machinery/light/rogue/hearth/MouseDrop_T(atom/movable/O, mob/user)
+	if(attachment)
+		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+			var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
+			var/datum/component/storage/STR = P.GetComponent(/datum/component/storage)
+			if(STR)
+				STR.user_show_to_mob(user, TRUE)
+			return
+	. = ..()
+*/	
+	
 
 /* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.
 
@@ -708,7 +715,6 @@
 				attachment.forceMove(user.loc)
 			attachment = null
 			update_icon()
-			boilloop.stop()
 	else
 		if(on)
 			var/mob/living/carbon/human/H = user
@@ -740,12 +746,12 @@
 						qdel(food)
 						food = C
 			if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
-				if(attachment.reagents)
-					attachment.reagents.expose_temperature(400, 0.033)
-					if(attachment.reagents.chem_temp > 374)
-						boilloop.start()
-					else
-						boilloop.stop()
+				var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
+				if(P.reagents)
+					P.reagents.expose_temperature(400, 0.033)
+					if(P.reagents.chem_temp >= T100C)
+						if(!P.active)
+							P.start_boiling()
 		update_icon()
 
 
@@ -755,7 +761,6 @@
 		burn_out()
 
 /obj/machinery/light/rogue/hearth/Destroy()
-	QDEL_NULL(boilloop)
 	. = ..()
 
 /obj/machinery/light/rogue/campfire

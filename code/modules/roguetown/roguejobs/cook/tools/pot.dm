@@ -17,12 +17,44 @@
 	throwforce = 10
 	//volume is same as buckets now, 198. (66oz) (whoever changed this to 300 before caused a lot of headaches)
 	smeltresult = null
-	var/list/active_recipes = list() //all current cooking things in the pot.
+	var/active = FALSE // for the timer looping
+	var/list/item_times = list() // items in the pot and their associated time
+	var/datum/looping_sound/boilloop/boilloop // the pot boils now!
 
+/obj/item/reagent_containers/glass/bucket/pot/stone
+	name = "stone pot"
+	desc = "A pot made out of stone"
 
-/obj/item/reagent_containers/glass/bucket/pot/Destroy()
+/obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/reagent_containers/glass/bowl))
+		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
+		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
+		if(do_after(user,2 SECONDS, target = src))
+			reagents.trans_to(I, reagents.total_volume)
+		return TRUE
+
+	if(istype(I, /obj/item/reagent_containers/glass)) //ignore these for now I'll have to figure out something later
+		return FALSE
 	. = ..()
-	active_recipes = null
+
+/* Process */
+obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
+	if(!active)
+		active = TRUE
+		boil()
+
+/* Component Initialize */
+obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/pot)
+	boilloop = new(src, FALSE)
+
+/* Destroy */
+/obj/item/reagent_containers/glass/bucket/pot/Destroy()
+	//active_recipes = null
+	QDEL_NULL(boilloop)
+	. = ..()
+	item_times = list()
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()
 	cut_overlays()
@@ -40,40 +72,54 @@
 			add_overlay(filling)
 
 
-/obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/glass/bowl))
-		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
-		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
-		if(do_after(user,2 SECONDS, target = src))
-			reagents.trans_to(I, reagents.total_volume)
-	return TRUE
+/* Boil */
+obj/item/reagent_containers/glass/bucket/pot/proc/boil()
+	if(!active)
+		return
+	// still process down to room temp even if no longer cooking
+	if(reagents.chem_temp < T100C)
+		boilloop.stop()
 
-/obj/item/reagent_containers/glass/bucket/pot/stone
-	name = "stone pot"
-	desc = "A pot made out of stone"
-
-
-/* Handle recipes */
-/obj/item/reagent_containers/glass/bucket/pot/proc/check_for_recipe(obj/item/input, mob/living/user)
-	var/datum/pot_recipe/recipe = select_pot_recipe(GLOB.pot_recipes, input)
-	if(!recipe)
-		return FALSE
-	if(!recipe.output)
-		return FALSE
-
-	var/reserve_water = 0
-	for(var/datum/pot_recipe/R in active_recipes)
-		reserve_water += R.volume_to_replace
+		if(reagents.chem_temp <= T20C)
+			active = FALSE
+			return
+		// cool down if not on a heat source
+		if(!istype(loc, /obj/machinery/light/rogue/hearth))
+			reagents.expose_temperature(T20C,  0.033) //cools down a third a hearth heats it so it should never cool on one.
+		addtimer(CALLBACK(src, PROC_REF(boil)),1 SECONDS)
+		return
 	
-	var/amount_of_water = reagents.get_reagent_amount(/datum/reagent/water)
-	if(amount_of_water - reserve_water >= recipe.volume_to_replace)
-		var/delay = get_skill_delay(user.mind.get_skill_level(/datum/skill/craft/cooking), 0.3, 2)
-		if(do_after(user,delay, target = src))
-			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			qdel(input)
-			recipe.start_cooking(src, user)
-	else
-		to_chat(user, span_warning("There is not enough water in the pot."))
+	if(!reagents) //if you put a dry pot on
+		active = FALSE
+		return
+
+	// Start of success loops
+	boilloop.start()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		if(!length(things))
+			// Should be the termination point if a pot with no items is idle on a hearth
+			reagents.remove_reagent(/datum/reagent/water, 1) //slowly lose water
+			addtimer(CALLBACK(src, PROC_REF(boil)),4 SECONDS)
+			return
+
+		for(var/obj/item/I in things)
+			var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, I)
+			if(R.output)
+				item_times[I] += 1
+			else
+				continue
+		for(var/J in item_times)
+			var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, J)
+			var/cooking_limit = R.cooking_time/10
+			if(item_times[J] >= cooking_limit) //remove 10 for deciseconds
+				STR.remove_from_storage(J)
+				item_times -= J
+				R.cook(src) 
+				qdel(J)
+
+	addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS)
 
 
 // TO DO: Find a better place for this stuff eventually
@@ -86,6 +132,7 @@ GLOBAL_LIST_INIT(pot_recipes, init_subtypes(/datum/pot_recipe))
 			if(R.check_can_cook())
 				return R
 	return FALSE
+
 
 /*========
 Pot Recipe
@@ -103,45 +150,31 @@ Pot Recipe
 /datum/pot_recipe/proc/check_can_cook()
 	return TRUE
 
-/* Start cooking */
-/datum/pot_recipe/proc/start_cooking(obj/item/reagent_containers/glass/bucket/pot/P, mob/living/user)
-	P.active_recipes.Add(src)
-	var/real_cooking_time = cooking_time 
-	if(user.mind)
-		real_cooking_time /= 1 + (user.mind.get_skill_level(/datum/skill/craft/cooking) * 0.5)
-		real_cooking_time = round(real_cooking_time)
-	addtimer(CALLBACK(src, PROC_REF(cook), P), cooking_time)
-
 /* Cook */
 /datum/pot_recipe/proc/cook(obj/item/reagent_containers/glass/bucket/pot/pot)
 	if(!pot)
-		end_cooking()
 		return
 	if(volume_to_replace <= 0)
-		end_cooking()
 		return
 	if(!pot.reagents) // If we somehow lost all our reagents (either deleted or emptied before we finished)
-		end_cooking()
 		return
 	if(!pot.reagents.has_reagent(/datum/reagent/water, volume_to_replace)) //if we somehow snuck in or some water level changed before we fired just fucking DIE
-		end_cooking()
 		return
 
 	// One final sanity check in case some lunatic empties some water but still keeps cooking and didn't hit 0 water or null reagents
 	var/true_volume_to_remove =  min(volume_to_replace, pot.reagents.get_reagent_amount(/datum/reagent/water))
-
+	
 	var/temp = pot.reagents.chem_temp
 	pot.reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
-	pot.reagents.add_reagent(output, true_volume_to_remove, list(), temp) //last value should stop pot losing temp.
+	pot.reagents.add_reagent(output, true_volume_to_remove, reagtemp = temp)
 
 	var/turf/pot_turf = get_turf(pot)
 	playsound(pot_turf, "bubbles", 30, TRUE)
-	end_cooking(pot) //we just finish for now...
 
 /* End cooking */
 //Probably never needs to do more than this but here if you wanna do something special on ending
 /datum/pot_recipe/proc/end_cooking(obj/item/reagent_containers/glass/bucket/pot/P)
-	P.active_recipes.Remove(src)
+	return
 
 /*===========
 Stew Variants
