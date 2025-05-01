@@ -1,149 +1,755 @@
 /obj/item/organ
-/obj/item/organ/adamantine_resonator
+	name = "organ"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/antennas
-/obj/item/organ/antennas/ipc
+	name = "antennae"
+	desc = "A severed pair of antennae. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/antennas/moth
-/obj/item/organ/antennas/synth
-/obj/item/organ/anus
+	name = "fluvian antennas"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/anus // Нужно перевести в нашем файле и удалить отсюда
+
 /obj/item/organ/appendix
+	name = "appendix"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/back_feature
+	name = "back fluff"
+	desc = "A severed bunch of fluff. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/brain
-/obj/item/organ/brain/alien
+	name = "brain"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/breasts
-/obj/item/organ/butt
+	name = "breasts"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/butt // Нужно перевести в нашем файле и удалить отсюда
+
 /obj/item/organ/ears
+	name = "ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/akula
+	name = "axian ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/anthro
+	name = "wild-kin ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/bronze
+	name = "tin ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/cat
-/obj/item/organ/ears/cybernetic
-/obj/item/organ/ears/cybernetic/upgraded
+	name = "cat ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/elf
+	name = "elf ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/elfw
+	name = "wood elf ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/goblin
+	name = "goblin ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/halforc
-/obj/item/organ/ears/invincible
+	name = "halforc ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/lupian
+	name = "lupian ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/penguin
+	name = "penguin ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/tabaxi
+	name = "tabaxi ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/tiefling
+	name = "tiefling ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/ears/vulpkanin
+	name = "vulpkian ears"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes
+	name = "eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/elf
+	name = "elf eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/goblin
+	name = "goblin eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/halfelf
+	name = "half-elf eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/moth
+	name = "fluvian eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision
+	name = "shadow eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/alien
+	name = "alien eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/argonian
+	name = "sissean eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/mushroom
+	name = "fung-eye"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/nightmare
+	name = "burning red eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/werewolf
+	name = "moonlight eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/night_vision/zombie
-/obj/item/organ/eyes/robotic
-/obj/item/organ/eyes/robotic/flashlight
-/obj/item/organ/eyes/robotic/glow
-/obj/item/organ/eyes/robotic/shield
-/obj/item/organ/eyes/robotic/thermals
+	name = "undead eyes"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/robotic/wooden
-/obj/item/organ/eyes/robotic/xray
+	name = "wooden eyeball"
+	desc = "This is just a wooden ball."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/eyes/snail
+	name = "snail eyes"
+	desc = ""
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/frills
-/obj/item/organ/frills/lizard
+	name = "frills"
+	desc = "A severed pair of frills. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/head_feature
-/obj/item/organ/head_feature/skrell_hair
-/obj/item/organ/head_feature/xeno_head
+	name = "head fluff"
+	desc = "A severed bunch of fluff. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/heart
+	name = "heart"
+	desc = ""
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/heart/cursed
+	name = "cursed heart"
+	desc = ""
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/horns
+	name = "horns"
+	desc = "A severed pair of horns. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/horns/halforc
-/obj/item/organ/horns/humanoid
+	name = "halforc horns"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/liver
-/obj/item/organ/liver/alien
-/obj/item/organ/liver/cybernetic
-/obj/item/organ/liver/cybernetic/upgraded
-/obj/item/organ/liver/fly
-/obj/item/organ/liver/plasmaman
+	name = "liver"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/liver/weak
+	name = "weakened liver"
+	desc = "This seems hardly functional."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/lungs
-/obj/item/organ/lungs/plasmaman
-/obj/item/organ/lungs/slime
+	name = "lungs"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/neck_feature
-/obj/item/organ/neck_feature/anthro_fluff
-/obj/item/organ/neck_feature/moth_fluff
+	name = "neck fluff"
+	desc = "A severed bunch of fluff. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis
+	name = "penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/barbed
+	name = "barbed penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/barbed_knotted
+	name = "barbed knotted penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/equine
+	name = "equine penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/knotted
-/obj/item/organ/penis/knotted/big
+	name = "knotted penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/tapered
+	name = "tapered penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/tapered_double
+	name = "hemi tapered penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/tapered_double_knotted
+	name = "hemi knotted tapered penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/tapered_mammal
+	name = "tapered penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/penis/tentacle
+	name = "tentacle penis"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/snout
-/obj/item/organ/snout/akula
-/obj/item/organ/snout/anthro
+	name = "snout"
+	desc = "A severed snout. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/snout/kraukalee // Нужно перевести в нашем файле и удалить отсюда
+
 /obj/item/organ/snout/beak
-/obj/item/organ/snout/cat
-/obj/item/organ/snout/kraukalee
-/obj/item/organ/snout/lizard
+	name = "beak"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/snout/anthro
+	name = "wild-kin snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/snout/lupian
-/obj/item/organ/snout/synth
-/obj/item/organ/snout/tajaran
-/obj/item/organ/snout/vox
+	name = "lupian snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/snout/lizard
+	name = "sissean snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/snout/vulpkanin
+	name = "vulpkian snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/snout/cat
+	name = "cat snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/snout/akula
+	name = "axian snout"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/stomach
-/obj/item/organ/stomach/ethereal
-/obj/item/organ/stomach/fly
-/obj/item/organ/stomach/plasmaman
+	name = "stomach"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail
+	name = "tail"
+	desc = "A severed tail. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/akula
+	name = "axian tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/anthro
-/obj/item/organ/tail/avali
+	name = "wild-kin tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/cat
+	name = "cat tail"
+	desc = "A severed cat tail. Who's wagging now?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/kobold
-/obj/item/organ/tail/kraukalee
+	name = "kobold tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/tail/kraukalee // Перевести в оригинале, удалить отсюда
+
 /obj/item/organ/tail/lizard
+	name = "sissean tail"
+	desc = "A severed sissean tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/lizard/fake
+	name = "fabricated lizard tail"
+	desc = "A fabricated severed lizard tail. This one's made of synthflesh. Probably not usable for lizard wine."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/lupian
+	name = "lupian tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/monkey
-/obj/item/organ/tail/synth
-/obj/item/organ/tail/tajaran
+	name = "monkey tail"
+	desc = "A severed monkey tail. Does not look like a banana."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/tiefling
-/obj/item/organ/tail/vox
+	name = "tiefling tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail/vulpkanin
-/obj/item/organ/tail/xeno
+	name = "vulpkian tail"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail_feature
+	name = "tail fluff"
+	desc = "A severed bunch of fluff. What did you cut this off of?"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tail_feature/lizard_spines
-/obj/item/organ/tail_feature/vox_marking
-/obj/item/organ/taur_body
-/obj/item/organ/taur_body/humanoid
-/obj/item/organ/taur_body/synth
+	name = "spines"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/testicles
+	name = "testicles"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/testicles/internal
+	name = "internal testicles"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tongue
-/obj/item/organ/tongue/abductor
-/obj/item/organ/tongue/alien
-/obj/item/organ/tongue/bone
-/obj/item/organ/tongue/bone/plasmaman
-/obj/item/organ/tongue/fly
+	name = "tongue"
+	desc = ""
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/tongue/lizard
-/obj/item/organ/tongue/robot
-/obj/item/organ/tongue/snail
-/obj/item/organ/tongue/zombie
+	name = "forked tongue"
+	desc = ""
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/vagina
-/obj/item/organ/vocal_cords //organs that are activated through speech with the :x/mode_key_vocalcords channel
-/obj/item/organ/vocal_cords/adamantine
-/obj/item/organ/vocal_cords/colossus
+	name = "vagina"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings
+	name = "wings"
+	desc = "A pair of wings. Those may or may not allow you to fly... or at the very least flap."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/angel
+	name = "aasimar wings"
+	desc = "A pair of magnificent, feathery wings. They look strong enough to lift you up in the air."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/anthro
+	name = "wild-kin wings"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/dracon
-/obj/item/organ/wings/flight
+	name = "dragon wings"
+	desc = "A pair of intimidating, membranous wings. They look strong enough to lift you up in the air."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/flight/dragon
+	name = "dragon wings"
+	desc = "A pair of intimidating, membranous wings. They look strong enough to lift you up in the air."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/flight/megamoth
-/obj/item/organ/wings/kraukalee
+	name = "megamoth wings"
+	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/organ/wings/kraukalee // Перевести в нашем файле, удалить отсюда
+
 /obj/item/organ/wings/moth
+	name = "fluvian wings"
+	desc = "A pair of fuzzy moth wings."
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/organ/wings/seelie
+	name = "seelie wings"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный

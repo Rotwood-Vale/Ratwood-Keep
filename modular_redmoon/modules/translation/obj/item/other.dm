@@ -500,6 +500,22 @@
 /obj/item/stack/wrapping_paper
 /obj/item/staff
 /obj/item/staff/broom
+/obj/item/seeds
+	name = "seeds"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
+/obj/item/seeds/mycelium
+	name = "spores"
+	name_gen = "" // Родительный
+	name_accu = "" // Винительный
+	name_dat = "" // Дательный
+	name_inst = "" // Творительный
+	name_prep = "" // Предложный
+
 /obj/item/target
 /obj/item/target/alien
 /obj/item/target/alien/anchored
