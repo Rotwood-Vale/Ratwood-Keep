@@ -89,7 +89,7 @@
 	//We cannot call it for items that have not been handled as they are not yet correctly
 	//in a slot (handled further down inheritance chain, probably living/carbon/human/equip_to_slot
 	if(!not_handled)
-		I.equipped(src, slot, initial = FALSE, silent = FALSE)
+		I.equipped(src, slot, initial)
 
 	if(hud_used)
 		hud_used.throw_icon?.update_icon()

@@ -218,7 +218,7 @@
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
-		I.equipped(src, slot, initial = FALSE, silent = FALSE)
+		I.equipped(src, slot)
 
 
 	if(hud_used)
