@@ -149,7 +149,7 @@ Sunlight System
 /turf/var/weatherproof = TRUE
 /turf/open/transparent/openspace/weatherproof = FALSE
 
-/datum/lighting_corner/var/list/globAffect = list() /* list of sunlight objects affecting this corner */
+/datum/lighting_corner/var/list/globAffect /* list of sunlight objects affecting this corner */
 /datum/lighting_corner/var/sunFalloff = 0 /* smallest distance to sunlight turf, for sunlight falloff */
 
 /* loop through and find our strongest sunlight value */

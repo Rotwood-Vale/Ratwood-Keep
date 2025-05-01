@@ -5,7 +5,7 @@
 	var/smooth_icon = null
 	var/prettifyturf = FALSE
 	icon = 'icons/turf/roguefloor.dmi'
-	baseturfs = list(/turf/open/transparent/openspace)
+	baseturfs = /turf/open/transparent/openspace
 	neighborlay = ""
 
 /turf/open/floor/rogue/break_tile()
@@ -388,8 +388,7 @@
 
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
 	//No tile slowdown for fairies
-	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	if(user.is_floor_hazard_immune())
 		return 0
 
 	var/returned = slowdown
@@ -432,7 +431,8 @@
 	..()
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
-		if(H.shoes && !(HAS_TRAIT(H, TRAIT_LIGHT_STEP) || isseelie(H))) //Seelie hover, so they won't step on blood
+		var/skip_footsteps = HAS_TRAIT(H, TRAIT_LIGHT_STEP) || H.is_floor_hazard_immune()
+		if(H.shoes && !skip_footsteps) //Seelie hover, so they won't step on blood
 			var/obj/item/clothing/shoes/S = H.shoes
 			if(!S.can_be_bloody)
 				return
@@ -532,6 +532,7 @@
 	for(var/A in neighborlay_list)
 		cut_overlay("[A]")
 		neighborlay_list -= A
+	LAZYINITLIST(neighborlay_list)
 	var/usedturf
 	if(adjacencies & N_NORTH)
 		usedturf = get_step(src, NORTH)

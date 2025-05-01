@@ -24,9 +24,8 @@
 				if(do_after(user, 50, needhand = 1, target = src))
 					facial_hairstyle = "None"
 					update_hair()
-					if(dna?.species)
-						if(dna.species.id == "dwarf")
-							add_stress(/datum/stressevent/dwarfshaved)
+					if(dna?.species?.id == "dwarf")
+						add_stress(/datum/stressevent/dwarfshaved)
 				else
 					held_item.melee_attack_chain(user, src, params)
 		return
@@ -79,27 +78,22 @@
 	GLOB.human_list += src
 
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
-	var/obj/item/bodypart/affecting
 	var/dam = levels * rand(10,50)
 	add_stress(/datum/stressevent/felldown)
+	var/list/obj/item/bodypart/candidates = list()
+	for(var/candidate in list(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_CHEST, BODY_ZONE_HEAD))
+		var/the_organ = get_bodypart(candidate)
+		if(the_organ)
+			candidates += the_organ
 	var/chat_message
-	switch(rand(1,4))
-		if(1)
-			affecting = get_bodypart(pick(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-			chat_message = span_danger("I fall on my [affecting]!")
-		if(2)
-			affecting = get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
-			chat_message = span_danger("I fall on my arm!")
-		if(3)
-			affecting = get_bodypart(BODY_ZONE_CHEST)
+	var/obj/item/bodypart/affecting = pick(candidates) // this should never be null, a mob should always have at least a chest
+	if(affecting) // but just in case, check anyway
+		chat_message = span_danger("I fall on my [affecting.name]!")
+		if(affecting.body_zone == BODY_ZONE_CHEST)
 			chat_message = span_danger("I fall flat! I'm winded!")
 			emote("gasp")
 			adjustOxyLoss(50)
-		if(4)
-			affecting = get_bodypart(BODY_ZONE_HEAD)
-			chat_message = span_danger("I fall on my head!")
-	if(affecting)
-		apply_damage(dam/2, BRUTE, affecting)
+		apply_damage(dam/2, BRUTE, affecting) // half the damage bypasses armour
 		if(apply_damage(dam/2, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
 			if(levels >= 1)
 				//absurd damage to guarantee a crit
@@ -361,11 +355,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, span_unconscious("I feel a breath of fresh air enter your lungs... It feels good..."))
+			to_chat(C, span_unconscious("I feel a breath of fresh air enter my lungs... It feels good..."))
 		else if(they_breathe && !they_lung)
-			to_chat(C, span_unconscious("I feel a breath of fresh air... but you don't feel any better..."))
+			to_chat(C, span_unconscious("I feel a breath of fresh air... but I don't feel any better..."))
 		else
-			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation you don't recognise..."))
+			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation I don't recognise..."))
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(..())
@@ -626,7 +620,7 @@
 	if(blood && (NOBLOOD in dna.species.species_traits) && !HAS_TRAIT(src, TRAIT_TOXINLOVER))
 		if(message)
 			visible_message(span_warning("[src] dry heaves!"), \
-							span_danger("I try to throw up, but there's nothing in your stomach!"))
+							span_danger("I try to throw up, but there's nothing in my stomach!"))
 		if(stun)
 			Immobilize(200)
 		return 1
@@ -783,11 +777,11 @@
 	if(hands_needed || target_hands_needed)
 		if(hands_needed && !equipped_hands_self)
 			src.visible_message(span_warning("[src] can't get a grip on [target] because their hands are full!"),
-				span_warning("I can't get a grip on [target] because your hands are full!"))
+				span_warning("I can't get a grip on [target] because my hands are full!"))
 			return
 		else if(target_hands_needed && !equipped_hands_target)
 			target.visible_message(span_warning("[target] can't get a grip on [src] because their hands are full!"),
-				span_warning("I can't get a grip on [src] because your hands are full!"))
+				span_warning("I can't get a grip on [src] because my hands are full!"))
 			return
 
 	//stop_pulling()
@@ -807,7 +801,7 @@
 	remove_movespeed_modifier(MOVESPEED_ID_SHOVE)
 	var/active_item = get_active_held_item()
 	if(is_type_in_typecache(active_item, GLOB.shove_disarming_types))
-		visible_message(span_warning("[src.name] regains their grip on \the [active_item]!"), span_warning("I regain your grip on \the [active_item]"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_warning("[src] regains their grip on \the [active_item]!"), span_warning("I regain my grip on \the [active_item]!"), null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/carbon/human/do_after_coefficent()
 	. = ..()
