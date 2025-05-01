@@ -399,7 +399,11 @@
 		A.locked = FALSE
 	lock_tampered = TRUE
 	playsound(loc, 'sound/items/LPWin.ogg', 150 - (15 * skill_level))
-
+	
+	//Stops division by zero
+	if(!difficulty || difficulty == 0)
+		difficulty = 6 // lowest value apparently.
+		
 	var/amt2raise = user.STAINT + (50 / difficulty)
 	var/boon = user.STALUC/4
 	user.mind?.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
