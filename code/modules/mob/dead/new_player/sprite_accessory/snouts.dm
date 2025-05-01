@@ -72,6 +72,10 @@
 	name = "Hook Beak"
 	icon_state = "hookbeak"
 
+/datum/sprite_accessory/snout/domestic
+	name = "Feline, Short"
+	icon_state = "domestic"
+
 /datum/sprite_accessory/snout/hookbeakbig
 	name = "Hook Beak Big"
 	icon_state = "hookbeakbig"
@@ -343,12 +347,6 @@
 /datum/sprite_accessory/snout/front/lcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
-
-/datum/sprite_accessory/snout/front/fshortt
-	name = "Feline, short"
-	icon_state = "fshortt"
-	color_keys = 2
-	color_key_names = list("Snout", "Inner")
 
 /datum/sprite_accessory/snout/front/lcanidalt
 	name = "Mammal, Long ALT (Top)"

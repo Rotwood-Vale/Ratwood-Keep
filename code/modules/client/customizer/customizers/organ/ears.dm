@@ -48,7 +48,6 @@
 		/datum/sprite_accessory/ears/cat_big,
 		/datum/sprite_accessory/ears/cat_normal,
 		/datum/sprite_accessory/ears/lynx,
-		/datum/sprite_accessory/ears/broad,
 		)
 
 /datum/customizer/organ/ears/axian
@@ -123,7 +122,6 @@
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
 		/datum/sprite_accessory/ears/lynx,
-		/datum/sprite_accessory/ears/broad,
 		)
 
 /datum/customizer/organ/ears/anthro
@@ -187,5 +185,4 @@
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
 		/datum/sprite_accessory/ears/lynx,
-		/datum/sprite_accessory/ears/broad,
 		)
