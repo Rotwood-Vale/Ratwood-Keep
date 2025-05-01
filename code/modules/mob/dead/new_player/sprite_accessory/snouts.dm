@@ -72,6 +72,10 @@
 	name = "Hook Beak"
 	icon_state = "hookbeak"
 
+/datum/sprite_accessory/snout/domestic
+	name = "Feline, Short"
+	icon_state = "domestic"
+
 /datum/sprite_accessory/snout/hookbeakbig
 	name = "Hook Beak Big"
 	icon_state = "hookbeakbig"
