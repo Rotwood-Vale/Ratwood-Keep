@@ -38,7 +38,7 @@
 	lockhash = 0
 	lockid = null
 	var/lockbroken = 0
-	var/lockdiff = 0 //how hard it is to pick the lock of a door
+	var/lockdiff = 6 //how hard it is to pick the lock of a door
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
 	var/rattlesound = 'sound/foley/doors/lockrattle.ogg'
