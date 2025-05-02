@@ -143,8 +143,7 @@
 								icon_state = "pestra_chalky"
 
 /obj/structure/ritualcircle/pestra/proc/flylordstriage(src)
-	var/ritualtargets = view(0, loc)
-	for(var/mob/living/carbon/human/target in ritualtargets)
+	for(var/mob/living/carbon/human/target in view(0, src))
 		to_chat(target,span_userdanger("You feel them crawling into your wounds and pores. Their horrific hum rings through your ears as they do their work!"))
 		target.flash_fullscreen("redflash3")
 		target.emote("agony")
