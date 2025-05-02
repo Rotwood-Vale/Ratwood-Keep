@@ -981,7 +981,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/structure/pillory/town_square,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "aAe" = (
@@ -2527,7 +2527,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/harbor)
 "bpz" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
+/obj/structure/pillory/bounty/keep_dungeon,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "bpD" = (
@@ -11668,7 +11668,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/rtfield)
 "fXn" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
+/obj/structure/pillory/bounty/keep_dungeon,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "fXx" = (
@@ -29325,7 +29325,7 @@
 /area/rogue/indoors/town/bath)
 "puw" = (
 /obj/effect/decal/cleanable/vomit/old,
-/obj/structure/pillory/town_square,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "puT" = (
@@ -29896,7 +29896,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/tavern)
 "pJk" = (
-/obj/structure/pillory/town_square,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "pKb" = (
@@ -32369,7 +32369,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "reS" = (
-/obj/structure/pillory/town_square,
+/obj/structure/pillory/bounty/town_square,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
@@ -39683,7 +39683,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "vfH" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
+/obj/structure/pillory/bounty/keep_dungeon,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "vfI" = (
@@ -42586,7 +42586,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town/harbor)
 "wIj" = (
-/obj/structure/pillory/reinforced/keep_dungeon,
+/obj/structure/pillory/bounty/keep_dungeon,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "wIy" = (
