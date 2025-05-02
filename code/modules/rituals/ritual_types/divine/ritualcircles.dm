@@ -283,8 +283,7 @@
 								icon_state = "eora_chalky"
 
 /obj/structure/ritualcircle/eora/proc/pacify(src)
-	var/ritualtargets = view(0, loc)
-	for(var/mob/living/carbon/human/target in ritualtargets)
+	for(var/mob/living/carbon/human/target in view(0, loc))
 		loc.visible_message(span_warning("[target] sways like windchimes in the wind..."))
 		target.visible_message(span_green("I feel the burdens of my heart lifting. Something feels very wrong... I don't mind at all..."))
 		target.apply_status_effect(/datum/status_effect/buff/calmed)
