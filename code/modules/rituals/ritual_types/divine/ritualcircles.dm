@@ -9,8 +9,8 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/structure/ritualcircle/attack_right(mob/living/carbon/human/user)
-	user.visible_message(span_warning("[user] begins wiping away the rune..."), span_warning("I begin wiping away the rune..."))
-	if(do_after(user, 1.5 SECONDS))
+	user.visible_message(span_warning("[user] begins wiping away the rune"))
+	if(do_after(user, 15))
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
@@ -34,13 +34,13 @@
 	var/riteselection = input(user, "Rituals of the Sun", src) as null|anything in solarrites // When you use a open hand on a rune, It'll give you a selection of all the rites available from that rune
 	switch(riteselection) // rite selection goes in this section, try to do something fluffy. Presentation is most important here, truthfully.
 		if("Guiding Light") // User selects Guiding Light, begins the stuff for it
-			if(do_after(user, 50)) // just flavor stuff before activation
+			 if(do_after(user, 5 SECONDS)) // just flavor stuff before activation 
 				user.say("I beseech the she-form of the Twinned God!!")
-				if(do_after(user, 50))
-					user.say("To bring Order to a world of naught!!")
-					if(do_after(user, 50))
+				if(do_after(user, 5 SECONDS)) 
+					user.say("To bring Order to a world bereft!!")
+					if(do_after(user, 5 SECONDS))  
 						user.say("Place your gaze upon me, oh Radiant one!!")
-						to_chat(user,span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up...")) // A bunch of flavor stuff, slow incanting.
+						user.visible_message(span_warning("[user] bursts into flames, wholly embraced by Her Warmth!"), span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up..."))  // A bunch of flavor stuff, slow incanting.  
 						icon_state = "astrata_active"
 						loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
 						playsound(loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
@@ -50,12 +50,12 @@
 						user.emote("firescream")
 						guidinglight(src) // Actually starts the proc for applying the buff
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-						spawn(120)
+						spawn(12 SECONDS) 
 							icon_state = "astrata_chalky"
 
 /obj/structure/ritualcircle/astrata/proc/guidinglight(src)
 	var/ritualtargets = view(7, loc) // Range of 7 from the source, which is the rune
-	for(var/mob/living/carbon/human/target in ritualtargets) // defines the target as every human in this range
+	for(var/mob/living/carbon/human/target in view(7, src) // defines the target as every human in 7 tiles of the circle
 		target.apply_status_effect(/datum/status_effect/buff/guidinglight) // applies the status effect
 		to_chat(target,span_cultsmall("Astrata's light guides me forward, drawn to me by the Ritualist's pyre!"))
 		playsound(target, 'sound/magic/holyshield.ogg', 80, FALSE, -1) // Cool sound!
@@ -81,11 +81,11 @@
 	var/riteselection = input(user, "Rituals of the Moon", src) as null|anything in lunarrites
 	switch(riteselection) // put ur rite selection here
 		if("Moonlight Dance")
-			if(do_after(user, 50))
+			if(do_after(user, 5 SECONDS))
 				user.say("I beseech the he-form of the Twinned God!!")
-				if(do_after(user, 50))
+				if(do_after(user, 5 SECONDS))
 					user.say("To bring Wisdom to a world of naught!!")
-					if(do_after(user, 50))
+					if(do_after(user, 5 SECONDS))
 						user.say("Place your gaze upon me, oh wise one!!")
 						to_chat(user,span_cultsmall("The waning half of the Twin-God carries but one eye. With some effort, it can be drawn upon supplicants."))
 						playsound(loc, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
@@ -124,21 +124,22 @@
 	var/riteselection = input(user, "Rituals of Plague", src) as null|anything in plaguerites
 	switch(riteselection) // put ur rite selection here
 		if("Flylord's Triage")
-			if(do_after(user, 50))
+			if(do_after(user, 5 SECONDS))
 				user.say("Buboes, phlegm, blood and guts!!")
-				if(do_after(user, 50))
+				if(do_after(user, 5 SECONDS))
 					user.say("Boils, bogeys, rots and pus!!")
-					if(do_after(user, 50))
+					if(do_after(user, 5 SECONDS))
 						user.say("Blisters, fevers, weeping sores!!")
 						to_chat(user,span_danger("You feel something crawling up your throat, humming and scratching..."))
-						if(do_after(user, 30))
+						if(do_after(user, 3 SECONDS))
 							icon_state = "pestra_active"
 							user.say("From your wounds, the fester pours!!")
-							user.visible_message(span_warning("[user] opens their mouth, disgorging a great swarm of flies!"), span_cultsmall("My devotion to the Plague Queen allowing, her servants crawl up from my throat. Come now, father fly..."))
+							to_chat(user,span_cultsmall("My devotion to the Plague Queen allowing, her servants crawl up from my throat. Come now, father fly..."))
+							loc.visible_message(span_warning("[user] opens their mouth, disgorging a great swarm of flies!"))
 							playsound(loc, 'sound/misc/fliesloop.ogg', 100, FALSE, -1)
 							flylordstriage(src)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-							spawn(120)
+							spawn(12 SECONDS)
 								icon_state = "pestra_chalky"
 
 /obj/structure/ritualcircle/pestra/proc/flylordstriage(src)
@@ -170,27 +171,26 @@
 	var/riteselection = input(user, "Rituals of Beasts", src) as null|anything in bestialrites
 	switch(riteselection) // put ur rite selection here
 		if("Rite of the Lesser Wolf")
-			if(do_after(user, 50))
+			if(do_after(user, 5 SECONDS))
 				user.say("RRRGH GRRRHHHG GRRRRRHH!!")
 				playsound(loc, 'sound/vo/mobs/vw/idle (1).ogg', 100, FALSE, -1)
-				if(do_after(user, 50))
+				if(do_after(user, 5 SECONDS))
 					user.say("GRRRR GRRRRHHHH!!")
 					playsound(loc, 'sound/vo/mobs/vw/idle (4).ogg', 100, FALSE, -1)
-					if(do_after(user, 50))
+					if(do_after(user, 5 SECONDS))
 						loc.visible_message(span_warning("[user] snaps and snarls at the rune. Drool runs down their lip..."))
 						playsound(loc, 'sound/vo/mobs/vw/bark (1).ogg', 100, FALSE, -1)
-						if(do_after(user, 30))
+						if(do_after(user, 3 SECONDS))
 							icon_state = "dendor_active"
 							loc.visible_message(span_warning("[user] snaps their head upward, they let out a howl!"))
 							playsound(loc, 'sound/vo/mobs/wwolf/howl (2).ogg', 100, FALSE, -1)
 							lesserwolf(src)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-							spawn(120)
+							spawn(12 SECONDS)
 								icon_state = "dendor_chalky"
 
 /obj/structure/ritualcircle/dendor/proc/lesserwolf(src)
-	var/ritualtargets = view(1, loc)
-	for(var/mob/living/carbon/human/target in ritualtargets)
+	for(var/mob/living/carbon/human/target in view(1, src))
 		target.apply_status_effect(/datum/status_effect/buff/lesserwolf)
 
 
@@ -223,26 +223,25 @@
 		if("Undermaiden's Bargain")
 			loc.visible_message(span_warning("[user] sways before the rune, they open their mouth, though no words come out..."))
 			playsound(user, 'sound/vo/mobs/ghost/whisper (3).ogg', 100, FALSE, -1)
-			if(do_after(user, 60))
+			if(do_after(user, 6 SECONDS))
 				loc.visible_message(span_warning("[user] silently weeps, yet their tears do not flow..."))
 				playsound(user, 'sound/vo/mobs/ghost/whisper (1).ogg', 100, FALSE, -1)
-				if(do_after(user, 60))
+				if(do_after(user, 6 SECONDS))
 					loc.visible_message(span_warning("[user] locks up, as though someone had just grabbed them..."))
 					to_chat(user,span_danger("You feel cold breath on the back of your neck..."))
 					playsound(user, 'sound/vo/mobs/ghost/death.ogg', 100, FALSE, -1)
-					if(do_after(user, 20))
+					if(do_after(user, 2 SECONDS))
 						icon_state = "necra_active"
 						user.say("Forgive me, the bargain is intoned!!")
 						to_chat(user,span_cultsmall("My devotion to the Undermaiden has allowed me to strike a bargain for these souls...."))
 						playsound(loc, 'sound/vo/mobs/ghost/moan (1).ogg', 100, FALSE, -1)
 						undermaidenbargain(src)
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-						spawn(120)
+						spawn(12 SECONDS)
 							icon_state = "necra_chalky"
 
 /obj/structure/ritualcircle/necra/proc/undermaidenbargain(src)
-	var/ritualtargets = view(7, loc)
-	for(var/mob/living/carbon/human/target in ritualtargets)
+	for(var/mob/living/carbon/human/target in view(7, src))
 		target.apply_status_effect(/datum/status_effect/buff/undermaidenbargain)
 
 
@@ -266,20 +265,21 @@
 	var/riteselection = input(user, "Rituals of Love", src) as null|anything in peacerites
 	switch(riteselection) // put ur rite selection here
 		if("Rite of Pacification")
-			if(do_after(user, 50))
+			if(do_after(user, 5 SECONDS))
 				user.say("#Blessed be your weary head...")
-				if(do_after(user, 50))
+				if(do_after(user, 5 SECONDS))
 					user.say("#Full of strife and pain...")
-					if(do_after(user, 50))
+					if(do_after(user, 5 SECONDS))
 						user.say("#Let Her ease your fear...")
-						if(do_after(user, 50))
+						if(do_after(user, 5 SECONDS0))
 							icon_state = "eora_active"
 							pacify(src)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-							spawn(120)
+							spawn(12 SECONDS)
 								icon_state = "eora_chalky"
 
 /obj/structure/ritualcircle/eora/proc/pacify(src)
-	for(var/mob/living/carbon/human/target in view(0, loc))
-		target.visible_message(span_warning("[target] sways like windchimes in the wind..."), span_green("I feel the burdens of my heart lifting. Something feels very wrong... I don't mind at all..."))
+	for(var/mob/living/carbon/human/target in view(0, src))
+		loc.visible_message(span_warning("[target] sways like windchimes in the wind..."))
+		target.visible_message(span_green("I feel the burdens of my heart lifting. Something feels very wrong... I don't mind at all..."))
 		target.apply_status_effect(/datum/status_effect/buff/calmed)
