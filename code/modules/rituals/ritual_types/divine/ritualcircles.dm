@@ -135,8 +135,7 @@
 						if(do_after(user, 30))
 							icon_state = "pestra_active"
 							user.say("From your wounds, the fester pours!!")
-							to_chat(user,span_cultsmall("My devotion to the Plague Queen allowing, her servants crawl up from my throat. Come now, father fly..."))
-							loc.visible_message(span_warning("[user] opens their mouth, disgorging a great swarm of flies!"))
+							user.visible_message(span_warning("[user] opens their mouth, disgorging a great swarm of flies!"), span_cultsmall("My devotion to the Plague Queen allowing, her servants crawl up from my throat. Come now, father fly..."))
 							playsound(loc, 'sound/misc/fliesloop.ogg', 100, FALSE, -1)
 							flylordstriage(src)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
