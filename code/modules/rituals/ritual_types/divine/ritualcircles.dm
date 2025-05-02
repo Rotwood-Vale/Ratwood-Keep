@@ -14,14 +14,14 @@
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
-// This'll be our tutorial ritual for those who want to make more later, let's go into details in comments, mm? - Onutsio 
+// This'll be our tutorial ritual for those who want to make more later, let's go into details in comments, mm? - Onutsio
 /obj/structure/ritualcircle/astrata
 	name = "Rune of the Sun" // defines name of the circle itself
-	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state. 
+	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state.
 	desc = "A Holy Rune of Astrata" // description on examine
 	var/solarrites = list("Guiding Light") // This is important - This is the var which stores every ritual option available to a ritualist - Ideally, we'd have like, 3 for each God. Right now, just 1.
 
-/obj/structure/ritualcircle/astrata/attack_hand(mob/living/user) 
+/obj/structure/ritualcircle/astrata/attack_hand(mob/living/user)
 	if((user.patron?.type) != /datum/patron/divine/astrata)
 		to_chat(user,span_smallred("I don't know the proper rites for this..."))
 		return
@@ -31,31 +31,33 @@
 	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
 		to_chat(user,span_smallred("I have performed enough rituals for the day... I must rest before communing more.")) // If you have already done a ritual in the last 30 minutes, you cannot do another.
 		return
-	var/riteselection = input(user, "Rituals of the Sun", src) as null|anything in solarrites // When you use a open hand on a rune, It'll give you a selection of all the rites available from that rune
-	switch(riteselection) // rite selection goes in this section, try to do something fluffy. Presentation is most important here, truthfully.
-		if("Guiding Light") // User selects Guiding Light, begins the stuff for it
-			 if(do_after(user, 5 SECONDS)) // just flavor stuff before activation 
+
+	var/riteselection = input(user, "Rituals of the Sun", src) as null|anything in solarrites
+
+	switch(riteselection)
+		if("Guiding Light")
+			if(do_after(user, 5 SECONDS))
 				user.say("I beseech the she-form of the Twinned God!!")
-				if(do_after(user, 5 SECONDS)) 
+				if(do_after(user, 5 SECONDS))
 					user.say("To bring Order to a world bereft!!")
-					if(do_after(user, 5 SECONDS))  
+					if(do_after(user, 5 SECONDS))
 						user.say("Place your gaze upon me, oh Radiant one!!")
-						user.visible_message(span_warning("[user] bursts into flames, wholly embraced by Her Warmth!"), span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up..."))  // A bunch of flavor stuff, slow incanting.  
+						user.visible_message(span_warning("[user] bursts into flames, wholly embraced by Her Warmth!"),
+							span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up..."))
 						icon_state = "astrata_active"
-						loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
+						loc.visible_message(span_warning("[user] bursts to flames! Embraced by Her Warmth wholly!"))
 						playsound(loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
 						user.adjust_fire_stacks(10)
 						user.IgniteMob()
 						user.flash_fullscreen("redflash3")
 						user.emote("firescream")
-						guidinglight(src) // Actually starts the proc for applying the buff
+						guidinglight(src)
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-						spawn(12 SECONDS) 
+						spawn(12 SECONDS)
 							icon_state = "astrata_chalky"
 
 /obj/structure/ritualcircle/astrata/proc/guidinglight(src)
-	var/ritualtargets = view(7, loc) // Range of 7 from the source, which is the rune
-	for(var/mob/living/carbon/human/target in view(7, src) // defines the target as every human in 7 tiles of the circle
+	for(var/mob/living/carbon/human/target in view(7, src)) // defines the target as every human in 7 tiles of the circle
 		target.apply_status_effect(/datum/status_effect/buff/guidinglight) // applies the status effect
 		to_chat(target,span_cultsmall("Astrata's light guides me forward, drawn to me by the Ritualist's pyre!"))
 		playsound(target, 'sound/magic/holyshield.ogg', 80, FALSE, -1) // Cool sound!
@@ -271,7 +273,7 @@
 					user.say("#Full of strife and pain...")
 					if(do_after(user, 5 SECONDS))
 						user.say("#Let Her ease your fear...")
-						if(do_after(user, 5 SECONDS0))
+						if(do_after(user, 5 SECONDS))
 							icon_state = "eora_active"
 							pacify(src)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
