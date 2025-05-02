@@ -39,7 +39,7 @@
 	switch(runeselection)
 		if("Rune of Sun")
 			to_chat(user,span_cultsmall("I begin inscribing the rune of Her Radiance..."))
-			if(do_after(user, 30, src))
+			if(do_after(user, 3 SECONDS, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/astrata(step_turf)
 		if("Rune of Moon")
