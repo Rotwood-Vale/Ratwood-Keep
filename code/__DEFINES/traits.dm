@@ -95,7 +95,7 @@
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
-#define TRAIT_RITUALIST "Ritualist" // Allows use of ritual chalk
+#define TRAIT_RITUALIST "Ritualist" // Allows use of ritual feathers
 #define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
 
 // PATRON CURSE TRAITS
