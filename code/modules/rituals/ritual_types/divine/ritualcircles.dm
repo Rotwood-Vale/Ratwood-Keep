@@ -93,8 +93,7 @@
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 
 /obj/structure/ritualcircle/noc/proc/moonlightdance(src)
-	var/ritualtargets = view(7, loc)
-	for(var/mob/living/carbon/human/target in ritualtargets)
+	for(var/mob/living/carbon/human/target in view(7, src))
 		target.apply_status_effect(/datum/status_effect/buff/moonlightdance)
 
 /obj/structure/ritualcircle/xylix
