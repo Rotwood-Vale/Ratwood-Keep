@@ -10,7 +10,7 @@
 
 /obj/structure/ritualcircle/attack_right(mob/living/carbon/human/user)
 	user.visible_message(span_warning("[user] begins wiping away the rune"))
-	if(do_after(user, 15))
+	if(do_after(user, 1.5 SECONDS))
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
