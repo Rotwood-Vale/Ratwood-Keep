@@ -46,14 +46,25 @@
 	ai_controller = /datum/ai_controller/mimic
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
+	/// The typepath of the chest this mimic is mimicking.
+	var/obj/structure/closet/crate/chest/mimicking_chest = /obj/structure/closet/crate/chest
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/Initialize(mapload)
 	. = ..()
 	if(mapload)//load objects into chest.
 		for(var/obj/item/I in loc)
 			I.forceMove(src)
-	icon_state = "mimic"
+	name = mimicking_chest::name
+	icon = mimicking_chest::icon
+	icon_state = mimicking_chest::icon_state
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, TRUE, null, null, FALSE)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/mimic/examine(mob/user)
+	if(aggressive)
+		return ..() // we've gone mask-off!
+	. = list("[get_examine_string(user, TRUE)].[get_inspect_button()]")
+	if(mimicking_chest::desc)
+		. += span_info("[mimicking_chest::desc]")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/find_food()
 	. = ..()
@@ -71,14 +82,25 @@
 	Retaliate(user)
 	GiveTarget(user)
 
+/mob/living/simple_animal/hostile/retaliate/rogue/mimic/proc/disguise()
+	if(stat)
+		return // can't disguise while unconscious or dead!
+	name = mimicking_chest::name
+	icon = mimicking_chest::icon
+	icon_state = mimicking_chest::icon_state
+
+/mob/living/simple_animal/hostile/retaliate/rogue/mimic/proc/undisguise()
+	name = "\improper MIMIC"
+	icon = initial(icon)
+	icon_state = (stat == DEAD) ? icon_dead : icon_living
+
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/Aggro()
 	..()
-	name = "MIMIC"
-	icon_state = "[initial(icon_state)]"
-	aggressive = 1
+	// go mask-off!
+	undisguise()
+	aggressive = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/death()
-	icon_state = "[initial(icon_state)]dead"
 	// Drop loot onto tile.
 	for(var/obj/O in src)
 		O.forceMove(loc)
@@ -91,54 +113,44 @@
 			return pick('sound/vo/mobs/mimic/mimic_death.ogg')
 
 /mob/living/simple_animal/hostile/retaliate/rogue/mimic/simple_limb_hit(zone)
-	if(!zone)
+	if(!zone || !aggressive) // don't talk about bodyparts while disguised!
 		return ""
 	switch(zone)
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
-		if(BODY_ZONE_PRECISE_L_EYE)
+		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS)
 			return "head"
 		if(BODY_ZONE_PRECISE_NOSE)
 			return "nose"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "mouth"
-		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
-		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
 		if(BODY_ZONE_PRECISE_NECK)
 			return "neck"
-		if(BODY_ZONE_PRECISE_L_HAND)
+		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 			return "foreleg"
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return "foreleg"
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "leg"
-		if(BODY_ZONE_PRECISE_R_FOOT)
+		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "stomach"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
-		if(BODY_ZONE_HEAD)
-			return "head"
-		if(BODY_ZONE_R_LEG)
-			return "leg"
-		if(BODY_ZONE_L_LEG)
-			return "leg"
-		if(BODY_ZONE_R_ARM)
-			return "foreleg"
-		if(BODY_ZONE_L_ARM)
-			return "foreleg"
 	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/mimic/gold
+	mimicking_chest = /obj/structure/closet/crate/chest/gold
 
 //////
 // Landmark
 //////
 
+/obj/effect/landmark/chest_or_mimic
+	var/mimic_type = /mob/living/simple_animal/hostile/retaliate/rogue/mimic
+	var/chest_type = /obj/structure/closet/crate/chest
+
 /obj/effect/landmark/chest_or_mimic/Initialize()
 	..()
-	var/C = pick(/obj/structure/closet/crate/chest,
-				/mob/living/simple_animal/hostile/retaliate/rogue/mimic)
+	var/C = pick(mimic_type, chest_type)
 	new C(loc)
 	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/chest_or_mimic/gold
+	mimic_type = /mob/living/simple_animal/hostile/retaliate/rogue/mimic/gold
+	chest_type = /obj/structure/closet/crate/chest/gold
