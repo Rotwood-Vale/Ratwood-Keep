@@ -389,9 +389,9 @@
 		Weapon = get_active_held_item()
 		OffWeapon = get_inactive_held_item()
 	if(!(mobility_flags & MOBILITY_STAND))
-		aimheight_change(rand(10,19))
+		aimheight_change(rand(1,4)) // Go for the knees!
 	else
-		aimheight_change(rand(10,19))
+		aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12,19))) // Arms, chest, head. Equal chance for each.
 
 	// attack with weapon if we have one
 	if(Weapon)
