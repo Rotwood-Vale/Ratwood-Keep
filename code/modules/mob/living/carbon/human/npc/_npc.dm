@@ -305,7 +305,7 @@
 			// Flee before trying to pick up a weapon.
 			if(flee_in_pain && target && (target.stat == CONSCIOUS))
 				var/paine = get_complex_pain()
-				if(paine >= ((STAEND * 10)*0.9))
+				if(paine >= ((STAEND * 10)*0.75)) // pain threshold decreased from END*10*0.9 due to all NPCs having insane END for some reason
 					mode = NPC_AI_FLEE
 					m_intent = MOVE_INTENT_RUN
 					myPath = list() // cancel chasing our target
