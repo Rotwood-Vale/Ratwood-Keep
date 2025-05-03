@@ -466,6 +466,10 @@
 	var/travel_dir = get_dir(src, T)
 	. = Distance_cardinal(T, traverser) + get_heuristic_slowdown(traverser, travel_dir) + T.get_heuristic_slowdown(traverser, travel_dir)
 
+/// A 3d-aware version of Heuristic_cardinal that just... adds the Z-axis distance with a multiplier.
+/turf/proc/Heuristic_cardinal_3d(turf/T, mob/traverser)
+	return Heuristic_cardinal(T, traverser) + abs(z - T.z) * 5 // Weight z-level differences higher so that we try to change Z-level sooner
+
 ////////////////////////////////////////////////////
 
 /turf/singularity_act()
