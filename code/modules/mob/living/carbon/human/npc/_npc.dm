@@ -92,8 +92,8 @@
 		if(wander)
 			if(prob(50))
 				var/turf/T = get_step(loc,pick(GLOB.cardinals))
-				if(!isgroundlessturf(T)) // Don't move into flowing water, lava, or open space.
-					Move(T)
+				if(T.can_traverse_safely(src)) // Don't wander into lava or open space unless we're immune to it/can't fall.
+					step_towards(src, T, update_movespeed())
 			else
 				setDir(turn(dir, pick(90,-90)))
 		else
