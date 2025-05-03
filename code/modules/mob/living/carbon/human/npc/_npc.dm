@@ -148,8 +148,14 @@
 			// we ran out of time and started the next tick!
 			break
 		if(length(myPath))
+			var/turf/next_path_turf = myPath[1]
 			var/move_dir = get_dir(src, myPath[1])
 			var/turf/next_step = get_step(src, move_dir)
+			if(next_path_turf.z != z) // if moving up or down z-levels, need specific checks
+				var/obj/structure/stairs/the_stairs = locate() in get_turf(src)
+				// if moving up, go in the direction of the stairs, else go the opposite direction
+				move_dir = next_path_turf.z > z ? the_stairs.dir : GLOB.reverse_dir[the_stairs.dir]
+				next_step = the_stairs.get_target_loc(move_dir)
 			if(!next_step)
 				pathing_frustration++
 				myPath -= myPath[1]
@@ -171,23 +177,18 @@
 /mob/living/carbon/human/proc/start_pathing_to(new_target)
 	if(!new_target)
 		back_to_idle()
-		return 0
+		return FALSE
 
 	var/turf/turf_of_target = get_turf(new_target)
 	if(!turf_of_target)
 		back_to_idle()
 		return FALSE
-	if(turf_of_target?.z < z)
-		turf_of_target = get_step_multiz(turf_of_target, DOWN)
-	else if(turf_of_target?.z > z)
-		turf_of_target = get_step_multiz(turf_of_target, UP)
-	if(turf_of_target?.z == z)
-		if(!length(myPath)) // need a new path
-			myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal), MAX_RANGE_FIND + 1, 250,1)
-			if(length(myPath))
-				myPath -= get_turf(src) // remove the turf we start on
-			pathing_frustration = 0
-		return TRUE
+	if(!length(myPath)) // need a new path
+		myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), MAX_RANGE_FIND + 1, 250,1, adjacent = TYPE_PROC_REF(/turf, reachableTurftest3d))
+		if(length(myPath))
+			myPath -= get_turf(src) // remove the turf we start on
+		pathing_frustration = 0
+		return length(myPath) > 0
 	//too far away or pathing failed
 	back_to_idle()
 	return FALSE
