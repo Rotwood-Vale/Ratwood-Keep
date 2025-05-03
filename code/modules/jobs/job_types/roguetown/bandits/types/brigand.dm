@@ -46,7 +46,6 @@
 	H.change_stat("intelligence", -3)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
 	H.ambushable = FALSE
 	H.adjust_blindness(-3)
 	var/weapons = list("Axe & Cudgel","Flail & Shield")
@@ -59,3 +58,14 @@
 		if("Flail & Shield") //plate users beware, you're in for a scare!
 			backl= /obj/item/rogueweapon/shield/wood
 			beltr = /obj/item/rogueweapon/flail
+	var/wanted = list("Not wanted", "Wanted")
+	var/wanted_choice = input("Are you wanted by the kingdom", "You will be more skilled from your experience") as anything in wanted
+	switch(wanted_choice)
+		if ("Not wanted")
+			l_hand = /obj/item/storage/belt/rogue/pouch/coins/poor
+		if ("Wanted")
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
