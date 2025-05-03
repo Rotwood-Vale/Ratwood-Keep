@@ -169,6 +169,8 @@
 			can_see_sky = SEE_SKY_NO
 			return can_see_sky()
 
+/turf/proc/can_traverse_safely(atom/movable/traveler)
+	return TRUE
 
 /turf/attack_hand(mob/user)
 	. = ..()
