@@ -82,7 +82,7 @@
 #define SPELL_SPACETIME_DIST						/obj/effect/proc_holder/spell/spacetime_dist
 #define SPELL_AREA_TELEPORT							/obj/effect/proc_holder/spell/targeted/area_teleport/teleport
 #define SPELL_AREA_TELEPORT_SANTA					/obj/effect/proc_holder/spell/targeted/area_teleport/teleport/santa
-#define SPELL_BEASTTAME								/obj/effect/proc_holder/spell/targeted/beasttame
+#define SPELL_BEASTTAME								/obj/effect/proc_holder/spell/invoked/beasttame
 #define SPELL_BLESSCROP								/obj/effect/proc_holder/spell/targeted/blesscrop
 #define SPELL_BURIALRITE							/obj/effect/proc_holder/spell/targeted/burialrite
 #define SPELL_CHURN									/obj/effect/proc_holder/spell/targeted/churn
