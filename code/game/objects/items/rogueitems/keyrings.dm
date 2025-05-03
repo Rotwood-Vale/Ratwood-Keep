@@ -110,7 +110,7 @@
 	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor)
 
 /obj/item/storage/keyring/councillor
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon,  /obj/item/key/manor)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/kitchen)
 
 /obj/item/storage/keyring/bog_guard
 	keys = list(/obj/item/key/bog_gatehouse)
@@ -182,13 +182,13 @@
 	keys = list(/obj/item/key/nightman)
 
 /obj/item/storage/keyring/hand
-	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor)
+	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/kitchen)
 
 /obj/item/storage/keyring/steward
-	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor,)
+	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/kitchen)
 
 /obj/item/storage/keyring/servant
-	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks)
+	keys = list(/obj/item/key/manor, /obj/item/key/kitchen, /obj/item/key/keep_barracks)
 
 /obj/item/storage/keyring/archivist
 	keys = list(/obj/item/key/manor, /obj/item/key/archive)
@@ -200,7 +200,7 @@
 	keys = list(/obj/item/key/manor, /obj/item/key/keep_barracks, /obj/item/key/physician, /obj/item/key/keep_dungeon_torture)
 
 /obj/item/storage/keyring/royal
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/prince_rooms, /obj/item/key/manor, /obj/item/key/royal)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/prince_rooms, /obj/item/key/manor, /obj/item/key/kitchen, /obj/item/key/royal)
 
 /obj/item/storage/keyring/gravedigger
 	keys = list(/obj/item/key/graveyard, /obj/item/key/church)
