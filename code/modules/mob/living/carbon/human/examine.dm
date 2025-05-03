@@ -185,7 +185,7 @@
 			if(mind.special_role == "Bandit")
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
-				else
+				else if(HAS_TRAIT(user, TRAIT_WANTED_POSTER_READ))
 					commie_text = span_userdanger("BANDIT!")
 
 			if(HAS_TRAIT(src, TRAIT_WANTED))

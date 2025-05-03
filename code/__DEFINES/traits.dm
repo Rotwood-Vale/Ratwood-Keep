@@ -94,6 +94,7 @@
 #define TRAIT_ROTTOUCHED "Rot Touched"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 #define TRAIT_WANTED "Wanted Brigand"
+#define TRAIT_WANTED_POSTER_READ "Read Wanted Poster"
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites

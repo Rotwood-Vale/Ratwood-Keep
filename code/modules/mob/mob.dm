@@ -435,7 +435,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 					if(G.grabbed == T)
 						if(G.sublimb_grabbed == zone_selected)
 							grabbing = TRUE
-			if(!ishuman(T))
+			if(!ishuman(T) && hitzone)
 				target = "\the [T.name]'s [hitzone]"
 			else if(ishuman(T))
 				var/mob/living/carbon/human/target_human = T
