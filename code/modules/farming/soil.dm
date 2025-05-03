@@ -38,6 +38,9 @@
 	var/blessed_time = 0
 	/// Time remaining for the soil to decay and destroy itself, only applicable when its out of water and nutriments and has no plant
 	var/soil_decay_time = SOIL_DECAY_TIME
+	var/soil_quality = 1
+	var/water_max = 300
+	var/nutrition_max = 300
 
 /obj/structure/soil/Crossed(atom/movable/AM)
 	. = ..()
@@ -51,18 +54,18 @@
 	add_sleep_experience(user, /datum/skill/labor/farming, user.STAINT * 2)
 
 	var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
-	var/chance_to_ruin = 50 - (farming_skill * 25)
+	var/chance_to_ruin = 50 - (farming_skill * 25 * soil_quality)
 	if(prob(chance_to_ruin))
 		ruin_produce()
 		to_chat(user, span_warning("I ruin the produce..."))
 		return
 	var/feedback = "I harvest the produce."
 	var/modifier = 0
-	var/chance_to_ruin_single = 75 - (farming_skill * 25)
+	var/chance_to_ruin_single = 75 - (farming_skill * 25 * soil_quality)
 	if(prob(chance_to_ruin_single))
 		feedback = "I harvest the produce, ruining a little."
 		modifier -= 1
-	var/chance_to_get_extra = -75 + (farming_skill * 25)
+	var/chance_to_get_extra = -75 + (farming_skill * 25 * soil_quality)
 	if(prob(chance_to_get_extra))
 		feedback = "I harvest the produce well."
 		modifier += 1
@@ -112,16 +115,16 @@
 /obj/structure/soil/proc/try_handle_watering(obj/item/attacking_item, mob/user, params)
 	var/water_amount = 0
 	if(istype(attacking_item, /obj/item/reagent_containers))
-		if(water >= MAX_PLANT_WATER * 0.8)
+		if(water >= water_max * 0.8 * soil_quality)
 			to_chat(user, span_warning("The soil is already wet!"))
 			return TRUE
 		var/obj/item/reagent_containers/container = attacking_item
 		if(container.reagents.has_reagent(/datum/reagent/water, 10))
 			container.reagents.remove_reagent(/datum/reagent/water, 10)
-			water_amount = 150
+			water_amount = water_max
 		else if(container.reagents.has_reagent(/datum/reagent/water/gross, 10))
 			container.reagents.remove_reagent(/datum/reagent/water/gross, 10)
-			water_amount = 150
+			water_amount = water_max
 		else
 			to_chat(user, span_warning("There's no water in \the [container]!"))
 			return TRUE
@@ -142,7 +145,7 @@
 	else if (istype(attacking_item, /obj/item/compost))
 		fertilize_amount = 150
 	if(fertilize_amount > 0)
-		if(nutrition >= MAX_PLANT_NUTRITION * 0.8)
+		if(nutrition >= nutrition_max * 0.8)
 			to_chat(user, span_warning("The soil is already fertilized!"))
 		else
 			to_chat(user, span_notice("I fertilize the soil."))
@@ -273,11 +276,11 @@
 		add_growth(2 MINUTES)
 
 /obj/structure/soil/proc/adjust_water(adjust_amount)
-	water = clamp(water + adjust_amount, 0, MAX_PLANT_WATER)
+	water = clamp(water + adjust_amount, 0, water_max)
 	update_icon()
 
 /obj/structure/soil/proc/adjust_nutrition(adjust_amount)
-	nutrition = clamp(nutrition + adjust_amount, 0, MAX_PLANT_NUTRITION)
+	nutrition = clamp(nutrition + adjust_amount, 0, nutrition_max)
 	update_icon()
 
 /obj/structure/soil/proc/adjust_weeds(adjust_amount)
@@ -605,3 +608,18 @@
 	produce_ready = FALSE
 	plant_dead = FALSE
 	update_icon()
+
+/obj/structure/soil/poor
+	name = "poor soil"
+	desc = "Dirt, weak and lacking fertility."
+	soil_quality = 0.5
+	water_max = 150
+	nutrition_max = 150
+
+
+/obj/structure/soil/great
+	name = "feracious soil"
+	desc = "Dirt, full of nutrients."
+	soil_quality = 1.5
+	water_max = 450
+	nutrition_max = 450
