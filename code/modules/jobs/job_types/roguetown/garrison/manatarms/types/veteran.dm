@@ -28,6 +28,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 		H.change_stat("strength", 2)
 		H.change_stat("perception", 1)
 		H.change_stat("constitution", 1)

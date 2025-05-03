@@ -145,7 +145,6 @@ GLOBAL_LIST_INIT(mercenary_positions, list(
 GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
-	"Servant",
 	"Magicians Apprentice",
 	"Smithy Apprentice",
 	"Novitiate",

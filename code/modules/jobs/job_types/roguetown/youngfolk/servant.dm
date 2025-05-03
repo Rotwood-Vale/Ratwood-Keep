@@ -4,8 +4,8 @@
 	flag = SERVANT
 	department_flag = YOUNGFOLK
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 0
+	spawn_positions = 0
 
 	allowed_races = RACES_SHUNNED_UP_PLUS_SEELIE
 	allowed_ages = ALL_AGES_LIST

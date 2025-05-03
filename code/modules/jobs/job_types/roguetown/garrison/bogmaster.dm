@@ -72,6 +72,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, SKILL_LEVEL_JOURNEYMAN, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("constitution", 2)
 		H.change_stat("perception", 2)
