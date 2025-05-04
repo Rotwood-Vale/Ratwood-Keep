@@ -16,6 +16,9 @@
 	// rumors_addition
 	S["use_rumors"]										>> use_rumors
 
+	// Sethand remoake
+	S["hand_ckey"]										>> hand_ckey
+
 	// String
 	S["rumors_prefered_behavior_in_combat"]				>> rumors_prefered_behavior_in_combat
 	S["rumors_prefered_behavior_with_problems"]			>> rumors_prefered_behavior_with_problems
@@ -69,6 +72,8 @@
 	WRITE_FILE(S["allow_latejoin_family"] 				, allow_latejoin_family) // family_changes - разрешение на семью после раундстарта
 
 	WRITE_FILE(S["use_rumors"]							, use_rumors) // rumors_addition
+
+	WRITE_FILE(S["hand_ckey"]							, hand_ckey) // sethand remake
 
 	// String
 	WRITE_FILE(S["rumors_prefered_behavior_with_problems"]	, rumors_prefered_behavior_with_problems) // rumors_addition

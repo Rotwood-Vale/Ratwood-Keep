@@ -306,6 +306,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Антагонисты</a>"
 			else
 				dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
+			if(usr?.client?.prefs?.be_russian)
+				dat += "<a href='?_src_=prefs;preference=additional_settings;task=menu'>Дополнительные настройки</a>"
+			else
+				dat += "<a href='?_src_=prefs;preference=additional_settings;task=menu'>Additional Settings</a>"
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
@@ -1429,7 +1433,19 @@ Slots: [job.spawn_positions]</span>
 				SetAntag(user)
 			else
 				SetAntag(user)
-
+	else if(href_list["preference"] == "additional_settings")
+		switch(href_list["task"])
+			if("close")
+				user << browse(null, "window=additional_settings")
+				ShowChoices(user)
+			if("set_hand")
+				var/potential_hand_ckey = input(usr, "Введите Byond Login (CKEY) игрока, которого вы хотели бы видеть в качестве десницы (эту настройку можно изменять посреди раунда) Те, кто не выставлен в качестве десницы, не смогут зайти за неё ни в начале, ни в процессе раунда..", "Bloodbinding", hand_ckey) as text
+				if(!potential_hand_ckey)
+					hand_ckey = ""
+				hand_ckey = potential_hand_ckey
+				AdditionalSettings(user)
+			else
+				AdditionalSettings(user)
 	else if(href_list["preference"] == "triumphs")
 		user.show_triumphs_list()
 
@@ -2849,3 +2865,19 @@ Slots: [job.spawn_positions]</span>
 	if(is_misc_banned(parent.ckey, BAN_MISC_RESPAWN))
 		return FALSE
 	return TRUE
+
+/datum/preferences/proc/AdditionalSettings(mob/user)
+	var/list/dat = list()
+
+	dat += "<style>label { display: inline-block; width: 200px; }</style><body>"
+
+	dat += "<center><a href='?_src_=prefs;preference=additional_settings;task=close'>Done</a></center><br>"
+
+	dat += "<b>Set Hand: <a href='?_src_=prefs;preference=additional_settings;task=set_hand'>[hand_ckey ? hand_ckey : "(Anyone)"]</a></b>"
+
+	dat += "</body>"
+
+	var/datum/browser/noclose/popup = new(user, "additional_settings", "<div align='center'>Additional Settings</div>", 250, 300) //no reason not to reuse the occupation window, as it's cleaner that way
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
