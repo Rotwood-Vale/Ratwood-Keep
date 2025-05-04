@@ -402,7 +402,7 @@
 		for(var/obj/structure/S in src)
 			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 				return
-		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 0.5 SECONDS, TIMER_STOPPABLE|TIMER_LOOP)
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 0.5 SECONDS, TIMER_STOPPABLE)
 
 /turf/open/water/river/get_heuristic_slowdown(mob/traverser, travel_dir)
 	var/const/UPSTREAM_PENALTY = 2
@@ -419,9 +419,7 @@
 		. += UPSTREAM_PENALTY // slower
 
 /turf/open/water/river/proc/process_river()
-	if(river_processing)
-		deltimer(river_processing)
-		river_processing = null
+	river_processing = null
 	for(var/obj/structure/S in src)
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
