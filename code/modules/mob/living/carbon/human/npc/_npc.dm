@@ -363,15 +363,16 @@
 					myPath = list() // cancel chasing our target
 					return TRUE
 
-			if(!get_active_held_item() && !get_inactive_held_item() && !mind?.has_antag_datum(/datum/antagonist/zombie))
+			if(!get_active_held_item() && !get_inactive_held_item() && !HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) && (mobility_flags & MOBILITY_PICKUP))
 				// pickup any nearby weapon
 				for(var/obj/item/I in view(1,src))
 					if(!isturf(I.loc))
 						continue
 					if(blacklistItems[I])
 						continue
-					if(I.force > 7)
-						equip_item(I)
+					if(I.force > 7 && equip_item(I))
+						// Picked up an item, end turn.
+						return TRUE
 
 			// if can't reach target for long enough, go idle
 			if(frustration >= 15)
