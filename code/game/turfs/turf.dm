@@ -449,6 +449,12 @@
 		return FALSE
 	return abs(x - T.x) + abs(y - T.y)
 
+/// Returns the number of node moves. Used for AStar node-length checking.
+/turf/proc/Distance_cardinal_3d(turf/T, mob/traverser)
+	if(!src || !T)
+		return FALSE
+	return abs(x - T.x) + abs(y - T.y) + abs(z - T.z)
+
 /// Returns an additional distance factor based on slowdown and other factors.
 /turf/proc/get_heuristic_slowdown(mob/traverser, travel_dir)
 	. = get_slowdown(traverser)
