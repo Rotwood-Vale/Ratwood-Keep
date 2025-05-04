@@ -613,10 +613,32 @@
     desc = "The flesh of a Vanguard, granting a boost in speed."
     icon_state = "meatsteak"
 
+/datum/status_effect/buff/mercenarymeat
+    id = "mercenarymeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/mercenarymeat
+    effectedstats = list("intelligence" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/mercenarymeat
+    name = "Mercenary Flesh"
+    desc = "The flesh of a skilled outlander. They have seen many things."
+    icon_state = "meatsteak"
+
+/datum/status_effect/buff/inquisitormeat
+    id = "inquisitormeat"
+    alert_type = /atom/movable/screen/alert/status_effect/buff/inquisitormeat
+    effectedstats = list("strength" = 1, "intelligence" = 1)
+    duration = -1 // permanent
+
+/atom/movable/screen/alert/status_effect/buff/inquisitormeat
+    name = "Inquisitor Flesh"
+    desc = "The flesh of an Inquisitor, they were supposed to be stronger and smarter."
+    icon_state = "meatsteak"	
+
 /datum/status_effect/buff/knightmeat
     id = "knightmeat"
     alert_type = /atom/movable/screen/alert/status_effect/buff/knightmeat
-    effectedstats = list("strength" = 1)
+    effectedstats = list("strength" = 1, "constitution" = 1)
     duration = -1 // permanent
 
 /atom/movable/screen/alert/status_effect/buff/knightmeat

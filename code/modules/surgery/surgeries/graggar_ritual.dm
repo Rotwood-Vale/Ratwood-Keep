@@ -1,11 +1,11 @@
 /datum/surgery_step/graggarritual
-	name = "Graggar ritual"
+	name = "graggar ritual"
 	time = 45 SECONDS
 	accept_hand = FALSE
 	possible_locs = list(BODY_ZONE_CHEST)
 	implements = list(
-		TOOL_SCALPEL = 80,
-		TOOL_SHARP = 60,
+		TOOL_SCALPEL = 100,
+		TOOL_SHARP = 80,
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	surgery_flags = SURGERY_INCISED | SURGERY_BROKEN
@@ -43,7 +43,11 @@
         chosen_meat = /obj/item/graggarflesh/knight
     else if(H.mind.assigned_role == "Priest")
         chosen_meat = /obj/item/graggarflesh/priest
-    else if(H.mind.assigned_role == "Duke" || H.mind.assigned_role == "Duke consort" || H.mind.assigned_role == "Duchess" || H.mind.assigned_role == "Duchess consort" || H.mind.assigned_role == "Heir" || H.mind.assigned_role == "Heiress")
+    else if(H.mind.assigned_role == "Mercenary" || H.mind.assigned_role == "Veteran")
+        chosen_meat = /obj/item/graggarflesh/mercenary
+    else if(H.mind.assigned_role == "Inquisitor")
+        chosen_meat = /obj/item/graggarflesh/inquisitor
+    else if(H.mind.assigned_role in list("Duke", "Duke consort", "Duchess", "Duchess consort", "Heir", "Heiress"))
         chosen_meat = /obj/item/graggarflesh/royal
     else
         display_results(user, target, span_notice("[target] is NOT a worthy OPPONENT!"),
@@ -62,8 +66,8 @@
 /obj/item/graggarflesh
     name = "Flesh"
     desc = "A piece of meat harvested from a fallen foe."
-    icon = 'icons/roguetown/items/food.dmi'  
-    icon_state = "meatcutlet"          
+    icon = 'icons/roguetown/items/food.dmi'
+    icon_state = "meatcutlet"
 
 
 // Man-at-Arms Flesh
@@ -215,6 +219,57 @@
     to_chat(user, span_notice("[M] now tastes the flesh of a Priest."))
     qdel(src)
     return TRUE
+
+// Mercenary's Flesh or Veteran's Flesh
+/obj/item/graggarflesh/mercenary
+	name = "Mercenary's flesh"
+	desc = "A rugged piece of meat, taken from a battle-hardened Mercenary."
+
+/obj/item/graggarflesh/mercenary/attack(mob/M, mob/user)
+    if(ishuman(M))
+        consume_flesh(M, user)
+    return ..()
+
+/obj/item/graggarflesh/mercenary/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/mercenarymeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/mercenarymeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a mercenary."))
+    qdel(src)
+
+
+// Inquisitor's Flesh
+
+/obj/item/graggarflesh/inquisitor
+	name = "Inquisitor's flesh"
+	desc = "A rare piece of meat, taken from a cunning Inquisitor."
+
+/obj/item/graggarflesh/inquisitor/attack(mob/M, mob/user)
+    if(ishuman(M))
+        consume_flesh(M, user)
+    return ..()
+
+/obj/item/graggarflesh/inquisitor/proc/consume_flesh(mob/living/carbon/human/M, mob/user)
+    if(!isliving(M) || M.stat == DEAD)
+        to_chat(user, span_warning("They are dead. You cannot feed them the flesh."))
+        return FALSE
+    if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+        to_chat(user, span_warning("Only followers of Graggar can do such things..."))
+        return FALSE
+    if(M.has_status_effect(/datum/status_effect/buff/inquisitormeat))
+        to_chat(user, span_warning("[M] knows the taste of this flesh already!"))
+        return FALSE
+    M.apply_status_effect(/datum/status_effect/buff/inquisitormeat)
+    to_chat(user, span_notice("[M] now tastes the flesh of a Priest."))
+    qdel(src)
+
 
 // Royal Flesh
 /obj/item/graggarflesh/royal
