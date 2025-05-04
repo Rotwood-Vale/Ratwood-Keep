@@ -387,52 +387,33 @@
 	flick("bell_commonpressed", src)
 	last_ring = world.time
 
-/obj/item/catbell/attack(mob/living/carbon/C, mob/living/user)
-	var/obj/item/clothing/neck/roguetown/collar = C.get_item_by_slot(SLOT_NECK)
-	if(!istype(collar, /obj/item/clothing/neck/roguetown/collar/leather))
-		to_chat(user, "[C] needs a collar to attach the bell!")
+/obj/item/catbell/attack(mob/living/carbon/target, mob/living/user)
+	var/obj/item/clothing/neck/roguetown/collar/leather/collar = target.get_item_by_slot(SLOT_NECK)
+	if(!istype(collar))
+		to_chat(user, "[target] needs a collar to attach the bell!")
 		return
 
-	if(istype(collar, /obj/item/clothing/neck/roguetown/collar/leather))
-		if(collar.bell == TRUE)
-			to_chat(user, "[C]'s collar already has a bell!")
-			return
+	if(collar.bell)
+		to_chat(user, "[target]'s collar already has a bell!")
+		return
 
-		if(collar.bell == FALSE)
-			var/bell_attempt_message = "[user] raises \the [src] to [C]'s neck!"
-			for(var/mob/viewing in viewers(C, null))
-				if(viewing == C)
-					to_chat(C, "<span class='warning'>[user] begins raising \the [src] to my neck!</span>")
-				else if(viewing == user)
-					to_chat(user, "<span class='warning'>I begin raising \the [src] to [C]'s neck!</span>")
-				else
-					viewing.show_message("<span class='warning'>[bell_attempt_message]</span>", 1)
-			var/belltime = 50
-			if(C.handcuffed)
-				belltime = 5
-			if(do_mob(user, C, belltime))
-				log_combat(user, C, "put a bell on")
-				for(var/mob/viewing in viewers(user, null))
-					if(viewing == user)
-						to_chat(user, span_warning("You have attached \a [src] onto [C]'s \the [collar]!"))
-					else
-						viewing.show_message(span_warning("[C] has had \a [src] clipped onto their \the [collar] by [user]!"), 1)
-				collar.bell = TRUE
-				collar.do_sound_bell = TRUE
-				collar.AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
-													'sound/items/collarbell2.ogg',\
-													'sound/items/collarbell3.ogg',\
-													'sound/items/collarbell4.ogg'), 50, 100, 1)
-				if(istype(src, /obj/item/catbell/cow))
-					collar.icon_state = "collar_leather_cow"
-					C.update_inv_neck()
-					collar.desc = "A comfortable collar made of leather, this one has a lil jingly cowbell!"
-					collar.salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
-				else if(istype(src, /obj/item/catbell))
-					collar.icon_state = "collar_leather_cat"
-					C.update_inv_neck()
-					collar.desc = "A comfortable collar made of leather, this one has a lil jingly catbell!"
-					collar.salvage_result = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
-				collar.name = "jingly [collar.name]"
-				qdel(src)
-				
+	target.visible_message(span_warning("[user] raises \the [src] to [target]'s neck!"), span_warning("[user] begins raising \the [src] to my neck!"), span_hear("I hear \a [src] jingling."), ignored_mobs = user)
+	to_chat(user, span_warning("I begin raising \the [src] to [target]'s neck!"))
+	if(!do_mob(user, target, target.handcuffed ? 0.5 SECONDS : 5 SECONDS))
+		return
+	log_combat(user, target, "put a bell on")
+	user.visible_message(span_warning("[target] has had \a [src] clipped onto [target.p_their()] [collar.name] by [user]!"), span_warning("I clip \a [src] onto [target]'s [collar.name]!"))
+	collar.bell = TRUE
+	collar.do_sound_bell = TRUE
+	collar.AddComponent(/datum/component/squeak, list('sound/items/collarbell1.ogg',\
+										'sound/items/collarbell2.ogg',\
+										'sound/items/collarbell3.ogg',\
+										'sound/items/collarbell4.ogg'), 50, 100, 1)
+	if(istype(src, /obj/item/catbell/cow))
+		collar.icon_state = /obj/item/clothing/neck/roguetown/collar/leather/bell/cow::icon_state
+	else
+		collar.icon_state = /obj/item/clothing/neck/roguetown/collar/leather/bell::icon_state
+	target.update_inv_neck()
+	collar.desc = "[initial(collar.desc)] This one has a little jingly [name]!"
+	collar.name = "jingly [collar.name]"
+	forceMove(collar) // move us inside the collar so that if we salvage it, we get the bell back

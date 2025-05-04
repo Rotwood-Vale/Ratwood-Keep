@@ -62,6 +62,11 @@
 	var/immune_to_genderswap = FALSE
 	var/armor_class = ARMOR_CLASS_NONE
 
+	var/bell = FALSE
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+
 	sellprice = 1
 
 /obj/item
