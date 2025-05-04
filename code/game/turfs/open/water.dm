@@ -371,16 +371,17 @@
 /turf/open/water/river/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(!river_processing)
-		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE|TIMER_LOOP)
-
-/turf/open/water/river/proc/process_river()
-	if(river_processing)
-		deltimer(river_processing)
-		river_processing = null
-	for(var/atom/movable/A in contents)
 		for(var/obj/structure/S in src)
 			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 				return
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 0.5 SECONDS, TIMER_STOPPABLE)
+
+/turf/open/water/river/proc/process_river()
+	river_processing = null
+	for(var/obj/structure/S in src)
+		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
+			return
+	for(var/atom/movable/A in contents)
 		if((A.loc == src) && A.has_gravity())
 			if(ismob(A))
 				var/mob/the_mob = A
