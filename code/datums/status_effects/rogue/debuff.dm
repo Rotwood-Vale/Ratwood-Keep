@@ -425,7 +425,7 @@
 	desc = "Shame upon the member of clergy!"
 	icon_state = "debuff"
 	color ="#7a0606"
-
+	
 /datum/status_effect/debuff/hereticsermon
 	id = "Heretic on sermon!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon
@@ -454,6 +454,11 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/apostasy
 	effectedstats = list("strength" = -2)
 	duration = 2 MINUTES
+
+/atom/movable/screen/alert/status_effect/smited/apostasy
+	name = "Smited!"
+	desc = "Astrata's divine light saps at my strength!"
+	icon_state = "stressvb"	
 
 /datum/status_effect/debuff/lobotomized
 	id = "lobotomized"
