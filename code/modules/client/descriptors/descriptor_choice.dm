@@ -282,6 +282,9 @@
 		/datum/mob_descriptor/feathers/frayed,
 		/datum/mob_descriptor/feathers/delicate,
 		/datum/mob_descriptor/feathers/soft,
+		/datum/mob_descriptor/chitin/smooth,
+		/datum/mob_descriptor/chitin/hard,
+		/datum/mob_descriptor/chitin/fine,
 	)
 
 #define PROMINENT_DESCRIPTORS \

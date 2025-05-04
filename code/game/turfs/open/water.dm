@@ -35,6 +35,7 @@
 	neighborlay_override = "edge"
 	var/water_color = "#6a9295"
 	var/water_reagent = /datum/reagent/water
+	var/water_reagent_purified = /datum/reagent/water // If put through a water filtration device, provides this reagent instead
 	water_level = 2
 	var/wash_in = TRUE
 	var/swim_skill = FALSE
@@ -57,15 +58,11 @@
 
 /turf/open/water/Exited(atom/movable/AM, atom/newloc)
 	. = ..()
-	var/mob/living/carbon/human/FM = AM
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
-		return
-
 	for(var/obj/structure/S in src)
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
-	if(isliving(AM) && !AM.throwing)
-		var/mob/living/user = AM
+	var/mob/living/user = AM
+	if(isliving(user) && !user.is_floor_hazard_immune())
 		if(water_overlay)
 			if((get_dir(src, newloc) == SOUTH))
 				water_overlay.layer = BELOW_MOB_LAYER
@@ -112,15 +109,11 @@
 
 /turf/open/water/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	var/mob/living/carbon/human/FM = AM
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
-		return
-
 	for(var/obj/structure/S in src)
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
-	if(isliving(AM) && !AM.throwing)
-		var/mob/living/L = AM
+	var/mob/living/L = AM
+	if(isliving(L) && !L.is_floor_hazard_immune())
 		if(!(L.mobility_flags & MOBILITY_STAND) || water_level == 3)
 			L.SoakMob(FULL_BODY)
 		else
@@ -146,13 +139,17 @@
 			if(C.reagents.holder_full())
 				to_chat(user, span_warning("[C] is full."))
 				return
+			playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 			if(do_after(user, 8, target = src))
 				user.changeNext_move(CLICK_CD_MELEE)
-				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				var/list/L = list()
 				L[water_reagent] = 200
 				C.reagents.add_reagent_list(L)
 				to_chat(user, span_notice("I fill [C] from [src]."))
+				// If the user is filling a water purifier and the water isn't already clean...
+				if (istype(C, /obj/item/reagent_containers/glass/bottle/waterskin/purifier) && water_reagent != water_reagent_purified)
+					var/obj/item/reagent_containers/glass/bottle/waterskin/purifier/P = C
+					P.cleanwater(user)
 			return
 	. = ..()
 
@@ -217,9 +214,8 @@
 		O.extinguish()
 
 /turf/open/water/get_slowdown(mob/user)
-	var/mob/living/carbon/human/FM = user
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
-		return
+	if(user.is_floor_hazard_immune())
+		return 0
 
 	var/returned = slowdown
 	if(user.mind && swim_skill)
@@ -271,6 +267,7 @@
 	slowdown = 3
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water/gross
+	var/leech_chance = 3
 
 /turf/open/water/swamp/Initialize()
 	icon_state = "dirt"
@@ -278,28 +275,27 @@
 	water_color = pick("#705a43")
 	.  = ..()
 
+/turf/open/water/swamp/proc/get_leech_zones()
+	var/static/leech_zones = list(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
+	return leech_zones
+
 /turf/open/water/swamp/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	var/mob/living/carbon/human/FM = AM
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
+	var/mob/living/carbon/C = AM
+	if(!iscarbon(C) || C.is_floor_hazard_immune() || !prob(leech_chance))
 		return
-	if(isliving(AM) && !AM.throwing)
-		if(!prob(3))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
-			if(C.blood_volume <= 0)
-				return
-			var/zonee = list(BODY_ZONE_R_LEG,BODY_ZONE_L_LEG)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
-				if(!BP)
-					continue
-				if(BP.skeletonized)
-					continue
-				var/obj/item/natural/worms/leech/I = new(C)
-				BP.add_embedded_object(I, silent = TRUE)
-				return .
+	if(C.blood_volume <= 0)
+		return
+	var/zonee = get_leech_zones()
+	for(var/X in zonee)
+		var/obj/item/bodypart/BP = C.get_bodypart(X)
+		if(!BP)
+			continue
+		if(BP.skeletonized)
+			continue
+		var/obj/item/natural/worms/leech/I = new(C)
+		BP.add_embedded_object(I, silent = TRUE)
+		return .
 
 /turf/open/water/sea
 	name = "shallows"
@@ -324,29 +320,11 @@
 	water_color = "#705a43"
 	slowdown = 5
 	swim_skill = TRUE
+	leech_chance = 8
 
-/turf/open/water/swamp/deep/Entered(atom/movable/AM, atom/oldLoc)
-	. = ..()
-	var/mob/living/carbon/human/FM = AM
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
-		return
-	if(isliving(AM) && !AM.throwing)
-		if(!prob(8))
-			return
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
-			if(C.blood_volume <= 0)
-				return
-			var/zonee = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
-			for(var/X in zonee)
-				var/obj/item/bodypart/BP = C.get_bodypart(X)
-				if(!BP)
-					continue
-				if(BP.skeletonized)
-					continue
-				var/obj/item/natural/worms/leech/I = new(C)
-				BP.add_embedded_object(I, silent = TRUE)
-				return .
+/turf/open/water/swamp/deep/get_leech_zones()
+	var/static/deep_leech_zones = list(BODY_ZONE_CHEST,BODY_ZONE_R_LEG,BODY_ZONE_L_LEG,BODY_ZONE_R_ARM,BODY_ZONE_L_ARM)
+	return deep_leech_zones
 
 /turf/open/water/cleanshallow
 	name = "water"
@@ -392,17 +370,20 @@
 
 /turf/open/water/river/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
-	var/mob/living/carbon/human/FM = AM
-	if(isseelie(FM) && !(FM.resting))	//Add wingcheck
-		return
 	if(!river_processing)
-		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
+		river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE|TIMER_LOOP)
 
 /turf/open/water/river/proc/process_river()
-	river_processing = null
+	if(river_processing)
+		deltimer(river_processing)
+		river_processing = null
 	for(var/atom/movable/A in contents)
 		for(var/obj/structure/S in src)
 			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 				return
 		if((A.loc == src) && A.has_gravity())
+			if(ismob(A))
+				var/mob/the_mob = A
+				if(the_mob.is_floor_hazard_immune())
+					continue // floating seelie, jumping, etc
 			A.ConveyorMove(dir)

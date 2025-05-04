@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		var/turf/speakturf = get_turf(speaker)
 		var/turf/sourceturf = get_turf(src)
 		if(istype(speakturf) && istype(sourceturf) && !(speakturf in get_hear(7, sourceturf)))
-			switch(get_dir(src,speaker))
+			switch(angle2dir(Get_Angle(src, speaker)))
 				if(NORTH)
 					arrowpart = " ⇑"
 				if(SOUTH)

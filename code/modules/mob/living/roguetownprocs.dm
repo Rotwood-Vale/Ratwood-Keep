@@ -32,7 +32,11 @@
 			chance2hit += 10
 
 		chance2hit += ((user.STAPER-10)*5)
+		if(istype(I, /obj/item/rogueweapon/sword))
+			var/obj/item/rogueweapon/sword/S = I
+			chance2hit += S.accuracy_bonus
 
+	chance2hit += zone_difficulty(zone)		//This makes it harder to hit places that are hyper specific.
 
 	if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 		chance2hit += (user.STAPER)*2
@@ -44,17 +48,44 @@
 	if(prob(chance2hit))
 		return zone
 	else
-		if(prob(chance2hit+5))
+		var/accuracy2hit = chance2hit+25
+		if(prob(accuracy2hit))
 			if(check_zone(zone) == zone)
 				return zone
 			else
 				if(user.client?.prefs.showrolls)
-					to_chat(user, span_warning("Accuracy fail! [chance2hit]%"))
+					to_chat(user, span_warning("Accuracy fail! [accuracy2hit]%"))
 				return check_zone(zone)
 		else
 			if(user.client?.prefs.showrolls)
 				to_chat(user, span_warning("Double accuracy fail! [chance2hit]%"))
 			return BODY_ZONE_CHEST
+
+/proc/zone_difficulty(zone)
+	switch(zone)
+		//Hyper specific targetting is very difficult
+		if(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE,
+		   BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_EARS,
+		   BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH,
+		   BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND,
+		   BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT)
+			return -25
+
+		// Head, arms, legs are all harder to hit then chest, but doable
+		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_NECK,
+		   BODY_ZONE_L_ARM, BODY_ZONE_R_ARM,
+		   BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+			return -10
+
+		// Groin/stomach maybe mild difficulty
+		if(BODY_ZONE_PRECISE_GROIN, BODY_ZONE_PRECISE_STOMACH)
+			return -5
+
+		// Chest is easiest
+		if(BODY_ZONE_CHEST)
+			return 0
+
+	return 0
 
 /mob/proc/get_generic_parry_drain()
 	return 30
