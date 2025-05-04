@@ -455,7 +455,54 @@
 	effectedstats = list("strength" = -2)
 	duration = 2 MINUTES
 
-/atom/movable/screen/alert/status_effect/smited/apostasy
-	name = "Smited!"
-	desc = "Astrata's divine light saps at my strength!"
-	icon_state = "stressvb"
+/datum/status_effect/debuff/lobotomized
+	id = "lobotomized"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/lobotomized
+	effectedstats = list("intelligence" = -4, "constitution" = 1, "endurance" = 1)
+	duration = -1
+
+/atom/movable/screen/alert/status_effect/debuff/lobotomized
+	name = "Lobotomized"
+	desc = "Your mind has been shattered. Speech and sanity suffer."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/lobotomized/on_apply()
+	. = ..()
+	addtimer(CALLBACK(src, .proc/lobotomy_attack), 3 MINUTES)
+
+/datum/status_effect/debuff/lobotomized/on_remove()
+	. = ..()
+
+/datum/status_effect/debuff/lobotomized/proc/lobotomy_attack()
+	if(!owner || !ismob(owner)) return
+	var/mob/living/carbon/target = owner
+
+	if(prob(90))
+		var/emote = pick("giggle", "twitch", "drool", "sneeze")
+		target.emote(emote)
+	else
+		var/say_line = pick(
+			"I LOVE YOU!",
+			"HELP! HE PUTS HIS PANTS OFF!",
+			"INTRUDERS!!",
+			"ZIZO!!",
+			"GRRRR GRRRRHHHH!!",
+			"WHO STOLE MY SKIN?!",
+			"MY TEETH ARE BUZZING!",
+			"WHERE IS MY SECOND HEAD?",
+			"THE FLOOR IS MADE OF FISH!",
+			"THE VOICES WON’T LET ME SLEEP!",
+			"MY BLOOD IS FULL OF STARS!",
+			"THE AIR TASTES LIKE COLORS!",
+			"I CAN SMELL TOMORROW!",
+			"EVERYONE IS WATCHING ME! EVEN THE CHAIRS!",
+			"I TALK TO THE WALLS. THEY TALK BACK.",
+			"I CAN'T REMEMBER HOW TO BLINK.",
+			"THE CLOCK IS MELTING!",
+			"I FORGOT HOW TO FORGET!",
+			"WHERE DID MY BONES GO?!",
+			"STOP BREATHING SO LOUD, PLANTS!")
+		target.say(say_line)
+
+	// Повторить через 50 тиков (~5 секунд)
+	addtimer(CALLBACK(src, .proc/lobotomy_attack), 3 MINUTES)
