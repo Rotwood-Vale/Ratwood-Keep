@@ -1,4 +1,10 @@
-#define MAX_RANGE_FIND 32
+// Uncomment this for NPCs to display their 'thoughts' above their heads.
+// #define NPC_THINK_DEBUG
+#ifdef NPC_THINK_DEBUG
+#define NPC_THINK(message) visible_message(message, runechat_message = message)
+#else
+#define NPC_THINK(message)
+#endif
 
 /mob/living/carbon/human
 	var/aggressive=0 //0= retaliate only
@@ -11,6 +17,7 @@
 	var/obj/item/pickupTarget
 	var/mode = NPC_AI_OFF
 	var/list/myPath = list()
+	var/is_currently_pathing = FALSE
 	var/list/blacklistItems = list()
 	var/maxStepsTick = 6
 	var/resisting = FALSE
@@ -24,8 +31,8 @@
 	var/next_stand = 0
 	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
-	/// How many ticks until our next stand attempt?
-	var/stand_cooldown = 0
+	/// When is the next time we'll attempt to stand up?
+	var/next_stand_attempt = 0
 	var/ai_currently_active = FALSE
 
 	var/returning_home = FALSE
@@ -42,7 +49,7 @@
 /mob/living/carbon/human/proc/process_ai()
 	if(IsDeadOrIncap())
 		walk_to(src,0)
-		return TRUE
+		return stat == DEAD // only stop processing if we're dead-dead
 	// we assume we're conscious after this point since we aren't dead or incapacitated
 	if(client)
 		if(!ai_when_client)
@@ -52,18 +59,20 @@
 	update_cone_show()
 	if(resisting) // already busy from a prior turn! stop!
 		walk_to(src, 0)
+		NPC_THINK("Still resisting, passing turn!")
 		return // Your turn is already being used to continue a resist.
 	if(on_fire || buckled || restrained() || pulledby)
 		resisting = TRUE
 		walk_to(src,0)
+		NPC_THINK("Starting to resist!")
 		resist()
 		resisting = FALSE
 		return // Resisting passes your turn, you can't attack.
-	if(!(mobility_flags & MOBILITY_STAND) && stand_cooldown <= 0)
+	if(!(mobility_flags & MOBILITY_STAND) && (world.time >= next_stand_attempt))
 		resisting = TRUE
 		npc_stand()
+		resisting = FALSE
 		return // Standing passes your turn, you can't attack.
-	stand_cooldown = max(stand_cooldown-1, 0)
 	if(!handle_combat())
 		if(mode == NPC_AI_IDLE && !pickupTarget)
 			npc_idle()
@@ -75,18 +84,19 @@
 	if(next_move > world.time)
 		return
 	walk_to(src, 0) // no walking while you stand up
+	NPC_THINK("Trying to stand!")
 	if(stand_up())
-		stand_cooldown = 0
-		resisting = FALSE
+		next_stand_attempt = world.time
 	else
-		stand_cooldown = rand(10,120) // 10 to 120 ticks, 5 to 60 seconds
-		resisting = FALSE
+		// Wait 1-3 seconds between attempts.
+		next_stand_attempt = world.time + rand(1 SECONDS, 3 SECONDS)
 
 /mob/living/carbon/human/proc/npc_idle()
 	if(m_intent == MOVE_INTENT_SNEAK)
 		return
 	if(world.time < next_idle + rand(3 SECONDS, 5 SECONDS))
 		return
+	NPC_THINK("Idle...")
 	next_idle = world.time + rand(3 SECONDS, 5 SECONDS)
 	if((mobility_flags & MOBILITY_MOVE) && isturf(loc))
 		if(wander)
@@ -125,52 +135,81 @@
 
 /// unsets my_path if it's not valid. that's it that's the proc
 /mob/living/carbon/human/proc/validate_path()
-	if(pathing_frustration > 8) // failed for 8 attempts in a row
+	var/give_up = FALSE
+	if(pathing_frustration > 8)
+		NPC_THINK("Giving up on this path because of frustration!")
+		give_up = TRUE
+	if(length(myPath) && get_dist(src, myPath[1]) > 5)
+		NPC_THINK("Giving up on this path because of distance!")
+		give_up = TRUE
+	if(give_up)
 		myPath = list()
 		pathing_frustration = 0
+	return !give_up // returns TRUE if the path is valid, FALSE otherwise
 
 /// progress along an existing path or cancel it
 /// returns # of steps taken
 /mob/living/carbon/human/proc/move_along_path()
 	if(!length(myPath))
 		// no path, quit early
+		NPC_THINK("Tried to move along a nonexistent path?!")
 		return 0
 	if(get_dist(src, myPath[1]) > 3) // too far away from our current path to continue
 		pathing_frustration++
+		NPC_THINK("TOO FAR! Strike [pathing_frustration]!")
 		return 0
-	var/move_started = world.time
+	// var/move_started = world.time
 	for(var/i = 0; i < maxStepsTick; i++)
+		if(!length(myPath))
+			NPC_THINK("MOVEMENT TURN [i]: Path complete!")
+			return
+		else if(!validate_path())
+			NPC_THINK("MOVEMENT TURN [i]: Path invalidated!")
+			return
+		// We have a valid path, but our target might be next to us due to movement. Check and bail if so.
+		// This logic will have to change if we ever use A* to pathfind to something that isn't our target var.
+		else if(target && z == target.z && Adjacent(target))
+			myPath = list()
+			pathing_frustration = 0
+			return
 		var/movespeed = update_movespeed()
 		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill() || is_move_blocked_by_grab())
-			sleep(movespeed) // wait one movement tick to see if we're finished/recovered
+			NPC_THINK("MOVEMENT TURN [i]: Waiting to move!")
+			sleep(1) // wait 1ds to see if we're finished/recovered
 			continue
-		if(world.time > (move_started + /datum/controller/subsystem/humannpc::wait))
+		// this is unnecessary, we don't re-call handle_ai until this is done
+/* 		if(world.time > (move_started + /datum/controller/subsystem/humannpc::wait))
 			// we ran out of time and started the next tick!
-			break
-		if(length(myPath))
-			var/turf/next_path_turf = myPath[1]
-			var/move_dir = get_dir(src, myPath[1])
-			var/turf/next_step = get_step(src, move_dir)
-			if(next_path_turf.z != z) // if moving up or down z-levels, need specific checks
-				var/obj/structure/stairs/the_stairs = locate() in get_turf(src)
-				// if moving up, go in the direction of the stairs, else go the opposite direction
-				move_dir = next_path_turf.z > z ? the_stairs.dir : GLOB.reverse_dir[the_stairs.dir]
-				next_step = the_stairs.get_target_loc(move_dir)
-			if(!next_step)
-				pathing_frustration++
-				myPath -= myPath[1]
-				continue
-			if(!step(src, move_dir)) // try to move onto or along our path
-				for(var/obj/structure/O in next_step)
-					if(O.density && O.climbable)
-						O.climb_structure(src)
-						break
-			if(loc != next_step) // movement failed and so did climb_structure
-				pathing_frustration++
-			else if(loc == myPath[1]) // if we made it to the right part of our path
-				.++
-				pathing_frustration = 0
-				myPath -= myPath[1]
+			NPC_THINK("MOVEMENT TURN [i]: Out of time to move!")
+			return */
+		var/turf/next_path_turf = myPath[1]
+		var/move_dir = get_dir(src, myPath[1])
+		var/turf/next_step = get_step(src, move_dir)
+		if(next_path_turf.z != z) // if moving up or down z-levels, need specific checks
+			var/obj/structure/stairs/the_stairs = locate() in get_turf(src)
+			// if moving up, go in the direction of the stairs, else go the opposite direction
+			move_dir = next_path_turf.z > z ? the_stairs.dir : GLOB.reverse_dir[the_stairs.dir]
+			next_step = the_stairs.get_target_loc(move_dir)
+		if(!next_step)
+			pathing_frustration++
+			NPC_THINK("MOVEMENT TURN [i]: Unable to find turf to move to! Strike [pathing_frustration]!")
+			myPath -= myPath[1]
+			continue
+		if(!step(src, move_dir)) // try to move onto or along our path
+			for(var/obj/structure/O in next_step)
+				if(O.density && O.climbable)
+					NPC_THINK("MOVEMENT TURN [i]: Trying to climb over [O]!")
+					O.climb_structure(src)
+					break
+		if(loc != next_step) // movement failed and so did climb_structure
+			pathing_frustration++
+			NPC_THINK("MOVEMENT TURN [i]: Move failed! Strike [pathing_frustration]!")
+			sleep(1)
+		else if(loc == myPath[1]) // if we made it to the right part of our path
+			.++
+			pathing_frustration = 0
+			myPath -= myPath[1]
+			NPC_THINK("MOVEMENT TURN [i]: Movement on cooldown for [movespeed/10] seconds!")
 			sleep(movespeed) // wait until next move
 
 // blocks, but only while path is being calculated
@@ -183,12 +222,21 @@
 	if(!turf_of_target)
 		back_to_idle()
 		return FALSE
+	if(is_currently_pathing)
+		NPC_THINK("Already pathing!")
+		return FALSE
 	if(!length(myPath)) // need a new path
+		var/const/MAX_RANGE_FIND = 32
+		NPC_THINK("Pathfinding...")
+		is_currently_pathing = TRUE
 		myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), MAX_RANGE_FIND + 1, 250,1, adjacent = TYPE_PROC_REF(/turf, reachableTurftest3d))
+		is_currently_pathing = FALSE
 		if(length(myPath))
 			myPath -= get_turf(src) // remove the turf we start on
-		pathing_frustration = 0
-		return length(myPath) > 0
+			pathing_frustration = 0
+			NPC_THINK("Found a path with length [length(myPath)]!")
+			return TRUE
+	NPC_THINK("Failed to find a path!")
 	//too far away or pathing failed
 	back_to_idle()
 	return FALSE
@@ -278,6 +326,7 @@
 	switch(mode)
 		if(NPC_AI_IDLE)		// idle
 			if(world.time >= next_seek)
+				NPC_THINK("Seeking for targets...")
 				next_seek = world.time + 3 SECONDS
 				for(var/mob/living/L in view(7, src)) // scan for enemies
 					if(should_target(L))
@@ -300,13 +349,15 @@
 				validate_path()
 				if(!length(myPath)) // create a new path to the target
 					start_pathing_to(target)
-				if(length(myPath)) // move along the existing path if we have one
-					move_along_path()
+				// move along the existing path if we have one
+				if(length(myPath) && move_along_path()) // If we successfully moved, finish our turn
+					return TRUE
 
 			// Flee before trying to pick up a weapon.
 			if(flee_in_pain && target && (target.stat == CONSCIOUS))
 				var/paine = get_complex_pain()
 				if(paine >= ((STAEND * 10)*0.75)) // pain threshold decreased from END*10*0.9 due to all NPCs having insane END for some reason
+					NPC_THINK("Ouch! Entering flee mode!")
 					mode = NPC_AI_FLEE
 					m_intent = MOVE_INTENT_RUN
 					myPath = list() // cancel chasing our target
@@ -351,11 +402,14 @@
 						// found an enemy who might be able to hurt us
 						flee_target = bystander
 			if(!flee_target || get_dist(src, flee_target) >= NPC_FLEE_DISTANCE)
+				NPC_THINK("Done fleeing!")
 				back_to_idle()
 			else if(!is_move_blocked_by_grab()) // try to run offscreen if we aren't being grabbed by someone else
+				NPC_THINK("Fleeing from [flee_target]!")
 				// todo: use A* to find the shortest path to the farthest tile away from the flee target?
 				walk_away(src, target, NPC_FLEE_DISTANCE, update_movespeed())
 			else // can't flee and can't move, stop walking!
+				NPC_THINK("I can't flee from [flee_target]!")
 				walk(src, 0)
 			return TRUE
 
@@ -364,6 +418,7 @@
 
 /mob/living/carbon/human/proc/back_to_idle()
 	last_aggro_loss = world.time
+	NPC_THINK("Losing interest in [target]!")
 	if(pulling)
 		stop_pulling()
 	myPath = list()
@@ -393,6 +448,7 @@
 		aimheight_change(rand(1,4)) // Go for the knees!
 	else
 		aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12,19))) // Arms, chest, head. Equal chance for each.
+	NPC_THINK("Aiming for \the [zone_selected]!")
 
 	// attack with weapon if we have one
 	if(Weapon)
@@ -433,6 +489,7 @@
 			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
 			if (!npc_detect_sneak(L, extra_chance))
 				return
+		NPC_THINK("Hunting [L]!")
 		mode = NPC_AI_HUNT
 		// Interrupt ongoing actions on-hit, except for standing up or resisting.
 		if(!resisting && (mobility_flags & MOBILITY_STAND))
@@ -480,5 +537,3 @@
 	. = ..()
 	if((W.force) && (!target) && (W.damtype != STAMINA) )
 		retaliate(user)
-
-#undef MAX_RANGE_FIND
