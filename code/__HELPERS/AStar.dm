@@ -22,8 +22,6 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 //////////////////////
 //datum/PathNode object
 //////////////////////
-#define MASK_ODD 85
-#define MASK_EVEN 170
 
 
 //A* nodes variables
@@ -100,7 +98,10 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 		return FALSE
 	if(maxnodes)
 		//if start turf is farther than maxnodes from end turf, no need to do anything
-		if(call(start, dist)(end, caller) > maxnodes)
+		//Yes, this is a hardcoded distance proc. If you want diagonal moves you'll need to change this,
+		//but otherwise this is fine.
+		// EVERYTHING ELSE SHOULD USE THE DIST PARAMETER, THOUGH!
+		if(start.Distance_cardinal_3d(end, caller) > maxnodes)
 			return FALSE
 		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
 	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare) //the open list
@@ -118,7 +119,9 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
 		if(mintargetdist && cur.source.z == end.z) // don't stop early if you aren't on the same z-level
-			closeenough = call(cur.source,dist)(end, caller) <= mintargetdist
+			// I lied, this one is also hardcoded; we don't want to use the heuristic for our termination condition,
+			// only the actual distance.
+			closeenough = cur.source.Distance_cardinal(end, caller) <= mintargetdist
 
 		//found the target turf (or close enough), let's create the path to it
 		if(cur.source == end || closeenough)
