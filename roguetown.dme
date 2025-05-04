@@ -2472,6 +2472,7 @@
 #include "modular_redmoon\modules\tetris\wrists.dm"
 #include "modular_redmoon\modules\translation\emotes.dm"
 #include "modular_redmoon\modules\translation\translation.dm"
+#include "modular_redmoon\modules\translation\game\gamemodes\objectives_rogue.dm"
 #include "modular_redmoon\modules\unbreakable_castle_underwalls\unbreakable_castle_underwalls.dm"
 #include "modular_redmoon\modules\vampire_update\vamparmor.dm"
 #include "modular_redmoon\modules\venicle\baneblade.dm"
