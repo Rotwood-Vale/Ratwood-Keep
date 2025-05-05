@@ -232,46 +232,46 @@
 
 			drained = max(drained, 5)
 
-			if(weapon_parry == TRUE)
-				if(do_parry(used_weapon, drained, user)) //show message
+			if(weapon_parry)
+				if(!do_parry(used_weapon, drained, user)) // Parry failed
+					return FALSE
+				//show message
+				if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
+					mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
 
-					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
-						mind.add_sleep_experience(used_weapon.associated_skill, max(round(STAINT/2), 0), FALSE)
+				var/obj/item/AB = intenty.masteritem
 
-					var/obj/item/AB = intenty.masteritem
+				//attacker skill gain
 
-					//attacker skill gain
+				if(U.mind)
+					var/attacker_skill_type
+					if(AB)
+						attacker_skill_type = AB.associated_skill
+					else if(intenty.unarmed && intenty.unarmed_skill)
+						attacker_skill_type = intenty.unarmed_skill
+					else
+						attacker_skill_type = /datum/skill/combat/unarmed
+					if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
+						U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
 
-					if(U.mind)
-						var/attacker_skill_type
-						if(AB)
-							attacker_skill_type = AB.associated_skill
-						else
-							attacker_skill_type = /datum/skill/combat/unarmed
-						if((U.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(U, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-							U.mind.add_sleep_experience(attacker_skill_type, max(round(STAINT/2), 0), FALSE)
-
-					if(prob(66) && AB)
-						if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
-							flash_fullscreen("whiteflash")
-							user.flash_fullscreen("whiteflash")
-							var/datum/effect_system/spark_spread/S = new()
-							var/turf/front = get_step(src,src.dir)
-							S.set_up(1, 1, front)
-							S.start()
-						else
-							flash_fullscreen("blackflash2")
+				if(prob(66) && AB)
+					if((used_weapon.flags_1 & CONDUCT_1) && (AB.flags_1 & CONDUCT_1))
+						flash_fullscreen("whiteflash")
+						user.flash_fullscreen("whiteflash")
+						var/datum/effect_system/spark_spread/S = new()
+						var/turf/front = get_step(src,src.dir)
+						S.set_up(1, 1, front)
+						S.start()
 					else
 						flash_fullscreen("blackflash2")
-
-					var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
-					if(dam2take)
-						used_weapon.take_damage(max(dam2take,1), BRUTE, used_weapon.d_type)
-					return TRUE
 				else
-					return FALSE
+					flash_fullscreen("blackflash2")
 
-			if(weapon_parry == FALSE)
+				var/dam2take = round((get_complex_damage(AB,user,used_weapon.blade_dulling)/2),1)
+				if(dam2take)
+					used_weapon.take_damage(max(dam2take,1), BRUTE, used_weapon.d_type)
+				return TRUE
+			else
 				if(do_unarmed_parry(drained, user))
 					if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(H, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
 						H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
@@ -432,12 +432,12 @@
 					drained = drained + (thing * 10)
 				*/
 		else //the enemy attacked us unarmed or is nonhuman
-			if(UH)
-				if(UH.used_intent.unarmed)
-					if(UH.mind)
-						prob2defend = prob2defend - (UH.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-					if(H.mind)
-						prob2defend = prob2defend + (H.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
+			if(UH?.used_intent.unarmed)
+				var/unarmed_skill = UH.used_intent.unarmed_skill
+				if(UH.mind)
+					prob2defend = prob2defend - (UH.mind.get_skill_level(unarmed_skill) * 10)
+				if(H.mind)
+					prob2defend = prob2defend + (H.mind.get_skill_level(unarmed_skill) * 10)
 		// dodging while knocked down sucks ass
 		if(!(L.mobility_flags & MOBILITY_STAND))
 			prob2defend *= 0.25
