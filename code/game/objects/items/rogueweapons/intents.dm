@@ -357,7 +357,7 @@
 	animname = "blank22"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
 	misscost = 5
-	releasedrain = 5
+	releasedrain = 1
 	swingdelay = 0
 	rmb_ranged = TRUE
 	candodge = TRUE

@@ -28,11 +28,16 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, A, proximity) & COMPONENT_NO_ATTACK_HAND)
 		return
 	SEND_SIGNAL(src, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, A, proximity)
+	var/rmb_stam_penalty = 0
+	if(istype(rmb_intent, /datum/rmb_intent/strong) || istype(rmb_intent, /datum/rmb_intent/swift))
+		rmb_stam_penalty = 4 // as opposed to 10 for a weapon; these are your hands, it's easier to move them
 	if(isliving(A))
 		var/mob/living/L = A
 		if(!used_intent.noaa)
 			playsound(get_turf(src), pick(GLOB.unarmed_swingmiss), 100, FALSE)
 //			src.emote("attackgrunt")
+		if(used_intent.releasedrain)
+			stamina_add(used_intent.releasedrain + rmb_stam_penalty)
 		if(L.checkmiss(src))
 			return
 		if(!L.checkdefense(used_intent, src))
@@ -61,6 +66,8 @@
 						visible_message(span_warning("[src] pushes [AM]."))
 					changeNext_move(CLICK_CD_MELEE)
 					return
+		if(used_intent.releasedrain)
+			stamina_add(used_intent.releasedrain + rmb_stam_penalty)
 		A.attack_hand(src, params)
 
 /mob/living/rmb_on(atom/A, params)
