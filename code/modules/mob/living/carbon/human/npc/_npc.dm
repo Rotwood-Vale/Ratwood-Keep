@@ -362,7 +362,7 @@
 					myPath = list() // cancel chasing our target
 					return TRUE
 
-			if(!get_active_held_item() && !get_inactive_held_item() && !HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) && (mobility_flags & MOBILITY_PICKUP))
+			if(!get_active_held_item() && !HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) && (mobility_flags & MOBILITY_PICKUP))
 				// pickup any nearby weapon
 				for(var/obj/item/I in view(1,src))
 					if(!isturf(I.loc))
@@ -456,13 +456,13 @@
 				break
 		if(smash_target) // now actually smash!
 			NPC_THINK("Trying to smash [victim] into [smash_target]!")
-			smash_target.attackby(the_grab, src)
+			the_grab.melee_attack_chain(src, smash_target)
 			return TRUE
 		NPC_THINK("Failed to find something to smash [victim] into!")
 		return FALSE
 	// otherwise just use it normally
 	NPC_THINK("Trying to [used_intent.name] a grab on [victim]!")
-	the_grab.attack(victim, src)
+	the_grab.melee_attack_chain(src, victim)
 	return TRUE
 
 /// A proc used in monkey_attack. Selects and performs our preferred attack.
@@ -484,12 +484,18 @@
 		OffWeapon = get_inactive_held_item()
 
 	// What is the chance we try to grab with our offhand?
-	var/grab_chance = Weapon ? 20 : 50 // If unarmed, 50% chance; otherwise 20%
+	var/grab_chance = Weapon ? 10 : 30 // If unarmed, 30% chance; otherwise 10%
+	if(HAS_TRAIT(victim, TRAIT_CHUNKYFINGERS)) // we can't use normal weapons, so try to grapple harder because we don't care about having a free hand
+		grab_chance = 50
 	if(!OffWeapon)
 		if(prob(grab_chance)) // grab with offhand instead of attack
 			var/obj/item/grabbing/the_grab = OffWeapon
 			if(istype(the_grab) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
 				swap_hand() // switch to grab
+				if(grab_state < GRAB_AGGRESSIVE && prob(80)) // upgrade!
+					stamina_add(rand(7,15))
+					victim.grippedby(src)
+					return TRUE // used our turn
 				if(isitem(the_grab.sublimb_grabbed) && prob(50))
 					rog_intent_change(1) // 50% chance to remove the embedded weapon, 50% to twist it
 				else
@@ -498,8 +504,13 @@
 				swap_hand() // switch back to mainhand to avoid fucking up the rest of combat
 				return TRUE // and end turn
 			NPC_THINK("Trying to grab [victim]!")
-			if(start_pulling(victim)) // pull successful, end turn
+			start_pulling(victim) // this doesn't return TRUE if it succeeds
+			if(pulling == victim) // pull successful, end turn
+				stamina_add(/datum/intent/unarmed/grab::releasedrain) // not using the intent so we have to grab the amount this way
 				return TRUE
+			else
+				stamina_add(/datum/intent/unarmed/grab::misscost)
+				return TRUE // failing a grab ends your turn too
 
 	// attack with weapon if we have one
 	if(Weapon)
@@ -517,16 +528,26 @@
 		UnarmedAttack(victim, 1)
 		return TRUE
 
+/mob/living/carbon/human/proc/npc_choose_zone_target(mob/living/victim)
+	// My life for a better way to handle deadite AI.
+	if(mind?.has_antag_datum(/datum/antagonist/zombie))
+		aimheight_change(deadite_get_aimheight(victim))
+		return
+	if(!(mobility_flags & MOBILITY_STAND))
+		aimheight_change(rand(1, 4)) // Go for the knees!
+		return
+	if(HAS_TRAIT(victim, TRAIT_BLOODLOSS_IMMUNE)) // Go for the head!
+		aimheight_change(rand(12, 19))
+		return
+	aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12, 19))) // Arms, chest, head. Equal chance for each.
+
 // attack using a held weapon otherwise bite the enemy, then if we are angry there is a chance we might calm down a little
 /mob/living/carbon/human/proc/monkey_attack(mob/living/L)
 	if(next_move > world.time)
 		return
-	if(!(mobility_flags & MOBILITY_STAND))
-		aimheight_change(rand(1,4)) // Go for the knees!
-	else
-		aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12,19))) // Arms, chest, head. Equal chance for each.
+	
+	npc_choose_zone_target(L)
 	NPC_THINK("Aiming for \the [zone_selected]!")
-
 	do_best_melee_attack(L)
 
 	// handle cooldowns
