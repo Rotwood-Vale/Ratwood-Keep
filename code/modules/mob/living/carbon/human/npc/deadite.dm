@@ -95,6 +95,13 @@
 	STAEND = rand(6,13)
 	STAINT = 1
 
+/mob/living/carbon/human/proc/deadite_get_aimheight(victim)
+	if(!(mobility_flags & MOBILITY_STAND))
+		return rand(1, 2) // Bite their ankles!
+	return pick(rand(11, 13), rand(14, 17), rand(5, 8)) // Chest, neck, and mouth; face and ears; arms and hands.
+
+/mob/living/carbon/human/species/deadite/npc_choose_zone_target(mob/living/victim)
+	aimheight_change(deadite_get_aimheight(victim))
 
 /mob/living/carbon/human/species/deadite/do_best_melee_attack(mob/living/victim)
 	return do_deadite_attack(victim)
@@ -110,7 +117,8 @@
 	if(try_do_deadite_bite(victim))
 		return TRUE // spent our turn
 	// we failed to bite or already had a bite, try grabbing instead
-	if(start_pulling(victim))
+	start_pulling(victim) // this doesn't return TRUE if it succeeds
+	if(pulling == victim) // pull successful, end turn
 		return TRUE
 	return FALSE
 
