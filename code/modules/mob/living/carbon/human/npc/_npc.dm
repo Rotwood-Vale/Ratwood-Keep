@@ -1,11 +1,3 @@
-// Uncomment this for NPCs to display their 'thoughts' above their heads.
-// #define NPC_THINK_DEBUG
-#ifdef NPC_THINK_DEBUG
-#define NPC_THINK(message) visible_message(message, runechat_message = message)
-#else
-#define NPC_THINK(message)
-#endif
-
 /mob/living/carbon/human
 	var/aggressive=0 //0= retaliate only
 	var/frustration=0
@@ -79,6 +71,13 @@
 			if(del_on_deaggro && last_aggro_loss && (world.time >= last_aggro_loss + del_on_deaggro))
 				if(deaggrodel())
 					return TRUE
+
+// separate override to ensure it happens last
+/mob/living/carbon/human/process_ai()
+	. = ..()
+	// TODO: Better converted-deadite AI than this.
+	if(mind?.has_antag_datum(/datum/antagonist/zombie))
+		try_do_deadite_idle() // sort of a misnomer, just handles zombie noises
 
 /mob/living/carbon/human/proc/npc_stand()
 	if(next_move > world.time)
@@ -430,51 +429,113 @@
 	frustration = 0
 	walk_to(src,0)
 
+/// Try to attack using an offhand grab.
+/mob/living/carbon/human/proc/npc_try_use_grab(mob/living/victim, obj/item/grabbing/the_grab)
+	if(used_intent.type == /datum/intent/grab/smash) // special, need to smash them into something
+		var/atom/smash_target // structure or turf
+		// first check for a structure to smash someone into
+		for(var/obj/structure/smashy_struct in view(1, src))
+			if(!victim.Adjacent(smashy_struct)) // have to find a structure we're both adjacent to
+				continue
+			if(smashy_struct.blade_dulling != DULLING_CUT) // smashable!
+				smash_target = smashy_struct
+				break
+		if(!smash_target) // now check turfs
+			// if standing you have to slam them into a wall; otherwise slam them into the floor
+			var/victim_standing = victim.mobility_flags & MOBILITY_STAND
+			for(var/turf/smashy_turf in view(1, src))
+				if(victim_standing)
+					if(isopenturf(smashy_turf))
+						continue
+				else
+					if(isclosedturf(smashy_turf))
+						continue
+				if(!victim.Adjacent(smashy_turf))
+					continue
+				smash_target = smashy_turf
+				break
+		if(smash_target) // now actually smash!
+			NPC_THINK("Trying to smash [victim] into [smash_target]!")
+			smash_target.attackby(the_grab, src)
+			return TRUE
+		NPC_THINK("Failed to find something to smash [victim] into!")
+		return FALSE
+	// otherwise just use it normally
+	NPC_THINK("Trying to [used_intent.name] a grab on [victim]!")
+	the_grab.attack(victim, src)
+	return TRUE
+
+/// A proc used in monkey_attack. Selects and performs our preferred attack.
+/// Returns TRUE if our turn has been used.
+/mob/living/carbon/human/proc/do_best_melee_attack(mob/living/victim)
+	// TODO: Better converted-deadite AI than this.
+	// My life for a refactor of this system to use the new AI controllers... maybe.
+	if(mind?.has_antag_datum(/datum/antagonist/zombie))
+		do_deadite_attack(victim)
+		return TRUE
+	var/obj/item/Weapon = get_active_held_item()
+	var/obj/item/OffWeapon = get_inactive_held_item()
+	// if we're weaponless or our offhand is stronger, switch hands
+	// since grabs have a force of 0 this has the fun effect of putting embed grabs in the offhand too, which is useful later
+	if(!Weapon || OffWeapon?.force > Weapon.force)
+		NPC_THINK("Switching active hand to [OffWeapon]!")
+		swap_hand()
+		Weapon = get_active_held_item()
+		OffWeapon = get_inactive_held_item()
+
+	// What is the chance we try to grab with our offhand?
+	var/grab_chance = Weapon ? 20 : 50 // If unarmed, 50% chance; otherwise 20%
+	if(!OffWeapon)
+		if(prob(grab_chance)) // grab with offhand instead of attack
+			var/obj/item/grabbing/the_grab = OffWeapon
+			if(istype(the_grab) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
+				swap_hand() // switch to grab
+				if(isitem(the_grab.sublimb_grabbed) && prob(50))
+					rog_intent_change(1) // 50% chance to remove the embedded weapon, 50% to twist it
+				else
+					rog_intent_change(2) // 2 -> choke for neck, twist for limb, smash for precise
+				npc_try_use_grab(victim, the_grab) // twist, smash, choke, whatever
+				swap_hand() // switch back to mainhand to avoid fucking up the rest of combat
+				return TRUE // and end turn
+			NPC_THINK("Trying to grab [victim]!")
+			if(start_pulling(victim)) // pull successful, end turn
+				return TRUE
+
+	// attack with weapon if we have one
+	if(Weapon)
+		if(!Weapon.wielded && Weapon.force_wielded > Weapon.force)
+			// todo: decide to drop the offhand maybe?
+			if(!OffWeapon) // wield it!
+				Weapon.attack_self(src)
+		rog_intent_change(1)
+		used_intent = a_intent
+		Weapon.melee_attack_chain(src, victim)
+		return TRUE
+	else // unarmed
+		rog_intent_change(4) // punch
+		used_intent = a_intent
+		UnarmedAttack(victim, 1)
+		return TRUE
+
 // attack using a held weapon otherwise bite the enemy, then if we are angry there is a chance we might calm down a little
 /mob/living/carbon/human/proc/monkey_attack(mob/living/L)
 	if(next_move > world.time)
 		return
-	var/obj/item/Weapon = get_active_held_item()
-	var/obj/item/OffWeapon = get_inactive_held_item()
-	if(Weapon && OffWeapon)
-		if(OffWeapon.force > Weapon.force)
-			swap_hand()
-			Weapon = get_active_held_item()
-			OffWeapon = get_inactive_held_item()
-	if(!Weapon)
-		swap_hand()
-		Weapon = get_active_held_item()
-		OffWeapon = get_inactive_held_item()
 	if(!(mobility_flags & MOBILITY_STAND))
 		aimheight_change(rand(1,4)) // Go for the knees!
 	else
 		aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12,19))) // Arms, chest, head. Equal chance for each.
 	NPC_THINK("Aiming for \the [zone_selected]!")
 
-	// attack with weapon if we have one
-	if(Weapon)
-		if(!Weapon.wielded)
-			if(Weapon.force_wielded > Weapon.force)
-				if(!OffWeapon)
-					Weapon.attack_self(src)
-		rog_intent_change(1)
-		used_intent = a_intent
-		Weapon.melee_attack_chain(src, L)
-	else
-		rog_intent_change(4)
-		used_intent = a_intent
-		UnarmedAttack(L,1)
+	do_best_melee_attack(L)
 
+	// handle cooldowns
 	var/adf = used_intent.clickcd
 	if(istype(rmb_intent, /datum/rmb_intent/aimed))
 		adf = round(adf * 1.4)
 	if(istype(rmb_intent, /datum/rmb_intent/swift))
 		adf = round(adf * 0.6)
 	changeNext_move(adf)
-
-	// no de-aggro
-	if(aggressive)
-		return
 
 // get angry at a mob
 /mob/living/carbon/human/proc/retaliate(mob/living/L)

@@ -96,32 +96,51 @@
 	STAINT = 1
 
 
+/mob/living/carbon/human/species/deadite/do_best_melee_attack(mob/living/victim)
+	return do_deadite_attack(victim)
+
 /mob/living/carbon/human/species/deadite/handle_ai()
 	. = ..()
-	try_do_deadite_bite()
-	try_do_deadite_idle()
+	try_do_deadite_idle() // sort of a misnomer, just handles zombie noises
 
-/mob/living/carbon/human/proc/try_do_deadite_bite()
+// This proc exists because non-converted deadites don't have minds and can't have the antag datum
+// So we need two separate entry points for this logic
+/mob/living/carbon/human/proc/do_deadite_attack(mob/living/victim)
+	// first, we try to bite
+	if(try_do_deadite_bite(victim))
+		return TRUE // spent our turn
+	// we failed to bite or already had a bite, try grabbing instead
+	if(start_pulling(victim))
+		return TRUE
+	return FALSE
 
+/mob/living/carbon/human/proc/try_do_deadite_bite(mob/living/victim)
 	if(!src || stat >= DEAD)
-		return
-
-	if(mob_timers["deadite_bite"])
-		if(world.time < mob_timers["deadite_bite"] + rand(2 SECONDS, 5 SECONDS))
-			return
-
-	mob_timers["deadite_bite"] = world.time
+		return FALSE
 
 	var/obj/item/grabbing/bite/bite = get_item_by_slot(SLOT_MOUTH)
-	if(!bite || !get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
+	if(istype(bite))
+		// 50% chance to continue biting if already started
+		if(prob(50))
+			bite.bitelimb(src)
+			return TRUE
+		return FALSE // try something else like grappling
+	
+	if(!victim) // if we aren't passed a target, find one at random from nearby. this is currently unused
 		for(var/mob/living/carbon/human in view(1, src))
 			if(human == src) //prevent self biting
 				continue
 			if((human.mob_biotypes & MOB_UNDEAD) || ("undead" in human.faction) || HAS_TRAIT(human, TRAIT_ZOMBIE_IMMUNE))
 				continue
-			human.onbite(src)
-	else if(istype(bite)) // continue biting if already started
-		bite.bitelimb(src)
+			victim = human
+
+	if(!victim) // still no one to bite
+		return FALSE
+
+	if(!get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE)) // can't bite, mouth is covered!
+		return FALSE
+
+	victim.onbite(src)
 
 /mob/living/carbon/human/proc/try_do_deadite_idle()
 
