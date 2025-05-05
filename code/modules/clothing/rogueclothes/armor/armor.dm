@@ -959,6 +959,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	name = "studded leather bikini"
 	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
+	armor = list("blunt" = 55, "slash" = 35, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN
 	icon_state = "studleatherkini"
 	item_state = "studleatherkini"
@@ -977,6 +978,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "half-plate bikini"
 	desc = "Half plate in bikini form, still just as protective somehow. Save for the stomach."
+	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
@@ -987,6 +989,7 @@
 	name = "fullplate bikini"
 	desc = "Full plate in bikini form, full package and full exposure."
 	icon_state = "platekini"
+	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	allowed_sex = list(FEMALE)
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	equip_delay_self = 8 SECONDS
@@ -1005,14 +1008,16 @@
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "hierophant's shawl"
+	name = "desert robe"
 	icon_state = "desertrobe"
 	item_state = "desertrobe"
-	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the daemons, yet still allowing one to cast spells aptly."
+	armor = list("blunt" = 30, "slash" = 15, "stab" = 20, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = CHEST|GROIN|VITALS
+	desc = "A thick robe intervowen with spell-laced fabrics. Thick and protective while remaining light and breezy; the perfect gear for protecting one from the threats of the sun, the desert and the beasts in it."
 //	naledicolor = TRUE   //Azure specific most-likely will need someone to double check
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "pontifex's kaftan"
+	name = "leather monk robes"
 	icon_state = "monkleather"
 	item_state = "monkleather"
 	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
@@ -1020,18 +1025,26 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted
 	name = "fluted hauberk"
 	desc = "An ornate cuirass, flanked with sleeves of steel maille."
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "flutedhauberk"
 	item_state = "flutedhauberk"
+	max_integrity = 260
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 90, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/blacksmithing
+	smeltresult = /obj/item/ingot/steel
+	do_sound_chain = TRUE
+	armor_class = ARMOR_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/suit/roguetown/armor/otavan  //Be aware this item is clearly made for an Azure specific role, may require renaming.
 	slot_flags = ITEM_SLOT_ARMOR
-	name = "otavan half-plate"
+	name = "corset half-plate"
 	desc = "half-plate armor with pauldrons."
 	body_parts_covered = CHEST|GROIN|VITALS
 	icon_state = "corsethalfplate"
 	item_state = "corsethalfplate"
 	adjustable = CAN_CADJUST
-	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 80, "bullet" = 100, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	nodismemsleeves = TRUE
 	max_integrity = 500
@@ -1072,7 +1085,7 @@
 	desc = "A large shirt with heavy padding meant to be used below armor."
 	icon_state = "fancygamb"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|VITALS
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 50, "piercing" = 25, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 50, "slash" = 45, "stab" = 60, "bullet" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -1088,6 +1101,7 @@
 	name = "artificer jacket"
 	icon_state = "artijacket"
 	desc = "A thick leather jacket adorned with fur and cog decals. The height of Heartfelt fashion."
+	resistance_flags = FIRE_PROOF	//Artificers contraptions set them on fire with regular intervals. Thus, Fire retardent clothing.
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket  //Will need looking into, sprite accounted for.
 	name = "winter jacket"
@@ -1117,26 +1131,124 @@
 	body_parts_covered = CHEST
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
-    name = "confessor jacket"
-    desc = "Padded jacket that provides adequate protection against unarmed innocents."
-    icon_state = "overseerjacket"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    slot_flags = ITEM_SLOT_ARMOR
-    body_parts_covered = CHEST|GROIN|ARMS|VITALS
-    prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-    armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-    max_integrity = 150
-    sellprice = 30
-    boobed = TRUE
+	name = "confessor jacket"
+	desc = "Padded jacket that provides adequate protection against unarmed innocents."
+	icon_state = "overseerjacket"
+	icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	slot_flags = ITEM_SLOT_ARMOR
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 150
+	sellprice = 30
+	boobed = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/overseer
-    name = "Lord inquisitor coat"
-    desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
-    icon_state = "viceseercoat"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    boobed = TRUE
-    ignore_sleeves_code = FALSE
+	name = "Lord inquisitor coat"
+	desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
+	icon_state = "viceseercoat"
+	icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	boobed = TRUE
+	ignore_sleeves_code = FALSE
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "artificer armor"
+	desc = "Lightweight Armor made of copper by an artificer"
+	body_parts_covered = CHEST|VITALS|GROIN|NECK
+	icon_state = "artificerplate"
+	item_state = "artificerplate"
+	armor = list("blunt" = 45, "slash" = 45, "stab" = 45, "bullet" = 45, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	allowed_race = CLOTHED_RACES_TYPES
+	nodismemsleeves = TRUE
+	max_integrity = 300 //Might be copper, but it's reinforced with an arcane meld and bronze plating
+	smeltresult = /obj/item/ingot/copper
+	armor_class = ARMOR_CLASS_LIGHT //copper plating, fairly light.
+	var/powered = FALSE
+	var/mode = 1
+	var/active_item = FALSE //Prevents issues like dragon ring giving negative str instead
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/Initialize()
+	.=..()
+	update_description()
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/rogueweapon/hammer))
+		if(user.mind?.get_skill_level(/datum/skill/craft/engineering) >= 3)
+			toggle_mode(user)
+			return
+	if(istype(I, /obj/item/natural/melded/t1) && !powered)
+		user.visible_message(span_notice("[user] starts carefully setting [I] into place as a power source."))
+		if(do_after(user, 5 SECONDS, target = src))
+			qdel(I)
+			powered = TRUE
+			icon_state ="artificerplate_powered"
+			item_state = "artificerplate_powered"
+	.=..()
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/proc/toggle_mode(mob/user)
+	mode = (mode == 1) ? 2 : 1
+	user.visible_message(span_notice("[user] tinkers with [src], adjusting its enhancements."))
+	update_description()
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/equipped(mob/living/user, slot)
+	. = ..()
+	if(!powered || active_item || slot != SLOT_ARMOR)
+		return
+	if(mode == 1)
+		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+			active_item = TRUE
+			user.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			to_chat(user, span_notice("Magicks flow throughout your body."))
+			user.change_stat("intelligence", 3)
+			return
+		else
+			to_chat(user, span_warning("The curiass feels cold and dead to the non-arcane."))
+	if(mode == 2)
+		if(slot != SLOT_ARMOR)
+			return
+		if(user.mind.get_skill_level(/datum/skill/misc/athletics))
+			active_item = TRUE
+			user.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			to_chat(user, span_notice("Strength flow throughout your body."))
+			user.change_stat("strength", 2)
+			user.change_stat("endurance", 2)
+			return
+		else
+			to_chat(user, span_warning("The curiass feels cold and dead."))
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/dropped(mob/living/user) //Remove some bugfixing stuff in exchange for stricter checks.
+	if(active_item)
+		if(mode == 1)
+			if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+				var/mob/living/carbon/human/H = user
+				if(H.get_item_by_slot(SLOT_ARMOR) == src) //Hopefully fixes this last issue.
+					to_chat(H, span_notice("Gone is the arcane magicks enhancing thine abilities..."))
+					H.change_stat("intelligence", -3) //Ensure to not give inf intelligence.
+					H.mind.adjust_skillrank(/datum/skill/magic/arcane, -1, TRUE)
+					active_item = FALSE
+					return
+			else
+				to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
+		if(mode == 2)
+			if(user.mind.get_skill_level(/datum/skill/misc/athletics))
+				var/mob/living/carbon/human/H = user
+				if(H.get_item_by_slot(SLOT_ARMOR) == src) //Hopefully fixes this last issue.
+					to_chat(H, span_notice("Gone is the strength enhancing thine abilities..."))
+					user.change_stat("strength", -2)
+					user.change_stat("endurance", -2)
+					H.mind.adjust_skillrank(/datum/skill/misc/athletics, -2, TRUE)
+					active_item = FALSE
+					return
+			else
+				to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
+
+/obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/proc/update_description()
+	if(mode == 1)
+		desc = "Lightweight Armor made of copper by an artificer. It hums with arcane power, enhancing magical prowess."
+	else
+		desc = "Lightweight Armor made of copper by an artificer. It radiates raw strength, reinforcing the wearer's physical might."

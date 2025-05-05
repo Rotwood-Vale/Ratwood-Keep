@@ -6,7 +6,7 @@
 	icon_living = "spider"
 	icon_dead = "spider-dead"
 
-	faction = list("bugs")
+	faction = list("bugs", "spiders")
 	turns_per_move = 4
 	move_to_delay = 2
 	vision_range = 5
@@ -47,6 +47,9 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 */
+
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'

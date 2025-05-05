@@ -344,6 +344,12 @@
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
 
+/datum/sprite_accessory/snout/front/fshortt
+	name = "Feline, short"
+	icon_state = "fshortt"
+	color_keys = 2
+	color_key_names = list("Snout", "Inner")
+
 /datum/sprite_accessory/snout/front/lcanidalt
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"

@@ -16,10 +16,12 @@
 		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
 		color = def.seed_color
 
-/obj/item/seeds/Crossed(mob/living/L)
+/obj/item/seeds/Crossed(atom/movable/crosser)
 	. = ..()
+	var/mob/living/crossy_mob = crosser
 	// Chance to destroy the seed as it's being stepped on if the mob is human-sized or larger
-	if(prob(35) && istype(L) && L.mob_size >= MOB_SIZE_HUMAN)
+	// TODO: Make TRAIT_TINY set mob_size, or replace TRAIT_TINY with just setting mob_size...?
+	if(prob(35) && istype(crossy_mob) && !HAS_TRAIT(crosser, TRAIT_TINY) && crossy_mob.mob_size >= MOB_SIZE_HUMAN && !crossy_mob.is_floor_hazard_immune())
 		qdel(src)
 
 
@@ -183,3 +185,7 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/fyritius
+	seed_identity = "fyritius seeds"
+	plant_def_type = /datum/plant_def/fyritiusflower

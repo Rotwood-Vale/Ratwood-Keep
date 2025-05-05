@@ -108,6 +108,7 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/front/fshortt,
 		)
 
 /datum/customizer/organ/snout/anthro
@@ -203,6 +204,7 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/front/fshortt,
 		)
 
 /datum/customizer/organ/snout/akula
@@ -244,4 +246,5 @@
 		/datum/sprite_accessory/snout/front/round,
 		/datum/sprite_accessory/snout/front/sharplight,
 		/datum/sprite_accessory/snout/front/roundlight,
+		/datum/sprite_accessory/snout/front/fshortt,
 		)

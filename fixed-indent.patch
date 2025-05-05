@@ -1,0 +1,96 @@
+From 120b7e24fbc48e11d1ae66f754cbc50353cb7f6f Mon Sep 17 00:00:00 2001
+From: Useroth <37159550+Useroth@users.noreply.github.com>
+Date: Fri, 18 Apr 2025 03:48:23 +0200
+Subject: [PATCH] fixed indent
+
+---
+ code/modules/admin/admin.dm | 64 ++++++++++++++++++-------------------
+ 1 file changed, 32 insertions(+), 32 deletions(-)
+
+diff --git a/code/modules/admin/admin.dm b/code/modules/admin/admin.dm
+index eed8da0de..3d4179055 100644
+--- a/code/modules/admin/admin.dm
++++ b/code/modules/admin/admin.dm
+@@ -1054,46 +1054,46 @@
+ 	body += "</ul></div>"
+ 
+ 	body += "<div id='stats-section'>"
+-// Stats Section
+-body += "<h3>Stats</h3><ul>"
+-if(isliving(M)) // Ensure M is a living mob
+-	var/mob/living/living = M // Explicitly cast M to /mob/living
+-	body += "<li>Strength: [living.STASTR] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"strength\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"strength\"'>-</a></li>"
++	// Stats Section
++	body += "<h3>Stats</h3><ul>"
++	if(isliving(M)) // Ensure M is a living mob
++		var/mob/living/living = M // Explicitly cast M to /mob/living
++		body += "<li>Strength: [living.STASTR] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"strength\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"strength\"'>-</a></li>"
+ 
+-	body += "<li>Perception: [living.STAPER] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"perception\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"perception\"'>-</a></li>"
++		body += "<li>Perception: [living.STAPER] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"perception\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"perception\"'>-</a></li>"
+ 
+-	body += "<li>Endurance: [living.STAEND] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"endurance\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"endurance\"'>-</a></li>"
++		body += "<li>Endurance: [living.STAEND] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"endurance\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"endurance\"'>-</a></li>"
+ 
+-	body += "<li>Constitution: [living.STACON] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"constitution\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"constitution\"'>-</a></li>"
++		body += "<li>Constitution: [living.STACON] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"constitution\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"constitution\"'>-</a></li>"
+ 
+-	body += "<li>Intelligence: [living.STAINT] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"intelligence\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"intelligence\"'>-</a></li>"
++		body += "<li>Intelligence: [living.STAINT] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"intelligence\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"intelligence\"'>-</a></li>"
+ 
+-	body += "<li>Speed: [living.STASPD] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"speed\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"speed\"'>-</a></li>"
++		body += "<li>Speed: [living.STASPD] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"speed\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"speed\"'>-</a></li>"
+ 
+-	body += "<li>Luck: [living.STALUC] "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"fortune\"'>+</a> "
+-	body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"fortune\"'>-</a></li>"
+-body += "</ul>"
++		body += "<li>Luck: [living.STALUC] "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=\"fortune\"'>+</a> "
++		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=\"fortune\"'>-</a></li>"
++		body += "</ul>"
+ 
+ 
+-	body += "</div>"
+-	body += "</div>"
++		body += "</div>"
++		body += "</div>"
+ 
+ 
+-	body += "<br>"
+-	body += "</body></html>"
++		body += "<br>"
++		body += "</body></html>"
+ 
+-	usr << browse(body, "window=adminplayeropts-[REF(M)];size=800x600")
+-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+\ No newline at end of file
++		usr << browse(body, "window=adminplayeropts-[REF(M)];size=800x600")
++		SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+-- 
+2.47.0.windows.1
+
