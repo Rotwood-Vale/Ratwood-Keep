@@ -191,9 +191,9 @@
 	// Heal the specific body part every second while bandaged and manage wound pain and disabling effects
 	addtimer(CALLBACK(src, /proc/heal_and_manage_pain_disabling, H, affecting), 10, 1, TRUE)
 	if (M == user)
-		user.visible_message("You bandage your [affecting].")
+		user.visible_message("You bandage your [affecting.name].")
 	else
-		user.visible_message("You bandage [M]'s [affecting].")
+		user.visible_message("You bandage [M]'s [affecting.name].")
 
 /proc/heal_and_manage_pain_disabling(var/mob/living/carbon/human/H, var/obj/item/bodypart/affecting)
 	if (!affecting) return
@@ -312,9 +312,9 @@
 	H.update_damage_overlays()
 
 	if(M == user)
-		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting]."), span_notice("I bandage my [affecting]."))
+		user.visible_message(span_notice("[user] bandages [user.p_their()] [affecting.name]."), span_notice("I bandage my [affecting.name]."))
 	else
-		user.visible_message(span_notice("[user] bandages [M]'s [affecting]."), span_notice("I bandage [M]'s [affecting]."))
+		user.visible_message(span_notice("[user] bandages [M]'s [affecting.name]."), span_notice("I bandage [M]'s [affecting.name]."))
 
 /obj/item/natural/thorn
 	name = "thorn"

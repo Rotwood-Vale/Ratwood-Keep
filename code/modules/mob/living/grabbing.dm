@@ -88,6 +88,17 @@
 	if(ismob(grabbed))
 		var/mob/M = grabbed
 		M.grabbedby -= src
+		if (iscarbon(M) && sublimb_grabbed)
+			var/mob/living/carbon/carbonmob = M
+			var/obj/item/bodypart/part = carbonmob.get_bodypart(sublimb_grabbed)
+
+			// Edge case: if a weapon becomes embedded in a mob, our "grab" will be destroyed...
+			// In this case, grabbed will be the mob, and sublimb_grabbed will be the weapon, rather than a bodypart
+			// This means we should skip any further processing for the bodypart
+			if (part)
+				part.grabbedby -= src
+				part = null
+				sublimb_grabbed = null
 	if(isturf(grabbed))
 		var/turf/T = grabbed
 		T.grabbedby -= src
@@ -403,9 +414,9 @@
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
-	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), \
-					span_userdanger("[user] smashes my [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_warning("I smash [C]'s [limb_grabbed] against [A].[C.next_attack_msg.Join()]"))
+	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), \
+					span_userdanger("[user] smashes my [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_warning("I smash [C]'s [limb_grabbed.name] against [A].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbsmashed [limb_grabbed] ")
 

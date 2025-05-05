@@ -29,6 +29,7 @@
 	minstr = 7
 	sellprice = 30
 	wdefense = 4
+	var/accuracy_bonus = 20
 
 /obj/item/rogueweapon/sword/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))
@@ -121,6 +122,7 @@
 	minstr = 6
 	wdefense = 4
 	can_cdg = TRUE
+	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
 
 /obj/item/rogueweapon/sword/long
 	force = 25
@@ -148,6 +150,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
+	accuracy_bonus = 5	//large swords are unwieldy
 
 /obj/item/rogueweapon/sword/long/death
 	color = CLOTHING_BLACK
@@ -156,13 +159,13 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen") 
+			if("gen")
 				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
-			if("onback") 
+			if("onback")
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-			if("wielded") 
+			if("wielded")
 				return list("shrink" = 0.6,"sx" = 6,"sy" = -2,"nx" = -4,"ny" = 2,"wx" = -8,"wy" = -1,"ex" = 8,"ey" = 3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = -200,"wturn" = -160,"eturn" = -25,"nflip" = 8,"sflip" = 8,"wflip" = 0,"eflip" = 0)
-			if("onbelt") 
+			if("onbelt")
 				return list("shrink" = 0.6,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 
@@ -197,13 +200,13 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen") 
+			if("gen")
 				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
-			if("onback") 
+			if("onback")
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-			if("wielded") 
+			if("wielded")
 				return list("shrink" = 0.6,"sx" = 6,"sy" = -2,"nx" = -4,"ny" = 2,"wx" = -8,"wy" = -1,"ex" = 8,"ey" = 3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = -200,"wturn" = -160,"eturn" = -25,"nflip" = 8,"sflip" = 8,"wflip" = 0,"eflip" = 0)
-			if("onbelt") 
+			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 
@@ -240,13 +243,13 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen") 
+			if("gen")
 				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
-			if("onback") 
+			if("onback")
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-			if("wielded") 
+			if("wielded")
 				return list("shrink" = 0.4,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
-			if("onbelt") 
+			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/vlord
@@ -283,13 +286,13 @@
 	. = ..()
 	if(tag)
 		switch(tag)
-			if("gen") 
+			if("gen")
 				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
-			if("onback") 
+			if("onback")
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-			if("wielded") 
+			if("wielded")
 				return list("shrink" = 0.4,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
-			if("onbelt") 
+			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/sword/long/rider
@@ -424,9 +427,9 @@
 				return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 			if("onback")
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 3,"nx" = -1,"ny" = 2,"wx" = 3,"wy" = 4,"ex" = -1,"ey" = 5,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 20,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-			if("onbelt") 
+			if("onbelt")
 				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-				
+
 /obj/item/rogueweapon/sword/long/exe/cloth
 	icon_state = "terminusest"
 	name = "Terminus Est"
@@ -481,6 +484,7 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 3
+	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
@@ -526,6 +530,7 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
+	accuracy_bonus = 10
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
@@ -557,6 +562,7 @@
 	minstr = 6
 	wdefense = 7
 	wbalance = 1
+	accuracy_bonus = 5	//Rapiers are already wildly accurate due to stab bonus
 
 /obj/item/rogueweapon/sword/rapier/getonmobprop(tag)
 	. = ..()
@@ -789,17 +795,6 @@
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
 
-/obj/item/rogueweapon/sword/gladius
-	force = 22
-	name = "Gladius"
-	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
-	icon_state = "gladius"
-	gripped_intents = null
-	smeltresult = /obj/item/ingot/bronze
-	max_blade_int = 100
-	max_integrity = 200
-	dropshrink = 0.80
-	wdefense = 2
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
 	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
@@ -856,3 +851,22 @@
 		if(istype(I))
 			I.afterchange()
 	update_icon()
+
+// BRONZE SWORDS
+//Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
+
+/obj/item/rogueweapon/sword/gladius
+	force = 22
+	name = "Gladius"
+	desc = "An artificed bronze short sword with no guard. Meant to slash through armor, compliments a shield."
+	icon_state = "gladius"
+	possible_item_intents = list(/datum/intent/sword/cut/bronze, /datum/intent/sword/thrust)
+	gripped_intents = null
+	smeltresult = /obj/item/ingot/bronze
+	max_blade_int = 100
+	max_integrity = 150
+	dropshrink = 0.80
+	wdefense = 2
+
+/datum/intent/sword/cut/bronze
+	penfactor = 60

@@ -513,6 +513,15 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/new_player = valid_characters[character]
 		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)
 		CHECK_TICK
+	// NOTE: Though the comment above initialise_memories specifies that it should always be called after EquipRank,
+	// in this specific case, it needs to be called after ALL calls to EquipRank have been processed in a second pass.
+	// This is because the derived implementations of EquipRank actually set role information and the mob's real name,
+	// and the base version is called BEFORE the derived implementation rather than after.
+	// Consequently, when initialising the game, we need to call initialise_memories in a second pass, so each character
+	// will actually have the correct role information set.
+	for (var/mob/character as anything in valid_characters)
+		var/mob/new_player = valid_characters[character]
+		SSjob.initialise_memories(new_player, character.mind.assigned_role, joined_late = FALSE)
 
 /datum/controller/subsystem/ticker/proc/transfer_characters()
 	var/list/livings = list()

@@ -136,6 +136,10 @@
 	name = "Dog, Long"
 	icon_state = "lab"
 
+/datum/sprite_accessory/ears/broad
+	name = "Broad"
+	icon_state = "broad"
+
 /datum/sprite_accessory/ears/murid
 	name = "Murid"
 	icon_state = "murid"
