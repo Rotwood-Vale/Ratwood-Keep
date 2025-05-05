@@ -38,6 +38,15 @@
 			return
 	START_PROCESSING(SShumannpc,src)
 
+/mob/living/carbon/human/species/deadite/npc_should_resist(ignore_grab = TRUE)
+	return ..(ignore_grab = TRUE)
+
+/mob/living/carbon/human/proc/npc_should_resist(ignore_grab = FALSE)
+	ignore_grab ||= mind?.has_antag_datum(/datum/antagonist/zombie) // zombie antags don't try to resist grabs
+	if(on_fire || buckled || restrained(ignore_grab = ignore_grab))
+		return TRUE
+	return FALSE
+
 /mob/living/carbon/human/proc/process_ai()
 	if(IsDeadOrIncap())
 		walk_to(src,0)
@@ -53,7 +62,7 @@
 		walk_to(src, 0)
 		NPC_THINK("Still resisting, passing turn!")
 		return // Your turn is already being used to continue a resist.
-	if(on_fire || buckled || restrained() || pulledby)
+	if(npc_should_resist())
 		resisting = TRUE
 		walk_to(src,0)
 		NPC_THINK("Starting to resist!")
