@@ -547,11 +547,19 @@
 		rog_intent_change(1)
 		used_intent = a_intent
 		Weapon.melee_attack_chain(src, victim)
+		// attackby and attack_obj handles cooldowns already
 		return TRUE
 	else // unarmed
 		rog_intent_change(4) // punch
 		used_intent = a_intent
 		UnarmedAttack(victim, 1)
+		// handle cooldowns since that's not done directly in UnarmedAttack
+		var/adf = used_intent.clickcd
+		if(istype(rmb_intent, /datum/rmb_intent/aimed))
+			adf = round(adf * 1.4)
+		if(istype(rmb_intent, /datum/rmb_intent/swift))
+			adf = round(adf * 0.6)
+		changeNext_move(adf)
 		return TRUE
 
 /mob/living/carbon/human/proc/npc_choose_grab_zone(mob/living/victim)
@@ -585,14 +593,6 @@
 	npc_choose_attack_zone(L)
 	NPC_THINK("Aiming for \the [zone_selected]!")
 	do_best_melee_attack(L)
-
-	// handle cooldowns
-	var/adf = used_intent.clickcd
-	if(istype(rmb_intent, /datum/rmb_intent/aimed))
-		adf = round(adf * 1.4)
-	if(istype(rmb_intent, /datum/rmb_intent/swift))
-		adf = round(adf * 0.6)
-	changeNext_move(adf)
 
 // get angry at a mob
 /mob/living/carbon/human/proc/retaliate(mob/living/L)
