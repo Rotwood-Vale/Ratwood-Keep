@@ -180,6 +180,9 @@
 				if(user.loc != M.loc)
 					to_chat(user, span_warning("I must be on top of them."))
 					return
+				if(user.l_grab?.grabbed != M || user.r_grab?.grabbed != M)
+					to_chat(user, span_warning("I must grab them with both hands."))
+					return
 				user.stamina_add(rand(10,15))
 				M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 								span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
