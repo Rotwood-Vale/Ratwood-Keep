@@ -640,17 +640,17 @@
 	. = ..()
 
 //If you know what I have to do to make this work let me know!!
-/*
-/obj/machinery/light/rogue/hearth/MouseDrop_T(atom/movable/O, mob/user)
+
+/obj/machinery/light/rogue/hearth/MouseDrop(mob/over)
 	if(attachment)
 		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot/P = attachment
 			var/datum/component/storage/STR = P.GetComponent(/datum/component/storage)
 			if(STR)
-				STR.user_show_to_mob(user, TRUE)
+				STR.mousedrop_onto(STR, over, over)
 			return
 	. = ..()
-*/	
+
 	
 
 /* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.

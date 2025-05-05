@@ -15,8 +15,7 @@
 		else
 			viewing.show_message(span_notice("[M] drops something [insert_preposition]to \the [parent]."), MSG_VISUAL)
 
-//This proc return 1 if the item can be picked up and 0 if it can't.
-//Set the stop_messages to stop it from printing messages
+//had to rewrite this just to add the hearth check!!!! messed up!
 /datum/component/storage/concrete/pot/can_be_inserted(obj/item/I, stop_messages = FALSE, mob/M)
 	if(!istype(I) || (I.item_flags & ABSTRACT))
 		return FALSE //Not an item
@@ -81,3 +80,14 @@
 	if(!istype(master))
 		return FALSE
 	return master.slave_can_insert_object(src, I, stop_messages, M)
+
+/*
+/datum/component/storage/concrete/pot/signal_take_obj(datum/source, atom/movable/AM, new_loc, force = FALSE)
+	world.log << "This ran??"
+	var/atom/host = parent
+	if(istype(host.loc, /obj/machinery/light/rogue/hearth))
+		world.log << "I am here"
+		return remove_from_storage(AM, new_loc)
+
+	..()
+*/

@@ -106,6 +106,8 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 
 		for(var/obj/item/I in things)
 			var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, I)
+			if(!R)
+				continue
 			if(R.output)
 				item_times[I] += 1
 			else
