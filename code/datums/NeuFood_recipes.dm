@@ -6,7 +6,6 @@ handle_recipes
 	var/time_to_make = list(0.5, 4)    //IN SECONDS how long your action should take (shortest and longest)
 	var/list/reagents // example: = list(/datum/reagent/drink/juice/berry = 5) // do not list same reagent twice
 	var/list/items    // example: = list(/obj/item/weapon/crowbar, /obj/item/weapon/welder) // place /foo/bar before /foo
-	var/list/items_used // The items that actually get used when the recipe succeeds (Empty, adds on success)
 	var/result = null // example: = /obj/item/weapon/reagent_containers/food/snacks/donut/normal
 	var/required_skill_level = 0 // Skill for attempting recipe
 	var/interaction_type = FOOD_INTERACTION_ITEM 
@@ -28,17 +27,35 @@ Clear_items
 		return
 	if(!length(itemlist))
 		return
-	// Delete only items in the recipe list. In case you have
-	// 2 of the same thing in your hand when making the food.
+	/*// Delete only items in the recipe list. In case you have
+	var/item_amount = 0//in case we have multiples
+	for(var/obj/I in items)
+		var/found_item = locate(I) in itemlist
+		if(found_item)
+			if(istype(J, /obj/item/reagent_containers/food/snacks))
+				qdel(found_item)
+			if(istype(J, /obj/item/reagent_containers/powder))
+				qdel(found_item)
+			item_amount += 1
+			if(item_amount == length(items))
+				break // we don't wanna delete more than we needed
+*/
+	var/item_amount = 0
 	var/I = 1
-	while(I <= itemlist.len)
+	while(I <= length(items))
 		for(var/obj/item/J in itemlist)
-			if(istype(J, itemlist[I]))
+			if(istype(J, items[I]))
 				if(istype(J, /obj/item/reagent_containers/food/snacks))
+					itemlist.Remove(J)
 					qdel(J)
 				if(istype(J, /obj/item/reagent_containers/powder))
 					qdel(J)
-				break 
+					itemlist.Remove(J)
+				item_amount += 1
+				break
+
+		if(item_amount == length(items))
+			break
 		I += 1 // in case we somehow got here might prevent infinite loops?
 		
 /*=================

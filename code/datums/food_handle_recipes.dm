@@ -119,7 +119,7 @@ COOKED MEALS
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
        /obj/item/reagent_containers/food/snacks/rogue/meat/mince )
         
-    result = /obj/item/reagent_containers/food/snacks/rogue/sausageroll
+    result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
 
 /* Spicy bird */
 /datum/food_handle_recipes/spicybird

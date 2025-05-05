@@ -278,8 +278,10 @@
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
 	name = "raw sausage roll"
 	desc = "a roll of pastry filled with meat."
-	icon_state = "sausageroll"
+	icon_state = "sausageroll_raw"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/sausageroll
+	tastes = list("meat" = 1, "dough" = 1)
+	dropshrink = 0.6
 
 
 /* .................   Sausage roll   ...................*/
@@ -289,3 +291,5 @@
 	icon_state = "sausageroll"
 	cooked_smell = /datum/pollutant/food/fried_meat
 	rotprocess = SHELFLIFE_LONG
+	tastes = list("meat" = 1, "dough" = 1)
+	dropshrink = 0.6
