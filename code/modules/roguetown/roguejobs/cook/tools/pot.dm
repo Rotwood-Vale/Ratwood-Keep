@@ -244,6 +244,11 @@ MISC
 	output = /datum/reagent/consumable/soup/oatmeal
 	cooking_time = 40 SECONDS
 
+/datum/pot_recipe/porridge
+	input =  /obj/item/reagent_containers/food/snacks/grown/wheat
+	output = /datum/reagent/consumable/soup/porridge
+	cooking_time = 40 SECONDS
+
 /datum/pot_recipe/poo
 	input =  /obj/item/natural/poo
 	output = /datum/reagent/consumable/soup/poo
