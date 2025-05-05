@@ -344,15 +344,6 @@
 	/datum/job/roguetown/consort,\
 	/datum/job/roguetown/ruler
 
-
-// DUKE, CONSORT, HEIR, PRIEST
-#define CANT_LEAVE_ROLES \
-	/datum/job/roguetown/priest,\
-	/datum/job/roguetown/consort,\
-	/datum/job/roguetown/ruler,\
-	/datum/job/roguetown/prince,\
-	/datum/job/roguetown/hand
-
 #define CHURCH_ROLES \
 	/datum/job/roguetown/novitiate,\
 	/datum/job/roguetown/druid,\

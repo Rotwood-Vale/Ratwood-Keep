@@ -63,9 +63,11 @@
 	max_integrity = 9999 // In case any maniac decides to hit it.
 
 
+/*=====================
+Carriage door attack by
+=====================*/
+// Handles leaving.
 /obj/structure/carriagedoor/attack_hand(mob/user)
-	. = ..()
-
 	var/mob/living/carbon/human/H
 	if(ishuman(user))
 		H = user
@@ -76,32 +78,27 @@
 	if(user.get_active_held_item())
 		to_chat(user, span_warn("I can't turn the handle. My hand has something in it!"))
 		return
-
+		
 	var/datum/job/J = SSjob.name_occupations[user.job]
-	for(var/K in list(CANT_LEAVE_ROLES))
-		if(istype(J, K))
-			to_chat(user, span_warning("You are too important to leave!!"))
-			return
+	if(J.can_leave_round == FALSE)
+		to_chat(user, span_warning("You are too important to leave!!"))
+		return
 
 	// No important antags can leave!
 	if(H.mind && H.mind.antag_datums)
 		var/datum/mind/M = H.mind
-		for(var/a in M.antag_datums)
-			for(var/b in ALL_ANTAG_TYPES)
-				if(istype(a, b)) 
-					to_chat(user, span_warning("I still have work to do here...")) // TO DO antag and job can leave variable
-					return
+		if(length(M.antag_datums)) // Fuck it we don't need to check at all. If you have any antag datums you can't leave!
+			to_chat(user, span_warning("I still have work to do here..."))
+			return
 
-	//This check tree is the face of hell. If someone knows how to clean this up please help.
-	//Get everything (YES EVEN INSIDE ITEMS, HANDS TOO!)
+	//Checks for all items
 	var/list/user_items = H.get_all_gear()
 	for(var/forbidden_type in list(CANT_LEAVE_ITEMS))
-		var/obj/item/forbidden_item = locate(forbidden_type) in user_items
+		var/forbidden_item = locate(forbidden_type) in user_items
 		if(forbidden_item)
 			to_chat(user, span_notice("You can't leave with \the [forbidden_item]."))
 			return
-		return
-
+		
 	switch(alert("Do you wish to leave town? (You cannot return.)",,"Yes","No"))
 		if("Yes")
 			to_chat(user, span_notice("You start climbing into the carriage to leave..."))
@@ -137,6 +134,7 @@
 					SSrole_class_handler.adjust_class_amount(subclass, -1)
 
 				qdel(user)
+				return // You don't do anything else 
 				//Technically with this sytem you can return with the same job later. I don't mind
 				// I'm sure someone might throw a fit and it admin logs so if anyone out there
 				// is insane enough to try and abuse this you'd find out pretty quickly.
@@ -146,6 +144,9 @@
 		if("No")
 			to_chat(user, span_notice("You decide to stay..."))
 
+	. = ..()
+
+	
 /obj/structure/underworld/carriageman/Initialize()
 	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)
