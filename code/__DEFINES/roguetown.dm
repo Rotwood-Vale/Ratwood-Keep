@@ -167,6 +167,8 @@
 	/datum/species/goblin/moon,\
 )
 
+
+
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
