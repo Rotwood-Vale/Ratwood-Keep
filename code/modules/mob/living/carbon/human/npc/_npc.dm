@@ -443,6 +443,12 @@
 
 /// Try to attack using an offhand grab.
 /mob/living/carbon/human/proc/npc_try_use_grab(mob/living/victim, obj/item/grabbing/the_grab)
+	// set the intent 'intelligently'
+	if(isitem(the_grab.sublimb_grabbed) && prob(30))
+		rog_intent_change(1) // 30% chance to remove the embedded weapon, 70% to twist it
+	else
+		rog_intent_change(2) // 2 -> choke for neck, twist for limb/embed, smash for precise
+	// now use it
 	if(used_intent.type == /datum/intent/grab/smash) // special, need to smash them into something
 		var/atom/smash_target // structure or turf
 		// first check for a structure to smash someone into
@@ -477,6 +483,21 @@
 	the_grab.melee_attack_chain(src, victim)
 	return TRUE
 
+/mob/living/carbon/human/proc/npc_try_make_grab(mob/living/victim)
+	NPC_THINK("Trying to grab [victim]!")
+	swap_hand() // switch to offhand
+	rog_intent_change(3) // grab intent
+	npc_choose_grab_zone(victim)
+	UnarmedAttack(victim, TRUE) // instead of start_pulling(victim)
+	var/stam_penalty = used_intent.releasedrain
+	if(istype(rmb_intent, /datum/rmb_intent/strong) || istype(rmb_intent, /datum/rmb_intent/swift))
+		stam_penalty += 4 // as opposed to 10 for a weapon; these are your hands, it's easier to move them
+	stamina_add(stam_penalty)
+	if(pulling != victim)
+		aftermiss()
+	rog_intent_change(1) // and back to normal intent to avoid getting stuck on grabs
+	return TRUE // end your turn
+
 /// A proc used in monkey_attack. Selects and performs our preferred attack.
 /// Returns TRUE if our turn has been used.
 /mob/living/carbon/human/proc/do_best_melee_attack(mob/living/victim)
@@ -497,32 +518,23 @@
 
 	// What is the chance we try to grab with our offhand?
 	var/grab_chance = Weapon ? 10 : 30 // If unarmed, 30% chance; otherwise 10%
-	if(HAS_TRAIT(victim, TRAIT_CHUNKYFINGERS)) // we can't use normal weapons, so try to grapple harder because we don't care about having a free hand
-		grab_chance = 50
-	if(!OffWeapon)
-		if(prob(grab_chance)) // grab with offhand instead of attack
-			var/obj/item/grabbing/the_grab = OffWeapon
-			if(istype(the_grab) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
-				swap_hand() // switch to grab
-				if(grab_state < GRAB_AGGRESSIVE && prob(80)) // upgrade!
-					stamina_add(rand(7,15))
-					victim.grippedby(src)
-					return TRUE // used our turn
-				if(isitem(the_grab.sublimb_grabbed) && prob(50))
-					rog_intent_change(1) // 50% chance to remove the embedded weapon, 50% to twist it
-				else
-					rog_intent_change(2) // 2 -> choke for neck, twist for limb, smash for precise
-				npc_try_use_grab(victim, the_grab) // twist, smash, choke, whatever
-				swap_hand() // switch back to mainhand to avoid fucking up the rest of combat
-				return TRUE // and end turn
-			NPC_THINK("Trying to grab [victim]!")
-			start_pulling(victim) // this doesn't return TRUE if it succeeds
-			if(pulling == victim) // pull successful, end turn
-				stamina_add(/datum/intent/unarmed/grab::releasedrain) // not using the intent so we have to grab the amount this way
+	if(HAS_TRAIT(victim, TRAIT_CHUNKYFINGERS))
+		grab_chance = 50 // we can't use normal weapons, so try to grapple harder because we don't care about having a free hand
+	var/obj/item/grabbing/the_grab = OffWeapon
+	if(prob(grab_chance)) // grab with offhand instead of attack
+		if(istype(the_grab) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
+			swap_hand() // switch to grab
+			if(grab_state < GRAB_AGGRESSIVE && prob(80)) // upgrade!
+				stamina_add(rand(7,15))
+				victim.grippedby(src)
+				return TRUE // used our turn
+			npc_try_use_grab(victim, the_grab) // twist, smash, choke, whatever
+			swap_hand() // switch back to mainhand to avoid fucking up the rest of combat
+			return TRUE // and end turn
+		if(!OffWeapon)
+			if(npc_try_make_grab(victim)) // returns TRUE if we've finished our turn, not if we succeeded at the grab
 				return TRUE
-			else
-				stamina_add(/datum/intent/unarmed/grab::misscost)
-				return TRUE // failing a grab ends your turn too
+
 
 	// attack with weapon if we have one
 	if(Weapon)
@@ -548,7 +560,17 @@
 		changeNext_move(adf)
 		return TRUE
 
-/mob/living/carbon/human/proc/npc_choose_zone_target(mob/living/victim)
+/mob/living/carbon/human/proc/npc_choose_grab_zone(mob/living/victim)
+	// My life for a better way to handle deadite AI.
+	var/victim_is_deadite = istype(victim, /mob/living/carbon/human/species/deadite) || victim.mind?.has_antag_datum(/datum/antagonist/zombie)
+	// if we're standing, or neither of us are, then we can grab mouth
+	var/can_mouthgrab = (mobility_flags & MOBILITY_STAND) || !(victim.mobility_flags & MOBILITY_STAND)
+	if(prob(60) && can_mouthgrab && victim_is_deadite) // 60% chance to go for the mouth to stop biting
+		zone_selected = BODY_ZONE_PRECISE_MOUTH
+	else
+		npc_choose_attack_zone(victim)
+
+/mob/living/carbon/human/proc/npc_choose_attack_zone(mob/living/victim)
 	// My life for a better way to handle deadite AI.
 	if(mind?.has_antag_datum(/datum/antagonist/zombie))
 		aimheight_change(deadite_get_aimheight(victim))
@@ -566,7 +588,7 @@
 	if(next_move > world.time)
 		return
 	
-	npc_choose_zone_target(L)
+	npc_choose_attack_zone(L)
 	NPC_THINK("Aiming for \the [zone_selected]!")
 	do_best_melee_attack(L)
 

@@ -100,7 +100,7 @@
 		return rand(1, 2) // Bite their ankles!
 	return pick(rand(11, 13), rand(14, 17), rand(5, 8)) // Chest, neck, and mouth; face and ears; arms and hands.
 
-/mob/living/carbon/human/species/deadite/npc_choose_zone_target(mob/living/victim)
+/mob/living/carbon/human/species/deadite/npc_choose_attack_zone(mob/living/victim)
 	aimheight_change(deadite_get_aimheight(victim))
 
 /mob/living/carbon/human/species/deadite/do_best_melee_attack(mob/living/victim)
