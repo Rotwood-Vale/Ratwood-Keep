@@ -27,19 +27,7 @@ Clear_items
 		return
 	if(!length(itemlist))
 		return
-	/*// Delete only items in the recipe list. In case you have
-	var/item_amount = 0//in case we have multiples
-	for(var/obj/I in items)
-		var/found_item = locate(I) in itemlist
-		if(found_item)
-			if(istype(J, /obj/item/reagent_containers/food/snacks))
-				qdel(found_item)
-			if(istype(J, /obj/item/reagent_containers/powder))
-				qdel(found_item)
-			item_amount += 1
-			if(item_amount == length(items))
-				break // we don't wanna delete more than we needed
-*/
+
 	var/item_amount = 0
 	var/I = 1
 	while(I <= length(items))
