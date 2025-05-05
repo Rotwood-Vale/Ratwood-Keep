@@ -113,6 +113,14 @@ COOKED MEALS
 		P.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
 
 
+/* sausage roll */
+/datum/food_handle_recipes/sausageroll
+    items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
+       /obj/item/reagent_containers/food/snacks/rogue/meat/mince )
+        
+    result = /obj/item/reagent_containers/food/snacks/rogue/sausageroll
+
 /* Spicy bird */
 /datum/food_handle_recipes/spicybird
     items = list(

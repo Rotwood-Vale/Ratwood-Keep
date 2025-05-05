@@ -272,3 +272,20 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
+
+
+/* ...............   Sausage roll raw  ..................*/
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
+	name = "raw sausage roll"
+	desc = "a roll of pastry filled with meat."
+	icon_state = "sausageroll"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/sausageroll
+
+
+/* .................   Sausage roll   ...................*/
+/obj/item/reagent_containers/food/snacks/rogue/sausageroll
+	name = "sausage roll"
+	desc = "a roll of pastry filled with meat."
+	icon_state = "sausageroll"
+	cooked_smell = /datum/pollutant/food/fried_meat
+	rotprocess = SHELFLIFE_LONG
