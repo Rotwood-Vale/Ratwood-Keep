@@ -397,24 +397,27 @@
 
 		if(NPC_AI_FLEE)
 			var/const/NPC_FLEE_DISTANCE = 8
-			var/flee_target = target
-			if(!flee_target)
+			if(!target || get_dist(src, target) >= NPC_FLEE_DISTANCE)
 				// try to flee from any enemies who aren't incapacitated
-				for(var/mob/living/bystander in view(src))
-					if(enemies[bystander])
-						if(ishuman(bystander))
-							var/mob/living/carbon/human/human_bystander = bystander
-							if(human_bystander.IsDeadOrIncap())
-								continue
-						else if(stat != CONSCIOUS)
+				for(var/mob/living/bystander in view(src, 7))
+					if(ishuman(bystander))
+						var/mob/living/carbon/human/human_bystander = bystander
+						if(human_bystander.IsDeadOrIncap())
 							continue
-						// found an enemy who might be able to hurt us
-						flee_target = bystander
-			if(!flee_target || get_dist(src, flee_target) >= NPC_FLEE_DISTANCE)
+					else if(stat != CONSCIOUS)
+						continue
+					// found an enemy who might be able to hurt us!
+					// if our current candidate is closer, ignore this one
+					if(target && (get_dist(src, target) <= get_dist(src, bystander)))
+						continue
+					// we assume if we want to hurt them they want to hurt us back
+					if(should_target(bystander))
+						target = bystander // We're trying to run from this person now
+			if(!target || get_dist(src, target) >= NPC_FLEE_DISTANCE)
 				NPC_THINK("Done fleeing!")
 				back_to_idle()
 			else if(!is_move_blocked_by_grab()) // try to run offscreen if we aren't being grabbed by someone else
-				NPC_THINK("Fleeing from [flee_target]!")
+				NPC_THINK("Fleeing from [target]!")
 				// todo: use A* to find the shortest path to the farthest tile away from the flee target?
 				walk_away(src, target, NPC_FLEE_DISTANCE, update_movespeed())
 			else // can't flee and can't move, stop walking!
