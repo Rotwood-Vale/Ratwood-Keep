@@ -9,8 +9,7 @@
 	and you're going to find out why most men don't end up in the annals of history."
 	department_flag = FOREIGNERS
 	faction = "Station"
-	total_positions = 25
-	spawn_positions = 25
+	total_positions = 20
 	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
 				One of these refugees, you have left everything behind to seek a new life in a foreign land."
