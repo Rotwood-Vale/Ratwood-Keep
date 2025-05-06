@@ -466,6 +466,30 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Goblin Shaman")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/mentor
+	name = "Mentor"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/mulyeogenhenchman
+	name = "Salsu"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/mulyeogenforcer
+	name = "Bunsu"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/rumacaptain
+	name = "Ruma Captain"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/kyodai
+	name = "Kyodai"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/wakashu
+	name = "Wakashu"
+	icon_state = "arrow"
+
 
 //Antagonist spawns
 

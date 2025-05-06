@@ -321,3 +321,30 @@
 			playsound(user, 'sound/items/stunmace_toggle (3).ogg', 100)
 			user.visible_message(span_warning("The voltaic link fizzles out!"), span_warning("[C] is too far away!"))
 
+//eastern content
+
+/obj/item/clothing/gloves/roguetown/eastgloves1
+	name = "black gloves"
+	desc = "Sleek gloves typically used by Achimgoyo swordsmen."
+	icon_state = "eastgloves1"
+	item_state = "eastgloves1"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+
+/obj/item/clothing/gloves/roguetown/eastgloves2
+	name = "stylish gloves"
+	desc = "Unusual gloves worn by the Ruma Clan."
+	icon_state = "eastgloves2"
+	item_state = "eastgloves2"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	resistance_flags = null
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'

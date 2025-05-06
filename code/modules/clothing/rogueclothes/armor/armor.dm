@@ -1252,3 +1252,59 @@
 		desc = "Lightweight Armor made of copper by an artificer. It hums with arcane power, enhancing magical prowess."
 	else
 		desc = "Lightweight Armor made of copper by an artificer. It radiates raw strength, reinforcing the wearer's physical might."
+
+    name = "Lord inquisitor coat"
+    desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
+    icon_state = "viceseercoat"
+    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+    boobed = TRUE
+    ignore_sleeves_code = FALSE
+
+
+// east-gronn armors
+/obj/item/clothing/suit/roguetown/armor/eastsuit
+	name = "simple dobo robe"
+	desc = "A dirty dobo robe with white lapels."
+	icon_state = "eastsuit3"
+	item_state = "eastsuit3"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	body_parts_covered = CHEST|GROIN|VITALS
+	armor = list("blunt" = 50, "slash" = 35, "stab" = 40, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP)
+	blocksound = SOFTHIT
+	blade_dulling = DULLING_BASHCHOP
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	sewrepair = TRUE
+	nodismemsleeves = TRUE
+	max_integrity = 175
+	sellprice = 20
+	armor_class = ARMOR_CLASS_LIGHT
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDEBOOB|HIDECROTCH
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit/mentorsuit
+	name = "old dobo robe"
+	desc = "The Lineage only accepts those with scars on their body, as proof of experience & bravado."
+	icon_state = "eastsuit1"
+	item_state = "eastsuit1"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit/foreignsuit
+	name = "decorated dobo robe"
+	desc = "A dobo robe with a red tassel. Leather inlays are sewn in."
+	icon_state = "eastsuit2"
+	item_state = "eastsuit2"
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 50, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/suit/roguetown/armor/eastsuit/captainrobe
+	name = "foreign robes"
+	desc = "Flower-styled robes You are the Captain."
+	icon_state = "eastsuit4"
+	item_state = "eastsuit4"
+	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	max_integrity = 300 
+	sellprice = 25
