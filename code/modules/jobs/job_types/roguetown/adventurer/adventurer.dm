@@ -9,7 +9,6 @@
 	and you're going to find out why most men don't end up in the annals of history."
 	department_flag = FOREIGNERS
 	faction = "Station"
-	total_positions = 20
 	allowed_races = RACES_VERY_SHUNNED_UP
 	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
 				One of these refugees, you have left everything behind to seek a new life in a foreign land."
@@ -24,7 +23,7 @@
 	min_pq = 0
 	max_pq = null
 
-	subclass_cat_rolls = list(CTAG_REFUGEE = 15)
+	subclass_cat_rolls = list(CTAG_ADVENTURER = 15)
 
 	wanderer_examine = TRUE
 	foreign_examine = TRUE

@@ -7,7 +7,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/pirate
-	category_tags = list(CTAG_REFUGEE)
+	category_tags = list(CTAG_ADVENTURER)
 	pickprob = 75
 	maximum_possible_slots = 5
 	cmode_music = 'sound/music/combat_pirate.ogg'

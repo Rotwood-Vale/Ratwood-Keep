@@ -7,7 +7,7 @@
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 
-	category_tags = list(CTAG_REFUGEE)
+	category_tags = list(CTAG_ADVENTURER)
 
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)

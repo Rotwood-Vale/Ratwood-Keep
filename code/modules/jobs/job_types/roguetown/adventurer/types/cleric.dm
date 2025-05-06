@@ -4,7 +4,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/cleric
-	category_tags = list(CTAG_REFUGEE)
+	category_tags = list(CTAG_ADVENTURER)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
 

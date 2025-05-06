@@ -344,7 +344,6 @@
 #define JDO_REFUGEE 42.1
 #define JDO_MIGRANT 42.2
 #define JDO_BANDIT 42.3
-#define JDO_ADVENTURER 42.4
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
