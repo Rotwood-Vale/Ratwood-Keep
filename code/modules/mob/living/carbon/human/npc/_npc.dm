@@ -69,7 +69,7 @@
 		resist()
 		resisting = FALSE
 		return // Resisting passes your turn, you can't attack.
-	if(!(mobility_flags & MOBILITY_STAND) && (world.time >= next_stand_attempt))
+	if((mobility_flags & MOBILITY_CANSTAND) && !(mobility_flags & MOBILITY_STAND) && (world.time >= next_stand_attempt))
 		resisting = TRUE
 		npc_stand()
 		resisting = FALSE
