@@ -208,6 +208,7 @@
 #define REFUGEE	(1<<0)
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
+#define ADVENTURER		(1<<3)
 
 //mulyeog lineage
 #define MULYEOGLINEAGE	(1<<8)

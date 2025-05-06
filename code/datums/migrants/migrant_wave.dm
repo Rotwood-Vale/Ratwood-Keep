@@ -40,7 +40,7 @@
 	downgrade_wave = /datum/migrant_wave/refugee_down_one
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/refugee = 4,
+		/datum/job/roguetown/adventurer = 4,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
@@ -49,7 +49,7 @@
 	downgrade_wave = /datum/migrant_wave/refugee_down_two
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/refugee = 3,
+		/datum/job/roguetown/adventurer = 3,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
@@ -58,7 +58,7 @@
 	downgrade_wave = /datum/migrant_wave/refugee_down_three
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/refugee = 2,
+		/datum/job/roguetown/adventurer = 2,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
@@ -66,7 +66,7 @@
 	name = "Adventure Party"
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/refugee = 1,
+		/datum/job/roguetown/adventurer = 1,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
@@ -113,3 +113,4 @@
 	roles = list(
 		/datum/migrant_role/bandit = 1,
 	)
+
