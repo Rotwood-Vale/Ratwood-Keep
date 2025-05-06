@@ -208,7 +208,7 @@
 #define REFUGEE	(1<<0)
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
-#define ADVENTURER	(1<<3)
+#define ADVENTURER		(1<<3)
 
 //mulyeog lineage
 #define MULYEOGLINEAGE	(1<<8)
@@ -344,6 +344,7 @@
 #define JDO_REFUGEE 42.1
 #define JDO_MIGRANT 42.2
 #define JDO_BANDIT 42.3
+#define JDO_ADVENTURER 42.4
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -438,7 +439,7 @@
 	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/migrant,\
 	/datum/job/roguetown/bandit,\
-	/datum/job/roguetown/adventurer
+	/datum/job/roguetown/adventurer,
 
 #define MULYEOGLINEAGE_ROLES \
 	/datum/job/roguetown/mentor,\

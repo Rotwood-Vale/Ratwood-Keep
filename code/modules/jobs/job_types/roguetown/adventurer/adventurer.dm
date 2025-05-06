@@ -17,7 +17,6 @@
 	outfit = null
 	outfit_female = null
 
-	display_order = JDO_REFUGEE
 	selection_color = JCOLOR_FOREIGNER
 	show_in_credits = TRUE
 	min_pq = 0
