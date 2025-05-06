@@ -1,14 +1,13 @@
 //shield sword
-/datum/advclass/sfighter
+/datum/subclass/sfighter
 	name = "Warrior"
 	tutorial = "Warriors are well balanced fighters, skilled in blades and capable of most other weapons. \
 	They are an important member to most parties for their combat prowess, but not for much more."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
-	traits_applied = list(TRAIT_HEAVYARMOR)
 
-	category_tags = list(CTAG_ADVENTURER)
+	category_tags = list(CTAG_REFUGEE)
 
 
 /datum/outfit/job/roguetown/adventurer/sfighter/pre_equip(mob/living/carbon/human/H)
@@ -42,6 +41,7 @@
 			H.change_stat("endurance", 2) // Slightly worse stats since they're now actually skilled
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather

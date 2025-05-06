@@ -1,32 +1,38 @@
-GLOBAL_LIST_EMPTY(billagerspawns)
-
-GLOBAL_VAR_INIT(hugbox_duration, 40 SECONDS)
-GLOBAL_VAR_INIT(hugbox_duration_still, 3 MINUTES)
 
 /datum/job/roguetown/adventurer
 	title = "Adventurer"
 	flag = ADVENTURER
+	tutorial = "Hero of nothing, adventurer by trade. \
+	Whatever led you to this fate is up to the wind to decide, \
+	and you've never fancied yourself for much other than the thrill. \
+	Someday your pride is going to catch up to you, \
+	and you're going to find out why most men don't end up in the annals of history."
 	department_flag = FOREIGNERS
 	faction = "Station"
-	total_positions = 20
-	spawn_positions = 20
+	total_positions = 25
+	spawn_positions = 25
 	allowed_races = RACES_VERY_SHUNNED_UP
-	tutorial = "Hero of nothing, adventurer by trade. Whatever led you to this fate is up to the wind to decide, and you've never fancied yourself for much other than the thrill. Someday your pride is going to catch up to you, and you're going to find out why most men don't end up in the annals of history."
+	tutorial = "People of all walks of life have fled the rot, seeking refuge in the many rumored safe havens of the world. \
+				One of these refugees, you have left everything behind to seek a new life in a foreign land."
+
 
 	outfit = null
 	outfit_female = null
 
-	display_order = JDO_ADVENTURER
-	show_in_credits = FALSE
+	display_order = JDO_REFUGEE
+	selection_color = JCOLOR_FOREIGNER
+	show_in_credits = TRUE
 	min_pq = 0
 	max_pq = null
-	
-	advclass_cat_rolls = list(CTAG_ADVENTURER = 10)
+
+	subclass_cat_rolls = list(CTAG_REFUGEE = 12)
 
 	wanderer_examine = TRUE
 	foreign_examine = TRUE
 	advjob_examine = TRUE
-	same_job_respawn_delay = 10 MINUTES
+	always_show_on_latechoices = TRUE
+	job_reopens_slots_on_death = TRUE
+	same_job_respawn_delay = 15 MINUTES
 	announce_latejoin = FALSE
 
 
