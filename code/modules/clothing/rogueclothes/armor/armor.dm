@@ -1253,15 +1253,14 @@
 	else
 		desc = "Lightweight Armor made of copper by an artificer. It radiates raw strength, reinforcing the wearer's physical might."
 
-    name = "Lord inquisitor coat"
-    desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
-    icon_state = "viceseercoat"
-    icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
-    boobed = TRUE
-    ignore_sleeves_code = FALSE
-
+	name = "Lord inquisitor coat"
+	desc = "Heavy, reinforced coat with a tasteful burgundy covering will not leave anyone indifferent."
+	icon_state = "viceseercoat"
+	icon = 'icons/roguetown/clothing/inquisition_overseers/overseer.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
+	boobed = TRUE
+	ignore_sleeves_code = FALSE
 
 // east-gronn armors
 /obj/item/clothing/suit/roguetown/armor/eastsuit
@@ -1306,5 +1305,5 @@
 	icon_state = "eastsuit4"
 	item_state = "eastsuit4"
 	armor = list("blunt" = 70, "slash" = 65, "stab" = 65, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	max_integrity = 300 
+	max_integrity = 300
 	sellprice = 25
