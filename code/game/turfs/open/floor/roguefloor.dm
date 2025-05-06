@@ -391,7 +391,7 @@
 	if(user.is_floor_hazard_immune())
 		return 0
 
-	. = slowdown
+	. = ..()
 	var/negate_slowdown = FALSE
 	for(var/obj/item/stick in user.held_items)
 		if(stick.walking_stick && !stick.wielded && !user.cmode)
