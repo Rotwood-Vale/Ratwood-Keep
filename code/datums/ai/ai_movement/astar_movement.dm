@@ -33,7 +33,8 @@
 		var/generate_path = FALSE // set to TRUE when we either have no path, or we failed a step
 		if(length(controller.movement_path))
 			var/turf/next_step = controller.movement_path[1]
-			movable_pawn.Move(next_step)
+			var/dir_to_move = get_dir(movable_pawn, next_step)
+			step(movable_pawn, dir_to_move, controller.movement_delay)
 
 			// this check if we're on exactly the next tile may be overly brittle for dense pawns who may get bumped slightly
 			// to the side while moving but could maybe still follow their path without needing a whole new path

@@ -111,7 +111,7 @@
 			if(prob(50))
 				var/turf/T = get_step(loc,pick(GLOB.cardinals))
 				if(T.can_traverse_safely(src)) // Don't wander into lava or open space unless we're immune to it/can't fall.
-					step_towards(src, T, update_movespeed())
+					step_towards(src, T, cached_multiplicative_slowdown)
 			else
 				setDir(turn(dir, pick(90,-90)))
 		else
@@ -180,7 +180,7 @@
 			myPath = list()
 			pathing_frustration = 0
 			return
-		var/movespeed = update_movespeed()
+		var/movespeed = cached_multiplicative_slowdown // this is recalculated on Moved() so we don't need to do it ourselves
 		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill() || is_move_blocked_by_grab())
 			NPC_THINK("MOVEMENT TURN [i]: Waiting to move!")
 			sleep(1) // wait 1ds to see if we're finished/recovered
@@ -203,7 +203,7 @@
 			NPC_THINK("MOVEMENT TURN [i]: Unable to find turf to move to! Strike [pathing_frustration]!")
 			myPath -= myPath[1]
 			continue
-		if(!step(src, move_dir)) // try to move onto or along our path
+		if(!step(src, move_dir, cached_multiplicative_slowdown)) // try to move onto or along our path
 			for(var/obj/structure/O in next_step)
 				if(O.density && O.climbable)
 					NPC_THINK("MOVEMENT TURN [i]: Trying to climb over [O]!")
@@ -419,9 +419,9 @@
 			else if(!is_move_blocked_by_grab()) // try to run offscreen if we aren't being grabbed by someone else
 				NPC_THINK("Fleeing from [target]!")
 				// todo: use A* to find the shortest path to the farthest tile away from the flee target?
-				walk_away(src, target, NPC_FLEE_DISTANCE, update_movespeed())
+				walk_away(src, target, NPC_FLEE_DISTANCE, cached_multiplicative_slowdown)
 			else // can't flee and can't move, stop walking!
-				NPC_THINK("I can't flee from [flee_target]!")
+				NPC_THINK("I can't flee from [target]!")
 				walk(src, 0)
 			return TRUE
 
