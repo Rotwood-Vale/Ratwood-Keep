@@ -7,11 +7,12 @@
 	var/list/friends = list()
 	var/mob/living/target
 	var/obj/item/pickupTarget
+	var/atom/pathfinding_target
 	var/mode = NPC_AI_OFF
 	var/list/myPath = list()
 	var/is_currently_pathing = FALSE
 	var/list/blacklistItems = list()
-	var/maxStepsTick = 6
+	var/maxStepsTick = 7 // can move a screen's width in one turn
 	var/resisting = FALSE
 	var/pickpocketing = FALSE
 	var/del_on_deaggro = null
@@ -74,6 +75,10 @@
 		npc_stand()
 		resisting = FALSE
 		return // Standing passes your turn, you can't attack.
+	// If we're pathfinding somewhere, move along that path
+	if(length(myPath))
+		move_along_path()
+		// We could return here if we wanted to make moving use your turn.
 	if(!handle_combat())
 		if(mode == NPC_AI_IDLE && !pickupTarget)
 			npc_idle()
@@ -151,9 +156,13 @@
 		NPC_THINK("Giving up on this path because of distance!")
 		give_up = TRUE
 	if(give_up)
-		myPath = list()
-		pathing_frustration = 0
+		clear_path()
 	return !give_up // returns TRUE if the path is valid, FALSE otherwise
+
+/mob/living/carbon/human/proc/clear_path()
+	myPath = list()
+	pathing_frustration = 0
+	pathfinding_target = null
 
 /// progress along an existing path or cancel it
 /// returns # of steps taken
@@ -167,28 +176,30 @@
 		NPC_THINK("TOO FAR! Strike [pathing_frustration]!")
 		return 0
 	// var/move_started = world.time
-	for(var/i = 0; i < maxStepsTick; i++)
+	var/old_pathfinding_target = pathfinding_target
+	for(var/movement_turn in 1 to maxStepsTick)
 		if(!length(myPath))
-			NPC_THINK("MOVEMENT TURN [i]: Path complete!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Path complete!")
 			return
 		else if(!validate_path())
-			NPC_THINK("MOVEMENT TURN [i]: Path invalidated!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Path invalidated!")
+			return
+		if(pathfinding_target != old_pathfinding_target)
+			NPC_THINK("Changed pathfinding target, ending movement!")
 			return
 		// We have a valid path, but our target might be next to us due to movement. Check and bail if so.
-		// This logic will have to change if we ever use A* to pathfind to something that isn't our target var.
-		else if(target && z == target.z && Adjacent(target))
-			myPath = list()
-			pathing_frustration = 0
+		else if(pathfinding_target && z == pathfinding_target.z && Adjacent(pathfinding_target))
+			clear_path()
 			return
 		var/movespeed = cached_multiplicative_slowdown // this is recalculated on Moved() so we don't need to do it ourselves
 		if(!(mobility_flags & MOBILITY_MOVE) || IsDeadOrIncap() || IsStandingStill() || is_move_blocked_by_grab())
-			NPC_THINK("MOVEMENT TURN [i]: Waiting to move!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Waiting to move!")
 			sleep(1) // wait 1ds to see if we're finished/recovered
 			continue
 		// this is unnecessary, we don't re-call handle_ai until this is done
 /* 		if(world.time > (move_started + /datum/controller/subsystem/humannpc::wait))
 			// we ran out of time and started the next tick!
-			NPC_THINK("MOVEMENT TURN [i]: Out of time to move!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Out of time to move!")
 			return */
 		var/turf/next_path_turf = myPath[1]
 		var/move_dir = get_dir(src, myPath[1])
@@ -200,24 +211,24 @@
 			next_step = the_stairs.get_target_loc(move_dir)
 		if(!next_step)
 			pathing_frustration++
-			NPC_THINK("MOVEMENT TURN [i]: Unable to find turf to move to! Strike [pathing_frustration]!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Unable to find turf to move to! Strike [pathing_frustration]!")
 			myPath -= myPath[1]
 			continue
 		if(!step(src, move_dir, cached_multiplicative_slowdown)) // try to move onto or along our path
 			for(var/obj/structure/O in next_step)
 				if(O.density && O.climbable)
-					NPC_THINK("MOVEMENT TURN [i]: Trying to climb over [O]!")
+					NPC_THINK("MOVEMENT TURN [movement_turn]: Trying to climb over [O]!")
 					O.climb_structure(src)
 					break
 		if(loc != next_step) // movement failed and so did climb_structure
 			pathing_frustration++
-			NPC_THINK("MOVEMENT TURN [i]: Move failed! Strike [pathing_frustration]!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Move failed! Strike [pathing_frustration]!")
 			sleep(1)
 		else if(loc == myPath[1]) // if we made it to the right part of our path
 			.++
 			pathing_frustration = 0
 			myPath -= myPath[1]
-			NPC_THINK("MOVEMENT TURN [i]: Movement on cooldown for [movespeed/10] seconds!")
+			NPC_THINK("MOVEMENT TURN [movement_turn]: Movement on cooldown for [movespeed/10] seconds!")
 			sleep(movespeed) // wait until next move
 
 // blocks, but only while path is being calculated
@@ -226,6 +237,7 @@
 		back_to_idle()
 		return FALSE
 
+	pathfinding_target = new_target
 	var/turf/turf_of_target = get_turf(new_target)
 	if(!turf_of_target)
 		back_to_idle()
@@ -235,9 +247,9 @@
 		return FALSE
 	if(!length(myPath)) // need a new path
 		var/const/MAX_RANGE_FIND = 32
-		NPC_THINK("Pathfinding...")
+		NPC_THINK("Pathfinding to [pathfinding_target]...")
 		is_currently_pathing = TRUE
-		myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), MAX_RANGE_FIND + 1, 250,1, adjacent = TYPE_PROC_REF(/turf, reachableTurftest3d))
+		myPath = get_path_to(src, turf_of_target, TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), MAX_RANGE_FIND + 1, 250, 1, adjacent = TYPE_PROC_REF(/turf, reachableTurftest3d))
 		is_currently_pathing = FALSE
 		if(length(myPath))
 			myPath -= get_turf(src) // remove the turf we start on
@@ -357,9 +369,6 @@
 				validate_path()
 				if(!length(myPath)) // create a new path to the target
 					start_pathing_to(target)
-				// move along the existing path if we have one
-				if(length(myPath) && move_along_path()) // If we successfully moved, finish our turn
-					return TRUE
 
 			// Flee before trying to pick up a weapon.
 			if(flee_in_pain && target && (target.stat == CONSCIOUS))
@@ -368,7 +377,7 @@
 					NPC_THINK("Ouch! Entering flee mode!")
 					mode = NPC_AI_FLEE
 					m_intent = MOVE_INTENT_RUN
-					myPath = list() // cancel chasing our target
+					clear_path()
 					return TRUE
 
 			if(!get_active_held_item() && !HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) && (mobility_flags & MOBILITY_PICKUP))
@@ -510,7 +519,7 @@
 	var/obj/item/OffWeapon = get_inactive_held_item()
 	// if we're weaponless or our offhand is stronger, switch hands
 	// since grabs have a force of 0 this has the fun effect of putting embed grabs in the offhand too, which is useful later
-	if(!Weapon || OffWeapon?.force > Weapon.force)
+	if(OffWeapon && (!Weapon || OffWeapon.force > Weapon.force))
 		NPC_THINK("Switching active hand to [OffWeapon]!")
 		swap_hand()
 		Weapon = get_active_held_item()
@@ -618,6 +627,8 @@
 		if(!target)
 			emote("aggro")
 		target = L
+		if(pathfinding_target != target)
+			clear_path() // Cancel pathfinding so that we can pursue our new enemy.
 		enemies |= L
 
 /mob/living/proc/npc_detect_sneak(mob/living/target, extra_prob = 0)
