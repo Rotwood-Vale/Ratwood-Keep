@@ -25,7 +25,7 @@
 	min_pq = 0
 	max_pq = null
 
-	subclass_cat_rolls = list(CTAG_REFUGEE = 12)
+	subclass_cat_rolls = list(CTAG_REFUGEE = 15)
 
 	wanderer_examine = TRUE
 	foreign_examine = TRUE

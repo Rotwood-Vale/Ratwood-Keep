@@ -35,38 +35,38 @@
 		amount += roles[role_type]
 	return amount
 
-/datum/migrant_wave/refugee
+/datum/migrant_wave/adventurer
 	name = "Adventure Party"
-	downgrade_wave = /datum/migrant_wave/refugee_down_one
+	downgrade_wave = /datum/migrant_wave/adventurer_down_one
 	can_roll = FALSE
 	roles = list(
-		/datum/job/roguetown/adventurer = 4,
+		/datum/migrant_role/adventurer = 4,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
-/datum/migrant_wave/refugee_down_one
+/datum/migrant_wave/adventurer_down_one
 	name = "Adventure Party"
-	downgrade_wave = /datum/migrant_wave/refugee_down_two
+	downgrade_wave = /datum/migrant_wave/adventurer_down_two
 	can_roll = FALSE
 	roles = list(
-		/datum/job/roguetown/adventurer = 3,
+		/datum/migrant_role/adventurer = 3,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
-/datum/migrant_wave/refugee_down_two
+/datum/migrant_wave/adventurer_down_two
 	name = "Adventure Party"
-	downgrade_wave = /datum/migrant_wave/refugee_down_three
+	downgrade_wave = /datum/migrant_wave/adventurer_down_three
 	can_roll = FALSE
 	roles = list(
-		/datum/job/roguetown/adventurer = 2,
+		/datum/migrant_role/adventurer = 2,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
-/datum/migrant_wave/refugee_down_three
+/datum/migrant_wave/adventurer_down_three
 	name = "Adventure Party"
 	can_roll = FALSE
 	roles = list(
-		/datum/job/roguetown/adventurer = 1,
+		/datum/migrant_role/adventurer = 1,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
 
