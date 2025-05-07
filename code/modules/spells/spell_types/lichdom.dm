@@ -90,7 +90,7 @@
 /obj/item/phylactery/Initialize(mapload, datum/mind/newmind)
 	. = ..()
 	mind = newmind
-	name = "phylactery of [usr.mind.name]"
+//	name = "phylactery of [usr.mind.name]" - REDMOON REMOVAL - lich_fixes - присваиваеся имя персонажа до личёвского ренейма
 
 	active_phylacteries++
 	GLOB.poi_list |= src

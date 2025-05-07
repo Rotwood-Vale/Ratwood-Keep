@@ -176,4 +176,25 @@
 	bigbad.change_stat("speed", -1)
 	bigbad.set_patron(/datum/patron/zizo)
 	skele_look()
+	ADD_TRAIT(bigbad, TRAIT_NOSTAMINA, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOHUNGER, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOBREATH, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOPAIN, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_BLOODLOSS_IMMUNE, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NO_BLOOD, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_TOXIMMUNE, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_STEELHEARTED, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOSLEEP, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_LIMPDICK, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_VAMPMANSION, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOMOOD, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_NOLIMBDISABLE, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_SHOCKIMMUNE, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_LIMBATTACHMENT, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_SEEPRICES, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_CRITICAL_RESISTANCE, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_HEAVYARMOR, "[type]")
+	ADD_TRAIT(bigbad, TRAIT_SPECIALUNDEAD, "[type]") //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
+	bigbad.cmode_music = 'sound/music/combat_cult.ogg'
+
 	// REDMOON ADD END
