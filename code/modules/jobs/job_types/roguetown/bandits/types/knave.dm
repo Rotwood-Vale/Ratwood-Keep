@@ -55,7 +55,7 @@
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
 			beltr = /obj/item/rogueweapon/huntingknife/idagger
 			backr = /obj/item/storage/backpack/rogue/satchel
-			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
+			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1)
 			H.change_stat("speed", 2)
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/bow
