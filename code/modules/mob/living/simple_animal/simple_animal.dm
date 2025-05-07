@@ -160,6 +160,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	var/mob/owner = null
 
+	var/datum/ai_controller/saved_ai_controller = null
+
 	///I don't want to confuse this with client registered_z.
 	var/my_z
 	///What kind of footstep this mob should have. Null if it shouldn't have any.
@@ -717,6 +719,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			M.visible_message("<span class='danger'>[M] falls off [src]!</span>")
 		else
 			return
+		
+	// Restore AI when unmounted
+		if(!ai_controller && saved_ai_controller)
+			ai_controller = saved_ai_controller
+			saved_ai_controller = null
+
 	..()
 	update_icon()
 
@@ -745,6 +753,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		M.forceMove(get_turf(src))
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
+
+		// Save and disable AI when mounted
+		if(ai_controller)
+			saved_ai_controller = ai_controller
+			ai_controller = null
+		
 	..()
 	update_icon()
 
