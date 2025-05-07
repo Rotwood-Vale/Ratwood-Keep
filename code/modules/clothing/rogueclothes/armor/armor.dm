@@ -1128,7 +1128,43 @@
 	desc = "A leather binding to constrict one's figure... and lungs."
 	icon_state = "corset"
 	armor_class = ARMOR_CLASS_LIGHT
-	body_parts_covered = CHEST
+	body_parts_covered = VITALS //It's just covering your belly
+	flags_inv = null
+
+/obj/item/clothing/suit/roguetown/armor/corset/attack_right(mob/user)
+	. = ..()
+	if(.)
+		return
+	user.changeNext_move(CLICK_CD_MELEE)
+	testing("corsetmaxxing")
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	var/list/things = STR.contents()
+	if(things.len)
+		testing("yea64")
+		var/obj/item/I = pick(things)
+		STR.remove_from_storage(I, get_turf(user))
+		user.put_in_hands(I, FALSE, TRUE, FALSE, TRUE)
+
+/obj/item/clothing/suit/roguetown/armor/corset/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		STR.max_combined_w_class = 2
+		STR.max_w_class = WEIGHT_CLASS_SMALL
+		STR.max_items = 1
+		STR.attack_hand_interact = FALSE
+		STR.allow_look_inside = FALSE
+
+/obj/item/clothing/suit/roguetown/armor/corset/dropped(mob/living/carbon/human/user)
+	..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	if(STR)
+		var/list/things = STR.contents()
+		for(var/obj/item/I in things)
+			STR.remove_from_storage(I, get_turf(src))
+
+
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
 	name = "confessor jacket"

@@ -49,7 +49,8 @@
 			target.sexcon.cum_onto()
 		else
 			target.visible_message(span_lovebold("[target] cums into [user]'s mouth!"))
-			target.sexcon.cum_into()
+			target.sexcon.target = user
+			target.sexcon.cum_into(TRUE)
 
 /datum/sex_action/blowjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
