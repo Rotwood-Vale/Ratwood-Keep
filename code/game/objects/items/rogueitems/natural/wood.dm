@@ -269,18 +269,19 @@
 	if(M.checkarmor(BODY_ZONE_CHEST, BCLASS_STAB))
 		to_chat(user, "The stake can't pierce through [M]'s armor!")
 		return FALSE
-
-	if(M.resting) // only if prone
-		to_chat(user, "You begin driving the stake into [M]'s chest...")
-		user.visible_message("<span class='warning'>[user] begins staking [M]!</span>")
-		if(do_after(user, 30, M))
-			to_chat(user, "You drive the stake into [M]!")
-			embed_in_target(M, user)
-
-		else
-			to_chat(user, "You were interrupted!")
-	else
+	if(!M.resting)
 		to_chat(user, "[M] can't be staked while standing!")
+		return
+
+	to_chat(user, "You begin driving the stake into [M]'s chest...")
+	user.visible_message(span_warning("[user] begins staking [M]!"))
+	if(do_after(user, 30, M))
+		to_chat(user, "You drive the stake into [M]!")
+		embed_in_target(M, user)
+
+	else
+		to_chat(user, "You were interrupted!")
+
 
 /obj/item/grown/log/tree/stake/attackby(obj/item/I, mob/user, params)
 	return
@@ -291,7 +292,7 @@
 		bodypart.add_embedded_object(src, silent = FALSE, crit_message = FALSE)
 
 	if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampirelord))
-		to_chat(M, "<span class='danger'>Pain erupts in your chest as the stake pierces your undead heart!</span>")
+		to_chat(M, span_danger("Pain erupts in your chest as the stake pierces your undead heart!"))
 		var/datum/antagonist/vampirelord/lord = M.mind.has_antag_datum(/datum/antagonist/vampirelord)
 		lord.stake()
 

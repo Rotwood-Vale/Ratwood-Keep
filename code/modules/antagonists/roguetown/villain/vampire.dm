@@ -175,7 +175,7 @@
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
 	set category = "VAMPIRE"
-	if(!stakecheck(usr))
+	if(!is_not_staked(usr))
 		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
@@ -263,7 +263,7 @@
 /mob/living/carbon/human/proc/alter_button()
 	set name = "Alter Appearance"
 	set category = "VAMPIRE"
-	if(!stakecheck(usr))
+	if(!is_not_staked(usr))
 		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
@@ -282,7 +282,7 @@
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
 	set category = "VAMPIRE"
-	if(!stakecheck(usr))
+	if(!is_not_staked(usr))
 		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
@@ -315,7 +315,7 @@
 /mob/living/carbon/human/proc/blood_celerity()
 	set name = "Quickening"
 	set category = "VAMPIRE"
-	if(!stakecheck(usr))
+	if(!is_not_staked(usr))
 		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
@@ -351,7 +351,7 @@
 /mob/living/carbon/human/proc/blood_fortitude()
 	set name = "Armor of Darkness"
 	set category = "VAMPIRE"
-	if(!stakecheck(usr))
+	if(!is_not_staked(usr))
 		return
 	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!VD)
