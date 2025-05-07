@@ -5,7 +5,9 @@
 		return zone
 	if(zone == BODY_ZONE_CHEST)
 		return zone
-	if(target.grabbedby == user)
+	// This is a more thorough check, but probably unnecessary.
+	// if((user.r_grab && (user.r_grab in target.grabbedby)) || (user.l_grab && user.l_grab in target.grabbedby) || (user.mouth && user.mouth in target.grabbedby))
+	if(target.pulledby == user)
 		if(user.grab_state >= GRAB_AGGRESSIVE)
 			return zone
 	if(!(target.mobility_flags & MOBILITY_STAND))
