@@ -181,11 +181,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/icon/experimental_onhip = FALSE
 	var/icon/experimental_onback = FALSE
 
-	var/do_sound_bell = FALSE
-	var/do_sound_chain = FALSE
-	var/do_sound_plate = FALSE
-	var/bell = FALSE
-
 	///trying to emote or talk with this in our mouth makes us muffled
 	var/muteinmouth = TRUE
 	///using spit emote spits the item out of our mouth and falls out after some time
