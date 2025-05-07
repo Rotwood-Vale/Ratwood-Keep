@@ -2168,6 +2168,7 @@
 #include "modular_redmoon\code\game\objects\items\rogueitems\dmusicbox.dm"
 #include "modular_redmoon\code\game\objects\items\rogueitems\flail.dm"
 #include "modular_redmoon\code\game\objects\items\rogueitems\inquisitionrelics.dm"
+#include "modular_redmoon\code\game\objects\items\rogueitems\keys.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\integrity.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\melee\flail.dm"
 #include "modular_redmoon\code\game\objects\items\rogueweapons\melee\knives.dm"
