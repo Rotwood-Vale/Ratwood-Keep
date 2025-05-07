@@ -116,6 +116,7 @@ GLOBAL_LIST_INIT(yeoman_positions, list(
 	"Scribe",
 	"Harbormaster",
 	"Longshoreman",
+	"Guild mage", // REDMOON CHANGE - Вместо учеников мага теперь Гильдейские маги. 04.05.25 Corde50
 ))
 
 GLOBAL_LIST_INIT(peasant_positions, list(
@@ -146,7 +147,6 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
 	"Servant",
-	"Magicians Apprentice",
 	"Smithy Apprentice",
 	"Novitiate",
 	"Shophand",

@@ -63,6 +63,9 @@
 /obj/effect/proc_holder/spell/invoked/push_spell
 	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
 	overlay_state = "repulsewiz"
+/obj/effect/proc_holder/spell/invoked/enlarge
+	action_icon = 'modular_redmoon/icons/redmoon_spells/redmoonspells.dmi'
+	overlay_state = "enlarge"
 /obj/projectile/magic/frostbolt
 	range = 20
 	speed = 3 
