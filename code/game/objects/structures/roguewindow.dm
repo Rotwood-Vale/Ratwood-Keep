@@ -148,6 +148,12 @@
 	update_icon()
 	return TRUE
 
+/obj/structure/roguewindow/CanAStarPass(ID, to_dir, caller)
+	. = ..()
+	var/atom/movable/mover = caller
+	if(!. && istype(mover) && (mover.pass_flags & PASSTABLE) && climbable)
+		return TRUE
+
 /obj/structure/roguewindow/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE) && climbable)
 		return 1

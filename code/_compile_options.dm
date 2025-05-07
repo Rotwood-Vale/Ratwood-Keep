@@ -79,3 +79,6 @@
 #ifdef OPENDREAM
 #pragma UnimplementedAccess disable
 #endif
+
+// Uncomment this for NPCs to display their 'thoughts' (AI planning steps) above their heads. Useful for debugging NPC logic.
+// #define NPC_THINK_DEBUG

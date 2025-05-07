@@ -15,7 +15,7 @@
 
 /mob/living/carbon/human/species/skeleton/npc
 	aggressive = 1
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	wander = FALSE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush

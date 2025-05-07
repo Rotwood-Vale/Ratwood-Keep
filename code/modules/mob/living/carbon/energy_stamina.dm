@@ -31,7 +31,7 @@
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
-		mind.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
+		mind?.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	energy += added
 	if(energy > max_energy)
 		energy = max_energy
@@ -73,18 +73,18 @@
 		else
 			emote(emote_override, forced = force_emote)
 		blur_eyes(2)
-		last_fatigued = world.time + 30 //extra time before fatigue regen sets in
+		last_fatigued = world.time + 3 SECONDS //extra time before fatigue regen sets in
 		stop_attack()
 		changeNext_move(CLICK_CD_EXHAUSTED)
 		flash_fullscreen("blackflash")
 		if(energy <= 0)
-			addtimer(CALLBACK(src, PROC_REF(Knockdown), 30), 10)
-		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 10)
+			addtimer(CALLBACK(src, PROC_REF(Knockdown), 30), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(Immobilize), 30), 1 SECONDS)
 		if(iscarbon(src))
 			var/mob/living/carbon/C = src
 			if(isseelie(C))  //Add wingcheck here
 				C.visible_message(span_warning("[C] falls from the air!"), span_warning("I fall down in exhaustion!"))
-				addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 10)
+				addtimer(CALLBACK(C, TYPE_PROC_REF(/mob/living/carbon/human, Knockdown), 10), 1 SECONDS)
 			if(C.get_stress_amount() >= 30)
 				C.heart_attack()
 			if(!HAS_TRAIT(C, TRAIT_NOHUNGER))

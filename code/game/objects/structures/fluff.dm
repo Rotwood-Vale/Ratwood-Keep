@@ -448,6 +448,11 @@ obj/structure/bars/steel
 				day = "Sun's dae."
 		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]"
 
+/obj/structure/fluff/clock/CanAStarPass(ID, to_dir, caller)
+	if(to_dir == dir)
+		return FALSE // don't even bother climbing over it
+	return ..()
+
 /obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
 		return 0
@@ -658,6 +663,11 @@ obj/structure/bars/steel
 	if(get_dir(loc, mover) == dir)
 		return 0
 	return !density
+
+/obj/structure/fluff/statue/CanAStarPass(ID, to_dir, caller)
+	if(to_dir == dir)
+		return FALSE // don't even bother climbing over it
+	return ..()
 
 /obj/structure/fluff/statue/CheckExit(atom/movable/O, turf/target)
 	if(get_dir(O.loc, target) == dir)
@@ -883,6 +893,11 @@ obj/structure/bars/steel
 /obj/structure/fluff/psycross/post_unbuckle_mob(mob/living/M)
 	..()
 	M.reset_offsets("bed_buckle")
+
+/obj/structure/fluff/psycross/CanAStarPass(ID, to_dir, caller)
+	if(to_dir == dir)
+		return FALSE // don't even bother climbing over it
+	return ..()
 
 /obj/structure/fluff/psycross/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
@@ -1301,6 +1316,11 @@ obj/structure/bars/steel
 
 /obj/structure/fluff/canopy/side/end
 	icon_state = "canopyb-side-end"
+
+/obj/structure/fluff/canopy/booth/CanAStarPass(ID, to_dir, caller)
+	if(to_dir == dir)
+		return FALSE // don't even bother climbing over it
+	return ..()
 
 /obj/structure/fluff/canopy/booth/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)

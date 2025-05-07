@@ -501,14 +501,9 @@
 			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
-			if(istype(get_active_held_item(), /obj/item/grabbing))
-				var/obj/item/grabbing/I = get_active_held_item()
-				if(I.grabbed == pulling)
-					dropItemToGround(I, silent = FALSE)
-			if(istype(get_inactive_held_item(), /obj/item/grabbing))
-				var/obj/item/grabbing/I = get_inactive_held_item()
-				if(I.grabbed == pulling)
-					dropItemToGround(I, silent = FALSE)
+			for(var/obj/item/grabbing/grab in held_items)
+				if(grab.grabbed == pulling)
+					dropItemToGround(grab, silent = FALSE)
 
 	. = ..()
 
@@ -1020,6 +1015,11 @@
 	..()
 	update_charging_movespeed()
 
+/mob/living/proc/get_held_embed_grabs()
+	for(var/obj/item/grabbing/grab in held_items)
+		if(grab.grabbed == pulling && isitem(grab.sublimb_grabbed))
+			LAZYADD(., grab)
+
 /mob/proc/resist_grab(moving_resist)
 	return 1 //returning 0 means we successfully broke free
 
@@ -1057,7 +1057,7 @@
 	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
-		client.move_delay = world.time + 20
+		client.move_delay = world.time + 2 SECONDS
 	if(prob(resist_chance))
 		stamina_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
@@ -1065,7 +1065,12 @@
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
 		log_combat(pulledby, src, "broke grab")
 		pulledby.changeNext_move(CLICK_CD_GRABBING)
-		pulledby.stop_pulling()
+		if(!L.badluck(2))
+			// return any embedded items
+			for(var/obj/item/grabbing/grab in L.get_held_embed_grabs())
+				grab.removeembeddeditem(pulledby) // ouch!
+		if(pulledby) // if it was due to an embed, we've already stopped pulling
+			pulledby.stop_pulling() // the default is forced = TRUE
 
 		var/wrestling_cooldown_reduction = 0
 		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
@@ -1076,11 +1081,14 @@
 	else
 		stamina_add(rand(5,15))
 		var/shitte = ""
-//		if(client?.prefs.showrolls)
-//			shitte = " ([resist_chance]%)"
+		if(client?.prefs.showrolls)
+			shitte = " ([resist_chance]%)"
 		visible_message(span_warning("[src] struggles to break free from [pulledby]'s grip!"), \
 						span_warning("I struggle against [pulledby]'s grip![shitte]"), null, null, pulledby)
 		to_chat(pulledby, span_warning("[src] struggles against my grip!"))
+		// any embedded weapons held by our puller should get twisted
+		for(var/obj/item/grabbing/grab in L.get_held_embed_grabs())
+			grab.twistitemlimb() // userless because it's automatic
 
 		return TRUE
 

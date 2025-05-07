@@ -13,7 +13,7 @@
 	experimental_inhand = FALSE
 	var/atom/movable/grabbed //ref to what atom we are grabbing
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
-	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
+	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (zone string or item ref)
 	var/mob/living/carbon/grabbee
 	var/bleed_suppressing = 0.5 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
 	var/chokehold = FALSE
@@ -272,15 +272,27 @@
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
 
+// if user is null, the twist is being initiated via a resist
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
-	var/mob/living/M = grabbed
+	var/mob/living/living_victim = grabbed
 	var/damage = rand(5,10)
 	var/obj/item/I = sublimb_grabbed
-	playsound(M.loc, "genblunt", 100, FALSE, -1)
-	M.apply_damage(damage, BRUTE, limb_grabbed)
-	M.visible_message(span_danger("[user] twists [I] in [M]'s wound!"), \
-					span_userdanger("[user] twists [I] in my wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-	log_combat(user, M, "itemtwisted [sublimb_grabbed] ")
+	playsound(living_victim.loc, "genblunt", 100, FALSE, -1)
+	living_victim.apply_damage(damage, BRUTE, limb_grabbed)
+	// use the user's intent if it's intentional, else use cut by default
+	var/bclass_used = user?.used_intent?.blade_class || BCLASS_CUT
+	if(istype(limb_grabbed))
+		limb_grabbed.try_crit(bclass_used, damage, user || grabbee, silent = TRUE)
+	else
+		living_victim.simple_try_crit(bclass_used, damage, user || grabbee, silent = TRUE)
+	if(user)
+		living_victim.visible_message(span_danger("[user] twists [I] in [living_victim]'s wound!"), \
+						span_userdanger("[user] twists [I] in my wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+		log_combat(user, living_victim, "itemtwisted [sublimb_grabbed] ")
+	else
+		living_victim.visible_message(span_danger("[living_victim] flails, twisting [I] in the wound!"), \
+			span_userdanger("Your flailing twists [I] in the wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+		log_combat(living_victim, living_victim, "self itemtwisted [sublimb_grabbed] ")
 
 /obj/item/grabbing/proc/removeembeddeditem(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/M = grabbed
@@ -312,9 +324,9 @@
 		M.emote("paincrit", TRUE)
 		playsound(M, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 		if(user == M)
-			user.visible_message(span_notice("[user] rips [I] out of [user.p_them()]self!"), span_notice("I remove [I] from myself."))
+			user.visible_message(span_notice("[user] rips [I] out of [user.p_them()]self!"), span_notice("I rip [I] out of myself."))
 		else
-			user.visible_message(span_notice("[user] rips [I] out of [M]!"), span_notice("I rip [I] from [src]."))
+			user.visible_message(span_notice("[user] rips [I] out of [M]!"), span_notice("I rip [I] out of [src]."))
 		sublimb_grabbed = M.simple_limb_hit(user.zone_selected)
 	user.update_grab_intents(grabbed)
 	return TRUE
@@ -489,7 +501,6 @@
 					user.werewolf_feed(C)
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
-				user.mob_timers["deadite_bite"] = world.time
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)

@@ -210,11 +210,12 @@
 	..()
 	if(door_opened)
 		return
-	if(world.time < last_bump+20)
+	// And an individual door can be bumped once every two seconds to avoid spamming knocks/rattles
+	if(world.time < last_bump + 2 SECONDS)
 		return
 	last_bump = world.time
-	if(ismob(AM))
-		var/mob/user = AM
+	if(isliving(AM))
+		var/mob/living/user = AM
 		if(HAS_TRAIT(user, TRAIT_BASHDOORS))
 			if(locked)
 				user.visible_message(span_warning("[user] bashes into [src]!"))
@@ -223,6 +224,10 @@
 				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
+			return
+		//Can bump-open maybe 3 doors per second. This is to prevent weird mass door openings
+		//While keeping things feeling snappy
+		if(world.time - user.last_bumped <= 0.3 SECONDS)
 			return
 		if(locked)
 			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
@@ -264,7 +269,7 @@
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				to_chat(user, span_warning("This door is locked."))
 				return
-		if(world.time >= last_bump+20)
+		if(world.time >= last_bump+2 SECONDS)
 			last_bump = world.time
 			playsound(src, 'sound/foley/doors/knocking.ogg', 100)
 			user.visible_message(span_warning("[user] knocks on [src]."), \
@@ -277,23 +282,32 @@
 		return !opacity
 	return !density
 
+/obj/structure/mineral_door/CanAStarPass(ID, to_dir, datum/caller)
+	. = ..()
+	if(.) // we can already go through it
+		return TRUE
+	if(!anchored)
+		return FALSE
+	if(HAS_TRAIT(caller, TRAIT_BASHDOORS))
+		return TRUE // bash into it!
+	// it's openable
+	return ishuman(caller) && !locked // only humantype mobs can open doors, as funny as it'd be for a volf to walk in on you ERPing
+
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates || !anchored)
 		return
 	if(isliving(user))
 		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
-			return //NOTE do we really need that?
-		if(M.client)
-			if(iscarbon(M))
-				var/mob/living/carbon/C = M
-				if(!C.handcuffed)
-					if(C.m_intent == MOVE_INTENT_SNEAK)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.client || length(H.myPath)) // if we have a client or are trying to pass through the door
+				if(!H.handcuffed)
+					if(H.m_intent == MOVE_INTENT_SNEAK)
 						SwitchState(TRUE)
 					else
 						SwitchState()
-			else
-				SwitchState()
+		else if(M.client)
+			SwitchState()
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)

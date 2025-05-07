@@ -85,7 +85,7 @@
 
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
-	zombie.mode = AI_OFF
+	zombie.mode = NPC_AI_OFF
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
@@ -98,7 +98,7 @@
 	zombie.set_patron(patron)
 
 	for(var/trait in GLOB.traits_deadite)
-		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+		REMOVE_TRAIT(zombie, trait, DEADITE_TRAIT)
 
 	zombie.remove_client_colour(/datum/client_colour/monochrome)
 
@@ -170,11 +170,6 @@
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
 	return ..()
-
-/datum/antagonist/zombie/on_life(mob/user)
-	var/mob/living/carbon/human/deadite = owner?.current
-	deadite.try_do_deadite_bite()
-	deadite.try_do_deadite_idle()
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag

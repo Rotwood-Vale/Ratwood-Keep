@@ -433,19 +433,21 @@
 ///Gets the skill's singleton and returns the result of its get_skill_speed_modifier
 /datum/mind/proc/get_skill_speed_modifier(skill)
 	var/datum/skill/S = GetSkillRef(skill)
-	return S.get_skill_speed_modifier(known_skills[S] || SKILL_LEVEL_NONE)
+	return S.get_skill_speed_modifier(get_skill_level(skill))
 
 /datum/mind/proc/get_skill_level(skill)
+	if(has_antag_datum(/datum/antagonist/zombie) && !current.client) // Non-player deadites don't have skills.
+		return SKILL_LEVEL_NONE
 	var/datum/skill/S = GetSkillRef(skill)
 	return known_skills[S] || SKILL_LEVEL_NONE
 
 /datum/mind/proc/get_skill_parry_modifier(skill)
 	var/datum/skill/combat/S = GetSkillRef(skill)
-	return S.get_skill_parry_modifier(known_skills[S] || SKILL_LEVEL_NONE)
+	return S.get_skill_parry_modifier(get_skill_level(skill))
 
 /datum/mind/proc/get_skill_dodge_drain(skill)
 	var/datum/skill/combat/S = GetSkillRef(skill)
-	return S.get_skill_dodge_drain(known_skills[S] || SKILL_LEVEL_NONE)
+	return S.get_skill_dodge_drain(get_skill_level(skill))
 
 /datum/mind/proc/print_levels(user)
 	var/list/shown_skills = list()

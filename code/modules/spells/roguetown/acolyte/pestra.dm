@@ -255,7 +255,7 @@
 		target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
 
 		for(var/trait in GLOB.traits_deadite)
-			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
+			REMOVE_TRAIT(target, trait, DEADITE_TRAIT)
 
 		if(target.stat < DEAD) // Drag and shove ghost back in.
 			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
