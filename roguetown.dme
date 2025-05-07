@@ -2411,6 +2411,7 @@
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\tiefling.dm"
 #include "modular_redmoon\modules\mob\living\carbon\human\species_types\roguetown\vulpkanin.dm"
 #include "modular_redmoon\modules\notongue\notongue.dm"
+#include "modular_redmoon\modules\old_player_panel\old_player_panel.dm"
 #include "modular_redmoon\modules\prices_fix\prices_fix.dm"
 #include "modular_redmoon\modules\prices_fix\prices_fix_recipes.dm"
 #include "modular_redmoon\modules\ranged_weapon_balancing\ranged_weapon_balancing.dm"

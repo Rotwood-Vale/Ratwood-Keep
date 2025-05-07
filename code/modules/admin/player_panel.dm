@@ -1,3 +1,4 @@
+	// REDMOON ADD START - old_player_panel - старая панель на случай поломки новой крысами. Добавлено в строку 75
 /datum/admins/proc/player_panel_new()//The new one
 	if(!check_rights())
 		return
@@ -71,7 +72,8 @@
 
 					body += "</td><td align='center'>";
 
-					body += "<a href='?_src_=holder;[HrefToken()];adminplayeropts="+ref+"'>PP</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];admin_old_player_panel="+ref+"'>Old PP</a> - "
+					body += "<a href='?_src_=holder;[HrefToken()];adminplayeropts="+ref+"'>New PP</a> - "
 					body += "<a href='?_src_=holder;[HrefToken()];showmessageckey="+ckey+"'>N</a> - "
 					body += "<a href='?_src_=vars;[HrefToken()];Vars="+ref+"'>VV</a> - "
 					body += "<a href='?_src_=holder;[HrefToken()];traitor="+ref+"'>TP</a> - "

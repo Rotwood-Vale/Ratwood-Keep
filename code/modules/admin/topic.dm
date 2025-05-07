@@ -911,6 +911,12 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
+	// REDMOON ADD START - old_player_panel - старая панель на случай поломки новой крысами
+	else if(href_list["admin_old_player_panel"])
+		var/mob/M = locate(href_list["admin_old_player_panel"])
+		show_player_panel_old(M)
+	// REDMOON ADD END
+
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
 			return
