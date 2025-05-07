@@ -56,6 +56,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gwstrap
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) // REDMOON ADD - для корректной работы семьи
 /datum/subclass/knight/sentinel
 	name = "Sentinel"
 	tutorial = "Proud defender of your ducal house. You are a master of the spear, and prefer to don yourself in the heaviest of armors."
@@ -95,7 +96,7 @@
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
@@ -149,7 +150,7 @@
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
@@ -199,7 +200,7 @@
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 

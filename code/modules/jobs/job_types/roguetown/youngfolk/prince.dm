@@ -67,6 +67,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	shoes = /obj/item/clothing/shoes/roguetown/armor/nobleboot
 
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) // REDMOON ADD - для корректной работы семьи
 /datum/subclass/prince/sheltered
 	name = "Sheltered Successor"
 	tutorial = "Your fate was already defined the moment you were born. One dae you shall inherit the throne and your father's realm. \
@@ -102,7 +103,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", -1)
 		H.change_stat("endurance", -2)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 /datum/subclass/prince/militant
@@ -138,7 +139,7 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/subclass/prince/bookworm
@@ -178,7 +179,7 @@
 		H.change_stat("constitution", -1)
 		H.change_stat("strength", -2)
 		H.change_stat("endurance", -2)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 
 /datum/subclass/prince/inbred
@@ -212,6 +213,6 @@
 		H.change_stat("constitution", -2)
 		H.change_stat("strength", -2)
 		H.change_stat("endurance", -2)
-	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+//	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) - REDMOON REMOVAL - добавляется при спавне, а не выборе класса
 	ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORUN, TRAIT_GENERIC) // no running is enough, dont change their speed
