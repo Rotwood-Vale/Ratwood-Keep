@@ -87,7 +87,7 @@
 		part.update_disabled()
 
 	for(var/trait_applied in GLOB.traits_deadite)
-		ADD_TRAIT(src, trait_applied, TRAIT_GENERIC)
+		ADD_TRAIT(src, trait_applied, DEADITE_TRAIT)
 
 	STASTR = rand(6,13)
 	STASPD = rand(6,13)

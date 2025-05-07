@@ -251,7 +251,7 @@
 			// both player and npc deadites can infect
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
+				if(caused_wound?.zombie_infect_attempt() && !existing_zomble && user.client)
 					user.mind.adjust_triumphs(1)
 
 	var/obj/item/grabbing/bite/B = new()
