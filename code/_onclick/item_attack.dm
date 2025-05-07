@@ -126,10 +126,12 @@
 			if(!user.used_intent.swingdelay)
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
-	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.stamina_add(10)
-	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.stamina_add(10)
+	var/rmb_stam_penalty = 0
+	if(istype(user.rmb_intent, /datum/rmb_intent/strong) || istype(user.rmb_intent, /datum/rmb_intent/swift))
+		rmb_stam_penalty = 10
+	// As of writing, releasedrain is 1 on everything but unarmed and grab intents,
+	// so it's primarily an unarmed thing.
+	user.stamina_add(user.used_intent.releasedrain + rmb_stam_penalty)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
