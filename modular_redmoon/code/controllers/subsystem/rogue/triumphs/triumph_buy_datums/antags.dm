@@ -1,16 +1,16 @@
 #define ANTAGCOIN_LICH_COST			150
 #define ANTAGCOIN_WEREWOLF_COST		75
 #define ANTAGCOIN_MANIAC_COST		50
+#define ANTAGCOIN_GIFT_COST			50
 #define ANTAGCOIN_CULT_COST			25
 #define ANTAGCOIN_REVOLUTION_COST	10
-#define ANTAGCOIN_GIFT_COST			50
 
 /datum/triumph_buy/antagcoin
 	var/owner_ckey
 
 /datum/triumph_buy/antagcoin/lich
 	triumph_buy_id = "Antagcoin: Lich"
-	desc = "Antagcoin: Lich! (Minimum 50 players)"
+	desc = "Antagcoin: Lich! (Minimum 60 players)"
 	triumph_cost = ANTAGCOIN_LICH_COST
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -22,7 +22,7 @@
 
 /datum/triumph_buy/antagcoin/werewolf
 	triumph_buy_id = "Antagcoin: Werewolf"
-	desc = "Antagcoin: Werewolf! (Minimum 20 players)"
+	desc = "Antagcoin: Werewolf! (Minimum 40 players)"
 	triumph_cost = ANTAGCOIN_WEREWOLF_COST
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -34,7 +34,7 @@
 
 /datum/triumph_buy/antagcoin/maniac
 	triumph_buy_id = "Antagcoin: Maniac"
-	desc = "Antagcoin: Maniac! (Minimum 20 players)"
+	desc = "Antagcoin: Maniac! (Minimum 40 players)"
 	triumph_cost = ANTAGCOIN_MANIAC_COST
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -46,7 +46,7 @@
 
 /datum/triumph_buy/antagcoin/cult
 	triumph_buy_id = "Antagcoin: Cult"
-	desc = "Antagcoin: Cult! (Minimum 30 players)"
+	desc = "Antagcoin: Cult! (Minimum 40 players)"
 	triumph_cost = ANTAGCOIN_CULT_COST
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -58,7 +58,7 @@
 
 /datum/triumph_buy/antagcoin/revolution
 	triumph_buy_id = "Antagcoin: Revolution"
-	desc = "Antagcoin: Revolution! (Minimum 30 players)"
+	desc = "Antagcoin: Revolution! (Minimum 40 players)"
 	triumph_cost = ANTAGCOIN_REVOLUTION_COST
 	category = TRIUMPH_CAT_CHARACTER
 	pre_round_only = FALSE
@@ -119,7 +119,7 @@
 
 /obj/item/antagcoin
 	name = "Flip Me"
-	desc = "Подбросишь левой - поиграешься. Подбросишь правой - сгоришь."
+	desc = "Зло, которое нужно привнести в этот мир. (RMB)"
 	icon_state = "coin_valid"
 	icon = 'modular_redmoon/icons/economy.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -127,37 +127,37 @@
 	var/sideslist = list("valid", "salad")
 	var/coinflip
 	var/cooldown = 0
-	var/minimum_players = 20
+	var/minimum_players = 40
 	var/revert_sum = 0
 
 /obj/item/antagcoin/lich
 	name = "Flip Me: Lich Energy"
 	antagcoin_role = /datum/antagonist/lich
-	minimum_players = 50
+	minimum_players = 60
 	revert_sum = ANTAGCOIN_LICH_COST
 
 /obj/item/antagcoin/werewolf
 	name = "Flip Me: Werewolf Energy"
 	antagcoin_role = /datum/antagonist/werewolf
-	minimum_players = 20
+	minimum_players = 40
 	revert_sum = ANTAGCOIN_WEREWOLF_COST
 
 /obj/item/antagcoin/maniac
 	name = "Flip Me: Maniac Energy"
 	antagcoin_role = /datum/antagonist/maniac
-	minimum_players = 20
+	minimum_players = 40
 	revert_sum = ANTAGCOIN_MANIAC_COST
 
 /obj/item/antagcoin/zizocultist
 	name = "Flip Me: Zizo Energy"
 	antagcoin_role = /datum/antagonist/zizocultist
-	minimum_players = 30
+	minimum_players = 40
 	revert_sum = ANTAGCOIN_CULT_COST
 
 /obj/item/antagcoin/revolution
 	name = "Flip Me: Rebel Energy"
 	antagcoin_role = /datum/antagonist/prebel/head
-	minimum_players = 30
+	minimum_players = 40
 	revert_sum = ANTAGCOIN_REVOLUTION_COST
 
 /obj/item/antagcoin/triumph
