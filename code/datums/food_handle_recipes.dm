@@ -12,7 +12,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/butterdough,
 		/obj/item/reagent_containers/food/snacks/egg ) 
 	
-	crafting_message = ""
+	crafting_message = "You start making a cake base..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 
 /*Cake base full */
@@ -23,6 +23,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/butterslice, 
 		/obj/item/reagent_containers/food/snacks/egg ) 
 
+	crafting_message = "You start making a cake base..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 
 /* Cheese cake */
@@ -30,7 +31,7 @@ CAKES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese )
-
+	crafting_message = "You start making a cheesecake..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
 
 /* Pancake stack*/
@@ -38,7 +39,7 @@ CAKES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/pancake,
 		/obj/item/reagent_containers/food/snacks/rogue/pancake)
-
+	crafting_message = "You start making a pancake stack..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/pancake_stack
 
 
@@ -47,7 +48,7 @@ CAKES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/food/snacks/rogue/honey)
-
+	crafting_message = "You start making a honey cake..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
 
 
@@ -57,19 +58,19 @@ COOKED MEALS
 
 /* Frybird and Tato */
 /datum/food_handle_recipes/frybirdtato
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried,
-        /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried )
-
-    result = /obj/item/reagent_containers/food/snacks/rogue/frybirdtato
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried,
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried )	
+	crafting_message = "You start making frybird and tato..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/frybirdtato
 
 /* Fried eggs */
 /datum/food_handle_recipes/friedeggs
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/friedegg,
-        /obj/item/reagent_containers/food/snacks/rogue/friedegg )
-
-    result = /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/friedegg,
+		/obj/item/reagent_containers/food/snacks/rogue/friedegg )
+	crafting_message = "You start combining the eggs..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/friedegg/two
 
 /datum/food_handle_recipes/friedeggs/pre_check(user, to_check)
 	for(var/obj/I in to_check)
@@ -82,34 +83,34 @@ COOKED MEALS
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/bun/,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked )
-
+	crafting_message = "You start putting the sausage into the bun..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
 
 
 /* Omelette */
 /datum/food_handle_recipes/omelette
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/friedegg/two, 
-        /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge )
-
-    result = /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/friedegg/two, 
+		/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge )
+	crafting_message = "You start making an omelette..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian
 
 
 /* Onionsteak */
 /datum/food_handle_recipes/onionsteak
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried,
-        /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried )
-
-    result = /obj/item/reagent_containers/food/snacks/rogue/onionsteak
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried,
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried )
+	crafting_message = "You start combining the onion and steak..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/onionsteak
 
 /* Peppersteak */
 /datum/food_handle_recipes/peppersteak
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried,
-        /obj/item/reagent_containers/peppermill )
-        
-    result = /obj/item/reagent_containers/food/snacks/rogue/peppersteak
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried,
+		/obj/item/reagent_containers/peppermill )
+	crafting_message = "You start making a peppersteak..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/peppersteak
 
 /datum/food_handle_recipes/peppersteak/pre_check(user, to_check)
 	for(var/obj/item/reagent_containers/peppermill/P in to_check)
@@ -124,19 +125,19 @@ COOKED MEALS
 
 /* sausage roll */
 /datum/food_handle_recipes/sausageroll
-    items = list(
+	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
-       /obj/item/reagent_containers/food/snacks/rogue/meat/mince )
-        
-    result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
+	crafting_message = "You start making a sausage roll..."       
+	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
 
 /* Spicy bird */
 /datum/food_handle_recipes/spicybird
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/,
-        /obj/item/reagent_containers/peppermill )
-        
-    result = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/,
+		/obj/item/reagent_containers/peppermill )
+	crafting_message = "You start making a spicy bird..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
 
 /datum/food_handle_recipes/spicybird/pre_check(user, to_check)
 	for(var/obj/item/reagent_containers/peppermill/P in to_check)
@@ -151,11 +152,11 @@ COOKED MEALS
 
 /* Wiener cabbage */
 /datum/food_handle_recipes/wienercabbage
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried, 
-        /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked )
-
-    result = /obj/item/reagent_containers/food/snacks/rogue/wienercabbage
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/cabbage_fried, 
+		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked )
+	crafting_message = "You start combining the sausage and cabbage..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/wienercabbage
 
 /* Wiener meal */
 /datum/food_handle_recipes/wienermeal
@@ -163,31 +164,33 @@ COOKED MEALS
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked,
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried )
-
+	crafting_message = "You start making a wiener meal..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 
 /* Wiener onions */
 /datum/food_handle_recipes/wieneronions
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried, 
-        /obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked 
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried, 
+		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked 
 		)
-    result = /obj/item/reagent_containers/food/snacks/rogue/wieneronions
+	crafting_message = "You start combining the sausage and onions..."	
+	result = /obj/item/reagent_containers/food/snacks/rogue/wieneronions
 
 /* Wiener onions to meal */
 /datum/food_handle_recipes/wieneronionstomeal
-    items = list(
-        /obj/item/reagent_containers/food/snacks/rogue/wieneronions, 
-        /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked 
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/wieneronions, 
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked 
 		)
-    result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
+	crafting_message = "You start making a wiener meal..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 
 /* Wiener potato */
 /datum/food_handle_recipes/wienerpotato
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked )
-
+	crafting_message = "You start combining the sausage with the potato..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotato
 
 /* Wiener potato to meal */
@@ -195,7 +198,7 @@ COOKED MEALS
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/wienerpotato,
 		/obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried )
-
+	crafting_message = "You start making a wiener meal..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
 
 /*============
@@ -211,7 +214,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/powder/flour,
 		/obj/item/reagent_containers )
-
+	crafting_message = "You wetting the dough..."
 	result = null
 	craft_sound = 'modular/Neu_Food/sound/splishy.ogg'
 
@@ -257,6 +260,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/powder/flour, )
 	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
+	crafting_message = "You start shaping the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
 	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 
@@ -275,7 +279,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/powder/flour,
 		/obj/item/reagent_containers/food/snacks/rogue/dough_base ) 
-
+	crafting_message = "You begin to finish the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 
@@ -285,7 +289,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/reagent_containers/food/snacks/butterslice )
-
+	crafting_message = "You start working the butter into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
 
 /* Butterdough reassemble */
@@ -293,7 +297,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice )
-
+	crafting_message = "You start putting the butterdough back together..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
 
 /* Raisinbread half */
@@ -301,7 +305,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
-
+	crafting_message = "You start working some raisins into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbread_half
 
 /* Raisinbread full */
@@ -309,7 +313,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
-
+	crafting_message = "You start finishing the raisin bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
 
 
@@ -317,8 +321,8 @@ DOUGH RECIPES
 /datum/food_handle_recipes/hardtack_raw
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
-		/obj/item/kitchen/rollingpin ) //This could be a bit iffy...
-
+		/obj/item/kitchen/rollingpin )
+	crafting_message = "You begin making some hardtack..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
 
 /* Cheese bun raw */
@@ -326,7 +330,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese ) 
-
+	crafting_message = "You start making a cheesebun..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw
 
 // Good example below of the utility of this sytem (however I suppose it could be better with multiple lists?)
@@ -336,7 +340,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice ) 
-
+	crafting_message = "You merge the dough back together..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 
 /* Dough slice + flat combination */
@@ -344,7 +348,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice ) 
-
+	crafting_message = "You merge the dough back together..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 
 /* Dough flat + flat combination */
@@ -352,7 +356,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall,
 		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall ) 
-
+	crafting_message = "You merge the dough back together..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 
 
@@ -361,7 +365,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/fish/crab,
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice ) 
-
+	crafting_message = "You roll the crab around into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw
 
 /* Pie dough */
@@ -369,7 +373,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
 		/obj/item/kitchen/rollingpin ) 
-
+	crafting_message = "You start flattening the butterdough out..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
 
 /* small flat dough */
@@ -377,7 +381,7 @@ DOUGH RECIPES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
 		/obj/item/kitchen/rollingpin ) 
-
+	crafting_message = "You start to flatten the dough out..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall
 
 
@@ -385,8 +389,8 @@ DOUGH RECIPES
 /datum/food_handle_recipes/raisin_biscuit_raw
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
-		 /obj/item/reagent_containers/food/snacks/rogue/raisins ) 
-
+			/obj/item/reagent_containers/food/snacks/rogue/raisins ) 
+	crafting_message = "You start making a biscuit..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw
 
 /* Prezzel */
@@ -423,7 +427,7 @@ HAND PIES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
-
+	crafting_message = "You stuff the meat into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/mince
 
 /* Handpie berries */
@@ -431,7 +435,7 @@ HAND PIES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue )
-
+	crafting_message = "You stuff the berries into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/berry
 
 /* Handpie poison */
@@ -439,7 +443,7 @@ HAND PIES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/piedough,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison )
-
+	crafting_message = "You stuff the berries into the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw/poison
 
 /*==
@@ -453,7 +457,7 @@ MISC
 	items = list(
 		/obj/item/reagent_containers/powder/sugar )
 	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
-
+	crafting_message = "You start working the sugar..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
 
 /datum/food_handle_recipes/candy_base/pre_check(user, to_check)
@@ -467,7 +471,7 @@ MISC
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/apple )
-
+	crafting_message = "You massage the apple into the candy..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/applecandy
 
 /* Candy berry */
@@ -475,7 +479,7 @@ MISC
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue )
-
+	crafting_message = "You massage the berries into the candy..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/berrycandy
 
 /*======
@@ -486,7 +490,7 @@ PASTRIES
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/pastry/,
 		/obj/item/reagent_containers/powder/sugar )
-
+	crafting_message = "You start to cover the pastry in sugar..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/sweetroll
 
 /*========
@@ -498,7 +502,7 @@ RAW COMBOS
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
-
+	crafting_message = "You start forming a susage..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 
 /* Sausage fat */
@@ -506,6 +510,7 @@ RAW COMBOS
 	items = list(
 		/obj/item/reagent_containers/food/snacks/fat/,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
+	crafting_message = "You start forming a susage..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 
 /* Sausage fish */
@@ -513,6 +518,7 @@ RAW COMBOS
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish )
+	crafting_message = "You start forming a susage..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
 
 /*=====
@@ -523,7 +529,7 @@ SAMMICH
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice )
-
+	crafting_message = "You start making salumoi bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/salami
 
 /* Sammich cheese */
@@ -531,7 +537,7 @@ SAMMICH
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
 		/obj/item/reagent_containers/food/snacks/rogue/cheddarslice )
-
+	crafting_message = "You start making cheese bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
 
 /* Sammich egg */
@@ -539,7 +545,7 @@ SAMMICH
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
 		/obj/item/reagent_containers/food/snacks/rogue/friedegg )
-
+	crafting_message = "You start making egg bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 
 /* Sammich salo */
@@ -547,7 +553,7 @@ SAMMICH
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice,
 		/obj/item/reagent_containers/food/snacks/fat/salo/slice )
-
+	crafting_message = "You start making salo bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/sandwich/salo
 
 /* Sammich buttered toast */
@@ -555,7 +561,7 @@ SAMMICH
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/breadslice/toast,
 		/obj/item/reagent_containers/food/snacks/butterslice )
-
+	crafting_message = "You start making buttered bread..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast/buttered
 
 /*======
@@ -567,5 +573,5 @@ SEA FOOD
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster,
 		/obj/item/reagent_containers/food/snacks/butterslice )
-
+	crafting_message = "You start making a lobster meal..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal
