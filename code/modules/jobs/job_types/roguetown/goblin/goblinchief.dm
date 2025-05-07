@@ -56,7 +56,10 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.change_stat("strength", 4)
+		if(istype(H.dna.species, /datum/species/halforc)) // Horc with +4 strength might be too strong.
+			H.change_stat("strength", 2)
+		else
+			H.change_stat("strength", 4)	
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
