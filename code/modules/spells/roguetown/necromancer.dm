@@ -132,10 +132,6 @@
 		to_chat(user, span_warning("I need to cast this spell on a corpse."))
 		return FALSE
 
-	if(!istype(obj, /mob/living/simple_animal/hostile/rogue/skeleton))
-		to_chat(user, span_warning("I need to cast this spell on a living skeletons."))
-		return FALSE
-
 	// bandaid until goblin skeleton immortality is fixed
 	if(istype(obj, /mob/living/carbon/human/species/goblin))
 		to_chat(user, span_warning("I cannot raise goblins."))
@@ -146,7 +142,7 @@
 	if(target.stat != DEAD)
 		// REDMOON ADD START - lich_fixes - возможность подчинять живую нежить
 		if(user.faction_check_mob(target)) // это должна быть нежить
-			if(target.ckey) // игрок в скелете/зомби
+			if(target.client) // игрок в скелете/зомби
 				to_chat(user, user.client.prefs.be_russian ? span_warning("Внутри этой оболочки уже заключена душа.") : span_warning("A soul has already occupied this shell."))
 				return FALSE
 			if(target.summoner != user.real_name) // не убитая нежить подчиняется другому некроманту
@@ -161,8 +157,6 @@
 				target.turn_to_minion(user, C.ckey)
 				target.visible_message(span_warning("[target.real_name]'s eyes light up with an STRONG glow."), runechat_message = TRUE)
 				target.summoner = user.real_name
-				if(target.ai_controller)
-					qdel(target.ai_controller)
 			else
 				target.visible_message(span_notice("[target.real_name]'s eyes still have uneven glow, but nothing more."), runechat_message = TRUE)
 			return TRUE
@@ -200,7 +194,7 @@
 
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
-	if(target.ckey) //player still inside body
+	if(target.client) //player still inside body // REDMOON EDIT - lich_fixes - заменяем проверку на более надёжную - WAS: if(target.ckey)
 
 		var/offer = alert(target, "Do you wish to be reanimated as a minion?", "RAISED BY NECROMANCER", "Yes", "No")
 		var/offer_time = world.time
@@ -208,6 +202,7 @@
 		if(offer == "No" || world.time > offer_time + 5 SECONDS)
 			to_chat(target, span_danger("Another soul will take over."))
 			offer_refused = TRUE
+			target.ghostize(TRUE)
 
 		else if(offer == "Yes")
 			to_chat(target, span_danger("You rise as a minion."))
@@ -216,7 +211,7 @@
 			target.summoner = user.real_name // REDMOON ADD - lich_fixes - присвоение хозяина для поднятых скелетов
 			return TRUE
 
-	if(!target.ckey || offer_refused) //player is not inside body or has refused, poll for candidates
+	if(!target.client || offer_refused) //player is not inside body or has refused, poll for candidates // REDMOON EDIT - lich_fixes - заменяем проверку на более надёжную - WAS: if(target.ckey || offer_refused))
 
 		var/list/candidates = pollCandidatesForMob("Do you want to play as a Necromancer's minion?", null, null, null, 100, target, POLL_IGNORE_NECROMANCER_SKELETON)
 
