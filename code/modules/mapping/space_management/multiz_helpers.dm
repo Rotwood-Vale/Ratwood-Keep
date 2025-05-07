@@ -11,13 +11,13 @@
 	. = list(center_z)
 	var/other_z = center_z
 	var/offset
-	while((offset = SSmapping.multiz_levels[other_z]["[DOWN]"]))
+	while((offset = SSmapping.multiz_levels[other_z][Z_LEVEL_DOWN]))
 		other_z -= offset
 		if(other_z in .)
 			break	// no infinite loops
 		. += other_z
 	other_z = center_z
-	while((offset = SSmapping.multiz_levels[other_z]["[UP]"]))
+	while((offset = SSmapping.multiz_levels[other_z][Z_LEVEL_UP]))
 		other_z += offset
 		if(other_z in .)
 			break	// no infinite loops
@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(zweb_cache)
 			var/ztext = num2text(zlevel)
 			GLOB.zweb_cache[my_text][ztext] = TRUE
 			LAZYINITLIST(GLOB.zweb_cache[ztext])
-			LAZYADD(GLOB.zweb_cache[ztext], my_text)
+			LAZYSET(GLOB.zweb_cache[ztext], my_text, TRUE)
 	return GLOB.zweb_cache[my_text][comp_text]
 
 /proc/get_dir_multiz(turf/us, turf/them)
