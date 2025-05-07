@@ -114,7 +114,8 @@ but for now I'm mostly just checking food. */
 		var/highest_count = 0
 		. = possible_recipes[1]
 		for (var/datum/food_handle_recipes/recipe in possible_recipes)
-			var/count = ((recipe.items)?(recipe.items.len):0)
+			var/count = ((recipe.items)?(recipe.items.len):0) // more complex = high score
+			count += (locate(items[1] in recipe)?1:0) //Add point for active item to get recipe(what you want to make vs what you get)
 			if (count >= highest_count)
 				highest_count = count
 

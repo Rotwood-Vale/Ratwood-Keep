@@ -37,6 +37,17 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("dough" = 1)
 
+/* ..............   Flat small dough   .............. */
+/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall
+	name = "flat dough"
+	desc = "A smaller, flatter piece of dough."
+	icon_state = "flatdough_small"
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/pancake
+	cooked_smell = /datum/pollutant/food/pastry
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("dough" = 1)
+
+
 /*	.................   Butterdough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/butterdough
 	name = "butterdough"
@@ -262,6 +273,30 @@
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY
+
+/* ..................   Pancake   .................. */
+/obj/item/reagent_containers/food/snacks/rogue/pancake
+	name = "pancake"
+	desc = "Fluffy, delicious, and simple. An easy treat for all enjoyers of flat cakes."
+	icon_state = "pancake"
+	bitesize = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	foodtype = SUGAR | GRAIN
+	w_class = WEIGHT_CLASS_NORMAL
+	rotprocess = SHELFLIFE_EXTREME
+
+//cake is 40 can feed 8 people okayish... 
+/* .............   Pancake stack   ............. */
+/obj/item/reagent_containers/food/snacks/rogue/pancake_stack
+	name = "pancake stack"
+	desc = "A large pile of pancakes."
+	icon_state = "pancake_stack"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	foodtype = SUGAR | GRAIN
+	bitesize = 3
+	w_class = WEIGHT_CLASS_NORMAL
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /*	.................   Sweetroll   ................... */
 

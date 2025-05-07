@@ -33,6 +33,15 @@ CAKES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
 
+/* Pancake stack*/
+/datum/food_handle_recipes/pancake_stack
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/pancake,
+		/obj/item/reagent_containers/food/snacks/rogue/pancake)
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/pancake_stack
+
+
 /* Zybantine cake */
 /datum/food_handle_recipes/zybantine_cake
 	items = list(
@@ -279,6 +288,14 @@ DOUGH RECIPES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
 
+/* Butterdough reassemble */
+/datum/food_handle_recipes/butterdough_reassemble
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
+		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice )
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
+
 /* Raisinbread half */
 /datum/food_handle_recipes/rbread_half
 	items = list(
@@ -312,7 +329,9 @@ DOUGH RECIPES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw
 
-/*Dough slice combination*/
+// Good example below of the utility of this sytem (however I suppose it could be better with multiple lists?)
+
+/* Dough slice combination */
 /datum/food_handle_recipes/dough_slice_combine
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
@@ -320,7 +339,24 @@ DOUGH RECIPES
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
 
-/*Crabcake raw*/
+/* Dough slice + flat combination */
+/datum/food_handle_recipes/dough_slice_flat_combine
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall,
+		/obj/item/reagent_containers/food/snacks/rogue/doughslice ) 
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough
+
+/* Dough flat + flat combination */
+/datum/food_handle_recipes/dough_flat_flat_combine
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall,
+		/obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall ) 
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/dough
+
+
+/* Crabcake raw */
 /datum/food_handle_recipes/crabcakeraw
 	items = list(
 		/obj/item/reagent_containers/food/snacks/fish/crab,
@@ -335,6 +371,15 @@ DOUGH RECIPES
 		/obj/item/kitchen/rollingpin ) 
 
 	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
+
+/* small flat dough */
+/datum/food_handle_recipes/small_flat_dough
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
+		/obj/item/kitchen/rollingpin ) 
+
+	result = /obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall
+
 
 /* Raw biscuit */
 /datum/food_handle_recipes/raisin_biscuit_raw
