@@ -206,7 +206,57 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/scissors)
 
-/datum/supply_pack/rogue/tools/shopkeyy
-	name = "Spare Shopkey"
-	cost = 10
-	contains = list(/obj/item/key/shop)
+/datum/supply_pack/rogue/tools/tntstick
+	name = "Blackpowder sticks"
+	cost = 50
+	contains = list(/obj/item/tntstick,
+					/obj/item/tntstick,
+					/obj/item/tntstick,
+					)
+
+/datum/supply_pack/rogue/tools/bombsatchel
+	name = "Bomb satchel"
+	cost = 50
+	contains = list(/obj/item/satchel_bomb)					
+
+/datum/supply_pack/rogue/tools/impactgrenadecontact
+	name = "Impact grenade contact"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/explosion,
+					/obj/item/impact_grenade/explosion,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegas
+	name = "Impact grenade gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/poison_gas,
+					/obj/item/impact_grenade/poison_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasheal
+	name = "Impact grenade healing gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/healing_gas,
+					/obj/item/impact_grenade/healing_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasfire
+	name = "Impact grenade fire gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/fire_gas,
+					/obj/item/impact_grenade/fire_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasblind
+	name = "Impact grenade blind gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/blind_gas,
+					/obj/item/impact_grenade/blind_gas,
+					)				
+
+/datum/supply_pack/rogue/tools/impactgrenadegasmute
+	name = "Impact grenade mute gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/mute_gas,
+					/obj/item/impact_grenade/mute_gas,
+					)								
