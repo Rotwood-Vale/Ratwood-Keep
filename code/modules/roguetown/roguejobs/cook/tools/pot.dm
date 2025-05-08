@@ -100,7 +100,6 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 		var/list/things = STR.contents()
 		if(!length(things))
 			// Should be the termination point if a pot with no items is idle on a hearth
-			reagents.remove_reagent(/datum/reagent/water, 1) //slowly lose water
 			addtimer(CALLBACK(src, PROC_REF(boil)),4 SECONDS)
 			return
 
