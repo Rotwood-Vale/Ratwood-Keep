@@ -202,6 +202,20 @@ Meats
 			return FALSE
 	return TRUE
 
+//uses whole meat slab
+/datum/pot_recipe/meat_stew_slab
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/steak
+	volume_to_replace = 99 // 3 mince equivalent
+	output = /datum/reagent/consumable/soup/stew/meat
+	cooking_time = 120 SECONDS
+
+//sausage variant
+/datum/pot_recipe/meat_stew_sausage
+	input = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
+	volume_to_replace = 66 // 2 mince equivalent
+	output = /datum/reagent/consumable/soup/stew/meat
+	cooking_time = 90 SECONDS
+
 /datum/pot_recipe/fish_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	output = /datum/reagent/consumable/soup/stew/fish 
