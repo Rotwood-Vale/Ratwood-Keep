@@ -467,7 +467,7 @@
 		if(play_sound)
 			playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 
-/obj/structure/roguemachine/independent_vendor
+/obj/structure/roguemachine/merchantvend_static
 	name = "Independent Vendor"
 	desc = "A fully autonomous vendor. No taxes. No masters."
 	icon = 'icons/roguetown/misc/machines.dmi'
@@ -480,7 +480,7 @@
 	var/current_cat = "1"
 	var/budget = 0
 
-/obj/structure/roguemachine/independent_vendor/attack_hand(mob/living/user)
+/obj/structure/roguemachine/merchantvend_static/attack_hand(mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
@@ -508,7 +508,7 @@
 	popup.set_content(contents)
 	popup.open()
 
-/obj/structure/roguemachine/independent_vendor/attackby(obj/item/P, mob/user)
+/obj/structure/roguemachine/merchantvend_static/attackby(obj/item/P, mob/user)
 	if(istype(P, /obj/item/roguecoin))
 		var/obj/item/roguecoin/C = P
 		budget += C.get_real_price()
@@ -518,7 +518,7 @@
 		return attack_hand(user)
 	..()
 
-/obj/structure/roguemachine/independent_vendor/Topic(href, href_list)
+/obj/structure/roguemachine/merchantvend_static/Topic(href, href_list)
 	. = ..()
 	var/mob/user = usr
 
