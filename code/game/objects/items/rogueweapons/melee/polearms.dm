@@ -64,7 +64,6 @@
 		if(exam)
 			to_chat(user, exam.Join("\n"))//relays the examine string to the user
 		return TRUE
-		
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
