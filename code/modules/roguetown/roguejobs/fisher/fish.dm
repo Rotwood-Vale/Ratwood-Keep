@@ -21,13 +21,14 @@
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/adjusted = FALSE
-	if(istype(loc, /turf/open/water/sea/thermalwater))
-		adjusted = TRUE
 
-	var/list/rarities = adjusted
-		? list("gold" = 600, "ultra" = 600, "rare" = 600, "com" = 1)
-		: list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
+	var/list/rarities
+	if(istype(loc, /turf/open/water/sea/thermalwater))
+		// sin
+		rarities = list("gold" = 600, "ultra" = 600, "rare" = 600, "com" = 1)
+	else
+		// sobaki
+		rarities = list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
 
 	var/rarity = pickweight(rarities)
 	icon_state = "[initial(icon_state)][rarity]"
@@ -169,7 +170,7 @@
 				new /obj/item/oystershell(user.loc)
 	else
 		. = ..()
-	
+
 /obj/item/reagent_containers/food/snacks/fish/oyster/attack_right(mob/user)
 	if(user.get_active_held_item())
 		return
@@ -260,7 +261,7 @@
 	icon_state = "crabcooked"
 	name = "cooked crab"
 	tastes = list("shellfish" = 1)
-	
+
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	icon_state = "lobstercooked"
 	name = "cooked lobster"
