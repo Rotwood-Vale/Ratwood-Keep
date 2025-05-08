@@ -239,7 +239,7 @@
 					H.change_stat("constitution", 1)
 					H.change_stat("speed", 2)
 					H.change_stat("intelligence", 2)
-					H.verbs += list(/mob/living/carbon/human/proc/draw_sigil_zizo)
+					H.verbs += list(/mob/living/carbon/human/proc/draw_sigil_zizo, /mob/living/carbon/human/proc/praise, /mob/living/carbon/human/proc/favorcheck)
 					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				else
 					H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

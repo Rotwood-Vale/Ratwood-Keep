@@ -55,7 +55,14 @@
 
 /proc/giftofpain(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
+		if(H.has_status_effect(/datum/status_effect/debuff/zizoagony))
+			to_chat(user.mind, span_notice("This one has suffered enough for the moment.."))
+			return
 		H.take_overall_damage(150)
+		H.Paralyze(30)
+		H.apply_status_effect(/datum/status_effect/debuff/zizoagony)
 		C.visible_message(span_danger("[H.real_name] is lifted up into the air and multiple scratches, incisions and shallow cuts start etching themselves into their skin!"))
 		user.mind.zizofavor += 25
+		to_chat(user.mind, span_notice("She smiles upon the suffering I cause!"))
+		to_chat(H.mind, span_notice("THE PAIN!! IT'S TOO MUCH!!!"))
 		playsound(C,pick('sound/combat/hits/bladed/genslash (1).ogg','sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (3).ogg'), 100, FALSE)

@@ -426,6 +426,18 @@
 	icon_state = "debuff"
 	color ="#7a0606"
 
+/datum/status_effect/debuff/zizoagony
+	id = "zizoagony"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/zizoagony
+	effectedstats = list("endurance" = -4, "intelligence" = -2)
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/zizoagony
+	name = "Zizos Agony"
+	desc = "A profane zizoid ritual has touched my being, the pain is much to bear.."
+	icon_state = "debuff"
+	color ="#664040"
+
 /datum/status_effect/debuff/hereticsermon
 	id = "Heretic on sermon!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon

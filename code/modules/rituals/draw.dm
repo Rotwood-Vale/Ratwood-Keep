@@ -3,7 +3,7 @@
 
 /mob/living/carbon/human/proc/draw_sigil_zizo()
 	set name = "Draw Zizoite Sigil"
-	set category = "RITUALS"
+	set category = "ZIZO"
 
 	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting", "Sacrifice")
 

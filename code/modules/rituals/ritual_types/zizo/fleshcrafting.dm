@@ -1,5 +1,20 @@
 // FLESH CRAFTING
 
+/datum/ritual/zizo/lesserfleshmend
+	name = "Lesser Fleshmend"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+	difficulty = 2
+	favor_cost = 50
+	function = /proc/lesserfleshmend
+
+/proc/lesserfleshmend(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+		//heal
+		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
+		break
 
 /datum/ritual/zizo/fleshmend
 	name = "Fleshmend"
@@ -24,6 +39,8 @@
 /datum/ritual/zizo/bunnylegs
 	name = "Saliendo Pedes"
 	circle = "Fleshcrafting"
+	favor_cost = 150
+	difficulty = 3
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/bodypart/l_leg
 	e_req = /obj/item/bodypart/r_leg
@@ -40,6 +57,8 @@
 /datum/ritual/zizo/darkeyes
 	name = "Darkened Eyes"
 	circle = "Fleshcrafting"
+	difficulty = 2
+	favor_cost = 100
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/organ/eyes
