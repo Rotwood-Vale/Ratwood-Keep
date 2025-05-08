@@ -602,3 +602,14 @@
 	else
 		patient = null
 		return FALSE
+
+/obj/structure/table/optable/church
+	name = "Surgery table"
+	desc = "A cold, bloodstained slab used for surgeries, sacrifices, or worse. Its surface bears claw marks and old restraints, reeking of desperation and ancient rites. You’re not sure if it was made for healing or punishment."
+	icon = 'icons/roguetown/topadd/delinefortune/misc.dmi'
+	icon_state = "church_surgery"
+	smooth = SMOOTH_FALSE
+	can_buckle = 1
+	buckle_lying = -1
+	buckle_requires_restraints = 1
+

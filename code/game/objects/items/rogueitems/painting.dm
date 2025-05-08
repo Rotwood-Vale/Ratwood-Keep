@@ -69,3 +69,4 @@
 	desc = "It's holy priest Seraphina, first of her name, blessed be her name."
 	icon_state = "seraphinapainting_deployed"
 	stolen_painting = /obj/item/rogue/painting/seraphina
+

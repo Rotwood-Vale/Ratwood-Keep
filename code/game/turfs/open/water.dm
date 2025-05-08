@@ -389,7 +389,7 @@
 					continue // floating seelie, jumping, etc
 			A.ConveyorMove(dir)
 
-/turf/open/water/sea/thermalwater //heals u and has better chance to catch rare fish
+/turf/open/water/sea/thermalwater //heals u and has better chance to catch rare fish IT SUPPOSED TO BE BOG ONLY BECAUSE GIVES +25% CHANCE TO CATCH RARE FISH
 	name = "healing hot spring"
 	desc = "A warm spring with gentle ripples. Standing here soothes your body."
 	icon = 'icons/turf/roguefloor.dmi'
@@ -402,7 +402,7 @@
 	var/heal_amount = 20
 	var/last_heal = 0
 
-/turf/open/water/sea/thermalwater/Initialize()
+/turf/open/water/sea/thermalwater/Initialize()  // I REPEAT ITS BOG ONLY YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -423,5 +423,35 @@
 			M.adjustOxyLoss(-heal_amount*2)
 
 		M.visible_message(span_notice("[M] looks a bit better after soaking in the spring."))
+
+	last_heal = world.time
+
+/turf/open/water/tear_of_pestra
+	name = "Tear of Pestra"
+	desc = "A warm spring with the stench of rusted iron. It beckons with comfort, but something ancient festers beneath the surface. Your skin tingles — not from heat, but from something watching."
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "together"
+	water_color = "#c93509"
+	water_level = 2
+	wash_in = TRUE
+	water_reagent = /datum/reagent/water/gross
+	var/heal_interval = 30 SECONDS
+	var/last_heal = 0
+
+/turf/open/water/tear_of_pestra/Initialize()  
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/turf/open/water/tear_of_pestra/process()
+	if(world.time < last_heal + heal_interval)
+		return
+
+	for(var/mob/living/carbon/M in src)
+		if(M.stat == DEAD) continue
+
+		if(M.getCloneLoss())
+			M.adjustCloneLoss(1)	
+
+		M.visible_message(span_notice("[M] seems worse... They are shaking in pain..."))
 
 	last_heal = world.time
