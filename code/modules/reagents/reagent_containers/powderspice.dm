@@ -110,7 +110,7 @@
 			user.visible_message(span_danger("[user] attempts to force [C] to inhale [src]."), \
 								span_danger("[user] attempts to force me to inhale [src]!"))
 			if(C.cmode)
-				if(!CH.grabbedby)
+				if(!LAZYLEN(CH.grabbedby))
 					to_chat(user, span_info("[C.p_they(TRUE)] steals [C.p_their()] face from it."))
 					return FALSE
 			if(!do_mob(user, M, 10))
@@ -579,7 +579,7 @@
 
 /datum/reagent/alch/syrum_swamp_weed
 	name = "swamp syrum"
-	description = "refined berry poison"
+	description = "refined swamp weed"
 	reagent_state = LIQUID
 	color = "#61DE2A"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM

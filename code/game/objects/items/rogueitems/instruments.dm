@@ -141,7 +141,10 @@
 	"Tip Thine Tankard" = 'sound/music/instruments/lute (4).ogg',
 	"A Reed On the Wind" = 'sound/music/instruments/lute (5).ogg',
 	"Jests On Steel Ears" = 'sound/music/instruments/lute (6).ogg',
-	"Merchant in the Mire" = 'sound/music/instruments/lute (7).ogg')
+	"Merchant in the Mire" = 'sound/music/instruments/lute (7).ogg',
+	"Twilight on the Moor" = 'sound/music/instruments/lute (8).ogg',
+	"A Lady's Almain" = 'sound/music/instruments/lute (9).ogg',
+	"Wind of Regality" = 'sound/music/instruments/lute (10).ogg')
 
 /obj/item/rogue/instrument/accord
 	name = "accordion"
@@ -152,7 +155,9 @@
 	"We Toil Together" = 'sound/music/instruments/accord (3).ogg',
 	"Just One More, Tavern Wench" = 'sound/music/instruments/accord (4).ogg',
 	"Moonlight Carnival" = 'sound/music/instruments/accord (5).ogg',
-	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg')
+	"'Ye Best Be Goin'" = 'sound/music/instruments/accord (6).ogg',
+	"Waltz in the Bog" = 'sound/music/instruments/accord (7).ogg',
+	"Mussels and Memory" = 'sound/music/instruments/accord (8).ogg')
 
 /obj/item/rogue/instrument/guitar
 	name = "guitar"
@@ -163,7 +168,10 @@
 	"Regrets Unpaid" = 'sound/music/instruments/guitar (3).ogg',
 	"'Took the Mammon and Ran'" = 'sound/music/instruments/guitar (4).ogg',
 	"Poor Man's Tithe" = 'sound/music/instruments/guitar (5).ogg',
-	"In His Arms Ye'll Find Me" = 'sound/music/instruments/guitar (6).ogg')
+	"In His Arms Ye'll Find Me" = 'sound/music/instruments/guitar (6).ogg',
+	"Flickering Steel" = 'sound/music/instruments/guitar (7).ogg',
+	"His Honeyed Tongue " = 'sound/music/instruments/guitar (8).ogg',
+	"Crimson Sonata" = 'sound/music/instruments/guitar (9).ogg')
 
 /obj/item/rogue/instrument/harp
 	name = "harp"
@@ -175,7 +183,10 @@
 	"Her Arms Caress Me" = 'sound/music/instruments/harb (4).ogg',
 	"Dance Between the Sheets" = 'sound/music/instruments/harb (5).ogg',
 	"A Mother's Affection" = 'sound/music/instruments/harb (6).ogg',
-	"Nightmaiden's Lullaby" = 'sound/music/instruments/harb (7).ogg')
+	"Nightmaiden's Lullaby" = 'sound/music/instruments/harb (7).ogg',
+	"She Danced at Dawn" = 'sound/music/instruments/harb (8).ogg',
+	"Cradled by Starlight" = 'sound/music/instruments/harb (9).ogg',
+	"Letters Never Sent" = 'sound/music/instruments/harb (10).ogg')
 
 /obj/item/rogue/instrument/flute
 	name = "flute"

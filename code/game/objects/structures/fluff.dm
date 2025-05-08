@@ -942,37 +942,60 @@ obj/structure/bars/steel
 							if(!FirstPerson || !SecondPerson)
 								testing("fail22")
 								return
-							var/surname2use
+							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPerson.real_name] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							var/surname2use = FirstPerson.dna.species.random_surname()
+							var/T
+							var/title = list("Sir", "Dame", "Lord", "Lady", "Knight-Captain", "Duke", "Duchess", "Ser", "Father", "Brother", "Sister")
+							var/title_removed = FALSE
 							var/index = findtext(FirstPerson.real_name, " ")
-							var/SecondPersonFirstName
 							FirstPerson.original_name = FirstPerson.real_name
 							SecondPerson.original_name = SecondPerson.real_name
-							if(!index)
-								surname2use = FirstPerson.dna.species.random_surname()
-							else
-								if(findtext(FirstPerson.real_name, " of ") || findtext(FirstPerson.real_name, " the "))
-									surname2use = FirstPerson.dna.species.random_surname()
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+							if(index)
+								for(T in title)
+									if(T == copytext(FirstPerson.real_name, 1, index))
+										FirstPerson.original_name = copytext(FirstPerson.real_name, index + 1)
+										title_removed = TRUE
+										break
+								index = findtext(FirstPerson.original_name, " ")
+								if(index)
+									if(findtext(FirstPerson.original_name, " of ") || findtext(FirstPerson.original_name, " the "))
+										if(title_removed)
+											FirstPerson.change_name(T + " " + copytext(FirstPerson.original_name, 1, index))
+										else
+											FirstPerson.change_name(copytext(FirstPerson.original_name, 1, index))
+									else
+										surname2use = copytext(FirstPerson.original_name, index)
+										if(title_removed)
+											FirstPerson.change_name(T + " " + copytext(FirstPerson.original_name, 1, index))
+										else
+											FirstPerson.change_name(copytext(FirstPerson.original_name, 1, index))
 								else
-									surname2use = copytext(FirstPerson.real_name, index)
-									FirstPerson.change_name(copytext(FirstPerson.real_name, 1,index))
+									if(title_removed)
+										FirstPerson.change_name(T + " " + FirstPerson.original_name)
+
+							title_removed = FALSE
 							index = findtext(SecondPerson.real_name, " ")
 							if(index)
-								SecondPerson.change_name(copytext(SecondPerson.real_name, 1,index))
-							SecondPersonFirstName = SecondPerson.real_name
+								for(T in title)
+									if(T == copytext(SecondPerson.real_name, 1, index))
+										SecondPerson.original_name = copytext(SecondPerson.real_name, index + 1)
+										title_removed = TRUE
+										break
+								index = findtext(SecondPerson.original_name, " ")
+								if(index)
+									if(title_removed)
+										SecondPerson.change_name(T + " " + copytext(SecondPerson.original_name, 1, index))
+									else
+										SecondPerson.change_name(copytext(SecondPerson.original_name, 1, index))
+
 							FirstPerson.change_name(FirstPerson.real_name + surname2use)
 							SecondPerson.change_name(SecondPerson.real_name + surname2use)
 							FirstPerson.marriedto = SecondPerson.real_name
 							SecondPerson.marriedto = FirstPerson.real_name
 							FirstPerson.adjust_triumphs(1)
 							SecondPerson.adjust_triumphs(1)
-							priority_announce("Rejoice, for [user.real_name] has united [FirstPerson.real_name] and [SecondPersonFirstName] in marriage!", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
 							marriage = TRUE
 							qdel(A)
-//							if(FirstPerson.has_stress(/datum/stressevent/nobel))
-//								SecondPerson.add_stress(/datum/stressevent/nobel)
-//							if(SecondPerson.has_stress(/datum/stressevent/nobel))
-//								FirstPerson.add_stress(/datum/stressevent/nobel)
 
 				if(!marriage)
 					A.burn()

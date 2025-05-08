@@ -7,7 +7,7 @@
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = null
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	baseturfs = /turf/open/floor/rogue/naturalstone
 	opacity = 1
 	density = TRUE
 	var/environment_type = "asteroid"
@@ -201,7 +201,7 @@
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
 	turf_type = /turf/open/floor/rogue/naturalstone
 	above_floor = /turf/open/floor/rogue/naturalstone
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	baseturfs = /turf/open/floor/rogue/naturalstone
 	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/salt = 5,/turf/closed/mineral/rogue/iron = 15,/turf/closed/mineral/rogue/copper = 15, /turf/closed/mineral/rogue/coal = 25)
 	mineralChance = 23
 

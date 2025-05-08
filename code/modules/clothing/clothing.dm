@@ -62,6 +62,11 @@
 	var/immune_to_genderswap = FALSE
 	var/armor_class = ARMOR_CLASS_NONE
 
+	var/bell = FALSE
+	var/do_sound_bell = FALSE
+	var/do_sound_chain = FALSE
+	var/do_sound_plate = FALSE
+
 	sellprice = 1
 
 /obj/item
@@ -360,17 +365,6 @@
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
 		update_clothes_damaged_state(TRUE)
-	var/broken = FALSE
-	var/list/armorlist = armor.getList()
-	for(var/key in armorlist)
-		if(armorlist[key] > 0)
-			broken = TRUE
-			break
-	if(broken)
-		armor = armor.detachArmor(armor) // Unset everything!
-		if(ismob(loc))
-			var/mob/M = loc
-			to_chat(M, "ARMOR BROKEN...!")
 	..()
 
 /obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)

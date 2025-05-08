@@ -110,6 +110,10 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather/rope
 			beltl = /obj/item/rogueweapon/huntingknife
@@ -120,7 +124,7 @@
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/tribal
-			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1)
+			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("speed", 1)
 			H.change_stat("intelligence", 2)

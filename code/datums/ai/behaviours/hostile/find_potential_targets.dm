@@ -74,7 +74,9 @@
 	. = ..()
 	if (succeeded)
 		controller.CancelActions()
-		controller.pawn.icon_state = "mimicopen"
+		var/mob/living/simple_animal/hostile/basic_mob = controller.pawn
+		if(!basic_mob.stat) // if the mimic's not dead
+			basic_mob.Aggro() // wake up the mimic and update their icon
 
 
 /datum/ai_behavior/find_potential_targets/mole
