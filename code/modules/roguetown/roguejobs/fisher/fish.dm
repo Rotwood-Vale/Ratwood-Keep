@@ -21,7 +21,15 @@
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
+	var/adjusted = FALSE
+	if(istype(loc, /turf/open/water/sea/thermalwater))
+		adjusted = TRUE
+
+	var/list/rarities = adjusted
+		? list("gold" = 600, "ultra" = 600, "rare" = 600, "com" = 1)
+		: list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
+
+	var/rarity = pickweight(rarities)
 	icon_state = "[initial(icon_state)][rarity]"
 	switch(rarity)
 		if("gold")
@@ -35,6 +43,7 @@
 			name = "rare [initial(name)]"
 		if("com")
 			name = "common [initial(name)]"
+
 	if(!dead)
 		START_PROCESSING(SSobj, src)
 

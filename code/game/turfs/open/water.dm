@@ -389,19 +389,18 @@
 					continue // floating seelie, jumping, etc
 			A.ConveyorMove(dir)
 
-/turf/open/water/sea/thermalwater
+/turf/open/water/sea/thermalwater //heals u and has better chance to catch rare fish
 	name = "healing hot spring"
 	desc = "A warm spring with gentle ripples. Standing here soothes your body."
 	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "together"
-	water_color = "#44aadd"
+	water_color = "#23b9df"
 	water_level = 2
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water
 	var/heal_interval = 20 SECONDS
 	var/heal_amount = 10
 	var/last_heal = 0
-	var/hotspring_bonus = 100 // 100% bonus to rare+ fish
 
 /turf/open/water/sea/thermalwater/Initialize()
 	. = ..()

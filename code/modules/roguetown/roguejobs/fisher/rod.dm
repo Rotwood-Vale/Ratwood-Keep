@@ -102,13 +102,10 @@
 		update_icon()
 		return
 
-	var/caught_thing
-	if(istype(target, /turf/open/water/sea/thermalwater))
-		caught_thing = apply_hotspring_bonus(target)
-	else
-		caught_thing = pickweight(baited.fishloot)
-
+	var/caught_thing = pickweight(baited.fishloot)
 	new caught_thing(current_fisherman.loc)
+	amt2raise = current_fisherman.STAINT * 2
+	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
 	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
@@ -147,25 +144,3 @@
 				return
 			. = ..()
 
-/obj/item/fishingrod/proc/apply_hotspring_bonus(turf/water_tile)
-	if(!baited || !baited.fishloot)
-		return
-
-	var/list/rare_choices = list()
-	var/list/weighted_all = baited.fishloot.Copy() 
-	var/hotspring_bonus = 0
-
-	if(istype(water_tile, /turf/open/water/sea/thermalwater))
-		var/turf/open/water/sea/thermalwater/spring = water_tile
-		hotspring_bonus = spring.hotspring_bonus
-
-	for(var/type in baited.fishloot)
-		var/name_str = "[initial(type).name]"
-		if(findtext(name_str, "rare") || findtext(name_str, "legendary") || findtext(name_str, "ultra"))
-			if(prob(hotspring_bonus)) 
-				rare_choices += type
-
-	if(length(rare_choices))
-		return pick(rare_choices)
-
-	return pickweight(weighted_all)
