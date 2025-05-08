@@ -343,38 +343,33 @@
 			else
 				return FALSE
 
-/mob/proc/do_parry(obj/item/W, parrydrain as num, mob/living/user)
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(H.stamina_add(parrydrain))
-			if(W)
-				playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
-			if(istype(rmb_intent, /datum/rmb_intent/riposte))
-				src.visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [W]!"))
-			else
-				src.visible_message(span_boldwarning("<b>[src]</b> parries [user] with [W]!"))
-			return TRUE
-		else
-			to_chat(src, span_warning("I'm too tired to parry!"))
-			return FALSE //crush through
+/mob/living/carbon/human/do_parry(obj/item/used_weapon, parrydrain as num, mob/living/user)
+	if(!stamina_add(parrydrain))
+		to_chat(src, span_warning("I'm too tired to parry!"))
+		return FALSE //crush through
+	..() // play the sound
+	if(istype(rmb_intent, /datum/rmb_intent/riposte))
+		visible_message(span_boldwarning("<b>[src]</b> ripostes [user] with [used_weapon]!"))
 	else
-		if(W)
-			playsound(get_turf(src), pick(W.parrysound), 100, FALSE)
-		return TRUE
+		visible_message(span_boldwarning("<b>[src]</b> parries [user] with [used_weapon]!"))
+	return TRUE
+
+/mob/proc/do_parry(obj/item/used_weapon, parrydrain as num, mob/living/user)
+	if(used_weapon)
+		playsound(get_turf(src), pick(used_weapon.parrysound), 100, FALSE)
+	return TRUE
 
 /mob/proc/do_unarmed_parry(parrydrain as num, mob/living/user)
-	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
-		if(H.stamina_add(parrydrain))
-			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
-			src.visible_message(span_warning("<b>[src]</b> parries [user]!"))
-			return TRUE
-		else
-			to_chat(src, span_boldwarning("I'm too tired to parry!"))
-			return FALSE
-	else
-		playsound(get_turf(src), pick(parry_sound), 100, FALSE)
-		return TRUE
+	playsound(get_turf(src), pick(parry_sound), 100, FALSE)
+	return TRUE
+
+/mob/living/carbon/human/do_unarmed_parry(parrydrain as num, mob/living/user)
+	if(!stamina_add(parrydrain))
+		to_chat(src, span_boldwarning("I'm too tired to parry!"))
+		return FALSE
+	..() // play the sound
+	visible_message(span_warning("<b>[src]</b> parries [user]!"))
+	return TRUE
 
 /mob/living/proc/do_dodge(mob/living/user, turf/turfy)
 	if(dodgecd)
