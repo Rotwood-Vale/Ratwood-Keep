@@ -143,7 +143,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 		H.change_stat("fortune", 1) // Xylix blessed you with great luck bro trust me
 		H.change_stat("perception", 3)
-		H.change_stat("Speed", 3)
+		H.change_stat("speed", 3)
 		H.change_stat("constitution", -2)
 		H.change_stat("strength", -1)
 		H.change_stat("endurance", -1)
