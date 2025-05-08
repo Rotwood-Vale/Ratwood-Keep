@@ -3,6 +3,8 @@
 /datum/ritual/zizo/allseeingeye
 	name = "All-seeing Eye"
 	circle = "Transmutation"
+	difficulty = 2
+	favor_cost = 250
 	center_requirement = /obj/item/organ/eyes
 
 	function = /proc/allseeingeye
@@ -10,9 +12,12 @@
 /proc/allseeingeye(mob/user, turf/C)
 	new /obj/item/scrying/eye(C)
 
+
 /datum/ritual/zizo/criminalstool
 	name = "Criminal's Tool"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 20
 	center_requirement = /obj/item/natural/cloth
 
 	function = /proc/criminalstool
@@ -30,6 +35,8 @@
 /datum/ritual/zizo/propaganda
 	name = "Propaganda"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 50
 	center_requirement = /obj/item/natural/worms/leech
 	n_req = /obj/item/paper
 	s_req = /obj/item/natural/feather
@@ -43,6 +50,8 @@
 /datum/ritual/zizo/falseidol
 	name = "False Idol"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 50
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/paper
 	s_req = /obj/item/natural/feather
@@ -76,6 +85,8 @@
 
 /datum/ritual/zizo/invademind
 	name = "Invade Mind"
+	difficulty = 2
+	favor_cost = 50
 	circle = "Transmutation"
 	center_requirement = /obj/item/natural/feather
 
@@ -95,9 +106,11 @@
 		break
 
 /datum/ritual/zizo/summongear
-	name = "Summon Gear"
+	name = "Summon Robes"
 	circle = "Transmutation"
-	center_requirement = /obj/item/ingot/steel
+	difficulty = 1
+	favor_cost = 50
+	center_requirement = /obj/item/natural/hide
 
 	function = /proc/summongear
 
@@ -111,12 +124,5 @@
 
 	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
-
-	new /obj/item/rogueweapon/sword(C)
-	new /obj/item/rogueweapon/huntingknife(C)
-	new /obj/item/rogueweapon/huntingknife(C)
-
-	new /obj/item/rope/chain(C)
-	new /obj/item/rope/chain(C)
 
 	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)

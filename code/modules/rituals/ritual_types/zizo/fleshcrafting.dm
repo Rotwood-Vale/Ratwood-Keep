@@ -1,10 +1,16 @@
 // FLESH CRAFTING
 
+
 /datum/ritual/zizo/fleshmend
 	name = "Fleshmend"
 	circle = "Fleshcrafting"
 	center_requirement = /mob/living/carbon/human
 	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+	e_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+	w_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+	s_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
+	difficulty = 4
+	favor_cost = 150
 
 	function = /proc/fleshmend
 
@@ -19,7 +25,6 @@
 	name = "Saliendo Pedes"
 	circle = "Fleshcrafting"
 	center_requirement = /mob/living/carbon/human
-
 	w_req = /obj/item/bodypart/l_leg
 	e_req = /obj/item/bodypart/r_leg
 	n_req = /obj/item/reagent_containers/food/snacks/rogue/meat
@@ -57,6 +62,8 @@
 /datum/ritual/zizo/nopain
 	name = "Painless Battle"
 	circle = "Fleshcrafting"
+	difficulty = 4
+	favor_cost = 250
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/organ/heart
@@ -71,15 +78,13 @@
 		to_chat(H.mind, span_notice("I no longer feel pain, but it has come at a terrible cost."))
 		H.change_stat("strength", -2)
 		H.change_stat("constitution", -2)
-		if(H.gender == FEMALE)
-			H.change_stat("constitution", -1)
-		else
-			ADD_TRAIT(user, TRAIT_LIMPDICK, TRAIT_GENERIC)
 		break
 
 /datum/ritual/zizo/fleshform
 	name = "Stronger Form"
 	circle = "Fleshcrafting"
+	difficulty = 4
+	favor_cost = 250
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/bodypart/l_arm
@@ -104,6 +109,8 @@
 /datum/ritual/zizo/gutted
 	name = "Gutted Fish"
 	circle = "Fleshcrafting"
+	difficulty = 1
+	favor_cost = 10
 	center_requirement = /mob/living/carbon/human // One to be gutted.human
 
 	function = /proc/guttedlikeafish
@@ -126,6 +133,8 @@
 /datum/ritual/zizo/ascend
 	name = "ASCEND!"
 	circle = "Fleshcrafting"
+	difficulty = 5
+	favor_cost = 1000
 	center_requirement = /mob/living/carbon/human // cult leader
 
 	n_req = /mob/living/carbon/human // the ruler

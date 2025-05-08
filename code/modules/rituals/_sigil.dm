@@ -48,6 +48,9 @@
 		var/datum/ritual/G = path
 		rituals[G.name] = G
 
+
+	
+
 /obj/effect/decal/cleanable/sigil/proc/consume_ingredients(datum/ritual/R)
 
 	for(var/atom/A in get_step(src, NORTH))
@@ -80,15 +83,20 @@
 	if(icon_state != "center") // fucking awful but it has to be this way
 		return
 
+	var/list/available_names = list()
 	for(var/G in rituals)
 		var/datum/ritual/path = rituals[G]
 		if(path.circle == sigil_type)
-			rituals |= path.name
+			available_names += path.name
 
-	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
-	var/datum/ritual/pickritual
+	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in available_names
+	var/datum/ritual/pickritual = rituals[ritualnameinput]
 
 	pickritual = rituals[ritualnameinput]
+	
+	if (pickritual.difficulty > user.mind.get_skill_level(/datum/skill/magic/unholy))
+		to_chat(user.mind, span_danger("\"My skill is not great enough for this.\""))
+		return
 
 	var/cardinal_success = FALSE
 	var/center_success = FALSE
@@ -162,6 +170,15 @@
 		to_chat(user.mind, span_danger("\"The ritual fails...\""))
 		user.electrocute_act(10, src)
 		return
+
+	if (pickritual.favor_cost > user.mind.zizofavor)
+		if(badritualpunishment)
+			return
+		to_chat(user.mind, span_danger("\"Zizo favors me not...\""))
+		user.electrocute_act(10, src)
+		return
+
+
 
 	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)

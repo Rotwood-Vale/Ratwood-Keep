@@ -1,6 +1,26 @@
+
+/datum/ritual/zizo/bonemastery //Increases A Necromancers Skeleton Cap by 1
+	name = "Ritual of Bone Mastery"
+	circle = "Servantry"
+	difficulty = 3
+	favor_cost = 250
+	center_requirement = /mob/living/carbon/human
+
+	function = /proc/bonemastery
+
+/proc/bonemastery(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if (user.mind.get_skill_level(/datum/skill/magic/unholy)> H.mind.bonemax)
+			H.mind.bonemax += 1
+		else
+			to_chat(user.mind, span_danger("\"I am not powerful enough to grant them a closer connection to Zizo...\""))
+			to_chat(H.mind, span_danger("\"That cultist is not powerful enough to grant me a closer connection to Zizo...\""))
+
 /datum/ritual/zizo/convert
 	name = "Convert"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 150
 	center_requirement = /mob/living/carbon/human
 
 	function = /proc/convert
@@ -39,9 +59,12 @@
 				sleep(2 SECONDS)
 				H.anchored = FALSE
 
+
 /datum/ritual/zizo/skeletaljaunt
 	name = "Skeletal Jaunt"
 	circle = "Servantry"
+	difficulty = 3
+	favor_cost = 150
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/organ/heart
@@ -116,6 +139,8 @@
 /datum/ritual/zizo/thecall
 	name = "The Call"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 250
 	center_requirement = /obj/item/bedsheet/rogue
 
 	w_req = /obj/item/bodypart/l_leg
@@ -151,6 +176,8 @@
 /datum/ritual/zizo/falseappearance
 	name = "Falsified Appearance"
 	circle = "Servantry"
+	difficulty = 2
+	favor_cost = 100
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/bodypart/head
@@ -224,6 +251,8 @@
 /datum/ritual/zizo/heartache
 	name = "Heartache"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 100
 	center_requirement = /obj/item/organ/heart
 
 	n_req = /obj/item/natural/worms/leech
