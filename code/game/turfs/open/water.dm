@@ -389,24 +389,24 @@
 					continue // floating seelie, jumping, etc
 			A.ConveyorMove(dir)
 
-/turf/open/water/sea/thermalwater/healinghotspot
+/turf/open/water/sea/thermalwater
 	name = "healing hot spring"
 	desc = "A warm spring with gentle ripples. Standing here soothes your body."
 	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "together"
 	water_color = "#44aadd"
 	water_level = 2
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water
-	icon_state = "rockw2"
-	var/heal_interval = 10 SECONDS
-	var/heal_amount = 5
+	var/heal_interval = 20 SECONDS
+	var/heal_amount = 10
 	var/last_heal = 0
 
-/turf/open/water/sea/thermalwater/healinghotspot/Initialize()
+/turf/open/water/sea/thermalwater/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/turf/open/water/sea/thermalwater/healinghotspot/process()
+/turf/open/water/sea/thermalwater/process()
 	if(world.time < last_heal + heal_interval)
 		return
 
@@ -420,7 +420,7 @@
 		if(M.getToxLoss())
 			M.adjustToxLoss(-heal_amount)
 		if(M.getOxyLoss())
-			M.adjustOxyLoss(-heal_amount)
+			M.adjustOxyLoss(-heal_amount*2)
 
 		M.visible_message(span_notice("[M] looks a bit better after soaking in the spring."))
 

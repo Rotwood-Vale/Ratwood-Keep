@@ -102,10 +102,11 @@
 		update_icon()
 		return
 
-	var/caught_thing = pickweight(baited.fishloot)
-	new caught_thing(current_fisherman.loc)
-	amt2raise = current_fisherman.STAINT * 2
-	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
+	var/caught_thing
+	if(istype(target, /turf/open/water/sea/thermalwater))
+		caught_thing = apply_hotspring_bonus(target)
+	else
+		caught_thing = pickweight(baited.fishloot)
 
 	QDEL_NULL(baited)
 	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
@@ -144,18 +145,21 @@
 				return
 			. = ..()
 
-/obj/item/fishingrod/proc/apply_hotspring_bonus()
-	if(!baited) return
-	if(prob(100))
-		var/list/rare_choices = list()
-		for(var/type in baited.fishloot)
-			if(initial(type) in list(
-				/obj/item/reagent_containers/food/snacks/fish/clownfish,
-				/obj/item/reagent_containers/food/snacks/fish/angler,
-				/obj/item/reagent_containers/food/snacks/fish/lobster,
-				/obj/item/reagent_containers/food/snacks/fish/oyster
-			))
-				rare_choices += type
-		if(length(rare_choices))
-			return pick(rare_choices)
+/obj/item/fishingrod/proc/apply_hotspring_bonus(turf/water_tile)
+	if(!baited)
+		return
+
+	var/list/rare_choices = list()
+	for(var/type in baited.fishloot)
+		var/name_str = "[initial(type).name]"
+		if(findtext(name_str, "rare") || findtext(name_str, "legendary") || findtext(name_str, "ultra"))
+			rare_choices += type
+
+	var/bonus = 0
+	if(istype(water_tile, /turf/open/water/sea/thermalwater))
+		bonus = 100 // 1 = 1% yes i am retarded
+
+	if(length(rare_choices) && prob(bonus))
+		return pick(rare_choices)
+
 	return pickweight(baited.fishloot)

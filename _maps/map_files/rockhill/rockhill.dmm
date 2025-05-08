@@ -24704,6 +24704,9 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/manor)
+"mUu" = (
+/turf/open/water/sea/thermalwater,
+/area/rogue/indoors/town/church/chapel)
 "mUI" = (
 /obj/item/grown/log/tree,
 /turf/open/floor/rogue/naturalstone,
@@ -45200,6 +45203,8 @@
 /obj/effect/landmark/start/hospitaller,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
+"xPt" = (
+/area/rogue/indoors/town/church/chapel)
 "xPD" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -255093,7 +255098,7 @@ sYx
 odi
 wLx
 sYx
-odi
+sYx
 sYx
 sYx
 wLx
@@ -255525,9 +255530,9 @@ sYx
 sYx
 odi
 sYx
-odi
 sYx
-odi
+sYx
+sYx
 sYx
 odi
 odi
@@ -255959,7 +255964,7 @@ sYx
 sYx
 sYx
 sYx
-odi
+sYx
 sYx
 odi
 uRH
@@ -468191,9 +468196,9 @@ dGr
 dGr
 ntK
 ujc
-swm
+xPt
 nhW
-swm
+mUu
 bsv
 dGr
 ntK
@@ -468623,9 +468628,9 @@ dBr
 tCM
 bUY
 ijH
-swm
+xPt
 nhW
-swm
+mUu
 ygx
 fYb
 msg
@@ -469055,9 +469060,9 @@ xKS
 tCM
 bUY
 ijH
-swm
+xPt
 nhW
-swm
+mUu
 cJb
 bUY
 msg
