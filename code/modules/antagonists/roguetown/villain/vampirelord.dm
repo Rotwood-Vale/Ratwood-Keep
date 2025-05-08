@@ -60,7 +60,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	C.vampires |= owner
 	. = ..()
 	owner.special_role = name
-	ADD_TRAIT(owner.current, TRAIT_CRITICAL_WEAKNESS, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, "[type]")
@@ -69,7 +68,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_NOSLEEP, "[type]")
-	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_HEAVYARMOR, "[type]")
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
@@ -693,11 +691,21 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(do_after(user, 100))
 					lord.handle_vitae(-5000)
 					new /obj/item/clothing/under/roguetown/platelegs/vampire(user.loc)
-					new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire(user.loc)
+					new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/vampire(user.loc)
 					new /obj/item/clothing/suit/roguetown/armor/plate/vampire(user.loc)
 					new /obj/item/clothing/shoes/roguetown/armor/steel/vampire(user.loc)
-					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
-					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
+					new /obj/item/clothing/head/roguetown/helmet/heavy/captain/vampire(user.loc)
+					new /obj/item/clothing/gloves/roguetown/plate/blk/vampire(user.loc)
+					new /obj/item/clothing/neck/roguetown/gorget(user.loc)
+				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
+		if("Shape Sword")
+			if(alert(user, "Craft a new Zizo blade? Cost:2500","","Yes","No") == "Yes")
+				if(!check_withdraw(-2500))
+					to_chat(user, "I don't have enough vitae!")
+					return
+				if(do_after(user, 100))
+					lord.handle_vitae(-2500)
+					new /obj/item/rogueweapon/greatsword/zizo(user.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /obj/structure/vampire/bloodpool/proc/update_pool(change)
@@ -814,16 +822,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/choice = input(user,"What to do?", "ROGUETOWN") as anything in useoptions|null
 		switch(choice)
 			if("Create Death Knight")
-				if(alert(user, "Create a Death Knight? Cost:10000","","Yes","No") == "Yes")
+				if(alert(user, "Create a Death Knight? Cost:900000","","Yes","No") == "Yes")
 					if(C.deathknights.len >= 3)
 						to_chat(user, "You cannot summon any more death knights.")
 						return
-					if(!lord.mypool.check_withdraw(-10000))
+					if(!lord.mypool.check_withdraw(-900000))
 						to_chat(user, "I don't have enough vitae!")
 						return
 					if(do_after(user, 100))
 						to_chat(user, "I have summoned a knight from the underworld. I need only wait for them to materialize.")
-						lord.handle_vitae(-10000)
+						lord.handle_vitae(-900000)
 						C.deathknightspawn = TRUE
 						for(var/mob/dead/observer/D in GLOB.player_list)
 							D.death_knight_spawn()
@@ -1111,7 +1119,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/current = 8000
 	var/nextlevel = VAMP_LEVEL_ONE
 	var/debug = FALSE
-	var/list/useoptions = list("Grow Power", "Shape Amulet", "Shape Armor")
+	var/list/useoptions = list("Grow Power", "Shape Amulet", "Shape Armor", "Shape Sword")
 
 /obj/structure/vampire/scryingorb // Method of spying on the town
 	name = "Eye of Night"
