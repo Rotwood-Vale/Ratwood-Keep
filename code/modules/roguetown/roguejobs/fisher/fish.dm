@@ -15,6 +15,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	w_class = WEIGHT_CLASS_SMALL
+	var/turf/fished_from
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
@@ -23,11 +24,9 @@
 	. = ..()
 
 	var/list/rarities
-	if(istype(loc, /turf/open/water/sea/thermalwater))
-		// sin
-		rarities = list("gold" = 600, "ultra" = 600, "rare" = 600, "com" = 1)
+	if(istype(fished_from, /turf/open/water/sea/thermalwater))
+		rarities = list("gold" = 3, "ultra" = 60, "rare" = 100, "com" = 800)
 	else
-		// sobaki
 		rarities = list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
 
 	var/rarity = pickweight(rarities)
@@ -79,7 +78,6 @@
 //		icon_state = "[icon_state]"
 		STOP_PROCESSING(SSobj, src)
 		return 1
-
 
 
 /obj/item/reagent_containers/food/snacks/fish/carp
