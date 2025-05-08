@@ -13,6 +13,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 
 	ambushable = 1
+	defprob = 0
 
 	var/footstep_type = FOOTSTEP_MOB_HUMAN
 
