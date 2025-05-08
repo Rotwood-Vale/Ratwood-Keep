@@ -398,8 +398,8 @@
 	water_level = 2
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water
-	var/heal_interval = 20 SECONDS
-	var/heal_amount = 10
+	var/heal_interval = 10 SECONDS
+	var/heal_amount = 20
 	var/last_heal = 0
 
 /turf/open/water/sea/thermalwater/Initialize()
