@@ -401,6 +401,7 @@
 	var/heal_interval = 20 SECONDS
 	var/heal_amount = 10
 	var/last_heal = 0
+	var/hotspring_bonus = 100 // 100% bonus to rare+ fish
 
 /turf/open/water/sea/thermalwater/Initialize()
 	. = ..()

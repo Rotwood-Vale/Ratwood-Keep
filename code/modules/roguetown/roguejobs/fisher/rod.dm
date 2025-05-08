@@ -108,6 +108,8 @@
 	else
 		caught_thing = pickweight(baited.fishloot)
 
+	new caught_thing(current_fisherman.loc) 
+
 	QDEL_NULL(baited)
 	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
 	update_icon()
@@ -155,11 +157,9 @@
 		if(findtext(name_str, "rare") || findtext(name_str, "legendary") || findtext(name_str, "ultra"))
 			rare_choices += type
 
-	var/bonus = 0
 	if(istype(water_tile, /turf/open/water/sea/thermalwater))
-		bonus = 100 // 1 = 1% yes i am retarded
-
-	if(length(rare_choices) && prob(bonus))
-		return pick(rare_choices)
+		var/turf/open/water/sea/thermalwater/thermal = water_tile
+		if(length(rare_choices) && prob(thermal.hotspring_bonus))
+			return pick(rare_choices)
 
 	return pickweight(baited.fishloot)

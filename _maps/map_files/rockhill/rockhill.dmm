@@ -45203,8 +45203,6 @@
 /obj/effect/landmark/start/hospitaller,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
-"xPt" = (
-/area/rogue/indoors/town/church/chapel)
 "xPD" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -467764,9 +467762,9 @@ dGr
 ntK
 suK
 vZQ
-swm
+mUu
 nhW
-swm
+mUu
 gEH
 suK
 ntK
@@ -468196,7 +468194,7 @@ dGr
 dGr
 ntK
 ujc
-xPt
+mUu
 nhW
 mUu
 bsv
@@ -468628,7 +468626,7 @@ dBr
 tCM
 bUY
 ijH
-xPt
+mUu
 nhW
 mUu
 ygx
@@ -469060,7 +469058,7 @@ xKS
 tCM
 bUY
 ijH
-xPt
+mUu
 nhW
 mUu
 cJb
