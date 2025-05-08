@@ -229,34 +229,41 @@
 /datum/supply_pack/rogue/tools/impactgrenadegas
 	name = "Impact grenade gas"
 	cost = 50
-	contains = list(/obj/item/impact_grenade/poison_gas,
-					/obj/item/impact_grenade/poison_gas,
+	contains = list(/obj/item/impact_grenade/smoke/poison_gas,
+					/obj/item/impact_grenade/smoke/poison_gas,
 					)
 
 /datum/supply_pack/rogue/tools/impactgrenadegasheal
 	name = "Impact grenade healing gas"
 	cost = 50
-	contains = list(/obj/item/impact_grenade/healing_gas,
-					/obj/item/impact_grenade/healing_gas,
+	contains = list(/obj/item/impact_grenade/smoke/healing_gas,
+					/obj/item/impact_grenade/smoke/healing_gas,
 					)
 
 /datum/supply_pack/rogue/tools/impactgrenadegasfire
 	name = "Impact grenade fire gas"
 	cost = 50
-	contains = list(/obj/item/impact_grenade/fire_gas,
-					/obj/item/impact_grenade/fire_gas,
+	contains = list(/obj/item/impact_grenade/smoke/fire_gas,
+					/obj/item/impact_grenade/smoke/fire_gas,
 					)
 
 /datum/supply_pack/rogue/tools/impactgrenadegasblind
 	name = "Impact grenade blind gas"
 	cost = 50
-	contains = list(/obj/item/impact_grenade/blind_gas,
-					/obj/item/impact_grenade/blind_gas,
+	contains = list(/obj/item/impact_grenade/smoke/blind_gas,
+					/obj/item/impact_grenade/smoke/blind_gas,
 					)				
 
 /datum/supply_pack/rogue/tools/impactgrenadegasmute
 	name = "Impact grenade mute gas"
 	cost = 50
-	contains = list(/obj/item/impact_grenade/mute_gas,
-					/obj/item/impact_grenade/mute_gas,
+	contains = list(/obj/item/impact_grenade/smoke/mute_gas,
+					/obj/item/impact_grenade/smoke/mute_gas,
 					)								
+
+/datum/supply_pack/rogue/tools/impactgrenadesmoke
+	name = "Impact grenade smoke"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke,
+					/obj/item/impact_grenade/smoke,
+					)			
