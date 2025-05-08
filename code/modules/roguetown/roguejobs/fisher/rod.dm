@@ -143,3 +143,19 @@
 				update_icon()
 				return
 			. = ..()
+
+/obj/item/fishingrod/proc/apply_hotspring_bonus()
+	if(!baited) return
+	if(prob(100))
+		var/list/rare_choices = list()
+		for(var/type in baited.fishloot)
+			if(initial(type) in list(
+				/obj/item/reagent_containers/food/snacks/fish/clownfish,
+				/obj/item/reagent_containers/food/snacks/fish/angler,
+				/obj/item/reagent_containers/food/snacks/fish/lobster,
+				/obj/item/reagent_containers/food/snacks/fish/oyster
+			))
+				rare_choices += type
+		if(length(rare_choices))
+			return pick(rare_choices)
+	return pickweight(baited.fishloot)
