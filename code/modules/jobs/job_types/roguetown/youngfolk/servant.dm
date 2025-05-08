@@ -130,7 +130,7 @@
 	Now you must find your way back into the high society, as well as hide your shame of lowlife work."
 	outfit = /datum/outfit/job/roguetown/servant/bankrupt
 	category_tags = list(CTAG_SERVANT)
-	allowed_races = RACES_SHUNNED_UP
+	allowed_races = RACES_TOLERATED_UP
 	maximum_possible_slots = 1
 
 /datum/outfit/job/roguetown/servant/bankrupt/pre_equip(mob/living/carbon/human/H)
