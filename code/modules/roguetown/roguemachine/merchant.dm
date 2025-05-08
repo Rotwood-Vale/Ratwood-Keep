@@ -139,8 +139,8 @@
 
 /obj/structure/roguemachine/merchantvend/attack_right(mob/user)
 	if(user.mind.assigned_role == "Shophand")
-		if(hidden_key_present)		
-			for(var/mob/living/carbon/human/boss in GLOB.human_list)		
+		if(hidden_key_present)
+			for(var/mob/living/carbon/human/boss in GLOB.human_list)
 				if(boss.mind)
 					if(boss.mind.assigned_role == "Merchant")
 						if(boss in GLOB.alive_mob_list)
@@ -148,11 +148,11 @@
 								//to_chat(user, span_warning("MERCHANT FOUND ALIVE BUT DISCONNECTED"))
 							else
 								//to_chat(user, span_warning("The hidden compartment is sealed tightly."))
-								return		
+								return
 			var/alert = alert(user, "Thankfully, the hidden compartment with the spare key is still untouched.", "Spare key", "Take it", "Leave it")
 			if(alert != "Take it")
 				return
-			else		
+			else
 				var/obj/item/key/key
 				key = new /obj/item/key/merchant(get_turf(user))
 				user.put_in_hands(key)
@@ -340,7 +340,7 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			var/cost = PA.cost 
+			var/cost = PA.cost
 			var/costy = cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
 				costy = round(costy + (SStreasury.tax_value * cost))
@@ -376,7 +376,7 @@
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
-// BOG VERSION 
+// BOG VERSION
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
@@ -478,12 +478,14 @@
 	var/fixed_markup = 3.0
 	var/upgrade_flags
 	var/current_cat = "1"
+	var/budget = 0
 
 /obj/structure/roguemachine/independent_vendor/attack_hand(mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 
 	var/contents = "<center>INDEPENDENT VENDOR<br><br>"
+	contents += "Funds: [budget]<br><br>"
 
 	if(current_cat == "1")
 		contents += "<a href='?src=[REF(src)];changecat=Apparel'>Apparel</a><br>"
@@ -500,11 +502,21 @@
 			if(PA.group != current_cat) continue
 			var/cost = round(PA.cost * fixed_markup)
 			contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
-		contents += "<br><a href='?src=[REF(src)];changecat=1'>[RETURN]</a><br>"
+		contents += "<br><a href='?src=[REF(src)];changecat=1'>Return</a><br>"
 
 	var/datum/browser/popup = new(user, "INDVENDOR", "", 360, 400)
 	popup.set_content(contents)
 	popup.open()
+
+/obj/structure/roguemachine/independent_vendor/attackby(obj/item/P, mob/user)
+	if(istype(P, /obj/item/roguecoin))
+		var/obj/item/roguecoin/C = P
+		budget += C.get_real_price()
+		qdel(C)
+		update_icon()
+		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+		return attack_hand(user)
+	..()
 
 /obj/structure/roguemachine/independent_vendor/Topic(href, href_list)
 	. = ..()
@@ -521,27 +533,21 @@
 		var/datum/supply_pack/PA = new path
 		var/cost = round(PA.cost * fixed_markup)
 
-		var/obj/item/coin
-		for(var/obj/item/C in user.contents)
-			if(istype(C, /obj/item/roguecoin))
-				if(C.get_real_price() >= cost)
-					coin = C
-					break
-		if(!coin)
-			to_chat(user, span_warning("You don't have a coin worth [cost]."))
+		if(budget < cost)
+			to_chat(user, span_warning("Not enough funds!"))
 			qdel(PA)
 			return
 
-		coin.get_real_price() -= cost
-		if(coin.get_real_price() <= 0)
-			qdel(coin)
+		budget -= cost
 
 		for(var/type in PA.contains)
 			var/obj/item/I = new type(get_turf(src))
 			user.put_in_hands(I)
 		qdel(PA)
+
 		playsound(src, 'sound/misc/beep.ogg', 100, FALSE, -1)
 		to_chat(user, span_notice("Purchased [PA.name]."))
+		return
 
 	if(href_list["secrets"])
 		var/select = input(user, "Buy License") as null|anything in list(
@@ -550,27 +556,33 @@
 			(upgrade_flags & UPGRADE_FOOD ? null : "Pantry License (100)"),
 			(upgrade_flags & UPGRADE_WARDROBE ? null : "Wardrobe License (100)")
 		)
-		if(!select) return
-
-		var/cost = 0
-		if(select == "Armor License (300)") cost = 300; upgrade_flags |= UPGRADE_ARMOR
-		else if(select == "Weapons License (220)") cost = 220; upgrade_flags |= UPGRADE_WEAPONS
-		else if(select == "Pantry License (100)") cost = 100; upgrade_flags |= UPGRADE_FOOD
-		else if(select == "Wardrobe License (100)") cost = 100; upgrade_flags |= UPGRADE_WARDROBE
-
-		var/obj/item/coin
-		for(var/obj/item/C in user.contents)
-			if(istype(C, /obj/item/roguecoin))
-				if(C.get_real_price() >= cost)
-					coin = C
-					break
-		if(!coin)
-			to_chat(user, span_warning("You don't have a coin worth [cost]."))
+		if(!select)
 			return
 
-		coin.get_real_price() -= cost
-		if(coin.get_real_price() <= 0)
-			qdel(coin)
+		var/cost = 0
+		if(select == "Armor License (300)") {
+			cost = 300
+			upgrade_flags |= UPGRADE_ARMOR
+		}
+		else if(select == "Weapons License (220)") {
+			cost = 220
+			upgrade_flags |= UPGRADE_WEAPONS
+		}
+		else if(select == "Pantry License (100)") {
+			cost = 100
+			upgrade_flags |= UPGRADE_FOOD
+		}
+		else if(select == "Wardrobe License (100)") {
+			cost = 100
+			upgrade_flags |= UPGRADE_WARDROBE
+		}
 
+		if(budget < cost) {
+			to_chat(user, span_warning("Insufficient funds."))
+			return
+		}
+
+		budget -= cost
 		playsound(src, 'sound/misc/beep.ogg', 100, FALSE, -1)
 		to_chat(user, span_notice("License purchased: [select]"))
+		return
