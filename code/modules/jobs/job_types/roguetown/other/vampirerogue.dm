@@ -1,12 +1,11 @@
 /datum/subclass/vampirerogue
 	name = "Rogue"
 	tutorial = "A life of crime has led you to wander from city to city, always looking for an opportunity to \
-				make a quick buck at someone else's expense. The ever spreading rot has pushed you towards a new haven, \
-				where illicit profit is sure to be made."
+				make a quick buck at someone else's expense. That is, until your master found you. Now you serve the vampire lord whom holds your soul."
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	category_tags = list(CTAG_REFUGEE)
+	category_tags = list(CTAG_ANTAG)
 
 	cmode_music = 'sound/music/combat_duelist.ogg'
 

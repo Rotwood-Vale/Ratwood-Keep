@@ -4,7 +4,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
-	category_tags = list(CTAG_REFUGEE)
+	category_tags = list(CTAG_ANTAG)
 
 	maximum_possible_slots = 5
 
