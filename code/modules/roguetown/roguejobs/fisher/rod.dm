@@ -108,7 +108,7 @@
 	else
 		caught_thing = pickweight(baited.fishloot)
 
-	new caught_thing(current_fisherman.loc) 
+	new caught_thing(current_fisherman.loc)
 
 	QDEL_NULL(baited)
 	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
@@ -148,18 +148,24 @@
 			. = ..()
 
 /obj/item/fishingrod/proc/apply_hotspring_bonus(turf/water_tile)
-	if(!baited)
+	if(!baited || !baited.fishloot)
 		return
 
 	var/list/rare_choices = list()
+	var/list/weighted_all = baited.fishloot.Copy() 
+	var/hotspring_bonus = 0
+
+	if(istype(water_tile, /turf/open/water/sea/thermalwater))
+		var/turf/open/water/sea/thermalwater/spring = water_tile
+		hotspring_bonus = spring.hotspring_bonus
+
 	for(var/type in baited.fishloot)
 		var/name_str = "[initial(type).name]"
 		if(findtext(name_str, "rare") || findtext(name_str, "legendary") || findtext(name_str, "ultra"))
-			rare_choices += type
+			if(prob(hotspring_bonus)) 
+				rare_choices += type
 
-	if(istype(water_tile, /turf/open/water/sea/thermalwater))
-		var/turf/open/water/sea/thermalwater/thermal = water_tile
-		if(length(rare_choices) && prob(thermal.hotspring_bonus))
-			return pick(rare_choices)
+	if(length(rare_choices))
+		return pick(rare_choices)
 
-	return pickweight(baited.fishloot)
+	return pickweight(weighted_all)
