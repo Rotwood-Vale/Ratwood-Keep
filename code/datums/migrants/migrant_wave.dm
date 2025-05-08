@@ -38,7 +38,6 @@
 /datum/migrant_wave/adventurer
 	name = "Adventure Party"
 	downgrade_wave = /datum/migrant_wave/adventurer_down_one
-	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/adventurer = 4,
 	)
@@ -47,7 +46,6 @@
 /datum/migrant_wave/adventurer_down_one
 	name = "Adventure Party"
 	downgrade_wave = /datum/migrant_wave/adventurer_down_two
-	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/adventurer = 3,
 	)
@@ -56,7 +54,6 @@
 /datum/migrant_wave/adventurer_down_two
 	name = "Adventure Party"
 	downgrade_wave = /datum/migrant_wave/adventurer_down_three
-	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/adventurer = 2,
 	)
@@ -64,7 +61,6 @@
 
 /datum/migrant_wave/adventurer_down_three
 	name = "Adventure Party"
-	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/adventurer = 1,
 	)
