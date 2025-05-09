@@ -285,6 +285,7 @@
 
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.STASTR = 8
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STASPD = 16
 	else
