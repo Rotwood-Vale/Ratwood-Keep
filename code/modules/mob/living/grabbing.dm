@@ -570,7 +570,7 @@
 				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")
 				addtimer(CALLBACK(user, .mob/living/carbon/human/proc/vampire_infect), 1 MINUTES) // I'll use this for succession later.
 			else 
-			to_chat(user, "<span class='warning'>I'm going to puke...</span>")
+				to_chat(user, "<span class='warning'>I'm going to puke...</span>")
 			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
 	else
 		if(user.mind)
