@@ -256,16 +256,16 @@
 			// both player and npc deadites can infect
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
+				if(caused_wound?.zombie_infect_attempt() && !existing_zomble && user.client)
 					user.mind.adjust_triumphs(1)
 
 	var/obj/item/grabbing/bite/B = new()
-	user.equip_to_slot_or_del(B, SLOT_MOUTH)
-	if(user.mouth == B)
+	if(user.equip_to_slot_or_del(B, SLOT_MOUTH))
 		var/used_limb = src.find_used_grab_limb(user, def_zone)
 		B.name = "[src]'s [parse_zone(used_limb)]"
 		var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
-		BP.grabbedby += B
+		LAZYADD(grabbedby, B)
+		LAZYADD(BP.grabbedby, B)
 		B.grabbed = src
 		B.grabbee = user
 		B.limb_grabbed = BP

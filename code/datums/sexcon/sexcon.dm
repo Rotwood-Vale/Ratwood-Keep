@@ -205,9 +205,9 @@
 		baotha_process(user, target) // Баотит даёт
 	else
 		baotha_process(target, user) // REDMOON ADD END - баотит принимает
+	target.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
 	after_ejaculation()
-	if(!oral)
-		after_intimate_climax()
+	after_intimate_climax()
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Ejaculated")
@@ -261,12 +261,14 @@
 			user.adjust_triumphs(3) // REDMOON EDIT - выставлено 3 триумфа, по желанию Смайли
 			to_chat(user, span_love("Our loving is a true TRIUMPH!"))
 			user.add_stress(/datum/stressevent/cumgood)
+			user.apply_status_effect(/datum/status_effect/buff/goodloving)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
 		if(!target.mob_timers["cumtri"])
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(3) // REDMOON EDIT - выставлено 3 триумфа, по желанию Смайли
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
-			user.add_stress(/datum/stressevent/cumgood)
+			target.add_stress(/datum/stressevent/cumgood)
+			target.apply_status_effect(/datum/status_effect/buff/goodloving)
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)

@@ -113,7 +113,7 @@
 	zombie.recalculate_stats() // REDMOON ADD - after_death_stats_fix
 
 	for(var/trait in GLOB.traits_deadite)
-		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+		REMOVE_TRAIT(zombie, trait, DEADITE_TRAIT)
 
 	zombie.remove_client_colour(/datum/client_colour/monochrome)
 
