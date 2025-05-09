@@ -319,6 +319,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_TOWNER			"CAT_TOWNER"		// Villager class - Villagers can use it
 #define CTAG_MERCENARY		"CAT_MERCENARY"		// Mercs
 #define CTAG_HENCH			"CAT_HENCH"			// Whitevein Guards
+#define CTAG_WENCH			"CAT_WENCH"			// Whitevein workers
 
 //Courtiers
 #define CTAG_SERVANT		"CAT_SERVANT"		// Maids and butlers

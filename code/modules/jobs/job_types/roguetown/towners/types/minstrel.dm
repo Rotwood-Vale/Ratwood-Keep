@@ -10,8 +10,8 @@
 
 /datum/outfit/job/roguetown/towner/minstrel/pre_equip(mob/living/carbon/human/H)
     ..()
-    H.mind.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+    H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
+    H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
     H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
     H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
     H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
@@ -26,15 +26,15 @@
     gloves = /obj/item/clothing/gloves/roguetown/fingerless
     belt = /obj/item/storage/belt/rogue/leather
     armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
-    cloak = /obj/item/clothing/cloak/raincloak/green
+    cloak = /obj/item/clothing/cloak/half/red
     backl = /obj/item/storage/backpack/rogue/satchel
     //beltl = /obj/item/ammo_holder/bomb/smokebombs
     beltr = /obj/item/rogueweapon/huntingknife/idagger
     head = /obj/item/clothing/head/roguetown/bardhat //with this hat, they will get all the pussy(or dick depending on preference(or both ig))
-    neck = /obj/item/clothing/neck/roguetown/coif
+    neck = /obj/item/storage/belt/rogue/pouch/coins/poor
     shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
     shoes = /obj/item/clothing/shoes/roguetown/shortboots
-    backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+    backpack_contents = list(/obj/item/natural/feather = 1, /obj/item/paper/scroll = 1)
     var/instrument = pick(0,1,2,3,4,5)
     switch(instrument)
         if(0)
@@ -77,3 +77,4 @@
     H.change_stat("perception", 2)
     H.change_stat("speed", 2)
     ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+    ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

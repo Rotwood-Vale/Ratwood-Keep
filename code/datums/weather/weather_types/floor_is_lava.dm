@@ -33,7 +33,7 @@
 		return
 	if(!L.client) //Only sentient people are going along with it!
 		return
-	if(L.movement_type & FLYING)
+	if(L.is_floor_hazard_immune())
 		return
 	L.adjustFireLoss(3)
 	return ..()

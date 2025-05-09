@@ -98,7 +98,7 @@
 	zombie.set_patron(patron)
 
 	for(var/trait in GLOB.traits_deadite)
-		REMOVE_TRAIT(zombie, trait, TRAIT_GENERIC)
+		REMOVE_TRAIT(zombie, trait, DEADITE_TRAIT)
 
 	zombie.remove_client_colour(/datum/client_colour/monochrome)
 

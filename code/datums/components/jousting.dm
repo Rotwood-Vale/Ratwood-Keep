@@ -48,7 +48,7 @@
 		var/sharp = I.get_sharpness()
 		var/msg
 		if(damage)
-			msg += "[user] [sharp? "impales" : "slams into"] [target] [sharp? "on" : "with"] their [parent]"
+			msg += "[user] [sharp? "impales" : "slams into"] [target] [sharp? "on" : "with"] [user.p_their()] [I.name]"
 			target.apply_damage(damage, BRUTE, user.zone_selected, 0)
 		if(prob(knockdown_chance))
 			msg += " and knocks [target] [target_buckled? "off of [target.buckled]" : "down"]"

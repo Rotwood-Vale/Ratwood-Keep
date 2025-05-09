@@ -9,6 +9,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN
 	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	seelie_tutorial = "Thrown in this accursed place, the collar around your neck prevents any and all magic you might've had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
 
 	outfit = /datum/outfit/job/roguetown/prisonerr
 	banned_leprosy = FALSE

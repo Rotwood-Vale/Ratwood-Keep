@@ -125,3 +125,8 @@
 			return 30
 
 	return damage
+
+/mob/living/carbon/human/is_floor_hazard_immune()
+	. = ..()
+	if(dna?.species?.is_floor_hazard_immune(src))
+		return TRUE

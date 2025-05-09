@@ -22,6 +22,14 @@
 	pixel_x = -16
 	density = TRUE
 
+/obj/machinery/light/roguestreet/walllamp
+	name = "wall lamp"
+	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
+	icon_state = "wlamp1_nozap"
+	base_state = "wlamp"
+	brightness = 7.8
+	density = FALSE
+
 /obj/machinery/light/roguestreet/orange
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "o_slamp1_nozap"
@@ -157,7 +165,7 @@
 		GLOB.fires_list -= src
 
 /obj/machinery/light/rogue/Destroy()
-	QDEL_NULL(soundloop)	
+	QDEL_NULL(soundloop)
 	GLOB.fires_list -= src
 	. = ..()
 
@@ -405,7 +413,7 @@
 		if(WEST)
 			pixel_x = -32
 	. = ..()
-	
+
 /obj/machinery/light/rogue/wallfire/candle/attack_hand(mob/user)
 	if(isliving(user) && on)
 		user.visible_message(span_warning("[user] snuffs [src]."))
@@ -444,6 +452,7 @@
 	crossfire = FALSE
 	plane = GAME_PLANE_UPPER
 	cookonme = FALSE
+	metalizer_result = /obj/machinery/light/roguestreet/walllamp
 
 /obj/machinery/light/rogue/torchholder/c
 	pixel_y = 32
@@ -726,7 +735,7 @@
 
 /* This is the blackstone version, not compatible but retained so it can be injected into say stews if the new system ends up too shallow.
 
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour) 
+			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks) || W.type == /obj/item/reagent_containers/powder/flour)
 				if(pot.reagents.chem_temp < 374)
 					to_chat(user, span_warning("[pot] isn't boiling!"))
 					return
@@ -833,7 +842,7 @@
 		burn_out()
 
 /obj/machinery/light/rogue/hearth/Destroy()
-	QDEL_NULL(boilloop)	
+	QDEL_NULL(boilloop)
 	. = ..()
 
 /obj/machinery/light/rogue/campfire

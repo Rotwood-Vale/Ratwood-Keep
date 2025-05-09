@@ -229,14 +229,15 @@
 //----------------- MORE AZURE SPRITEWORK ---------------------
 
 /obj/item/clothing/suit/roguetown/shirt/robe/hierophant  //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "hierophant's kandys"
+	name = "desert gown"
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	desc = "A thin piece of fabric worn under a robe to stop chafing and keep ones dignity if a harsh blow of wind comes through."
 	icon_state = "desertgown"
 	item_state = "desertgown"
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/robe/pointfex  //Be aware this item is clearly made for an Azure specific role, may require renaming.
-	name = "pointfex's qaba"
+	name = "monk robes"
 	desc = "A slimmed down, tighter fitting robe made of fine silks and fabrics. Somehow you feel more mobile in it than in the nude."
 	icon_state = "monkcloth"
 	item_state = "monkcloth"

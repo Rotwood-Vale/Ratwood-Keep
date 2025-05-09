@@ -43,9 +43,7 @@
 		return
 
 	var/mob/living/LM = parent
-	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.throwing || LM.movement_type & (VENTCRAWLING | FLYING))
-		if (LM.lying && !LM.buckled && !(!T.footstep || LM.movement_type & (VENTCRAWLING | FLYING))) //play crawling sound if we're lying
-			playsound(T, 'sound/blank.ogg', 15 * volume)
+	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.is_floor_hazard_immune() || (LM.movement_type & VENTCRAWLING))
 		return
 
 	if(iscarbon(LM))
@@ -97,7 +95,7 @@
 		return
 	var/mob/living/carbon/human/H = parent
 	//TODO: Look into implementing soft fluttering sounds instead, and prevent this check that will happen for every footstep ever
-	if(isseelie(H))	//Need to look into a wing check for wingless seelie too
+	if(H.is_floor_hazard_immune())
 		return
 	if(HAS_TRAIT(H,TRAIT_LIGHT_STEP)) //TODO, do the above.
 		return
@@ -106,40 +104,42 @@
 	var/used_sound
 	var/list/used_footsteps
 
-	if(H.shoes || feetCover) //are we wearing shoes
-		var/obj/item/clothing/shoes/humshoes = H.shoes
-		if(humshoes.isbarefoot == FALSE) //are the shoes actually not barefoot
-			//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
-			if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
-				CRASH("Invalid footstep value. Turf type: [T.type]; Value: [T.footstep]")
-				return
-			used_footsteps = GLOB.footstep[T.footstep][1]
-			used_footsteps = used_footsteps.Copy()
-			used_sound = pick_n_take(used_footsteps)
-			if(used_sound == last_sound)
-				if(used_footsteps.len)
-					used_sound = pick(used_footsteps)
-			if(!used_sound)
-				used_sound = last_sound
-			last_sound = used_sound
-			playsound(T, used_sound,
-				GLOB.footstep[T.footstep][2],
-				FALSE,
-				GLOB.footstep[T.footstep][3] + e_range)
-		else
-			//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
-			if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
-				CRASH("Invalid barefootstep value given. Turf type: [T.type]; Value: [T.barefootstep]")
-				return
-			used_footsteps = GLOB.barefootstep[T.barefootstep][1]
-			used_footsteps = used_footsteps.Copy()
-			used_sound = pick_n_take(used_footsteps)
-			if(used_sound == last_sound)
+	var/obj/item/clothing/shoes/humshoes = H.shoes
+	// use the non-barefoot sound if:
+	// - we have shoes that either aren't barefoot or aren't of type /obj/item/clothing/shoes
+	// - our armour or pants are covering our feet
+	if((humshoes && (!istype(humshoes) || !humshoes.isbarefoot)) || feetCover)
+		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
+		if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
+			CRASH("Invalid footstep value. Turf type: [T.type]; Value: [T.footstep]")
+			return
+		used_footsteps = GLOB.footstep[T.footstep][1]
+		used_footsteps = used_footsteps.Copy()
+		used_sound = pick_n_take(used_footsteps)
+		if(used_sound == last_sound)
+			if(used_footsteps.len)
 				used_sound = pick(used_footsteps)
-			if(!used_sound)
-				used_sound = last_sound
-			last_sound = used_sound
-			playsound(T, used_sound,
-				GLOB.barefootstep[T.barefootstep][2],
-				TRUE,
-				GLOB.barefootstep[T.barefootstep][3] + e_range)
+		if(!used_sound)
+			used_sound = last_sound
+		last_sound = used_sound
+		playsound(T, used_sound,
+			GLOB.footstep[T.footstep][2],
+			FALSE,
+			GLOB.footstep[T.footstep][3] + e_range)
+	else
+		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
+		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
+			CRASH("Invalid barefootstep value given. Turf type: [T.type]; Value: [T.barefootstep]")
+			return
+		used_footsteps = GLOB.barefootstep[T.barefootstep][1]
+		used_footsteps = used_footsteps.Copy()
+		used_sound = pick_n_take(used_footsteps)
+		if(used_sound == last_sound)
+			used_sound = pick(used_footsteps)
+		if(!used_sound)
+			used_sound = last_sound
+		last_sound = used_sound
+		playsound(T, used_sound,
+			GLOB.barefootstep[T.barefootstep][2],
+			TRUE,
+			GLOB.barefootstep[T.barefootstep][3] + e_range)
