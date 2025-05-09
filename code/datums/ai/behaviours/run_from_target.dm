@@ -9,8 +9,11 @@
  * * range - Distance of returned target turf from starting_atom
  * * offset - Angle offset, 180 input would make the returned target turf be in the opposite direction
  */
-var/failure_attempts = 0
-var/max_failure_attempts = 3 // players will not build minecraft machines anymore
+/datum/ai_behavior/run_away_from_target
+	var/failure_attempts = 0
+	var/first_failure_time = 0
+	var/failure_window = 300 // 300 = 30 second my boy
+	var/max_failures_in_window = 3
 
 /proc/get_ranged_target_turf_direct(atom/starting_atom, atom/target, range, offset)
 	var/angle = ATAN2(target.x - starting_atom.x, target.y - starting_atom.y)
@@ -87,6 +90,7 @@ var/max_failure_attempts = 3 // players will not build minecraft machines anymor
 
 /datum/ai_behavior/run_away_from_target/perform(delta_time, datum/ai_controller/controller, target_key, hiding_location_key)
 	. = ..()
+
 	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
 	if(isnull(target))
 		return
@@ -101,14 +105,38 @@ var/max_failure_attempts = 3 // players will not build minecraft machines anymor
 			finish_action(controller, TRUE)
 		return
 
+	if (!controller.temp_data)
+		controller.temp_data = list()
+
+	if (!controller.temp_data["flee_failures"])
+		controller.temp_data["flee_failures"] = 0
+	if (!controller.temp_data["flee_fail_start_time"])
+		controller.temp_data["flee_fail_start_time"] = world.time
+
+	// PATHFINDING I HATE IT KILL ME
 	if (!plot_path_away_from(controller, target))
-		failure_attempts++
-		if (failure_attempts >= max_failure_attempts)
+		var/time_now = world.time
+		var/failure_count = controller.temp_data["flee_failures"]
+		var/start_time = controller.temp_data["flee_fail_start_time"]
+
+		// RESET AFTER 30 SECONDS
+		if (time_now - start_time > 300)
+			controller.temp_data["flee_failures"] = 1
+			controller.temp_data["flee_fail_start_time"] = time_now
+		else
+			controller.temp_data["flee_failures"] = failure_count + 1
+
+		// 3 mistakes = removal
+		if (controller.temp_data["flee_failures"] > 3)
+			world.visible_message("<span class='combat'>[controller.pawn] panics and vanishes!</span>")
 			qdel(controller.pawn)
 			finish_action(controller, FALSE)
-			return
-	else
-		failure_attempts = 0
+		else
+			finish_action(controller, FALSE)
+
+		return
+
+	// IF SUC JUST WAIT 30 SECONDS
 
 /datum/ai_behavior/run_away_from_target/proc/get_furthest_turf(atom/source, angle, atom/target)
 	var/turf/return_turf
