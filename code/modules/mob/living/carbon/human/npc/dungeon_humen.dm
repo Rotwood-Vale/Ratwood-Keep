@@ -66,6 +66,8 @@
 			face_atom(get_step(src, pick(GLOB.cardinals)))
 	else if(prob(10))
 		face_atom(get_step(src, pick(GLOB.cardinals)))
+
+
 /*
 
 // === Sub (ah~~~) classes ===
@@ -104,47 +106,29 @@
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric/after_creation()
 	..()
-	if(prob(25))
-		mask = /obj/item/clothing/mask/rogue/facemask/hound
-	else
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_cleric)
+
+/datum/outfit/job/roguetown/npc/dungeon_cleric
+	name = "Dungeon Cleric"
+
+	pre_equip(mob/living/carbon/human/H)
+		
+		..()
 		mask = /obj/item/clothing/mask/rogue/facemask
 		head = /obj/item/clothing/head/roguetown/necrahood
-
-	if(prob(10))
-		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	else
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
-
-	if(prob(30))
 		neck = /obj/item/clothing/neck/roguetown/gorget
-	else
-		neck = /obj/item/clothing/neck/roguetown/leather
-
-	if(prob(20))
-		gloves = /obj/item/clothing/gloves/roguetown/leather
-	else
 		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
-
-	if(prob(50))
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	else
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
-
-	if(prob(30))
-		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
-	else
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
 		r_hand = /obj/item/rogueweapon/mace/wsword
-
-
-	H.STASPD = 10
-	H.STACON = 12
-	H.STAEND = 12
-	H.STASTR = 12
-	H.STAINT = 11
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+			
+		H.STASTR = 12
+		H.STASPD = 10
+		H.STACON = 12
+		H.STAEND = 12
+		H.STAINT = 11
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric/use_combat_abilities()
 	if(world.time < next_cast)
@@ -165,7 +149,10 @@
 		target_to_heal = src
 
 	if(target_to_heal)
-		src.say("Healing!")
+		if(target_to_heal == src)
+			src.say("Dark gods restore my flesh!")
+		else
+			src.say("Dark gods heal one of their faithful!")
 		var/obj/effect/proc_holder/spell/invoked/lesser_heal_npc/H = new(src)
 		H.cast(list(target_to_heal), src)
 
@@ -252,7 +239,7 @@
 	target.blood_volume += BLOOD_VOLUME_SURVIVE
 
 	target.visible_message(span_info("[target] glows with unholy light."), span_notice("You feel your wounds closing."))
-	
+
 	return TRUE // I REPEAT NPC ONLY YOU R WORD
 
 	/obj/effect/proc_holder/spell/targeted/churnnpc
