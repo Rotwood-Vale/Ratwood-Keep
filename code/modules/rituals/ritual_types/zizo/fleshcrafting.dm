@@ -1,19 +1,83 @@
-// FLESH CRAFTING
+// Fleshcrafting, everything to do with the mortal form mostly
+
+//get yourself some stats..
+/datum/ritual/zizo/riteofbodilyperfection
+	name = "Rite of bodily Perfection"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+	difficulty = 4
+	favor_cost = 250
+	n_req = /obj/item/reagent_containers/lux
+	function = /proc/riteofbodilyperfection
+
+proc/riteofbodilyperfection(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if("Rite of bodily Perfection" in H.mind.rituals_completed) // No doing this twice.
+			to_chat(H.mind, span_notice("My body is already honed to perfection.."))
+			to_chat(user.mind, span_notice("That ones body has already been perfected.."))
+			break
+		H.change_stat("strength", 1)
+		H.change_stat("speed", 1)
+		H.change_stat("constitution", 2)
+		H.change_stat("endurance", 2)
+		user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+		H.mind.rituals_completed += "Rite of bodily Perfection"
+		C.visible_message(span_danger("[H.real_name]s form begins to twist and contort violently as they are remade by Her hands."))
+		H.emote("painscream")
+		to_chat(H.mind, span_notice("By Zizos grace, my wretched mortal form twists into an idealized form of itself!"))
+
+//Steal Lux from a living Creature
+/datum/ritual/zizo/theftoflight 
+	name = "Theft of the Light"
+	circle = "Fleshcrafting"
+	center_requirement = /mob/living/carbon/human
+	difficulty = 1
+	favor_cost = 25
+	function = /proc/theftoflight
+
+//if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
+proc/theftoflight(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if(!(H.mind) || H.has_status_effect(/datum/status_effect/debuff/death_weaken)) //fails if mindless/luxdrained, no farming from afk/dead
+			to_chat(user.mind, span_notice("There is not a spark of thought inside this one.."))
+			user.mind.zizofavor += 25 //refund
+			return
+		H.apply_status_effect(/datum/status_effect/debuff/death_weaken)
+		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+		H.electrocute_act(30, src)
+		new /obj/item/reagent_containers/lux(H.loc)
+		
+
+
+
 
 /datum/ritual/zizo/lesserfleshmend
 	name = "Lesser Fleshmend"
 	circle = "Fleshcrafting"
 	center_requirement = /mob/living/carbon/human
 	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
-	difficulty = 2
+	difficulty = 1
 	favor_cost = 50
 	function = /proc/lesserfleshmend
 
 /proc/lesserfleshmend(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-		//heal
-		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
+		
+
+		var/healing = (H.mind.get_skill_level(/datum/skill/magic/unholy))*20
+		if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+			H.blood_volume = min(H.blood_volume+healing, BLOOD_VOLUME_NORMAL)
+		if(length(H.get_wounds()))
+			H.heal_wounds(healing)
+			H.update_damage_overlays()
+		H.adjustBruteLoss(-healing, 0)
+		H.adjustFireLoss(-healing, 0)
+		H.adjustOxyLoss(-healing, 0)
+		H.adjustToxLoss(-healing, 0)
+		H.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing)
+		H.adjustCloneLoss(-healing, 0)
+		to_chat(H.mind, span_notice("Zizo deigns to pull my wretched body together once more!"))
 		break
 
 /datum/ritual/zizo/fleshmend
@@ -148,44 +212,3 @@
 			if(cavity.cavity_item)
 				cavity.cavity_item.forceMove(drop_location)
 				cavity.cavity_item = null
-
-/datum/ritual/zizo/ascend
-	name = "ASCEND!"
-	circle = "Fleshcrafting"
-	difficulty = 5
-	favor_cost = 1000
-	center_requirement = /mob/living/carbon/human // cult leader
-
-	n_req = /mob/living/carbon/human // the ruler
-	s_req = /mob/living/carbon/human // virgin
-
-	function = /proc/ascend
-
-/proc/ascend(mob/user, turf/C)
-	var/datum/game_mode/chaosmode/CM = SSticker.mode
-
-	for(var/mob/living/carbon/human/H in C.contents)
-		if(!iszizocultist(H))
-			return
-		for(var/mob/living/carbon/human/Ruler in get_step(C, NORTH))
-			if(Ruler != SSticker.rulermob && Ruler.stat != DEAD)
-				break
-			Ruler.gib()
-		for(var/mob/living/carbon/human/VIRGIN in get_step(C, SOUTH))
-			if(!VIRGIN.virginity && VIRGIN.stat != DEAD)
-				break
-			VIRGIN.gib()
-		CM.cultascended = TRUE
-		addomen("ascend")
-		to_chat(user.mind, span_danger("I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! SOON THERE WILL BE NO GODS. ONLY MASTERS!"))
-		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
-		trl.ckey = H.ckey
-		H.gib()
-		to_chat(world, "\n<font color='purple'>The fabric of reality begins to weep. Fifteen minutes remain until the end.</font>")
-		for(var/mob/living/carbon/human/V in GLOB.human_list)
-			if(V.mind in CM.cultists)
-				V.add_stress(/datum/stressevent/lovezizo)
-			else
-				V.add_stress(/datum/stressevent/hatezizo)
-		CM.roundvoteend = TRUE
-		break

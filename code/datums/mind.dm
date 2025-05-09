@@ -55,7 +55,8 @@
 	var/bonenecro = null
 
 	//zizoid rituals tracker
-	var/zizofavor = 0
+	var/zizofavor = 0 
+	var/list/rituals_completed = list() //This is used to track which rituals have already been applied to somebody.
 
 	var/linglink
 	var/datum/martial_art/martial_art

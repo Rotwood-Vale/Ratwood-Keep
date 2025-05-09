@@ -438,6 +438,38 @@
 	icon_state = "debuff"
 	color ="#664040"
 
+
+/datum/status_effect/debuff/zizovoice/on_creation(mob/owner, mob/zizoid)
+	..()
+	zizoid_ref = WEAKREF(zizoid)
+	zizoid_mob = zizoid
+
+/datum/status_effect/debuff/zizovoice
+	id = "zizovoice"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/zizovoice
+	duration = 3 MINUTES
+	var/datum/weakref/zizoid_ref
+	var/mob/zizoid_mob
+	tick_interval = 10 SECONDS
+
+
+/atom/movable/screen/alert/status_effect/debuff/zizovoice
+	name = "Zizos Voice"
+	desc = "A profane zizoid ritual is forcing me to sing Her praises.."
+	icon_state = "debuff"
+	color ="#664040"
+
+/datum/status_effect/debuff/zizovoice/tick()
+	.=..()
+	zizoid_mob = zizoid_ref.resolve()
+	if(zizoid_mob && zizoid_mob.mind)
+		zizoid_mob.mind.zizofavor +=1
+		owner.say("Praise Zizo!!!")
+
+
+
+
+
 /datum/status_effect/debuff/hereticsermon
 	id = "Heretic on sermon!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/hereticsermon

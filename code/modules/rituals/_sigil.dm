@@ -84,15 +84,18 @@
 		return
 
 	var/list/available_names = list()
+	var/list/name_to_datum = list()
 	for(var/G in rituals)
 		var/datum/ritual/path = rituals[G]
 		if(path.circle == sigil_type)
-			available_names += path.name
+			var/display_name = "[path.name] (Cost: [path.favor_cost], Difficulty: [path.difficulty])"
+			available_names += display_name
+			name_to_datum[display_name] = path
 
 	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in available_names
-	var/datum/ritual/pickritual = rituals[ritualnameinput]
+	var/datum/ritual/pickritual = name_to_datum[ritualnameinput]
 
-	pickritual = rituals[ritualnameinput]
+	//pickritual = rituals[ritualnameinput]
 	
 	if (pickritual.difficulty > user.mind.get_skill_level(/datum/skill/magic/unholy))
 		to_chat(user.mind, span_danger("\"My skill is not great enough for this.\""))
@@ -179,7 +182,7 @@
 		return
 
 
-
+	user.mind.zizofavor -= pickritual.favor_cost
 	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)
 

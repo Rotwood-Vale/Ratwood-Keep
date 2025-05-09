@@ -5,7 +5,7 @@
 	set name = "Draw Zizoite Sigil"
 	set category = "ZIZO"
 
-	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting", "Sacrifice")
+	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting", "Sacrifice", "Ascension")
 
 	if(!bloody_hands)
 		to_chat(src, span_danger("My hands aren't bloody enough."))

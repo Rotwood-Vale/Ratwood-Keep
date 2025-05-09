@@ -5,8 +5,6 @@
 		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
 	*/
 
-
-
 /datum/ritual/zizo/lesserwildsacrifice
 	name = "Lesser wild Sacrifice"
 	circle = "Sacrifice"
@@ -60,6 +58,7 @@
 			return
 		H.take_overall_damage(150)
 		H.Paralyze(30)
+		H.emote("painscream")
 		H.apply_status_effect(/datum/status_effect/debuff/zizoagony)
 		C.visible_message(span_danger("[H.real_name] is lifted up into the air and multiple scratches, incisions and shallow cuts start etching themselves into their skin!"))
 		user.mind.zizofavor += 25

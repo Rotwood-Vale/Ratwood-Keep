@@ -1,4 +1,4 @@
-// TRANSMUTATION
+// TRANSMUTATION, creating inanimate stuff
 
 /datum/ritual/zizo/allseeingeye
 	name = "All-seeing Eye"
@@ -36,10 +36,10 @@
 	name = "Propaganda"
 	circle = "Transmutation"
 	difficulty = 1
-	favor_cost = 50
+	favor_cost = 25
 	center_requirement = /obj/item/natural/worms/leech
 	n_req = /obj/item/paper
-	s_req = /obj/item/natural/feather
+	s_req = /obj/item/paper
 
 	function = /proc/propaganda
 
@@ -51,10 +51,10 @@
 	name = "False Idol"
 	circle = "Transmutation"
 	difficulty = 1
-	favor_cost = 50
+	favor_cost = 10
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/paper
-	s_req = /obj/item/natural/feather
+	e_req = /obj/item/paper
 
 	function = /proc/falseidol
 
