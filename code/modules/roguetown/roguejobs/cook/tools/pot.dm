@@ -76,21 +76,24 @@ obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 	if(!active)
 		return
+
+	if(!reagents) //if you put a dry pot on
+		active = FALSE
+		boilloop.stop()
+		return
+	
+	//cools down if not on hearth
+	if(!istype(loc, /obj/machinery/light/rogue/hearth))
+		reagents.expose_temperature(T20C,  0.033) 
+
+	if(reagents.chem_temp <= T20C)
+		active = FALSE
+		return
+
 	// still process down to room temp even if no longer cooking
 	if(reagents.chem_temp < T100C)
 		boilloop.stop()
-
-		if(reagents.chem_temp <= T20C)
-			active = FALSE
-			return
-		// cool down if not on a heat source
-		if(!istype(loc, /obj/machinery/light/rogue/hearth))
-			reagents.expose_temperature(T20C,  0.033) //cools down a third a hearth heats it so it should never cool on one.
-		addtimer(CALLBACK(src, PROC_REF(boil)),1 SECONDS)
-		return
-	
-	if(!reagents) //if you put a dry pot on
-		active = FALSE
+		addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS) //At this point we slowly die down
 		return
 
 	// Start of success loops
@@ -120,7 +123,8 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 				R.cook(src) 
 				qdel(J)
 
-	addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS)
+	if(active)
+		addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS)
 
 
 // TO DO: Find a better place for this stuff eventually
