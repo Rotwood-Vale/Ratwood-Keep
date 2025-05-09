@@ -32,7 +32,6 @@
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	//Desc says grenzelhoft has great jesters so 50% change to raceswap because slop lore
-	// bitch I don't give a shit that's a terrible reason to do this!
 /*	if(ishumannorthern(H) && prob(50))
 		H.skin_tone = SKIN_COLOR_GRENZELHOFT
 		H.update_body()
