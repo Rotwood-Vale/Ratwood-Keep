@@ -10617,9 +10617,6 @@
 /obj/item/roguegem/yellow,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/under/cave)
-"fdS" = (
-/turf/open/water/river,
-/area/rogue/indoors/town/church)
 "fdW" = (
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/hexstone,
@@ -15256,6 +15253,10 @@
 "htF" = (
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"htK" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/water/bath,
+/area/rogue/indoors/town/church/chapel)
 "htL" = (
 /obj/effect/decal/cobbleedge{
 	dir = 4;
@@ -15455,7 +15456,8 @@
 "hzl" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "church";
-	name = "Shrine"
+	name = "Shrine";
+	locked = 1
 	},
 /turf/open/floor/rogue/hexstone/dfloor10,
 /area/rogue/indoors/town/church)
@@ -16356,7 +16358,8 @@
 "hUK" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "church";
-	name = "Church's Workplace"
+	name = "Church's Workplace";
+	locked = 1
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church/chapel)
@@ -16922,6 +16925,16 @@
 /obj/effect/landmark/start/nightmaiden,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"ikl" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/obj/structure/gate/vertical{
+	redstone_id = "gatechurch1";
+	name = "Church gate"
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "ikn" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcr";
@@ -22336,7 +22349,8 @@
 "kUj" = (
 /obj/structure/mineral_door/wood/donjon/stone{
 	lockid = "church";
-	name = "Church's Workplace"
+	name = "Church's Workplace";
+	locked = 1
 	},
 /turf/open/floor/rogue/hexstone/dfloor19,
 /area/rogue/indoors/town/church)
@@ -28058,7 +28072,8 @@
 "nQS" = (
 /obj/structure/mineral_door/wood{
 	lockid = "church";
-	name = "Healer's Wing"
+	name = "Healer's Wing";
+	locked = 1
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
@@ -31409,7 +31424,7 @@
 /obj/structure/mineral_door/wood/donjon{
 	dir = 1;
 	locked = 1;
-	lockid = "keep_dungeon"
+	lockid = "church"
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
@@ -32814,7 +32829,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "qlL" = (
-/obj/structure/mineral_door/wood{
+/obj/structure/mineral_door/wood/donjon{
+	dir = 1;
+	locked = 1;
 	lockid = "church";
 	name = "Healer's Wing"
 	},
@@ -38129,7 +38146,7 @@
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_y = -32
 	},
-/turf/closed/mineral/rogue,
+/turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "sXu" = (
 /obj/machinery/light/rogue/hearth{
@@ -48241,6 +48258,9 @@
 /area/rogue/indoors/town/tavern)
 "ycn" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/winch{
+	redstone_id = "gatechurch1"
+	},
 /turf/open/water/bath,
 /area/rogue/indoors/town/church/chapel)
 "ycv" = (
@@ -469482,7 +469502,7 @@ nJy
 ryj
 jjS
 klN
-jjS
+ikl
 tCI
 nJy
 moU
@@ -469910,7 +469930,7 @@ nQS
 wAm
 tML
 bxS
-ycn
+htK
 dUQ
 swm
 nhW
@@ -577062,12 +577082,12 @@ tBL
 moU
 qJb
 kDL
-fdS
-fdS
+jvj
+jvj
 sga
 jTS
-fdS
-fdS
+jvj
+jvj
 shv
 tML
 vIa
@@ -577494,12 +577514,12 @@ nGW
 moU
 qJb
 nxl
-fdS
-fdS
-fdS
-fdS
-fdS
-fdS
+jvj
+jvj
+jvj
+jvj
+jvj
+jvj
 wOu
 tML
 vIa
@@ -577927,10 +577947,10 @@ ihO
 qJb
 mcO
 onL
-fdS
+jvj
 fvB
 mfr
-fdS
+jvj
 byX
 ylj
 tML
@@ -578359,10 +578379,10 @@ ihO
 qJb
 emH
 onL
-fdS
+jvj
 iDH
 fMW
-fdS
+jvj
 byX
 waz
 tML
@@ -578790,12 +578810,12 @@ nto
 wVn
 qJb
 nxl
-fdS
-fdS
-fdS
-fdS
-fdS
-fdS
+jvj
+jvj
+jvj
+jvj
+jvj
+jvj
 shv
 tML
 vIa
@@ -579222,12 +579242,12 @@ fjC
 lti
 qJb
 kDL
-fdS
-fdS
+jvj
+jvj
 kCZ
 hkF
-fdS
-fdS
+jvj
+jvj
 shv
 tML
 vIa
