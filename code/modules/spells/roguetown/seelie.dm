@@ -245,7 +245,7 @@
 			B.tame = TRUE
 			B.tamed()
 			B.body_eater = FALSE
-			B.faction = list("neutral") //Makes the Rous not target the Seelie when on aggro
+			B.faction += list("neutral") //Makes the Rous not target the Seelie when on aggro
 		B.enemies = list()
 		B.aggressive = 0
 		B.LoseTarget()
