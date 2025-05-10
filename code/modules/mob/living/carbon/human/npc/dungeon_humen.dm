@@ -328,8 +328,8 @@
 
 	return TRUE
 
-/proc/warrior_strike(mob/living/target)
-	if(!istype(target) || target.stat == DEAD || get_dist(src, target) > 3)
+/proc/warrior_strike(mob/living/user, mob/living/target)
+	if(!istype(target) || target.stat == DEAD || get_dist(user, target) > 3)
 		return FALSE
 
 	target.visible_message(
@@ -340,7 +340,6 @@
 	target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
 
 	return TRUE
-
 /proc/display_results(mob/user, mob/living/target, msg_others, msg_self = null)
 	if(!target)
 		return
