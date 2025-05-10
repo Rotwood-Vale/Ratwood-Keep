@@ -14,3 +14,5 @@
 	var/w_req = null
 
 	var/function // a proc
+	var/favor_cost = 0
+	var/difficulty = 0

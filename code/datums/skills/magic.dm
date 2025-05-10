@@ -17,3 +17,6 @@
 
 /datum/skill/magic/druidic
 	name = "Druidic Trickery"
+
+/datum/skill/magic/unholy
+	name = "Unholy Rituals"

@@ -168,19 +168,33 @@
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
-
 	if(stat == DEAD)
 		return
 
-	// 3 seconds cooldown
+	// Five minute cooldown, this can be used to generate zizo favor
 	if(mob_timers["cult_praise_zizo"])
-		if(world.time < mob_timers["cult_praise_zizo"] + 3 SECONDS)
+		if(world.time < mob_timers["cult_praise_zizo"] + 5 MINUTES)
 			return
 	mob_timers["cult_praise_zizo"] = world.time
 
-	audible_message("[src] praises " + span_bold("Zizo") + "!")
+	//audible_message("[src] praises " + span_bold("Zizo") + "!")
 	log_game("[src.real_name] praises Zizo!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
+	src.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!"))
+	for(var/mob/living/carbon/human/H in view(src))
+		if(H.patron?.type != /datum/patron/zizo)
+			src.mind.zizofavor += 5
+			to_chat(src, span_notice("A soul hears my message of devotion! She is pleased."))
+
+/mob/living/carbon/human/proc/favorcheck()
+	set name = "Determine Favor"
+	set category = "ZIZO"
+
+	if (src.mind)
+		to_chat(src, "Your Zizo favor level is: [src.mind.zizofavor]")
+
+
+		
 
 /mob/living/carbon/human/proc/communicate()
 	set name = "Communicate"
