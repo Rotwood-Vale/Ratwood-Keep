@@ -55,6 +55,16 @@
 	associated_skill = /datum/skill/combat/polearms
 	metalizer_result = /obj/item/rogueweapon/spear/bronze
 
+// Allows blind carbons to examine if they click on an object using a wooden staff
+/obj/item/rogueweapon/woodstaff/pre_attack(atom/A, mob/living/user, params)
+	if(HAS_TRAIT(user, TRAIT_BLIND) && !user.cmode) //if is not used by a blind mob in combat mode it won't examine
+		var/list/exam = A.examine(user) //directly extracts the examine string without using the examinate proc
+		if(A != user) // avoids the message of user poking themselves
+			src.visible_message(span_notice("[user] pokes [A] with [user.p_their()] wooden staff"))
+		if(exam)
+			to_chat(user, exam.Join("\n"))//relays the examine string to the user
+		return TRUE
+
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
 	if(tag)

@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Bad Eyesight" =/datum/charflaw/badsight,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
 	"Cyclops (L)"=/datum/charflaw/noeyel,
+	"Blind"=/datum/charflaw/blind,
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Hunted"=/datum/charflaw/dead_or_alive,
@@ -227,6 +228,26 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch/left(get_turf(H))
 	H.put_in_hands(eyepatch, forced = TRUE)
 	H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
+
+/datum/charflaw/blind
+	name = "Blind"
+	desc = "I have completely lost my sight. No medicine or surgery is able to cure my ailment, luckily I carry my cane to feel my surroundings."
+
+/datum/charflaw/blind/on_mob_creation(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	
+	var/mob/living/carbon/human/H = user
+	H.become_blind(TRAUMA_TRAIT)
+
+/datum/charflaw/blind/apply_post_equipment(mob/user)
+	..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/woodstaff = new /obj/item/rogueweapon/woodstaff(get_turf(H))
+	H.put_in_hands(woodstaff, forced = TRUE)
 
 /datum/charflaw/greedy
 	name = "Greedy"
