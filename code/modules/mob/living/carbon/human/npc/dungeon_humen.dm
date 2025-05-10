@@ -243,7 +243,7 @@
 
 	var/list/enemies = list()
 	for(var/mob/living/L in view(8, src))
-		if(L != src && (L.faction == null || disjoint_lists(L.faction, faction)))
+		if(L != src && (L.faction == null || disjoint_lists(L.faction, src.faction)))
 			enemies += L
 
 	if(enemies.len)
@@ -252,42 +252,8 @@
 		C.cast(enemies, src)
 
 
-
-*/
-
 // NPC SPELLS // DONT GIVE THEM TO PLAYERS  YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
-/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/cast(list/targets, mob/living/user)
-	. = ..()
-	if(!user)
-		return FALSE
-
-	var/list/heal_targets = list()
-	for(var/mob/living/M in view(3, user))
-		if(M.stat != DEAD && istype(M, /mob/living) && (!M.faction || !disjoint_lists(M.faction, user.faction)))
-			heal_targets += M
-
-	if(!heal_targets.len)
-		return FALSE
-
-	user.visible_message(
-		span_warning("[user] raises a hand and healing light surrounds his allies!"),
-		span_userdanger("A soothing warmth radiates from your ally!")
-	)
-
-	for(var/mob/living/M in heal_targets)
-		spawn()
-			if(QDELETED(M) || M.stat == DEAD)
-				return
-			M.adjustBruteLoss(-100)
-			M.adjustFireLoss(-100)
-			M.adjustOxyLoss(-100)
-			M.adjustToxLoss(-100)
-			if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-				M.blood_volume = min(M.blood_volume + 100, BLOOD_VOLUME_NORMAL)
-			M.update_damage_overlays()
-
-	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/churnnpc
 	name = "Churn Undead NPC"
@@ -299,6 +265,28 @@
 	sound = 'sound/magic/churn.ogg'
 	invocation_type = "whisper"
 
+/obj/effect/proc_holder/spell/targeted/churnnpc/cast(list/targets, mob/living/user)
+	if(!user)
+		return FALSE
+
+	var/list/user_faction = islist(user.faction) ? user.faction : list()
+
+	for(var/mob/living/L in targets)
+		if(L == user || L.stat == DEAD)
+			continue
+
+		if(!L.faction || disjoint_lists(L.faction, user_faction))
+			L.visible_message(
+				span_warning("[L] is struck by unholy wrath!"),
+				span_userdanger("Unholy force burns through me!")
+			)
+			L.Stun(20)
+			L.Knockdown(20)
+			if(prob(30))
+				explosion(get_turf(L), heavy_impact_range = 1, flame_range = 1, smoke = FALSE)
+			L.apply_damage(rand(10, 25), BRUTE)
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/lesser_heal_npc/cast(list/targets, mob/living/user)
 	. = ..()
