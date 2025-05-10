@@ -318,6 +318,12 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
+"ahV" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "aip" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcv";
@@ -1433,6 +1439,19 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"aLu" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "aLK" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -3232,6 +3251,11 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/academy)
+"bCh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "bCk" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -3253,6 +3277,10 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/manor)
+"bCL" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/cave)
 "bCO" = (
 /obj/structure/chair/stool/rogue,
 /obj/effect/decal/cobbleedge{
@@ -4886,6 +4914,10 @@
 	layer = 1.90
 	},
 /area/rogue/outdoors/town/harbor)
+"ctC" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/greenstone,
+/area/rogue/under/cave)
 "ctJ" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/swamp/deep,
@@ -8403,6 +8435,19 @@
 	icon_state = "vertw"
 	},
 /area/rogue/indoors)
+"ebh" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cavewet/bogcaves)
 "ebt" = (
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/churchmarble,
@@ -10558,6 +10603,10 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
+"fcj" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cavewet/bogcaves)
 "fcw" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -10732,6 +10781,19 @@
 	},
 /turf/closed/wall/mineral/rogue/wooddark/window,
 /area/rogue/outdoors/druidgrove)
+"fhE" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "fhJ" = (
 /obj/structure/fluff/railing/wood{
 	pixel_y = -4
@@ -13595,6 +13657,19 @@
 /obj/item/bodypart/l_arm/prosthetic/wood,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
+"gCM" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/water/sewer,
+/area/rogue/under/cave)
 "gCQ" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -14715,6 +14790,10 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"heB" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave)
 "heP" = (
 /obj/structure/chair/bench/couchablack,
 /obj/structure/rogue/trophy/deer,
@@ -17646,6 +17725,10 @@
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
+"iCQ" = (
+/obj/structure/flora/roguegrass/bush,
+/turf/open/floor/rogue/grass/dgrass7,
+/area/rogue/under/cavewet/bogcaves)
 "iCS" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/greenstone,
@@ -18102,6 +18185,11 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
+"iOh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/blocks,
+/area/rogue/under/cavewet/bogcaves)
 "iOE" = (
 /obj/structure/closet/crate/chest{
 	locked = 1;
@@ -19314,6 +19402,20 @@
 "jsT" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/dirt,
+/area/rogue/under/cave)
+"jsZ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/cave)
 "jtg" = (
 /turf/open/floor/rogue/blocks/stonered,
@@ -21274,6 +21376,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town/harbor)
+"kpq" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/under/cave)
 "kqe" = (
 /turf/open/floor/rogue/rooftop/green{
 	dir = 1
@@ -22094,6 +22200,19 @@
 /obj/structure/flora/roguegrass/bush/wall/tall,
 /turf/open/floor/rogue/grass/dgrass17,
 /area/rogue/indoors/town/church)
+"kKQ" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/under/cave)
 "kLf" = (
 /obj/structure/fluff/statue/faith/astrata,
 /turf/open/floor/rogue/hexstone/dfloor14,
@@ -22224,6 +22343,10 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/church)
+"kOS" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave)
 "kPc" = (
 /obj/structure/chair/bench/church/smallbench{
 	pixel_y = 20
@@ -24484,6 +24607,10 @@
 "maB" = (
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/druidgrove)
+"maG" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grass/dgrass7,
+/area/rogue/under/cavewet/bogcaves)
 "maH" = (
 /turf/open/floor/rogue/greenstone/runed{
 	dir = 4
@@ -25044,6 +25171,20 @@
 /obj/item/paper/scroll,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
+"mnF" = (
+/obj/effect/decal/cleanable/blood/old,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/under/cave)
 "mnG" = (
 /obj/structure/rack/rogue,
 /obj/item/rogueweapon/mace/spiked,
@@ -25238,6 +25379,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/bath)
+"mty" = (
+/mob/living/carbon/human/species/human/northern/dungeon_base/paladin,
+/turf/open/floor/rogue/hexstone/dfloor33,
+/area/rogue/under/cavewet/bogcaves)
 "mtF" = (
 /obj/structure/stairs{
 	dir = 1
@@ -25254,6 +25399,11 @@
 	icon_state = "paving"
 	},
 /area/rogue/indoors/town/church)
+"mtX" = (
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/under/cave)
 "muj" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -26900,6 +27050,11 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/town)
+"nlT" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/cave)
 "nlU" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/walldeco/customflag{
@@ -29370,7 +29525,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "ovD" = (
-/obj/item/roguemachine/taxmerchant,
+/obj/structure/roguemachine/merchant_bog,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/under/cavewet/bogcaves)
 "ovW" = (
@@ -29671,6 +29826,19 @@
 "oCO" = (
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/druidgrove)
+"oCU" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/cave)
 "oDS" = (
 /obj/effect/decal/cobbleedge{
 	dir = 8;
@@ -30604,6 +30772,19 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
+"pcb" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/cave)
 "pco" = (
 /obj/structure/fluff/statue/knight,
 /obj/item/trash/pearcore,
@@ -31922,6 +32103,11 @@
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
+"pKm" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "pKo" = (
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/cave)
@@ -32216,10 +32402,6 @@
 /obj/item/rope/chain,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
-"pRu" = (
-/obj/structure/roguemachine/merchantvend_static,
-/turf/open/floor/carpet/red,
-/area/rogue/under/cavewet/bogcaves)
 "pSg" = (
 /obj/structure/mirror{
 	pixel_y = 28
@@ -32664,6 +32846,20 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/outdoors/town/harbor)
+"qgB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "qgE" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/ruinedwood{
@@ -32745,6 +32941,10 @@
 "qjh" = (
 /turf/open/floor/rogue/grass/dgrass21,
 /area/rogue/outdoors/bog)
+"qjz" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "qjD" = (
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/manor)
@@ -33482,6 +33682,10 @@
 	dir = 1
 	},
 /area/rogue/outdoors/rtfield)
+"qBQ" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/hexstone,
+/area/rogue/under/cave)
 "qBX" = (
 /obj/structure/lever/wall{
 	dir = 8;
@@ -33737,6 +33941,20 @@
 	},
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/town/harbor)
+"qHz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/cave)
 "qHC" = (
 /obj/structure/fermenting_barrel/random/water,
 /turf/open/floor/rogue/blocks,
@@ -34595,6 +34813,19 @@
 "rfx" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/town)
+"rfA" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cave)
 "rfI" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/herringbone,
@@ -34747,6 +34978,13 @@
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"rkk" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "rko" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/rogue/ruinedwood{
@@ -35498,6 +35736,9 @@
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town/harbor)
+"rGp" = (
+/turf/open/floor/rogue/grass/dgrass7,
+/area/rogue/under/cavewet/bogcaves)
 "rGy" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -35816,6 +36057,19 @@
 "rOF" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/bog)
+"rOL" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cavewet/bogcaves)
 "rOO" = (
 /obj/structure/chair/bench/couchablack,
 /turf/open/floor/carpet/red,
@@ -37467,6 +37721,22 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
+"sDE" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "sDQ" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/rack/rogue,
@@ -37562,6 +37832,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
+"sGo" = (
+/mob/living/carbon/human/species/human/northern/dungeon_base/cleric,
+/turf/open/floor/rogue/hexstone/dfloor5,
+/area/rogue/under/cavewet/bogcaves)
 "sGq" = (
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/floor/rogue/naturalstone,
@@ -38130,6 +38404,11 @@
 	icon_state = "bfloorz"
 	},
 /area/rogue/indoors/town/manor)
+"sWY" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/mob/living/carbon/human/species/human/northern/dungeon_base/cleric,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "sXa" = (
 /obj/effect/landmark/start/hand{
 	dir = 8
@@ -39141,6 +39420,10 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"trI" = (
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior,
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "trL" = (
 /obj/structure/rack/rogue,
 /obj/item/natural/feather,
@@ -40394,6 +40677,10 @@
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/dark_filler,
 /area/rogue/under/cavewet/bogcaves)
+"tXN" = (
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior,
+/turf/open/floor/rogue/hexstone/dfloor33,
+/area/rogue/under/cavewet/bogcaves)
 "tXY" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
@@ -40658,6 +40945,19 @@
 /obj/structure/fluff/railing/border,
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town/harbor)
+"ugz" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/cavewet/bogcaves)
 "uhw" = (
 /obj/item/grown/log/tree/small,
 /obj/item/grown/log/tree/small,
@@ -41308,6 +41608,10 @@
 	},
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/town/harbor)
+"uAQ" = (
+/obj/structure/roguemachine/merchantvend_bog,
+/turf/open/floor/carpet/red,
+/area/rogue/under/cavewet/bogcaves)
 "uBE" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/cobweb,
@@ -41557,6 +41861,10 @@
 "uJF" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/outdoors/town)
+"uJM" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/cavewet/bogcaves)
 "uKd" = (
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/woodturned,
@@ -42148,6 +42456,19 @@
 	dir = 1
 	},
 /area/rogue/outdoors/bog)
+"uXE" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/blocks/stonered,
+/area/rogue/under/cave)
 "uXG" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/bed/rogue/shit,
@@ -42670,6 +42991,16 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 5
 	},
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavewet/bogcaves)
 "voY" = (
@@ -43072,6 +43403,10 @@
 	},
 /turf/open/dark_filler,
 /area/rogue/indoors/town/bath)
+"vxQ" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/dirt,
+/area/rogue/under/cave)
 "vyl" = (
 /obj/structure/mineral_door/wood/red,
 /turf/open/floor/rogue/cobble,
@@ -43684,6 +44019,10 @@
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
+"vOg" = (
+/obj/effect/spawner/npc_dungeon,
+/turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue/under/cave)
 "vOi" = (
 /obj/structure/chair/stool/rogue{
 	pixel_x = -5;
@@ -45202,6 +45541,19 @@
 /obj/effect/wisp/prestidigitation,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"wBl" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/closed/wall/mineral/rogue/stone/moss,
+/area/rogue/under/cave)
 "wBC" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -47415,6 +47767,10 @@
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
+"xFl" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/grass/dgrass7,
+/area/rogue/under/cavewet/bogcaves)
 "xFm" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/cobble,
@@ -47966,6 +48322,19 @@
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/town/basement)
+"xTz" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/concrete,
+/area/rogue/under/cave)
 "xTB" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4;
@@ -48087,6 +48456,19 @@
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
+"xWJ" = (
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	melee_damage_upper = 50;
+	melee_damage_lower = 35;
+	health = 200;
+	blood_volume = 800;
+	damage_coeff = list("brute" = 0.5, "fire" = 0.5, "toxin" = 1, "clone" = 1, "stamina" = 0, "oxygen" = 1);
+	faction = list("orcs","wolfs","dungeon");
+	name = "warg";
+	desc = "A massive, feral wolf with burning eyes and blood-matted fur. These beasts are stronger, smarter, and more vicious than any common predator, often used as mounts or guards."
+	},
+/turf/open/floor/rogue/hexstone/dfloor33,
+/area/rogue/under/cavewet/bogcaves)
 "xWK" = (
 /obj/structure/fermenting_barrel/random/beer{
 	name = "Beer barrel"
@@ -57327,6 +57709,7 @@ mUu
 mUu
 mUu
 mUu
+gCM
 mUu
 mUu
 mUu
@@ -57350,8 +57733,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
-mUu
+gCM
 mUu
 mUu
 mUu
@@ -57745,7 +58127,7 @@ bpD
 bpD
 pKo
 bGI
-mUu
+gCM
 bGI
 pKo
 bGI
@@ -57772,7 +58154,7 @@ bGI
 bGI
 bGI
 bGI
-bGI
+oCU
 bGI
 pKo
 bGI
@@ -59497,13 +59879,13 @@ fjw
 pKo
 reR
 fXw
-fXw
+qBQ
 fXw
 hlq
 sbO
 hlq
 fXw
-fXw
+qBQ
 fXw
 reR
 pKo
@@ -59905,7 +60287,7 @@ bpD
 bpD
 pKo
 cdX
-mUu
+gCM
 fjw
 pKo
 cdX
@@ -59946,7 +60328,7 @@ pKo
 pKo
 pKo
 fjw
-mUu
+gCM
 bGI
 pKo
 bpD
@@ -60337,7 +60719,7 @@ bpD
 bpD
 pKo
 cdX
-mUu
+gCM
 fjw
 pKo
 cdX
@@ -60378,7 +60760,7 @@ feD
 bGI
 bGI
 bGI
-mUu
+gCM
 bGI
 pKo
 bpD
@@ -62101,7 +62483,7 @@ reR
 pKo
 bGI
 bGI
-bGI
+bCL
 bGI
 bGI
 pKo
@@ -63373,7 +63755,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
+gCM
 mUu
 mUu
 mUu
@@ -64678,7 +65060,7 @@ pKo
 bGI
 mUu
 bGI
-pKo
+wBl
 pKo
 pKo
 pKo
@@ -64698,7 +65080,7 @@ kkZ
 kkZ
 pKo
 pKo
-mUu
+gCM
 fjw
 pKo
 bpD
@@ -65118,7 +65500,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
+gCM
 mUu
 bGI
 bGI
@@ -65130,7 +65512,7 @@ kkZ
 lex
 pKo
 cdX
-mUu
+gCM
 fjw
 pKo
 bpD
@@ -65993,7 +66375,7 @@ pKo
 pKo
 pKo
 pKo
-bGI
+oCU
 mUu
 bGI
 pKo
@@ -66389,7 +66771,7 @@ bpD
 pKo
 fjw
 mUu
-bGI
+oCU
 pKo
 bGI
 bGI
@@ -66408,7 +66790,7 @@ fjw
 bGI
 pKo
 cdX
-cdX
+vxQ
 pKo
 pKo
 pKo
@@ -67282,14 +67664,14 @@ fjw
 fjw
 bGI
 pKo
-bGI
+oCU
 mUu
 bGI
 pKo
 bGI
 feD
 pKo
-bGI
+bCL
 mUu
 bGI
 pKo
@@ -68138,7 +68520,7 @@ fjw
 fjw
 fjw
 fjw
-bGI
+bCL
 bGI
 bGI
 fjw
@@ -68154,7 +68536,7 @@ bGI
 bGI
 bGI
 bGI
-mUu
+gCM
 bGI
 pKo
 bpD
@@ -68554,7 +68936,7 @@ fjw
 fjw
 fjw
 cdX
-fjw
+kOS
 fjw
 bGI
 mUu
@@ -69712,7 +70094,7 @@ whb
 whb
 whb
 gbc
-pRu
+uAQ
 aUa
 fvN
 fvN
@@ -69854,7 +70236,7 @@ bGI
 pKo
 bGI
 mUu
-bGI
+oCU
 pKo
 pKo
 pKo
@@ -70693,6 +71075,7 @@ mUu
 mUu
 mUu
 mUu
+gCM
 mUu
 mUu
 mUu
@@ -70705,6 +71088,7 @@ mUu
 mUu
 mUu
 mUu
+gCM
 mUu
 mUu
 mUu
@@ -70715,9 +71099,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
-mUu
-mUu
+gCM
 bGI
 pKo
 bGI
@@ -70726,7 +71108,7 @@ hhO
 pKo
 bGI
 bGI
-bGI
+bCL
 bGI
 bGI
 pKo
@@ -72905,7 +73287,7 @@ vuH
 tQZ
 wZV
 vuH
-vuH
+rfA
 jXf
 vuH
 vuH
@@ -73178,7 +73560,7 @@ cHt
 cqu
 cqu
 cqu
-eio
+mty
 bhD
 bJT
 eio
@@ -73600,7 +73982,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+rGp
 dVO
 dVO
 dVO
@@ -73611,12 +73993,12 @@ kxx
 kxx
 kxx
 bJT
-eio
+xWJ
 qtE
 qtE
 iXP
 kxx
-kxx
+sGo
 bJT
 bJT
 iNk
@@ -74030,12 +74412,12 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+rGp
+rGp
+maG
+xFl
+maG
+rGp
 dVO
 dVO
 rYR
@@ -74044,7 +74426,7 @@ eio
 eio
 bJT
 kxx
-qtE
+rOL
 eio
 bJT
 kxx
@@ -74186,7 +74568,7 @@ bGI
 hgJ
 hgJ
 wTT
-wTT
+bCh
 hgJ
 wTT
 tQZ
@@ -74462,12 +74844,12 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+xFl
+oNE
+oNE
+oNE
+iCQ
+rGp
 dVO
 dVO
 rYR
@@ -74574,7 +74956,7 @@ bpD
 bpD
 pKo
 fjw
-mUu
+gCM
 fjw
 fjw
 fjw
@@ -74893,13 +75275,13 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+rGp
+maG
+oNE
+oNE
+oNE
+oNE
+rGp
 dVO
 dVO
 cHt
@@ -75061,13 +75443,13 @@ pxz
 vuH
 vuH
 vuH
-vuH
+rfA
 vuH
 vuH
 riS
 vuH
 vuH
-vuH
+rfA
 vuH
 tQZ
 vRu
@@ -75326,12 +75708,12 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+iCQ
+oNE
+oNE
+oNE
+oNE
+xFl
 dVO
 dVO
 eLM
@@ -75757,13 +76139,13 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+rGp
+rGp
+oNE
+oNE
+oNE
+oNE
+rGp
 dVO
 dVO
 cHt
@@ -75901,7 +76283,7 @@ mUu
 bGI
 pKo
 bGI
-mUu
+gCM
 bGI
 pKo
 pKo
@@ -76189,19 +76571,19 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+rGp
+xFl
+oNE
+oNE
+oNE
+iCQ
+rGp
 dVO
 whb
 cHt
 bJT
 bJT
-eio
+tXN
 cHt
 isQ
 bJT
@@ -76339,7 +76721,7 @@ iwm
 bGI
 bGI
 fjw
-fjw
+kOS
 pKo
 bGI
 bGI
@@ -76622,11 +77004,11 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
-dVO
-dVO
-dVO
+rGp
+rGp
+maG
+xFl
+rGp
 dVO
 dVO
 dVO
@@ -77221,7 +77603,7 @@ vRu
 tQZ
 fff
 vuH
-vuH
+rfA
 vuH
 vuH
 tQZ
@@ -77860,7 +78242,7 @@ dVO
 dVO
 dVO
 dVO
-huj
+dVO
 huj
 huj
 huj
@@ -78051,7 +78433,7 @@ kkZ
 pKo
 bGI
 bGI
-bGI
+bCL
 bGI
 pKo
 bGI
@@ -78290,10 +78672,10 @@ dVO
 dVO
 dVO
 xkm
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 xkm
@@ -78340,8 +78722,8 @@ vqY
 vyl
 vqY
 voy
-dDh
-uZV
+sWY
+sDE
 cSA
 dVO
 dVO
@@ -78724,9 +79106,9 @@ xkm
 xkm
 huj
 huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
 huj
 xkm
 xkm
@@ -79157,8 +79539,8 @@ xkm
 huj
 huj
 huj
-huj
-huj
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -79589,13 +79971,13 @@ dVO
 huj
 huj
 huj
-huj
-huj
 dVO
 dVO
 dVO
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -80026,9 +80408,9 @@ dVO
 dVO
 xkm
 dVO
-huj
-huj
-huj
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -80203,7 +80585,7 @@ bGI
 pKo
 bGI
 mUu
-fjw
+kOS
 cdX
 cdX
 pKo
@@ -80459,9 +80841,9 @@ xkm
 xkm
 huj
 huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -80654,6 +81036,14 @@ bGI
 pKo
 bGI
 mUu
+oCU
+bGI
+bGI
+bCL
+bGI
+bGI
+pKo
+bGI
 bGI
 bGI
 bGI
@@ -80661,14 +81051,6 @@ bGI
 bGI
 bGI
 pKo
-bGI
-bGI
-bGI
-bGI
-bGI
-bGI
-bGI
-pKo
 bpD
 bpD
 bpD
@@ -80892,9 +81274,9 @@ xkm
 huj
 huj
 huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -81324,11 +81706,11 @@ xkm
 xkm
 huj
 huj
-huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -81373,7 +81755,7 @@ cSA
 gxt
 cSA
 rvz
-vqY
+ugz
 vqY
 vqY
 vqY
@@ -81383,7 +81765,7 @@ cSA
 cSA
 itO
 vqY
-uZV
+rkk
 vqY
 vqY
 vqY
@@ -81521,7 +81903,7 @@ mUu
 bGI
 bGI
 bGI
-bGI
+oCU
 bGI
 pKo
 bGI
@@ -81757,11 +82139,11 @@ xkm
 xkm
 huj
 huj
-huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -81807,7 +82189,7 @@ cSA
 itO
 vqY
 vqY
-vqY
+trI
 vqY
 vqY
 vyl
@@ -81921,7 +82303,7 @@ mUu
 fjw
 fjw
 fjw
-fjw
+pcb
 fjw
 pKo
 bGI
@@ -81971,7 +82353,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
+gCM
 mUu
 mUu
 mUu
@@ -82190,11 +82572,11 @@ xkm
 xaf
 huj
 huj
-huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -82417,7 +82799,7 @@ bGI
 bGI
 bGI
 bGI
-bGI
+oCU
 bGI
 bGI
 pKo
@@ -82624,10 +83006,10 @@ xaf
 huj
 huj
 huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -83057,11 +83439,11 @@ xaf
 huj
 huj
 huj
-huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -83249,7 +83631,7 @@ mUu
 bGI
 bGI
 bGI
-bGI
+oCU
 bGI
 bGI
 bGI
@@ -83283,7 +83665,7 @@ vuH
 vuH
 vuH
 vuH
-vuH
+heB
 vuH
 vuH
 vuH
@@ -83491,10 +83873,10 @@ huj
 huj
 huj
 huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -83925,10 +84307,10 @@ huj
 huj
 huj
 huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -84148,7 +84530,7 @@ vuH
 vuH
 vuH
 vuH
-vuH
+heB
 vuH
 foD
 tQZ
@@ -84358,10 +84740,10 @@ xaf
 huj
 huj
 huj
-huj
-huj
-huj
-huj
+dVO
+dVO
+dVO
+dVO
 huj
 huj
 huj
@@ -84574,10 +84956,10 @@ fff
 vuH
 fff
 vuH
+rfA
 vuH
 vuH
-vuH
-vuH
+heB
 vuH
 vuH
 vuH
@@ -84587,9 +84969,9 @@ tQZ
 bpD
 bpD
 tQZ
-kkZ
+ctC
 mUu
-kkZ
+ctC
 bpD
 bpD
 bpD
@@ -84791,21 +85173,21 @@ xaf
 xaf
 huj
 huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-xaf
-xaf
-xaf
-xaf
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -84936,7 +85318,7 @@ bGI
 bGI
 pKo
 bGI
-bGI
+bCL
 fjw
 fjw
 fjw
@@ -85225,19 +85607,19 @@ xaf
 huj
 huj
 huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-huj
-xaf
-xaf
-xaf
-xaf
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
+dVO
 dVO
 dVO
 dVO
@@ -85387,7 +85769,7 @@ pKo
 bGI
 mUu
 bGI
-fjw
+pcb
 fjw
 fjw
 fjw
@@ -85395,7 +85777,7 @@ fjw
 pKo
 bGI
 bGI
-bGI
+oCU
 bGI
 mUu
 bGI
@@ -85429,7 +85811,7 @@ tnM
 tnM
 ohy
 hNk
-tnM
+xTz
 nUW
 pxz
 pxz
@@ -85658,7 +86040,7 @@ huj
 huj
 huj
 huj
-huj
+dVO
 huj
 huj
 huj
@@ -85869,10 +86251,10 @@ tQZ
 pxz
 tQZ
 kyC
-vuH
+heB
 tQZ
 kyC
-vuH
+rfA
 tQZ
 kyC
 vuH
@@ -86271,7 +86653,7 @@ bGI
 hhO
 pKo
 bGI
-bGI
+bCL
 pKo
 bGI
 pKo
@@ -87603,7 +87985,7 @@ kyC
 vuH
 tQZ
 kyC
-vuH
+heB
 tQZ
 kyC
 vuH
@@ -88425,7 +88807,7 @@ pKo
 fjw
 cdX
 pKo
-fjw
+kOS
 guG
 pKo
 pKo
@@ -88453,7 +88835,7 @@ kkv
 vuH
 vuH
 vuH
-vuH
+rfA
 vuH
 wIS
 vuH
@@ -88828,7 +89210,7 @@ pKo
 bGI
 bGI
 pKo
-bGI
+bCL
 mUu
 bGI
 pKo
@@ -89257,7 +89639,7 @@ bGI
 bGI
 bGI
 pKo
-bGI
+oCU
 hhO
 bGI
 bGI
@@ -89281,7 +89663,7 @@ bpD
 pKo
 fjw
 mUu
-bGI
+bCL
 pKo
 mRb
 fjw
@@ -89739,7 +90121,7 @@ pKo
 pKo
 bGI
 mUu
-bGI
+oCU
 pKo
 bpD
 bpD
@@ -89771,7 +90153,7 @@ tQZ
 bpD
 bpD
 tQZ
-kkZ
+aLu
 mUu
 kkZ
 pKo
@@ -90423,7 +90805,7 @@ whb
 dVO
 dVO
 dVO
-dVO
+fhE
 dVO
 dVO
 whb
@@ -91059,8 +91441,8 @@ vuH
 vuH
 vuH
 vuH
-vuH
-vuH
+heB
+heB
 vuH
 vuH
 tQZ
@@ -91465,7 +91847,7 @@ pKo
 pKo
 pKo
 pKo
-bGI
+oCU
 mUu
 pKo
 bpD
@@ -91939,7 +92321,7 @@ pKo
 tQZ
 hgJ
 pKo
-hgJ
+qHz
 lBt
 eUN
 pAM
@@ -92288,7 +92670,7 @@ pKo
 hhO
 bGI
 bGI
-bGI
+bCL
 fjw
 fjw
 fjw
@@ -92304,6 +92686,7 @@ bpD
 pKo
 bGI
 mUu
+gCM
 mUu
 mUu
 mUu
@@ -92313,8 +92696,7 @@ mUu
 mUu
 mUu
 mUu
-mUu
-mUu
+gCM
 mUu
 mUu
 bOy
@@ -92373,7 +92755,7 @@ lBt
 pAM
 hgJ
 wTT
-eUN
+ahV
 eUN
 vMj
 pAM
@@ -92717,7 +93099,7 @@ mUu
 bGI
 bGI
 pKo
-bGI
+oCU
 bGI
 pKo
 pKo
@@ -92804,9 +93186,9 @@ hgJ
 eUN
 eUN
 wTT
-wTT
+bCh
 dNx
-eUN
+ahV
 eUN
 wTT
 jiR
@@ -93198,7 +93580,7 @@ mUu
 bGI
 iMU
 iMU
-sbO
+kKQ
 sbO
 sbO
 xlE
@@ -93207,7 +93589,7 @@ cpT
 bMj
 cpT
 sbO
-xlE
+mnF
 sbO
 wND
 bMj
@@ -93237,7 +93619,7 @@ hgJ
 vMj
 lBt
 eUN
-wTT
+bCh
 wTT
 vMj
 hgJ
@@ -93603,7 +93985,7 @@ mUu
 fjw
 pKo
 bGI
-bGI
+oCU
 bGI
 bGI
 bGI
@@ -93619,7 +94001,7 @@ fjw
 fjw
 pKo
 bGI
-buu
+nlT
 bGI
 pKo
 bGI
@@ -93667,7 +94049,7 @@ tQZ
 pKo
 hgJ
 pKo
-pAM
+jsZ
 vMj
 eUN
 pAM
@@ -94047,7 +94429,7 @@ bGI
 bGI
 pKo
 fjw
-bGI
+oCU
 bGI
 pKo
 bGI
@@ -94084,8 +94466,8 @@ tQZ
 vuH
 vuH
 jwY
-vuH
-vuH
+heB
+rfA
 vuH
 wIS
 vuH
@@ -94472,7 +94854,7 @@ pKo
 pKo
 pKo
 pKo
-bGI
+bCL
 bGI
 pKo
 bGI
@@ -94498,12 +94880,12 @@ xlE
 fdO
 bMj
 cpT
+kKQ
 sbO
 sbO
 sbO
 sbO
-sbO
-sbO
+vOg
 sbO
 cpT
 bMj
@@ -94932,7 +95314,7 @@ guD
 cpT
 sbO
 sbO
-sbO
+vOg
 sbO
 sbO
 cpT
@@ -95780,7 +96162,7 @@ buu
 pKo
 pKo
 bGI
-bGI
+bCL
 bGI
 bGI
 mUu
@@ -96238,7 +96620,7 @@ bMj
 tQZ
 bMj
 cpT
-xlE
+mnF
 sbO
 iMU
 iMU
@@ -96622,7 +97004,7 @@ pKo
 pKo
 pKo
 pKo
-bGI
+oCU
 mUu
 pKo
 pKo
@@ -96660,7 +97042,7 @@ tQZ
 cpT
 sbO
 sbO
-sbO
+vOg
 sbO
 sbO
 cpT
@@ -96679,7 +97061,7 @@ sbO
 xlE
 sbO
 cpT
-sbO
+vOg
 cpT
 cpT
 cpT
@@ -97094,14 +97476,14 @@ xlE
 iMU
 sbO
 sbO
-kxS
+mtX
 sbO
-jcn
+sbO
 sbO
 sbO
 xlE
 sbO
-sbO
+vOg
 kxS
 sbO
 bMj
@@ -97518,7 +97900,7 @@ vzM
 sbO
 lEf
 sbO
-sbO
+kKQ
 cpT
 bMj
 cpT
@@ -97752,7 +98134,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 whb
@@ -97965,7 +98347,7 @@ tQZ
 bMj
 bMj
 bMj
-cpT
+uXE
 sbO
 xlE
 sbO
@@ -98399,7 +98781,7 @@ bpD
 bMj
 cpT
 xlE
-sbO
+vOg
 sbO
 sbO
 sbO
@@ -99251,9 +99633,9 @@ cpT
 iMU
 iMU
 iMU
-sbO
+kKQ
 xlE
-sbO
+vOg
 sbO
 cpT
 cpT
@@ -99288,7 +99670,7 @@ tQZ
 wZV
 vuH
 vuH
-vuH
+heB
 vuH
 nmR
 tQZ
@@ -99659,7 +100041,7 @@ mUu
 mUu
 bGI
 bGI
-buu
+nlT
 bGI
 pKo
 fjw
@@ -99719,7 +100101,7 @@ kkZ
 tQZ
 eCr
 vuH
-vuH
+rfA
 vuH
 vuH
 ftJ
@@ -100150,7 +100532,7 @@ mUu
 kkZ
 kkZ
 vuH
-vuH
+heB
 vuH
 jSR
 vuH
@@ -100545,7 +100927,7 @@ bpD
 cpT
 cpT
 cpT
-cpT
+kpq
 sbO
 cpT
 tQZ
@@ -100982,7 +101364,7 @@ cpT
 cpT
 bMj
 cpT
-sbO
+vOg
 sbO
 sbO
 cpT
@@ -101408,7 +101790,7 @@ cpT
 lWL
 cpT
 cpT
-cpT
+uXE
 sbO
 sbO
 cpT
@@ -101879,7 +102261,7 @@ kkZ
 tQZ
 eCr
 vuH
-vuH
+heB
 vuH
 vuH
 nmR
@@ -105049,7 +105431,7 @@ whb
 dVO
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 dVO
@@ -105329,7 +105711,7 @@ bpD
 bpD
 bpD
 tQZ
-kkZ
+aLu
 kkZ
 noT
 kkZ
@@ -109290,7 +109672,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 dVO
@@ -109387,10 +109769,10 @@ dVO
 xXX
 rzJ
 vqY
-vqY
+qjz
 czt
 vqY
-vqY
+ugz
 vqY
 mTV
 vqY
@@ -109823,10 +110205,10 @@ vqY
 buW
 vqY
 vqY
-vqY
+qjz
 buW
 vqY
-vqY
+qjz
 vqY
 nDs
 rbY
@@ -111114,7 +111496,7 @@ dVO
 rbY
 rZs
 vqY
-ges
+qgB
 mGS
 hzU
 rzA
@@ -111554,7 +111936,7 @@ rzJ
 rzJ
 iTo
 vqY
-vqY
+ugz
 hfe
 vWU
 rbY
@@ -111944,7 +112326,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+fhE
 dVO
 dVO
 dVO
@@ -111979,12 +112361,12 @@ rbY
 soT
 gqB
 vqY
-rzJ
+fcj
 nDs
 rzJ
 rzJ
-nDs
-nDs
+iOh
+iOh
 rzJ
 vqY
 tvc
@@ -112414,7 +112796,7 @@ vqY
 nDs
 rbY
 rbY
-rzJ
+ebh
 rbY
 rbY
 nDs
@@ -114073,7 +114455,7 @@ whb
 whb
 whb
 dVO
-dVO
+uJM
 dVO
 dVO
 whb
@@ -114183,7 +114565,7 @@ whb
 whb
 whb
 whb
-dVO
+fhE
 dVO
 dVO
 whb
@@ -114570,15 +114952,15 @@ dVO
 rbY
 xXX
 rIg
+qjz
 vqY
-vqY
 rbY
 rbY
 rbY
 rbY
 rbY
 vqY
-vqY
+qjz
 bwT
 xXX
 rbY
@@ -115434,7 +115816,7 @@ dVO
 dVO
 rbY
 rIg
-vqY
+ugz
 vqY
 kxY
 qzG
@@ -116306,7 +116688,7 @@ rbY
 rbY
 rbY
 vqY
-vqY
+ugz
 vlz
 xXX
 rbY
@@ -117142,7 +117524,7 @@ whb
 whb
 dVO
 dVO
-dVO
+fhE
 dVO
 dVO
 dVO
@@ -117162,7 +117544,7 @@ dVO
 whb
 rbY
 rIg
-ges
+pKm
 vqY
 kxY
 xNw
@@ -117174,7 +117556,7 @@ vqY
 vlz
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 uiN
@@ -117602,7 +117984,7 @@ rbY
 dhp
 lTm
 mgt
-vqY
+qjz
 vlz
 dVO
 dVO
@@ -117946,7 +118328,7 @@ whb
 whb
 dVO
 dVO
-dVO
+uJM
 whb
 whb
 whb
@@ -118890,7 +119272,7 @@ dVO
 whb
 rbY
 sCl
-rzJ
+fcj
 vqY
 kxY
 mTM
@@ -135395,7 +135777,7 @@ pEm
 dVO
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 dVO
@@ -139207,7 +139589,7 @@ huj
 dVO
 dVO
 dVO
-dVO
+fhE
 dVO
 dVO
 xaf
@@ -140938,7 +141320,7 @@ xaf
 dVO
 dVO
 dVO
-dVO
+uJM
 dVO
 dVO
 dVO
@@ -145174,7 +145556,7 @@ xaf
 xaf
 xaf
 dVO
-dVO
+uJM
 xaf
 xaf
 xaf

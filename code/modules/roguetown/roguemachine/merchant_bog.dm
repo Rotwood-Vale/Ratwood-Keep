@@ -1,98 +1,94 @@
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-// BOG VERSION
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
+/// BOOOOOOOOOOOOOOOOOOG MERCHANT ///
 
-/obj/structure/roguemachine/balloon_pad_bog
-	name = "tariff beacon"
-	desc = "A rugged merchant beacon with stiff government tariffs."
+
+/obj/structure/roguemachine/merchant_bog
+	name = "Contraband Beacon"
+	desc = "An illicit merchant beacon stolen from the Guild. It imposes harsh tariffs and is used outside official channels."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "ballooner"
 	density = TRUE
 	blade_dulling = DULLING_BASH
-	var/next_airlift
 	anchored = TRUE
-	w_class = WEIGHT_CLASS_GIGANTIC
+	var/next_airlift = 0
+	max_integrity = 0
 
-/obj/item/roguemachine/balloon_pad_bog_/attack_hand(mob/living/user)
-	if(!anchored)
-		return ..()
+/obj/structure/roguemachine/balloon_pad_bog
+	name = ""
+	desc = ""
+	icon = 'icons/roguetown/misc/machines.dmi'
+	icon_state = ""
+	density = FALSE
+	layer = BELOW_OBJ_LAYER
+	anchored = TRUE
+
+/obj/structure/roguemachine/merchant_bog/attack_hand(mob/living/user)
 	user.changeNext_move(CLICK_CD_MELEE)
 
-	var/contents
-	contents += "<center>EXPORT DEVICE<BR>"
-	contents += "--------------<BR>"
-	contents += "Tariff: 50%<BR>"
+	var/contents = ""
+	contents += "<center>TARIFF BEACON<BR>"
+	contents += "-----------------<BR>"
+	contents += "Fixed Tariff: 50%<BR>"
 	contents += "Next Balloon: [time2text((next_airlift - world.time), "mm:ss")]</center><BR>"
 
-	if(!user.can_read(src, TRUE))
-		contents = stars(contents)
-	var/datum/browser/popup = new(user, "TAXBEACON", "", 370, 300)
+	var/datum/browser/popup = new(user, "TAXNAV", "", 370, 300)
 	popup.set_content(contents)
 	popup.open()
 
-/obj/item/roguemachine/balloon_pad_bog/update_icon()
-	if(!anchored)
-		w_class = WEIGHT_CLASS_BULKY
-		set_light(0)
-		return
-	w_class = WEIGHT_CLASS_GIGANTIC
-	set_light(2, 2, "#d14747") // red text about 50% dont be blind my boy
+/obj/structure/roguemachine/merchant_bog/update_icon()
+	set_light(2, 2, "#d14747")
 
-/obj/item/roguemachine/balloon_pad_bog/Initialize()
+/obj/structure/roguemachine/merchant_bog/Initialize()
 	. = ..()
-	if(anchored)
-		START_PROCESSING(SSroguemachine, src)
+	START_PROCESSING(SSroguemachine, src)
 	update_icon()
 	for(var/X in GLOB.alldirs)
 		var/T = get_step(src, X)
-		if(!T)
-			continue
-		new /obj/structure/roguemachine/balloon_pad(T)
+		if(T)
+			new /obj/structure/roguemachine/balloon_pad_bog(T)
 
-/obj/item/roguemachine/balloon_pad_bog/Destroy()
+/obj/structure/roguemachine/merchant_bog/Destroy()
 	STOP_PROCESSING(SSroguemachine, src)
 	set_light(0)
 	return ..()
 
-/obj/item/roguemachine/balloon_pad_bog/process()
-	if(!anchored)
-		return TRUE
+/obj/structure/roguemachine/merchant_bog/process()
 	if(world.time > next_airlift)
 		next_airlift = world.time + rand(2 MINUTES, 3 MINUTES)
 #ifdef TESTSERVER
 		next_airlift = world.time + 5 SECONDS
 #endif
+
 		var/play_sound = FALSE
 		for(var/D in GLOB.alldirs)
 			var/budgie = 0
 			var/turf/T = get_step(src, D)
-			if(!T)
-				continue
-			var/obj/structure/roguemachine/balloon_pad/E = locate() in T
-			if(!E)
-				continue
+			if(!T) continue
+
+			var/obj/structure/roguemachine/balloon_pad_bog/E = locate() in T
+			if(!E) continue
+
 			for(var/obj/I in T)
 				if(I.anchored || !isturf(I.loc) || istype(I, /obj/item/roguecoin))
 					continue
+
 				var/prize = I.get_real_price()
-				var/final_price = round(prize * 0.5) // its ALWAYS 50% MY BOY
+				var/final_price = round(prize * 0.5)
 				if(final_price >= 1)
 					play_sound = TRUE
 					budgie += final_price
 					I.visible_message(span_warning("[I] is sucked into the sky with a bureaucratic whistle!"))
 					qdel(I)
+
 			budgie = round(budgie)
 			if(budgie > 0)
-				play_sound = TRUE
 				E.budget2change(budgie)
+
 		if(play_sound)
 			playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 
 /obj/structure/roguemachine/merchantvend_bog
 	name = "Independent Vendor"
-	desc = "A fully autonomous vendor. No taxes. No masters."
+	desc = "A fully autonomous vendor. No gods. No masters. Only taxes."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
