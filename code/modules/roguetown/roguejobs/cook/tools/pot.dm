@@ -32,7 +32,7 @@
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
 			reagents.trans_to(B, reagents.total_volume)
-			B.reagents.adjust_thermal_energy(T20C) // sloppy quick way to make it so any stew isn't boiling, will fix later
+			B.reagents.chem_temp = T20C // sloppy quick way to make it so any stew isn't boiling, will fix later
 		return TRUE
 
 	if(istype(I, /obj/item/reagent_containers/glass)) //ignore these for now I'll have to figure out something later
