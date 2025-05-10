@@ -36389,7 +36389,7 @@
 /area/rogue/outdoors/town)
 "rYR" = (
 /obj/structure/mineral_door/wood/window,
-/turf/closed/wall/mineral/rogue/stone/moss,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavewet/bogcaves)
 "rZf" = (
 /obj/structure/flora/newtree,
