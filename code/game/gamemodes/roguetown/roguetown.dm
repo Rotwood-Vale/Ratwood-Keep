@@ -223,11 +223,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Priest",
 	"Knight",
 	"Goblin Chief",
-	"Goblin Cook",
-	"Goblin Guard",
-	"Goblin Rabble",
-	"Goblin Smith",
-	"Goblin Shaman")
+	"Goblin")
 	var/num_bandits = 0
 	var/limit_bandits = 8
 	if(num_players() >= 9)
@@ -403,11 +399,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Confessor",
 	"Acolyte",
 	"Goblin Chief",
-	"Goblin Cook",
-	"Goblin Guard",
-	"Goblin Rabble",
-	"Goblin Smith",
-	"Goblin Shaman"
+	"Goblin",
 	)
 	antag_candidates = get_players_for_role(ROLE_ZIZOIDCULTIST)
 	antag_candidates = shuffle(antag_candidates)
@@ -455,12 +447,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Mortician",
 	"Mercenary",
 	"Goblin Chief",
-	"Goblin Cook",
-	"Goblin Guard",
-	"Goblin Rabble",
-	"Goblin Smith",
-	"Goblin Shaman"
-	)
+	"Goblins")
 	antag_candidates = get_players_for_role(ROLE_LICH)
 	var/datum/mind/lichman = pick_n_take(antag_candidates)
 	if(lichman)
@@ -500,11 +487,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Knight",
 	"Bandit",
 	"Goblin Chief",
-	"Goblin Cook",
-	"Goblin Guard",
-	"Goblin Rabble",
-	"Goblin Smith",
-	"Goblin Shaman"
+	"Goblin"
 	)
 	antag_candidates = get_players_for_role(ROLE_NBEAST)
 	antag_candidates = shuffle(antag_candidates)
@@ -557,11 +540,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Mercenary",
 	"Bandit",
 	"Goblin Chief",
-	"Goblin Cook",
-	"Goblin Guard",
-	"Goblin Rabble",
-	"Goblin Smith",
-	"Goblin Shaman"
+	"Goblin,"
 	)
 
 	var/num_werewolves = rand(1,2)
