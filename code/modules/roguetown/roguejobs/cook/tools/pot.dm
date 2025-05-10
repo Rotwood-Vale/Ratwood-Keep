@@ -27,10 +27,12 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass/bowl))
+		var/obj/item/reagent_containers/glass/bowl/B = I 
 		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
-			reagents.trans_to(I, reagents.total_volume)
+			reagents.trans_to(B, reagents.total_volume)
+			B.reagents.adjust_thermal_energy(T20C) // sloppy quick way to make it so any stew isn't boiling, will fix later
 		return TRUE
 
 	if(istype(I, /obj/item/reagent_containers/glass)) //ignore these for now I'll have to figure out something later
