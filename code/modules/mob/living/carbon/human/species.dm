@@ -1197,7 +1197,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			log_combat(user, target, "attempted to punch")
 			return FALSE
 */
-		var/selzone = accuracy_check(user.zone_selected, user, target, /datum/skill/combat/unarmed, user.used_intent)
+		var/selzone = accuracy_check(user.zone_selected, user, target, user.used_intent.unarmed_skill || /datum/skill/combat/unarmed, user.used_intent)
 
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
