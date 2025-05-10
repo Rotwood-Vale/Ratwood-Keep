@@ -55,8 +55,8 @@
 	var/bonenecro = null
 
 
-	//zizoid rituals tracker
-	var/zizofavor = 0 
+	//rituals tracker
+	var/divinefavor = 0 
 	var/list/rituals_completed = list() //This is used to track which rituals have already been applied to somebody.
 
 	//Druid Awakened Animal Trackers

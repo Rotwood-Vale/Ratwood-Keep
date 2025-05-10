@@ -81,7 +81,8 @@
 		idol.icon = entry.icon
 		idol.icon_state = entry.icon_state
 		idol.add_overlay(entry.overlays)
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/invademind
 	name = "Invade Mind"
@@ -103,18 +104,19 @@
 			if(HL.real_name == input)
 				qdel(P)
 				to_chat(HL, "<i>You hear a voice in your head... <b>[info]</i></b>")
-		break
+		return TRUE
+	return FALSE
 
-/datum/ritual/zizo/summongear
+/datum/ritual/zizo/summonrobes
 	name = "Summon Robes"
 	circle = "Transmutation"
 	difficulty = 1
 	favor_cost = 50
-	center_requirement = /obj/item/natural/hide
+	n_req = /obj/item/natural/hide
+	s_req = /obj/item/natural/artifact
+	function = /proc/summonrobes
 
-	function = /proc/summongear
-
-/proc/summongear(mob/user, turf/C)
+/proc/summonrobes(mob/user, turf/C)
 	var/datum/effect_system/spark_spread/S = new(C)
 	S.set_up(1, 1, C)
 	S.start()

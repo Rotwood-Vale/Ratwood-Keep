@@ -180,10 +180,10 @@
 	//audible_message("[src] praises " + span_bold("Zizo") + "!")
 	log_game("[src.real_name] praises Zizo!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
-	src.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!"))
+	src.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!", "THE WEEPERS TEARS FILL ZIZOS CHALICE!", "THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", "ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", "ZIZOS SONG TURNS FLESH TO FAITH!"))
 	for(var/mob/living/carbon/human/H in view(src))
 		if(H.patron?.type != /datum/patron/zizo)
-			src.mind.zizofavor += 5
+			src.mind.divinefavor += 5
 			to_chat(src, span_notice("A soul hears my message of devotion! She is pleased."))
 
 /mob/living/carbon/human/proc/favorcheck()
@@ -191,7 +191,7 @@
 	set category = "ZIZO"
 
 	if (src.mind)
-		to_chat(src, "Your Zizo favor level is: [src.mind.zizofavor]")
+		to_chat(src, "Your Zizo favor level is: [src.mind.divinefavor]")
 
 
 		

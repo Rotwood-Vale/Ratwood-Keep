@@ -4,6 +4,23 @@
 	for(var/mob/living/carbon/human/HL in GLOB.human_list)
 		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
 	*/
+/datum/ritual/zizo/debugfavor
+	name = "Debug Favor Ritual please report to Admemes if this is somehow ingame"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
+
+	function = /proc/debugfavor
+
+
+/proc/debugfavor(mob/user, turf/C)
+	user.mind.divinefavor += 9999;
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("Lady Zizo fucking loves you, for some reason"))
+	for(var/mob/living/carbon/human/HL in GLOB.human_list)
+		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
+
 
 /datum/ritual/zizo/lesserwildsacrifice
 	name = "Lesser wild Sacrifice"
@@ -16,11 +33,9 @@
 
 
 /proc/lesserwildsacrifice(mob/user, turf/C)
-	user.mind.zizofavor += 10;
+	user.mind.divinefavor += 10;
 	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	to_chat(user.mind, span_notice("Lady Zizo accepts my meagre gift!"))
-	for(var/mob/living/carbon/human/HL in GLOB.human_list)
-		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
 
 
 
@@ -38,7 +53,7 @@
 
 
 /proc/greaterwildsacrifice(mob/user, turf/C)
-	user.mind.zizofavor += 75;
+	user.mind.divinefavor += 75;
 	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	to_chat(user.mind, span_notice("Lady Zizo accepts my gift!"))
 
@@ -61,7 +76,7 @@
 		H.emote("painscream")
 		H.apply_status_effect(/datum/status_effect/debuff/zizoagony)
 		C.visible_message(span_danger("[H.real_name] is lifted up into the air and multiple scratches, incisions and shallow cuts start etching themselves into their skin!"))
-		user.mind.zizofavor += 25
+		user.mind.divinefavor += 25
 		to_chat(user.mind, span_notice("She smiles upon the suffering I cause!"))
 		to_chat(H.mind, span_notice("THE PAIN!! IT'S TOO MUCH!!!"))
 		playsound(C,pick('sound/combat/hits/bladed/genslash (1).ogg','sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (3).ogg'), 100, FALSE)

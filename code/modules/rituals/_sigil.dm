@@ -174,7 +174,7 @@
 		user.electrocute_act(10, src)
 		return
 
-	if (pickritual.favor_cost > user.mind.zizofavor)
+	if (pickritual.favor_cost > user.mind.divinefavor)
 		if(badritualpunishment)
 			return
 		to_chat(user.mind, span_danger("\"Zizo favors me not...\""))
@@ -182,7 +182,7 @@
 		return
 
 
-	user.mind.zizofavor -= pickritual.favor_cost
+	user.mind.divinefavor -= pickritual.favor_cost
 	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)
 

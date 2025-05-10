@@ -15,7 +15,7 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 		if("Rite of bodily Perfection" in H.mind.rituals_completed) // No doing this twice.
 			to_chat(H.mind, span_notice("My body is already honed to perfection.."))
 			to_chat(user.mind, span_notice("That ones body has already been perfected.."))
-			break
+			return TRUE
 		H.change_stat("strength", 1)
 		H.change_stat("speed", 1)
 		H.change_stat("constitution", 2)
@@ -25,6 +25,8 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 		C.visible_message(span_danger("[H.real_name]s form begins to twist and contort violently as they are remade by Her hands."))
 		H.emote("painscream")
 		to_chat(H.mind, span_notice("By Zizos grace, my wretched mortal form twists into an idealized form of itself!"))
+		return TRUE
+	return FALSE
 
 //Steal Lux from a living Creature
 /datum/ritual/zizo/theftoflight 
@@ -35,17 +37,17 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 	favor_cost = 25
 	function = /proc/theftoflight
 
-//if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
 proc/theftoflight(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(!(H.mind) || H.has_status_effect(/datum/status_effect/debuff/death_weaken)) //fails if mindless/luxdrained, no farming from afk/dead
 			to_chat(user.mind, span_notice("There is not a spark of thought inside this one.."))
-			user.mind.zizofavor += 25 //refund
-			return
+			return TRUE
 		H.apply_status_effect(/datum/status_effect/debuff/death_weaken)
 		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-		H.electrocute_act(30, src)
+		H.Paralyze(30)
 		new /obj/item/reagent_containers/lux(H.loc)
+		return TRUE
+	return FALSE
 		
 
 
@@ -78,7 +80,8 @@ proc/theftoflight(mob/user, turf/C)
 		H.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing)
 		H.adjustCloneLoss(-healing, 0)
 		to_chat(H.mind, span_notice("Zizo deigns to pull my wretched body together once more!"))
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/fleshmend
 	name = "Fleshmend"
@@ -98,7 +101,8 @@ proc/theftoflight(mob/user, turf/C)
 		H.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 		H.fully_heal(admin_revive = TRUE)
 		to_chat(H.mind, span_notice("ZIZO EMPOWERS ME!"))
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/bunnylegs
 	name = "Saliendo Pedes"
@@ -116,7 +120,8 @@ proc/theftoflight(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 		to_chat(H.mind, span_notice("I feel like my legs have become stronger."))
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/darkeyes
 	name = "Darkened Eyes"
@@ -140,7 +145,8 @@ proc/theftoflight(mob/user, turf/C)
 		eyes = new /obj/item/organ/eyes/night_vision/zombie
 		eyes.Insert(H)
 		to_chat(H.mind, span_notice("I no longer fear the dark."))
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/nopain
 	name = "Painless Battle"
@@ -161,7 +167,8 @@ proc/theftoflight(mob/user, turf/C)
 		to_chat(H.mind, span_notice("I no longer feel pain, but it has come at a terrible cost."))
 		H.change_stat("strength", -2)
 		H.change_stat("constitution", -2)
-		break
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/fleshform
 	name = "Stronger Form"
@@ -188,6 +195,8 @@ proc/theftoflight(mob/user, turf/C)
 		trl.forceMove(H)
 		trl.ckey = H.ckey
 		H.gib()
+		return TRUE
+	return FALSE
 
 /datum/ritual/zizo/gutted
 	name = "Gutted Fish"
@@ -212,3 +221,5 @@ proc/theftoflight(mob/user, turf/C)
 			if(cavity.cavity_item)
 				cavity.cavity_item.forceMove(drop_location)
 				cavity.cavity_item = null
+		return TRUE
+	return FALSE

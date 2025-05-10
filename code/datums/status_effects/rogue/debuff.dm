@@ -461,10 +461,11 @@
 
 /datum/status_effect/debuff/zizovoice/tick()
 	.=..()
-	zizoid_mob = zizoid_ref.resolve()
+	zizoid_mob = zizoid_ref.resolve() 
 	if(zizoid_mob && zizoid_mob.mind)
-		zizoid_mob.mind.zizofavor +=1
-		owner.say("Praise Zizo!!!")
+		if(prob(5)) //5% every 10 seconds = on average every 200 seconds
+			zizoid_mob.mind.divinefavor +=5
+			owner.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!", "THE WEEPERS TEARS FILL ZIZOS CHALICE!", "THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", "ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", "ZIZOS SONG TURNS FLESH TO FAITH!", "S-she’s in my head—Zizo won’t stop whispering!"))
 
 
 
