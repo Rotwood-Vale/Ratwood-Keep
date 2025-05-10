@@ -974,7 +974,6 @@
 #include "code\game\objects\structures\spirit_board.dm"
 #include "code\game\objects\structures\stairs.dm"
 #include "code\game\objects\structures\statues.dm"
-#include "code\game\objects\structures\statues_gods.dm"
 #include "code\game\objects\structures\tables_racks.dm"
 #include "code\game\objects\structures\target_stake.dm"
 #include "code\game\objects\structures\timed_blockers.dm"

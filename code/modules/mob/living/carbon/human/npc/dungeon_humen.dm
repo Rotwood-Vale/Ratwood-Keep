@@ -112,7 +112,7 @@
 	name = "Dungeon Cleric"
 
 	pre_equip(mob/living/carbon/human/H)
-		
+
 		..()
 		mask = /obj/item/clothing/mask/rogue/facemask
 		head = /obj/item/clothing/head/roguetown/necrahood
@@ -123,7 +123,7 @@
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
 		r_hand = /obj/item/rogueweapon/mace/wsword
-			
+
 		H.STASTR = 12
 		H.STASPD = 10
 		H.STACON = 12
@@ -136,27 +136,12 @@
 
 	next_cast = world.time + 200
 
-	var/mob/living/target_to_heal = null
+	src.say("Dark gods spread their blessing!")
 
-	var/list/allies = list()
-	for(var/mob/living/M in view(7, src))
-		if(M != src && M.health < M.maxHealth && !disjoint_lists(M.faction, faction))
-			allies += M
+	var/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/H = new(src)
+	H.cast(null, src)
 
-	if(allies.len)
-		target_to_heal = pick(allies)
-	else if(src.health < src.maxHealth)
-		target_to_heal = src
-
-	if(target_to_heal)
-		if(target_to_heal == src)
-			src.say("Dark gods restore my flesh!")
-		else
-			src.say("Dark gods heal one of their faithful!")
-		var/obj/effect/proc_holder/spell/invoked/lesser_heal_npc/H = new(src)
-		H.cast(list(target_to_heal), src)
-
-	sleep(50) // 5 секунд
+	sleep(50) // 5 SECONDS
 
 	var/list/enemies = list()
 	for(var/mob/living/L in view(8, src))
@@ -210,7 +195,7 @@
 
 // NPC SPELLS // DONT GIVE THEM TO PLAYERS  YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
-/obj/effect/proc_holder/spell/invoked/lesser_heal_npc
+/obj/effect/proc_holder/spell/targeted/lesser_heal_npc
 	name = "Miracle NPC"
 	overlay_state = "lesserheal"
 	releasedrain = 30
@@ -218,31 +203,45 @@
 	chargetime = 0
 	range = 7
 	warnie = "sydwarning"
-	movement_interrupt = FALSE
+	cast_without_targets = TRUE
 	sound = 'sound/magic/heal.ogg'
 	invocation_type = "whisper"
 	charge_max = 10 SECONDS
 
-/obj/effect/proc_holder/spell/invoked/lesser_heal_npc/cast(list/targets, mob/living/user)
+/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/cast(list/targets, mob/living/user)
 	. = ..()
-	if(!targets || !targets.len)
+	if(!user)
 		return FALSE
 
-	var/mob/living/target = targets[1]
-	if(!target || target.stat == DEAD)
-		return FALSE
+	var/list/heal_targets = list()
+	for(var/mob/living/M in view(3, user))
+		if(M.stat == DEAD || disjoint_lists(M.faction, user.faction))
+			continue
+		heal_targets += M
+		var/obj/effect/temp_visual/heal_rogue/V = new /obj/effect/temp_visual/heal_rogue(get_turf(M))
+		V.color = "#FFD700"
 
-	target.adjustOxyLoss(-100)
-	target.adjustToxLoss(-100)
-	target.adjustBruteLoss(-100)
-	target.adjustFireLoss(-100)
-	target.blood_volume += BLOOD_VOLUME_SURVIVE
+	for(var/mob/living/M in heal_targets)
+		spawn()
+			for(var/i = 1 to 10)
+				if(QDELETED(M) || M.stat == DEAD)
+					break
+				M.adjustBruteLoss(-10)
+				M.adjustFireLoss(-10)
+				M.adjustOxyLoss(-10)
+				M.adjustToxLoss(-10)
+				if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+					M.blood_volume = min(M.blood_volume + 5, BLOOD_VOLUME_NORMAL)
+				M.update_damage_overlays()
+				sleep(10)
 
-	target.visible_message(span_info("[target] glows with unholy light."), span_notice("You feel your wounds closing."))
+	src.visible_message(span_notice("[src] raises a hand, and healing light surrounds his fellows."))
+	return TRUE
+
 
 	return TRUE // I REPEAT NPC ONLY YOU R WORD
 
-	/obj/effect/proc_holder/spell/targeted/churnnpc
+/obj/effect/proc_holder/spell/targeted/churnnpc
 	name = "Churn Undead NPC"
 	range = 8
 	overlay_state = "necra"
@@ -250,8 +249,7 @@
 	charge_max = 20 SECONDS
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
-	invocation = "The Undermaiden rebukes!"
-	invocation_type = "shout"
+	invocation_type = "whisper"
 
 
 /obj/effect/proc_holder/spell/targeted/churnnpc/cast(list/targets, mob/living/user = usr)
@@ -276,6 +274,16 @@
 			L.apply_damage(rand(10, 25), BRUTE)
 
 	return TRUE
+
+
+
+
+
+
+
+
+
+
 
 /proc/disjoint_lists(list/A, list/B)
 	for(var/val in A)
