@@ -167,6 +167,14 @@
 	/datum/species/goblin/moon,\
 )
 
+//non-dwarfs, restricted furries - primarily used for eastern update since stats can get really weird considering easy access to stat-drugs
+#define EAST_GRONN_TYPES list(\
+	/datum/species/human/northern,\
+	/datum/species/human/halfelf,\
+	/datum/species/elf/wood,\
+	/datum/species/tieberian,\
+	/datum/species/demihuman,\
+)
 
 
 #define ALL_CLERIC_PATRONS list(\
@@ -341,7 +349,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
-
+#define CTAG_ADVENTURER		"CAT_ADVENTURER"		// Adventurer classes
 /*
 	Defines for the triumph buy datum categories
 */

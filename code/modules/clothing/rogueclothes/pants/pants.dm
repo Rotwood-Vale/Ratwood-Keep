@@ -405,7 +405,6 @@
 /obj/item/clothing/under/roguetown/skirt/red
 	color = CLOTHING_RED
 
-
 /obj/item/clothing/under/roguetown/trou/overseer
     name = "heavy trousers"
     desc = "A pair of washed-out heavy trousers in grey colors."
@@ -417,3 +416,28 @@
     max_integrity = 110
     armor = list("blunt" = 35, "slash" = 25, "stab" = 20, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
     prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+
+	//eastern pants
+
+/obj/item/clothing/under/roguetown/trou/eastpants1
+	name = "cut-throat's pants"
+	desc = "Foreign pants, with leather insewns."
+	icon_state = "eastpants1"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
+	max_integrity = 130
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDECROTCH
+
+/obj/item/clothing/under/roguetown/trou/eastpants2
+	name = "strange ripped pants"
+	desc = "Weird pants typically worn by Ruma Clan Red Poles."
+	icon_state = "eastpants2"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
+	max_integrity = 130
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 40, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	flags_inv = HIDECROTCH
+

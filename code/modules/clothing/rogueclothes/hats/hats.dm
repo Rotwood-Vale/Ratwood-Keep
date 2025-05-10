@@ -1713,3 +1713,16 @@
     icon_state = "viceseermask"
     item_state = "viceseermask"
     sellprice = 40
+
+/obj/item/clothing/head/roguetown/easthat
+	name = "worn bamboo hat"
+	desc = "A reinforced bamboo hat."
+	icon_state = "easthat"
+	item_state = "easthat"
+	armor = list("blunt" = 47, "slash" = 27, "stab" = 37, "bullet" = 20, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) 
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST) //same stats as rein. hood
+	max_integrity = 150
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+	flags_inv = HIDEEARS
+	
