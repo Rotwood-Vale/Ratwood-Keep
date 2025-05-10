@@ -692,20 +692,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 
 /datum/game_mode/chaosmode/make_antag_chance(mob/living/carbon/human/character) //klatejoin
 	return
-//******** VILLAINS
-	var/num_villains = round((num_players() * 0.30)+1, 1)
-	if((villains.len + pre_villains.len) >= num_villains) //Upper cap for number of latejoin antagonists
-		return
-	if(ROLE_MANIAC in character.client.prefs.be_special)
-		if(!is_antag_banned(character.ckey, ROLE_MANIAC) && !QDELETED(character))
-			if(age_check(character.client))
-				if(!(character.job in restricted_jobs))
-					if(prob(66))
-						add_latejoin_villain(character.mind)
-
-/datum/game_mode/chaosmode/proc/add_latejoin_villain(datum/mind/character)
-	var/datum/antagonist/maniac/new_antag = new /datum/antagonist/maniac()
-	character.add_antag_datum(new_antag)
 
 /datum/game_mode/chaosmode/proc/vampire_werewolf()
 	var/vampyr = 0

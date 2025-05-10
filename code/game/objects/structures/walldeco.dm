@@ -51,7 +51,7 @@
 	. = ..()
 	if(user.Adjacent(src))
 		if(SSrole_class_handler.bandits_in_round)
-			if(user.mind && user.mind.assigned_role in BANDIT_AUTHORITY_ROLES)
+			if(user.mind && (user.mind.assigned_role in BANDIT_AUTHORITY_ROLES))
 				. += span_bold("I already know the faces of the local bandits well.")
 				return
 			. += span_bold("I now know the faces of the local bandits.")

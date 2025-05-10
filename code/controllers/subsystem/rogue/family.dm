@@ -328,7 +328,7 @@ SUBSYSTEM_DEF(family)
 	return FALSE
 
 
-proc/getMatchingRel(var/rel_type)
+/proc/getMatchingRel(var/rel_type)
 	switch(rel_type)
 		if(REL_TYPE_PARENT)
 			return REL_TYPE_OFFSPRING

@@ -7,8 +7,8 @@ dreamchecker = true
 use_typepath_names = true
 
 [code_standards]
-disallow_relative_type_definitions = false
-disallow_relative_proc_definitions = false
+disallow_relative_type_definitions = true
+disallow_relative_proc_definitions = true
 
 [diagnostics]
 # Raised by DreamChecker
@@ -28,14 +28,14 @@ protected_var = "error"
 must_be_pure = "error"
 must_not_sleep = "off"
 redefined_proc = "off"
-ambiguous_in_lhs = "off"
-ambiguous_not_bitwise = "off"
+ambiguous_in_lhs = "error"
+ambiguous_not_bitwise = "error"
 no_typehint_implicit_new = "error"
-field_access_static_type = "off"
-proc_call_static_type = "off"
+field_access_static_type = "error"
+proc_call_static_type = "error"
 proc_has_no_parent = "error"
 no_operator_overload = "off"
-unreachable_code = "off"
+unreachable_code = "error"
 control_condition_static = "error"
 if_condition_determinate = "error"
 loop_condition_determinate = "error"

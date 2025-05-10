@@ -35,7 +35,7 @@ T1 Enchantments below here*/
 	desc = "A scroll imbued with an enchantment of mining. Good for mining rock."
 	component = /datum/magic_item/mundane/mining
 
-obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
+/obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 	.=..()
 	if(istype(O,/obj/item/rogueweapon/pick))
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))

@@ -314,7 +314,7 @@
 		to_chat(user,span_notice("I stop the [src].")) //Sand magically flows back because that's more convinient to use.
 		stop()
 
-obj/item/hourglass/temporal/stop()
+/obj/item/hourglass/temporal/stop()
 	..()
 	do_teleport(victim, target, channel = TELEPORT_CHANNEL_QUANTUM)
 
