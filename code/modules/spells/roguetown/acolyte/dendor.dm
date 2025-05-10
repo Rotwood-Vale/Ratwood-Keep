@@ -77,7 +77,7 @@
 
 	target.visible_message(span_warning("The [target.real_name]'s body is engulfed by a calming aura..."), runechat_message = TRUE)
 	// Kind of a hacky fix to make sure the ai doesn't attack people, but it works. 
-	target.faction = list("neutral")
+	target.faction += "neutral"
 	target.tame = TRUE
 
 	if(user.mind.awakened_animals < user.mind.awakened_max)

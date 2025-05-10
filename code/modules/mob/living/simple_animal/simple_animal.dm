@@ -160,6 +160,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	var/mob/owner = null
 
+	var/datum/ai_controller/saved_ai_controller = null
+
 	///I don't want to confuse this with client registered_z.
 	var/my_z
 	///What kind of footstep this mob should have. Null if it shouldn't have any.
@@ -231,6 +233,20 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			qdel(O)
 			food = min(food + 30, 100)
+			//Heals a bit of health after eating.
+			var/healing = 7
+			if(src.blood_volume < BLOOD_VOLUME_NORMAL)
+				src.blood_volume = min(src.blood_volume+10, BLOOD_VOLUME_NORMAL)
+			if(length(src.get_wounds()))
+				src.heal_wounds(healing)
+				src.update_damage_overlays()
+			src.adjustBruteLoss(-healing, 0)
+			src.adjustFireLoss(-healing, 0)
+			src.adjustOxyLoss(-healing, 0)
+			src.adjustToxLoss(-healing, 0)
+			src.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing)
+			src.adjustCloneLoss(-healing, 0)
+				
 			if(tame)
 				return
 			var/realchance = tame_chance
@@ -703,6 +719,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			M.visible_message("<span class='danger'>[M] falls off [src]!</span>")
 		else
 			return
+		
+	// Restore AI when unmounted
+		if(!ai_controller && saved_ai_controller)
+			ai_controller = saved_ai_controller
+			saved_ai_controller = null
+
 	..()
 	update_icon()
 
@@ -731,6 +753,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		M.forceMove(get_turf(src))
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
+
+		// Save and disable AI when mounted
+		if(ai_controller)
+			saved_ai_controller = ai_controller
+			ai_controller = null
+		
 	..()
 	update_icon()
 

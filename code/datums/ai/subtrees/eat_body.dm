@@ -7,6 +7,13 @@
 	if(QDELETED(target))
 		return
 	var/mob/living/pawn = controller.pawn
+
+	// Prevent eating dead bodies if the mob is being ridden or has buckled mobs
+	if(istype(pawn, /mob/living/simple_animal))
+		var/mob/living/simple_animal/mob = pawn
+		if(mob.has_buckled_mobs())
+			return
+
 	if(pawn.doing)
 		return
 	controller.queue_behavior(behavior, BB_BASIC_MOB_FOOD_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)

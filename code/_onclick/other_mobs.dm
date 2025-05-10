@@ -591,6 +591,10 @@
 	Animals & All Unspecified
 */
 /mob/living/UnarmedAttack(atom/A)
+	// Prevent attacking self
+	if(A == src)
+		return
+
 	if(!isliving(A))
 		if(used_intent.type == INTENT_GRAB)
 			var/obj/structure/AM = A
@@ -610,6 +614,10 @@
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user)
+	// Prevent attacking self
+	if(user == src)
+		return
+		
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
 
 /mob/living/RestrainedClickOn(atom/A)
@@ -679,25 +687,30 @@
 */
 
 /mob/living/simple_animal/UnarmedAttack(atom/A, proximity)
-	if(!dextrous)
-		return ..()
-	if(!ismob(A))
-		A.attack_hand(src)
-		update_inv_hands()
+    // Prevent attacking self
+    if(A == src)
+        return
 
+    if(!dextrous)
+        return ..()
+    if(!ismob(A))
+        A.attack_hand(src)
+        update_inv_hands()
 
 /*
 	Hostile animals
 */
 
 /mob/living/simple_animal/hostile/UnarmedAttack(atom/A)
-	target = A
-	if(dextrous && !ismob(A))
-		..()
-	else
-		AttackingTarget(A)
+    // Prevent attacking self
+    if(A == src)
+        return
 
-
+    target = A
+    if(dextrous && !ismob(A))
+        ..()
+    else
+        AttackingTarget(A)
 
 /*
 	New Players:

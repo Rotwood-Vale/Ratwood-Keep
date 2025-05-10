@@ -23,6 +23,10 @@
 		if(mob.food == mob.food_max && !mob.eat_forever)
 			return // not hungry
 
+		// Prevent searching for dead bodies if the mob is being ridden or has buckled mobs
+		if(mob.has_buckled_mobs())
+			return
+
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_FOOD_TARGET]
 	if(!QDELETED(target))
 		// Busy with something
