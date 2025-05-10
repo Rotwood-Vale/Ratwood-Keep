@@ -85,11 +85,6 @@ SUBSYSTEM_DEF(treasury)
 				continue
 			if(X.job in list("Duke", "Steward", "Clerk"))
 				send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-			else if(X.mind.has_antag_datum(/datum/antagonist/bandit))
-				var/datum/antagonist/bandit/bandit_player = X.mind.has_antag_datum(/datum/antagonist/bandit)
-				var/to_give = 20
-				bandit_player.favor += to_give
-				to_chat(bandit_player.owner, ("<font color='yellow'>The Hoardmaster bestows you with [to_give] favor.</font>"))
 
 
 /datum/controller/subsystem/treasury/proc/create_bank_account(name, initial_deposit)
