@@ -23,6 +23,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	critical = TRUE
+	woundpain = 30 // it REALLY HURTS to have ruptured eardrums
 
 /datum/wound/facial/ears/can_apply_to_mob(mob/living/affected)
 	. = ..()
@@ -142,6 +143,7 @@
 		"The tongue is severed!",
 		"The tongue flies off in an arc!"
 	)
+	woundpain = 20
 	can_sew = FALSE
 	can_cauterize = FALSE
 	critical = TRUE
@@ -187,6 +189,7 @@
 		"The nose is mangled beyond recognition!",
 		"The nose is destroyed!",
 	)
+	woundpain = 10
 
 /datum/wound/facial/disfigurement/nose/on_mob_gain(mob/living/affected)
 	. = ..()
