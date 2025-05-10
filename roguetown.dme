@@ -560,6 +560,7 @@
 #include "code\datums\components\crafting\guncrafting.dm"
 #include "code\datums\components\crafting\recipes.dm"
 #include "code\datums\components\decals\blood.dm"
+#include "code\datums\components\storage\pot.dm"
 #include "code\datums\components\storage\storage.dm"
 #include "code\datums\components\storage\concrete\_concrete.dm"
 #include "code\datums\components\storage\concrete\stack.dm"
