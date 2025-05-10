@@ -42,12 +42,13 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/maceherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
+		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/maceherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = "Regular Mace"
+			icon_state = old_icon_state
 	else
 		..()
 
@@ -89,12 +90,13 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/smaceherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
+		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/smaceherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = "Regular S.Mace"
+			icon_state = old_icon_state
 	else
 		..()
 
