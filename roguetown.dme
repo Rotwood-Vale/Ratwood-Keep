@@ -1608,6 +1608,7 @@
 #include "code\modules\mob\living\carbon\human\voicepacks\genmale.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\female\dwarf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\female\elf.dm"
+#include "code\modules\mob\living\carbon\human\voicepacks\female\goblinf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\male\dwarf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\male\elf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\male\evil.dm"
