@@ -2,20 +2,17 @@
     "full": {
         "no": "ni",
         "yes": "ye",
-        "a": ["", "a"],
-		"an": ["", "an"],
+		"are": "ah",
         "and": "an",
-        "the": ["", "de"],
         "bye": ["isseo", "jalga"],
 		"goodbye": "annyeong",
-        "thanks": "gamsa",
-        "thank you": ["gamsahimda", "daengkyu"],
+        "thank you very much": "gamsahimda",
         "hello": ["annyeong","hai"],
-        "what": ["mwo","waht"],
-		"who": ["hoo","nugu"],
-		"you": ["niga","yoo"],
-		"why": ["wae","wai"],
-		"where": ["eodi","wer"],
+        "what": ["what","mwo"],
+		"who": "hoo",
+		"whom": "nugu",
+		"your": "nige",
+		"where": "wer",
 		"shit": "aissi",
 		"fuck": "sibal",
 		"dick": "jot",
@@ -23,27 +20,31 @@
 		"whore": "galbo",
 		"awesome": "assa",
 		"darling": "yeobo",
-		"love": "lavu",
-		"cabbage": "kimchi"
+		"love": "lavu"
     },
     "start": {
         "p": "b",
 		"th": "d",
 		"k": "g",
-		"z": "j"
+		"z": "j",
+		"wh": "h",
+		"hy": ["ai","ae"]
     },
     "end": {
+		"x": "kse"
 
     },
     "syllable": {
+		"a": "ae",
         "sh": "s",
         "th": "d",
-		"ou": ["eo","oo"],
+		"ou": ["eo","u"],
 		"oa": "ae",
 		"ll": "r",
 		"x": "kse",
 		"z": "ji",
 		"gg": "k",
-		"ar": "aw"
+		"ar": "ah",
+		"ie": "i"
     }
 }
