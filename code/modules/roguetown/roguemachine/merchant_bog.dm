@@ -109,8 +109,8 @@
 	if(current_cat == "1")
 		contents += "<a href='?src=[REF(src)];changecat=Apparel'>Apparel</a><br>"
 		contents += "<a href='?src=[REF(src)];changecat=Tools'>Tools</a><br>"
-		contents += "<a href='?src=[REF(src)];changecat=Tools'>Seeds</a><br>"
-		contents += "<a href='?src=[REF(src)];changecat=Tools'>Luxury</a><br>"
+		contents += "<a href='?src=[REF(src)];changecat=Seeds'>Seeds</a><br>"
+		contents += "<a href='?src=[REF(src)];changecat=Luxury'>Luxury</a><br>"
 		if(upgrade_flags & UPGRADE_ARMOR) contents += "<a href='?src=[REF(src)];changecat=Armor'>Armor</a><br>"
 		if(upgrade_flags & UPGRADE_WEAPONS) contents += "<a href='?src=[REF(src)];changecat=Weapons'>Weapons</a><br>"
 		if(upgrade_flags & UPGRADE_FOOD) contents += "<a href='?src=[REF(src)];changecat=Consumable'>Consumable</a><br>"
