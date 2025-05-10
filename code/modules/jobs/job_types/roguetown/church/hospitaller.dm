@@ -48,8 +48,9 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat("strength", -1)		//too busy healing to get reps.
-		H.change_stat("intelligence", 1)	//physician smarts
-		H.change_stat("endurance", 1)		//divine miracle take their toll
+		H.change_stat("perception", 2)      //doctor's precision
+		H.change_stat("intelligence", 2)	//physician smarts
+		H.change_stat("endurance", 2)		//divine miracle take their toll
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
