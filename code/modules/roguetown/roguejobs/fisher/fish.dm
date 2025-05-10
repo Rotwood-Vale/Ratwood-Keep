@@ -15,13 +15,21 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	w_class = WEIGHT_CLASS_SMALL
+	var/turf/fished_from
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
+
+	var/list/rarities
+	if(istype(fished_from, /turf/open/water/sea/thermalwater))
+		rarities = list("gold" = 3, "ultra" = 60, "rare" = 100, "com" = 800)
+	else
+		rarities = list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
+
+	var/rarity = pickweight(rarities)
 	icon_state = "[initial(icon_state)][rarity]"
 	switch(rarity)
 		if("gold")
@@ -35,6 +43,7 @@
 			name = "rare [initial(name)]"
 		if("com")
 			name = "common [initial(name)]"
+
 	if(!dead)
 		START_PROCESSING(SSobj, src)
 
@@ -69,7 +78,6 @@
 //		icon_state = "[icon_state]"
 		STOP_PROCESSING(SSobj, src)
 		return 1
-
 
 
 /obj/item/reagent_containers/food/snacks/fish/carp
@@ -160,7 +168,7 @@
 				new /obj/item/oystershell(user.loc)
 	else
 		. = ..()
-	
+
 /obj/item/reagent_containers/food/snacks/fish/oyster/attack_right(mob/user)
 	if(user.get_active_held_item())
 		return
@@ -251,7 +259,7 @@
 	icon_state = "crabcooked"
 	name = "cooked crab"
 	tastes = list("shellfish" = 1)
-	
+
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster
 	icon_state = "lobstercooked"
 	name = "cooked lobster"

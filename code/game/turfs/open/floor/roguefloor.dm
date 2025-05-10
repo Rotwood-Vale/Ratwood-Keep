@@ -202,6 +202,130 @@
 	. = ..()
 	src.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 
+/turf/open/floor/rogue/grass/dgrass1
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass1"
+
+/turf/open/floor/rogue/grass/dgrass2
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass2"
+
+/turf/open/floor/rogue/grass/dgrass3
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass3"
+
+/turf/open/floor/rogue/grass/dgrass4
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass4"
+
+/turf/open/floor/rogue/grass/dgrass5
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass5"
+
+/turf/open/floor/rogue/grass/dgrass6
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass6"
+
+/turf/open/floor/rogue/grass/dgrass7
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass7"
+
+/turf/open/floor/rogue/grass/dgrass8
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass8"
+
+/turf/open/floor/rogue/grass/dgrass9
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass9"
+
+/turf/open/floor/rogue/grass/dgrass10
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass10"
+
+/turf/open/floor/rogue/grass/dgrass11
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass11"
+
+/turf/open/floor/rogue/grass/dgrass12
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass12"
+
+/turf/open/floor/rogue/grass/dgrass13
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass13"
+
+/turf/open/floor/rogue/grass/dgrass14
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass14"
+
+/turf/open/floor/rogue/grass/dgrass15
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass15"
+
+/turf/open/floor/rogue/grass/dgrass16
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass16"
+
+/turf/open/floor/rogue/grass/dgrass17
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass17"
+
+/turf/open/floor/rogue/grass/dgrass18
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass18"
+
+/turf/open/floor/rogue/grass/dgrass19
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass19"
+
+/turf/open/floor/rogue/grass/dgrass20
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass20"
+
+/turf/open/floor/rogue/grass/dgrass21
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass21"
+
+/turf/open/floor/rogue/grass/dgrass22
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass22"
+
+/turf/open/floor/rogue/grass/dgrass23
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass23"
+
+/turf/open/floor/rogue/grass/dgrass24
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass24"
+
+/turf/open/floor/rogue/grass/dgrass25
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass25"
+
+/turf/open/floor/rogue/grass/dgrass26
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass26"
+
+/turf/open/floor/rogue/grass/dgrass27
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass27"
+
+/turf/open/floor/rogue/grass/dgrass28
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass28"
+
+/turf/open/floor/rogue/grass/dgrass29
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass29"
+
+/turf/open/floor/rogue/grass/dgrass30
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass30"
+
+/turf/open/floor/rogue/grass/dgrass31
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dgrass31"	
+
 /turf/open/floor/rogue/snow
 	name = "snow"
 	desc = "A gentle blanket of snow."
@@ -736,6 +860,142 @@
 /turf/open/floor/rogue/hexstone/turf_destruction(damage_flag)
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+
+/turf/open/floor/rogue/hexstone/dfloor1
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor1"
+
+/turf/open/floor/rogue/hexstone/dfloor2
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor2"
+
+/turf/open/floor/rogue/hexstone/dfloor3
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor3"
+
+/turf/open/floor/rogue/hexstone/dfloor4
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor4"
+
+/turf/open/floor/rogue/hexstone/dfloor5
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor5"
+
+/turf/open/floor/rogue/hexstone/dfloor6
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor6"
+
+/turf/open/floor/rogue/hexstone/dfloor7
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor7"
+
+/turf/open/floor/rogue/hexstone/dfloor8
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor8"
+
+/turf/open/floor/rogue/hexstone/dfloor9
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor9"
+
+/turf/open/floor/rogue/hexstone/dfloor10
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor10"
+
+/turf/open/floor/rogue/hexstone/dfloor11
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor11"
+
+/turf/open/floor/rogue/hexstone/dfloor12
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor12"
+
+/turf/open/floor/rogue/hexstone/dfloor13
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor13"
+
+/turf/open/floor/rogue/hexstone/dfloor14
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor14"
+
+/turf/open/floor/rogue/hexstone/dfloor15
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor15"
+
+/turf/open/floor/rogue/hexstone/dfloor16
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor16"
+
+/turf/open/floor/rogue/hexstone/dfloor17
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor17"
+
+/turf/open/floor/rogue/hexstone/dfloor18
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor18"
+
+/turf/open/floor/rogue/hexstone/dfloor19
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor19"
+
+/turf/open/floor/rogue/hexstone/dfloor20
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor20"
+
+/turf/open/floor/rogue/hexstone/dfloor21
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor21"
+
+/turf/open/floor/rogue/hexstone/dfloor22
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor22"
+
+/turf/open/floor/rogue/hexstone/dfloor23
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor23"
+
+/turf/open/floor/rogue/hexstone/dfloor24
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor24"
+
+/turf/open/floor/rogue/hexstone/dfloor25
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor25"
+
+/turf/open/floor/rogue/hexstone/dfloor26
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor26"
+
+/turf/open/floor/rogue/hexstone/dfloor27
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor27"
+
+/turf/open/floor/rogue/hexstone/dfloor28
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor28"
+
+/turf/open/floor/rogue/hexstone/dfloor29
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor29"
+
+/turf/open/floor/rogue/hexstone/dfloor30
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor30"
+
+/turf/open/floor/rogue/hexstone/dfloor31
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor31"
+
+/turf/open/floor/rogue/hexstone/dfloor32
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor32"
+
+/turf/open/floor/rogue/hexstone/dfloor33
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor32"
+
+/turf/open/floor/rogue/hexstone/dfloor34
+	icon = 'icons/roguetown/topadd/delinefortune/churchfloors.dmi'
+	icon_state = "dfloor32"	
 
 //Church floors
 

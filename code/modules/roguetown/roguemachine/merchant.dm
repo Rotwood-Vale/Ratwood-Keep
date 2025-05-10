@@ -139,8 +139,8 @@
 
 /obj/structure/roguemachine/merchantvend/attack_right(mob/user)
 	if(user.mind.assigned_role == "Shophand")
-		if(hidden_key_present)		
-			for(var/mob/living/carbon/human/boss in GLOB.human_list)		
+		if(hidden_key_present)
+			for(var/mob/living/carbon/human/boss in GLOB.human_list)
 				if(boss.mind)
 					if(boss.mind.assigned_role == "Merchant")
 						if(boss in GLOB.alive_mob_list)
@@ -148,11 +148,11 @@
 								//to_chat(user, span_warning("MERCHANT FOUND ALIVE BUT DISCONNECTED"))
 							else
 								//to_chat(user, span_warning("The hidden compartment is sealed tightly."))
-								return		
+								return
 			var/alert = alert(user, "Thankfully, the hidden compartment with the spare key is still untouched.", "Spare key", "Take it", "Leave it")
 			if(alert != "Take it")
 				return
-			else		
+			else
 				var/obj/item/key/key
 				key = new /obj/item/key/merchant(get_turf(user))
 				user.put_in_hands(key)
@@ -340,7 +340,7 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			var/cost = PA.cost 
+			var/cost = PA.cost
 			var/costy = cost
 			if(!(upgrade_flags & UPGRADE_NOTAX))
 				costy = round(costy + (SStreasury.tax_value * cost))

@@ -42,6 +42,19 @@
 	pixel_y = 0
 	pixel_x = -32
 
+/obj/structure/fluff/walldeco/doctor_first
+	name = "Medical Poster"
+	desc = ""
+	icon = 'icons/roguetown/topadd/delinefortune/misc.dmi'
+	icon_state = "dposter1"
+
+/obj/structure/fluff/walldeco/doctor_second
+	name = "Medical notice"
+	desc = ""
+	icon = 'icons/roguetown/topadd/delinefortune/misc.dmi'
+	icon_state = "dposter2"
+
+
 /obj/structure/fluff/walldeco/wantedposter/Initialize()
 	. = ..()
 	icon_state = "wanted[rand(1,3)]"

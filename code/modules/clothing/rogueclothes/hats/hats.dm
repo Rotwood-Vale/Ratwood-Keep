@@ -1713,3 +1713,156 @@
     icon_state = "viceseermask"
     item_state = "viceseermask"
     sellprice = 40
+
+/obj/item/clothing/head/flowers
+    name = "Flowers"
+    desc = " "
+    icon_state = "dflower"
+    item_state = "dflower"
+    icon = 'icons/roguetown/topadd/delinefortune/flowersdlc.dmi'
+    mob_overlay_icon = 'icons/roguetown/topadd/delinefortune/flowersonmob.dmi'
+    slot_flags = ITEM_SLOT_HEAD
+    body_parts_covered = NONE
+    force = 0
+    throwforce = 0
+    w_class = WEIGHT_CLASS_TINY
+    throw_speed = 1
+    throw_range = 3
+
+/obj/item/clothing/head/flowers/purple_lily
+    name = "Purple lily"
+    desc = "Flower? Flower."
+    icon_state = "dflower1"
+    item_state = "dflower1"
+
+/obj/item/clothing/head/flowers/snapdragon
+    name = "Snapdragon"
+    desc = "Flower? Flower."
+    icon_state = "dflower2"
+    item_state = "dflower2"
+
+/obj/item/clothing/head/flowers/redpurple_rose
+    name = "Red-purple rose"
+    desc = "Flower? Flower."
+    icon_state = "dflower3"
+    item_state = "dflower3"
+
+/obj/item/clothing/head/flowers/burdock_flower_purple
+    name = "Purple burdock flower"
+    desc = "Flower? Flower."
+    icon_state = "dflower4"
+    item_state = "dflower4"
+
+/obj/item/clothing/head/flowers/yellow_lily
+    name = "Yellow lily"
+    desc = "Flower? Flower."
+    icon_state = "dflower5"
+    item_state = "dflower5"
+
+/obj/item/clothing/head/flowers/burdock_flower_pink
+    name = "Pink burdock flower"
+    desc = "Flower? Flower."
+    icon_state = "dflower6"
+    item_state = "dflower6"
+
+/obj/item/clothing/head/flowers/yarrow_white
+    name = "White yarrow"
+    desc = "Flower? Flower."
+    icon_state = "dflower7"
+    item_state = "dflower7"
+
+/obj/item/clothing/head/flowers/rose_pink
+    name = "Pink rose"
+    desc = "Flower? Flower."
+    icon_state = "dflower8"
+    item_state = "dflower8"
+
+/obj/item/clothing/head/flowers/roses_red
+    name = "Red roses rose"
+    desc = "Flower? Flower."
+    icon_state = "dflower9"
+    item_state = "dflower9"
+
+/obj/item/clothing/head/flowers/peony
+    name = "Peony"
+    desc = "Flower? Flower."
+    icon_state = "dflower10"
+    item_state = "dflower10"
+
+/obj/item/clothing/head/flowers/forget_me_not_alt
+    name = "Pink-forget-me-not"
+    desc = "Flower? Flower."
+    icon_state = "dflower11"
+    item_state = "dflower11"
+
+/obj/item/clothing/head/flowers/forget_me_not
+    name = "Forget-me-not"
+    desc = "Flower? Flower."
+    icon_state = "dflower12"
+    item_state = "dflower12"
+
+/obj/item/clothing/head/flowers/blue_rose
+    name = "Blue rose"
+    desc = "Flower? Flower."
+    icon_state = "dflower13"
+    item_state = "dflower13"
+
+/obj/item/clothing/head/flowers/orange_rose
+    name = "Orange rose"
+    desc = "Flower? Flower."
+    icon_state = "dflower14"
+    item_state = "dflower14"
+
+/obj/item/clothing/head/flowers/sunflower
+    name = "Sunflower"
+    desc = "Flower? Flower."
+    icon_state = "dflower15"
+    item_state = "dflower15"
+
+/obj/item/clothing/head/flowers/yellow_bells
+    name = "Yellow bells"
+    desc = "Flower? Flower."
+    icon_state = "dflower16"
+    item_state = "dflower16"
+
+/obj/item/clothing/head/flowers/poppy
+    name = "Poppy"
+    desc = "Flower? Flower."
+    icon_state = "dflower17"
+    item_state = "dflower17"
+
+/obj/item/clothing/head/flowers/blue_purple_bells
+    name = "Blue and purple bells"
+    desc = "Flower? Flower."
+    icon_state = "dflower18"
+    item_state = "dflower18"
+
+/obj/item/clothing/head/flowers/iris
+    name = "Iris"
+    desc = "Flower? Flower."
+    icon_state = "dflower19"
+    item_state = "dflower19"
+
+/obj/item/clothing/head/flowers/muscaris
+    name = "Muscaris"
+    desc = "Flower? Flower."
+    icon_state = "dflower20"
+    item_state = "dflower20"
+
+/obj/item/clothing/head/flowers/lavander
+    name = "Lavander"
+    desc = "Flower? Flower."
+    icon_state = "dflower21"
+    item_state = "dflower21"
+
+/obj/item/clothing/head/flowers/milva
+    name = "Milva"
+    desc = "Flower? Flower."
+    icon_state = "dflower22"
+    item_state = "dflower22"
+
+/obj/item/clothing/head/flowers/yellow_iris
+    name = "Yellow iris"
+    desc = "Flower? Flower."
+    icon_state = "dflower23"
+    item_state = "dflower23"
