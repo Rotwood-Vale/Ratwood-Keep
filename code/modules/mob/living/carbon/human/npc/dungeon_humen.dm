@@ -68,41 +68,116 @@
 		face_atom(get_step(src, pick(GLOB.cardinals)))
 
 
-/*
-
 // === Sub (ah~~~) classes ===
 
 // 1. Warrior
-/mob/living/carbon/human/species/human/northern/dungeon_base_warrior
-	parent_type = /mob/living/carbon/human/species/human/northern/dungeon_base_base
-	aggressive = TRUE
-	wander = TRUE
-
-/mob/living/carbon/human/species/human/northern/dungeon_base_warrior/after_creation()
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior/after_creation()
 	..()
-	job = "dungeon_base Warrior"
-	equipOutfit(new /datum/outfit/job/dungeon_base/warrior)
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_warrior)
 
+/datum/outfit/job/roguetown/npc/dungeon_warrior
+	name = "Dungeon Warrior"
+
+	pre_equip(mob/living/carbon/human/H)
+		..()
+		head = /obj/item/clothing/head/roguetown/helmet/skullcap
+		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+		armor = /obj/item/clothing/cloak/tabard/crusader/tief
+		neck = /obj/item/clothing/neck/roguetown/coif
+		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+		pants = /obj/item/clothing/under/roguetown/chainlegs
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor
+		r_hand = /obj/item/rogueweapon/spear
+
+		H.STASTR = 14
+		H.STASPD = 10
+		H.STACON = 13
+		H.STAEND = 14
+		H.STAINT = 8
+		H.STAPER = 15
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior/use_combat_abilities()
+	if(src.stat != CONSCIOUS || src.stat != CONSCIOUS || world.time < next_cast)
+		return
+
+	next_cast = world.time + 10
+
+	if(!target || get_dist(src, target) > 2)
+		return
+
+	var/list/possible_zones = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_LEG,
+		BODY_ZONE_L_LEG
+	)
+
+	var/zone = pick(possible_zones)
+	warrior_strike(target, zone)
 
 // 2. Paladin
-/mob/living/carbon/human/species/human/northern/dungeon_base_paladin
-	parent_type = /mob/living/carbon/human/species/human/northern/dungeon_base_base
-	aggressive = TRUE
-	wander = FALSE
-
-/mob/living/carbon/human/species/human/northern/dungeon_base_paladin/after_creation()
+/mob/living/carbon/human/species/human/northern/dungeon_base/paladin/after_creation()
 	..()
-	job = "dungeon_base Paladin"
-	equipOutfit(new /datum/outfit/job/dungeon_base/paladin)
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_paladin)
 
-*/
+/datum/outfit/job/roguetown/npc/dungeon_paladin
+	name = "Dungeon Paladin"
+
+	pre_equip(mob/living/carbon/human/H)
+		..()
+		head = /obj/item/clothing/head/roguetown/helmet/skullcap
+		mask = /obj/item/clothing/mask/rogue/facemask
+		cloak = /obj/item/clothing/cloak/templar/necran
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		pants = /obj/item/clothing/under/roguetown/chainlegs
+		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor
+		r_hand = /obj/item/rogueweapon/sword
+		l_hand = /obj/item/rogueweapon/shield/wood
+
+		H.STASTR = 17
+		H.STASPD = 13
+		H.STACON = 18
+		H.STAEND = 15
+		H.STAINT = 9
+		H.STAPER = 15
+
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/cleric/use_combat_abilities()
+	if(!is_alive(src) || src.stat != CONSCIOUS || world.time < next_cast)
+		return
+
+	next_cast = world.time + 300
+
+	spawn(50) // 5 SECONDS
+		if(istype(src.target, /mob/living) && get_dist(src, src.target) <= 7)
+			var/mob/living/L = src.target
+			src.say("BE STILL!")
+			L.visible_message(
+				span_warning("[L] is gripped by unholy paralysis!"),
+				span_userdanger("You feel your limbs freeze under a dreadful presence!")
+			)
+			L.Stun(20)
+
+	spawn(100) // 10 SECONDS
+		if(istype(src.target, /mob/living) && get_dist(src, src.target) <= 2)
+			src.say("CRUSH THE HEAD!")
+			headstrike_dungeon(src)
+
+	spawn(200) // 20 SECONDS
+		if(is_alive(src))
+			src.say("The gods mend our flesh!")
+			var/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/H = new(src)
+			H.cast(null, src)
 
 // 3. Cleric
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric
-
-/obj/effect/proc_holder/spell/invoked/lesser_heal_npc
-
-/obj/effect/proc_holder/spell/targeted/churnnpc
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric/after_creation()
 	..()
@@ -131,12 +206,12 @@
 		H.STAINT = 11
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric/use_combat_abilities()
-	if(world.time < next_cast)
+	if(!is_alive(src) || src.stat != CONSCIOUS || world.time < next_cast)
 		return
 
 	next_cast = world.time + 200
 
-	src.say("Dark gods spread their blessing!")
+	src.say("Dark gods! Spread your blessing!")
 
 	var/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/H = new(src)
 	H.cast(null, src)
@@ -149,9 +224,10 @@
 			enemies += L
 
 	if(enemies.len)
-		src.say("Undermaiden rebukes!!")
+		src.say("My gods do rebuke you!!")
 		var/obj/effect/proc_holder/spell/targeted/churnnpc/C = new(src)
 		C.cast(enemies, src)
+
 
 
 /*
@@ -215,31 +291,24 @@
 
 	var/list/heal_targets = list()
 	for(var/mob/living/M in view(3, user))
-		if(M.stat == DEAD || disjoint_lists(M.faction, user.faction))
-			continue
-		heal_targets += M
-		var/obj/effect/temp_visual/heal_rogue/V = new /obj/effect/temp_visual/heal_rogue(get_turf(M))
-		V.color = "#FFD700"
+		if(M.stat != DEAD && !disjoint_lists(M.faction, user.faction))
+			heal_targets += M
+
+	src.visible_message(span_warning("Cleric raises a hand and healing light surrounds his fellows."))
 
 	for(var/mob/living/M in heal_targets)
 		spawn()
-			for(var/i = 1 to 10)
-				if(QDELETED(M) || M.stat == DEAD)
-					break
-				M.adjustBruteLoss(-10)
-				M.adjustFireLoss(-10)
-				M.adjustOxyLoss(-10)
-				M.adjustToxLoss(-10)
-				if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-					M.blood_volume = min(M.blood_volume + 5, BLOOD_VOLUME_NORMAL)
-				M.update_damage_overlays()
-				sleep(10)
+			if(QDELETED(M) || M.stat == DEAD)
+				break
+			M.adjustBruteLoss(-100)
+			M.adjustFireLoss(-100)
+			M.adjustOxyLoss(-100)
+			M.adjustToxLoss(-100)
+			if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+				M.blood_volume = min(M.blood_volume + 100, BLOOD_VOLUME_NORMAL)
+			M.update_damage_overlays()
 
-	src.visible_message(span_notice("[src] raises a hand, and healing light surrounds his fellows."))
 	return TRUE
-
-
-	return TRUE // I REPEAT NPC ONLY YOU R WORD
 
 /obj/effect/proc_holder/spell/targeted/churnnpc
 	name = "Churn Undead NPC"
@@ -267,17 +336,75 @@
 				span_warning("[L] is struck by unholy wrath!"),
 				span_userdanger("Unholy force burns through me!")
 			)
-			L.Stun(40)
-			L.Knockdown(40)
-			if(prob(80))
+			L.Stun(20)
+			L.Knockdown(20)
+			if(prob(30))
 				explosion(get_turf(L), heavy_impact_range = 1, flame_range = 1, smoke = FALSE)
 			L.apply_damage(rand(10, 25), BRUTE)
 
 	return TRUE
 
+/proc/headstrike_dungeon(mob/living/user)
+	if(!user || !user.target)
+		return FALSE
+
+	var/mob/living/target = user.target
+
+	if(!isturf(user.loc) || get_dist(user, target) > 2 || target.stat == DEAD)
+		return FALSE
+
+	if(target == user || (target.faction && !disjoint_lists(user.faction, target.faction)))
+		return FALSE
+
+	playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
+
+	target.visible_message(
+		span_warning("[target] is bashed in the head with unholy force!"),
+		span_userdanger("Your head rings from a heavy blow!")
+	)
+	target.apply_damage(rand(10, 50), BRUTE, BODY_ZONE_HEAD)
+	M.add_nausea(50)
+
+	return TRUE
 
 
+/proc/warrior_strike(mob/living/target, zone)
+	if(!istype(target) || target.stat == DEAD || get_dist(src, target) > 2)
+		return
 
+	switch(zone)
+		if(BODY_ZONE_HEAD)
+			src.visible_message(
+				span_warning("[target] is bashed in the head with unholy force!"),
+				span_userdanger("Your head rings from a heavy blow!")
+			)
+		if(BODY_ZONE_CHEST)
+			src.visible_message(
+				span_warning("[target] takes a crushing blow to the chest!"),
+				span_userdanger("You gasp for air as pain shoots through your ribs!")
+			)
+		if(BODY_ZONE_R_ARM)
+			src.visible_message(
+				span_warning("[target]'s right arm is slashed violently!"),
+				span_userdanger("Your right arm burns with pain!")
+			)
+		if(BODY_ZONE_L_ARM)
+			src.visible_message(
+				span_warning("[target]'s left arm is battered hard!"),
+				span_userdanger("You feel your left arm go numb!")
+			)
+		if(BODY_ZONE_R_LEG)
+			src.visible_message(
+				span_warning("[target] takes a heavy kick to the right leg!"),
+				span_userdanger("Your right leg nearly gives out!")
+			)
+		if(BODY_ZONE_L_LEG)
+			src.visible_message(
+				span_warning("[target] takes a heavy kick to the left leg!"),
+				span_userdanger("Your left leg nearly buckles!")
+			)
+
+	target.apply_damage(rand(20, 70), BRUTE, zone)
 
 
 
