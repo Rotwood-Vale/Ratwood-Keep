@@ -43,6 +43,7 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
+#define TRAIT_SENSEEVIL "Sense for Evil"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -185,6 +186,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
+	TRAIT_SENSEEVIL = span_info("I have a sixth sense for the profane."),
 ))
 
 // trait accessor defines

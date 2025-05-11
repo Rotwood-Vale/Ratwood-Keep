@@ -7,6 +7,7 @@
 	center_requirement = /mob/living/carbon/human
 	difficulty = 4
 	favor_cost = 250
+	revealchance = 50 //powerful buff
 	n_req = /obj/item/reagent_containers/lux
 	function = /proc/riteofbodilyperfection
 
@@ -35,6 +36,7 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 	center_requirement = /mob/living/carbon/human
 	difficulty = 1
 	favor_cost = 25
+	revealchance = 10 // just a prerequisite, really, not dangerous on its own
 	function = /proc/theftoflight
 
 proc/theftoflight(mob/user, turf/C)
@@ -60,6 +62,7 @@ proc/theftoflight(mob/user, turf/C)
 	n_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
 	difficulty = 1
 	favor_cost = 50
+	revealchance = 10
 	function = /proc/lesserfleshmend
 
 /proc/lesserfleshmend(mob/user, turf/C)
@@ -92,6 +95,7 @@ proc/theftoflight(mob/user, turf/C)
 	w_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
 	s_req =  /obj/item/reagent_containers/food/snacks/rogue/meat
 	difficulty = 4
+	revealchance = 33 //somebody is getting revived here, possibly
 	favor_cost = 150
 
 	function = /proc/fleshmend
@@ -109,6 +113,7 @@ proc/theftoflight(mob/user, turf/C)
 	circle = "Fleshcrafting"
 	favor_cost = 150
 	difficulty = 3
+	revealchance = 33 //this is quite the buff..
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/bodypart/l_leg
 	e_req = /obj/item/bodypart/r_leg
@@ -128,6 +133,7 @@ proc/theftoflight(mob/user, turf/C)
 	circle = "Fleshcrafting"
 	difficulty = 2
 	favor_cost = 100
+	revealchance = 20 // really useful
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/organ/eyes
@@ -153,20 +159,20 @@ proc/theftoflight(mob/user, turf/C)
 	circle = "Fleshcrafting"
 	difficulty = 4
 	favor_cost = 250
+	revealchance = 50 //This is quite dangerous.
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/organ/heart
 	e_req = /obj/item/organ/brain
-	n_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	n_req = /obj/item/natural/voidstone
+	s_req = /obj/item/reagent_containers/lux
 
 	function = /proc/nopain
 
 /proc/nopain(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
-		to_chat(H.mind, span_notice("I no longer feel pain, but it has come at a terrible cost."))
-		H.change_stat("strength", -2)
-		H.change_stat("constitution", -2)
+		to_chat(H.mind, span_notice("By Zizos dark grace, I now know that pain is but temporary."))
 		return TRUE
 	return FALSE
 
@@ -175,6 +181,7 @@ proc/theftoflight(mob/user, turf/C)
 	circle = "Fleshcrafting"
 	difficulty = 4
 	favor_cost = 250
+	revealchance = 33 //This thingy is not that dangerous, but still..
 	center_requirement = /mob/living/carbon/human
 
 	w_req = /obj/item/bodypart/l_arm

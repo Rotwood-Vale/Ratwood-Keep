@@ -16,3 +16,4 @@
 	var/function // a proc
 	var/favor_cost = 0
 	var/difficulty = 0
+	var/revealchance = 0 //the chance to ping people with the sense evil trait when this ritual is completed

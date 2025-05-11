@@ -5,6 +5,7 @@
 	circle = "Transmutation"
 	difficulty = 2
 	favor_cost = 250
+	revealchance = 10
 	center_requirement = /obj/item/organ/eyes
 
 	function = /proc/allseeingeye
@@ -88,6 +89,7 @@
 	name = "Invade Mind"
 	difficulty = 2
 	favor_cost = 50
+	revealchance = 3
 	circle = "Transmutation"
 	center_requirement = /obj/item/natural/feather
 
@@ -112,6 +114,7 @@
 	circle = "Transmutation"
 	difficulty = 1
 	favor_cost = 50
+	revealchance = 1
 	n_req = /obj/item/natural/hide
 	s_req = /obj/item/natural/artifact
 	function = /proc/summonrobes

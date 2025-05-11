@@ -185,6 +185,10 @@
 	user.mind.divinefavor -= pickritual.favor_cost
 	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)
+	if(prob(pickritual.revealchance))
+		if(istype(user, /mob))
+			var/mob/M = user
+			M.ritualalert()
 
 /turf/open/floor/proc/generateSigils(mob/M, type, subtype)
 	var/turf/T = get_turf(M.loc)

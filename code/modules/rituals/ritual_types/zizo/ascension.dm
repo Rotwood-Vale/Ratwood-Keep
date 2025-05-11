@@ -5,6 +5,7 @@
 	circle = "Ascension"
 	difficulty = 3
 	favor_cost = 300
+	revealchance = 75 // the inquis should probably know about this, usually, we are unlocking some dangerous stuff here
 	center_requirement = /mob/living/carbon/human 
 	n_req = /obj/item/natural/voidstone
 	s_req = /obj/item/reagent_containers/lux
@@ -27,6 +28,7 @@
 	circle = "Ascension"
 	difficulty = 5
 	favor_cost = 1000
+	revealchance = 100 //yeaaaaaaaaaaaah
 	center_requirement = /mob/living/carbon/human // cult leader
 
 	n_req = /mob/living/carbon/human // the ruler

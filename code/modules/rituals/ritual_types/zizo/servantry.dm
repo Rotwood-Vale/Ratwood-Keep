@@ -15,11 +15,16 @@ mob/living/carbon/proc/check_skeletonized()
 	center_requirement = /mob/living/carbon/human //skeleton, technically
 	n_req = /obj/item/natural/infernalash
 	s_req = /obj/item/natural/infernalash
+	revealchance = 15
 
 	function = /proc/riteofboneremembrance
 
 proc/riteofboneremembrance(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
+		if("Rite of Bone Remembrance" in H.mind.rituals_completed)
+			to_chat(H, span_notice("You can remember no more than last time..."))
+			to_chat(user, span_notice("This deadite has already been given a glimpse of his past!"))
+			continue //skip this one in particular
 		if(H.check_skeletonized())
 			var/choice = input(H, "Visions of your past life flash before you. What fragment of your past life shall help you serve?", "Ritual of Remembrance") in list("Blacksmith", "Carpenter", "Mason", "Soilson", "Seamster")
 			switch(choice)
@@ -48,7 +53,7 @@ proc/riteofboneremembrance(mob/user, turf/C)
 					H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
 					H.say(pick("Needle and thread... my fingertips ache with memory.", "I remember stitching the retinues gambesons, after so many fierce battles...", "So many patterns and colors... I remember them still."))
 					return TRUE
-			//gonna start to actually implement the choice mechanic here then
+		H.mind.rituals_completed += "Rite of Bone Remembrance"
 	return FALSE
 
 /datum/ritual/zizo/zizobargain //bargain with somebody to change their patron to zizo, a good way to prevent frags of captives
@@ -56,6 +61,7 @@ proc/riteofboneremembrance(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 1 // We want to encourage this happening
 	favor_cost = 150 //Underpriced for a new ally, but again this being "meta" is good for the gameplay
+	revealchance = 15 // High despite low difficulty etc, to compensate
 	center_requirement = /mob/living/carbon/human
 
 	function = /proc/zizobargain
@@ -104,6 +110,7 @@ proc/zizobargain(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 1 // We want to encourage this
 	favor_cost = 50
+	revealchance = 5 //this already has a very high chance to reveal you
 	center_requirement = /mob/living/carbon/human
 
 	function = /proc/voiceofzizo
@@ -121,6 +128,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 3
 	favor_cost = 250
+	revealchance = 33 // gotta be careful about this one, potentially
 	center_requirement = /mob/living/carbon/human
 	n_req = /obj/item/natural/infernalash //the necromancer will have to do their own work getting this
 	s_req = /obj/item/natural/infernalash
@@ -144,6 +152,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 5
 	favor_cost = 150
+	revealchance = 33
 	center_requirement = /mob/living/carbon/human
 
 	function = /proc/convert
@@ -188,6 +197,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 4
 	favor_cost = 150
+	revealchance = 33
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/organ/heart
@@ -264,6 +274,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 5
 	favor_cost = 250
+	revealchance = 100 //because this is op as fuck, gives you a chance to atleast rush to the inquis to get them back
 	center_requirement = /obj/item/bedsheet/rogue
 
 	w_req = /obj/item/bodypart/l_leg
@@ -301,6 +312,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 2
 	favor_cost = 100
+	revealchance = 15
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/bodypart/head
@@ -376,6 +388,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	circle = "Servantry"
 	difficulty = 5
 	favor_cost = 100
+	revealchance = 33 //its got a fullheal..
 	center_requirement = /obj/item/organ/heart
 
 	n_req = /obj/item/natural/worms/leech

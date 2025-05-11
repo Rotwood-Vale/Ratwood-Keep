@@ -9,6 +9,7 @@
 	circle = "Sacrifice"
 	difficulty = 1
 	favor_cost = 0
+	revealchance = 100 //for testing purposes
 	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
 
 	function = /proc/debugfavor
@@ -18,8 +19,6 @@
 	user.mind.divinefavor += 9999;
 	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	to_chat(user.mind, span_notice("Lady Zizo fucking loves you, for some reason"))
-	for(var/mob/living/carbon/human/HL in GLOB.human_list)
-		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
 
 
 /datum/ritual/zizo/lesserwildsacrifice
@@ -27,6 +26,7 @@
 	circle = "Sacrifice"
 	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
 	difficulty = 1
+	revealchance = 5 //penalize spamming this, you will on average achieve 200 favor before alerting inquis
 	favor_cost = 0
 
 	function = /proc/lesserwildsacrifice
@@ -49,6 +49,7 @@
 	w_req = /obj/item/reagent_containers/food/snacks/rogue/meat
 	difficulty = 3
 	favor_cost = 0
+	revealchance = 15 //this is MUCH safer than the lesser one, but still a significant risk
 	function = /proc/greaterwildsacrifice
 
 
@@ -62,6 +63,7 @@
 	circle = "Sacrifice"
 	center_requirement = /mob/living/carbon/human
 	difficulty = 2
+	revealchance = 25 //a player is getting tortured here, and needs somebody to save them
 	favor_cost = 0
 
 	function = /proc/giftofpain

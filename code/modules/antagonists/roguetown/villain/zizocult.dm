@@ -165,6 +165,61 @@
 
 // VERBS
 
+//this will alert certain people with an ominous message
+//the design intention is to cause inevitable crackdown by the inquisition
+/mob/proc/ritualalert()
+	src.visible_message("<span class='warning'> The fabric of reality briefly shifts and contorts around [src] as the consequences of their ritual visibly ripple across reality!</span>")
+	playsound(src, 'sound/villain/zizolaugh.ogg', 100, TRUE)
+	var/turf/origin_turf = get_turf(src)
+
+	for(var/mob/living/player in GLOB.player_list)
+		if(player.stat == DEAD)
+			continue
+		if(isbrain(player))
+			continue
+		if(!(HAS_TRAIT(player, TRAIT_SENSEEVIL)))
+			continue
+		var/distance = get_dist(player, origin_turf)
+		if(distance <= 7)
+			continue
+		var/dirtext = " to the "
+		var/direction = get_dir(player, origin_turf)
+		switch(direction)
+			if(NORTH)
+				dirtext += "north"
+			if(SOUTH)
+				dirtext += "south"
+			if(EAST)
+				dirtext += "east"
+			if(WEST)
+				dirtext += "west"
+			if(NORTHWEST)
+				dirtext += "northwest"
+			if(NORTHEAST)
+				dirtext += "northeast"
+			if(SOUTHWEST)
+				dirtext += "southwest"
+			if(SOUTHEAST)
+				dirtext += "southeast"
+			else //Where ARE you.
+				dirtext = ", although I cannot make out a direction"
+		var/disttext
+		switch(distance)
+			if(0 to 20)
+				disttext = " very close"
+			if(20 to 40)
+				disttext = " close"
+			if(40 to 80)
+				disttext = ""
+			if(80 to 160)
+				disttext = " far"
+			else
+				disttext = " very far"
+
+		//sound played for other players
+		player.playsound_local(get_turf(player), 'sound/villain/zizolaugh.ogg', 35, FALSE, pressure_affected = FALSE)
+		to_chat(player, pick("<span class='warning'>A dreadful resonance pulses through your bones. Something profane has just happened somewhere [disttext] to the [dirtext].</span>", "<span class='warning'>The veil of reality ripples unnaturally somewhere [disttext][dirtext]—something dark stirs.</span>"))
+
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
