@@ -243,6 +243,11 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(break_message)
 		visible_message(break_message)
 
+/// Called after obj is repaired (needle/hammer for items)
+/obj/proc/obj_fix(mob/user)
+	obj_broken = FALSE
+	obj_integrity = max_integrity
+
 ///what happens when the obj's integrity reaches zero.
 /obj/proc/obj_destruction(damage_flag)
 	obj_destroyed = TRUE
