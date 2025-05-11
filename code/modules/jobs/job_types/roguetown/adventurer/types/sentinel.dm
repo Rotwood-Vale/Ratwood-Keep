@@ -9,7 +9,6 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/sentinal
 	maximum_possible_slots = 5
 	pickprob = 50
-	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ADVENTURER)
 
 
@@ -46,4 +45,6 @@
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	H.change_stat("perception", 5)
 	H.change_stat("endurance", 2)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.ambushable = FALSE

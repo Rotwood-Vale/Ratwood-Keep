@@ -8,7 +8,6 @@
 	maximum_possible_slots = 3
 	category_tags = list(CTAG_ADVENTURER)
 
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H)
@@ -51,6 +50,8 @@
 	H.change_stat("perception", 1)
 	H.change_stat("endurance", 3)
 	H.change_stat("speed", 1)
+	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	if(H.wear_mask) //for stupid stupid with bad eyes
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)

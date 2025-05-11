@@ -4,7 +4,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/paladin
-	traits_applied = list(TRAIT_HEAVYARMOR)
 	category_tags = list(CTAG_ADVENTURER)
 
 	cmode_music = 'sound/music/combat_clergy.ogg'
@@ -64,6 +63,7 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2) // Classic paladin is faster then the battle master.
 			H.change_stat("endurance", 2)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -123,6 +123,7 @@
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 2)
 			H.change_stat("speed", -1)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			pants = /obj/item/clothing/under/roguetown/chainlegs
@@ -161,7 +162,6 @@
 				head = /obj/item/clothing/head/roguetown/helmet
 			backl = /obj/item/storage/backpack/rogue/satchel
 
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	if(H.dna.species.type == /datum/species/tieberian)
 		cloak = /obj/item/clothing/cloak/tabard/crusader/tief

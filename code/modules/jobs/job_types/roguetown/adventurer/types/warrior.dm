@@ -95,6 +95,8 @@
 			H.change_stat("constitution", 1)
 			H.change_stat("intelligence", 1)
 			H.change_stat("speed", 1)
+			ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 			belt = /obj/item/storage/belt/rogue/leather
@@ -127,6 +129,3 @@
 		H.underwear_color = CLOTHING_BLACK
 		H.update_body()
 		pants = /obj/item/clothing/under/roguetown/tights/black
-
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

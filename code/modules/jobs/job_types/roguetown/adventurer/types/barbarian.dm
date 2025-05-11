@@ -4,7 +4,6 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
 	cmode_music = 'sound/music/combat_gronn.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 
@@ -56,6 +55,8 @@
 			H.change_stat("strength", 3) // Barbs are traditionally a mix of strength/resilience.
 			H.change_stat("constitution", 3)
 			H.change_stat("endurance", 2)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 		if("Hunter Killer")
 			H.set_blindness(0)
 			to_chat(H, span_warning("Barbarians are great warriors of the outlands, often regarded as the strongest of their tribes -- should they have any that live. These incredible titans of strength and brutality are motivated most often by a single... all consuming instinct. SURVIVE."))
@@ -95,6 +96,8 @@
 			H.change_stat("strength", 2)
 			H.change_stat("constitution", 2)
 			H.change_stat("endurance", 3)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 /*
 			if("ROLL THE DICE!")
 				if(prob(49)) // Warrior

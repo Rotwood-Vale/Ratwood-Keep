@@ -5,7 +5,6 @@
 	allowed_races = RACES_ALL_KINDS
 	pickprob = 25
 	maximum_possible_slots = 2
-	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_ADVENTURER)
 
 	outfit = /datum/outfit/job/roguetown/adventurer/bladesinger
@@ -47,3 +46,4 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/learnspell)
+		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

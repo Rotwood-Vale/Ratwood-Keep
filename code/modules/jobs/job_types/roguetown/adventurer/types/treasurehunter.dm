@@ -8,7 +8,6 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/puritan
 	maximum_possible_slots = 2
 	pickprob = 11
-	traits_applied = list(TRAIT_MEDIUMARMOR)
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/puritan
@@ -53,7 +52,6 @@
 		H.change_stat("speed", 1)
 		H.change_stat("constitution", 1)
 		H.change_stat("perception", 2)
+		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
-
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)

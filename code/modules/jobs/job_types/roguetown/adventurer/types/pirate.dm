@@ -37,8 +37,6 @@
 	beltr = /obj/item/rogueweapon/sword/cutlass
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel
 
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -56,3 +54,4 @@
 	H.change_stat("endurance", 1)
 	H.change_stat("speed", 2)
 	H.change_stat("fortune", 1)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
