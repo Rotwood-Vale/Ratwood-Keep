@@ -108,15 +108,6 @@
 			to_chat(user, span_warning("I should put this on a table or an anvil first."))
 			return
 			
-		/*if(attacked_item.obj_broken)
-			if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) >= SKILL_LEVEL_EXPERT)
-				if(attacked_item.obj_broken && istype(attacked_item, /obj/item/clothing))
-					var/obj/item/clothing/clothing = attacked_item
-					clothing.obj_fix()
-			else
-				user.visible_message(span_warning("[attacked_item] is broken! I am not skilled enough to fix it..."))
-				return
-*/
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= SKILL_LEVEL_NONE)
 			if(prob(30))
@@ -146,22 +137,6 @@
 			attacked_item.obj_integrity = max(0, attacked_item.obj_integrity - (10 - repair_percent))
 			return
 
-
-		/*playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
-		if(repair_percent)
-			repair_percent *= attacked_item.max_integrity
-			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
-			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
-			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
-				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
-			else
-				user.visible_message(span_info("[user] repairs [attacked_item]!"))
-			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
-			return
-		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
-			return*/
 
 	if(isstructure(attacked_object) && !user.cmode)
 		var/obj/structure/attacked_structure = attacked_object
