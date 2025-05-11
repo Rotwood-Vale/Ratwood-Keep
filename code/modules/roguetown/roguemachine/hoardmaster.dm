@@ -128,9 +128,6 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			if(PA.purchases_per_player && usr.mind in PA.purchasers)
-				if(PA.purchasers[usr.mind] >= PA.purchases_per_player)
-					continue
 			var/unlock_time = SSticker.round_start_time + PA.time_lock
 			if(world.time < unlock_time) // Not enough time has passed
 				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
