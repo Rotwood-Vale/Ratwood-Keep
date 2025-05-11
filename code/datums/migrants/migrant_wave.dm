@@ -37,6 +37,7 @@
 
 /datum/migrant_wave/adventurer
 	name = "Adventure Party"
+	weight = 60
 	downgrade_wave = /datum/migrant_wave/adventurer_down_one
 	roles = list(
 		/datum/migrant_role/adventurer = 4,
@@ -45,6 +46,7 @@
 
 /datum/migrant_wave/adventurer_down_one
 	name = "Adventure Party"
+	can_roll = FALSE
 	downgrade_wave = /datum/migrant_wave/adventurer_down_two
 	roles = list(
 		/datum/migrant_role/adventurer = 3,
@@ -53,6 +55,7 @@
 
 /datum/migrant_wave/adventurer_down_two
 	name = "Adventure Party"
+	weight = 60
 	downgrade_wave = /datum/migrant_wave/adventurer_down_three
 	roles = list(
 		/datum/migrant_role/adventurer = 2,
@@ -62,6 +65,7 @@
 /datum/migrant_wave/adventurer_down_three
 	name = "Adventure Party"
 	roles = list(
+	can_roll = FALSE
 		/datum/migrant_role/adventurer = 1,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
