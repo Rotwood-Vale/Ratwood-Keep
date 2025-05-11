@@ -17,32 +17,17 @@
 	var/gid
 	var/obj/structure/attached_to
 
-/obj/gblock
-	name = ""
-	desc = ""
-	icon = null
-	mouse_opacity = 0
-	opacity = TRUE
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-
 /obj/structure/gate_vertical/Initialize()
 	. = ..()
-	update_icon()
+	update_gate_icon()
 
 	if(initial(opacity))
 		var/turf/T = loc
-		T = get_step(T, NORTH)
-		var/G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, NORTH)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
-		T = get_step(T, NORTH)
-		G = new /obj/gblock(T)
-		turfsy += T
-		blockers += G
+		for(var/i in 1 to 3)
+			T = get_step(T, NORTH)
+			var/G = new /obj/gblock(T)
+			turfsy += T
+			blockers += G
 
 	GLOB.biggates += src
 
@@ -51,7 +36,7 @@
 		qdel(A)
 	return ..()
 
-/obj/structure/gate_vertical/update_icon()
+/obj/structure/gate_vertical/proc/update_gate_icon()
 	cut_overlays()
 	icon_state = "[base_state][density ? 1 : 0]"
 	if(!density && !isSwitchingStates)
@@ -78,13 +63,13 @@
 	for(var/obj/gblock/B in blockers)
 		B.opacity = FALSE
 	isSwitchingStates = FALSE
-	update_icon()
+	update_gate_icon()
 
 /obj/structure/gate_vertical/proc/close()
 	if(isSwitchingStates || density)
 		return
 	isSwitchingStates = TRUE
-	update_icon()
+	update_gate_icon()
 	layer = ABOVE_MOB_LAYER
 	playsound(src, 'sound/misc/gate.ogg', 100, extrarange = 5)
 	flick("[base_state]_closing", src)
@@ -108,10 +93,10 @@
 			M.Knockdown(50)
 			M.Stun(50)
 
-	density = initial(density)
-	opacity = initial(opacity)
+	density = TRUE
+	opacity = TRUE
 	layer = initial(layer)
 	for(var/obj/gblock/B in blockers)
 		B.opacity = TRUE
 	isSwitchingStates = FALSE
-	update_icon()
+	update_gate_icon()
