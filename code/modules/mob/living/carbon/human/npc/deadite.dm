@@ -89,11 +89,22 @@
 	for(var/trait_applied in GLOB.traits_deadite)
 		ADD_TRAIT(src, trait_applied, DEADITE_TRAIT)
 
-	STASTR = rand(6,13)
-	STASPD = rand(6,13)
-	STACON = rand(6,13)
-	STAEND = rand(6,13)
-	STAINT = 1
+	var/datum/stat_set/stats = new()
+	stats.create_from(src)
+
+	// Deadites will still be affected by certain lingering status conditions, but should be immune to
+	// the nastiest ones (eg. blood loss) thanks to their traits
+	var/strdiff = rand(6, 13) - stats.STASTR
+	var/spddiff = rand(6, 13) - stats.STASPD
+	var/condiff = rand(6, 13) - stats.STACON
+	var/enddiff = rand(6, 13) - stats.STAEND
+	var/intdiff = 1 - stats.STAINT
+
+	change_stat("strength", strdiff, "deadite_str")
+	change_stat("speed", spddiff, "deadite_spd")
+	change_stat("constitution", condiff, "deadite_con")
+	change_stat("endurance", enddiff, "deadite_end")
+	change_stat("intelligence", intdiff, "deadite_int")
 
 
 /mob/living/carbon/human/species/deadite/handle_ai()
