@@ -848,7 +848,7 @@ obj/structure/bars/steel
 					return
 				playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				qdel(W)
-				var/to_distribute = round(donatedamnt/bandits_to_benefit.len, 0.1)
+				var/to_distribute = (round(donatedamnt/bandits_to_benefit.len, 0.1) + 5)	//minimum of 5 favor per item
 				for(var/datum/antagonist/bandit/bandit_player in bandits_to_benefit)
 					bandit_player.favor += to_distribute
 					bandit_player.totaldonated += donatedamnt
