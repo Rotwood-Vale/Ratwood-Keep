@@ -120,3 +120,5 @@
 	/datum/rmb_intent/weak)
 
 	rot_type = /datum/component/rot/corpse
+
+	var/voice_type = null

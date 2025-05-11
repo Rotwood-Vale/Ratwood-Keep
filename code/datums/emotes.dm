@@ -141,6 +141,14 @@
 				possible_sounds = H.dna.species.soundpack_f.get_sound(key,modifier)
 			else if(H.dna.species.soundpack_m)
 				possible_sounds = H.dna.species.soundpack_m.get_sound(key,modifier)
+
+			if(H.voice_type)
+				switch(H.voice_type)
+					if(VOICE_TYPE_MASC)
+						possible_sounds = H.dna.species.soundpack_m.get_sound(key, modifier)
+					if(VOICE_TYPE_FEM)
+						possible_sounds = H.dna.species.soundpack_f.get_sound(key, modifier)
+						
 			if(possible_sounds)
 				if(islist(possible_sounds))
 					var/list/PS = possible_sounds
