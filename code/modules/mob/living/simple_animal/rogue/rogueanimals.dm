@@ -130,6 +130,10 @@
 			..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/find_food()
+	// Prevent searching for dead bodies if the mob is being ridden or has buckled mobs
+	if(src.has_buckled_mobs())
+		return
+
 	if(food > 50 && !eat_forever)
 		return
 	var/list/around = view(1, src)
