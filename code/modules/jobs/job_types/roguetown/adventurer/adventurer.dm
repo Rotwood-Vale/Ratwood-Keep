@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/adventurer
 	title = "Adventurer"
-	flag = ADVENTURER
+	flag = MIGRANT
 	tutorial = "Hero of nothing, adventurer by trade. \
 	Whatever led you to this fate is up to the wind to decide, \
 	and you've never fancied yourself for much other than the thrill. \

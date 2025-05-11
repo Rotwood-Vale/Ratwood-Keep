@@ -98,7 +98,6 @@
 			H.change_stat("endurance", 3)
 			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-*/
 	if(ishumannorthern(H) && prob(70)) //gronn lore
 		H.skin_tone = SKIN_COLOR_GRONN
 		H.update_body()

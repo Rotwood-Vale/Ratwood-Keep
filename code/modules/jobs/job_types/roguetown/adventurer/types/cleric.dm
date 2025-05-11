@@ -81,7 +81,6 @@
 			H.change_stat("constitution", -1)
 			H.change_stat("endurance", 2)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 		if("Forge Cleric")
 			H.set_blindness(0)
 			to_chat(H, span_warning("You are a cleric of the Forge domain. You are adept at making arms and armors as well as using them."))
@@ -114,7 +113,6 @@
 			H.change_stat("strength", 2)
 			H.change_stat("speed", -2)
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
