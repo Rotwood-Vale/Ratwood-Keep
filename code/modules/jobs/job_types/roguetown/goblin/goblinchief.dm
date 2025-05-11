@@ -59,7 +59,8 @@
 		if(istype(H.dna.species, /datum/species/halforc)) // Horc with +4 strength might be too strong.
 			H.change_stat("strength", 2)
 		else
-			H.change_stat("strength", 4)	
+			H.change_stat("strength", 4)
+			H.ventcrawler = VENTCRAWLER_ALWAYS
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)
