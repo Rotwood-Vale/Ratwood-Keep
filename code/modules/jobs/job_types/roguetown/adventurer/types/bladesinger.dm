@@ -38,7 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_spellpoints(4)
 		H.change_stat("intelligence", 2) //6 stat points total. Less then dedicated martial roles, more then a mage/paladin

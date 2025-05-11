@@ -22,7 +22,7 @@
 			H.set_blindness(0)
 			to_chat(H, span_warning("Warriors are well rounded fighters, experienced often in many theaters of warfare and battle they are capable of rising to any challenge that might greet them on the path."))
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,2), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, rand(1,2), TRUE)
@@ -30,8 +30,8 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,1,2), TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
@@ -104,21 +104,21 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			if(prob(40))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 				backr = /obj/item/rogueweapon/sword/iron
 			else if(prob(60))
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/spear
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale // No helms for monster hunters.
-				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-				H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+				H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 				backr = /obj/item/rogueweapon/stoneaxe/woodcut
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/huntingknife
