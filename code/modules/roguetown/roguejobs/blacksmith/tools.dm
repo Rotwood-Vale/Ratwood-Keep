@@ -219,6 +219,7 @@
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
+	var/heat_time = 10 SECONDS
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
@@ -231,40 +232,56 @@
 		return 150+T0C
 	return ..()
 
+/obj/item/rogueweapon/tongs/proc/has_ingot()
+	if(locate(/obj/item/ingot) in src)
+		return TRUE
+	return FALSE
+
+/obj/item/rogueweapon/tongs/proc/get_ingot()
+	if(has_ingot())
+		return locate(/obj/item/ingot) in src
+
 /obj/item/rogueweapon/tongs/fire_act(added, maxstacks)
 	. = ..()
 	hott = world.time
-	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(make_unhot), world.time), 10 SECONDS)
+	make_hot(heat_time)
 
 /obj/item/rogueweapon/tongs/update_icon()
 	. = ..()
-	if(!hingot)
+	var/obj/item/ingot/I = get_ingot()
+	if(!I)
 		icon_state = "[initial(icon_state)]"
 	else
-		if(hott)
+		if(I.ishot)
 			icon_state = "[initial(icon_state)]i1"
 		else
 			icon_state = "[initial(icon_state)]i0"
+	update_transform()	
 
-/obj/item/rogueweapon/tongs/proc/make_unhot(input)
-	if(hott == input)
-		hott = FALSE
+
+
+/obj/item/rogueweapon/tongs/proc/make_hot(heating)
+	var/obj/item/ingot/I = get_ingot()
+	if(!I)
+		return
+	var/time_to_heat = heat_time + heating
+	I.heat(time_to_heat)
+	update_icon()
 
 /obj/item/rogueweapon/tongs/attack_self(mob/user)
-	if(hingot)
-		if(isturf(user.loc))
-			hingot.forceMove(get_turf(user))
-			hingot = null
-			hott = FALSE
-			update_icon()
+	var/obj/item/ingot/I = get_ingot()
+	if(!I)
+		return
+	if(isturf(user.loc))
+		I.forceMove(get_turf(user))
+		update_icon()
 
 /obj/item/rogueweapon/tongs/dropped()
 	. = ..()
-	if(hingot)
-		hingot.forceMove(get_turf(src))
-		hingot = null
-	hott = FALSE
+	var/obj/item/ingot/I = get_ingot()
+	if(!I)
+		return
+	I.forceMove(get_turf(src))
 	update_icon()
 
 /obj/item/rogueweapon/tongs/getonmobprop(tag)
@@ -303,3 +320,4 @@
 	wdefense = 2
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
+	heat_time = 20 SECONDS
