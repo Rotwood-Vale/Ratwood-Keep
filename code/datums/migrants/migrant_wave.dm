@@ -64,8 +64,8 @@
 
 /datum/migrant_wave/adventurer_down_three
 	name = "Adventure Party"
-	roles = list(
 	can_roll = FALSE
+	roles = list(
 		/datum/migrant_role/adventurer = 1,
 	)
 	greet_text = "Together with a party of trusted friends we decided to venture out, seeking thrills, glory and treasure, ending up in the misty and damp bog underneath Rockhill, perhaps getting ourselves into more than what we bargained for."
