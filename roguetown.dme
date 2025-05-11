@@ -996,6 +996,7 @@
 #include "code\game\objects\structures\multistage\siege\onager_unfinished.dm"
 #include "code\game\objects\structures\roguetown\bell_common.dm"
 #include "code\game\objects\structures\roguetown\gate.dm"
+#include "code\game\objects\structures\roguetown\gate_vertical.dm"
 #include "code\game\objects\structures\roguetown\handcart.dm"
 #include "code\game\objects\structures\roguetown\loot.dm"
 #include "code\game\objects\structures\roguetown\mobspawner.dm"

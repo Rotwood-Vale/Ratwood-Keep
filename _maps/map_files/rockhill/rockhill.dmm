@@ -17004,16 +17004,6 @@
 /obj/effect/landmark/start/nightmaiden,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
-"ikl" = (
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/obj/structure/gate/vertical{
-	redstone_id = "gatechurch1";
-	name = "Church gate"
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "ikn" = (
 /obj/structure/mineral_door/wood{
 	icon_state = "wcr";
@@ -29103,6 +29093,16 @@
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/town/harbor)
+"omf" = (
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/obj/structure/gate_vertical{
+	name = "Church Gate";
+	redstone_id = "churchgate1"
+	},
+/turf/open/floor/rogue/churchbrick,
+/area/rogue/indoors/town/church/chapel)
 "omg" = (
 /obj/structure/fluff/statue/small{
 	pass_flags = 1
@@ -48641,7 +48641,8 @@
 "ycn" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/winch{
-	redstone_id = "gatechurch1"
+	redstone_id = "churchgate1";
+	name = "Church gate"
 	},
 /turf/open/water/bath,
 /area/rogue/indoors/town/church/chapel)
@@ -469883,8 +469884,8 @@ wAm
 nJy
 ryj
 jjS
-klN
-ikl
+jjS
+omf
 tCI
 nJy
 moU
