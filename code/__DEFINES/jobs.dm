@@ -409,5 +409,5 @@
 #define FOREIGNER_ROLES \
 	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/migrant,\
-	/datum/job/roguetown/bandit\
+	/datum/job/roguetown/bandit
 
