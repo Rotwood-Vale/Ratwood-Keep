@@ -65,11 +65,6 @@
 		else
 			say("Earn your keep first!")
 			return
-		if(PA.purchases_per_player)
-			if(PA.purchasers[M.mind])
-				PA.purchasers[M.mind]++
-			else
-				PA.purchasers[M.mind] = 1
 		var/shoplength = PA.contains.len
 		var/l
 		for(l=1,l<=shoplength,l++)
