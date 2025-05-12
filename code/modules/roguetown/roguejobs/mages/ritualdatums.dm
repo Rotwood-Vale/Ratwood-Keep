@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons a hellhound"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/infernalash = 3, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/infernalash = 3, /obj/item/natural/obsidian = 2, /obj/item/natural/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound
 
 /datum/runerituals/summoning/watcher
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons an elemental"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/natural/manacrystal = 2, /obj/item/natural/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden
 
 /datum/runerituals/summoning/behemoth
@@ -437,7 +437,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 	desc = "summons a large elemental"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t2 =1)
+	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/natural/manacrystal = 2, /obj/item/natural/melded/t2 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth
 
 /datum/runerituals/summoning/collossus
