@@ -4,7 +4,26 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Half-kin</b><br>\
+	Half-kins are a highly diversified people. Half-kins are primarily \
+	a consequence of Beastling races mixing with a Humens and Elves, although some have \
+	acquired their Beastling traits due to magical curses or blessings from a god, typically \
+	Dendor. Half-kins can reproduce with one another, and their children will inherit features \
+	from both parents. Half-kin genes are dominant when mixing with Humens or Elves."
+
+	expanded_desc = "Half-kins are a highly diversified people. Half-kins are primarily \
+	a consequence of Beastling races mixing with a Humens and Elves, although some have \
+	acquired their Beastling traits due to magical curses or blessings from a god, typically \
+	Dendor. Half-kins can reproduce with one another, and their children will inherit features \
+	from both parents. Half-kin genes are dominant when mixing with Humens or Elves. \
+	<br><br> \
+	Half-kins have an easier time being accepted into societies depending on what Beastling features \
+	they have, but it is highly dependent on both their appearance and attitude. However, due to both \
+	historic and ongoing discrimination of mixed bloods they are usually not fully accepted by either \
+	of their parent races. Hence, Half-kins tend to share a strong sense of kinship with similar Half-kins. \
+	Yet, their shared traits with respectable races do mean that Half-kins are more widely accepted into \
+	societies that they share blood ties with than other Beastling races."
+
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
