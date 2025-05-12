@@ -7082,11 +7082,16 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "dGl" = (
-/obj/structure/fluff/walldeco/painting/queen{
-	pixel_y = -32
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = -7
 	},
-/turf/open/floor/rogue/ruinedwood/chevron,
-/area/rogue/indoors/town)
+/obj/structure/fluff/railing/border,
+/turf/open/water/river{
+	dir = 1;
+	icon_state = "rockwd"
+	},
+/area/rogue/outdoors/town/harbor)
 "dGm" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /obj/item/roguegem/violet,
@@ -8089,6 +8094,12 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"edV" = (
+/obj/structure/fluff/walldeco/painting/queen{
+	pixel_y = -32
+	},
+/turf/open/floor/rogue/ruinedwood/chevron,
+/area/rogue/indoors/town)
 "edX" = (
 /turf/closed/wall/mineral/rogue/wood/window,
 /area/rogue/indoors/town/church)
@@ -9730,6 +9741,12 @@
 /obj/item/book/rogue/necra,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
+"eWB" = (
+/turf/open/water/river{
+	icon_state = "rockwd";
+	layer = 1.9
+	},
+/area/rogue/outdoors/town/harbor)
 "eWM" = (
 /obj/machinery/light/rogue/chand,
 /obj/effect/landmark/start/jester{
@@ -17482,11 +17499,11 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "jdY" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_y = 32
+/obj/structure/stairs{
+	dir = 8
 	},
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/shop)
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors)
 "jfd" = (
 /obj/structure/fluff/statue/knight/r,
 /obj/structure/flora/ausbushes/stalkybush,
@@ -17760,6 +17777,12 @@
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
+"jkW" = (
+/obj/machinery/light/rogue/wallfire{
+	pixel_y = 32
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/shop)
 "jlg" = (
 /obj/structure/fluff/statue/knight{
 	dir = 3;
@@ -19302,11 +19325,12 @@
 /turf/open/floor/rogue/church,
 /area/rogue/under/town/basement)
 "kcB" = (
-/obj/structure/stairs{
-	dir = 8
+/turf/open/water/river{
+	dir = 8;
+	icon_state = "rockwd";
+	layer = 1.9
 	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors)
+/area/rogue/under/cavewet/bogcaves)
 "kcG" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
@@ -32127,16 +32151,12 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town)
 "rar" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = -7
-	},
-/obj/structure/fluff/railing/border,
 /turf/open/water/river{
-	dir = 1;
-	icon_state = "rockwd"
+	dir = 8;
+	icon_state = "rockwd";
+	layer = 1.9
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/outdoors/druidgrove)
 "ras" = (
 /obj/structure/fluff/walldeco/psybanner/red,
 /turf/closed/wall/mineral/rogue/stone,
@@ -32488,9 +32508,14 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "rkY" = (
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
-	dir = 4;
-	icon_state = "rockwd"
+	icon_state = "rockwd";
+	layer = 1.9
 	},
 /area/rogue/outdoors/town/harbor)
 "rld" = (
@@ -39163,11 +39188,11 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "uRK" = (
-/turf/open/water/river{
-	icon_state = "rockwd";
-	layer = 1.9
+/obj/structure/roguemachine/scomm{
+	pixel_y = -32
 	},
-/area/rogue/outdoors/town/harbor)
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors)
 "uRY" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/cobble/mossy,
@@ -40126,16 +40151,12 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "vvr" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = -7
-	},
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
 	icon_state = "rockwd";
-	layer = 1.9
+	water_reagent = /datum/reagent/water/gross
 	},
-/area/rogue/outdoors/town/harbor)
+/area/rogue/outdoors/druidgrove)
 "vvI" = (
 /turf/closed/wall/mineral/rogue/stone/blue_moss,
 /area/rogue/outdoors/druidgrove)
@@ -44480,11 +44501,11 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "xJr" = (
-/obj/structure/roguemachine/scomm{
-	pixel_y = -32
+/turf/open/water/river{
+	dir = 4;
+	icon_state = "rockwd"
 	},
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors)
+/area/rogue/outdoors/town/harbor)
 "xJE" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -241265,7 +241286,7 @@ xRS
 xRS
 xRS
 xRS
-rkY
+xJr
 hXf
 aOb
 hkm
@@ -241695,7 +241716,7 @@ xRS
 xRS
 xRS
 xRS
-rkY
+xJr
 hXf
 xRS
 xRS
@@ -248308,11 +248329,11 @@ sSS
 sSS
 bpD
 bpD
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+kcB
 aan
 aan
 qbG
@@ -248739,14 +248760,14 @@ sSS
 bpD
 bpD
 bpD
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
 aan
 qbG
 qbG
@@ -249169,17 +249190,17 @@ bpD
 bpD
 bpD
 bpD
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -249592,7 +249613,7 @@ maB
 maB
 jsk
 maB
-lhb
+dqU
 lhb
 vRu
 vRu
@@ -249601,16 +249622,16 @@ vRu
 vRu
 vRu
 bpD
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -250024,24 +250045,24 @@ wYF
 bER
 maB
 maB
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
 lhb
 vRu
 vRu
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -250456,23 +250477,23 @@ maB
 maB
 rvw
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -250887,22 +250908,22 @@ maB
 jsk
 maB
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -251319,21 +251340,21 @@ jsk
 maB
 sjX
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -251750,20 +251771,20 @@ sjX
 jsk
 maB
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -252182,19 +252203,19 @@ maB
 maB
 jsk
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -252529,11 +252550,11 @@ qHu
 hkm
 hkm
 hkm
-rar
+dGl
 nOI
 rwW
 xaB
-vvr
+rkY
 pzv
 pzv
 pzv
@@ -252614,17 +252635,17 @@ jsk
 maB
 maB
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -252964,7 +252985,7 @@ hkm
 kgT
 pzv
 smP
-uRK
+eWB
 pzv
 pzv
 kgT
@@ -253045,17 +253066,17 @@ maB
 maB
 bER
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -253476,16 +253497,16 @@ maB
 jsk
 maB
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -253907,15 +253928,15 @@ maB
 jsk
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -254308,7 +254329,7 @@ qbG
 qbG
 cJe
 uML
-dmm
+vvr
 lLo
 oCO
 tSt
@@ -254338,15 +254359,15 @@ maB
 wYF
 maB
 sjX
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -254769,15 +254790,15 @@ maB
 maB
 jsk
 pSY
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -255199,16 +255220,16 @@ maB
 sjX
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -255606,7 +255627,7 @@ vIa
 vIa
 dmm
 lLo
-lLo
+bRF
 bLV
 bLV
 sjX
@@ -255629,17 +255650,17 @@ maB
 maB
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -256059,18 +256080,18 @@ maB
 jsk
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -256488,19 +256509,19 @@ maB
 maB
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+aan
+aan
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
 gxt
 gxt
 gxt
@@ -256918,19 +256939,19 @@ jsk
 maB
 rvw
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+kcB
+aan
+aan
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
 gxt
 gxt
 gxt
@@ -257335,7 +257356,7 @@ vIa
 vIa
 vIa
 xQO
-bRF
+rar
 bRF
 bRF
 bRF
@@ -257347,19 +257368,19 @@ jsk
 maB
 maB
 jsk
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+kcB
+kcB
+kcB
+kcB
+aan
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
+kcB
 gxt
 gxt
 gxt
@@ -257778,18 +257799,18 @@ bRF
 bRF
 jsk
 maB
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+kcB
+kcB
+kcB
+kcB
+kcB
+dqU
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
 gxt
 gxt
 gxt
@@ -258207,20 +258228,20 @@ vJE
 vJE
 xQO
 xQO
-bRF
+rar
 rBg
 rBg
-lhb
+kcB
 idq
 aan
 idq
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
-lhb
+kcB
+dqU
+dqU
+dqU
+dqU
+dqU
+kcB
 gxt
 gxt
 gxt
@@ -258640,17 +258661,17 @@ vJE
 xQO
 xQO
 xQO
-rBg
+kcB
 rBg
 idq
 aan
 dVO
 aan
 idq
-lhb
-lhb
-lhb
-lhb
+dqU
+dqU
+dqU
+kcB
 gxt
 gxt
 gxt
@@ -348877,7 +348898,7 @@ uuq
 vwl
 lZz
 nqU
-kcB
+jdY
 dlR
 lZV
 hHI
@@ -349741,7 +349762,7 @@ siL
 siL
 wsY
 htF
-xJr
+uRK
 hHI
 fnA
 nqU
@@ -447814,7 +447835,7 @@ fZJ
 fZJ
 fZJ
 sEV
-jdY
+jkW
 dJl
 pvq
 uLz
@@ -455152,7 +455173,7 @@ qLo
 qLo
 qLo
 qLo
-dGl
+edV
 evo
 fZJ
 fZJ
