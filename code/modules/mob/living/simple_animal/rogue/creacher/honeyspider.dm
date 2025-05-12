@@ -11,6 +11,7 @@
 	move_to_delay = 2
 	vision_range = 5
 	aggro_vision_range = 9
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,
 							/obj/item/reagent_containers/food/snacks/rogue/honey = 1,
