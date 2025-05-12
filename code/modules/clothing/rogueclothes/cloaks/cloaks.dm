@@ -1,7 +1,7 @@
 /obj/item/clothing/cloak
 	name = "cloak"
 	icon = 'icons/roguetown/clothing/cloaks.dmi'
-	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/cloaks.dmi/icons/roguetown/clothing/onmob/cloaks.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/cloaks.dmi'
 	slot_flags = ITEM_SLOT_CLOAK
 	desc = "Protects you from the weather and your identity from everyone else."
 	edelay_type = 1
@@ -21,7 +21,7 @@
 	color = null
 	icon_state = "tabard"
 	item_state = "tabard"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/detailed/tabards.dmi'
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
@@ -314,8 +314,8 @@
 	alternate_worn_layer = TABARD_LAYER
 	body_parts_covered = CHEST|GROIN
 	boobed = TRUE
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/detailed/tabards.dmi'
+	sleeved = 'modular_redmoon/icons/roguetown/clothing/onmob/detailed/tabards.dmi'
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
@@ -599,6 +599,8 @@
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	boobed = TRUE
+	sleeved = 'modular_redmoon/icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"	
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 //	allowed_sex = list(MALE)
