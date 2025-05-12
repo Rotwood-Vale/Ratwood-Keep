@@ -32,13 +32,14 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(istype(H.cloak, /obj/item/clothing/cloak/cape/guard))
-			var/obj/item/clothing/S = H.cloak
+			var/obj/item/clothing/cloak/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
 			S.name = "captain's cape ([index])"
+			S.visual_name = index // REDMOON ADD - tabard_fix
 		for(var/datum/mind/MF in get_minds()) // REDMOON ADD - fixes_for_characters_memory - удаление из памяти всех, кто успел запомнить имя без титула
 			H.mind.become_unknown_to(MF)
 		var/prev_real_name = H.real_name

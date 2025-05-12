@@ -39,12 +39,12 @@
 	if(name_override)
 		return name_override
 	if(face_name)
-		if(id_name && (id_name != face_name))
+		if(real_name != face_name) // REDMOON EDIT - tabard_fix - WAS: if(id_name && (id_name != face_name))
 			return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
 		return face_name
 	if(id_name)
 		return id_name
-	return "Unknown"
+	return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
 
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when Fluacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name(if_no_face="Unknown")
@@ -61,6 +61,10 @@
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	. = if_no_id	//to prevent null-names making the mob unclickable
+	if(cloak)
+		if(istype(cloak, /obj/item/clothing/cloak))
+			var/obj/item/clothing/cloak/C = cloak
+			return C.visual_name
 	return
 
 /mob/living/carbon/human/IsAdvancedToolUser()

@@ -55,6 +55,11 @@
 
 /mob/living/carbon/human/get_alt_name()
 	if(name != GetVoice())
+		if(cloak)
+			if(istype(cloak, /obj/item/clothing/cloak))
+				var/obj/item/clothing/cloak/visual_cloak = cloak
+				if(visual_cloak.visual_name)
+					return "[visual_cloak.visual_name]"
 		return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
 
 /mob/living/carbon/human/proc/forcesay(list/append) //this proc is at the bottom of the file because quote fuckery makes notepad++ cri
