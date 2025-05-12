@@ -180,6 +180,13 @@
 	sellprice = 10
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
+	var corruptable = TRUE
+
+
+/obj/item/clothing/neck/roguetown/psicross/bloodied
+	name = "defiled psycross"
+	desc = "Once sacred, this psycross now weeps crimson tears, its pure purpose corrupted by the vile influence of Zizo."
+	icon_state = "psicrossblood"
 
 /obj/item/clothing/neck/roguetown/psicross/astrata
 	name = "amulet of Astrata"
@@ -238,6 +245,7 @@
 	icon_state = "oyster_necklace"
 	desc = "A necklace of strung-up sea shells, the calming noise they make when they clack together is reminiscent of a shellfish's claws. They remind you that while men no longer live in water, Abyssor will always remember our origins."
 	sellprice = 25
+	corruptable = FALSE
 
 /obj/item/clothing/neck/roguetown/psicross/shell/bracelet
 	name = "shell bracelet"
@@ -245,6 +253,7 @@
 	desc = "A beaded bracelet made from sea shells, their rough exterior and glossy interior reminding you that Abyssor's children hide the best gifts at the deepest spots beneath the waves."
 	sellprice = 15
 	slot_flags = ITEM_SLOT_WRISTS
+	corruptable = FALSE
 
 /obj/item/clothing/neck/roguetown/psicross/eora
 	name = "amulet of Eora"
@@ -255,6 +264,7 @@
 	name = "wooden psycross"
 	desc = "So zealous are PSYDON's followers that they will carve his symbol into everything they can reach, even wood, lest their descendants forget their covenant: to make war eternal against the Archenemy, Zizo."
 	icon_state = "psicrossw"
+	corruptable = FALSE
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
@@ -318,6 +328,7 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 100
+
 
 /obj/item/clothing/neck/roguetown/talkstone
 	name = "talkstone"

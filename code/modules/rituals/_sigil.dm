@@ -57,26 +57,31 @@
 		if(istype(A, R.n_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, SOUTH))
 		if(istype(A, R.s_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, EAST))
 		if(istype(A, R.e_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, WEST))
 		if(istype(A, R.w_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in loc.contents)
 		if(istype(A, R.center_requirement) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 /obj/effect/decal/cleanable/sigil/attack_hand(mob/living/user)
 	. = ..()
@@ -187,12 +192,12 @@
 			return
 
 	user.mind.divinefavor -= pickritual.favor_cost
-	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)
 	if(prob(pickritual.revealchance))
 		if(istype(user, /mob))
 			var/mob/M = user
 			M.ritualalert()
+	consume_ingredients(pickritual)
 
 /turf/open/floor/proc/generateSigils(mob/M, type, subtype)
 	var/turf/T = get_turf(M.loc)
