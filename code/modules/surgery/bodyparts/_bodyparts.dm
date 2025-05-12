@@ -395,6 +395,18 @@
 	update_HP()
 	set_disabled(is_disabled())
 
+/obj/item/bodypart/proc/cure_infections(cure_rot = TRUE, cure_werewolf = FALSE)
+	for(var/datum/wound/wound in wounds)
+		if (wound.has_special_infection() \
+		&& ((wound.zombie_infection_timer && cure_rot) || (wound.werewolf_infection_timer && cure_werewolf)))
+			// If we want to cure either infection, cure both - they shouldn't be simultaneously present on
+			// the same wound, but we want to avoid any weird bugs if it somehow happens anyway
+			if (wound.zombie_infection_timer)
+				deltimer(wound.zombie_infection_timer)
+			if (wound.werewolf_infection_timer)
+				deltimer(wound.werewolf_infection_timer)
+			qdel(wound)
+
 /obj/item/bodypart/proc/is_disabled()
 	if(!owner || !can_disable() || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
 		return BODYPART_NOT_DISABLED
