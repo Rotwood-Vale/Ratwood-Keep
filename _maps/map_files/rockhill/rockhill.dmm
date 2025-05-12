@@ -34954,12 +34954,15 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "sBQ" = (
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/pipeweed,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/sweetleaf,
+/obj/item/seeds/berryrogue/poison,
+/obj/item/seeds/berryrogue/poison,
 /obj/structure/closet/crate/chest{
 	lockid = "physician"
 	},
-/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf,
-/obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "sBT" = (
