@@ -182,6 +182,10 @@
 		return
 
 
+	if(pickritual.casttime > 0)
+		if(!do_after(user, pickritual.casttime SECONDS))
+			return
+
 	user.mind.divinefavor -= pickritual.favor_cost
 	consume_ingredients(pickritual)
 	call(pickritual.function)(user, loc)

@@ -65,6 +65,7 @@
 	difficulty = 2
 	revealchance = 25 //a player is getting tortured here, and needs somebody to save them
 	favor_cost = 0
+	casttime = 5
 
 	function = /proc/giftofpain
 

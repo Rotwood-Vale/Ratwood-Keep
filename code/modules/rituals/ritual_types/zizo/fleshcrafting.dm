@@ -23,6 +23,8 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 		H.change_stat("endurance", 2)
 		user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 		H.mind.rituals_completed += "Rite of bodily Perfection"
+		if(!("Mark of Zizo" in user.mind.rituals_completed))
+			H.mind.rituals_completed += "Mark of Zizo"
 		C.visible_message(span_danger("[H.real_name]s form begins to twist and contort violently as they are remade by Her hands."))
 		H.emote("painscream")
 		to_chat(H.mind, span_notice("By Zizos grace, my wretched mortal form twists into an idealized form of itself!"))
@@ -36,6 +38,7 @@ proc/riteofbodilyperfection(mob/user, turf/C)
 	center_requirement = /mob/living/carbon/human
 	difficulty = 1
 	favor_cost = 25
+	casttime = 5
 	revealchance = 10 // just a prerequisite, really, not dangerous on its own
 	function = /proc/theftoflight
 
@@ -172,6 +175,8 @@ proc/theftoflight(mob/user, turf/C)
 /proc/nopain(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
 		ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
+		if(!("Mark of Zizo" in user.mind.rituals_completed))
+			H.mind.rituals_completed += "Mark of Zizo"
 		to_chat(H.mind, span_notice("By Zizos dark grace, I now know that pain is but temporary."))
 		return TRUE
 	return FALSE

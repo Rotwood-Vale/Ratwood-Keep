@@ -13,10 +13,16 @@
 
 /proc/firststep(mob/user, turf/C)
 	for(var/mob/living/carbon/human/H in C.contents)
+		if("First step towards Ascension" in H.mind.rituals_completed)
+			to_chat(H.mind, span_danger("I have already used this ritual to further my might.."))
+			continue
 		if(H.mind.get_skill_level(/datum/skill/magic/unholy) < 4)
 			user.playsound_local(C, 'sound/villain/zizolaugh.ogg', 100, FALSE, pressure_affected = FALSE)
 			H.mind.adjust_skillrank(/datum/skill/magic/unholy, 1, TRUE)
 			to_chat(H.mind, span_danger("Zizos power courses through me, taking me one step further along her profane path"))
+			H.mind.rituals_completed += "First step towards Ascension"
+			if(!("Mark of Zizo" in user.mind.rituals_completed))
+				H.mind.rituals_completed += "Mark of Zizo"
 			return TRUE
 		else
 			to_chat(H.mind, span_danger("I can not ascend even further with this base ritual.."))

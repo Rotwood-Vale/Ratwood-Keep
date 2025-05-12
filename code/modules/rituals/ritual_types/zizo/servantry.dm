@@ -76,8 +76,9 @@ proc/zizobargain(mob/user, turf/C)
 			if(choice == "Yes")
 				H.patron = new /datum/patron/zizo
 				H.faction += "undead"
+				ADD_TRAIT(H, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
 				to_chat(H, span_notice("You feel Her cold embrace settle into your soul..."))
-				var/secondchoice = input(H, "Zizo offers you Her gift. Was it worth it?", "Zizo's Gift") in list("Strength", "Speed", "Intellect", "Perception", "Endurance", "Constitution")
+				var/secondchoice = input(H, "Zizo offers you Her gift. Was it worth it?", "Zizo's Gift") in list("Strength", "Speed", "Intelligence", "Perception", "Endurance", "Constitution")
 				switch (secondchoice)
 					if("Strength")
 						H.change_stat("strength", 1)
