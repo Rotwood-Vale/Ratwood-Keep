@@ -754,7 +754,7 @@ There are several things that need to be remembered:
 					standing_front += onbelt_overlay
 					standing_behind += onbelt_behind
 			else
-				onbelt_overlay = beltr.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/belt_r.dmi')
+				onbelt_overlay = beltr.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'modular_redmoon/icons/roguetown/clothing/onmob/belt_r.dmi') // REDMOON ADD
 				if(onbelt_overlay)
 					if(gender == MALE)
 						if(OFFSET_BELT in dna.species.offset_features)
@@ -809,7 +809,7 @@ There are several things that need to be remembered:
 					standing_front += onbelt_overlay
 					standing_behind += onbelt_behind
 			else
-				onbelt_overlay = beltl.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'icons/roguetown/clothing/onmob/belt_l.dmi')
+				onbelt_overlay = beltl.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'modular_redmoon/icons/roguetown/clothing/onmob/belt_l.dmi') // REDMOON ADD
 				if(onbelt_overlay)
 					if(gender == MALE)
 						if(OFFSET_BELT in dna.species.offset_features)

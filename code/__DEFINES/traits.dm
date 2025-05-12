@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
+	TRAIT_EORA = span_info("Ты была благославлена Эорой!"),
 ))
 
 // trait accessor defines

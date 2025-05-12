@@ -13,3 +13,25 @@
 	character.transform = character.transform.Scale(0.75, 0.75)
 	character.transform = character.transform.Translate(0, (-0.25 * 16))
 	character.update_transform()
+
+/datum/special_trait/eora
+	name = "Благословение Эоры"
+	greet_text = span_notice("Вас благословила богиня любви!")
+	req_text = "Эора милоствует лишь высоких женщин, а иные же... получат проклятье..."
+	weight = 40
+
+/datum/special_trait/eora/on_apply(mob/living/carbon/human/character, silent)
+	if(character.gender == "female")
+		if(!(character.dna.species.clothes_id == "dwarf"))
+			ADD_TRAIT(character, TRAIT_EORA, "[type]")
+			character.dna.species.limbs_icon_f = 'modular_redmoon/code/modules/eora_bless/icons/eora_f.dmi'
+			character.dna.species.dam_icon_f = 'modular_redmoon/code/modules/eora_bless/icons/dam_female_eora.dmi'
+			character.dna.species.custom_clothes = TRUE
+			character.dna.species.clothes_id = "eora"
+			character.update_body_parts(TRUE)
+		else
+			ADD_TRAIT(character, TRAIT_EORA_CURSE, "[type]")
+			to_chat(character, span_warning("ВЫ НИЗКАЯ."))
+	else
+		ADD_TRAIT(character, TRAIT_EORA_CURSE, "[type]")
+		to_chat(character, span_warning("ВЫ МУЖИК."))

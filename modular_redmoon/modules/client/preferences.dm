@@ -8,3 +8,4 @@
 	var/bark_variance = 0.2
 	COOLDOWN_DECLARE(bark_previewing)
 	var/datum/loadout_item/loadout
+	var/bodytype = BODYTYPE_FEMALE_PLUMP // Значение по умолчанию или опция в меню
