@@ -126,9 +126,8 @@
 	M.energy_add(200)
 	..()
 	. = 1
-	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
-		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
-		M.remove_stress(/datum/stressevent/sleepytime)
+	M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+	M.remove_stress(/datum/stressevent/sleepytime)
 
 /datum/reagent/medicine/greatermanapot
 	name = "Greater Mana Potion"
@@ -144,11 +143,10 @@
 	M.energy_add(400)
 	..()
 	. = 1
+	M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+	M.remove_stress(/datum/stressevent/sleepytime)
+	M.Sleeping(-40)
 	M.apply_status_effect(/datum/status_effect/buff/greatermanabuff)
-	if(M.has_status_effect(/datum/status_effect/debuff/sleepytime))
-		M.remove_status_effect(/datum/status_effect/debuff/sleepytime)
-		M.remove_stress(/datum/stressevent/sleepytime)
-		M.Sleeping(-40)
 
 /datum/reagent/berrypoison
 	name = "Berry Poison"
