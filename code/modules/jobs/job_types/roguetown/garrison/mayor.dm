@@ -17,7 +17,6 @@
 	min_pq = 5
 	max_pq = null
 	give_bank_account = 100
-	spells = list(SPELL_CONVERT_ROLE_GUARD)
 
 	//cmode_music = 'sound/music/combat_bog.ogg'
 
@@ -71,10 +70,10 @@
 
 /mob/living/carbon/human/proc/request_outlaw_mayor()
 	set name = "Request Outlaw"
-	set category = "Martial Law"
+	set category = "Juris Civilis"
 	if(stat)
 		return
-	var/inputty = input("Outlaw a person", "MARTIAL LAW") as text|null
+	var/inputty = input("Outlaw a person", "JURIS CIVILIS") as text|null
 	if(inputty)
 		if(hasomen(OMEN_NOLORD))
 			make_outlaw(inputty)
