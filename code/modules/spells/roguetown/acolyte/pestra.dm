@@ -218,6 +218,9 @@
 	if(isliving(targets[1]))
 		testing("curerot1")
 		var/mob/living/target = targets[1]
+		if(target == user)
+			revert_cast()
+			return FALSE
 		if(HAS_TRAIT(target, TRAIT_ROTTOUCHED))
 			to_chat(user, span_warning("The Rot has spread too deeply for even Pestra to clean."))
 			revert_cast()
