@@ -2,7 +2,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST
 	icon = 'icons/roguetown/clothing/armor.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/armor.dmi'
 	equip_sound = 'sound/blank.ogg'
 	drop_sound = 'sound/blank.ogg'
 	pickup_sound =  'sound/blank.ogg'
@@ -645,7 +645,7 @@
 	name = "silk jacket"
 	desc = "A soft and comfortable jacket."
 	icon_state = "nightman"
-	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'modular_redmoon/icons/roguetown/clothing/onmob/armor.dmi'
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -759,7 +759,7 @@
 	name = "leather coat"
 	desc = "A long leather coat made with quality materials for experienced hunters or noble explorers. The leather still offers some protection."
 	icon = 'icons/roguetown/clothing/armor.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	mob_overlay_icon = 'modular_redmoon/icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	icon_state = "leathercoat"
 	blocksound = SOFTHIT
