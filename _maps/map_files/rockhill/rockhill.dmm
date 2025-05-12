@@ -17482,11 +17482,11 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "jdY" = (
-/obj/structure/stairs{
-	dir = 8
+/obj/machinery/light/rogue/wallfire{
+	pixel_y = 32
 	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors)
+/turf/open/floor/rogue/hexstone,
+/area/rogue/indoors/town/shop)
 "jfd" = (
 /obj/structure/fluff/statue/knight/r,
 /obj/structure/flora/ausbushes/stalkybush,
@@ -19302,11 +19302,11 @@
 /turf/open/floor/rogue/church,
 /area/rogue/under/town/basement)
 "kcB" = (
-/obj/machinery/light/rogue/wallfire{
-	pixel_y = 32
+/obj/structure/stairs{
+	dir = 8
 	},
-/turf/open/floor/rogue/hexstone,
-/area/rogue/indoors/town/shop)
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors)
 "kcG" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
@@ -32127,8 +32127,13 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/outdoors/town)
 "rar" = (
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/structure/fluff/railing/border,
 /turf/open/water/river{
-	dir = 4;
+	dir = 1;
 	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/town/harbor)
@@ -32483,14 +32488,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "rkY" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = -7
-	},
-/obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
-	icon_state = "rockwd";
-	layer = 1.9
+	dir = 4;
+	icon_state = "rockwd"
 	},
 /area/rogue/outdoors/town/harbor)
 "rld" = (
@@ -39163,14 +39163,9 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "uRK" = (
-/obj/structure/fluff/railing/border{
-	dir = 8;
-	pixel_x = -7
-	},
-/obj/structure/fluff/railing/border,
 /turf/open/water/river{
-	dir = 1;
-	icon_state = "rockwd"
+	icon_state = "rockwd";
+	layer = 1.9
 	},
 /area/rogue/outdoors/town/harbor)
 "uRY" = (
@@ -40131,6 +40126,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "vvr" = (
+/obj/structure/fluff/railing/border{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/river{
 	icon_state = "rockwd";
 	layer = 1.9
@@ -241265,7 +241265,7 @@ xRS
 xRS
 xRS
 xRS
-rar
+rkY
 hXf
 aOb
 hkm
@@ -241695,7 +241695,7 @@ xRS
 xRS
 xRS
 xRS
-rar
+rkY
 hXf
 xRS
 xRS
@@ -251285,7 +251285,7 @@ qbG
 dSV
 oCO
 oCO
-gzp
+dmm
 oCO
 oCO
 vpR
@@ -252529,11 +252529,11 @@ qHu
 hkm
 hkm
 hkm
-uRK
+rar
 nOI
 rwW
 xaB
-rkY
+vvr
 pzv
 pzv
 pzv
@@ -252964,7 +252964,7 @@ hkm
 kgT
 pzv
 smP
-vvr
+uRK
 pzv
 pzv
 kgT
@@ -348877,7 +348877,7 @@ uuq
 vwl
 lZz
 nqU
-jdY
+kcB
 dlR
 lZV
 hHI
@@ -447814,7 +447814,7 @@ fZJ
 fZJ
 fZJ
 sEV
-kcB
+jdY
 dJl
 pvq
 uLz
