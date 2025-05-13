@@ -79,7 +79,7 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 	if(!active)
 		return
 
-	if(!reagents) //if you put a dry pot on
+	if(!reagents.get_reagents()) //If there's no reagents in the pot. 
 		active = FALSE
 		boilloop.stop()
 		return
