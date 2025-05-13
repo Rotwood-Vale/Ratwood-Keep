@@ -19,7 +19,11 @@
 		if(H.mind.get_skill_level(/datum/skill/magic/unholy) < 4)
 			user.playsound_local(C, 'sound/villain/zizolaugh.ogg', 100, FALSE, pressure_affected = FALSE)
 			H.mind.adjust_skillrank(/datum/skill/magic/unholy, 1, TRUE)
+			H.mind.adjust_skillrank_up_to(/datum/skill/magic/holy, H.mind.get_skill_level(/datum/skill/magic/unholy), TRUE)
 			to_chat(H.mind, span_danger("Zizos power courses through me, taking me one step further along her profane path"))
+			var/datum/devotion/dev = new /datum/devotion(H, H.patron)
+			dev.grant_spells_churchling(H)
+			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 			H.mind.rituals_completed += "First step towards Ascension"
 			if(!("Mark of Zizo" in user.mind.rituals_completed))
 				H.mind.rituals_completed += "Mark of Zizo"
@@ -32,8 +36,9 @@
 /datum/ritual/zizo/ascend
 	name = "ASCEND!"
 	circle = "Ascension"
-	difficulty = 5
+	difficulty = 6
 	favor_cost = 1000
+	casttime = 120
 	revealchance = 100 //yeaaaaaaaaaaaah
 	center_requirement = /mob/living/carbon/human // cult leader
 

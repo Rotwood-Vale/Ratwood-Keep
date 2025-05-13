@@ -214,6 +214,7 @@
 
 		//Very ugly, but it will do!
 		var/list/sigilsPath = list()
+	
 		switch(type)
 			if("ZIZO")
 				var/obj/effect/decal/cleanable/sigil/zizo/C = new(src)
@@ -229,6 +230,12 @@
 					/obj/effect/decal/cleanable/sigil/zizo/SE,
 					/obj/effect/decal/cleanable/sigil/zizo/SW
 				)
+				for(var/i = 1; i <= alldirs.len; i++)
+					var/turf/floor = get_step(src, alldirs[i])
+					var/sigil = sigilsPath[i]
+					var/obj/effect/decal/cleanable/sigil/placed = new sigil(floor)
+					placed.sigil_type = C.sigil_type
+				
 			if("DIVINE")
 				var/obj/effect/decal/cleanable/sigil/divine/C = new(src)
 				C.sigil_type = subtype
@@ -243,15 +250,18 @@
 					/obj/effect/decal/cleanable/sigil/divine/SE,
 					/obj/effect/decal/cleanable/sigil/divine/SW
 				)
+
+				for(var/i = 1; i <= alldirs.len; i++)
+					var/turf/floor = get_step(src, alldirs[i])
+					var/sigil = sigilsPath[i]
+					var/obj/effect/decal/cleanable/sigil/placed = new sigil(floor)
+					placed.sigil_type = C.sigil_type
+
 			else
 				stack_trace("Someone tried to draw an invalid sigil type. This is likely a bug in one of the draw_sigil procs.")
 				return FALSE
 
-		for(var/i = 1; i <= alldirs.len; i++)
-			var/turf/floor = get_step(src, alldirs[i])
-			var/sigil = sigilsPath[i]
 
-			new sigil(floor)
 
 	return TRUE
 

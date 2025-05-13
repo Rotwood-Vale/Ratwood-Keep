@@ -14,7 +14,7 @@
 	var/w_req = null
 
 	var/function // a proc
-	var/favor_cost = 0
-	var/difficulty = 0
+	var/favor_cost = 0 //universal currency
+	var/difficulty = 0 //required unholy skill to cast this
 	var/revealchance = 0 //the chance to ping people with the sense evil trait when this ritual is completed
-	var/casttime = 0
+	var/casttime = 0 //how long of a doafter it takes to complete a ritual, important for things like stunrunes

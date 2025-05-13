@@ -13,8 +13,6 @@
 
 /proc/corruptamulet(mob/user, turf/C)
 	var/obj/item/clothing/neck/roguetown/psicross/P = locate(/obj/item/clothing/neck/roguetown/psicross) in C
-	if(!P)
-		C.visible_message(span_danger("Uuuuh fuck???"))
 	if(!(P.corruptable))
 		C.visible_message(span_danger("The amulet in the center of the ritual circle begins to bleed for but a moment, before a puff of black fire consumes it utterly!"))
 		return TRUE
@@ -111,10 +109,10 @@
 /datum/ritual/zizo/invademind
 	name = "Invade Mind"
 	difficulty = 2
-	favor_cost = 50
+	favor_cost = 25
 	revealchance = 3
 	circle = "Transmutation"
-	center_requirement = /obj/item/natural/feather
+	center_requirement = /obj/item/paper/
 
 	function = /proc/invademind
 
@@ -136,7 +134,7 @@
 	name = "Summon Robes"
 	circle = "Transmutation"
 	difficulty = 1
-	favor_cost = 50
+	favor_cost = 25
 	revealchance = 5
 	n_req = /obj/item/natural/hide
 	s_req = /obj/item/natural/artifact

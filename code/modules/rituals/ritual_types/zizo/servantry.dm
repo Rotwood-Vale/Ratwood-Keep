@@ -202,6 +202,7 @@ proc/voiceofzizo(mob/user, turf/C)
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/organ/heart
+	s_req = /obj/item/clothing/neck/roguetown/psicross/bloodied
 
 	function = /proc/skeletaljaunt
 
