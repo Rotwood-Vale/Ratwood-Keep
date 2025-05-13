@@ -394,9 +394,15 @@
 
 /obj/item/key/manor
 	name = "manor key"
-	desc = "This key will open any manor doors."
+	desc = "This key will open any manor doors except for the kitchen."
 	icon_state = "mazekey"
 	lockid = "manor"
+
+/obj/item/key/kitchen
+	name = "kitchen key"
+	desc = "This key will open any kitchen doors in the manor."
+	icon_state = "brownkey"
+	lockid = "kitchen"
 
 /obj/item/key/bog_gatehouse
 	name = "bog gatehouse key"

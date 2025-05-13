@@ -72,8 +72,8 @@
 	addtimer(CALLBACK(affecting, /proc/apply_continuous_brute_damage), 10, 10, TRUE)
 
 	H.update_damage_overlays()
-	to_chat(user, "You quickly slip and tourniquet the [src] to stop the bleeding on [M]'s [affecting]. you really shouldn't leave the on forever.")
-	user.visible_message("You quickly tourniquet your [affecting]. with the [src]! you shouldn't leave this on too long.")
+	to_chat(user, "You quickly slip and tourniquet the [src] to stop the bleeding on [M]'s [affecting.name]. you really shouldn't leave the on forever.")
+	user.visible_message("You quickly tourniquet your [affecting.name]. with the [src]! you shouldn't leave this on too long.")
 
 /obj/item/storage/belt/rogue/proc/apply_continuous_brute_damage()
 	var/mob/living/carbon/human/H = M
@@ -103,7 +103,7 @@
 		affecting.bandage = FALSE
 		affecting.bleeding = TRUE
 
-	to_chat(user, "You remove the belt, and blood resumes squirting from [M]'s [affecting].") */
+	to_chat(user, "You remove the belt, and blood resumes squirting from [M]'s [affecting.name].") */
 
 /obj/item/storage/belt/rogue/leather
 	name = "belt"
@@ -420,7 +420,7 @@
 	desc = "A dark belt with real gold making up the buckle and highlights. How bougie."
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
-	heldz_items = 1
+	heldz_items = 3
 
 /* Commented out as this knife belt is for "throwing knives" and I am unsure we have those here.
 

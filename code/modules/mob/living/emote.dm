@@ -201,6 +201,42 @@
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
+/datum/emote/living/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "howls."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "growls."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/whine
+	key = "whine"
+	key_third_person = "whines"
+	message = "whines."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/bark
+	key = "bark"
+	key_third_person = "barks"
+	message = "barks."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+	
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"

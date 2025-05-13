@@ -168,7 +168,7 @@
 	name = "silk gloves"
 	desc = "Silken gloves, usually used by the wealthy for the material, or by thieves for the light weight and smooth material."
 	icon = 'icons/roguetown/clothing/gloves.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/gloves.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	icon_state = "shadowgloves"
 	resistance_flags = null
@@ -203,11 +203,11 @@
 	item_state = "psydongloveschains"
 
 /obj/item/clothing/gloves/roguetown/otavan
-	name = "otavan leather gloves"
-	desc = "A pair of heavy Otavan leather gloves, commonly used by fencers, renowned for their quality."
+	name = "fencer leather gloves"
+	desc = "A pair of heavy leather gloves, commonly used by fencers, renowned for their quality."
 	icon_state = "fencergloves"
 	item_state = "fencergloves"
-	armor = list("blunt" = 60, "slash" = 100, "stab" = 80, "piercing" = 20, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 50, "slash" = 70, "stab" = 85, "bullet" = 20, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT

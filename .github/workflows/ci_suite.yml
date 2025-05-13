@@ -62,12 +62,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
+      - name: Restore BYOND cache
+        uses: actions/cache@v4
+        with:
+          path: ~/BYOND
+          key: ${{ runner.os }}-BYOND-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
+      
       - name: Install BYOND
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y make gcc unzip
-          wget http://www.byond.com/download/build/${{ env.BYOND_MAJOR }}/${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}_byond_linux.zip
-          unzip ${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip
           bash tools/ci/install_byond.sh
 
       - name: Compile BYOND project

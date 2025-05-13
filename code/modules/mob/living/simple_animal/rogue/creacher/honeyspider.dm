@@ -6,11 +6,12 @@
 	icon_living = "spider"
 	icon_dead = "spider-dead"
 
-	faction = list("bugs")
+	faction = list("bugs", "spiders")
 	turns_per_move = 4
 	move_to_delay = 2
 	vision_range = 5
 	aggro_vision_range = 9
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,
 							/obj/item/reagent_containers/food/snacks/rogue/honey = 1,
@@ -47,6 +48,9 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 */
+
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'

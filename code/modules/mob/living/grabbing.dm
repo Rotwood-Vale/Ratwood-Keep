@@ -13,18 +13,13 @@
 	experimental_inhand = FALSE
 	var/atom/movable/grabbed //ref to what atom we are grabbing
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
-	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
+	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (zone string or item ref)
 	var/mob/living/carbon/grabbee
-	var/list/dependents = list()
-	var/handaction
 	var/bleed_suppressing = 0.5 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
 	var/chokehold = FALSE
 
 /atom/movable //reference to all obj/item/grabbing
-	var/list/grabbedby = list()
-
-/turf
-	var/list/grabbedby = list()
+	var/list/grabbedby
 
 /obj/item/grabbing/Initialize()
 	. = ..()
@@ -67,41 +62,13 @@
 			else
 				C.l_grab = src
 
-/datum/proc/grabdropped(obj/item/grabbing/G)
-	if(G)
-		for(var/datum/D in G.dependents)
-			if(D == src)
-				G.dependents -= D
-
-/obj/item/grabbing/proc/relay_cancel_action()
-	if(handaction)
-		for(var/datum/D in dependents) //stop fapping
-			if(handaction == D)
-				D.grabdropped(src)
-		handaction = null
-
 /obj/item/grabbing/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
-	if(isobj(grabbed))
-		var/obj/I = grabbed
-		I.grabbedby -= src
-	if(ismob(grabbed))
-		var/mob/M = grabbed
-		M.grabbedby -= src
-		if (iscarbon(M) && sublimb_grabbed)
-			var/mob/living/carbon/carbonmob = M
-			var/obj/item/bodypart/part = carbonmob.get_bodypart(sublimb_grabbed)
-
-			// Edge case: if a weapon becomes embedded in a mob, our "grab" will be destroyed...
-			// In this case, grabbed will be the mob, and sublimb_grabbed will be the weapon, rather than a bodypart
-			// This means we should skip any further processing for the bodypart
-			if (part)
-				part.grabbedby -= src
-				part = null
-				sublimb_grabbed = null
-	if(isturf(grabbed))
-		var/turf/T = grabbed
-		T.grabbedby -= src
+	LAZYREMOVE(grabbed.grabbedby, src)
+	if(limb_grabbed)
+		LAZYREMOVE(limb_grabbed.grabbedby, src)
+		limb_grabbed = null
+		sublimb_grabbed = null
 	if(grabbee)
 		if(grabbee.r_grab == src)
 			grabbee.r_grab = null
@@ -109,8 +76,6 @@
 			grabbee.l_grab = null
 		if(grabbee.mouth == src)
 			grabbee.mouth = null
-	for(var/datum/D in dependents)
-		D.grabdropped(src)
 	return ..()
 
 /obj/item/grabbing/dropped(mob/living/user, show_message = TRUE)
@@ -307,15 +272,27 @@
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
 
+// if user is null, the twist is being initiated via a resist
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
-	var/mob/living/M = grabbed
+	var/mob/living/living_victim = grabbed
 	var/damage = rand(5,10)
 	var/obj/item/I = sublimb_grabbed
-	playsound(M.loc, "genblunt", 100, FALSE, -1)
-	M.apply_damage(damage, BRUTE, limb_grabbed)
-	M.visible_message(span_danger("[user] twists [I] in [M]'s wound!"), \
-					span_userdanger("[user] twists [I] in my wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
-	log_combat(user, M, "itemtwisted [sublimb_grabbed] ")
+	playsound(living_victim.loc, "genblunt", 100, FALSE, -1)
+	living_victim.apply_damage(damage, BRUTE, limb_grabbed)
+	// use the user's intent if it's intentional, else use cut by default
+	var/bclass_used = user?.used_intent?.blade_class || BCLASS_CUT
+	if(istype(limb_grabbed))
+		limb_grabbed.try_crit(bclass_used, damage, user || grabbee, silent = TRUE)
+	else
+		living_victim.simple_try_crit(bclass_used, damage, user || grabbee, silent = TRUE)
+	if(user)
+		living_victim.visible_message(span_danger("[user] twists [I] in [living_victim]'s wound!"), \
+						span_userdanger("[user] twists [I] in my wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+		log_combat(user, living_victim, "itemtwisted [sublimb_grabbed] ")
+	else
+		living_victim.visible_message(span_danger("[living_victim] flails, twisting [I] in the wound!"), \
+			span_userdanger("Your flailing twists [I] in the wound!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+		log_combat(living_victim, living_victim, "self itemtwisted [sublimb_grabbed] ")
 
 /obj/item/grabbing/proc/removeembeddeditem(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/M = grabbed
@@ -347,9 +324,9 @@
 		M.emote("paincrit", TRUE)
 		playsound(M, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 		if(user == M)
-			user.visible_message(span_notice("[user] rips [I] out of [user.p_them()]self!"), span_notice("I remove [I] from myself."))
+			user.visible_message(span_notice("[user] rips [I] out of [user.p_them()]self!"), span_notice("I rip [I] out of myself."))
 		else
-			user.visible_message(span_notice("[user] rips [I] out of [M]!"), span_notice("I rip [I] from [src]."))
+			user.visible_message(span_notice("[user] rips [I] out of [M]!"), span_notice("I rip [I] out of [src]."))
 		sublimb_grabbed = M.simple_limb_hit(user.zone_selected)
 	user.update_grab_intents(grabbed)
 	return TRUE
@@ -414,9 +391,9 @@
 		playsound(C.loc, "smashlimb", 100, FALSE, -1)
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
-	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), \
-					span_userdanger("[user] smashes my [limb_grabbed] into [A]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_warning("I smash [C]'s [limb_grabbed] against [A].[C.next_attack_msg.Join()]"))
+	C.visible_message(span_danger("[user] smashes [C]'s [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), \
+					span_userdanger("[user] smashes my [limb_grabbed.name] into [A]![C.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE, user)
+	to_chat(user, span_warning("I smash [C]'s [limb_grabbed.name] against [A].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
 	log_combat(user, C, "limbsmashed [limb_grabbed] ")
 

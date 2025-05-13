@@ -163,10 +163,10 @@
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)
-			doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I stitch \a [target_wound.name] on my [affecting]."))
+			doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I stitch \a [target_wound.name] on my [affecting.name]."))
 		else
 			if(affecting)
-				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]'s [affecting]."), span_notice("I stitch \a [target_wound.name] on [patient]'s [affecting]."))
+				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]'s [affecting.name]."), span_notice("I stitch \a [target_wound.name] on [patient]'s [affecting.name]."))
 			else
 				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]."), span_notice("I stitch \a [target_wound.name] on [patient]."))
 		log_combat(doctor, patient, "sew", "needle")

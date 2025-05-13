@@ -643,11 +643,11 @@
 							/obj/item/rogueore/sulfur,
 						 	/obj/item/rogueore/selitre,
 						 	/obj/item/reagent_containers/powder/alch/berryp = 3)
-	created_item = /obj/item/impact_grenade/smoke
+	created_item = /obj/item/impact_grenade/smoke/poison_gas
 	hammers_per_item = 5
 	skill_level = 4
 
-/* // To do- Find something that will work as an ingredient without being a region for healing
+/* // To do- Find something that will work as an ingredient without being a reagent for healing
 /datum/artificer_recipe/general/impacthealingsmoke
 	name = "Healing Smoke Grenade"
 	required_item = /obj/item/ingot/copper
@@ -670,7 +670,7 @@
 							/obj/item/rogueore/sulfur,
 						 	/obj/item/rogueore/selitre,
 						 	/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius)
-	created_item = /obj/item/impact_grenade/smoke
+	created_item = /obj/item/impact_grenade/smoke/fire_gas
 	hammers_per_item = 5
 	skill_level = 4
 
@@ -687,7 +687,7 @@
 						 	/obj/item/ash,
 						 	/obj/item/ash,
 						 	/obj/item/ash)
-	created_item = /obj/item/impact_grenade/smoke
+	created_item = /obj/item/impact_grenade/smoke/blind_gas
 	hammers_per_item = 5
 	skill_level = 4
 

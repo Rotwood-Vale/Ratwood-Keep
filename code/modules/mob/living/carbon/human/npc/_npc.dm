@@ -222,6 +222,10 @@
 
 	if(L == src)
 		return FALSE
+	
+	// hugbox spawn protection
+	if(L.status_flags & GODMODE)
+		return FALSE
 
 	if (L.alpha == 0 && L.rogue_sneaking)
 		return FALSE
