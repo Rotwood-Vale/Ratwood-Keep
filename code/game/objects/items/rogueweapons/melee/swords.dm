@@ -47,19 +47,14 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/swordherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
-		var/old_bigboy = bigboy
 		bigboy = 0
-		var/old_gripsprite = gripsprite
-		gripsprite = FALSE
-		var/old_icon_state = icon_state
+		gripsprite = TRUE
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/swordherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_icon_state
-			gripsprite = old_gripsprite
-			bigboy = old_bigboy
+			icon_state = "Regular Sword"
 	else
 		..()
 
@@ -472,13 +467,12 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/iswordherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
-		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/iswordherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_icon_state
+			icon_state = "Regular Sword"
 	else
 		..()
 

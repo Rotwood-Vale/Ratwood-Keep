@@ -14,5 +14,3 @@
 #define T0C						273.15
 /// 20degC
 #define T20C					293.15
-/// 100degC
-#define T100C                   373.15

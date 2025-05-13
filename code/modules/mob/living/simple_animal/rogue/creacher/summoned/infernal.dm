@@ -367,7 +367,7 @@
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
-	new /obj/item/natural/melded/t1(deathspot)
+	new /obj/item/natural/melded/t1
 	spill_embedded_objects()
 	update_icon()
 	qdel(src)
@@ -442,7 +442,7 @@
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
-	new /obj/item/natural/melded/t2(deathspot)
+	new /obj/item/natural/melded/t2
 	spill_embedded_objects()
 	update_icon()
 	qdel(src)

@@ -274,11 +274,11 @@
 	butcher_results = list()
 	faction = list("fae")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 950
-	maxHealth = 950
+	health = 650
+	maxHealth = 650
 	obj_damage = 75
-	melee_damage_lower = 40
-	melee_damage_upper = 55
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES

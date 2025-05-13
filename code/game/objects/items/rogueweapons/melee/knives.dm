@@ -45,13 +45,12 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/idaggerherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
-		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/idaggerherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_icon_state
+			icon_state = "Hunting Knife"
 	else
 		..()
 
@@ -269,13 +268,12 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/idaggerherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
-		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/idaggerherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_icon_state
+			icon_state = "Regular Dagger"
 	else
 		..()
 
@@ -302,13 +300,12 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/daggerherald.dmi', picked_name)
 		M.alpha = 255
 		alpha = 255
-		var/old_icon_state = icon_state
 		icon_state = picked_name
 		icon = 'icons/roguetown/weapons/daggerherald.dmi'
 		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
-			icon_state = old_icon_state
+			icon_state = "Regular Dagger"
 	else
 		..()
 
