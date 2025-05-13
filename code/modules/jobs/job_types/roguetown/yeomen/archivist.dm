@@ -21,7 +21,7 @@
 /datum/outfit/job/roguetown/archivist
 	name = "Scholar"
 	jobtype = /datum/job/roguetown/archivist
-	allowed_patrons = list(/datum/patron/divine/noc)
+	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/zizo)
 
 /datum/outfit/job/roguetown/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
