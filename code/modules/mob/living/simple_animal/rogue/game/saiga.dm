@@ -49,6 +49,7 @@
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	move_to_delay = 8
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
@@ -182,6 +183,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/headbutt)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,

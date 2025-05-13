@@ -328,8 +328,8 @@
 	var/complete_multiplier = lock_angle/90 // 1 means we've unlocked it.
 	angle_distance = abs(sweet_spot-pick_angle) //How far are we, in angular units, are we from the sweet spot?
 	//The larger the angle distance, the easier it is to fail.
-
-	var/failing = (angle_distance * complete_multiplier) > (difficulty + (skill_level))
+	var/real_diff = abs(difficulty - 6) // This is why you don't fucking make 0 be the highest level of something!!!!!!!
+	var/failing = (angle_distance * complete_multiplier) > (real_diff + (skill_level))
 
 	var/matrix/M = matrix()
 	M.Turn(lock_angle)
@@ -348,7 +348,7 @@
 	var/mob/living/living_picker = picker
 	if(failing)
 		if(break_checking_cooldown <= world.time)
-			if(prob(50 - (skill_level * 10) - (living_picker.STALUC) + (difficulty * 10)))
+			if(prob(50 - (skill_level * 10) - (living_picker.STALUC) + (real_diff * 10)))
 				to_chat(picker, span_warning("Your [the_lockpick.name] broke!"))
 				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 				qdel(the_lockpick)
@@ -387,8 +387,8 @@
 /obj/proc/picked(mob/living/user, obj/lockpick_used, skill_level, difficulty)
 
 	finish_lockpicking(user)
-
-	if(prob(50 - (skill_level * 10) - (user.STALUC) + (difficulty * 10)))
+	var/real_diff = abs(difficulty - 6) //omg
+	if(prob(50 - (skill_level * 10) - (user.STALUC) + (real_diff * 10)))
 		to_chat(user, span_warning("Your [lockpick_used.name] broke!"))
 		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 		qdel(lockpick_used)
@@ -399,7 +399,11 @@
 		A.locked = FALSE
 	lock_tampered = TRUE
 	playsound(loc, 'sound/items/LPWin.ogg', 150 - (15 * skill_level))
-
+	
+	//Stops division by zero
+	if(!difficulty || difficulty == 0)
+		difficulty = 6 // lowest value apparently.
+		
 	var/amt2raise = user.STAINT + (50 / difficulty)
 	var/boon = user.STALUC/4
 	user.mind?.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)

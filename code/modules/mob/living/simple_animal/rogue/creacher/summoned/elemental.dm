@@ -274,11 +274,11 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	ranged = TRUE
 	projectiletype = /obj/projectile/earthenfist
-	health = 800
-	maxHealth = 800
+	health = 1000
+	maxHealth = 1000
 	obj_damage = 75
-	melee_damage_lower = 40
-	melee_damage_upper = 70
+	melee_damage_lower = 60
+	melee_damage_upper = 90
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -323,7 +323,8 @@
 	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
-	new /obj/item/natural/melded/t1
+	new /obj/item/natural/melded/t1(deathspot)
+
 	update_icon()
 	spill_embedded_objects()
 	qdel(src)
@@ -552,7 +553,7 @@
 	new /obj/item/natural/elementalrelic(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
-	new /obj/item/natural/melded/t2
+	new /obj/item/natural/melded/t2(deathspot)
 	update_icon()
 	spill_embedded_objects()
 	qdel(src)

@@ -15,6 +15,7 @@
 	move_to_delay = 5
 	vision_range = 2
 	aggro_vision_range = 2
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 					/obj/item/natural/hide = 1)
