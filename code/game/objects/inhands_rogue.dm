@@ -17,7 +17,7 @@
 /* Allows modifying items by calling the hammer's proc.
 Not the best place for it but right clicking is based on the item you click
 And not the item you are using in your hand. It'd be nice if it were not the case... */
-obj/item/attack_right(mob/user)
+/obj/item/attack_right(mob/user)
 	var/hasanvil = locate(/obj/machinery/anvil) in (loc)
 	if(!hasanvil)
 		return ..()
