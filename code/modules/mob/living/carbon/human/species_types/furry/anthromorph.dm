@@ -12,7 +12,7 @@
 	expanded_desc = "Wild-kins are a highly diverse and varied group of people, the majority of which are descendants of the \
 	first followers of Dendor who rejected civilization in favour of the deep forests. However, some came from \
 	magical anomalies or curses, Divine or otherwise. \
-	<br><br> \ Their devotion of their ancestors led them to bloodlines blessed by Dendor \
+	<br><br> \ The devotion of their ancestors led them to bloodlines blessed by Dendor \
 	and this is reflected in their appearance. Some descendants of the first Dendorian wild-kins, \
 	especially those not as devoted to the ways of Dendor and filled \
 	with wanderlust, emerged from their remote communities to embrace the civilization their ancestors had once rejected. \
