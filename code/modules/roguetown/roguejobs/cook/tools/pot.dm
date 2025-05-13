@@ -165,12 +165,12 @@ Pot Recipe
 		return
 	if(!pot.reagents) // If we somehow lost all our reagents (either deleted or emptied before we finished)
 		return
-	if(!pot.reagents.has_reagent(/datum/reagent/water, volume_to_replace)) //if we somehow snuck in or some water level changed before we fired just fucking DIE
-		return
 
 	// One final sanity check in case some lunatic empties some water but still keeps cooking and didn't hit 0 water or null reagents
 	var/true_volume_to_remove =  min(volume_to_replace, pot.reagents.get_reagent_amount(/datum/reagent/water))
-	
+
+	if(true_volume_to_remove <= 0) //better place for this
+		return
 	var/temp = pot.reagents.chem_temp
 	pot.reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
 	pot.reagents.add_reagent(output, true_volume_to_remove, reagtemp = temp)
