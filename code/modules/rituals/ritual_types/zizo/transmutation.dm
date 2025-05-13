@@ -13,9 +13,13 @@
 
 /proc/corruptamulet(mob/user, turf/C)
 	var/obj/item/clothing/neck/roguetown/psicross/P = locate(/obj/item/clothing/neck/roguetown/psicross) in C
+	if(!P)
+		return TRUE
+	/*
 		if(!(P.corruptable))
 			C.visible_message(span_danger("The amulet in the center of the ritual circle begins to bleed for but a moment, before a puff of black fire consumes it utterly!"))
 			return TRUE
+	*/
 		new /obj/item/clothing/neck/roguetown/psicross/bloodied(C)
 		C.visible_message(span_danger("The amulet in the center of the ritual circle begins to bleed from its edges as it warps into a mockery of the divine!"))
 		user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
