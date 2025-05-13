@@ -438,6 +438,17 @@
 	icon_state = "debuff"
 	color ="#af9f9f"
 
+///Bandit kidnapping debuff
+/datum/status_effect/matthiosbrand
+	id = "matthiosbrand"
+	effectedstats = list("strength" = -1, "speed" = -1, "endurance" = -1, "constitution" = -1)
+	alert_type = /atom/movable/screen/alert/status_effect/matthiosbrand
+
+/atom/movable/screen/alert/status_effect/matthiosbrand
+	name = "Matthios' Brand"
+	desc = "The Robber God has emblazoned his mark upon my face. The shame is immeasurable."
+	icon_state = "stressvb"
+
 /datum/status_effect/debuff/alreadygraggared
 	id = "alreadygraggared"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/alreadygraggared

@@ -1,6 +1,6 @@
 /datum/supply_pack/rogue
 	var/static_cost = FALSE
-	var/randomprice_factor = 0.07
+	var/randomprice_factor = 0.3
 
 /datum/supply_pack/rogue/New()
 	. = ..()
@@ -12,3 +12,6 @@
 			var/na = max(round(cost * randomprice_factor, 1), 1)
 			cost = max(rand(cost-na, cost+na), 1)
 #endif
+
+/datum/supply_pack/rogue/bandit
+	static_cost = TRUE
