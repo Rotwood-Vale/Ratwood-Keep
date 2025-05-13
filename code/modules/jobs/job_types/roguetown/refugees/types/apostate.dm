@@ -53,46 +53,83 @@
 		if("Fanatic")
 
 			switch (H.patron?.type)
-
 				if(/datum/patron/zizo)
-					H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-					H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
-					H.mind.AddSpell(new SPELL_SICKNESS)
-					H.mind.AddSpell(new SPELL_EYEBITE)
-					H.mind.AddSpell(new SPELL_RAISE_UNDEAD_LESSER)
-					H.mind.AddSpell(new SPELL_REVOKE_UNLIFE)
-					head = /obj/item/clothing/head/roguetown/necromhood
-					pants = /obj/item/clothing/under/roguetown/trou/leather
-					shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-					neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-					armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
-					belt = /obj/item/storage/belt/rogue/leather/rope
-					backpack_contents = list(/obj/item/chalk = 1)
-					backl = /obj/item/storage/backpack/rogue/satchel
-					beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
-					beltl = /obj/item/rogueweapon/huntingknife
-					r_hand = /obj/item/rogueweapon/woodstaff
-					H.change_stat("strength", -1)
-					H.change_stat("intelligence", 3)
-					H.change_stat("constitution", -2)
-					H.change_stat("endurance", -1)
-					H.change_stat("speed", -1)
-					H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
-					H.mind.AddSpell(new SPELL_LEARNSPELL)
-					H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+					var/zizoidfanaticclasses = list("Necromancer", "Cultist")
+					var/zizoidfanaticclasschoice = input("Choose your archetypes", "Available archetypes") as anything in zizoidfanaticclasses
+					switch(zizoidfanaticclasschoice)
+						if("Necromancer")
+							H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/magic/unholy, 2, TRUE) //maybe this should be 1
+							H.mind.AddSpell(new SPELL_STRENGTHEN_UNDEAD)
+							H.mind.AddSpell(new SPELL_SICKNESS)
+							H.mind.AddSpell(new SPELL_EYEBITE)
+							H.mind.AddSpell(new SPELL_RAISE_UNDEAD_LESSER)
+							H.mind.AddSpell(new SPELL_REVOKE_UNLIFE)
+							head = /obj/item/clothing/head/roguetown/necromhood
+							pants = /obj/item/clothing/under/roguetown/trou/leather
+							shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+							neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+							armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
+							belt = /obj/item/storage/belt/rogue/leather/rope
+							backpack_contents = list(/obj/item/chalk = 1)
+							backl = /obj/item/storage/backpack/rogue/satchel
+							beltr = /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot
+							beltl = /obj/item/rogueweapon/huntingknife
+							r_hand = /obj/item/rogueweapon/woodstaff
+							H.change_stat("strength", -1)
+							H.change_stat("intelligence", 3)
+							H.change_stat("constitution", -2)
+							H.change_stat("endurance", -1)
+							H.change_stat("speed", -1)
+							H.mind.adjust_spellpoints(-3) //no starting spellpoints, but they can make a spellbook to get some.
+							H.mind.AddSpell(new SPELL_LEARNSPELL)
+							H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+							H.verbs += list(/mob/living/carbon/human/proc/draw_sigil_zizo, /mob/living/carbon/human/proc/praise, /mob/living/carbon/human/proc/favorcheck)
 
-					H.set_blindness(0)
-				
+							H.set_blindness(0)
+						if("Cultist") //OK stats, bad starting gear, no armor training, badish skills, only remarkable thing is unholy 3
+							H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/magic/unholy, 3, TRUE)
+							head = /obj/item/clothing/head/roguetown/helmet/leather/cult_hood
+							shoes = /obj/item/clothing/shoes/roguetown/shortboots
+							pants = /obj/item/clothing/under/roguetown/trou/leather
+							armor = /obj/item/clothing/suit/roguetown/armor/leather/cult_robe
+							belt = /obj/item/storage/belt/rogue/leather/rope
+							beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+							backr = /obj/item/rogueweapon/woodstaff
+							backl = /obj/item/storage/backpack/rogue/satchel
+							r_hand = /obj/item/rogueweapon/huntingknife/idagger
+							H.change_stat("strength", 2)
+							H.change_stat("constitution", 1) //-1 zizo
+							H.change_stat("endurance", 1)
+							H.change_stat("speed", 1)
+							H.change_stat("intelligence", 2) //+1 zizo
+							H.verbs += list(/mob/living/carbon/human/proc/draw_sigil_zizo, /mob/living/carbon/human/proc/praise, /mob/living/carbon/human/proc/favorcheck)
+
+
+
+
+
 				if(/datum/patron/inhumen/graggar)
 					H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -227,18 +264,17 @@
 					H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/magic/unholy, 3, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/magic/unholy, 1, TRUE) //maybe this should be 2
 					head = /obj/item/clothing/head/roguetown/roguehood
 					shoes = /obj/item/clothing/shoes/roguetown/shortboots
 					armor = /obj/item/clothing/suit/roguetown/shirt/robe
 					belt = /obj/item/storage/belt/rogue/leather/rope
 					beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 					backl = /obj/item/storage/backpack/rogue/backpack	
-					r_hand = /obj/item/rogueweapon/huntingknife
-					H.change_stat("strength", 2)
+					H.change_stat("strength", 3)
 					H.change_stat("constitution", 1)
 					H.change_stat("speed", 2)
-					H.change_stat("intelligence", 2)
+					H.change_stat("intelligence", 1)
 					H.verbs += list(/mob/living/carbon/human/proc/draw_sigil_zizo, /mob/living/carbon/human/proc/praise, /mob/living/carbon/human/proc/favorcheck)
 					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				else
