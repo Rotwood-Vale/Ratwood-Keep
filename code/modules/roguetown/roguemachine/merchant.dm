@@ -340,17 +340,15 @@
 	else
 		contents += "<center>[current_cat]<BR></center>"
 		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
-		var/list/pax = list()
-		for(var/pack in SSmerchant.supply_packs)
-			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
-			if(PA.group == current_cat)
-				pax += PA
-		for(var/datum/supply_pack/PA in sortList(pax))
-			var/cost = PA.cost 
-			var/costy = cost
-			if(!(upgrade_flags & UPGRADE_NOTAX))
-				costy = round(costy + (SStreasury.tax_value * cost))
-			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+		for (var/datum/supply_pack/PA in sortList(packs))
+			if(!PA)
+				continue
+			var/unlock_time = get_unlock_time_or_null(PA)
+			if(unlock_time && world.time < unlock_time)
+				var/time_left = time2text(unlock_time - world.time, "hh:mm")
+				contents += "[PA.name] (Locked - Available in [time_left])<br>"
+			else
+				contents += "[PA.name] ([PA.cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
 
 	if(!canread)
 		contents = stars(contents)
@@ -377,3 +375,8 @@
 //	held_items[/obj/item/dmusicbox] = list("PRICE" = rand(444,777),"NAME" = "Music Box")
 
 #undef UPGRADE_NOTAX
+
+/proc/get_unlock_time_or_null(var/datum/supply_pack/PA)
+	if(isnum(PA.unlock_at))
+		return PA.unlock_at
+	return null
