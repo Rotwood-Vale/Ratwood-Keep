@@ -58,7 +58,7 @@
 			new item(C)
 
 /datum/supply_pack
-	var/unlock_delay = null  // например, 45 MINUTES
+	var/unlock_delay = null  // its TICKS. So 45 minutes = 27000. Yes the server will say you ingame its 3:45 dont trust it it adds 3 hours i have no idea why
 	var/unlock_at = null     // world.time
 
 /datum/supply_pack/New()
