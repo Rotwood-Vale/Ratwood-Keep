@@ -16,7 +16,6 @@
 	var/DropPodOnly = FALSE//only usable by the Bluespace Drop Pod via the express cargo console
 	var/admin_spawned = FALSE
 	var/small_item = FALSE //Small items can be grouped into a single crate.
-	var/time_lock = FALSE //How much time before this becomes purchaseable
 	var/purchases_per_player = 0 //If non-null, can only be purchased a limited amount of times
 	var/list/purchasers = list()
 /*
@@ -57,3 +56,12 @@
 	else
 		for(var/item in contains)
 			new item(C)
+
+/datum/supply_pack
+	var/unlock_delay = null  // например, 45 MINUTES
+	var/unlock_at = null     // world.time
+
+/datum/supply_pack/New()
+	. = ..()
+	if(unlock_delay && isnum(unlock_delay))
+		unlock_at = SSticker.round_start_time + unlock_delay

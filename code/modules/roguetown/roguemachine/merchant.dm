@@ -198,9 +198,15 @@
 		var/mob/M = usr
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack))
-			message_admins("STUPID MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
+			message_admins("[usr.key] attempted to buy invalid path: [href_list["buy"]]")
 			return
+
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
+		if(!PA)
+			PA = new path
+		if(!PA)
+			to_chat(usr, span_warning("GOLDFACE spits out your greed. The item doesn't exist."))
+			return
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
 		cost = cost + tax_amt

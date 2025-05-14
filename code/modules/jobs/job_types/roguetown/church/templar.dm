@@ -32,7 +32,7 @@
 			title = "Sister"
 		H.real_name = "[title] [prev_real_name]"
 		H.name = "[title] [prev_name]"
-		
+
 		addtimer(CALLBACK(src, PROC_REF(templar_helmet_choice), H), 50)
 
 /datum/outfit/job/roguetown/templar/pre_equip(mob/living/carbon/human/H)
@@ -77,10 +77,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	switch(H.patron.name)
 		if("Necra")
-			backpack_contents = list(/obj/item/key/graveyard, /obj/item/key/church, /obj/item/ritualfeather = 1)
 		else
-			backpack_contents = list(/obj/item/key/church = 1, /obj/item/ritualfeather = 1)
-	backr = /obj/item/rogueweapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/clothing/ring/silver

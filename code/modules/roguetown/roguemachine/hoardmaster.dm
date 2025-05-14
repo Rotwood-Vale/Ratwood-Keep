@@ -53,11 +53,18 @@
 	if(href_list["buy"])
 		var/mob/M = usr
 		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
+
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack/rogue/bandit))
-			message_admins("[usr.key] has attempted to purchase [sanitize(href_list["buy"])] with the HOARDMASTER. This is likely a HREF exploit attempt!")
+			message_admins("[usr.key] has attempted to purchase [href_list["buy"]] with the HOARDMASTER.")
 			return
+
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
+		if(!PA)
+			PA = new path
+		if(!PA)
+			to_chat(usr, span_warning("This offering has crumbled to dust."))
+			return
 		var/cost = PA.cost
 		if(B.favor >= cost)
 			B.favor -= cost
@@ -128,11 +135,11 @@
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			var/unlock_time = SSticker.round_start_time + PA.time_lock
-			if(world.time < unlock_time) // Not enough time has passed
-				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
-			else // Item is available for purchase
-				contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			if(PA.unlock_at && world.time < PA.unlock_at)
+				var/time_left = time2text(PA.unlock_at - world.time, "hh:mm")
+				contents += "[PA.name] (Locked - Available in [time_left])<BR>"
+			else
+				contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"		
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)
