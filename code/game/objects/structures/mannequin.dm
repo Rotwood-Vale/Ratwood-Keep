@@ -10,6 +10,8 @@
 #define SLOT_MANNEQUIN_MASK "mask"
 #define SLOT_MANNEQUIN_HEAD "head"
 #define SLOT_MANNEQUIN_PANTS "pants"
+#define SLOT_MANNEQUIN_NECK "neck"
+#define SLOT_MANNEQUIN_WRISTS "wrists"
 
 /*
 * If you are porting this from another codebase
@@ -50,6 +52,8 @@
 		SLOT_MANNEQUIN_HEAD,
 		SLOT_MANNEQUIN_CLOAK,
 		SLOT_MANNEQUIN_GLOVES,
+		SLOT_MANNEQUIN_NECK,
+		SLOT_MANNEQUIN_WRISTS,
 		)
 
 	//Easily Editable Mapping Variables
@@ -71,6 +75,8 @@
 	var/mapping_mask
 	var/mapping_head
 	var/mapping_cloak
+	var/mapping_neck
+	var/mapping_wrists
 
 //Code//
 /obj/structure/mannequin/New(turf/loc, list/items_to_wear)
@@ -174,11 +180,13 @@
 /obj/structure/mannequin/proc/EquippableSlots()
 	. = ""
 	. += "<BR><B>Head:</B> <A href='?src=\ref[src];item=[BODY_ZONE_HEAD]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_HEAD])]</A>"
-	. += "<BR><B>Neck:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_NECK]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_CLOAK])]</A>"
-	. += "<BR><B>Mask:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_MOUTH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_MASK])]</A>"
+	. += "<BR><B>Neck:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_NECK]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_NECK])]</A>"
+	. += "<BR><B>Cloak:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_MOUTH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_CLOAK])]</A>"
+	. += "<BR><B>Mask:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_NOSE]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_MASK])]</A>"
 	. += "<BR><B>Armor:</B> <A href='?src=\ref[src];item=[BODY_ZONE_CHEST]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_ARMOR])]</A>"
 	. += "<BR><B>Shirt:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_STOMACH]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_SHIRT])]</A>"
 	. += "<BR><B>Belt:</B> <A href='?src=\ref[src];item=[BODY_ZONE_PRECISE_GROIN]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_BELT])]</A>"
+	. += "<BR><B>Wrists:</B> <A href='?src=\ref[src];item=[BODY_ZONE_L_ARM]'>[makeStrippingButton(clothing[SLOT_MANNEQUIN_WRISTS])]</A>"
 
 /obj/structure/mannequin/attackby(obj/item/I, mob/user)
 	if(user.cmode || user.a_intent == INTENT_HARM || user.a_intent == INTENT_DISARM)
@@ -212,12 +220,18 @@
 					slot_examine = " close to its skin"
 				if(SLOT_MANNEQUIN_ARMOR)
 					slot_examine = " over its body"
+				if(SLOT_MANNEQUIN_PANTS)
+					slot_examine = " on its legs"
 				if(SLOT_MANNEQUIN_FEET)
 					slot_examine = " on its feet"
 				if(SLOT_MANNEQUIN_MASK)
 					slot_examine = " on its face"
 				if(SLOT_MANNEQUIN_CLOAK)
 					slot_examine = " around its neck"
+				if(SLOT_MANNEQUIN_NECK)
+					slot_examine = " on its neck"
+				if(SLOT_MANNEQUIN_WRISTS)
+					slot_examine = " on its arms"
 			msg += "Wearing [cloth_to_examine][slot_examine].<br>"
 	/*
 	* This is placed here due to the fact
@@ -251,7 +265,7 @@
 * to item flags and mannequin slots.
 */
 /obj/structure/mannequin/proc/FinalEquipCheck(mob/living/user, obj/item/item_thing, slot_placement)
-	if(canEquip(user ,item_thing, EquipHelper(slot_placement)))
+	if(canEquip(user, item_thing, EquipHelper(slot_placement)))
 		if(user.dropItemToGround(item_thing))
 			if(clothing[slot_placement])
 				to_chat(user, "<span class='info'>You switch \the [item_thing] and \the [clothing[slot_placement]] on the [src].</span>")
@@ -385,6 +399,13 @@
 			sleeves = TRUE
 			clothing_layer = CLOAK_LAYER
 			overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+		if(SLOT_MANNEQUIN_WRISTS)
+			sleeves = TRUE
+			clothing_layer = WRISTS_LAYER
+			overlay_icon = 'icons/roguetown/clothing/onmob/wrists.dmi'
+		if (SLOT_MANNEQUIN_NECK)
+			clothing_layer = ITEM_SLOT_NECK
+			overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 
 	if(worn_thing.alternate_worn_layer)
 		clothing_layer = worn_thing.alternate_worn_layer
@@ -424,6 +445,8 @@
 			layer2use = SHIRTSLEEVE_LAYER
 		if(SLOT_MANNEQUIN_CLOAK)
 			layer2use = CLOAK_LAYER
+		if(SLOT_MANNEQUIN_WRISTS)
+			layer2use = WRISTSLEEVE_LAYER
 
 	if(!cloth_slot)
 		return
@@ -531,6 +554,8 @@
 	SpawnQuickEquip(mapping_mask, SLOT_MANNEQUIN_MASK)
 	SpawnQuickEquip(mapping_head, SLOT_MANNEQUIN_HEAD)
 	SpawnQuickEquip(mapping_cloak, SLOT_MANNEQUIN_CLOAK)
+	SpawnQuickEquip(mapping_neck, SLOT_MANNEQUIN_NECK)
+	SpawnQuickEquip(mapping_wrists, SLOT_MANNEQUIN_WRISTS)
 
 //For simplifying the MapEquip() proc.
 /obj/structure/mannequin/proc/SpawnQuickEquip(obj/O, slot)
@@ -565,15 +590,21 @@
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_SKULL)
 			return ITEM_SLOT_HEAD
 		if(BODY_ZONE_PRECISE_NECK)
-			return ITEM_SLOT_CLOAK
-		if(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH)
+			return ITEM_SLOT_NECK
+		if(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_NOSE)
 			return ITEM_SLOT_MASK
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return ITEM_SLOT_CLOAK
 		if(BODY_ZONE_CHEST)
 			return ITEM_SLOT_ARMOR
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return ITEM_SLOT_SHIRT
 		if(BODY_ZONE_PRECISE_GROIN)
 			return ITEM_SLOT_BELT
+		if(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
+			return ITEM_SLOT_WRISTS
+		if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
+			return ITEM_SLOT_HANDS
 
 /*
 * Translates the item slot into a text
@@ -583,7 +614,7 @@
 	switch(target_zone)
 		if(ITEM_SLOT_HEAD)
 			return "head"
-		if(ITEM_SLOT_CLOAK)
+		if(ITEM_SLOT_CLOAK || ITEM_SLOT_NECK)
 			return "neck"
 		if(ITEM_SLOT_MASK)
 			return "face"
@@ -599,6 +630,8 @@
 			return "hands"
 		if(ITEM_SLOT_SHOES)
 			return "feet"
+		if(ITEM_SLOT_WRISTS)
+			return "arms"
 	return "thing"
 
 /*
@@ -613,15 +646,19 @@
 		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_EARS, BODY_ZONE_PRECISE_SKULL)
 			return SLOT_MANNEQUIN_HEAD
 		if(BODY_ZONE_PRECISE_NECK)
-			return SLOT_MANNEQUIN_CLOAK
-		if(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH)
+			return SLOT_MANNEQUIN_NECK
+		if(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_NOSE)
 			return SLOT_MANNEQUIN_MASK
+		if(BODY_ZONE_PRECISE_MOUTH)
+			return SLOT_MANNEQUIN_CLOAK
 		if(BODY_ZONE_CHEST)
 			return SLOT_MANNEQUIN_ARMOR
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return SLOT_MANNEQUIN_SHIRT
 		if(BODY_ZONE_PRECISE_GROIN)
 			return SLOT_MANNEQUIN_BELT
+		if(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+			return SLOT_MANNEQUIN_WRISTS
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			return SLOT_MANNEQUIN_PANTS
 		if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
@@ -684,4 +721,6 @@
 #undef SLOT_MANNEQUIN_MASK
 #undef SLOT_MANNEQUIN_HEAD
 #undef SLOT_MANNEQUIN_PANTS
-//#undef MANNEQUIN_LAYER_CALC
+#undef SLOT_MANNEQUIN_NECK
+#undef SLOT_MANNEQUIN_WRISTS
+
