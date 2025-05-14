@@ -141,7 +141,7 @@
 			var/time_left = time2text(unlock_time - world.time, "hh:mm")
 			contents += "[PA.name] (Locked - Available in [time_left])<br>"
 		else
-			contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
+			contents += "[PA.name] ([PA.cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)
