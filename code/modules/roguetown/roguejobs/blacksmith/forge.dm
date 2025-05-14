@@ -11,7 +11,7 @@
 	climbable = TRUE
 	climb_time = 0
 	layer = 2.8
-	var/heat_time = 30 SECONDS
+	var/heat_time = 10 SECONDS
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
 	cookonme = TRUE

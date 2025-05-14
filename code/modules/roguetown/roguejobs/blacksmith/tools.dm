@@ -219,7 +219,7 @@
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
-	var/heat_time = 10 SECONDS
+	var/heat_time = 5 SECONDS
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
@@ -320,4 +320,4 @@
 	wdefense = 2
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
-	heat_time = 20 SECONDS
+	heat_time = 10 SECONDS
