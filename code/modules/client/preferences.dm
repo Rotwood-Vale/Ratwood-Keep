@@ -1368,13 +1368,22 @@ Slots: [job.spawn_positions]</span>
 							ghost_others = GHOST_OTHERS_SIMPLE
 
 				if("name")
+					var/T
+					var/title = list("Sir", "Dame", "Lord", "Lady", "Knight-Captain", "Duke", "Duchess", "Ser", "Father", "Brother", "Sister")
+					var/titleCheck = FALSE
 					var/new_name = input(user, "Choose your character's name:", "Identity")  as text|null
 					if(new_name)
 						new_name = reject_bad_name(new_name)
-						if(new_name)
-							real_name = new_name
-						else
+						if(!new_name)
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+						else
+							for(T in title)
+								if(findtext(new_name, T))
+									titleCheck = TRUE
+									to_chat(user, "<font color='red'>Invalid name. Your name should not contain any titles used ingame.</font>")
+									break
+							if(!titleCheck)
+								real_name = new_name
 					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
 					log_character("[parent] changed their characters name to [new_name].")
 
