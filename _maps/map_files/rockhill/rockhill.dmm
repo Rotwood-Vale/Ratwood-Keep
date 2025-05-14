@@ -39132,17 +39132,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
 "uRa" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = -32
-	},
-/turf/open/floor/rogue/ruinedwood{
-	dir = 1;
-	icon_state = "vertw"
-	},
-/area/rogue/indoors)
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/church)
 "uRd" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/tile,
@@ -39783,11 +39775,10 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/fluff/railing/border{
-	dir = 5;
-	pixel_x = 4
+/turf/open/floor/rogue/ruinedwood{
+	dir = 1;
+	icon_state = "vertw"
 	},
-/turf/open/transparent/openspace,
 /area/rogue/indoors)
 "vmF" = (
 /obj/structure/stairs,
@@ -339062,7 +339053,7 @@ qlw
 xbD
 xbD
 snp
-uRa
+nVH
 jju
 qbG
 qbG
@@ -339493,8 +339484,8 @@ fvr
 uqR
 uqR
 xbD
-xdj
-nVH
+fov
+nkJ
 hHI
 qbG
 qbG
@@ -339925,8 +339916,8 @@ fvr
 etg
 uqR
 xbD
-fov
-nkJ
+xCf
+jCh
 hHI
 qbG
 qbG
@@ -340357,7 +340348,7 @@ nqU
 xUC
 uqR
 xbD
-xCf
+snp
 vlO
 nqU
 qbG
@@ -340789,8 +340780,8 @@ nqU
 mIi
 xbD
 xbD
-snp
-tix
+xdj
+xdj
 nqU
 qbG
 qbG
@@ -361866,7 +361857,7 @@ uKB
 wJF
 cIT
 wXe
-upd
+wXe
 qPA
 jmz
 apD
@@ -362296,9 +362287,9 @@ dBG
 kCN
 ock
 pHA
-lUx
-lUx
-pHA
+upd
+wXe
+uRa
 qPA
 mWb
 iRo
