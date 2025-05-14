@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 				if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_MATTHIOS_EYES) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
 					H.add_stress(/datum/stressevent/gazeuponme)
 					H.apply_status_effect(/datum/status_effect/buff/gazeuponme)
-				else
+				else if(H.patron.type != /datum/patron/godless)
 					H.add_stress(/datum/stressevent/excommunicated)
 					H.apply_status_effect(/datum/status_effect/debuff/excomm)
 		if(!found)
