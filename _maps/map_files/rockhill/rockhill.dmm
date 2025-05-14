@@ -28959,8 +28959,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "pmi" = (
-/turf/closed/wall/mineral/rogue/wooddark,
-/area/rogue/outdoors/mountains)
+/obj/structure/rack/rogue,
+/turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue/indoors/town/church)
 "pmk" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -39131,10 +39132,6 @@
 /obj/structure/fluff/railing/border,
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
-"uRa" = (
-/obj/structure/rack/rogue,
-/turf/open/floor/rogue/ruinedwood/spiral,
-/area/rogue/indoors/town/church)
 "uRd" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/tile,
@@ -351515,7 +351512,7 @@ dlR
 nqU
 nqU
 nqU
-pmi
+ryI
 qbG
 qbG
 qbG
@@ -362289,7 +362286,7 @@ ock
 pHA
 upd
 wXe
-uRa
+pmi
 qPA
 mWb
 iRo
@@ -461676,7 +461673,7 @@ nqU
 nqU
 nqU
 nqU
-pmi
+ryI
 qbG
 qbG
 qbG
