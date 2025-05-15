@@ -37,5 +37,7 @@
 
 	..()
 
-	user.playsound_local(user, 'sound/vo/cult/tesa.ogg', 25)
-	user.whisper("O'vena tesa...")
+	if(last_picked_ritual && src.icon_state == "center")
+		user.playsound_local(user, 'sound/vo/cult/tesa.ogg', 25)
+		user.whisper("O'vena tesa...")
+		last_picked_ritual = null //only this nulls it, nowhere else.

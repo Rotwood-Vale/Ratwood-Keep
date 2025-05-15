@@ -10,6 +10,8 @@
 
 	/// The list of rituals that can be performed with this sigil.
 	var/rituals = list()
+	/obj/effect/decal/cleanable/sigil/var/datum/ritual/last_picked_ritual = null //this is checked to play sounds only if a ritual is picked in zizo.dm
+
 
 /obj/effect/decal/cleanable/sigil/
 
@@ -99,8 +101,13 @@
 
 	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in available_names
 	var/datum/ritual/pickritual = name_to_datum[ritualnameinput]
+	last_picked_ritual = pickritual
+
 
 	//pickritual = rituals[ritualnameinput]
+
+	if (!pickritual)
+		return
 	
 	if (pickritual.difficulty > user.mind.get_skill_level(/datum/skill/magic/unholy))
 		to_chat(user.mind, span_danger("\"My skill is not great enough for this.\""))
