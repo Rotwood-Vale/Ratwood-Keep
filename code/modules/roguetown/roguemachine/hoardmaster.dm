@@ -103,35 +103,35 @@
 
 	switch(user.advjob)
 		if("Brigand")
-			if(time_elapsed >= 50)
-				unlocked_cats += "Brigand_first_supply_pack"
-			if(time_elapsed >= 1000)
-				unlocked_cats += "Brigand_second_supply_pack"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Brigand first supply pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Brigand second supply pack"
 		if("Foresworn")
-			if(time_elapsed >= 1500)
-				unlocked_cats += "Foresworn_first_supply_pack"
-			if(time_elapsed >= 2000)
-				unlocked_cats += "Foresworn_second_supply_pack"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Foresworn first supply pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Foresworn second supply pack"
 		if("Hedge Knight")
 			if(time_elapsed >= 27000)
-				unlocked_cats += "Knight_first_supply_pack"
+				unlocked_cats += "Knight first supply pack"
 			if(time_elapsed >= 48000)
-				unlocked_cats += "Knight_second_supply_pack"
+				unlocked_cats += "Knight second supply pack"
 		if("Knave")
 			if(time_elapsed >= 27000)
-				unlocked_cats += "Knave_first_supply_pack"
+				unlocked_cats += "Knave first supply pack"
 			if(time_elapsed >= 48000)
-				unlocked_cats += "Knave_second_supply_pack"
+				unlocked_cats += "Knave second supply pack"
 		if("Rogue Mage")
 			if(time_elapsed >= 27000)
-				unlocked_cats += "Mage_first_supply_pack"
+				unlocked_cats += "Mage first supply pack"
 			if(time_elapsed >= 48000)
-				unlocked_cats += "Mage_second_supply_pack"
+				unlocked_cats += "Mage second supply pack"
 		if("Sawbones")
 			if(time_elapsed >= 27000)
-				unlocked_cats += "Sawbones_first_supply_pack"
+				unlocked_cats += "Sawbones first supply pack"
 			if(time_elapsed >= 48000)
-				unlocked_cats += "Sawbones_second_supply_pack"
+				unlocked_cats += "Sawbones second supply pack"
 
 	if(current_cat == "1")
 		contents += "<center>"
@@ -204,10 +204,6 @@
 
 	if(!do_after(user, 40 SECONDS, TRUE, H))
 		return
-	for(var/mob/living/carbon/human/M in view(7, src))
-		if(M != user && M.mind?.has_antag_datum(/datum/antagonist/bandit))
-			M.Knockdown(50)
-			M.Paralyze(250)
 			to_chat(M, span_warning("The Hoardmaster's power surges through the air, stunning you!"))
 
 	playsound(src.loc, 'sound/items/pickgood1.ogg', 100, TRUE, -1)
