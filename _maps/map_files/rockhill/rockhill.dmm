@@ -40353,11 +40353,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
-"vCv" = (
-/obj/structure/roguewindow/stained/zizo,
-/obj/structure/roguewindow/stained/silver,
-/turf/closed/wall/mineral/rogue/decostone/mossy/red,
-/area/rogue/indoors/town/church)
 "vCE" = (
 /turf/open/floor/rogue/rooftop/green/corner1{
 	dir = 9
@@ -583042,7 +583037,7 @@ wJI
 wJI
 tkX
 wfQ
-vCv
+jEH
 eMX
 eBN
 mQM
