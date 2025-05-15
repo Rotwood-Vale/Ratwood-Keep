@@ -21,7 +21,6 @@
 /datum/supply_pack/rogue/bandit/Clothing/hardleathershoes
 	name = "Hardened Leather shoes"
 	cost = 20
-	unlock_delay = 27000
 	contains = list(/obj/item/clothing/shoes/roguetown/armor/leather/advanced)
 
 /datum/supply_pack/rogue/bandit/Clothing/shoulderhood

@@ -198,15 +198,9 @@
 		var/mob/M = usr
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack))
-			message_admins("[usr.key] attempted to buy invalid path: [href_list["buy"]]")
+			message_admins("STUPID MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE GOLDFACE")
 			return
-
-		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
-		if(!PA)
-			PA = new path
-		if(!PA)
-			to_chat(usr, span_warning("GOLDFACE spits out your greed. The item doesn't exist."))
-			return
+		var/datum/supply_pack/PA = new path
 		var/cost = PA.cost
 		var/tax_amt=round(SStreasury.tax_value * cost)
 		cost = cost + tax_amt
@@ -314,7 +308,7 @@
 	contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
 
 	var/mob/living/carbon/human/H = user
-	if(H.job == "Merchant" || H.job == "Shophand")
+	if(H.job == "Merchant")
 		if(canread)
 			contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
 		else
@@ -345,14 +339,12 @@
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
 			if(PA.group == current_cat)
 				pax += PA
-
-		for (var/datum/supply_pack/PA in sortList(pax))
-			var/unlock_time = get_unlock_time_or_null(PA)
-			if(unlock_time && world.time < unlock_time)
-				var/time_left = time2text(unlock_time - world.time, "hh:mm")
-				contents += "[PA.name] (Locked - Available in [time_left])<br>"
-			else
-				contents += "[PA.name] ([PA.cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
+		for(var/datum/supply_pack/PA in sortList(pax))
+			var/cost = PA.cost 
+			var/costy = cost
+			if(!(upgrade_flags & UPGRADE_NOTAX))
+				costy = round(costy + (SStreasury.tax_value * cost))
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([costy])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	if(!canread)
 		contents = stars(contents)
@@ -379,9 +371,3 @@
 //	held_items[/obj/item/dmusicbox] = list("PRICE" = rand(444,777),"NAME" = "Music Box")
 
 #undef UPGRADE_NOTAX
-
-/proc/get_unlock_time_or_null(var/datum/supply_pack/PA)
-	if(isnum(PA.unlock_at))
-		return PA.unlock_at
-	return null
-

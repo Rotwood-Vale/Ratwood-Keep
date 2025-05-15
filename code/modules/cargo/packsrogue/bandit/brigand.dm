@@ -9,41 +9,6 @@
 	cost = 35
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmetsallet
-	name = "Sallet"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet)
-
-/datum/supply_pack/rogue/bandit/Brigand/helmetwinged
-	name = "Winged Cap"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
-
-/datum/supply_pack/rogue/bandit/Brigand/helmethorned
-	name = "Horned Cap"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
-
-/datum/supply_pack/rogue/bandit/Brigand/kettlehelmet
-	name = "Kettle Helmet"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
-
-/datum/supply_pack/rogue/bandit/Brigand/helmetvisoredsallet
-	name = "Visored Sallet"
-	cost = 70
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
-
-/datum/supply_pack/rogue/bandit/Brigand/helmetvolfhelmet
-	name = "Volf Face Helmet"
-	cost = 70
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/volfplate)
 
 //neck
 
@@ -52,29 +17,12 @@
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
-/datum/supply_pack/rogue/bandit/Brigand/coifsteel
-	name = "Steel Coif"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
-
-/datum/supply_pack/rogue/bandit/Brigand/Bevor
-	name = "Bevor"
-	cost = 35
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/neck/roguetown/bervor)
-//wrist
 
 /datum/supply_pack/rogue/bandit/Brigand/bracersleather
 	name = "Leather Bracers"
 	cost = 15
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/bandit/Brigand/bracerssteel
-	name = "Steel Bracers"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/wrists/roguetown/bracers)
 //pants
 
 /datum/supply_pack/rogue/bandit/Brigand/chainlegsiron
@@ -82,11 +30,6 @@
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/iron)
 
-/datum/supply_pack/rogue/bandit/Brigand/chainlegs
-	name = "Steel Chain Chausses"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/under/roguetown/chainlegs)
 //gauntlets
 
 /datum/supply_pack/rogue/bandit/Brigand/ironchaingauntlets
@@ -94,18 +37,8 @@
 	cost = 25
 	contains = list(/obj/item/clothing/gloves/roguetown/chain/iron)
 
-/datum/supply_pack/rogue/bandit/Brigand/steelchaingauntlets
-	name = "Steel Chain Gauntlets"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/gloves/roguetown/chain)
 //boots
 
-/datum/supply_pack/rogue/bandit/Brigand/bootssteel
-	name = "Steel Boots"
-	cost = 50
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/shoes/roguetown/armor/steel)
 //armor
 
 /datum/supply_pack/rogue/bandit/Brigand/gambeson
@@ -118,29 +51,7 @@
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail)
 
-/datum/supply_pack/rogue/bandit/Brigand/lightbrigandine
-	name = "Light Brigandine"
-	cost = 30
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/light)
 
-/datum/supply_pack/rogue/bandit/Brigand/steelcuirass
-	name = "Steel Cuirass"
-	cost = 70
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/half)
-
-/datum/supply_pack/rogue/bandit/Brigand/scalemail
-	name = "Scalemail"
-	cost = 35
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
-
-/datum/supply_pack/rogue/bandit/Brigand/hauberk
-	name = "Hauberk"
-	cost = 70
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
 //flail
 
 /datum/supply_pack/rogue/bandit/Brigand/flail
@@ -148,11 +59,7 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/flail)
 
-/datum/supply_pack/rogue/bandit/Brigand/steelflail
-	name = "Steel Flail"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/flail/sflail)
+
 //mace
 
 /datum/supply_pack/rogue/bandit/Brigand/cudgel
@@ -165,23 +72,9 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/mace)
 
-/datum/supply_pack/rogue/bandit/Brigand/steelmace
-	name = "Steel Mace"
-	cost = 70
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/mace/steel)
 
-/datum/supply_pack/rogue/bandit/Brigand/gmace
-	name = "Grand Mace"
-	cost = 40
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 
-/datum/supply_pack/rogue/bandit/Brigand/warhammer
-	name = "Steel Warhammer"
-	cost = 70
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
+
 //axe
 
 /datum/supply_pack/rogue/bandit/Brigand/axe
@@ -189,27 +82,7 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut)
 
-/datum/supply_pack/rogue/bandit/Brigand/steelaxe
-	name = "Steel Axe"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel)
 
-/datum/supply_pack/rogue/bandit/Brigand/Staxe
-	name = "Steel Battleaxe"
-	cost = 70
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
+
+
 //shield
-
-/datum/supply_pack/rogue/bandit/Brigand/heatershield
-	name = "Heater Shield"
-	cost = 25
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/shield/heater)
-
-/datum/supply_pack/rogue/bandit/Brigand/Tshield
-	name = "Tower Shield"
-	cost = 30
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/shield/tower)

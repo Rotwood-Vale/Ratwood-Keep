@@ -11,42 +11,10 @@
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
-/datum/supply_pack/rogue/bandit/Knave/winged
-	name = "Winged Cap"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/winged)
 
-/datum/supply_pack/rogue/bandit/Knave/hhelmet
-	name = "Horned Cap"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/horned)
-
-/datum/supply_pack/rogue/bandit/Knave/kettlehelmet
-	name = "Kettle Helmet"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 //neck
 
-/datum/supply_pack/rogue/bandit/Knave/gorget
-	name = "Gorget"
-	cost = 25
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
-/datum/supply_pack/rogue/bandit/Knave/coifsteel
-	name = "Steel Coif"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
-
-/datum/supply_pack/rogue/bandit/Knave/bevor
-	name = "Bevor"
-	cost = 35
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/neck/roguetown/bervor)
 //wrist
 
 /datum/supply_pack/rogue/bandit/Knave/Lbracers
@@ -54,25 +22,10 @@
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
-/datum/supply_pack/rogue/bandit/Knave/AdvancedLbracers
-	name = "Hardened Leather Bracers"
-	cost = 15
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/advanced)
+
 //gauntlets
 
-/datum/supply_pack/rogue/bandit/Knave/Lgloves
-	name = "Hardened Leather Gloves"
-	cost = 15
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/gloves/roguetown/leather/advanced)
-//pants
 
-/datum/supply_pack/rogue/bandit/Knave/leatherpantsadvanced
-	name = "Hardened Leather Chausses"
-	cost = 30
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/under/roguetown/trou/leather/advanced)
 
 //armor
 
@@ -91,23 +44,9 @@
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leathercoat)
 
-/datum/supply_pack/rogue/bandit/Knave/paddedgambeson
-	name = "Padded Gambeson"
-	cost = 40
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
-/datum/supply_pack/rogue/bandit/Knave/leatherstudded
-	name = "Studded Leather Armor"
-	cost = 50
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
-/datum/supply_pack/rogue/bandit/Knave/leathercoatheavy
-	name = "heavy leather coat"
-	cost = 60
-	unlock_delay = 27000
-	contains = list(/obj/item/clothing/suit/roguetown/armor/leathercoat/heavy)
+
 
 //daggers
 
@@ -116,17 +55,7 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
 
-/datum/supply_pack/rogue/bandit/Knave/daggerss
-	name = "Steel Dagger"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel)
 
-/datum/supply_pack/rogue/bandit/Knave/combatdaggerss
-	name = "Combat Knife"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/huntingknife/cleaver/combat)
 //swords
 
 /datum/supply_pack/rogue/bandit/Knave/sword
@@ -144,47 +73,10 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/sword/iron/messer)
 
-/datum/supply_pack/rogue/bandit/Knave/onehandedarmingsword
-	name = "Arming Sword"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/sword/short)
 
-/datum/supply_pack/rogue/bandit/Knave/swordsteel
-	name = "Steel Sword"
-	cost = 35
-	unlock_delay = 27000
-	contains = list(/obj/item/rogueweapon/sword)
 
-/datum/supply_pack/rogue/bandit/Knave/swordgladius
-	name = "Gladius"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/sword/gladius)
 
-/datum/supply_pack/rogue/bandit/Knave/swordRapier
-	name = "Rapier"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/sword/rapier)
 
-/datum/supply_pack/rogue/bandit/Knave/swordCutlass
-	name = "Cutlass"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/sword/cutlass)
-
-/datum/supply_pack/rogue/bandit/Knave/swordkatar
-	name = "Katar"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/katar)
-
-/datum/supply_pack/rogue/bandit/Knave/swordsabre
-	name = "Sabre"
-	cost = 35
-	unlock_delay = 36000
-	contains = list(/obj/item/rogueweapon/sword/sabre)
 //bows
 
 /datum/supply_pack/rogue/bandit/Knave/bow
@@ -192,11 +84,6 @@
 	cost = 25
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 
-/datum/supply_pack/rogue/bandit/Knave/recurvebow
-	name = "Recurve Bow"
-	cost = 50
-	unlock_delay = 36000
-	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 //bow arrows
 
 /datum/supply_pack/rogue/bandit/Knave/quiversarrows

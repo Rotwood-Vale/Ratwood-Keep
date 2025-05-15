@@ -129,8 +129,3 @@
 	cost = 66
 	contains = list(/obj/item/clothing/neck/roguetown/collar/leather/nomagic)
 
-/datum/supply_pack/rogue/bandit/Gear/Dragonscale
-	name = "Dragonscale Necklace"
-	cost = 999
-	unlock_delay = 54000
-	contains = list(/obj/item/clothing/neck/roguetown/blkknight)

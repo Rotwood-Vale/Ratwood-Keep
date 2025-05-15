@@ -53,18 +53,11 @@
 	if(href_list["buy"])
 		var/mob/M = usr
 		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
-
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack/rogue/bandit))
-			message_admins("[usr.key] has attempted to purchase [href_list["buy"]] with the HOARDMASTER.")
+			message_admins("[usr.key] has attempted to purchase [sanitize(href_list["buy"])] with the HOARDMASTER. This is likely a HREF exploit attempt!")
 			return
-
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
-		if(!PA)
-			PA = new path
-		if(!PA)
-			to_chat(usr, span_warning("This offering has crumbled to dust."))
-			return
 		var/cost = PA.cost
 		if(B.favor >= cost)
 			B.favor -= cost
@@ -102,21 +95,40 @@
 	contents = "<center>Wishes for the Free<BR>"
 	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
 
+var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
+	var/time_elapsed = world.time - SSticker.round_start_time
 
-	var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
-	switch(usr.advjob)
+		switch(usr.advjob)
 		if("Brigand")
-			unlocked_cats+="Brigand"
+			if(time_elapsed >= 27000) // 45 mins
+				unlocked_cats += "Brigand_first_supply_pack"
+			if(time_elapsed >= 48000) // 80 mins
+				unlocked_cats += "Brigand_second_supply_pack"
 		if("Foresworn")
-			unlocked_cats+="Foresworn"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Foresworn_first_supply_pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Foresworn_second_supply_pack"
 		if("Hedge Knight")
-			unlocked_cats+="Knight"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Knight_first_supply_pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Knight_second_supply_pack"
 		if("Knave")
-			unlocked_cats+="Knave"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Knave_first_supply_pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Knave_second_supply_pack"
 		if("Rogue Mage")
-			unlocked_cats+="Mage"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Mage_first_supply_pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Mage_second_supply_pack"
 		if("Sawbones")
-			unlocked_cats+="Sawbones"
+			if(time_elapsed >= 27000)
+				unlocked_cats += "Sawbones_first_supply_pack"
+			if(time_elapsed >= 48000)
+				unlocked_cats += "Sawbones_second_supply_pack"
 
 	if(!(current_cat in unlocked_cats))
 		current_cat = "1"
@@ -124,24 +136,24 @@
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
+			var/display_name = replacetext(X, "_", " ")
+			display_name = uppertext(copytext(display_name, 1, 2)) + lowertext(copytext(display_name, 2)) // Capitalize first letter
+			contents += "<a href='?src=[REF(src)];changecat=[X]'>[display_name]</a><BR>"
 		contents += "</center>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
 		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
-	var/list/pax = list()
-	for (var/pack in SSmerchant.supply_packs)
-		var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
-		if(PA.group == current_cat)
-			pax += PA
-
-	for (var/datum/supply_pack/PA in sortList(pax))
-		var/unlock_time = get_unlock_time_or_null(PA)
-		if(unlock_time && world.time < unlock_time)
-			var/time_left = time2text(unlock_time - world.time, "hh:mm")
-			contents += "[PA.name] (Locked - Available in [time_left])<br>"
-		else
-			contents += "[PA.name] ([PA.cost]) <a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><br>"
+		var/list/pax = list()
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
+			if(PA.group == current_cat)
+				pax += PA
+		for(var/datum/supply_pack/PA in sortList(pax))
+			var/unlock_time = SSticker.round_start_time + PA.time_lock
+			if(world.time < unlock_time) // Not enough time has passed
+				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
+			else // Item is available for purchase
+				contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)
