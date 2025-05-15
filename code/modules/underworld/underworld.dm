@@ -133,6 +133,8 @@ Carriage door attack by
 				if(subclass)
 					SSrole_class_handler.adjust_class_amount(subclass, -1)
 
+				for(var/obj/item/I in contained_items)
+					qdel(I)
 				qdel(user)
 				return // You don't do anything else 
 				//Technically with this sytem you can return with the same job later. I don't mind
