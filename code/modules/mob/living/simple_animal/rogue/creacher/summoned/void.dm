@@ -330,8 +330,8 @@ It will also call down lightning strikes from the sky, and fling people with it'
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon
 	name = "void dragon"
 	desc = "An ancient creature from a bygone age. Now would be a good time to run."
-	health = 2500
-	maxHealth = 2500
+	health = 5000
+	maxHealth = 5000
 	attack_verb_continuous = "gouges"
 	attack_verb_simple = "gouge"
 	attack_sound = 'sound/misc/demon_attack1.ogg'
@@ -346,8 +346,8 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	base_intents = list(/datum/intent/unarmed/dragonclaw)
 	faction = list("abberant")
 	obj_damage = 400	//Behold, nothing shall keep the dragon out
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	melee_damage_lower = 80
+	melee_damage_upper = 80
 	retreat_distance = 0
 	retreat_health = 0
 	minimum_distance = 0

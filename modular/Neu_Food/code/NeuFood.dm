@@ -402,6 +402,18 @@
 	taste_mult = 5
 	hydration = 2
 
+/datum/reagent/consumable/soup/porridge
+	name = "porridge"
+	description = "Fitting for a peasant."
+	reagent_state = LIQUID
+	color = "#ddd190"
+	nutriment_factor = 7
+	metabolization_rate = 0.5 // half as fast as normal, last twice as long
+	taste_description = "oatmeal"
+	taste_mult = 5
+	hydration = 2
+
+
 /datum/reagent/consumable/soup/veggie
 	name = "vegetable soup"
 	description = ""
