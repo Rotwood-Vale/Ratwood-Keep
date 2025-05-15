@@ -206,7 +206,8 @@
 		return
 	for(var/mob/living/carbon/human/M in view(7, src))
 		if(M != user && M.mind?.has_antag_datum(/datum/antagonist/bandit))
-			M.stun(20 SECONDS)
+			M.Knockdown(50)
+			M.Paralyze(250)
 			to_chat(M, span_warning("The Hoardmaster's power surges through the air, stunning you!"))
 
 	playsound(src.loc, 'sound/items/pickgood1.ogg', 100, TRUE, -1)
