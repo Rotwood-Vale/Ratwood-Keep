@@ -204,7 +204,6 @@
 
 	if(!do_after(user, 40 SECONDS, TRUE, H))
 		return
-			to_chat(M, span_warning("The Hoardmaster's power surges through the air, stunning you!"))
 
 	playsound(src.loc, 'sound/items/pickgood1.ogg', 100, TRUE, -1)
 	H.Paralyze(20 SECONDS)
