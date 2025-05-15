@@ -108,9 +108,9 @@
 			if(time_elapsed >= 1000)
 				unlocked_cats += "Brigand_second_supply_pack"
 		if("Foresworn")
-			if(time_elapsed >= 27000)
+			if(time_elapsed >= 1500)
 				unlocked_cats += "Foresworn_first_supply_pack"
-			if(time_elapsed >= 48000)
+			if(time_elapsed >= 2000)
 				unlocked_cats += "Foresworn_second_supply_pack"
 		if("Hedge Knight")
 			if(time_elapsed >= 27000)
@@ -202,8 +202,12 @@
 		to_chat(user, span_notice("The Deposed is defunct."))
 		return
 
-	if(!do_after(user, 3 SECONDS, TRUE, H))
+	if(!do_after(user, 40 SECONDS, TRUE, H))
 		return
+	for(var/mob/living/carbon/human/M in view(7, src))
+		if(M != user && M.mind?.has_antag_datum(/datum/antagonist/bandit))
+			M.stun(20 SECONDS)
+			to_chat(M, span_warning("The Hoardmaster's power surges through the air, stunning you!"))
 
 	playsound(src.loc, 'sound/items/pickgood1.ogg', 100, TRUE, -1)
 	H.Paralyze(20 SECONDS)
