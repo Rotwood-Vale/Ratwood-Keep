@@ -1,17 +1,17 @@
 /datum/supply_pack/rogue/bandit/Brigand/second_supply_pack
-	group = "Brigand_second_supply_pack"
-	crate_name = "Crate of Supplies"
+	group = "Brigand second supply pack"
+	crate_name = "Gifts of Strength"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //helmet
 
 
-/datum/supply_pack/rogue/bandit/Brigand/helmetvisoredsallet
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/helmetvisoredsallet
 	name = "Visored Sallet"
 	cost = 70
 	contains = list(/obj/item/clothing/head/roguetown/helmet/sallet/visored)
 
-/datum/supply_pack/rogue/bandit/Brigand/helmetvolfhelmet
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/helmetvolfhelmet
 	name = "Volf Face Helmet"
 	cost = 70
 	contains = list(/obj/item/clothing/head/roguetown/helmet/volfplate)
@@ -19,7 +19,7 @@
 //neck
 
 
-/datum/supply_pack/rogue/bandit/Brigand/Bevor
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/Bevor
 	name = "Bevor"
 	cost = 35
 	contains = list(/obj/item/clothing/neck/roguetown/bervor)
@@ -34,12 +34,12 @@
 //armor
 
 
-/datum/supply_pack/rogue/bandit/Brigand/scalemail
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/scalemail
 	name = "Scalemail"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale)
 
-/datum/supply_pack/rogue/bandit/Brigand/hauberk
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/hauberk
 	name = "Hauberk"
 	cost = 70
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk)
@@ -48,12 +48,12 @@
 //mace
 
 
-/datum/supply_pack/rogue/bandit/Brigand/gmace
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/gmace
 	name = "Grand Mace"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/mace/goden/steel)
 
-/datum/supply_pack/rogue/bandit/Brigand/warhammer
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/warhammer
 	name = "Steel Warhammer"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/mace/warhammer/steel)
@@ -61,14 +61,14 @@
 
 
 
-/datum/supply_pack/rogue/bandit/Brigand/Staxe
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/Staxe
 	name = "Steel Battleaxe"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 //shield
 
 
-/datum/supply_pack/rogue/bandit/Brigand/Tshield
+/datum/supply_pack/rogue/bandit/Brigand/second_supply_pack/Tshield
 	name = "Tower Shield"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/shield/tower)

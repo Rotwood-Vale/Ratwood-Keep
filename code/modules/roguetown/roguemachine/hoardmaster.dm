@@ -82,27 +82,30 @@
 	if (has_buckled_mobs())
 		for(var/mob/living/L in buckled_mobs)
 			user_unbuckle_mob(L, user)
+
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
 		return
-	var/datum/antagonist/bandit/B = usr.mind.has_antag_datum(/datum/antagonist/bandit)
+
+	var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
+	if(!ishuman(user) || !B)
+		return
+
+	user.changeNext_move(CLICK_CD_MELEE)
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(user))
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	var/contents
-	contents = "<center>Wishes for the Free<BR>"
+
+	var/contents = "<center>Wishes for the Free<BR>"
 	contents += "<a href='?src=[REF(src)];change=1'>Your favor:</a> [B.favor]<BR>"
 
-var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
+	var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
 	var/time_elapsed = world.time - SSticker.round_start_time
 
-		switch(usr.advjob)
+	switch(user.advjob)
 		if("Brigand")
-			if(time_elapsed >= 27000) // 45 mins
+			if(time_elapsed >= 50)
 				unlocked_cats += "Brigand_first_supply_pack"
-			if(time_elapsed >= 48000) // 80 mins
+			if(time_elapsed >= 1000)
 				unlocked_cats += "Brigand_second_supply_pack"
 		if("Foresworn")
 			if(time_elapsed >= 27000)
@@ -130,15 +133,10 @@ var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Sawbones_second_supply_pack"
 
-	if(!(current_cat in unlocked_cats))
-		current_cat = "1"
-
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			var/display_name = replacetext(X, "_", " ")
-			display_name = uppertext(copytext(display_name, 1, 2)) + lowertext(copytext(display_name, 2)) // Capitalize first letter
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[display_name]</a><BR>"
+			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
 		contents += "</center>"
 	else
 		contents += "<center>[current_cat]<BR></center>"
@@ -149,11 +147,7 @@ var/list/unlocked_cats = list("Gear", "Consumables", "Clothing")
 			if(PA.group == current_cat)
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			var/unlock_time = SSticker.round_start_time + PA.time_lock
-			if(world.time < unlock_time) // Not enough time has passed
-				contents += "[PA.name] (Locked - Available in [time2text(unlock_time - world.time, "hh:mm")])<BR>"
-			else // Item is available for purchase
-				contents += "[PA.name] [PA.contains.len > 1 ? "x[PA.contains.len]" : ""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)

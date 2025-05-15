@@ -56,12 +56,3 @@
 	else
 		for(var/item in contains)
 			new item(C)
-
-/datum/supply_pack
-	var/unlock_delay = null  // its TICKS. So 45 minutes = 27000. Yes the server will say you ingame its 3:45 dont trust it it adds 3 hours i have no idea why
-	var/unlock_at = null     // world.time
-
-/datum/supply_pack/New()
-	. = ..()
-	if(unlock_delay && isnum(unlock_delay))
-		unlock_at = SSticker.round_start_time + unlock_delay
