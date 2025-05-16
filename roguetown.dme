@@ -1266,6 +1266,7 @@
 #include "code\modules\clothing\suits\toggles.dm"
 #include "code\modules\clothing\under\_under.dm"
 #include "code\modules\clothing\under\accessories.dm"
+#include "code\modules\crafting\recipe_books\recipe_book.dm"
 #include "code\modules\detectivework\detective_work.dm"
 #include "code\modules\detectivework\footprints_and_rag.dm"
 #include "code\modules\discord\accountlink.dm"
