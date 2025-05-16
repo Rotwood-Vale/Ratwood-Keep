@@ -4,7 +4,7 @@
 	icon = 'icons/roguetown/items/books.dmi'
 
 	grid_width = 32
-	grid_height = 64
+	grid_height = 32
 	var/list/types = list()
 	var/mob/current_reader
 	var/open
@@ -75,8 +75,11 @@
 			if(!first)
 				html += "<br>"
 			first = FALSE
-			for(var/atom/sub_path as anything in subtypesof(path))
+			var/list/sorted_types = sortNames(subtypesof(path))
+			for(var/atom/sub_path as anything in sorted_types)
 				if(is_abstract(sub_path))
+					continue
+				if(!sub_path.name)
 					continue
 				html += "<a href='byond://?src=\ref[src];pick_recipe=[sub_path]'>[initial(sub_path.name)]</a> <br>"
 		else
@@ -95,6 +98,9 @@
 		if(ispath(path, /datum/crafting_recipe))
 			var/datum/crafting_recipe/real_path = new path
 			real_path.show_menu(current_reader)
+		else if(ispath(path, /datum/anvil_recipe))
+			var/datum/anvil_recipe/real_path = new path
+			real_path.show_menu(current_reader)
 		// if(ispath(path, /datum/repeatable_crafting_recipe))
 		// 	var/datum/repeatable_crafting_recipe/real_path = new path
 		// 	real_path.show_menu(current_reader)
@@ -109,9 +115,6 @@
 		// 	real_path.show_menu(current_reader)
 		// else if(ispath(path, /datum/molten_recipe))
 		// 	var/datum/molten_recipe/real_path = new path
-		// 	real_path.show_menu(current_reader)
-		// else if(ispath(path, /datum/anvil_recipe))
-		// 	var/datum/anvil_recipe/real_path = new path
 		// 	real_path.show_menu(current_reader)
 		// else if(ispath(path, /datum/pottery_recipe))
 		// 	var/datum/pottery_recipe/real_path = new path
@@ -181,12 +184,3 @@
 	"eflip" = 0)
 				if("onbelt")
 					return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
-
-/obj/item/recipe_book/leatherworking
-	name = "The Tanned Hide Tome: Mastery of Leather and Craft"
-	desc = "Penned by Orym Vaynore, fourth generation leatherworker"
-	icon_state ="book8_0"
-	base_icon_state = "book8"
-
-	types = list(/datum/crafting_recipe/roguetown/leather)

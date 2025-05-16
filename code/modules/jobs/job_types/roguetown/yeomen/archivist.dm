@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/rogueweapon/huntingknife/idagger)
+	backpack_contents = list(/obj/item/storage/fancy/ifak = 1, /obj/item/rogueweapon/huntingknife/idagger, /obj/item/recipe_book/alchemy)
 	beltl = /obj/item/storage/keyring/archivist
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	mask = /obj/item/clothing/mask/rogue/spectacles

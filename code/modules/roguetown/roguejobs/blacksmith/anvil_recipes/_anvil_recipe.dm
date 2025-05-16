@@ -1,4 +1,5 @@
 /datum/anvil_recipe
+	abstract_type = /datum/anvil_recipe
 	var/name
 	var/list/additional_items = list()
 	var/appro_skill = /datum/skill/craft/blacksmithing

@@ -94,14 +94,19 @@
 
 	html += {"<div>
 		      <strong>Requirements</strong>
-			<br>"}
+			  <br>"}
 
-	for(var/atom/path as anything in reqs)
+	for(var/path as anything in reqs)
 		var/count = reqs[path]
-		if(subtype_reqs)
-			html += "[icon2html(new path, user)] [count] of any [initial(path.name)]<br>"
-		else
-			html += "[icon2html(new path, user)] [count] [initial(path.name)]<br>"
+		if(ispath(path, /datum/reagent))
+			var/datum/reagent/R = path
+			html += "[CEILING(count / 3, 1)] oz of [initial(R.name)]<br>" // Cuz we're weird and don't use it under chem catalyst and we don't want icon crash 
+		else if(ispath(path, /obj)) // Prevent a runtime from happening w/ datum atm until it is
+			var/atom/atom = path
+			if(subtype_reqs)
+				html += "[icon2html(new atom, user)] [count] of any [initial(atom.name)]<br>"
+			else
+				html += "[icon2html(new atom, user)] [count] [initial(atom.name)]<br>"
 
 	html += {"
 		</div>
@@ -158,4 +163,4 @@
 	return html
 
 /datum/crafting_recipe/proc/show_menu(mob/user)
-	user << browse(generate_html(user),"window=recipe;size=500x810")
+	user << browse(generate_html(user),"window=new_recipe;size=500x810")

@@ -51,7 +51,11 @@
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/lovepotion,/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/book/granter/spellbook/master, /obj/item/rogueweapon/huntingknife/idagger/silver/arcyne)
+	backpack_contents = list(
+	/obj/item/reagent_containers/glass/bottle/rogue/poison, 
+	/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+	/obj/item/recipe_book/alchemy
+	)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
 	ADD_TRAIT(H, TRAIT_NOBLE, "[type]")
 	if(H.mind)
