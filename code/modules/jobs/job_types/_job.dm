@@ -39,7 +39,6 @@
 	//Sellection screen color
 	var/selection_color = "#dbdce3"
 
-
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
@@ -128,6 +127,9 @@
 
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
+
+	//used on the carriage to allow leaving rounds
+	var/can_leave_round = TRUE
 
 	/// This job is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
