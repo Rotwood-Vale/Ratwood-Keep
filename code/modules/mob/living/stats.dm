@@ -99,7 +99,7 @@
 		if(statindex[index])
 			change_stat(statindex[index]["stat"], -1*statindex[index]["amt"])
 			statindex[index] = null
-			return
+		return
 	if(!amt)
 		return
 	if(index)
@@ -200,3 +200,89 @@
 
 	value = newamt
 	buffer = tempbuffer
+
+/datum/stat_set
+	var/STASTR = 10
+	var/STAPER = 10
+	var/STAINT = 10
+	var/STACON = 10
+	var/STAEND = 10
+	var/STASPD = 10
+	var/STALUC = 10
+	
+	var/BUFSTR = 0
+	var/BUFPER = 0
+	var/BUFINT = 0
+	var/BUFCON = 0
+	var/BUFEND = 0
+	var/BUFSPD = 0
+	var/BUFLUC = 0
+
+	var/obj/statdata/tempstat = new()
+
+// Creates a copy of stats and stat buffers from the given livingmob.
+// If remove_buffs is true, the stat effects of any buffs will be removed,
+// giving the original stat values; otherwise, gives the current effective stat values.
+/datum/stat_set/proc/create_from(mob/living/L, remove_buffs = TRUE)
+	STASTR = L.STASTR
+	BUFSTR = L.BUFSTR
+
+	STAPER = L.STAPER
+	BUFPER = L.BUFPER
+
+	STAINT = L.STAINT
+	BUFINT = L.BUFINT
+
+	STACON = L.STACON
+	BUFCON = L.BUFCON
+
+	STAEND = L.STAEND
+	BUFEND = L.BUFEND
+
+	STASPD = L.STASPD
+	BUFSPD = L.BUFSPE
+
+	STALUC = L.STALUC
+	BUFLUC = L.BUFLUC
+
+	if (remove_buffs)
+		// Iterate over every status effect, and remove their effects
+		for (var/datum/status_effect/effect in L.status_effects)
+			for (var/affectedstat in effect.effectedstats)
+				change_stat(affectedstat, -effect.effectedstats[affectedstat])
+
+/datum/stat_set/proc/change_stat(stat, amount)
+	if(!stat)
+		return
+	if(!amount)
+		return
+
+	switch(stat)
+		if("strength")
+			tempstat.modifystat(STASTR, BUFSTR, amount)
+			STASTR = tempstat.value
+			BUFSTR = tempstat.buffer
+		if("perception")
+			tempstat.modifystat(STAPER, BUFPER, amount)
+			STAPER = tempstat.value
+			BUFPER = tempstat.buffer
+		if("intelligence")
+			tempstat.modifystat(STAINT, BUFINT, amount)
+			STAINT = tempstat.value
+			BUFINT = tempstat.buffer
+		if("constitution")
+			tempstat.modifystat(STACON, BUFCON, amount)
+			STACON = tempstat.value
+			BUFCON = tempstat.buffer
+		if("endurance")
+			tempstat.modifystat(STAEND, BUFEND, amount)
+			STAEND = tempstat.value
+			BUFEND = tempstat.buffer
+		if("speed")
+			tempstat.modifystat(STASPD, BUFSPD, amount)
+			STASPD = tempstat.value
+			BUFSPD = tempstat.buffer
+		if("fortune")
+			tempstat.modifystat(STALUC, BUFLUC, amount)
+			STALUC = tempstat.value
+			BUFLUC = tempstat.buffer
