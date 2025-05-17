@@ -359,7 +359,7 @@
 		src.ckey = ckey
 	else //npc
 		aggressive = 1
-		mode = AI_HUNT
+		mode = NPC_AI_HUNT
 		wander = TRUE
 
 	if(!mind)

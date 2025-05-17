@@ -105,6 +105,7 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
+		// this is done so that climbing onto something doesn't ignore other dense objects on the same turf
 		density = FALSE
 		. = step(A,get_dir(A,src.loc))
 		density = TRUE
@@ -133,6 +134,10 @@
 			else
 				to_chat(user, span_warning("I fail to climb onto [src]."))
 	structureclimber = null
+
+// You can path over a dense structure if it's climbable.
+/obj/structure/CanAStarPass(ID, to_dir, caller)
+	. = climbable || ..()
 
 /obj/structure/examine(mob/user)
 	. = ..()

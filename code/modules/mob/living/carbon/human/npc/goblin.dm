@@ -15,7 +15,7 @@
 
 /mob/living/carbon/human/species/goblin/npc
 	aggressive=1
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	dodgetime = 30 //they can dodge easily, but have a cooldown on it
 	flee_in_pain = TRUE
 
@@ -199,7 +199,7 @@
 	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 /mob/living/carbon/human/species/goblin/handle_combat()
-	if(mode == AI_HUNT)
+	if(mode == NPC_AI_HUNT)
 		if(prob(2))
 			emote("laugh")
 	. = ..()
@@ -231,9 +231,11 @@
 	real_name = "goblin"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
+//	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 //	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 //	blue breathes underwater, need a new specific one for this maybe organ cheque
+	if(is_species(src, /datum/species/goblin/sea))
+		ADD_TRAIT(src, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 //	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	if(gob_outfit)
 		var/datum/outfit/O = new gob_outfit
