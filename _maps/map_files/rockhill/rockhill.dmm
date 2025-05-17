@@ -4138,12 +4138,11 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "cgt" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/winch{
 	redstone_id = "churchgates1"
 	},
-/turf/open/water/bath,
-/area/rogue/indoors/town/church/chapel)
+/turf/closed/wall/mineral/rogue/decostone,
+/area/rogue/indoors/town/church)
 "cgK" = (
 /obj/structure/flora/rogueshroom,
 /turf/open/water/swamp,
@@ -467076,7 +467075,7 @@ teW
 wAm
 unL
 wAm
-tML
+cgt
 bxS
 ycn
 dUQ
@@ -467084,7 +467083,7 @@ swm
 nhW
 swm
 xyU
-cgt
+ycn
 bxS
 moU
 moU
