@@ -1291,6 +1291,22 @@
 
 	emote("shake", intentional = TRUE)
 
+/* Vomit emote */
+/mob/living/carbon/human/verb/emote_vomit()
+	set name = "Vomit"
+	set category = "Emotes"
+	
+	emote("vomit", intentional = TRUE)
+
+/datum/emote/living/vomit
+	key = "vomit"
+	nomsg = TRUE
+
+/datum/emote/living/vomit/run_emote(mob/user, params, type_override, intentional, targetted)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.vomit()
+
 /datum/emote/living/squint
 	key = "squint"
 	key_third_person = "squints"
