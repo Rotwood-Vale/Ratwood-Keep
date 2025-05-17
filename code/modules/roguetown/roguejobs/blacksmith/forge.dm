@@ -11,7 +11,7 @@
 	climbable = TRUE
 	climb_time = 0
 	layer = 2.8
-	var/heat_time = 100
+	var/heat_time = 10 SECONDS
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
 	cookonme = TRUE
@@ -31,10 +31,8 @@
 			return
 	if(istype(W, /obj/item/rogueweapon/tongs) && on)
 		var/obj/item/rogueweapon/tongs/T = W
-		if(T.hingot)
-			var/tyme = world.time
-			T.hott = tyme
-			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme),heat_time )
+		if(T.has_ingot())
+			T.make_hot(heat_time)
 			T.update_icon()
 			user.visible_message(span_info("[user] heats the bar."))
 			return
