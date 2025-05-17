@@ -1,5 +1,5 @@
 
-client/
+/client
 	var/list/hidden_atoms = list()
 	var/list/hidden_mobs = list()
 	var/list/hidden_images = list()

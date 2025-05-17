@@ -20,12 +20,7 @@
 	var/alt_click = pa.Find("alt")
 
 	if(istype(object,/turf) && left_click && !alt_click && !ctrl_click)
-		to_chat(src, span_notice("Basic mode is only partially funcational, please use Adv. Build."))
-		return
-		var/turf/T = object
-		if(isfloorturf(object))
-			T.PlaceOnTop(/turf/closed/wall/mineral/rogue/decowood)
-		log_admin("Build Mode: [key_name(c)] built [T] at [AREACOORD(T)]")
+		to_chat(src, span_notice("Basic mode is only partially functional, please use Adv. Build."))
 		return
 	else if(right_click)
 		log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")

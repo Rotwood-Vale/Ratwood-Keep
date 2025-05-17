@@ -38,8 +38,8 @@
 			C.visible_message(span_notice("[user] has touched \the [C] with \the [src]."))
 			log_combat(user, C, "touched", src, log_object)
 
-	else if(istype(A) && src in user)
+	else if(istype(A) && (src in user))
 		user.visible_message(span_notice("[user] starts to wipe down [A] with [src]!"), span_notice("I start to wipe down [A] with [src]..."))
-		if(do_after(user,30, target = A))
+		if(do_after(user, 3 SECONDS, target = A))
 			user.visible_message(span_notice("[user] finishes wiping off [A]!"), span_notice("I finish wiping off [A]."))
 			SEND_SIGNAL(A, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)

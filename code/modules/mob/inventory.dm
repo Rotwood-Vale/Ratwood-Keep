@@ -250,10 +250,10 @@
 	I.dropped(src)
 	return FALSE
 
-/mob/proc/drop_all_held_items()
+/mob/proc/drop_all_held_items(force = FALSE)
 	. = FALSE
 	for(var/obj/item/I in held_items)
-		. |= dropItemToGround(I)
+		. |= dropItemToGround(I, force = force)
 
 //Here lie drop_from_inventory and before_item_take, already forgotten and not missed.
 

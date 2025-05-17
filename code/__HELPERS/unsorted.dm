@@ -10,11 +10,9 @@ var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAS
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -25,7 +23,6 @@ var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAS
 	textg = num2hex(255 - g, 2)
 	textb = num2hex(255 - b, 2)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 /proc/Get_Angle(atom/movable/start,atom/movable/end)//For beams.
 	if(!start || !end)
@@ -265,12 +262,9 @@ Turf and target are separate in case you want to teleport some distance from a t
 /proc/sortmobs()
 	var/list/moblist = list()
 	var/list/sortmob = sortNames(GLOB.mob_list)
-	var/list/types = list()
+	var/list/list/mob/types = list()
 	for(var/mob/M in sortmob)
-		if(M.type in types)
-			types[M.type].Add(M)
-		else
-			types[M.type] = list(M)
+		LAZYADD(types[M.type], M)
 	var/types_sort = sortNames(types)
 	for(var/T in types_sort)
 		moblist.Add(types_sort[T])
@@ -352,6 +346,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 // note range is non-pythagorean
 // used for disposal system
 /proc/get_ranged_target_turf(atom/A, direction, range)
+	RETURN_TYPE(/turf)
 
 	var/x = A.x
 	var/y = A.y
@@ -1098,7 +1093,7 @@ B --><-- A
 	return closest_atom
 
 
-proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
+/proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if (value == FALSE) //nothing should be calling us with a number, so this is safe
 		value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
 		if (isnull(value))
@@ -1554,14 +1549,14 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 #define VALID_HUNTING_AREAS list(\
 	/area/rogue/outdoors/bog )
 
-proc/is_valid_hunting_area(area/A)
+/proc/is_valid_hunting_area(area/A)
 	for(var/i in VALID_HUNTING_AREAS)
 		if(istype(A, i))
 			return TRUE
 	return FALSE
 
 // How long an action (e.g. do_after) can takes IN SECONDS by using skill checks
-proc/get_skill_delay(skill_level, fastest = 0.5, slowest = 5) 
+/proc/get_skill_delay(skill_level, fastest = 0.5, slowest = 5) 
 	if(skill_level == SKILL_LEVEL_NONE) //can't divivde by zero
 		return slowest SECONDS
 	else
