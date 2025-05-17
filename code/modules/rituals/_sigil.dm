@@ -10,7 +10,7 @@
 
 	/// The list of rituals that can be performed with this sigil.
 	var/rituals = list()
-	/obj/effect/decal/cleanable/sigil/var/datum/ritual/last_picked_ritual = null //this is checked to play sounds only if a ritual is picked in zizo.dm
+	var/datum/ritual/last_picked_ritual = null //this is checked to play sounds only if a ritual is picked in zizo.dm
 
 
 /obj/effect/decal/cleanable/sigil/
