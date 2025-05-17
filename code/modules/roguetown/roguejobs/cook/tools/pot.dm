@@ -76,13 +76,14 @@ obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 
 /* Boil */
 obj/item/reagent_containers/glass/bucket/pot/proc/boil()
+	// We only get a timer if we have a boil
+	// proc called, so don't do anything if called while one is active.
 	if(!active)
-		return
+		return 
 
-	if(!reagents.get_reagents()) //If there's no reagents in the pot. 
-		active = FALSE
+	//If there's no reagents in the pot. 
+	if(!reagents.get_reagents()) 
 		boilloop.stop()
-		return
 	
 	//cools down if not on hearth
 	if(!istype(loc, /obj/machinery/light/rogue/hearth))
@@ -95,38 +96,44 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 	// still process down to room temp even if no longer cooking
 	if(reagents.chem_temp < T100C)
 		boilloop.stop()
-		addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS) //At this point we slowly die down
-		return
 
-	// Start of success loops
-	boilloop.start()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		var/list/things = STR.contents()
-		if(!length(things))
-			// Should be the termination point if a pot with no items is idle on a hearth
-			addtimer(CALLBACK(src, PROC_REF(boil)),1 SECONDS)
-			return
+	// boiling code starts
+	if(reagents.chem_temp >= T100C)
+		boilloop.start()
+		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+		if(STR)
+			var/list/things = STR.contents()
 
-		for(var/obj/item/I in things)
-			var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, I)
-			if(!R)
-				continue
-			if(R.output)
-				item_times[I] += 1
-			else
-				continue
-		for(var/J in item_times)
-			var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, J)
-			var/cooking_limit = R.cooking_time/10
-			if(item_times[J] >= cooking_limit) //remove 10 for deciseconds
-				STR.remove_from_storage(J)
-				item_times -= J
-				R.cook(src) 
-				qdel(J)
+			for(var/obj/item/I in things)
+				var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, I)
+				if(!R)
+					// For items with reagents we can render down but did not have a recipe.
+					// Might need work if there's any fickle things added inside to a pot.
+					if(I.reagents.total_volume > 0)
+						item_times[I] += 1
+						if(item_times[I] >= I.reagents.total_volume) //uses total reagents as placeholder timer
+							I.reagents.trans_to(src, I.reagents.total_volume)
+							item_times -= I
+							playsound(get_turf(src), "bubbles", 30, TRUE)
+							qdel(I)
+					continue
 
-	if(active)
-		addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS)
+				if(R.output)
+					item_times[I] += 1
+				else
+					continue
+
+			for(var/J in item_times)
+				var/datum/pot_recipe/R = select_pot_recipe(GLOB.pot_recipes, J)
+				if(R)
+					var/cooking_limit = R.cooking_time/10
+					if(item_times[J] >= cooking_limit) //remove 10 for deciseconds
+						STR.remove_from_storage(J)
+						item_times -= J
+						R.cook(src) 
+						qdel(J)
+
+	addtimer(CALLBACK(src, PROC_REF(boil)), 1 SECONDS)
 
 
 // TO DO: Find a better place for this stuff eventually
