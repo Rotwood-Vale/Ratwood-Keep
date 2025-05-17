@@ -2126,6 +2126,10 @@
 	icon_state = "paving"
 	},
 /area/rogue/indoors/town/church)
+"bfa" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/bog)
 "bft" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 1
@@ -3633,12 +3637,6 @@
 	dir = 8
 	},
 /area/rogue/indoors/town/church/chapel)
-"bSv" = (
-/obj/structure/roguewindow/stained/silver,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
-/area/rogue/indoors/town/church)
 "bSE" = (
 /obj/structure/chair/bench{
 	dir = 4
@@ -4139,6 +4137,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
+"cgt" = (
+/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/structure/winch{
+	redstone_id = "churchgates1"
+	},
+/turf/open/water/bath,
+/area/rogue/indoors/town/church/chapel)
 "cgK" = (
 /obj/structure/flora/rogueshroom,
 /turf/open/water/swamp,
@@ -5863,14 +5868,6 @@
 /obj/structure/plasticflaps,
 /turf/open/water/swamp,
 /area/rogue/under/town/basement)
-"cZd" = (
-/obj/structure/mineral_door/wood{
-	lockid = "church";
-	name = "Healer's Wing";
-	locked = 1
-	},
-/turf/open/floor/rogue/churchrough,
-/area/rogue/indoors/town/church)
 "cZl" = (
 /obj/structure/flora/newleaf,
 /turf/open/floor/rogue/grassred,
@@ -8713,10 +8710,6 @@
 "evo" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/indoors/town)
-"evt" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/bog)
 "evw" = (
 /obj/structure/rack/rogue,
 /obj/item/storage/roguebag,
@@ -8764,6 +8757,10 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
+"ewD" = (
+/obj/structure/flora/newtree,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/bog)
 "ewU" = (
 /obj/structure/bed/rogue/shit,
 /obj/effect/landmark/start/prisonerr,
@@ -12538,6 +12535,9 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
+"gud" = (
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/bog)
 "guN" = (
 /obj/structure/roguewindow/curtain,
 /turf/open/floor/rogue/herringbone,
@@ -12548,13 +12548,6 @@
 	},
 /turf/open/floor/rogue/grassred,
 /area/rogue/outdoors/rtfield)
-"guY" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	lockid = "church";
-	name = "Common Room"
-	},
-/turf/open/floor/rogue/church,
-/area/rogue/indoors/town/church)
 "gvg" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -14414,10 +14407,6 @@
 	icon_state = "wooden_floor2"
 	},
 /area/rogue/indoors)
-"hvv" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/rogue/grassyel,
-/area/rogue/outdoors/bog)
 "hvB" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /turf/open/water/swamp,
@@ -16229,6 +16218,12 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"iux" = (
+/obj/structure/roguewindow/stained/silver,
+/turf/closed/wall/mineral/rogue/decostone/long{
+	dir = 1
+	},
+/area/rogue/indoors/town/church)
 "iuB" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -17300,6 +17295,10 @@
 /obj/item/flashlight/flare/torch/metal,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/indoors/town/church)
+"iWy" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/bog)
 "iWF" = (
 /obj/structure/roguewindow/curtain{
 	dir = 1
@@ -19735,8 +19734,15 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town/roofs)
 "kiR" = (
-/turf/open/floor/rogue/grassred,
-/area/rogue/outdoors/bog)
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/obj/structure/gate_vertical{
+	name = "Church gates";
+	redstone_id = "churchgates1"
+	},
+/turf/open/floor/rogue/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "kiY" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -22302,10 +22308,6 @@
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/bath)
-"lGo" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/grassred,
-/area/rogue/outdoors/bog)
 "lGu" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/basement)
@@ -30973,6 +30975,10 @@
 /obj/structure/bed/rogue/inn/hay,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
+"qnG" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/rogue/grassred,
+/area/rogue/outdoors/bog)
 "qnQ" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -31866,13 +31872,6 @@
 	dir = 6
 	},
 /area/rogue/outdoors/town/roofs)
-"qLL" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
-/obj/structure/winch{
-	redstone_id = "churchgates1"
-	},
-/turf/open/water/bath,
-/area/rogue/indoors/town/church/chapel)
 "qLP" = (
 /obj/structure/fluff/statue/gargoyle/moss/candles,
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -31902,6 +31901,13 @@
 /obj/structure/well,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
+"qNi" = (
+/obj/structure/mineral_door/wood/donjon/stone{
+	lockid = "church";
+	name = "Common Room"
+	},
+/turf/open/floor/rogue/church,
+/area/rogue/indoors/town/church)
 "qNP" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -34482,10 +34488,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
-"skG" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/rogue/grassred,
-/area/rogue/outdoors/bog)
 "skN" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -36413,8 +36415,7 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "tky" = (
-/obj/structure/flora/newtree,
-/turf/open/floor/rogue/grassred,
+/turf/open/water/sea/thermalwater,
 /area/rogue/outdoors/bog)
 "tkK" = (
 /obj/structure/fluff/statue/scare,
@@ -38352,6 +38353,14 @@
 	},
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/town/harbor)
+"unL" = (
+/obj/structure/mineral_door/wood{
+	lockid = "church";
+	name = "Healer's Wing";
+	locked = 1
+	},
+/turf/open/floor/rogue/churchrough,
+/area/rogue/indoors/town/church)
 "uoa" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /obj/structure/closet/crate/chest{
@@ -39450,9 +39459,6 @@
 	icon_state = "weird1"
 	},
 /area/rogue/indoors)
-"uSF" = (
-/turf/open/water/sea/thermalwater,
-/area/rogue/outdoors/bog)
 "uSL" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4;
@@ -42585,16 +42591,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
-"wDE" = (
-/obj/structure/stairs/stone{
-	dir = 4
-	},
-/obj/structure/gate_vertical{
-	name = "Church gates";
-	redstone_id = "churchgates1"
-	},
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "wDJ" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -44195,6 +44191,10 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/carpet/inn,
 /area/rogue/under/cavewet/bogcaves)
+"xtP" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/rogue/grassyel,
+/area/rogue/outdoors/bog)
 "xtQ" = (
 /obj/structure/closet/crate/chest{
 	lockid = "physician";
@@ -253118,7 +253118,7 @@ wLx
 odi
 sYx
 wLx
-evt
+bfa
 odi
 sYx
 sYx
@@ -253549,9 +253549,9 @@ sYx
 odi
 odi
 cqD
-hvv
-evt
-kiR
+xtP
+bfa
+gud
 sYx
 sYx
 uRH
@@ -253980,11 +253980,11 @@ odi
 odi
 odi
 odi
-evt
-uSF
-uSF
-hvv
-kiR
+bfa
+tky
+tky
+xtP
+gud
 kWT
 uRH
 sYx
@@ -254412,12 +254412,12 @@ uRH
 sYx
 sYx
 cqD
-hvv
-uSF
-uSF
-uSF
-evt
+xtP
 tky
+tky
+tky
+bfa
+ewD
 odi
 sYx
 sYx
@@ -254843,14 +254843,14 @@ uRH
 wLx
 wLx
 sYx
-evt
-evt
-uSF
-uSF
-uSF
-uSF
-skG
-kiR
+bfa
+bfa
+tky
+tky
+tky
+tky
+iWy
+gud
 sYx
 sYx
 sYx
@@ -255276,13 +255276,13 @@ wLx
 wLx
 sYx
 sYx
-evt
-uSF
-uSF
-uSF
-uSF
-evt
-kiR
+bfa
+tky
+tky
+tky
+tky
+bfa
+gud
 odi
 sYx
 sYx
@@ -255708,13 +255708,13 @@ wLx
 wLx
 sYx
 sYx
-kiR
-evt
-uSF
-uSF
-uSF
-uSF
-hvv
+gud
+bfa
+tky
+tky
+tky
+tky
+xtP
 uRH
 odi
 odi
@@ -256142,11 +256142,11 @@ odi
 odi
 wLx
 cqD
-uSF
-uSF
-uSF
-uSF
-evt
+tky
+tky
+tky
+tky
+bfa
 odi
 odi
 sYx
@@ -256573,11 +256573,11 @@ odi
 sYx
 odi
 sYx
-kiR
+gud
+ewD
 tky
-uSF
-uSF
-uSF
+tky
+tky
 cqD
 cqD
 sYx
@@ -257006,11 +257006,11 @@ egs
 odi
 sYx
 odi
-skG
+iWy
 cqD
-uSF
-uSF
-evt
+tky
+tky
+bfa
 cqD
 odi
 odi
@@ -257439,10 +257439,10 @@ odi
 odi
 sYx
 sYx
-lGo
-lGo
-tky
-kiR
+qnG
+qnG
+ewD
+gud
 odi
 odi
 sYx
@@ -257873,7 +257873,7 @@ odi
 wLx
 sYx
 odi
-kiR
+gud
 odi
 uRH
 sYx
@@ -355183,7 +355183,7 @@ xAt
 abn
 wbg
 wVI
-bSv
+iux
 cDx
 eBN
 eBN
@@ -466650,7 +466650,7 @@ nJy
 ryj
 jjS
 klN
-wDE
+kiR
 tCI
 nJy
 moU
@@ -467074,7 +467074,7 @@ fZJ
 uSx
 teW
 wAm
-cZd
+unL
 wAm
 tML
 bxS
@@ -467084,11 +467084,11 @@ swm
 nhW
 swm
 xyU
-qLL
+cgt
 bxS
 moU
 moU
-guY
+qNi
 moU
 wAm
 uSx
