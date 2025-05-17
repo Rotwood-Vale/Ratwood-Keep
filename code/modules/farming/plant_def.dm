@@ -88,8 +88,8 @@
 	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
-	maturation_time = 6 MINUTES
-	produce_time = 3 MINUTES
+	maturation_time = 10 MINUTES
+	produce_time = 6 MINUTES
 
 /datum/plant_def/pipeweed
 	name = "westleach leaf"
@@ -122,8 +122,8 @@
 	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
-	maturation_time = 6 MINUTES
-	produce_time = 3 MINUTES
+	maturation_time = 10 MINUTES
+	produce_time = 6 MINUTES
 
 /datum/plant_def/berry_poison
 	name = "berry bush"
