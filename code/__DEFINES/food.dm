@@ -19,3 +19,8 @@
 #define DRINK_VERYGOOD	3
 #define DRINK_FANTASTIC	4
 #define FOOD_AMAZING 5
+
+// Checking for interaction types? (attackby and attackhand, both procs feed their own proc)
+// Will make getting this all into the same datum easier to read maybe.
+#define FOOD_INTERACTION_ITEM 1 // use for attackby proc
+#define FOOD_INTERACTION_HAND 2 // use for attack_hand proc
