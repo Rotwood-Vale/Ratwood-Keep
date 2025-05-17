@@ -7,8 +7,11 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	var/despawn_on_idle = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/proc/despawncheck()
+	if (!despawn_on_idle)
+		return
 	if(nearbyhumanpresent(5))	//check for humans in range
 		return	//return if humans in range
 	if(AIStatus == AI_IDLE)
