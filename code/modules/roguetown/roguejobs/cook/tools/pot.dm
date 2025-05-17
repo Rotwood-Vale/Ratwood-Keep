@@ -27,7 +27,7 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass/bowl))
-		var/obj/item/reagent_containers/glass/bowl/B = I 
+		var/obj/item/reagent_containers/glass/bowl/B = I
 		to_chat(user, "<span class='notice'>Filling the bowl...</span>")
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 70, FALSE)
 		if(do_after(user,2 SECONDS, target = src))
@@ -48,7 +48,6 @@ obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
 /* Component Initialize */
 obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/pot)
 	boilloop = new(src, FALSE)
 
 /* Destroy */
@@ -83,10 +82,10 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 		active = FALSE
 		boilloop.stop()
 		return
-	
+
 	//cools down if not on hearth
 	if(!istype(loc, /obj/machinery/light/rogue/hearth))
-		reagents.expose_temperature(T20C,  0.033) 
+		reagents.expose_temperature(T20C,  0.033)
 
 	if(reagents.chem_temp <= T20C)
 		active = FALSE
@@ -122,7 +121,7 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 			if(item_times[J] >= cooking_limit) //remove 10 for deciseconds
 				STR.remove_from_storage(J)
 				item_times -= J
-				R.cook(src) 
+				R.cook(src)
 				qdel(J)
 
 	if(active)
@@ -170,7 +169,7 @@ Pot Recipe
 
 	// One final sanity check in case some lunatic empties some water but still keeps cooking and didn't hit 0 water or null reagents
 	var/true_volume_to_remove =  min(volume_to_replace, pot.reagents.get_reagent_amount(/datum/reagent/water))
-	
+
 	var/temp = pot.reagents.chem_temp
 	pot.reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
 	pot.reagents.add_reagent(output, true_volume_to_remove, reagtemp = temp)
@@ -223,7 +222,7 @@ Meats
 
 /datum/pot_recipe/fish_stew
 	input = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
-	output = /datum/reagent/consumable/soup/stew/fish 
+	output = /datum/reagent/consumable/soup/stew/fish
 	cooking_time = 90 SECONDS
 
 /datum/pot_recipe/chicken_stew

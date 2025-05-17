@@ -16,7 +16,7 @@
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
-	
+
 	cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/job/roguetown/monk/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -42,7 +42,6 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/ritualfeather = 1)
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
