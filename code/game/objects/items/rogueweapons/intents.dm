@@ -12,6 +12,7 @@
 	var/obj/item/masteritem
 	var/mob/living/mastermob
 	var/unarmed = FALSE
+	var/datum/skill/unarmed_skill = /datum/skill/combat/unarmed
 	var/intent_type
 	var/animname = "strike"
 	var/blade_class = BCLASS_BLUNT
@@ -418,6 +419,7 @@
 	candodge = TRUE
 	canparry = TRUE
 	item_d_type = "blunt"
+	unarmed_skill = /datum/skill/combat/wrestling
 
 /datum/intent/unarmed/grab/rmb_ranged(atom/target, mob/user)
 	if(ismob(target))
