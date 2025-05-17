@@ -167,8 +167,6 @@
 	/datum/species/goblin/moon,\
 )
 
-
-
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
 	/datum/patron/divine/noc,\
@@ -341,7 +339,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
-
+#define CTAG_ADVENTURER		"CAT_ADVENTURER"		// Adventurer classes
 /*
 	Defines for the triumph buy datum categories
 */

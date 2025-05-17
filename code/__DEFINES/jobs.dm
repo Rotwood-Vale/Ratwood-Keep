@@ -298,7 +298,7 @@
 #define JDO_VET 31.2
 #define JDO_SEELIE 31.3
 
-#define JDO_VAGRANT 33
+#define JDO_VAGRANT 34
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
@@ -316,7 +316,6 @@
 #define JDO_REFUGEE 42.1
 #define JDO_MIGRANT 42.2
 #define JDO_BANDIT 42.3
-
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -410,4 +409,5 @@
 #define FOREIGNER_ROLES \
 	/datum/job/roguetown/refugee,\
 	/datum/job/roguetown/migrant,\
-	/datum/job/roguetown/bandit,
+	/datum/job/roguetown/bandit
+
