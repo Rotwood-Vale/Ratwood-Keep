@@ -111,8 +111,9 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 					// Might need work if there's any fickle things added inside to a pot.
 					if(I.reagents.total_volume > 0)
 						item_times[I] += 1
-						if(item_times[I] >= I.reagents.total_volume) //uses total reagents as placeholder timer
-							I.reagents.trans_to(src, I.reagents.total_volume)
+						var/render_time = I.reagents.total_volume * 5 // 3 is now 15 seconds etc...
+						if(item_times[I] >= 40) 
+							I.reagents.trans_to(src, render_time)
 							item_times -= I
 							playsound(get_turf(src), "bubbles", 30, TRUE)
 							qdel(I)
