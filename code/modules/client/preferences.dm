@@ -1999,6 +1999,7 @@ Slots: [job.spawn_positions]</span>
 		O = character.get_bodypart(BODY_ZONE_L_ARM)
 		if(O)
 			O.drop_limb()
+			qdel(O)
 		character.regenerate_limb(BODY_ZONE_R_ARM)
 		character.regenerate_limb(BODY_ZONE_L_ARM)
 
