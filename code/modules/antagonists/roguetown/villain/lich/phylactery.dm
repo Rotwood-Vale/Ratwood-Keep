@@ -23,3 +23,8 @@
 		possessor.owner.current.forceMove(get_turf(src))
 		possessor.rise_anew()
 		qdel(src)
+
+/obj/item/phylactery/Destroy()
+	if(possessor)
+		possessor.phylacteries -= src
+	return ..()

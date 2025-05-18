@@ -97,7 +97,7 @@
 
 							H.set_blindness(0)
 						if("Cultist") //OK stats, bad starting gear, no armor training, badish skills, only remarkable thing is unholy 3
-							H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+							H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE) //they need to be able to detain people nonlethally
 							H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 							H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 							H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)

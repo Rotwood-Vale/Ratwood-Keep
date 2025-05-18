@@ -1,9 +1,35 @@
 // Sacrifice
 
-	/* //Use to notifiy
-	for(var/mob/living/carbon/human/HL in GLOB.human_list)
-		to_chat(HL.mind, "<span class='notice'>A dark ritual has been completed...</span>")
-	*/
+/datum/ritual/zizo/bloodfavor
+	name = "Blood Favor"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	revealchance = 50
+	center_requirement = /obj/item/bloodoffering
+
+	function = /proc/bloodfavor
+
+proc/bloodfavor(mob/user, turf/C)
+	user.mind.divinefavor += 50
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("You feel your connection to Zizo deepen as you drain power from this bloody artefact!"))
+
+/datum/ritual/zizo/undyingfavor
+	name = "Undying Favor"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	revealchance = 50
+	center_requirement = /obj/item/phylactery
+
+	function = /proc/undyingfavor
+
+/proc/undyingfavor(mob/user, turf/C)
+	user.mind.divinefavor += 100
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("You feel your connection to Zizo deepen as you drain power from this unholy artefact!"))
+
 /datum/ritual/zizo/debugfavor
 	name = "Debug Favor Ritual please report to Admemes if this is somehow ingame"
 	circle = "Sacrifice"
@@ -33,7 +59,7 @@
 
 
 /proc/lesserwildsacrifice(mob/user, turf/C)
-	user.mind.divinefavor += 10;
+	user.mind.divinefavor += 5;
 	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	to_chat(user.mind, span_notice("Lady Zizo accepts my meagre gift!"))
 
@@ -54,7 +80,7 @@
 
 
 /proc/greaterwildsacrifice(mob/user, turf/C)
-	user.mind.divinefavor += 75;
+	user.mind.divinefavor += 40;
 	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
 	to_chat(user.mind, span_notice("Lady Zizo accepts my gift!"))
 
