@@ -208,7 +208,7 @@
 
 /datum/supply_pack/rogue/tools/tntstick
 	name = "Blackpowder sticks"
-	cost = 50
+	cost = 80
 	contains = list(/obj/item/tntstick,
 					/obj/item/tntstick,
 					/obj/item/tntstick,
@@ -216,7 +216,7 @@
 
 /datum/supply_pack/rogue/tools/bombsatchel
 	name = "Bomb satchel"
-	cost = 50
+	cost = 120
 	contains = list(/obj/item/satchel_bomb)					
 
 /datum/supply_pack/rogue/tools/impactgrenadecontact
