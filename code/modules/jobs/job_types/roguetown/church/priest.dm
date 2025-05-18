@@ -17,6 +17,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	allowed_ages = ALL_AGES_LIST
 	tutorial = "The Divine is all that matters in a world of the immoral. The Weeping God left his children to rule over us mortals and you will preach their wisdom to any who still heed their will. The faithless are growing in number, it is up to you to shepard them to a Gods-fearing future."
 	whitelist_req = FALSE
+	can_leave_round = FALSE
 
 	spells = list(SPELL_CONVERT_ROLE_TEMPLAR, SPELL_CONVERT_ROLE_MONK)
 	outfit = /datum/outfit/job/roguetown/priest
@@ -59,8 +60,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		/obj/item/needle/pestra = 1,
 		/obj/item/natural/worms/leech/cheele = 1, //little buddy
 		/obj/item/storage/keyring/priest = 1,
+		/obj/item/ritualfeather = 1,
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)

@@ -217,6 +217,33 @@
 	add_overlay(M)
 	GLOB.lordcolor -= src
 
+/obj/structure/fluff/walldeco/custombanner
+	name = "rockhill banners"
+	desc = "Small flags displaying duchy pride."
+	icon_state = "bannerflags"
+
+/obj/structure/fluff/walldeco/custombanner/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/structure/fluff/walldeco/custombanner/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/structure/fluff/walldeco/custombanner/lordcolor(primary,secondary)
+	if(!primary || !secondary)
+		return
+	var/mutable_appearance/M = mutable_appearance(icon, "bannerflags_primary", -(layer+0.1))
+	M.color = primary
+	add_overlay(M)
+	M = mutable_appearance(icon, "bannerflags_secondary", -(layer+0.1))
+	M.color = secondary
+	add_overlay(M)
+	GLOB.lordcolor -= src
+
 /obj/structure/fluff/walldeco/moon
 	name = "banner"
 	icon_state = "moon"

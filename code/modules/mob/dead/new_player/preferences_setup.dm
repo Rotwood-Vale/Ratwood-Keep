@@ -8,6 +8,11 @@
 		gender = gender_override
 	else
 		gender = pick(MALE,FEMALE)
+
+	voice_type = VOICE_TYPE_MASC
+	if(gender == FEMALE)
+		voice_type = VOICE_TYPE_FEM
+		
 	age = AGE_ADULT
 	var/list/skins = pref_species.get_skin_list()
 	skin_tone = skins[pick(skins)]

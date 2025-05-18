@@ -16,6 +16,8 @@
 	give_bank_account = TRUE
 	min_pq = 0
 	max_pq = null
+	
+	cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/job/roguetown/monk/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -39,6 +41,8 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
+	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/ritualfeather = 1)
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -102,6 +106,7 @@
 		H.change_stat("intelligence", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("perception", -1)
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new SPELL_MALUM_FLAME_ROGUE) // weaker astra fire spell. mostly for lighting things.
 

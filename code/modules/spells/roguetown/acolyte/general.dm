@@ -147,7 +147,7 @@
 			to_chat(user, "Channeling my patron's power is easier in these conditions!")
 			healing += situational_bonus
 
-		if(ishuman(target))
+		if(target)
 			var/mob/living/carbon/human/H = target
 			var/no_embeds = TRUE
 			var/list/embeds = H.get_embedded_objects()
