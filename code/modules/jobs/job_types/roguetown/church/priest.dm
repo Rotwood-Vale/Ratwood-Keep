@@ -75,12 +75,12 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", 2) //good at casting lots of miracles without tiring, divinely fortified stamina
+		H.change_stat("intelligence", 3) 
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat("strength", -1)
-		H.change_stat("intelligence", 3)
-		H.change_stat("constitution", -1)
-		H.change_stat("endurance", 1)
+
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron) // This creates the cleric holder used for devotion spells
 	C.grant_spells_priest(H)
