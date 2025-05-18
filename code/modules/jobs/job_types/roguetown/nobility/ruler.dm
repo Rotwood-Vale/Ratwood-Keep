@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	selection_color = JCOLOR_NOBLE
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
+	can_leave_round = FALSE
 
 	spells = list(
 		SPELL_GRANT_TITLE,
