@@ -431,6 +431,33 @@
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
 
+/obj/item/reagent_containers/food/snacks/rogue/cake_base_cooked
+	name = "plain cake"
+	desc = "A simple plain cake for any non special occasion."
+	icon_state = "cakeplain"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 30)
+	slices_num = 8
+	\slice_path = /obj/item/reagent_containers/food/snacks/rogue/cake_base_sliced
+	w_class = WEIGHT_CLASS_NORMAL
+	foodtype = GRAIN | DAIRY
+	rotprocess = SHELFLIFE_LONG
+	slice_batch = TRUE
+	slice_sound = TRUE 
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	bitesize = 16
+
+/obj/item/reagent_containers/food/snacks/rogue/cake_base_slice
+	name = "plaine cake slice"
+	icon_state = "cakeplain_slice"
+	slices_num = 0
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	w_class = WEIGHT_CLASS_NORMAL
+	cooked_type = null
+	foodtype = GRAIN | DAIRY
+	bitesize = 3
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	rotprocess = SHELFLIFE_LONG
+
 // -------------- SPIDER-HONEY CAKE (Zybantu) -----------------
 /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
 	name = "unbaked cake"
