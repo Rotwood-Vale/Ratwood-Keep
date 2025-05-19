@@ -113,10 +113,17 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 						item_times[I] += 1
 						var/render_time = I.reagents.total_volume * 5 // 3 is now 15 seconds etc...
 						if(item_times[I] >= render_time) 
-							I.reagents.trans_to(src, I.reagents.total_volume)
-							item_times -= I
-							playsound(get_turf(src), "bubbles", 30, TRUE)
-							qdel(I)
+							var/true_volume_to_remove =  min(I.reagents.total_volume, reagents.get_reagent_amount(/datum/reagent/water))
+
+							if(true_volume_to_remove > 0) //better place for this
+								var/temp = reagents.chem_temp
+								reagents.remove_reagent(/datum/reagent/water, true_volume_to_remove)
+								reagents.add_reagent(I.reagents.get_reagents(), true_volume_to_remove, reagtemp = temp)
+
+								I.reagents.trans_to(src, true_volume_to_remove)
+								item_times -= I
+								playsound(get_turf(src), "bubbles", 30, TRUE)
+								qdel(I)
 					continue
 
 				if(R.output)
