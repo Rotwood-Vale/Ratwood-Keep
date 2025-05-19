@@ -426,6 +426,7 @@
 	name = "cake base"
 	desc = "With this sweet thing, you shall make them sing.(Add fresh cheese or honeycomb and bake!)"
 	icon_state = "cake"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cake_base_cooked
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
@@ -437,7 +438,7 @@
 	icon_state = "cakeplain"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 30)
 	slices_num = 8
-	\slice_path = /obj/item/reagent_containers/food/snacks/rogue/cake_base_sliced
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cake_base_slice
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
@@ -456,6 +457,129 @@
 	foodtype = GRAIN | DAIRY
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	rotprocess = SHELFLIFE_LONG
+
+
+/*	.................   Fruit Cake   ................... */
+/obj/item/reagent_containers/food/snacks/rogue/cake_fruit
+	name = "unbaked fruit cake"
+	desc = "A cake of Valorian origin featuring a number of fruits."
+	icon_state = "fruitcakeuncook"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fruit_cake_cooked
+	w_class = WEIGHT_CLASS_NORMAL
+	foodtype = GRAIN | DAIRY | FRUIT
+	rotprocess = SHELFLIFE_LONG
+
+/obj/item/reagent_containers/food/snacks/rogue/fruit_cake_cooked
+	name = "fruit cake"
+	desc = "A cake of Valoria origin featuring a number of fruits."
+	icon_state = "fruitcake"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 40)
+	tastes = list("cake"=1, "various fruits"=1)
+	slices_num = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/fruit_cake_slice
+	w_class = WEIGHT_CLASS_NORMAL
+	foodtype = GRAIN | DAIRY | FRUIT
+	rotprocess = SHELFLIFE_LONG
+	slice_batch = TRUE
+	slice_sound = TRUE 
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	bitesize = 16
+
+/obj/item/reagent_containers/food/snacks/rogue/fruit_cake_slice
+	name = "fruit cake slice"
+	icon_state = "fruitcake_slice"
+	slices_num = 0
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	w_class = WEIGHT_CLASS_NORMAL
+	cooked_type = null
+	foodtype = GRAIN | DAIRY | FRUIT
+	bitesize = 3
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	rotprocess = SHELFLIFE_LONG
+
+/* Iced cake */
+/obj/item/reagent_containers/food/snacks/rogue/icedcake
+	name = "unbaked iced cake"
+	desc = "A Lanternshore favorite. The cake is covered in a smooth layer of icing."
+	icon_state = "icedcakeuncook"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/icedcake_cooked
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	foodtype = GRAIN | DAIRY | SUGAR
+	rotprocess = SHELFLIFE_LONG
+
+/obj/item/reagent_containers/food/snacks/rogue/icedcake_cooked
+	name = "iced cake"
+	desc = "A Lanternshore favorite. The cake is covered in a smooth layer of icing."
+	icon_state = "icedcake"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 40)
+	slices_num = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/icedcake_slice
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("cake"=1, "sugar"=1)
+	foodtype = GRAIN | DAIRY | SUGAR
+	rotprocess = SHELFLIFE_LONG
+	slice_batch = TRUE
+	slice_sound = TRUE 
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	bitesize = 16
+
+/obj/item/reagent_containers/food/snacks/rogue/icedcake_slice
+	name = "fruit cake slice"
+	icon_state = "icedcake_slice"
+	slices_num = 0
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	w_class = WEIGHT_CLASS_NORMAL
+	cooked_type = null
+	foodtype = GRAIN | DAIRY | SUGAR
+	bitesize = 3
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	rotprocess = SHELFLIFE_LONG
+
+
+
+/* ----- Venus Cake ----- */
+/obj/item/reagent_containers/food/snacks/rogue/venuscake
+	name = "unbaked venus cake"
+	icon_state = "venuscakeuncook"
+	slices_num = 0
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/venuscake_cooked
+	cooked_smell = /datum/pollutant/food/honey_cake
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	foodtype = GRAIN | DAIRY | FRUIT
+	rotprocess = SHELFLIFE_DECENT
+
+/obj/item/reagent_containers/food/snacks/rogue/venuscake_cooked
+	name = "Venus cake"
+	desc = "A berries covered cake."
+	icon_state = "venuscake"
+	slices_num = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/venuscake_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = 40)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("cake"=1, "berries"=1)
+	foodtype = GRAIN | DAIRY | FRUIT
+	slice_batch = TRUE
+	slice_sound = TRUE 
+	rotprocess = SHELFLIFE_LONG
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	extra_eat_effect = /datum/status_effect/buff/sweet
+	bitesize = 16
+
+/obj/item/reagent_containers/food/snacks/rogue/venuscake_slice
+	name = "Venus cake slice"
+	icon_state = "venuscake_slice"
+	slices_num = 0
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
+	w_class = WEIGHT_CLASS_NORMAL
+	cooked_type = null
+	foodtype = GRAIN | DAIRY | FRUIT
+	bitesize = 3
+	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 // -------------- SPIDER-HONEY CAKE (Zybantu) -----------------

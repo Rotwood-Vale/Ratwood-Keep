@@ -34,6 +34,25 @@ CAKES
 	crafting_message = "You start making a cheesecake..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
 
+
+/* Fruit cake */
+/datum/food_handle_recipes/fruit_cake
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+		/obj/item/reagent_containers/food/snacks/grown/apple )
+	crafting_message = "You start making a fruitcake..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/cake_fruit
+
+/* Iced cake */
+/datum/food_handle_recipes/iced_cake
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
+		/obj/item/reagent_containers/powder/sugar)
+	crafting_message = "You start making an iced cake..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/icedcake
+
+
 /* Pancake stack*/
 /datum/food_handle_recipes/pancake_stack
 	items = list(
@@ -41,6 +60,17 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/pancake)
 	crafting_message = "You start making a pancake stack..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/pancake_stack
+
+
+
+/* Venus cake */
+/datum/food_handle_recipes/venus_cake
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue)
+	crafting_message = "You start making a Venus cake..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/venuscake
+
 
 
 /* Zybantine cake */
@@ -86,6 +116,13 @@ COOKED MEALS
 	crafting_message = "You start putting the sausage into the bun..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
 
+/* Meatballs */
+/datum/food_handle_recipes/omelette
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/meat/mince, 
+		/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced)
+	crafting_message = "You start making forming meatballs..."
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/meatballs_raw
 
 /* Omelette */
 /datum/food_handle_recipes/omelette
@@ -130,6 +167,14 @@ COOKED MEALS
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince )
 	crafting_message = "You start making a sausage roll..."       
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
+
+/* Scallped potatoes */
+/datum/food_handle_recipes/scallped_potatoes
+	items = list(
+		/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried,
+		/obj/item/reagent_containers/food/snacks/rogue/cheddarwedge,)
+	crafting_message = "You start making scalloped potatoes..."       
+	result = /obj/item/reagent_containers/food/snacks/rogue/veg/scalloped_potatoes
 
 /* Spicy bird */
 /datum/food_handle_recipes/spicybird
