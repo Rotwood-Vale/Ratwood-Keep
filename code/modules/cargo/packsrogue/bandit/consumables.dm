@@ -53,11 +53,6 @@
 	cost = 35
 	contains = list(/obj/item/reagent_containers/powder/spice)
 
-/datum/supply_pack/rogue/bandit/Consumables/wienerpotato
-	name = "Wiener & Potato"
-	cost = 25
-	contains = list(/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated)
-
 /datum/supply_pack/rogue/bandit/Consumables/meatpie
 	name = "Meat Pie"
 	cost = 35
