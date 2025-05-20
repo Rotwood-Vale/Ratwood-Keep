@@ -71,10 +71,7 @@
 /datum/supply_pack/rogue/bandit/Brigand/Brigand_second_supply_pack/Tshield
 	name = "Tower Shield"
 	cost = 30
-	contains = list(/obj/item/rogueweapon/shield/tower)/datum/supply_pack/rogue/bandit/Brigand/Brigand_second_supply_pack
-	group = "Brigand second supply pack"
-	crate_name = "Gifts of Strength"
-	crate_type = /obj/structure/closet/crate/chest/merchant
+	contains = list(/obj/item/rogueweapon/shield/tower)
 
 //helmet
 
