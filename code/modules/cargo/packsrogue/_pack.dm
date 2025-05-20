@@ -18,7 +18,6 @@
 	var/small_item = FALSE //Small items can be grouped into a single crate.
 	var/purchases_per_player = 0 //If non-null, can only be purchased a limited amount of times
 	var/list/purchasers = list()
-/*
 
 /datum/supply_pack/New()
 	..()
