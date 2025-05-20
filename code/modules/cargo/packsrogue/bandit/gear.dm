@@ -5,7 +5,7 @@
 
 /datum/supply_pack/rogue/bandit/Gear/zenarii
 	name = "Zenar"
-	cost = 11
+	cost = 15
 	contains = list(/obj/item/roguecoin/gold)
 
 /datum/supply_pack/rogue/bandit/Gear/chain
