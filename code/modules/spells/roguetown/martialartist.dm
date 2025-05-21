@@ -67,7 +67,7 @@
 	miracle = FALSE
 	charge_max = 40 SECONDS
 	invocation = "Heh."
-	invovaction_type "none"
+	invovaction_type = "none"
 	movement_interrupt = FALSE
 
 /obj/effect/proc_holder/spell/invoked/ryunecksnap/cast(list/targets, mob/living/user)
