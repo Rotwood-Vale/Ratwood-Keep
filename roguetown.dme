@@ -1843,6 +1843,7 @@
 #include "code\modules\spells\roguetown\_roguetown.dm"
 #include "code\modules\spells\roguetown\confessor.dm"
 #include "code\modules\spells\roguetown\jester.dm"
+#include "code\modules\spells\roguetown\martialartist.dm"
 #include "code\modules\spells\roguetown\necromancer.dm"
 #include "code\modules\spells\roguetown\seelie.dm"
 #include "code\modules\spells\roguetown\wizard.dm"

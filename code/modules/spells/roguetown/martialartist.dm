@@ -74,7 +74,7 @@
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		var/obj/item/bodypart/BPN = target.get_bodypart(BODY_ZONE_PRECISE_NECK)
-		target.visible_message(span_warningbig("[target] has their neck suddenly snapped with a sickening sound!", span_userdanger("Your vision suddenly darkens, you have trouble breathing...")))
+		target.visible_message(span_warningbig("[target] has their neck suddenly snapped with a sickening sound!"), span_userdanger("Your vision suddenly darkens, you have trouble breathing..."))
 		playsound(target, 'sound/magic/necksnap.ogg')
 		target.adjustOxyLoss(100)
 		target.apply_damage(rand(70,100), BRUTE, BPN)
