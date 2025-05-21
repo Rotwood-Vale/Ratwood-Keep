@@ -13,6 +13,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/egg ) 
 	
 	crafting_message = "You start making a cake base..."
+	craft_sound = 'modular/Neu_Food/sound/eggbreak.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 
 /*Cake base full */
@@ -24,6 +25,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/egg ) 
 
 	crafting_message = "You start making a cake base..."
+	craft_sound = 'modular/Neu_Food/sound/eggbreak.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_base
 
 /* Cheese cake */
@@ -32,6 +34,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese )
 	crafting_message = "You start making a cheesecake..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/ccakeuncooked
 
 
@@ -42,6 +45,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
 		/obj/item/reagent_containers/food/snacks/grown/apple )
 	crafting_message = "You start making a fruitcake..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/cake_fruit
 
 /* Iced cake */
@@ -50,6 +54,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/powder/sugar)
 	crafting_message = "You start making an iced cake..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/icedcake
 
 
@@ -59,6 +64,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/pancake,
 		/obj/item/reagent_containers/food/snacks/rogue/pancake)
 	crafting_message = "You start making a pancake stack..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/pancake_stack
 
 
@@ -69,6 +75,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue)
 	crafting_message = "You start making a Venus cake..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/venuscake
 
 
@@ -79,6 +86,7 @@ CAKES
 		/obj/item/reagent_containers/food/snacks/rogue/cake_base,
 		/obj/item/reagent_containers/food/snacks/rogue/honey)
 	crafting_message = "You start making a honey cake..."
+	craft_sound = 'sound/foley/dropsound/food_drop.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/hcakeuncooked
 
 
@@ -307,7 +315,7 @@ DOUGH RECIPES
 	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
 	crafting_message = "You start shaping the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough_base
-	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 
 /datum/food_handle_recipes/dough_base/pre_check(user, to_check)
 	for(var/obj/item/reagent_containers/powder/flour/F in to_check)
@@ -326,7 +334,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/dough_base ) 
 	crafting_message = "You begin to finish the dough..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/dough
-	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 
 
 /* Butterdough */
@@ -335,6 +343,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/reagent_containers/food/snacks/butterslice )
 	crafting_message = "You start working the butter into the dough..."
+	craft_sound = 'modular/Neu_Food/sound/kneading_alt.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
 
 /* Butterdough reassemble */
@@ -343,6 +352,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice )
 	crafting_message = "You start putting the butterdough back together..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/butterdough
 
 /* Raisinbread half */
@@ -351,6 +361,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
 	crafting_message = "You start working some raisins into the dough..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbread_half
 
 /* Raisinbread full */
@@ -359,6 +370,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/rbread_half,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins )
 	crafting_message = "You start finishing the raisin bread..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked
 
 
@@ -368,6 +380,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/dough,
 		/obj/item/kitchen/rollingpin )
 	crafting_message = "You begin making some hardtack..."
+	craft_sound = 'modular/Neu_Food/sound/rollingpin.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
 
 /* Cheese bun raw */
@@ -419,6 +432,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/butterdoughslice,
 		/obj/item/kitchen/rollingpin ) 
 	crafting_message = "You start flattening the butterdough out..."
+	craft_sound = 'modular/Neu_Food/sound/rollingpin.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/piedough
 
 /* small flat dough */
@@ -427,6 +441,7 @@ DOUGH RECIPES
 		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
 		/obj/item/kitchen/rollingpin ) 
 	crafting_message = "You start to flatten the dough out..."
+	craft_sound = 'modular/Neu_Food/sound/rollingpin.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/flatdoughsmall
 
 
@@ -503,6 +518,7 @@ MISC
 		/obj/item/reagent_containers/powder/sugar )
 	interaction_type = FOOD_INTERACTION_HAND //uses attackhand
 	crafting_message = "You start working the sugar..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/candybase
 
 /datum/food_handle_recipes/candy_base/pre_check(user, to_check)
@@ -517,6 +533,7 @@ MISC
 		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/apple )
 	crafting_message = "You massage the apple into the candy..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/applecandy
 
 /* Candy berry */
@@ -525,6 +542,7 @@ MISC
 		/obj/item/reagent_containers/food/snacks/rogue/candybase,
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue )
 	crafting_message = "You massage the berries into the candy..."
+	craft_sound = 'modular/Neu_Food/sound/kneading.ogg'
 	result = /obj/item/reagent_containers/food/snacks/rogue/berrycandy
 
 /*======
