@@ -5,7 +5,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/bandit/foresworn
 	category_tags = list(CTAG_BANDIT)
-	cmode_music = 'sound/music/combat_bandit2.ogg'
+	cmode_music = 'sound/music/combat_bandit_foresworn.ogg'
 
 /datum/outfit/job/roguetown/bandit/foresworn/pre_equip(mob/living/carbon/human/H)
 	..()
