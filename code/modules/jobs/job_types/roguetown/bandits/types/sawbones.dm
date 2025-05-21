@@ -23,13 +23,8 @@
 	backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 1, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/reagent_containers/glass/alembic = 1,)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-<<<<<<< Updated upstream
 	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-=======
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
->>>>>>> Stashed changes
 	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
@@ -37,15 +32,9 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-<<<<<<< Updated upstream
-	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)	//in line with town physicians and can now revive
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-=======
 	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE) //while treatment is useful, bandits are very mobile and surgical healing is not
-	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)	
->>>>>>> Stashed changes
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) // Vital for any surgical role dealing in potentially decaying bodies.
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
@@ -56,13 +45,8 @@
 	if(H.age == AGE_OLD)
 		H.change_stat("intelligence", 1)
 		H.change_stat("perception", 1)
-<<<<<<< Updated upstream
-	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-	H.ambushable = FALSE
-=======
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells_heretic(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 	H.ambushable = FALSE
->>>>>>> Stashed changes
