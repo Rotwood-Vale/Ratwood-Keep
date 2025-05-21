@@ -222,3 +222,13 @@
 	name = "Silk dress"
 	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random)
+
+/datum/supply_pack/rogue/bandit/Clothing/exoticsilkspack
+	name = "Exotics Silks Pack"
+	cost = 150
+	contains = list(
+					/obj/item/clothing/shoes/roguetown/anklets,
+					/obj/item/clothing/mask/rogue/exoticsilkmask,
+					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
+					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
+				)
