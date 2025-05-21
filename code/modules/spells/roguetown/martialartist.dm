@@ -92,7 +92,7 @@
 	miracle = FALSE
 	charge_max = 25 SECONDS
 	movement_interrupt = FALSE
-	invocation = list("Haha!","Hmph!")
+	invocation = "Hmph!"
 	invocation_type = "shout"
 
 
@@ -109,7 +109,7 @@
 		target.Knockdown(5)
 		yeet(target, user)
 		sleep(15)
-		user.say(list("Get up, come on!", "There is no shame in yielding to me.", "Can always back up from this fight."))
+		user.say("Are you finished already?")
 		return TRUE
 	return FALSE
 
@@ -184,7 +184,7 @@
 	victim.forceMove(target_turf)
 	attacker.visible_message(span_warning("[victim] quickly sidesteps your attack, however they do get hit by it in the process!"))
 	sleep(5)
-	victim.say(list("Dumbass!", "You fell for it!", "Fool!", "Nimrod!"))
+	victim.say("Humph..!")
 	sleep(10)
 	playsound(victim, 'sound/magic/bigfist1.ogg', 50)
 	attacker.apply_damage(rand(35,75), BRUTE, BPC)
@@ -193,7 +193,7 @@
 	attacker.visible_message(span_warningbig("[victim] launches a crushing blow to [attacker]'s your chest, launching you back, a sickening crunch heard!"))
 	bigshove(attacker, victim)
 	attacker.Knockdown(15)
-	victim.say(list("What's wrong, chest feeling heavy?", "Having trouble breathing?", "I hope that hurt.", "You should yield, I think!", "You're not looking good."))
+	victim.say("Honor is bound.")
 
 
 
