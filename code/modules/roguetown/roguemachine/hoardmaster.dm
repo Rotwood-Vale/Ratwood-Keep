@@ -103,31 +103,37 @@
 
 	switch(user.advjob)
 		if("Brigand")
+			unlocked_cats += "Brigand"
 			if(time_elapsed >= 27000)
 				unlocked_cats += "Brigand first supply pack"
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Brigand second supply pack"
 		if("Foresworn")
+			unlocked_cats += "Foresworn"
 			if(time_elapsed >= 27000)
 				unlocked_cats += "Foresworn first supply pack"
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Foresworn second supply pack"
 		if("Hedge Knight")
+			unlocked_cats += "Knight"
 			if(time_elapsed >= 27000)
 				unlocked_cats += "Knight first supply pack"
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Knight second supply pack"
 		if("Knave")
+			unlocked_cats += "Knave"
 			if(time_elapsed >= 27000)
 				unlocked_cats += "Knave first supply pack"
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Knave second supply pack"
 		if("Rogue Mage")
+			unlocked_cats += "Mage"
 			if(time_elapsed >= 27000)
-				unlocked_cats += "Mage first supply_ pack"
+				unlocked_cats += "Mage first supply pack"
 			if(time_elapsed >= 48000)
 				unlocked_cats += "Mage second supply pack"
 		if("Sawbones")
+			unlocked_cats += "Sawbones"
 			if(time_elapsed >= 27000)
 				unlocked_cats += "Sawbones first supply pack"
 			if(time_elapsed >= 48000)

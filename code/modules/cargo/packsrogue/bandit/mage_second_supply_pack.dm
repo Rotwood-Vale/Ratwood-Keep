@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/bandit/Mage/Mage_second_supply_pack
-	group = "Mage_second_supply_pack"
+	group = "Mage second supply pack"
 	crate_name = "Gifts of Knowledge"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
