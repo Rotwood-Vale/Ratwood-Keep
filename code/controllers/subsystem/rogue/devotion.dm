@@ -116,6 +116,21 @@
 		LAZYADD(granted_spells, newspell)
 	level = CLERIC_T1
 	update_devotion(50, 50, silent = TRUE)
+	
+/datum/devotion/proc/grant_spells_heretic(mob/living/carbon/human/H)
+	if(!H || !H.mind || !patron)
+		return
+
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
+	for(var/spell_type in spelllist)
+		if(!spell_type || H.mind.has_spell(spell_type))
+			continue
+		var/newspell = new spell_type
+		H.mind.AddSpell(newspell)
+		LAZYADD(granted_spells, newspell)
+	level = CLERIC_T0
+	max_devotion = CLERIC_REQ_3 //Max devotion limit - Heretics get churchling miracles for now, with reduced max devotion.
+	max_progression = CLERIC_REQ_0
 
 /datum/devotion/proc/grant_spells_templar(mob/living/carbon/human/H)
 	if(!H || !H.mind || !patron)
