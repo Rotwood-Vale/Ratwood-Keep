@@ -109,6 +109,9 @@ obj/item/reagent_containers/glass/bucket/pot/proc/boil()
 				if(!R)
 					// For items with reagents we can render down but did not have a recipe.
 					// Might need work if there's any fickle things added inside to a pot.
+					if(!I.reagents)
+						continue
+
 					if(I.reagents.total_volume > 0)
 						item_times[I] += 1
 						var/render_time = I.reagents.total_volume * 5 // 3 is now 15 seconds etc...
