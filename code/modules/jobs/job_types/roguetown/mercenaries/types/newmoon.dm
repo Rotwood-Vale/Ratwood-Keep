@@ -6,7 +6,11 @@
 		/datum/species/tabaxi,
 		/datum/species/elf/wood,
 		/datum/species/demihuman,
-		/datum/species/tieberian
+		/datum/species/tieberian,
+		/datum/species/dracon,
+		/datum/species/anthromorph,
+		/datum/species/moth,
+		/datum/species/lupian,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/newmoon
 	maximum_possible_slots = 10
