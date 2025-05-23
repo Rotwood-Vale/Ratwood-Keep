@@ -266,7 +266,7 @@
 	base_icon = "pillory_device"
 	var/mob/living/carbon/human/bounty_hunter
 	var/datum/bounty/active_bounty
-	var/bounty_redemption_time = 5 MINUTES
+	var/bounty_redemption_time = 3 MINUTES
 	var/bounty_step_reward = 50
 	var/bounty_timer
 
@@ -296,9 +296,6 @@
 	var/datum/bounty/found_bounty
 	var/mob/living/carbon/human/hunter = usr
 	if(!istype(hunter) || hunter == victim) return
-	if(victim.has_flaw(/datum/charflaw/dead_or_alive))
-		say("Unable to redeem bounty, only their head shall be satisfactory.")
-		return
 
 	for(var/datum/bounty/bounty as anything in GLOB.head_bounties)
 		if(bounty?.target == victim.real_name)
