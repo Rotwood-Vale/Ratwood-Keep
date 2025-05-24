@@ -24,7 +24,8 @@
 	switch(classchoice)
 
 		if("Alchemist")
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
@@ -48,7 +49,8 @@
 			H.change_stat("strength", -1)
 
 		if("War Surgeon")
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)	//in line with town physicians and can now revive
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)	//in line with town physicians and can now revive
+			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

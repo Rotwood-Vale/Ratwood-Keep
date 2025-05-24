@@ -138,6 +138,7 @@
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["A firebomb"] = /obj/item/bomb
 	character.mind.special_items["Another firebomb"] = /obj/item/bomb
+	character.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
 
 /datum/special_trait/psydons_rider
 	name = "Psydon's Drunkest Rider"

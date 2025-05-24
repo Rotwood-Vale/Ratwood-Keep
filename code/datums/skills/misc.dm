@@ -31,8 +31,12 @@
 /datum/skill/misc/music
 	name = "Music"
 
-/datum/skill/misc/treatment
-	name = "Treatment"
+/datum/skill/misc/alchemy
+	name = "Alchemy"
 
 /datum/skill/misc/sewing
 	name = "Sewing"
+
+/datum/skill/misc/medicine
+	name = "Medicine"
+	dream_cost_base = 3

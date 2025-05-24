@@ -180,7 +180,7 @@
 		return
 	var/used_time = 100
 	if (H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)

@@ -274,7 +274,7 @@
 	description = ""
 	color = "#bfc3b5"
 	overdose_threshold = 16
-	metabolization_rate = 0.2
+	metabolization_rate = 0.1
 
 /datum/reagent/moondust/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
@@ -335,7 +335,7 @@
 	description = ""
 	color = "#bfc3b5"
 	overdose_threshold = 19
-	metabolization_rate = 0.2
+	metabolization_rate = 0.075
 
 /datum/reagent/moondust_purest/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.25*REM, 0)
