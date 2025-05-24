@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list("strings/rt/bumaggrolines.txt"))
 
 /mob/living/carbon/human/species/human/northern/bum
 	aggressive=0
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	gender = MALE
 	faction = list("bums", "station")
 	ambushable = FALSE

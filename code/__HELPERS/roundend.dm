@@ -50,7 +50,7 @@
 		H.LoseTarget()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		H.mode = AI_OFF
+		H.mode = NPC_AI_OFF
 	if(client)
 		client.verbs += /client/proc/lobbyooc
 
