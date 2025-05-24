@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown/gravemarker
-	name = "grave marker"
+	name = "grave marker - (stick; GRAVE; NONE)"
 	result = /obj/structure/gravemarker
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 	time = 10 SECONDS

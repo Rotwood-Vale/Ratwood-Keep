@@ -86,7 +86,7 @@
 							var/mob/M = pickweight(attracted_types)
 							new M(T)
 							if(prob(66))
-								new /obj/item/storage/roguebag/crafted(T)
+								new /obj/item/storage/roguebag(T)
 							else
 								new /obj/item/natural/cloth(T)
 							qdel(src)
