@@ -13,6 +13,7 @@
 	px_y = -8
 	stam_damage_coeff = 1
 	max_stamina_damage = 100
+	max_pain_damage = 125
 	dismember_wound = /datum/wound/dismemberment/head
 
 	var/mob/living/brain/brainmob = null //The current occupant.
