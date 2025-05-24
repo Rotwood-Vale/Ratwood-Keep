@@ -32,12 +32,29 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	slice_bclass = BCLASS_CHOP
 
+/* Meatballs */
+/obj/item/reagent_containers/food/snacks/rogue/meat/meatballs_raw
+	name = "raw meatballs"
+	desc = "A delicacy first originating from Sienna that consists balls of cooked meat."
+	icon_state = "meatballs_raw"
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/meatballs
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/meatballs
+	cooked_smell = /datum/pollutant/food/fried_meat
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/meatballs
+	eat_effect = null
+	name = "meatballs"
+	desc = "A delicacy first originating from Sienna that consists balls of cooked meat."
+	icon_state = "meatballs"
+	cooked_smell = /datum/pollutant/food/fried_meat
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+
 
 /*	.............   Minced meat & stuffing sausages   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince
 	name = "mince"
 	icon_state = "meatmince"
-	desc = "Use in stew, pie or alchemy or use with fat or more mince to make a Sausage"
+	desc = "Use in stew, pie or alchemy or use with fat or more mince to make a Sausage."
 	ingredient_size = 2
 	slice_path = null
 	filling_color = "#8a0000"
@@ -48,36 +65,6 @@
 	playsound(get_turf(src), 'modular/Neu_Food/sound/meatslap.ogg', 100, TRUE, -1)
 	..()
 	qdel(src)
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
-	if(istype(I, /obj/item/reagent_containers/food/snacks/fat))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, "<span class='notice'>Stuffing a wiener...</span>")
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, "<span class='warning'>You need to put [src] on a table to work on it.</span>")
-	else
-		return ..()
-
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	name = "minced meat"
@@ -158,6 +145,26 @@
 /obj/item/reagent_containers/food/snacks/fish
 	mill_result = /obj/item/reagent_containers/powder/alch/mincef
 	chopping_sound = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/fish_fillet_raw
+	name = "raw fish filet meat"
+	desc = "A fine cut of boneless fish meat. (Slice again for mince)"
+	icon_state = "fishfilet_uncook"
+	rotprocess = SHELFLIFE_LONG
+	slices_num = 1
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	mill_result = /obj/item/reagent_containers/powder/alch/mincef
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish_fillet
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/fish_fillet
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/fish_fillet
+	eat_effect = null
+	slices_num = 0
+	name = "fish filet"
+	desc = "A fine cut of boneless fish meat, cooked to perfection."
+	icon_state = "fishfilet"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
 
 /* .........   Shellfish    ................. */
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish

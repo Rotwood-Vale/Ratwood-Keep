@@ -93,44 +93,6 @@
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated
-	icon_state = "wienerpotato_plated"
-	item_state = "plate_food"
-	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
-	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	experimental_inhand = FALSE
-	w_class = WEIGHT_CLASS_BULKY
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	trash = /obj/item/cooking/platter
-	rotprocess = SHELFLIFE_EXTREME
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/plated/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.................   Wiener & Fried onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions
@@ -144,45 +106,6 @@
 	bitesize = 5
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/mealbuff
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated
-	icon_state = "wieneronions_plated"
-	item_state = "plate_food"
-	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
-	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
-	experimental_inhand = FALSE
-	w_class = WEIGHT_CLASS_BULKY
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	trash = /obj/item/cooking/platter
-	rotprocess = SHELFLIFE_EXTREME
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/plated/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions/plated(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 
 /*	.................   Wiener & potato & onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
@@ -316,32 +239,6 @@
 	cooked_type = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	rotprocess = SHELFLIFE_DECENT
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/living/user, params)
-	var/obj/item/reagent_containers/peppermill/mill = I
-	if (!isturf(src.loc) || \
-		!(locate(/obj/structure/table) in src.loc) && \
-		!(locate(/obj/structure/table/optable) in src.loc) && \
-		!(locate(/obj/item/storage/bag/tray) in src.loc))
-		to_chat(user, "<span class='warning'>I need to use a table.</span>")
-		return FALSE
-	if(istype(mill))
-		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-			to_chat(user, "There's not enough black pepper to make anything with.")
-			return TRUE
-		mill.icon_state = "peppermill_grind"
-		to_chat(user, "You start rubbing the bird roast with black pepper.")
-		playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 100, TRUE, -1)
-		if(do_after(user,3 SECONDS, target = src))
-			if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-				to_chat(user, "There's not enough black pepper to make anything with.")
-				return TRUE
-			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
-			qdel(src)
-
-	else
-		to_chat(user, "<span class='warning'>You need to put [src] on a table to knead in the spice.</span>")
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced
 	desc = "A plump bird, roasted perfection, spiced to taste divine."
@@ -375,3 +272,24 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	trash = /obj/item/cooking/platter
 	rotprocess = SHELFLIFE_LONG
+
+
+/* ...............   Sausage roll raw  ..................*/
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/sausageroll_raw
+	name = "raw sausage roll"
+	desc = "a roll of pastry filled with meat."
+	icon_state = "sausageroll_raw"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/sausageroll
+	tastes = list("meat" = 1, "dough" = 1)
+	dropshrink = 0.6
+
+
+/* .................   Sausage roll   ...................*/
+/obj/item/reagent_containers/food/snacks/rogue/sausageroll
+	name = "sausage roll"
+	desc = "a roll of pastry filled with meat."
+	icon_state = "sausageroll"
+	cooked_smell = /datum/pollutant/food/fried_meat
+	rotprocess = SHELFLIFE_LONG
+	tastes = list("meat" = 1, "dough" = 1)
+	dropshrink = 0.6
