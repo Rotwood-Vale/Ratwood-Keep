@@ -125,7 +125,7 @@ COOKED MEALS
 	result = /obj/item/reagent_containers/food/snacks/rogue/bun_grenz
 
 /* Meatballs */
-/datum/food_handle_recipes/omelette
+/datum/food_handle_recipes/meatballs
 	items = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/mince, 
 		/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced)

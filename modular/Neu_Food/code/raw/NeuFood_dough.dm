@@ -527,7 +527,7 @@
 	bitesize = 16
 
 /obj/item/reagent_containers/food/snacks/rogue/icedcake_slice
-	name = "fruit cake slice"
+	name = "iced cake slice"
 	icon_state = "icedcake_slice"
 	slices_num = 0
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT-1)
