@@ -27,6 +27,8 @@ Please do not confuse the two.
 	min_pq = 4
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_inquisition.ogg'
+
 /datum/outfit/job/roguetown/shepherd
 	name = "Confessor"
 	jobtype = /datum/job/roguetown/shepherd

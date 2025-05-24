@@ -22,6 +22,8 @@
 	min_pq = 8
 	max_pq = null
 
+	cmode_music = 'sound/music/combat_inquisition.ogg'
+
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
 	jobtype = /datum/job/roguetown/puritan
