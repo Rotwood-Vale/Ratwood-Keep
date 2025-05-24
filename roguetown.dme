@@ -1361,6 +1361,8 @@
 #include "code\modules\jobs\job_types\roguetown\other\deathknight.dm"
 #include "code\modules\jobs\job_types\roguetown\other\skeleton.dm"
 #include "code\modules\jobs\job_types\roguetown\other\tester.dm"
+#include "code\modules\jobs\job_types\roguetown\other\vampiremagos.dm"
+#include "code\modules\jobs\job_types\roguetown\other\vampirerogue.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\bathmaid.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\beggar.dm"
 #include "code\modules\jobs\job_types\roguetown\peasants\bogprisoner.dm"
