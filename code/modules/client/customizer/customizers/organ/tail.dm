@@ -59,6 +59,7 @@
 		/datum/sprite_accessory/tail/lizard/dtiger,
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/snuppy,
 		)
 
 /datum/customizer/organ/tail/kobold
