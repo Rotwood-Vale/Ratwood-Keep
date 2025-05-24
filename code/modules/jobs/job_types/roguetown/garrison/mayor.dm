@@ -9,15 +9,15 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "Whether you are a crooked politician or a true benefactor, the cityfolk now turn to you for guidance on smaller matters. \
+	tutorial = "Whether you are a crooked politician or a true benefactor, you are the Mayor of the city of Rockhill and oversees both Lowtown and Hightown, the cityfolk now turn to you for guidance on smaller matters. \
 				The Duke may hold the official title, but with the Sheriff under your command, will you submit to the weight of tradition or reshape the very idea of authority?"
 	whitelist_req = TRUE
 	outfit = /datum/outfit/job/roguetown/mayor
 	display_order = JDO_MAYOR
 	min_pq = 5
 	max_pq = null
+	give_bank_account = 100
 	can_leave_round = FALSE
-	give_bank_account = 35
 
 	//cmode_music = 'sound/music/combat_bog.ogg'
 
@@ -27,10 +27,8 @@
 
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
-
 	r_hand = /obj/item/gun/ballistic/firearm/arquebus_pistol
-	head = /obj/item/clothing/head/roguetown/nightman //will do for now
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/armor
@@ -66,4 +64,32 @@
 		H.change_stat("speed", -3)
 		H.change_stat("intelligence", 5)
 		ADD_TRAIT(H, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_BOGVULNERABLE, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
+	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw_mayor)
+
+/mob/living/carbon/human/proc/request_outlaw_mayor()
+	set name = "Request Outlaw"
+	set category = "Juris Civilis"
+	if(stat)
+		return
+	var/inputty = input("Outlaw a person", "JURIS CIVILIS") as text|null
+	if(inputty)
+		if(hasomen(OMEN_NOLORD))
+			make_outlaw(inputty)
+		else
+			var/lord = find_lord()
+			if(lord)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(mayor_outlaw_requested), src, lord, inputty)
+			else
+				make_outlaw(inputty)
+				
+
+/proc/mayor_outlaw_requested(mob/living/mayor, mob/living/carbon/human/lord, requested_outlaw)
+	var/choice = alert(lord, "The Mayor requests to outlaw someone!\n[requested_outlaw]", "MAYOR OUTLAW REQUEST", "Yes", "No")
+	if(choice != "Yes" || QDELETED(lord) || lord.stat > CONSCIOUS)
+		if(mayor)
+			to_chat(mayor, span_warning("The Duke has denied the request for declaring an outlaw!"))
+		return
+	make_outlaw(requested_outlaw)
