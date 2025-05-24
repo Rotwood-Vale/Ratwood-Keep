@@ -57,7 +57,7 @@
 				if(/datum/patron/zizo)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-					H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+					H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 					H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
