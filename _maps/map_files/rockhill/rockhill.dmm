@@ -17071,8 +17071,8 @@
 	icon_state = "longtable_mid"
 	},
 /obj/item/storage/dice{
-	pixel_y = 5;
-	pixel_x = 15
+	pixel_x = 15;
+	pixel_y = 5
 	},
 /obj/item/toy/cards/deck/syndicate{
 	pixel_y = 4
@@ -19317,9 +19317,9 @@
 /area/rogue/indoors/town/tavern)
 "jTj" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "church";
-	name = "Healer's Wing";
-	locked = 1
+	name = "Healer's Wing"
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)
@@ -19522,18 +19522,6 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
-"jYL" = (
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
-	},
-/obj/structure/closet/crate/roguecloset/crafted{
-	keylock = 1;
-	locked = 1;
-	lockid = "butcher"
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/rtfield)
 "jZb" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/blocks,
@@ -31281,8 +31269,7 @@
 	},
 /obj/structure/table/wood{
 	icon_state = "longtable";
-	pixel_x = 8;
-	pixel_y = 0
+	pixel_x = 8
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
@@ -36548,9 +36535,9 @@
 /area/rogue/indoors/town/shop)
 "tcb" = (
 /obj/structure/mineral_door/wood{
+	locked = 1;
 	lockid = "church";
-	name = "Healer's Wing";
-	locked = 1
+	name = "Healer's Wing"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
@@ -118810,10 +118797,10 @@ lkR
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -119242,7 +119229,7 @@ lkR
 lkR
 lkR
 lkR
-wEQ
+lkR
 lkR
 lkR
 lkR
@@ -120541,8 +120528,8 @@ xkm
 xkm
 xkm
 xkm
-wEQ
-wEQ
+lkR
+lkR
 wEQ
 wEQ
 dVO
@@ -120973,8 +120960,8 @@ xkm
 xkm
 dVO
 dVO
-wEQ
-wEQ
+lkR
+lkR
 wEQ
 wEQ
 dVO
@@ -121405,8 +121392,8 @@ xkm
 dVO
 dVO
 lkR
-wEQ
-wEQ
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -121837,8 +121824,8 @@ dVO
 dVO
 lkR
 lkR
-wEQ
-wEQ
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -123559,11 +123546,11 @@ dVO
 dVO
 dVO
 dVO
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 lkR
 lkR
 wEQ
@@ -123991,11 +123978,11 @@ dVO
 dVO
 uVn
 dVO
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 lkR
 lkR
 wEQ
@@ -124857,7 +124844,7 @@ xMn
 lgk
 dUn
 xMn
-wEQ
+lkR
 lkR
 lkR
 lkR
@@ -125289,7 +125276,7 @@ jGb
 dUn
 irD
 xMn
-wEQ
+lkR
 lkR
 lkR
 lkR
@@ -125721,7 +125708,7 @@ xMn
 dUn
 xCq
 xMn
-wEQ
+lkR
 wEQ
 wEQ
 wEQ
@@ -126552,7 +126539,7 @@ dVO
 dVO
 dVO
 dVO
-xaf
+lkR
 xMn
 dUn
 dUn
@@ -126984,7 +126971,7 @@ wEQ
 dVO
 dVO
 dVO
-xaf
+lkR
 jMl
 ygg
 ygg
@@ -132177,10 +132164,10 @@ dVO
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
 lkR
 lkR
 wEQ
@@ -132609,10 +132596,10 @@ dVO
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -133040,11 +133027,11 @@ dVO
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -133472,11 +133459,11 @@ lkR
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -133903,12 +133890,12 @@ lkR
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -134334,13 +134321,13 @@ dVO
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -139080,7 +139067,7 @@ lkR
 lkR
 lkR
 lkR
-wEQ
+lkR
 wEQ
 wEQ
 wEQ
@@ -139510,9 +139497,9 @@ lkR
 lkR
 lkR
 lkR
-xaf
-xaf
-wEQ
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -139937,14 +139924,14 @@ lkR
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -140367,11 +140354,11 @@ dVO
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -140799,11 +140786,11 @@ lkR
 lkR
 lkR
 lkR
-wEQ
-wEQ
-wEQ
-wEQ
-wEQ
+lkR
+lkR
+lkR
+lkR
+lkR
 wEQ
 wEQ
 wEQ
@@ -238862,7 +238849,7 @@ odi
 nqU
 gGq
 qhH
-xou
+qhH
 lzv
 iDD
 nkS
@@ -239293,8 +239280,8 @@ odi
 odi
 nqU
 qhH
-jEp
-xou
+qhH
+qhH
 fTJ
 nqU
 nkS
@@ -239726,7 +239713,7 @@ odi
 nqU
 wdU
 cjc
-xou
+jEp
 xZv
 nqU
 nEf
@@ -307895,7 +307882,7 @@ vIa
 vIa
 qbG
 qbG
-jYL
+qbG
 qbG
 qbG
 qbG
@@ -315689,11 +315676,11 @@ qbG
 qbG
 qbG
 qbG
-gxc
-gft
-gft
-gft
-krf
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -316121,11 +316108,11 @@ qbG
 qbG
 qbG
 qbG
-col
-eNY
-eNY
-eNY
-lHE
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -316553,11 +316540,11 @@ qbG
 qbG
 qbG
 qbG
-col
-eNY
-eNY
-eNY
-lHE
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -316985,11 +316972,11 @@ qbG
 qbG
 qbG
 qbG
-col
-eNY
-eNY
-eNY
-lHE
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -317417,11 +317404,11 @@ qbG
 qbG
 qbG
 qbG
-col
-eNY
-eNY
-eNY
-lHE
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -317849,11 +317836,11 @@ qbG
 qbG
 qbG
 qbG
-vjf
-lwY
-lwY
-lwY
-orm
+qbG
+qbG
+qbG
+qbG
+qbG
 qbG
 qbG
 qbG
@@ -370976,7 +370963,7 @@ nno
 nno
 nno
 fON
-rbn
+fON
 fON
 fON
 fON
