@@ -98,6 +98,8 @@
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 #define TRAIT_RITUALIST "Ritualist" // Allows use of ritual feathers
 #define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
+#define TRAIT_MATTHIOS_BRAND "Matthios Brand"
+#define TRAIT_MATTHIOS_BRAND_OLD "Old Matthios Brand"
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -420,6 +422,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define MADE_UNCLONEABLE "made-uncloneable"
 #define TIMESTOP_TRAIT "timestop"
 #define HUGBOX_TRAIT "hugbox"
+
 
 #define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
 
