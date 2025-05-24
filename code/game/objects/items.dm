@@ -589,6 +589,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return FALSE
 	for(var/obj/structure/table/T in src.loc)
 		return TRUE
+	for(var/obj/machinery/anvil/A in src.loc)
+		return TRUE
 	return FALSE
 
 /obj/item/proc/allow_attack_hand_drop(mob/user)
@@ -1257,6 +1259,22 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		else
 			str += "NO DEFENSE"
 	return str
+
+/obj/item/obj_fix()
+	..()
+	update_damaged_state(FALSE)
+
+
+/obj/item/proc/update_damaged_state(damaging = TRUE)
+	cut_overlays()
+	if (!obj_broken)
+		return
+	var/icon/damaged_icon = icon(initial(icon), icon_state, , TRUE)
+	damaged_icon.Blend("#fff", ICON_ADD)
+	damaged_icon.Blend(icon('icons/effects/item_damage.dmi', "itemdamaged"), ICON_MULTIPLY)
+	var/mutable_appearance/damage = new(damaged_icon)
+	damage.alpha = 150
+	add_overlay(damage)
 
 /proc/colorgrade_rating(input, rating)
 	var/str
