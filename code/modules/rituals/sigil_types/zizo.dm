@@ -31,11 +31,13 @@
 	icon_state = "NW"
 
 /obj/effect/decal/cleanable/sigil/zizo/attack_hand(mob/living/user)
-	if(!(iszizocultist(user) || iszizolackey(user)))
+	if(!(user.mind.get_skill_level(/datum/skill/magic/unholy) > 0))
 		to_chat(user, span_warning("What.. is this..."))
 		return
 
 	..()
 
-	user.playsound_local(user, 'sound/vo/cult/tesa.ogg', 25)
-	user.whisper("O'vena tesa...")
+	if(last_picked_ritual && src.icon_state == "center")
+		user.playsound_local(user, 'sound/vo/cult/tesa.ogg', 25)
+		user.whisper("O'vena tesa...")
+		last_picked_ritual = null //only this nulls it, nowhere else.

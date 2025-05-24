@@ -1,0 +1,111 @@
+// Sacrifice
+
+/datum/ritual/zizo/bloodfavor
+	name = "Blood Favor"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	revealchance = 50
+	center_requirement = /obj/item/bloodoffering
+
+	function = /proc/bloodfavor
+
+proc/bloodfavor(mob/user, turf/C)
+	user.mind.divinefavor += 50
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("You feel your connection to Zizo deepen as you drain power from this bloody artefact!"))
+
+/datum/ritual/zizo/undyingfavor
+	name = "Undying Favor"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	revealchance = 50
+	center_requirement = /obj/item/phylactery
+
+	function = /proc/undyingfavor
+
+/proc/undyingfavor(mob/user, turf/C)
+	user.mind.divinefavor += 100
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("You feel your connection to Zizo deepen as you drain power from this unholy artefact!"))
+
+/datum/ritual/zizo/debugfavor
+	name = "Debug Favor Ritual please report to Admemes if this is somehow ingame"
+	circle = "Sacrifice"
+	difficulty = 1
+	favor_cost = 0
+	revealchance = 100 //for testing purposes
+	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
+
+	function = /proc/debugfavor
+
+
+/proc/debugfavor(mob/user, turf/C)
+	user.mind.divinefavor += 9999;
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("Lady Zizo fucking loves you, for some reason"))
+
+
+/datum/ritual/zizo/lesserwildsacrifice
+	name = "Lesser wild Sacrifice"
+	circle = "Sacrifice"
+	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
+	difficulty = 1
+	revealchance = 5 //penalize spamming this, you will on average achieve 200 favor before alerting inquis
+	favor_cost = 0
+
+	function = /proc/lesserwildsacrifice
+
+
+/proc/lesserwildsacrifice(mob/user, turf/C)
+	user.mind.divinefavor += 5;
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("Lady Zizo accepts my meagre gift!"))
+
+
+
+/datum/ritual/zizo/greaterwildsacrifice
+	name = "Greater wild Sacrifice"
+	circle = "Sacrifice"
+	center_requirement = /obj/item/reagent_containers/food/snacks/rogue/meat
+	n_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	s_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	e_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	w_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+	difficulty = 3
+	favor_cost = 0
+	revealchance = 15 //this is MUCH safer than the lesser one, but still a significant risk
+	function = /proc/greaterwildsacrifice
+
+
+/proc/greaterwildsacrifice(mob/user, turf/C)
+	user.mind.divinefavor += 40;
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	to_chat(user.mind, span_notice("Lady Zizo accepts my gift!"))
+
+/datum/ritual/zizo/giftofpain
+	name = "Gift of Pain"
+	circle = "Sacrifice"
+	center_requirement = /mob/living/carbon/human
+	difficulty = 2
+	revealchance = 25 //a player is getting tortured here, and needs somebody to save them
+	favor_cost = 0
+	casttime = 5
+
+	function = /proc/giftofpain
+
+/proc/giftofpain(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if(H.has_status_effect(/datum/status_effect/debuff/zizoagony))
+			to_chat(user.mind, span_notice("This one has suffered enough for the moment.."))
+			return
+		H.take_overall_damage(150)
+		H.Paralyze(30)
+		H.emote("painscream")
+		H.apply_status_effect(/datum/status_effect/debuff/zizoagony)
+		C.visible_message(span_danger("[H.real_name] is lifted up into the air and multiple scratches, incisions and shallow cuts start etching themselves into their skin!"))
+		user.mind.divinefavor += 25
+		to_chat(user.mind, span_notice("She smiles upon the suffering I cause!"))
+		to_chat(H.mind, span_notice("THE PAIN!! IT'S TOO MUCH!!!"))
+		playsound(C,pick('sound/combat/hits/bladed/genslash (1).ogg','sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (3).ogg'), 100, FALSE)
