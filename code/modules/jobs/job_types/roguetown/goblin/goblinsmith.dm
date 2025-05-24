@@ -46,6 +46,7 @@
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 1)
 		H.change_stat("speed", -2)
+		H.ventcrawler = VENTCRAWLER_ALWAYS
 
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))
