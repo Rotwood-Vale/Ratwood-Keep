@@ -100,7 +100,7 @@
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 		if("Caveling Shaman")
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
