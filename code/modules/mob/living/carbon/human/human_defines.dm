@@ -13,6 +13,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 
 	ambushable = 1
+	defprob = 0
 
 	var/footstep_type = FOOTSTEP_MOB_HUMAN
 
@@ -121,3 +122,5 @@
 	/datum/rmb_intent/weak)
 
 	rot_type = /datum/component/rot/corpse
+
+	var/voice_type = null

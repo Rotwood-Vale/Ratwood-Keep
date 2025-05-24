@@ -54,6 +54,7 @@
 	tutorial = "Born into nobility, you are yet to become a real knight. Yet, the Gods smile upon you, so eventually you will be the one in need of a squire. \
 	A riddle, little one, who is superior: a noble squire or an unremarkable man-at-arms?"
 	outfit = /datum/outfit/job/roguetown/squire/page
+	allowed_races = RACES_TOLERATED_UP
 	category_tags = list(CTAG_SQUIRE)
 	maximum_possible_slots = 2
 

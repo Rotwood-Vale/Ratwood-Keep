@@ -248,7 +248,7 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/shoes/roguetown/otavan
-	name = "otavan leather boots"
+	name = "fencer leather boots"
 	desc = "Boots of outstanding craft, your fragile feet has never felt so protected and comfortable before."
 	body_parts_covered = FEET
 	icon_state = "fencerboots"
@@ -256,5 +256,5 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	max_integrity = 200
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 100, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 65, "slash" = 80, "stab" = 95, "bullet" = 100, "fire" = 0, "acid" = 0)
 	allowed_race = NON_DWARVEN_RACE_TYPES

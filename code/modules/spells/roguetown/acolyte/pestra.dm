@@ -240,9 +240,10 @@
 		testing("curerot2")
 
 		var/datum/component/rot/rot = target.GetComponent(/datum/component/rot)
+		var/become_rot_touched = FALSE
 		if(rot)
 			rot.amount = 0
-		ADD_TRAIT(target, TRAIT_ROTTOUCHED, "[type]")
+			become_rot_touched = TRUE
 		if(iscarbon(target))
 			var/mob/living/carbon/stinky = target
 			for(var/obj/item/bodypart/limb in stinky.bodyparts)
@@ -251,11 +252,13 @@
 				limb.update_limb()
 				limb.update_disabled()
 
+				limb.cure_infections(TRUE, FALSE)
+
 		// un-deadite'ing process
 		target.mob_biotypes &= ~MOB_UNDEAD // the zombie antag on_loss() does this as well, but this is for the times it doesn't work properly. We check if they're any special undead role first.
 
 		for(var/trait in GLOB.traits_deadite)
-			REMOVE_TRAIT(target, trait, TRAIT_GENERIC)
+			REMOVE_TRAIT(target, trait, DEADITE_TRAIT)
 
 		if(target.stat < DEAD) // Drag and shove ghost back in.
 			var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()
@@ -267,11 +270,20 @@
 
 		var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)	//This should be after putting the mind back into the target
 		if(was_zombie)
-			target.death()
+			// Only kill the target if they were already a deadite -
+			// NOT if they were just infected.
+			if (was_zombie.has_turned)
+				target.death()
+				become_rot_touched = TRUE
 			target.mind.remove_antag_datum(/datum/antagonist/zombie)
+			// Currently, this trait is only used for determining whether to award PQ - it can stay unconditional
+			// if we remove the antag datum. Pestrans shouldn't be incentivised to let infected patients die.
 			if(unzombification_pq && !HAS_TRAIT(target, TRAIT_IWASUNZOMBIFIED) && user?.ckey)
 				adjust_playerquality(unzombification_pq, user.ckey)
 				ADD_TRAIT(target, TRAIT_IWASUNZOMBIFIED, "[type]")
+
+		if (become_rot_touched)
+			ADD_TRAIT(target, TRAIT_ROTTOUCHED, "[type]")
 
 		target.update_body()
 		target.visible_message(span_notice("The rot leaves [target]'s body!"), span_green("I feel the rot leave my body!"))

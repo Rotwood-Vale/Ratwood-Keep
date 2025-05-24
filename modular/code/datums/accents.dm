@@ -9,7 +9,8 @@ GLOBAL_LIST_INIT(character_accents, list("No accent",
 	"Hissing accent",
 	"Tiefling accent",
 	"Half Orc accent",
-	"Akula accent"))
+	"Akula accent",
+	"Islander accent"))
 
 /mob/living/carbon/human
 	var/char_accent = "No accent"

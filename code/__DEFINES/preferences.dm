@@ -117,3 +117,10 @@
 //Voice ranges
 #define MIN_VOICE_PITCH		0.8
 #define MAX_VOICE_PITCH		1.35
+
+
+#define VOICE_TYPE_MASC	"Masculine"
+#define VOICE_TYPE_FEM	"Feminine"
+// #define VOICE_TYPE_ANDR	"Androgynous"
+
+GLOBAL_LIST_INIT(voice_types_list, list(VOICE_TYPE_MASC, VOICE_TYPE_FEM))

@@ -130,6 +130,10 @@
 			..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/find_food()
+	// Prevent searching for dead bodies if the mob is being ridden or has buckled mobs
+	if(src.has_buckled_mobs())
+		return
+
 	if(food > 50 && !eat_forever)
 		return
 	var/list/around = view(1, src)
@@ -262,7 +266,11 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/UniqueAttack()
-	if(body_eater && !tame)
+	// Prevent attacking self
+	if(target == src)
+		return FALSE
+	
+	if(body_eater)
 		if(isliving(target))
 			var/mob/living/body = target
 			if(body.stat != CONSCIOUS)
@@ -282,6 +290,19 @@
 		playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 		qdel(target)
 		food = max(food + 30, food_max + 50)
+		//Heals a bit of health after eating.
+		var/healing = 7
+		if(src.blood_volume < BLOOD_VOLUME_NORMAL)
+			src.blood_volume = min(src.blood_volume+10, BLOOD_VOLUME_NORMAL)
+		if(length(src.get_wounds()))
+			src.heal_wounds(healing)
+			src.update_damage_overlays()
+		src.adjustBruteLoss(-healing, 0)
+		src.adjustFireLoss(-healing, 0)
+		src.adjustOxyLoss(-healing, 0)
+		src.adjustToxLoss(-healing, 0)
+		src.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing)
+		src.adjustCloneLoss(-healing, 0)		
 		return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/rogue/proc/DismemberBody(mob/living/L)
@@ -464,6 +485,11 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/UnarmedAttack(atom/A)
 	. = ..()
+
+	// Prevent attacking self
+	if(A == src)
+		return
+
 	if(!is_type_in_list(A, food_type))
 		return
 

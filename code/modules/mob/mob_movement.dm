@@ -708,7 +708,7 @@
 	return TRUE
 
 /mob/living/proc/check_dodge_skill()
-	return TRUE
+	return HAS_TRAIT(src, TRAIT_DODGEEXPERT)
 
 /mob/living/carbon/human/check_dodge_skill()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
@@ -784,3 +784,8 @@
 /// Can this mob move between z levels
 /mob/proc/canZMove(direction, turf/target)
 	return FALSE
+
+/// A general-purpose proc used to centralise checks to skip turf, movement, step, etc. effects
+/// for mobs that are floating, flying, intangible, etc.
+/mob/proc/is_floor_hazard_immune()
+	return throwing || (movement_type & (FLYING|FLOATING))

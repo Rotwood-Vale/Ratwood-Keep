@@ -28,6 +28,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	///Unlike speak_emote, the list of things in this variable only show by themselves with no spoken text. IE: Ian barks, Ian yaps
 	var/list/emote_see = list()
 
+	// Languages the simplemob can and cannot speak or understand.
+	var/list/language_known = list()
+	var/list/language_not_known = list()
+
 	var/move_skip = FALSE
 	var/action_skip = FALSE
 
@@ -156,6 +160,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	var/mob/owner = null
 
+	var/datum/ai_controller/saved_ai_controller = null
+
 	///I don't want to confuse this with client registered_z.
 	var/my_z
 	///What kind of footstep this mob should have. Null if it shouldn't have any.
@@ -187,9 +193,17 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(!loc)
 		stack_trace("Simple animal being instantiated in nullspace")
 	update_simplemob_varspeed()
+
+	//Sets languages
+	for(var/language_type in language_known)
+		grant_language(language_type)
+	for(var/language_type in language_not_known)
+		remove_language(language_type)
+
 //	if(dextrous)
 //		AddComponent(/datum/component/personal_crafting)
 
+	
 /mob/living/simple_animal/Destroy()
 	GLOB.simple_animals[AIStatus] -= src
 	if (SSnpcpool.state == SS_PAUSED && LAZYLEN(SSnpcpool.currentrun))
@@ -219,6 +233,20 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
 			qdel(O)
 			food = min(food + 30, 100)
+			//Heals a bit of health after eating.
+			var/healing = 7
+			if(src.blood_volume < BLOOD_VOLUME_NORMAL)
+				src.blood_volume = min(src.blood_volume+10, BLOOD_VOLUME_NORMAL)
+			if(length(src.get_wounds()))
+				src.heal_wounds(healing)
+				src.update_damage_overlays()
+			src.adjustBruteLoss(-healing, 0)
+			src.adjustFireLoss(-healing, 0)
+			src.adjustOxyLoss(-healing, 0)
+			src.adjustToxLoss(-healing, 0)
+			src.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing)
+			src.adjustCloneLoss(-healing, 0)
+				
 			if(tame)
 				return
 			var/realchance = tame_chance
@@ -691,6 +719,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			M.visible_message("<span class='danger'>[M] falls off [src]!</span>")
 		else
 			return
+		
+	// Restore AI when unmounted
+		if(!ai_controller && saved_ai_controller)
+			ai_controller = saved_ai_controller
+			saved_ai_controller = null
+
 	..()
 	update_icon()
 
@@ -719,6 +753,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		M.forceMove(get_turf(src))
 		if(ssaddle)
 			playsound(src, 'sound/foley/saddlemount.ogg', 100, TRUE)
+
+		// Save and disable AI when mounted
+		if(ai_controller)
+			saved_ai_controller = ai_controller
+			ai_controller = null
+		
 	..()
 	update_icon()
 
@@ -756,18 +796,17 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 					amt = clamp(amt, 0, 4) //higher speed amounts are a little wild. Max amount achieved at expert riding.
 					riding_datum.vehicle_move_delay -= (amt/5 + 2)
 				riding_datum.vehicle_move_delay -= 3
-			if(loc != oldloc)
+			if(loc != oldloc && isliving(user))
+				var/mob/living/L = user
 				var/obj/structure/mineral_door/MD = locate() in loc
-				if(MD && !MD.ridethrough)
-					if(isliving(user) && !isseelie(user))
-						var/mob/living/L = user
-						var/strong_thighs = L.mind.get_skill_level((/datum/skill/misc/riding))
-						if(prob(60 - (strong_thighs * 10))) // Legendary riders do not fall!
-							unbuckle_mob(L)
-							L.Paralyze(50)
-							L.Stun(50)
-							playsound(L.loc, 'sound/foley/zfall.ogg', 100, FALSE)
-							L.visible_message(span_danger("[L] falls off [src]!"))
+				if(MD && !MD.ridethrough && !isseelie(L))
+					var/strong_thighs = L.mind.get_skill_level((/datum/skill/misc/riding))
+					if(prob(60 - (strong_thighs * 10))) // Legendary riders do not fall!
+						unbuckle_mob(L)
+						L.Paralyze(50)
+						L.Stun(50)
+						playsound(L.loc, 'sound/foley/zfall.ogg', 100, FALSE)
+						L.visible_message(span_danger("[L] falls off [src]!"))
 
 /mob/living/simple_animal/buckle_mob(mob/living/buckled_mob, force = 0, check_loc = 1)
 	. = ..()

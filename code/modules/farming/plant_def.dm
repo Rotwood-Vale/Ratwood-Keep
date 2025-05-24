@@ -88,8 +88,8 @@
 	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
-	maturation_time = 6 MINUTES
-	produce_time = 3 MINUTES
+	maturation_time = 10 MINUTES
+	produce_time = 6 MINUTES
 
 /datum/plant_def/pipeweed
 	name = "westleach leaf"
@@ -103,6 +103,14 @@
 	icon_state = "weed"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 
+/datum/plant_def/fyritiusflower
+	name = "fyritius flowers"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "fyritius"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+	produce_amount_min = 1
+	produce_amount_max = 3
+
 /datum/plant_def/berry
 	name = "berry bush"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -114,8 +122,8 @@
 	produce_amount_max = 3
 	maturation_nutrition = 60
 	produce_nutrition =  30
-	maturation_time = 6 MINUTES
-	produce_time = 3 MINUTES
+	maturation_time = 10 MINUTES
+	produce_time = 6 MINUTES
 
 /datum/plant_def/berry_poison
 	name = "berry bush"

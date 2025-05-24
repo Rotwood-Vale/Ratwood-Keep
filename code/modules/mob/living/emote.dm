@@ -201,6 +201,42 @@
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
+/datum/emote/living/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "howls."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "growls."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/whine
+	key = "whine"
+	key_third_person = "whines"
+	message = "whines."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/bark
+	key = "bark"
+	key_third_person = "barks"
+	message = "barks."
+	message_muffled = "makes a muffled noise."
+	only_forced_audio = TRUE
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+	
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
@@ -1254,6 +1290,22 @@
 	set category = "Emotes"
 
 	emote("shake", intentional = TRUE)
+
+/* Vomit emote */
+/mob/living/carbon/human/verb/emote_vomit()
+	set name = "Vomit"
+	set category = "Emotes"
+	
+	emote("vomit", intentional = TRUE)
+
+/datum/emote/living/vomit
+	key = "vomit"
+	nomsg = TRUE
+
+/datum/emote/living/vomit/run_emote(mob/user, params, type_override, intentional, targetted)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.vomit()
 
 /datum/emote/living/squint
 	key = "squint"

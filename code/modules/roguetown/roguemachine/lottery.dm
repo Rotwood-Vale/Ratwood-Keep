@@ -148,6 +148,8 @@
 			return
 		if(!Adjacent(user))
 			return
+		if(src.stopgambling == 1) // double check because it's possible to have input field open before starting gambling
+			return
 		if((coin_amt*mod) > gamblingprice)
 			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			return

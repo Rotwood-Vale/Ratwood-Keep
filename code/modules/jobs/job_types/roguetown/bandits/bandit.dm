@@ -46,4 +46,21 @@
 	..()
 	var/datum/antagonist/new_antag = new /datum/antagonist/bandit()
 	H.mind.add_antag_datum(new_antag)
+	if(!SSrole_class_handler.bandits_in_round)
+		SSrole_class_handler.bandits_in_round = TRUE
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "BANDIT"), 5 SECONDS)
+
+
+/*BANDIT DESIGN GOALS:
+
+Minor antagonist meant to abduct, ransom, pillage and steal from the people. Fill in periods of calm with trouble, giving work to guards.
+Main points: 5 stat total, Journeyman skill for main weapons (Bow/crossbows get expert until bow draw time is rebalanced properly.)
+Meant to be better statted then vanguard but same skill level. Vanguard has better starting gear, but bandits can earn much better gear more reliably, and get even more stats.
+
+Brigand:3 str, 2 end, 2 con 1 per, -3 INT
+Foresworn: 2 str, 2 end 2 con, 2 spd -3 INT
+Hedgeknight: 4 str, 2 end 2 con -1 spd
+Knave: 1 str, 1 con 2 per 2 spd, -3 INT (+2 spd if dagger) (+1 str +1 per if sword/bow)
+Sawbones: 1 str 2 int 1 spd 1 fortune
+Bandit Mage: 1 str, 2 int, 1 end, 1 spd
+*/

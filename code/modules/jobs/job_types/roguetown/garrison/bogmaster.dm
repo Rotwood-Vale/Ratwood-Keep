@@ -22,6 +22,7 @@
 	give_bank_account = 35
 	min_pq = 8
 	max_pq = null
+	can_leave_round = FALSE
 	cmode_music = 'sound/music/combat_bog.ogg'
 
 /datum/job/roguetown/bogmaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -78,7 +79,7 @@
 		H.change_stat("endurance", 2)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/convertrole/bog
 	name = "Recruit Vanguard"

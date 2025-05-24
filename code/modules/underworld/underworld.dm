@@ -39,7 +39,116 @@
 	bound_height = 96
 	anchored = TRUE
 	density = TRUE
+	max_integrity = 9999
 
+/obj/structure/underworld/carriage_normal/New(loc, ...)
+	. = ..()
+	var/pos = get_step(loc, EAST)
+	pos = get_step(pos, EAST)
+	new /obj/structure/carriagedoor(pos)
+
+#define CANT_LEAVE_ITEMS \
+	/obj/item/rogueweapon/woodstaff/aries, \
+	/obj/item/clothing/head/roguetown/crown, \
+	/obj/item/key/lord
+
+/obj/structure/carriagedoor
+	name = "Carriage door"
+	desc = "The wooden entrance to the carriage. It allows those who come to arrive and those who leave to depart."
+	icon = 'icons/roguetown/misc/doors.dmi'
+	icon_state = "carriage_door"
+	layer = WALL_OBJ_LAYER
+	plane = GAME_PLANE_UPPER
+	pixel_y = 27
+	max_integrity = 9999 // In case any maniac decides to hit it.
+
+
+/*=====================
+Carriage door attack by
+=====================*/
+// Handles leaving.
+/obj/structure/carriagedoor/attack_hand(mob/user)
+	var/mob/living/carbon/human/H
+	if(ishuman(user))
+		H = user
+
+	if(!isliving(user) || user.incapacitated())
+		return //No ghosts or incapacitated folk allowed to do this.
+
+	if(user.get_active_held_item())
+		to_chat(user, span_warn("I can't turn the handle. My hand has something in it!"))
+		return
+		
+	var/datum/job/J = SSjob.name_occupations[user.job]
+	if(J.can_leave_round == FALSE)
+		to_chat(user, span_warning("You are too important to leave!!"))
+		return
+
+	// No important antags can leave!
+	if(H.mind && H.mind.antag_datums)
+		var/datum/mind/M = H.mind
+		if(length(M.antag_datums)) // Fuck it we don't need to check at all. If you have any antag datums you can't leave!
+			to_chat(user, span_warning("I still have work to do here..."))
+			return
+
+	//Checks for all items
+	var/list/user_items = H.get_all_gear()
+	for(var/forbidden_type in list(CANT_LEAVE_ITEMS))
+		var/forbidden_item = locate(forbidden_type) in user_items
+		if(forbidden_item)
+			to_chat(user, span_notice("You can't leave with \the [forbidden_item]."))
+			return
+		
+	switch(alert("Do you wish to leave town? (You cannot return.)",,"Yes","No"))
+		if("Yes")
+			to_chat(user, span_notice("You start climbing into the carriage to leave..."))
+			if(do_after(user, 5 SECONDS))
+				// Thank you Azure <3 I did not want to have to write this.
+				// Logs everything on the mob
+				var/dat = "[key_name(user)] has departed town via the carriage. job [user.job], at [AREACOORD(src)]. They had:"
+				var/list/contained_items = H.get_all_gear()
+				if(!length(contained_items))
+					dat += " Nothing on them."
+				else
+					dat += " [english_list(H.get_all_gear())]"
+
+				// Remove known person
+				if(user.mind)
+					user.mind.unknow_all_people()
+					for(var/datum/mind/MF in get_minds())
+						user.mind.become_unknown_to(MF)
+					for(var/datum/bounty/removing_bounty in GLOB.head_bounties)
+						if(removing_bounty.target == user.real_name)
+							GLOB.head_bounties -= removing_bounty
+
+				GLOB.chosen_names -= user.real_name
+				
+				//log player to admins
+				message_admins(dat)
+				log_admin(dat)
+
+				// open up positions
+				J.current_positions =  max(0, J.current_positions - 1)
+				var/datum/subclass/subclass = SSrole_class_handler.get_subclass_by_name(user.advjob)
+				if(subclass)
+					SSrole_class_handler.adjust_class_amount(subclass, -1)
+
+				for(var/obj/item/I in contained_items)
+					qdel(I)
+				qdel(user)
+				return // You don't do anything else 
+				//Technically with this sytem you can return with the same job later. I don't mind
+				// I'm sure someone might throw a fit and it admin logs so if anyone out there
+				// is insane enough to try and abuse this you'd find out pretty quickly.
+
+			else
+				to_chat(user, span_notice("You have to stand still do to this!"))
+		if("No")
+			to_chat(user, span_notice("You decide to stay..."))
+
+	. = ..()
+
+	
 /obj/structure/underworld/carriageman/Initialize()
 	. = ..()
 	set_light(5, 30, LIGHT_COLOR_BLUE)

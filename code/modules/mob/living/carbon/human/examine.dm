@@ -164,7 +164,7 @@
 				if(HAS_TRAIT(user, TRAIT_COMMIE))
 					commie_text = span_notice("Free man!")
 
-			if(HAS_TRAIT(src, TRAIT_WANTED))
+			if(HAS_TRAIT(src, TRAIT_WANTED) && HAS_TRAIT(user, TRAIT_WANTED_POSTER_READ))
 				. += span_userdanger("BANDIT!")
 
 			if(mind.special_role == "Vampire Lord")

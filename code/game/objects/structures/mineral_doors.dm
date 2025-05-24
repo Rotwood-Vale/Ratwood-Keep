@@ -38,7 +38,7 @@
 	lockhash = 0
 	lockid = null
 	var/lockbroken = 0
-	var/lockdiff = 0 //how hard it is to pick the lock of a door
+	var/lockdiff = 6 //how hard it is to pick the lock of a door
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
 	var/rattlesound = 'sound/foley/doors/lockrattle.ogg'
@@ -210,11 +210,12 @@
 	..()
 	if(door_opened)
 		return
-	if(world.time < last_bump+20)
+	// An individual door can be bumped once every two seconds to avoid spamming knocks/rattles
+	if(world.time < last_bump + 2 SECONDS)
 		return
 	last_bump = world.time
-	if(ismob(AM))
-		var/mob/user = AM
+	if(isliving(AM))
+		var/mob/living/user = AM
 		if(HAS_TRAIT(user, TRAIT_BASHDOORS))
 			if(locked)
 				user.visible_message(span_warning("[user] bashes into [src]!"))
@@ -223,6 +224,10 @@
 				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
+			return
+		//And you can bump-open maybe 3 doors per second. This is to prevent weird mass door openings
+		//While keeping things feeling snappy
+		if(world.time - user.last_bumped <= 0.3 SECONDS)
 			return
 		if(locked)
 			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
@@ -264,7 +269,7 @@
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				to_chat(user, span_warning("This door is locked."))
 				return
-		if(world.time >= last_bump+20)
+		if(world.time >= last_bump+2 SECONDS)
 			last_bump = world.time
 			playsound(src, 'sound/foley/doors/knocking.ogg', 100)
 			user.visible_message(span_warning("[user] knocks on [src]."), \
@@ -282,13 +287,11 @@
 		return
 	if(isliving(user))
 		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
-			return //NOTE do we really need that?
-		if(M.client)
-			if(iscarbon(M))
-				var/mob/living/carbon/C = M
-				if(!C.handcuffed)
-					if(C.m_intent == MOVE_INTENT_SNEAK)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.client)
+				if(!H.handcuffed)
+					if(H.m_intent == MOVE_INTENT_SNEAK)
 						SwitchState(TRUE)
 					else
 						SwitchState()

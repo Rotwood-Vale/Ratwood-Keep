@@ -6,7 +6,7 @@
 	icon_living = "vv"
 	icon_dead = "vvd"
 
-	faction = list("orcs")
+	faction = list("orcs", "wolfs")
 	emote_hear = null
 	emote_see = null
 	turns_per_move = 5
@@ -14,6 +14,7 @@
 	move_to_delay = 2
 	vision_range = 9
 	aggro_vision_range = 9
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
 						/obj/item/natural/hide = 2,
@@ -54,6 +55,9 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/volf
 
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
+
 /obj/effect/decal/remains/wolf
 	name = "remains"
 	gender = PLURAL
@@ -63,10 +67,12 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/Initialize()
 	. = ..()
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
+	
 
 	gender = MALE
 	if(prob(33))
 		gender = FEMALE
+	ADD_TRAIT(src, TRAIT_DARKVISION, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	update_icon()
 
@@ -105,7 +111,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/wolf/Life()
 	..()
-	if(pulledby)
+	if(pulledby && !tame)
 		Retaliate()
 		GiveTarget(pulledby)
 

@@ -16,6 +16,7 @@
 	display_order = JDO_MAYOR
 	min_pq = 5
 	max_pq = null
+	can_leave_round = FALSE
 	give_bank_account = 35
 
 	//cmode_music = 'sound/music/combat_bog.ogg'
@@ -64,3 +65,5 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", -3)
 		H.change_stat("intelligence", 5)
+		ADD_TRAIT(H, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
+

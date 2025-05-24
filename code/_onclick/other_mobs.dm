@@ -206,15 +206,9 @@
 		if(!lying_attack_check(user))
 			return FALSE
 	
-	if(isseelie(src))
-		if(user.patron.type == /datum/patron/inhumen/graggar)
-			if(user.pulling == src)
-				if(user.grab_state == GRAB_AGGRESSIVE)
-					visible_message(span_danger("[user] is putting [src]'s head in their mouth!"), \
-									span_userdanger("[user] is putting my head in their mouth!"))
-					if(do_after(user, 8 SECONDS, target = src))
-						var/obj/item/bodypart/head/head = src.get_bodypart("head")
-						head.dismember()
+	// Handle species-specific bite effects.
+	if(dna?.species?.on_bitten(src, user))
+		return
 
 	var/obj/item/bodypart/affecting = get_bodypart(check_zone(def_zone))
 	if(!affecting)
@@ -257,16 +251,16 @@
 			// both player and npc deadites can infect
 			if(user.mind.has_antag_datum(/datum/antagonist/zombie) || istype(user, /mob/living/carbon/human/species/deadite))
 				var/datum/antagonist/zombie/existing_zomble = mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
+				if(caused_wound?.zombie_infect_attempt() && !existing_zomble && user.client)
 					user.mind.adjust_triumphs(1)
 
 	var/obj/item/grabbing/bite/B = new()
-	user.equip_to_slot_or_del(B, SLOT_MOUTH)
-	if(user.mouth == B)
+	if(user.equip_to_slot_or_del(B, SLOT_MOUTH))
 		var/used_limb = src.find_used_grab_limb(user, def_zone)
 		B.name = "[src]'s [parse_zone(used_limb)]"
 		var/obj/item/bodypart/BP = get_bodypart(check_zone(used_limb))
-		BP.grabbedby += B
+		LAZYADD(grabbedby, B)
+		LAZYADD(BP.grabbedby, B)
 		B.grabbed = src
 		B.grabbee = user
 		B.limb_grabbed = BP
@@ -283,10 +277,8 @@
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
 			return
-		if(isseelie(A) && !(isseelie(src)))
-			var/mob/living/carbon/human/target = A
-			if(target.pulledby == src)
-				target.dna.species.on_wing_removal(A, src)
+		var/mob/living/carbon/human/target = A
+		if(ishuman(target) && target.dna.species.on_middle_click(A, src))
 			return
 		A.MiddleClick(src, params)
 	else
@@ -599,6 +591,10 @@
 	Animals & All Unspecified
 */
 /mob/living/UnarmedAttack(atom/A)
+	// Prevent attacking self
+	if(A == src)
+		return
+
 	if(!isliving(A))
 		if(used_intent.type == INTENT_GRAB)
 			var/obj/structure/AM = A
@@ -618,6 +614,10 @@
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user)
+	// Prevent attacking self
+	if(user == src)
+		return
+		
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
 
 /mob/living/RestrainedClickOn(atom/A)
@@ -687,25 +687,30 @@
 */
 
 /mob/living/simple_animal/UnarmedAttack(atom/A, proximity)
-	if(!dextrous)
-		return ..()
-	if(!ismob(A))
-		A.attack_hand(src)
-		update_inv_hands()
+    // Prevent attacking self
+    if(A == src)
+        return
 
+    if(!dextrous)
+        return ..()
+    if(!ismob(A))
+        A.attack_hand(src)
+        update_inv_hands()
 
 /*
 	Hostile animals
 */
 
 /mob/living/simple_animal/hostile/UnarmedAttack(atom/A)
-	target = A
-	if(dextrous && !ismob(A))
-		..()
-	else
-		AttackingTarget(A)
+    // Prevent attacking self
+    if(A == src)
+        return
 
-
+    target = A
+    if(dextrous && !ismob(A))
+        ..()
+    else
+        AttackingTarget(A)
 
 /*
 	New Players:

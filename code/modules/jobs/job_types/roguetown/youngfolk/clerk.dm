@@ -33,6 +33,7 @@
 	tutorial = "You were born in a noble family and the moment you grew up, your parents decided to give you under apprenticeship of the Steward. \
 	It is your calling that eventually you will take your master's place, but for now, you must follow the Steward's orders and lessons."
 	outfit = /datum/outfit/job/roguetown/clerk/apprentice
+	allowed_races = RACES_TOLERATED_UP
 	category_tags = list(CTAG_CLERK)
 
 /datum/outfit/job/roguetown/clerk/apprentice/pre_equip(mob/living/carbon/human/H)

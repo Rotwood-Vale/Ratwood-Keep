@@ -21,47 +21,54 @@
 
 /obj/structure/glowshroom/CanPass(atom/movable/mover, turf/target)
 	if(isliving(mover) && mover.z == z)
-//		var/throwdir = get_dir(src, mover)
-		var/mob/living/L = mover
-
-		if(HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY)) //Dendor kneestinger immunity
-			return TRUE
-
-		if(L.electrocute_act(30, src))
-			L.consider_ambush()
-			if(L.throwing)
-				L.throwing.finalize(FALSE)
-//			if(mover.loc != loc && L.stat == CONSCIOUS)
-//				L.throw_at(get_step(L, throwdir), 1, 1, L, spin = FALSE)
-			return FALSE
+		return !can_zap(mover)
 	. = ..()
 
-/obj/structure/glowshroom/Crossed(AM as mob|obj)
-	if(isliving(AM))
-		var/mob/living/L = AM
-		if(L.z == z)
-			if(!HAS_TRAIT(L, TRAIT_KNEESTINGER_IMMUNITY))
-				if(L.electrocute_act(30, src))
-					L.emote("painscream")
-					L.update_sneak_invis(TRUE)
-					L.consider_ambush()
+/obj/structure/glowshroom/proc/can_zap(atom/movable/movable_victim)
+	if(!isliving(movable_victim))
+		return FALSE
+	var/mob/living/victim = movable_victim
+	if(HAS_TRAIT(victim, TRAIT_KNEESTINGER_IMMUNITY))
+		return FALSE
+	if(victim.throwing) // Exception to floor hazard immunity: they'll graze you if you're thrown over it.
+		victim.throwing.finalize(FALSE) // This will unset victim.throwing, so we can still do floor hazard immunity check to check for other sources of immunity.
+	if(victim.is_floor_hazard_immune()) // Floating or flying over the kneestinger
+		return FALSE
+	return TRUE
+
+/obj/structure/glowshroom/proc/do_zap(atom/movable/movable_victim)
+	if(!isliving(movable_victim))
+		return FALSE
+	var/mob/living/victim = movable_victim
+	if(victim.electrocute_act(30, src))
+		victim.emote("painscream")
+		victim.update_sneak_invis(TRUE)
+		victim.consider_ambush()
+		if(victim.throwing)
+			victim.throwing.finalize(FALSE)
+		return TRUE
+	return FALSE
+
+/obj/structure/glowshroom/Bumped(atom/movable/bumper)
+	. = ..()
+	if(can_zap(bumper))
+		do_zap(bumper)
+
+/obj/structure/glowshroom/Crossed(atom/movable/crosser)
+	if(can_zap(crosser))
+		do_zap(crosser)
 	. = ..()
 
 /obj/structure/glowshroom/attackby(obj/item/W, mob/user, params)
-	if(isliving(user) && W && user.z == z)
-		if(W.flags_1 & CONDUCT_1)
-			var/mob/living/L = user
-			if(L.electrocute_act(30, src)) // The kneestingers will let you pass if you worship dendor, but they won't take your stupid ass hitting them.
-				L.emote("painscream")
-				L.consider_ambush()
-				if(L.throwing)
-					L.throwing.finalize(FALSE)
-				return FALSE
-	..()
+	if(isliving(user) && W && user.z == z && (W.flags_1 & CONDUCT_1))
+		// The kneestingers will let you pass if you worship dendor, but they won't take your stupid ass hitting them.
+		if(do_zap(user))
+			return FALSE
+	return ..()
 
 
-/obj/structure/glowshroom/New(loc, obj/item/seeds/newseed, mutate_stats)
-	..()
+/obj/structure/glowshroom/Initialize(mapload, obj/item/seeds/newseed, mutate_stats)
+	. = ..()
 	set_light(1.5, 1.5, "#d4fcac")
 
 	icon_state = "glowshroom[rand(1,3)]"

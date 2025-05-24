@@ -19,6 +19,7 @@
 							/obj/structure/flora/roguegrass/bush = 25,
 							/obj/structure/flora/roguegrass = 26,
 							/obj/structure/flora/roguegrass/maneater = 13,
+							/obj/structure/flora/roguegrass/pyroclasticflowers = 5,
 							/obj/item/natural/stone = 23,
 							/obj/item/natural/rock = 6,
 							/obj/item/natural/artifact = 4,

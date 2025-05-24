@@ -29,14 +29,12 @@
 		if(bp && istype(bp , /obj/item/clothing))
 			var/obj/item/clothing/C = bp
 			if(zone2covered(def_zone, C.body_parts_covered))
-				if(C.max_integrity)
-					if(C.obj_integrity <= 0)
-						continue
+				if(C.obj_broken)
+					continue
 				var/val = C.armor.getRating(d_type)
-				if(val > 0)
-					if(val > protection)
-						protection = val
-						used = C
+				if(val > protection)
+					protection = val
+					used = C
 	if(used)
 		if(!blade_dulling)
 			blade_dulling = BCLASS_BLUNT
@@ -60,7 +58,7 @@
 		if(bp && istype(bp , /obj/item/clothing))
 			var/obj/item/clothing/C = bp
 			if(zone2covered(def_zone, C.body_parts_covered))
-				if(C.obj_integrity > 1)
+				if(!C.obj_broken)
 					if(d_type in C.prevent_crits)
 						return TRUE
 /*

@@ -69,6 +69,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh)
 	var/age = AGE_ADULT						//age of character
+	var/voice_type = VOICE_TYPE_MASC // voice pack they use
 	var/origin = "Default"
 	var/underwear = "Nude"				//underwear type
 	var/underwear_color = null			//underwear color
@@ -330,6 +331,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
+			
+			// Allows you to select vioce pack					
+			dat += "<b>Voice Type</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -1393,6 +1397,14 @@ Slots: [job.spawn_positions]</span>
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 
+
+				if ("voicetype")
+					var voicetype_input = input(user, "Choose your character's voice type", "Voice Type") as null|anything in GLOB.voice_types_list
+					if(voicetype_input)
+						voice_type = voicetype_input
+						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
+
+						
 				if("faith")
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
@@ -1987,6 +1999,7 @@ Slots: [job.spawn_positions]</span>
 		O = character.get_bodypart(BODY_ZONE_L_ARM)
 		if(O)
 			O.drop_limb()
+			qdel(O)
 		character.regenerate_limb(BODY_ZONE_R_ARM)
 		character.regenerate_limb(BODY_ZONE_L_ARM)
 
@@ -2048,6 +2061,7 @@ Slots: [job.spawn_positions]</span>
 	character.set_patron(selected_patron)
 	character.backpack = backpack
 	character.defiant = defiant
+	character.voice_type = voice_type
 	character.virginity = virginity
 
 	character.jumpsuit_style = jumpsuit_style

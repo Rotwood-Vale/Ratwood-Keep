@@ -44,15 +44,7 @@
 	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
 
-	//Humie grenzelhofts are always set to be, well, grenzelhoft
-	if(ishumannorthern(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Grenzelhoft"]
-		H.update_body()
-	if(isdemihuman(H))
-		var/list/skin_slop = H.dna.species.get_skin_list()
-		H.skin_tone = skin_slop["Grenzelhoft"]
-		H.update_body()
+	//Gone are the days of the Grenzelhoft whitewashing forcefields
 	if(iswoodelf(H))
 		H.change_stat("strength", 1)
 		H.change_stat("speed", -1)

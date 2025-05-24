@@ -39,7 +39,6 @@
 	//Sellection screen color
 	var/selection_color = "#dbdce3"
 
-
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
@@ -82,6 +81,8 @@
 
 	var/job_greet_text = TRUE
 	var/tutorial = null
+	/// If non-null, will be used instead of the tutorial variable for Seelie characters.
+	var/seelie_tutorial = null
 
 	var/whitelist_req = FALSE
 
@@ -127,6 +128,9 @@
 	/// This job re-opens slots if someone dies as it
 	var/job_reopens_slots_on_death = FALSE
 
+	//used on the carriage to allow leaving rounds
+	var/can_leave_round = TRUE
+
 	/// This job is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
 
@@ -156,21 +160,13 @@
 	if(!job_greet_text)
 		return
 	to_chat(player, span_notice("You are the <b>[title]</b>"))
-	if(tutorial)
-		if(isseelie(player))		//If player is a Seelie
-			change_tutorial(player)	//Check if job flavortext needs changed (hand and maid currently)
+	// If we're a Seelie, use the seelie tutorial if it exists.
+	// Otherwise, use the normal tutorial.
+	// TODO: Add a general system for species-specific tutorial overrides?
+	var/use_tutorial = (isseelie(player) && seelie_tutorial) || tutorial
+	if(use_tutorial)
 		to_chat(player, span_notice("*-----------------*"))
-		to_chat(player, span_notice(tutorial))
-
-//Custom join messages for SEELIE ONLY, will not trigger for other races unless explicitly called to
-/datum/job/proc/change_tutorial(mob/player)
-	if(title == "Hand")		//Change tutorial message for Seelie Hand
-		tutorial = "It wasn't easy for a fae, but your liege saw great potential in you. Once, you were just an adventuring companion- now you are one of the highest status fae within the realm itself. It's come at a cost, youve lost your more mischievous spells and nature over time, but gained ones more useful to dealing with the chaos of court."
-	else if(title == "Servant")		//Change tutorial message for Seelie maids
-		tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but youve allowed the more chaotic ones to fade to memory."
-	else if(title == "Prisoner (Rockhill)" || title == "Prisoner (Bog)")
-		tutorial = "Thrown in this accursed place, the colar around your neck prevents any and all magic you mightve had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
-	return
+		to_chat(player, span_notice(use_tutorial))
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -196,12 +192,6 @@
 		for(var/S in jobstats)
 			H.change_stat(S, jobstats[S])
 
-	for(var/X in peopleknowme)
-		for(var/datum/mind/MF in get_minds(X))
-			H.mind.person_knows_me(MF)
-	for(var/X in peopleiknow)
-		for(var/datum/mind/MF in get_minds(X))
-			H.mind.i_know_person(MF)
 
 	if(H.islatejoin && show_in_credits)
 		var/used_title = title
@@ -227,6 +217,14 @@
 	
 	if(GLOB.hugbox_duration)
 		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, hugboxing_start)), 1)
+
+/datum/job/proc/initialise_memories(mob/living/H)
+	for(var/X in peopleknowme)
+		for(var/datum/mind/MF in get_minds(X))
+			H.mind.person_knows_me(MF)
+	for(var/X in peopleiknow)
+		for(var/datum/mind/MF in get_minds(X))
+			H.mind.i_know_person(MF)
 
 /mob/living/carbon/human/proc/hugboxing_start()
 	to_chat(src, span_warning("I will be in danger once I start moving."))

@@ -369,24 +369,58 @@
 		playsound(user, 'sound/blank.ogg', 50, TRUE)
 		open = TRUE
 
+/// Checks if target can be stored in the lantern.
+/// User is the mob that receives feedback messages.
+/obj/item/flashlight/flare/torch/lantern/proc/can_store_mob(mob/living/target, mob/living/user, do_warning = TRUE)
+	if(!user)
+		do_warning = FALSE
+	if(!open)	//Lantern must be "open", or unlocked
+		if(do_warning)
+			to_chat(user, span_warning("I need to open \the [src]'s door!"))
+		return FALSE
+	var/they = target.p_they()
+	var/them = target.p_them()
+	var/target_string = "\the [target]"
+	if(target == user)
+		they = "you"
+		them = "yourself"
+		target_string = "you"
+	if(!HAS_TRAIT(target, TRAIT_TINY))
+		if(do_warning)
+			to_chat(user, span_warning("How could [they] possibly fit?"))
+		return FALSE
+	if(target.buckled) //Seelie is buckled
+		if(do_warning)
+			to_chat(user, span_warning("Unbuckle [them] first."))
+		return FALSE
+	// Check if we're in a Seelie's inventory.
+	if(item_flags & IN_INVENTORY)
+		var/mob/living/holder = get(src, /mob/living) // Get the mob whose inventory we're in.
+		if(holder == target)
+			if(do_warning)
+				var/user_string = (target == user) ? "you're" : "they're"
+				to_chat(user, span_warning("\The [src] can't fit [target_string] while [user_string] holding it!"))
+			return FALSE
+		if(isseelie(holder)) //Left this one as a seelie check since they shrink items
+			if(do_warning)
+				to_chat(user, span_warning("\The [src] can't fit [target_string] while it's shrunken by a Seelie!"))
+			return FALSE
+	if(on)
+		if(do_warning)
+			to_chat(user, span_warning("[src] is lit, you'll burn [them]!"))
+		return FALSE
+	if(length(occupants) >= max_occupants)
+		if(do_warning)
+			to_chat(user, span_warning("[src] is already carrying a seelie!"))
+		return FALSE
+	return TRUE
+
+
 //Handles loading of lantern via "attacking" (clicking) on mob with it
 /obj/item/flashlight/flare/torch/lantern/attack(mob/living/target, mob/living/user)
 	if(!(istype(user.rmb_intent, /datum/rmb_intent/weak)))	//Only allow caging seelie via weak intent rmb
 		return ..()
-	if(!open)	//Lantern must be "open", or unlocked
-		to_chat(user, span_warning("I need to open the [src]'s door!"))
-		return
-	if(!HAS_TRAIT(target, TRAIT_TINY))
-		to_chat(user, span_warning("How could they possibly fit?"))
-		return
-	if(target.buckled)	//Seelie is buckled
-		to_chat(user, span_warning("Unbuckle them first."))
-		return
-	if((isseelie(user)) && HAS_TRAIT(target, TRAIT_TINY))	//Left this one as a seelie check since they shrink items
-		to_chat(user, span_warning("You shrink the [src] by holding it, they cant fit!"))
-		return
-	if(on)
-		to_chat(user, span_warning("[src] is lit, you'll burn them!"))
+	if(!can_store_mob(target, user))
 		return
 	load_occupant(user, target)
 
@@ -394,7 +428,7 @@
 /obj/item/flashlight/flare/torch/lantern/relaymove(mob/living/user, direction)
 	if(open)
 		loc.visible_message(span_notice("[user] climbs out of [src]!"), \
-		span_warning("[user] jumps out of [src]!"))
+			span_warning("[user] jumps out of [src]!"))
 		remove_occupant(user)
 		return
 	//else if(user.client)
@@ -404,10 +438,10 @@
 /obj/item/flashlight/flare/torch/lantern/container_resist(mob/living/user)	//This spams messages while movement key is held down
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	loc.visible_message(span_warning("[src] starts rattling as something pushes against the door!"), null, null, null, user)
+	loc.visible_message(span_warning("[src] starts rattling as something pushes against the door!"), ignored_mobs = user)
 	to_chat(user, span_notice("I start pushing against the door of the [src]..."))
-	if(do_after(user, 200, target = src) && !open && (user in occupants))
-		loc.visible_message(span_warning("[user] shoves out of	[src]!"), null, null, null, user)
+	if(do_after(user, 20 SECONDS, target = src) && !open && (user in occupants))
+		loc.visible_message(span_warning("[user] shoves out of	[src]!"), ignored_mobs = user)
 		to_chat(user, span_notice("I force open the [src]'s door and fall out!"))
 		open = TRUE
 		remove_occupant(user)
@@ -416,13 +450,13 @@
 
 //Handle something (O) drag dropped onto lamp by (user)
 /obj/item/flashlight/flare/torch/lantern/MouseDrop_T(atom/movable/O, mob/living/user)
-	if(isliving(O))
-		var/mob/living/l_object = O
-		if(HAS_TRAIT(l_object, TRAIT_TINY) && l_object == user)
-			loc.visible_message(span_notice("[user] starts climbing into [src]!"), \
-			span_warning("[user] starts climbing into [src]!"))
-			if(do_after(user, 120, target = src))
-				add_occupant(l_object)
+	if(isliving(O) && HAS_TRAIT(O, TRAIT_TINY) && O == user && can_store_mob(user, user))
+		loc.visible_message(span_notice("[user] starts climbing into [src]!"), \
+		span_warning("[user] starts climbing into [src]!"))
+		if(do_after(user, 12 SECONDS, target = src) && can_store_mob(user, user))
+			add_occupant(O)
+		return TRUE
+	. = ..()
 
 
 //Unloads via click-dragging onto an empty tile
@@ -436,21 +470,17 @@
 
 //Handle the actual loading of the seelie
 /obj/item/flashlight/flare/torch/lantern/proc/load_occupant(mob/living/user, mob/living/target)
-	if(occupants.len >= max_occupants)
-		to_chat(user, span_warning("[src] is already carrying a seelie!"))
-		return
 	user.visible_message(span_notice("[user] starts loading [target] into [src]."), \
-	span_notice("I start loading [target] into [src]..."), null, null, target)
+		span_notice("I start loading [target] into [src]..."), ignored_mobs = target)
 	to_chat(target, span_danger("[user] starts loading you into [user.p_their()] [name]!"))
-	if(!do_mob(user, target, 30))
+	if(!do_mob(user, target, 3 SECONDS))
 		return
 	if(target in occupants)
 		return
-	if(occupants.len >= max_occupants) //Run the checks again, just in case
-		to_chat(user, span_warning("[src] is already carrying a seelie!"))
+	if(!can_store_mob(target, user)) //Run the checks again, just in case
 		return
 	user.visible_message(span_notice("[user] loads [target] into [src]!"), \
-	span_notice("I load [target] into [src]."), null, null, target)
+		span_notice("I load [target] into [src]."), ignored_mobs = target)
 	to_chat(target, span_danger("[user] loads you into [user.p_their()] [name]!"))
 	add_occupant(target)
 
@@ -460,6 +490,7 @@
 		return
 	occupant.forceMove(src)
 	occupants += occupant
+	// TODO: Make these variables once bronze lanterns have their own wisp sprites.
 	icon_state = "lantern_wisp"
 	item_state = "lantern_wisp"
 	light_color = "#6e55fc"
@@ -477,8 +508,8 @@
 		return
 	occupant.forceMove(new_turf ? new_turf : drop_location())
 	occupants -= occupant
-	icon_state = "lamp"
-	item_state = "lamp"
+	icon_state = initial(icon_state)
+	item_state = initial(icon_state)
 	light_color = "#da8c45"
 	on = FALSE
 	set_light_on(FALSE)

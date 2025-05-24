@@ -25,7 +25,7 @@
 
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += list("rats", "spiders", "wolfs")
+	H.faction += list("rats", "spiders", "wolfs", "saiga")
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -34,6 +34,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	r_hand = /obj/item/rogueweapon/woodstaff
+	backpack_contents = list(/obj/item/ritualfeather = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -51,12 +52,14 @@
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 1, TRUE)
+		H.change_stat("strength", 1)
 		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
+		H.change_stat("endurance", 2)
 		H.change_stat("perception", -1)
 
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

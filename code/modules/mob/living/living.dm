@@ -38,9 +38,12 @@
 	return ..()
 
 /mob/living/onZImpact(turf/T, levels)
-	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
-		if(levels <= 2 || isseelie(src))
-			return
+	// TRAIT_NOFALLDAMAGE1 only protects you if you fall two or fewer levels.
+	if(levels <= 2 && HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
+		return
+	// TRAIT_NOFALLDAMAGE2, used by seelies, gives full fall damage immunity.
+	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE2))
+		return
 	var/points
 	for(var/i in 2 to levels)
 		i++
@@ -335,7 +338,7 @@
 		return FALSE
 	if(throwing || !(mobility_flags & MOBILITY_PULL))
 		return FALSE
-	if(!(isliving(AM)) && isseelie(src))	//Seelie grabbing non living object
+	if(!isliving(AM) && HAS_TRAIT(src, TRAIT_TINY))	//Seelie grabbing non living object
 		to_chat(src, span_warning("My hands are too small to grab that."))
 		return FALSE
 
@@ -374,10 +377,11 @@
 			var/used_limb = C.find_used_grab_limb(src)
 			O.name = "[C]'s [parse_zone(used_limb)]"
 			var/obj/item/bodypart/BP = C.get_bodypart(check_zone(used_limb))
-			C.grabbedby += O
+			LAZYADD(C.grabbedby, O)
 			O.grabbed = C
 			O.grabbee = src
 			O.limb_grabbed = BP
+			LAZYADD(BP.grabbedby, O)
 			if(item_override)
 				O.sublimb_grabbed = item_override
 			else
@@ -497,14 +501,9 @@
 			reset_pull_offsets(pulling)
 
 		if(forced) //if false, called by the grab item itself, no reason to drop it again
-			if(istype(get_active_held_item(), /obj/item/grabbing))
-				var/obj/item/grabbing/I = get_active_held_item()
-				if(I.grabbed == pulling)
-					dropItemToGround(I, silent = FALSE)
-			if(istype(get_inactive_held_item(), /obj/item/grabbing))
-				var/obj/item/grabbing/I = get_inactive_held_item()
-				if(I.grabbed == pulling)
-					dropItemToGround(I, silent = FALSE)
+			for(var/obj/item/grabbing/grab in held_items)
+				if(grab.grabbed == pulling)
+					dropItemToGround(grab, silent = FALSE)
 
 	. = ..()
 
@@ -613,12 +612,13 @@
 		return FALSE
 	if(resting)
 		if(isseelie(src))
-			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
-			if(Wing == null)
+			var/mob/living/carbon/human/H = src
+			var/datum/species/seelie/seelie = H.dna.species
+			if(!seelie.has_wings(src))
 				to_chat(src, span_warning("I can't stand without my wings!"))
 				return FALSE
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			if(move_after(src, 20, target = src))
+			if(move_after(src, 2 SECONDS, target = src))
 				set_resting(FALSE, FALSE)
 				if(resting)
 					src.visible_message(span_warning("[src] tries to stand up."))
@@ -643,8 +643,9 @@
 		return
 	if(resting)
 		if(isseelie(src))
-			var/obj/item/organ/wings/Wing = src.getorganslot(ORGAN_SLOT_WINGS)
-			if(Wing == null)
+			var/mob/living/carbon/human/H = src
+			var/datum/species/seelie/seelie = H.dna.species
+			if(!seelie.has_wings(src))
 				to_chat(src, span_warning("I can't stand without my wings!"))
 				return
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
@@ -665,19 +666,13 @@
 				toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 	if(!silent)
 		if(rest == resting)
+			//Quiet the falling and rising sound for fairies. Possibly replace the ogg outright
+			var/rest_sound_vol = isseelie(src) ? 30 : 100
 			if(resting)
-				if(isseelie(src))
-					//Quiet the falling and rising sound for fairies. Possibly replace the ogg outright
-					playsound(src, 'sound/foley/toggledown.ogg', 30, FALSE)
-				else
-					playsound(src, 'sound/foley/toggledown.ogg', 100, FALSE)
+				playsound(src, 'sound/foley/toggledown.ogg', rest_sound_vol, FALSE)
 				src.visible_message(span_info("[src] lays down."))
 			else
-				if(isseelie(src))
-					//Quiet the falling and rising sound for fairies. Possibly replace the ogg outright
-					playsound(src, 'sound/foley/toggleup.ogg', 30, FALSE)
-				else
-					playsound(src, 'sound/foley/toggleup.ogg', 100, FALSE)
+				playsound(src, 'sound/foley/toggleup.ogg', rest_sound_vol, FALSE)
 		else
 			to_chat(src, span_warning("I fail to get up!"))
 	update_cone_show()
@@ -1020,6 +1015,11 @@
 	..()
 	update_charging_movespeed()
 
+/mob/living/proc/get_held_embed_grabs()
+	for(var/obj/item/grabbing/grab in held_items)
+		if(grab.grabbed == pulling && isitem(grab.sublimb_grabbed))
+			LAZYADD(., grab)
+
 /mob/proc/resist_grab(moving_resist)
 	return 1 //returning 0 means we successfully broke free
 
@@ -1057,7 +1057,7 @@
 	resist_chance = clamp((((4 + (((STASTR - L.STASTR)/2) + wrestling_diff)) * 10 + rand(-5, 10)) * combat_modifier), 5, 95)
 
 	if(moving_resist && client) //we resisted by trying to move
-		client.move_delay = world.time + 20
+		client.move_delay = world.time + 2 SECONDS
 	if(prob(resist_chance))
 		stamina_add(rand(5,15))
 		visible_message(span_warning("[src] breaks free of [pulledby]'s grip!"), \
@@ -1065,7 +1065,12 @@
 		to_chat(pulledby, span_danger("[src] breaks free of my grip!"))
 		log_combat(pulledby, src, "broke grab")
 		pulledby.changeNext_move(CLICK_CD_GRABBING)
-		pulledby.stop_pulling()
+		if(!L.badluck(2))
+			// return any embedded items
+			for(var/obj/item/grabbing/grab in L.get_held_embed_grabs())
+				grab.removeembeddeditem(pulledby) // ouch!
+		if(pulledby) // if it was due to an embed, we've already stopped pulling
+			pulledby.stop_pulling() // the default is forced = TRUE
 
 		var/wrestling_cooldown_reduction = 0
 		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
@@ -1076,11 +1081,14 @@
 	else
 		stamina_add(rand(5,15))
 		var/shitte = ""
-//		if(client?.prefs.showrolls)
-//			shitte = " ([resist_chance]%)"
+		if(client?.prefs.showrolls)
+			shitte = " ([resist_chance]%)"
 		visible_message(span_warning("[src] struggles to break free from [pulledby]'s grip!"), \
 						span_warning("I struggle against [pulledby]'s grip![shitte]"), null, null, pulledby)
 		to_chat(pulledby, span_warning("[src] struggles against my grip!"))
+		// any embedded weapons held by our puller should get twisted
+		for(var/obj/item/grabbing/grab in L.get_held_embed_grabs())
+			grab.twistitemlimb() // userless because it's automatic
 
 		return TRUE
 
@@ -1472,6 +1480,13 @@
 			stickstand = TRUE
 
 	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyzed && ( ignore_legs || ((has_legs >= 2) || (has_legs == 1 && stickstand)) ) && !(buckled && buckled.buckle_lying)
+	// Seelie cannot stand without wings.
+	// TODO: Make this a generic species proccall to avoid the cast and other checks?
+	if(isseelie(src))
+		var/mob/living/carbon/human/H = src
+		var/datum/species/seelie/seelie = H.dna.species
+		if(!seelie.has_wings(src))
+			canstand_involuntary = FALSE
 	var/canstand = canstand_involuntary && !resting
 
 	var/should_be_lying = !canstand

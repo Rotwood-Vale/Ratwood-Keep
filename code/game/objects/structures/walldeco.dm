@@ -1,3 +1,6 @@
+#define BANDIT_AUTHORITY_ROLES list("Warden", "Retinue Captain", "Sheriff", "Mayor")
+
+// Then later:
 
 /obj/structure/fluff/walldeco
 	name = ""
@@ -48,10 +51,18 @@
 	. = ..()
 	if(user.Adjacent(src))
 		if(SSrole_class_handler.bandits_in_round)
-			. += span_bold("I see that bandits are active in the region.")
+			if(user.mind && user.mind.assigned_role in BANDIT_AUTHORITY_ROLES)
+				. += span_bold("I already know the faces of the local bandits well.")
+				return
+			. += span_bold("I now know the faces of the local bandits.")
+			ADD_TRAIT(user, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
+			addtimer(CALLBACK(user, /mob/proc/forget_wanted, user), 20 MINUTES)
 			user.playsound_local(user, 'sound/misc/notice (2).ogg', 100, FALSE)
 		else
 			. += span_bold("There doesn't seem to be any reports of bandit activity.")
+/mob/proc/forget_wanted(mob/user)
+	REMOVE_TRAIT(user, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)
+	to_chat(user, span_notice("You can't quite remember the bandit posters faces."))
 
 /obj/structure/fluff/walldeco/innsign
 	name = "sign"
@@ -202,6 +213,33 @@
 	M.color = primary
 	add_overlay(M)
 	M = mutable_appearance(icon, "wallflag_secondary", -(layer+0.1))
+	M.color = secondary
+	add_overlay(M)
+	GLOB.lordcolor -= src
+
+/obj/structure/fluff/walldeco/custombanner
+	name = "rockhill banners"
+	desc = "Small flags displaying duchy pride."
+	icon_state = "bannerflags"
+
+/obj/structure/fluff/walldeco/custombanner/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	else
+		GLOB.lordcolor += src
+
+/obj/structure/fluff/walldeco/custombanner/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/structure/fluff/walldeco/custombanner/lordcolor(primary,secondary)
+	if(!primary || !secondary)
+		return
+	var/mutable_appearance/M = mutable_appearance(icon, "bannerflags_primary", -(layer+0.1))
+	M.color = primary
+	add_overlay(M)
+	M = mutable_appearance(icon, "bannerflags_secondary", -(layer+0.1))
 	M.color = secondary
 	add_overlay(M)
 	GLOB.lordcolor -= src

@@ -14,6 +14,7 @@
 	You rose up through the ranks as a watchman, and now rule over them - Ensure that they enforce the laws of this land properly. \
 	While you may work under the Mayor, everyone knows the Duke is the true authority, or is he?"
 	whitelist_req = FALSE
+	can_leave_round = FALSE
 	outfit = /datum/outfit/job/roguetown/sheriff
 	give_bank_account = 26
 	min_pq = 8
@@ -60,3 +61,4 @@
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BOGVULNERABLE, TRAIT_GENERIC)	//applies debuff of -2end -2 spd when in the bog
+	ADD_TRAIT(H, TRAIT_WANTED_POSTER_READ, TRAIT_GENERIC)

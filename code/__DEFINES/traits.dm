@@ -28,6 +28,7 @@
 #define TRAIT_NASTY_EATER "Inhumen Digestion" //can eat rotten food, organs, poison berries, and drink murky water
 #define TRAIT_WILD_EATER "Beastly Digestion" //can eat raw and rotten food and drink murky water
 #define TRAIT_NOFALLDAMAGE1 "Minor fall damage immunity"
+#define TRAIT_NOFALLDAMAGE2 "Major fall damage immunity"
 #define TRAIT_MISSING_NOSE "Missing Nose" //halved stamina regeneration
 #define TRAIT_DISFIGURED "Disfigured"
 #define TRAIT_SPELLCOCKBLOCK "Bewitched" //prevents spellcasting
@@ -91,9 +92,12 @@
 #define TRAIT_ROTTOUCHED "Rot Touched"
 #define TRAIT_NUDE_SLEEPER "Nude Sleeper"
 #define TRAIT_WANTED "Wanted Brigand"
+#define TRAIT_WANTED_POSTER_READ "Read Wanted Poster"
 #define TRAIT_COMMIE "Eye of a Brigand" //bandit trait
 #define TRAIT_DEATHBYSNUSNU "Bed Breaker" // double sex damage (requires strong intent)
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
+#define TRAIT_RITUALIST "Ritualist" // Allows use of ritual feathers
+#define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -151,6 +155,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_NASTY_EATER = span_dead("I can eat bad food, and water that would be toxic to humen will not affect me."),
 	TRAIT_WILD_EATER = span_info("I can eat raw food and drink from dirty water."),
 	TRAIT_NOFALLDAMAGE1 = span_warning("I can easily handle minor falls."),
+	TRAIT_NOFALLDAMAGE2 = span_warning("I can't be injured by falling."),
 	TRAIT_DISFIGURED = span_warning("No one can recognize me..."),
 	TRAIT_MISSING_NOSE = span_warning("I struggle to breathe."),
 	TRAIT_SPELLCOCKBLOCK = span_warning("I cannot cast any spells."),
@@ -182,6 +187,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_POISONBITE = "My bites inject venom into my target.", // Ham change
 	TRAIT_WANTED = span_info("You are wanted in this kingdom, if someone sees your face they might run away or attack you."),
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
+	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
+	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
 ))
 
 // trait accessor defines
@@ -369,6 +376,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define GLASSES_TRAIT "glasses"
 #define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
 #define INNATE_TRAIT "innate"
+#define DEADITE_TRAIT "deadite"
 
 // unique trait sources, still defines
 #define TRAIT_BOG_TREKKING "trekking"
