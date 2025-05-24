@@ -363,7 +363,7 @@
 			return
 	. = ..()
 
-obj/structure/spike_pit/attack_hand(mob/user)
+/obj/structure/spike_pit/attack_hand(mob/user)
 	
 	if(has_buckled_mobs())
 		var/person = buckled_mobs[1].name

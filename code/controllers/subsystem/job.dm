@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(job)
 
 	var/list/occupations = list()		//List of all jobs
 	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles
-	var/list/type_occupations = list()	//Dict of all jobs, keys are types
+	var/list/datum/job/type_occupations = list()	//Dict of all jobs, keys are types
 	var/list/unassigned = list()		//Players who need jobs
 	var/initial_players_to_assign = 0 	//used for checking against population caps
 
@@ -204,7 +204,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ player not enough xp, Player: [player]")
 			continue
 
-		if(player.mind && job.title in player.mind.restricted_roles)
+		if(player.mind && (job.title in player.mind.restricted_roles))
 			JobDebug("GRJ incompatible with antagonist role, Player: [player], Job: [job.title]")
 			continue
 
@@ -418,7 +418,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player not enough xp, Player: [player], Job:[job.title]")
 					continue
 
-				if(player.mind && job.title in player.mind.restricted_roles)
+				if(player.mind && (job.title in player.mind.restricted_roles))
 					JobDebug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
 
@@ -515,7 +515,7 @@ SUBSYSTEM_DEF(job)
 				if(job.required_playtime_remaining(player.client))
 					continue
 
-				if(player.mind && job.title in player.mind.restricted_roles)
+				if(player.mind && (job.title in player.mind.restricted_roles))
 					continue
 
 				if(length(job.allowed_races) && !(player.client.prefs.pref_species.type in job.allowed_races))

@@ -188,8 +188,8 @@
 			if(do_after(user, load_time_skill, src))
 				user.visible_message("<span class='notice'>[user] fills the [src] with gunpowder.</span>")
 				gunpowder = TRUE
+			// user.stop_sound_channel(gunchannel)
 			return
-		user.stop_sound_channel(gunchannel)
 	if(istype(A, /obj/item/ramrod))
 		var/obj/item/ramrod/R=A
 		if(!reloaded)
@@ -199,6 +199,7 @@
 				if(do_after(user, load_time_skill, src))
 					user.visible_message("<span class='notice'>[user] has finished reloading the [src].</span>")
 					reloaded = TRUE
+				// user.stop_sound_channel(gunchannel)
 				return
 		if(reloaded && !myrod)
 			user.transferItemToLoc(R, src)
@@ -213,7 +214,6 @@
 		if(!myrod == null)
 			to_chat(user, span_warning("There's already a [R.name] inside of the [name]."))
 			return
-		user.stop_sound_channel(gunchannel)
 
 /obj/item/gun/ballistic/firearm/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 
