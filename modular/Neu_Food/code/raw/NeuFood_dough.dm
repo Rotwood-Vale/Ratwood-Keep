@@ -536,6 +536,7 @@
 	foodtype = GRAIN | DAIRY | SUGAR
 	bitesize = 3
 	eat_effect = /datum/status_effect/buff/greatsnackbuff 
+	extra_eat_effect = /datum/status_effect/buff/sweet
 	rotprocess = SHELFLIFE_LONG
 
 

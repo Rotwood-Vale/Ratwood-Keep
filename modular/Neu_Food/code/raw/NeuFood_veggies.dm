@@ -62,6 +62,5 @@
 	name = "scalloped potatoes"
 	desc = "A cheesey covering of baked potatoes."
 	icon_state = "scalloped_potatoes"
-	eat_effect = null
 	tastes = list("potato" = 1, "cheese" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
