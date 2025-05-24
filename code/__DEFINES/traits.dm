@@ -98,6 +98,7 @@
 #define TRAIT_POISONBITE "Venomous Bite" // Adds tox damage on bites
 #define TRAIT_RITUALIST "Ritualist" // Allows use of ritual feathers
 #define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
+#define TRAIT_CANNOT_HARVEST_LUX "No Lux" // you cannot harvest lux from this person
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
