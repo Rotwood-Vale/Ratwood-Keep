@@ -16,6 +16,7 @@
 	give_bank_account = TRUE
 	min_pq = -5
 	max_pq = null
+	cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/job/roguetown/undertaker/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
