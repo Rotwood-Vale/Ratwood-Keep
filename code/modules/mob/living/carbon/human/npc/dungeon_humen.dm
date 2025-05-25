@@ -368,3 +368,46 @@
 		if(val in B)
 			return FALSE
 	return TRUE
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/rogue/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_rogue)
+
+	dodgetime = 5
+	H.STASTR = 8
+	H.STASPD = 17
+	H.STACON = 10
+	H.STAEND = 10
+	H.STAINT = 16
+	H.STAPER = 17
+
+/datum/outfit/job/roguetown/npc/dungeon_rogue
+	name = "Dungeon Rogue"
+
+	pre_equip(mob/living/carbon/human/H)
+		..()
+		mask = /obj/item/clothing/mask/rogue/facemask
+		head = /obj/item/clothing/head/roguetown/necrahood
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+		r_hand = /obj/item/rogueweapon/mace/wsword
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/rogue/use_combat_abilities()
+	if(stat != CONSCIOUS || world.time < next_cast)
+		return
+	next_cast = world.time + 100
+
+	var/list/enemies = list()
+	for(var/mob/living/L in view(3, src))
+		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+			enemies += L
+
+	if(enemies.len)
+		var/mob/living/target = pick(enemies)
+		src.say("The shadows guide my blade...")
+		target.visible_message(span_warning("[target] is stabbed with poisoned steel!"), span_userdanger("A sting of venom burns through you!"))
+		target.apply_damage(rand(10, 70, TOXIN)
