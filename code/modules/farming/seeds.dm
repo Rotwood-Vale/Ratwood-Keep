@@ -189,3 +189,4 @@
 /obj/item/seeds/fyritius
 	seed_identity = "fyritius seeds"
 	plant_def_type = /datum/plant_def/fyritiusflower
+

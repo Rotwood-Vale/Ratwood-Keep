@@ -40,7 +40,7 @@
 /obj/item/alch/examine(mob/user)
 	. = ..()
 	if(user.mind)
-		var/alch_skill = user.mind.get_skill_level(/datum/skill/craft/alchemy)
+		var/alch_skill = user.mind.get_skill_level(/datum/skill/misc/alchemy)
 		var/perint = 0
 		if(isliving(user))
 			var/mob/living/lmob = user
@@ -88,7 +88,7 @@
 	icon_state = "seeddust"
 	major_pot = /datum/alch_cauldron_recipe/big_stamina_potion
 	med_pot = /datum/alch_cauldron_recipe/stamina_potion
-	minor_pot = /datum/alch_cauldron_recipe/disease_cure
+	minor_pot = /datum/alch_cauldron_recipe/strong_antidote
 
 /obj/item/alch/runedust
 	name = "rune dust"
@@ -107,7 +107,7 @@
 /obj/item/alch/silverdust
 	name = "silver dust"
 	icon_state = "silverdust"
-	major_pot = /datum/alch_cauldron_recipe/disease_cure
+	major_pot = /datum/alch_cauldron_recipe/strong_antidote
 	med_pot = /datum/alch_cauldron_recipe/antidote
 	minor_pot = /datum/alch_cauldron_recipe/big_health_potion
 
@@ -176,7 +176,7 @@
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 
-	major_pot = /datum/alch_cauldron_recipe/disease_cure
+	major_pot = /datum/alch_cauldron_recipe/strong_antidote
 	med_pot = /datum/alch_cauldron_recipe/health_potion
 	minor_pot = /datum/alch_cauldron_recipe/con_potion
 
@@ -206,7 +206,7 @@
 
 	major_pot = /datum/alch_cauldron_recipe/spd_potion
 	med_pot = /datum/alch_cauldron_recipe/big_mana_potion
-	minor_pot = /datum/alch_cauldron_recipe/disease_cure
+	minor_pot = /datum/alch_cauldron_recipe/strong_antidote
 
 /obj/item/alch/ozium
 	name = "alchemical ozium"
@@ -217,14 +217,14 @@
 	med_pot = /datum/alch_cauldron_recipe/lck_potion
 	minor_pot = /datum/alch_cauldron_recipe/int_potion
 
-/obj/item/alch/transisdust
+/* /obj/item/alch/transisdust
 	name = "transis dust"
 	desc = "A long mix of herb that product a special powder."
 	icon_state = "transisdust"
 
 	major_pot = /datum/alch_cauldron_recipe/gender_potion
 	med_pot = /datum/alch_cauldron_recipe/gender_potion
-	minor_pot = /datum/alch_cauldron_recipe/gender_potion
+	minor_pot = /datum/alch_cauldron_recipe/gender_potion */ //SUPPOSED TO BE FIXED
 
 //BEGIN THE HERBS
 
@@ -350,8 +350,7 @@
 	structurecraft = /obj/structure/table/wood
 	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
-	skillcraft = /datum/skill/craft/alchemy
-	craftdiff = 0
+	skillcraft = /datum/skill/misc/alchemy
 
 /datum/crafting_recipe/roguetown/alch/magicdust
 	name = "magic dust"
@@ -361,5 +360,4 @@
 	structurecraft = /obj/structure/table/wood
 	verbage = "mixes"
 	craftsound = 'sound/foley/scribble.ogg'
-	skillcraft = /datum/skill/craft/alchemy
-	craftdiff = 0
+	skillcraft = /datum/skill/misc/alchemy

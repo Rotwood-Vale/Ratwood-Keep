@@ -52,7 +52,7 @@
 				S.start()
 			QDEL_NULL(to_grind)
 			if(user.mind)
-				user.mind.adjust_experience(/datum/skill/craft/alchemy, user.STAINT, FALSE)
+				user.mind.adjust_experience(/datum/skill/misc/alchemy, user.STAINT, FALSE)
 		return
 	if(to_grind)
 		to_chat(user, "<span class='warning'>[src] is full!</span>")

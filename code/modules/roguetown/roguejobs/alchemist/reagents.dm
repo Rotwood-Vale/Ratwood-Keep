@@ -43,12 +43,12 @@
 		M.blood_volume = min(M.blood_volume+16, BLOOD_VOLUME_MAXIMUM) //weak health potions should be properly abysmal compared to the real thing. Particularly since they can be casually imported. Find an alchemist for the real panacea.
 	else
 		M.blood_volume = min(M.blood_volume+4, BLOOD_VOLUME_MAXIMUM)
-	if(wCount.len > 0)	
+	if(wCount.len > 0)
 		M.heal_wounds(1)
 		M.update_damage_overlays()
 	M.adjustBruteLoss(-0.4*REM, 0) // 45u = 15 oz = 50 points of healing
 	M.adjustFireLoss(-0.4*REM, 0)
-	M.adjustOxyLoss(-0.5, 0) 
+	M.adjustOxyLoss(-0.5, 0)
 	..()
 	. = 1
 
@@ -293,7 +293,7 @@
 		M.adjust_fire_stacks(1)
 		M.IgniteMob()
 	return ..()
-	
+
 /datum/reagent/medicine/enbalming
 	name = "Enbalming Fluid"
 	reagent_state = LIQUID
@@ -404,8 +404,8 @@
 	alpha = 173
 
 /datum/reagent/medicine/manapot/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(30)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(30)
 	..()
 
 /datum/reagent/medicine/strongmana
@@ -416,8 +416,8 @@
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
 /datum/reagent/medicine/strongmana/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(120)
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(120)
 	..()
 
 /datum/reagent/medicine/stampot
@@ -432,7 +432,7 @@
 
 /datum/reagent/medicine/stampot/on_mob_life(mob/living/carbon/M)
 	if(volume > 0.99)
-		M.rogfat_add(-20)
+		M.stamina_add(-20)
 	..()
 	. = 1
 
@@ -445,7 +445,7 @@
 
 /datum/reagent/medicine/strongstam/on_mob_life(mob/living/carbon/M)
 	if(volume > 0.99)
-		M.rogfat_add(-50)
+		M.stamina_add(-50)
 	..()
 	. = 1
 
@@ -495,7 +495,7 @@
 	Previously, it would apply a status effect to the mob lasting for 93 / 300 seconds and remove everything
 	However it meant that putting it in an alchemical vial was a trap as it sipped 9 units instead of 5 units that is the required minimum.
 	And removed any excessive potion inside the body. This has been changed to apply a 3 seconds buff to the mob, but have much lower
-	metabolization rate, so that the duration of the buff depends on how long you last. 
+	metabolization rate, so that the duration of the buff depends on how long you last.
 	Roughly tested. At Metabolization Rate 1. 9 units sip (1/3 of a vial) last 20 seconds.
 	To make this somewhat equal to the old system, base metabolization rate is 0.1 - making it last 200 seconds - 600 seconds if you sip an entire vial.
 	This is 2x on weaker potions (Intelligence, Fortune). However, overdose threshold is now 30 units so you can only drink one vial at once.
@@ -660,8 +660,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 
 /datum/reagent/stampoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(-45) //Slowly leech stamina
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(-45) //Slowly leech stamina
 	return ..()
 
 /datum/reagent/strongstampoison
@@ -675,8 +675,8 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 
 /datum/reagent/strongstampoison/on_mob_life(mob/living/carbon/M)
-	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
-		M.rogstam_add(-180) //Rapidly leech stamina
+	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
+		M.energy_add(-180) //Rapidly leech stamina
 	return ..()
 
 /datum/reagent/toxin/killersice

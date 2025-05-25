@@ -996,3 +996,25 @@
 /atom/movable/screen/alert/status_effect/buff/alch/fortunepot
 	name = "Fortune"
 	icon_state = "buff"
+
+/atom/movable/screen/alert/status_effect/buff/drunkmurk
+	name = "Murk-Knowledge"
+	desc = ""
+	icon_state = "drunk"
+
+/atom/movable/screen/alert/status_effect/buff/drunknoc
+	name = "Noc-Shine Strength"
+	desc = ""
+	icon_state = "drunk"
+
+/datum/status_effect/buff/murkwine
+	id = "murkwine"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/drunkmurk
+	effectedstats = list("intelligence" = 5)
+	duration = 2 MINUTES
+
+/datum/status_effect/buff/nocshine
+	id = "nocshine"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/drunknoc
+	effectedstats = list("strength" = 1, "endurance" = 1)
+	duration = 2 MINUTES

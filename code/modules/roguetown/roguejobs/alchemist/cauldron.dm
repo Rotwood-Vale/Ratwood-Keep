@@ -102,7 +102,7 @@
 					src.visible_message("<span class='info'>The cauldron finishes boiling with a faint [found_recipe.smells_like] smell.</span>")
 					//give xp for /datum/skill/craft/alchemy
 					var/amt2raise = lastuser.STAINT*2
-					lastuser?.mind?.adjust_experience(/datum/skill/craft/alchemy, amt2raise, FALSE)
+					lastuser?.mind?.adjust_experience(/datum/skill/misc/alchemy, amt2raise, FALSE)
 					playsound(src, "bubbles", 100, TRUE)
 					playsound(src,'sound/misc/smelter_fin.ogg', 30, FALSE)
 					ingredients = list()
@@ -166,5 +166,5 @@
 	if(reagents)
 		chem_splash(loc, 2, list(reagents))
 	user.visible_message("<span class='info'>[user] kicks [src],spilling it's contents!</span>")
-	playsound(src, 'sound/items/beartrap2.ogg', 100, FALSE)
+	playsound(src, 'sound/items/beartrap.ogg', 100, FALSE)
 	return ..()

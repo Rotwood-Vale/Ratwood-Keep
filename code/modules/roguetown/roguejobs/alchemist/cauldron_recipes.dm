@@ -4,10 +4,10 @@
 	var/list/output_reagents = list() //list of paths of new reagents to create in the cauldron. Remember, 1 oz is 3 units! [reagent = amnt]
 	var/list/output_items = list() //List of paths for new items that should be created, [path = chance to be created]
 
-/datum/alch_cauldron_recipe/disease_cure
-	recipe_name = "Disease Cure"
+/datum/alch_cauldron_recipe/strong_antidote
+	recipe_name = "Strong Antidote"
 	smells_like = "purity"
-	output_reagents = list(/datum/reagent/medicine/diseasecure = 81)
+	output_reagents = list(/datum/reagent/medicine/strong_antidote = 81)
 
 /datum/alch_cauldron_recipe/antidote
 	recipe_name = "Antidote"
@@ -34,10 +34,10 @@
 	smells_like = "stagnant air"
 	output_reagents = list(/datum/reagent/stampoison = 81,/datum/reagent/additive = 81)
 
-/datum/alch_cauldron_recipe/gender_potion
+/*datum/alch_cauldron_recipe/gender_potion
 	recipe_name = "Gender Potion"
 	smells_like = "living beings"
-	output_reagents = list(/datum/reagent/medicine/gender_potion = 9)
+	output_reagents = list(/datum/reagent/medicine/gender_potion = 9) */ //im sowwy
 
 //Healing potions
 /datum/alch_cauldron_recipe/health_potion
