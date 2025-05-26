@@ -1479,7 +1479,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		if(I.obj_integrity < I.max_integrity)
 			var/repair_percent = 0.25
 			repair_percent *= I.max_integrity
-			I.obj_integrity = min(I.obj_integrity + repair_percent, I.max_integrity)
+			I.mend_damage(repair_percent, TRUE)
 			user.visible_message(span_info("[I] glows in a faint mending light."))
 		else
 			user.visible_message(span_info("[I] appears to be in pefect condition."))
