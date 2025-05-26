@@ -1405,6 +1405,7 @@
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	allowed_sex = list(MALE, FEMALE)
+	body_parts_covered = CHEST|GROIN|VITALS|ARMS|LEGS
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
