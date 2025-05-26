@@ -145,6 +145,7 @@
 			tempskill.modifystat(STASPD, BUFSPE, amt)
 			STASPD = tempskill.value
 			BUFSPE = tempskill.buffer
+			update_move_intent_slowdown()
 
 		if("fortune")
 			tempskill.modifystat(STALUC, BUFLUC, amt)

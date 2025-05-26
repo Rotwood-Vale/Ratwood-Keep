@@ -101,11 +101,16 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE) //not as much as novitiate, but some to represent their past
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE) //they should be able to make crosses
+		H.change_stat("strength", 1)
+		H.change_stat("perception", -1) 
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", 2)
+		H.change_stat("intelligence", 1)
+		H.change_stat("speed", 1)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", -1)
 		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 		if (H.patron.type == /datum/patron/divine/malum)
 			H.AddSpell(new SPELL_MALUM_FLAME_ROGUE) // weaker astra fire spell. mostly for lighting things.

@@ -309,24 +309,20 @@
 
 	if(on)
 		var/mob/living/carbon/human/H = user
-
 		if(istype(H))
-			H.visible_message(span_info("[H] warms \his hand over the fire."))
-
-			if(do_after(H, 15, target = src))
+			H.visible_message(span_info("[H] warms [H.p_their()] hand over the fire."))
+			if(do_after(H, 1.5 SECONDS, target = src))
 				var/obj/item/bodypart/affecting = H.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				to_chat(H, span_warning("HOT!"))
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					H.update_damage_overlays()
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
-
-	else
-		if(icon_state == "[base_state]over")
-			user.visible_message(span_notice("[user] starts to pick up [src]..."), \
-				span_notice("I start to pick up [src]..."))
-			if(do_after(user, 30, target = src))
-				icon_state = "[base_state]0"
-			return
+	else if(icon_state == "[base_state]over")
+		user.visible_message(span_notice("[user] starts to pick up [src]..."), \
+			span_notice("I start to pick up [src]..."))
+		if(do_after(user, 3 SECONDS, target = src))
+			icon_state = "[base_state]0"
+		return
 
 /obj/machinery/light/rogue/firebowl/stump
 	icon_state = "stumpfire1"
