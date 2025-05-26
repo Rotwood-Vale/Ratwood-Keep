@@ -15,8 +15,8 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "vampire"
 	confess_lines = list(
-		"I WANT YOUR BLOOD!", 
-		"DRINK THE BLOOD!", 
+		"I WANT YOUR BLOOD!",
+		"DRINK THE BLOOD!",
 		"CHILD OF KAIN!",
 	)
 	rogue_enabled = TRUE
@@ -90,7 +90,7 @@
 //			owner.current.AddSpell(batform)
 	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
 	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
-	
+
 	if(!is_lesser)
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
@@ -128,7 +128,7 @@
 
 /datum/antagonist/vampire/proc/finalize_vampire()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
-	
+
 
 
 /datum/antagonist/vampire/on_life(mob/user)
@@ -175,7 +175,8 @@
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -259,10 +260,30 @@
 			testicles.accessory_colors = "#c9d3de"
 		regenerate_icons()
 
+/mob/living/carbon/human/proc/alter_button()
+	set name = "Alter Appearance"
+	set category = "VAMPIRE"
+	if(!is_not_staked(usr))
+		return
+	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
+	if(!VD)
+		return
+	if(world.time < VD.last_transform + 30 SECONDS)
+		var/timet2 = (VD.last_transform + 30 SECONDS) - world.time
+		to_chat(src, span_warning("No.. not yet. [round(timet2/10)]s"))
+		return
+	else
+		if(VD.vitae < 100)
+			to_chat(src, span_warning("I don't have enough Vitae!"))
+			return
+		VD.last_transform = world.time
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "Altered Appearance"), 1 SECONDS)
+
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -294,7 +315,8 @@
 /mob/living/carbon/human/proc/blood_celerity()
 	set name = "Quickening"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -329,7 +351,8 @@
 /mob/living/carbon/human/proc/blood_fortitude()
 	set name = "Armor of Darkness"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!VD)
 		return

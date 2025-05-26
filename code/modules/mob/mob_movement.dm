@@ -708,7 +708,7 @@
 	return TRUE
 
 /mob/living/proc/check_dodge_skill()
-	return TRUE
+	return HAS_TRAIT(src, TRAIT_DODGEEXPERT)
 
 /mob/living/carbon/human/check_dodge_skill()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))

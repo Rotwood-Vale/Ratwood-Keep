@@ -133,11 +133,14 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
+	var/do_crit = TRUE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			return FALSE
-	var/do_crit = TRUE
+		if(owner.mind && get_damage() < max_damage/2) //No crits except if it hits a damage threshold on players.
+			if(owner.mobility_flags & MOBILITY_STAND && !owner.buckled && !owner.has_healthpotion_active()) //Unless they're buckled or lying down.
+				do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
@@ -185,6 +188,9 @@
 		if(crit_attempt)
 			return crit_attempt
 	return added_wound
+
+/mob/living/proc/has_healthpotion_active()
+	return reagents?.has_reagent(/datum/reagent/medicine/lesserhealthpot) || reagents?.has_reagent(/datum/reagent/medicine/healthpot) || reagents?.has_reagent(/datum/reagent/medicine/greaterhealthpot)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
@@ -360,7 +366,7 @@
 					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 					if(!my_ears || has_wound(/datum/wound/facial/ears))
 						attempted_wounds += /datum/wound/fracture/head/ears
-					else 
+					else
 						attempted_wounds += /datum/wound/facial/ears
 				else if(zone_precise in eyestab_zones)
 					var/obj/item/organ/my_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
@@ -396,7 +402,7 @@
 	if(!embedder || !can_embed(embedder))
 		return FALSE
 	if(owner && ((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE)))
-		return FALSE 
+		return FALSE
 	LAZYADD(embedded_objects, embedder)
 	embedder.is_embedded = TRUE
 	embedder.forceMove(src)
@@ -418,6 +424,11 @@
 		embedder = has_embedded_object(embedder)
 	if(!istype(embedder) || !is_object_embedded(embedder))
 		return FALSE
+	if(istype(embedder, /obj/item/grown/log/tree/stake))
+		var/mob/living/L = owner
+		var/datum/antagonist/vampirelord/vampire = L.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+		if(vampire)
+			vampire.unstake()
 	LAZYREMOVE(embedded_objects, embedder)
 	embedder.is_embedded = FALSE
 	var/drop_location = owner?.drop_location() || drop_location()

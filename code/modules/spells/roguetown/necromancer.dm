@@ -357,6 +357,7 @@
 
 	if(ckey) //player
 		src.ckey = ckey
+		ADD_TRAIT(src, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
 	else //npc
 		aggressive = 1
 		mode = AI_HUNT
