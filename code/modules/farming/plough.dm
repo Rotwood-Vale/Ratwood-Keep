@@ -1,4 +1,4 @@
-/obj/structure/plough
+/obj/structure/plough	//Tilling grass with a plow will provide 'average' soil. Ploughs are not common constructs.
 	name = "plough"
 	desc = "A wooden plough with iron blades to till the earth for crops."
 	icon = 'icons/obj/structures/plough.dmi'
@@ -16,11 +16,31 @@
 		user_tries_tilling(pulledby, get_turf(src))
 
 /obj/structure/plough/proc/user_tries_tilling(mob/living/user, turf/location)
+
 	if(istype(location, /turf/open/floor/rogue/grass))
 		apply_farming_fatigue(user, 10)
 		playsound(location,'sound/items/dig_shovel.ogg', 100, TRUE)
 		location.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
 		return
+	if(istype(location, /turf/open/floor/rogue/dirt/npoor))
+		playsound(location,'sound/items/dig_shovel.ogg', 100, TRUE)
+		var/obj/structure/soil/soil = get_soil_on_turf(location)
+		if(soil)
+			soil.user_till_soil(user)
+		else
+			apply_farming_fatigue(user, 10)
+			new /obj/structure/soil/poor(location)
+		return
+	if(istype(location, /turf/open/floor/rogue/dirt/nrich))
+		playsound(location,'sound/items/dig_shovel.ogg', 100, TRUE)
+		var/obj/structure/soil/soil = get_soil_on_turf(location)
+		if(soil)
+			soil.user_till_soil(user)
+		else
+			apply_farming_fatigue(user, 10)
+			new /obj/structure/soil/great(location)
+		return
+
 	if(istype(location, /turf/open/floor/rogue/dirt))
 		playsound(location,'sound/items/dig_shovel.ogg', 100, TRUE)
 		var/obj/structure/soil/soil = get_soil_on_turf(location)
@@ -30,3 +50,4 @@
 			apply_farming_fatigue(user, 10)
 			new /obj/structure/soil(location)
 		return
+
