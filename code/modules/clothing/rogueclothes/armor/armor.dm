@@ -68,6 +68,7 @@
 	desc = "Not very comfortable against the skin."
 	icon_state = "chainkini"
 	item_state = "chainkini"
+	allowed_sex = list(MALE, FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/blacksmithing
