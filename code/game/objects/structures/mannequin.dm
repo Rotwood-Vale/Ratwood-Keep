@@ -614,7 +614,7 @@
 	switch(target_zone)
 		if(ITEM_SLOT_HEAD)
 			return "head"
-		if(ITEM_SLOT_CLOAK || ITEM_SLOT_NECK)
+		if(ITEM_SLOT_CLOAK, ITEM_SLOT_NECK)
 			return "neck"
 		if(ITEM_SLOT_MASK)
 			return "face"
