@@ -68,7 +68,6 @@
 	desc = "Not very comfortable against the skin."
 	icon_state = "chainkini"
 	item_state = "chainkini"
-	allowed_sex = list(FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
 	body_parts_covered = CHEST|GROIN
 	anvilrepair = /datum/skill/craft/blacksmithing
@@ -310,7 +309,6 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	allowed_sex = list(MALE, FEMALE)
-	allowed_race = NON_DWARVEN_RACE_TYPES
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
