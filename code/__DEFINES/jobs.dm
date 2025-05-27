@@ -129,7 +129,7 @@
 #define INQUISITION		(1<<3)
 
 #define PURITAN		(1<<0)
-#define CONFESSOR	(1<<1)
+#define REPENTENT	(1<<1)
 
 #define COURTIERS	(1<<4)
 

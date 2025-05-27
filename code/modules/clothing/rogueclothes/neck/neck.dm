@@ -258,9 +258,14 @@
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
+	var/active_item = FALSE
 	name = "silver psycross"
 	desc = "Make no mistake, son of PSYDON, this amulet is as valuable as any blade in your crusade. Inhumen monsters and cultists shrink at the sight of silver, for it is the All-Father's blood made manifest. So hoist it high, scream his name, and bathe this world in blood so that it might be redeemed."
 	icon_state = "psicrossiron"
+	max_integrity = 300
+	armor = list("blunt" = 90, "slash" = 90, "stab" = 90, "bullet" = 90, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
@@ -310,6 +315,28 @@
 			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
 			H.Knockdown(20)
 			H.Paralyze(20)
+
+/obj/item/clothing/neck/roguetown/psicross/silver/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
+	. = ..()
+	if(active_item)
+		return
+	active_item = TRUE
+	if(HAS_TRAIT(user, TRAIT_ZEALOT))
+		to_chat(user, span_notice("I feel my faith in PSYDON protecting me!"))
+		ADD_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
+		armor = getArmor("blunt" = 90, "slash" = 90, "stab" = 90, "bullet" = 90, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	else
+		armor = getArmor("blunt" = 0, "slash" = 0, "stab" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/clothing/neck/roguetown/psicross/silver/dropped(mob/living/user)
+	if(!active_item)
+		return
+	active_item = FALSE
+	if(HAS_TRAIT(user, TRAIT_ZEALOT))
+		to_chat(user, span_notice("I no longer feel my faith in PSYDON protecting me!"))
+		REMOVE_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
+	else
+		armor = getArmor("blunt" = 90, "slash" = 90, "stab" = 90, "bullet" = 90, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"

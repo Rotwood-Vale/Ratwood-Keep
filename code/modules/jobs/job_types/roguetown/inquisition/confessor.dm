@@ -3,8 +3,8 @@ This confessor is different to 'confessors', the people who are hit with the con
 Please do not confuse the two.
 */
 /datum/job/roguetown/shepherd
-	title = "Confessor"
-	flag = CONFESSOR
+	title = "Repentent"
+	flag = REPENTENT
 	department_flag = INQUISITION
 	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
@@ -16,9 +16,10 @@ Please do not confuse the two.
 		/datum/patron/psydon
 	)
 
-	tutorial = "Confessors are shady agents of the church hired to spy on the populace and keep them moral. \
-	As the most fanatical members of the clergy, their main concern is assisting the local Inquisitor with their work. \
-	Whether that be in extracting confessions of sin or hunting night beasts and cultists that hide in plain sight."
+	tutorial = "Repentents are former heretics who have been seized and indoctrinated by the Inquisition. \
+	These wretched souls now seek to redeem themselves through the sting of the whip and muscling for the Inquisition, \
+	leading other wayward souls down the same bloody path they were forced onto themselves. \
+	Due their indocrination, they are often more zealously naive compared to their knowledgeable Masters."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 	whitelist_req = TRUE
@@ -30,7 +31,7 @@ Please do not confuse the two.
 	cmode_music = 'sound/music/combat_inquisition.ogg'
 
 /datum/outfit/job/roguetown/shepherd
-	name = "Confessor"
+	name = "Repentent"
 	jobtype = /datum/job/roguetown/shepherd
 	allowed_patrons = list(/datum/patron/psydon)
 
@@ -40,17 +41,17 @@ Please do not confuse the two.
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/trou/overseer
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = beltr = /obj/item/rogueweapon/whip
 	head = /obj/item/clothing/head/roguetown/helmet/overseer
 	mask = /obj/item/clothing/mask/rogue/overseer
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/overseer
 	cloak = /obj/item/clothing/cloak/cape/inquisitor
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/overseer
-	beltl = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/rogueweapon/mace/stunmace
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/puritan = 1)
+	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/lockpick = 1, /obj/item/clothing/head/roguetown/puritan = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
@@ -63,13 +64,12 @@ Please do not confuse the two.
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
 		H.change_stat("intelligence", -1)
-		H.change_stat("endurance", 1)
-		H.change_stat("strength", 2)
-		H.change_stat("speed", 2)
+		H.change_stat("constitution", 3)
+		H.change_stat("strength", 3)
 		H.change_stat("perception", 1)
 
 		if(H.mind.has_antag_datum(/datum/antagonist))
@@ -79,3 +79,6 @@ Please do not confuse the two.
 
 	H.verbs |= /mob/living/carbon/human/proc/faith_test
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
+	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
