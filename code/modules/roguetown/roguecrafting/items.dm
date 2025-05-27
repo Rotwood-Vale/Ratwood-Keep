@@ -2,20 +2,6 @@
 	always_available = TRUE
 	skillcraft = /datum/skill/craft/crafting
 
-
-/datum/crafting_recipe/roguetown/tneedle
-	name = "thorn sewing needle"
-	result = /obj/item/needle/thorn
-	reqs = list(/obj/item/natural/thorn = 1,
-				/obj/item/natural/fibers = 1)
-	skill_level = 0
-
-/datum/crafting_recipe/roguetown/whet
-	name = "whet stone"
-	result = /obj/item/natural/whet
-	reqs = list(/obj/item/natural/stone = 2)
-	skill_level = 1
-
 /datum/crafting_recipe/roguetown/cloth5x
 	name = "cloth 5x (10 fibers; none)"
 	result = list(
@@ -112,36 +98,6 @@
 	reqs = list(/obj/item/natural/fibers = 3)
 	verbage_simple = "braid"
 	verbage = "braids"
-
-/datum/crafting_recipe/roguetown/bowstring
-	name = "bowstring"
-	result = /obj/item/natural/bowstring
-	reqs = list(/obj/item/natural/fibers = 2)
-	verbage_simple = "twist"
-	verbage = "twists"
-
-/datum/crafting_recipe/roguetown/bowpartial
-	name = "unstrung bow"
-	result = /obj/item/grown/log/tree/bowpartial
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-	tools = list(/obj/item/rogueweapon/huntingknife)
-	verbage_simple = "carve"
-	verbage = "carves"
-
-/datum/crafting_recipe/roguetown/bow
-	name = "strung bow"
-	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	reqs = list(/obj/item/natural/bowstring = 1, /obj/item/grown/log/tree/bowpartial = 1)
-	verbage_simple = "string together"
-	verbage = "strings together"
-	skill_level = 2
-
-/datum/crafting_recipe/roguetown/torch
-	name = "torch"
-	result = /obj/item/flashlight/flare/torch
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/fibers = 1)
-	skill_level = 0
 
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3)"
@@ -258,26 +214,6 @@
 	result = /obj/item/reagent_containers/glass/bucket/pot/stone
 	reqs = list(/obj/item/natural/stone = 2)
 
-/datum/crafting_recipe/roguetown/stonearrow
-	name = "arrow (stone)"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/stone = 1)
-	req_table = TRUE
-
-/datum/crafting_recipe/roguetown/stonearrow_five
-	name = "stone arrow (x5)"
-	result = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone
-				)
-	reqs = list(/obj/item/grown/log/tree/stick = 5,
-				/obj/item/natural/stone = 5)
-	req_table = TRUE
-
 /datum/crafting_recipe/roguetown/poisonarrow
 	name = "poisoned arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
@@ -369,39 +305,6 @@
 	reqs = list(/obj/item/rope = 1, /obj/item/storage/roguebag/crafted = 1,)
 	skill_level = 0
 	skillcraft = /datum/skill/craft/crafting
-
-
-/datum/crafting_recipe/roguetown/bait
-	name = "bait"
-	result = /obj/item/bait
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/sbaita
-	name = "sweetbait (apple)"
-	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/apple = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/sbait
-	name = "sweetbait (berry)"
-	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/bloodbait
-	name = "bloodbait"
-	result = /obj/item/bait/bloody
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/pipe
 	name = "smoking pipe"

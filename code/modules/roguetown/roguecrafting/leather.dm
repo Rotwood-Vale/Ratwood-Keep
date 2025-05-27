@@ -140,3 +140,115 @@
 	result = /obj/item/bedroll
 	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/natural/cloth = 2, /obj/item/rope = 1)
 	sellprice = 50
+
+/datum/crafting_recipe/roguetown/hunting/wickercloak
+	name = "wicker cloak"
+	result = /obj/item/clothing/cloak/wickercloak
+	reqs = list(/obj/item/natural/fibers = 3,
+				/obj/item/grown/log/tree/stick = 2)
+	sellprice = 5
+
+/datum/crafting_recipe/roguetown/hunting/tribalcloak
+	name = "tribal cloak"
+	result = /obj/item/clothing/cloak/tribal
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	sellprice = 8
+
+/datum/crafting_recipe/roguetown/hunting/volfmantle
+	name = "volf mantle"
+	result = /obj/item/clothing/cloak/volfmantle
+	reqs = list(/obj/item/natural/fur = 2,
+				/obj/item/natural/hide/cured = 1)
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/hunting/volfhelm
+	name = "volf helm"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 1)
+	sellprice = 20
+
+
+
+/datum/crafting_recipe/roguetown/hunting/bowstring
+	name = "bowstring"
+	result = /obj/item/natural/bowstring
+	reqs = list(/obj/item/natural/fibers = 2)
+	sellprice = 3
+
+/datum/crafting_recipe/roguetown/hunting/bowpartial
+	name = "unstrung bow"
+	result = /obj/item/grown/log/tree/bowpartial
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	sellprice = 8
+
+/datum/crafting_recipe/roguetown/hunting/bow
+	name = "strung bow"
+	result = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+	reqs = list(/obj/item/natural/bowstring = 1, 
+				/obj/item/grown/log/tree/bowpartial = 1)
+	sellprice = 15
+
+/datum/crafting_recipe/roguetown/hunting/stonearrow
+	name = "stone arrow"
+	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	reqs = list(/obj/item/grown/log/tree/stick = 1,
+				/obj/item/natural/stone = 1)
+	sellprice = 1
+
+/datum/crafting_recipe/roguetown/hunting/stonearrow_five
+	name = "stone arrows (x5)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone
+				)
+	reqs = list(/obj/item/grown/log/tree/stick = 5,
+				/obj/item/natural/stone = 5)
+	sellprice = 5
+
+/datum/crafting_recipe/roguetown/hunting/bait
+	name = "bait"
+	result = /obj/item/bait
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
+	sellprice = 2
+
+/datum/crafting_recipe/roguetown/hunting/sweetbait
+	name = "sweetbait (berry)"
+	result = /obj/item/bait/sweet
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
+	sellprice = 3
+
+/datum/crafting_recipe/roguetown/hunting/bloodbait
+	name = "bloodbait"
+	result = /obj/item/bait/bloody
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
+	sellprice = 4
+
+/datum/crafting_recipe/roguetown/hunting/torch
+	name = "torch"
+	result = /obj/item/flashlight/flare/torch
+	reqs = list(/obj/item/grown/log/tree/stick = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 2
+
+/datum/crafting_recipe/roguetown/hunting/tneedle
+	name = "thorn sewing needle"
+	result = /obj/item/needle/thorn
+	reqs = list(/obj/item/natural/thorn = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 2
+
+/datum/crafting_recipe/roguetown/hunting/whet
+	name = "whet stone"
+	result = /obj/item/natural/whet
+	reqs = list(/obj/item/natural/stone = 2)
+	sellprice = 3
+

@@ -170,19 +170,6 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	skill_level = 1
 
-/datum/crafting_recipe/roguetown/sewing/wickercloak
-	name = "wicker cloak (3 fibers, 2 sticks; NOVICE)"
-	result = /obj/item/clothing/cloak/wickercloak
-	reqs = list(/obj/item/natural/fibers = 3,
-				/obj/item/grown/log/tree/stick = 2)
-	skill_level = 1
-
-/datum/crafting_recipe/roguetown/sewing/tribalcloak
-	name = "tribal cloak (2 cured hides, fibers; NOVICE)"
-	result = /obj/item/clothing/cloak/tribal
-	reqs = list(/obj/item/natural/hide/cured = 2,
-				/obj/item/natural/fibers = 1)
-	skill_level = 1
 
 /datum/crafting_recipe/roguetown/sewing/nunhat
 	name = "nun habit (2 cloths; NOVICE)"
@@ -543,20 +530,6 @@
 /datum/crafting_recipe/roguetown/sewing/winterjacket
 	name = "winter jacket (2 leather, 1 fur; JOURNEYMAN)"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
-	reqs = list(/obj/item/natural/hide/cured = 2,
-				/obj/item/natural/fur = 1)
-	skill_level = 3
-
-/datum/crafting_recipe/roguetown/sewing/volfmantle
-	name = "volf mantle (2 fur, 1 leather; JOURNEYMAN)"
-	result = /obj/item/clothing/cloak/volfmantle
-	reqs = list(/obj/item/natural/fur = 2,
-				/obj/item/natural/hide/cured = 1)
-	skill_level = 3
-
-/datum/crafting_recipe/roguetown/sewing/volfhelm
-	name = "volf helm (2 leather, 1 fur; JOURNEYMAN)"
-	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fur = 1)
 	skill_level = 3
