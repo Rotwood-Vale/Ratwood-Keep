@@ -51,6 +51,7 @@
 		H.change_stat("perception", 2)      //doctor's precision
 		H.change_stat("intelligence", 2)	//physician smarts
 		H.change_stat("endurance", 2)		//divine miracle take their toll
+		ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_spells(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
