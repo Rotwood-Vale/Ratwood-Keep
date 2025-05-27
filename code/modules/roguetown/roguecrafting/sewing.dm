@@ -170,6 +170,26 @@
 	reqs = list(/obj/item/natural/cloth = 2)
 	skill_level = 1
 
+/datum/crafting_recipe/roguetown/sewing/wickercloak
+	name = "wicker cloak (3 fibers, 2 sticks; NOVICE)"
+	result = /obj/item/clothing/cloak/wickercloak
+	reqs = list(/obj/item/natural/fibers = 3,
+				/obj/item/grown/log/tree/stick = 2)
+	skill_level = 1
+
+/datum/crafting_recipe/roguetown/sewing/tribalcloak
+	name = "tribal cloak (2 cured hides, fibers; NOVICE)"
+	result = /obj/item/clothing/cloak/tribal
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 1
+
+/datum/crafting_recipe/roguetown/sewing/nunhat
+	name = "nun habit (2 cloths; NOVICE)"
+	result = /obj/item/clothing/head/roguetown/nun
+	reqs = list(/obj/item/natural/cloth = 2)
+	skill_level = 1
+
 /* craftdif of 2 = APPRENTICE */
 
 /datum/crafting_recipe/roguetown/sewing/nocwrappings
@@ -189,6 +209,13 @@
 	result = list(/obj/item/sleepingbag)
 	reqs =  list(/obj/item/natural/cloth = 2,
                 /obj/item/natural/fibers = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/sewing/shalalhood
+	name = "shalal hood (2 cloths, 1 fiber; APPRENTICE)"
+	result = /obj/item/clothing/head/roguetown/roguehood/shalal
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/sewing/fauld
@@ -242,6 +269,20 @@
 	name = "waist apron (cloth, fibers; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/apron/waist)
 	reqs = list(/obj/item/natural/cloth = 1,
+				/obj/item/natural/fibers = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/sewing/battlenuncloak
+	name = "battle nun cloak (2 cloths, 1 fiber; APPRENTICE)"
+	result = /obj/item/clothing/cloak/battlenun
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/sewing/nunrobe
+	name = "nun robe (2 cloths, fiber; APPRENTICE)"
+	result = /obj/item/clothing/suit/roguetown/shirt/robe/nun
+	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 2
 
@@ -485,7 +526,77 @@
 				/obj/item/natural/feather = 1)
 	skill_level = 3
 
+/datum/crafting_recipe/roguetown/sewing/silkydress
+	name = "silky dress (3 silk, 2 fibers; JOURNEYMAN)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
+	reqs = list(/obj/item/natural/silk = 3,
+				/obj/item/natural/fibers = 2)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/archivistrobe
+	name = "archivist robe (3 cloths, 3 silk; JOURNEYMAN)"
+	result = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/silk = 3)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/winterjacket
+	name = "winter jacket (2 leather, 1 fur; JOURNEYMAN)"
+	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/volfmantle
+	name = "volf mantle (2 fur, 1 leather; JOURNEYMAN)"
+	result = /obj/item/clothing/cloak/volfmantle
+	reqs = list(/obj/item/natural/fur = 2,
+				/obj/item/natural/hide/cured = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/sewing/volfhelm
+	name = "volf helm (2 leather, 1 fur; JOURNEYMAN)"
+	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fur = 1)
+	skill_level = 3
+
 /* craftdif of 4 EXPERT */
+
+/datum/crafting_recipe/roguetown/sewing/gown
+	name = "gown (3 cloths, 1 silk; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/silk = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/summergown
+	name = "gown (summer) - (2 cloths, 2 silk; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/summergown
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/silk = 2)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/fallgown
+	name = "gown (fall) - (3 cloths, 1 fur; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fur = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/wintergown
+	name = "gown (winter) - (2 cloths, 2 fur; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fur = 2)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/sewing/weddingdress
+	name = "wedding dress (3 cloths, 2 silk; EXPERT)"
+	result = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/silk = 2)
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/sewing/stockdress
 	name = "dress (3 cloths, fiber; EXPERT)"

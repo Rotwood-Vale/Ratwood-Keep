@@ -449,7 +449,7 @@
 	icon_state = "headdressalt"
 
 /obj/item/clothing/head/roguetown/nun
-	name = "nun's habit"
+	name = "habit"
 	icon_state = "nun"
 	sellprice = 5
 
@@ -1063,7 +1063,7 @@
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "volf helmet"
-	desc = "Bandit initiation rites involve the slaying of a volf."
+	desc = "Some cultures has initiation rites that involves the slaying of a volf, usually bandits or tribals."
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"
@@ -1474,7 +1474,6 @@
 
 /obj/item/clothing/head/roguetown/witchhat
 	name = "witch hat"
-	desc = ""
 	icon_state = "witch"
 	item_state = "witch"
 	icon = 'icons/roguetown/clothing/head.dmi'

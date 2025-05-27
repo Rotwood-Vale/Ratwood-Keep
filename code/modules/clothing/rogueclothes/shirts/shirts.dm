@@ -602,3 +602,10 @@
 	icon_state = "wintergown"
 	boobed = TRUE
 	detail_color = "#ffffff"
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress
+	name = "wedding silk dress"
+	desc = "A dress woven from fine silks, with golden threads inlaid in it. Made for that special day."
+	icon_state = "weddingdress"
+	item_state = "weddingdress"
