@@ -14633,13 +14633,6 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
-"hgW" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_y = -1
-	},
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors/rtfield)
 "hhx" = (
 /turf/open/floor/rogue/ruinedwood/platform,
 /area/rogue/outdoors/town/harbor)
@@ -16159,7 +16152,7 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "hTT" = (
 /obj/structure/bookcase/random,
@@ -23824,7 +23817,7 @@
 	dir = 4
 	},
 /obj/machinery/tanningrack,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "lRm" = (
 /obj/structure/mineral_door/bars{
@@ -28760,10 +28753,6 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/under/town/basement)
 "oqI" = (
-/obj/structure/mineral_door/wood/towner/miner,
-/obj/structure/mineral_door/wood/towner/miner,
-/obj/structure/mineral_door/wood/towner/miner,
-/obj/structure/mineral_door/wood/towner/miner,
 /obj/structure/mineral_door/wood/towner/miner,
 /turf/open/dark_filler,
 /area/rogue/indoors)
@@ -36963,6 +36952,12 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
+"sEf" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/rtfield)
 "sEg" = (
 /obj/machinery/light/rogue/firebowl/standing/blue{
 	pixel_y = 10
@@ -43592,7 +43587,7 @@
 	dir = 4
 	},
 /obj/structure/fluff/millstone,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "whl" = (
 /obj/structure/bookcase/random/archive,
@@ -237288,7 +237283,7 @@ ltT
 skP
 eSw
 wSn
-hgW
+gTO
 gTO
 gTO
 pAt
@@ -237718,11 +237713,11 @@ ooo
 kms
 ltT
 fpw
-uaL
+wSn
 wSn
 xvN
 qvR
-uaL
+wSn
 pAt
 qvR
 spp
@@ -238150,7 +238145,7 @@ ltT
 ltT
 ltT
 fwd
-uaL
+wSn
 wSn
 xvN
 qvR
@@ -238583,10 +238578,10 @@ mcc
 nOt
 pOX
 hTN
-uaL
-uaL
-uaL
-uaL
+wSn
+wSn
+wSn
+wSn
 pAt
 xvN
 qvR
@@ -239016,9 +239011,9 @@ wOD
 ryI
 lQK
 whi
-qqr
-qqr
-qqr
+sEf
+sEf
+sEf
 pAt
 qvR
 het
