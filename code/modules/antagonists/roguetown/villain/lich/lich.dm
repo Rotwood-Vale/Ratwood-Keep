@@ -53,6 +53,10 @@
 	greet()
 	save_stats()
 
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	if (istype(owner.current.rmb_intent, /datum/rmb_intent/swift))
+		owner.current.swap_rmb_intent(null, 1)
+
 	return ..()
 
 /datum/antagonist/lich/greet()
@@ -232,6 +236,10 @@
 	set_stats()
 	skele_look()
 	equip_and_traits()
+
+	// Lich should never be on swift in the first place - but better safe than sorry.
+	if (istype(new_body.rmb_intent, /datum/rmb_intent/swift))
+		new_body.swap_rmb_intent(null, 1)
 
 	// Delete the old body if it still exists
 	if (!QDELETED(old_body))
