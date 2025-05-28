@@ -223,7 +223,7 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/backpack
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("strength", 3)
+			H.change_stat("strength", 2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
