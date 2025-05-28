@@ -266,14 +266,20 @@
 					var/name_to_display = tmp.real_name
 					var/job_to_display = tmp.advjob ? tmp.advjob : tmp.job
 
+					var/datum/job/roguetown/job
 					if (iswerewolf(A))
 						// We want to display 
 						name_to_display = A.stored_mob?.real_name
 						if (!name_to_display)
 							name_to_display = "UNKNOWN" // Should hopefully never happen, tell Zoni if you see this in-game
-					var/datum/job/roguetown/job = SSjob.GetJob(tmp.job)
-					if (job.should_anonymise_job())
-						job_to_display = "NON-SUBJECT" // A little more formal than "Foreigner"
+						job = SSjob.GetJob(A.stored_mob?.job)
+					else
+						job = SSjob.GetJob(tmp.job)
+						
+					if (job && job.should_anonymise_job())
+						job_to_display = "FOREIGNER"
+					else if (!job)
+						job_to_display = "UNKNOWN" // Should hopefully never happen
 
 					contents += "[name_to_display] ([job_to_display]) - [SStreasury.bank_accounts[A]]m"
 				else
