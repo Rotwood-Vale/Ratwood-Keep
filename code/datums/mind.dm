@@ -151,10 +151,9 @@
 			used_title = "unknown"
 
 		var/datum/job/roguetown/job = SSjob.GetJob(H.job)
-		if (job.should_anonymise_job())
-			known_people[H.real_name]["FJOB"] = "Foreigner"
-		else
-			known_people[H.real_name]["FJOB"] = used_title
+		if (job && job.should_anonymise_job())
+			used_title = "Foreigner"
+		known_people[H.real_name]["FJOB"] = used_title
 
 		known_people[H.real_name]["FGENDER"] = H.gender
 		known_people[H.real_name]["FSPECIES"] = H.dna.species.name
