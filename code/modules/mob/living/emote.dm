@@ -1306,6 +1306,9 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		H.vomit()
+		var/msg = "[key_name(H)] puked!"
+		message_admins(msg)
+		log_admin(msg)
 
 /datum/emote/living/squint
 	key = "squint"
