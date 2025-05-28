@@ -57,6 +57,13 @@
 	if (istype(owner.current.rmb_intent, /datum/rmb_intent/swift))
 		owner.current.swap_rmb_intent(null, 1)
 
+	// No swift intent for undead!!
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
 	return ..()
 
 /datum/antagonist/lich/greet()
@@ -240,6 +247,13 @@
 	// Lich should never be on swift in the first place - but better safe than sorry.
 	if (istype(new_body.rmb_intent, /datum/rmb_intent/swift))
 		new_body.swap_rmb_intent(null, 1)
+
+	// Need to reapply the intent restrictions here - the new body won't have them...
+	new_body.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
 
 	// Delete the old body if it still exists
 	if (!QDELETED(old_body))
