@@ -4,8 +4,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
-	maximum_possible_slots = 10
-	min_pq = 4
+	maximum_possible_slots = 5
+	min_pq = 15
 	torch = FALSE
 	cmode_music = 'sound/music/combat_forlorn.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -21,10 +21,28 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	beltr = /obj/item/storage/keyring/mercenary
-	beltl = /obj/item/rogueweapon/mace/warhammer/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/shield/heater
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
+
+	var/weapons = list("warhammer", "messer", "szabla")
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+
+		if("warhammer")
+			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
+		if("messer")
+			beltl = /obj/item/rogueweapon/sword/iron/messer/steel
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("szabla")
+			beltl = /obj/item/rogueweapon/sword/sabre
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		else
+			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -35,7 +53,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
