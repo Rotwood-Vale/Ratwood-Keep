@@ -3,8 +3,8 @@ This confessor is different to 'confessors', the people who are hit with the con
 Please do not confuse the two.
 */
 /datum/job/roguetown/shepherd
-	title = "Repentent"
-	flag = REPENTENT
+	title = "Repentant"
+	flag = REPENTANT
 	department_flag = INQUISITION
 	selection_color = JCOLOR_INQUISITION
 	faction = "Station"
@@ -16,22 +16,22 @@ Please do not confuse the two.
 		/datum/patron/psydon
 	)
 
-	tutorial = "Repentents are former heretics who have been seized and indoctrinated by the Inquisition. \
+	tutorial = "Repentants are former heretics who have been seized and indoctrinated by the Inquisition. \
 	These wretched souls now seek to redeem themselves through the sting of the whip and muscling for the Inquisition, \
 	leading other wayward souls down the same bloody path they were forced onto themselves. \
-	Due their indocrination, they are often more zealously naive compared to their knowledgeable Masters."
+	Due their indoctrination, they are often more zealously naive compared to their knowledgeable Masters."
 
 	outfit = /datum/outfit/job/roguetown/shepherd
 	whitelist_req = TRUE
 	display_order = JDO_SHEPHERD
 	give_bank_account = 3
-	min_pq = 4
+	min_pq = 6
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_inquisition.ogg'
 
 /datum/outfit/job/roguetown/shepherd
-	name = "Repentent"
+	name = "Repentant"
 	jobtype = /datum/job/roguetown/shepherd
 	allowed_patrons = list(/datum/patron/psydon)
 
