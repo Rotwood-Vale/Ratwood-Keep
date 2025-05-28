@@ -22,7 +22,11 @@
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
+	set_rarity()
+	if(!dead)
+		START_PROCESSING(SSobj, src)
 
+/obj/item/reagent_containers/food/snacks/fish/proc/set_rarity()
 	var/list/rarities
 	if(istype(fished_from, /turf/open/water/sea/thermalwater))
 		rarities = list("gold" = 3, "ultra" = 60, "rare" = 100, "com" = 800)
@@ -43,8 +47,7 @@
 			name = "rare [initial(name)]"
 		if("com")
 			name = "common [initial(name)]"
-	if(!dead)
-		START_PROCESSING(SSobj, src)
+
 
 /obj/item/reagent_containers/food/snacks/fish/attack_hand(mob/user)
 	if(isliving(user))
