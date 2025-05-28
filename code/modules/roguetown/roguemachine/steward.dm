@@ -259,12 +259,21 @@
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 			contents += "<a href='?src=\ref[src];withdraw=1'>\[Withdraw\]</a></center><BR>"
 			contents += "<a href='?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
-			
+
 			for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 				if(ishuman(A))
 					var/mob/living/carbon/human/tmp = A
 					var/name_to_display = tmp.real_name
 					var/job_to_display = tmp.advjob ? tmp.advjob : tmp.job
+
+					if (iswerewolf(A))
+						// We want to display 
+						name_to_display = A.stored_mob?.real_name
+						if (!name_to_display)
+							name_to_display = "UNKNOWN" // Should hopefully never happen, tell Zoni if you see this in-game
+					var/datum/job/roguetown/job = SSjob.GetJob(tmp.job)
+					if (job.should_anonymise_job())
+						job_to_display = "NON-SUBJECT" // A little more formal than "Foreigner"
 
 					contents += "[name_to_display] ([job_to_display]) - [SStreasury.bank_accounts[A]]m"
 				else

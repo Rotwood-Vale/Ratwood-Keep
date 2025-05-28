@@ -76,6 +76,8 @@ GLOBAL_LIST_INIT(areas_in_town, typecacheof(list(
 
 #define ishuman(A) (istype(A, /mob/living/carbon/human))
 
+#define iswerewolf(A) (istype(A, /mob/living/carbon/human/species/werewolf))
+
 //Human sub-species
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isvampire(A) (is_species(A,/datum/species/vampire))
