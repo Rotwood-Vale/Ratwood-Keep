@@ -1586,11 +1586,15 @@
 	name = "crown of thorns"
 	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity... or be used as a torture device."
 	icon_state = "briarthorns"
+	alternate_worn_layer  = 8.9 //On top of helmet
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 
 /obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
 	. = ..()
 	to_chat(user, span_warning ("The thorns prick me."))
 	user.adjustBruteLoss(20)
+
+
 
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."

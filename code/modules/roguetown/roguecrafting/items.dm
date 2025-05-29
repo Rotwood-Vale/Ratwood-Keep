@@ -617,20 +617,22 @@
 /datum/crafting_recipe/roguetown/flowercrown_salvia
 	name = "salvia flower crown"
 	result = /obj/item/clothing/head/roguetown/flower_crown/salvia
+	structurecraft = /obj/structure/flora/ausbushes
 	reqs = list(
-		/obj/structure/flora/ausbushes = 1,
-		/obj/item/natural/fibers = 1
+		/obj/item/natural/thorn = 2,
+		/obj/item/natural/fibers = 2
 	)
 	skill_level = 0
 	verbage_simple = "weave"
 	verbage = "weaves"
 
 /datum/crafting_recipe/roguetown/flowercrown
-	name = "flower crown"
+	name = "rose crown"
 	result = /obj/item/clothing/head/roguetown/flower_crown
+	structurecraft = /obj/structure/flora/ausbushes
 	reqs = list(
-		/obj/structure/flora/ausbushes = 1,
-		/obj/item/natural/fibers = 1
+		/obj/item/natural/thorn = 2,
+		/obj/item/natural/fibers = 2
 	)
 	skill_level = 0
 	verbage_simple = "weave"
