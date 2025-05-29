@@ -1583,14 +1583,14 @@
 	icon_state = "heavyhood"
 
 /obj/item/clothing/head/roguetown/padded/briarthorns
-	name = "briar thorns"
-	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity..."
+	name = "crown of thorns"
+	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity... or be used as a torture device."
 	icon_state = "briarthorns"
 
 /obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
 	. = ..()
 	to_chat(user, span_warning ("The thorns prick me."))
-	user.adjustBruteLoss(4)
+	user.adjustBruteLoss(20)
 
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
@@ -1712,3 +1712,21 @@
     icon_state = "viceseermask"
     item_state = "viceseermask"
     sellprice = 40
+
+
+/obj/item/clothing/head/roguetown/flower_crown
+	name = "rose crown"
+	desc = "A crown made of roses, often worn by those who wish to show their love for Eora or Necra. It is said that the wearer will be blessed with peace and love."
+	icon_state = "rosa_crown"
+	item_state = "rosa_crown"
+	fiber_salvage = FALSE
+	salvage_amount = 0
+	dynamic_hair_suffix = null
+	alternate_worn_layer  = 8.9 //On top of helmet
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+
+/obj/item/clothing/head/roguetown/flower_crown/salvia
+	name = "salvia crown"
+	desc = "A crown made from salvia flowers, often worn by those who wish to show their love for Eora or Necra. It is said that the wearer will be blessed with peace and love."
+	icon_state = "salvia_crown"
+	item_state = "salvia_crown"
