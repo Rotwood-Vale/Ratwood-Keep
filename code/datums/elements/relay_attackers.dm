@@ -13,6 +13,7 @@
 	RegisterSignal(target, list(COMSIG_ATOM_ATTACK_ANIMAL), PROC_REF(on_attack_npc))
 	RegisterSignal(target, COMSIG_ATOM_BULLET_ACT, PROC_REF(on_bullet_act))
 	RegisterSignal(target, COMSIG_ATOM_HITBY, PROC_REF(on_hitby))
+	RegisterSignal(target, COMSIG_MOB_ATTACK_HAND, PROC_REF(on_mob_attack_hand))
 
 /datum/element/relay_attackers/Detach(datum/source, ...)
 	. = ..()
@@ -23,6 +24,7 @@
 		COMSIG_ATOM_ATTACK_ANIMAL,
 		COMSIG_ATOM_BULLET_ACT,
 		COMSIG_ATOM_HITBY,
+		COMSIG_MOB_ATTACK_HAND,
 	))
 
 /datum/element/relay_attackers/proc/on_attackby(atom/target, obj/item/weapon, mob/attacker)
@@ -57,6 +59,10 @@
 	if(!ismob(thrown_by))
 		return
 	relay_attacker(target, thrown_by)
+
+/datum/element/relay_attackers/proc/on_mob_attack_hand(mob/target, mob/attacker, attacker_style)
+	SIGNAL_HANDLER
+	relay_attacker(target, attacker)
 
 /// Send out a signal identifying whoever just attacked us (usually a mob but sometimes a mech or turret)
 /datum/element/relay_attackers/proc/relay_attacker(atom/victim, atom/attacker)

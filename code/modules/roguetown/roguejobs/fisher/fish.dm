@@ -12,16 +12,24 @@
 	dropshrink = 0.6
 	slices_num = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/fish_fillet_raw
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	w_class = WEIGHT_CLASS_SMALL
+	var/turf/fished_from
 
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
 
 /obj/item/reagent_containers/food/snacks/fish/Initialize()
 	. = ..()
-	var/rarity = pickweight(list("gold" = 1, "ultra" =40, "rare"=50, "com"=900))
+
+	var/list/rarities
+	if(istype(fished_from, /turf/open/water/sea/thermalwater))
+		rarities = list("gold" = 3, "ultra" = 60, "rare" = 100, "com" = 800)
+	else
+		rarities = list("gold" = 1, "ultra" = 40, "rare" = 50, "com" = 900)
+
+	var/rarity = pickweight(rarities)
 	icon_state = "[initial(icon_state)][rarity]"
 	switch(rarity)
 		if("gold")
