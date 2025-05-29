@@ -274,11 +274,11 @@
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
 		r_hand = /obj/item/rogueweapon/mace/wsword
 
-		H.STASTR = 12
-		H.STASPD = 10
-		H.STACON = 12
-		H.STAEND = 12
-		H.STAINT = 11
+		H.STASTR = 7
+		H.STASPD = 13
+		H.STACON = 3
+		H.STAEND = 5
+		H.STAINT = 5
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/wrestler/use_combat_abilities()
 	if(src.stat != CONSCIOUS || world.time < next_cast)
