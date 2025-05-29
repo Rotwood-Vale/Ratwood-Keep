@@ -4,6 +4,14 @@
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/rogueore/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/rogueweapon/tongs))
+		forceMove(I)
+		user.visible_message(span_warning("[user] picks up \the [name] with \the [I.name]"))
+		I.update_icon()
+	. = ..()
+	
+
 /obj/item/rogueore/gold
 	name = "raw gold"
 	desc = "A clump of dirty lustrous nuggets!"
@@ -125,14 +133,12 @@
 				bp = H.get_bodypart(BODY_ZONE_PRECISE_R_HAND)
 			H.apply_damage(20, BRUTE, bp)
 			H.emote("scream")
-			H.Stun(10)
+			H.Stun(20)
 			H.visible_message(span_warn("[H.name] burns [user.p_their()] hand on the [name]!"))
 			return
 	. = ..()
 	
-// Issue: I can't get this to update the on mob overlay
-// to show you have an ingot when picking it up
-// if you know how please do it or let me know. (nothing I tried worked) - Fridge
+
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
