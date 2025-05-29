@@ -12625,11 +12625,6 @@
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/outdoors/rtfield)
 "gjd" = (
-/obj/structure/flora/roguetree/wise{
-	desc = "An old, wicked tree that is in a deep slumber. The druids seem to love it.";
-	name = "Elderbaum";
-	pixel_x = -12
-	},
 /obj/machinery/light/rogue/firebowl/standing/green{
 	pixel_x = -5;
 	pixel_y = 22
@@ -12647,10 +12642,6 @@
 /obj/item/natural/stone{
 	pixel_x = 15;
 	pixel_y = -15
-	},
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
 	},
 /obj/structure/flora/roguetree/wise/elder{
 	pixel_x = -12
