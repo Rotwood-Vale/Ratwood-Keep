@@ -38840,7 +38840,7 @@
 /area/rogue/indoors/town/garrison)
 "tEr" = (
 /obj/structure/roguemachine/mail{
-	mailtag = MercenaryGuild
+	mailtag = "MercenaryGuild"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
