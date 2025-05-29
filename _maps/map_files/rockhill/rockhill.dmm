@@ -15690,14 +15690,14 @@
 /area/rogue/under/town/basement)
 "hLw" = (
 /obj/item/candle/yellow/lit{
-	step_x = -5
+	pixel_x = -5
 	},
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "tablewood1"
 	},
 /obj/item/reagent_containers/glass/cup/wooden{
-	step_x = 7
+	pixel_x = 7
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
