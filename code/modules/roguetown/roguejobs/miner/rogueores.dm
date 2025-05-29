@@ -6,9 +6,10 @@
 
 /obj/item/rogueore/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
-		forceMove(I)
-		user.visible_message(span_warning("[user] picks up \the [name] with \the [I.name]"))
-		I.update_icon()
+		if(!length(I.contents))
+			forceMove(I)
+			user.visible_message(span_warning("[user] picks up \the [name] with \the [I.name]"))
+			I.update_icon()
 	. = ..()
 	
 
@@ -141,10 +142,9 @@
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = I
-		if(!T.has_ingot())
-			forceMove(T)
-			T.update_icon()
+		if(!length(I.contents))
+			forceMove(I)
+			I.update_icon()
 	..()
 
 /obj/item/ingot/Destroy()
