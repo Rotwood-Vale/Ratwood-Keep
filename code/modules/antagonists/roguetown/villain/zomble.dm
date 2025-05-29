@@ -57,12 +57,6 @@
 	cmode_music = zombie.cmode_music
 	patron = zombie.patron
 
-	STASTR = zombie.STASTR
-	STASPD = zombie.STASPD
-	STAINT = zombie.STAINT
-	STACON = zombie.STACON
-	STAEND = zombie.STAEND
-
 
 	return ..()
 
@@ -89,11 +83,13 @@
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
-	zombie.STASTR = STASTR
-	zombie.STASPD = STASPD
-	zombie.STAINT = STAINT
-	zombie.STACON = STACON
-	zombie.STAEND = STAEND
+
+	zombie.change_stat("strength", 0, "deadite_str")
+	zombie.change_stat("speed", 0, "deadite_spd")
+	zombie.change_stat("constitution", 0, "deadite_con")
+	zombie.change_stat("endurance", 0, "deadite_end")
+	zombie.change_stat("intelligence", 0, "deadite_int")
+	
 	zombie.cmode_music = cmode_music
 	zombie.set_patron(patron)
 
