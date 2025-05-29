@@ -3890,7 +3890,7 @@
 /area/rogue/indoors/town/tavern)
 "bTw" = (
 /obj/structure/roguemachine/mail{
-	mailtag = LowtownSquare
+	mailtag = "LowtownSquare"
 	},
 /obj/structure/table/wood{
 	dir = 1;
