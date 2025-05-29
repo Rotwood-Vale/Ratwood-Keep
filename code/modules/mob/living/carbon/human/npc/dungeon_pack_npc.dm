@@ -5,11 +5,12 @@
 	faction = list("dungeon")
 	ambushable = FALSE
 	dodgetime = 20
+	defprob = 35
 	flee_in_pain = FALSE
 	wander = TRUE
+
 	var/combat_loop_running =  FALSE
 	var/next_cast = 0
-	possible_rmb_intents = list()
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/examine(mob/user)
 	to_chat(user, "You don't recognize this person.")
@@ -29,6 +30,7 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/proc/use_combat_abilities()
 	return
@@ -76,6 +78,7 @@
 /mob/living/carbon/human/species/human/northern/dungeon_base/warrior/after_creation()
 	..()
 	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_warrior)
+	possible_rmb_intents += /datum/rmb_intent/swift
 
 /datum/outfit/job/roguetown/npc/dungeon_warrior
 	name = "Dungeon Warrior"
@@ -125,6 +128,7 @@
 /mob/living/carbon/human/species/human/northern/dungeon_base/paladin/after_creation()
 	..()
 	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_paladin)
+	possible_rmb_intents += /datum/rmb_intent/swift
 
 /datum/outfit/job/roguetown/npc/dungeon_paladin
 	name = "Dungeon Paladin"
@@ -153,7 +157,7 @@
 		H.STACON = 15
 		H.STAEND = 14
 		H.STAINT = 8
-		H.STAPER = 15
+		H.STAPER = 17
 
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/paladin/use_combat_abilities()
@@ -176,7 +180,7 @@
 		if(target && get_dist(src, target) <= 7)
 			src.say("BE STILL!")
 			target.visible_message(
-				span_warning("[target] is gripped by unholy paralysis!"),
+				span_warning("[target] is gripped by unholy hands!"),
 				span_userdanger("You feel your limbs freeze under a dreadful presence!")
 			)
 			target.Stun(20)
@@ -198,6 +202,7 @@
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric/after_creation()
 	..()
 	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_cleric)
+	possible_rmb_intents += /datum/rmb_intent/swift
 
 /datum/outfit/job/roguetown/npc/dungeon_cleric
 	name = "Dungeon Cleric"
@@ -245,9 +250,142 @@
 		C.cast(enemies, src)
 
 
+// 4. Wrestler
+/mob/living/carbon/human/species/human/northern/dungeon_base/wrestler
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/wrestler/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_wrestler)
+	possible_rmb_intents += /datum/rmb_intent/swift
+
+/datum/outfit/job/roguetown/npc/dungeon_wrestler
+	name = "Dungeon Wrestler"
+
+	pre_equip(mob/living/carbon/human/H)
+
+		..()
+		mask = /obj/item/clothing/mask/rogue/facemask
+		head = /obj/item/clothing/head/roguetown/necrahood
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+		r_hand = /obj/item/rogueweapon/mace/wsword
+
+		H.STASTR = 12
+		H.STASPD = 10
+		H.STACON = 12
+		H.STAEND = 12
+		H.STAINT = 11
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/wrestler/use_combat_abilities()
+	if(src.stat != CONSCIOUS || world.time < next_cast)
+		return
 
 
+// 5. Rogue
+/mob/living/carbon/human/species/human/northern/dungeon_base/rogue
 
+/mob/living/carbon/human/species/human/northern/dungeon_base/rogue/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_rogue)
+	possible_rmb_intents += /datum/rmb_intent/swift
+
+/datum/outfit/job/roguetown/npc/dungeon_rogue
+	name = "Dungeon Rogue"
+
+	pre_equip(mob/living/carbon/human/H)
+
+		..()
+		mask = /obj/item/clothing/mask/rogue/facemask
+		head = /obj/item/clothing/head/roguetown/necrahood
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+		r_hand = /obj/item/rogueweapon/mace/wsword
+
+		H.STASTR = 12
+		H.STASPD = 10
+		H.STACON = 12
+		H.STAEND = 12
+		H.STAINT = 11
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/rogue/use_combat_abilities()
+	if(src.stat != CONSCIOUS || world.time < next_cast)
+		return
+		
+// 6. Mage
+/mob/living/carbon/human/species/human/northern/dungeon_base/mage
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/mage/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_mage)
+	possible_rmb_intents += /datum/rmb_intent/swift
+
+/datum/outfit/job/roguetown/npc/dungeon_mage
+	name = "Dungeon Mage"
+
+	pre_equip(mob/living/carbon/human/H)
+
+		..()
+		mask = /obj/item/clothing/mask/rogue/facemask
+		head = /obj/item/clothing/head/roguetown/necrahood
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+		r_hand = /obj/item/rogueweapon/mace/wsword
+
+		H.STASTR = 12
+		H.STASPD = 10
+		H.STACON = 12
+		H.STAEND = 12
+		H.STAINT = 11
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/mage/use_combat_abilities()
+	if(src.stat != CONSCIOUS || world.time < next_cast)
+		return
+
+// 7. Silencer
+/mob/living/carbon/human/species/human/northern/dungeon_base/silencer
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/silencer/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_silencer)
+	possible_rmb_intents += /datum/rmb_intent/swift
+
+/datum/outfit/job/roguetown/npc/dungeon_silencer
+	name = "Dungeon Silencer"
+
+	pre_equip(mob/living/carbon/human/H)
+
+		..()
+		mask = /obj/item/clothing/mask/rogue/facemask
+		head = /obj/item/clothing/head/roguetown/necrahood
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+		neck = /obj/item/clothing/neck/roguetown/gorget
+		gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
+		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/advanced
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
+		r_hand = /obj/item/rogueweapon/mace/wsword
+
+		H.STASTR = 12
+		H.STASPD = 10
+		H.STACON = 12
+		H.STAEND = 12
+		H.STAINT = 11
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/silencer/use_combat_abilities()
+	if(src.stat != CONSCIOUS || world.time < next_cast)
+		return		
 
 // NPC SPELLS // DONT GIVE THEM TO PLAYERS  YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
@@ -338,13 +476,37 @@
 		return FALSE
 
 	target.visible_message(
-		span_warning("[target] takes a heavy kick to the left leg!"),
-		span_userdanger("Your left leg nearly buckles!")
+		span_warning("[target] takes a heavy kick to the leg!"),
+		span_userdanger("Your leg nearly buckles!")
 	)
-
-	if(prob(20))
+	// right leg hit — with a chance of 30%
+	if(prob(30))
 		target.Stun(20)
-	target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
+
+	// left leg hit — with a chance of 30%
+	if(prob(30))
+		target.Stun(20)
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
+
+	// HARDER STRIKE
+	if(prob(15))
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
+		var/obj/item/bodypart/leg_l = target.get_bodypart(BODY_ZONE_L_LEG)
+		var/datum/wound/W = new /datum/wound/dislocation()
+		W.apply_to_bodypart(leg_l)
+
+	// HARDER STRIKE
+	if(prob(15))
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/leg_r = target.get_bodypart(BODY_ZONE_R_LEG)
+		var/datum/wound/W2 = new /datum/wound/dislocation()
+		W2.apply_to_bodypart(leg_r)
+
+	// Count it as a miss
+	else
+		target.apply_damage(rand(5, 10), BRUTE, BODY_ZONE_L_LEG)
+
 
 	return TRUE
 /proc/display_results(mob/user, mob/living/target, msg_others, msg_self = null)
@@ -365,10 +527,24 @@
 		span_warning("[target] is bashed in the head with unholy force!"),
 		span_userdanger("Your head rings from a heavy blow!")
 	)
-	if(prob(10))
+	if(prob(50))
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
+		target.throw_at(throw_target, 5, 4)
+		target.adjust_blurriness(3)
+		target.emote("cry")
+		target.apply_damage(rand(10, 60), BRUTE, BODY_ZONE_HEAD)
+	if(prob(30))
 		target.Stun(20)
 		target.Knockdown(20)
-	target.apply_damage(rand(10, 60), BRUTE, BODY_ZONE_HEAD)
+		target.apply_damage(rand(10, 60), BRUTE, BODY_ZONE_HEAD)
+	if(prob(5)) //CRIT YOUR NECK BROKEN 
+		var/obj/item/bodypart/head = target.get_bodypart(BODY_ZONE_HEAD)
+		var/datum/wound/W2 = new /datum/wound/fracture()
+		W2.apply_to_bodypart(head)
+		target.apply_damage(rand(40, 100), BRUTE, BODY_ZONE_HEAD)
+	
+	else //you are lucky
+		target.apply_damage(rand(10, 15), BRUTE, BODY_ZONE_HEAD)
 
 	return TRUE
 
