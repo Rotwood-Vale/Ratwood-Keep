@@ -257,7 +257,7 @@
 	..()
 	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_wrestler)
 	possible_rmb_intents += /datum/rmb_intent/swift
-
+//  ШМОТ
 /datum/outfit/job/roguetown/npc/dungeon_wrestler
 	name = "Dungeon Wrestler"
 
@@ -284,6 +284,28 @@
 	if(src.stat != CONSCIOUS || world.time < next_cast)
 		return
 
+	next_cast = world.time + 150
+
+	if(!target || target.stat != CONSCIOUS || get_dist(src, target) > 1)
+		return
+
+	src.say("You’re going down!")
+
+	target.Stun(50)
+	target.Knockdown(50)
+	target.Sleep(50)
+
+	spawn(100)
+		var/list/candidates = list()
+		for(var/mob/living/L in view(5, src))
+			if(L != src && L.stat == CONSCIOUS && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+				candidates += L
+
+		if(candidates.len)
+			var/mob/living/L = pick(candidates)
+			to_chat(src, span_notice("Wrestler shifts attention to [L]!"))
+			target = L
+
 
 // 5. Rogue
 /mob/living/carbon/human/species/human/northern/dungeon_base/rogue
@@ -297,7 +319,7 @@
 	name = "Dungeon Rogue"
 
 	pre_equip(mob/living/carbon/human/H)
-
+//  ШМОТ
 		..()
 		mask = /obj/item/clothing/mask/rogue/facemask
 		head = /obj/item/clothing/head/roguetown/necrahood
@@ -315,9 +337,39 @@
 		H.STAEND = 12
 		H.STAINT = 11
 
+//walter more dota 2 things plz
+
 /mob/living/carbon/human/species/human/northern/dungeon_base/rogue/use_combat_abilities()
 	if(src.stat != CONSCIOUS || world.time < next_cast)
 		return
+	next_cast = world.time + 150
+
+	var/list/enemies = list()
+	for(var/mob/living/L in view(7, src))
+		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+			enemies += L
+
+	if(!enemies.len)
+		return
+
+	var/mob/living/target = pick(enemies)
+	src.say("Shadows guide me...")
+	step_towards(src, target) 
+	target.visible_message(span_warning("[src] suddenly appears behind [target]!"))
+
+	spawn(20)
+		if(get_dist(src, target) <= 1)
+			src.visible_message(span_danger("[src] strikes from the shadows!"))
+			if(prob(50))
+				target.apply_damage(rand(40, 80), BRUTE, BODY_ZONE_CHEST)
+			else
+				target.apply_damage(rand(20, 40), BRUTE)
+
+	spawn(100)
+		if(target && get_dist(src, target) <= 2)
+			src.say("Let’s slow you down.")
+			target.apply_damage(rand(10, 20), BRUTE, BODY_ZONE_L_LEG)
+			target.Slowdown(40)
 		
 // 6. Mage
 /mob/living/carbon/human/species/human/northern/dungeon_base/mage
@@ -331,7 +383,7 @@
 	name = "Dungeon Mage"
 
 	pre_equip(mob/living/carbon/human/H)
-
+//  ШМОТ
 		..()
 		mask = /obj/item/clothing/mask/rogue/facemask
 		head = /obj/item/clothing/head/roguetown/necrahood
@@ -349,9 +401,33 @@
 		H.STAEND = 12
 		H.STAINT = 11
 
+//Эту хуйню нужно реворкнуть потому что пусть будут прожектайлы лучше но нужно избежать френдли фаера
 /mob/living/carbon/human/species/human/northern/dungeon_base/mage/use_combat_abilities()
 	if(src.stat != CONSCIOUS || world.time < next_cast)
 		return
+	next_cast = world.time + 180
+
+	var/list/enemies = list()
+	for(var/mob/living/L in view(8, src))
+		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+			enemies += L
+
+	if(!enemies.len)
+		return
+
+	var/mob/living/target = pick(enemies)
+	src.say("Arcana, strike true!")
+	target.visible_message(span_warning("A bolt of arcane energy slams into [target]!"))
+	target.apply_damage(rand(30, 60), BURN)
+
+	if(prob(30))
+		explosion(get_turf(target), 0, 1)
+
+	spawn(100)
+		if(target && !QDELETED(target))
+			src.say("Feel your soul burn!")
+			target.apply_damage(rand(15, 45), BURN)
+			target.Slowdown(30)
 
 // 7. Silencer
 /mob/living/carbon/human/species/human/northern/dungeon_base/silencer
@@ -363,7 +439,7 @@
 
 /datum/outfit/job/roguetown/npc/dungeon_silencer
 	name = "Dungeon Silencer"
-
+//  ШМОТ
 	pre_equip(mob/living/carbon/human/H)
 
 		..()
@@ -385,7 +461,31 @@
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/silencer/use_combat_abilities()
 	if(src.stat != CONSCIOUS || world.time < next_cast)
-		return		
+		return
+	next_cast = world.time + 300
+
+	src.say("Begone, voices!")
+
+	//  немота на 120 тиков (~12 но нужно сделать больше и да проверка на фракцию уже есть)
+	for(var/mob/living/L in view(5, src))
+		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+			to_chat(L, span_warning("A wave of oppressive silence washes over you..."))
+			L.mute(120)
+
+	// оглушение + измени эту херню плз
+	spawn(100)
+		src.say("Your thoughts are not your own...")
+
+		var/list/enemies = list()
+		for(var/mob/living/L in view(7, src))
+			if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
+				enemies += L
+
+		if(enemies.len)
+			var/mob/living/target = pick(enemies)
+			target.apply_damage(rand(30, 70), BODY_ZONE_HEAD)
+			target.Stun(30)
+			target.adjust_blurriness(3)
 
 // NPC SPELLS // DONT GIVE THEM TO PLAYERS  YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
