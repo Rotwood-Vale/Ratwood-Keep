@@ -33,6 +33,49 @@
 	else
 		return ..()
 
+<<<<<<< HEAD
+=======
+// TALLOW is used as an intermediate crafting ingredient for other recipes.
+/obj/item/reagent_containers/food/snacks/tallow
+	name = "tallow"
+	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \
+	grease."
+	icon = 'modular/Neu_Food/icons/food.dmi'
+	icon_state = "tallow"
+	tastes = list("grease" = 1, "oil" = 1, "regret" =1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+	fat_yield = 5 // 5 per animal fat
+	bitesize = 1
+	dropshrink = 0.3
+
+/obj/item/reagent_containers/food/snacks/tallow/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/survival/soap,
+		/datum/crafting_recipe/roguetown/survival/candle,
+		/datum/crafting_recipe/roguetown/survival/candle/eora,
+		/datum/crafting_recipe/roguetown/survival/recurvepartial,
+		/datum/crafting_recipe/roguetown/survival/longbowpartial,
+		/datum/crafting_recipe/roguetown/leather/container/javelinbag,
+		/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves,
+		/datum/crafting_recipe/roguetown/leather/armor/heavy_leather_pants,
+		/datum/crafting_recipe/roguetown/leather/armor/heavy_leather_pants/shorts,
+		/datum/crafting_recipe/roguetown/leather/armor/helmet/advanced,
+		/datum/crafting_recipe/roguetown/leather/armor/heavy_leather_armor,
+		/datum/crafting_recipe/roguetown/leather/armor/heavy_leather_armor/coat,
+		/datum/crafting_recipe/roguetown/leather/armor/heavy_leather_armor/jacket,
+		/datum/crafting_recipe/roguetown/leather/hidebikini,
+		/datum/crafting_recipe/roguetown/leather/unique/otavanleatherpants,
+		/datum/crafting_recipe/roguetown/leather/unique/otavanboots,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
+>>>>>>> 8b5f2f9d6 (Merge pull request #2526 from WeNeedMorePhoron/recipe-book-2)
 // -------------- RAISINS -----------------
 /obj/item/reagent_containers/food/snacks/rogue/raisins
 	name = "raisins"
