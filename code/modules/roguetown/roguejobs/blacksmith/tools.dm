@@ -247,10 +247,9 @@
 	make_hot(heat_time)
 
 /obj/item/rogueweapon/tongs/update_icon()
-	. = ..()
 	if(length(contents))
 		icon_state = "[initial(icon_state)]i0"
-		
+
 	var/obj/item/ingot/I = get_ingot()
 	if(!I)
 		icon_state = "[initial(icon_state)]"
@@ -259,8 +258,10 @@
 			icon_state = "[initial(icon_state)]i1"
 		else
 			icon_state = "[initial(icon_state)]i0"
-	update_transform()	
-
+	. = ..()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_hands()
 
 
 /obj/item/rogueweapon/tongs/proc/make_hot(heating)
