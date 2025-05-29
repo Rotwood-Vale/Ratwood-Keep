@@ -249,15 +249,12 @@
 /obj/item/rogueweapon/tongs/update_icon()
 	if(length(contents))
 		icon_state = "[initial(icon_state)]i0"
-
-	var/obj/item/ingot/I = get_ingot()
-	if(!I)
-		icon_state = "[initial(icon_state)]"
+		var/obj/item/ingot/I = get_ingot()
+		if(I)
+			if(I.ishot)
+				icon_state = "[initial(icon_state)]i1"
 	else
-		if(I.ishot)
-			icon_state = "[initial(icon_state)]i1"
-		else
-			icon_state = "[initial(icon_state)]i0"
+		icon_state = "[initial(icon_state)]"
 	. = ..()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -273,19 +270,16 @@
 	update_icon()
 
 /obj/item/rogueweapon/tongs/attack_self(mob/user)
-	var/obj/item/ingot/I = get_ingot()
-	if(!I)
-		return
-	if(isturf(user.loc))
+	if(length(contents))
+		var/obj/item/I = contents[1]
 		I.forceMove(get_turf(user))
+		playsound(get_turf(src), 'sound/foley/dropsound/gen_drop.ogg', 60)
 		update_icon()
 
 /obj/item/rogueweapon/tongs/dropped()
 	. = ..()
-	var/obj/item/ingot/I = get_ingot()
-	if(!I)
-		return
-	I.forceMove(get_turf(src))
+	for(var/obj/item/I in contents)
+		I.forceMove(get_turf(src))
 	update_icon()
 
 /obj/item/rogueweapon/tongs/getonmobprop(tag)
