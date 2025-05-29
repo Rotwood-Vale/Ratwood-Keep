@@ -172,6 +172,10 @@
 
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
+		target.swap_rmb_intent(null, 1)
+
 	if(target.ckey) //player still inside body
 
 		var/offer = alert(target, "Do you wish to be reanimated as a minion?", "RAISED BY NECROMANCER", "Yes", "No")

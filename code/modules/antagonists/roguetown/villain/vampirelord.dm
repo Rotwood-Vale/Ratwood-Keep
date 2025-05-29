@@ -72,6 +72,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_VAMPMANSION, "[type]")
 	ADD_TRAIT(owner.current, TRAIT_HEAVYARMOR, "[type]")
+
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	if (istype(owner.current.rmb_intent, /datum/rmb_intent/swift))
+		owner.current.swap_rmb_intent(null, 1)
+
 	for(var/obj/structure/fluff/traveltile/vampire/tile in GLOB.traveltiles)
 		tile.show_travel_tile(owner.current)
 	ADD_TRAIT(owner.current, TRAIT_VAMP_DREAMS, "[type]")
