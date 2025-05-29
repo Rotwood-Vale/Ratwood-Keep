@@ -34630,7 +34630,7 @@
 /area/rogue/indoors)
 "rBe" = (
 /obj/structure/chair/bench,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "rBg" = (
 /turf/open/water/river{
@@ -36903,9 +36903,8 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
 "sHM" = (
-/obj/structure/flora/roguegrass,
-/turf/open/floor/rogue/grass,
-/area/rogue/indoors/shelter/mountains)
+/turf/closed/wall/mineral/rogue/wooddark/vertical,
+/area/rogue/under/cave)
 "sIl" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
@@ -42308,9 +42307,10 @@
 /obj/structure/mineral_door/wood/deadbolt{
 	keylock = 1;
 	locked = 1;
-	name = "Blacksmith Backdoor"
+	name = "Blacksmith Backdoor";
+	dir = 1
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "vAB" = (
 /obj/structure/fluff/railing/border{
@@ -187989,7 +187989,7 @@ vIa
 vIa
 vIa
 xvN
-nrs
+uaL
 qvR
 xvN
 hUD
@@ -190580,7 +190580,7 @@ vIa
 vIa
 vIa
 xvN
-nrs
+uaL
 qvR
 wSn
 xvN
@@ -194888,7 +194888,7 @@ vIa
 vIa
 vIa
 qvR
-xvN
+qvR
 xvN
 qvR
 pNH
@@ -195318,7 +195318,7 @@ vIa
 vIa
 vIa
 vIa
-sHM
+clE
 xvN
 qvR
 qvR
@@ -195750,7 +195750,7 @@ vIa
 vIa
 vIa
 xvN
-idH
+qvR
 qvR
 qvR
 spp
@@ -197043,7 +197043,7 @@ tmH
 vIa
 tmH
 vIa
-xvN
+qvR
 xvN
 qvR
 xvN
@@ -197475,7 +197475,7 @@ tmH
 tmH
 tmH
 vIa
-xvN
+qvR
 qvR
 spp
 qvR
@@ -197921,7 +197921,7 @@ uaL
 qvR
 qvR
 lgA
-nrs
+uaL
 qfX
 qvR
 uaL
@@ -203537,7 +203537,7 @@ qvR
 dNu
 qvR
 ntG
-xIB
+ntG
 gKI
 qvR
 uaL
@@ -204390,9 +204390,9 @@ vIa
 vIa
 vIa
 vIa
-xvN
+qvR
 pAt
-xvN
+qvR
 xvN
 uaL
 uaL
@@ -205256,7 +205256,7 @@ vIa
 vIa
 xrY
 rEn
-nrs
+uaL
 xvN
 qvR
 qvR
@@ -205686,7 +205686,7 @@ vIa
 tmH
 vIa
 vIa
-xrY
+wSn
 xrY
 sUo
 fjO
@@ -208741,7 +208741,7 @@ fZS
 wSn
 lgA
 qvR
-fxx
+sjP
 fxx
 xvN
 qvR
@@ -209173,7 +209173,7 @@ uaL
 xQw
 uaL
 oQT
-fxx
+sjP
 fxx
 aPR
 qvR
@@ -209605,7 +209605,7 @@ uaL
 qvR
 uaL
 gZZ
-fxx
+sjP
 fxx
 qvR
 uaL
@@ -210452,9 +210452,9 @@ sjP
 fxx
 sjP
 wfR
-fxx
-fxx
-fxx
+qvR
+qvR
+qvR
 qvR
 qvR
 qvR
@@ -210469,7 +210469,7 @@ qvR
 uSR
 uSR
 xvN
-fxx
+sjP
 fxx
 qvR
 uaL
@@ -210898,10 +210898,10 @@ qvR
 sjP
 fxx
 sjP
-jXZ
-jXZ
-fxx
-fxx
+sjP
+sjP
+sjP
+sjP
 fxx
 uaL
 qvR
@@ -212182,7 +212182,7 @@ qvR
 qvR
 uaL
 sjP
-uaL
+sjP
 sjP
 uaL
 fxx
@@ -212194,7 +212194,7 @@ uaL
 qvR
 qvR
 qvR
-fxx
+qvR
 sjP
 fxx
 fxx
@@ -212628,7 +212628,7 @@ uaL
 xvN
 qvR
 qvR
-fxx
+qvR
 sjP
 fxx
 fxx
@@ -214335,7 +214335,7 @@ bpD
 woq
 ryI
 pKw
-wOD
+ryI
 wOD
 wOD
 ryI
@@ -214767,7 +214767,7 @@ vuM
 cTI
 cTI
 tyj
-mXz
+sHM
 xvN
 qvR
 qvR
@@ -226460,7 +226460,7 @@ iNr
 uaL
 uaL
 jmu
-fxx
+sjP
 fxx
 sjP
 fxx
@@ -229482,8 +229482,8 @@ gyT
 dIx
 ddv
 ddv
+ddv
 vAo
-hHF
 uaL
 xvN
 skP
@@ -229914,7 +229914,7 @@ pAV
 pAV
 vFU
 ddv
-pAV
+ddv
 jju
 uaL
 nrs
@@ -230347,7 +230347,7 @@ jju
 pAV
 pAV
 jju
-uaL
+pAV
 qvR
 uaL
 xvN
@@ -327053,8 +327053,8 @@ qbG
 vIa
 vIa
 vIa
-vIa
-vIa
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -327487,9 +327487,9 @@ vIa
 vIa
 iyK
 iyK
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
 tmH
 vIa
 vIa
@@ -327529,8 +327529,8 @@ pAV
 pAV
 hky
 dio
-pAV
-pAV
+hHI
+hHI
 pAV
 rDt
 pAV
@@ -327917,9 +327917,9 @@ qbG
 qbG
 vIa
 vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
 vIa
 vIa
 vIa
@@ -327958,10 +327958,10 @@ tmH
 tmH
 tmH
 vIa
-vIa
+tUS
 pAV
-pAV
-pAV
+hHI
+hHI
 qbG
 qbG
 qbG
@@ -329226,8 +329226,8 @@ qbG
 qbG
 vIa
 tmH
-vIa
-vIa
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -329658,16 +329658,16 @@ qbG
 qbG
 vIa
 vIa
-vIa
+tmH
 vIa
 vIa
 tmH
 tmH
-vIa
+tmH
+tmH
 fON
-fON
-vIa
-vIa
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -330095,10 +330095,10 @@ vIa
 qbG
 vIa
 tmH
-vIa
 tmH
 tmH
-vIa
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -330526,9 +330526,9 @@ qbG
 qbG
 qbG
 vIa
-vIa
-vIa
-vIa
+tmH
+tmH
+tmH
 tmH
 tmH
 tmH
@@ -332701,8 +332701,8 @@ qbG
 qbG
 qbG
 qbG
-rbn
-rbn
+vIa
+vIa
 vIa
 vIa
 tmH
@@ -333134,7 +333134,7 @@ qbG
 qbG
 qbG
 qbG
-qbG
+oMD
 vIa
 vIa
 tmH
@@ -333567,7 +333567,7 @@ qbG
 qbG
 qbG
 rbn
-rbn
+vIa
 vIa
 vIa
 vIa
@@ -333999,7 +333999,7 @@ qbG
 qbG
 qbG
 rbn
-rbn
+vIa
 vIa
 vIa
 vIa
@@ -334432,7 +334432,7 @@ qbG
 qbG
 qbG
 rbn
-rbn
+vIa
 vIa
 vIa
 vIa
@@ -334865,7 +334865,7 @@ qbG
 qbG
 rbn
 rbn
-rbn
+vIa
 vIa
 vIa
 qbG
@@ -433359,7 +433359,7 @@ tmH
 tmH
 vIa
 vIa
-qbG
+vIa
 qbG
 qbG
 qbG
