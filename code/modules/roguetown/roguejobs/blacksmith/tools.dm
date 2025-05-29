@@ -248,6 +248,9 @@
 
 /obj/item/rogueweapon/tongs/update_icon()
 	. = ..()
+	if(length(contents))
+		icon_state = "[initial(icon_state)]i0"
+		
 	var/obj/item/ingot/I = get_ingot()
 	if(!I)
 		icon_state = "[initial(icon_state)]"

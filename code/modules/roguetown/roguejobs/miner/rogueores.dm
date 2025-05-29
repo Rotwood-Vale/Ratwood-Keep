@@ -138,6 +138,7 @@
 		var/obj/item/rogueweapon/tongs/T = I
 		if(!T.has_ingot())
 			forceMove(T)
+			T.update_icon()
 	..()
 
 /obj/item/ingot/Destroy()
