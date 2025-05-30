@@ -859,11 +859,9 @@ Try slip
 	//If we succeed either of these we do not slip
 	//Ideally athletics is the easier of the two to check
 	if(athletics >= chance)
-		to_chat( "Athletics passed! [athletics] - [chance]")
 		failed = FALSE
 	chance = rand(10, 20)
 	if(STAPER >= chance)
-		to_chat( "Athletics passed! [athletics] - [chance]")
 		failed = FALSE
 	
 	if(failed)
