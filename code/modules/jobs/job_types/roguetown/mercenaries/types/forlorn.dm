@@ -22,25 +22,32 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	beltr = /obj/item/storage/keyring/mercenary
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/shield/heater
 
-	var/weapons = list("warhammer", "messer", "szabla")
+	var/weapons = list("warhammer", "axe", "crossbow")
 	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
 
 	switch(weaponschoice)
 
 		if("warhammer")
 			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			backl = /obj/item/rogueweapon/shield/heater
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
-		if("messer")
-			beltl = /obj/item/rogueweapon/sword/iron/messer/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("szabla")
-			beltl = /obj/item/rogueweapon/sword/sabre
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("axe")
+			beltl = /obj/item/rogueweapon/stoneaxe/battle
+			backl = /obj/item/rogueweapon/shield/heater
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE) // This brings the axe class in line-
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE) //
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE) // -for the same total skill points overall
+		if("crossbow")
+			beltl = /obj/item/ammo_holder/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // Takes the crossbow merc to expert crossbows-
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE) // -overall, as all mercs are experts with weapons
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
 		else
 			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			backl = /obj/item/rogueweapon/shield/heater
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
