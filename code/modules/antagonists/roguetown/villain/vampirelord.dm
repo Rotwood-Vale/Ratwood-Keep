@@ -559,6 +559,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/msg = input("Send a message.", "Command") as text|null
 	if(!msg)
 		return
+	log_game("[key_name(src)] used vampyre telepathy to say \"[msg]\"")
 	for(var/datum/mind/V in C.vampires)
 		to_chat(V, span_boldnotice("A message from [src.real_name]: \"[msg]\""))
 	for(var/datum/mind/D in C.deathknights)
