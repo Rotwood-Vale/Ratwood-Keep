@@ -96,6 +96,8 @@
 
 	var/list/notes = list() //RTD add notes button
 
+	var/list/special_people = list() // For characters whose text will display in a different colour when seen by this Mind
+
 	var/lastrecipe
 
 	var/datum/sleep_adv/sleep_adv = null
@@ -859,3 +861,16 @@
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
 	sleep_adv.add_sleep_experience(skill, amt, silent)
 
+/datum/mind/proc/add_special_person(mob/M, special_colour)
+	if (!istext(special_colour))
+		return
+	if (!special_people[M.real_name])
+		special_people[M.real_name] = special_colour
+
+/datum/mind/proc/remove_special_person(mob/M)
+	if (special_people[M.real_name])
+		special_people -= M.real_name
+
+/datum/mind/proc/get_special_person_colour(mob/M)
+	if (special_people[M.real_name])
+		return special_people[M.real_name]
