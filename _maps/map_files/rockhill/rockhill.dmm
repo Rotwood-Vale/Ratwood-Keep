@@ -2700,12 +2700,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "bqm" = (
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
-	},
 /obj/effect/decal/cleanable/vomit/old,
-/obj/structure/pillory/bounty/town_square,
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cavewet/bogcaves)
 "bqy" = (
@@ -26841,6 +26836,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "nAu" = (
 /obj/effect/decal/cleanable/vomit/old,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves)
 "nAB" = (
@@ -29469,11 +29465,6 @@
 /area/rogue/indoors/town/church)
 "oPt" = (
 /obj/structure/bars,
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
-	},
-/obj/structure/pillory/bounty/town_square,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
@@ -31044,6 +31035,7 @@
 /area/rogue/indoors/town/manor)
 "pEJ" = (
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
 "pFb" = (
