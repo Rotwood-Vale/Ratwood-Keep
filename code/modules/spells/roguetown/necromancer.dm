@@ -172,6 +172,10 @@
 
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
+		target.swap_rmb_intent(null, 1)
+
 	if(target.ckey) //player still inside body
 
 		var/offer = alert(target, "Do you wish to be reanimated as a minion?", "RAISED BY NECROMANCER", "Yes", "No")
@@ -269,6 +273,10 @@
 	target.set_necrotarget(TRUE)
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
+		target.swap_rmb_intent(null, 1)
+
 	if(user.mind.boneboys < user.mind.bonemax)
 		to_chat(user, span_warning("I have the capacity to sustain another self aware skeleton!"))
 
@@ -360,7 +368,7 @@
 		ADD_TRAIT(src, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
 	else //npc
 		aggressive = 1
-		mode = AI_HUNT
+		mode = NPC_AI_HUNT
 		wander = TRUE
 
 	if(!mind)

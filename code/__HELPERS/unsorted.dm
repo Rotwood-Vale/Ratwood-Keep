@@ -1629,3 +1629,34 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 			for(var/atom/contained_atom in M.component_parts)
 				contained_atom.flags_1 |= HOLOGRAM_1
 	return O
+
+/*================
+handle interaction
+================*/
+/*	- Takes the current item in your active hand, inactive hand, and what was hit (the src)
+	  and feeds it through the food_interaction recipes to determine what to do. This way
+	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
+
+/proc/food_handle_interaction(obj/item/source, mob/living/user, list/items, interaction_type)
+	var/obj/method_result
+	var/datum/food_handle_recipes/recipe = select_interaction_recipe(GLOB.food_combinations, items, interaction_type)
+
+	if (!recipe)
+		return FALSE
+
+	method_result = recipe.result
+
+	if(recipe.pre_check(user, items) == FALSE)
+		return FALSE //We can't do it!
+
+	to_chat(user, span_warning("[recipe.crafting_message]"))
+	playsound(user.loc, recipe.craft_sound, 100)
+	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
+	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
+	if(do_after(user, delay, source))
+		if(method_result != null)
+			new method_result(source.loc) // Always be on the table
+		recipe.clear_items(items)
+		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
+		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8) //TEMP: MAKE THIS ATTACHED TO RECIPES AT SOME POINT
+	return TRUE
