@@ -101,6 +101,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		greet()
 		if(!sired)
 			addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, spawn_pick_class), "VAMPIRE SPAWN"), 5 SECONDS)
+		// All vampyre spawn consider the vampyre lord special
+		for(var/datum/mind/vampire in C.vampires)
+			if (vampire.special_role == "Vampire Lord")
+				owner.add_special_person(vampire.current, "#DC143C")
+				// Don't break - an admin may need to create a second vampyre lord
 	else
 		forge_vampirelord_objectives()
 		finalize_vampire()
@@ -111,6 +116,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		equip_lord()
 		addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "VAMPIRE LORD"), 5 SECONDS)
 		greet()
+		// Vampyre Lord is special to all vampyre spawn
+		for(var/datum/mind/thrall in C.vampires)
+			if (thrall.special_role == "Vampire Spawn")
+				thrall.add_special_person(owner.current, "#DC143C")
 	return ..()
 
 // OLD AND EDITED
