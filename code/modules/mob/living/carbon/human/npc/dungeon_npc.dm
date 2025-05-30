@@ -10,7 +10,6 @@
 	wander = TRUE
 
 	var/combat_loop_running =  FALSE
-	var/next_cast = 0
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/examine(mob/user)
 	to_chat(user, "You don't recognize this person.")
@@ -412,8 +411,3 @@
 
 	return TRUE
 
-/proc/disjoint_lists(list/A, list/B)
-	for(var/val in A)
-		if(val in B)
-			return FALSE
-	return TRUE
