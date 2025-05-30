@@ -43,7 +43,9 @@
 			beltl = /obj/item/ammo_holder/quiver/bolts
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // Takes the crossbow merc to expert crossbows-
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE) // -overall, as all mercs are experts with weapons
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) // -and competent bows overall, as all mercs are-
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, -2, TRUE) // -experts with their respected weapons.
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE) // Apprentice swordsmen. 
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
 		else
 			beltl = /obj/item/rogueweapon/mace/warhammer/steel
