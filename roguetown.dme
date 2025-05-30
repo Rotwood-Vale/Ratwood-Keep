@@ -1583,6 +1583,7 @@
 #include "code\modules\mob\living\carbon\human\npc\dungeon_npc.dm"
 #include "code\modules\mob\living\carbon\human\npc\dungeon_pack_npc.dm"
 #include "code\modules\mob\living\carbon\human\npc\goblin.dm"
+#include "code\modules\mob\living\carbon\human\npc\GreatWolf.dm"
 #include "code\modules\mob\living\carbon\human\npc\skeleton.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromorph.dm"
 #include "code\modules\mob\living\carbon\human\species_types\furry\anthromorphsmall.dm"

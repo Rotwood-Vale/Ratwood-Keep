@@ -1,85 +1,119 @@
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/Obsidian
-	name = "Obsidian Choir"
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf
+	name = "Great Wolf"
 	icon = 'icons/roguetown/topadd/delinefortune/BossGreatWolf.dmi'
-	summon_primer = "You are a shard of the Obsidian Choir, a being of screeching resonance and shadow-song."
 	icon_state = "GreatWolfAlive"
 	icon_living = "GreatWolfAlive"
 	icon_dead = "GreatWolfDead"
+	faction = list("orcs", "wolfs","dungeon","wolves")
 	gender = NEUTER
 	speak_chance = 2
 	turns_per_move = 5
 	see_in_dark = 7
-	move_to_delay = 4
+	move_to_delay = 2
 	aggressive = TRUE
 	ranged = FALSE
 	dodgetime = 30
-	base_intents = list(/datum/intent/simple/bite)
+	base_intents = list(/datum/intent/sword/cut)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+
 	health = 800
 	maxHealth = 800
-	melee_damage_lower = 18
-	melee_damage_upper = 26
+	melee_damage_lower = 60
+	melee_damage_upper = 120
+	retreat_distance = 0
+	minimum_distance = 0
+	retreat_health = 0 // 0 = For Motherland, there is no option to retreat
 	vision_range = 7
 	aggro_vision_range = 10
-	environment_smash = ENVIRONMENT_SMASH_NONE
+	environment_smash = ENVIRONMENT_SMASH_WALLS
 	simple_detect_bonus = 25
-	retreat_distance = 4
-	minimum_distance = 3
-	retreat_health = 0.3
-	food = 0
-	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	food = 0
+
+	body_eater = TRUE
 	pooptype = null
-	STACON = 14
-	STASTR = 10
-	STASPD = 9
+	STACON = 50
+	STASTR = 30
+	STASPD = 15
+	STAPER = 9
 	defprob = 35
 	ranged_cooldown = 0
 
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+				/obj/item/bodypart,
+				/obj/item/organ)
+
 	var/enraged = FALSE
-	var/phase_triggered = FALSE
-	var/next_cast = 0
+	var/next_special_cast = 0
+	var/special_cooldown = 80 // 8 секунд
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/Initialize()
 	. = ..()
-	if(world.time >= next_cast)
-		ChoirAttack()
-		next_cast = world.time + 80
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	possible_rmb_intents += /datum/rmb_intent/swift
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/proc/ChoirAttack()
-	if(enraged && prob(20))
-		ChoirVoidPulse()
-	else if(prob(25))
-		ChoirRuneCircle()
-	else if(prob(50))
-		ChoirShriek()
-	else
-		ChoirPulse()
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/Life()
+	. = ..()
+	if(world.time >= next_special_cast)
+		UseSpecialAbility()
+		next_special_cast = world.time + special_cooldown
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/proc/ChoirPulse()
-	say("A dark tone vibrates from the stones...")
-	for(var/mob/living/M in view(3, src))
-		if(M.stat != DEAD && disjoint_lists(M.faction, src.faction))
-			M.Knockdown(15)
-			M.apply_damage(rand(10,20), BRUTE)
+	if(blood_volume < 300)
+		blood_volume += 5
+		if(blood_volume > 300)
+			blood_volume = 300		//WE LOVE ROGUE CODE WE LOVE ROGUE CODE MOST MOBS WILL DIE OF BLOOD LOSS AND CRIT
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/proc/ChoirShriek()
-	say("A sudden screech pierces the air!")
-	for(var/mob/living/M in view(5, src))
-		if(M.stat != DEAD && disjoint_lists(M.faction, src.faction))
-			M.Stun(8)
-			M.apply_damage(rand(5,15), BURN)
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/UseSpecialAbility()
+	var/roll = rand(1, 4)
+	switch(roll)
+		if(1) GhostBlade()
+		if(2) MoonLeap()
+		if(3) DarkHowl()
+		if(4) SealOfTheLastBreath()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/proc/ChoirVoidPulse()
-	say("The Choir vibrates into a sickening harmony!")
-	for(var/mob/living/M in view(6, src))
-		if(M.stat != DEAD && disjoint_lists(M.faction, src.faction))
-			M.apply_damage(rand(15,30), TOX)
-			M.visible_message(span_danger("[M] is struck by void resonance!"))
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/GhostBlade()
+	say("The spectral blade sings through the air!")
+	var/turf/T = get_turf(target)
+	if(!T) return
+	var/turf/start = get_turf(src)
+	if(!start) return
 
-/mob/living/simple_animal/hostile/retaliate/rogue/choir/obsidian/proc/ChoirRuneCircle()
-	say("Runes light up in black flame around the choir!")
-	for(var/turf/T in range(5, src))
-		if(prob(60))
-			explosion(get_turf(T), heavy_impact_range = 1, flame_range = 1, smoke = FALSE)
+	for(var/turf/path in range(6, start))
+		if(get_dist(path, T) <= 1)
+			for(var/mob/living/M in path.contents)
+				if(M != src && M.stat != DEAD)
+					M.apply_damage(rand(50, 80), BRUTE)
+					if(prob(40))
+						M.Stun(2)
+					M.visible_message(span_danger("[M] is slashed by a ghostly crescent!"))
 
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/MoonLeap()
+	say("Sif leaps into the air with supernatural strength!")
+
+	if(!target || !isturf(target.loc)) return
+	var/turf/T = get_turf(target)
+
+	forceMove(T)
+
+	for(var/mob/living/M in range(1, T))
+		if(M != src && M.stat != DEAD)
+			M.Knockdown(30)
+			explosion(M, light_impact_range = 1, heavy_impact_range = 0, flame_range = 0, smoke = FALSE)
+			M.apply_damage(rand(50, 80), BRUTE)
+			M.visible_message(span_danger("[M] is knocked back by the crushing impact!"))
+
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/DarkHowl()
+	say("A deafening howl splits the silence!")
+	for(var/mob/living/M in view(7, src))
+		if(M != src && M.stat != DEAD)
+			M.Stun(10)
+			M.apply_damage(rand(10, 50), BURN)
+			M.visible_message(span_warning("[M] reels in pain from the psychic howl!"))
+
+/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/SealOfTheLastBreath()
+	say("Runes begin to glow beneath your feet...")
+	var/turf/T = get_turf(target)
+	if(!T) return
+	for(var/turf/A in range(2, T))
+		if(prob(70))
+			explosion(A, light_impact_range = 1, heavy_impact_range = 1, flame_range = 0, smoke = FALSE)
