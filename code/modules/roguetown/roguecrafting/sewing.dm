@@ -61,13 +61,6 @@
 
 /* craftdif of 1 = NOVICE */
 
-/datum/crafting_recipe/roguetown/sewing/wickercloak
-	name = "wicker cloak (3 fibers, 2 sticks; NOVICE)"
-	result = /obj/item/clothing/cloak/wickercloak
-	reqs = list(/obj/item/natural/fibers = 3,
-				/obj/item/grown/log/tree/stick = 2)
-	skill_level = 1
-
 /datum/crafting_recipe/roguetown/sewing/tribalcloak
 	name = "tribal cloak (2 cured hides, fibers; NOVICE)"
 	result = /obj/item/clothing/cloak/tribal
@@ -185,12 +178,6 @@
 	skill_level = 1
 
 
-/datum/crafting_recipe/roguetown/sewing/nunhat
-	name = "nun habit (2 cloths; NOVICE)"
-	result = /obj/item/clothing/head/roguetown/nun
-	reqs = list(/obj/item/natural/cloth = 2)
-	skill_level = 1
-
 /* craftdif of 2 = APPRENTICE */
 
 /datum/crafting_recipe/roguetown/sewing/nocwrappings
@@ -270,20 +257,6 @@
 	name = "waist apron (cloth, fibers; APPRENTICE)"
 	result = list(/obj/item/clothing/cloak/apron/waist)
 	reqs = list(/obj/item/natural/cloth = 1,
-				/obj/item/natural/fibers = 1)
-	skill_level = 2
-
-/datum/crafting_recipe/roguetown/sewing/battlenuncloak
-	name = "battle nun cloak (2 cloths, 1 fiber; APPRENTICE)"
-	result = /obj/item/clothing/cloak/battlenun
-	reqs = list(/obj/item/natural/cloth = 2,
-				/obj/item/natural/fibers = 1)
-	skill_level = 2
-
-/datum/crafting_recipe/roguetown/sewing/nunrobe
-	name = "nun robe (2 cloths, fiber; APPRENTICE)"
-	result = /obj/item/clothing/suit/roguetown/shirt/robe/nun
-	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 2
 

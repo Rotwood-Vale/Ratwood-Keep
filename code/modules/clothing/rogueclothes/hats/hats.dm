@@ -449,7 +449,7 @@
 	icon_state = "headdressalt"
 
 /obj/item/clothing/head/roguetown/nun
-	name = "habit"
+	name = "nun's habit"
 	icon_state = "nun"
 	sellprice = 5
 
