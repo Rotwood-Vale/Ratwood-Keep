@@ -852,15 +852,13 @@
 /*======
 Try slip
 ======*/
-/mob/living/carbon/human/proc/try_slip(obj/item/I)
+/mob/living/carbon/human/proc/try_slip(obj/item/I, difficulty_mod = 0)
 	var/athletics = mind.get_skill_level(/datum/skill/misc/athletics)
-	var/chance = rand(0, 5) //Legendary shouldn't slip
+	var/chance = rand(0, 6) + difficulty_mod
 	var/failed = TRUE
-	//If we succeed either of these we do not slip
-	//Ideally athletics is the easier of the two to check
-	if(athletics >= chance)
+	if(athletics > chance) //Should be easier to roll against if you have any skills.
 		failed = FALSE
-	chance = rand(10, 20)
+	chance = rand(10, 20) + difficulty_mod // Fallback check, should be harder.
 	if(STAPER >= chance)
 		failed = FALSE
 	
