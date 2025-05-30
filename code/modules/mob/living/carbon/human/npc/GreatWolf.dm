@@ -58,10 +58,9 @@
 		UseSpecialAbility()
 		next_special_cast = world.time + special_cooldown
 
+
 	if(blood_volume < 300)
-		blood_volume += 5
-		if(blood_volume > 300)
-			blood_volume = 300		//WE LOVE ROGUE CODE WE LOVE ROGUE CODE MOST MOBS WILL DIE OF BLOOD LOSS AND CRIT
+		blood_volume += 700 //WE LOVE ROGUE CODE WE LOVE ROGUE CODE MOST MOBS WILL DIE OF BLOOD LOSS AND CRIT
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/UseSpecialAbility()
 	var/roll = rand(1, 4)
@@ -72,7 +71,7 @@
 		if(4) SealOfTheLastBreath()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/GhostBlade()
-	say("The spectral blade sings through the air!")
+	emote("swings a spectral blade through the air!")
 	var/turf/T = get_turf(target)
 	if(!T) return
 	var/turf/start = get_turf(src)
@@ -88,8 +87,7 @@
 					M.visible_message(span_danger("[M] is slashed by a ghostly crescent!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/MoonLeap()
-	say("Sif leaps into the air with supernatural strength!")
-
+	emote("leaps into the air with supernatural strength!")
 	if(!target || !isturf(target.loc)) return
 	var/turf/T = get_turf(target)
 
@@ -98,12 +96,12 @@
 	for(var/mob/living/M in range(1, T))
 		if(M != src && M.stat != DEAD)
 			M.Knockdown(30)
-			explosion(M, light_impact_range = 1, heavy_impact_range = 0, flame_range = 0, smoke = FALSE)
 			M.apply_damage(rand(50, 80), BRUTE)
 			M.visible_message(span_danger("[M] is knocked back by the crushing impact!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/DarkHowl()
-	say("A deafening howl splits the silence!")
+	emote("unleashes a deafening, psychic howl!")
+	playsound(src, pick('sound/vo/mobs/wwolf/howldist (1).ogg', 'sound/vo/mobs/wwolf/howldist (2).ogg'), 100, TRUE)
 	for(var/mob/living/M in view(7, src))
 		if(M != src && M.stat != DEAD)
 			M.Stun(10)
@@ -111,7 +109,7 @@
 			M.visible_message(span_warning("[M] reels in pain from the psychic howl!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/SealOfTheLastBreath()
-	say("Runes begin to glow beneath your feet...")
+	emote("strikes his enemy with all its might!")
 	var/turf/T = get_turf(target)
 	if(!T) return
 	for(var/turf/A in range(2, T))
