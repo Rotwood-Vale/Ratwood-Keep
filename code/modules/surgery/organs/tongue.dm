@@ -70,7 +70,6 @@
 	name = "tabaxi tongue"
 	desc = ""
 	icon_state = "tonguenormal"
-	say_mod = "meows"
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/tabaxi/handle_speech(datum/source, list/speech_args)
@@ -82,12 +81,6 @@
 		message = tabaxi_Purr.Replace(message, "RRR")
 	speech_args[SPEECH_MESSAGE] = message
 
-/obj/item/organ/tongue/tabaxi/Insert(mob/living/carbon/speaker, special = FALSE, drop_if_replaced = TRUE) // should replace the mob verbs starts
-	. = ..()
-	speaker.verb_ask = "mrrps"
-	speaker.verb_exclaim = "mrrowls"
-	speaker.verb_whisper = "purrs"
-	speaker.verb_yell = "yowls"
 
 /obj/item/organ/tongue/fly
 	name = "proboscis"
