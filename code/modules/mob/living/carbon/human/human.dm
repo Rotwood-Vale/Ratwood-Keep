@@ -862,6 +862,11 @@ Try slip
 	if(STAPER >= chance)
 		failed = FALSE
 	
+	// we could also do a check here but I think it's fair you
+	// could sneak over almost anything without punishment.
+	if(m_intent == MOVE_INTENT_SNEAK)
+		failed = FALSE
+
 	if(failed)
 		slip(I)
 /*==
