@@ -42,6 +42,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.change_stat("intelligence", 1)
 		H.change_stat("fortune", 1)
+		H.ventcrawler = VENTCRAWLER_ALWAYS
 
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))

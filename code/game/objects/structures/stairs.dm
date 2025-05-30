@@ -93,11 +93,9 @@
 		return FALSE
 	return ..()
 
-/obj/structure/stairs/proc/stair_ascend(atom/movable/AM, dirmove)
-	return user_walk_into_target_loc(AM, dirmove)
-
-/obj/structure/stairs/proc/stair_descend(atom/movable/AM, dirmove)
-	return user_walk_into_target_loc(AM, dirmove)
+/// From a cardinal direction, returns the resulting turf we'll end up at if we're uncrossing the stairs. Used for pathfinding, mostly.
+/obj/structure/stairs/proc/get_transit_destination(dirmove)
+	return get_target_loc(dirmove) || get_step(src, dirmove) // just normal movement if we failed to find a matching stair
 
 /// Get the turf above/below us corresponding to the direction we're moving on the stairs.
 /obj/structure/stairs/proc/get_target_loc(dirmove)

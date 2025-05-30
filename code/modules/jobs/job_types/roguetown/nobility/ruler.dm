@@ -249,6 +249,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_nobility
 	name = "Grant Nobility"
 	desc = "Make someone a noble, or strip them of their nobility."
+	overlay_state = "recruit_noble"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for nobility granting
