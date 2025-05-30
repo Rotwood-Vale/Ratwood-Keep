@@ -29,7 +29,6 @@
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/aasimar,\
-	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
 	/datum/species/dracon,
@@ -37,6 +36,7 @@
 #define RACES_TOLERATED \
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
+	/datum/species/lupian,\
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman
