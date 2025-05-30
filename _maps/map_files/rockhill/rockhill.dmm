@@ -2706,12 +2706,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "bqm" = (
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
-	},
 /obj/effect/decal/cleanable/vomit/old,
-/obj/structure/pillory/bounty/town_square,
 /turf/closed/mineral/random/rogue,
 /area/rogue/under/cavewet/bogcaves)
 "bqy" = (
@@ -4940,11 +4935,6 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
-"cuA" = (
-/obj/effect/landmark/events/haunts,
-/obj/structure/pillory/bounty/town_square,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/outdoors/rtfield)
 "cuV" = (
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/mountains)
@@ -18548,6 +18538,9 @@
 /obj/item/rogueweapon/sickle,
 /obj/item/rogueweapon/sickle,
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/thresher,
+/obj/item/rogueweapon/thresher,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cave)
 "jim" = (
@@ -20947,10 +20940,6 @@
 	dir = 4
 	},
 /area/rogue/outdoors/town/roofs)
-"kri" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/rogue/dirt/npoor,
-/area/rogue/outdoors/bog)
 "krz" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -26096,11 +26085,12 @@
 /obj/structure/closet/crate/chest{
 	lockid = "farm"
 	},
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/thresher,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
 	},
+/obj/item/key/farm,
+/obj/item/key/farm,
+/obj/item/key/farm,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/cave)
 "ncT" = (
@@ -26881,6 +26871,7 @@
 /area/rogue/under/cavewet/bogcaves)
 "nAu" = (
 /obj/effect/decal/cleanable/vomit/old,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves)
 "nAB" = (
@@ -29508,11 +29499,6 @@
 /area/rogue/indoors/town/church)
 "oPt" = (
 /obj/structure/bars,
-/obj/merge_conflict_marker{
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete.";
-	name = "---Merge Conflict Marker---"
-	},
-/obj/structure/pillory/bounty/town_square,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
@@ -31083,6 +31069,7 @@
 /area/rogue/indoors/town/manor)
 "pEJ" = (
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cavewet/bogcaves)
 "pFb" = (
@@ -219133,7 +219120,7 @@ sjP
 uaL
 sjP
 sjP
-sjP
+gwJ
 sjP
 sjP
 fxx
@@ -219997,7 +219984,7 @@ sjP
 hGv
 sjP
 vsW
-cuA
+aJE
 myT
 sjP
 fxx
@@ -220861,7 +220848,7 @@ fxx
 sjP
 sjP
 qvR
-sjP
+gwJ
 xvN
 qvR
 fxx
@@ -221725,7 +221712,7 @@ sjP
 wSn
 uTf
 mtA
-gwJ
+sjP
 fxx
 rBC
 fxx
@@ -255627,7 +255614,7 @@ odi
 cqD
 cYA
 osl
-vLA
+hcP
 vLA
 vLA
 uRH
@@ -256058,9 +256045,9 @@ odi
 odi
 osl
 cEl
-vLA
-gzW
-vLA
+cEl
+cYA
+hcP
 rWF
 uRH
 vLA
@@ -256489,8 +256476,8 @@ vLA
 vLA
 vLA
 cYA
-vLA
-vLA
+cEl
+cEl
 cEl
 osl
 euG
@@ -256921,10 +256908,10 @@ wLx
 vLA
 osl
 osl
-vLA
 cEl
-vLA
-vLA
+cEl
+cEl
+cEl
 cXi
 hcP
 vLA
@@ -257353,11 +257340,11 @@ wLx
 vLA
 vLA
 osl
-vLA
 cEl
-vLA
 cEl
-kri
+cEl
+cEl
+osl
 hcP
 odi
 vLA
@@ -257784,12 +257771,12 @@ wLx
 wLx
 vLA
 vLA
-vLA
-kri
-vLA
-vLA
+hcP
+osl
 cEl
-vLA
+cEl
+cEl
+cEl
 cYA
 uRH
 odi
@@ -258217,12 +258204,12 @@ odi
 odi
 odi
 wLx
+hcP
+cEl
+cEl
 vLA
-vLA
-vLA
-vLA
-vLA
-kri
+cEl
+osl
 odi
 odi
 vLA
@@ -258652,9 +258639,9 @@ vLA
 hcP
 euG
 cEl
-vLA
-vLA
-vLA
+cEl
+cEl
+hcP
 vLA
 vLA
 vLA
@@ -259083,10 +259070,10 @@ odi
 vLA
 odi
 gzW
-vLA
 cEl
-vLA
-kri
+cEl
+cEl
+osl
 vLA
 odi
 odi
@@ -259518,7 +259505,7 @@ vLA
 oIE
 oIE
 rWF
-vLA
+hcP
 odi
 odi
 vLA
