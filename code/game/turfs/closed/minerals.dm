@@ -64,13 +64,35 @@
 		return
 	lastminer = user
 	..()
-	var/olddam = turf_integrity
-	if(turf_integrity && turf_integrity > 10)
-		if(turf_integrity < olddam)
-			if(prob(50))
-				if(user.Adjacent(src))
-					var/obj/item/natural/stone/S = new(src)
-					S.forceMove(get_turf(user))
+	// Auto mining logic
+	if(istype(I, /obj/item/rogueweapon/pick))
+		var/my_icon = icon_state
+		user.doing = FALSE
+		spawn(1)
+		while(get_turf(src))
+		
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				if(H.IsStun() || H.IsParalyzed())
+					break
+
+			if(do_after(user, I.toolspeed *  1 SECONDS, TRUE, src))
+				..()
+				//does this even work?
+				var/olddam = turf_integrity
+				if(turf_integrity && turf_integrity > 10)
+					if(turf_integrity < olddam)
+						if(prob(50))
+							if(user.Adjacent(src))
+								var/obj/item/natural/stone/S = new(src)
+								S.forceMove(get_turf(user))
+
+				//Turfs never die, they simply change
+				if(icon_state != my_icon)
+					break
+
+			else
+				break
 
 /turf/closed/mineral/turf_destruction(damage_flag)
 	if(!(istype(src, /turf/closed)))
