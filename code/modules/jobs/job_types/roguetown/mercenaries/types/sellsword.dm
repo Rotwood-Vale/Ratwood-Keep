@@ -133,7 +133,7 @@
 			neck = /obj/item/clothing/neck/roguetown/gorget
 			gloves = /obj/item/clothing/gloves/roguetown/chain
 			belt = /obj/item/storage/belt/rogue/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+			armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 			pants = /obj/item/clothing/under/roguetown/tights/black
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1, /obj/item/storage/keyring/mercenary = 1)
 		
