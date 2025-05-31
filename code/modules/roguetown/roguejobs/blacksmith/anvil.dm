@@ -177,7 +177,7 @@
 		H.visible_message(span_warn("[H.name] burns [user.p_their()] hand on the [name]!"))
 		return
 
-	I.loc = user.loc
+	I.loc = get_turf(user)
 	user.put_in_active_hand(I)
 	update_icon()
 
