@@ -275,18 +275,10 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/pigface
 
-/datum/anvil_recipe/armor/steel/helmetvolf
-	name = "Volf Face Helmet (+1 Steel)"
-	req_bar = /obj/item/ingot/steel
-	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/head/roguetown/helmet/volfplate
-
 /datum/anvil_recipe/armor/steel/bascinet
 	name = "Bascinet Helmet"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet
-
-
 
 /datum/anvil_recipe/armor/steel/helmetknight
 	name = "Knight's Helmet (+1 Steel)"
