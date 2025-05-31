@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	else
 		return verb_say
 
-/atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode, message_colour)
+/atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode, message_colour = null)
 	if(!input)
 		input = "..."
 
