@@ -76,7 +76,7 @@
 				if(H.IsStun() || H.IsParalyzed())
 					break
 
-			if(do_after(user, I.toolspeed *  1 SECONDS, TRUE, src))
+			if(do_after(user, CLICK_CD_MELEE, TRUE, src))
 				..()
 				//does this even work?
 				var/olddam = turf_integrity
