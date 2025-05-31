@@ -35,6 +35,11 @@
 
 /datum/surgery_step/extract_lux/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	target.emote("painscream")
+	if(HAS_TRAIT(target, TRAIT_CANNOT_HARVEST_LUX))
+		display_results(user, target, span_notice("You cannot extract lux from [target]; their body resists the process."),
+		"[user] attempts to extract lux from [target], but something prevents it.",
+		"[user] attempts to extract lux from [target], but something prevents it.")
+		return FALSE
 	if(target.has_status_effect(/datum/status_effect/debuff/death_weaken))
 		display_results(user, target, span_notice("You cannot draw lux from [target]; they have none left to give."),
 		"[user] extracts lux from [target]'s innards.",
