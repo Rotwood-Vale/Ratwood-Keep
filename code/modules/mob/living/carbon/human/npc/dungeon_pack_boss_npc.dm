@@ -36,10 +36,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/MirrorKnight/Life()
 	. = ..()
-	if(isliving(target) && target.client)
-		spawn(5 SECONDS)
+	if(isliving(target))
+		spawn(50) // 5 секунд
 			if(target && aggressive)
-				use_combat_abilities()
+				UseSpecialAbility()
 
 	if(world.time >= next_special_cast)
 		UseSpecialAbility()
@@ -120,26 +120,6 @@
 			M.apply_damage(rand(30, 80), BRUTE)
 			src.visible_message(span_danger("[M] is slashed from behind by [src]!"))
 
-/mob/living/simple_animal/hostile/retaliate/rogue/MirrorKnight/CalmDown()
-	. = ..()
-	LesserHealSelfMirrorKnight()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/MirrorKnight/proc/LesserHealSelfMirrorKnight()
-	if(stat == DEAD || QDELETED(src))
-		return
-
-	if(health >= maxHealth)
-		return
-
-	visible_message(span_warning("[src] steadies itself as healing light washes over its armor."))
-
-	var/healing = rand(800)
-	adjustHealth(healing)
-
-	if(blood_volume < BLOOD_VOLUME_NORMAL)
-		blood_volume = min(blood_volume + 100, BLOOD_VOLUME_NORMAL)
-
-	update_damage_overlays()
 
 // BOSS NPC: Great Wolf
 
@@ -197,12 +177,12 @@
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	possible_rmb_intents += /datum/rmb_intent/swift
 
-/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/MirrorKnight/Life()
 	. = ..()
-	if(isliving(target) && target.client)
-		spawn(5 SECONDS)
+	if(isliving(target))
+		spawn(50) // 5 секунд
 			if(target && aggressive)
-				use_combat_abilities()
+				UseSpecialAbility()
 
 	if(world.time >= next_special_cast)
 		UseSpecialAbility()
@@ -264,24 +244,3 @@
 	for(var/turf/A in range(2, T))
 		if(prob(70))
 			explosion(A, light_impact_range = 1, heavy_impact_range = 1, flame_range = 0, smoke = FALSE)
-
-/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/CalmDown()
-	. = ..()
-	LesserHealSelfGreatWolf()
-
-/mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/LesserHealSelfGreatWolf()
-	if(stat == DEAD || QDELETED(src))
-		return
-
-	if(health >= maxHealth)
-		return
-
-	visible_message(span_warning("[src] steadies itself as healing light washes over its skin."))
-
-	var/healing = rand(800)
-	adjustHealth(healing)
-
-	if(blood_volume < BLOOD_VOLUME_NORMAL)
-		blood_volume = min(blood_volume + 100, BLOOD_VOLUME_NORMAL)
-
-	update_damage_overlays()
