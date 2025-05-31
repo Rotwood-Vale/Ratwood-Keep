@@ -392,7 +392,7 @@
 		span_userdanger("Your head rings from a heavy blow!")
 	)
 	if(prob(50))
-		var/atom/throw_target = get_edge_target_turf(src, get_dir(src, target))
+		var/atom/throw_target = get_edge_target_turf(user, get_dir(user, target))
 		target.throw_at(throw_target, 5, 4)
 		target.adjust_blurriness(3)
 		target.emote("cry")
