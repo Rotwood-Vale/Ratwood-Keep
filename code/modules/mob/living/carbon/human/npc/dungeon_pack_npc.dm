@@ -146,6 +146,8 @@
 				if(enemies.len)
 					target = pick(enemies)
 
+/// ========== ROGUE ==========
+
 /mob/living/carbon/human/species/human/northern/dungeon_base/rogue/Life()
 	. = ..()
 	if(world.time >= next_cast)

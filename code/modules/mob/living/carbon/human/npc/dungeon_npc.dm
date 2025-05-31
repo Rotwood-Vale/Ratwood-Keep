@@ -353,14 +353,14 @@
 		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
 
 	// HARDER STRIKE
-	if(prob(15))
+	if(prob(10))
 		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/leg_l = target.get_bodypart(BODY_ZONE_L_LEG)
 		var/datum/wound/W = new /datum/wound/dislocation()
 		W.apply_to_bodypart(leg_l)
 
 	// HARDER STRIKE
-	if(prob(15))
+	if(prob(10))
 		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/leg_r = target.get_bodypart(BODY_ZONE_R_LEG)
 		var/datum/wound/W2 = new /datum/wound/dislocation()
@@ -410,4 +410,3 @@
 		target.apply_damage(rand(10, 15), BRUTE, BODY_ZONE_HEAD)
 
 	return TRUE
-

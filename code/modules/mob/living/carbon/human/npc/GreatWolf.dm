@@ -16,8 +16,8 @@
 	base_intents = list(/datum/intent/sword/cut)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 
-	health = 800
-	maxHealth = 800
+	health = 1500
+	maxHealth = 1500
 	melee_damage_lower = 60
 	melee_damage_upper = 120
 	retreat_distance = 0
@@ -58,7 +58,6 @@
 		UseSpecialAbility()
 		next_special_cast = world.time + special_cooldown
 
-
 	if(blood_volume < 300)
 		blood_volume += 700 //WE LOVE ROGUE CODE WE LOVE ROGUE CODE MOST MOBS WILL DIE OF BLOOD LOSS AND CRIT
 
@@ -71,7 +70,7 @@
 		if(4) SealOfTheLastBreath()
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/GhostBlade()
-	emote("swings a spectral blade through the air!")
+	src.show_message(span_emote("swings a spectral blade through the air!"))
 	var/turf/T = get_turf(target)
 	if(!T) return
 	var/turf/start = get_turf(src)
@@ -87,7 +86,7 @@
 					M.visible_message(span_danger("[M] is slashed by a ghostly crescent!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/MoonLeap()
-	emote("leaps into the air with supernatural strength!")
+	src.show_message(span_emote("leaps into the air with supernatural strength!"))
 	if(!target || !isturf(target.loc)) return
 	var/turf/T = get_turf(target)
 
@@ -100,7 +99,7 @@
 			M.visible_message(span_danger("[M] is knocked back by the crushing impact!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/DarkHowl()
-	emote("unleashes a deafening, psychic howl!")
+	src.show_message(span_emote("unleashes a deafening, psychic howl!"))
 	playsound(src, pick('sound/vo/mobs/wwolf/howldist (1).ogg', 'sound/vo/mobs/wwolf/howldist (2).ogg'), 100, TRUE)
 	for(var/mob/living/M in view(7, src))
 		if(M != src && M.stat != DEAD)
@@ -109,7 +108,7 @@
 			M.visible_message(span_warning("[M] reels in pain from the psychic howl!"))
 
 /mob/living/simple_animal/hostile/retaliate/rogue/GreatWolf/proc/SealOfTheLastBreath()
-	emote("strikes his enemy with all its might!")
+	src.show_message(span_emote("strikes his enemy with all its might!"))
 	var/turf/T = get_turf(target)
 	if(!T) return
 	for(var/turf/A in range(2, T))
