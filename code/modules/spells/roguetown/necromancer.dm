@@ -173,6 +173,12 @@
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
 	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	target.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
 	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
 		target.swap_rmb_intent(null, 1)
 
@@ -274,6 +280,12 @@
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
 	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	target.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
 	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
 		target.swap_rmb_intent(null, 1)
 
