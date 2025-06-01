@@ -68,6 +68,9 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC) //Allows to see other wardens on examine, gives a debuff inside the town, forbids shylocks
 	H.cmode_music = 'sound/music/combat_warden.ogg'
+	if(!H.has_language(/datum/language/beast))
+		H.grant_language(/datum/language/beast)
+		to_chat(H, span_info("I can communicate with beasts with ,b before my speech."))
 
 /datum/migrant_role/warden/wraith //warrior
 	name = "Wraith of the North"
@@ -131,6 +134,9 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_warden.ogg'
+	if(!H.has_language(/datum/language/beast))
+		H.grant_language(/datum/language/beast)
+		to_chat(H, span_info("I can communicate with beasts with ,b before my speech."))
 
 /datum/migrant_role/warden/warden_shaman //essentially a physician + magos class
 	name = "Shaman of the North"
@@ -192,6 +198,9 @@
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_warden.ogg'
+	if(!H.has_language(/datum/language/beast))
+		H.grant_language(/datum/language/beast)
+		to_chat(H, span_info("I can communicate with beasts with ,b before my speech."))
 
 /datum/migrant_role/warden/forager //hunter+knave class
 	name = "Forager of the North"
@@ -251,6 +260,9 @@
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_warden.ogg'
+	if(!H.has_language(/datum/language/beast))
+		H.grant_language(/datum/language/beast)
+		to_chat(H, span_info("I can communicate with beasts with ,b before my speech."))
 
 /datum/migrant_role/warden/sheep //de jure carpenter+mason class, de facto rapebait class
 	name = "Slave"
