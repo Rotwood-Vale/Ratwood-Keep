@@ -386,7 +386,7 @@ DOUGH RECIPES
 /* Cheese bun raw */
 /datum/food_handle_recipes/cheesebun_raw
 	items = list(
-		/obj/item/reagent_containers/food/snacks/rogue/dough,
+		/obj/item/reagent_containers/food/snacks/rogue/doughslice,
 		/obj/item/reagent_containers/food/snacks/rogue/cheese ) 
 	crafting_message = "You start making a cheesebun..."
 	result = /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesebun_raw

@@ -887,16 +887,18 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/mob/dead/observer/C = pick(candidates)
 		log_game("VAMPIRE LOG: [C.ckey] chosen as new death knight.")
 		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern()
-		new_knight.forceMove(usr.loc)
 		new_knight.ckey = C.key
+    
+		SSjob.EquipRank(new_knight, "Death Knight", TRUE)
+		new_knight.forceMove(usr.loc) // Latejoin will place them in one of the latejoin locations,
+									  // so move the death knight to the vampyre lord AFTER applying the job
 
-		var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
+    var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
 		if (new_knight.mind)
 			for(var/datum/mind/vampire in chaosmode.vampires)
 				if (vampire.special_role == "Vampire Lord")
 					new_knight.mind.add_special_person(vampire.current, "#DC143C")
 
-		new_knight.equipOutfit(/datum/job/roguetown/deathknight)
 		new_knight.regenerate_icons()
 
 // DEATH KNIGHT ANTAG

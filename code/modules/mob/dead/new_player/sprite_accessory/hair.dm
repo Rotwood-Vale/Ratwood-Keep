@@ -1002,6 +1002,10 @@
 	name = "Emma"
 	icon_state = "emma"
 
+/datum/sprite_accessory/hair/head/royalcurls
+	name = "Royal Curls"
+	icon_state = "royalcurls"
+
 /datum/sprite_accessory/hair/head/damsel
 	name = "Damsel"
 	icon_state = "damsel"
