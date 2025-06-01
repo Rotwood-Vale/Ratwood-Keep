@@ -118,10 +118,10 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 		//get the lower f node on the open list
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
-		if(mintargetdist && cur.source.z == end.z) // don't stop early if you aren't on the same z-level
+		if(mintargetdist) // we let you stop early if you aren't on the same z-level because that enables fun shenanigans like taunting and climbing
 			// I lied, this one is also hardcoded; we don't want to use the heuristic for our termination condition,
 			// only the actual distance.
-			closeenough = cur.source.Distance_cardinal(end, caller) <= mintargetdist
+			closeenough = cur.source.Distance_cardinal_3d(end, caller) <= mintargetdist
 
 		//found the target turf (or close enough), let's create the path to it
 		if(cur.source == end || closeenough)

@@ -81,6 +81,8 @@
 	zombie.aggressive = FALSE
 	zombie.mode = NPC_AI_OFF
 	zombie.npc_jump_chance = initial(zombie.npc_jump_chance)
+	zombie.rude = initial(zombie.rude)
+	zombie.tree_climber = initial(zombie.tree_climber)
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()

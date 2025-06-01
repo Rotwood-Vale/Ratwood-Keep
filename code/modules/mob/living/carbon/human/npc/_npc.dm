@@ -27,6 +27,10 @@
 	/// When is the next time we'll attempt to stand up?
 	var/next_stand_attempt = 0
 	var/ai_currently_active = FALSE
+	/// (BOOL) If TRUE, the mob will taunt players in certain situations. Psychological warfare!
+	var/rude = FALSE
+	/// (BOOL) If TRUE, the mob will attempt to climb trees to chase players. Evil!
+	var/tree_climber = FALSE
 	/// The number of steps moved so far, used to limit the total number of steps per turn + affect attack reaction time
 	var/steps_moved_this_turn = 0
 	/// Whether or not to check for targets above us.
@@ -103,6 +107,22 @@
 	if(length(myPath))
 		steps_moved_this_turn += move_along_path()
 		// We could return here if we wanted to make moving use your turn.
+	// Special case: Taunt people hiding in trees directly above us.
+	var/turf/my_turf = get_turf(src)
+	var/turf/their_turf = get_turf(target)
+	if(!IsDeadOrIncap() && !length(myPath) && their_turf && my_turf.z < their_turf.z && my_turf.Distance_cardinal_3d(their_turf, src) == 1 && istransparentturf(their_turf))
+		// They're directly above us, now are they in a tree?
+		var/obj/structure/flora/newbranch/the_branch = locate() in their_turf
+		var/should_try_taunt = prob(5) // this is a var so that when debugging i can just set it to TRUE
+		if(tree_climber && can_zTravel(their_turf, UP)) // TIME TO BE EVIL
+			if(the_branch)
+				// follow the branch to get to the tree
+				var/obj/structure/flora/newtree/the_tree = locate() in get_step_multiz(the_branch, GLOB.reverse_dir[the_branch.dir]|DOWN)
+				the_tree.attack_hand(src)
+				return TRUE // climbing uses your turn
+		else if(rude && should_try_taunt) // taunt the enemy!
+			npc_taunt_target()
+			// don't return, taunting is a free action
 	if(!handle_combat())
 		if(mode == NPC_AI_IDLE && !pickupTarget)
 			npc_idle()
@@ -542,8 +562,12 @@
 						return TRUE
 				m_intent = MOVE_INTENT_WALK
 				validate_path()
-				if(!length(myPath)) // create a new path to the target
-					start_pathing_to(target)
+				var/turf/my_turf = get_turf(src)
+				var/turf/target_turf = get_turf(target)
+				// only path if we're more than one tile away
+				if(my_turf.Distance_cardinal_3d(target_turf, src) > 1)
+					if(!length(myPath)) // create a new path to the target
+						start_pathing_to(target)
 
 			// Flee before trying to pick up a weapon.
 			if(flee_in_pain && target && (target.stat == CONSCIOUS))
@@ -891,3 +915,10 @@
 	. = ..()
 	if((W.force) && (!target) && (W.damtype != STAMINA) )
 		retaliate(user)
+
+/mob/living/carbon/human/proc/npc_taunt_target()
+	var/list/possible_taunts = list("laugh" = null)
+	if(!restrained() && get_num_arms() != 0)
+		possible_taunts["point"] = "\the [target]"
+	var/the_emote = pick(possible_taunts)
+	emote(the_emote, message = possible_taunts[the_emote])
