@@ -172,10 +172,6 @@
 
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
 
-	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
-	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
-		target.swap_rmb_intent(null, 1)
-
 	if(target.ckey) //player still inside body
 
 		var/offer = alert(target, "Do you wish to be reanimated as a minion?", "RAISED BY NECROMANCER", "Yes", "No")
@@ -272,10 +268,6 @@
 
 	target.set_necrotarget(TRUE)
 	target.visible_message(span_warning("[target.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
-
-	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
-	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
-		target.swap_rmb_intent(null, 1)
 
 	if(user.mind.boneboys < user.mind.bonemax)
 		to_chat(user, span_warning("I have the capacity to sustain another self aware skeleton!"))
@@ -416,6 +408,16 @@
 		QDEL_NULL(charflaw)
 
 	can_do_sex = FALSE //where my bonger go
+
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	target.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
+	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
+		target.swap_rmb_intent(null, 1)
 
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
