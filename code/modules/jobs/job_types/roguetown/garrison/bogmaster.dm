@@ -23,7 +23,7 @@
 	min_pq = 8
 	max_pq = null
 	can_leave_round = FALSE
-	cmode_music = 'sound/music/combat_bog.ogg'
+	cmode_music = 'sound/music/combat_vanguard.ogg'
 
 /datum/job/roguetown/bogmaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
