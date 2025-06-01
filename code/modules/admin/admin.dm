@@ -224,8 +224,8 @@
 		body += "<br>"
 		body += "</body></html>"
 
-		usr << browse(body, "window=adminplayeropts-[REF(M)];size=800x600")
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	usr << browse(body, "window=adminplayeropts-[REF(M)];size=800x600")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/admin_heal(mob/living/M in GLOB.mob_list)
 	set name = "Heal Mob"

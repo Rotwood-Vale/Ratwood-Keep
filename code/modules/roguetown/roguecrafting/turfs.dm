@@ -202,7 +202,7 @@
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/cloth = 1)
 	skillcraft = /datum/skill/craft/crafting
-	verbage_simple = "set up"	
+	verbage_simple = "set up"
 	verbage = "sets up"
 	skill_level = 1
 
@@ -233,7 +233,7 @@
 
 /// DURT
 /datum/crafting_recipe/roguetown/turfs/nrich
-	name = "soil plot"
+	name = "enriched soil"
 	result = /turf/open/floor/rogue/dirt/nrich
 	reqs = list(/obj/item/ash = 1,
 				/obj/item/natural/fibers = 1,
@@ -241,7 +241,7 @@
 	skillcraft = /datum/skill/labor/farming
 	verbage_simple = "set up"
 	verbage = "sets up"
-	skill_level = 2
+	skill_level = 5
 
 /datum/crafting_recipe/roguetown/turfs/nrich/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
@@ -250,3 +250,36 @@
 		return
 	return TRUE
 
+/datum/crafting_recipe/roguetown/turfs/npoor
+	name = "poor soil"
+	result = /turf/open/floor/rogue/dirt/npoor
+	reqs = list(/obj/item/natural/dirtclod = 2)
+	skillcraft = /datum/skill/labor/farming
+	verbage_simple = "set up"
+	verbage = "sets up"
+	skill_level = 1
+
+/datum/crafting_recipe/roguetown/turfs/npoor/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
+
+/datum/crafting_recipe/roguetown/turfs/dirt
+	name = "decent dirt"
+	result = /turf/open/floor/rogue/dirt
+	reqs = list(/obj/item/ash = 1,
+				/obj/item/natural/fibers = 1,
+				/obj/item/natural/dirtclod = 2)
+	skillcraft = /datum/skill/labor/farming
+	verbage_simple = "set up"
+	verbage = "sets up"
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/turfs/dirt/TurfCheck(mob/user, turf/T)
+	if(isclosedturf(T))
+		return
+	if(!istype(T, /turf/open/floor/rogue))
+		return
+	return TRUE
