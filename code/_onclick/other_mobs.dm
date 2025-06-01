@@ -447,7 +447,7 @@
 								to_chat(src, span_warning("What am I going to steal from there?"))
 								return
 							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-							if(mobsbehind.Find(src))
+							if(mobsbehind.Find(src) || V.IsSleeping() || V.eyesclosed) //If they can't see you or are sleeping
 								switch(U.zone_selected)
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
