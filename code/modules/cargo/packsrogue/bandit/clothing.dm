@@ -188,11 +188,6 @@
 	cost = 10
 	contains = list(/obj/item/clothing/neck/roguetown/coif)
 
-/datum/supply_pack/rogue/bandit/Clothing/exoticsilkbra
-	name = "Exotic silk bra"
-	cost = 25
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra)
-
 /datum/supply_pack/rogue/bandit/Clothing/reddress
 	name = "Sexy random dress"
 	cost = 25
@@ -223,12 +218,22 @@
 	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random)
 
-/datum/supply_pack/rogue/bandit/Clothing/exoticsilkspack
-	name = "Exotics Silks Pack"
-	cost = 150
-	contains = list(
-					/obj/item/clothing/shoes/roguetown/anklets,
-					/obj/item/clothing/mask/rogue/exoticsilkmask,
-					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
-					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
-				)
+/datum/supply_pack/rogue/bandit/Clothing/exoticsilkmask
+	name = "Silk mask"
+	cost = 25
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/exoticsilkmask)
+
+/datum/supply_pack/rogue/bandit/Clothing/exoticsilkbelt
+	name = "Silk belt"
+	cost = 25
+	contains = list(/obj/item/storage/belt/rogue/leather/exoticsilkbelt)
+
+/datum/supply_pack/rogue/bandit/Clothing/anklets
+	name = "Silk anklets"
+	cost = 25
+	contains = list(/obj/item/clothing/shoes/roguetown/anklets)
+
+/datum/supply_pack/rogue/bandit/Clothing/exoticsilkbra
+	name = "Exotic silk bra"
+	cost = 25
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra)
