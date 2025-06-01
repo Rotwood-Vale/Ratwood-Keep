@@ -893,7 +893,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		new_knight.forceMove(usr.loc) // Latejoin will place them in one of the latejoin locations,
 									  // so move the death knight to the vampyre lord AFTER applying the job
 
-    var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
+		var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
 		if (new_knight.mind)
 			for(var/datum/mind/vampire in chaosmode.vampires)
 				if (vampire.special_role == "Vampire Lord")
