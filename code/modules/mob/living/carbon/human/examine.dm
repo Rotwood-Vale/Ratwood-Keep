@@ -185,6 +185,9 @@
 		if(HAS_TRAIT(src, TRAIT_ZIZO_MARKED) && HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 			. += span_purple("A fellow seeker of Her ascension.")
 
+		if(HAS_TRAIT(src, TRAIT_NORTHERNWARDEN) && HAS_TRAIT(user, TRAIT_NORTHERNWARDEN))
+			. += span_notice("A fellow volf of my pack.")
+
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
 			var/atom/item = get_most_expensive()
 			if(item)
@@ -205,6 +208,8 @@
 						. += shit
 			if(user.mind.has_antag_datum(/datum/antagonist/vampirelord) || user.mind.has_antag_datum(/datum/antagonist/vampire))
 				. += span_userdanger("Blood Volume: [blood_volume]")
+
+	
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))

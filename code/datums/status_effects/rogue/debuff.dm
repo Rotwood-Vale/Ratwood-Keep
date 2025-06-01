@@ -402,6 +402,24 @@
 	if(!(our_area.roughterrain))
 		owner.remove_status_effect(/datum/status_effect/debuff/guarddebuff)
 
+/atom/movable/screen/alert/status_effect/debuff/wardendebuff
+	name = "Oppressive Surroundings"
+	desc = "I stand in the middle of Rockhill. The Spirits of the Woods cannot watch over me as I stand inbetween brick walls. I am on my own here."
+	icon_state = "debuff"
+
+/datum/status_effect/debuff/wardendebuff
+	id = "wardendebuff"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/wardendebuff
+	effectedstats = list("endurance" = -2, "strength" = -2) //should discourage wardens from attacking the town
+	duration = 5000 SECONDS
+
+/datum/status_effect/debuff/wardendebuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(our_area.roughterrain)
+		owner.remove_status_effect(/datum/status_effect/debuff/wardendebuff)
+
 /datum/status_effect/debuff/excomm
 	id = "Excommunicated follower of Ten!"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/excomm

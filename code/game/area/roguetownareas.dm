@@ -22,6 +22,8 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	. = ..()
 	if((src.roughterrain == TRUE) && HAS_TRAIT(guy, TRAIT_BOGVULNERABLE) && !guy.has_status_effect(/datum/status_effect/debuff/guarddebuff)) //guards
 		guy.apply_status_effect(/datum/status_effect/debuff/guarddebuff)
+	if((src.roughterrain == FALSE) && HAS_TRAIT(guy, TRAIT_NORTHERNWARDEN) && !guy.has_status_effect(/datum/status_effect/debuff/wardendebuff)) //wardens
+		guy.apply_status_effect(/datum/status_effect/debuff/wardendebuff)
 
 /area/rogue/indoors
 	name = "indoors rt"
