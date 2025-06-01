@@ -176,6 +176,10 @@
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
 
+			if(user.mind.assigned_role == "Inquisitor" || user.mind.assigned_role == "Confessor" || user.mind.assigned_role == "Priest" || user.mind.assigned_role == "Templar" || user.mind.assigned_role == "Druid" || user.mind.assigned_role == "Acolyte" || user.mind.assigned_role == "Hospitaller" || user.mind.assigned_role == "Mortician")
+				if(HAS_TRAIT(src, TRAIT_NORTHERNWARDEN)) // neither assigned.role in list(CHURCH_ROLES, INQUISITION_ROLES) nor (department_flag == CHURCHMEN || department_flag == INQUISITION) have worked so I had to resort to this; novitiates are too unexperienced to judge
+					. += span_userdanger("A MAD DENDORITE, A HERETIC!")
+
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
 
@@ -184,6 +188,9 @@
 
 		if(HAS_TRAIT(src, TRAIT_ZIZO_MARKED) && HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 			. += span_purple("A fellow seeker of Her ascension.")
+
+		if(HAS_TRAIT(src, TRAIT_NORTHERNWARDEN) && HAS_TRAIT(user, TRAIT_NORTHERNWARDEN))
+			. += span_notice("My fellow volf.")
 
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
 			var/atom/item = get_most_expensive()
@@ -205,6 +212,8 @@
 						. += shit
 			if(user.mind.has_antag_datum(/datum/antagonist/vampirelord) || user.mind.has_antag_datum(/datum/antagonist/vampire))
 				. += span_userdanger("Blood Volume: [blood_volume]")
+
+	
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))

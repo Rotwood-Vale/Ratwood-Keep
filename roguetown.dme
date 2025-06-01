@@ -630,6 +630,8 @@
 #include "code\datums\migrants\migrant_waves\musketeer wave.dm"
 #include "code\datums\migrants\migrant_waves\slaver roles.dm"
 #include "code\datums\migrants\migrant_waves\slaver wave.dm"
+#include "code\datums\migrants\migrant_waves\warden roles.dm"
+#include "code\datums\migrants\migrant_waves\warden wave.dm"
 #include "code\datums\mob_descriptors\mob_descriptor.dm"
 #include "code\datums\mob_descriptors\descriptors\body.dm"
 #include "code\datums\mob_descriptors\descriptors\face.dm"
