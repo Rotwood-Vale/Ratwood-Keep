@@ -2,6 +2,7 @@
 	name = "Adventure Party"
 	weight = 15 //fuck off and stop spawning so many - never raise this above 15 as adventurers are still incredibly broken
 	downgrade_wave = /datum/migrant_wave/adventurer_down_one
+	max_spawns = 3 // Go away. 
 	roles = list(
 		/datum/migrant_role/adventurer = 4,
 	)
