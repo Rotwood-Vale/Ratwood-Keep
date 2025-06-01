@@ -141,12 +141,17 @@
 	if(time_since_last_help < world.time)
 		time_since_last_help = world.time + delay
 		spawn_help()
+	if(user.faction.Find("grove"))
+		to_chat(user, span_warning("You have defied the elder and betrayed your oath! He no longer considers you a friend..."))
+		user.faction.Remove("grove")
 	. = ..()
 
 // Had a bunch of shit of various types but whatever a dryad every 60 seconds is pretty tough
 // It will at least stop solo attemps
 /obj/structure/flora/roguetree/wise/elder/proc/spawn_help()
-	new /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad (loc)
+	var/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/D = new /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad(loc)
+	D.faction += list("grove")
+
 
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"
