@@ -18,6 +18,7 @@
 	mode = NPC_AI_IDLE
 	dodgetime = 30 //they can dodge easily, but have a cooldown on it
 	flee_in_pain = TRUE
+	npc_jump_chance = 50
 
 	wander = FALSE
 

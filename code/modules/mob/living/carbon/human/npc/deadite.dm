@@ -71,6 +71,7 @@
 	update_a_intents()
 	aggressive = TRUE
 	mode = NPC_AI_IDLE
+	npc_jump_chance = 0
 	handle_ai()
 	ambushable = FALSE
 	mob_biotypes |= MOB_UNDEAD

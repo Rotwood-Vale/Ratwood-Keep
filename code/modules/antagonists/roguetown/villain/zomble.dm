@@ -80,6 +80,7 @@
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
 	zombie.mode = NPC_AI_OFF
+	zombie.npc_jump_chance = initial(zombie.npc_jump_chance)
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
