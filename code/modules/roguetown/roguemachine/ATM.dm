@@ -23,7 +23,6 @@
 	if(HAS_TRAIT(H, TRAIT_MATTHIOS_BRAND))
 		to_chat(H, span_warning("The inhumen sigil on my temple scalds me!"))
 		say("Your social value is NEGATIVE. Restitution is in order. You are [HAS_TRAIT(H, TRAIT_NOBLE) ? 200 : 100] MAMMON in debt.")
-		return
 
 	if(H in SStreasury.bank_accounts)
 		var/amt = SStreasury.bank_accounts[H]
@@ -63,6 +62,15 @@
 			return
 		budget2change(coin_amt*mod, user, selection)
 	else
+		var/consent = alert(user, "Submit your fealty to this land upon my mouth place in your hand...", "NERVELOCK", "Yes", "No")
+		if(consent != "Yes")
+			to_chat(user, span_danger("You pull your hand away."))
+			return
+
+		if(H in SStreasury.bank_accounts)
+			say("The machine already knows your blood.")
+			return
+
 		to_chat(user, span_warning("The machine bites my finger."))
 		icon_state = "atm-b"
 		H.flash_fullscreen("redflash3")

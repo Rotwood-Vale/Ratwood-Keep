@@ -144,11 +144,11 @@
 		if(name in GLOB.apostasy_players)
 			. += span_userdanger("APOSTATE!")
 
-		if(HAS_TRAIT(user, TRAIT_MATTHIOS_BRAND))
+		if(HAS_TRAIT(src, TRAIT_MATTHIOS_BRAND))
 			. += span_phobia("A shameful Matthiosian sigil on their temple!")
 
-		if(HAS_TRAIT(user, TRAIT_MATTHIOS_BRAND_OLD))
-			. += span_phobia("A faded sigil on their temple...")	
+		if(HAS_TRAIT(src, TRAIT_MATTHIOS_BRAND_OLD))
+			. += span_phobia("A faded sigil on their temple...")
 
 		if(name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC'S BRAND! SHAME!")
