@@ -361,6 +361,7 @@
 		/datum/sprite_accessory/hair/head/curtains,
 		/datum/sprite_accessory/hair/head/glamourh,
 		/datum/sprite_accessory/hair/head/emma,
+		/datum/sprite_accessory/hair/head/royalcurls,
 		/datum/sprite_accessory/hair/head/damsel,
 		/datum/sprite_accessory/hair/head/wavylong,
 		/datum/sprite_accessory/hair/head/wavyovereye,
