@@ -210,7 +210,7 @@
 	gender = MALE
 	if(src.dna && src.dna.species)
 		src.dna.species.soundpack_m = new /datum/voicepack/male/goblin()
-		src.dna.species.soundpack_f = new /datum/voicepack/male/goblin()
+		src.dna.species.soundpack_f = new /datum/voicepack/female/goblinf()
 		var/obj/item/headdy = get_bodypart(BODY_ZONE_HEAD)
 		if(headdy)
 			headdy.icon = 'icons/roguetown/mob/monster/goblins.dmi'
@@ -289,10 +289,16 @@
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 8
+	var/chance_zjumper = 5
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STASPD = 16
+		chance_zjumper = 20
 	else
 		H.STASPD = 14
+	chance_zjumper = 100 // DEBUG
+	if(prob(chance_zjumper))
+		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+		H.find_targets_above = TRUE
 	H.STACON = 6
 	H.STAEND = 15
 	if(is_species(H, /datum/species/goblin/moon))
