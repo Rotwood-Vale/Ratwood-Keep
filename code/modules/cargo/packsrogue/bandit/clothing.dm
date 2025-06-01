@@ -221,7 +221,7 @@
 /datum/supply_pack/rogue/bandit/Clothing/exoticsilkmask
 	name = "Silk mask"
 	cost = 25
-	contains = list(/obj/item/clothing/suit/roguetown/shirt/dress/exoticsilkmask)
+	contains = list(/obj/item/clothing/mask/rogue/exoticsilkmask)
 
 /datum/supply_pack/rogue/bandit/Clothing/exoticsilkbelt
 	name = "Silk belt"
