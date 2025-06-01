@@ -15,6 +15,10 @@
 		to_chat(H, "<span class='warning'>The idea of giving hard won coin to nobles repulses me!</span>")
 		return
 
+	if(HAS_TRAIT(user, TRAIT_NORTHERNWARDEN))
+		to_chat(H, "<span class='warning'>The idea of bearing the machine demon's mark repulses me!</span>")
+		return
+
 	if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 		to_chat(H, "<span class='warning'>The idea repulses me!</span>")
 		H.cursed_freak_out()

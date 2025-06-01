@@ -1,4 +1,8 @@
-/datum/migrant_role/warden/warden_overlord
+//The wardens are NOT a tribe, they are former townfolk who have gone wild due to either losing their homes to rot or just feeling like they belong to the forest
+//Treat them more like a military hospitaller clan who hate good living standards
+//Please NOTE that wardens arent inherent enemies of the town. They loathe rockhillians but do not aim to kill them, the whole point of their expidition is not to spark a war, but protect the wildlife from towners.
+
+/datum/migrant_role/warden/warden_overlord //leader of the wave, lorewise had to kill the previous leader, thus is so strong
 	name = "Warden of the North"
 	greet_text = "You are the champion of the woods who swore to protect the forest and guide the pack. \
 	Your authority is based on your strength, anyone who dares to challenge you must be shown their place. \
@@ -68,20 +72,20 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.change_stat("constitution", 3)
 		H.change_stat("intelligence", -1)
 		H.change_stat("speed", -2)
-		if(H.race in list(/datum/species/lupian, /datum/species/halforc, /datum/species/lizardfolk, /datum/species/dwarf/mountain))
+		if(istype(H.dna.species, /datum/species/lupian) || istype(H.dna.species, /datum/species/halforc) || istype(H.dna.species, /datum/species/lizardfolk) || istype(H.dna.species, /datum/species/dwarf/mountain))
 			H.change_stat("strength", -1)
-			H.change_stat("speed", 1)
-		if(H.race in list(/datum/species/anthromorphsmall, /datum/species/kobold, /datum/species/moth, /datum/species/elf/wood))
+			H.change_stat("speed", 1) //to prevent balance-breaking 16 STR roll, 15 STR is alright
+		if(istype(H.dna.species, /datum/species/anthromorphsmall) || istype(H.dna.species, /datum/species/kobold) || istype(H.dna.species, /datum/species/moth) || istype(H.dna.species, /datum/species/elf/wood))
 			H.change_stat("strength", 1)
-			H.change_stat("speed", -1)
+			H.change_stat("speed", -1) //the wave prioritizes raw strength
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC) //Allows to see other wardens on examine, gives a debuff inside the town, forbids shylocks
 
-/datum/migrant_role/warden/wraith
+/datum/migrant_role/warden/wraith //a MAA like class
 	name = "Wraith of the North"
 	greet_text = "You are one of the best fighters in all of the north, trained to take down anyone who threatens the woods. \
 	Some people treat you as dangerous heretics, while others believe you are just a confused dendorite. \
@@ -150,10 +154,10 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.change_stat("constitution", 2)
 		H.change_stat("intelligence", -1)
 		H.change_stat("speed", -2)
-		if(H.race in list(/datum/species/lupian, /datum/species/halforc, /datum/species/lizardfolk, /datum/species/dwarf/mountain))
+		if(istype(H.dna.species, /datum/species/lupian) || istype(H.dna.species, /datum/species/halforc) || istype(H.dna.species, /datum/species/lizardfolk) || istype(H.dna.species, /datum/species/dwarf/mountain))
 			H.change_stat("strength", -1)
 			H.change_stat("speed", 1)
-		if(H.race in list(/datum/species/anthromorphsmall, /datum/species/kobold, /datum/species/moth, /datum/species/elf/wood))
+		if(istype(H.dna.species, /datum/species/anthromorphsmall) || istype(H.dna.species, /datum/species/kobold) || istype(H.dna.species, /datum/species/moth) || istype(H.dna.species, /datum/species/elf/wood))
 			H.change_stat("strength", 1)
 			H.change_stat("speed", -1)
 
@@ -162,7 +166,7 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 
-/datum/migrant_role/warden/warden_shaman
+/datum/migrant_role/warden/warden_shaman //essentially a physician + magos class
 	name = "Shaman of the North"
 	greet_text = "You are the wisest volf in the pack, who's duty is to look after the others and perform rituals in the name of the woods. \
 	You must not let your pack go astray, they all are dependant on your teachings. The Warden is strong, but is still in need of your teachings."
@@ -182,13 +186,14 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/leather/advanced
-	neck = /obj/item/clothing/neck/roguetown/psicross/wood
+	wrists = /obj/item/clothing/neck/roguetown/psicross/wood
+	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/huntingknife
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/rogueweapon/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/mid = 1, /obj/item/flint = 1)
+	backpack_contents = list(/obj/item/book/granter/spellbook/apprentice = 1, /obj/item/storage/fancy/skit = 1, /obj/item/storage/fancy/ifak = 1, /obj/item/reagent_containers/glass/alembic = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
@@ -206,15 +211,25 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+		H.mind.adjust_spellpoints(-1) //two spellpoints at roundstart
 		H.change_stat("intelligence", 2)
 		H.change_stat("endurance", 1)
+		H.change_stat("perception", 1)
 		H.change_stat("speed", -1)
 
+	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) //needed for surgeries
+	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 
-/datum/migrant_role/warden/forager
+	H.mind.AddSpell(new SPELL_LEARNSPELL)
+	H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+	H.mind.AddSpell(new SPELL_MENDING)
+	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
+
+
+/datum/migrant_role/warden/forager //hunter+knave class
 	name = "Forager of the North"
 	greet_text = "Being the most agile member of the pack, you are responsible for the scout duty, hunting and stealthy operations. \
 	The pack relies on your information as well as they await you every night, expecting some fresh meat of your preys."
@@ -269,8 +284,8 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
 
-/datum/migrant_role/warden/sheep
-	name = "Captive"
+/datum/migrant_role/warden/sheep //de jure carpenter+mason class, de facto rapebait class
+	name = "Slave"
 	greet_text = "You've continiously refused to be a volf; on the contrary, you embraced your lyfe as a sheep. \
 	 You were either enslaved by the pack during yet another raid or came willingly, now you live to please your new masters."
 	outfit = /datum/outfit/job/roguetown/warden/sheep

@@ -10,7 +10,9 @@
 		/datum/migrant_role/warden/forager = 1
 		/datum/migrant_role/warden/sheep = 1
 	)
-	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. No mortal can defeat or tame the beast, but the pack shall follow his path."
+	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. \
+	No mortal can defeat or tame the beast, but the pack shall follow his path. And we shall not fall to our bloodlust: there's no point in harming rockhillians as long as they dont harm us. \
+	We were among the sheep ourselves, many of us were born inbetween the brick walls. Now, its time to free the others off their shackles and reunite them with the nature."
 
 /datum/migrant_wave/warden_down_one
 	name = "The Wardens of the North"

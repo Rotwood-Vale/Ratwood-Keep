@@ -948,6 +948,18 @@
 	sellprice = 50
 	nodismemsleeves = TRUE
 
+/obj/item/clothing/cloak/warden
+	name = "grey cloak"
+	desc = "A cloak designed to protect the wearer in the harsh weather of the north."
+	icon_state = "warden_cloak"
+	body_parts_covered = CHEST|GROIN|VITALS|ARMS
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	slot_flags = ITEM_SLOT_CLOAK
+	allowed_sex = list(MALE, FEMALE)
+	sellprice = 50
+	nodismemsleeves = TRUE
+
 /obj/item/clothing/cloak/half
 	name = "halfcloak"
 	desc = "A cloak designed to cover one half of the body predominantly over the other."
