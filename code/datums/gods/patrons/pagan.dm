@@ -1,4 +1,4 @@
-/datum/patron/northern
+/datum/patron/pagan/northern
 	name = "Northern Spirits"
 	domain = "Spirits of the Woods and the Wildlife"
 	desc = "Hundreds of nameless spirits wander in the world of mortals, protecting and guiding all those living in the Woods. \

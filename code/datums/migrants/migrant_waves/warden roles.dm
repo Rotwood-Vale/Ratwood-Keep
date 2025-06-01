@@ -12,7 +12,9 @@
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
-	cmode_music = 'sound/music/combat_warden.ogg'
+
+/datum/outfit/job/roguetown/warden/warden_overlord
+	allowed_patrons = list(/datum/patron/pagan/northern)
 
 /datum/outfit/job/roguetown/warden/warden_overlord/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -25,34 +27,17 @@
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	wrists = /obj/item/clothing/neck/roguetown/psicross/wood
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
+	id = /obj/item/clothing/ring/silver
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	beltl = /obj/item/flashlight/flare/torch/lantern
+	beltr = /obj/item/rogueweapon/stoneaxe/battle
 	backr = /obj/item/rogueweapon/shield/tower/metal
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/mid = 1, /obj/item/flint = 1)
-
-var/weapons = list("battle axe", "bastard sword", "warhammer")
-	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
-
-	switch(weaponschoice)
-
-		if("battle axe")
-			beltr = /obj/item/rogueweapon/stoneaxe/battle
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-		if("bastard sword")
-			beltr = /obj/item/rogueweapon/sword/long
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("warhammer")
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		else
-			beltr = /obj/item/rogueweapon/stoneaxe/battle
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
@@ -70,22 +55,21 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.change_stat("strength", 4)
 		H.change_stat("endurance", 3)
 		H.change_stat("constitution", 3)
-		H.change_stat("intelligence", -1)
-		H.change_stat("speed", -2)
+		H.change_stat("perception", 2)
+		H.change_stat("speed", -1)
 		if(istype(H.dna.species, /datum/species/lupian) || istype(H.dna.species, /datum/species/halforc) || istype(H.dna.species, /datum/species/lizardfolk) || istype(H.dna.species, /datum/species/dwarf/mountain))
 			H.change_stat("strength", -1)
 			H.change_stat("speed", 1) //to prevent balance-breaking 16 STR roll, 15 STR is alright
 		if(istype(H.dna.species, /datum/species/anthromorphsmall) || istype(H.dna.species, /datum/species/kobold) || istype(H.dna.species, /datum/species/moth) || istype(H.dna.species, /datum/species/elf/wood))
-			H.change_stat("strength", 1)
-			H.change_stat("speed", -1) //the wave prioritizes raw strength
-
+			H.change_stat("strength", 1) //the wave prioritizes raw strength
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC) //Allows to see other wardens on examine, gives a debuff inside the town, forbids shylocks
+	H.cmode_music = 'sound/music/combat_warden.ogg'
 
-/datum/migrant_role/warden/wraith //a MAA like class
+/datum/migrant_role/warden/wraith //warrior
 	name = "Wraith of the North"
 	greet_text = "You are one of the best fighters in all of the north, trained to take down anyone who threatens the woods. \
 	Some people treat you as dangerous heretics, while others believe you are just a confused dendorite. \
@@ -95,8 +79,8 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
-	cmode_music = 'sound/music/combat_warden.ogg'
-
+/datum/outfit/job/roguetown/warden/wraith
+	allowed_patrons = list(/datum/patron/pagan/northern)
 /datum/outfit/job/roguetown/warden/wraith/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/volfplate
@@ -109,32 +93,15 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	wrists = /obj/item/clothing/neck/roguetown/psicross/wood
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	belt = /obj/item/storage/belt/rogue/leather/steel
-	beltl = obj/item/storage/belt/rogue/pouch/coins/poor
+	belt = /obj/item/rogueweapon/mace
+	beltr = /obj/item/rogueweapon/stoneaxe/battle
 	backr = /obj/item/rogueweapon/shield/wood
 	backl = /obj/item/storage/backpack/rogue/satchel
-
-var/weapons = list("battle axe", "bastard sword", "warhammer")
-	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
-
-	switch(weaponschoice)
-
-		if("battle axe")
-			beltr = /obj/item/rogueweapon/stoneaxe/battle
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-		if("bastard sword")
-			beltr = /obj/item/rogueweapon/sword/long
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("warhammer")
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		else
-			beltr = /obj/item/rogueweapon/stoneaxe/battle
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-
+	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1) //placing the pouch on the belt breaks the game for some reason
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
@@ -149,22 +116,21 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-		H.change_stat("strength", 2)
-		H.change_stat("endurance", 2)
+		H.change_stat("strength", 3)
+		H.change_stat("endurance", 3)
 		H.change_stat("constitution", 2)
-		H.change_stat("intelligence", -1)
-		H.change_stat("speed", -2)
+		H.change_stat("perception", 1)
+		H.change_stat("speed", -1)
 		if(istype(H.dna.species, /datum/species/lupian) || istype(H.dna.species, /datum/species/halforc) || istype(H.dna.species, /datum/species/lizardfolk) || istype(H.dna.species, /datum/species/dwarf/mountain))
 			H.change_stat("strength", -1)
 			H.change_stat("speed", 1)
 		if(istype(H.dna.species, /datum/species/anthromorphsmall) || istype(H.dna.species, /datum/species/kobold) || istype(H.dna.species, /datum/species/moth) || istype(H.dna.species, /datum/species/elf/wood))
 			H.change_stat("strength", 1)
-			H.change_stat("speed", -1)
-
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_warden.ogg'
 
 /datum/migrant_role/warden/warden_shaman //essentially a physician + magos class
 	name = "Shaman of the North"
@@ -175,8 +141,8 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
-	cmode_music = 'sound/music/combat_warden.ogg'
-
+/datum/outfit/job/roguetown/warden/warden_shaman
+	allowed_patrons = list(/datum/patron/pagan/northern)
 /datum/outfit/job/roguetown/warden/warden_shaman/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/volfplate
@@ -212,22 +178,20 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 		H.mind.adjust_spellpoints(-1) //two spellpoints at roundstart
-		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("perception", 1)
+		H.change_stat("intelligence", 3)
+		H.change_stat("perception", 3)
+		H.change_stat("endurance", 2)
 		H.change_stat("speed", -1)
-
+		H.mind.AddSpell(new SPELL_LEARNSPELL)
+		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+		H.mind.AddSpell(new SPELL_MENDING)
+		H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC) //needed for surgeries
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
-
-	H.mind.AddSpell(new SPELL_LEARNSPELL)
-	H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-	H.mind.AddSpell(new SPELL_MENDING)
-	H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
-
+	H.cmode_music = 'sound/music/combat_warden.ogg'
 
 /datum/migrant_role/warden/forager //hunter+knave class
 	name = "Forager of the North"
@@ -238,8 +202,8 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
-	cmode_music = 'sound/music/combat_warden.ogg'
-
+/datum/outfit/job/roguetown/warden/forager
+	allowed_patrons = list(/datum/patron/pagan/northern)
 /datum/outfit/job/roguetown/warden/warden_shaman/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/volfplate
@@ -278,11 +242,15 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
-
+		H.change_stat("perception", 3)
+		H.change_stat("speed", 3)
+		H.change_stat("endurance", 1)
+		H.change_stat("constitution", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NORTHERNWARDEN, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_warden.ogg'
 
 /datum/migrant_role/warden/sheep //de jure carpenter+mason class, de facto rapebait class
 	name = "Slave"
@@ -293,9 +261,7 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 	allowed_races = RACES_ALL_KINDS
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
-	cmode_music = 'sound/music/combat_warden.ogg'
-
-/datum/outfit/job/roguetown/gronn/slave/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/warden/sheep/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
 	armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
@@ -325,5 +291,5 @@ var/weapons = list("battle axe", "bastard sword", "warhammer")
 		H.change_stat("speed", 1)
 		H.change_stat("strength", -2)
 		H.change_stat("constitution", -2)
-
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/combat_warden.ogg'

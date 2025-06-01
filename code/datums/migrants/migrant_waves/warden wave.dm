@@ -4,10 +4,10 @@
 	weight = 5
 	downgrade_wave = /datum/migrant_wave/warden_down_one
 	roles = list(
-		/datum/migrant_role/warden/warden_overlord = 1
-		/datum/migrant_role/warden/wraith = 2
-		/datum/migrant_role/warden/warden_shaman = 1
-		/datum/migrant_role/warden/forager = 1
+		/datum/migrant_role/warden/warden_overlord = 1,
+		/datum/migrant_role/warden/wraith = 2,
+		/datum/migrant_role/warden/warden_shaman = 1,
+		/datum/migrant_role/warden/forager = 1,
 		/datum/migrant_role/warden/sheep = 1
 	)
 	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. \
@@ -20,10 +20,10 @@
 	downgrade_wave = /datum/migrant_wave/warden_down_two
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/warden/warden_overlord = 1
-		/datum/migrant_role/warden/wraith = 1
-		/datum/migrant_role/warden/warden_shaman = 1
-		/datum/migrant_role/warden/forager = 1
+		/datum/migrant_role/warden/warden_overlord = 1,
+		/datum/migrant_role/warden/wraith = 1,
+		/datum/migrant_role/warden/warden_shaman = 1,
+		/datum/migrant_role/warden/forager = 1,
 		/datum/migrant_role/warden/sheep = 1
 	)
 	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. \
@@ -36,9 +36,9 @@
 	downgrade_wave = /datum/migrant_wave/warden_down_three
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/warden/warden_overlord = 1
-		/datum/migrant_role/warden/wraith = 1
-		/datum/migrant_role/warden/warden_shaman = 1
+		/datum/migrant_role/warden/warden_overlord = 1,
+		/datum/migrant_role/warden/wraith = 1,
+		/datum/migrant_role/warden/warden_shaman = 1,
 		/datum/migrant_role/warden/sheep = 1
 	)
 	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. \
@@ -51,8 +51,8 @@
 	downgrade_wave = /datum/migrant_wave/warden_down_four
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/warden/warden_overlord = 1
-		/datum/migrant_role/warden/wraith = 1
+		/datum/migrant_role/warden/warden_overlord = 1,
+		/datum/migrant_role/warden/wraith = 1,
 		/datum/migrant_role/warden/warden_shaman = 1
 	)
 	greet_text = "A clan of stray warriors heads to Rockhill to protect the forests from the destructive actions of the local folk, distraught by their technologies. \
@@ -64,7 +64,7 @@
 	downgrade_wave = /datum/migrant_wave/warden_down_five
 	can_roll = FALSE
 	roles = list(
-		/datum/migrant_role/warden/warden_overlord = 1
+		/datum/migrant_role/warden/warden_overlord = 1,
 		/datum/migrant_role/warden/warden_shaman = 1
 	)
 	greet_text = "A clan of stray warriors heads to Rockhill to get supplies and find new worthy warriors. \
