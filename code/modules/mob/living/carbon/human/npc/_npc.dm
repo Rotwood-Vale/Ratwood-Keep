@@ -421,8 +421,7 @@
 			NPC_THINK("Found a path with length [length(myPath)]!")
 			return TRUE
 	NPC_THINK("Failed to find a path!")
-	//too far away or pathing failed
-	back_to_idle()
+	//too far away or pathing failed; don't immediately lose aggro though
 	return FALSE
 
 // taken from /mob/living/carbon/human/interactive/
