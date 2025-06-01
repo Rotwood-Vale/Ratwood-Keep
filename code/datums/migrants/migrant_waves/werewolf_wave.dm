@@ -3,6 +3,7 @@
 	downgrade_wave = /datum/migrant_wave/werewolf_down_one
 	can_roll = TRUE
 	weight = 2 //Significantly Rarer than bandits, due to the fact these guys can convert.
+	max_spawns = 1
 	roles = list(
 		/datum/migrant_role/werewolf = 2,
 	)
@@ -10,7 +11,9 @@
 
 /datum/migrant_wave/werewolf_down_one
 	name = "Isolated Packmate"
-	can_roll = FALSE
+	can_roll = TRUE
+	weight = 4 //Half as rare. 
+	max_spawns = 2 //Can roll more often. 
 	roles = list(
 		/datum/migrant_role/werewolf = 1,
 	)
