@@ -66,17 +66,16 @@
 	..()
 	// Auto mining logic
 	if(istype(I, /obj/item/rogueweapon/pick))
+		if(!isliving(user))
+			return
+
+		var/mob/living/L = user
 		var/my_icon = icon_state
 		user.doing = FALSE
+
 		spawn(1)
 		while(get_turf(src))
-		
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				if(H.IsStun() || H.IsParalyzed())
-					break
-
-			if(do_after(user, CLICK_CD_MELEE, TRUE, src))
+			if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
 				..()
 				//does this even work?
 				var/olddam = turf_integrity
@@ -90,7 +89,6 @@
 				//Turfs never die, they simply change
 				if(icon_state != my_icon)
 					break
-
 			else
 				break
 
