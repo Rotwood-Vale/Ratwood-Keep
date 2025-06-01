@@ -43,7 +43,7 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
-#define TRAIT_NORTHERNWARDEN "Warden Pack's Volf"
+#define TRAIT_NORTHERNWARDEN "Wood Warden"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
 	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
-	TRAIT_NORTHERNWARDEN = span_info("I've abandoned the lyfe of a sheep and joined the Wardens, a true volf must keep its feeding grounds safe and clean. Though the Trees cannot watch over me in the town..."),
+	TRAIT_NORTHERNWARDEN = span_blue("I've abandoned the lyfe of a sheep and joined the Wardens. Though I embraced the Beast, it cannot watch over me in the town..."),
 ))
 
 // trait accessor defines

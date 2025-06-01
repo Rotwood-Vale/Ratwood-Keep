@@ -176,6 +176,10 @@
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
 
+			if(user.mind.assigned_role == "Inquisitor" || user.mind.assigned_role == "Confessor" || user.mind.assigned_role == "Priest" || user.mind.assigned_role == "Templar" || user.mind.assigned_role == "Druid" || user.mind.assigned_role == "Acolyte" || user.mind.assigned_role == "Hospitaller" || user.mind.assigned_role == "Mortician")
+				if(HAS_TRAIT(src, TRAIT_NORTHERNWARDEN)) // neither assigned.role in list(CHURCH_ROLES, INQUISITION_ROLES) nor (department_flag == CHURCHMEN || department_flag == INQUISITION) have worked so I had to resort to this; novitiates are too unexperienced to judge
+					. += span_userdanger("A MAD DENDORITE, A HERETIC!")
+
 		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
 			. += span_userdanger("MANIAC!")
 
@@ -186,7 +190,7 @@
 			. += span_purple("A fellow seeker of Her ascension.")
 
 		if(HAS_TRAIT(src, TRAIT_NORTHERNWARDEN) && HAS_TRAIT(user, TRAIT_NORTHERNWARDEN))
-			. += span_notice("A fellow volf of my pack.")
+			. += span_notice("My fellow volf.")
 
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
 			var/atom/item = get_most_expensive()

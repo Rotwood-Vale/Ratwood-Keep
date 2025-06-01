@@ -410,7 +410,7 @@
 /datum/status_effect/debuff/wardendebuff
 	id = "wardendebuff"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/wardendebuff
-	effectedstats = list("endurance" = -1, "strength" = -1, "fortune" = -1) //should discourage wardens from attacking the town
+	effectedstats = list("endurance" = -1, "strength" = -1, "perception" = -1, "fortune" = -1) //should discourage wardens from attacking the town
 	duration = 5000 SECONDS
 
 /datum/status_effect/debuff/wardendebuff/process()
