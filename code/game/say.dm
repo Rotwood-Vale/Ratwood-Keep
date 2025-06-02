@@ -68,7 +68,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if (ishuman(src) && ishuman(speaker))
 		var/mob/living/carbon/human/recipient = src
 		var/mob/living/carbon/human/sender = speaker
-		message_colour = recipient.mind.get_special_person_colour(sender)
+		if (recipient.mind)
+			message_colour = recipient.mind.get_special_person_colour(sender)
 
 	//Message
 	var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mode, FALSE, message_colour)]</span></span>"
