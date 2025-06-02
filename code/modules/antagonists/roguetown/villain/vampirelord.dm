@@ -894,7 +894,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 									  // so move the death knight to the vampyre lord AFTER applying the job
 
 		var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
-		if (new_knight.mind)
+		if (istype(chaosmode) && new_knight.mind)
 			for(var/datum/mind/vampire in chaosmode.vampires)
 				if (vampire.special_role == "Vampire Lord")
 					new_knight.mind.add_special_person(vampire.current, "#DC143C")
