@@ -35,8 +35,8 @@
 
 	obj_integrity = min(obj_integrity + mending_amount, max_integrity)
 
-	// The obj_broken value is breaking shit I HATE IT FUCK YOU!!
-	if(obj_integrity == max_integrity && istype(src, /obj/item/clothing))
+	//unset broken if any attempt is tried.
+	if(istype(src, /obj/item/clothing))
 		var/obj/item/clothing/clothing = src
 		clothing.obj_fix()
 
@@ -259,7 +259,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 /// Called after obj is repaired (needle/hammer for items)
 /obj/proc/obj_fix(mob/user)
 	obj_broken = FALSE
-	obj_integrity = max_integrity
+	//obj_integrity = max_integrity
 
 ///what happens when the obj's integrity reaches zero.
 /obj/proc/obj_destruction(damage_flag)
