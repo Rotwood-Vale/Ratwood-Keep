@@ -404,7 +404,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/wardendebuff
 	name = "Oppressive Surroundings"
-	desc = "The Spirits of the Woods cannot watch over me as I stand inbetween those walls. I am on my own here."
+	desc = "The Beast cannot watch over me as I stand inbetween those walls. I am on my own here."
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/wardendebuff
