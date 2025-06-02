@@ -439,40 +439,16 @@
 	color ="#664040"
 
 
-/datum/status_effect/debuff/zizovoice/on_creation(mob/owner, mob/zizoid)
-	..()
-	zizoid_ref = WEAKREF(zizoid)
-	zizoid_mob = zizoid
+/datum/status_effect/debuff/zizotouch
+	id = "zizotouch"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/zizotouch
+	duration = 30 MINUTES
 
-/datum/status_effect/debuff/zizovoice
-	id = "zizovoice"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/zizovoice
-	duration = 3 MINUTES
-	var/datum/weakref/zizoid_ref
-	var/mob/zizoid_mob
-	tick_interval = 10 SECONDS
-
-
-/atom/movable/screen/alert/status_effect/debuff/zizovoice
-	name = "Zizos Voice"
-	desc = "A profane zizoid ritual is forcing me to sing Her praises.."
+/atom/movable/screen/alert/status_effect/debuff/zizotouch
+	name = "Zizos Touch"
+	desc = "A profane zizoid ritual has touched my very soul. It is likely they can use this connection to affect me with further rituals.."
 	icon_state = "debuff"
 	color ="#664040"
-
-/datum/status_effect/debuff/zizovoice/tick()
-	.=..()
-	zizoid_mob = zizoid_ref.resolve() 
-	if(zizoid_mob && zizoid_mob.mind)
-		if(prob(10)) //10% every 10 seconds = on average every 100 seconds
-			zizoid_mob.mind.divinefavor +=5
-			owner.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!", "THE WEEPERS TEARS FILL ZIZOS CHALICE!", "THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", "ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", "ZIZOS SONG TURNS FLESH TO FAITH!", "S-she’s in my head—Zizo won’t stop whispering!"))
-	else
-		if(prob(10))
-			owner.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!", "THE WEEPERS TEARS FILL ZIZOS CHALICE!", "THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", "ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", "ZIZOS SONG TURNS FLESH TO FAITH!", "S-she’s in my head—Zizo won’t stop whispering!"))
-
-
-
-
 
 /datum/status_effect/debuff/hereticsermon
 	id = "Heretic on sermon!"

@@ -460,6 +460,15 @@
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
 
+/obj/item/rogueweapon/huntingknife/idagger/steel/cult
+	name = "profane dagger"
+	desc = "This long, wicked looking dagger emanates a thick, profane aura."
+	icon_state = "profanedagger"
+	item_state = "profanedagger"
+	max_integrity = 200
+	force = 20
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/rogueweapon/huntingknife/elvish/drow
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."

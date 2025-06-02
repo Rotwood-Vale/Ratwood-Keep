@@ -220,6 +220,20 @@
 		player.playsound_local(get_turf(player), 'sound/villain/zizolaugh.ogg', 35, FALSE, pressure_affected = FALSE)
 		to_chat(player, pick("<span class='warning'>A dreadful resonance pulses through your bones. Something profane has just happened somewhere [disttext] to the [dirtext].</span>", "<span class='warning'>The veil of reality ripples unnaturally somewhere [disttext][dirtext]—something dark stirs.</span>"))
 
+
+#define ZIZO_PRAISES list( \
+	"PRAISE ZIZO!!!", \
+	"THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", \
+	"ALL WILL BE REMADE IN ZIZO'S IMAGE!!!", \
+	"THE WEEPERS TEARS FILL ZIZO'S CHALICE!", \
+	"THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", \
+	"ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", \
+	"ZIZO'S SONG TURNS FLESH TO FAITH!" \
+)
+
+
+
+
 /mob/living/carbon/human/proc/praise()
 	set name = "Praise the Godhead!"
 	set category = "ZIZO"
@@ -235,10 +249,10 @@
 	//audible_message("[src] praises " + span_bold("Zizo") + "!")
 	log_game("[src.real_name] praises Zizo!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
-	src.say(pick("PRAISE ZIZO!!!", "THE WEEPER WEEPS NO MORE, GLORY TO ZIZO!!!", "ALL WILL BE REMADE IN ZIZOS IMAGE!!!", "THE WEEPERS TEARS FILL ZIZOS CHALICE!", "THE LIVING SHALL KNEEL TO ZIZO, THE DEAD SHALL WALK WITH HER!", "ZIZO WILL SWALLOW ASTRATA AND SING NOC TO SLEEP!", "ZIZOS SONG TURNS FLESH TO FAITH!"))
+	src.say(pick(ZIZO_PRAISES))
 	for(var/mob/living/carbon/human/H in view(src))
 		if(H.patron?.type != /datum/patron/zizo)
-			src.mind.divinefavor += 5
+			src.mind.divinefavor += 15
 			to_chat(src, span_notice("A soul hears my message of devotion! She is pleased."))
 
 /mob/living/carbon/human/proc/favorcheck()

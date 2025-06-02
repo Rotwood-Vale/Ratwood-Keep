@@ -109,38 +109,13 @@
 		return TRUE
 	return FALSE
 
-/datum/ritual/zizo/invademind
-	name = "Invade Mind"
-	difficulty = 2
-	favor_cost = 50
-	revealchance = 3
-	circle = "Transmutation"
-	center_requirement = /obj/item/natural/feather
-
-	function = /proc/invademind
-
-/proc/invademind(mob/user, turf/C)
-	for(var/obj/item/paper/P in C.contents)
-		var/info = ""
-		info = sanitize(P.info)
-		var/input = stripped_input(user, "To whom do we send this message?", "RATWOOD")
-		if(!input)
-			return
-		for(var/mob/living/carbon/human/HL in GLOB.human_list)
-			if(HL.real_name == input)
-				qdel(P)
-				to_chat(HL, "<i>You hear a voice in your head... <b>[info]</i></b>")
-		return TRUE
-	return FALSE
-
 /datum/ritual/zizo/summonrobes
 	name = "Summon Robes"
 	circle = "Transmutation"
 	difficulty = 1
-	favor_cost = 50
+	favor_cost = 25
 	revealchance = 1
 	n_req = /obj/item/natural/hide
-	s_req = /obj/item/natural/artifact
 	function = /proc/summonrobes
 
 /proc/summonrobes(mob/user, turf/C)
@@ -149,9 +124,27 @@
 	S.start()
 
 	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
-	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
-
-	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 
+	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
+
+/datum/ritual/zizo/empowerrobes
+	name = "Summon Robes"
+	circle = "Transmutation"
+	difficulty = 2
+	favor_cost = 25
+	revealchance = 10
+	n_req = /obj/item/clothing/head/roguetown/helmet/leather/cult_hood
+	s_req = /obj/item/clothing/suit/roguetown/armor/leather/cult_robe
+	center_requirement = /obj/item/clothing/neck/roguetown/psicross/bloodied
+	function = /proc/empowerrobes
+
+
+/proc/empowerrobes(mob/user, turf/C)
+	var/datum/effect_system/spark_spread/S = new(C)
+	S.set_up(1, 1, C)
+	S.start()
+	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood/empowered(C)
+	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe/empowered(C)
 	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)

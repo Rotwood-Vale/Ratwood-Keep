@@ -104,26 +104,6 @@ proc/zizobargain(mob/user, turf/C)
 		return TRUE
 	return FALSE
 
-
-
-/datum/ritual/zizo/voiceofzizo
-	name = "Voice of Zizo"
-	circle = "Servantry"
-	difficulty = 1 // We want to encourage this
-	favor_cost = 50
-	revealchance = 5 //this already has a very high chance to reveal you
-	center_requirement = /mob/living/carbon/human
-
-	function = /proc/voiceofzizo
-
-
-proc/voiceofzizo(mob/user, turf/C)
-	for(var/mob/living/carbon/human/H in C.contents)
-		H.apply_status_effect(/datum/status_effect/debuff/zizovoice, H, user)
-		user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-		return TRUE
-	return FALSE
-
 /datum/ritual/zizo/bonemastery //Increases A Necromancers Skeleton Cap by 1
 	name = "Ritual of Bone Mastery"
 	circle = "Servantry"

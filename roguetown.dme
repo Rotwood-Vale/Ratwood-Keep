@@ -1748,6 +1748,7 @@
 #include "code\modules\rituals\ritual_types\divine\ritualfeather.dm"
 #include "code\modules\rituals\ritual_types\zizo\ascension.dm"
 #include "code\modules\rituals\ritual_types\zizo\fleshcrafting.dm"
+#include "code\modules\rituals\ritual_types\zizo\malediction.dm"
 #include "code\modules\rituals\ritual_types\zizo\sacrifice.dm"
 #include "code\modules\rituals\ritual_types\zizo\servantry.dm"
 #include "code\modules\rituals\ritual_types\zizo\transmutation.dm"
