@@ -57,3 +57,10 @@
 	cooked_smell = /datum/pollutant/food/baked_potato
 	can_distill = TRUE
 	distill_amt = 8
+
+/obj/item/reagent_containers/food/snacks/rogue/veg/scalloped_potatoes
+	name = "scalloped potatoes"
+	desc = "A cheesey covering of baked potatoes."
+	icon_state = "scalloped_potatoes"
+	tastes = list("potato" = 1, "cheese" = 1)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff

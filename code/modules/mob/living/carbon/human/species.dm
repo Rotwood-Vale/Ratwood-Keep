@@ -1545,7 +1545,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						span_danger("[M] attempts to touch you!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, span_warning("I attempt to touch [H]!"))
 		return 0
-	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
+	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, H, attacker_style) // sending a signal where H, cosmig, M??? what the fuck are you talking about. switched them around and it works the same + removed a completely useless arg.
 	switch(M.used_intent.type)
 		if(INTENT_HELP)
 			help(M, H, attacker_style)

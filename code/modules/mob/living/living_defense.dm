@@ -49,6 +49,9 @@
 	next_attack_msg.Cut()
 
 	var/on_hit_state = P.on_hit(src, armor)
+
+	SEND_SIGNAL(src, COMSIG_ATOM_BULLET_ACT, P, def_zone)
+	
 	var/nodmg = FALSE
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
 		if(!apply_damage(P.damage, P.damage_type, def_zone, armor))

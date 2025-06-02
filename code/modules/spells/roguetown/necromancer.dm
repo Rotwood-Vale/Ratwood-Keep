@@ -357,9 +357,10 @@
 
 	if(ckey) //player
 		src.ckey = ckey
+		ADD_TRAIT(src, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
 	else //npc
 		aggressive = 1
-		mode = AI_HUNT
+		mode = NPC_AI_HUNT
 		wander = TRUE
 
 	if(!mind)
@@ -407,6 +408,16 @@
 		QDEL_NULL(charflaw)
 
 	can_do_sex = FALSE //where my bonger go
+
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	target.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
+	if (istype(target.rmb_intent, /datum/rmb_intent/swift))
+		target.swap_rmb_intent(null, 1)
 
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)

@@ -9,9 +9,9 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/mage.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/mage.dmi'
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	allowed_race = NON_DWARVEN_RACE_TYPES	//I don't have the sprites for these, so no shortfolk until a spriter can do it for me.
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	ignore_sleeves_code = TRUE 
 	boobed = FALSE
 	toggle_icon_state = TRUE
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
@@ -179,6 +179,7 @@
 	desc = "Standard robes for an arcane sorcerer."
 	icon_state = "vizier-red"
 	item_state = "vizier-red"
+	ignore_sleeves_code = TRUE 
 	sleevetype = "shirt"
 	hoodtype = null
 

@@ -16,7 +16,7 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/goblin
-	soundpack_f = /datum/voicepack/male/goblin
+	soundpack_f = /datum/voicepack/female/goblinf
 	custom_clothes = TRUE
 	use_f = TRUE
 	clothes_id = "dwarf"

@@ -648,3 +648,12 @@
 	skill_level = 0
 	verbage_simple = "weave"
 	verbage = "weaves"
+/datum/crafting_recipe/roguetown/wickercloak
+	name = "wickercloak"
+	result = /obj/item/clothing/cloak/wickercloak
+	reqs = list(
+		/obj/item/natural/dirtclod = 1,
+		/obj/item/grown/log/tree/stick = 5,
+		/obj/item/natural/fibers = 3,
+		)
+	skill_level = 0
