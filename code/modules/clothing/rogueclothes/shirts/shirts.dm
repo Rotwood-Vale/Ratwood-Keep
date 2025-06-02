@@ -585,7 +585,7 @@
 	desc = "A breezy flowing gown fit for warm weathers."
 	icon_state = "summergown"
 	boobed = TRUE
-	detail_color = "#ffffff"
+	detail_color = "#e395bb"
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -593,7 +593,7 @@
 	desc = "A solemn long-sleeved gown that signifies the season of year's end."
 	icon_state = "fallgown"
 	boobed = TRUE
-	detail_color = "#ffffff"
+	detail_color = "#8b3f00"
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -601,7 +601,7 @@
 	desc = "A warm elegant gown adorned with soft fur for the cold winter."
 	icon_state = "wintergown"
 	boobed = TRUE
-	detail_color = "#ffffff"
+	detail_color = "#45749d"
 
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress
