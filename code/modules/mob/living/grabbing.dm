@@ -201,7 +201,7 @@
 			var/obj/item/I
 			if(sublimb_grabbed == BODY_ZONE_PRECISE_L_HAND && M.active_hand_index == 1)
 				I = M.get_active_held_item()
-			else 
+			else
 				if(sublimb_grabbed == BODY_ZONE_PRECISE_R_HAND && M.active_hand_index == 2)
 					I = M.get_active_held_item()
 				else
@@ -458,6 +458,7 @@
 	slot_flags = ITEM_SLOT_MOUTH
 	bleed_suppressing = 1
 	var/last_drink
+	var/memorylost = FALSE
 
 /obj/item/grabbing/bite/Click(location, control, params)
 	var/list/modifiers = params2list(params)
@@ -501,7 +502,6 @@
 					user.werewolf_feed(C)
 			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
-				user.mob_timers["deadite_bite"] = world.time
 				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
 				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
 					user.mind.adjust_triumphs(1)
@@ -532,6 +532,10 @@
 		to_chat(user, span_warning("Sigh. It's not bleeding."))
 		return
 	var/mob/living/carbon/C = grabbed
+	if(istype(C, /mob/living/carbon/human/species/goblin)|| istype(C, /mob/living/carbon/human/species/goblinp))
+		to_chat(user, span_warning("You recoil at the foul taste of graggar corrupted blood."))
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
+		return
 	if(C.dna?.species && (NOBLOOD in C.dna.species.species_traits))
 		to_chat(user, span_warning("Sigh. No blood."))
 		return
@@ -563,6 +567,9 @@
 				else if (C.vitae_bank > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
 					C.vitae_bank -= 500
+					if(!memorylost)	//has the person already gotten the memory loss callback?
+						addtimer(CALLBACK(src, /obj/item/grabbing/bite/proc/apply_memory_loss, C, VDrinker), 15 SECONDS)
+						memorylost = TRUE	//memory loss callback applied, skip applying on next drink
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
 						if(H.virginity)
@@ -582,8 +589,9 @@
 				to_chat(user, "<span class='notice'>A strange, sweet taste tickles my throat.</span>")
 				addtimer(CALLBACK(user, .mob/living/carbon/human/proc/vampire_infect), 1 MINUTES) // I'll use this for succession later.
 			else */
-			to_chat(user, "<span class='warning'>I'm going to puke...</span>")
-			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
+			if(!HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+				to_chat(user, span_warning("I'm going to puke..."))
+				addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
 	else
 		if(user.mind)
 			if(user.mind.has_antag_datum(/datum/antagonist/vampirelord))
@@ -594,8 +602,10 @@
 				else
 					VDrinker.handle_vitae(300)
 
-	C.blood_volume = max(C.blood_volume-5, 0)
+	C.blood_volume = max(C.blood_volume-10, 0)
 	C.handle_blood()
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+		user.adjust_hydration(10)
 
 	playsound(user.loc, 'sound/misc/drink_blood.ogg', 100, FALSE, -4)
 
@@ -621,3 +631,11 @@
 							VDrinker.handle_vitae(0) // Updates pool max.
 					if("No")
 						to_chat(user, span_warning("I decide [C] is unworthy."))
+
+
+/obj/item/grabbing/bite/proc/apply_memory_loss(mob/living/target, mob/living/user)
+	to_chat(target, span_notice("You feel... something slipping away. You can't remember who bit you!"))
+	target.visible_message(span_notice("[target] looks rather confused!"))
+	target.drowsyness = min(target.drowsyness + 50, 150)
+	log_game("[key_name(target)] has lost memory due to [key_name(user)]'s vampiric bite.")
+	memorylost = FALSE	//after this proc is ran, it can be ran again

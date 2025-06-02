@@ -74,15 +74,46 @@
 	icon_state = "tomato_floor1"
 	random_icon_states = list("tomato_floor1", "tomato_floor2", "tomato_floor3")
 
-/obj/item/reagent_containers/food/snacks/attackby(obj/item/W, mob/user, params)
-	if(user.used_intent.blade_class == slice_bclass && W.wlength == WLENGTH_SHORT)
+
+// While I would usually call the parent procs food doesn't seem to benefit at all 
+// I checked all the parent procs...There's nothing from what I can tell that matters
+/*======
+attackby
+======*/
+/obj/item/reagent_containers/food/snacks/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		return //tables are needed for now.
+
+	/* Special code for slicing because right now I don't want to deal with this
+	   right now and it's already done in a way I can tolerate */
+	if(user.used_intent.blade_class == slice_bclass && I.wlength == WLENGTH_SHORT)
 		if(slice_bclass == BCLASS_CHOP)
 			user.visible_message("<span class='notice'>[user] chops [src]!</span>")
-			slice(W, user)
+			slice(I, user)
 			return 1
-		else if(slice(W, user))
+		else if(slice(I, user))
 			return 1
-	..()
+
+	//Otherwise we try to get an interaction
+	var/obj/item/inactive = user.get_inactive_held_item()
+	var/list/to_check = list(I, src) 
+	if(inactive)
+		to_check += inactive
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_ITEM)
+	if(!interaction_status)
+		..() //If we failed everything see what parent procs think.
+
+/obj/item/reagent_containers/food/snacks/attack_hand(mob/user)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		return ..()
+	
+	var/list/to_check = list(src) 
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_HAND)
+	if(!interaction_status)
+		..() //If we failed everything see what parent procs think.
+	
 
 /*	........   Kitchen tools / items   ................ */
 /obj/item/kitchen/spoon
@@ -485,38 +516,24 @@
 	qdel(src)
 
 /obj/item/reagent_containers/powder/flour/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	var/obj/item/reagent_containers/R = I
-	if(user.mind)
-		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
-	if(!istype(R) || (water_added))
-		return ..()
-	if(isturf(loc)&& (!found_table))
-		to_chat(user, "<span class='notice'>Need a table...</span>")
-		return ..()	
-	if(!R.reagents.has_reagent(/datum/reagent/water, 10))
-		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
-		return TRUE
-	to_chat(user, "<span class='notice'>Adding water, now its time to knead it...</span>")
-	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
-	if(do_after(user,2 SECONDS, target = src))
-		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-		name = "wet powder"
-		desc = "Destined for greatness, at your hands."
-		R.reagents.remove_reagent(/datum/reagent/water, 10)
-		water_added = TRUE
-		color = "#d9d0cb"	
-	return TRUE
+	//Otherwise we try to get an interaction
+	var/obj/item/inactive = user.get_inactive_held_item()
+	var/list/to_check = list(I, src) 
+	if(inactive)
+		to_check += inactive
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_ITEM)
+	if(!interaction_status)
+		..() //If we failed everything see what parent procs think.
 
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
-	if(water_added)
-		playsound(get_turf(user), 'modular/Neu_Food/sound/kneading_alt.ogg', 90, TRUE, -1)
-		if(do_after(user,3 SECONDS, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/dough_base(loc)
-			qdel(src)
-	else ..()
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(!found_table)
+		return ..()
+
+	var/list/to_check = list(src) 
+	var/interaction_status = food_handle_interaction(src, user, to_check, FOOD_INTERACTION_HAND)
+	if(!interaction_status)
+		..() //If we failed everything see what parent procs think.
 
 // -------------- SALT -----------------
 /obj/item/reagent_containers/powder/salt

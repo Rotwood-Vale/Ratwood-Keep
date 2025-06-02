@@ -19,7 +19,9 @@
 	var/mob/living/living_pawn = controller.pawn
 	if(prob(walk_chance) && (living_pawn.mobility_flags & MOBILITY_MOVE) && isturf(living_pawn.loc) && !living_pawn.pulledby)
 		var/move_dir = pick(GLOB.alldirs)
-		living_pawn.Move(get_step(living_pawn, move_dir), move_dir)
+		var/turf/target_turf = get_step(living_pawn, move_dir)
+		if(target_turf?.can_traverse_safely(living_pawn))
+			step_towards(living_pawn, target_turf, living_pawn.cached_multiplicative_slowdown)
 
 	if(prob(8))
 		living_pawn.emote("idle")

@@ -4,7 +4,33 @@
 /datum/species/vulpkanin
 	name = "Vulpkian"
 	id = "vulpkanin"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Vulpkians</b> <br>\
+	Vulpkians are a fox-like Beastling race with the majority hailing from the Kingdom \
+	of Vulpkheim, which borders Hammerhold. However, there are a few Vulpkian tribes that \
+	originate elsewhere but are still considered Vulpkians, despite not hailing from Vulpkheim. \
+	Vulpkians are a crafty, cunning, and perceptive people. Many Vulpkians have used their nature \
+	to take advantage of other races, causing them to be known for their wit and charm at the expense \
+	of a reputation as cheats, frauds, tricksters, and thieves."
+
+	expanded_desc = "Vulpkians are a fox-like Beastling race with the majority hailing from the Kingdom \
+	of Vulpkheim, which borders Hammerhold. However, there are a few Vulpkian tribes that \
+	originate elsewhere but are still considered Vulpkians, despite not hailing from Vulpkheim. \
+	Vulpkians are a crafty, cunning, and perceptive people. Many Vulpkians have used their nature \
+	to take advantage of other races, causing them to be known for their wit and charm at the expense \
+	of a reputation as cheats, frauds, tricksters, and thieves. \
+	<br><br> \
+	Due to their nature and their reputation, Xylix often patronizes Vulpkians and their descendants. \
+	These traits, combined with the fact that the average Vulpkian pregnancy consists of twins, triplets, \
+	or even quadruplets, have allowed the Vulpkian tribes to dominate the other Beastling tribes within the \
+	great forest of Vargheim. This ultimately led to establishment of the Kingdom of Vulpkheim, which \
+	the Vulpkians rule and politically dominate. \
+	<br><br> \
+	Many Vulpkians suffer from wanderlust and set off upon reaching adulthood to explore the world, with \
+	most beginning their journey in Hammerhold. This has led to Vulpkians being widely accepted in the lands \
+	of Hammerhold. However, their fox-like features often leave people in foreign lands wary, as many \
+	Hammerhold raiders bear fox-like features due to the strong relationship between the two peoples and their \
+	kingdoms. Consequently, they are often looked upon with suspicion and fear in lands under threat by Hammerhold sea raiders."
+
 	default_color = "444"
 	species_traits = list(
 		MUTCOLORS,

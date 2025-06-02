@@ -106,7 +106,7 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
         var/ramount = 20
         var/rid = /datum/reagent/medicine/healthpot
         target.reagents.add_reagent(rid, ramount)
-        ramount = 10
+        ramount = 2
         rid = /datum/reagent/medicine/stimu
         target.reagents.add_reagent(rid, ramount)
         if(target.mind.has_antag_datum(/datum/antagonist/werewolf))
@@ -116,10 +116,7 @@ var/sound_cooldown = 10 * 60 * 10 // cooldown in deciseconds (15 minutes)
             target.reagents.add_reagent(rid, ramount)
         else
             target.visible_message(span_green("[user] is licking [target]'s wounds with its tongue!"), span_notice("That thing... Did it lick my wounds?"))
-            ramount = 5
-            rid = /datum/reagent/water/gross
-            target.reagents.add_reagent(rid, ramount)
-            ramount = 10
+            ramount = 20
             rid = /datum/reagent/water
             target.reagents.add_reagent(rid, ramount)
             if(prob(10))

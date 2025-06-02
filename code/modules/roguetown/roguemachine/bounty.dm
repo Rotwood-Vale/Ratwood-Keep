@@ -64,6 +64,7 @@
 			flick("excidium_talk", src)
 			reward_amount += b.amount
 			GLOB.head_bounties -= b
+			qdel(b)
 			message_admins("[ADMIN_LOOKUPFLW(user)] has completed the bounty on [ADMIN_LOOKUPFLW(b.target)] by delivering the severed head.")
 
 	if(P.type == /obj/item/bodypart/head/goblin)

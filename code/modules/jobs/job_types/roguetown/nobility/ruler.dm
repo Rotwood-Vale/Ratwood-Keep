@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	selection_color = JCOLOR_NOBLE
 	allowed_races = RACES_TOLERATED_UP
 	allowed_sexes = list(MALE, FEMALE)
+	can_leave_round = FALSE
 
 	spells = list(
 		SPELL_GRANT_TITLE,
@@ -248,6 +249,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /obj/effect/proc_holder/spell/self/grant_nobility
 	name = "Grant Nobility"
 	desc = "Make someone a noble, or strip them of their nobility."
+	overlay_state = "recruit_noble"
 	antimagic_allowed = TRUE
 	charge_max = 100
 	/// Maximum range for nobility granting
