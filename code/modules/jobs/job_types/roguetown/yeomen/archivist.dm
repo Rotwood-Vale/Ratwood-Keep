@@ -44,7 +44,8 @@
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
@@ -105,7 +106,8 @@
 	/datum/skill/misc/reading,
 	/datum/skill/misc/riding,
 	/datum/skill/misc/sewing,
-	/datum/skill/misc/treatment
+	/datum/skill/misc/medicine,
+	/datum/skill/misc/alchemy
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
 		choices["[skill_choices[i].name]"] = skill_choices[i]

@@ -105,6 +105,10 @@
 	remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
 
 /mob/living/can_zFall(turf/T, levels)
+	if(HAS_TRAIT(src, TRAIT_WOODWALKER))
+		for(var/leaf in T.contents)
+			if(istype(leaf, /obj/structure/flora/newleaf))
+				return FALSE
 	return ..()
 
 /mob/living/canZMove(dir, turf/target)

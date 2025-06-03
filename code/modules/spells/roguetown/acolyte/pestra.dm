@@ -28,7 +28,7 @@
 	name = "Secular Diagnosis"
 	overlay_state = "diagnose"
 	range = 1
-	associated_skill = /datum/skill/misc/treatment
+	associated_skill = /datum/skill/misc/medicine
 	miracle = FALSE
 	devotion_cost = 0 //Doctors are not clerics
 
