@@ -1487,6 +1487,10 @@
 		var/datum/species/seelie/seelie = H.dna.species
 		if(!seelie.has_wings(src))
 			canstand_involuntary = FALSE
+	if(canstand_involuntary)
+		mobility_flags |= MOBILITY_CANSTAND
+	else
+		mobility_flags &= ~MOBILITY_CANSTAND
 	var/canstand = canstand_involuntary && !resting
 
 	var/should_be_lying = !canstand

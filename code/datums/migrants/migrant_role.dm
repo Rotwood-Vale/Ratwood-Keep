@@ -28,9 +28,9 @@
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return
 
-/datum/migrant_role/refugee
-	name = "Refugee"
-	subclass_cat_rolls = list(CTAG_REFUGEE = 5)
+/datum/migrant_role/adventurer
+	name = "Adventurer"
+	subclass_cat_rolls = list(CTAG_ADVENTURER = 5)
 
 
 /datum/migrant_role/bandit

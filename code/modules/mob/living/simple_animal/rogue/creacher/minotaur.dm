@@ -46,6 +46,10 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 
+/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_BASHDOORS, TRAIT_GENERIC)
+
 /mob/living/simple_animal/hostile/retaliate/rogue/blood
 	name = "FLESH HOMUNCULUS"
 	desc = null
