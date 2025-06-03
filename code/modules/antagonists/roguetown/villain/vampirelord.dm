@@ -101,6 +101,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		greet()
 		if(!sired)
 			addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, spawn_pick_class), "VAMPIRE SPAWN"), 5 SECONDS)
+		// All vampyre spawn consider the vampyre lord special
+		for(var/datum/mind/vampire in C.vampires)
+			if (vampire.special_role == "Vampire Lord")
+				owner.add_special_person(vampire.current, "#DC143C")
+				// Don't break - an admin may need to create a second vampyre lord
 	else
 		forge_vampirelord_objectives()
 		finalize_vampire()
@@ -111,6 +116,16 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		equip_lord()
 		addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "VAMPIRE LORD"), 5 SECONDS)
 		greet()
+		// Vampyre Lord is special to all vampyre spawn
+		for(var/datum/mind/thrall in C.vampires)
+			if (thrall.special_role == "Vampire Spawn")
+				thrall.add_special_person(owner.current, "#DC143C")
+		// And to all death knights
+		if (istype(C, /datum/game_mode/chaosmode))
+			var/datum/game_mode/chaosmode/chaosmode = C
+			for(var/datum/mind/deathknight in chaosmode.deathknights)
+				deathknight.add_special_person(owner.current, "#DC143C")
+
 	return ..()
 
 // OLD AND EDITED
@@ -873,9 +888,17 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		log_game("VAMPIRE LOG: [C.ckey] chosen as new death knight.")
 		var/mob/living/carbon/human/new_knight = new /mob/living/carbon/human/species/human/northern()
 		new_knight.ckey = C.key
+    
 		SSjob.EquipRank(new_knight, "Death Knight", TRUE)
 		new_knight.forceMove(usr.loc) // Latejoin will place them in one of the latejoin locations,
 									  // so move the death knight to the vampyre lord AFTER applying the job
+
+		var/datum/game_mode/chaosmode/chaosmode = SSticker.mode
+		if (istype(chaosmode) && new_knight.mind)
+			for(var/datum/mind/vampire in chaosmode.vampires)
+				if (vampire.special_role == "Vampire Lord")
+					new_knight.mind.add_special_person(vampire.current, "#DC143C")
+
 		new_knight.regenerate_icons()
 
 // DEATH KNIGHT ANTAG
