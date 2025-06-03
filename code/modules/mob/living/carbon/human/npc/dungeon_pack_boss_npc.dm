@@ -129,7 +129,7 @@
 	icon_state = "GreatWolfAlive"
 	icon_living = "GreatWolfAlive"
 	icon_dead = "GreatWolfDead"
-	faction = list("orcs", "wolfs","dungeon","wolves")
+	faction = list("dungeon")
 	gender = NEUTER
 	speak_chance = 2
 	turns_per_move = 5

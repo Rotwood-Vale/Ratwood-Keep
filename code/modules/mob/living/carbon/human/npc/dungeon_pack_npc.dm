@@ -44,7 +44,7 @@
 		if(isliving(target) && target.client)
 			spawn(5 SECONDS)
 				if(target && aggressive)
-					use_combat_abilities()
+					UseSpecialAbility()
 
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/npc_idle()
@@ -58,8 +58,8 @@
 				target = L
 				break
 
-	if(target && get_dist(src, target) <= 2)
-		use_combat_abilities()
+	if(target && get_dist(src, target) <= 1)
+		UseSpecialAbility()
 		return
 
 	if((mobility_flags & MOBILITY_MOVE) && isturf(loc) && wander)
@@ -75,10 +75,74 @@
 // === Sub (ah~~~) classes ===
 
 // 1. Warrior
-/mob/living/carbon/human/species/human/northern/dungeon_base/warrior/after_creation()
-	..()
-	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_warrior)
-	possible_rmb_intents += /datum/rmb_intent/swift
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior
+	after_creation()
+		..()
+		equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_warrior)
+		possible_rmb_intents += /datum/rmb_intent/swift
+
+	use_combat_abilities()
+		if(src.stat != CONSCIOUS || world.time < next_cast)
+			return
+
+		next_cast = world.time + 100
+
+		var/mob/living/target = find_nearest_enemy(3)
+		if(target && get_dist(src, target) <= 3)
+			perform_warrior_strike(target)
+
+/proc/find_nearest_enemy(mob/living/self, range = 5)
+	var/closest
+	var/min_dist = 999
+	for(var/mob/living/L in view(range, self))
+		if(L == self || L.stat == DEAD || !islist(L.faction)) continue
+		if(disjoint_lists(L.faction, self.faction))
+			var/d = get_dist(self, L)
+			if(d < min_dist)
+				min_dist = d
+				closest = L
+	return closest
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/warrior/proc/perform_warrior_strike(mob/living/target)
+	if(!target || target.stat != CONSCIOUS  || get_dist(src, target) > 3)
+		return
+
+	src.say("Watch your steps!")
+	warrior_strike(src, target)
+
+/proc/warrior_strike(mob/living/user, mob/living/target)
+	if(!istype(target) || target.stat != CONSCIOUS  || get_dist(user, target) > 3)
+		return FALSE
+
+	target.visible_message(
+		span_warning("[target] takes a heavy kick to the leg!"),
+		span_userdanger("Your leg nearly buckles!")
+	)
+
+	if(prob(30))
+		target.Stun(20)
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
+
+	if(prob(30))
+		target.Stun(20)
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
+
+	if(prob(10))
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
+		var/obj/item/bodypart/leg_l = target.get_bodypart(BODY_ZONE_L_LEG)
+		var/datum/wound/W = new /datum/wound/dislocation()
+		W.apply_to_bodypart(leg_l)
+
+	if(prob(10))
+		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/leg_r = target.get_bodypart(BODY_ZONE_R_LEG)
+		var/datum/wound/W2 = new /datum/wound/dislocation()
+		W2.apply_to_bodypart(leg_r)
+
+	else
+		target.apply_damage(rand(5, 10), BRUTE, BODY_ZONE_L_LEG)
+
+	return TRUE
 
 /datum/outfit/job/roguetown/npc/dungeon_warrior
 	name = "Dungeon Warrior"
@@ -102,14 +166,21 @@
 		H.STAINT = 8
 		H.STAPER = 15
 
-/mob/living/carbon/human/species/human/northern/dungeon_base/warrior/use_combat_abilities()
+
+// 2. Paladin
+/mob/living/carbon/human/species/human/northern/dungeon_base/paladin/after_creation()
+	..()
+	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_paladin)
+	possible_rmb_intents += /datum/rmb_intent/swift
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/paladin/use_combat_abilities()
 	if(src.stat != CONSCIOUS || world.time < next_cast)
 		return
 
-	next_cast = world.time + 100
+	next_cast = world.time + 10
 
 	var/list/enemies_in_range = list()
-	for(var/mob/living/L in view(3, src))
+	for(var/mob/living/L in view(7, src))
 		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
 			enemies_in_range += L
 
@@ -117,18 +188,27 @@
 		return
 
 	var/mob/living/target = pick(enemies_in_range)
+	if(!target || target.stat != CONSCIOUS)
+		return
 
-	spawn(50) // 10 SECONDS
-		if(target && get_dist(src, target) <= 3)
-			src.say("Watch your steps!")
-			warrior_strike(src, target)
+	var/roll = rand(1, 3)
 
+	if(roll == 1 && get_dist(src, target) <= 7)
+		src.say("BE STILL!")
+		target.visible_message(
+			span_warning("[target] is gripped by unholy hands!"),
+			span_userdanger("You feel your limbs freeze under a dreadful presence!")
+		)
+		target.Stun(20)
 
-// 2. Paladin
-/mob/living/carbon/human/species/human/northern/dungeon_base/paladin/after_creation()
-	..()
-	equipOutfit(new /datum/outfit/job/roguetown/npc/dungeon_paladin)
-	possible_rmb_intents += /datum/rmb_intent/swift
+	else if(roll == 2 && get_dist(src, target) <= 3)
+		src.say("CRUSH THE HEAD!")
+		headstrike_dungeon(src, target)
+
+	else if(roll == 3 && src.stat == CONSCIOUS)
+		src.say("The gods mend our flesh!")
+		var/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/H = new(src)
+		H.cast(null, src)
 
 /datum/outfit/job/roguetown/npc/dungeon_paladin
 	name = "Dungeon Paladin"
@@ -158,43 +238,6 @@
 		H.STAEND = 14
 		H.STAINT = 8
 		H.STAPER = 17
-
-
-/mob/living/carbon/human/species/human/northern/dungeon_base/paladin/use_combat_abilities()
-	if(src.stat != CONSCIOUS || world.time < next_cast)
-		return
-
-	next_cast = world.time + 300
-
-	var/list/enemies_in_range = list()
-	for(var/mob/living/L in view(3, src))
-		if(L != src && L.stat != DEAD && (L.faction == null || disjoint_lists(L.faction, src.faction)))
-			enemies_in_range += L
-
-	if(!enemies_in_range.len)
-		return
-
-	var/mob/living/target = pick(enemies_in_range)
-
-	spawn(50) // 5 SECONDS
-		if(target && get_dist(src, target) <= 7)
-			src.say("BE STILL!")
-			target.visible_message(
-				span_warning("[target] is gripped by unholy hands!"),
-				span_userdanger("You feel your limbs freeze under a dreadful presence!")
-			)
-			target.Stun(20)
-
-	spawn(100) // 10 SECONDS
-		if(target && get_dist(src, target) <= 3)
-			src.say("CRUSH THE HEAD!")
-			headstrike_dungeon(src, target)
-
-	spawn(200) // 20 SECONDS
-		if(src.stat == CONSCIOUS)
-			src.say("The gods mend our flesh!")
-			var/obj/effect/proc_holder/spell/targeted/lesser_heal_npc/H = new(src)
-			H.cast(null, src)
 
 // 3. Cleric
 /mob/living/carbon/human/species/human/northern/dungeon_base/cleric
@@ -332,9 +375,6 @@
 
 	return TRUE
 
-
-//WE CANNOT APPLY FUCKING EFFECT UPON MOBS THANKS ROGUEBUILD
-
 /proc/warrior_strike(mob/living/user, mob/living/target)
 	if(!istype(target) || target.stat == DEAD || get_dist(user, target) > 3)
 		return FALSE
@@ -370,9 +410,8 @@
 	// Count it as a miss
 	else
 		target.apply_damage(rand(5, 10), BRUTE, BODY_ZONE_L_LEG)
-
-
 	return TRUE
+	
 /proc/display_results(mob/user, mob/living/target, msg_others, msg_self = null)
 	if(!target)
 		return
@@ -412,38 +451,6 @@
 
 	return TRUE
 
-
-/mob/living/carbon/human/species/human/northern/dungeon_base
-	aggressive = TRUE
-	mode = AI_IDLE
-	gender = MALE
-	faction = list("dungeon")
-	ambushable = FALSE
-	dodgetime = 20
-	defprob = 35
-	flee_in_pain = FALSE
-	wander = TRUE
-
-	var/next_cast = 0
-
-/mob/living/carbon/human/species/human/northern/dungeon_base/examine(mob/user)
-	to_chat(user, "You don't recognize this person.")
-	return
-
-/mob/living/carbon/human/species/human/northern/dungeon_base/Initialize()
-	. = ..()
-	set_species(/datum/species/human/northern)
-	spawn(1)
-		after_creation()
-
-/mob/living/carbon/human/species/human/northern/dungeon_base/after_creation()
-	..()
-	gender = pick(MALE, FEMALE)
-	job = "Wanderer"
-	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 
 /// ========== WARRIOR ==========
 
