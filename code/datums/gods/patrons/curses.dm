@@ -133,7 +133,7 @@
 	name = "Zizo's Curse"
 	description = "I can no longer distinguish reality from delusion."
 	trait = TRAIT_ZIZO_CURSE
-	var/atom/movable/screen/fullscreen/maniac/hallucinations
+	var/atom/movable/screen/fullscreen/serialkiller/hallucinations
 
 /datum/curse/graggar
 	name = "Graggar's Curse"
@@ -167,7 +167,7 @@
 
 /datum/curse/zizo/on_gain(mob/living/carbon/human/owner)
 	. = ..()
-	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
+	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/serialkiller)
 
 /datum/curse/zizo/on_loss(mob/living/carbon/human/owner)
 	. = ..()
@@ -249,10 +249,10 @@
 // Currently calls maniac hallucinations
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
-	handle_maniac_visions(owner, hallucinations)
-	handle_maniac_hallucinations(owner)
-	handle_maniac_floors(owner)
-	handle_maniac_walls(owner)
+	handle_serialkiller_visions(owner, hallucinations)
+	handle_serialkiller_hallucinations(owner)
+	handle_serialkiller_floors(owner)
+	handle_serialkiller_walls(owner)
 
 
 // cursed_freak_out() is freak_out() without stress adjustments

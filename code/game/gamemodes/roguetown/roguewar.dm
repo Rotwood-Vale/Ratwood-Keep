@@ -245,7 +245,7 @@
 	proab = 10 //35?
 #endif
 	if(prob(proab))
-		antag_candidates = get_players_for_role(ROLE_MANIAC)
+		antag_candidates = get_players_for_role(ROLE_SERIALKILLER)
 		var/datum/mind/villain = pick_n_take(antag_candidates)
 		if(villain)
 			var/found = FALSE
@@ -335,7 +335,7 @@
 	set waitfor = FALSE
 ///////////////// VILLAINS
 	for(var/datum/mind/traitor in pre_villains)
-		var/datum/antagonist/new_antag = new /datum/antagonist/maniac()
+		var/datum/antagonist/new_antag = new /datum/antagonist/serialkiller()
 		addtimer(CALLBACK(traitor, TYPE_PROC_REF(/datum/mind, add_antag_datum), new_antag), rand(10,100))
 		GLOB.pre_setup_antags -= traitor
 
@@ -375,15 +375,15 @@
 	var/num_villains = round((num_players() * 0.30)+1, 1)
 	if((SSticker.mode.villains.len + pre_villains.len) >= num_villains) //Upper cap for number of latejoin antagonists
 		return
-	if(ROLE_MANIAC in character.client.prefs.be_special)
-		if(!is_banned_from(character.ckey, list(ROLE_MANIAC)) && !QDELETED(character))
+	if(ROLE_SERIALKILLER in character.client.prefs.be_special)
+		if(!is_banned_from(character.ckey, list(ROLE_SERIALKILLER)) && !QDELETED(character))
 			if(age_check(character.client))
 				if(!(character.job in restricted_jobs))
 					if(prob(66))
 						add_latejoin_villain(character.mind)
 
 /datum/game_mode/chaosmode/proc/add_latejoin_villain(datum/mind/character)
-	var/datum/antagonist/maniac/new_antag = new /datum/antagonist/maniac()
+	var/datum/antagonist/serialkiller/new_antag = new /datum/antagonist/serialkiller()
 	character.add_antag_datum(new_antag)
 
 /datum/game_mode/chaosmode/proc/vampire_werewolf()

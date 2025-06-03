@@ -29,7 +29,7 @@
 	var/t_is = p_are()
 	var/obscure_name = FALSE
 	var/race_name = dna.species.name
-	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
+	var/datum/antagonist/serialkiller/maniac = user.mind?.has_antag_datum(/datum/antagonist/serialkiller)
 	if(maniac && (user != src))
 		race_name = "disgusting pig"
 
@@ -544,17 +544,10 @@
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
 
-	if(maniac)
-		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
-		if(heart)
-			var/inscryption_key = LAZYACCESS(heart.inscryption_keys, maniac) // SPECIFICALLY the key that WE wrote
-			if(inscryption_key && (inscryption_key in maniac.key_nums))
-				. += span_danger("[t_He] know[p_s()] [inscryption_key], I AM SURE OF IT!")
-
 	if(aghost_privilege)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 		if(heart && heart.maniacs)
-			for(var/datum/antagonist/maniac/M in heart.maniacs)
+			for(var/datum/antagonist/serialkiller/M in heart.maniacs)
 				var/K = LAZYACCESS(heart.inscryptions, M)
 				var/W = LAZYACCESS(heart.maniacs2wonder_ids, M)
 				var/N = M.owner?.name

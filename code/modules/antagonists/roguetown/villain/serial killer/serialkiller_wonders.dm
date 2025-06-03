@@ -51,14 +51,14 @@
 //Wonder structure
 /obj/structure/wonder
 	name = "wonder"
-	desc = "What a disgusting thing, what type of maniac would make this!?"
+	desc = "What a disgusting thing, what type of lunatic would make this!?"
 	icon = 'icons/roguetown/maniac/creations.dmi'
 	icon_state = "creation1"
 	resistance_flags = INDESTRUCTIBLE
 	density = TRUE
 	anchored = TRUE
 	/// The maniac that made this structure
-	var/datum/antagonist/maniac/dream_master
+	var/datum/antagonist/serial_killer/dream_master
 	/// Index of the wonder
 	var/wonder_id = 1
 	/// Wonder ID descriptor
@@ -77,7 +77,7 @@
 /obj/structure/wonder/OnCrafted(dirin, mob/user)
 	. = ..()
 	playsound(src, 'sound/villain/wonder.ogg', 100, vary = FALSE)
-	dream_master = user?.mind?.has_antag_datum(/datum/antagonist/maniac)
+	dream_master = user?.mind?.has_antag_datum(/datum/antagonist/serial_killer)
 	if(dream_master)
 		if(LAZYACCESS(dream_master.recipe_progression, dream_master.current_wonder))
 			user.mind.forget_crafting_recipe(dream_master.recipe_progression[dream_master.current_wonder])
@@ -92,15 +92,12 @@
 			if(4)
 				wonder_id_desc = "FOURTH"
 		if(wonder_id >= 4)
-			if(GLOB.maniac_highlander) // Has a Maniac already TRIUMPHED?
-				to_chat(user, span_danger("IT WAS ALL FOR NAUGHT! I CAN'T WAKE UP!"))
-			else
-				to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
-				dream_master.agony(user)
-				for(var/mob/living/carbon/C in GLOB.carbon_list - user) // Notify any other maniacs
-					var/datum/antagonist/maniac/competitor = C.mind?.has_antag_datum(/datum/antagonist/maniac)
-					if(competitor)
-						to_chat(C, span_userdanger("The WORLD is crumbling. I must make HASTE and SUM the keys!"))
+			to_chat(user, span_userdanger("I must SUM the keys. I am WAKING up!"))
+			dream_master.agony(user)
+			for(var/mob/living/carbon/C in GLOB.carbon_list - user) // Notify any other maniacs
+				var/datum/antagonist/serialkiller/competitor = C.mind?.has_antag_datum(/datum/antagonist/serialkiller)
+				if(competitor)
+					to_chat(C, span_userdanger("The WORLD is crumbling. I must make HASTE and SUM the keys!"))
 		key_num = LAZYACCESS(dream_master.num_keys, wonder_id)
 		key_text = LAZYACCESS(dream_master.key_nums, wonder_id)
 		name = "Wonder[key_text ? " [key_text]" : ""]"
@@ -116,7 +113,7 @@
 /obj/structure/wonder/examine(mob/user)
 	. = ..()
 	if(!QDELETED(dream_master))
-		var/maniac_datum = user.mind?.has_antag_datum(/datum/antagonist/maniac)
+		var/maniac_datum = user.mind?.has_antag_datum(/datum/antagonist/serial_killer)
 		if(isadminobserver(user))
 			var/datum/mind/maniac_mind
 			if(!QDELETED(dream_master.owner))
@@ -145,7 +142,7 @@
 	var/list/viewers = view(7, src)
 	if(!QDELETED(dream_master))
 		for(var/mob/living/carbon/human/victim in viewers)
-			var/manniaq = victim.mind?.has_antag_datum(/datum/antagonist/maniac)
+			var/manniaq = victim.mind?.has_antag_datum(/datum/antagonist/serialkiller)
 			if(!victim.mind || (victim.stat == DEAD) || manniaq)
 				continue
 			var/obj/item/organ/heart/heart = victim.getorganslot(ORGAN_SLOT_HEART)
