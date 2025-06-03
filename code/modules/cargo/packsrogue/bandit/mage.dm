@@ -74,3 +74,8 @@
 	name = "bottle of mercury"
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/mercury)
+
+/datum/supply_pack/rogue/bandit/Mage/apprenticespellbook
+	name = "Apprentice spellbook"
+	cost = 100
+	contains = list(/obj/item/book/granter/spellbook/apprentice)

@@ -6,6 +6,11 @@
 //helmet
 
 
+/datum/supply_pack/rogue/bandit/Mage_first_supply_pack/adeptspellbook
+	name = "Adept spellbook"
+	cost = 200
+	contains = list(/obj/item/book/granter/spellbook/adept)
+
 /datum/supply_pack/rogue/bandit/Mage/Mage_first_supply_pack/hhelmet
 	name = "Horned cap"
 	cost = 35
