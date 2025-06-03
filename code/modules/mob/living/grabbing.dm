@@ -188,7 +188,8 @@
 			if(usr.buckled)
 				to_chat(user, span_warning("I can't be riding a mount."))
 				return
-			else
+			var/obj/item/held_item = M.get_active_held_item()
+			if(!istype(held_item,/obj/item/rogueweapon) && M.cmode)
 				user.stamina_add(rand(5,15))
 				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
@@ -197,6 +198,8 @@
 				else
 					M.visible_message(span_warning("[user] tries to shove [M]!"), \
 									span_danger("[user] tries to shove me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+			else
+				to_chat(user, span_warning("I can't shove them down while they're armed."))
 		if(/datum/intent/grab/disarm)
 			var/obj/item/I
 			if(sublimb_grabbed == BODY_ZONE_PRECISE_L_HAND && M.active_hand_index == 1)
