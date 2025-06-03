@@ -170,7 +170,7 @@
 	leashable = TRUE
 
 /obj/item/clothing/neck/roguetown/psicross
-	var corruptable = TRUE
+	var/corruptable = TRUE
 
 	name = "psycross"
 	desc = "An iron cross of PSYDON, whose will is like tempered metal and lives on in the eternal war of his Inquisition. In His final moments, He struck a bargain with mankind: never allow His name to fade from the earth, and He will one day return."
@@ -182,7 +182,6 @@
 	sellprice = 10
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/blacksmithing
-
 
 /obj/item/clothing/neck/roguetown/psicross/bloodied
 	name = "defiled psycross"

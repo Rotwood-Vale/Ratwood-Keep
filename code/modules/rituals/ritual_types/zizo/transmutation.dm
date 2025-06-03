@@ -130,7 +130,7 @@
 
 
 /datum/ritual/zizo/empowerrobes
-	name = "Summon Robes"
+	name = "Empower Robes"
 	circle = "Transmutation"
 	difficulty = 2
 	favor_cost = 25
@@ -147,4 +147,22 @@
 	S.start()
 	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood/empowered(C)
 	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe/empowered(C)
+	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
+/datum/ritual/zizo/empowerrobes
+	name = "Empower Dagger"
+	circle = "Transmutation"
+	difficulty = 3
+	favor_cost = 25
+	revealchance = 15
+	n_req = /obj/item/clothing/neck/roguetown/psicross/bloodied
+	s_req = /obj/item/natural/artifact
+	center_requirement = /obj/item/rogueweapon/huntingknife/idagger/steel/
+	function = /proc/empowerdagger
+
+/proc/empowerdagger(mob/user, turf/C)
+	var/datum/effect_system/spark_spread/S = new(C)
+	S.set_up(1, 1, C)
+	S.start()
+	new /obj/item/rogueweapon/huntingknife/idagger/steel/cult(C)
 	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
