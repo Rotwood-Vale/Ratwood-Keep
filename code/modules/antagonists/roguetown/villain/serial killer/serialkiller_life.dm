@@ -66,7 +66,7 @@
 	if(prob(1))
 		speech = "[rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)]"
 	else
-		speech = pick_list_replacements("maniac.json", "dreamer_object")
+		speech = pick_list_replacements("serial_killer.json", "objects")
 		speech = replacetext(speech, "%OWNER", "[target.real_name]")
 	var/language = target.get_random_understood_language()
 	var/message = target.compose_message(speaker, language, speech)

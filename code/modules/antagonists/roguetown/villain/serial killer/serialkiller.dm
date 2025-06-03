@@ -67,7 +67,7 @@
 
 /datum/antagonist/serial_killer/New()
 	set_keys()
-	load_strings_file("maniac.json")
+	load_strings_file("serial_killer.json")
 	return ..()
 
 /datum/antagonist/serial_killer/Destroy()
