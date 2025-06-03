@@ -350,6 +350,61 @@
 	can_assin = TRUE
 	var/last_used = 0
 
+/obj/item/rogueweapon/huntingknife/elvish/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 100)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/s_user = user
+		var/mob/living/carbon/human/H = target
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(V)
+			if(V.disguised)
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.Stun(20)
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			if(V_lord.vamplevel < 4 && !V)
+				H.Knockdown(10)
+				H.Paralyze(10)
+				to_chat(H, span_userdanger("I'm hit by my BANE!"))
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				src.last_used = world.time
+			if(V_lord.vamplevel == 4 && !V)
+				s_user.Stun(10)
+				s_user.Paralyze(10)
+				s_user.adjustFireLoss(25)
+				s_user.fire_act(1,10)
+				to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
+				H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM THE ANCIENT!"))
+		if(W && W.transformed == TRUE)
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))
+			src.last_used = world.time
+
 /obj/item/rogueweapon/huntingknife/elvish/Initialize()
 	. = ..()
 	var/datum/magic_item/mundane/silver/effect = new
