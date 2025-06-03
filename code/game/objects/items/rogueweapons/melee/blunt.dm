@@ -4,7 +4,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "mace"
-	desc = "Helps anyone fall asleep."
+	desc = "Helps anyone fall asleep. \ It is made of iron."
 	icon_state = "mace"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	item_state = "mace_greyscale"
@@ -56,7 +56,7 @@
 	force = 25
 	force_wielded = 30
 	name = "bell ringer"
-	desc = "This heavy hammer is used to ring the church's bell."
+	desc = "This heavy hammer is used to ring the church's bell. \ It is made of sturdy steel."
 	icon_state = "churchmace"
 	wbalance = -1
 	smeltresult = /obj/item/ingot/steel
@@ -156,7 +156,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale)
 	gripped_intents = null
 	name = "warhammer"
-	desc = "Made to punch through armor and skull alike."
+	desc = "Made to punch through armor and skull alike.\ It is made of iron."
 	icon_state = "iwarhammer"
 	wbalance = -1
 	smeltresult = /obj/item/ingot/iron
@@ -274,12 +274,12 @@
 
 /obj/item/rogueweapon/mace/cudgel
 	name = "cudgel"
-	desc = "A stubby little club for brigands."
+	desc = "A stubby little club for brigands. Fitted with iron orbs to increase its head-bashing ability."
 	force = 25
 	icon_state = "cudgel"
 	force_wielded = 25
 	gripped_intents = null
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	wbalance = 0
@@ -368,7 +368,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/rangedthrust)
 	name = "Goedendag"
-	desc = "Thick club capped with an iron spike. Good morning."
+	desc = "Thick club capped with an iron spike. Good dae."
 	icon_state = "goedendag"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	sharpness = IS_BLUNT
@@ -376,7 +376,7 @@
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	associated_skill = /datum/skill/combat/maces
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	parrysound = "parrywood"
 	swingsound = BLUNTWOOSH_MED
 	minstr = 10
@@ -401,7 +401,7 @@
 
 /obj/item/rogueweapon/mace/goden/steel
 	name = "grand mace"
-	desc = "A massive mace that can crush any opposition with ease."
+	desc = "A massive mace that can crush any opposition with ease. \ It is made of sturdy steel."
 	icon_state = "polemace"
 	force = 15
 	force_wielded = 35

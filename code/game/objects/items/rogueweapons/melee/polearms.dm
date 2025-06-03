@@ -117,86 +117,10 @@
 				user.adjust_fire_stacks(5)
 				user.IgniteMob()
 
-/obj/item/rogueweapon/woodstaff/aries/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+/obj/item/rogueweapon/woodstaff/aries/Initialize()
 	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(V)
-			if(V.disguised)
-				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(40)
-				H.fire_act(1,10)
-			else
-				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(40)
-				H.fire_act(1,10)
-		if(V_lord)
-			to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(40)
-			H.fire_act(1,10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
-
-/obj/item/rogueweapon/woodstaff/aries/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
-	if(world.time < src.last_used + 100)
-		to_chat(user, span_notice("The silver effect is on cooldown."))
-		return
-
-	. = ..()
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		if(V)
-			if(V.disguised)
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
-				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-			else
-				H.Stun(20)
-				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(25)
-				H.fire_act(1,10)
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
-		if(V_lord)
-			H.Knockdown(10)
-			H.Paralyze(10)
-			to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-			src.last_used = world.time
-		if(W && W.transformed == TRUE)
-			H.adjustFireLoss(25)
-			H.Paralyze(10)
-			H.Stun(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-			to_chat(H, span_userdanger("I'm hit by my BANE!"))
-			src.last_used = world.time
-
+	var/datum/magic_item/mundane/silver/effect = new
+	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rogueweapon/spear
 	force = 18
@@ -252,7 +176,7 @@
 	force = 12
 	force_wielded = 25
 	name = "improvised billhook"
-	desc = "Looks hastily made."
+	desc = "Looks hastily made. \ It is made of iron."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
@@ -358,7 +282,7 @@
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 100
 
 /datum/intent/spear/thrust/steel
 	penfactor = 50
@@ -373,7 +297,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
-	desc = "A heavy polearm with a hammer on its end, topped with a spike."
+	desc = "A heavy polearm with a hammer on its end, topped with a spike. \ It is made of sturdy steel."
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -405,11 +329,11 @@
 
 /obj/item/rogueweapon/eaglebeak/lucerne
 	name = "lucerne"
-	desc = "A polehammer with a sharp pointy end."
+	desc = "A polehammer with a sharp pointy end. \ It is made of iron."
 	icon_state = "polehammer"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 100
 
 /datum/intent/spear/thrust/eaglebeak
 	penfactor = 20
@@ -444,7 +368,7 @@
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	name = "greatsword"
-	desc = "Might be able to chop anything in half!"
+	desc = "Might be able to chop anything in half! \ It is made of sturdy steel."
 	icon_state = "gsw"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -475,7 +399,7 @@
 
 /obj/item/rogueweapon/greatsword/zwei
 	name = "zweihander"
-	desc = "This is much longer than a common greatsword, and well balanced too!"
+	desc = "This is much longer than a common greatsword, and well balanced too! \ It is made of iron."
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
@@ -491,7 +415,7 @@
 /obj/item/rogueweapon/estoc
 	name = "estoc"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
-	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
+	gaps in an opponent's armor. The hilt is wrapped tight in black leather. \ It is made of sturdy steel."
 	icon_state = "estoc"
 	force = 12
 	force_wielded = 25

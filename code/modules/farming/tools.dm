@@ -191,6 +191,7 @@
 	experimental_onback = FALSE
 	experimental_onhip = FALSE
 	gripspriteonmob = TRUE
+	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	blade_dulling = DULLING_BASHCHOP

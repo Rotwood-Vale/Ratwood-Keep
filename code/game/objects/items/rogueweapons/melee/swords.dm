@@ -70,7 +70,7 @@
 
 /obj/item/rogueweapon/sword/decorated
 	name = "engraved sword"
-	desc = "A valuable sword for celebrations and rites."
+	desc = "A valuable sword for celebrations and rites. \ The blade is mostly steel."
 	icon_state = "decsword1"
 	sellprice = 140
 
@@ -119,12 +119,12 @@
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
 	name = "arming sword"
-	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
+	desc = "A short steel arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "shortsword"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null
 	swingsound = BLADEWOOSH_SMALL
-	minstr = 6
+	minstr = 5
 	wdefense = 4
 	can_cdg = TRUE
 	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
@@ -140,7 +140,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "bastard sword"
-	desc = "A bastard sword that can chop with ease."
+	desc = "A bastard sword that can chop with ease. \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -226,7 +226,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "judgement"
-	desc = "A sword with a silver grip, a topaz gem hilt and a steel blade, what more could a noble ask for?"
+	desc = "A sword with a silver grip, a topaz gem hilt and a steel blade, what more could a noble ask for? \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -268,7 +268,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "crimson fang"
-	desc = "A strange long sword with a green metal composition."
+	desc = "A strange long sword with a green metal composition. \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -346,7 +346,7 @@
 	icon_state = "Kmesser"
 	item_state = "Kmesser"
 	name = "langesmesser"
-	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
+	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency. \ It is made of sturdy steel."
 
 /obj/item/rogueweapon/sword/long/marlin
 	force = 26
@@ -419,7 +419,7 @@
 	gripped_intents = list(/datum/intent/axe/chop)
 	icon_state = "exe"
 	name = "execution sword"
-	desc = ""
+	desc = "This large flat-edged blade is specifically designed to make heads roll. \ It is made of sturdy steel."
 	minstr = 10
 
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
@@ -483,8 +483,8 @@
 		..()
 
 /obj/item/rogueweapon/sword/iron/short
-	name = "short sword"
-	desc = "An archaic iron sword."
+	name = "arming sword"
+	desc = "A short iron arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "iswordshort"
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	gripped_intents = null
@@ -508,7 +508,7 @@
 
 /obj/item/rogueweapon/sword/iron/messer
 	name = "iron messer"
-	desc = "A single edged blade to slice and chop with."
+	desc = "A single edged blade to slice and chop with. \ It is made of iron."
 	icon_state = "imesser"
 	max_integrity = 125
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
@@ -519,14 +519,14 @@
 
 /obj/item/rogueweapon/sword/iron/messer/steel
 	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
-	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
+	desc = "A single edged blade to slice and chop with. \ It is made of sturdy steel."
 	icon_state = "smesser"
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 175 //A stout blade that will last a long time before breakage
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
-	desc = "A swift sabre. Parries realiantly and strikes swiftly"
+	desc = "A swift sabre. Parries realiantly and strikes swiftly. \ It is made of sturdy steel."
 	icon_state = "saber"
 	max_integrity = 230
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
@@ -548,7 +548,7 @@
 /obj/item/rogueweapon/sword/rapier
 	name = "rapier"
 	desc = "A duelist's weapon derived from western battlefield instruments, it features a tapered \
-	blade with a specialized stabbing tip."
+	blade with a specialized stabbing tip. \ It is made of sturdy steel."
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
 	max_integrity = 215
@@ -654,7 +654,7 @@
 /obj/item/rogueweapon/sword/rapier/dec
 	desc = "A fine duelist's instrument with a tapered thrusting blade. Its hilt is gilt in gold and inlaid, \
 	and its blade bears twin inscriptions on either side. One reads, 'CAST IN THE NAME OF GODS' while the \
-	obverse reads, 'YE NOT GUILTY'."
+	obverse reads, 'YE NOT GUILTY'. \ It is made of sturdy steel."
 	icon_state = "decrapier"
 	sellprice = 140
 
@@ -663,7 +663,7 @@
 	name = "sword of the Mad Duke"
 	desc = "A noble heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
 	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
-	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders."
+	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders. \ It is made of sturdy steel."
 	icon_state = "lordrap"
 	sellprice = 300
 	max_integrity = 300
@@ -682,7 +682,7 @@
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven design."
+	desc = "This finely crafted saber is of elven design. \ It shines with the brilliance of silver."
 	icon_state = "esaber"
 	item_state = "esaber"
 	smeltresult = /obj/item/ingot/silver
@@ -698,7 +698,7 @@
 
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
-	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite. \ It is made of sturdy steel."
 	icon_state = "saber"
 	max_integrity = 150
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)

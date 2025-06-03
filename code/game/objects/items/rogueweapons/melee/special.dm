@@ -225,7 +225,7 @@
 	force = 16
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
 	name = "katar"
-	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting"
+	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting. \ It is made of sturdy steel."
 	icon_state = "katar"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	gripsprite = FALSE
