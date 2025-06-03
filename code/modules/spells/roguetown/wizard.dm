@@ -14,9 +14,7 @@ Court magos has a total of 17 points, To allow for picking of their 'strongest' 
 Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
 Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
 -Radiantflash
-
-Addendum from Yawet, the above is partly false pending rework. Magos Apprentice can get greater fireball/meteor storm/sundering lightning by night two.
-Please consider this before adding future spells of similar cost, and ensure they aren't Ei'Nath levels. Thank you!*/
+*/
 //A spell to choose new spells, upon spawning or gaining levels - NOTE: Please keep this spell at the top of the file to make it better for organization -RadiantFlash
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
@@ -25,7 +23,7 @@ Please consider this before adding future spells of similar cost, and ensure the
 	overlay_state = "book1"
 	chargedrain = 0
 	chargetime = 0
-	var/maxspells = 12 //So admins can abuse. Also easier management
+	var/maxspells = 12 //Handles how many spells you can have (12 is the maximum, and mages always start with 2 spells, so in reality you will want to add 2 to any number you cap mage spells at, e.g 5 is actually 3 learnable spells)
 
 /obj/effect/proc_holder/spell/invoked/learnspell/weak
 	maxspells = 5 //3 max.
