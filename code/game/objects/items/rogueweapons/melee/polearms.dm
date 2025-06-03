@@ -117,6 +117,54 @@
 				user.adjust_fire_stacks(5)
 				user.IgniteMob()
 
+/obj/item/rogueweapon/woodstaff/aries/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
+	if(world.time < src.last_used + 100)
+		to_chat(user, span_notice("The silver effect is on cooldown."))
+		return
+
+	. = ..()
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+		if(V)
+			if(V.disguised)
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.visible_message("<font color='white'>The silver weapon manifests the [H] curse!</font>")
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+			else
+				H.Stun(20)
+				to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+				H.Knockdown(10)
+				H.Paralyze(10)
+				H.adjustFireLoss(25)
+				H.fire_act(1,10)
+				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+				src.last_used = world.time
+		if(V_lord)
+			H.Knockdown(10)
+			H.Paralyze(10)
+			to_chat(H, span_userdanger("I'm hit by BLESSED SILVER!"))
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			src.last_used = world.time
+		if(W && W.transformed == TRUE)
+			H.adjustFireLoss(25)
+			H.Paralyze(10)
+			H.Stun(10)
+			H.adjustFireLoss(25)
+			H.fire_act(1,10)
+			to_chat(H, span_userdanger("I'm hit by my BANE!"))
+			src.last_used = world.time
+
+
+
 /obj/item/rogueweapon/woodstaff/aries/Initialize()
 	. = ..()
 	var/datum/magic_item/mundane/silver/effect = new
