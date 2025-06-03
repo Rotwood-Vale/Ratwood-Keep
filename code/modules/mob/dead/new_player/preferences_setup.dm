@@ -19,7 +19,6 @@
 	eye_color = random_eye_color()
 	features = pref_species.get_random_features()
 	body_markings = pref_species.get_random_body_markings(features)
-	accessory = "Nothing"
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
 
