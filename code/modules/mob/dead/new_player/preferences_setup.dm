@@ -13,7 +13,7 @@
 	if(gender == FEMALE)
 		voice_type = VOICE_TYPE_FEM
 		
-	age = AGE_ADULT
+	age = pick(pref_species.possible_ages)
 	var/list/skins = pref_species.get_skin_list()
 	skin_tone = skins[pick(skins)]
 	eye_color = random_eye_color()
