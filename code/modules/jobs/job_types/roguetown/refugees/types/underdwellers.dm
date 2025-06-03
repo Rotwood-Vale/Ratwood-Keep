@@ -109,7 +109,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE) //We want these guys to be atleast somewhat more redeeming now that their speed bonus is gone, and their spell learning is FUCKED.
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -126,12 +126,11 @@
 			cloak = /obj/item/clothing/cloak/tribal
 			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			H.change_stat("strength", -1)
-			H.change_stat("speed", 1)
 			H.change_stat("intelligence", 2)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.mind.adjust_spellpoints(1)
-			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.adjust_spellpoints(-1) //You start with a malus.
+			H.mind.AddSpell(new SPELL_LEARNSPELL_WEAK)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_churchling(H)
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
