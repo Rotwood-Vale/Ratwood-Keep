@@ -13,6 +13,7 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
+
 	rogue_enabled = TRUE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
@@ -24,27 +25,12 @@
 		TRAIT_SCHIZO_AMBIENCE,
 		TRAIT_DARKVISION,
 	)
-	/// Traits that only get applied in the final sequence
-	var/static/list/final_traits = list(
-		TRAIT_MANIAC_AWOKEN,
-		TRAIT_SCREENSHAKE,
-	)
-	/// Cached old stats in case we get removed
-	var/STASTR
-	var/STACON
-	var/STAEND
+
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
 		/obj/item/rogueweapon/huntingknife/cleaver/combat,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special,
-	)
-	/// Wonder recipes
-	var/static/list/recipe_progression = list(
-		/datum/crafting_recipe/roguetown/structure/wonder/first,
-		/datum/crafting_recipe/roguetown/structure/wonder/second,
-		/datum/crafting_recipe/roguetown/structure/wonder/third,
-		/datum/crafting_recipe/roguetown/structure/wonder/fourth,
 	)
 	/// Key number > Key text
 	var/list/num_keys = list()
@@ -78,40 +64,36 @@
 	. = ..()
 	owner.special_role = ROLE_SERIALKILLER
 	owner.special_items["Surgical Kit"] = /obj/item/storage/backpack/rogue/backpack/surgery
+
 	if(owner.current)
+
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.cmode_music = 'sound/music/combat_maniac2.ogg'
-			owner.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE)
-			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
-			if(heart) // clear any inscryptions, in case of being made maniac midround
-				heart.inscryptions = list()
-				heart.inscryption_keys = list()
-				heart.maniacs2wonder_ids = list()
-				heart.maniacs = list()
 			dreamer.remove_stress(/datum/stressevent/saw_wonder)
 			dreamer.remove_curse(/datum/curse/zizo, TRUE)
-		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
+
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
+
+			owner.current.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/wonder)
+
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/serialkiller)
-	LAZYINITLIST(owner.learned_recipes)
-	owner.learned_recipes |= recipe_progression[1]
+
 	forge_villain_objectives()
+
 	if(length(objectives))
 		SEND_SOUND(owner.current, 'sound/villain/dreamer_warning.ogg')
 		to_chat(owner.current, span_danger("[antag_memory]"))
 		owner.announce_objectives()
+
 	START_PROCESSING(SSobj, src)
 
 /datum/antagonist/serial_killer/on_removal()
 	STOP_PROCESSING(SSobj, src)
 	if(owner.current)
 		if(!silent)
-			to_chat(owner.current,span_danger("I am no longer a MANIAC!"))
+			to_chat(owner.current,span_danger("I am no longer a SERIAL KILLER!"))
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			var/client/clinet = dreamer?.client
@@ -119,12 +101,9 @@
 				animate(clinet, dreamer.pixel_y)
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
-		for(var/trait in final_traits)
-			REMOVE_TRAIT(owner.current, trait, "[type]")
 		owner.current.clear_fullscreen("maniac")
 	QDEL_LIST(wonders_made)
 	wonders_made = null
-	owner.learned_recipes -= recipe_progression
 	owner.special_role = null
 	hallucinations = null
 	return ..()
@@ -160,8 +139,6 @@
 	SEND_SOUND(dreamer, im_sick)
 	dreamer.overlay_fullscreen("dream", /atom/movable/screen/fullscreen/dreaming)
 	dreamer.overlay_fullscreen("wakeup", /atom/movable/screen/fullscreen/dreaming/waking_up)
-	for(var/trait in final_traits)
-		ADD_TRAIT(dreamer, trait, "[type]")
 	waking_up = TRUE
 
 /datum/antagonist/serial_killer/proc/wake_up()

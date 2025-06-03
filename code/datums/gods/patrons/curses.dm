@@ -246,7 +246,7 @@
 		owner.cursed_freak_out()
 		break
 
-// Currently calls maniac hallucinations
+// Currently calls serial killer hallucinations
 /datum/curse/zizo/on_life(mob/living/carbon/human/owner)
 	. = ..()
 	handle_serialkiller_visions(owner, hallucinations)
