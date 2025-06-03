@@ -167,7 +167,7 @@
 
 /datum/curse/zizo/on_gain(mob/living/carbon/human/owner)
 	. = ..()
-	hallucinations = owner.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/serialkiller)
+	hallucinations = owner.overlay_fullscreen("serial killer", /atom/movable/screen/fullscreen/serialkiller)
 
 /datum/curse/zizo/on_loss(mob/living/carbon/human/owner)
 	. = ..()

@@ -2,7 +2,7 @@
 //NOTE: Wonders are named after their proper keys, the wonder structure handles that code
 /datum/crafting_recipe/roguetown/structure/wonder
 	name = "bloody totem (3 bodyparts, 1 stomach, 1 liver, 1 tongue, 2 eyes, 1 head)"
-	result = /obj/structure/wonder
+	result = /obj/structure/totem
 	reqs = list(
 		/obj/item/bodypart = 3,
 		/obj/item/organ/stomach = 1,
@@ -18,32 +18,30 @@
 	always_available = FALSE
 
 //Wonder structure
-/obj/structure/wonder
+/obj/structure/totem
 	name = "bloody totem"
 	desc = "What a disgusting thing, what type of lunatic would make this!?"
 	icon = 'icons/roguetown/maniac/creations.dmi'
 	icon_state = "creation1"
 	density = TRUE
 	anchored = TRUE
-	/// The maniac that made this structure
-	var/datum/antagonist/serial_killer/SK
 
-/obj/structure/wonder/Destroy()
+/obj/structure/totem/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/structure/wonder/Initialize()
+/obj/structure/totem/Initialize()
 	. = ..()
 	playsound(src, 'sound/villain/wonder.ogg', 100, vary = FALSE)
 	icon_state = "creation[rand(1, 4)]"
 	START_PROCESSING(SSobj, src)
 
-/obj/structure/wonder/OnCrafted(dirin, mob/user)
+/obj/structure/totem/OnCrafted(dirin, mob/user)
 	. = ..()
-	user.log_message("crafted Serial Killer Wonder.", LOG_GAME)
+	user.log_message("crafted Serial Killer Totem.", LOG_GAME)
 
-// Give visions to the person who examines the wonder.
-/obj/structure/wonder/examine(mob/user)
+// Give visions to the person who examines the totem.
+/obj/structure/totem/examine(mob/user)
 	. = ..()
 
 	if(user.stat == DEAD || isobserver(user))
@@ -58,12 +56,11 @@
 
 	mark_victim(user)
 
-// The wonder also randomly gives visions to people around it, so it cant be ignored.
-/obj/structure/wonder/process()
+/obj/structure/totem/process()
 	. = ..()
 	var/list/viewers = view(7, src)
 	for(var/mob/living/carbon/human/victim in viewers)
-		var/is_SK = victim.mind?.has_antag_datum(/datum/antagonist/serialkiller)
+		var/is_SK = victim.mind?.has_antag_datum(/datum/antagonist/serial_killer)
 
 		// Skip logged off players
 		if(!victim.mind)
@@ -75,7 +72,8 @@
 		mark_victim(victim)
 		break
 
-/obj/structure/wonder/proc/mark_victim(mob/living/carbon/human/V)
+// Curse victim with stress and temporary visions
+/obj/structure/totem/proc/mark_victim(mob/living/carbon/human/V)
 
 	V.add_stress(/datum/stressevent/saw_wonder)
 	V.add_curse(/datum/curse/zizo, TRUE)

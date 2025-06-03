@@ -125,11 +125,11 @@
 	if(!target?.client)
 		return
 	if(caught_dreamer)
-		var/datum/antagonist/serialkiller/maniac = target.mind.has_antag_datum(/datum/antagonist/serialkiller)
+		var/datum/antagonist/serial_killer/SK = target.mind.has_antag_datum(/datum/antagonist/serial_killer)
 		target.Stun(rand(2, 4) SECONDS)
 		var/pain_message = pick("NO!", "THEY GOT ME!", "AGH!")
 		to_chat(target, span_userdanger("[pain_message]"))
-		if(!maniac) //If they're a maniac, they don't freak out and get knocked down, they still get stunned. 
+		if(!SK) //If they're a serial killer, they don't freak out and get knocked down, they still get stunned. 
 			target.freak_out()
 			target.Knockdown(10)
 	sleep(chase_wait)
@@ -165,9 +165,9 @@
 	for(var/turf/closed/wall in view(target))
 		if(!prob(4))
 			continue
-		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_wall), wall, target)
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_wall), wall, target)
 
-/proc/handle_maniac_wall(turf/closed/wall, mob/living/target)
+/proc/handle_serialkiller_wall(turf/closed/wall, mob/living/target)
 	var/image/shit = image('icons/roguetown/maniac/shit.dmi', wall, "splat[rand(1,8)]")
 	target.client?.images += shit
 	var/offset = pick(-1, 1, 2)
@@ -178,26 +178,3 @@
 	animate(shit, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
 	target.client?.images -= shit
-
-/datum/antagonist/serialkiller/proc/handle_waking_up(mob/living/dreamer)
-	if(!dreamer.client)
-		return
-	if(prob(2.5))
-		dreamer.emote("laugh")
-	//Floors go crazier go stupider
-	for(var/turf/open/floor in view(dreamer))
-		if(!prob(20))
-			continue
-		INVOKE_ASYNC(src, PROC_REF(handle_waking_up_floor), floor, dreamer)
-
-/datum/antagonist/serialkiller/proc/handle_waking_up_floor(turf/open/floor, mob/living/dreamer)
-	var/mutable_appearance/fake_floor = image('icons/roguetown/maniac/dreamer_floors.dmi', floor,  pick("rcircuitanim", "gcircuitanim"), floor.layer + 0.1)
-	dreamer.client.images += fake_floor
-	var/offset = pick(-1, 1, 2)
-	var/disappearfirst = 3 SECONDS
-	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
-	sleep(disappearfirst)
-	var/disappearsecond = 3 SECONDS
-	animate(fake_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
-	sleep(disappearsecond)
-	dreamer.client?.images -= fake_floor

@@ -177,7 +177,7 @@
 					pick_werewolves()
 					pick_vampires()
 			if(3)
-				pick_maniac()
+				pick_serial_killer()
 
 
 	return TRUE
@@ -229,7 +229,7 @@
 			GLOB.pre_setup_antags += antag
 		restricted_jobs = list()
 
-/datum/game_mode/chaosmode/proc/pick_maniac()
+/datum/game_mode/chaosmode/proc/pick_serial_killer()
 	restricted_jobs = list("Lord",
 	"Prisoner",
 	"Dungeoneer",
@@ -261,7 +261,7 @@
 			if(found)
 				allantags -= villain
 				pre_villains += villain
-				villain.special_role = "maniac"
+				villain.special_role = "serial killer"
 				villain.restricted_roles = restricted_jobs.Copy()
 				testing("[key_name(villain)] has been selected as the [villain.special_role]")
 				log_game("[key_name(villain)] has been selected as the [villain.special_role]")
@@ -335,7 +335,7 @@
 	set waitfor = FALSE
 ///////////////// VILLAINS
 	for(var/datum/mind/traitor in pre_villains)
-		var/datum/antagonist/new_antag = new /datum/antagonist/serialkiller()
+		var/datum/antagonist/new_antag = new /datum/antagonist/serial_killer()
 		addtimer(CALLBACK(traitor, TYPE_PROC_REF(/datum/mind, add_antag_datum), new_antag), rand(10,100))
 		GLOB.pre_setup_antags -= traitor
 
@@ -383,7 +383,7 @@
 						add_latejoin_villain(character.mind)
 
 /datum/game_mode/chaosmode/proc/add_latejoin_villain(datum/mind/character)
-	var/datum/antagonist/serialkiller/new_antag = new /datum/antagonist/serialkiller()
+	var/datum/antagonist/serial_killer/new_antag = new /datum/antagonist/serial_killer()
 	character.add_antag_datum(new_antag)
 
 /datum/game_mode/chaosmode/proc/vampire_werewolf()

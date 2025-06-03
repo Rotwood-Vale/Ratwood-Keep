@@ -1,8 +1,8 @@
 
 /datum/antagonist/serial_killer
 	name = "Serial Killer"
-	roundend_category = "maniacs"
-	antagpanel_category = "Maniac"
+	roundend_category = "serial killer"
+	antagpanel_category = "Serial Killer"
 	antag_memory = "<b>Recently I've been visited by a lot of VISIONS. They're all about another WORLD, ANOTHER life. I will do EVERYTHING to know the TRUTH, and return to the REAL world.</b>"
 	job_rank = ROLE_SERIALKILLER
 	antag_hud_type = ANTAG_HUD_TRAITOR
@@ -78,7 +78,7 @@
 
 			owner.current.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/wonder)
 
-		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/serialkiller)
+		hallucinations = owner.current.overlay_fullscreen("serial killer", /atom/movable/screen/fullscreen/serialkiller)
 
 	forge_villain_objectives()
 
@@ -101,7 +101,7 @@
 				animate(clinet, dreamer.pixel_y)
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
-		owner.current.clear_fullscreen("maniac")
+		owner.current.clear_fullscreen("serial killer")
 	QDEL_LIST(wonders_made)
 	wonders_made = null
 	owner.special_role = null
@@ -131,8 +131,8 @@
 		sum_keys += text2num(i)
 
 /datum/antagonist/serial_killer/proc/forge_villain_objectives()
-	var/datum/objective/maniac/wakeup = new()
-	objectives += wakeup
+	var/datum/objective/serial_killer/kill = new()
+	objectives += kill
 
 /datum/antagonist/serial_killer/proc/agony(mob/living/carbon/dreamer)
 	var/sound/im_sick = sound('sound/villain/imsick.ogg', TRUE, FALSE, CHANNEL_IMSICK, 100)

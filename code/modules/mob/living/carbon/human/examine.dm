@@ -29,8 +29,9 @@
 	var/t_is = p_are()
 	var/obscure_name = FALSE
 	var/race_name = dna.species.name
-	var/datum/antagonist/serialkiller/maniac = user.mind?.has_antag_datum(/datum/antagonist/serialkiller)
-	if(maniac && (user != src))
+
+	var/datum/antagonist/serial_killer/SK = user.mind?.has_antag_datum(/datum/antagonist/serial_killer)
+	if(SK && (user != src))
 		race_name = "disgusting pig"
 
 	var/m1 = "[t_He] [t_is]"
@@ -175,9 +176,6 @@
 
 			if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 				. += span_userdanger("CURSED!")
-
-		if(HAS_TRAIT(src, TRAIT_MANIAC_AWOKEN))
-			. += span_userdanger("MANIAC!")
 
 		if(commie_text)
 			. += commie_text
@@ -543,15 +541,6 @@
 				. += span_warning("[t_He] look[p_s()] weaker than I.")
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
-
-	if(aghost_privilege)
-		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
-		if(heart && heart.maniacs)
-			for(var/datum/antagonist/serialkiller/M in heart.maniacs)
-				var/K = LAZYACCESS(heart.inscryptions, M)
-				var/W = LAZYACCESS(heart.maniacs2wonder_ids, M)
-				var/N = M.owner?.name
-				. += span_notice("Inscryption[N ? " by [N]'s " : ""][W ? "Wonder #[W]" : ""]: [K ? K : ""]")
 
 
 	if(Adjacent(user) || aghost_privilege)
