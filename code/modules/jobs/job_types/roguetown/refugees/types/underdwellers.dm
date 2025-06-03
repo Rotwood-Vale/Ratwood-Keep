@@ -127,9 +127,9 @@
 			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			H.change_stat("strength", -1)
 			H.change_stat("intelligence", 2)
+			H.change_stat("endurance", 1) //So they can use their miracles and spells more often in exchange for their lost speed.
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.mind.adjust_spellpoints(-1) //You start with a malus.
 			H.mind.AddSpell(new SPELL_LEARNSPELL_WEAK)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_churchling(H)
