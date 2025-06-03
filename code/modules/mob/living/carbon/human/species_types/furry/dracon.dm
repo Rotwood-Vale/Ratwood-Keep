@@ -57,6 +57,10 @@
 		"speed" = -1,
 		"fortune" = 0
 		)
+	specstats_f = list(
+		"constitution" = -1,
+		"endurance" = 1,
+	)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
