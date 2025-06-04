@@ -51,6 +51,19 @@
 		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_object_hallucination), target)
 
 /proc/handle_serialkiller_object_hallucination(mob/living/target)
+	var/static/list/speech_sounds = list(
+		'sound/villain/male_talk1.ogg',
+		'sound/villain/male_talk2.ogg',
+		'sound/villain/male_talk3.ogg',
+		'sound/villain/male_talk4.ogg',
+		'sound/villain/male_talk5.ogg',
+		'sound/villain/male_talk6.ogg',
+		'sound/villain/female_talk1.ogg',
+		'sound/villain/female_talk2.ogg',
+		'sound/villain/female_talk3.ogg',
+		'sound/villain/female_talk4.ogg',
+		'sound/villain/female_talk5.ogg',
+	)
 	var/list/objects = list()
 	for(var/obj/object in view(target))
 		if((object.invisibility > target.see_invisible) || !object.loc || !object.name)
@@ -75,6 +88,7 @@
 		speech = replacetext(speech, "%OWNER", "[target.real_name]")
 	var/language = target.get_random_understood_language()
 	var/message = target.compose_message(speaker, language, speech)
+	target.playsound_local(target, pick(speech_sounds), vol = 60, vary = FALSE)
 	if(target.client.prefs?.chat_on_map)
 		target.create_chat_message(speaker, language, speech, spans = list(target.speech_span))
 	to_chat(target, message)

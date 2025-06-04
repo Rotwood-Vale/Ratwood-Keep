@@ -38,23 +38,6 @@
 		TRAIT_DARKVISION,
 	)
 
-	var/static/list/male_relief_sounds = list(
-		'sound/villain/male_talk1.ogg',
-		'sound/villain/male_talk2.ogg',
-		'sound/villain/male_talk3.ogg',
-		'sound/villain/male_talk4.ogg',
-		'sound/villain/male_talk5.ogg',
-		'sound/villain/male_talk6.ogg',
-	)
-
-	var/static/list/female_relief_sounds = list(
-		'sound/villain/female_talk1.ogg',
-		'sound/villain/female_talk2.ogg',
-		'sound/villain/female_talk3.ogg',
-		'sound/villain/female_talk4.ogg',
-		'sound/villain/female_talk5.ogg',
-	)
-
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
 		/obj/item/rogueweapon/huntingknife/cleaver/combat,
@@ -142,7 +125,7 @@
 	if(prep_phase)
 
 		if(SK.mob_timers["no_killing_yet"])
-			if(world.time < SK.mob_timers["no_killing_yet"] + 1 MINUTES)
+			if(world.time < SK.mob_timers["no_killing_yet"] + 5 MINUTES)
 				return
 			else
 				prep_phase = FALSE
@@ -161,22 +144,25 @@
 		SK.mob_timers["need_to_kill"] = world.time
 		return
 
-	if(world.time < SK.mob_timers["need_to_kill"] + 2 MINUTES)
+	if(world.time < SK.mob_timers["need_to_kill"] + 25 MINUTES)
 		return
 
-	// If the Serial Killer has not killed anyone before the end of the timer, he will receive a deadly heart attack.
+	// If the Serial Killer has not killed anyone before the end of the timer, he dies
 	if(!has_killed)
 		if(!heartattack_timer_started) // We hate sleep() here
 			to_chat(SK, span_purple("W- Wait- NO! I NEED MORE TIME!"))
+			SK.flash_fullscreen("redflash1")
 			heartattack_timer_started = TRUE
 			heartattack_start_time = world.time
 			return
 
 		if(world.time < heartattack_start_time + 5 SECONDS)
 			SK.add_stress(/datum/stressevent/serial_killer_death)
+			SK.flash_fullscreen("redflash1")
 			SK.visible_message(span_danger("[SK] clutches at [SK.p_their()] chest. [SK.p_their()] heart is stopping!"))
 			return
 
+		SK.flash_fullscreen("redflash1")
 		SK.death(FALSE)
 		return
 
@@ -199,12 +185,7 @@
 	
 	has_killed = TRUE
 
-	to_chat(SK, span_purple("I have killed [victim.real_name]... The visions begin to fade."))
-
-	if(SK.gender == FEMALE)
-		SK.playsound_local(SK, pick(female_relief_sounds), 100, FALSE)
-	else
-		SK.playsound_local(SK, pick(male_relief_sounds), 100, FALSE)
+	to_chat(SK, span_purple("I have killed [victim.real_name]... I will be fine... for now."))
 
 /datum/antagonist/roundend_report()
 	var/traitorwin = TRUE
