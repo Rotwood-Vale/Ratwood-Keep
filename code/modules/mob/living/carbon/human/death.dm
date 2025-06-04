@@ -56,6 +56,25 @@
 				L.out_of_lives = TRUE
 				gib()
 				return
+	
+	// Check if the player was killed by the Serial Killer.
+	// Ugly nested code
+	if(mind)
+		if(SSticker.mode)
+			var/datum/game_mode/C = SSticker.mode
+			if((src.lastattackerckey in C.serial_killer_ckeys))
+				var/mob/living/carbon/human/SK_owner = get_mob_by_ckey(src.lastattackerckey)
+				if(SK_owner && SK_owner.mind)
+					var/datum/antagonist/serial_killer/SK = SK_owner.mind.has_antag_datum(/datum/antagonist/serial_killer)
+					if(SK)
+						SK.has_killed = TRUE
+						to_chat(SK_owner, span_purple("I have killed [src.real_name]... The visions begin to fade."))
+						if(SK_owner.gender == FEMALE)
+							SK_owner.playsound_local(SK_owner, pick(SK.female_relief_sounds), 100, FALSE)
+						else
+							SK_owner.playsound_local(SK_owner, pick(SK.male_relief_sounds), 100, FALSE)
+						STOP_PROCESSING(SSobj, SK)
+
 
 	if(!gibbed)
 		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)

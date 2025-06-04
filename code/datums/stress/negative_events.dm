@@ -303,6 +303,11 @@
 	desc = span_boldred("<B>I have seen something nightmarish, and I fear for my life!</B>")
 	timer = 999 MINUTES
 
+/datum/stressevent/serial_killer_death
+	stressadd = 100
+	desc = span_boldred("<B>W- Wait- NO!</B>")
+	timer = 999 MINUTES
+
 /datum/stressevent/drankrat
 	stressadd = 1
 	desc = span_red("I drank from a lesser creature.")

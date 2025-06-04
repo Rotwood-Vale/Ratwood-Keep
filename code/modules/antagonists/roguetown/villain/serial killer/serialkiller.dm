@@ -3,7 +3,7 @@
 	name = "Serial Killer"
 	roundend_category = "serial killer"
 	antagpanel_category = "Serial Killer"
-	antag_memory = "<b>Recently I've been visited by a lot of VISIONS. They're all about another WORLD, ANOTHER life. I will do EVERYTHING to know the TRUTH, and return to the REAL world.</b>"
+	antag_memory = "<b>The visions haunt me every waking moment, they tell me to kill.. I know I have to. They tell me I have no other choice... I must appease the voices.</b>"
 	job_rank = ROLE_SERIALKILLER
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "villain"
@@ -15,44 +15,52 @@
 	)
 
 	rogue_enabled = TRUE
-	/// Traits we apply to the owner
+
+	/// Whether he has killed anyone in the last 24 ingame hours.
+	var/has_killed = FALSE
+
+	/// Small 15 minute prep phase before the killing timer starts ticking.
+	var/prep_phase = TRUE
+
+	/// Whether the killing intro has been sent to the player.
+	var/killing_intro = FALSE
+
+
 	var/static/list/applied_traits = list(
 		TRAIT_DECEIVING_MEEKNESS,
 		TRAIT_NOSTINK,
 		TRAIT_EMPATH,
 		TRAIT_STEELHEARTED,
-		TRAIT_NOMOOD,
 		TRAIT_SCHIZO_AMBIENCE,
 		TRAIT_DARKVISION,
 	)
 
-	/// Weapons we can give to the dreamer
+	var/static/list/male_relief_sounds = list(
+		'sound/villain/male_talk1.ogg',
+		'sound/villain/male_talk2.ogg',
+		'sound/villain/male_talk3.ogg',
+		'sound/villain/male_talk4.ogg',
+		'sound/villain/male_talk5.ogg',
+		'sound/villain/male_talk6.ogg',
+	)
+
+	var/static/list/female_relief_sounds = list(
+		'sound/villain/female_talk1.ogg',
+		'sound/villain/female_talk2.ogg',
+		'sound/villain/female_talk3.ogg',
+		'sound/villain/female_talk4.ogg',
+		'sound/villain/female_talk5.ogg',
+	)
+
 	var/static/list/possible_weapons = list(
 		/obj/item/rogueweapon/huntingknife/cleaver,
 		/obj/item/rogueweapon/huntingknife/cleaver/combat,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special,
 	)
-	/// Key number > Key text
-	var/list/num_keys = list()
-	/// Key text > key number
-	var/list/key_nums = list()
-	/// Every heart inscryption we have seen
-	var/list/hearts_seen = list()
-	/// Sum of the numbers of every key
-	var/sum_keys = 0
-	/// Keeps track of which wonder we are gonna make next
-	var/current_wonder = 1
-	/// Set to TRUE when we are on the last wonder (waking up)
-	var/waking_up = FALSE
-	/// Set to true when we WIN and are on the ending sequence
-	var/triumphed = FALSE
-	/// Wonders we have made
-	var/list/wonders_made = list()
 	/// Hallucinations screen object
 	var/atom/movable/screen/fullscreen/serialkiller/hallucinations
 
 /datum/antagonist/serial_killer/New()
-	set_keys()
 	load_strings_file("serial_killer.json")
 	return ..()
 
@@ -66,26 +74,32 @@
 	owner.special_items["Surgical Kit"] = /obj/item/storage/backpack/rogue/backpack/surgery
 
 	if(owner.current)
-
 		if(ishuman(owner.current))
-			var/mob/living/carbon/human/dreamer = owner.current
-			dreamer.cmode_music = 'sound/music/combat_maniac2.ogg'
-			dreamer.remove_stress(/datum/stressevent/saw_wonder)
-			dreamer.remove_curse(/datum/curse/zizo, TRUE)
+			var/mob/living/carbon/human/SK = owner.current
+			SK.cmode_music = 'sound/music/combat_maniac2.ogg'
+			SK.remove_stress(/datum/stressevent/saw_wonder)
+			SK.remove_curse(/datum/curse/zizo, TRUE)
 
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 
-			owner.current.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/wonder)
+		owner.current.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/structure/wonder)
 
 		hallucinations = owner.current.overlay_fullscreen("serial killer", /atom/movable/screen/fullscreen/serialkiller)
 
-	forge_villain_objectives()
+		// Save Serial Killer's key so we will know if he killed someone in death.dm
+		if(SSticker.mode)
+			var/datum/game_mode/C = SSticker.mode
+			C.serial_killer_ckeys |= owner.current.ckey
+
+	forge_objectives()
 
 	if(length(objectives))
 		SEND_SOUND(owner.current, 'sound/villain/dreamer_warning.ogg')
 		to_chat(owner.current, span_danger("[antag_memory]"))
 		owner.announce_objectives()
+	
+	owner.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 
 	START_PROCESSING(SSobj, src)
 
@@ -102,78 +116,76 @@
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		owner.current.clear_fullscreen("serial killer")
-	QDEL_LIST(wonders_made)
-	wonders_made = null
+
+	owner.adjust_skillrank(/datum/skill/combat/knives, -2, TRUE)
+
 	owner.special_role = null
 	hallucinations = null
 	return ..()
 
-/datum/antagonist/serial_killer/proc/set_keys()
-	key_nums = list()
-	num_keys = list()
-	//We need 4 numbers and four keys
-	for(var/i in 1 to 4)
-		//Make the number first
-		var/randumb
-		while(!randumb || (randumb in num_keys))
-			randumb = "[rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)]"
-		//Make the key second
-		var/rantelligent
-		while(!rantelligent || (rantelligent in key_nums))
-			rantelligent = uppertext("[pick(GLOB.alphabet)][pick(GLOB.alphabet)][pick(GLOB.alphabet)][pick(GLOB.alphabet)]")
-
-		//Stick then in the lists, continue the loop
-		num_keys[randumb] = rantelligent
-		key_nums[rantelligent] = randumb
-
-	sum_keys = 0
-	for(var/i in num_keys)
-		sum_keys += text2num(i)
-
-/datum/antagonist/serial_killer/proc/forge_villain_objectives()
+/datum/antagonist/serial_killer/proc/forge_objectives()
+	message_admins("Serial Killer objectives forged for [owner.current ? owner.current.ckey : "unknown"]")
 	var/datum/objective/serial_killer/kill = new()
-	objectives += kill
+	objectives.Add(kill)
+	message_admins("Serial Killer objectives forged: [objectives.len] objectives.")
 
-/datum/antagonist/serial_killer/proc/agony(mob/living/carbon/dreamer)
-	var/sound/im_sick = sound('sound/villain/imsick.ogg', TRUE, FALSE, CHANNEL_IMSICK, 100)
-	SEND_SOUND(dreamer, im_sick)
-	dreamer.overlay_fullscreen("dream", /atom/movable/screen/fullscreen/dreaming)
-	dreamer.overlay_fullscreen("wakeup", /atom/movable/screen/fullscreen/dreaming/waking_up)
-	waking_up = TRUE
+/datum/antagonist/serial_killer/on_life(mob/user)
+	. = ..()
 
-/datum/antagonist/serial_killer/proc/wake_up()
-	STOP_PROCESSING(SSobj, src)
-	triumphed = TRUE
-	waking_up = FALSE
-	var/mob/living/carbon/dreamer = owner.current
-	dreamer.log_message("prayed their sum ([sum_keys]), beginning the Maniac TRIUMPH sequence and the end of the round.", LOG_GAME)
-	message_admins("[ADMIN_LOOKUPFLW(dreamer)] as Maniac TRIUMPHED[sum_keys ? " with sum [sum_keys]" : ""]. The round will end shortly.")
-	// var/client/dreamer_client = dreamer.client // Trust me, we need it later
-	to_chat(dreamer, "...It couldn't be.")
-	dreamer.clear_fullscreen("dream")
-	dreamer.clear_fullscreen("wakeup")
-	var/client/clinet = dreamer?.client
-	if(clinet) //clear screenshake animation
-		animate(clinet, dreamer.pixel_y)
-	for(var/datum/objective/objective in objectives)
-		objective.completed = TRUE
-	for(var/mob/connected_player in GLOB.player_list)
-		if(!connected_player.client)
-			continue
-		SEND_SOUND(connected_player, sound(null))
-		SEND_SOUND(connected_player, 'sound/villain/dreamer_win.ogg')
-	sleep(15 SECONDS)
-	to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
-	SSticker.declare_completion()
+	var/mob/living/carbon/human/SK = owner?.current
 
-//TODO Collate
+	// We want to give the player some breathing room to prepare before the killing timer starts ticking.
+	if(prep_phase)
+
+		if(SK.mob_timers["no_killing_yet"])
+			if(world.time < SK.mob_timers["no_killing_yet"] + 1 MINUTES)
+				return
+			else
+				prep_phase = FALSE
+				return
+
+		SK.mob_timers["no_killing_yet"] = world.time
+		return 
+	
+	if(!killing_intro)
+		to_chat(owner.current, span_purple("The visions are getting stronger, I- I cannot resist them any longer!"))
+		SK.add_curse(/datum/curse/zizo, TRUE)
+		killing_intro = TRUE
+
+	// Starts the killing timer after the prep phase is over. 25 minutes is around 1 ingame dae/night cycle.
+	if(!SK.mob_timers["need_to_kill"])
+		SK.mob_timers["need_to_kill"] = world.time
+		return
+
+	if(world.time < SK.mob_timers["need_to_kill"] + 2 MINUTES)
+		return
+
+	// If the Serial Killer has not killed anyone before the end of the timer, he will receive a deadly heart attack.
+	if(!has_killed && SK.stat != DEAD)
+		to_chat(SK, span_purple("W- Wait- NO! I NEED MORE TIME!"))
+		sleep(5 SECONDS)
+		SK.add_stress(/datum/stressevent/serial_killer_death)
+		SK.visible_message(span_danger("[SK] clutches at [SK.p_their()] chest. [SK.p_their()] heart is stopping!"))
+		sleep(5 SECONDS)
+		SK.death(FALSE)
+
+	// Timer ends and Serial Killer has killed someone, repeat.
+	else 
+		to_chat(SK, span_purple("Oh no.. they are coming back... I must keep killing!"))
+		has_killed = FALSE
+		START_PROCESSING(SSobj, src)
+		SK.adjust_triumphs(1)
+		SK.mob_timers["need_to_kill"] = null
+
+
+
 /datum/antagonist/roundend_report()
 	var/traitorwin = TRUE
 
 	printplayer(owner)
 
 	var/count = 0
-	if(objectives.len)//If the traitor had no objectives, don't need to process this.
+	if(objectives.len)
 		for(var/datum/objective/objective in objectives)
 			objective.update_explanation_text()
 			if(objective.check_completion())

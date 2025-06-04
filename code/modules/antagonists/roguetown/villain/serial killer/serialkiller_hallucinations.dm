@@ -2,9 +2,11 @@
 
 //Processing procs related to dreamer, so he hallucinates and shit
 /datum/antagonist/serial_killer/process()
-	if(!owner.current || triumphed)
+	if(!owner.current || (prep_phase || has_killed || owner.current.IsUnconscious()))
 		STOP_PROCESSING(SSobj, src)
 		return
+
+	// The SK kills to get rid of the visions
 	handle_serialkiller_visions(owner.current, hallucinations)
 	handle_serialkiller_hallucinations(owner.current)
 	handle_serialkiller_floors(owner.current)
@@ -48,19 +50,6 @@
 	objects -= target.contents
 	if(!length(objects))
 		return
-	var/static/list/speech_sounds = list(
-		'sound/villain/female_talk1.ogg',
-		'sound/villain/female_talk2.ogg',
-		'sound/villain/female_talk3.ogg',
-		'sound/villain/female_talk4.ogg',
-		'sound/villain/female_talk5.ogg',
-		'sound/villain/male_talk1.ogg',
-		'sound/villain/male_talk2.ogg',
-		'sound/villain/male_talk3.ogg',
-		'sound/villain/male_talk4.ogg',
-		'sound/villain/male_talk5.ogg',
-		'sound/villain/male_talk6.ogg',
-	)
 	var/obj/speaker = pickweight(objects)
 	var/speech
 	if(prob(1))
@@ -70,7 +59,6 @@
 		speech = replacetext(speech, "%OWNER", "[target.real_name]")
 	var/language = target.get_random_understood_language()
 	var/message = target.compose_message(speaker, language, speech)
-	target.playsound_local(target, pick(speech_sounds), vol = 60, vary = FALSE)
 	if(target.client.prefs?.chat_on_map)
 		target.create_chat_message(speaker, language, speech, spans = list(target.speech_span))
 	to_chat(target, message)

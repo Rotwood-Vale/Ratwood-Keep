@@ -60,8 +60,3 @@
 	if(istype(C))
 		if(C.vampire_werewolf() == "vampire")
 			return TRUE
-
-/datum/objective/serial_killer
-	name = "KILL"
-	explanation_text = "The visions haunt me... I know that if I do not kill at least one person every night, I will be the one to die."
-	flavor = "The overwhelming need to kill."

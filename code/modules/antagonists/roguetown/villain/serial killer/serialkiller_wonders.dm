@@ -1,14 +1,10 @@
 //Wonder recipes
 //NOTE: Wonders are named after their proper keys, the wonder structure handles that code
 /datum/crafting_recipe/roguetown/structure/wonder
-	name = "bloody totem (3 bodyparts, 1 stomach, 1 liver, 1 tongue, 2 eyes, 1 head)"
+	name = "bloody totem (3 bodyparts, 1 head)"
 	result = /obj/structure/totem
 	reqs = list(
 		/obj/item/bodypart = 3,
-		/obj/item/organ/stomach = 1,
-		/obj/item/organ/liver = 1,
-		/obj/item/organ/tongue = 1,
-		/obj/item/organ/eyes = 2,
 		/obj/item/bodypart/head = 1,
 	)
 	verbage_simple = "construct"
