@@ -28,14 +28,4 @@
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return
 
-/datum/migrant_role/adventurer
-	name = "Adventurer"
-	subclass_cat_rolls = list(CTAG_ADVENTURER = 5)
-
-
-/datum/migrant_role/bandit
-	name = "Bandit"
-	antag_datum = /datum/antagonist/bandit
-	subclass_cat_rolls = list(CTAG_BANDIT = 20)
-	grant_lit_torch = TRUE
 
