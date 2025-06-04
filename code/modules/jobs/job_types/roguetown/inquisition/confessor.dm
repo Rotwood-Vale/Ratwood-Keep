@@ -11,7 +11,7 @@ Please do not confuse the two.
 	total_positions = 2
 	spawn_positions = 2
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_TOLERATED_UP
+	allowed_races = RACES_SHUNNED_UP_MINUS_SMOLFOLK
 	allowed_patrons = list(
 		/datum/patron/psydon
 	)
