@@ -26,7 +26,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/maxspells = 12 //Handles how many spells you can have (12 is the maximum, and mages always start with 2 spells, so in reality you will want to add 2 to any number you cap mage spells at, e.g 5 is actually 3 learnable spells)
 
 /obj/effect/proc_holder/spell/invoked/learnspell/weak
-	maxspells = 5 //3 max.
+	maxspells = 7 //5 max.
 
 /obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
 	. = ..()
