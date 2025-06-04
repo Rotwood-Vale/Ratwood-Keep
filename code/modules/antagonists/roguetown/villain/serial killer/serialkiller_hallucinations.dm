@@ -2,15 +2,31 @@
 
 //Processing procs related to dreamer, so he hallucinates and shit
 /datum/antagonist/serial_killer/process()
-	if(!owner.current || (prep_phase || has_killed || owner.current.IsUnconscious()))
+	if(!owner.current)
 		STOP_PROCESSING(SSobj, src)
 		return
 
 	// The SK kills to get rid of the visions
-	handle_serialkiller_visions(owner.current, hallucinations)
-	handle_serialkiller_hallucinations(owner.current)
-	handle_serialkiller_floors(owner.current)
-	handle_serialkiller_walls(owner.current)
+	if (!prep_phase && !has_killed)
+		handle_serialkiller_visions(owner.current, hallucinations)
+		handle_serialkiller_hallucinations(owner.current)
+		handle_serialkiller_floors(owner.current)
+		handle_serialkiller_walls(owner.current)
+
+
+
+/mutable_appearance/SK_hallucination
+    name = "Serialkiller"
+    var/timetodelete
+
+/mutable_appearance/SK_hallucination/New()
+    ..()
+    timetodelete = world.time + rand(1 SECONDS, 4 SECONDS)
+
+/mutable_appearance/SK_hallucination/process()
+	// Doesn't work btw
+    if(world.time >= timetodelete)
+        QDEL_NULL(src)
 
 
 /proc/handle_serialkiller_visions(mob/living/target, atom/movable/screen/fullscreen/serialkiller/hallucinations)
@@ -135,16 +151,16 @@
 		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_floor), floor, target)
 
 /proc/handle_serialkiller_floor(turf/open/floor, mob/living/target)
-	var/mutable_appearance/fake_floor = image(floor.icon, floor, floor.icon_state, floor.layer + 0.01)
-	target.client.images += fake_floor
+	var/mutable_appearance/SK_hallucination/schizo_floor = image(floor.icon, floor, floor.icon_state, floor.layer + 0.01)
+	target.client.images += schizo_floor
 	var/offset = pick(-3,-2, -1, 1, 2, 3)
 	var/disappearfirst = rand(1 SECONDS, 3 SECONDS) * abs(offset)
-	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
+	animate(schizo_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
 	sleep(disappearfirst)
 	var/disappearsecond = rand(1 SECONDS, 3 SECONDS) * abs(offset)
-	animate(fake_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
+	animate(schizo_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
-	target.client?.images -= fake_floor
+	target.client?.images -= schizo_floor
 
 /proc/handle_serialkiller_walls(mob/living/target)
 	if(!target.client)
@@ -156,13 +172,13 @@
 		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_wall), wall, target)
 
 /proc/handle_serialkiller_wall(turf/closed/wall, mob/living/target)
-	var/image/shit = image('icons/roguetown/maniac/shit.dmi', wall, "splat[rand(1,8)]")
-	target.client?.images += shit
+	var/mutable_appearance/SK_hallucination/schizo_wall = image('icons/roguetown/maniac/shit.dmi', wall, "splat[rand(1,8)]")
+	target.client?.images += schizo_wall
 	var/offset = pick(-1, 1, 2)
 	var/disappearfirst = rand(2 SECONDS, 4 SECONDS)
-	animate(shit, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
+	animate(schizo_wall, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
 	sleep(disappearfirst)
 	var/disappearsecond = rand(2 SECONDS, 4 SECONDS)
-	animate(shit, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
+	animate(schizo_wall, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
-	target.client?.images -= shit
+	target.client?.images -= schizo_wall

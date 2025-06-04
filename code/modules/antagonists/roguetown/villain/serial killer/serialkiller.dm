@@ -25,6 +25,9 @@
 	/// Whether the killing intro has been sent to the player.
 	var/killing_intro = FALSE
 
+	var/heartattack_timer_started = FALSE
+	var/heartattack_start_time = 0
+
 
 	var/static/list/applied_traits = list(
 		TRAIT_DECEIVING_MEEKNESS,
@@ -124,15 +127,16 @@
 	return ..()
 
 /datum/antagonist/serial_killer/proc/forge_objectives()
-	message_admins("Serial Killer objectives forged for [owner.current ? owner.current.ckey : "unknown"]")
 	var/datum/objective/serial_killer/kill = new()
 	objectives.Add(kill)
-	message_admins("Serial Killer objectives forged: [objectives.len] objectives.")
 
 /datum/antagonist/serial_killer/on_life(mob/user)
 	. = ..()
 
 	var/mob/living/carbon/human/SK = owner?.current
+
+	if(SK.stat == DEAD)
+		return
 
 	// We want to give the player some breathing room to prepare before the killing timer starts ticking.
 	if(prep_phase)
@@ -161,23 +165,46 @@
 		return
 
 	// If the Serial Killer has not killed anyone before the end of the timer, he will receive a deadly heart attack.
-	if(!has_killed && SK.stat != DEAD)
-		to_chat(SK, span_purple("W- Wait- NO! I NEED MORE TIME!"))
-		sleep(5 SECONDS)
-		SK.add_stress(/datum/stressevent/serial_killer_death)
-		SK.visible_message(span_danger("[SK] clutches at [SK.p_their()] chest. [SK.p_their()] heart is stopping!"))
-		sleep(5 SECONDS)
-		SK.death(FALSE)
+	if(!has_killed)
+		if(!heartattack_timer_started) // We hate sleep() here
+			to_chat(SK, span_purple("W- Wait- NO! I NEED MORE TIME!"))
+			heartattack_timer_started = TRUE
+			heartattack_start_time = world.time
+			return
 
-	// Timer ends and Serial Killer has killed someone, repeat.
-	else 
-		to_chat(SK, span_purple("Oh no.. they are coming back... I must keep killing!"))
+		if(world.time < heartattack_start_time + 5 SECONDS)
+			SK.add_stress(/datum/stressevent/serial_killer_death)
+			SK.visible_message(span_danger("[SK] clutches at [SK.p_their()] chest. [SK.p_their()] heart is stopping!"))
+			return
+
+		SK.death(FALSE)
+		return
+
+	//Player has killed someone, reset timer.
+	else
+		to_chat(SK, span_purple("Oh no.. the voices are back... I must keep killing!"))
 		has_killed = FALSE
-		START_PROCESSING(SSobj, src)
 		SK.adjust_triumphs(1)
 		SK.mob_timers["need_to_kill"] = null
+		heartattack_timer_started = FALSE
+		heartattack_start_time = 0
 
 
+/datum/antagonist/serial_killer/proc/on_kill(mob/living/carbon/human/victim)
+
+	var/mob/living/carbon/human/SK = owner?.current
+
+	if(SK == victim)
+		return
+	
+	has_killed = TRUE
+
+	to_chat(SK, span_purple("I have killed [victim.real_name]... The visions begin to fade."))
+
+	if(SK.gender == FEMALE)
+		SK.playsound_local(SK, pick(female_relief_sounds), 100, FALSE)
+	else
+		SK.playsound_local(SK, pick(male_relief_sounds), 100, FALSE)
 
 /datum/antagonist/roundend_report()
 	var/traitorwin = TRUE
