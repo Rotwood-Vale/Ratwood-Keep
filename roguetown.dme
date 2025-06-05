@@ -1416,7 +1416,6 @@
 #include "code\modules\jobs\job_types\roguetown\towners\types\miner.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\minstrel.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\peasant.dm"
-#include "code\modules\jobs\job_types\roguetown\towners\types\seamster.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\towndoctor.dm"
 #include "code\modules\jobs\job_types\roguetown\towners\types\woodcutter.dm"
 #include "code\modules\jobs\job_types\roguetown\yeomen\alchemist.dm"
