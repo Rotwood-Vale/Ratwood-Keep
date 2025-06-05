@@ -33,7 +33,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/farming, pick(4,5), TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
@@ -42,6 +42,11 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
+		if(H.age == AGE_MIDDLEAGED)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather/rope
