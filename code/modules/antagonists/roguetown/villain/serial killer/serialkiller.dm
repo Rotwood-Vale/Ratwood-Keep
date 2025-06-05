@@ -51,7 +51,6 @@
 	return ..()
 
 /datum/antagonist/serial_killer/Destroy()
-	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /datum/antagonist/serial_killer/on_gain()
@@ -87,10 +86,7 @@
 	
 	owner.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 
-	START_PROCESSING(SSobj, src)
-
 /datum/antagonist/serial_killer/on_removal()
-	STOP_PROCESSING(SSobj, src)
 	if(owner.current)
 		if(!silent)
 			to_chat(owner.current,span_danger("I am no longer a SERIAL KILLER!"))
@@ -164,11 +160,13 @@
 
 		SK.flash_fullscreen("redflash1")
 		SK.death(FALSE)
+		SK.remove_curse(/datum/curse/zizo, TRUE)
 		return
 
 	//Player has killed someone, reset timer.
 	else
 		to_chat(SK, span_purple("Oh no.. the voices are back... I must keep killing!"))
+		SK.add_curse(/datum/curse/zizo, TRUE)
 		has_killed = FALSE
 		SK.adjust_triumphs(1)
 		SK.mob_timers["need_to_kill"] = null
@@ -186,6 +184,7 @@
 	has_killed = TRUE
 
 	to_chat(SK, span_purple("I have killed [victim.real_name]... I will be fine... for now."))
+	SK.remove_curse(/datum/curse/zizo, TRUE)
 
 /datum/antagonist/roundend_report()
 	var/traitorwin = TRUE

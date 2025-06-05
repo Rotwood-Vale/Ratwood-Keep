@@ -1,30 +1,12 @@
-
-
-//Processing procs related to dreamer, so he hallucinates and shit
-/datum/antagonist/serial_killer/process()
-	if(!owner.current)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	// The SK kills to get rid of the visions
-	if (!prep_phase && !has_killed)
-		handle_serialkiller_visions(owner.current, hallucinations)
-		handle_serialkiller_hallucinations(owner.current)
-		handle_serialkiller_floors(owner.current)
-		handle_serialkiller_walls(owner.current)
-
-
-
 /mutable_appearance/SK_hallucination
     name = "Serialkiller"
     var/timetodelete
 
 /mutable_appearance/SK_hallucination/New()
     ..()
-    timetodelete = world.time + rand(1 SECONDS, 4 SECONDS)
+    timetodelete = world.time + rand(3 SECONDS, 10 SECONDS)
 
 /mutable_appearance/SK_hallucination/process()
-	// Doesn't work btw
     if(world.time >= timetodelete)
         QDEL_NULL(src)
 
