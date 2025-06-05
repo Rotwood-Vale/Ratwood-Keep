@@ -58,3 +58,6 @@
 
 /// Create an typed null global
 #define GLOBAL_DATUM(X, Typepath) GLOBAL_RAW(Typepath/##X); GLOBAL_UNMANAGED(X)
+
+GLOBAL_LIST_EMPTY(alch_grind_recipes)			//list of all alchemy grinding recipes
+GLOBAL_LIST_EMPTY(alch_cauldron_recipes)		//list of all alchemy cauldron recipes
