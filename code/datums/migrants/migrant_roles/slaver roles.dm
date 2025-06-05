@@ -214,7 +214,7 @@
 	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the Kingdom of Ferentia."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
