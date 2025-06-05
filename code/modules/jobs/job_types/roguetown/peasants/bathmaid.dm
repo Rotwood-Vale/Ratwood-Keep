@@ -144,7 +144,7 @@
 	if(H.mind)
 		//Worst overall skills since they can kindof wrestle people? But not anybody that matters
 		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE) //I'm the boss of this gym
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE) //I'm the boss of this gym
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
