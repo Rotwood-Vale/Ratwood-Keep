@@ -249,5 +249,9 @@
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	if(istype(H.dna.species, /datum/species/goblinp))
+		H.set_patron(/datum/patron/inhumen/graggar)
+		ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
+		H.ventcrawler = 2
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
