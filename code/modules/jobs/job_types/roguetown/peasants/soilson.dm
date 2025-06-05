@@ -44,7 +44,9 @@
 		H.change_stat("speed", 1)
 		if(H.age == AGE_MIDDLEAGED)
 			H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 
