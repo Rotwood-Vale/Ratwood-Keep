@@ -70,11 +70,10 @@
 			return
 
 		var/mob/living/L = user
-		var/my_icon = icon_state
 		user.doing = FALSE
-
-		spawn(1)
-		while(get_turf(src))
+		// Makes more sense for the check since they always
+		// become an open tile afterwards
+		while(density && user.Adjacent(src))
 			if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
 				..()
 				//does this even work?
@@ -85,10 +84,8 @@
 							if(user.Adjacent(src))
 								var/obj/item/natural/stone/S = new(src)
 								S.forceMove(get_turf(user))
-
-				//Turfs never die, they simply change
-				if(icon_state != my_icon)
-					break
+					if(!density)
+						break
 			else
 				break
 
