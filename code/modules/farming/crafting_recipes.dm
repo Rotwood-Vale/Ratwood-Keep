@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown/structure/composter
-	name = "composter"
+	name = "composter - (small log; NONE)"
 	result = /obj/structure/composter
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	verbage_simple = "build"
@@ -8,7 +8,7 @@
 	time = 2 SECONDS
 
 /datum/crafting_recipe/roguetown/wheatflour
-	name = "flour (wheat)"
+	name = "flour (wheat) - (wheat; MILLSTONE; NONE)"
 	result = /obj/item/reagent_containers/powder/flour
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/wheat = 1)
 	structurecraft = /obj/structure/fluff/millstone
@@ -18,7 +18,7 @@
 	time = 3
 
 /datum/crafting_recipe/roguetown/oatflour
-	name = "flour (oat)"
+	name = "flour (oat) - (oat; MILLSTONE; NONE)"
 	result = /obj/item/reagent_containers/powder/flour
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/oat = 1)
 	structurecraft = /obj/structure/fluff/millstone
@@ -28,7 +28,7 @@
 	time = 3
 
 /datum/crafting_recipe/roguetown/structure/plough
-	name = "plough"
+	name = "plough - (2 small logs, iron ingot; BEGINNER)"
 	result = /obj/structure/plough
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/iron = 1)
 	verbage_simple = "construct"
@@ -37,7 +37,7 @@
 	time = 4 SECONDS
 
 /datum/crafting_recipe/roguetown/dryleaf
-	name = "dry swampweed"
+	name = "dry swampweed - (swamp weed; DRYING RACK; NONE)"
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1)
 	structurecraft = /obj/machinery/tanningrack
@@ -48,10 +48,10 @@
 	skillcraft = null
 
 /datum/crafting_recipe/roguetown/sigsweet
-	name = "swampweed zig"
+	name = "swampweed zig - (dry weed, paper; NONE)"
 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1,
-				/obj/item/paper/scroll = 1)
+				/obj/item/paper = 1)
 	req_table = TRUE
 	time = 10 SECONDS
 	verbage_simple = "roll"
@@ -59,7 +59,7 @@
 	skill_level = 0
 
 /datum/crafting_recipe/roguetown/dryweed
-	name = "dry westleach leaf"
+	name = "dry westleach leaf - (westleach leaf; DRYING RACK; NONE)"
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed = 1)
 	structurecraft = /obj/machinery/tanningrack
@@ -70,10 +70,10 @@
 	skillcraft = null
 
 /datum/crafting_recipe/roguetown/sigdry
-	name = "westleach zig"
+	name = "westleach zig - (dry westleach leaf, paper; NONE)"
 	result = /obj/item/clothing/mask/cigarette/rollie/nicotine
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry = 1,
-				/obj/item/paper/scroll = 1)
+				/obj/item/paper = 1)
 	req_table = TRUE
 	time = 10 SECONDS
 	verbage_simple = "roll"

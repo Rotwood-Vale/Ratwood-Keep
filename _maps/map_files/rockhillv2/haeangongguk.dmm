@@ -2132,7 +2132,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "rG" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "rI" = (
@@ -2954,7 +2954,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "ya" = (
-/obj/structure/fermenting_barrel/crafted,
+/obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "yj" = (
@@ -4816,8 +4816,8 @@
 /area/rogue)
 "NS" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub/crafted,
-/obj/item/rogueweapon/mace/woodclub/crafted,
+/obj/item/rogueweapon/mace/woodclub,
+/obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "NT" = (
@@ -4979,7 +4979,7 @@
 	},
 /area/rogue)
 "OO" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "OQ" = (
@@ -5441,7 +5441,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue)
 "SB" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/shoes/roguetown/boots,
 /turf/open/floor/rogue/woodturned,
@@ -6110,7 +6110,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "XH" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
