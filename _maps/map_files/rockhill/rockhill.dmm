@@ -2246,7 +2246,6 @@
 /area/rogue/indoors/town/garrison)
 "bbY" = (
 /obj/structure/closet/crate/chest{
-	locked = 1;
 	lockid = "towner_fisher"
 	},
 /turf/open/floor/rogue/cobble/mossy,
@@ -3913,7 +3912,6 @@
 "bQB" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
-	locked = 1;
 	lockid = "merc"
 	},
 /obj/item/clothing/head/roguetown/helmet/leather,
@@ -5389,7 +5387,6 @@
 "cAC" = (
 /obj/structure/closet/crate/roguecloset/crafted{
 	keylock = 1;
-	locked = 1;
 	lockid = "merc"
 	},
 /obj/item/clothing/suit/roguetown/armor/gambeson/light,
@@ -6276,10 +6273,6 @@
 	},
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/shop)
-"cVr" = (
-/obj/structure/rack/rogue,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/under/town/basement)
 "cVD" = (
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
@@ -6818,8 +6811,8 @@
 /area/rogue/outdoors/town/roofs)
 "dik" = (
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/light/rogue/torchholder/c,
-/turf/open/floor/rogue/ruinedwood,
+/obj/machinery/light/rogue/oven/south,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "diI" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled{
@@ -7984,14 +7977,6 @@
 "dLp" = (
 /turf/closed/wall/mineral/rogue/decostone/center,
 /area/rogue/under/town/basement)
-"dLB" = (
-/obj/structure/mineral_door/wood/donjon/stone{
-	locked = 1;
-	lockid = sssssssssss;
-	name = "Church Vault"
-	},
-/turf/open/floor/rogue/concrete,
-/area/rogue/indoors/town/church)
 "dLE" = (
 /obj/structure/closet/crate/chest{
 	lockid = "merc"
@@ -9142,8 +9127,7 @@
 "emd" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
-	locked = 1;
-	lockid = "merc"
+	lockid = "towner_fisher"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/basement)
@@ -12218,6 +12202,8 @@
 /area/rogue/indoors/town/church)
 "fLF" = (
 /obj/effect/decal/cleanable/cobweb,
+/obj/structure/rack/rogue,
+/obj/item/storage/roguebag,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "fLL" = (
@@ -18324,7 +18310,10 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/roguecloset/inn/chest{
+	keylock = 1;
+	lockid = "towner_miner"
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "iIE" = (
@@ -20106,9 +20095,12 @@
 	},
 /area/rogue/indoors/town/church)
 "jFz" = (
-/obj/structure/flora/newtree,
-/turf/closed/wall/mineral/rogue/stone/moss,
-/area/rogue/outdoors/rtfield)
+/obj/item/natural/stone{
+	pixel_x = 9;
+	pixel_y = -8
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/under/town/basement)
 "jFE" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -24519,7 +24511,6 @@
 "lOr" = (
 /obj/item/cooking/pan,
 /obj/structure/closet/crate/chest{
-	locked = 1;
 	lockid = "towner_fisher";
 	pixel_x = 3
 	},
@@ -25673,6 +25664,7 @@
 /area/rogue/indoors/town/manor)
 "mqI" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/grown/log/tree/small,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "mqS" = (
@@ -25907,14 +25899,12 @@
 /obj/item/kitchen/spoon,
 /obj/item/kitchen/spoon,
 /obj/item/kitchen/spoon,
-/obj/item/kitchen/spoon,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/kitchen/fork,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
-/obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -30598,6 +30588,9 @@
 /area/rogue/indoors)
 "oPc" = (
 /obj/item/natural/dirtclod,
+/obj/item/natural/stone{
+	pixel_y = -12
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "oPj" = (
@@ -37306,7 +37299,9 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "sjR" = (
-/obj/structure/bearpelt,
+/obj/structure/bearpelt{
+	pixel_y = -16
+	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "sjW" = (
@@ -41639,6 +41634,7 @@
 "urG" = (
 /obj/structure/rack/rogue,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/item/natural/stone,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/town/basement)
 "urX" = (
@@ -44496,9 +44492,15 @@
 /turf/closed/mineral/rogue,
 /area/rogue/under/cave)
 "vSo" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/turf/closed/mineral/rogue,
-/area/rogue/indoors/shelter/mountains)
+/mob/living/carbon/human/species/skeleton/npc/ambush{
+	STACON = 13;
+	STAEND = 13;
+	STASPD = 13;
+	STASTR = 13;
+	inertia_move_delay = 0
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/indoors)
 "vSr" = (
 /obj/structure/fermenting_barrel/beer,
 /turf/open/floor/rogue/tile,
@@ -106729,7 +106731,7 @@ cTA
 cEK
 rqd
 cEK
-dLG
+rqd
 gxt
 gxt
 whb
@@ -107158,7 +107160,7 @@ whb
 whb
 gxt
 cTA
-cVr
+cEK
 cEK
 rqd
 dLG
@@ -107592,7 +107594,7 @@ gxt
 cTA
 tqA
 cEK
-cEK
+jFz
 eqB
 gxt
 gxt
@@ -184917,7 +184919,7 @@ vIa
 vIa
 eKK
 vIa
-wSn
+qvR
 wSn
 uaL
 wSn
@@ -187083,7 +187085,7 @@ xvN
 uaL
 uaL
 qvR
-qvR
+xvN
 qvR
 spp
 qvR
@@ -187508,7 +187510,7 @@ vIa
 vIa
 vIa
 vIa
-xrY
+wSn
 wSn
 qvR
 qvR
@@ -187947,7 +187949,7 @@ xvN
 hUD
 rXy
 hUD
-xvN
+qvR
 qvR
 qvR
 uTf
@@ -188373,10 +188375,10 @@ vIa
 vIa
 vIa
 xrY
-wSn
+qvR
 xvN
 hUD
-jFz
+hUD
 jXZ
 jXZ
 hUD
@@ -188804,7 +188806,7 @@ vIa
 vIa
 vIa
 vIa
-xrY
+wSn
 wSn
 qvR
 rXy
@@ -193123,7 +193125,7 @@ vIa
 vIa
 vIa
 vIa
-bNB
+xvN
 jXZ
 qQZ
 jXZ
@@ -196151,9 +196153,9 @@ uaL
 wSn
 wSn
 uaL
+qvR
 wSn
-wSn
-wSn
+qvR
 qGJ
 gIw
 gIw
@@ -198313,7 +198315,7 @@ qvR
 uaL
 qvR
 wSn
-wSn
+qvR
 spp
 qvR
 spp
@@ -225106,7 +225108,7 @@ pAV
 hiY
 jhi
 pAV
-pAV
+hHI
 qvR
 qvR
 uaL
@@ -226394,13 +226396,13 @@ uaL
 iNT
 qvR
 qvR
+hHI
 pAV
 pAV
 pAV
 pAV
-pAV
-pAV
-pAV
+hHI
+hHI
 qvR
 mwQ
 qvR
@@ -229811,7 +229813,7 @@ sjP
 fxx
 fxx
 fxx
-fxx
+aJE
 fxx
 wSn
 wSn
@@ -240926,8 +240928,8 @@ xRS
 xRS
 hrJ
 xRS
-xRS
-xRS
+hkm
+hkm
 nYV
 nYV
 nYV
@@ -240936,8 +240938,8 @@ nYV
 nYV
 nYV
 mfm
-xRS
-hrJ
+hkm
+aOb
 xRS
 xRS
 vCG
@@ -241358,8 +241360,8 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 aVv
 nYV
 nYV
@@ -241367,8 +241369,8 @@ nYV
 nYV
 nYV
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -241790,16 +241792,16 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 bdq
 bdq
 nYV
 fqr
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -242223,15 +242225,15 @@ xRS
 xRS
 xRS
 hrJ
-xRS
-hrJ
-xRS
-xRS
+hkm
+aOb
+hkm
+hkm
 fqr
 bdq
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -242655,16 +242657,16 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-hrJ
-xRS
-xRS
-hrJ
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+aOb
+hkm
+hkm
+aOb
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -243086,18 +243088,18 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 nYV
 seu
 seu
 seu
 aVv
 bdq
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -243518,8 +243520,8 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 aVv
 seu
 seu
@@ -243527,10 +243529,10 @@ nYV
 seu
 seu
 bdq
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -243950,7 +243952,7 @@ xRS
 xRS
 xRS
 xRS
-xRS
+hkm
 bdq
 nYV
 seu
@@ -243958,11 +243960,11 @@ nYV
 nYV
 nYV
 seu
-hrJ
-xRS
+aOb
+hkm
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -244382,7 +244384,7 @@ xRS
 xRS
 xRS
 xRS
-xRS
+hkm
 bdq
 nYV
 seu
@@ -244390,11 +244392,11 @@ nYV
 nYV
 nYV
 seu
-xRS
+hkm
 bdq
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -244814,7 +244816,7 @@ xRS
 xRS
 xRS
 xRS
-xRS
+hkm
 aVv
 nYV
 seu
@@ -244822,11 +244824,11 @@ seu
 nYV
 seu
 seu
-xRS
+hkm
 bdq
 nYV
 bdq
-xRS
+hkm
 xRS
 xRS
 xRS
@@ -245246,7 +245248,7 @@ xRS
 xRS
 xRS
 xRS
-xRS
+hkm
 bdq
 nYV
 nYV
@@ -245254,11 +245256,11 @@ seu
 seu
 seu
 bdq
-xRS
-xRS
+hkm
+hkm
 bdq
 bdq
-xRS
+hkm
 xRS
 xRS
 xRS
@@ -245678,19 +245680,19 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 bdq
 bdq
 nYV
 nYV
 nYV
 aVv
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 bdq
-xRS
+hkm
 xRS
 xRS
 xRS
@@ -246111,18 +246113,18 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 bdq
 bdq
 nYV
 bdq
-xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -246544,17 +246546,17 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
 bdq
 bdq
 bdq
-xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -246977,17 +246979,17 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
+hkm
+hkm
 nYV
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -247410,15 +247412,15 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
 nYV
 nYV
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -247844,13 +247846,13 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 nYV
 nYV
 bdq
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -248276,13 +248278,13 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -248710,11 +248712,11 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
-xRS
-xRS
-xRS
+hkm
+hkm
+hkm
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -249144,9 +249146,9 @@ xRS
 xRS
 xRS
 xRS
-xRS
+hkm
 bdq
-xRS
+hkm
 xRS
 xRS
 xRS
@@ -249577,8 +249579,8 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -250010,8 +250012,8 @@ xRS
 xRS
 xRS
 xRS
-xRS
-xRS
+hkm
+hkm
 xRS
 xRS
 xRS
@@ -299387,7 +299389,7 @@ vIa
 vIa
 vIa
 vIa
-vSo
+vIa
 vIa
 vIa
 vIa
@@ -301110,14 +301112,14 @@ vIa
 vIa
 vIa
 vIa
+vIa
+vIa
+vIa
 vRu
 vRu
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
+vIa
 vIa
 vIa
 vIa
@@ -301542,8 +301544,8 @@ vIa
 vIa
 vIa
 vIa
-vRu
-vRu
+vIa
+vIa
 vRu
 vRu
 fyP
@@ -301974,8 +301976,8 @@ vIa
 vIa
 vIa
 vIa
-vRu
-vRu
+vIa
+vIa
 vRu
 fyP
 fyP
@@ -302406,8 +302408,8 @@ vIa
 vIa
 vIa
 vIa
-vRu
-vRu
+vIa
+vIa
 vRu
 fyP
 fyP
@@ -302838,7 +302840,7 @@ vIa
 vIa
 vIa
 vIa
-vRu
+vIa
 vRu
 vRu
 fyP
@@ -303270,7 +303272,7 @@ vIa
 vIa
 vIa
 vIa
-vRu
+vIa
 vRu
 vRu
 fyP
@@ -304129,8 +304131,8 @@ tmH
 tmH
 tmH
 tmH
-vRu
-vRu
+vIa
+vIa
 vRu
 vRu
 vRu
@@ -304141,7 +304143,7 @@ czk
 czk
 vRu
 vRu
-vRu
+vIa
 vIa
 vIa
 vIa
@@ -304572,8 +304574,8 @@ czk
 vRu
 vRu
 vRu
-vRu
-vRu
+vIa
+vIa
 vIa
 vIa
 vIa
@@ -305002,10 +305004,10 @@ vRu
 czk
 vRu
 vRu
-vRu
-vRu
-vRu
-vRu
+vIa
+vIa
+vIa
+vIa
 vIa
 vIa
 qbG
@@ -305430,7 +305432,7 @@ czk
 vRu
 vRu
 vRu
-vRu
+vIa
 fZe
 fZe
 vIa
@@ -305861,8 +305863,8 @@ vRu
 czk
 vRu
 vRu
-vRu
-vRu
+vIa
+vIa
 vIa
 qbG
 qbG
@@ -307153,7 +307155,7 @@ tmH
 tmH
 nlo
 vIa
-vRu
+vIa
 vRu
 vRu
 czk
@@ -310604,8 +310606,8 @@ tmH
 tmH
 tmH
 tmH
-nqU
-xbD
+pAV
+fBT
 xbD
 xbD
 esK
@@ -311036,7 +311038,7 @@ tmH
 tmH
 tmH
 vIa
-nqU
+pAV
 dik
 xbD
 xbD
@@ -311468,8 +311470,8 @@ vIa
 tmH
 tmH
 tmH
-nqU
-ani
+pAV
+vSo
 osK
 xbD
 nqU
@@ -370597,7 +370599,7 @@ jEY
 jEY
 czd
 pHA
-dLB
+aBz
 pHA
 lUx
 czd
