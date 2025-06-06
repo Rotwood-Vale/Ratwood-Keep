@@ -6956,7 +6956,6 @@
 "dlI" = (
 /obj/structure/closet/crate/roguecloset/crafted{
 	keylock = 1;
-	locked = 1;
 	lockid = "butcher"
 	},
 /turf/open/floor/rogue/cobble,
@@ -25673,11 +25672,7 @@
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/manor)
 "mqI" = (
-/obj/structure/closet/crate/roguecloset{
-	keylock = 1;
-	locked = 1;
-	lockid = "towner_miner"
-	},
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "mqS" = (
@@ -39242,11 +39237,7 @@
 /area/rogue/indoors/shelter/mountains)
 "thC" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/structure/closet/crate/roguecloset{
-	keylock = 1;
-	locked = 1;
-	lockid = "towner_miner"
-	},
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cavewet/bogcaves)
 "thL" = (
