@@ -128,24 +128,10 @@
 		if(INTENT_DODGE)
 			return checkdodge(intenty, attacker)
 
-/mob/living/proc/checkdodge(datum/intent/intenty, mob/living/attacker)
-	if(!candodge)
-		return FALSE
-	if(pulledby)
-		return FALSE
-	if(pulling == attacker)
-		return FALSE
-	if(world.time < last_dodge + dodgetime)
-		if(!istype(rmb_intent, /datum/rmb_intent/riposte))
-			return FALSE
-	if(has_status_effect(/datum/status_effect/debuff/riposted))
-		return FALSE
-	last_dodge = world.time
-	var/dodge_dir = get_dir(src, attacker)
+/mob/living/proc/get_dodge_destinations(mob/living/attacker)
+	var/dodge_dir = get_dir(attacker, src)
 	if(!dodge_dir) // dir is 0, so we're on the same tile.
-		return FALSE
-	if(intenty && !intenty.candodge)
-		return FALSE
+		return null
 	var/list/dirry = list(turn(dodge_dir, -90), dodge_dir, turn(dodge_dir, 90))
 	// pick a random dir
 	var/list/turf/dodge_candidates = list()
@@ -163,6 +149,27 @@
 		if(has_impassable_atom)
 			continue
 		dodge_candidates += dodge_candidate
+	return dodge_candidates
+
+/mob/living/proc/checkdodge(datum/intent/intenty, mob/living/attacker)
+	if(!candodge)
+		return FALSE
+	if(pulledby)
+		return FALSE
+	if(pulling == attacker)
+		return FALSE
+	if(world.time < last_dodge + dodgetime)
+		if(!istype(rmb_intent, /datum/rmb_intent/riposte))
+			return FALSE
+	if(has_status_effect(/datum/status_effect/debuff/riposted))
+		return FALSE
+	last_dodge = world.time
+	if(intenty && !intenty.candodge)
+		return FALSE
+	var/dodge_dir = get_dir(src, attacker)
+	if(!dodge_dir) // dir is 0, so we're on the same tile.
+		return FALSE
+	var/list/turf/dodge_candidates = get_dodge_destinations(attacker)
 	if(!length(dodge_candidates))
 		to_chat(src, span_boldwarning("There's nowhere to dodge to!"))
 		return FALSE

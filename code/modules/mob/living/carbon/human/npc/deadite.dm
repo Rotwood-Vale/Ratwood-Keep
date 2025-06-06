@@ -71,6 +71,9 @@
 	update_a_intents()
 	aggressive = TRUE
 	mode = NPC_AI_IDLE
+	npc_jump_chance = 0
+	rude = FALSE // don't taunt people as a deadite
+	tree_climber = FALSE // or climb trees
 	handle_ai()
 	ambushable = FALSE
 	mob_biotypes |= MOB_UNDEAD
