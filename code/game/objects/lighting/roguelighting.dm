@@ -295,6 +295,7 @@
 	cookonme = TRUE
 	fueluse = 0
 	max_integrity = 150
+	metalizer_result = /obj/machinery/light/roguestreet
 
 /obj/machinery/light/rogue/firebowl/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
@@ -343,17 +344,19 @@
 	bulb_colour = "#ff9648"
 	cookonme = FALSE
 	crossfire = FALSE
-
+	metalizer_result = /obj/machinery/light/roguestreet
 
 /obj/machinery/light/rogue/firebowl/standing/blue
 	bulb_colour = "#b9bcff"
 	icon_state = "standingb1"
 	base_state = "standingb"
+	metalizer_result = /obj/machinery/light/roguestreet
 
 /obj/machinery/light/rogue/firebowl/standing/green
 	bulb_colour = "#8ee2a7"
 	icon_state = "standingg1"
 	base_state = "standingg"
+	metalizer_result = /obj/machinery/light/roguestreet
 
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
