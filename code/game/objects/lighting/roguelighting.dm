@@ -11,7 +11,8 @@
 	fueluse = 0
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
-	max_integrity = 0
+	blade_dulling = DULLING_BASH
+	max_integrity = 250
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
 
@@ -28,6 +29,7 @@
 	icon_state = "wlamp1_nozap"
 	base_state = "wlamp"
 	brightness = 7.8
+	max_integrity = 125
 	density = FALSE
 
 /obj/machinery/light/roguestreet/orange
@@ -51,6 +53,7 @@
 	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
 	brightness = 7.8
+	max_integrity = 250
 	density = FALSE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
