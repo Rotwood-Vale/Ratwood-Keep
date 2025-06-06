@@ -53,7 +53,7 @@
 	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
 	brightness = 7.8
-	max_integrity = 250
+	max_integrity = 125
 	density = FALSE
 
 /obj/machinery/light/roguestreet/proc/lights_out()
