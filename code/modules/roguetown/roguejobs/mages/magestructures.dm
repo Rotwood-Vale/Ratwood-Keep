@@ -110,7 +110,7 @@
 	max_integrity = 0	// Integrity 0 should make this indestructible.
 	pixel_x = -16
 	layer = -0.1
-	resistance_flags = INDESTRUCTIBLE // Just to make doubly sure it can't be destroyed.
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // Just to make doubly sure it can't be destroyed.
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
 	if(isliving(user))
