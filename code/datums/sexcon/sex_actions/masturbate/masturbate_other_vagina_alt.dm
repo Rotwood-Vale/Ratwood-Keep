@@ -24,7 +24,7 @@
 		//Stroking becomes finger fucking instead
 		user.visible_message(span_warning("[user] starts fucking [target]'s cunt with their finger..."))
 	else
-		user.visible_message(span_warning("[user] starts  fucking [target]'s cunt with their fingers..."))
+		user.visible_message(span_warning("[user] starts fucking [target]'s cunt with their fingers..."))
 
 /datum/sex_action/masturbate_other_vagina_alt/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
