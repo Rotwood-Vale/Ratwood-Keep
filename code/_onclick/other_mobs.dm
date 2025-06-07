@@ -466,7 +466,7 @@
 								to_chat(src, span_warning("What am I going to steal from there?"))
 								return
 							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-							if(mobsbehind.Find(src))
+							if(mobsbehind.Find(src) || V.IsSleeping() || V.eyesclosed) //If they can't see you or are sleeping
 								switch(U.zone_selected)
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
@@ -508,7 +508,7 @@
 							to_chat(V, span_danger("Someone tried pickpocketing me!"))
 							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
 						// If we're pickpocketing someone else, and that person is conscious, grant XP
-						if(src != V && V.stat == CONSCIOUS)
+						if(src != V && V.stat == CONSCIOUS && V.client != null)
 							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 						changeNext_move(mmb_intent.clickcd)
 				return
