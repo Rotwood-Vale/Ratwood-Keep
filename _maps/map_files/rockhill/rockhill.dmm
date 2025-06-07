@@ -28865,9 +28865,7 @@
 /area/rogue/indoors)
 "nVI" = (
 /obj/structure/chair/bench/church/smallbench{
-	dir = 8;
-	name = "Steering Base";
-	pixel_x = -13
+	dir = 8
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
@@ -40126,12 +40124,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "txZ" = (
-/obj/structure/chair/bench/church/smallbench{
-	dir = 8;
-	name = "Steering Base";
-	pixel_x = -13
-	},
 /obj/machinery/light/rogue/wallfire/candle,
+/obj/structure/chair/bench/church/smallbench{
+	dir = 8
+	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
 "tyf" = (
@@ -49571,13 +49567,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "yit" = (
-/obj/structure/chair/bench/church/smallbench{
-	dir = 8;
-	name = "Steering Base";
-	pixel_x = -13
-	},
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
+	},
+/obj/structure/chair/bench/church/smallbench{
+	dir = 8
 	},
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church)
