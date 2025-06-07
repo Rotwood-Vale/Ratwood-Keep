@@ -81,3 +81,9 @@ GLOBAL_VAR(king_throne)
 	M.color = secondary
 	add_overlay(M)
 	GLOB.lordcolor -= src
+
+/obj/structure/roguethrone/augustgrad
+	name = "Pride of Augustgrad"
+	desc = "Be the judge be the ruler. Say 'help' with the crown on your head if you are confused."
+	icon = 'icons/roguetown/misc/96x96.dmi'
+	icon_state = "throne_august"
