@@ -24,7 +24,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	id = /obj/item/clothing/ring/gold
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
