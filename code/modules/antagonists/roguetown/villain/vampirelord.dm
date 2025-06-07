@@ -307,6 +307,19 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	icon_state = "vgloves"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+//Misc Items
+
+/obj/item/bloodoffering //Zizo cultists should usually demand this before working with the VL. They are supposed to gain less than the VL loses, it's an IC balancing mechanic that explains why zizoid cultists would not always work with the VL.
+	name = "offering of blood"	
+	desc = "This unholy orb of blood could be used by a learned follower of Zizo to gain a measure of power. A good gift from one profane creature to another."
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "soulstone"
+	item_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	layer = HIGH_OBJ_LAYER
+	w_class = WEIGHT_CLASS_TINY
+
 /datum/antagonist/vampirelord/on_removal()
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
@@ -721,8 +734,18 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					new /obj/item/clothing/shoes/roguetown/armor/steel/vampire(user.loc)
 					new /obj/item/clothing/head/roguetown/helmet/heavy/vampire(user.loc)
 					new /obj/item/clothing/gloves/roguetown/chain/vampire(user.loc)
-				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
+					user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
+		if("Create Offering")
+			if((alert(user, "Create an unholy gift? A cultist might be swayed to serve you for this offering. Cost:5000","","Yes","No") == "Yes"))
+				if(!check_withdraw(-5000))
+					to_chat(user, "I don't have enough vitae!")
+					return
+				if(do_after(user, 100))
+					lord.handle_vitae(-5000)
+					new /obj/item/bloodoffering(user.loc)
+					user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 
+					
 /obj/structure/vampire/bloodpool/proc/update_pool(change)
 	var/datum/game_mode/chaosmode/C = SSticker.mode
 	var/new_max = 8000
@@ -1128,7 +1151,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/current = 8000
 	var/nextlevel = VAMP_LEVEL_ONE
 	var/debug = FALSE
-	var/list/useoptions = list("Grow Power", "Shape Amulet", "Shape Armor")
+	var/list/useoptions = list("Grow Power", "Shape Amulet", "Shape Armor", "Create Offering")
 
 /obj/structure/vampire/scryingorb // Method of spying on the town
 	name = "Eye of Night"

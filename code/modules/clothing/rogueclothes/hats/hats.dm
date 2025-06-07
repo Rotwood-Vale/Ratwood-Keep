@@ -574,7 +574,19 @@
 /obj/item/clothing/head/roguetown/helmet/leather/cult_hood
 	name = "cultist hood"
 	desc = "It echoes with ominous laughter."
+	blocksound = SOFTHIT
 	icon_state = "warlockhood"
+	dynamic_hair_suffix = ""
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	body_parts_covered = NECK|HAIR|EARS|HEAD
+
+/obj/item/clothing/head/roguetown/helmet/leather/cult_hood/empowered
+	name = "cultist hood"
+	desc = "It echoes with ominous laughter."
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 50, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	max_integrity = 200
+	icon_state = "ewarlockhood"
 	dynamic_hair_suffix = ""
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	body_parts_covered = NECK|HAIR|EARS|HEAD
