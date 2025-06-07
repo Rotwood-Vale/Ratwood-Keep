@@ -140,3 +140,37 @@
 	result = /obj/item/bedroll
 	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/natural/cloth = 2, /obj/item/rope = 1)
 	sellprice = 50
+
+
+/datum/crafting_recipe/roguetown/bait
+	name = "bait"
+	result = /obj/item/bait
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
+	req_table = TRUE
+	subtype_reqs = TRUE
+
+/datum/crafting_recipe/roguetown/sbaita
+	name = "sweetbait (apple)"
+	result = /obj/item/bait/sweet
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/grown/apple = 2)
+	req_table = TRUE
+	subtype_reqs = TRUE
+
+/datum/crafting_recipe/roguetown/sbait
+	name = "sweetbait (berry)"
+	result = /obj/item/bait/sweet
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
+	req_table = TRUE
+	subtype_reqs = TRUE
+
+/datum/crafting_recipe/roguetown/bloodbait
+	name = "bloodbait"
+	result = /obj/item/bait/bloody
+	reqs = list(/obj/item/storage/roguebag = 1,
+				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
+	req_table = TRUE
+	subtype_reqs = TRUE
+
