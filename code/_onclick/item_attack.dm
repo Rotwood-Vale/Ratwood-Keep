@@ -350,6 +350,10 @@
 			newforce = 1
 	else
 		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+
+	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity)
+		user.visible_message(span_warning("[src] doesn't appear to take any damage!")) // Lets the player know that the object they're attacking is indestructible.
+
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
