@@ -848,15 +848,23 @@ obj/structure/bars/steel
 					proceed_with_offer = TRUE
 					break
 			if(proceed_with_offer)
+				var/list/bandits_to_benefit = list()
+				for(var/mob/player in GLOB.player_list)
+					if(player.mind && player.stat != DEAD) //You better be alive if you actually want your cut.
+						if(player.mind.has_antag_datum(/datum/antagonist/bandit))
+							bandits_to_benefit += player.mind.has_antag_datum(/datum/antagonist/bandit)
+				if(isemptylist(bandits_to_benefit))
+					to_chat(user, span_warning("Something is wrong."))
+					return
 				playsound(loc,'sound/items/carvty.ogg', 50, TRUE)
 				qdel(W)
-				for(var/mob/player in GLOB.player_list)
-					if(player.mind)
-						if(player.mind.has_antag_datum(/datum/antagonist/bandit))
-							var/datum/antagonist/bandit/bandit_players = player.mind.has_antag_datum(/datum/antagonist/bandit)
-							bandit_players.favor += donatedamnt
-							bandit_players.totaldonated += donatedamnt
-							to_chat(player, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You now have [bandit_players.favor] favor.</font>"))
+				var/to_distribute = round(donatedamnt / bandits_to_benefit.len, 0.1)
+				if(bandits_to_benefit.len > 4 && donatedamnt > 20)
+					to_distribute += 5
+				for(var/datum/antagonist/bandit/bandit_player in bandits_to_benefit)
+					bandit_player.favor += to_distribute
+					bandit_player.totaldonated += donatedamnt
+					to_chat(bandit_player.owner, ("<font color='yellow'>[user.name] donates [donatedamnt] to the shrine! You get [to_distribute] and now have <b>[bandit_player.favor]</b> favor.</font>"))
 
 			else
 				to_chat(user, span_warning("This item isn't a good offering."))
