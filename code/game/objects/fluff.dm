@@ -6,6 +6,7 @@
 	desc = ""
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
+	max_integrity = 35 // They had 300 before. 35 is the same as the non-decorative bushes.
 
 /obj/structure/flora/ausbushes/Initialize()
 	if(icon_state == "firstbush_1")

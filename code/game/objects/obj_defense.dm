@@ -5,7 +5,7 @@
 		return
 	if(sound_effect)
 		play_attack_sound(damage_amount, damage_type, damage_flag)
-	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity)
+	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity) // If the object is indestructible or is set to have 0 health, escape.
 		return
 	damage_amount = run_obj_armor(damage_amount, damage_type, damage_flag, attack_dir, armor_penetration)
 	testing("damamount [damage_amount]")
