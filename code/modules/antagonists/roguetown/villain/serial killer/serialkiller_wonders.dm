@@ -1,5 +1,3 @@
-//Wonder recipes
-//NOTE: Wonders are named after their proper keys, the wonder structure handles that code
 /datum/crafting_recipe/roguetown/structure/wonder
 	name = "bloody totem (3 bodyparts, 1 head)"
 	result = /obj/structure/totem
@@ -13,7 +11,6 @@
 	skillcraft = null
 	always_available = FALSE
 
-//Wonder structure
 /obj/structure/totem
 	name = "bloody totem"
 	desc = "What a disgusting thing, what type of lunatic would make this!?"
