@@ -193,12 +193,13 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.real_name == inputty)
 					REMOVE_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-					if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_MATTHIOS_EYES) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
-						H.remove_stress(/datum/stressevent/gazeuponme)
-						H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
-					else
-						H.remove_stress(/datum/stressevent/excommunicated)
-						H.remove_status_effect(/datum/status_effect/debuff/excomm)
+					switch(H.patron.type)
+						if(/datum/patron/inhumen/baotha, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/zizo)
+							H.remove_stress(/datum/stressevent/gazeuponme)
+							H.remove_status_effect(/datum/status_effect/buff/gazeuponme)
+						else
+							H.remove_stress(/datum/stressevent/excommunicated)
+							H.remove_status_effect(/datum/status_effect/debuff/excomm)
 			return
 		var/found = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -207,12 +208,13 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			if(H.real_name == inputty)
 				found = TRUE
 				ADD_TRAIT(H, TRAIT_EXCOMMUNICATED, TRAIT_GENERIC)
-				if(HAS_TRAIT(H, TRAIT_ORGAN_EATER) || HAS_TRAIT(H, TRAIT_COMMIE) || HAS_TRAIT(H, TRAIT_MATTHIOS_EYES) || HAS_TRAIT(H, TRAIT_CRACKHEAD) || HAS_TRAIT(H, TRAIT_ZIZO_MARKED))
-					H.add_stress(/datum/stressevent/gazeuponme)
-					H.apply_status_effect(/datum/status_effect/buff/gazeuponme)
-				else
-					H.add_stress(/datum/stressevent/excommunicated)
-					H.apply_status_effect(/datum/status_effect/debuff/excomm)
+				switch(H.patron.type)
+					if(/datum/patron/inhumen/baotha, /datum/patron/inhumen/graggar, /datum/patron/inhumen/matthios, /datum/patron/zizo)
+						H.add_stress(/datum/stressevent/gazeuponme)
+						H.apply_status_effect(/datum/status_effect/buff/gazeuponme)
+					else if(H.patron.type != /datum/patron/godless)
+						H.add_stress(/datum/stressevent/excommunicated)
+						H.apply_status_effect(/datum/status_effect/debuff/excomm)
 		if(!found)
 			return FALSE
 		GLOB.excommunicated_players += inputty
