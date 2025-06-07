@@ -56,7 +56,6 @@
 			H.change_stat("speed", 3)
 			H.change_stat("intelligence", 1)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		if("Swashbuckler") //A swashbuckler is a heroic protagonist stock character who is skilled in swordsmanship, acrobatics, and guile. A little less sneaky, a little more en garde-y
 			H.set_blindness(0)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
