@@ -56,6 +56,11 @@
 	sellprice = 121
 	desc = "Beautifully clear, it demands respect."
 
+/obj/item/roguegem/amethyst
+	name = "amythortz"
+	icon_state = "amethyst"
+	sellprice = 0
+	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
 
 /obj/item/roguegem/random
 	name = "random gem"
