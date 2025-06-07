@@ -43,6 +43,7 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
+#define TRAIT_ZEALOT "Zealot"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"

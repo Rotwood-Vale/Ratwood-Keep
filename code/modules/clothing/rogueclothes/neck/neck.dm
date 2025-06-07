@@ -172,7 +172,7 @@
 /obj/item/clothing/neck/roguetown/psicross
 	name = "psycross"
 	desc = "An iron cross of PSYDON, whose will is like tempered metal and lives on in the eternal war of his Inquisition. In His final moments, He struck a bargain with mankind: never allow His name to fade from the earth, and He will one day return."
-	icon_state = "psicross"
+	icon_state = "psycross"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
@@ -254,13 +254,14 @@
 /obj/item/clothing/neck/roguetown/psicross/wood
 	name = "wooden psycross"
 	desc = "So zealous are PSYDON's followers that they will carve his symbol into everything they can reach, even wood, lest their descendants forget their covenant: to make war eternal against the Archenemy, Zizo."
-	icon_state = "psicrossw"
+	icon_state = "psycross_w"
 	sellprice = 0
 
 /obj/item/clothing/neck/roguetown/psicross/silver
+	var/active_item = FALSE
 	name = "silver psycross"
 	desc = "Make no mistake, son of PSYDON, this amulet is as valuable as any blade in your crusade. Inhumen monsters and cultists shrink at the sight of silver, for it is the All-Father's blood made manifest. So hoist it high, scream his name, and bathe this world in blood so that it might be redeemed."
-	icon_state = "psicrossiron"
+	icon_state = "psycross_s"
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
@@ -311,10 +312,27 @@
 			H.Knockdown(20)
 			H.Paralyze(20)
 
+/obj/item/clothing/neck/roguetown/psicross/silver/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
+	. = ..()
+	if(active_item)
+		return
+	active_item = TRUE
+	if(HAS_TRAIT(user, TRAIT_ZEALOT))
+		to_chat(user, span_notice("The blood of PSYDON protects me against spells!"))
+		ADD_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
+	
+/obj/item/clothing/neck/roguetown/psicross/silver/dropped(mob/living/user)
+	if(!active_item)
+		return
+	active_item = FALSE
+	if(HAS_TRAIT(user, TRAIT_ZEALOT))
+		to_chat(user, span_notice("As my silver psycross is removed, so too is the anti-magical protection it granted me."))
+		REMOVE_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
+	
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
 	desc = "A golden cross of PSYDON, the antithesis to heresy and patron of mankind. The Ten carry His will, yet His followers understand that their virtues stem from one single source, and that they must prepare the world for His inevitable return."
-	icon_state = "psicrossg"
+	icon_state = "psycross_g"
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	sellprice = 100
