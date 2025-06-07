@@ -259,21 +259,37 @@
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 			contents += "<a href='?src=\ref[src];withdraw=1'>\[Withdraw\]</a></center><BR>"
 			contents += "<a href='?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
-			if(compact)
-				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
-					if(ishuman(A))
-						var/mob/living/carbon/human/tmp = A
-						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m"
+
+			for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+				if(ishuman(A))
+					var/mob/living/carbon/human/tmp = A
+					var/name_to_display = tmp.real_name
+					var/job_to_display = tmp.advjob ? tmp.advjob : tmp.job
+
+					var/datum/job/roguetown/job
+					if (iswerewolf(A))
+						// We want to display 
+						name_to_display = A.stored_mob?.real_name
+						if (!name_to_display)
+							name_to_display = "UNKNOWN" // Should hopefully never happen, tell Zoni if you see this in-game
+						job = SSjob.GetJob(A.stored_mob?.job)
 					else
-						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
+						job = SSjob.GetJob(tmp.job)
+						
+					if (job && job.should_anonymise_job())
+						job_to_display = "FOREIGNER"
+					else if (!job)
+						job_to_display = "UNKNOWN" // Should hopefully never happen
+
+					contents += "[name_to_display] ([job_to_display]) - [SStreasury.bank_accounts[A]]m"
+				else
+					// Not a human mob, so just show real name and account
+					contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
+					
+				if (compact)
 					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
-			else
-				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
-					if(ishuman(A))
-						var/mob/living/carbon/human/tmp = A
-						contents += "[tmp.real_name] ([tmp.advjob ? tmp.advjob : tmp.job]) - [SStreasury.bank_accounts[A]]m<BR>"
-					else
-						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
+				else
+					contents += "<BR>"
 					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
 		if(TAB_STOCK)
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
