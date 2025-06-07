@@ -19,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 200
-	min_pq = 8
+	min_pq = 40
 	max_pq = null
 
 	cmode_music = 'sound/music/combat_inquisition.ogg'
