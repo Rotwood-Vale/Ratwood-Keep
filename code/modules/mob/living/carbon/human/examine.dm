@@ -533,7 +533,13 @@
 			final_str = 10
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
-			if(5 to INFINITY)
+			if(20 to INFINITY)
+				. += span_warning("<B>I cannot comprehend such strength!</B>")
+			if(14 to 20)
+				. += span_warning("<B>[t_He] look[p_s()] astronomically stronger than I!</B>")
+			if(7 to 14)
+				. += span_warning("<B>[t_He] look[p_s()] significantly stronger than I!</B>")
+			if(5 to 7)
 				. += span_warning("<B>[t_He] look[p_s()] much stronger than I.</B>")
 			if(1 to 5)
 				. += span_warning("[t_He] look[p_s()] stronger than I.")
@@ -541,8 +547,14 @@
 				. += "[t_He] look[p_s()] about as strong as I."
 			if(-5 to -1)
 				. += span_warning("[t_He] look[p_s()] weaker than I.")
-			if(-INFINITY to -5)
+			if(-7 to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
+			if(-14 to -7)
+				. += span_warning("<B>[t_He] look[p_s()] like a weakling!</B>")
+			if(-20 to -14)
+				. += span_warning("<B>[t_He] look[p_s()] like I could rip them in half with ease!</B>")
+			if (-INFINITY to -20)
+				. += span_warning("<B>They are no match for me!</B>")
 
 	if(maniac)
 		var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
