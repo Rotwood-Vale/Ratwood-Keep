@@ -208,6 +208,46 @@
 		to_chat(user, span_notice("The Deposed is defunct."))
 		return
 
+    // You cannot offer the player if they have missing ears, eyes or tongue or any body part. This says a lot about our society. Sometimes its too much freedom for players so things like this must be added.
+	var/list/missing_organs = list(
+		ORGAN_SLOT_EARS,
+		ORGAN_SLOT_EYES,
+		ORGAN_SLOT_TONGUE
+	)
+
+	for(var/slot in missing_organs)
+		var/obj/item/organ/O = H.getorganslot(slot)
+		if(!O)
+			var/organ_name = "[slot]"
+			switch(slot)
+				if(ORGAN_SLOT_EARS) organ_name = "ears"
+				if(ORGAN_SLOT_EYES) organ_name = "eyes"
+				if(ORGAN_SLOT_TONGUE) organ_name = "tongue"
+			to_chat(usr, span_warning("The [organ_name] are missing. The Hoardmaster demands wholeness."))
+			return FALSE
+
+	var/obj/item/bodypart/target_head = H.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/target_larm = H.get_bodypart(BODY_ZONE_L_ARM)
+	var/obj/item/bodypart/target_rarm = H.get_bodypart(BODY_ZONE_R_ARM)
+	var/obj/item/bodypart/target_lleg = H.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/target_rleg = H.get_bodypart(BODY_ZONE_R_LEG)
+
+	if(!target_head)
+		to_chat(usr, span_warning("This offering is headless. Hoardmaster wants them alive."))
+		return FALSE
+	if(!target_larm)
+		to_chat(usr, span_warning("The left arm is missing. The Hoardmaster demands wholeness."))
+		return FALSE
+	if(!target_rarm)
+		to_chat(usr, span_warning("The right arm is gone. The Hoardmaster turns away."))
+		return FALSE
+	if(!target_lleg)
+		to_chat(usr, span_warning("The left leg is gone. This one cannot stand before the Hoardmaster."))
+		return FALSE
+	if(!target_rleg)
+		to_chat(usr, span_warning("The right leg is missing. Incomplete offerings are rejected."))
+		return FALSE
+
 	if(!do_after(user, 40 SECONDS, TRUE, H))
 		return
 
