@@ -223,11 +223,15 @@
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backl = /obj/item/storage/backpack/rogue/backpack
 			r_hand = /obj/item/rogueweapon/woodstaff
-			H.change_stat("strength", 3)
+			H.change_stat("strength", 2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("speed", 2)
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			var/datum/devotion/C = new /datum/devotion(H, H.patron)
+			C.grant_spells_churchling(H)
+			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+
 
 	H.set_blindness(0)
