@@ -1,6 +1,5 @@
 /mob/living/carbon/human/species/deadite
-	race = /datum/species/human/northern
-	gender = MALE
+	// race and gender are overridden in Initialize
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
@@ -18,16 +17,14 @@
 	wander = TRUE
 
 /mob/living/carbon/human/species/deadite/Initialize()
+	race = pick(RACES_ALL_KINDS)
+	gender = pick(MALE, FEMALE) // needs to be done before DNA setup
 	. = ..()
-	var/race = pick(list(ALL_RACES_TYPES))
-	set_species(race)
-	//randomize_human(src, TRUE) //Fix this shit if you want racially diverse zombies
+	dna.species.random_character(src)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 /mob/living/carbon/human/species/deadite/after_creation()
-	..()
-	gender = pick(MALE, FEMALE)
-	set_species(/datum/species/human/northern)
+	..() // rolls stats
 	if(outfit)
 		var/datum/outfit/Outfit = new outfit
 		if(Outfit)
@@ -44,25 +41,25 @@
 	if(prob(5))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	if(prob(30))
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-		if(prob(50))
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
+		if(prob(20))
+			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		else
+			shirt = pick(/obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant, /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l)
+	else if(!armor && prob(80) && H.gender == FEMALE) // cover those thangs
+		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	if(prob(5))
 		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	else if(prob(80))
+		if(prob(20))
+			pants = /obj/item/clothing/under/roguetown/tights
+		else
+			pants = pick(/obj/item/clothing/under/roguetown/tights/vagrant, /obj/item/clothing/under/roguetown/tights/vagrant/l)
 	if(prob(5))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(5))
 		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 	if(prob(5))
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-	if(H.gender == FEMALE)
-		H.STASTR = rand(8,13)
-	else
-		H.STASTR = rand(9,14)
-	H.STASPD = 5
-	H.STACON = 4
-	H.STAEND = 10
-	H.STAINT = 1
 
 /// Makes the mob a deadite, called on both npc and player deadites
 /mob/living/carbon/human/proc/make_deadite()
