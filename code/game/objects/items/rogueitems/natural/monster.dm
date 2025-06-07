@@ -45,7 +45,7 @@
 /obj/item/natural/heartwoodcore	//T3 mage summon loot
 	name = "heartwood core"
 	icon_state = "heartwood_core"
-	desc = "A piece of enchanted wood imbued with the dryad’s essence. Merely holding it transports one's mind to ancient times."
+	desc = "A piece of enchanted wood imbued with the dryadï¿½s essence. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FIRE_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 

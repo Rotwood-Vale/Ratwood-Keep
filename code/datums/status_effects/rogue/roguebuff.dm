@@ -924,16 +924,15 @@
 	to_chat(owner, span_warning("My mind is my own again, no longer awash with foggy peace!"))
 
 
+/atom/movable/screen/alert/status_effect/buff/alch
+	desc = "Power rushes through your veins."
+	icon_state = "buff"
+
 /datum/status_effect/buff/alch/strengthpot
 	id = "strpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
-	duration = 930
-
-/datum/status_effect/buff/alch/strengthpot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("strength")
-	effectedstats = list("strength" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("strength" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	name = "Strength"
@@ -942,13 +941,8 @@
 /datum/status_effect/buff/alch/perceptionpot
 	id = "perpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/perceptionpot
-	duration = 3000
-
-/datum/status_effect/buff/alch/perceptionpot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("perception")
-	effectedstats = list("perception" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("perception" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/perceptionpot
 	name = "Perception"
@@ -957,13 +951,8 @@
 /datum/status_effect/buff/alch/intelligencepot
 	id = "intpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/intelligencepot
-	duration = 3000
-
-/datum/status_effect/buff/alch/intelligencepot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("intelligence")
-	effectedstats = list("intelligence" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("intelligence" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/intelligencepot
 	name = "Intelligence"
@@ -972,13 +961,8 @@
 /datum/status_effect/buff/alch/constitutionpot
 	id = "conpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/constitutionpot
-	duration = 930
-
-/datum/status_effect/buff/alch/constitutionpot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("constitution")
-	effectedstats = list("constitution" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("constitution" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/constitutionpot
 	name = "Constitution"
@@ -987,28 +971,18 @@
 /datum/status_effect/buff/alch/endurancepot
 	id = "endpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/endurancepot
-	duration = 930
-
-/datum/status_effect/buff/alch/endurancepot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("endurance")
-	effectedstats = list("endurance" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("endurance" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/endurancepot
 	name = "Endurance"
-	icon_state = "buff"	
+	icon_state = "buff"
 
 /datum/status_effect/buff/alch/speedpot
 	id = "spdpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/speedpot
-	duration = 930
-
-/datum/status_effect/buff/alch/speedpot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("speed")
-	effectedstats = list("speed" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("speed" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/speedpot
 	name = "Speed"
@@ -1017,27 +991,12 @@
 /datum/status_effect/buff/alch/fortunepot
 	id = "forpot"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/fortunepot
-	duration = 3000
-
-/datum/status_effect/buff/alch/fortunepot/on_life(mob/living/carbon/M)
-	if(!M) return
-	var/current = M.get_stat("fortune")
-	effectedstats = list("fortune" = calculate_buff_bonus(current))
-	return ..()
+	effectedstats = list("fortune" = 3)
+	duration = 3 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/alch/fortunepot
 	name = "Fortune"
-	icon_state = "buff"	
-
-/proc/calculate_buff_bonus(current_value) //PROC CALCULATE FOR ALCHEMY POTIONS 
-	if(current_value <= 12)
-		return 3
-	else if(current_value == 13)
-		return 2
-	else if(current_value == 14)
-		return 1
-	else
-		return 0 
+	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/drunkmurk
 	name = "Murk-Knowledge"
