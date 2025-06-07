@@ -2,6 +2,7 @@
 	abstract_type = /datum/sprite_accessory/eyes
 	color_keys = 2
 	color_key_names = list("First Eye", "Second Eye")
+	has_rot_color = FALSE
 	icon = 'icons/mob/sprite_accessory/eyes/eyes.dmi'
 
 /datum/sprite_accessory/eyes/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)

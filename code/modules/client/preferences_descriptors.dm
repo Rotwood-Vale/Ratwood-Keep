@@ -43,6 +43,23 @@
 		var/datum/custom_descriptor_entry/custom_entry = new /datum/custom_descriptor_entry()
 		custom_descriptors += custom_entry
 
+/// Mostly used for random NPC stuff. Picks random descriptors with no sense of sanity or anything.
+/datum/preferences/proc/randomize_descriptors()
+	reset_descriptors() // clear any customs
+	for(var/choice_type in pref_species.descriptor_choices)
+		var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
+		var/datum/descriptor_entry/entry = get_descriptor_entry_for_choice(choice_type)
+		if(entry)
+			continue
+		entry = new /datum/descriptor_entry()
+		entry.set_values(choice_type, pick(choice.descriptors))
+		descriptor_entries += entry
+
+	for(var/datum/descriptor_entry/entry as anything in descriptor_entries)
+		var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(entry.descriptor_choice_type)
+		if(entry.descriptor_type == null || !(entry.descriptor_type in choice.descriptors))
+			entry.descriptor_type = pick(choice.descriptors)
+
 /datum/preferences/proc/handle_descriptors_topic(mob/user, href_list)
 	switch(href_list["preference"])
 		if("choose_descriptor")

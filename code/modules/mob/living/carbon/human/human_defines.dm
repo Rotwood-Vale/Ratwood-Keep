@@ -47,10 +47,6 @@
 
 	var/cached_underwear = "Nude"
 
-	var/accessory = "None"
-	var/detail = "None"
-	var/marking = "None"
-
 	var/shavelevel = 0
 
 	var/socks = "Nude" //Which socks the player wants
