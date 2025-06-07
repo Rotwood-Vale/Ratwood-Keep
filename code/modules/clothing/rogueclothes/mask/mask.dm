@@ -42,7 +42,7 @@
 		// Does everything it needs to, I think since they only ever break?
 		obj_integrity = 0
 		obj_broken = TRUE
-		update_clothes_damaged_state(TRUE)
+		update_damaged_state(TRUE)
 		playsound(src.loc, break_sound, 60, 1)
 	..()
 
