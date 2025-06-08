@@ -124,6 +124,108 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
+		
+/obj/effect/proc_holder/spell/invoked/shamanlearnspell
+	name = "Attempt to learn a new spell"
+	desc = "Weave a new spell"
+	school = "transmutation"
+	overlay_state = "book1"
+	chargedrain = 0
+	chargetime = 0
+
+/obj/effect/proc_holder/spell/invoked/shamanlearnspell/cast(list/targets, mob/living/user)
+	. = ..()
+	//TODO: make GLOB list of spells, give them a true/false tag for learning, run through that list to generate choices
+	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
+
+	var/list/spell_choices = list(
+		SPELL_ARCANEBOLT,			// 3 cost	combat, single target single shot damage
+		SPELL_FROSTBOLT,			// 3 cost	combat, single target, single shot lesser damage w/ slow
+		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
+		SPELL_FINDFAMILIAR,			// 3 cost	combat, summon spell.
+		SPELL_PUSH_SPELL,			// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
+		SPELL_DARKVISION,			// 2 cost	utility, dark sight
+		SPELL_HASTE,				// 2 cost	utility/combatbuff, faster mve speed.
+		SPELL_SUMMON_WEAPON,		// 2 cost	utility/combat, summons a marked weapon to caster.
+		SPELL_MENDING,				// 2 cost	utility, repairs items
+		SPELL_MESSAGE,				// 2 cost	utility, messages anyone you know the name of.
+		SPELL_BLADE_BURST,			// 2 cost	combat, single target damage localized on rndm leg. possible bone break.
+		SPELL_FETCH,				// 2 cost	utility/combat, pulls single target closer
+		SPELL_REPEL,				// 2 cost	utility/combat, flings single target away
+		SPELL_FORCEWALL_WEAK,		// 2 cost	utility/combat, places walls caster can walk through. stall spell.
+		SPELL_NONDETECTION,			// 1 cost	utility, no scrying your location.
+		SPELL_FEATHERFALL,			// 1 cost	utility, no fall damage from 1 zlevel drop
+		SPELL_PRESTIDIGITATION		// free for all mage roles, Utility spell, used in gathering components and parlor tricks
+		
+	)
+
+	//Patron Spelllists
+	var/list/spell_choices_noc = list(
+		SPELL_MAGEBLINDNESS,  // 2cost
+		SPELL_MAGEINVISIBILITY,
+	)
+
+	var/list/spell_choices_graggar = list(
+
+	)
+
+	var/list/spell_choices_matthios = list()
+
+	var/list/spell_choices_zizo = list(
+		SPELL_STRENGTHEN_UNDEAD,// 4 cost
+		SPELL_SICKNESS,// 3 cost
+		SPELL_EYEBITE,// 3 cost
+	)
+
+	if(user.patron.type == /datum/patron/divine/noc)
+		spell_choices.Add(spell_choices_noc)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/graggar)
+		spell_choices.Add(spell_choices_graggar)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/inhumen/matthios)
+		spell_choices.Add(spell_choices_matthios)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else if(user.patron.type == /datum/patron/zizo)
+		spell_choices.Add(spell_choices_zizo)
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	else
+		for(var/i = 1, i <= spell_choices.len, i++)
+			choices["[spell_choices[i].name]: [spell_choices[i].cost]"] = spell_choices[i]
+
+	var/totalspellcount = 0
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		totalspellcount++
+	if(totalspellcount >= 12)
+		to_chat(user,span_warning("You can not memorize more spells then you already have!"))
+		return
+	var/spellsleft = 12 - totalspellcount
+	to_chat(user,span_warning("You can memorize [spellsleft] more spells."))
+	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
+	var/obj/effect/proc_holder/spell/item = choices[choice]
+	if(!item)
+		return     // user canceled;
+	if(alert(user, "[item.desc]", "[item.name]", "Learn", "Cancel") == "Cancel") //gives a preview of the spell's description to let people know what a spell does
+		return
+	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
+		if(knownspell.type == item.type)
+			to_chat(user,span_warning("You already know this one!"))
+			return	//already know the spell
+	if(item.cost > user.mind.spell_points - user.mind.used_spell_points)
+		to_chat(user,span_warning("You do not have enough experience to create a new spell."))
+		return		// not enough spell points
+	else
+		user.mind.used_spell_points += item.cost
+		user.mind.AddSpell(new item)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"

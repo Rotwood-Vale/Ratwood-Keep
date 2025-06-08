@@ -3,7 +3,7 @@
 	tutorial = "You are of those not quite fit for society, those who hide away in the caves and sewers. That society has deemed you lesser. So now, you live amongst your own little communities, far from where the surface dwellers dare see you."
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/kobold, /datum/species/anthromorphsmall)
+	allowed_races = list(/datum/species/kobold, /datum/species/anthromorphsmall, /datum/species/elf/dark, /datum/species/tieberian)
 	category_tags = list(CTAG_REFUGEE)
 
 	maximum_possible_slots = 10
@@ -131,7 +131,7 @@
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 			H.mind.adjust_spellpoints(1)
-			H.mind.AddSpell(new SPELL_LEARNSPELL)
+			H.mind.AddSpell(new SPELL_SHAMANLEARNSPELL)
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_spells_churchling(H)
 			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
