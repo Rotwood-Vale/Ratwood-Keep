@@ -66,7 +66,7 @@
 		if(blade_int_modifier <= 0.15)
 			return 0
 		nuforce *= blade_int_modifier
-		pristine_blade = (blade_int >= (dismember_blade_int * 0.95))
+		pristine_blade = (blade_int >= dismember_blade_int) // Default dismember_blade_int is 95% of max_blade_int.
 
 	if(user)
 		if(istype(user.rmb_intent, /datum/rmb_intent/weak))
