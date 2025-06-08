@@ -5,7 +5,7 @@
 	name = "Goblin"
 	id = "goblinp"
 	desc = "<b>Goblin</b><br>\
-	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
+	A vile, cursed race of green skinned fiends with brains as small as their hearts. These creachers only care to obey one nearest to embody the strength and dominance of their progenitor. Slaves to Graggar, be not fooled by their appearance - What they lack in stature they possess in sheer malice." 
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
