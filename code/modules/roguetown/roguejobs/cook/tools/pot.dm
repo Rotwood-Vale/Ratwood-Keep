@@ -25,6 +25,7 @@
 	name = "stone pot"
 	desc = "A pot made out of stone"
 
+/*
 /obj/item/reagent_containers/glass/bucket/pot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass/bowl))
 		var/obj/item/reagent_containers/glass/bowl/B = I 
@@ -38,6 +39,7 @@
 	if(istype(I, /obj/item/reagent_containers/glass)) //ignore these for now I'll have to figure out something later
 		return FALSE
 	. = ..()
+*/
 
 /* Process */
 obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
@@ -48,7 +50,8 @@ obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
 /* Component Initialize */
 obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/pot)
+	var/datum/component/storage/STR = AddComponent(/datum/component/storage/concrete/pot)
+	STR.set_holdable(null, STR.cant_hold)
 	boilloop = new(src, FALSE)
 
 /* Destroy */
