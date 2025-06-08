@@ -708,7 +708,6 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
-	damtype = BRUTE
 	light_color = LIGHT_COLOR_BLUE
 	var/on = FALSE
 
