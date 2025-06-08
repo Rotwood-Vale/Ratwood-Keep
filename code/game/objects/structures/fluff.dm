@@ -150,6 +150,9 @@
 	blade_dulling = DULLING_BASHCHOP
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/fluff/railing/stonehedge/corner
+	icon_state = "stonehedge1"
+
 /obj/structure/fluff/railing/border
 	name = "border"
 	desc = ""
@@ -1401,3 +1404,4 @@ obj/structure/bars/steel
 			new /obj/item/grown/log/tree/small  (get_turf(src))
 			new /obj/item/natural/cloth (get_turf(src))
 			qdel(src)
+
