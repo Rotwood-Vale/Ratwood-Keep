@@ -271,6 +271,7 @@
 		if(mind)
 			mind.attackedme[user.real_name] = world.time
 		log_combat(user, src, "bit")
+	return TRUE
 
 /mob/living/proc/get_jump_range()
 	if(!check_armor_skill() || get_item_by_slot(SLOT_LEGCUFFED))
