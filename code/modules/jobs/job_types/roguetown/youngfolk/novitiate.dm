@@ -7,6 +7,7 @@
 	spawn_positions = 2
 
 	allowed_races = RACES_SHUNNED_UP
+	allowed_patrons = ALL_ACOLYTE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
 
