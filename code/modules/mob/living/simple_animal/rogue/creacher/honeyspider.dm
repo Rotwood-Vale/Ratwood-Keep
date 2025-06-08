@@ -8,7 +8,7 @@
 
 	faction = list("bugs", "spiders")
 	turns_per_move = 4
-	move_to_delay = 2
+	move_to_delay = (1 SECONDS)/2.5 // 2.5 tiles per second
 	vision_range = 5
 	aggro_vision_range = 9
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
