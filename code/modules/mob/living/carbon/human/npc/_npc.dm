@@ -252,7 +252,6 @@
 			mmb_intent = new INTENT_JUMP(src) // switch to jump intent
 		used_intent = mmb_intent
 		. = try_jump(jump_destination) // return whether the jump succeeded or failed
-		used_intent = null
 		QDEL_NULL(mmb_intent) // unset our intent after
 		m_intent = old_m_intent
 		if(.)
@@ -801,13 +800,11 @@
 			if(!OffWeapon) // wield it!
 				Weapon.attack_self(src)
 		rog_intent_change(1)
-		used_intent = a_intent
 		Weapon.melee_attack_chain(src, victim)
 		// attackby and attack_obj handles cooldowns already
 		return TRUE
 	else // unarmed
 		rog_intent_change(4) // punch
-		used_intent = a_intent
 		UnarmedAttack(victim, 1)
 		// handle cooldowns since that's not done directly in UnarmedAttack
 		var/adf = used_intent.clickcd
