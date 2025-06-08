@@ -143,7 +143,7 @@
 			continue
 		var/has_impassable_atom = FALSE
 		for(var/atom/movable/AM in dodge_candidate)
-			if(!AM.CanPass(attacker, dodge_candidate))
+			if(!AM.CanPass(src, dodge_candidate))
 				has_impassable_atom = TRUE
 				break
 		if(has_impassable_atom)
