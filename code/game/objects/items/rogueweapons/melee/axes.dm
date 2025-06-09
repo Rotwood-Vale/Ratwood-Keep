@@ -120,7 +120,7 @@
 	name = "battle axe"
 	desc = "A steel battleaxe of war. Has a wicked edge."
 	icon_state = "battleaxe"
-	max_blade_int = 300
+	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
 	minstr = 12
@@ -144,7 +144,7 @@
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	desc = "A regular iron woodcutting axe."
 	icon_state = "axe"
-	max_blade_int = 400
+	max_blade_int = 300
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	wdefense = 2
@@ -156,7 +156,7 @@
 	desc = "An iron hand axe."
 	icon_state = "hatchet"
 	minstr = 1
-	max_blade_int = 400
+	max_blade_int = 300
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = null
 	wdefense = 2

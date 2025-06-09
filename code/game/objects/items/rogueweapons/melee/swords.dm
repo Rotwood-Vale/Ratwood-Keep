@@ -348,17 +348,17 @@
 	name = "langesmesser"
 	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency. \ It is made of sturdy steel."
 
-/obj/item/rogueweapon/sword/long/marlin
+/obj/item/rogueweapon/sword/long/falchion
 	force = 26
 	force_wielded = 31
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop)
-	icon_state = "marlin"
+	icon_state = "falchion"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	item_state = "marlin"
+	item_state = "falchion"
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
-	name = "shalal saber"
+	name = "Falchion"
 	desc = "Lightweight, slender and curved."
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
@@ -378,7 +378,7 @@
 	wdefense = 5
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/rogueweapon/sword/long/marlin/getonmobprop(tag)
+/obj/item/rogueweapon/sword/long/falchion/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
