@@ -16,6 +16,12 @@
 	force_string = "robust... against germs"
 	var/uses = 100
 
+/obj/item/soap/Crossed(atom/movable/AM, oldloc)
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		H.try_slip(src)
+	
+
 /obj/item/soap/examine(mob/user)
 	. = ..()
 	var/max_uses = initial(uses)
