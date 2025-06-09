@@ -1,4 +1,3 @@
-
 /obj/item/bait
 	name = "bag of bait"
 	desc = "Horrid smell to me, wonderful smell to big game."
@@ -10,8 +9,9 @@
 	throwforce = 0
 	var/check_counter = 0
 	var/list/attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10,
-										/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
+									/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
 									/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
+									/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/cabbit = 33,
 									/mob/living/simple_animal/hostile/retaliate/rogue/chicken = 55)
 	var/attraction_chance = 100
 	var/deployed = 0
@@ -23,11 +23,6 @@
 	check_counter = world.time
 
 /obj/item/bait/attack_self(mob/user)
-	var/area/A = get_area(user.loc)
-	if(!is_valid_hunting_area(A))
-		to_chat(user, span_warning("I should save \the [name] for the wilderness..."))
-		return
-
 	. = ..()
 	user.visible_message(span_notice("[user] begins deploying the bait..."), \
 						span_notice("I begin deploying the bait..."))
@@ -96,18 +91,21 @@
 
 /obj/item/bait/sweet
 	name = "bag of sweetbait"
-	desc = "This bait doesn't smell as bad. I might even try a bite.."
+	desc = "This bait doesn't smell as bad as the others. I might even try a bite..."
 	icon_state = "baitp"
 	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
 							/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
-							/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 20)
+							/mob/living/simple_animal/hostile/retaliate/rogue/mudcrab/cabbit = 40, 	// Rabbits love sweet things
+							/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 40,
+							/mob/living/simple_animal/hostile/retaliate/rogue/fox = 20,				//Scavenger, so lower chance
+							/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10,			//Scavenger, so lower chance
+							/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 5)				//Predator, doesn't eat berries but attacted to prey
 
 
 /obj/item/bait/bloody
 	name = "bag of bloodbait"
-	desc = "Imagine if vampires got attracted to those!"
+	desc = "Imagine if vampires got attracted to these!"
 	icon_state = "baitb"
-	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 20,
-						/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10)
+	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50,
+							/mob/living/simple_animal/hostile/retaliate/rogue/mole = 25,
+							/mob/living/simple_animal/hostile/retaliate/rogue/fox = 25,)

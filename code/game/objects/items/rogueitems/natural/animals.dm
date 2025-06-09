@@ -101,3 +101,51 @@
 	var/obj/item/ssaddle
 	// A flat percentage bonus to our ability to detect sneaking people only. Use in lieu of giving mobs huge STAPER bonuses if you want them to be observant.
 	var/simple_detect_bonus = 0
+
+/obj/item/natural/rabbitsfoot
+	name = "rabbit's foot"
+	icon_state = "rabbitfoot"
+	desc = "A rabbit's foot. A lucky charm."
+	w_class = WEIGHT_CLASS_TINY
+	sellprice = 10
+
+
+/obj/item/natural/bone
+	name = "bone"
+	icon_state = "bone"
+	desc = "The meatless remains of the dead. Whether it came from an animal or a person, it all looks the same now."
+	blade_dulling = 0
+	max_integrity = 20
+	static_debris = null
+	obj_flags = null
+	firefuel = null
+	w_class = WEIGHT_CLASS_NORMAL
+	twohands_required = FALSE
+	gripped_intents = null
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	bundletype = /obj/item/natural/bundle/bone
+
+/obj/item/natural/bundle/bone
+	name = "stack of bones"
+	icon_state = "bonestack1"
+	possible_item_intents = list(/datum/intent/use)
+	desc = "These remains of the dead have been bundled together."
+	force = 0
+	throwforce = 0
+	maxamount = 6
+	obj_flags = null
+	color = null
+	firefuel = null
+	resistance_flags = FLAMMABLE
+	slot_flags = ITEM_SLOT_MOUTH
+	max_integrity = 20
+	muteinmouth = TRUE
+	w_class = WEIGHT_CLASS_TINY
+	spitoutmouth = FALSE
+	experimental_inhand = FALSE
+	stacktype = /obj/item/natural/bone
+	stackname = "bones"
+	icon1 = "bonestack1"
+	icon1step = 2
+	icon2 = "bonestack2"
+	icon2step = 4

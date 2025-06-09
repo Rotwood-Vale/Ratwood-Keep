@@ -16,9 +16,21 @@
 	aggro_vision_range = 9
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1, /obj/item/alch/viscera = 1, /obj/item/alch/sinew = 1, /obj/item/natural/bone = 2)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
 						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1)
+						/obj/item/alch/sinew = 2, 
+						/obj/item/alch/bone = 1, 
+						/obj/item/alch/viscera = 1,
+						/obj/item/natural/fur = 1, 
+						/obj/item/natural/bone = 3,)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+						/obj/item/natural/hide = 2,
+						/obj/item/alch/sinew = 2, 
+						/obj/item/alch/bone = 1, 
+						/obj/item/alch/viscera = 1,
+						/obj/item/natural/fur = 2, 
+						/obj/item/natural/bone = 4,)
 
 	health = VOLF_HEALTH
 	maxHealth = VOLF_HEALTH
