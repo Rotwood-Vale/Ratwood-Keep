@@ -59,7 +59,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 			pants = /obj/item/clothing/under/roguetown/loincloth/brown
@@ -85,7 +85,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/under/roguetown/loincloth/brown
@@ -100,7 +100,7 @@
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 
 		if("Caveling Shaman")
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
