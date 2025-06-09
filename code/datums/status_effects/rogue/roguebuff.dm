@@ -685,6 +685,7 @@
 	owner.adjustOxyLoss(-healing_on_tick, 0)
 	owner.adjustToxLoss(-healing_on_tick, 0)
 	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
+	owner.adjustCloneLoss(-healing_on_tick, 0)
 
 	// Fix for simplemob slow after healing
 	if(istype(owner, /mob/living/simple_animal))
