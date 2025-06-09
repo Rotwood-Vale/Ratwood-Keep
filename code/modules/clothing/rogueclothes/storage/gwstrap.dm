@@ -32,7 +32,7 @@ Credit entirely to them. Cheers, lads.
 	if(istype(A, /obj/item/rogueweapon) && A.w_class >= WEIGHT_CLASS_BULKY)
 		if(weps == null)
 			for(var/obj/item/gwstrap/I in user.get_equipped_items(TRUE))
-				to_chat(loc, span_warning("I work the latches of my strap to holster [A]."))
+				to_chat(loc, span_warning("I work the latches of my strap to sheathe [A]."))
 				if(do_after(user, 50, target = user))
 					user.transferItemToLoc(A, weps)
 					weps = A
@@ -49,7 +49,7 @@ Credit entirely to them. Cheers, lads.
 /obj/item/gwstrap/attack_right(mob/user)
 	if(weps != null)
 		if(!user.get_active_held_item())
-			to_chat(loc, span_warning("I work the latches of my strap to unholster [weps]."))
+			to_chat(loc, span_warning("I work the latches of my strap to unsheathe [weps]."))
 			if(do_after(user, 50, target = user))
 				user.put_in_active_hand(weps, user.active_hand_index)
 				name = "greatweapon strap"
