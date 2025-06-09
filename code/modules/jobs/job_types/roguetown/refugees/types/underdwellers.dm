@@ -118,7 +118,6 @@
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/tribal
-			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			H.change_stat("strength", -2)
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1) //So they can use their miracles and spells more often in exchange for their lost speed.
@@ -130,11 +129,13 @@
 					var/datum/devotion/C = new /datum/devotion(H, H.patron)
 					C.grant_spells_churchling(H)
 					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+					backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1)
 				if("Magos")
 					H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 					H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 					H.mind.adjust_spellpoints(2)
 					H.mind.AddSpell(new SPELL_LEARNSPELL_WEAK)
 					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
 	H.set_blindness(0)
