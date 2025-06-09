@@ -139,8 +139,6 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/list/choices = list()//Current thought: standard combat spells 3 spell points. utility/buff spells 2 points, minor spells 1 point
 
 	var/list/spell_choices = list(
-		SPELL_ARCANEBOLT,			// 3 cost	combat, single target single shot damage
-		SPELL_FROSTBOLT,			// 3 cost	combat, single target, single shot lesser damage w/ slow
 		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
 		SPELL_FINDFAMILIAR,			// 3 cost	combat, summon spell.
 		SPELL_PUSH_SPELL,			// 3 cost	localized AOE knockback spell. Knocksdown/disarms victims
