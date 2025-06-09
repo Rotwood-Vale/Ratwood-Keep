@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		handle_hallucinations()
 
 	if(drunkenness)
-		drunkenness = max(drunkenness - 0.1, 0)
+		drunkenness = max(drunkenness - 0.2, 0)
 		if(drunkenness >= 3)
 //			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(prob(3))
@@ -409,9 +409,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 				sate_addiction()
 			//Let's have fun with it.
 			if(prob(10))
-				confused += 2
-			Dizzy(2)
-			if(prob(20))
+				confused += 1
+				Dizzy(1)
+			if(prob(10))
 				blur_eyes(5)
 		if(drunkenness >= 11 && slurring < 5)
 			slurring += 1.2
