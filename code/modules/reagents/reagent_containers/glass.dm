@@ -63,8 +63,6 @@
 								to_chat(user, span_warning("[M] Does not seem to be producing milk."))
 					else
 						to_chat(user, span_warning("[M] cannot be milked!"))
-				else
-					to_chat(user, span_warning("[M]'s chest must be exposed before I can milk them!"))
 				return 1
 		if(!spillable)
 			return
