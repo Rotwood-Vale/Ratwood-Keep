@@ -33,8 +33,6 @@
 			return strings("mongolian_replacement.json", "full")
 		if("Akulan accent")
 			return strings("axian_replacement.json", "full")
-		if("Islander accent")
-			return strings("caribbean_replacement.json", "full")
 
 /datum/species/proc/post_accent_treatment(mob/living/carbon/human, message)
 	return message
@@ -65,8 +63,6 @@
 			return strings("polish_replacement.json", "start")
 		if("Gronn accent")
 			return strings("mongolian_replacement.json", "start")
-		if("Islander accent")
-			return strings("caribbean_replacement.json", "start")
 
 /datum/species/proc/get_accent_end(mob/living/carbon/human/H)
 	switch(H.char_accent)
@@ -94,8 +90,6 @@
 			return strings("polish_replacement.json", "end")
 		if("Gronn accent")
 			return strings("mongolian_replacement.json", "end")
-		if("Islander accent")
-			return strings("caribbean_replacement.json", "end")
 
 /datum/species/proc/get_accent_any(mob/living/carbon/human/H)
 	switch(H.char_accent)
@@ -125,8 +119,6 @@
 			return strings("mongolian_replacement.json", "syllable")
 		if("Drakian accent")
 			return strings("hissing_replacement.json", "syllable")
-		if("Islander accent")
-			return strings("caribbean_replacement.json", "syllable")
 
 #define REGEX_FULLWORD 1
 #define REGEX_STARTWORD 2
