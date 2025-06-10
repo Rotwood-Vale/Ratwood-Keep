@@ -437,3 +437,8 @@
 
 
 
+/obj/item/reagent_containers/glass/pre_attack_right(atom/A, mob/living/user, params)
+	if(can_reagent_interact(A, user, user.used_intent.type))
+		do_reagent_interact(A, user, user.used_intent.type, attempts = 1)
+		return
+

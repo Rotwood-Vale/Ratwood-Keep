@@ -7,7 +7,7 @@
 	var/amount_per_transfer_from_this = 5
 	var/list/possible_transfer_amounts = list(5,10,15,20,25,30)
 	var/volume = 30
-	var/reagent_flags
+	var/reagent_flags = null
 	var/list/list_reagents = null
 	var/disease_amount = 20
 	var/spillable = FALSE
@@ -147,6 +147,8 @@
 	if(i_action == INTENT_FILL)
 		if(!is_refillable())
 			return FALSE
+		if(!I.is_open_container())
+			return FALSE
 		if(!I.reagents.total_volume)
 			to_chat(user, "[I] is empty!")
 			return FALSE
@@ -156,6 +158,8 @@
 	
 	if(is_drainable() && (i_action == INTENT_POUR))
 		if(!I.is_refillable())
+			return FALSE
+		if(!is_open_container())
 			return FALSE
 		if(!reagents.total_volume)
 			to_chat(user, "[src] is empty!")
@@ -167,7 +171,7 @@
 
 ///Do interact
 // Does the action based logic
-/obj/item/reagent_containers/proc/do_reagent_interact(obj/item/I, mob/living/carbon/human/user, datum/intent/i_action)
+/obj/item/reagent_containers/proc/do_reagent_interact(obj/item/I, mob/living/carbon/human/user, datum/intent/i_action, attempts = 100)
 	if(user.m_intent != MOVE_INTENT_SNEAK)
 		if(poursounds)
 			playsound(user.loc, pick(poursounds), 100, TRUE)
@@ -177,7 +181,7 @@
 		user.visible_message(span_notice("[user] pours \the [src]'s contents into \the [I]."), \
 		span_notice("I pour \the [src]'s contents into \the [I]."))
 
-		for(var/i in 1 to 100)
+		for(var/i in 1 to attempts)
 			if(do_after(user, 8, target = src))
 				if(!reagents.total_volume)
 					break
@@ -193,7 +197,7 @@
 	if(i_action == INTENT_FILL)
 		user.visible_message(span_notice("[user] fills \the [I]'s from \the [src]."), \
 		span_notice("I fill \the [src] with \the [I]'s contents."))
-		for(var/i in 1 to 100)
+		for(var/i in 1 to attempts)
 			if(do_after(user, 8, target = src))
 				if(reagents.holder_full())
 					break
