@@ -17,6 +17,7 @@
 	max_integrity = 250
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
@@ -42,7 +43,7 @@
 	brightness = 10.9
 	bulb_colour = "#da8c45"
 	bulb_power = 1
-	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
+	resistance_flags = null // This one is craftable.
 
 /obj/machinery/light/roguestreet/orange/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
@@ -60,7 +61,7 @@
 	brightness = 7.8
 	max_integrity = 125
 	density = FALSE
-	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
+	resistance_flags = null // This one is craftable.
 
 /obj/machinery/light/roguestreet/proc/lights_out()
 	on = FALSE
@@ -295,7 +296,7 @@
 	cookonme = TRUE
 	fueluse = 0
 	max_integrity = 150
-	metalizer_result = /obj/machinery/light/roguestreet // Can be crafted into street lamp.
+	metalizer_result = /obj/machinery/light/roguestreet/orange // Can be crafted into street lamp.
 
 /obj/machinery/light/rogue/firebowl/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
@@ -345,7 +346,7 @@
 	bulb_colour = "#ff9648"
 	cookonme = FALSE
 	crossfire = FALSE
-	metalizer_result = /obj/machinery/light/roguestreet
+	metalizer_result = /obj/machinery/light/roguestreet/orange
 
 /obj/machinery/light/rogue/firebowl/standing/blue
 	bulb_colour = "#b9bcff"
@@ -458,7 +459,7 @@
 	crossfire = FALSE
 	plane = GAME_PLANE_UPPER
 	cookonme = FALSE
-	metalizer_result = /obj/machinery/light/roguestreet/walllamp
+	metalizer_result = /obj/machinery/light/roguestreet/orange/walllamp
 
 /obj/machinery/light/rogue/torchholder/c
 	pixel_y = 32
