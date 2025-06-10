@@ -1720,7 +1720,7 @@
     icon_state = "dflower"
     item_state = "dflower"
     icon = 'icons/roguetown/misc/flowerspack.dmi'
-    mob_overlay_icon = 'icons/roguetown/onmob/head.dmi'
+    mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
     slot_flags = ITEM_SLOT_HEAD
     body_parts_covered = NONE
     force = 0
