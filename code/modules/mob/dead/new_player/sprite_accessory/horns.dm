@@ -2,6 +2,7 @@
 	abstract_type = /datum/sprite_accessory/horns
 	icon = 'icons/mob/sprite_accessory/horns/horns.dmi'
 	color_key_name = "Horns"
+	has_rot_color = FALSE
 	relevant_layers = list(BODY_FRONT_LAYER)
 	default_colors = list("#555555")
 

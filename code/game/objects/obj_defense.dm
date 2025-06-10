@@ -26,6 +26,19 @@
 		testing("destroy1")
 		obj_destruction(damage_flag)
 
+/obj/proc/mend_damage(mending_amount, can_fix_broken)
+	if (QDELETED(src))
+		stack_trace("[src] being mended after deletion")
+		return
+	if (mending_amount <= 0)
+		return
+
+	obj_integrity = min(obj_integrity + mending_amount, max_integrity)
+
+	//unset broken if any attempt is tried.
+	if(istype(src, /obj/item/clothing))
+		var/obj/item/clothing/clothing = src
+		clothing.obj_fix()
 
 ///returns the damage value of the attack after processing the obj's various armor protections
 /obj/proc/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir, armor_penetration = 0)
@@ -242,6 +255,11 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		playsound(src, break_sound, 100, TRUE)
 	if(break_message)
 		visible_message(break_message)
+
+/// Called after obj is repaired (needle/hammer for items)
+/obj/proc/obj_fix(mob/user)
+	obj_broken = FALSE
+	//obj_integrity = max_integrity
 
 ///what happens when the obj's integrity reaches zero.
 /obj/proc/obj_destruction(damage_flag)

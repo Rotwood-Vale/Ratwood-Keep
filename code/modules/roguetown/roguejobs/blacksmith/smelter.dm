@@ -11,6 +11,7 @@
 	climb_offset = 10
 	on = TRUE
 	var/list/ore = list()
+	var/heat_time = 50 SECONDS
 	var/maxore = 1
 	var/cooking = 0
 	fueluse = 30 MINUTES
@@ -21,20 +22,27 @@
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = W
-		if(ore.len && !T.hingot)
+		var/obj/item/item_to_insert
+		if(ore.len && !T.has_ingot())
 			var/obj/item/I = ore[ore.len]
 			ore -= I
 			if(isnull(I))
 				return
 			I.forceMove(T)
-			T.hingot = I
+			T.update_icon()
 			user.visible_message(span_info("[user] retrieves [I] from [src]."))
 			if(on)
-				var/tyme = world.time
-				T.hott = tyme
-				addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 50)
-			T.update_icon()
+				T.make_hot(40 SECONDS)
 			return
+
+		if(ore.len < maxore && length(T.contents))
+			item_to_insert = T.contents[1]
+			if(item_to_insert.smeltresult)
+				item_to_insert.forceMove(src)
+				T.update_icon()
+				user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
+				ore += item_to_insert
+				cooking = 0
 		if(on)
 			return
 

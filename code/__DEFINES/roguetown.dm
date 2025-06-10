@@ -29,7 +29,6 @@
 	/datum/species/human/halfelf,\
 	/datum/species/dwarf/mountain,\
 	/datum/species/aasimar,\
-	/datum/species/lupian,\
 	/datum/species/vulpkanin,\
 	/datum/species/moth,\
 	/datum/species/dracon,
@@ -37,6 +36,7 @@
 #define RACES_TOLERATED \
 	/datum/species/lizardfolk,\
 	/datum/species/tabaxi,\
+	/datum/species/lupian,\
 	/datum/species/axian,\
 	/datum/species/anthromorph,\
 	/datum/species/demihuman
@@ -166,8 +166,6 @@
 	/datum/species/goblin/sea,\
 	/datum/species/goblin/moon,\
 )
-
-
 
 #define ALL_CLERIC_PATRONS list(\
 	/datum/patron/divine/astrata,\
@@ -341,7 +339,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
-
+#define CTAG_ADVENTURER		"CAT_ADVENTURER"		// Adventurer classes
 /*
 	Defines for the triumph buy datum categories
 */

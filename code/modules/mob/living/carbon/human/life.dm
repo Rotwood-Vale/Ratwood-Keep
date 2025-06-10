@@ -31,7 +31,7 @@
 	if (QDELETED(src))
 		return 0
 
-	if(. && (mode != AI_OFF))
+	if(. && (mode != NPC_AI_OFF))
 		handle_ai()
 
 	if(advsetup)
@@ -88,7 +88,7 @@
 			charflaw.flaw_on_life(src)
 		if(health <= 0)
 			apply_damage(2, OXY)
-		if(mode == AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
+		if(mode == NPC_AI_OFF && !client && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 			if(mob_timers["slo"])
 				if(world.time > mob_timers["slo"] + 90 SECONDS)
 					Sleeping(100)

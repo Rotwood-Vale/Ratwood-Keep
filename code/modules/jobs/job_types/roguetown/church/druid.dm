@@ -25,7 +25,7 @@
 
 /datum/outfit/job/roguetown/druid/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += list("rats", "spiders", "wolfs", "saiga")
+	H.faction += list("rats", "spiders", "wolfs", "saiga", "grove")
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/flashlight/flare/torch/lantern

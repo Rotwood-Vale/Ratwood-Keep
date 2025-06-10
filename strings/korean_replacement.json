@@ -1,0 +1,50 @@
+{
+    "full": {
+        "no": "ni",
+        "yes": "ye",
+		"are": "ah",
+        "and": "an",
+        "bye": ["isseo", "jalga"],
+		"goodbye": "annyeong",
+        "thank you very much": "gamsahimda",
+        "hello": ["annyeong","hai"],
+        "what": ["what","mwo"],
+		"who": "hoo",
+		"whom": "nugu",
+		"your": "nige",
+		"where": "wer",
+		"shit": "aissi",
+		"fuck": "sibal",
+		"dick": "jot",
+		"cock": "jaji",
+		"whore": "galbo",
+		"awesome": "assa",
+		"darling": "yeobo",
+		"love": "lavu"
+    },
+    "start": {
+        "p": "b",
+		"th": "d",
+		"k": "g",
+		"z": "j",
+		"wh": "h",
+		"hy": ["ai","ae"]
+    },
+    "end": {
+		"x": "kse"
+
+    },
+    "syllable": {
+		"a": "ae",
+        "sh": "s",
+        "th": "d",
+		"ou": ["eo","u"],
+		"oa": "ae",
+		"ll": "r",
+		"x": "kse",
+		"z": "ji",
+		"gg": "k",
+		"ar": "ah",
+		"ie": "i"
+    }
+}

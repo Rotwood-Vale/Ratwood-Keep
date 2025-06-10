@@ -447,7 +447,7 @@ There are several things that need to be remembered:
 				racecustom = dna.species.clothes_id
 			var/armsindex = get_limbloss_index(ARM_RIGHT, ARM_LEFT)
 			if((gender == FEMALE && !dna.species.use_m) || dna.species.use_f)
-				gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, sleeveindex = armsindex)
+				gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, sleeveindex = armsindex, customi = racecustom)
 			else
 				gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, sleeveindex = armsindex, customi = racecustom)
 

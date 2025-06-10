@@ -57,12 +57,6 @@
 	cmode_music = zombie.cmode_music
 	patron = zombie.patron
 
-	STASTR = zombie.STASTR
-	STASPD = zombie.STASPD
-	STAINT = zombie.STAINT
-	STACON = zombie.STACON
-	STAEND = zombie.STAEND
-
 
 	return ..()
 
@@ -85,15 +79,20 @@
 
 	zombie.update_a_intents()
 	zombie.aggressive = FALSE
-	zombie.mode = AI_OFF
+	zombie.mode = NPC_AI_OFF
+	zombie.npc_jump_chance = initial(zombie.npc_jump_chance)
+	zombie.rude = initial(zombie.rude)
+	zombie.tree_climber = initial(zombie.tree_climber)
 	if(zombie.charflaw)
 		zombie.charflaw.ephemeral = FALSE
 	zombie.update_body()
-	zombie.STASTR = STASTR
-	zombie.STASPD = STASPD
-	zombie.STAINT = STAINT
-	zombie.STACON = STACON
-	zombie.STAEND = STAEND
+
+	zombie.change_stat("strength", 0, "deadite_str")
+	zombie.change_stat("speed", 0, "deadite_spd")
+	zombie.change_stat("constitution", 0, "deadite_con")
+	zombie.change_stat("endurance", 0, "deadite_end")
+	zombie.change_stat("intelligence", 0, "deadite_int")
+	
 	zombie.cmode_music = cmode_music
 	zombie.set_patron(patron)
 
@@ -170,12 +169,6 @@
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))
 	return ..()
-
-/datum/antagonist/zombie/on_life(mob/user)
-	if (has_turned)
-		var/mob/living/carbon/human/deadite = owner?.current
-		deadite.try_do_deadite_bite()
-		deadite.try_do_deadite_idle()
 
 //Infected wake param is just a transition from living to zombie, via zombie_infect()
 //Previously you just died without warning in 3 minutes, now you just become an antag

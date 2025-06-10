@@ -1,16 +1,19 @@
 GLOBAL_LIST_INIT(character_accents, list("No accent",
-	"Dwarf accent",
-	"Dark Elf accent",
-	"Elf accent",
-	"Grenzelhoft accent",
+	"Dwarven accent",
+	"Dark Elven accent",
+	"West Elven accent",
+	"East Elven accent",
+	"Grenzel accent",
+	"Otavian accent",
 	"Hammerhold accent",
-	"Assimar accent",
-	"Lizard accent",
-	"Hissing accent",
+	"Assimari accent",
+	"Lupian accent",
+	"Sissean accent",
+	"Drakian accent",
 	"Tiefling accent",
 	"Half Orc accent",
-	"Akula accent",
-	"Islander accent"))
+	"Gronn accent",
+	"Akulan accent"))
 
 /mob/living/carbon/human
 	var/char_accent = "No accent"

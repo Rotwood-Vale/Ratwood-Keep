@@ -1,6 +1,7 @@
 /datum/sprite_accessory/hair
 	abstract_type = /datum/sprite_accessory/hair
 	color_key_name = "Hair"
+	has_rot_color = FALSE
 	layer = HAIR_LAYER
 
 /datum/sprite_accessory/hair/adjust_appearance_list(list/appearance_list, obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
@@ -1001,6 +1002,10 @@
 /datum/sprite_accessory/hair/head/emma
 	name = "Emma"
 	icon_state = "emma"
+
+/datum/sprite_accessory/hair/head/royalcurls
+	name = "Royal Curls"
+	icon_state = "royalcurls"
 
 /datum/sprite_accessory/hair/head/damsel
 	name = "Damsel"

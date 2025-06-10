@@ -182,8 +182,8 @@
 	landsound = 'sound/foley/jumpland/grassland.wav'
 	slowdown = 0
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/turf/open/floor/rogue/grassred, 
-						/turf/open/floor/rogue/grassyel, 
+	canSmoothWith = list(/turf/open/floor/rogue/grassred,
+						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
 						/turf/open/floor/rogue/snowpatchy,
 						/turf/open/floor/rogue/snow,
@@ -301,7 +301,7 @@
 	slowdown = 0
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(
-						/turf/open/floor/rogue/grassyel, 
+						/turf/open/floor/rogue/grassyel,
 						/turf/open/floor/rogue/grasscold,
 						/turf/open/floor/rogue/snowpatchy,
 						/turf/open/floor/rogue/snow,
@@ -385,25 +385,23 @@
 	var/bloodiness = 20
 	var/obj/structure/closet/dirthole/holie
 	var/dirt_amt = 3
-
+	var/soil_plot_type = /obj/structure/soil
 /turf/open/floor/rogue/dirt/get_slowdown(mob/user)
 	//No tile slowdown for fairies
 	if(user.is_floor_hazard_immune())
 		return 0
 
-	var/returned = slowdown
+	. = ..()
 	var/negate_slowdown = FALSE
-	for(var/obj/item/I in user.held_items)
-		if(I.walking_stick)
-			if(!I.wielded)
-				var/mob/living/L = user
-				if(!L.cmode)
-					negate_slowdown = TRUE
+	for(var/obj/item/stick in user.held_items)
+		if(stick.walking_stick && !stick.wielded && !user.cmode)
+			negate_slowdown = TRUE
+			break
 	if(HAS_TRAIT(user, TRAIT_BOG_TREKKING))
 		negate_slowdown = TRUE
 	if(negate_slowdown)
-		returned = max(returned-2, 0)
-	return returned
+		. -= 2
+	return max(., 0)
 
 
 /turf/open/floor/rogue/dirt/attack_right(mob/user)
@@ -517,6 +515,7 @@
 	canSmoothWith = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/grass)
 	neighborlay = "roadedge"
 	slowdown = 0
+	soil_plot_type = /obj/structure/soil/poor
 
 /turf/open/floor/rogue/dirt/road/attack_right(mob/user)
 	return
@@ -601,6 +600,22 @@
 	neighborlay = "dirtedge"
 	slowdown = 0
 	muddy = FALSE
+	soil_plot_type = /obj/structure/soil/great
+
+/turf/open/floor/rogue/dirt/npoor
+	name = "weak dirt"
+	desc = "The dirt is pocked with the scars of countless wars, It lacks much fertility."
+	icon_state = "dirt"
+	layer = MID_TURF_LAYER
+	footstep = FOOTSTEP_GRASS
+	barefootstep = FOOTSTEP_SOFT_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+	landsound = 'sound/foley/jumpland/dirtland.wav'
+	slowdown = 2
+	smooth = SMOOTH_TRUE
+	neighborlay = "dirtedge"
+	soil_plot_type = /obj/structure/soil/poor
 
 /turf/open/floor/rogue/underworld/road
 	name = "ash"

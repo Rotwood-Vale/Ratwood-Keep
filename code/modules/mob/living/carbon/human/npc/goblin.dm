@@ -15,10 +15,12 @@
 
 /mob/living/carbon/human/species/goblin/npc
 	aggressive=1
-	mode = AI_IDLE
+	mode = NPC_AI_IDLE
 	dodgetime = 30 //they can dodge easily, but have a cooldown on it
 	flee_in_pain = TRUE
-
+	npc_jump_chance = 60
+	npc_jump_distance = 3 // this might make them concheck more often, but it'll also mean it's easier to kick their legs out from under them
+	rude = TRUE
 	wander = FALSE
 
 /mob/living/carbon/human/species/goblin/npc/ambush
@@ -199,7 +201,7 @@
 	//addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
 /mob/living/carbon/human/species/goblin/handle_combat()
-	if(mode == AI_HUNT)
+	if(mode == NPC_AI_HUNT)
 		if(prob(2))
 			emote("laugh")
 	. = ..()
@@ -209,7 +211,7 @@
 	gender = MALE
 	if(src.dna && src.dna.species)
 		src.dna.species.soundpack_m = new /datum/voicepack/male/goblin()
-		src.dna.species.soundpack_f = new /datum/voicepack/male/goblin()
+		src.dna.species.soundpack_f = new /datum/voicepack/female/goblinf()
 		var/obj/item/headdy = get_bodypart(BODY_ZONE_HEAD)
 		if(headdy)
 			headdy.icon = 'icons/roguetown/mob/monster/goblins.dmi'
@@ -231,9 +233,11 @@
 	real_name = "goblin"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
+//	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 //	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
 //	blue breathes underwater, need a new specific one for this maybe organ cheque
+	if(is_species(src, /datum/species/goblin/sea))
+		ADD_TRAIT(src, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 //	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	if(gob_outfit)
 		var/datum/outfit/O = new gob_outfit
@@ -286,10 +290,20 @@
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 8
+	var/chance_zjumper = 5
+	var/chance_treeclimber = 30
 	if(is_species(H, /datum/species/goblin/moon))
 		H.STASPD = 16
+		chance_zjumper = 20
+		chance_treeclimber = 70
 	else
 		H.STASPD = 14
+	if(prob(chance_zjumper))
+		ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
+		H.find_targets_above = TRUE
+	if(prob(chance_treeclimber))
+		H.tree_climber = TRUE
+		H.find_targets_above = TRUE // so they can taunt
 	H.STACON = 6
 	H.STAEND = 15
 	if(is_species(H, /datum/species/goblin/moon))
