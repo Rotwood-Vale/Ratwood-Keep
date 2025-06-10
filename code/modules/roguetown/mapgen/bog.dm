@@ -67,4 +67,5 @@
 							/obj/item/natural/rock = 1,
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/table/roguetree/stump/log = 3,
+							/obj/effect/spawner/roguemap/flowerspawn = 30,
 							/datum/spacevine_controller = 1)
