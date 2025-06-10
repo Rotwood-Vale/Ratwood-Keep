@@ -2,8 +2,10 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 20
-	throwforce = 20 // Defined here so you know what the default for axes is. Axes should probably have throw equal to two-handed.
-	thrown_bclass = BCLASS_BLUNT // Stone axe is blunt.
+	throwforce = 20 // Axes should probably have throw equal to two-handed force, as they're meant to be thrown.
+	throw_range = 5
+	throw_speed = 1
+	thrown_bclass = BCLASS_BLUNT
 	possible_item_intents = list(/datum/intent/axe/chop/stone)
 	name = "stone axe"
 	desc = "A rough stone axe. Badly balanced."
@@ -119,7 +121,7 @@
 	force = 25
 	force_wielded = 30
 	throwforce = 30
-	thrown_bclass = BCLASS_CUT // Should cut when thrown.
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
 	name = "battle axe"
 	desc = "A steel battleaxe of war. Has a wicked edge."
@@ -146,7 +148,7 @@
 	force = 20
 	force_wielded = 26
 	throwforce = 26
-	thrown_bclass = BCLASS_CUT // Should cut when thrown.
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	desc = "A regular iron woodcutting axe."
 	icon_state = "axe"
@@ -158,7 +160,7 @@
 /obj/item/rogueweapon/stoneaxe/handaxe
 	force = 20
 	throwforce = 20
-	thrown_bclass = BCLASS_CUT // Should cut when thrown.
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	name = "hatchet"
 	desc = "An iron hand axe."
@@ -174,7 +176,7 @@
 	force = 22
 	force_wielded = 28
 	throwforce = 28
-	thrown_bclass = BCLASS_CUT // Should cut when thrown.
+	thrown_bclass = BCLASS_CHOP
 	desc = "A steel woodcutting axe. Performs much better than its iron counterpart."
 	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel

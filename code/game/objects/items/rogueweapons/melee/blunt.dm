@@ -1,6 +1,9 @@
 /obj/item/rogueweapon/mace
 	force = 20
 	force_wielded = 30
+	throwforce = 30 // If you can actualy hit someone with it, it will hurt.
+	throw_range = 3 // Maces are heavy, so they don't fly very far.
+	throw_speed = 0.5 // Maces are awkward to throw, so they don't fly very fast
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
 	name = "mace"
@@ -55,6 +58,7 @@
 /obj/item/rogueweapon/mace/church
 	force = 25
 	force_wielded = 30
+	throwforce = 30
 	name = "bell ringer"
 	desc = "This heavy hammer is used to ring the church's bell. \ It is made of sturdy steel."
 	icon_state = "churchmace"
@@ -66,6 +70,7 @@
 /obj/item/rogueweapon/mace/steel
 	force = 30
 	force_wielded = 40
+	throwforce = 30
 	name = "steel mace"
 	desc = "This steel mace is objectively superior to an iron one."
 	icon_state = "smace"
@@ -165,6 +170,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/steel
 	force = 25
+	throwforce = 30
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
 	name = "steel warhammer"
 	desc = "A fine steel warhammer, makes a satisfying sound when paired with a knight's helm."
@@ -248,6 +254,7 @@
 /obj/item/rogueweapon/mace/woodclub
 	force = 15
 	force_wielded = 18
+	throwforce = 15
 	name = "wooden club"
 	desc = "Unga! Unga to the head!"
 	icon_state = "club1"
@@ -300,6 +307,9 @@
 	desc = "This wooden sword is great for training. Or humiliating opponents."
 	force = 5
 	force_wielded = 8
+	throwforce = 10 // Made of wood.
+	throw_range = 3 // Same as other swords.
+	throw_speed = 1 // Same as other swords.
 	icon_state = "wsword"
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
@@ -365,6 +375,10 @@
 /obj/item/rogueweapon/mace/goden
 	force = 15
 	force_wielded = 30
+	throwforce = 30
+	throw_range = 5
+	throw_speed = 0.5 // Pretty slow to throw, to make sure it's not overpowered.
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/rangedthrust)
 	name = "Goedendag"

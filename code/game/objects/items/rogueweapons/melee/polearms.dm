@@ -34,6 +34,9 @@
 /obj/item/rogueweapon/woodstaff
 	force = 10
 	force_wielded = 15
+	throwforce = 10
+	throw_range = 5
+	throw_speed = 1
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
 	name = "wooden staff"
@@ -85,6 +88,7 @@
 	desc = "A blessed long silver staff adorned with an reinforced gold ornament atop. It is adorned with symbolism and icons of the Successors atop."
 	force = 25
 	force_wielded = 28
+	throwforce = 20 // It's a stick, but it's a fancy stick.
 	max_integrity = 300 // From my code diving it was 200. It being unique to the Priest it should probably get this
 	smeltresult = /obj/item/ingot/silver
 	icon_state = "aries"
@@ -173,6 +177,10 @@
 /obj/item/rogueweapon/spear
 	force = 18
 	force_wielded = 25
+	throwforce = 30
+	throw_range = 7
+	throw_speed = 1
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
@@ -195,8 +203,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 5
-	thrown_bclass = BCLASS_STAB
-	throwforce = 25
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -212,28 +218,31 @@
 	desc = "A neat, steel hook."
 	icon_state = "billhook"
 	force_wielded = 30
+	throwforce = 25
+	throw_range = 5
 	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH)
 	gripped_intents = list(/datum/intent/spear/thrust/steel, SPEAR_CUT, SPEAR_BASH)
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
 	wdefense = 6
-	throwforce = 15
 
 /obj/item/rogueweapon/spear/improvisedbillhook
 	force = 12
 	force_wielded = 25
+	throwforce = 18
+	throw_range = 5
 	name = "improvised billhook"
 	desc = "Looks hastily made. \ It is made of iron."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
 	wdefense = 4
-	throwforce = 10
 
 /obj/item/rogueweapon/spear/stone
 	force = 15
 	force_wielded = 18
+	throwforce = 20
 	name = "stone spear"
 	desc = "This handmade spear is simple, but does the job."
 	icon_state = "stonespear"
@@ -252,11 +261,14 @@
 	walking_stick = TRUE
 	wdefense = 4
 	max_integrity = 50
-	throwforce = 20
 
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
+	throwforce = 30
+	throw_range = 5
+	throw_speed = 0.5
+	thrown_bclass = BCLASS_CUT
 	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/spear/thrust/steel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
@@ -342,6 +354,9 @@
 /obj/item/rogueweapon/eaglebeak
 	force = 15
 	force_wielded = 30
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
@@ -413,6 +428,9 @@
 /obj/item/rogueweapon/greatsword
 	force = 12
 	force_wielded = 30
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for less-lethal takedowns, only targets limbs.
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
 	name = "greatsword"
@@ -450,7 +468,7 @@
 	desc = "This is much longer than a common greatsword, and well balanced too! \ It is made of iron."
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 200 // Less because it's made of iron.
 	wdefense = 4
 
 
@@ -467,6 +485,9 @@
 	icon_state = "estoc"
 	force = 12
 	force_wielded = 25
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
 	pixel_x = -16

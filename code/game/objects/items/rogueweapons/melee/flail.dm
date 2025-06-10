@@ -1,5 +1,6 @@
 /obj/item/rogueweapon/flail
 	force = 15
+	throwforce = 10
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
 	desc = "This is a swift, iron flail. Strikes hard and fast."
@@ -15,7 +16,6 @@
 	smeltresult = /obj/item/ingot/iron
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
-	throwforce = 5
 	wdefense = 0
 	minstr = 4
 
@@ -131,6 +131,7 @@
 
 /obj/item/rogueweapon/whip
 	force = 21
+	throwforce = 10
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
 	desc = "A leather whip, built to last with an sharp stone for a tip."
@@ -145,7 +146,6 @@
 	anvilrepair = /datum/skill/craft/hunting
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = WHIPWOOSH
-	throwforce = 5
 	wdefense = 0
 	minstr = 6
 

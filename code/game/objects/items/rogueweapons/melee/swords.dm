@@ -3,6 +3,10 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 25
+	throwforce = 15 // Defined here so you know what the default for swords is. Swords should probably not be thrown.
+	thrown_bclass = BCLASS_CUT // Swords swing in the air, making them cut when thrown.
+	throw_range = 3 // Swords don't travel very well when thrown.
+	throw_speed = 0.75 // Swords are awkward to throw, so they don't go very fast.
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	name = "sword"
@@ -21,8 +25,6 @@
 	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
 	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 	flags_1 = CONDUCT_1
-	throwforce = 10
-	thrown_bclass = BCLASS_CUT
 	//dropshrink = 0.75
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
@@ -132,6 +134,7 @@
 /obj/item/rogueweapon/sword/long
 	force = 25
 	force_wielded = 30
+	throwforce = 20 // Slightly more than shorter swords, but still bad.
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "longsword"
@@ -152,8 +155,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	accuracy_bonus = 5	//large swords are unwieldy
 
@@ -197,8 +198,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
@@ -218,6 +217,7 @@
 /obj/item/rogueweapon/sword/long/judgement
 	force = 40
 	force_wielded = 55
+	throwforce = 30 // This is a big sword, but still not good.
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "judgement"
@@ -238,8 +238,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -281,8 +279,6 @@
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
 	max_integrity = 9999
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -323,8 +319,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/rider/getonmobprop(tag)
@@ -371,8 +365,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	minstr = 6
 	sellprice = 42
 	wdefense = 5

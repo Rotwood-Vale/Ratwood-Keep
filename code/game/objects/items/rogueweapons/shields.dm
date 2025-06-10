@@ -10,9 +10,10 @@
 	slot_flags = ITEM_SLOT_BACK
 	flags_1 = null
 	force = 10
-	throwforce = 10 // 10 is the default for shields. Can break windows.
-	throw_speed = 1
+	throwforce = 15 // 15 is the default for shields. Can break windows.
 	throw_range = 3
+	throw_speed = 0.5
+	thrown_bclass = BCLASS_BLUNT
 	w_class = WEIGHT_CLASS_BULKY
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	block_chance = 0
@@ -117,11 +118,11 @@
 	desc = "A huge wooden shield! It's reinforced with iron."
 	icon_state = "shield_tower"
 	force = 15
-	throwforce = 15 // Only made of wood, so it won't get a bonus to throw force.
+	throwforce = 15
 	throw_speed = 1
 	throw_range = 3
-	resistance_flags = FLAMMABLE // Mostly made of wood.
-	smeltresult = /obj/item/ingot/iron // To make it scrappable.
+	resistance_flags = FLAMMABLE
+	smeltresult = /obj/item/ingot/iron
 	wlength = WLENGTH_NORMAL
 	wdefense = 15
 	coverage = 70
@@ -143,11 +144,11 @@
 	desc = "A kite-shaped steel shield. Reliable and sturdy."
 	icon_state = "metaltower"
 	force = 20
-	throwforce = 30 // Metal shields are heavier, so they get a bonus to throw force.
+	throwforce = 30
 	throw_speed = 1
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
-	resistance_flags = null // Makes it not flammable, unlike the wooden tower shield.
+	resistance_flags = null
 	flags_1 = CONDUCT_1
 	wdefense = 18
 	coverage = 70
@@ -156,7 +157,7 @@
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	sellprice = 30
-	smeltresult = /obj/item/ingot/steel // To make it scrappable.
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/shield/tower/metal/getonmobprop(tag)
 	if(tag)
@@ -193,14 +194,14 @@
 	desc = "A sturdy wood and leather shield. Made to not be too encumbering while still providing good protection."
 	icon_state = "heatershield"
 	force = 15
-	throwforce = 20 // Heater shields are small, so they won't get a bonus to throw force above the default.
+	throwforce = 20
 	dropshrink = 0.8
 	coverage = 60
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
-	resistance_flags = FLAMMABLE // It's made of wood and leather.
-	smeltresult = /obj/item/ash // It's made of wood and leather, so it can't be scrapped for metal.
+	resistance_flags = FLAMMABLE
+	smeltresult = /obj/item/ash
 
 /obj/item/rogueweapon/shield/heater/attack_hand(mob/user)
 	if(!overlays.len)
@@ -233,10 +234,11 @@
 	icon_state = "bucklersh"
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 20
-	throwforce = 20 // Buckler shields are small, so they won't get a bonus to throw force.
-	throw_range = 4 // Buckler shields are small, so they can be thrown further than normal.
+	throwforce = 20
+	throw_range = 5
+	throw_speed = 1 // Throws like a frisbee.
 	dropshrink = 0.8
-	resistance_flags = null // Not flammable.
+	resistance_flags = null
 	wdefense = 9
 	coverage = 10
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
@@ -244,7 +246,7 @@
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	associated_skill = 0
-	smeltresult = /obj/item/ingot/steel // To make it scrappable.
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
 	if(!ishuman(user))
@@ -277,7 +279,7 @@
 	desc = "A sturdy wood shield thats been highly modified by an artificer. It seems to have several pipes and gears built into it."
 	icon_state = "artificershield"
 	force = 15
-	throwforce = 20 // Artificer shields are small, so they won't get a bonus to throw force above the default.
+	throwforce = 20
 	dropshrink = 0.8
 	coverage = 60
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')

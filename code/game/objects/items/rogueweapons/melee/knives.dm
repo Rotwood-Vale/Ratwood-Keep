@@ -2,6 +2,10 @@
 
 /obj/item/rogueweapon/huntingknife
 	force = 12
+	throwforce = 20 // Should be higher than base force, since knives are meant to be thrown.
+	throw_range = 7
+	throw_speed = 2 // Pretty fast!
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	name = "hunting knife"
@@ -21,10 +25,8 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
-	throwforce = 12
 	wdefense = 3
 	wbalance = 1
-	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
@@ -130,14 +132,13 @@
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
 	name = "cleaver"
-	desc = "A big, heavy knife designed to chop through meat with ease."
+	desc = "A big, heavy knife designed to chop through meat with ease. \ It is made of sturdy steel."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
-	throwforce = 15
 	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CHOP
+	thrown_bclass = BCLASS_CHOP // Can actually dismember limbs when thrown.
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/steel
 	can_cdg = FALSE
@@ -145,10 +146,9 @@
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
 	name = "combat knife"
-	desc = "A swift and deadly combat knife. \ It is made of iron."
+	desc = "A swift and deadly combat knife. \ It is made of sturdy steel."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
 	icon_state = "combatknife"
-	throwforce = 16
 	can_cdg = TRUE
 	can_assin = TRUE
 
@@ -187,6 +187,7 @@
 	penfactor = 30
 
 /obj/item/rogueweapon/huntingknife/scissors
+	throwforce = 10
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
 	max_integrity = 100
 	name = "iron scissors"
@@ -334,6 +335,7 @@
 	desc = "A crudely crafted knife made of stone."
 	icon_state = "stone_knife"
 	smeltresult = null
+	throwforce = 10
 	max_integrity = 50
 	max_blade_int = 50
 	wdefense = 1
