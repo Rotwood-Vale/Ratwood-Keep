@@ -1,6 +1,8 @@
 /obj/item/rogueweapon/flail
 	force = 15
 	throwforce = 10
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
 	desc = "This is a swift, iron flail. Strikes hard and fast."
@@ -132,6 +134,8 @@
 /obj/item/rogueweapon/whip
 	force = 21
 	throwforce = 10
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash, /datum/intent/whip/punish)
 	name = "whip"
 	desc = "A leather whip, built to last with an sharp stone for a tip."
