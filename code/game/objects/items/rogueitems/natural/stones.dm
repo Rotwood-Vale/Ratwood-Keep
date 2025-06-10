@@ -288,6 +288,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	dropshrink = 0
 	throwforce = 25
 	throw_range = 2
+	throw_speed = 0.5
 	force = 18
 	obj_flags = CAN_BE_HIT
 	force_wielded = 15
@@ -496,7 +497,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	possible_item_intents = list(/datum/intent/use)
 	force = 2
 	throwforce = 0	// useless for throwing unless solo
-	throw_range = 2
+	throw_range = 3
+	throw_speed = 0.5
 	w_class = WEIGHT_CLASS_NORMAL
 	stackname = "stone blocks"
 	stacktype = /obj/item/natural/stoneblock
