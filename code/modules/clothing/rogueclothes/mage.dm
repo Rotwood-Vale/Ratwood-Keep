@@ -7,7 +7,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/mage.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/mage.dmi'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
