@@ -279,6 +279,7 @@
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
 	max_integrity = 9999
+	resistance_flags = INDESTRUCTIBLE // Special antag sword, so it should never break.
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
