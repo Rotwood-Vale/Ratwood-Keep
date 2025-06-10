@@ -138,36 +138,58 @@
 ///Can interact
 // Checks if the containers are able to do their action first.
 /obj/item/reagent_containers/proc/can_reagent_interact(obj/item/I, mob/living/carbon/human/user, datum/intent/i_action)
+	var/state = TRUE
+	var/failed_msg = ""
+	
+	/* == hard stops here == */
+	//splash is sort of a special case so it happens early on.
+	if(reagents.total_volume && i_action == INTENT_SPLASH)
+		return TRUE
 	if(!i_action)
 		return FALSE
-
 	if(!I.reagents || !reagents)
-		return FALSE //If no reagents datum in either thing, fail.
+		return FALSE
 
+	//soft stops here
 	if(i_action == INTENT_FILL)
-		if(!is_refillable())
-			return FALSE
-		if(!I.is_open_container())
-			return FALSE
+
 		if(!I.reagents.total_volume)
 			to_chat(user, "[I] is empty!")
-			return FALSE
+			state = FALSE
 		if(reagents.holder_full())
 			to_chat(user, "[src] is full.")
-			return FALSE
+			state = FALSE
+
+		//These checks come later to make failed message order work properly
+		if(!is_refillable())
+			failed_msg = "I can't fill this."
+			state = FALSE
+		if(!I.is_open_container())
+			failed_msg = "\The [I] isn't open."
+			state = FALSE
 	
-	if(is_drainable() && (i_action == INTENT_POUR))
-		if(!I.is_refillable())
-			return FALSE
-		if(!is_open_container())
-			return FALSE
+	if(i_action == INTENT_POUR)
+		//Special case for adding to food.
+		if(istype(I, /obj/item/reagent_containers/food/snacks))
+			state = TRUE
+
 		if(!reagents.total_volume)
-			to_chat(user, "[src] is empty!")
-			return FALSE
+			failed_msg = "[src] is empty!"
+			state = FALSE
 		if(I.reagents.holder_full())
-			to_chat(user, "[I] is full.")
-			return FALSE
-	return TRUE
+			failed_msg = "[I] is full."
+			state = FALSE
+
+		//These checks come later to make failed message order work properly
+		if(!I.is_refillable())
+			failed_msg = "I can't fill \the [I]."
+			state = FALSE
+		if(!is_open_container())
+			failed_msg = "\The [src] isn't open."
+			state = FALSE
+	if(!state)
+		to_chat(user, failed_msg)
+	return state
 
 ///Do interact
 // Does the action based logic
@@ -210,10 +232,9 @@
 				break
 		return
 
-	if(reagents.total_volume && i_action == INTENT_SPLASH)
+	if(i_action == INTENT_SPLASH)
 		user.visible_message(span_danger("[user] splashes the contents of [src] onto [I]!"), \
 		span_notice("I splash the contents of [src] onto [I]."))
-
 		reagents.reaction(I, TOUCH)
 		reagents.clear_reagents()
 		return
