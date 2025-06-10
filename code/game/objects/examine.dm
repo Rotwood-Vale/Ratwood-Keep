@@ -53,6 +53,10 @@
 		if(resistance_flags & FIRE_PROOF)
 			. += span_warning("[src] is made of fire-retardant materials.")
 
+	// Examines for weaknesses
+	if(resistance_flags & FLAMMABLE)
+		. += span_warning("[src] looks pretty flammable.")
+
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
@@ -90,4 +94,8 @@
 			. += span_warning("[src] is made of cold-resistant materials.")
 		if(resistance_flags & FIRE_PROOF)
 			. += span_warning("[src] is made of fire-retardant materials.")
+
+	// Examines for weaknesses
+	if(resistance_flags & FLAMMABLE)
+		. += span_warning("[src] looks pretty flammable.")
 					

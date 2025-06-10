@@ -160,6 +160,10 @@
 		if(resistance_flags & FIRE_PROOF)
 			. += span_warning("[src] is made of fire-retardant materials.")
 
+	// Examines for weaknesses
+	if(resistance_flags & FLAMMABLE)
+		. += span_warning("[src] looks pretty flammable.")
+
 /obj/structure/proc/examine_status(mob/user) //An overridable proc, mostly for falsewalls.
 	if(max_integrity)
 		var/healthpercent = (obj_integrity/max_integrity) * 100
