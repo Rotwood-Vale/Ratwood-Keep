@@ -110,6 +110,38 @@
 		C.add_nausea(100)
 	return ..()
 
+/* Kockout */
+/datum/status_effect/debuff/knockout
+	id = "knockout"
+	effectedstats = null
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/knockout
+	duration = 12 SECONDS
+	var/time = 0
+
+/datum/status_effect/debuff/knockout/tick()
+	time += 1
+	switch(time)
+		if(3)
+			to_chat(owner, span_warn("I feel sleepy..."))
+		if(5)
+			owner.Slowdown(20)
+		if(8)
+			if(iscarbon(owner))
+				var/mob/living/carbon/C = owner
+				C.emote("yawn", forced = TRUE)
+
+
+/datum/status_effect/debuff/knockout/on_remove() 
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
+		C.SetSleeping(15 SECONDS)
+		C.Slowdown(0)
+	..()
+
+/atom/movable/screen/alert/status_effect/debuff/knockout
+	name = "tired"
+	desc = "I feel sleepy..."
+
 /datum/status_effect/debuff/badmeal
 	id = "badmeal"
 	effectedstats = null
