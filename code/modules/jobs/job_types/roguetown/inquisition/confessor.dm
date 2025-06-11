@@ -70,6 +70,8 @@ Please do not confuse the two.
 		H.change_stat("speed", 2)
 		H.change_stat("perception", 1)
 
+		ADD_TRAIT(H, TRAIT_SENSEEVIL, TRAIT_GENERIC)
+
 		if(H.mind.has_antag_datum(/datum/antagonist))
 			return
 		var/datum/antagonist/new_antag = new /datum/antagonist/purishep()

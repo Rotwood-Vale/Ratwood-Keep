@@ -1,6 +1,139 @@
+// Servantry, mostly to do with minions, their enhancement etc..
+
+/// Checks if all bodyparts of a carbon are skeletonized, returns TRUE or FALSE
+mob/living/carbon/proc/check_skeletonized() 
+    for(var/obj/item/bodypart/B in bodyparts)
+        if(!B.skeletonized)
+            return FALSE
+    return TRUE
+
+/datum/ritual/zizo/riteofboneremembrance
+	name = "Rite of Bone Remembrance"
+	circle = "Servantry"
+	difficulty = 3 
+	favor_cost = 100
+	center_requirement = /mob/living/carbon/human //skeleton, technically
+	n_req = /obj/item/natural/infernalash
+	s_req = /obj/item/natural/infernalash
+	revealchance = 15
+
+	function = /proc/riteofboneremembrance
+
+proc/riteofboneremembrance(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if("Rite of Bone Remembrance" in H.mind.rituals_completed)
+			to_chat(H, span_notice("You can remember no more than last time..."))
+			to_chat(user, span_notice("This deadite has already been given a glimpse of his past!"))
+			continue //skip this one in particular
+		if(H.check_skeletonized())
+			var/choice = input(H, "Visions of your past life flash before you. What fragment of your past life shall help you serve?", "Ritual of Remembrance") in list("Blacksmith", "Carpenter", "Mason", "Soilson", "Seamster")
+			switch(choice)
+				if("Blacksmith")
+					H.mind.adjust_skillrank_up_to(/datum/skill/craft/blacksmithing, 3, TRUE)
+					H.mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 2, TRUE)
+					H.say(pick("Hammers, Tongs - The heat of the forge..", "My apron burned, but I never flinched...","I shaped iron like it was clay... once."))
+					return TRUE
+				if("Carpenter")
+					H.mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 3, TRUE)
+					H.mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 2, TRUE)
+					H.say(pick("Wood grain and sawdust... it comes back to me.", "My hands remember the saw, and the axe...", "Joists, beams... I built homes once."))
+					return TRUE
+				if("Mason")
+					H.mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 3, TRUE)
+					H.mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 2, TRUE)
+					H.say(pick("Stone and mortar... my old companions.", "Stone walls rose by my hands, silent and strong.", "I once stacked bricks taller than men..."))
+					return TRUE
+				if("Soilson")
+					H.mind.adjust_skillrank_up_to(/datum/skill/labor/farming, 3, TRUE)
+					H.mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 2, TRUE)
+					H.say(pick("The soil... I tilled it, fed it, lived by it.", "Harvests and hearths... it's all faint, but I remember...", "I can almost smell the stews I once stirred inside my own farms hearth."))
+					return TRUE
+				if("Seamster")
+					H.mind.adjust_skillrank_up_to(/datum/skill/misc/sewing, 3, TRUE)
+					H.mind.adjust_skillrank_up_to(/datum/skill/craft/hunting, 2, TRUE)
+					H.say(pick("Needle and thread... my fingertips ache with memory.", "I remember stitching the retinues gambesons, after so many fierce battles...", "So many patterns and colors... I remember them still."))
+					return TRUE
+		H.mind.rituals_completed += "Rite of Bone Remembrance"
+	return FALSE
+
+/datum/ritual/zizo/zizobargain //bargain with somebody to change their patron to zizo, a good way to prevent frags of captives
+	name = "Zizos Bargain"
+	circle = "Servantry"
+	difficulty = 1 // We want to encourage this happening
+	favor_cost = 150 //Underpriced for a new ally, but again this being "meta" is good for the gameplay
+	revealchance = 15 // High despite low difficulty etc, to compensate
+	center_requirement = /mob/living/carbon/human
+
+	function = /proc/zizobargain
+
+proc/zizobargain(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if(H.patron?.type == /datum/patron/zizo)
+			to_chat(user.mind, span_danger("\"They already serve Her!\""))
+			return FALSE
+		else
+			var/choice = input(H, "Zizo offers you Her bargain. Will you abandon all that is good for a speck of power?", "Zizo's Bargain") in list("Yes", "No")
+			if(choice == "Yes")
+				H.patron = new /datum/patron/zizo
+				H.faction += "undead"
+				ADD_TRAIT(H, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
+				to_chat(H, span_notice("You feel Her cold embrace settle into your soul..."))
+				var/secondchoice = input(H, "Zizo offers you Her gift. Was it worth it?", "Zizo's Gift") in list("Strength", "Speed", "Intelligence", "Perception", "Endurance", "Constitution")
+				switch (secondchoice)
+					if("Strength")
+						H.change_stat("strength", 1)
+					if("Speed")
+						H.change_stat("speed", 1)
+					if("Intelligence")
+						H.change_stat("intelligence", 1)
+					if("Perception")
+						H.change_stat("perception", 1)
+					if("Endurance")
+						H.change_stat("endurance", 1)
+					if("Constitution")
+						H.change_stat("constitution", 1)
+
+				to_chat(user, span_notice("[H.real_name] has accepted the bargain."))
+				H.say("PRAISE ZIZO!!!")
+			else
+				to_chat(user, span_warning("[H.real_name] refuses Zizo's gift. Such INSOLENCE!"))
+				C.visible_message(span_danger("[H.real_name] is thrown into the air, their body wracked with spasms as invisible forces tear at their flesh for their defiance!"))
+				H.emote("painscream")	
+				to_chat(H.mind, span_notice("THE PAIN!! IT'S TOO MUCH!!!"))
+				playsound(C,pick('sound/combat/hits/bladed/genslash (1).ogg','sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (3).ogg'), 100, FALSE)
+		return TRUE
+	return FALSE
+
+/datum/ritual/zizo/bonemastery //Increases A Necromancers Skeleton Cap by 1
+	name = "Ritual of Bone Mastery"
+	circle = "Servantry"
+	difficulty = 3
+	favor_cost = 250
+	revealchance = 33 // gotta be careful about this one, potentially
+	center_requirement = /mob/living/carbon/human
+	n_req = /obj/item/natural/infernalash //the necromancer will have to do their own work getting this
+	s_req = /obj/item/natural/infernalash
+	w_req = /obj/item/natural/infernalash
+	e_req = /obj/item/natural/infernalash
+
+	function = /proc/bonemastery
+
+/proc/bonemastery(mob/user, turf/C)
+	for(var/mob/living/carbon/human/H in C.contents)
+		if (user.mind.get_skill_level(/datum/skill/magic/unholy)> H.mind.bonemax)
+			H.mind.bonemax += 1
+			return TRUE
+		else
+			to_chat(user.mind, span_danger("\"I am not powerful enough to grant them a closer connection to Zizo...\""))
+			to_chat(H.mind, span_danger("\"That cultist is not powerful enough to grant me a closer connection to Zizo...\""))
+			return TRUE
+	return FALSE
 /datum/ritual/zizo/convert
 	name = "Convert"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 150
+	revealchance = 33
 	center_requirement = /mob/living/carbon/human
 
 	function = /proc/convert
@@ -39,12 +172,17 @@
 				sleep(2 SECONDS)
 				H.anchored = FALSE
 
+
 /datum/ritual/zizo/skeletaljaunt
 	name = "Skeletal Jaunt"
 	circle = "Servantry"
+	difficulty = 4
+	favor_cost = 150
+	revealchance = 33
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/organ/heart
+	s_req = /obj/item/clothing/neck/roguetown/psicross/bloodied
 
 	function = /proc/skeletaljaunt
 
@@ -98,7 +236,7 @@
 		H.STASTR = rand(8,17)
 
 		H.verbs |= /mob/living/carbon/human/proc/praise
-		H.verbs |= /mob/living/carbon/human/proc/communicate
+		//H.verbs |= /mob/living/carbon/human/proc/communicate
 
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOSTAMINA, TRAIT_GENERIC)
@@ -111,11 +249,14 @@
 		ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 		to_chat(H, span_userdanger("I am returned to serve. I will obey, so that I may return to rest."))
 		to_chat(H, span_userdanger("My master is [user]."))
-		break
+		return TRUE
 
 /datum/ritual/zizo/thecall
 	name = "The Call"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 250
+	revealchance = 100 //because this is op as fuck, gives you a chance to atleast rush to the inquis to get them back
 	center_requirement = /obj/item/bedsheet/rogue
 
 	w_req = /obj/item/bodypart/l_leg
@@ -151,6 +292,9 @@
 /datum/ritual/zizo/falseappearance
 	name = "Falsified Appearance"
 	circle = "Servantry"
+	difficulty = 2
+	favor_cost = 100
+	revealchance = 15
 	center_requirement = /mob/living/carbon/human
 
 	n_req = /obj/item/bodypart/head
@@ -224,6 +368,9 @@
 /datum/ritual/zizo/heartache
 	name = "Heartache"
 	circle = "Servantry"
+	difficulty = 5
+	favor_cost = 100
+	revealchance = 33 //its got a fullheal..
 	center_requirement = /obj/item/organ/heart
 
 	n_req = /obj/item/natural/worms/leech

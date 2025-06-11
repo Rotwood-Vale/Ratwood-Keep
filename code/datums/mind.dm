@@ -54,6 +54,11 @@
 	var/boneboy = FALSE
 	var/bonenecro = null
 
+
+	//rituals tracker
+	var/divinefavor = 0 
+	var/list/rituals_completed = list() //This is used to track which rituals have already been applied to somebody.
+
 	//Druid Awakened Animal Trackers
 	var/awakened_animals = 0
 	var/awakened_max = 2

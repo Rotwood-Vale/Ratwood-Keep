@@ -190,11 +190,18 @@
 
 		if(HAS_TRAIT(src, TRAIT_ZIZO_MARKED) && HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
 			. += span_purple("A fellow seeker of Her ascension.")
+		
+		if("Mark of Zizo" in src.mind.rituals_completed)
+			if(HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
+				. += span_purple("A shimmering trace of Zizo’s dark favor clings to them—blessed are they who receive Her favor so.")
+			else
+				. += span_userdanger("An unnatural aura clings to them—the clear mark of Zizos dark influence.")
 
 		if(HAS_TRAIT(user, TRAIT_MATTHIOS_EYES))
 			var/atom/item = get_most_expensive()
 			if(item)
 				. += span_notice("You get the feeling [m2] most valuable possession is \a [item.name].")
+		
 
 	if(HAS_TRAIT(src, TRAIT_LEPROSY))
 		. += span_necrosis("A LEPER...")

@@ -31,6 +31,29 @@
 	var/wash_precent = 0
 	COOLDOWN_DECLARE(wash_cooldown)
 
+
+
+
+//blood is not targetable, this is a workaround for nonfunctional code
+/turf/open/floor/attack_hand(mob/user)	
+	if(isliving(user))		
+		var/mob/living/carbon/human/L = user	
+		if(L.stat != CONSCIOUS)
+			return		
+		if((!istype(L.rmb_intent, /datum/rmb_intent/weak))) //it would be annoying otherwise, trust
+			return
+		for(var/obj/effect/decal/cleanable/blood/C in src)
+			playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE, ignore_walls = FALSE)
+			user.visible_message("<span class='love'>[user] starts to bloody their hands..</span>")
+			if(do_after(L, 25, target = src))
+				L.bloody_hands++
+				L.update_inv_gloves()
+			return
+		return
+	..()
+
+//nonfunctional, can not target decals
+/*
 /obj/effect/decal/cleanable/blood/attack_hand(mob/living/user)
 	. = ..()
 	if(ishuman(user))
@@ -38,6 +61,7 @@
 		to_chat(H, "<span class='notice'>I get my hands bloody.</span>")
 		H.bloody_hands++
 		H.update_inv_gloves()
+*/
 
 /obj/effect/decal/cleanable/blood/weather_act_on(weather_trait, severity)
 	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, wash_cooldown))

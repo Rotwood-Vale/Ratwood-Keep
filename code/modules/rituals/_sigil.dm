@@ -10,6 +10,8 @@
 
 	/// The list of rituals that can be performed with this sigil.
 	var/rituals = list()
+	var/datum/ritual/last_picked_ritual = null //this is checked to play sounds only if a ritual is picked in zizo.dm
+
 
 /obj/effect/decal/cleanable/sigil/
 
@@ -48,47 +50,68 @@
 		var/datum/ritual/G = path
 		rituals[G.name] = G
 
+
+	
+
 /obj/effect/decal/cleanable/sigil/proc/consume_ingredients(datum/ritual/R)
 
 	for(var/atom/A in get_step(src, NORTH))
 		if(istype(A, R.n_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, SOUTH))
 		if(istype(A, R.s_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, EAST))
 		if(istype(A, R.e_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in get_step(src, WEST))
 		if(istype(A, R.w_req) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 	for(var/atom/A in loc.contents)
 		if(istype(A, R.center_requirement) && !ishuman(A))
 			playsound(src, 'sound/foley/flesh_rem2.ogg', 30)
 			qdel(A)
+			break
 
 /obj/effect/decal/cleanable/sigil/attack_hand(mob/living/user)
 	. = ..()
 	if(icon_state != "center") // fucking awful but it has to be this way
 		return
 
+	var/list/available_names = list()
+	var/list/name_to_datum = list()
 	for(var/G in rituals)
 		var/datum/ritual/path = rituals[G]
 		if(path.circle == sigil_type)
-			rituals |= path.name
+			var/display_name = "[path.name] (Cost: [path.favor_cost], Difficulty: [path.difficulty])"
+			available_names += display_name
+			name_to_datum[display_name] = path
 
-	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in rituals
-	var/datum/ritual/pickritual
+	var/ritualnameinput = input(user, "Rituals", "RATWOOD") as null|anything in available_names
+	var/datum/ritual/pickritual = name_to_datum[ritualnameinput]
+	last_picked_ritual = pickritual
 
-	pickritual = rituals[ritualnameinput]
+
+	//pickritual = rituals[ritualnameinput]
+
+	if (!pickritual)
+		return
+	
+	if (pickritual.difficulty > user.mind.get_skill_level(/datum/skill/magic/unholy))
+		to_chat(user.mind, span_danger("\"My skill is not great enough for this.\""))
+		return
 
 	var/cardinal_success = FALSE
 	var/center_success = FALSE
@@ -163,8 +186,25 @@
 		user.electrocute_act(10, src)
 		return
 
-	consume_ingredients(pickritual)
+	if (pickritual.favor_cost > user.mind.divinefavor)
+		if(badritualpunishment)
+			return
+		to_chat(user.mind, span_danger("\"Zizo favors me not...\""))
+		user.electrocute_act(10, src)
+		return
+
+
+	if(pickritual.casttime > 0)
+		if(!do_after(user, pickritual.casttime SECONDS))
+			return
+
+	user.mind.divinefavor -= pickritual.favor_cost
 	call(pickritual.function)(user, loc)
+	if(prob(pickritual.revealchance))
+		if(istype(user, /mob))
+			var/mob/M = user
+			M.ritualalert()
+	consume_ingredients(pickritual)
 
 /turf/open/floor/proc/generateSigils(mob/M, type, subtype)
 	var/turf/T = get_turf(M.loc)
@@ -181,6 +221,7 @@
 
 		//Very ugly, but it will do!
 		var/list/sigilsPath = list()
+	
 		switch(type)
 			if("ZIZO")
 				var/obj/effect/decal/cleanable/sigil/zizo/C = new(src)
@@ -196,6 +237,12 @@
 					/obj/effect/decal/cleanable/sigil/zizo/SE,
 					/obj/effect/decal/cleanable/sigil/zizo/SW
 				)
+				for(var/i = 1; i <= alldirs.len; i++)
+					var/turf/floor = get_step(src, alldirs[i])
+					var/sigil = sigilsPath[i]
+					var/obj/effect/decal/cleanable/sigil/placed = new sigil(floor)
+					placed.sigil_type = C.sigil_type
+				
 			if("DIVINE")
 				var/obj/effect/decal/cleanable/sigil/divine/C = new(src)
 				C.sigil_type = subtype
@@ -210,15 +257,18 @@
 					/obj/effect/decal/cleanable/sigil/divine/SE,
 					/obj/effect/decal/cleanable/sigil/divine/SW
 				)
+
+				for(var/i = 1; i <= alldirs.len; i++)
+					var/turf/floor = get_step(src, alldirs[i])
+					var/sigil = sigilsPath[i]
+					var/obj/effect/decal/cleanable/sigil/placed = new sigil(floor)
+					placed.sigil_type = C.sigil_type
+
 			else
 				stack_trace("Someone tried to draw an invalid sigil type. This is likely a bug in one of the draw_sigil procs.")
 				return FALSE
 
-		for(var/i = 1; i <= alldirs.len; i++)
-			var/turf/floor = get_step(src, alldirs[i])
-			var/sigil = sigilsPath[i]
 
-			new sigil(floor)
 
 	return TRUE
 

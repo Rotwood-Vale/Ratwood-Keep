@@ -3,9 +3,9 @@
 
 /mob/living/carbon/human/proc/draw_sigil_zizo()
 	set name = "Draw Zizoite Sigil"
-	set category = "RITUALS"
+	set category = "ZIZO"
 
-	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting")
+	var/list/runes = list("Servantry", "Transmutation", "Fleshcrafting", "Sacrifice", "Ascension", "Malediction")
 
 	if(!bloody_hands)
 		to_chat(src, span_danger("My hands aren't bloody enough."))

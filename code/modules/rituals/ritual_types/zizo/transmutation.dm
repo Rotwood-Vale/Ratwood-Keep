@@ -1,8 +1,35 @@
-// TRANSMUTATION
+// TRANSMUTATION, creating inanimate stuff
+
+/datum/ritual/zizo/corruptamulet
+	name = "Corrupt Amulet"
+	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 25
+	revealchance = 5
+	center_requirement = /obj/item/clothing/neck/roguetown/psicross/ //all of them, wood etc. get incinerated
+	n_req = /obj/item/reagent_containers/food/snacks/rogue/meat
+
+	function = /proc/corruptamulet
+
+/proc/corruptamulet(mob/user, turf/C)
+	var/obj/item/clothing/neck/roguetown/psicross/P = locate(/obj/item/clothing/neck/roguetown/psicross) in C
+	if(!P)
+		return TRUE
+	if(!(P.corruptable))
+		C.visible_message(span_danger("The amulet in the center of the ritual circle begins to bleed for but a moment, before a puff of black fire consumes it utterly!"))
+		return TRUE
+	
+	new /obj/item/clothing/neck/roguetown/psicross/bloodied(C)
+	C.visible_message(span_danger("The amulet in the center of the ritual circle begins to bleed from its edges as it warps into a mockery of the divine!"))
+	user.playsound_local(C, 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
+	return TRUE
 
 /datum/ritual/zizo/allseeingeye
 	name = "All-seeing Eye"
 	circle = "Transmutation"
+	difficulty = 2
+	favor_cost = 250
+	revealchance = 10
 	center_requirement = /obj/item/organ/eyes
 
 	function = /proc/allseeingeye
@@ -10,9 +37,12 @@
 /proc/allseeingeye(mob/user, turf/C)
 	new /obj/item/scrying/eye(C)
 
+
 /datum/ritual/zizo/criminalstool
 	name = "Criminal's Tool"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 20
 	center_requirement = /obj/item/natural/cloth
 
 	function = /proc/criminalstool
@@ -30,9 +60,11 @@
 /datum/ritual/zizo/propaganda
 	name = "Propaganda"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 25
 	center_requirement = /obj/item/natural/worms/leech
 	n_req = /obj/item/paper
-	s_req = /obj/item/natural/feather
+	s_req = /obj/item/paper
 
 	function = /proc/propaganda
 
@@ -43,9 +75,11 @@
 /datum/ritual/zizo/falseidol
 	name = "False Idol"
 	circle = "Transmutation"
+	difficulty = 1
+	favor_cost = 10
 	center_requirement = /mob/living/carbon/human
 	w_req = /obj/item/paper
-	s_req = /obj/item/natural/feather
+	e_req = /obj/item/paper
 
 	function = /proc/falseidol
 
@@ -72,51 +106,63 @@
 		idol.icon = entry.icon
 		idol.icon_state = entry.icon_state
 		idol.add_overlay(entry.overlays)
-		break
+		return TRUE
+	return FALSE
 
-/datum/ritual/zizo/invademind
-	name = "Invade Mind"
+/datum/ritual/zizo/summonrobes
+	name = "Summon Robes"
 	circle = "Transmutation"
-	center_requirement = /obj/item/natural/feather
+	difficulty = 1
+	favor_cost = 25
+	revealchance = 1
+	n_req = /obj/item/natural/hide
+	function = /proc/summonrobes
 
-	function = /proc/invademind
-
-/proc/invademind(mob/user, turf/C)
-	for(var/obj/item/paper/P in C.contents)
-		var/info = ""
-		info = sanitize(P.info)
-		var/input = stripped_input(user, "To whom do we send this message?", "RATWOOD")
-		if(!input)
-			return
-		for(var/mob/living/carbon/human/HL in GLOB.human_list)
-			if(HL.real_name == input)
-				qdel(P)
-				to_chat(HL, "<i>You hear a voice in your head... <b>[info]</i></b>")
-		break
-
-/datum/ritual/zizo/summongear
-	name = "Summon Gear"
-	circle = "Transmutation"
-	center_requirement = /obj/item/ingot/steel
-
-	function = /proc/summongear
-
-/proc/summongear(mob/user, turf/C)
+/proc/summonrobes(mob/user, turf/C)
 	var/datum/effect_system/spark_spread/S = new(C)
 	S.set_up(1, 1, C)
 	S.start()
 
 	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
-	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood(C)
-
-	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe(C)
 
-	new /obj/item/rogueweapon/sword(C)
-	new /obj/item/rogueweapon/huntingknife(C)
-	new /obj/item/rogueweapon/huntingknife(C)
+	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 
-	new /obj/item/rope/chain(C)
-	new /obj/item/rope/chain(C)
 
+/datum/ritual/zizo/empowerrobes
+	name = "Empower Robes"
+	circle = "Transmutation"
+	difficulty = 2
+	favor_cost = 25
+	revealchance = 10
+	n_req = /obj/item/clothing/head/roguetown/helmet/leather/cult_hood
+	s_req = /obj/item/clothing/suit/roguetown/armor/leather/cult_robe
+	center_requirement = /obj/item/clothing/neck/roguetown/psicross/bloodied
+	function = /proc/empowerrobes
+
+
+/proc/empowerrobes(mob/user, turf/C)
+	var/datum/effect_system/spark_spread/S = new(C)
+	S.set_up(1, 1, C)
+	S.start()
+	new /obj/item/clothing/head/roguetown/helmet/leather/cult_hood/empowered(C)
+	new /obj/item/clothing/suit/roguetown/armor/leather/cult_robe/empowered(C)
+	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
+
+/datum/ritual/zizo/empowerrobes
+	name = "Empower Dagger"
+	circle = "Transmutation"
+	difficulty = 3
+	favor_cost = 25
+	revealchance = 15
+	n_req = /obj/item/clothing/neck/roguetown/psicross/bloodied
+	s_req = /obj/item/natural/artifact
+	center_requirement = /obj/item/rogueweapon/huntingknife/idagger/steel/
+	function = /proc/empowerdagger
+
+/proc/empowerdagger(mob/user, turf/C)
+	var/datum/effect_system/spark_spread/S = new(C)
+	S.set_up(1, 1, C)
+	S.start()
+	new /obj/item/rogueweapon/huntingknife/idagger/steel/cult(C)
 	playsound(C,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
