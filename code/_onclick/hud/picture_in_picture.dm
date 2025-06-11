@@ -127,6 +127,16 @@
 	viewing_turfs = get_visible_turfs()
 	vis_contents += viewing_turfs
 
+	for (var/atom/A in viewing_turfs)
+		if (istype(A, /obj/item/clothing/head/flowers) && !istype(A.loc, /mob))
+			var/mutable_appearance/MA = mutable_appearance(A)
+			var/matrix/M = matrix()
+			M.Scale(0.5, 0.5)
+			MA.transform = M
+			vis_contents += MA
+		else
+			vis_contents += A	
+
 /atom/movable/screen/movable/pic_in_pic/proc/get_visible_turfs()
 	var/turf/T = get_turf(center)
 	if(!T)
