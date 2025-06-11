@@ -1729,6 +1729,12 @@
     throw_speed = 1
     throw_range = 3
 
+/obj/item/clothing/head/flowers/Initialize()
+	. = ..()
+	var/matrix/M = matrix()
+	M.Scale(0.5, 0.5)
+	transform = M
+
 /obj/item/clothing/head/flowers/purple_lily
     name = "Purple lily"
     desc = "Flower? Flower."
