@@ -14,9 +14,11 @@
 	cmode_music = 'sound/music/antag/combatskeleton.ogg'
 
 /mob/living/carbon/human/species/skeleton/npc
-	aggressive = 1
+	aggressive = TRUE
 	mode = NPC_AI_IDLE
 	wander = FALSE
+	npc_jump_chance = 0 // no jumping skeletons
+	rude = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
 

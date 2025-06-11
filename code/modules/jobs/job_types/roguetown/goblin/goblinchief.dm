@@ -9,9 +9,9 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
-	tutorial = "You're the Chief of the local Goblin tribe, assuring Graggar's rule is spread to the surrounding lands. \
+	tutorial = "You're the Chief of the local Goblin tribe. A representation of Graggar's rule, you are the biggest and strongest. You ensure the spread of his dominion over others where you can. \
 	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
-	Have your subjects trudge through the sewers, in the name of Gragger, robbing passerby."
+	Have your subjects trudge through the sewers and elsewhere, robbing and kidnapping passersby. Spread your will upon the weak fools. Bring glory and slaves to your tribe in Graggar's name!"
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinchief
 	display_order = JDO_GOBLINCHIEF
