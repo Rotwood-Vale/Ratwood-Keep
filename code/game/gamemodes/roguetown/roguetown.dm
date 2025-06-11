@@ -373,7 +373,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	restricted_jobs = list(
 	"Duke",
 	"Duke Consort",
-	"Dungeoneer",
 	"Inquisitor",
 	"Confessor",
 	"Watchman",
