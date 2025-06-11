@@ -924,6 +924,7 @@
 #include "code\game\objects\items\rogueitems\natural\poo.dm"
 #include "code\game\objects\items\rogueitems\natural\stones.dm"
 #include "code\game\objects\items\rogueitems\natural\wood.dm"
+#include "code\game\objects\items\rogueitems\natural\zizobane.dm"
 #include "code\game\objects\items\rogueweapons\integrity.dm"
 #include "code\game\objects\items\rogueweapons\intents.dm"
 #include "code\game\objects\items\rogueweapons\magic.dm"
