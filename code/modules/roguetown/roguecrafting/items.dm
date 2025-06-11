@@ -370,39 +370,6 @@
 	skill_level = 0
 	skillcraft = /datum/skill/craft/crafting
 
-
-/datum/crafting_recipe/roguetown/bait
-	name = "bait"
-	result = /obj/item/bait
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/wheat = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/sbaita
-	name = "sweetbait (apple)"
-	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/apple = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/sbait
-	name = "sweetbait (berry)"
-	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/bloodbait
-	name = "bloodbait"
-	result = /obj/item/bait/bloody
-	reqs = list(/obj/item/storage/roguebag = 1,
-				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
-	req_table = TRUE
-	subtype_reqs = TRUE
-
 /datum/crafting_recipe/roguetown/pipe
 	name = "smoking pipe"
 	result = /obj/item/clothing/mask/cigarette/pipe/crafted
@@ -646,6 +613,41 @@
 	skill_level = 1
 	skillcraft = /datum/skill/craft/crafting
 
+
+/datum/crafting_recipe/roguetown/flowercrown_salvia
+	name = "salvia flower crown"
+	result = /obj/item/clothing/head/roguetown/flower_crown/salvia
+	structurecraft = /obj/structure/flora/ausbushes
+	reqs = list(
+		/obj/item/natural/thorn = 2,
+		/obj/item/natural/fibers = 2
+	)
+	skill_level = 0
+	verbage_simple = "weave"
+	verbage = "weaves"
+
+/datum/crafting_recipe/roguetown/flowercrown
+	name = "rose crown"
+	result = /obj/item/clothing/head/roguetown/flower_crown
+	structurecraft = /obj/structure/flora/ausbushes
+	reqs = list(
+		/obj/item/natural/thorn = 2,
+		/obj/item/natural/fibers = 2
+	)
+	skill_level = 0
+	verbage_simple = "weave"
+	verbage = "weaves"
+
+/datum/crafting_recipe/roguetown/briarthorns
+	name = "briarthorns headpiece"
+	result = /obj/item/clothing/head/roguetown/padded/briarthorns
+	reqs = list(
+		/obj/item/natural/thorn = 4,
+		/obj/item/natural/fibers = 2
+	)
+	skill_level = 0
+	verbage_simple = "weave"
+	verbage = "weaves"
 /datum/crafting_recipe/roguetown/wickercloak
 	name = "wickercloak"
 	result = /obj/item/clothing/cloak/wickercloak

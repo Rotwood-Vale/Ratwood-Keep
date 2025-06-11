@@ -84,7 +84,7 @@
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
 		to_chat(user, span_notice("I squeeze \the [I] into some colorful dye."))
-		berry_charges += 5
+		berry_charges += 15
 		update_icon()
 		qdel(I)
 		return
@@ -148,7 +148,7 @@
 			ui_interact(user)
 			return
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		if(!do_after(user, 3 SECONDS, target = src))
+		if(!do_after(user, 1 SECONDS, target = src))
 			return
 		if(berry_charges <= 0)
 			return
@@ -165,7 +165,7 @@
 			ui_interact(user)
 			return
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		if(!do_after(user, 3 SECONDS, target = src))
+		if(!do_after(user, 1 SECONDS, target = src))
 			return
 		if(berry_charges <= 0)
 			return
