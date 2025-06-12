@@ -252,7 +252,6 @@
 			mmb_intent = new INTENT_JUMP(src) // switch to jump intent
 		used_intent = mmb_intent
 		. = try_jump(jump_destination) // return whether the jump succeeded or failed
-		used_intent = null
 		QDEL_NULL(mmb_intent) // unset our intent after
 		m_intent = old_m_intent
 		if(.)
@@ -728,7 +727,7 @@
 	if(isitem(the_grab.sublimb_grabbed) && prob(30))
 		rog_intent_change(1) // 30% chance to remove the embedded weapon, 70% to twist it
 	else
-		rog_intent_change(2) // 2 -> choke for neck, twist for limb/embed, smash for precise
+		rog_intent_change(rand(1, length(possible_a_intents))) // choose choke/twist/smash/take at your leisure. todo: situational usage
 	// now use it
 	if(used_intent.type == /datum/intent/grab/smash) // special, need to smash them into something
 		var/atom/smash_target // structure or turf
@@ -793,8 +792,9 @@
 	// if we're weaponless or our offhand is stronger, switch hands
 	// since grabs have a force of 0 this has the fun effect of putting embed grabs in the offhand too, which is useful later
 	if(OffWeapon && (!Weapon || OffWeapon.force > Weapon.force))
-		NPC_THINK("Switching active hand to [OffWeapon]!")
-		swap_hand()
+		if(!istype(OffWeapon, /obj/item/grabbing)) // don't move grabs into your main hand please
+			NPC_THINK("Switching active hand to [OffWeapon]!")
+			swap_hand()
 	// in case we swapped, reset weapon/offweapon
 	Weapon = get_active_held_item()
 	OffWeapon = get_inactive_held_item()
@@ -809,7 +809,7 @@
 	// we always try to move our grab into our offhand where possible, so no need to worry about main-hand weapons
 	var/obj/item/grabbing/the_grab = OffWeapon
 	if(istype(the_grab)) // if we already have a grab in our offhand, we might want to use it
-		if(prob(use_grab_chance) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
+		if(prob(use_grab_chance) && the_grab.grabbed == victim) // already pulling, fuck with them a bit
 			swap_hand() // switch to grab
 			if(grab_state < GRAB_AGGRESSIVE && prob(upgrade_grab_chance)) // upgrade!
 				stamina_add(rand(7,15))
@@ -830,13 +830,11 @@
 			if(!OffWeapon) // wield it!
 				Weapon.attack_self(src)
 		rog_intent_change(1)
-		used_intent = a_intent
 		Weapon.melee_attack_chain(src, victim)
 		// attackby and attack_obj handles cooldowns already
 		return TRUE
 	else // unarmed
 		rog_intent_change(4) // punch
-		used_intent = a_intent
 		UnarmedAttack(victim, 1)
 		// handle cooldowns since that's not done directly in UnarmedAttack
 		var/adf = used_intent.clickcd
