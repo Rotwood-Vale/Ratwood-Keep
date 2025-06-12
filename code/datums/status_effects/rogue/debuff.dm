@@ -147,7 +147,7 @@
 		var/mob/living/carbon/C = owner
 		if(C.IsSleeping()) //No need to add more it's already pretty long.
 			return ..()
-		C.SetSleeping(15 SECONDS)
+		C.SetSleeping(20 SECONDS)
 	..()
 
 /atom/movable/screen/alert/status_effect/debuff/knockout
