@@ -22,7 +22,7 @@
 							/obj/item/natural/hide = 1)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 							/obj/item/natural/hide = 2, 
-							/obj/item/natural/fur = 1,)
+							/obj/item/natural/fur = 1)
 
 	health = ROUS_HEALTH
 	maxHealth = ROUS_HEALTH

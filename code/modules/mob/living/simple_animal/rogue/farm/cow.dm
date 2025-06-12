@@ -17,7 +17,7 @@
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/natural/hide = 2)
-	butcher_results = listlist(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 5,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 5,
 						/obj/item/natural/hide = 3,
 						/obj/item/reagent_containers/food/snacks/fat = 2)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
