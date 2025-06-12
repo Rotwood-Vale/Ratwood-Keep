@@ -33,7 +33,8 @@
 							/obj/effect/mob_spawner =5,
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/structure/wild_swampweed = 5,
-							/obj/structure/flora/roguegrass/maneater/real=3)
+							/obj/structure/flora/roguegrass/maneater/real=3,
+							/obj/effect/spawner/roguemap/flowerspawn = 30)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
 	allowed_areas = list(/area/rogue/outdoors/bog, /area/rogue/outdoors/rtfield)
@@ -66,4 +67,5 @@
 							/obj/item/natural/rock = 1,
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/table/roguetree/stump/log = 3,
+							/obj/effect/spawner/roguemap/flowerspawn = 30,
 							/datum/spacevine_controller = 1)
