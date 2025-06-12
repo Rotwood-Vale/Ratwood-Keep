@@ -108,3 +108,10 @@
 		/obj/item/clothing/head/flowers/milva = 5,
 		/obj/item/clothing/head/flowers/yellow_iris = 5
 	)
+
+/obj/effect/spawner/roguemap/flowerspawn/process()
+	var/type = weighted_pick(spawned)
+	if(type)
+		new type(get_turf(src))
+	STOP_PROCESSING(SSmapgen, src)
+	qdel(src)
