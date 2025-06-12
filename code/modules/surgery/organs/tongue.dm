@@ -66,6 +66,23 @@
 		message = lizard_hiSS.Replace(message, "SSS")
 	speech_args[SPEECH_MESSAGE] = message
 */
+/obj/item/organ/tongue/tabaxi
+	name = "tabaxi tongue"
+	desc = ""
+	icon_state = "tonguenormal"
+	modifies_speech = TRUE
+
+/obj/item/organ/tongue/tabaxi/handle_speech(datum/source, list/speech_args)
+	var/static/regex/tabaxi_purr = new("r+", "g")
+	var/static/regex/tabaxi_Purr = new("R+", "g")
+	var/message = speech_args[SPEECH_MESSAGE]
+	var/language = speech_args[5]
+	if(message[1] != "*" && (language != /datum/language/felid))
+		message = tabaxi_purr.Replace(message, "rrr")
+		message = tabaxi_Purr.Replace(message, "RRR")
+	speech_args[SPEECH_MESSAGE] = message
+
+
 /obj/item/organ/tongue/fly
 	name = "proboscis"
 	desc = ""

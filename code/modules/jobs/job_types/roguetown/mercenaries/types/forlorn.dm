@@ -4,8 +4,8 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/lupian, /datum/species/vulpkanin)
 	outfit = /datum/outfit/job/roguetown/mercenary/forlorn
-	maximum_possible_slots = 10
-	min_pq = 4
+	maximum_possible_slots = 5
+	min_pq = 15
 	torch = FALSE
 	cmode_music = 'sound/music/combat_forlorn.ogg'
 	category_tags = list(CTAG_MERCENARY)
@@ -21,10 +21,37 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	beltr = /obj/item/storage/keyring/mercenary
-	beltl = /obj/item/rogueweapon/mace/warhammer/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/shield/heater
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife)
+
+	var/weapons = list("warhammer", "axe", "crossbow")
+	var/weaponschoice = input("Choose your weapon", "Available weapons") as anything in weapons
+
+	switch(weaponschoice)
+
+		if("warhammer")
+			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			backl = /obj/item/rogueweapon/shield/heater
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
+		if("axe")
+			beltl = /obj/item/rogueweapon/stoneaxe/battle
+			backl = /obj/item/rogueweapon/shield/heater
+			H.mind.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE) // This brings the axe class in line-
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, -1, TRUE) //
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE) // -for the same total skill points overall
+		if("crossbow")
+			beltl = /obj/item/ammo_holder/quiver/bolts
+			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // Takes the crossbow merc to expert crossbows-
+			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) // -and competent bows overall, as all mercs are-
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, -2, TRUE) // -experts with their respective weapons.
+			H.mind.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE) // Apprentice swordsmen. 
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife) // They need something to take heads with
+		else
+			beltl = /obj/item/rogueweapon/mace/warhammer/steel
+			backl = /obj/item/rogueweapon/shield/heater
+			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
 
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -35,7 +62,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)

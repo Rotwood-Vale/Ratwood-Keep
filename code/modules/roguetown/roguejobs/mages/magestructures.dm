@@ -152,7 +152,7 @@
 	desc = "This forge uses cycling magma from an internal core to heat things."
 	icon_state = "infernal0"
 	base_state = "infernal"
-	heat_time = 300
+	heat_time = 30 SECONDS
 
 /obj/machinery/light/rogue/forge/arcane/process()
 	if(isopenturf(loc))
