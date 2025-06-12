@@ -16,7 +16,7 @@
 
 	rogue_enabled = TRUE
 
-	/// Whether he has killed anyone in the last 24 ingame hours.
+	/// Whether he has killed anyone in the last 2 ingame days.
 	var/has_killed = FALSE
 
 	/// Small 15 minute prep phase before the killing timer starts ticking.
@@ -140,7 +140,7 @@
 		SK.mob_timers["need_to_kill"] = world.time
 		return
 
-	if(world.time < SK.mob_timers["need_to_kill"] + 25 MINUTES)
+	if(world.time < SK.mob_timers["need_to_kill"] + 45 MINUTES)
 		return
 
 	// If the Serial Killer has not killed anyone before the end of the timer, he dies

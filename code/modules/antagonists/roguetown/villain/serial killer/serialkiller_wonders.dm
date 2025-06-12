@@ -32,6 +32,7 @@
 /obj/structure/totem/OnCrafted(dirin, mob/user)
 	. = ..()
 	user.log_message("crafted Serial Killer Totem.", LOG_GAME)
+	
 
 // Give visions to the person who examines the totem.
 /obj/structure/totem/examine(mob/user)
