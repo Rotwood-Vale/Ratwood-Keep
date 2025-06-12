@@ -26,7 +26,8 @@
 	color = "#ddd3df" // rgb: 96, 165, 132
 	metabolization_rate = 1
 
-
+// TO DO: eventually rewrite drowsyness code to do this instead then it can be expanded
+// The reason why I haven't is because vampire lords have some special code for drowsyness I'll ave to get to...
 /datum/reagent/sleep_powder/on_mob_metabolize(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/debuff/knockout)
 	..()
