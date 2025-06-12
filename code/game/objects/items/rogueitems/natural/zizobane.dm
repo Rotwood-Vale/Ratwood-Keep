@@ -42,7 +42,9 @@
     filling_color = "#772681"
     bitesize = 1
     foodtype = VEGETABLES
-    list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+    list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/sleep_powder = 5)
     tastes = list("sweet" = 1,"bitterness" = 1)
     eat_effect = /datum/status_effect/debuff/knockout
+    mill_result = /obj/item/reagent_containers/powder/sleep_powder
+    grind_results = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/sleep_powder = 5)
     rotprocess = 30 MINUTES
