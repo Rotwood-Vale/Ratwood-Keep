@@ -4737,7 +4737,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "Nc" = (
-/obj/structure/pillory/town_square,
+/obj/structure/pillory/bounty/town_square,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue)
 "Ne" = (

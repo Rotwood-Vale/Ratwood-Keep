@@ -79,7 +79,7 @@
 			I.forceMove(src)
 			bait = I
 			check_counter = world.time
-			time2catch = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 5, slowest = 40) //in seconds
+			time2catch = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), fastest = 15, slowest = 120) //in seconds
 			icon_state = "fishingcage_ready"
 			START_PROCESSING(SSobj, src)
 			return

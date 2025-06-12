@@ -5,7 +5,7 @@
 	name = "Goblin"
 	id = "goblinp"
 	desc = "<b>Goblin</b><br>\
-	A vile, cursed race of green skinned fiends with brains as small as their hearts. Be not fooled by their appearance - What they lack in stature, they possess in sheer malice."
+	A vile, cursed race of green skinned fiends with brains as small as their hearts. These creachers only care to obey one nearest to embody the strength and dominance of their progenitor. Slaves to Graggar, be not fooled by their appearance - What they lack in stature they possess in sheer malice." 
 	species_traits = list(EYECOLOR,LIPS,STUBBLE)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
@@ -16,7 +16,7 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male/goblin
-	soundpack_f = /datum/voicepack/male/goblin
+	soundpack_f = /datum/voicepack/female/goblinf
 	custom_clothes = TRUE
 	use_f = TRUE
 	clothes_id = "dwarf"
@@ -36,13 +36,13 @@
 		ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	offset_features = list(
-		OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_WRISTS = list(0,0),\
-		OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,-4), OFFSET_HEAD = list(0,-4), \
+		OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,0),\
+		OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,-5), OFFSET_HEAD = list(0,-4), \
 		OFFSET_FACE = list(0,-5), OFFSET_BELT = list(0,-4), OFFSET_BACK = list(0,-3), \
 		OFFSET_NECK = list(0,-4), OFFSET_MOUTH = list(0,-4), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,0), OFFSET_ARMOR = list(0,0), OFFSET_HANDS = list(0,-3), \
-		OFFSET_ID_F = list(0,-4), OFFSET_GLOVES_F = list(0,-4), OFFSET_WRISTS_F = list(0,-4), OFFSET_HANDS_F = list(0,-4), \
-		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-5), OFFSET_HEAD_F = list(0,-5), \
+		OFFSET_ID_F = list(0,-4), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,-5), OFFSET_HANDS_F = list(0,-4), \
+		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-6), OFFSET_HEAD_F = list(0,-5), \
 		OFFSET_FACE_F = list(0,-6), OFFSET_BELT_F = list(0,-4), OFFSET_BACK_F = list(0,-4), \
 		OFFSET_NECK_F = list(0,-5), OFFSET_MOUTH_F = list(0,-5), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES = list(0,0), OFFSET_UNDIES_F = list(0,0), \

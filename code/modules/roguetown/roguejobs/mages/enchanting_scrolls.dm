@@ -50,7 +50,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/xylix
 	name = "enchanting scroll of xylix's grace"
-	desc = "A scroll imbued with an enchantment of luck. How fortunate!"
+	desc = "A scroll imbued with an enchantment of luck. Grants luck to its wearer."
 	component = /datum/magic_item/mundane/xylix
 
 /obj/item/enchantmentscroll/xylix/attack_obj(obj/item/O, mob/living/user)
@@ -68,7 +68,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/light
 	name = "enchanting scroll of unyielding light"
-	desc = "A scroll imbued with an enchantment of unyielding light. provides light from the item."
+	desc = "A scroll imbued with an enchantment of unyielding light. Causes an enchanted item to glow with light."
 	component = /datum/magic_item/mundane/unyieldinglight
 
 /obj/item/enchantmentscroll/light/attack_obj(obj/item/O, mob/living/user)
@@ -86,7 +86,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/holding
 	name = "enchanting scroll of storage"
-	desc = "A scroll imbued with an enchantment of storage. doubles storage space of container"
+	desc = "A scroll imbued with an enchantment of storage. Doubles the storage space of a container."
 	component = /datum/magic_item/mundane/holding
 	w_class = WEIGHT_CLASS_HUGE
 
@@ -104,7 +104,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/revealing
 	name = "enchanting scroll of revealing"
-	desc = "A scroll imbued with an enchantment of revealing. Doubles range of lightsources."
+	desc = "A scroll imbued with an enchantment of revealing. Doubles the range of lightsources."
 	component = /datum/magic_item/mundane/revealing
 
 /obj/item/enchantmentscroll/revealing/attack_obj(obj/item/O, mob/living/user)
@@ -122,8 +122,8 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 //T2 Enchantments below
 
 /obj/item/enchantmentscroll/nightvision
-	name = "enchanting scroll of darksight"
-	desc = "A scroll imbued with an enchantment of dark vision. Good for seeing in the dark."
+	name = "enchanting scroll of darkvision"
+	desc = "A scroll imbued with an enchantment of darkvision. Good for seeing in the dark."
 	component = /datum/magic_item/superior/nightvision
 
 /obj/item/enchantmentscroll/nightvision/attack_obj(obj/item/O, mob/living/user)
@@ -132,7 +132,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of dark sight"
+		O.name += " of darkvision"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
@@ -140,7 +140,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/featherstep
 	name = "enchanting scroll of featherstep"
-	desc = "A scroll imbued with an enchantment of featherstep. Good for moving silently."
+	desc = "A scroll imbued with an enchantment of featherstep. Makes you speedier, and makes your footfalls silent."
 	component = /datum/magic_item/superior/featherstep
 
 /obj/item/enchantmentscroll/featherstep/attack_obj(obj/item/O, mob/living/user)
@@ -156,8 +156,8 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
 
 /obj/item/enchantmentscroll/fireresist
-	name = "enchanting scroll of fire-resistance"
-	desc = "A scroll imbued with an enchantment of fire resistance. Puts out flames upon you.."
+	name = "enchanting scroll of fire resistance"
+	desc = "A scroll imbued with an enchantment of fire resistance. Prevents you from catching fire."
 	component = /datum/magic_item/superior/fireresist
 
 /obj/item/enchantmentscroll/fireresist/attack_obj(obj/item/O, mob/living/user)
@@ -173,8 +173,8 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
 
 /obj/item/enchantmentscroll/climbing
-	name = "enchanting scroll of spider's movement"
-	desc = "A scroll imbued with an enchantment of climbing. Helps you clamber up difficult surfaces."
+	name = "enchanting scroll of spider-climbing"
+	desc = "A scroll imbued with an enchantment of spider-climbing. Helps you clamber up difficult surfaces."
 	component = /datum/magic_item/superior/climbing
 
 /obj/item/enchantmentscroll/climbing/attack_obj(obj/item/O, mob/living/user)
@@ -183,15 +183,15 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of fire resistance"
+		O.name += " of spider-climbing"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
 		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
 
 /obj/item/enchantmentscroll/thievery
-	name = "enchanting scroll of nimblefingers"
-	desc = "A scroll imbued with an enchantment of thievery. Helps you steal and picklocks."
+	name = "enchanting scroll of nimble fingers"
+	desc = "A scroll imbued with an enchantment of thievery. Helps you steal and pick locks."
 	component = /datum/magic_item/superior/thievery
 
 /obj/item/enchantmentscroll/thievery/attack_obj(obj/item/O, mob/living/user)
@@ -200,15 +200,15 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of nimblefingers"
+		O.name += " of nimble fingers"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
 		to_chat(user, span_notice("Nothing happens. Perhaps you can't enchant [O] with this?"))
 
 /obj/item/enchantmentscroll/trekk
-	name = "enchanting scroll of bog running"
-	desc = "A scroll imbued with an enchantment of bog running. Provides easy movement through swamps."
+	name = "enchanting scroll of bog-running"
+	desc = "A scroll imbued with an enchantment of bog-running. Provides easy movement through swamps."
 	component = /datum/magic_item/superior/trekk
 
 /obj/item/enchantmentscroll/trekk/attack_obj(obj/item/O, mob/living/user)
@@ -217,7 +217,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of bog running"
+		O.name += " of bog-running"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
@@ -225,7 +225,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/smithing
 	name = "enchanting scroll of smithing"
-	desc = "A scroll imbued with an enchantment of smithing. Provides better hammer strikes on anvils."
+	desc = "A scroll imbued with an enchantment of smithing. Provides more effective hammer strikes on anvils."
 	component = /datum/magic_item/superior/smithing
 
 /obj/item/enchantmentscroll/smithing/attack_obj(obj/item/O, mob/living/user)
@@ -260,7 +260,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/frostveil
 	name = "enchanting scroll of frostveil"
-	desc = "A scroll imbued with an enchantment of frostveil. Slows enemies that hit you, or you hit."
+	desc = "A scroll imbued with an enchantment of frostveil. Slows enemies that hit you when applied on armor, or enemies that you hit when applied on weapons."
 	component = /datum/magic_item/greater/frostveil
 
 /obj/item/enchantmentscroll/frostveil/attack_obj(obj/item/O, mob/living/user)
@@ -297,8 +297,8 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 	desc = "A scroll imbued with an enchantment of shadow melding. Slowly turns you invisible when you stay still."
 
 /obj/item/enchantmentscroll/woundclosing
-	name = "enchanting scroll of woundclosure"
-	desc = "A scroll imbued with an enchantment of woundclosure. Allows you to periodically seal wounds."
+	name = "enchanting scroll of wound closure"
+	desc = "A scroll imbued with an enchantment of wound closure. Allows you to periodically seal wounds."
 	component = /datum/magic_item/greater/woundclosing
 
 /obj/item/enchantmentscroll/woundclosing/attack_obj(obj/item/O, mob/living/user)
@@ -307,7 +307,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of wound closing"
+		O.name += " of wound closure"
 		qdel(src)
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 	else
@@ -315,7 +315,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/returningweapon
 	name = "enchanting scroll of returning weapon"
-	desc = "A scroll imbued with an enchantment of returning. Enables you to summon an existing weapon to you."
+	desc = "A scroll imbued with an enchantment of returning weapon. Enables you to summon an existing weapon back to you."
 	component = /datum/magic_item/greater/returningweapon
 
 /obj/item/enchantmentscroll/returningweapon/attack_obj(obj/item/O, mob/living/user)
@@ -332,7 +332,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/archery
 	name = "enchanting scroll of archery"
-	desc = "A scroll imbued with an enchantment of archery. Provides better archery skill"
+	desc = "A scroll imbued with an enchantment of archery. Provides the wearer with better archery skill."
 	component = /datum/magic_item/greater/archery
 
 /obj/item/enchantmentscroll/archery/attack_obj(obj/item/O, mob/living/user)
@@ -349,7 +349,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/leaping
 	name = "enchanting scroll of leaping"
-	desc = "A scroll imbued with an enchantment of leaping. allows those to leap up a surface."
+	desc = "A scroll imbued with an enchantment of leaping. Allows the wearer to jump very high."
 	component = /datum/magic_item/greater/leaping
 
 /obj/item/enchantmentscroll/leaping/attack_obj(obj/item/O, mob/living/user)
@@ -358,7 +358,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of archery"
+		O.name += " of leaping"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
@@ -367,7 +367,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/infernalflame
 	name = "enchanting scroll of infernalflame"
-	desc = "A scroll imbued with an enchantment of infernalflame. hitting an opponent sets them on fire."
+	desc = "A scroll imbued with an enchantment of infernalflame. Hitting an opponent sets them on fire."
 	component = /datum/magic_item/mythic/infernalflame
 
 /obj/item/enchantmentscroll/infernalflame/attack_obj(obj/item/O, mob/living/user)
@@ -384,7 +384,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/freeze
 	name = "enchanting scroll of freezing"
-	desc = "A scroll imbued with an enchantment of freezing. freezes your foe in a block of ice"
+	desc = "A scroll imbued with an enchantment of freezing. Freezes your foe in a block of ice when struck."
 	component = /datum/magic_item/mythic/freezing
 
 /obj/item/enchantmentscroll/freeze/attack_obj(obj/item/O, mob/living/user)
@@ -401,8 +401,8 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 
 /obj/item/enchantmentscroll/briars
-	name = "enchanting scroll of briars curse"
-	desc = "A scroll imbued with an enchantment of briars curse. Extra damage to weapon, but self inflicted damage."
+	name = "enchanting scroll of briar's curse"
+	desc = "A scroll imbued with an enchantment of briar's curse. A weapon with this enchantment does more damage, but damages its wielder in return."
 	component = /datum/magic_item/mythic/briarcurse
 
 /obj/item/enchantmentscroll/briars/attack_obj(obj/item/O, mob/living/user)
@@ -411,7 +411,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 		to_chat(user, span_notice("You open [src] and place [O] within. Moments later, it flashes blue with arcana, and [src] crumbles to dust."))
 		var/magiceffect= new component
 		O.AddComponent(/datum/component/magic_item, magiceffect)
-		O.name += " of briars curse"
+		O.name += " of briar's curse"
 		O.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 		qdel(src)
 	else
@@ -419,7 +419,7 @@ obj/item/enchantmentscroll/mining/attack_obj(obj/item/O, mob/living/user)
 
 /obj/item/enchantmentscroll/rewind
 	name = "enchanting scroll of temporal rewind"
-	desc = "A scroll imbued with an enchantment of temporal. Teleports you back where were hit, a few seconds after being hit."
+	desc = "A scroll imbued with an enchantment of temporal. Teleports you back to where you were hit, a few seconds after being hit."
 	component = /datum/magic_item/mythic/rewind
 
 /obj/item/enchantmentscroll/rewind/attack_obj(obj/item/O, mob/living/user)

@@ -185,6 +185,9 @@
 			to_chat(target, span_danger("You rise as a minion."))
 			target.turn_to_minion(user, target.ckey)
 			target.visible_message(span_warning("[target.real_name]'s eyes light up with an evil glow."), runechat_message = TRUE)
+
+			if (target.mind)
+				target.mind.add_special_person(user, "#BA00BA")
 			return TRUE
 
 	if(!target.ckey || offer_refused) //player is not inside body or has refused, poll for candidates
@@ -196,6 +199,9 @@
 			var/mob/C = pick(candidates)
 			target.turn_to_minion(user, C.ckey)
 			target.visible_message(span_warning("[target.real_name]'s eyes light up with an eerie glow."), runechat_message = TRUE)
+			
+			if (target.mind)
+				target.mind.add_special_person(user, "#BA00BA")
 
 		//no candidates, raise as npc
 		else
@@ -291,6 +297,9 @@
 				target.mind.set_boneboy(TRUE)
 				target.mind.set_bonenecro(user)
 				target.set_necrotarget(FALSE)
+
+				if (target.mind)
+					target.mind.add_special_person(user, "#BA00BA")
 				return TRUE
 
 		if(!target.ckey || offer_refused) //player is not inside body or has refused, poll for candidates
@@ -306,6 +315,8 @@
 				target.mind.set_boneboy(TRUE)
 				target.mind.set_bonenecro(user)
 
+				if (target.mind)
+					target.mind.add_special_person(user, "#BA00BA")
 			//no candidates, raise as npc
 			else
 				to_chat(user, span_warning("There are no souls to raise, this one shall be mindless.."))
@@ -357,9 +368,10 @@
 
 	if(ckey) //player
 		src.ckey = ckey
+		ADD_TRAIT(src, TRAIT_ZIZO_MARKED, TRAIT_GENERIC)
 	else //npc
 		aggressive = 1
-		mode = AI_HUNT
+		mode = NPC_AI_HUNT
 		wander = TRUE
 
 	if(!mind)
@@ -407,6 +419,17 @@
 		QDEL_NULL(charflaw)
 
 	can_do_sex = FALSE //where my bonger go
+
+	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
+	possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
+
+	if (istype(rmb_intent, /datum/rmb_intent/swift))
+		swap_rmb_intent(null, 1)
+
 
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC) //Why wasn't this a thing from the start
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)

@@ -124,6 +124,8 @@
 	name = "Elderbaum";
 	desc = "An old, wicked tree that is in a deep slumber. The druids seem to love it."
 	max_integrity = 1000 // 5 times mightier than your average tree!
+	var/time_since_last_help = 0
+	var/delay = 60 SECONDS 
 
 /obj/structure/flora/roguetree/wise/elder/obj_destruction(damage_flag)
 	. = ..()
@@ -134,6 +136,22 @@
 
 	message_admins("The elder tree has been destroyed")
 	addomen(OMEN_DESECRATE_DENDOR)
+
+/obj/structure/flora/roguetree/wise/elder/attackby(obj/item/I, mob/user, params)
+	if(time_since_last_help < world.time)
+		time_since_last_help = world.time + delay
+		spawn_help()
+	if(user.faction.Find("grove"))
+		to_chat(user, span_warning("You have defied the elder and betrayed your oath! He no longer considers you a friend..."))
+		user.faction.Remove("grove")
+	. = ..()
+
+// Had a bunch of shit of various types but whatever a dryad every 60 seconds is pretty tough
+// It will at least stop solo attemps
+/obj/structure/flora/roguetree/wise/elder/proc/spawn_help()
+	var/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/D = new /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad(loc)
+	D.faction += list("grove")
+
 
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"
@@ -396,6 +414,15 @@
 /obj/structure/flora/roguegrass/bush/update_icon()
 	icon_state = "bush[rand(1, 4)]"
 
+/obj/structure/flora/roguegrass/bush/CanAStarPass(ID, travel_dir, caller)
+	if(ismovableatom(caller))
+		var/atom/movable/mover = caller
+		if(mover.pass_flags & PASSGRILLE)
+			return TRUE
+	if(travel_dir == dir)
+		return FALSE // just don't even try, not even if you can climb it
+	return ..()
+
 /obj/structure/flora/roguegrass/bush/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
@@ -428,6 +455,13 @@
 
 /obj/structure/flora/roguegrass/bush/wall/update_icon()
 	return
+
+/obj/structure/flora/roguegrass/bush/wall/CanAStarPass(ID, travel_dir, caller)
+	if(ismovableatom(caller))
+		var/atom/movable/mover = caller
+		if(mover.pass_flags & PASSGRILLE)
+			return TRUE
+	return climbable || !density
 
 /obj/structure/flora/roguegrass/bush/wall/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
@@ -508,6 +542,15 @@
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)
 	pixel_x += rand(8,-8)
+
+/obj/structure/flora/rogueshroom/CanAStarPass(ID, travel_dir, caller)
+	if(ismovableatom(caller))
+		var/atom/movable/mover = caller
+		if(mover.pass_flags & PASSGRILLE)
+			return TRUE
+	if(travel_dir == dir)
+		return FALSE // just don't even try, not even if you can climb it
+	return ..()
 
 /obj/structure/flora/rogueshroom/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))

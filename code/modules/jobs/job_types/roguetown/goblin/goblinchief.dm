@@ -9,9 +9,9 @@
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
-	tutorial = "You're the Chief of the local Goblin tribe, assuring Graggar's rule is spread to the surrounding lands. \
+	tutorial = "You're the Chief of the local Goblin tribe. A representation of Graggar's rule, you are the biggest and strongest. You ensure the spread of his dominion over others where you can. \
 	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
-	Have your subjects trudge through the sewers, in the name of Gragger, robbing passerby."
+	Have your subjects trudge through the sewers and elsewhere, robbing and kidnapping passersby. Spread your will upon the weak fools. Bring glory and slaves to your tribe in Graggar's name!"
 	whitelist_req = FALSE
 	outfit = /datum/outfit/job/roguetown/goblinchief
 	display_order = JDO_GOBLINCHIEF
@@ -41,13 +41,26 @@
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.change_stat("strength", 2)
+		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+		if(istype(H.dna.species, /datum/species/halforc)) // Horc with +4 strength might be too strong.
+			H.change_stat("strength", 2)
+		else
+			H.change_stat("strength", 4)
+			H.ventcrawler = VENTCRAWLER_ALWAYS
 		H.change_stat("intelligence", 2)
 		H.change_stat("constitution", 3)
 		H.change_stat("endurance", 2)

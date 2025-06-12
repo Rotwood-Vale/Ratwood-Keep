@@ -8,13 +8,17 @@
 		gender = gender_override
 	else
 		gender = pick(MALE,FEMALE)
-	age = AGE_ADULT
+
+	voice_type = VOICE_TYPE_MASC
+	if(gender == FEMALE)
+		voice_type = VOICE_TYPE_FEM
+		
+	age = pick(pref_species.possible_ages)
 	var/list/skins = pref_species.get_skin_list()
 	skin_tone = skins[pick(skins)]
 	eye_color = random_eye_color()
 	features = pref_species.get_random_features()
 	body_markings = pref_species.get_random_body_markings(features)
-	accessory = "Nothing"
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
 

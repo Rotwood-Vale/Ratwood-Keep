@@ -4,6 +4,15 @@
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/rogueore/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/rogueweapon/tongs))
+		if(!length(I.contents))
+			forceMove(I)
+			user.visible_message(span_warning("[user] picks up \the [name] with \the [I.name]"))
+			I.update_icon()
+	. = ..()
+	
+
 /obj/item/rogueore/gold
 	name = "raw gold"
 	desc = "A clump of dirty lustrous nuggets!"
@@ -92,17 +101,50 @@
 	icon_state = "ingot"
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
+	var/ishot = FALSE
 	var/datum/anvil_recipe/currecipe
+
+/obj/item/ingot/proc/heat(value)
+	ishot = TRUE
+	addtimer(CALLBACK(src, PROC_REF(cool)), value)
+	update_icon()
+
+/obj/item/ingot/proc/cool()
+	ishot = FALSE
+	update_icon()
+
+/obj/item/ingot/update_icon()
+	. = ..()
+	if(ishot)
+		icon_state = "ingot_hot"
+	else
+		icon_state = initial(icon_state)
+	
+	var/obj/item/place = loc
+	if(istype(place, /obj/item/rogueweapon/tongs) || istype(loc, /obj/machinery/anvil))
+		place.update_icon()
+
+/obj/item/ingot/attack_hand(mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(ishot)
+			var/index = H.active_hand_index
+			var/bp = H.get_bodypart(BODY_ZONE_PRECISE_L_HAND)
+			if(index == 2)
+				bp = H.get_bodypart(BODY_ZONE_PRECISE_R_HAND)
+			H.apply_damage(20, BRUTE, bp)
+			H.emote("scream")
+			H.Stun(20)
+			H.visible_message(span_warn("[H.name] burns [user.p_their()] hand on the [name]!"))
+			return
+	. = ..()
+	
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = I
-		if(!T.hingot)
-			forceMove(T)
-			T.hingot = src
-			T.hott = null
-			T.update_icon()
-			return
+		if(!length(I.contents))
+			forceMove(I)
+			I.update_icon()
 	..()
 
 /obj/item/ingot/Destroy()
@@ -110,7 +152,6 @@
 		QDEL_NULL(currecipe)
 	if(istype(loc, /obj/machinery/anvil))
 		var/obj/machinery/anvil/A = loc
-		A.hingot = null
 		A.update_icon()
 	return ..()
 

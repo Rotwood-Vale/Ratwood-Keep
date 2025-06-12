@@ -181,18 +181,3 @@
 	returned["mcolor3"] = second_color
 	return returned
 
-/datum/species/axian/random_name(gender,unique,lastname)
-	var/randname
-	if(gender == MALE)
-		randname = pick(world.file2list("strings/names/roguetown/axianmale.txt"))
-	if(gender == FEMALE)
-		randname = pick(world.file2list("strings/names/roguetown/axianfemale.txt"))
-	if(prob(33))
-		//Prefix
-		var/prefix = pick(world.file2list("strings/names/roguetown/axianprefix.txt"))
-		randname = "[prefix] [randname]"
-	else
-		//Suffix
-		var/suffix = pick(world.file2list("strings/names/roguetown/axiansuffix.txt"))
-		randname = "[randname] [suffix]"
-	return randname

@@ -25,7 +25,7 @@
 /obj/item/clothing/head/worn_overlays(isinhands = FALSE)
 	. = list()
 
-/obj/item/clothing/head/update_clothes_damaged_state(damaging = TRUE)
+/obj/item/clothing/head/update_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc

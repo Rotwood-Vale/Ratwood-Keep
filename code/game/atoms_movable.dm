@@ -196,6 +196,9 @@
 		if(L.buckled && L.buckled.buckle_prevents_pull) //if they're buckled to something that disallows pulling, prevent it
 			stop_pulling()
 			return FALSE
+		else if (L.buckled == src) // Prevent shoving ourselves if we're carrying somebody
+			// Don't stop pulling - that will make us drop the other character - just negate the action.
+			return FALSE
 	if(A == loc && pulling.density)
 		return FALSE
 	var/move_dir = get_dir(pulling.loc, A)

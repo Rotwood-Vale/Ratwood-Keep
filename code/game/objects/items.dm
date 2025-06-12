@@ -589,6 +589,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return FALSE
 	for(var/obj/structure/table/T in src.loc)
 		return TRUE
+	for(var/obj/machinery/anvil/A in src.loc)
+		return TRUE
 	return FALSE
 
 /obj/item/proc/allow_attack_hand_drop(mob/user)
@@ -806,7 +808,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(prob(50))
 			if(M.stat != DEAD)
 				if(M.drop_all_held_items())
-					to_chat(M, span_danger("I drop what you're holding and clutch at my eyes!"))
+					to_chat(M, span_danger("I drop what I'm holding and clutch at my eyes!"))
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Paralyze(40)
@@ -1258,6 +1260,22 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			str += "NO DEFENSE"
 	return str
 
+/obj/item/obj_fix()
+	..()
+	update_damaged_state(FALSE)
+
+
+/obj/item/proc/update_damaged_state(damaging = TRUE)
+	cut_overlays()
+	if (!obj_broken)
+		return
+	var/icon/damaged_icon = icon(initial(icon), icon_state, , TRUE)
+	damaged_icon.Blend("#fff", ICON_ADD)
+	damaged_icon.Blend(icon('icons/effects/item_damage.dmi', "itemdamaged"), ICON_MULTIPLY)
+	var/mutable_appearance/damage = new(damaged_icon)
+	damage.alpha = 150
+	add_overlay(damage)
+
 /proc/colorgrade_rating(input, rating)
 	var/str
 	switch(rating)
@@ -1269,16 +1287,16 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			str = "<font color = '[color]'>[input] (D)</font>"
 		if(20 to 39)
 			var/color = "#753e11"
-			str = "<font color = '[color]'>[input] (D+)</font>" 
+			str = "<font color = '[color]'>[input] (D+)</font>"
 		if(40 to 49)
 			var/color = "#c0a739"
-			str = "<font color = '[color]'>[input] (C)</font>" 
+			str = "<font color = '[color]'>[input] (C)</font>"
 		if(50 to 59)
 			var/color = "#e3e63c"
-			str = "<font color = '[color]'>[input] (C+)</font>" 
+			str = "<font color = '[color]'>[input] (C+)</font>"
 		if(60 to 69)
 			var/color = "#425c33"
-			str = "<font color = '[color]'>[input] (B)</font>" 
+			str = "<font color = '[color]'>[input] (B)</font>"
 		if(70 to 79)
 			var/color = "#1a9c00"
 			str = "<font color = '[color]'>[input] (B+)</font>"

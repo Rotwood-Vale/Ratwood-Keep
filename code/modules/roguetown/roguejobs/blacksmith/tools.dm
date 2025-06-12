@@ -84,12 +84,14 @@
 			attacked_prosthetic.brute_dam = max(attacked_prosthetic.brute_dam - repair_percent, 0)
 			attacked_prosthetic.burn_dam = max(attacked_prosthetic.burn_dam - repair_percent, 0)
 			total_damage = attacked_prosthetic.brute_dam + attacked_prosthetic.burn_dam
-			attacked_prosthetic.obj_integrity = min(attacked_prosthetic.obj_integrity + repair_percent, attacked_prosthetic.max_integrity)
+			attacked_prosthetic.mend_damage(repair_percent, FALSE)
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_prosthetic]."))
 			else
 				user.visible_message(span_info("[user] repairs [attacked_prosthetic]!"))
 			blacksmith_mind.add_sleep_experience(attacked_prosthetic.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
+			if(do_after(user, CLICK_CD_MELEE, target = attacked_object))
+				attack_obj(attacked_object, user)
 			return
 		else
 			user.visible_message(span_warning("[user] damages [attacked_prosthetic]!"))
@@ -101,18 +103,11 @@
 		var/obj/item/attacked_item = attacked_object
 		if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
 			return
-		if(attacked_item.obj_broken)
-			if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) >= SKILL_LEVEL_EXPERT)
-				if(attacked_item.obj_broken && istype(attacked_item, /obj/item/clothing))
-					var/obj/item/clothing/clothing = attacked_item
-					clothing.obj_fix()
-			else
-				user.visible_message(span_warning("[attacked_item] is broken! I am not skilled enough to fix it..."))
-				return
 
-
-
-
+		if(!attacked_item.ontable())
+			to_chat(user, span_warning("I should put this on a table or an anvil first."))
+			return
+			
 
 		if(blacksmith_mind.get_skill_level(attacked_item.anvilrepair) <= SKILL_LEVEL_NONE)
 			if(prob(30))
@@ -122,21 +117,26 @@
 		else
 			repair_percent *= blacksmith_mind.get_skill_level(attacked_item.anvilrepair)
 
-		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+		playsound(src,'sound/items/bsmithfail.ogg', 40, FALSE)
 		if(repair_percent)
 			repair_percent *= attacked_item.max_integrity
 			exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
-			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
+			attacked_item.mend_damage(repair_percent, FALSE)
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else
 				user.visible_message(span_info("[user] repairs [attacked_item]!"))
-			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/3) //We gain as much exp as we fix divided by 3
+			if(attacked_item.obj_broken && attacked_item.obj_integrity == attacked_item.max_integrity)
+				attacked_item.obj_fix()
+			blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
+			if(do_after(user, CLICK_CD_MELEE, target = attacked_object))
+				attack_obj(attacked_object, user)
 			return
 		else
-			user.visible_message(span_warning("[user] damages [attacked_item]!"))
-			attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
+			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
+			attacked_item.obj_integrity = max(0, attacked_item.obj_integrity - (10 - repair_percent))
 			return
+
 
 	if(isstructure(attacked_object) && !user.cmode)
 		var/obj/structure/attacked_structure = attacked_object
@@ -147,7 +147,7 @@
 			return
 		repair_percent *= blacksmith_mind.get_skill_level(attacked_structure.hammer_repair) * attacked_structure.max_integrity
 		exp_gained = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity) - attacked_structure.obj_integrity
-		attacked_structure.obj_integrity = min(attacked_structure.obj_integrity + repair_percent, attacked_structure.max_integrity)
+		attacked_structure.mend_damage(repair_percent, TRUE)
 		blacksmith_mind.add_sleep_experience(attacked_structure.hammer_repair, exp_gained/1.5) //We gain as much exp as we fix
 		playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 		user.visible_message(span_info("[user] repairs [attacked_structure]!"))
@@ -219,6 +219,7 @@
 	associated_skill = null
 	var/obj/item/ingot/hingot = null
 	var/hott = FALSE
+	var/heat_time = 5 SECONDS
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
@@ -231,40 +232,54 @@
 		return 150+T0C
 	return ..()
 
+/obj/item/rogueweapon/tongs/proc/has_ingot()
+	if(locate(/obj/item/ingot) in src)
+		return TRUE
+	return FALSE
+
+/obj/item/rogueweapon/tongs/proc/get_ingot()
+	if(has_ingot())
+		return locate(/obj/item/ingot) in src
+
 /obj/item/rogueweapon/tongs/fire_act(added, maxstacks)
 	. = ..()
 	hott = world.time
-	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(make_unhot), world.time), 10 SECONDS)
+	make_hot(heat_time)
 
 /obj/item/rogueweapon/tongs/update_icon()
-	. = ..()
-	if(!hingot)
-		icon_state = "[initial(icon_state)]"
+	if(length(contents))
+		icon_state = "[initial(icon_state)]i0"
+		var/obj/item/ingot/I = get_ingot()
+		if(I)
+			if(I.ishot)
+				icon_state = "[initial(icon_state)]i1"
 	else
-		if(hott)
-			icon_state = "[initial(icon_state)]i1"
-		else
-			icon_state = "[initial(icon_state)]i0"
+		icon_state = "[initial(icon_state)]"
+	. = ..()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_hands()
 
-/obj/item/rogueweapon/tongs/proc/make_unhot(input)
-	if(hott == input)
-		hott = FALSE
+
+/obj/item/rogueweapon/tongs/proc/make_hot(heating)
+	var/obj/item/ingot/I = get_ingot()
+	if(!I)
+		return
+	var/time_to_heat = heat_time + heating
+	I.heat(time_to_heat)
+	update_icon()
 
 /obj/item/rogueweapon/tongs/attack_self(mob/user)
-	if(hingot)
-		if(isturf(user.loc))
-			hingot.forceMove(get_turf(user))
-			hingot = null
-			hott = FALSE
-			update_icon()
+	if(length(contents))
+		var/obj/item/I = contents[1]
+		I.forceMove(get_turf(user))
+		playsound(get_turf(src), 'sound/foley/dropsound/gen_drop.ogg', 60)
+		update_icon()
 
 /obj/item/rogueweapon/tongs/dropped()
 	. = ..()
-	if(hingot)
-		hingot.forceMove(get_turf(src))
-		hingot = null
-	hott = FALSE
+	for(var/obj/item/I in contents)
+		I.forceMove(get_turf(src))
 	update_icon()
 
 /obj/item/rogueweapon/tongs/getonmobprop(tag)
@@ -303,3 +318,4 @@
 	wdefense = 2
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
+	heat_time = 10 SECONDS

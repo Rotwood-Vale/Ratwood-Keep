@@ -16,6 +16,8 @@
 	var/layer = BODY_LAYER
 	/// Relevant layers. If this is defined, instead of a single image the code will generate an image for each defined layer, with a suffix for the layer.
 	var/list/relevant_layers
+	/// If TRUE, colors are overridden when the bodypart is rotten.
+	var/has_rot_color = TRUE
 	/// Amount of color keys this accessory uses.
 	var/color_keys = 1
 	/// Color key name to describe a single customizable color key.
@@ -86,6 +88,9 @@
 	var/icon_state_to_use = get_icon_state(organ, bodypart, owner)
 	if(!icon_state_to_use)
 		return null
+	if(bodypart?.rotted && has_rot_color && color_string) // HACK. HACK. HACK. I HATE THIS
+		var/const/rot_color = "#" + SKIN_COLOR_ROT
+		color_string = repeat_string(color_keys, rot_color) // handle multicolour parts
 	var/list/appearance_list = get_overlay(icon_state_to_use, color_string)
 	adjust_appearance_list(appearance_list, organ, bodypart, owner)
 	return appearance_list

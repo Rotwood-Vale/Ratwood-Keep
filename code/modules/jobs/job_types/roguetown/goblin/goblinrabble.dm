@@ -8,8 +8,10 @@
 	spawn_positions = 6
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/goblinp)
-	tutorial = "You're the lowest of the low. A goblin among many other goblins. \
-	There's little to say about you, aside from your Chief deeming you less than fit for service."
+	tutorial = "You're the lowest of the low. A goblin among many other goblins. You worship the chief as the representation of Graggar, the biggest and the strongest. \
+	There's little to say about you, aside from your proclivity for skullduggery over outright skull smashing, much to your chief's disappointment. Obey when called upon. \
+	When left to your own devices, you scrounge the sewers for valuables, shinies, occassionally skulking into town and stealing fresh treasures. \
+	Perhaps if you brought a fresh slave... The chief would finally notice you."
 	outfit = /datum/outfit/job/roguetown/goblinrabble
 	display_order = JDO_GOBLINRABBLE
 	min_pq = 0
@@ -52,6 +54,7 @@
 		H.change_stat("perception", 2)
 		H.change_stat("speed", 2)
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+		H.ventcrawler = VENTCRAWLER_ALWAYS
 
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))
