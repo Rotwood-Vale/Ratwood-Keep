@@ -903,6 +903,7 @@
 #include "code\game\objects\items\rogueitems\keyrings.dm"
 #include "code\game\objects\items\rogueitems\keys.dm"
 #include "code\game\objects\items\rogueitems\leash.dm"
+#include "code\game\objects\items\rogueitems\licenses.dm"
 #include "code\game\objects\items\rogueitems\locks.dm"
 #include "code\game\objects\items\rogueitems\magic.dm"
 #include "code\game\objects\items\rogueitems\natural.dm"
