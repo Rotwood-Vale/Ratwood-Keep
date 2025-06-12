@@ -128,15 +128,16 @@
 		if(INTENT_DODGE)
 			return checkdodge(intenty, attacker)
 
-/mob/living/proc/get_dodge_destinations(mob/living/attacker)
-	var/dodge_dir = get_dir(attacker, src)
+/// origin is used for multi-step dodges like NPC jukes
+/mob/living/proc/get_dodge_destinations(mob/living/attacker, atom/origin = src)
+	var/dodge_dir = get_dir(attacker, origin)
 	if(!dodge_dir) // dir is 0, so we're on the same tile.
 		return null
 	var/list/dirry = list(turn(dodge_dir, -90), dodge_dir, turn(dodge_dir, 90))
 	// pick a random dir
 	var/list/turf/dodge_candidates = list()
 	for(var/dir_to_check in dirry)
-		var/turf/dodge_candidate = get_step(src, dir_to_check)
+		var/turf/dodge_candidate = get_step(origin, dir_to_check)
 		if(!dodge_candidate)
 			continue
 		if(dodge_candidate.density)
