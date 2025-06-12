@@ -11358,7 +11358,7 @@
 	pixel_x = -1;
 	pixel_y = 30
 	},
-/turf/open/floor/rogue/ruinedwood,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "flB" = (
 /obj/structure/fluff/railing/border{
@@ -15130,11 +15130,14 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "gZS" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/structure/roguewindow/openclose/reinforced{
 	dir = 8
 	},
-/turf/open/floor/rogue/tile/bath,
-/area/rogue/under/town/basement)
+/obj/structure/roguewindow/openclose/reinforced{
+	dir = 4
+	},
+/turf/open/floor/rogue/woodturned,
+/area/rogue/indoors)
 "gZW" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grass,
@@ -21875,7 +21878,7 @@
 /area/rogue/outdoors/rtfield)
 "kmG" = (
 /obj/machinery/light/rogue/oven/south,
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "kmK" = (
 /turf/open/water/river{
@@ -22759,7 +22762,7 @@
 /obj/structure/roguewindow/openclose/reinforced{
 	dir = 4
 	},
-/turf/open/floor/rogue/wood,
+/turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "kJv" = (
 /obj/structure/fluff/walldeco/chains,
@@ -24877,11 +24880,11 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "lNG" = (
-/obj/structure/stairs{
+/obj/machinery/light/rogue/torchholder/c{
 	dir = 1
 	},
-/turf/open/floor/rogue/woodturned,
-/area/rogue/indoors/town/manor)
+/turf/closed/wall/mineral/rogue/decostone/cand,
+/area/rogue/under/town/basement)
 "lNS" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -25619,7 +25622,8 @@
 /obj/item/paper,
 /obj/item/natural/feather,
 /obj/item/book/rogue/law{
-	pixel_y = 6
+	pixel_y = 6;
+	layer = 5
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
@@ -29936,7 +29940,7 @@
 /area/rogue/indoors/town/manor)
 "omW" = (
 /obj/structure/handcart,
-/turf/open/floor/rogue/woodturned,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "onc" = (
 /obj/structure/table/wood{
@@ -32725,13 +32729,10 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/toy/cards/deck/syndicate,
-/obj/item/candle/skull/lit,
 /obj/item/reagent_containers/glass/cup/wooden{
-	pixel_y = -3;
-	pixel_x = 9
-	},
-/obj/item/reagent_containers/glass/cup/wooden{
-	pixel_x = -5
+	pixel_x = -9;
+	pixel_y = 13;
+	layer = 4
 	},
 /obj/item/roguecoin/copper{
 	pixel_x = -9;
@@ -32740,6 +32741,14 @@
 /obj/item/roguecoin/copper{
 	pixel_x = 10;
 	pixel_y = 7
+	},
+/obj/item/reagent_containers/glass/cup/wooden{
+	pixel_y = -3;
+	pixel_x = 9;
+	layer = 4
+	},
+/obj/item/candle/yellow/lit{
+	layer = 5
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/under/town/basement)
@@ -39566,7 +39575,7 @@
 /area/rogue/indoors)
 "tca" = (
 /obj/machinery/light/rogue/torchholder{
-	dir = 4
+	pixel_y = 26
 	},
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/under/town/basement)
@@ -230410,11 +230419,11 @@ ida
 ida
 iTw
 vse
-gZS
+vse
 vse
 cng
 vse
-gZS
+vse
 vse
 cBf
 cBf
@@ -230842,12 +230851,12 @@ iTw
 ddu
 iTw
 rbP
-rDV
+lNG
 cng
 pDl
 cng
 rDV
-vse
+tca
 wbq
 iTw
 iTw
@@ -231274,11 +231283,11 @@ pRt
 ida
 cBf
 vse
-tca
+vse
 vse
 cng
 vse
-tca
+vse
 vse
 iTw
 txa
@@ -253461,8 +253470,8 @@ twm
 aan
 ryI
 kmG
-wsY
-wsY
+bzm
+bzm
 hBy
 qbG
 qbG
@@ -253892,8 +253901,8 @@ twm
 twm
 twm
 pOX
-vIF
-wsY
+pPo
+bzm
 omW
 pOX
 dVO
@@ -344602,7 +344611,7 @@ qbG
 qbG
 ryI
 nqU
-fgx
+gZS
 nqU
 ryI
 qbG
@@ -346175,7 +346184,7 @@ nYV
 uOL
 jDm
 jDm
-uOL
+jDm
 uOL
 pRr
 mvO
@@ -347055,7 +347064,7 @@ tvJ
 eUJ
 cUy
 eUJ
-lNG
+aDP
 iur
 jDm
 iHC
