@@ -110,8 +110,9 @@
 	)
 
 /obj/effect/spawner/roguemap/flowerspawn/process()
-	var/type = weighted_pick(spawned)
+	var/type = pickweight(spawned)
 	if(type)
 		new type(get_turf(src))
+
 	STOP_PROCESSING(SSmapgen, src)
 	qdel(src)
