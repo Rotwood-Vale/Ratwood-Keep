@@ -608,6 +608,7 @@
 		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot))
 			playsound(get_turf(user), 'sound/foley/dropsound/shovel_drop.ogg', 40, TRUE, -1)
 			attachment = W
+			user.dropItemToGround(W, force = TRUE)
 			W.forceMove(src)
 			update_icon()
 			return
@@ -624,6 +625,7 @@
 						sleep(25) // to get egg crack before frying hiss
 						W.icon_state = "rawegg" // added
 				if(!food)
+					user.dropItemToGround(S, force = TRUE)
 					S.forceMove(src)
 					food = S
 					update_icon()
