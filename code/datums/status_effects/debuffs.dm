@@ -749,13 +749,17 @@
 
 /datum/status_effect/debuff/mishap_sleepy
 	id = "arcane_sleep"
-	duration = 250
+	duration = 150
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_sleepy
 	var/const/sleeping_amount = 60 SECONDS
 
 /datum/status_effect/debuff/mishap_sleepy/on_apply()
 	. = ..()
+	owner.eyesclosed = TRUE
+	for(var/atom/movable/screen/eye_intent/eyet in owner.hud_used.static_inventory)
+		eyet.update_icon(owner)
+	owner.become_blind("eyelids")
 	owner.Sleeping(sleeping_amount)
 
 /datum/status_effect/debuff/mishap_sleepy/tick()
