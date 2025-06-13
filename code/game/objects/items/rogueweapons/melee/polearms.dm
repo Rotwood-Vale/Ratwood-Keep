@@ -49,7 +49,8 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	wdefense = 10
+	wdefense = 3
+	wieldedwdefense = 7
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
@@ -222,7 +223,7 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 5
+	wdefense = 3
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
 
@@ -245,7 +246,8 @@
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
-	wdefense = 6
+	wdefense = 3
+	wieldedwdefense = 5
 	throwforce = 15
 
 /obj/item/rogueweapon/spear/improvisedbillhook
@@ -256,7 +258,6 @@
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
-	wdefense = 4
 	throwforce = 10
 
 /obj/item/rogueweapon/spear/stone
@@ -278,8 +279,8 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 4
-	max_integrity = 50
+	wdefense = 3
+	max_integrity = 100
 	throwforce = 20
 
 /obj/item/rogueweapon/halberd
@@ -306,7 +307,8 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 3
+	wieldedwdefense = 6
 
 /obj/item/rogueweapon/halberd/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))
@@ -389,7 +391,7 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 3
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
