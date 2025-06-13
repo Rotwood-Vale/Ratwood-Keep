@@ -547,7 +547,7 @@
 
 /datum/status_effect/debuff/mishap_feeblemind
 	id = "feeblemind"
-	duration = 600 // 10 minutes - this effect is really nasty but is deliberately one of the worst mishap effects.
+	duration = 6000 // 10 minutes - this effect is really nasty but is deliberately one of the worst mishap effects.
 	status_type = STATUS_EFFECT_REFRESH
 	// Won't necessarily force intelligence to 1, if we're really smart and have buffs
 	effectedstats = list("intelligence" = -20, "speed" = -5)
@@ -582,7 +582,7 @@
 
 /datum/status_effect/debuff/mishap_dimwitted
 	id = "dimwitted"
-	duration = 600
+	duration = 6000
 	status_type = STATUS_EFFECT_REFRESH
 	effectedstats = list("intelligence" = -6, "speed" = -3) // 50% worse than the Nimrod special at the time of implementation (for 10 minutes)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_dimwitted
@@ -603,7 +603,7 @@
 
 /datum/status_effect/debuff/mishap_arcane_high
 	id = "arcane_high"
-	duration = 600 // 10 minutes
+	duration = 6000 // 10 minutes
 	status_type = STATUS_EFFECT_REFRESH
 	effectedstats = list("intelligence" = -4, "perception" = -4)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_arcane_high
@@ -638,7 +638,7 @@
 
 /datum/status_effect/debuff/mishap_arcane_drunkenness
 	id = "arcane_drunk"
-	duration = 600
+	duration = 6000
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_arcane_drunkenness
 	var/mob/living/carbon/human/human_owner
@@ -671,7 +671,7 @@
 
 /datum/status_effect/debuff/mishap_arcane_paralysis
 	id = "arcane_paralysis"
-	duration = 300 // Nasty effect, let's not have it last as long as the others.
+	duration = 1500 // Nasty effect, let's not have it last as long as the others.
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_arcane_paralysis
 	var/list/traits_added = list()
@@ -723,7 +723,7 @@
 
 /datum/status_effect/debuff/mishap_blindness
 	id = "arcane_blindness"
-	duration = 300 // Another nasty effect - victim will need to be led around until it expires.
+	duration = 1500 // Another nasty effect - victim will need to be led around until it expires.
 	status_type = STATUS_EFFECT_REFRESH
 	effectedstats = list("perception" = -100) // Blind, can't see
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_blindness
@@ -770,7 +770,7 @@
 
 /datum/status_effect/debuff/mishap_confused
 	id = "arcane_confusion"
-	duration = 300
+	duration = 3000
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_confused
 	var/const/confusion_amount = 15
