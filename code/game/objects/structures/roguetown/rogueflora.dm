@@ -303,7 +303,6 @@
 			L.consider_ambush()
 	return
 
-
 /obj/structure/flora/roguegrass/bush
 	name = "bush"
 	desc = "A bush, I think I can see some spiders crawling in it."
@@ -419,6 +418,16 @@
 		return 0
 	return 1
 
+/obj/structure/flora/roguegrass/bush/winter
+	name = "winter bush"
+	desc = "A bush heavy with frost, its branches brittle in the cold."
+	icon_state = "bush1winter"
+
+	Initialize()
+		. = ..()
+		icon_state = "bush[pick(1,4)]winter"
+
+
 /obj/structure/flora/roguegrass/bush/wall
 	name = "great bush"
 	desc = "A bush, this one's roots are thick and block the way."
@@ -466,6 +475,15 @@
 /obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
 	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
+
+/obj/structure/flora/roguegrass/bush/wall/winter
+	name = "winter great bush"
+	desc = "A bush, its roots are thick and covered in ice. It blocks the way."
+	icon_state = "bushwall1winter"
+
+	Initialize()
+		. = ..()
+		icon_state = "bushwall[pick(1,2)]winter"
 
 
 /*	..................   Wild Swampweed   ................... */
