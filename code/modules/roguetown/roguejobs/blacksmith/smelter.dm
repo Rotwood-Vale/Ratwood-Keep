@@ -51,6 +51,7 @@
 			return
 
 	if((ore.len < maxore) && W.smeltresult)
+		user.dropItemToGround(W, force = TRUE)
 		W.forceMove(src)
 		ore += W
 		user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
