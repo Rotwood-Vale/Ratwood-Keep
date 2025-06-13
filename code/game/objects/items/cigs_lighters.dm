@@ -284,7 +284,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/carbon/human/M = loc
 			M.dropItemToGround(src, silent = TRUE)
 			var/obj/item/butt = new type_butt(get_turf(M))
-			M.equip_to_slot_if_possible(butt, SLOT_MOUTH)
+			M.equip_to_slot_if_possible(butt, SLOT_MOUTH, bypass_equip_delay_self = TRUE)
 		else
 			new type_butt(location)
 		qdel(src)
