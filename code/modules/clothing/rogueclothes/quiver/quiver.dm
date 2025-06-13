@@ -52,15 +52,16 @@
 		else
 			return FALSE
 
-/obj/item/ammo_holder/attackby(obj/A, loc, params)
+/obj/item/ammo_holder/attackby(obj/A, mob/user, params)
 	for(var/i in ammo_type)
 		if(istype(A, i))
 			if(ammo.len < max_storage)
+				user.dropItemToGround(A, force = TRUE)
 				A.forceMove(src)
 				ammo += A
 				update_icon()
 			else
-				to_chat(loc, span_warning("Full!"))
+				to_chat(user, span_warning("Full!"))
 			return
 	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
 		var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/B = A
@@ -68,7 +69,7 @@
 			for(var/AR in ammo)
 				if(istype(AR, /obj/item/ammo_casing/caseless/rogue/arrow))
 					ammo -= AR
-					B.attackby(AR, loc, params)
+					B.attackby(AR, user, params)
 					break
 		return
 	..()
