@@ -49,7 +49,8 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	wdefense = 10
+	wdefense = 4
+	max_integrity = 50
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
@@ -79,6 +80,7 @@
 /obj/item/rogueweapon/woodstaff/wise
 	name = "wise staff"
 	desc = "A staff for keeping the volfs at bay..."
+	wdefense = 10 //for keeping the volfs at bay...
 
 /obj/item/rogueweapon/woodstaff/aries
 	name = "staff of the shepherd"
@@ -86,6 +88,7 @@
 	force = 25
 	force_wielded = 28
 	max_integrity = 300 // From my code diving it was 200. It being unique to the Priest it should probably get this
+	wdefense = 10
 	smeltresult = /obj/item/ingot/silver
 	icon_state = "aries"
 	icon = 'icons/roguetown/weapons/64.dmi'
