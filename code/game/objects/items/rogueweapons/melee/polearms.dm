@@ -50,7 +50,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	wdefense = 4
-	max_integrity = 50
+	max_integrity = 75
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
@@ -282,7 +282,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
 	wdefense = 4
-	max_integrity = 50
+	max_integrity = 75
 	throwforce = 20
 
 /obj/item/rogueweapon/halberd
