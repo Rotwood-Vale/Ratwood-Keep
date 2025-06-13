@@ -26,8 +26,11 @@
 
 /datum/job/roguetown/mercenary/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
+	var/mob/living/carbon/human/H = L
 	if(L)
-		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+	if(H.mind)
+		if(H.charflaw && !H.has_flaw(/datum/charflaw/greedy))
+			H.charflaw = /datum/charflaw/greedy
