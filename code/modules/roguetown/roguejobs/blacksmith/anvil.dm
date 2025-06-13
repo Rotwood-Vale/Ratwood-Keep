@@ -11,6 +11,7 @@
 	climbable = TRUE
 	smeltresult = /obj/item/ingot/iron
 	anchored = FALSE
+	drag_slowdown = 10
 	var/advance_multiplier = 1 //Lower for auto-striking
 
 /obj/machinery/anvil/crafted
