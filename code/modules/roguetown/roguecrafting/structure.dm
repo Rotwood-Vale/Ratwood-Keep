@@ -22,7 +22,7 @@
 
 /datum/crafting_recipe/roguetown/structure/meathock
 	name = "meathook"
-	/obj/structure/meathook
+	result = /obj/structure/meathook
 	reqs = list(/obj/item/grown/log/tree/small = 2,
 				/obj/item/ingot/iron = 1)
 	verbage_simple = "construct"
