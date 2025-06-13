@@ -22,7 +22,7 @@
 	var/obj_broken = FALSE
 	var/obj_destroyed = FALSE
 
-	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF
+	var/resistance_flags = NONE // INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ON_FIRE | UNACIDABLE | ACID_PROOF | FLAMMABLE
 
 	///how much acid is on that obj
 	var/acid_level = 0 
