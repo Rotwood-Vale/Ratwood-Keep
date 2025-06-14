@@ -326,6 +326,9 @@
 	testing("isdrain")
 	return reagents && (reagents.flags & DRAINABLE)
 
+// Called whenever this container is successfully filled via the target.
+/atom/proc/onfill(obj/target, mob/user, silent = FALSE)
+
 /// Are you allowed to drop this atom
 /atom/proc/AllowDrop()
 	return FALSE

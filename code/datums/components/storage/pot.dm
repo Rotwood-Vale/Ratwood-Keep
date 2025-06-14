@@ -1,7 +1,7 @@
 /datum/component/storage/concrete/pot
-    max_w_class = WEIGHT_CLASS_NORMAL
-    max_items = 6
-
+	max_w_class = WEIGHT_CLASS_NORMAL
+	max_items = 6
+	cant_hold = list(/obj/item/reagent_containers/glass, /obj/item/flashlight/flare/torch)
 
 /datum/component/storage/concrete/pot/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
 	if(silent && !override)

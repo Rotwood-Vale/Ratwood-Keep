@@ -7,7 +7,7 @@
 	var/amount_per_transfer_from_this = 5
 	var/list/possible_transfer_amounts = list(5,10,15,20,25,30)
 	var/volume = 30
-	var/reagent_flags
+	var/reagent_flags = null
 	var/list/list_reagents = null
 	var/disease_amount = 20
 	var/spillable = FALSE
@@ -133,6 +133,120 @@
 
 /obj/item/reagent_containers/on_reagent_change(changetype)
 	update_icon()
+
+
+///Can interact
+// Checks if the containers are able to do their action first.
+/obj/item/reagent_containers/proc/can_reagent_interact(obj/item/I, mob/living/carbon/human/user, datum/intent/i_action)
+	var/state = TRUE
+	var/failed_msg = ""
+	
+	/* == hard stops here == */
+	//splash is sort of a special case so it happens early on.
+	if(reagents.total_volume && i_action == INTENT_SPLASH)
+		return TRUE
+	if(!i_action)
+		return FALSE
+	if(!I.reagents || !reagents)
+		return FALSE
+
+	//soft stops here
+	if(i_action == INTENT_FILL)
+
+		if(!I.reagents.total_volume)
+			to_chat(user, "[I] is empty!")
+			state = FALSE
+		if(reagents.holder_full())
+			to_chat(user, "[src] is full.")
+			state = FALSE
+
+		//These checks come later to make failed message order work properly
+		if(!is_refillable())
+			failed_msg = "I can't fill this."
+			state = FALSE
+		if(!I.is_open_container())
+			failed_msg = "\The [I] isn't open."
+			state = FALSE
+	
+	if(i_action == INTENT_POUR)
+		//Special case for adding to food.
+		if(istype(I, /obj/item/reagent_containers/food/snacks))
+			state = TRUE
+
+		if(!reagents.total_volume)
+			failed_msg = "[src] is empty!"
+			state = FALSE
+		if(I.reagents.holder_full())
+			failed_msg = "[I] is full."
+			state = FALSE
+
+		//These checks come later to make failed message order work properly
+		if(!I.is_refillable())
+			failed_msg = "I can't fill \the [I]."
+			state = FALSE
+		if(!is_open_container())
+			failed_msg = "\The [src] isn't open."
+			state = FALSE
+	if(!state)
+		to_chat(user, failed_msg)
+	return state
+
+///Do interact
+// Does the action based logic
+/obj/item/reagent_containers/proc/do_reagent_interact(obj/item/I, mob/living/carbon/human/user, datum/intent/i_action, attempts = 100)
+	if(user.m_intent != MOVE_INTENT_SNEAK)
+		if(poursounds)
+			playsound(user.loc, pick(poursounds), 100, TRUE)
+
+	// INTENT POUR is FEED as in: feed INTO another object
+	if(i_action == INTENT_POUR)
+		user.visible_message(span_notice("[user] pours \the [src]'s contents into \the [I]."), \
+		span_notice("I pour \the [src]'s contents into \the [I]."))
+
+		for(var/i in 1 to attempts)
+			if(do_after(user, 8, target = src))
+				if(!reagents.total_volume)
+					break
+				if(I.reagents.holder_full())
+					break
+				if(!reagents.trans_to(I, amount_per_transfer_from_this, transfered_by = user))
+					reagents.reaction(I, TOUCH, amount_per_transfer_from_this) //If it fails you try a generic reaction I think.
+				I.onfill(src, user, silent = TRUE)
+			else
+				break
+		return
+	// INTENT FILL is FILL as in: fill ITSELF from another object
+	if(i_action == INTENT_FILL)
+		user.visible_message(span_notice("[user] fills \the [I]'s from \the [src]."), \
+		span_notice("I fill \the [src] with \the [I]'s contents."))
+		for(var/i in 1 to attempts)
+			if(do_after(user, 8, target = src))
+				if(reagents.holder_full())
+					break
+				if(!I.reagents.total_volume)
+					break
+				if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
+					reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
+				onfill(I, user, silent = TRUE)
+			else
+				break
+		return
+
+	if(i_action == INTENT_SPLASH)
+		user.visible_message(span_danger("[user] splashes the contents of [src] onto [I]!"), \
+		span_notice("I splash the contents of [src] onto [I]."))
+		reagents.reaction(I, TOUCH)
+		reagents.clear_reagents()
+		return
+
+
+/*
+/// Do careful transfer
+// fires off a transfer 
+/obj/item/reagent_containers/proc/do_careful_transfer(var/atom/A, var/amount = 3)
+	if(reagents)
+		reagents.trans_to(A, amount)
+*/
 
 /obj/item/reagent_containers/update_icon(dont_fill=FALSE)
 	if(!fill_icon_thresholds || dont_fill)

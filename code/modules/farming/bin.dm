@@ -20,6 +20,9 @@
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
 
+/obj/item/roguebin/on_reagent_change(changetype)
+	update_icon()
+
 /obj/item/roguebin/Initialize()
 	if(!base_state)
 		create_reagents(600, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)

@@ -86,14 +86,6 @@
 	time = 50
 	category = CAT_NONE
 
-/obj/structure/fermenting_barrel/update_icon()
-	if(open)
-		icon_state = "barrel_open"
-	else
-		icon_state = "barrel"
-	if(broken)
-		icon_state = "barrel_destroyed"
-
 /obj/structure/fermenting_barrel/random/water/Initialize()
 	. = ..()
 	icon_state = "barrel3"
