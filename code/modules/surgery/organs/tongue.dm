@@ -73,36 +73,32 @@
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/tabaxi/handle_speech(datum/source, list/speech_args)
-    var/original_message = speech_args[SPEECH_MESSAGE]
-    var/language = speech_args[5]
+	var/original_message = speech_args[SPEECH_MESSAGE]
+	var/language = speech_args[5]
 
-    if(original_message[1] != "*" && (language != /datum/language/felid))
-        var/list/word_list = splittext(original_message, " ")
+	if(original_message[1] != "*" && (language != /datum/language/felid))
+		var/list/word_list = splittext(original_message, " ")
 
-        var/static/regex/multiple_lower_r = new("r{4,}", "g")
-        var/static/regex/multiple_upper_r = new("Rr{3,}", "g")
+		for(var/word_index = 2 to word_list.len)
+			if(!prob(50))
+				continue 
 
-        for(var/word_index in 1 to word_list.len)
-            var/word = word_list[word_index]
-            var/transformed_word = ""
-            var/r_modified = FALSE
+			var/word = word_list[word_index]
+			var/transformed_word = ""
 
-            for(var/char_index = 1; char_index <= length(word); char_index++)
-                var/character = copytext(word, char_index, char_index + 1)
-                if(!r_modified && (character == "r" || character == "R"))
-                    transformed_word += (character == "r") ? "rrr" : "Rrr"
-                    r_modified = TRUE
-                    continue
-                transformed_word += character
+			for(var/char_index = 1; char_index <= length(word); char_index++)
+				var/character = copytext(word, char_index, char_index + 1)
+				// Only affect r/R that are not at the start or end of the word
+				if((character == "r" || character == "R") && char_index != 1 && char_index != length(word))
+					transformed_word += (character == "r") ? "rr" : "RR"
+				else
+					transformed_word += character
 
-            // Reduce too many r's in a row
-            transformed_word = multiple_lower_r.Replace(transformed_word, "rrr")
-            transformed_word = multiple_upper_r.Replace(transformed_word, "Rrr")
-            word_list[word_index] = transformed_word
+			word_list[word_index] = transformed_word
 
-        original_message = jointext(word_list, " ")
+		original_message = jointext(word_list, " ")
 
-    speech_args[SPEECH_MESSAGE] = original_message
+	speech_args[SPEECH_MESSAGE] = original_message
 
 /obj/item/organ/tongue/fly
 	name = "proboscis"
