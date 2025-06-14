@@ -26,8 +26,22 @@
 
 /datum/job/roguetown/mercenary/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
+	var/mob/living/carbon/human/H = L
 	if(L)
-		var/mob/living/carbon/human/H = L
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+	if(H.charflaw)
+		if(H.charflaw.type == /datum/charflaw/noeyer)
+			var/obj/item/eyepatch = new /obj/item/clothing/mask/rogue/eyepatch(get_turf(H))
+			H.put_in_hands(eyepatch, forced = TRUE)
+			H.equip_to_slot_if_possible(eyepatch, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
+		if(H.charflaw.type == /datum/charflaw/noeyel)
+			var/obj/item/eyepatch_l = new /obj/item/clothing/mask/rogue/eyepatch/left(get_turf(H))
+			H.put_in_hands(eyepatch_l, forced = TRUE)
+			H.equip_to_slot_if_possible(eyepatch_l, SLOT_WEAR_MASK, FALSE, TRUE, FALSE, TRUE, TRUE)
+		if(H.charflaw.type != /datum/charflaw/greedy)
+			if(H.charflaw.type == /datum/charflaw/dead_or_alive)
+				return
+			else
+				H.charflaw = new /datum/charflaw/greedy
