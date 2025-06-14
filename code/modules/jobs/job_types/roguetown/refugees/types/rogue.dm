@@ -63,7 +63,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE) // let's them recognize reagents
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) 
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE) 
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			head =/obj/item/clothing/head/roguetown/helmet/bandana

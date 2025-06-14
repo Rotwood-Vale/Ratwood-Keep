@@ -928,3 +928,4 @@
 /datum/status_effect/buff/calmed/on_remove()
 	. = ..()
 	to_chat(owner, span_warning("My mind is my own again, no longer awash with foggy peace!"))
+

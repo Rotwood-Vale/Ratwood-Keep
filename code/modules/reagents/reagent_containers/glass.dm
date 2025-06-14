@@ -393,7 +393,7 @@
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item))
-		if(user.mind.get_skill_level(/datum/skill/misc/treatment) <= 2)
+		if(user.mind.get_skill_level(/datum/skill/misc/medicine) <= 2)
 			to_chat(user, span_warning("I don't know how this works."))
 			return TRUE
 		if(!I.can_brew)

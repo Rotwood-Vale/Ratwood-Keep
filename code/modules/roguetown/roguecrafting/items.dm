@@ -591,7 +591,7 @@
 	result = /obj/item/boulder
 	reqs = list(/obj/item/natural/stone = 5)
 	always_available = TRUE
-	
+
 //Bombs
 
 /datum/crafting_recipe/roguetown/smokebombefficient
@@ -623,7 +623,7 @@
 	result = /obj/item/natural/bundle/cloth/bandage/full
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/ash = 1,)
 	skill_level = 2
-	skillcraft = /datum/skill/misc/treatment
+	skillcraft = /datum/skill/misc/medicine
 
 /datum/crafting_recipe/roguetown/impsaw
 	name = "improvised saw"

@@ -2,7 +2,7 @@
 	req_table = FALSE
 	tools = list(/obj/item/reagent_containers/glass/alembic)
 	verbage_simple = "mix"
-	skillcraft = /datum/skill/misc/treatment
+	skillcraft = /datum/skill/misc/alchemy
 	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/alchemy/thermometer
