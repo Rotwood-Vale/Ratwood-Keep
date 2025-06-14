@@ -194,7 +194,7 @@
 	trash = /obj/item/reagent_containers/glass/bowl
 
 /datum/crafting_recipe/roguetown/cooking/gumbo
-	name = "shrimp gumbo"
+	name = "shrimp gumbo - (2 cooked shrimps; onion slice, caggabe slice, bowl; BEGINNER)"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp = 2,
 		/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1,
@@ -203,7 +203,7 @@
 	result = /obj/item/reagent_containers/food/snacks/rogue/fryfish/gumbo
 
 /datum/crafting_recipe/roguetown/cooking/chowder
-	name = "oyster chowder"
+	name = "oyster chowder - (oyster, flour, onion slice, bowl; BEGINNER)"
 	reqs = list(/obj/item/reagent_containers/food/snacks/fish/oyster = 1,
 			/obj/item/reagent_containers/powder/flour = 1,
 			/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1,

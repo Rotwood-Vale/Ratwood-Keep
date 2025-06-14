@@ -197,7 +197,7 @@
 	..()
 
 /datum/crafting_recipe/roguetown/cooking/soap
-	name = "soap"
+	name = "soap - (ash, water, fat; MASTER)"
 	reqs = list(
 		/obj/item/ash = 1,
 		/datum/reagent/water = 10,

@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown/wood_dildo
-	name = "wooden dildo"
+	name = "wooden dildo - (small log; BEGINNER)"
 	result = /obj/item/dildo/wood
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 

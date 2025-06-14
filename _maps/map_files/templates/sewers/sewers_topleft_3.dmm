@@ -95,7 +95,7 @@
 /area/rogue/under/town/sewer)
 "sB" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
@@ -195,7 +195,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "JR" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /obj/effect/spawner/lootdrop/roguetown/sewers,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
