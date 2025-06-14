@@ -303,9 +303,9 @@
 	desc = span_boldred("<B>I have seen something nightmarish, and I fear for my life!</B>")
 	timer = 999 MINUTES
 
-/datum/stressevent/maniac_woke_up
-	stressadd = 10
-	desc = span_boldred("No... I want to go back...")
+/datum/stressevent/serial_killer_death
+	stressadd = 100
+	desc = span_boldred("<B>W- Wait- NO!</B>")
 	timer = 999 MINUTES
 
 /datum/stressevent/drankrat
