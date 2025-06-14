@@ -134,8 +134,8 @@
 	if (debugseverity)
 		success_chance = 0
 
-	var/adjusted_fortune = user.STALUC * 2
-	if (prob(adjusted_fortune))
+	var/lucky_prob = user.get_scaled_sq_luck(1, 50)
+	if (prob(lucky_prob))
 		break_on_fail = FALSE
 		failure_severity -= rand(1, 3)
 
