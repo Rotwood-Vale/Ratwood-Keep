@@ -26,6 +26,9 @@
 
 /mob/living/carbon/human/species/skeleton/Initialize()
 	. = ..()
+
+	remove_genitalia()
+
 	cut_overlays()
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 

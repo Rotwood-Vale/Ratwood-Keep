@@ -420,6 +420,8 @@
 
 	can_do_sex = FALSE //where my bonger go
 
+	remove_genitalia()
+
 	// Undead have infinite stamina; they should not be using swift intent under any circumstances.
 	possible_rmb_intents = list(/datum/rmb_intent/feint,\
 		/datum/rmb_intent/aimed,\

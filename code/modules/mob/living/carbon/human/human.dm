@@ -875,3 +875,22 @@ Slip
 /mob/living/carbon/human/slip(obj/item/I)
 	visible_message(span_warn("[name] falls overs \the [I.name]!"))
 	Knockdown(20)
+
+/// Removes all existing genital organs from a human mob.
+/mob/living/carbon/human/proc/remove_genitalia()
+
+	// I don't know why we need two lists for internal organs.
+	var/obj/item/organ/PP = internal_organs_slot["penis"]
+	internal_organs_slot.Remove("penis")
+	if(PP)
+		internal_organs.Remove(PP)
+
+	var/obj/item/organ/TT = internal_organs_slot["testicles"]
+	internal_organs_slot.Remove("testicles")
+	if(TT)
+		internal_organs.Remove(TT)
+
+	var/obj/item/organ/VV = internal_organs_slot["vagina"]
+	internal_organs_slot.Remove("vagina")
+	if(VV)
+		internal_organs.Remove(VV)
