@@ -268,6 +268,7 @@
 
 	visible_message(span_warning("Runes of binding ignite on [H]'s temples, each sigil a searing brand of agony!"))
 	H.emote("scream")
+	H.reagents.add_reagent(/datum/reagent/medicine/healthpot, 90) //two health potion worth
 	if(HAS_TRAIT(H, TRAIT_NOBLE))
 		say("NOW YOU WILL KNOW TRUE SUBJUGATION.")
 		payout = 800
