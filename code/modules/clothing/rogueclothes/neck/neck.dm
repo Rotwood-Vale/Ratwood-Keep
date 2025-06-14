@@ -327,7 +327,7 @@
 		if(world.time < cooldowny + cdtime)
 			to_chat(user, span_warning("Nothing happens."))
 			return
-	if(!HAS_TRAIT(user, TRAIT_ZEALOT))
+	if(!HAS_TRAIT(user, TRAIT_INQUISITOR))
 		return
 	user.visible_message(span_warning("[user] kisses the [src]!"))
 	if(activate_sound)

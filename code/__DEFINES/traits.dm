@@ -43,7 +43,7 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
-#define TRAIT_ZEALOT "Zealot"
+#define TRAIT_INQUISITOR "Inquisitorial Training" //activates silver psycross
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -190,6 +190,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
 	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
+	TRAIT_INQUISITOR = span_info("The Inquisition has trained me to use silver psycrosses to protect myself from spells."),
 ))
 
 // trait accessor defines
