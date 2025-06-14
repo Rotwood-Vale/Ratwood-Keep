@@ -22,6 +22,13 @@
 
 	if(user.mind)
 		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
+	else
+		if(HAS_TRAIT(user, TRAIT_ACCURACY_HIGH_NPC))
+			chance2hit += 50
+		else if(HAS_TRAIT(user, TRAIT_ACCURACY_MID_NPC))
+			chance2hit += 35
+		else if(HAS_TRAIT(user, TRAIT_ACCURACY_LOW_NPC))
+			chance2hit += 15
 
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
@@ -237,7 +244,16 @@
 	if(!can_see_cone(attacker))
 		return FALSE
 
-	var/drained = attacker.defdrain
+	var/drained
+	if(attacker.mind)
+		drained = attacker.defdrain
+	else
+		if(HAS_TRAIT(attacker, TRAIT_PARRY_HIGH_NPC))
+			drained = 15
+		else if(HAS_TRAIT(attacker, TRAIT_PARRY_MID_NPC))
+			drained = 30
+		else if(HAS_TRAIT(attacker, TRAIT_PARRY_LOW_NPC))
+			drained = 50
 	var/weapon_parry = FALSE
 	var/offhand_defense = 0
 	var/mainhand_defense = 0

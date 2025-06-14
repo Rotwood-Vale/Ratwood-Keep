@@ -29,6 +29,10 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_ACCURACY_HIGH_NPC, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_PARRY_HIGH_NPC, TRAIT_GENERIC)
+
+
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/Life(datum/controller/process/mobs/parent)
 	. = ..()
@@ -43,7 +47,7 @@
 		if(isliving(target) && target.client)
 			spawn(5 SECONDS)
 				if(target && aggressive)
-					UseSpecialAbility()
+					use_combat_abilities()
 
 /mob/living/carbon/human/species/human/northern/dungeon_base/npc_idle()
 	if(world.time < next_idle)
@@ -74,6 +78,9 @@
 
 	use_combat_abilities()
 	next_cast = world.time + 100
+
+/mob/living/carbon/human/species/human/northern/dungeon_base/proc/use_combat_abilities()
+	return
 
 // === Sub (ah~~~) classes ===
 
