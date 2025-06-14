@@ -287,8 +287,7 @@
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_langloss)
 
 /obj/item/scrying/proc/failure_obsession(mob/living/user, mob/living/target)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - you can see the target in front of you. So beautiful, charming... You find yourself falling in love, into obsession. Why are you wasting time? You need them so badly..."))
-	user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head. [user.p_they(TRUE)] smiles beatifically at something..."))
+	user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head. [user.p_they(TRUE)] smiles beatifically at something..."), span_boldwarning("You focus your thoughts on the orb - you can see the target in front of you. So beautiful, charming... You find yourself falling in love, into obsession. Why are you wasting time? You need them so badly..."))
 	if(user.mind)
 		user.mind.store_memory("You are obsessed with [target].")
 		user.mind.add_special_person(target, "#FFC0CB")
@@ -297,53 +296,43 @@
 	scry(user, target) // Got to see them to fall in love with them...
 
 /obj/item/scrying/proc/failure_feeblemind(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and feel them slipping away, away, slowly... draining... into..."))
-	user.visible_message(span_danger("[user] stares into [src] - [user.p_their()] eyes lose their wit, and [user.p_their()] mouth hangs open..."))
+	user.visible_message(span_danger("[user] stares into [src] - [user.p_their()] eyes lose their wit, and [user.p_their()] mouth hangs open..."), span_boldwarning("You focus your thoughts on the orb - and feel them slipping away, away, slowly... draining... into..."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_feeblemind)
 
 /obj/item/scrying/proc/failure_paralysis(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - you feel a pain shooting through your head, and begin to feel a strange numbness..."))
-	user.visible_message(span_danger("[user] stares into [src]. Parts of [user.p_their()] body seem to go limp..."))
+	user.visible_message(span_danger("[user] stares into [src]. Parts of [user.p_their()] body seem to go limp..."), span_boldwarning("You focus your thoughts on the orb - you feel a pain shooting through your head, and begin to feel a strange numbness..."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_arcane_paralysis)
 
 /obj/item/scrying/proc/failure_blind(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - your vision darkens... And doesn't return."))
-	user.visible_message(span_danger("[user] stares into [src]. Arcyne darkness seem to cloud [user.p_their()] eyes!"))
+	user.visible_message(span_danger("[user] stares into [src]. Arcyne darkness seem to cloud [user.p_their()] eyes!"), span_boldwarning("You focus your thoughts on the orb - your vision darkens... And doesn't return."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_blindness)
 
 /obj/item/scrying/proc/failure_dimwitted(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and though you see nothing, suddenly the world becomes so much simpler."))
-	user.visible_message(span_danger("[user] stares into [src]... And [user.p_their()] eyes gain a witless look."))
+	user.visible_message(span_danger("[user] stares into [src]... And [user.p_their()] eyes gain a witless look."), span_boldwarning("You focus your thoughts on the orb - and though you see nothing, suddenly the world becomes so much simpler."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_dimwitted)
 
 /obj/item/scrying/proc/failure_high(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and you begin to feel so happy and giddy!"))
-	user.visible_message(span_danger("[user] stares into [src]. Suddenly, [user.p_they()] seems unable to stay still!"))
+	user.visible_message(span_danger("[user] stares into [src]. Suddenly, [user.p_they()] seems unable to stay still!"), span_boldwarning("You focus your thoughts on the orb - and you begin to feel so happy and giddy!"))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_arcane_high)
 
 /obj/item/scrying/proc/failure_random_person(mob/living/user, mob/living/target)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and... Wait, this isn't right..."))
-	user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head."))
+	user.visible_message(span_danger("[user] stares into [src], [user.p_their()] eyes rolling back into [user.p_their()] head."), span_boldwarning("You focus your thoughts on the orb - and... Wait, this isn't right..."))
 	scry_wrong_person(user, target)
 
 /obj/item/scrying/proc/failure_sleep(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and begin feeling tired, so tired; maybe you should... Should..."))
-	user.visible_message(span_danger("[user] stares into [src] - and then, without warning, falls asleep!"))
+	user.visible_message(span_danger("[user] stares into [src] - and then, without warning, falls asleep!"), span_boldwarning("You focus your thoughts on the orb - and begin feeling tired, so tired; maybe you should... Should..."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_sleepy)
 
 /obj/item/scrying/proc/failure_confused(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - and suddenly, you feel disoriented, as if the world no longer makes sense."))
-	user.visible_message(span_danger("[user] stares into [src]... And then looks around in confusion."))
+	user.visible_message(span_danger("[user] stares into [src]... And then looks around in confusion."), span_boldwarning("You focus your thoughts on the orb - and suddenly, you feel disoriented, as if the world no longer makes sense."))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_confused)
 
 /obj/item/scrying/proc/failure_drunk(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - the world spins and, oh TEN, have you been DRINKING? Ha ha!"))
-	user.visible_message(span_danger("[user] stares into [src] - and then hiccups."))
+	user.visible_message(span_danger("[user] stares into [src] - and then hiccups."), span_boldwarning("You focus your thoughts on the orb - the world spins and, oh TEN, have you been DRINKING? Ha ha!"))
 	user.apply_status_effect(/datum/status_effect/debuff/mishap_arcane_drunkenness)
 
 /obj/item/scrying/proc/failure_burn(mob/living/user)
-	to_chat(user, span_boldwarning("You focus your thoughts on the orb - it heats up, until it's painfully hot!"))
-	user.visible_message(span_danger("[user] stares into [src]... But the orb glows red, and you hear a sizzling sound!"))
+	user.visible_message(span_danger("[user] stares into [src]... But the orb glows red, and you hear a sizzling sound!"), span_boldwarning("You focus your thoughts on the orb - it heats up, until it's painfully hot!"))
 	var/obj/item = user.get_item_for_held_index(1)
 	if (item == src)
 		user.apply_damage(25, BURN, user.get_bodypart(BODY_ZONE_L_ARM))
