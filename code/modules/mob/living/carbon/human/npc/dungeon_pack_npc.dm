@@ -1,5 +1,3 @@
-// === Dungeon Base Mob Setup ===
-
 /mob/living/carbon/human/species/human/northern/dungeon_base
 	aggressive = TRUE
 	mode = AI_IDLE
@@ -11,78 +9,71 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
+	var/combat_loop_running = FALSE
 	var/next_cast = 0
 
-	Life(datum/controller/process/mobs/parent)
-		. = ..()
-		npc_idle()
-		npc_combat()
+/mob/living/carbon/human/species/human/northern/dungeon_base/examine(mob/user)
+	to_chat(user, "You don't recognize this person.")
 
-	Initialize()
-		. = ..()
-		set_species(/datum/species/human/northern)
-		spawn(1)
-			after_creation()
+/mob/living/carbon/human/species/human/northern/dungeon_base/Initialize()
+	. = ..()
+	set_species(/datum/species/human/northern)
+	spawn(1)
+		after_creation()
 
-	after_creation()
-		..()
-		gender = pick(MALE, FEMALE)
-		job = "Wanderer"
-		ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-		ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-		ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
-		ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+/mob/living/carbon/human/species/human/northern/dungeon_base/after_creation()
+	..()
+	gender = pick(MALE, FEMALE)
+	job = "Wanderer"
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 
-	examine(mob/user)
-		to_chat(user, "You don't recognize this person.")
+/mob/living/carbon/human/species/human/northern/dungeon_base/Life(datum/controller/process/mobs/parent)
+	. = ..()
+	npc_idle()
+	npc_combat()
 
-	proc/use_combat_abilities()
-		// To be overridden
+/mob/living/carbon/human/species/human/northern/dungeon_base/retaliate(mob/living/L)
+	. = ..()
+	if(target)
+		aggressive = TRUE
+		wander = TRUE
+		if(isliving(target) && target.client)
+			spawn(5 SECONDS)
+				if(target && aggressive)
+					UseSpecialAbility()
 
-	proc/UseSpecialAbility()
-		// To be overridden
+/mob/living/carbon/human/species/human/northern/dungeon_base/npc_idle()
+	if(world.time < next_idle)
+		return
+	next_idle = world.time + rand(30, 70)
 
-	retaliate(mob/living/L)
-		. = ..()
-		if(target)
-			aggressive = TRUE
-			wander = TRUE
-			if(isliving(target) && target.client)
-				spawn(5 SECONDS)
-					if(target && aggressive)
-						UseSpecialAbility()
+	if(!target || target.stat == DEAD || get_dist(src, target) > 5)
+		for(var/mob/living/L in view(5, src))
+			if(should_target(L))
+				target = L
+				break
 
-	proc/npc_idle()
-		if(world.time < next_idle) return
-		next_idle = world.time + rand(30, 70)
-
-		if(!target || target.stat == DEAD || get_dist(src, target) > 5)
-			for(var/mob/living/L in view(5, src))
-				if(should_target(L))
-					target = L
-					break
-
-		if(target && target.stat != DEAD)
-			use_combat_abilities()
-			return
-
-		if((mobility_flags & MOBILITY_MOVE) && isturf(loc) && wander)
-			if(prob(20))
-				var/turf/T = get_step(loc, pick(GLOB.cardinals))
-				if(!istype(T, /turf/open/transparent/openspace))
-					Move(T)
-			else
-				face_atom(get_step(src, pick(GLOB.cardinals)))
-		else if(prob(10))
+	if((mobility_flags & MOBILITY_MOVE) && isturf(loc) && wander)
+		if(prob(20))
+			var/turf/T = get_step(loc, pick(GLOB.cardinals))
+			if(!istype(T, /turf/open/transparent/openspace))
+				Move(T)
+		else
 			face_atom(get_step(src, pick(GLOB.cardinals)))
+	else if(prob(10))
+		face_atom(get_step(src, pick(GLOB.cardinals)))
 
-	proc/npc_combat()
-		if(world.time < next_cast) return
-		if(!target || target.stat == DEAD || get_dist(src, target) > 7) return
-		use_combat_abilities()
-		next_cast = world.time + 100
+/mob/living/carbon/human/species/human/northern/dungeon_base/proc/npc_combat()
+	if(world.time < next_cast)
+		return
+	if(!target || target.stat == DEAD || get_dist(src, target) > 7)
+		return
 
-
+	use_combat_abilities()
+	next_cast = world.time + 100
 
 // === Sub (ah~~~) classes ===
 
