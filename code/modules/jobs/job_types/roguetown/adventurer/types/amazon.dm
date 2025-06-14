@@ -29,12 +29,10 @@
 	beltl = /obj/item/rogueweapon/huntingknife
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator
 	backl = /obj/item/storage/backpack/rogue/satchel
-	if(prob(25))
+	if(prob(50))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather
-	if(prob(25))
+	if(prob(50))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	if(prob(20))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		shoes = /obj/item/clothing/shoes/roguetown/armor

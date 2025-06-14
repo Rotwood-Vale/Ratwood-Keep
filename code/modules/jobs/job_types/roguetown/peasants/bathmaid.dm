@@ -135,7 +135,7 @@
 		belt =	/obj/item/storage/belt/rogue/leather/black
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	else
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+		armor = /obj/item/clothing/suit/roguetown/armor/leather
 		pants =	/obj/item/clothing/under/roguetown/tights/stockings/fishnet/black
 		belt =	/obj/item/storage/belt/rogue/leather/black
 
