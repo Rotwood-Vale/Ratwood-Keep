@@ -1,12 +1,10 @@
 /datum/subclass/underdwellers
 	name = "Under Dwellers"
 	tutorial = "You are of those not quite fit for society, those who hide away in the caves and sewers. That society has deemed you lesser. So now, you live amongst your own little communities, far from where the surface dwellers dare see you."
-
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(/datum/species/kobold, /datum/species/anthromorphsmall)
 	category_tags = list(CTAG_REFUGEE)
-
-	maximum_possible_slots = 10
+	maximum_possible_slots = 4 //You are not a major antag faction. 
 
 	outfit = /datum/outfit/job/roguetown/refugee/underdwellers
 
@@ -18,7 +16,6 @@
 	H.adjust_blindness(-3)
 	var/classes = list("Caveling", "Caveling Gatherer", "Caveling Tinkerer", "Caveling Shaman")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
-
 	switch(classchoice)
 		if("Caveling")
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
@@ -109,9 +106,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -124,16 +118,24 @@
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			shoes = /obj/item/clothing/shoes/roguetown/shortboots
 			cloak = /obj/item/clothing/cloak/tribal
-			backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
-			H.change_stat("strength", -1)
-			H.change_stat("speed", 1)
+			H.change_stat("strength", -2)
 			H.change_stat("intelligence", 2)
+			H.change_stat("endurance", 1) //So they can use their miracles and spells more often in exchange for their lost speed.
+			var/classes2 = list("Miracleworker", "Magos")
+			var/classchoice2 = input("Choose your Subtype", "Available Subtypes") as anything in classes2
+			switch(classchoice2)
+				if("Miracleworker")
+					H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+					var/datum/devotion/C = new /datum/devotion(H, H.patron)
+					C.grant_spells_churchling(H)
+					H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+					backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1)
+				if("Magos")
+					H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+					H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+					H.mind.adjust_spellpoints(2)
+					H.mind.AddSpell(new SPELL_LEARNSPELL_WEAK)
+					H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+					backpack_contents = list(/obj/item/rogueweapon/surgery/hemostat/improv = 2, /obj/item/rogueweapon/surgery/retractor/improv = 1, /obj/item/rogueweapon/surgery/saw/improv = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 			ADD_TRAIT(H, TRAIT_WILD_EATER, TRAIT_GENERIC)
-			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			H.mind.adjust_spellpoints(1)
-			H.mind.AddSpell(new SPELL_LEARNSPELL)
-			var/datum/devotion/C = new /datum/devotion(H, H.patron)
-			C.grant_spells_churchling(H)
-			H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
-
 	H.set_blindness(0)
