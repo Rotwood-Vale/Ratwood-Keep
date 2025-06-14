@@ -293,11 +293,11 @@
 
 	if(!attacker.mind)
 		if(HAS_TRAIT(attacker, TRAIT_ACCURACY_HIGH_NPC))
-			prob2defend -= 50
+			prob2defend -= 150
 		else if(HAS_TRAIT(attacker, TRAIT_ACCURACY_MID_NPC))
-			prob2defend -= 35
+			prob2defend -= 105
 		else if(HAS_TRAIT(attacker, TRAIT_ACCURACY_LOW_NPC))
-			prob2defend -= 15
+			prob2defend -= 75
 
 	if(highest_defense <= (mind ? mind.get_skill_level(/datum/skill/combat/unarmed) : NPC_BASE_UNARMED_SKILL) * UNARMED_SKILL_BONUS)
 		defender_skill = mind?.get_skill_level(/datum/skill/combat/unarmed)
