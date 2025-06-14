@@ -435,7 +435,11 @@
 		do_reagent_interact(I, user, user.used_intent.type)
 		return
 
-
+/obj/item/reagent_containers/glass/mortar/update_icon()
+	if(length(contents))
+		icon_state = "mortar_grind"
+	else
+		icon_state = "mortar_empty"
 
 /obj/item/reagent_containers/glass/pre_attack_right(atom/A, mob/living/user, params)
 	if(can_reagent_interact(A, user, user.used_intent.type))
