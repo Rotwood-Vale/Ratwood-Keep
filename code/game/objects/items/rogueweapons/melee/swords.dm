@@ -28,7 +28,7 @@
 	smeltresult = /obj/item/ingot/steel
 	minstr = 7
 	sellprice = 30
-	wdefense = 4
+	wdefense = 8
 	var/accuracy_bonus = 20
 
 /obj/item/rogueweapon/sword/attack_right(mob/user)
@@ -153,6 +153,7 @@
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
 	throwforce = 15
+	wdefense = 10
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	accuracy_bonus = 5	//large swords are unwieldy
@@ -375,7 +376,7 @@
 	thrown_bclass = BCLASS_CUT
 	minstr = 6
 	sellprice = 42
-	wdefense = 5
+	wdefense = 9
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/marlin/getonmobprop(tag)
@@ -489,7 +490,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
 	gripped_intents = null
 	minstr = 4
-	wdefense = 3
+	wdefense = 6
 	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
 
 /obj/item/rogueweapon/sword/iron/short/chipped
@@ -514,7 +515,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
 	gripped_intents = null
 	minstr = 4
-	wdefense = 2
+	wdefense = 4
 	can_cdg = TRUE
 
 /obj/item/rogueweapon/sword/iron/messer/steel
@@ -534,7 +535,7 @@
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 5
-	wdefense = 6
+	wdefense = 10
 	wbalance = 1
 	accuracy_bonus = 10
 
@@ -566,7 +567,7 @@
 	)
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
-	wdefense = 7
+	wdefense = 10
 	wbalance = 1
 	accuracy_bonus = 5	//Rapiers are already wildly accurate due to stab bonus
 
@@ -668,7 +669,7 @@
 	sellprice = 300
 	max_integrity = 300
 	max_blade_int = 300
-	wdefense = 7
+	wdefense = 10
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"
@@ -677,7 +678,7 @@
 	max_integrity = 220
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
 	gripped_intents = null
-	wdefense = 7
+	wdefense = 10
 
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
@@ -706,7 +707,7 @@
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 5
-	wdefense = 6
+	wdefense = 10
 	wbalance = 1
 	damtype = BRUTE
 	light_color = LIGHT_COLOR_BLUE
