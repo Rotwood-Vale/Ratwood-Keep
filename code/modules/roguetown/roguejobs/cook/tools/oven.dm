@@ -32,6 +32,7 @@
 			return ..()
 		if(food.len < maxfood)
 			donefoods = FALSE
+			user.dropItemToGround(W, force = TRUE)
 			W.forceMove(src)
 			food += W
 			playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 50) // neu cooking
