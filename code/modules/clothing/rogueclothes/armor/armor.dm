@@ -63,19 +63,6 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
-	name = "chainmail bikini"
-	desc = "Not very comfortable against the skin."
-	icon_state = "chainkini"
-	item_state = "chainkini"
-	allowed_sex = list(MALE, FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-	body_parts_covered = CHEST|GROIN
-	anvilrepair = /datum/skill/craft/blacksmithing
-	armor_class = ARMOR_CLASS_LIGHT
-	edelay_type = 1
-	w_class = WEIGHT_CLASS_SMALL
-
 /obj/item/clothing/suit/roguetown/armor/plate
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "steel half-plate"
@@ -944,58 +931,6 @@
 	allowed_sex = list(MALE, FEMALE)
 	slot_flags = ITEM_SLOT_ARMOR
 	ignore_sleeves_code = TRUE // No sleeves, otherwise arms will be over the sprite
-
-//----------------- MORE AZURE SPRITEWORK ---------------------
-
-/obj/item/clothing/suit/roguetown/armor/leather/bikini
-	name = "leather bikini"
-	desc = "Flexible cowhide armor. Lightweight, better than nothing. Now in tasteful bikini shape."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "leatherkini"
-	item_state = "leatherkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
-	name = "studded leather bikini"
-	desc = "Studded leather is the most durable of all hides and leathers and about as light. This one is in bikini form."
-	armor = list("blunt" = 55, "slash" = 35, "stab" = 35, "bullet" = 15, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	body_parts_covered = CHEST|GROIN
-	icon_state = "studleatherkini"
-	item_state = "studleatherkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
-	name = "hide bikini"
-	desc = "A light armor of wildbeast hide. Far more durable than leather. This will not keep a person warm though..."
-	body_parts_covered = CHEST|GROIN
-	icon_state = "hidearmorkini"
-	item_state = "hidearmorkini"
-	allowed_sex = list(FEMALE)
-	allowed_race = CLOTHED_RACES_TYPES
-
-/obj/item/clothing/suit/roguetown/armor/plate/bikini
-	name = "half-plate bikini"
-	desc = "Half plate in bikini form, still just as protective somehow. Save for the stomach."
-	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	body_parts_covered = CHEST|GROIN
-	icon_state = "halfplatekini"
-	item_state = "halfplatekini"
-	allowed_sex = list(FEMALE)
-	armor_class = ARMOR_CLASS_MEDIUM
-
-/obj/item/clothing/suit/roguetown/armor/plate/full/bikini
-	name = "fullplate bikini"
-	desc = "Full plate in bikini form, full package and full exposure."
-	icon_state = "platekini"
-	armor = list("blunt" = 45, "slash" = 50, "stab" = 35, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	allowed_sex = list(FEMALE)
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	equip_delay_self = 8 SECONDS
-	unequip_delay_self = 8 SECONDS
-	equip_delay_other = 3 SECONDS
-	strip_delay = 6 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/longcoat
 	name = "longcoat"
