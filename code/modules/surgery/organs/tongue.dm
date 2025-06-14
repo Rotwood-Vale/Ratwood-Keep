@@ -76,7 +76,7 @@
 	var/original_message = speech_args[SPEECH_MESSAGE]
 	var/language = speech_args[5]
 
-	if(original_message[1] != "*" && (language != /datum/language/felid))
+	if(original_message[1] != "*" && (language != /datum/language/felid) && (usr.client.prefs.alternative_speech == TRUE))
 		var/list/word_list = splittext(original_message, " ")
 
 		for(var/word_index = 2 to word_list.len)

@@ -44,6 +44,14 @@
 	if(mob)
 		SEND_SOUND(mob, sound(null))
 
+/client/verb/alternative_speech()
+	set name = "Use Alternative Speech"
+	set category = "Options"
+	set desc = ""
+	if(prefs)
+		prefs.alternative_speech = !prefs.alternative_speech
+		to_chat(src, "Alternative speech is now [prefs.alternative_speech ? "enabled" : "disabled"].")
+		prefs.save_preferences()
 /*
 //toggles
 /datum/verbs/menu/Settings/Ghost/chatterbox

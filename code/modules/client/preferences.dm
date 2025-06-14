@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 	var/prefer_old_chat = FALSE
+	var/alternative_speech = TRUE
 
 	var/uses_glasses_colour = 0
 
