@@ -111,6 +111,7 @@
 
 	if(!spillable)
 		return
+
 	if(can_reagent_interact(target, user, user.used_intent.type))
 		do_reagent_interact(target, user, user.used_intent.type)
 		return
@@ -369,8 +370,6 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "mortar_empty"
 	volume = 100
-	reagent_flags = OPENCONTAINER
-	spillable = FALSE
 	var/obj/item/grinded
 	var/grinding_started = FALSE
 
@@ -430,10 +429,8 @@
 		grinded = I
 		icon_state = "mortar_grind"
 		return
-
-	if(can_reagent_interact(I, user, user.used_intent.type))
-		do_reagent_interact(I, user, user.used_intent.type)
-		return
+		
+	..()
 
 /obj/item/reagent_containers/glass/mortar/update_icon()
 	if(length(contents))
