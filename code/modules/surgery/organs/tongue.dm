@@ -77,27 +77,32 @@
     var/language = speech_args[5]
 
     if(original_message[1] != "*" && (language != /datum/language/felid))
-        var/list/word_list = splittext(original_message, " ")
+        var/list/word_list = splittext(original_message, " ") // Splits the message into words so we can process each one individually later, Regex would be harder to use for such.
 
-        var/static/regex/multiple_lower_r = new("r{4,}", "g")
-        var/static/regex/multiple_upper_r = new("Rr{3,}", "g")
-
-        for(var/word_index in 1 to word_list.len)
+        for(var/word_index in 1 to word_list.len) 
             var/word = word_list[word_index]
-            var/transformed_word = ""
+            var/transformed_word = "" 
             var/r_modified = FALSE
 
-            for(var/char_index = 1; char_index <= length(word); char_index++)
-                var/character = copytext(word, char_index, char_index + 1)
-                if(!r_modified && (character == "r" || character == "R"))
-                    transformed_word += (character == "r") ? "rrr" : "Rrr"
-                    r_modified = TRUE
-                    continue
-                transformed_word += character
+            for(var/char_index = 1; char_index <= length(word); char_index++) 
+                var/character = copytext(word, char_index, char_index + 1) 
 
-            // Reduce too many r's in a row
+                if(!r_modified && (character == "r" || character == "R")) 
+                    if(character == "r")
+                        transformed_word += "rrr"
+                    else
+                        transformed_word += "Rrr"
+                    r_modified = TRUE
+                else
+                    transformed_word += character
+
+            // Reduction of too much "rrrrr" -> "rrr"
+            var/static/regex/multiple_lower_r = new("r{4,}", "g")
+            var/static/regex/multiple_upper_r = new("Rr{3,}", "g")
+
             transformed_word = multiple_lower_r.Replace(transformed_word, "rrr")
             transformed_word = multiple_upper_r.Replace(transformed_word, "Rrr")
+
             word_list[word_index] = transformed_word
 
         original_message = jointext(word_list, " ")
@@ -267,7 +272,7 @@
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/snail/handle_speech(datum/source, list/speech_args)
-	var	new_message
+	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
 		if(findtext("ABCDEFGHIJKLMNOPWRSTUVWXYZabcdefghijklmnopqrstuvwxyz", message[i])) //Im open to suggestions
