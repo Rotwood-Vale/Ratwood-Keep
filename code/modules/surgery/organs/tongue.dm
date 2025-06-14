@@ -73,15 +73,41 @@
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/tabaxi/handle_speech(datum/source, list/speech_args)
-	var/static/regex/tabaxi_purr = new("r+", "g")
-	var/static/regex/tabaxi_Purr = new("R+", "g")
-	var/message = speech_args[SPEECH_MESSAGE]
-	var/language = speech_args[5]
-	if(message[1] != "*" && (language != /datum/language/felid))
-		message = tabaxi_purr.Replace(message, "rrr")
-		message = tabaxi_Purr.Replace(message, "RRR")
-	speech_args[SPEECH_MESSAGE] = message
+    var/original_message = speech_args[SPEECH_MESSAGE]
+    var/language = speech_args[5]
 
+    if(original_message[1] != "*" && (language != /datum/language/felid))
+        var/list/word_list = splittext(original_message, " ") // Splits the message into words so we can process each one individually later, Regex would be harder to use for such.
+
+        for(var/word_index in 1 to word_list.len) 
+            var/word = word_list[word_index]
+            var/transformed_word = "" 
+            var/r_modified = FALSE
+
+            for(var/char_index = 1; char_index <= length(word); char_index++) 
+                var/character = copytext(word, char_index, char_index + 1) 
+
+                if(!r_modified && (character == "r" || character == "R")) 
+                    if(character == "r")
+                        transformed_word += "rrr"
+                    else
+                        transformed_word += "Rrr"
+                    r_modified = TRUE
+                else
+                    transformed_word += character
+
+            // Reduction of too much "rrrrr" -> "rrr"
+            var/static/regex/multiple_lower_r = new("r{4,}", "g")
+            var/static/regex/multiple_upper_r = new("Rr{3,}", "g")
+
+            transformed_word = multiple_lower_r.Replace(transformed_word, "rrr")
+            transformed_word = multiple_upper_r.Replace(transformed_word, "Rrr")
+
+            word_list[word_index] = transformed_word
+
+        original_message = jointext(word_list, " ")
+
+    speech_args[SPEECH_MESSAGE] = original_message
 
 /obj/item/organ/tongue/fly
 	name = "proboscis"
