@@ -19,8 +19,22 @@
 	outfit = /datum/outfit/job/roguetown/puritan
 	display_order = JDO_PURITAN
 	give_bank_account = 200
-	min_pq = 8
+	min_pq = 40
 	max_pq = null
+
+	cmode_music = 'sound/music/combat_inquisition.ogg'
+
+/datum/job/roguetown/puritan/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
+	..()
+	if(ishuman(L))
+		var/mob/living/carbon/human/H = L
+		var/prev_real_name = H.real_name
+		var/prev_name = H.name
+		var/title = "Inquisitor"
+		if(H.gender == FEMALE)
+			title = "Inquisitrix"
+		H.real_name = "[title] [prev_real_name]"
+		H.name = "[title] [prev_name]"
 
 /datum/outfit/job/roguetown/puritan
 	name = "Inquisitor"
@@ -49,7 +63,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -74,6 +88,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_INQUISITOR, TRAIT_GENERIC)
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Extract Confession"
