@@ -262,6 +262,13 @@
 	name = "silver psycross"
 	desc = "Make no mistake, son of PSYDON, this amulet is as valuable as any blade in your crusade. Inhumen monsters and cultists shrink at the sight of silver, for it is the All-Father's blood made manifest. So hoist it high, scream his name, and bathe this world in blood so that it might be redeemed."
 	icon_state = "psycross_s"
+	var/cooldowny
+	var/cdtime
+	var/activetime
+	var/activate_sound
+	var/active
+	cdtime = 5 MINUTES
+	activetime = 1 MINUTES
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/psicross/silver/pickup(mob/user)
@@ -312,23 +319,38 @@
 			H.Knockdown(20)
 			H.Paralyze(20)
 
-/obj/item/clothing/neck/roguetown/psicross/silver/equipped(mob/living/user, slot, initial = FALSE, silent = FALSE)
-	. = ..()
-	if(active_item)
+/obj/item/clothing/neck/roguetown/psicross/silver/attack_right(mob/user)
+	if(loc != user)
 		return
-	active_item = TRUE
-	if(HAS_TRAIT(user, TRAIT_ZEALOT))
-		to_chat(user, span_notice("The blood of PSYDON protects me against spells!"))
-		ADD_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
-	
-/obj/item/clothing/neck/roguetown/psicross/silver/dropped(mob/living/user)
-	if(!active_item)
+	if(cooldowny)
+		if(world.time < cooldowny + cdtime)
+			to_chat(user, span_warning("Nothing happens."))
+			return
+	if(!HAS_TRAIT(user, TRAIT_ZEALOT))
 		return
-	active_item = FALSE
-	if(HAS_TRAIT(user, TRAIT_ZEALOT))
-		to_chat(user, span_notice("As my silver psycross is removed, so too is the anti-magical protection it granted me."))
-		REMOVE_TRAIT(user, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
-	
+	user.visible_message(span_warning("[user] kisses the [src]!"))
+	if(activate_sound)
+		playsound(user, activate_sound, 100, FALSE, -1)
+	cooldowny = world.time
+	addtimer(CALLBACK(src, PROC_REF(demagicify)), activetime)
+	active = TRUE
+	update_icon()
+	activate(user)
+
+/obj/item/clothing/neck/roguetown/psicross/silver/proc/activate(mob/user)
+	user.update_inv_wear_id()
+	ADD_TRAIT(user, TRAIT_ANTIMAGIC, src)
+
+/obj/item/clothing/neck/roguetown/psicross/silver/proc/demagicify()
+	active = FALSE
+	update_icon()
+	if(ismob(loc))
+		var/mob/user = loc
+		user.visible_message(span_warning("The psycross settles down."))
+		user.update_inv_wear_id()
+		if(HAS_TRAIT(user, TRAIT_ANTIMAGIC))
+			REMOVE_TRAIT(user, TRAIT_ANTIMAGIC, src)
+
 /obj/item/clothing/neck/roguetown/psicross/g
 	name = "golden psycross"
 	desc = "A golden cross of PSYDON, the antithesis to heresy and patron of mankind. The Ten carry His will, yet His followers understand that their virtues stem from one single source, and that they must prepare the world for His inevitable return."
