@@ -85,12 +85,13 @@
 
 			var/word = word_list[word_index]
 			var/transformed_word = ""
+			var/replaced = FALSE
 
 			for(var/char_index = 1; char_index <= length(word); char_index++)
 				var/character = copytext(word, char_index, char_index + 1)
-				// Only affect r/R that are not at the start or end of the word
-				if((character == "r" || character == "R") && char_index != 1 && char_index != length(word))
+				if(!replaced && (character == "r" || character == "R") && char_index != 1 && char_index != length(word))
 					transformed_word += (character == "r") ? "rr" : "RR"
+					replaced = TRUE
 				else
 					transformed_word += character
 
