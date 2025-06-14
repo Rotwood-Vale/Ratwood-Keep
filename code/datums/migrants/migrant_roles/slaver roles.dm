@@ -214,7 +214,7 @@
 	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the Kingdom of Ferentia."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
@@ -249,5 +249,9 @@
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	if(istype(H.dna.species, /datum/species/goblinp))
+		H.set_patron(/datum/patron/inhumen/graggar)
+		ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
+		H.ventcrawler = 2
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
