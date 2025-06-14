@@ -146,7 +146,7 @@
 	if(!prob(success_chance))
 		on_failure(user, target, failure_severity)
 		if (break_on_fail)
-			failure_break()
+			failure_break(user)
 		return
 
 	playsound(src, 'sound/magic/whiteflame.ogg', 100, TRUE)
