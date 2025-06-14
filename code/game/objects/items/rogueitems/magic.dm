@@ -32,11 +32,11 @@
 	cooldown = 5 MINUTES
 
 /obj/item/scrying/examine(mob/user)
+	. = ..()
 	if(on_cooldown())
 		. += "The orb requires rest..."
 	else
 		. += "The orb seems eager to be used!"
-	..()
 
 /obj/item/scrying/proc/on_cooldown()
 	if (world.time < last_scry + (on_extended_cooldown ? extended_cooldown : cooldown))
