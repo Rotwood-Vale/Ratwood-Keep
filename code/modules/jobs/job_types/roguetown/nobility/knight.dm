@@ -68,6 +68,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 	beltr = /obj/item/rogueweapon/sword/short
 	beltl = /obj/item/storage/keyring/knight
+	backl = /obj/item/gwstrap
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -123,6 +124,7 @@
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1)
 	beltr = /obj/item/rogueweapon/sword/long
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	backl = /obj/item/gwstrap
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
@@ -212,4 +214,4 @@
 		if("Buckler and Steel Mace")
 			l_hand = /obj/item/rogueweapon/shield/buckler
 			beltr = /obj/item/rogueweapon/mace/steel
-			
+
