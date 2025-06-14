@@ -10,6 +10,8 @@
 	damage_deflection = 25
 	climbable = TRUE
 	smeltresult = /obj/item/ingot/iron
+	anchored = FALSE
+	drag_slowdown = 10
 	var/advance_multiplier = 1 //Lower for auto-striking
 
 /obj/machinery/anvil/crafted
@@ -107,11 +109,14 @@
 		hingot.currecipe.item_added(user)
 		qdel(W)
 		return
-
+	
 	if(W.anvilrepair)
-		user.visible_message(span_info("[user] places [W] on the anvil."))
-		W.forceMove(src.loc)
-		return
+		if(user.cmode)
+			..()
+		else
+			user.visible_message(span_info("[user] places [W] on the anvil."))
+			W.forceMove(src.loc)
+			return
 	..()
 
 
