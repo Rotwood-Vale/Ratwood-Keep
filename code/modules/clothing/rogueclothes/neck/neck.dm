@@ -267,6 +267,7 @@
 	var/activetime
 	var/activate_sound
 	var/active
+	activate_sound = 'sound/magic/antimagic.ogg'
 	cdtime = 5 MINUTES
 	activetime = 1 MINUTES
 	sellprice = 50
