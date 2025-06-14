@@ -34,7 +34,7 @@
 
 
 
-/mob/living/carbon/human/species/human/northern/dungeon_base/Life(datum/controller/process/mobs/parent)
+/mob/living/carbon/human/species/human/northern/dungeon_base/Life()
 	. = ..()
 	npc_idle()
 	npc_combat()
