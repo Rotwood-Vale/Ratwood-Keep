@@ -149,6 +149,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/wlength = WLENGTH_NORMAL		//each weapon length class has its own inherent dodge properties
 	var/wbalance = 0
 	var/wdefense = 0 //better at defending
+	var/wieldedwdefense = 3 //Bonus for wielding, default to 3 for all weapons
 	var/minstr = 0  //for weapons
 
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
@@ -1215,7 +1216,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	wielded = TRUE
 	if(force_wielded)
 		force = force_wielded
-	wdefense = wdefense + 3
+	wdefense = wdefense + wieldedwdefense
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
