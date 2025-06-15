@@ -29,8 +29,9 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_ACCURACY_HIGH_NPC, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_PARRY_HIGH_NPC, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_ACCURACY_MID_NPC, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_PARRY_MID_NPC, TRAIT_GENERIC)
 
 
 
@@ -341,6 +342,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/rogueweapon/sword/iron/short
+	r_hand = /obj/item/rogueweapon/sword/iron/short
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 
 	H.STASTR = 12
@@ -443,29 +445,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // NPC SPELLS // DONT GIVE THEM TO PLAYERS  YOU RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
 // CLERIC
@@ -562,11 +541,11 @@
 		span_userdanger("Your leg nearly buckles!")
 	)
 
-	if(prob(30))
+	if(prob(10))
 		target.Stun(20)
 		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_R_LEG)
 
-	if(prob(30))
+	if(prob(10))
 		target.Stun(20)
 		target.apply_damage(rand(20, 70), BRUTE, BODY_ZONE_L_LEG)
 
@@ -608,7 +587,7 @@
 		target.adjust_blurriness(3)
 		target.emote("cry")
 		target.apply_damage(rand(10, 60), BRUTE, BODY_ZONE_HEAD)
-	if(prob(20)) //STUN
+	if(prob(10)) //STUN
 		target.Stun(20)
 		target.Knockdown(20)
 		target.apply_damage(rand(10, 60), BRUTE, BODY_ZONE_HEAD)
