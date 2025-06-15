@@ -164,6 +164,7 @@ GLOBAL_LIST(teleport_runes)
 			invoke(invokers)
 		else
 			to_chat(user, span_danger("You need [req_invokers - length(invokers)] more adjacent invokers to use this rune in such a manner."))	//Needs more invokers, fails invoke
+			rune_in_use = FALSE
 			fail_invoke()
 	else
 		var/list/invokers = can_invoke(user)
@@ -674,7 +675,6 @@ GLOBAL_LIST(teleport_runes)
 	for(var/obj/effect/decal/cleanable/roguerune/arcyne/teleport/teleport_rune as anything in GLOB.teleport_runes)
 		if(teleport_rune != src)
 			potential_runes[avoid_assoc_duplicate_keys(teleport_rune.listkey, teleportnames)] = teleport_rune
-
 	if(!length(potential_runes))
 		to_chat(user, span_warning("There are no valid runes to teleport to!"))
 		log_game("Teleport rune activated by [user] at [COORD(src)] failed - no other teleport runes.")

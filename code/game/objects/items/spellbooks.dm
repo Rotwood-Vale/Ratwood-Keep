@@ -27,6 +27,7 @@
 	var/picked // if the book has had it's style picked or not
 	var/born_of_rock = FALSE // was a magical stone used to make it instead of a gem?
 	var/bookquality = 3
+	var/imbued = FALSE
 /obj/item/book/granter/spellbook/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -390,22 +391,29 @@
 							user.visible_message(span_warning("[user] carefully sets down [the_rock] upon [src]. Nothing happens for a moment or three, then suddenly, the glow surrounding the stone becomes as liquid, seeps down and soaks into the tome!"), \
 							span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!"))
 							to_chat(user, span_notice("...what in the world does any of this scribbling possibly mean?"))
-							if(the_rock.magic_power <=5)
+							if(the_rock.magic_power <=2)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/horrible(loc)
 								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
-							else if(the_rock.magic_power >5 && the_rock.magic_power <=9)
+							else if(the_rock.magic_power >=3 && the_rock.magic_power <=7)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/mid(loc)
 								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
-							else if(the_rock.magic_power >=10)
+							else if(the_rock.magic_power >=8 && the_rock.magic_power <=9)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
+								newbook.owner = user
+								newbook.born_of_rock = TRUE
+								newbook.desc += " Traces of multicolored stone limn its margins."
+								qdel(P)
+								qdel(src)
+							else if(the_rock.magic_power >=10)
+								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/adept(loc)
 								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
@@ -438,14 +446,56 @@
 					user.electrocute_act(20, src)
 					qdel(P)
 		return ..()
-	else if (istype(P, /obj/item/natural/melded/t2))
+/obj/item/book/granter/spellbook/apprentice/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if (istype(P, /obj/item/natural/artifact))
 		if(isturf(loc) && (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				imbued = TRUE
+				to_chat(user, span_notice("I channel my mana into [src] and it resonates with [P], purifying the arcyne as it floods into [src]."))
+				qdel(P)
+	if(!imbued)
+		to_chat(user, span_notice("My spellbook needs ancient mana imbued by a runed artifact before I can improve it!"))
+		return
+	if (istype(P, /obj/item/natural/melded/t1))
+		if(isturf(loc) && (found_table) && imbued)
 			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
-						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
+					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/adept(loc)
+					newbook.owner = user
+					qdel(P)
+					qdel(src)
+				else
+					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, the [P] violently explodes!"), \
+					span_notice("I should have known messing with the arcyne as dangerous!"))
+					user.electrocute_act(40, src)
+					qdel(P)
+/obj/item/book/granter/spellbook/adept/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if (istype(P, /obj/item/natural/artifact))
+		if(isturf(loc) && (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				imbued = TRUE
+				to_chat(user, span_notice("I channel my mana into [src] and it resonates with [P], purifying the arcyne as it floods into [src]."))
+				qdel(P)
+	if(!imbued)
+		to_chat(user, span_notice("My spellbook needs ancient mana imbued by a runed artifact before I can improve it!"))
+		return
+	if (istype(P, /obj/item/natural/melded/t2))
+		if(isturf(loc) && (found_table) && imbued)
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				if (isarcyne(user))
+					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/expert(loc)
 					newbook.owner = user
@@ -456,14 +506,26 @@
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(40, src)
 					qdel(P)
-	else if (istype(P, /obj/item/natural/melded/t3))
+/obj/item/book/granter/spellbook/expert/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if (istype(P, /obj/item/natural/artifact))
+		if(isturf(loc) && (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				imbued = TRUE
+				to_chat(user, span_notice("I channel my mana into [src] and it resonates with [P], purifying the arcyne as it floods into [src]."))
+				qdel(P)
+	if(!imbued)
+		to_chat(user, span_notice("My spellbook needs ancient mana imbued by a runed artifact before I can improve it!"))
+		return
+	if (istype(P, /obj/item/natural/melded/t3))
 		if(isturf(loc) && (found_table))
 			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
-						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+						span_notice("I join my arcyne energy with that of  [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/master(loc)
 					newbook.owner = user
@@ -474,14 +536,26 @@
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(60, src)
 					qdel(P)
-	else if (istype(P, /obj/item/natural/melded/t4))
+/obj/item/book/granter/spellbook/master/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if (istype(P, /obj/item/natural/artifact))
+		if(isturf(loc) && (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				imbued = TRUE
+				to_chat(user, span_notice("I channel my mana into [src] and it resonates with [P], purifying the arcyne as it floods into [src]."))
+				qdel(P)
+	if(!imbued)
+		to_chat(user, span_notice("My spellbook needs ancient mana imbued by a runed artifact before I can improve it!"))
+		return
+	if (istype(P, /obj/item/natural/melded/t4))
 		if(isturf(loc) && (found_table))
 			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
-						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/legendary(loc)
 					newbook.owner = user
