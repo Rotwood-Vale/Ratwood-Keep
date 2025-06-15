@@ -434,7 +434,7 @@
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 					user.visible_message(span_warning("[user] imbues [user.p_their()] [P]! It fuses into the [src]."), \
-						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/adept(loc)
 					newbook.owner = user
@@ -494,7 +494,7 @@
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
-					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into [src]."), \
 						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/expert(loc)
@@ -502,7 +502,7 @@
 					qdel(P)
 					qdel(src)
 				else
-					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, the [P] violently explodes!"), \
+					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, [P] violently explodes!"), \
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(40, src)
 					qdel(P)
@@ -524,15 +524,15 @@
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
-					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
-						span_notice("I join my arcyne energy with that of  [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into [src]."), \
+						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/master(loc)
 					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
-					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, the [P] violently explodes!"), \
+					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, [P] violently explodes!"), \
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(60, src)
 					qdel(P)
@@ -554,7 +554,7 @@
 			if(do_after(user, crafttime, target = src))
 				if (isarcyne(user))
 					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
-					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into [src]."), \
 						span_notice("I join my arcyne energy with that of [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/legendary(loc)
@@ -562,7 +562,7 @@
 					qdel(P)
 					qdel(src)
 				else
-					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, the [P] violently explodes!"), \
+					user.visible_message(span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, [P] violently explodes!"), \
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(80, src)
 					qdel(P)
