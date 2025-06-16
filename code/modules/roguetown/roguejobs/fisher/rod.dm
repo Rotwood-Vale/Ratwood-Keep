@@ -103,14 +103,12 @@
 		return
 
 	var/caught_thing = pickweight(baited.fishloot)
-	var/obj/item/I = new caught_thing()
-
-	I.forceMove(current_fisherman.loc)
+	var/obj/item/I = new caught_thing(current_fisherman.loc)
 
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fish))
 		var/obj/item/reagent_containers/food/snacks/fish/F = I
 		F.fished_from = target
-		F.Initialize()
+		F.set_rarity()
 		
 	amt2raise = current_fisherman.STAINT * 2
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)

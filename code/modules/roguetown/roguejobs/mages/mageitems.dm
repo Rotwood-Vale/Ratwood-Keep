@@ -244,16 +244,6 @@
 	return FALSE
 
 
-
-/obj/item/roguegem/amethyst
-	name = "amythortz"
-	icon_state = "amethyst"
-	sellprice = 0
-	arcyne_potency = 25
-	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
-
-
-
 /obj/item/mimictrinket
 	name = "mimic trinket"
 	desc = "A small mimic, imbued with the arcane to make it docile. It can transform into most things it touchs. "
