@@ -12,7 +12,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "ac" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "ad" = (
@@ -3034,12 +3034,12 @@
 	},
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
-"Cd" = (
-/obj/structure/mineral_door/wood/donjon{
-	dir = 4;
-	locked = 1;
-	lockid = "gobbo";
-	name = "Smithery"
+"BZ" = (
+/obj/structure/fluff/wallclock/r,
+/obj/structure/fermentation_keg/random/water,
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
 	},
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/town/goblin)
@@ -3369,14 +3369,10 @@
 "HM" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/banditcamp)
-"HO" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/greenstone,
-/area/rogue/under/town/goblin)
-"HP" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/blocks{
-	icon_state = "paving"
+"Ig" = (
+/obj/structure/fermentation_keg/random/beer,
+/turf/open/floor/rogue/tile{
+	icon_state = "chess"
 	},
 /area/rogue/under/town/goblin)
 "HQ" = (
@@ -3388,27 +3384,9 @@
 	pixel_x = 32
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
-"Ig" = (
-/obj/structure/table/wood{
-	icon_state = "tablewood1"
-	},
-/obj/item/natural/feather,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/item/paper/scroll,
-/obj/structure/roguemachine/mail{
-	mailtag = "Goblin Encampment"
-	},
-/turf/open/floor/rogue/cobble,
-/area/rogue/under/town/goblin)
-"Ih" = (
-/obj/structure/fermenting_barrel/beer,
+/area/rogue)
+"It" = (
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
 "In" = (
@@ -3662,9 +3640,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "LN" = (
-/obj/item/roguebin/water,
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/under/town/goblin)
+/obj/structure/fermentation_keg/random/water,
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/banditcamp)
 "LS" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	locked = 1

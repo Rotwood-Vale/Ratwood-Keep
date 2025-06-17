@@ -17,7 +17,11 @@
 	layer = BELOW_OBJ_LAYER
 	var/keycontrol = "steward"
 	var/current_tab = TAB_MAIN
-	var/compact = FALSE
+	var/compact = TRUE
+	var/total_deposit = 0
+	var/list/excluded_jobs = list("Wretch","Vagabond","Adventurer")
+	var/current_category = "Raw Materials"
+	var/list/categories = list("Raw Materials", "Foodstuffs", "Fruits")
 
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)

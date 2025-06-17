@@ -153,7 +153,74 @@
 			return
 	..()
 
-/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
+// Called whenever this container is successfully filled via the target.
+/obj/item/reagent_containers/glass/proc/onfill(obj/target, mob/user, silent = FALSE)
+
+/obj/item/reagent_containers/glass/bucket
+	name = "bucket"
+	desc = ""
+	icon = 'icons/roguetown/items/misc.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	icon_state = "woodbucket"
+	item_state = "woodbucket"
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
+	max_integrity = 300
+	w_class = WEIGHT_CLASS_BULKY
+	force = 5
+	throwforce = 10
+	amount_per_transfer_from_this = 33
+	possible_transfer_amounts = list(33)
+	volume = 99
+	flags_inv = HIDEHAIR
+	reagent_flags = OPENCONTAINER
+	obj_flags = CAN_BE_HIT
+	gripped_intents = list(INTENT_POUR)
+	dropshrink = 0.8
+	slot_flags = null
+	resistance_flags = NONE
+	armor = list("blunt" = 25, "slash" = 20, "stab" = 15, "piercing" = 0, "fire" = 75, "acid" = 50) //Weak melee protection, because you can wear it on your head
+	slot_equipment_priority = list( \
+		SLOT_BACK, SLOT_RING,\
+		SLOT_PANTS, SLOT_ARMOR,\
+		SLOT_WEAR_MASK, SLOT_HEAD, SLOT_NECK,\
+		SLOT_SHOES, SLOT_GLOVES,\
+		SLOT_HEAD, SLOT_GLASSES,\
+		SLOT_BELT, SLOT_S_STORE,\
+		SLOT_L_STORE, SLOT_R_STORE,\
+		SLOT_GENERC_DEXTROUS_STORAGE
+	)
+
+/obj/item/reagent_containers/glass/bucket/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -5,"sy" = -8,"nx" = 7,"ny" = -9,"wx" = -1,"wy" = -8,"ex" = -1,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+
+/obj/item/reagent_containers/glass/bucket/update_icon(dont_fill=FALSE)
+	if(dont_fill)
+		testing("dontfull")
+		return ..()
+
+	cut_overlays()
+
+	if(reagents.total_volume > 0)
+		if(reagents.total_volume <= 50)
+			var/mutable_appearance/filling = mutable_appearance(icon, "bucket_half")
+			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
+			add_overlay(filling)
+
+		if(reagents.total_volume > 50)
+			var/mutable_appearance/filling = mutable_appearance(icon, "bucket_full")
+			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
+			add_overlay(filling)
+
+
+/obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
 	..()
 	if (slot == SLOT_HEAD)
 		if(reagents.total_volume)
