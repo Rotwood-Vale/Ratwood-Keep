@@ -67,3 +67,7 @@
 			L+= path
 		return L
 
+// Loadout items
+	for (var/path in subtypesof(/datum/loadout_item))
+		var/datum/loadout_item/loadout_item = new path()
+		GLOB.loadout_items[path] = loadout_item
