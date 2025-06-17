@@ -56,6 +56,17 @@
 				L.out_of_lives = TRUE
 				gib()
 				return
+	
+	// Check if the player was killed by the Serial Killer.
+	if(mind)
+		if(SSticker.mode)
+			var/datum/game_mode/C = SSticker.mode
+			if((src.lastattackerckey in C.serial_killer_ckeys))
+				var/mob/living/carbon/human/SK_owner = get_mob_by_ckey(src.lastattackerckey)
+				if(SK_owner && SK_owner.mind)
+					var/datum/antagonist/serial_killer/SK = SK_owner.mind.has_antag_datum(/datum/antagonist/serial_killer)
+					if(SK) SK.on_kill(src)
+
 
 	if(!gibbed)
 		var/datum/antagonist/zombie/zomble = mind?.has_antag_datum(/datum/antagonist/zombie)

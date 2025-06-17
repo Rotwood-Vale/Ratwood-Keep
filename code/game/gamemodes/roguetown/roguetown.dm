@@ -1,5 +1,5 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
+var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Serial Killer", "Cultists", "Lich", "CANCEL") // This is mainly used for forcemgamemodes
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -149,9 +149,9 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 				if("Aspirants")
 					pick_aspirants()
 					log_game("Minor Antagonist: Aspirant")
-				if("Maniac")
-					pick_maniac()
-					log_game("Minor Antagonist: Maniac")
+				if("Serial Killer")
+					pick_serial_killer()
+					log_game("Minor Antagonist: Serial Killer")
 				if("Lich")
 					pick_lich()
 					log_game("Major Antagonist: Lich")
@@ -206,11 +206,11 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
 
-/*
-	if(prob(10))
-		pick_maniac()
-		log_game("Minor Antagonist: Maniac")
-*/
+
+	if(prob(15))
+		pick_serial_killer()
+		log_game("Minor Antagonist: Serial Killer")
+
 
 	return TRUE
 
@@ -369,9 +369,34 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 		GLOB.pre_setup_antags |= antag
 	restricted_jobs = list()
 
-/datum/game_mode/chaosmode/proc/pick_maniac()
-	restricted_jobs = list("Duke", "Duke Consort")
-	antag_candidates = get_players_for_role(ROLE_MANIAC)
+/datum/game_mode/chaosmode/proc/pick_serial_killer()
+	restricted_jobs = list(
+	"Duke",
+	"Duke Consort",
+	"Inquisitor",
+	"Confessor",
+	"Watchman",
+	"Man at Arms",
+	"Priest",
+	"Acolyte",
+	"Cleric",
+	"Retinue Captain",
+	"Court Magos",
+	"Templar",
+	"Vanguard",
+	"Warden",
+	"Knight",
+	"Mortician",
+	"Mercenary",
+	"Bandit",
+	"Goblin Chief",
+	"Goblin Cook",
+	"Goblin Guard",
+	"Goblin Rabble",
+	"Goblin Smith",
+	"Goblin Shaman"
+	)
+	antag_candidates = get_players_for_role(ROLE_SERIALKILLER)
 	var/datum/mind/villain = pick_n_take(antag_candidates)
 	if(villain)
 		var/blockme = FALSE
@@ -381,7 +406,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 			return
 		allantags -= villain
 		pre_villains += villain
-		villain.special_role = ROLE_MANIAC
+		villain.special_role = ROLE_SERIALKILLER
 		villain.restricted_roles = restricted_jobs.Copy()
 		testing("[key_name(villain)] has been selected as the [villain.special_role]")
 		log_game("[key_name(villain)] has been selected as the [villain.special_role]")
@@ -598,7 +623,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	set waitfor = FALSE
 ///////////////// VILLAINS
 	for(var/datum/mind/traitor in pre_villains)
-		var/datum/antagonist/new_antag = new /datum/antagonist/maniac()
+		var/datum/antagonist/new_antag = new /datum/antagonist/serial_killer()
 		addtimer(CALLBACK(traitor, TYPE_PROC_REF(/datum/mind, add_antag_datum), new_antag), rand(10,100))
 		GLOB.pre_setup_antags -= traitor
 		villains += traitor
@@ -697,15 +722,15 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	var/num_villains = round((num_players() * 0.30)+1, 1)
 	if((villains.len + pre_villains.len) >= num_villains) //Upper cap for number of latejoin antagonists
 		return
-	if(ROLE_MANIAC in character.client.prefs.be_special)
-		if(!is_antag_banned(character.ckey, ROLE_MANIAC) && !QDELETED(character))
+	if(ROLE_SERIALKILLER in character.client.prefs.be_special)
+		if(!is_antag_banned(character.ckey, ROLE_SERIALKILLER) && !QDELETED(character))
 			if(age_check(character.client))
 				if(!(character.job in restricted_jobs))
 					if(prob(66))
 						add_latejoin_villain(character.mind)
 
 /datum/game_mode/chaosmode/proc/add_latejoin_villain(datum/mind/character)
-	var/datum/antagonist/maniac/new_antag = new /datum/antagonist/maniac()
+	var/datum/antagonist/serial_killer/new_antag = new /datum/antagonist/serial_killer()
 	character.add_antag_datum(new_antag)
 
 /datum/game_mode/chaosmode/proc/vampire_werewolf()

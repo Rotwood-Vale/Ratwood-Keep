@@ -263,14 +263,14 @@
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
 
-/atom/movable/screen/fullscreen/maniac 
+/atom/movable/screen/fullscreen/serialkiller
 	icon = 'icons/roguetown/maniac/fullscreen.dmi'
 	icon_state = "hall0"
 	alpha = 0
 	/// Amount of hallucination icon states we have
 	var/hall_amount = 13
 
-/atom/movable/screen/fullscreen/maniac/proc/jumpscare(mob/living/scared, silent = FALSE, fade_in = 0.2 SECONDS, duration = 0.5 SECONDS, fade_out = 1 SECONDS)
+/atom/movable/screen/fullscreen/serialkiller/proc/jumpscare(mob/living/scared, silent = FALSE, fade_in = 0.2 SECONDS, duration = 0.5 SECONDS, fade_out = 1 SECONDS)
 	if(!silent)
 		var/static/list/spookies = list(
 			'sound/villain/hall_appear1.ogg',

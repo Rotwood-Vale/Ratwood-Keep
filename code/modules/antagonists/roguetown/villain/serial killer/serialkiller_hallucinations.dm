@@ -1,20 +1,17 @@
+/mutable_appearance/SK_hallucination
+    name = "Serialkiller"
+    var/timetodelete
+
+/mutable_appearance/SK_hallucination/New()
+    ..()
+    timetodelete = world.time + rand(3 SECONDS, 10 SECONDS)
+
+/mutable_appearance/SK_hallucination/process()
+    if(world.time >= timetodelete)
+        QDEL_NULL(src)
 
 
-//Processing procs related to dreamer, so he hallucinates and shit
-/datum/antagonist/maniac/process()
-	if(!owner.current || triumphed)
-		STOP_PROCESSING(SSobj, src)
-		return
-	handle_maniac_visions(owner.current, hallucinations)
-	if(waking_up)
-		handle_waking_up(owner.current)
-	else
-		handle_maniac_hallucinations(owner.current)
-	handle_maniac_floors(owner.current)
-	handle_maniac_walls(owner.current)
-
-
-/proc/handle_maniac_visions(mob/living/target, atom/movable/screen/fullscreen/maniac/hallucinations)
+/proc/handle_serialkiller_visions(mob/living/target, atom/movable/screen/fullscreen/serialkiller/hallucinations)
 	if(prob(4))
 		hallucinations.jumpscare(target)
 	//Random laughter
@@ -27,15 +24,28 @@
 		)
 		target.playsound_local(target, pick(funnies), vol = 100, vary = FALSE)
 
-/proc/handle_maniac_hallucinations(mob/living/target)
+/proc/handle_serialkiller_hallucinations(mob/living/target)
 	//Chasing mob
 	if(prob(1))
-		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_mob_hallucination), target)
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_mob_hallucination), target)
 	//Talking objects
 	else if(prob(4))
-		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_object_hallucination), target)
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_object_hallucination), target)
 
-/proc/handle_maniac_object_hallucination(mob/living/target)
+/proc/handle_serialkiller_object_hallucination(mob/living/target)
+	var/static/list/speech_sounds = list(
+		'sound/villain/male_talk1.ogg',
+		'sound/villain/male_talk2.ogg',
+		'sound/villain/male_talk3.ogg',
+		'sound/villain/male_talk4.ogg',
+		'sound/villain/male_talk5.ogg',
+		'sound/villain/male_talk6.ogg',
+		'sound/villain/female_talk1.ogg',
+		'sound/villain/female_talk2.ogg',
+		'sound/villain/female_talk3.ogg',
+		'sound/villain/female_talk4.ogg',
+		'sound/villain/female_talk5.ogg',
+	)
 	var/list/objects = list()
 	for(var/obj/object in view(target))
 		if((object.invisibility > target.see_invisible) || !object.loc || !object.name)
@@ -51,25 +61,12 @@
 	objects -= target.contents
 	if(!length(objects))
 		return
-	var/static/list/speech_sounds = list(
-		'sound/villain/female_talk1.ogg',
-		'sound/villain/female_talk2.ogg',
-		'sound/villain/female_talk3.ogg',
-		'sound/villain/female_talk4.ogg',
-		'sound/villain/female_talk5.ogg',
-		'sound/villain/male_talk1.ogg',
-		'sound/villain/male_talk2.ogg',
-		'sound/villain/male_talk3.ogg',
-		'sound/villain/male_talk4.ogg',
-		'sound/villain/male_talk5.ogg',
-		'sound/villain/male_talk6.ogg',
-	)
 	var/obj/speaker = pickweight(objects)
 	var/speech
 	if(prob(1))
 		speech = "[rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)]"
 	else
-		speech = pick_list_replacements("maniac.json", "dreamer_object")
+		speech = pick_list_replacements("serial_killer.json", "objects")
 		speech = replacetext(speech, "%OWNER", "[target.real_name]")
 	var/language = target.get_random_understood_language()
 	var/message = target.compose_message(speaker, language, speech)
@@ -78,7 +75,7 @@
 		target.create_chat_message(speaker, language, speech, spans = list(target.speech_span))
 	to_chat(target, message)
 
-/proc/handle_maniac_mob_hallucination(mob/living/target)
+/proc/handle_serialkiller_mob_hallucination(mob/living/target)
 	if(!target.client)
 		return
 	var/mob_message = pick("It's mom!", "I have to HURRY UP!", "They are CLOSE!","They are NEAR!")
@@ -128,11 +125,11 @@
 	if(!target?.client)
 		return
 	if(caught_dreamer)
-		var/datum/antagonist/maniac/maniac = target.mind.has_antag_datum(/datum/antagonist/maniac)
+		var/datum/antagonist/serial_killer/SK = target.mind.has_antag_datum(/datum/antagonist/serial_killer)
 		target.Stun(rand(2, 4) SECONDS)
 		var/pain_message = pick("NO!", "THEY GOT ME!", "AGH!")
 		to_chat(target, span_userdanger("[pain_message]"))
-		if(!maniac) //If they're a maniac, they don't freak out and get knocked down, they still get stunned. 
+		if(!SK) //If they're a serial killer, they don't freak out and get knocked down, they still get stunned. 
 			target.freak_out()
 			target.Knockdown(10)
 	sleep(chase_wait)
@@ -140,67 +137,44 @@
 		return
 	target.client.images -= mob_image
 
-/proc/handle_maniac_floors(mob/living/target)
+/proc/handle_serialkiller_floors(mob/living/target)
 	if(!target.client)
 		return
 	//Floors go crazy go stupid
 	for(var/turf/open/floor in view(target))
 		if(!prob(7))
 			continue
-		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_floor), floor, target)
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_floor), floor, target)
 
-/proc/handle_maniac_floor(turf/open/floor, mob/living/target)
-	var/mutable_appearance/fake_floor = image(floor.icon, floor, floor.icon_state, floor.layer + 0.01)
-	target.client.images += fake_floor
+/proc/handle_serialkiller_floor(turf/open/floor, mob/living/target)
+	var/mutable_appearance/SK_hallucination/schizo_floor = image(floor.icon, floor, floor.icon_state, floor.layer + 0.01)
+	target.client.images += schizo_floor
 	var/offset = pick(-3,-2, -1, 1, 2, 3)
 	var/disappearfirst = rand(1 SECONDS, 3 SECONDS) * abs(offset)
-	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
+	animate(schizo_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
 	sleep(disappearfirst)
 	var/disappearsecond = rand(1 SECONDS, 3 SECONDS) * abs(offset)
-	animate(fake_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
+	animate(schizo_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
-	target.client?.images -= fake_floor
+	target.client?.images -= schizo_floor
 
-/proc/handle_maniac_walls(mob/living/target)
+/proc/handle_serialkiller_walls(mob/living/target)
 	if(!target.client)
 		return
 	//Shit on THA walls
 	for(var/turf/closed/wall in view(target))
 		if(!prob(4))
 			continue
-		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_maniac_wall), wall, target)
+		INVOKE_ASYNC(target, GLOBAL_PROC_REF(handle_serialkiller_wall), wall, target)
 
-/proc/handle_maniac_wall(turf/closed/wall, mob/living/target)
-	var/image/shit = image('icons/roguetown/maniac/shit.dmi', wall, "splat[rand(1,8)]")
-	target.client?.images += shit
+/proc/handle_serialkiller_wall(turf/closed/wall, mob/living/target)
+	var/mutable_appearance/SK_hallucination/schizo_wall = image('icons/roguetown/maniac/shit.dmi', wall, "splat[rand(1,8)]")
+	target.client?.images += schizo_wall
 	var/offset = pick(-1, 1, 2)
 	var/disappearfirst = rand(2 SECONDS, 4 SECONDS)
-	animate(shit, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
+	animate(schizo_wall, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
 	sleep(disappearfirst)
 	var/disappearsecond = rand(2 SECONDS, 4 SECONDS)
-	animate(shit, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
+	animate(schizo_wall, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
 	sleep(disappearsecond)
-	target.client?.images -= shit
-
-/datum/antagonist/maniac/proc/handle_waking_up(mob/living/dreamer)
-	if(!dreamer.client)
-		return
-	if(prob(2.5))
-		dreamer.emote("laugh")
-	//Floors go crazier go stupider
-	for(var/turf/open/floor in view(dreamer))
-		if(!prob(20))
-			continue
-		INVOKE_ASYNC(src, PROC_REF(handle_waking_up_floor), floor, dreamer)
-
-/datum/antagonist/maniac/proc/handle_waking_up_floor(turf/open/floor, mob/living/dreamer)
-	var/mutable_appearance/fake_floor = image('icons/roguetown/maniac/dreamer_floors.dmi', floor,  pick("rcircuitanim", "gcircuitanim"), floor.layer + 0.1)
-	dreamer.client.images += fake_floor
-	var/offset = pick(-1, 1, 2)
-	var/disappearfirst = 3 SECONDS
-	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
-	sleep(disappearfirst)
-	var/disappearsecond = 3 SECONDS
-	animate(fake_floor, pixel_y = -offset, time = disappearsecond, flags = ANIMATION_RELATIVE)
-	sleep(disappearsecond)
-	dreamer.client?.images -= fake_floor
+	target.client?.images -= schizo_wall
