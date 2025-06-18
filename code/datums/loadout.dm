@@ -1,4 +1,11 @@
-GLOBAL_LIST_EMPTY(loadout_items)
+/proc/init_loadout()
+    var/list/L = list()
+    for (var/path in subtypesof(/datum/loadout_item))
+        var/datum/loadout_item/loadout_item = new path()
+        L[path] = loadout_item
+    return L
+
+GLOBAL_LIST_INIT(loadout_items, /proc/init_loadout)
 
 /datum/loadout_item
 	var/name = "Parent loadout datum"
