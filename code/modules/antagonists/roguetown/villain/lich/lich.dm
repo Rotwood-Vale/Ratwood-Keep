@@ -224,6 +224,7 @@
 	new_body.mob_biotypes |= MOB_UNDEAD
 	new_body.set_patron(/datum/patron/zizo)
 	new_body.mind.grab_ghost(force = TRUE)
+	new_body.faction = list("undead")
 
 	for (var/obj/item/bodypart/body_part in new_body.bodyparts)
 		body_part.skeletonize(FALSE)

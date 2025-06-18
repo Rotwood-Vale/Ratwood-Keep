@@ -41,7 +41,7 @@
 
 /datum/crafting_recipe/roguetown/structure/onager_unfinished_stage_0
 
-	name = "Unfinished Onager"
+	name = "Unfinished Onager - (10 stones, 10 planks; HAMMER; COMPETENT)"
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	reqs = list(/obj/item/natural/stone = 10, /obj/item/natural/wood/plank = 10)
 	result = /obj/structure/multistage/onager_unfinished
@@ -51,7 +51,7 @@
 	always_available = TRUE
 
 /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_1
-	name = "Unfinished Onager"
+	name = "Unfinished Onager - (3 iron ingots; HAMMER; PROFICIENT)"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	reqs = list(/obj/item/ingot/iron = 3)
@@ -60,7 +60,7 @@
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_2
-	name = "Unfinished Onager"
+	name = "Unfinished Onager - (5 ropes, 3 bronze ingots; HAMMER; PROFICIENT)"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	reqs = list(/obj/item/rope = 5, /obj/item/roguegear/bronze= 3)
@@ -69,7 +69,7 @@
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/multistage/onager_unfinished_stage_3
-	name = "Unfinished Onager"
+	name = "Unfinished Onager - (2 steel ingots; HAMMER; PROFICIENT)"
 
 	tools = list(/obj/item/rogueweapon/hammer = 1)
 	reqs = list(/obj/item/ingot/steel = 2)

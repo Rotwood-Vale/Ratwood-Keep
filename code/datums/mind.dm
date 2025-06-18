@@ -151,7 +151,12 @@
 		var/used_title = H.get_role_title()
 		if(!used_title)
 			used_title = "unknown"
+
+		var/datum/job/roguetown/job = SSjob.GetJob(H.job)
+		if (job && job.should_anonymise_job())
+			used_title = "Foreigner"
 		known_people[H.real_name]["FJOB"] = used_title
+
 		known_people[H.real_name]["FGENDER"] = H.gender
 		known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 		known_people[H.real_name]["FAGE"] = H.age
@@ -180,7 +185,12 @@
 						used_title = J.f_title
 				if(!used_title)
 					used_title = "unknown"
+
+				var/datum/job/roguetown/job = SSjob.GetJob(H.job)
+				if (job && job.should_anonymise_job())
+					used_title = "Foreigner"
 				M.known_people[H.real_name]["FJOB"] = used_title
+
 				M.known_people[H.real_name]["FGENDER"] = H.gender
 				M.known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 				M.known_people[H.real_name]["FAGE"] = H.age

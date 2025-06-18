@@ -252,7 +252,6 @@
 			mmb_intent = new INTENT_JUMP(src) // switch to jump intent
 		used_intent = mmb_intent
 		. = try_jump(jump_destination) // return whether the jump succeeded or failed
-		used_intent = null
 		QDEL_NULL(mmb_intent) // unset our intent after
 		m_intent = old_m_intent
 		if(.)
@@ -525,6 +524,53 @@
 
 	return FALSE
 
+/mob/living/carbon/human/deadite/npc_try_backstep()
+	return FALSE // deadites cannot juke
+
+/mob/living/carbon/human/proc/npc_try_backstep()
+	// JUKE: backstep after attacking if you're fast and have movement left
+	var/const/base_juke_chance = 5
+	// for every point of STASPD above 10 you get an extra 5% juke chance
+	var/const/min_spd_for_juke = 10
+	var/const/juke_per_overspd = 5
+	if(mind?.has_antag_datum(/datum/antagonist/zombie)) // deadites cannot juke
+		return FALSE
+	if(!target)
+		return FALSE
+	if(steps_moved_this_turn >= maxStepsTick) // no movement left over
+		return FALSE
+	var/juke_spd_bonus = STASPD > min_spd_for_juke ? (STASPD - min_spd_for_juke) * juke_per_overspd : 0
+	if(!prob(base_juke_chance + juke_spd_bonus))
+		NPC_THINK("Failed juke roll ([base_juke_chance + juke_spd_bonus]%)!")
+		return FALSE
+	NPC_THINK("Succeeded juke roll ([base_juke_chance + juke_spd_bonus]%)!")
+	tempfixeye = TRUE //Change icon to 'target' red eye
+	if(!fixedeye) //If fixedeye isn't already enabled, we need to set this var
+		nodirchange = TRUE
+	var/list/newPath = list()
+	var/turf/lastTurf
+	// Use up to half your remaining distance, with a minimum of one tile.
+	var/juke_distance = rand(1, ceil((maxStepsTick - steps_moved_this_turn)/2))
+	for(var/i in 1 to juke_distance)
+		// pick random turfs to juke to until we're out of movement
+		var/list/turf/juke_candidates = get_dodge_destinations(target, lastTurf)
+		if(!length(juke_candidates))
+			break
+		lastTurf = pick(juke_candidates)
+		newPath += lastTurf
+	if(!length(newPath))
+		return FALSE
+	// temporarily force us to use the juke path
+	myPath = newPath
+	var/old_pathfinding_target = pathfinding_target
+	pathfinding_target = myPath[1]
+	steps_moved_this_turn += move_along_path()
+	pathfinding_target = old_pathfinding_target
+	tempfixeye = FALSE
+	if(!fixedeye)
+		nodirchange = FALSE
+	return TRUE // juke succeeded
+
 /mob/living/carbon/human/proc/handle_combat()
 	switch(mode)
 		if(NPC_AI_IDLE)		// idle
@@ -620,30 +666,12 @@
 			if(Adjacent(target) && isturf(target.loc))	// if right next to perp
 				frustration = 0
 				face_atom(target)
-				monkey_attack(target)
+				. = monkey_attack(target)
 				steps_moved_this_turn++ // an attack costs, currently, 1 movement step
-				// JUKE: backstep after attacking if you're fast and have movement left
 				NPC_THINK("Used [steps_moved_this_turn] moves out of [maxStepsTick]!")
-				if(target && (steps_moved_this_turn < maxStepsTick))
-					var/const/base_juke_chance = 5
-					// for every point of STASPD above 10 you get an extra 5% juke chance
-					var/const/min_spd_for_juke = 10
-					var/const/juke_per_overspd = 5
-					var/juke_spd_bonus = STASPD > min_spd_for_juke ? (STASPD - min_spd_for_juke) * juke_per_overspd : 0
-					if(prob(base_juke_chance + juke_spd_bonus))
-						NPC_THINK("Succeeded juke roll ([base_juke_chance + juke_spd_bonus]%)!")
-						// pick a random turf to juke to
-						var/list/turf/juke_candidates = get_dodge_destinations(target)
-						if(length(juke_candidates))
-							// temporarily force us to path to this turf
-							myPath = list(pick(juke_candidates))
-							var/old_pathfinding_target = pathfinding_target
-							pathfinding_target = myPath[1]
-							steps_moved_this_turn += move_along_path()
-							pathfinding_target = old_pathfinding_target
-					else
-						NPC_THINK("Failed juke roll ([base_juke_chance + juke_spd_bonus]%)!")
-				return TRUE
+				if(.) // attack was successful, try to backstep. todo: generalise to post-attack behaviour?
+					npc_try_backstep()
+				return
 			else if(should_frustrate) // not next to perp, and we didn't fail due to reaction time
 				frustration++
 
@@ -699,7 +727,7 @@
 	if(isitem(the_grab.sublimb_grabbed) && prob(30))
 		rog_intent_change(1) // 30% chance to remove the embedded weapon, 70% to twist it
 	else
-		rog_intent_change(2) // 2 -> choke for neck, twist for limb/embed, smash for precise
+		rog_intent_change(rand(1, length(possible_a_intents))) // choose choke/twist/smash/take at your leisure. todo: situational usage
 	// now use it
 	if(used_intent.type == /datum/intent/grab/smash) // special, need to smash them into something
 		var/atom/smash_target // structure or turf
@@ -764,8 +792,9 @@
 	// if we're weaponless or our offhand is stronger, switch hands
 	// since grabs have a force of 0 this has the fun effect of putting embed grabs in the offhand too, which is useful later
 	if(OffWeapon && (!Weapon || OffWeapon.force > Weapon.force))
-		NPC_THINK("Switching active hand to [OffWeapon]!")
-		swap_hand()
+		if(!istype(OffWeapon, /obj/item/grabbing)) // don't move grabs into your main hand please
+			NPC_THINK("Switching active hand to [OffWeapon]!")
+			swap_hand()
 	// in case we swapped, reset weapon/offweapon
 	Weapon = get_active_held_item()
 	OffWeapon = get_inactive_held_item()
@@ -780,7 +809,7 @@
 	// we always try to move our grab into our offhand where possible, so no need to worry about main-hand weapons
 	var/obj/item/grabbing/the_grab = OffWeapon
 	if(istype(the_grab)) // if we already have a grab in our offhand, we might want to use it
-		if(prob(use_grab_chance) && the_grab.grabbee == victim) // already pulling, fuck with them a bit
+		if(prob(use_grab_chance) && the_grab.grabbed == victim) // already pulling, fuck with them a bit
 			swap_hand() // switch to grab
 			if(grab_state < GRAB_AGGRESSIVE && prob(upgrade_grab_chance)) // upgrade!
 				stamina_add(rand(7,15))
@@ -801,13 +830,11 @@
 			if(!OffWeapon) // wield it!
 				Weapon.attack_self(src)
 		rog_intent_change(1)
-		used_intent = a_intent
 		Weapon.melee_attack_chain(src, victim)
 		// attackby and attack_obj handles cooldowns already
 		return TRUE
 	else // unarmed
 		rog_intent_change(4) // punch
-		used_intent = a_intent
 		UnarmedAttack(victim, 1)
 		// handle cooldowns since that's not done directly in UnarmedAttack
 		var/adf = used_intent.clickcd
@@ -845,11 +872,11 @@
 // attack using a held weapon otherwise bite the enemy, then if we are angry there is a chance we might calm down a little
 /mob/living/carbon/human/proc/monkey_attack(mob/living/L)
 	if(next_move > world.time)
-		return
+		return FALSE // no time to attack this turn!
 	
 	npc_choose_attack_zone(L)
 	NPC_THINK("Aiming for \the [zone_selected]!")
-	do_best_melee_attack(L)
+	return do_best_melee_attack(L)
 
 // get angry at a mob
 /mob/living/carbon/human/proc/retaliate(mob/living/L)

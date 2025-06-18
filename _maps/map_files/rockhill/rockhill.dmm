@@ -936,7 +936,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/academy)
 "ayy" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/bog)
 "ayD" = (
@@ -5199,7 +5199,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/bath)
 "cAC" = (
-/obj/structure/closet/crate/roguecloset/crafted{
+/obj/structure/closet/crate/roguecloset{
 	keylock = 1;
 	locked = 1;
 	lockid = "merc"
@@ -9571,7 +9571,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
 "eEp" = (
-/obj/structure/closet/crate/roguecloset/crafted{
+/obj/structure/closet/crate/roguecloset{
 	keylock = 1;
 	locked = 1;
 	lockid = "keep_barracks"
@@ -10556,7 +10556,7 @@
 	},
 /area/rogue/indoors)
 "fdc" = (
-/obj/item/chair/rogue/crafted,
+/obj/item/chair/rogue,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "fdo" = (
@@ -11130,7 +11130,7 @@
 	},
 /area/rogue/indoors)
 "ftE" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/glass/bottle/rogue/manapot,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
@@ -11626,7 +11626,7 @@
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/bath)
 "fHo" = (
-/obj/structure/closet/crate/roguecloset/crafted{
+/obj/structure/closet/crate/roguecloset{
 	keylock = 1;
 	locked = 1;
 	lockid = "keep_barracks"
@@ -13313,7 +13313,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "gyy" = (
-/obj/item/chair/stool/bar/rogue/crafted,
+/obj/item/chair/stool/bar/rogue,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "gyR" = (
@@ -15031,7 +15031,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "hqV" = (
-/obj/structure/closet/crate/chest/crafted,
+/obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "hrc" = (
@@ -15361,7 +15361,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors)
 "hAg" = (
-/obj/item/chair/rogue/crafted,
+/obj/item/chair/rogue,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "hAv" = (
@@ -27760,7 +27760,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "nQi" = (
-/obj/structure/closet/crate/roguecloset/crafted{
+/obj/structure/closet/crate/roguecloset{
 	keylock = 1;
 	locked = 1;
 	lockid = "keep_barracks"
@@ -30067,10 +30067,10 @@
 /area/rogue/outdoors/town/harbor)
 "oWX" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub/crafted,
-/obj/item/rogueweapon/mace/woodclub/crafted,
-/obj/item/rogueweapon/mace/woodclub/crafted,
-/obj/item/rogueweapon/mace/woodclub/crafted,
+/obj/item/rogueweapon/mace/woodclub,
+/obj/item/rogueweapon/mace/woodclub,
+/obj/item/rogueweapon/mace/woodclub,
+/obj/item/rogueweapon/mace/woodclub,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "oXd" = (
@@ -32058,7 +32058,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
 "pXT" = (
-/obj/structure/closet/crate/roguecloset/crafted{
+/obj/structure/closet/crate/roguecloset{
 	keylock = 1;
 	locked = 1;
 	lockid = "butcher"
@@ -33929,7 +33929,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "qZP" = (
-/obj/structure/closet/crate/chest/crafted,
+/obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "rad" = (
@@ -34608,7 +34608,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/bath)
 "rqP" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "rqY" = (
@@ -41343,11 +41343,11 @@
 	},
 /area/rogue/indoors)
 "uNw" = (
-/obj/item/chair/rogue/crafted,
-/obj/item/chair/rogue/crafted,
-/obj/item/chair/rogue/crafted,
-/obj/item/chair/rogue/crafted,
-/obj/item/chair/rogue/crafted,
+/obj/item/chair/rogue,
+/obj/item/chair/rogue,
+/obj/item/chair/rogue,
+/obj/item/chair/rogue,
+/obj/item/chair/rogue,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -41452,7 +41452,7 @@
 	},
 /area/rogue/under/town/basement)
 "uPj" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)
 "uPl" = (
@@ -42002,7 +42002,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "vfe" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
 "vfh" = (
@@ -42341,7 +42341,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "vqq" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -44226,7 +44226,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "wnT" = (
-/obj/structure/closet/crate/roguecloset/crafted,
+/obj/structure/closet/crate/roguecloset,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/cavewet/bogcaves)
 "wob" = (
@@ -44934,7 +44934,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors)
 "wFc" = (
-/obj/structure/closet/crate/chest/crafted{
+/obj/structure/closet/crate/chest{
 	keylock = 1;
 	locked = 1;
 	lockid = "councillor"

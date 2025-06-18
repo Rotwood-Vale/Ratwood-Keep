@@ -5,12 +5,13 @@
 	desc = "It's surface is marred by countless hammer strikes."
 	icon_state = "anvil"
 	var/hott = null
-	var/obj/item/ingot/hingot
 	max_integrity = 500
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
 	smeltresult = /obj/item/ingot/iron
+	anchored = FALSE
+	drag_slowdown = 10
 	var/advance_multiplier = 1 //Lower for auto-striking
 
 /obj/machinery/anvil/crafted
@@ -18,46 +19,39 @@
 
 /obj/machinery/anvil/examine(mob/user)
 	. = ..()
-	if(hingot && hott)
+	var/obj/item/ingot/hingot = get_ingot()
+	if(has_ingot() && hingot.ishot)
 		. += span_warning("[hingot] is too hot to touch.")
 
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
+	var/obj/item/ingot/hingot = get_ingot()
 	if(istype(W, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = W
+		var/obj/item/ingot/tong_ingot = T.get_ingot()
 		if(hingot)
-			if(T.hingot)
-				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.hingot, hingot.currecipe.needed_item))
+			if(tong_ingot)
+				if(hingot.currecipe && hingot.currecipe.needed_item && istype(tong_ingot, hingot.currecipe.needed_item))
 					hingot.currecipe.item_added(user)
-					qdel(T.hingot)
-					T.hingot = null
+					qdel(tong_ingot)
 					T.update_icon()
 					update_icon()
 					return
 				return
 			else
 				hingot.forceMove(T)
-				T.hingot = hingot
-				hingot = null
 				T.update_icon()
 				update_icon()
 				return
 		else
-			if(T.hingot && istype(T.hingot, /obj/item/ingot))
-				T.hingot.forceMove(src)
-				hingot = T.hingot
-				T.hingot = null
-				hott = T.hott
-				if(hott)
-					START_PROCESSING(SSmachines, src)
+			if(tong_ingot && istype(tong_ingot, /obj/item/ingot))
+				tong_ingot.forceMove(src)
 				T.update_icon()
 				update_icon()
 				return
 
 	if(istype(W, /obj/item/ingot))
-		if(!hingot)
+		if(!has_ingot())
 			W.forceMove(src)
-			hingot = W
-			hott = null
 			update_icon()
 			return
 
@@ -72,8 +66,8 @@
 		advance_multiplier = 1 //Manual striking more effective than manual striking.
 		user.doing = FALSE
 		spawn(1)
-			while(hingot)
-				if(!hott)
+			while(has_ingot())
+				if(!hingot.ishot)
 					to_chat(user, span_warning("It's too cold."))
 					return
 				if(!hingot.currecipe)
@@ -100,6 +94,7 @@
 				if(!hingot.currecipe.advance(user, breakthrough, advance_multiplier))
 					shake_camera(user, 1, 1)
 					playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+					update_icon()
 					break
 				playsound(src,pick('sound/items/bsmith1.ogg','sound/items/bsmith2.ogg','sound/items/bsmith3.ogg','sound/items/bsmith4.ogg'), 100, FALSE)
 				if(do_after(user, 20, target = src)) //Let's do it all over again!
@@ -114,21 +109,35 @@
 		hingot.currecipe.item_added(user)
 		qdel(W)
 		return
-
+	
 	if(W.anvilrepair)
-		user.visible_message(span_info("[user] places [W] on the anvil."))
-		W.forceMove(src.loc)
-		return
+		if(user.cmode)
+			..()
+		else
+			user.visible_message(span_info("[user] places [W] on the anvil."))
+			W.forceMove(src.loc)
+			return
 	..()
 
+
+/obj/machinery/anvil/proc/has_ingot()
+	if(locate(/obj/item/ingot) in src)
+		return TRUE
+	return FALSE
+
+/obj/machinery/anvil/proc/get_ingot()
+	if(has_ingot())
+		return locate(/obj/item/ingot) in src
+
 /obj/machinery/anvil/proc/choose_recipe(user)
-	if(!hingot || !hott)
+	var/obj/item/ingot/Ingot_check = get_ingot()
+	if(!Ingot_check || !Ingot_check.ishot)
 		return
 
 	var/list/valid_types = list()
 
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
-		if(istype(hingot, R.req_bar))
+		if(istype(get_ingot(), R.req_bar))
 			if(!valid_types.Find(R.i_type))
 				valid_types += R.i_type
 
@@ -141,35 +150,42 @@
 
 	var/list/appro_recipe = list()
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
-		if(R.i_type == i_type_choice && istype(hingot, R.req_bar))
+		if(R.i_type == i_type_choice && istype(get_ingot(), R.req_bar))
 			appro_recipe += R
 
 	for(var/I in appro_recipe)
 		var/datum/anvil_recipe/R = I
 		if(!R.req_bar)
 			appro_recipe -= R
-		if(!istype(hingot, R.req_bar))
+		if(!istype(get_ingot(), R.req_bar))
 			appro_recipe -= R
 
 	if(appro_recipe.len)
 		var/datum/chosen_recipe = input(user, "Choose A Creation", "Anvil") as null|anything in sortNames(appro_recipe.Copy())
-		if(!hingot.currecipe && chosen_recipe)
-			hingot.currecipe = new chosen_recipe.type(hingot)
+		if(!get_ingot().currecipe && chosen_recipe)
+			get_ingot().currecipe = new chosen_recipe.type(get_ingot())
 			return TRUE
 
 	return FALSE
 
 /obj/machinery/anvil/attack_hand(mob/user, params)
-	if(hingot)
-		if(hott)
-			to_chat(user, span_warning("It's too hot."))
-			return
-		else
-			var/obj/item/I = hingot
-			hingot = null
-			I.loc = user.loc
-			user.put_in_active_hand(I)
-			update_icon()
+	var/obj/item/ingot/I = get_ingot()
+	
+	if(I && I.ishot && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/index = H.active_hand_index
+		var/bp = H.get_bodypart(BODY_ZONE_PRECISE_L_HAND)
+		if(index == 2)
+			bp = H.get_bodypart(BODY_ZONE_PRECISE_R_HAND)
+		H.apply_damage(20, BRUTE, bp)
+		H.emote("scream")
+		H.Stun(10)
+		H.visible_message(span_warn("[H.name] burns [user.p_their()] hand on the [name]!"))
+		return
+
+	I.loc = get_turf(user)
+	user.put_in_active_hand(I)
+	update_icon()
 
 /obj/machinery/anvil/process()
 	if(hott)
@@ -182,12 +198,12 @@
 
 /obj/machinery/anvil/update_icon()
 	cut_overlays()
-	if(hingot)
-		var/obj/item/I = hingot
+	if(has_ingot())
+		var/obj/item/ingot/I =  get_ingot()
 		I.pixel_x = 0
 		I.pixel_y = 0
 		var/mutable_appearance/M = new /mutable_appearance(I)
-		if(hott)
+		if(I.ishot)
 			M.filters += filter(type="color", color = list(3,0,0,1, 0,2.7,0,0.4, 0,0,1,0, 0,0,0,1))
 		M.transform *= 0.5
 		M.pixel_y = 5

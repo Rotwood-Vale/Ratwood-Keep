@@ -19,7 +19,33 @@
 	name = "tome of the arcyne"
 	desc = "A crackling, glowing book, filled with runes and symbols that hurt the mind to stare at."
 	pages_to_mastery = 7
-	remarks = list("Recall that place of white and black, so cold after its season of heat...", "Time slips away as I devour each pictograph and sigil...", "Noc is a shrewd God, and his followers’ writings are no different...", "The smell of wet rain fills the room with every turned page...", "Helical text spans the page like a winding puzzle...", "Tracing a finger over one rune renders  my hand paralyzed, if only for a moment...", "The Sun-And-Moon theory implicates Astrata and Noc as the primary drivers of magick...", "The Sea-And-Moon theory connects Abyssor and Noc as the chief patrons of arcyne...", "This page clearly details the benefits of swampweed on one's capacity to conceptualize the arcyne...", "Conceptualize. Theorize. Feel. Flow. Manifest...", "Passion. Strength. Power. Victory. The tenets through which we break the chains of reality...", "Didn’t I just read this page...?", "A lone illustration of Noc’s visage fills this page, his stony gaze boring into my soul...", "My eyes begin to lid as I finish this chapter. These symbols cast a heavy fog over my mind...", "This chapter focuses on the scholars of Naledi, and their abstruse traditions on daemon-hunting...", "The book states Grenzelhoftian jesters are renowned for dabbling in the arcyne to please their lords. Is there something I could learn from fools...?", "Silver. Blade. Mana. Blood. These are the ingredients I’ll need to imbibe the very ground with arcyne abilities...", "Elysium incants speak to me in an extinct tongue immortalized on parchment...", "My mind wanders and waves. Z's temptations draw close, but I weather through as I finally finish this chapter...", "I close my eye's for but a moment, and the competing visages of Noc and Z stare into my very soul. I see them blink, and my eyelids open...", "I am the Root. The Root is me. I must reach it, and the Tree...", "I feel the arcyne circuits running through my body, empowered with each word I read...", "Am I reading? Are these words, symbols or inane scribbles? I cannot be sure, yet with each one my eyes glaze over, I can feel the arcyne pulse within me...", "A mystery is revealed before my very eyes. I do not read it, yet I am aware. Gems are the Root's natural arcyne energy, manifest. Perhaps I can use them to better my conceptualization...")
+	
+	remarks = list(\
+	"Recall that place of white and black, so cold after its season of heat...", \
+	"Time slips away as I devour each pictograph and sigil...", \
+	"Noc is a shrewd God, and his followersâ€™ writings are no different...", \
+	"The smell of wet rain fills the room with every turned page...", \
+	"Helical text spans the page like a winding puzzle...", \
+	"Tracing a finger over one rune renders  my hand paralyzed, if only for a moment...", \
+	"The Sun-And-Moon theory implicates Astrata and Noc as the primary drivers of magick...", \
+	"The Sea-And-Moon theory connects Abyssor and Noc as the chief patrons of arcyne...", \
+	"This page clearly details the benefits of swampweed on one's capacity to conceptualize the arcyne...", \
+	"Conceptualize. Theorize. Feel. Flow. Manifest...", \
+	"Passion. Strength. Power. Victory. The tenets through which we break the chains of reality...", \
+	"Didnâ€™t I just read this page...?", "A lone illustration of Nocâ€™s visage fills this page, his stony gaze boring into my soul...", \
+	"My eyes begin to lid as I finish this chapter. These symbols cast a heavy fog over my mind...", \
+	"This chapter focuses on the scholars of Naledi, and their abstruse traditions on daemon-hunting...", \
+	"The book states Grenzelhoftian jesters are renowned for dabbling in the arcyne to please their lords. Is there something I could learn from fools...?", \
+	"Silver. Blade. Mana. Blood. These are the ingredients Iâ€™ll need to imbibe the very ground with arcyne abilities...", \
+	"Elysium incants speak to me in an extinct tongue immortalized on parchment...", \
+	"My mind wanders and waves. Z's temptations draw close, but I weather through as I finally finish this chapter...", \
+	"I close my eye's for but a moment, and the competing visages of Noc and Z stare into my very soul. I see them blink, and my eyelids open...", \
+	"I am the Root. The Root is me. I must reach it, and the Tree...", \
+	"I feel the arcyne circuits running through my body, empowered with each word I read...", \
+	"Am I reading? Are these words, symbols or inane scribbles? I cannot be sure, yet with each one my eyes glaze over, I can feel the arcyne pulse within me...", \
+	"A mystery is revealed before my very eyes. I do not read it, yet I am aware. Gems are the Root's natural arcyne energy, manifest. Perhaps I can use them to better my conceptualization..."\
+	)
+
 	oneuse = FALSE
 	var/owner = null
 	var/list/allowed_readers = list()
@@ -495,38 +521,32 @@
 	else
 		return ..()
 
-// qualityoflearn buff shit
-
-/obj/item/roguegem
-	var/arcyne_potency = 20
-
-/obj/item/roguegem/yellow
-	arcyne_potency = 5
-
-/obj/item/roguegem/green
-	arcyne_potency = 7
-
-/obj/item/roguegem/violet
-	arcyne_potency = 10
-
-/obj/item/roguegem/blue
-	arcyne_potency = 25
-
-/obj/item/roguegem/diamond
-	arcyne_potency = 15
-
-
+GLOBAL_LIST_INIT(arcane_power, list( \
+/obj/item/roguegem/yellow = 5,\
+/obj/item/roguegem/green = 7,\
+/obj/item/roguegem/violet = 10,\
+/obj/item/roguegem/blue = 25, \
+/obj/item/roguegem/diamond = 15, \
+/obj/item/roguegem/amethyst = 25, \
+/obj/item/roguegem = 20 \
+))
 
 /obj/item/book/granter/spellbook/attackby(obj/item/P, mob/living/carbon/human/user, params)
-	if(istype(P, /obj/item/roguegem))
+	var/obj/I
+	var/power_temp = 0
+	for(var/J in GLOB.arcane_power)
+		if(istype(P, J))
+			I = P
+			power_temp = GLOB.arcane_power[J]
+			break
+	if(I)
 		if(!stored_gem)
 			if(isarcyne(user))
-				var/obj/item/roguegem/gem = P
 				var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 				if(do_after(user, crafttime, target = src))
 					playsound(loc, 'sound/magic/glass.ogg', 100, TRUE)
 					to_chat(user, span_notice("Running my arcyne energy through this crystal, I imbue the tome with my natural essence, attuning it to my state of mind..."))
-					stored_gem = gem.arcyne_potency
+					stored_gem = power_temp
 					qdel(P)
 			else
 				to_chat(user, span_notice("Why am I jamming a gem into a book? I must look like a fool!"))
