@@ -555,7 +555,6 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 	"Warden",
 	"Knight",
 	"Mortician",
-	"Mercenary",
 	"Bandit",
 	"Goblin Chief",
 	"Goblin Cook",
