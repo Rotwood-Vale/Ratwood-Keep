@@ -479,6 +479,13 @@
 				/obj/item/natural/feather = 1)
 	skill_level = 3
 
+/datum/crafting_recipe/roguetown/sewing/greatstrap
+	name = "greatweapon strap (2 leather, rope; APPRENTICE)"
+	result = list(/obj/item/gwstrap)
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/rope = 1)
+	skill_level = 3
+
 /* craftdif of 4 EXPERT */
 
 /datum/crafting_recipe/roguetown/sewing/stockdress
@@ -642,7 +649,7 @@
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
 	skill_level = 3
-	
+
 /datum/crafting_recipe/roguetown/sewing/vest/sailor
 	name = "leather sea jacket - (2 cured leather; PROFICIENT)"
 	result = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
