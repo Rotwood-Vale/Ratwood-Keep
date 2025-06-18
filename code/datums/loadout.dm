@@ -5,7 +5,7 @@
         L[path] = loadout_item
     return L
 
-GLOBAL_LIST_INIT(loadout_items, /proc/init_loadout)
+GLOBAL_LIST_INIT(loadout_items, init_loadout())
 
 /datum/loadout_item
 	var/name = "Parent loadout datum"
