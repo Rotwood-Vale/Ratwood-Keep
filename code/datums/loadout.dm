@@ -44,10 +44,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
 
-/datum/loadout_item/witchhat
-	name = "Witch Hat"
-	path = /obj/item/clothing/head/roguetown/witchhat
-
 /datum/loadout_item/bardhat
 	name = "Bard Hat"
 	path = /obj/item/clothing/head/roguetown/bardhat
@@ -73,10 +69,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 	name = "Hood"
 	path = /obj/item/clothing/head/roguetown/roguehood
 
-/datum/loadout_item/hijab
-	name = "Hijab"
-	path = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab
-
 /datum/loadout_item/heavyhood
 	name = "Heavy Hood"
 	path = /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
@@ -84,11 +76,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 /datum/loadout_item/nunveil
 	name = "Nun Veil"
 	path = /obj/item/clothing/head/roguetown/nun
-
-/datum/loadout_item/volfhelm
-	name = "Volf Helm"
-	path = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -119,12 +106,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 	name = "Fur Cloak"
 	path = /obj/item/clothing/cloak/raincloak/furcloak
 
-
-
-/datum/loadout_item/volfmantle
-	name = "Volf Mantle"
-	path = /obj/item/clothing/cloak/volfmantle
-
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
@@ -153,10 +134,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 /datum/loadout_item/ridingboots
 	name = "Riding Boots"
 	path = /obj/item/clothing/shoes/roguetown/ridingboots
-
-/datum/loadout_item/ankletscloth
-	name = "Cloth Anklets"
-	path = /obj/item/clothing/shoes/roguetown/boots/clothlinedanklets
 
 /datum/loadout_item/ankletsfur
 	name = "Fur Anklets"
@@ -325,10 +302,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout())
 /datum/loadout_item/feather
 	name = "Feather"
 	path = /obj/item/natural/feather
-
-/datum/loadout_item/collar
-	name = "Collar"
-	path = /obj/item/clothing/neck/roguetown/collar
 
 /datum/loadout_item/bell_collar
 	name = "Bell Collar"
