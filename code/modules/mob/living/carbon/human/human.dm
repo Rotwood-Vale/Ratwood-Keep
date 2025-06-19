@@ -848,3 +848,49 @@
 	. = ..()
 	if(race)
 		set_species(race)
+
+/*======
+Try slip
+======*/
+/mob/living/carbon/human/proc/try_slip(obj/item/I, difficulty_mod = 0)
+	var/athletics = mind.get_skill_level(/datum/skill/misc/athletics)
+	var/chance = rand(0, 6) + difficulty_mod
+	var/failed = TRUE
+	if(athletics > chance) //Should be easier to roll against if you have any skills.
+		failed = FALSE
+	chance = rand(10, 20) + difficulty_mod // Fallback check, should be harder.
+	if(STAPER >= chance)
+		failed = FALSE
+	
+	// we could also do a check here but I think it's fair you
+	// could sneak over almost anything without punishment.
+	if(m_intent == MOVE_INTENT_SNEAK)
+		failed = FALSE
+
+	if(failed)
+		slip(I)
+/*==
+Slip
+==*/
+/mob/living/carbon/human/slip(obj/item/I)
+	visible_message(span_warn("[name] falls overs \the [I.name]!"))
+	Knockdown(20)
+
+/// Removes all existing genital organs from a human mob.
+/mob/living/carbon/human/proc/remove_genitalia()
+
+	// I don't know why we need two lists for internal organs.
+	var/obj/item/organ/PP = internal_organs_slot["penis"]
+	internal_organs_slot.Remove("penis")
+	if(PP)
+		internal_organs.Remove(PP)
+
+	var/obj/item/organ/TT = internal_organs_slot["testicles"]
+	internal_organs_slot.Remove("testicles")
+	if(TT)
+		internal_organs.Remove(TT)
+
+	var/obj/item/organ/VV = internal_organs_slot["vagina"]
+	internal_organs_slot.Remove("vagina")
+	if(VV)
+		internal_organs.Remove(VV)

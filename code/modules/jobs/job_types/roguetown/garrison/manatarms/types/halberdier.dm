@@ -9,6 +9,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
 	beltl = /obj/item/rogueweapon/sword/short
 	r_hand = /obj/item/rogueweapon/halberd
+	backl = /obj/item/gwstrap
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/natural/cloth = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)

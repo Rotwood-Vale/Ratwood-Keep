@@ -118,10 +118,10 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 		//get the lower f node on the open list
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
-		if(mintargetdist && cur.source.z == end.z) // don't stop early if you aren't on the same z-level
+		if(mintargetdist) // we let you stop early if you aren't on the same z-level because that enables fun shenanigans like taunting and climbing
 			// I lied, this one is also hardcoded; we don't want to use the heuristic for our termination condition,
 			// only the actual distance.
-			closeenough = cur.source.Distance_cardinal(end, caller) <= mintargetdist
+			closeenough = cur.source.Distance_cardinal_3d(end, caller) <= mintargetdist
 
 		//found the target turf (or close enough), let's create the path to it
 		if(cur.source == end || closeenough)
@@ -178,22 +178,20 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 		return TRUE
 
 /// returns TRUE if there exists a way for caller to (safely) move from src to T. z-aware
-/turf/proc/reachableTurftest3d(caller, turf/T, ID)
+/turf/proc/reachableTurftest3d(caller, turf/T, ID, recursive_call = 0)
 	if(!T || T.density)
 		return FALSE
 	if(!T.can_traverse_safely(caller)) // dangerous turf! lava or openspace (or others in the future)
-		// HEY! IF YOU SEE THIS IN CODE REVIEW, TELL ME TO REMOVE THIS!
-		// I'm leaving it in because it might actually be necessary and I don't want to lose it,
-		// but it shouldn't make it to a final PR!
-		/*
-		if(istype(T, /turf/open/transparent/openspace))
-			// snowflake check for stairs, adapted from Vanderlin
-			var/turf/open/below_turf = GET_TURF_BELOW(T)
-			var/obj/structure/stairs/the_stairs = locate(/obj/structure/stairs) in below_turf
-			if(the_stairs?.get_target_loc(GLOB.reverse_dir[the_stairs.dir]) == T) // going the right way to descend the stairs to T
-				return TRUE
-		// if it's not openspace, there's no stairs, or we're going the wrong way, return false
-		*/
+		// If we can jump, jump over it!
+		if(!ishuman(caller)) // sorry, only humanmobs can jump atm
+			return FALSE
+		var/mob/living/carbon/human/human_caller = caller
+		if(!human_caller.npc_jump_chance) // If we can't jump at all, don't bother.
+			return FALSE
+		var/turf/landing_turf = get_step_away(T, src) // this is the turf we'd want to land on
+		// currently we'll only try to jump 2-tile gaps
+		if(recursive_call < 2 && T.reachableTurftest3d(caller, landing_turf, ID, recursive_call + 1))
+			return TRUE // jumpable
 		return FALSE
 	var/z_distance = abs(T.z - z)
 	if(!z_distance) // standard check for same-z pathing
@@ -201,6 +199,9 @@ Also added 'exclude' turf to avoid travelling over; defaults to null
 	if(z_distance != 1) // no single movement lets you move more than one z-level at a time (currently; update if this changes)
 		return FALSE
 	var/obj/structure/stairs/source_stairs = locate(/obj/structure/stairs) in src
+	var/mob/mob_caller = caller
+	if(ismob(caller) && HAS_TRAIT(mob_caller, TRAIT_ZJUMP)) // where we're going, we don't need stairs!
+		return TRUE
 	if(T.z < z) // going down
 		if(source_stairs?.get_target_loc(GLOB.reverse_dir[source_stairs.dir]) == T)
 			return TRUE

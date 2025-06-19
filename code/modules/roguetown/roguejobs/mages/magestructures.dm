@@ -103,14 +103,14 @@
 
 /obj/structure/well/fountain/mana
 	name = "mana fountain"
-	desc = ""
+	desc = "This fountain produces a strange blue liquid. It seems faintly magical."
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "manafountain"
 	layer = BELOW_MOB_LAYER
-	max_integrity = 50000	//I need to find a better way to make this unbreakable
+	max_integrity = 0	// Things with 0 max_integrity cannot be destroyed.
 	pixel_x = -16
 	layer = -0.1
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF // Just to make doubly sure it can't be destroyed or damaged.
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
 	if(isliving(user))
@@ -131,6 +131,7 @@
 			playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
 		return
 	..()
+	
 /obj/structure/well/fountain/mana/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/W = I
@@ -152,7 +153,7 @@
 	desc = "This forge uses cycling magma from an internal core to heat things."
 	icon_state = "infernal0"
 	base_state = "infernal"
-	heat_time = 300
+	heat_time = 30 SECONDS
 
 /obj/machinery/light/rogue/forge/arcane/process()
 	if(isopenturf(loc))
@@ -178,6 +179,7 @@
 	density = FALSE
 	var/time_between_uses = 12000
 	var/last_process = 0
+
 /obj/structure/leyline/Initialize()
 	.=..()
 	last_process = world.time

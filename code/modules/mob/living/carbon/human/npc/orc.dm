@@ -20,7 +20,7 @@
 	dodgetime = 15 //they can dodge easily, but have a cooldown on it
 	canparry = TRUE
 	flee_in_pain = FALSE
-
+	rude = TRUE
 	wander = FALSE
 
 

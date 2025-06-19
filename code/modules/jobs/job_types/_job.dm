@@ -410,3 +410,7 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		return list(ACCESS_MAINT_TUNNELS)
 	return list()
+
+// Whether the job should be anonymised when recorded in a character's memories
+/datum/job/proc/should_anonymise_job()
+	return ((wanderer_examine || foreign_examine) && !mercenary_examine)

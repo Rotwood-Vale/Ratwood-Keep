@@ -149,6 +149,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/wlength = WLENGTH_NORMAL		//each weapon length class has its own inherent dodge properties
 	var/wbalance = 0
 	var/wdefense = 0 //better at defending
+	var/wieldedwdefense = 3 //Bonus for wielding, default to 3 for all weapons
 	var/minstr = 0  //for weapons
 
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
@@ -588,6 +589,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!isturf(src.loc))
 		return FALSE
 	for(var/obj/structure/table/T in src.loc)
+		return TRUE
+	for(var/obj/machinery/anvil/A in src.loc)
 		return TRUE
 	return FALSE
 
@@ -1213,7 +1216,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	wielded = TRUE
 	if(force_wielded)
 		force = force_wielded
-	wdefense = wdefense + 3
+	wdefense = wdefense + wieldedwdefense
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
@@ -1257,6 +1260,22 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		else
 			str += "NO DEFENSE"
 	return str
+
+/obj/item/obj_fix()
+	..()
+	update_damaged_state(FALSE)
+
+
+/obj/item/proc/update_damaged_state(damaging = TRUE)
+	cut_overlays()
+	if (!obj_broken)
+		return
+	var/icon/damaged_icon = icon(initial(icon), icon_state, , TRUE)
+	damaged_icon.Blend("#fff", ICON_ADD)
+	damaged_icon.Blend(icon('icons/effects/item_damage.dmi', "itemdamaged"), ICON_MULTIPLY)
+	var/mutable_appearance/damage = new(damaged_icon)
+	damage.alpha = 150
+	add_overlay(damage)
 
 /proc/colorgrade_rating(input, rating)
 	var/str

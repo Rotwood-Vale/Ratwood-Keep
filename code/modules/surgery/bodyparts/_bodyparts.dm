@@ -666,7 +666,7 @@
 			. += marking_overlays
 
 	// Organ overlays
-	if(!rotted && !skeletonized && draw_organ_features)
+	if(!skeletonized && draw_organ_features) // show while rotted so we can have furry zombies
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue

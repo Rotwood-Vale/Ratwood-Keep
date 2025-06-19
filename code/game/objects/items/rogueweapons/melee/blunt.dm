@@ -220,21 +220,21 @@
 	damfactor = 0.9
 	item_d_type = "stab"
 
-/datum/intent/mace/warhammer/stab
+/datum/intent/mace/warhammer/stab // With the spike on the top of the hammer, quick thrust
 	name = "thrust"
 	icon_state = "instab"
 	blade_class = BCLASS_STAB
 	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 20
-	damfactor = 0.8
+	penfactor = 25
+	damfactor = 0.9
 	item_d_type = "stab"
 
-/datum/intent/mace/warhammer/impale
+/datum/intent/mace/warhammer/impale // With the spike on the opposite end of the hammer, strong stab
 	name = "impale"
 	icon_state = "inimpale"
-	blade_class = BCLASS_PICK
+	blade_class = BCLASS_STAB
 	attack_verb = list("picks", "impales")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 14

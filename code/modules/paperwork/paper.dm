@@ -338,6 +338,14 @@
 		return
 
 	if(href_list["read"])
+		if(trapped)
+			var/mob/living/victim = usr
+			victim.visible_message(span_notice("[victim] opens the [src]."))
+			to_chat(victim, span_warning("This parchment is full of strange symbols that start to glow. How odd. Wait-"))
+			sleep(5)
+			victim.adjust_fire_stacks(15)
+			victim.IgniteMob()
+			victim.visible_message(span_danger("[victim] bursts into flames upon reading [src]!"))
 		read(usr)
 
 	if(href_list["help"])
