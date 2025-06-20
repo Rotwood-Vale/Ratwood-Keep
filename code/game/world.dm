@@ -54,7 +54,6 @@ GLOBAL_VAR(restart_counter)
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
 //	SSdbcore.CheckSchemaVersion()
-	
 	SSdbcore.SetRoundID()
 	var/timestamp = replacetext(time_stamp(), ":", ".")
 
@@ -100,7 +99,7 @@ GLOBAL_VAR(restart_counter)
 
 	if(TEST_RUN_PARAMETER in params)
 		HandleTestRun()
-	
+
 	update_status()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
