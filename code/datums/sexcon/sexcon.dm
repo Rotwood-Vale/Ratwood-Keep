@@ -286,7 +286,10 @@
 	update_erect_state()
 
 /datum/sex_controller/proc/update_erect_state()
+	var/datum/antagonist/werewolf/W = user.mind.has_antag_datum(/datum/antagonist/werewolf/)
 	var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(W && W.transformed == TRUE)
+		user.regenerate_icons()
 	if(penis)
 		penis.update_erect_state()
 
