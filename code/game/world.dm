@@ -54,6 +54,7 @@ GLOBAL_VAR(restart_counter)
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
 //	SSdbcore.CheckSchemaVersion()
+	
 	SSdbcore.SetRoundID()
 	var/timestamp = replacetext(time_stamp(), ":", ".")
 
@@ -99,13 +100,14 @@ GLOBAL_VAR(restart_counter)
 
 	if(TEST_RUN_PARAMETER in params)
 		HandleTestRun()
-
+	
 	update_status()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
+	send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_alert_role_id)]> Round **[GLOB.round_id]** starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles."), CONFIG_GET(string/channel_announce_new_game))
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
