@@ -59,7 +59,7 @@
 	guard.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	guard.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	guard.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	guard.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	guard.change_stat("strength", 2)
 	guard.change_stat("perception", 1)
