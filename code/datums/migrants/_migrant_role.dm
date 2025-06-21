@@ -24,6 +24,10 @@
 	var/advjob_examine = TRUE
 	var/banned_leprosy = TRUE
 	var/banned_lunatic = TRUE
+	/// If TRUE, doesn't show up at all in the actors menu.
+	var/hidden_role = FALSE
+	/// If TRUE, shows up in the actors menu as Refugee.
+	var/obfuscated_role = FALSE
 
 /datum/migrant_role/proc/after_spawn(mob/living/carbon/human/character)
 	return

@@ -12,6 +12,7 @@
 
 	outfit = /datum/outfit/job/roguetown/skeleton
 	show_in_credits = FALSE
+	hidden_job = TRUE
 	give_bank_account = FALSE
 
 	cmode_music = 'sound/music/antag/combatskeleton.ogg'

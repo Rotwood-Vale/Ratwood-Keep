@@ -103,6 +103,11 @@
 	var/announce_latejoin = TRUE
 	var/give_bank_account = FALSE
 
+	/// If TRUE, this job isn't shown in the actors menu.
+	var/hidden_job = FALSE
+	/// If TRUE, this job is shown as a refugee rather than as its actual title.
+	var/obfuscated_job = FALSE
+
 	var/can_random = TRUE
 
 	//is the job required for game progression
@@ -193,15 +198,21 @@
 			H.change_stat(S, jobstats[S])
 
 
+	var/used_title = title
+	if((H.gender == FEMALE) && f_title)
+		used_title = f_title
 	if(H.islatejoin && show_in_credits)
-		var/used_title = title
-		if((H.gender == FEMALE) && f_title)
-			used_title = f_title
 
 		// Migrant_type isn't used, job titles apply to all, and by this point in the code
 		// This is the only thing I can think of that distinguishes towners from all outside forces...
 		if(peopleknowme.len) 
 			scom_announce("[H.real_name] the [used_title] arrives from Kingsfield.")
+
+	if (!hidden_job)
+		if (obfuscated_job)
+			GLOB.actors_list[H.mobid] = "[H.real_name] as Refugee<BR>"
+		else
+			GLOB.actors_list[H.mobid] = "[H.real_name] as [used_title]<BR>"
 
 	if(give_bank_account)
 		if(give_bank_account > 1)
