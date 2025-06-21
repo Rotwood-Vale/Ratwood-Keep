@@ -60,7 +60,7 @@
 	to_chat(C, "<span class='aphrodisiac'>The glow in your stomach spreads, rushing to your head and warming your face.</span>")
 	metabolization_rate = 0.2 //Purges faster while overdosing because this is really debilitating
 	C.emote("sexmoanhvy", forced = TRUE)
-	C.sexcon.aphrodisiac += 1
+	C.sexcon.aphrodisiac++
 	C.Jitter(20)
 	C.Stun(15)
 
