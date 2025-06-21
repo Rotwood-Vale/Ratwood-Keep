@@ -37,6 +37,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/overdose_threshold = 0
 	var/addiction_threshold = 0
 	var/addiction_stage = 0
+	var/addiction_permanent = 0
 	var/overdosed = FALSE // You fucked up and this is now triggering its overdose effects, purge that shit quick.
 	var/self_consuming = FALSE
 	var/reagent_weight = 1 //affects how far it travels when sprayed

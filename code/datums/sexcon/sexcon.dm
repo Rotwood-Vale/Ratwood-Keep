@@ -26,6 +26,7 @@
 	var/last_pain = 0
 	var/msg_signature = ""
 	var/last_msg_signature = 0
+	var/aphrodisiac = 1
 
 /datum/sex_controller/New(mob/living/carbon/human/owner)
 	user = owner
