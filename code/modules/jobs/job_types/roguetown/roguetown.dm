@@ -41,6 +41,8 @@
 	var/list/allowed_patrons
 	/// Default patron in case the patron is not allowed
 	var/datum/patron/default_patron
+	/// Can select equipment after you spawn in.
+	var/has_loadout = FALSE
 
 /datum/outfit/job/roguetown/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -88,4 +90,13 @@
 	for(var/list_key in SStriumphs.post_equip_calls)
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)
+	if(has_loadout && H.mind)
+		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
 	return
+
+/datum/outfit/job/roguetown/proc/choose_loadout(mob/living/carbon/human/H)
+	if(!has_loadout)
+		return
+	if(!H.client)
+		addtimer(CALLBACK(src, PROC_REF(choose_loadout), H), 50)
+		return

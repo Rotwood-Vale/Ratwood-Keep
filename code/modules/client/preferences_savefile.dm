@@ -327,6 +327,24 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		charflaw = GLOB.character_flaws[charflaw]
 		charflaw = new charflaw()
 
+/datum/preferences/proc/_load_loadout(S)
+	var/loadout_type
+	S["loadout"] >> loadout_type
+	if (loadout_type)
+		loadout = new loadout_type()
+
+/datum/preferences/proc/_load_loadout2(S)
+	var/loadout_type2
+	S["loadout2"] >> loadout_type2
+	if (loadout_type2)
+		loadout2 = new loadout_type2()
+
+/datum/preferences/proc/_load_loadout3(S)
+	var/loadout_type3
+	S["loadout3"] >> loadout_type3
+	if (loadout_type3)
+		loadout3 = new loadout_type3()
+
 /datum/preferences/proc/_load_appearence(S)
 	S["real_name"]			>> real_name
 	S["gender"]				>> gender
