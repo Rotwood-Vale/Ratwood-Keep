@@ -144,7 +144,12 @@
 	/* == hard stops here == */
 	//splash is sort of a special case so it happens early on.
 	if(reagents.total_volume && i_action == INTENT_SPLASH)
-		return TRUE
+		if(is_open_container())
+			return TRUE
+		else
+			//tried a to_chat here but it didn't want work RIP
+			return FALSE 
+
 	if(!i_action)
 		return FALSE
 	if(!I.reagents || !reagents)
@@ -154,10 +159,10 @@
 	if(i_action == INTENT_FILL)
 
 		if(!I.reagents.total_volume)
-			to_chat(user, "[I] is empty!")
+			to_chat(user, "\The [I] is empty!")
 			state = FALSE
 		if(reagents.holder_full())
-			to_chat(user, "[src] is full.")
+			to_chat(user, "\The [src] is full.")
 			state = FALSE
 
 		//These checks come later to make failed message order work properly
@@ -174,10 +179,10 @@
 			state = TRUE
 
 		if(!reagents.total_volume)
-			failed_msg = "[src] is empty!"
+			failed_msg = "\The [src] is empty!"
 			state = FALSE
 		if(I.reagents.holder_full())
-			failed_msg = "[I] is full."
+			failed_msg = "\The [I] is full."
 			state = FALSE
 
 		//These checks come later to make failed message order work properly
