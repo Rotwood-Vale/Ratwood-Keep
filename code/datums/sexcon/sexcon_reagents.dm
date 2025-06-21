@@ -12,7 +12,7 @@
 
 /datum/reagent/consumable/ethanol/beer/emberwine/on_mob_metabolize(mob/living/carbon/human/C)
 	..()
-	C.sexcon.aphrodisiac += 1
+	C.sexcon.aphrodisiac++
 
 /datum/reagent/consumable/ethanol/beer/emberwine/on_mob_end_metabolize(mob/living/carbon/human/C)
 	C.sexcon.aphrodisiac -= 1
