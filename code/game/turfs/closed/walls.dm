@@ -198,7 +198,6 @@
 			if("icon")
 				SStitle.icon = icon
 
-
 // Override the try_wallmount proc instead of attackby
 /turf/closed/wall/try_wallmount(obj/item/W, mob/user, turf/T)
 	// Check if user has Scholar role and has paper/parchment
@@ -219,7 +218,7 @@
 
 			// Create the scholar notice
 			var/obj/structure/fluff/walldeco/wantedposter/scholar/new_notice = new(get_turf(src))
-			new_notice.set_wall_position(wall_dir)
+			new_notice.OnCrafted(wall_dir, user)
 
 			// Transfer the paper content to the notice
 			var/paper_info = ""
@@ -237,11 +236,11 @@
 				paper_name_str = S.name
 
 			if(paper_info)
-				new_notice.paper_content = paper_info
-				new_notice.paper_name = paper_name_str
+				new_notice.stored_info = paper_info
+				new_notice.stored_name = paper_name_str
 			else
-				new_notice.paper_content = "This notice appears to be blank."
-				new_notice.paper_name = "blank notice"
+				new_notice.stored_info = "This notice appears to be blank."
+				new_notice.stored_name = "blank notice"
 
 			// Update the notice name and description
 			new_notice.name = "scholar's notice"
@@ -256,59 +255,104 @@
 			to_chat(user, "<span class='notice'>You post the [paper_name_str] on the wall as an official notice.</span>")
 			return TRUE
 
+	// Check for authority roles that can create bandit notices
+	if(user.mind && (user.mind.assigned_role in BANDIT_AUTHORITY_ROLES))
+		if(istype(W, /obj/item/paper))
+			var/obj/item/paper/P = W
+			// Only allow empty papers for bandit notices
+			if(!P.info || P.info == "")
+				// Check if there's already a bandit notice on this wall
+				var/obj/structure/fluff/walldeco/wantedposter/custom/existing_bandit_notice
+				for(var/obj/structure/fluff/walldeco/wantedposter/custom/BN in get_turf(src))
+					existing_bandit_notice = BN
+					break
+
+				if(existing_bandit_notice)
+					to_chat(user, "<span class='notice'>There's already a bandit notice posted on this wall.</span>")
+					return TRUE
+
+				// Check if user has a feather to write with
+				var/obj/item/natural/feather/writing_tool
+				for(var/obj/item/natural/feather/F in user.contents)
+					writing_tool = F
+					break
+
+				if(!writing_tool)
+					to_chat(user, "<span class='warning'>You need a feather to write the bandit notice.</span>")
+					return TRUE
+
+				// Prompt for bandit name(s)
+				var/bandit_names = input(user, "Enter the name(s) of the bandit(s) you wish to post a notice for:", "Bandit Notice", "") as text|null
+				if(!bandit_names || bandit_names == "")
+					to_chat(user, "<span class='notice'>You decide not to create a bandit notice.</span>")
+					return TRUE
+
+				// Reading skill check
+				var/reading_skill = user.mind.get_skill_level(/datum/skill/misc/reading)
+				var/required_skill = 3
+				var/skill_roll = roll(1, 20) + reading_skill
+
+				if(skill_roll < (10 + required_skill)) // DC 13 for skill level 3
+					to_chat(user, "<span class='warning'>Your writing is too poor to create an official bandit notice.</span>")
+					return TRUE
+
+				// Determine wall direction for proper positioning
+				var/wall_dir = get_dir(user, src)
+
+				// Create the custom bandit notice
+				var/obj/structure/fluff/walldeco/wantedposter/custom/new_bandit_notice = new(get_turf(src))
+				new_bandit_notice.OnCrafted(wall_dir, user)
+
+				// Set bandit notice content
+				new_bandit_notice.bandit_names = bandit_names
+				new_bandit_notice.posted_by = user.mind.assigned_role
+				new_bandit_notice.stored_info = "WANTED: [bandit_names]\n\nBy order of the [user.mind.assigned_role], the above named individual(s) are wanted for banditry and other crimes against the realm.\n\nA reward may be offered for information leading to their capture."
+				new_bandit_notice.stored_name = "bandit notice"
+
+				// Update the notice name and description
+				new_bandit_notice.name = "bandit notice"
+				new_bandit_notice.desc = "An official notice declaring [bandit_names] as wanted bandits."
+
+				// Play sound effect
+				playsound(get_turf(user), 'sound/foley/dropsound/paper_drop.ogg', 40, TRUE, -1)
+
+				// Remove the paper from user's hand
+				qdel(W)
+
+				to_chat(user, "<span class='notice'>You post an official bandit notice for [bandit_names] on the wall.</span>")
+				return TRUE
+
 	// Continue with normal wallmount behavior
 	return ..() // This calls the parent's try_wallmount, which returns FALSE
 
-// Helper proc to determine wall direction - removed since we're using get_dir directly
-
-// New scholar notice subtype extending the existing wanted poster system
+// Scholar notice subtype extending the existing wanted poster system
 /obj/structure/fluff/walldeco/wantedposter/scholar
 	name = "scholar's notice"
 	desc = "A parchment posted by a scholar."
-	icon_state = "wanted1"
-	var/paper_content = ""
-	var/paper_name = "notice"
+	icon_state = "wanted2" // Use a specific icon state for scholar notices
+	var/stored_info = ""
+	var/stored_name = "notice"
 
 /obj/structure/fluff/walldeco/wantedposter/scholar/Initialize()
-	// Don't call parent Initialize to avoid random icon_state
 	. = ..()
-	// Use a specific icon state for scholar notices
-	icon_state = "wanted2" // Or whatever looks best for scholar notices
-
-/obj/structure/fluff/walldeco/wantedposter/scholar/proc/set_wall_position(wall_dir)
-	pixel_x = 0
-	pixel_y = 0
-	switch(wall_dir)
-		if(NORTH)
-			pixel_y = 32
-		if(SOUTH)
-			pixel_y = -32
-		if(EAST)
-			pixel_x = 32
-		if(WEST)
-			pixel_x = -32
-	// Move the notice to the wall turf instead of the floor
-	var/turf/wall_turf = get_step(src, turn(wall_dir, 180))
-	if(istype(wall_turf, /turf/closed/wall))
-		forceMove(wall_turf)
+	// Don't randomize icon_state for scholar notices
+	icon_state = "wanted2"
 
 /obj/structure/fluff/walldeco/wantedposter/scholar/examine(mob/user)
-	. = list()
-	. += "<span class='notice'><b>[name]</b></span>"
-	. += desc
+	. = ..()
 	if(user.Adjacent(src))
 		. += "<span class='notice'>You can read the notice by clicking on it.</span>"
 		if(user.mind && user.mind.assigned_role == "Scholar")
 			. += "<span class='notice'>As a Scholar, you can remove this notice by right-clicking it.</span>"
 
 /obj/structure/fluff/walldeco/wantedposter/scholar/attack_hand(mob/living/user)
-	if(!paper_content)
+	if(!stored_info)
 		to_chat(user, "<span class='notice'>The notice appears to be blank.</span>")
 		return
 
 	// Show the content to the user
-	to_chat(user, "<span class='paper'>The [paper_name] reads:</span>")
-	to_chat(user, "<span class='paper'>[paper_content]</span>")
+	to_chat(user, "<span class='paper'>The [stored_name] reads:</span>")
+	to_chat(user, "<span class='paper'>[stored_info]</span>")
 
 	// Play a paper rustling sound
 	user.playsound_local(user, 'sound/foley/dropsound/paper_drop.ogg', 40, FALSE)
@@ -321,8 +365,8 @@
 
 		// Create a paper with the original content
 		var/obj/item/paper/recovered_paper = new(get_turf(user))
-		recovered_paper.info = paper_content
-		recovered_paper.name = paper_name
+		recovered_paper.info = stored_info
+		recovered_paper.name = stored_name
 
 		qdel(src)
 		return
@@ -340,19 +384,112 @@
 
 			// Create a paper with the original content
 			var/obj/item/paper/recovered_paper = new(get_turf(src))
-			recovered_paper.info = paper_content
-			recovered_paper.name = paper_name
+			recovered_paper.info = stored_info
+			recovered_paper.name = stored_name
 
 			qdel(src)
 			return
 
 		// Allow scholars to edit the notice content
 		if(istype(W, /obj/item/natural/feather))
-			var/new_content = input(user, "What would you like to write on this notice?", "Edit Notice", paper_content) as message|null
+			var/new_content = input(user, "What would you like to write on this notice?", "Edit Notice", stored_info) as message|null
 			if(new_content && user.Adjacent(src))
-				paper_content = new_content
+				stored_info = new_content
 				to_chat(user, "<span class='notice'>You update the content of the notice.</span>")
 				playsound(get_turf(user), 'sound/foley/dropsound/paper_drop.ogg', 40, TRUE, -1)
 			return
 
+	return ..()
+
+// Custom bandit notice subtype that authority figures can create
+/obj/structure/fluff/walldeco/wantedposter/custom
+	name = "bandit notice"
+	desc = "An official notice declaring someone as a wanted bandit."
+	icon_state = "wanted3" // Use a different icon state for custom bandit notices
+	var/stored_info = ""
+	var/stored_name = "bandit notice"
+	var/bandit_names = ""
+	var/posted_by = ""
+
+/obj/structure/fluff/walldeco/wantedposter/custom/Initialize()
 	. = ..()
+	// Don't randomize icon_state for custom bandit notices
+	icon_state = "wanted3"
+
+/obj/structure/fluff/walldeco/wantedposter/custom/examine(mob/user)
+	. = ..()
+	if(user.Adjacent(src))
+		. += "<span class='notice'>You can read the notice by clicking on it.</span>"
+		if(user.mind && user.mind.assigned_role == "Bandit")
+			. += "<span class='warning'>As a Bandit, you can tear down this notice by right-clicking it.</span>"
+
+/obj/structure/fluff/walldeco/wantedposter/custom/attack_hand(mob/living/user)
+	if(!stored_info)
+		to_chat(user, "<span class='notice'>The notice appears to be blank.</span>")
+		return
+
+	// Show the content to the user
+	to_chat(user, "<span class='paper'>The [stored_name] reads:</span>")
+	to_chat(user, "<span class='paper'>[stored_info]</span>")
+
+	// Play a paper rustling sound
+	user.playsound_local(user, 'sound/foley/dropsound/paper_drop.ogg', 40, FALSE)
+
+/obj/structure/fluff/walldeco/wantedposter/custom/attack_right(mob/living/user)
+	// Right-click to tear down notice (bandits only)
+	if(user.mind && user.mind.assigned_role == "Bandit")
+		to_chat(user, "<span class='warning'>You angrily tear down the bandit notice!</span>")
+		playsound(get_turf(user), 'sound/foley/dropsound/paper_drop.ogg', 60, TRUE, -1)
+
+		// Create torn paper scraps instead of recovering the original
+		var/obj/item/paper/torn_paper = new(get_turf(user))
+		torn_paper.info = ""
+		torn_paper.name = "torn paper scraps"
+
+		// Send a message to nearby players
+		for(var/mob/living/M in view(7, user))
+			if(M != user)
+				to_chat(M, "<span class='warning'>[user] tears down a bandit notice!</span>")
+
+		qdel(src)
+		return
+	else
+		to_chat(user, "<span class='warning'>You don't dare tear down an official notice.</span>")
+		return
+
+/obj/structure/fluff/walldeco/wantedposter/custom/attackby(obj/item/W, mob/living/user, params)
+	// Allow authority figures to remove bandit notices
+	if(user.mind && (user.mind.assigned_role in BANDIT_AUTHORITY_ROLES))
+		// Check for wrench or similar tool
+		if(W.tool_behaviour == TOOL_WRENCH || istype(W, /obj/item/rogueweapon/huntingknife))
+			to_chat(user, "<span class='notice'>You carefully remove the bandit notice from the wall.</span>")
+			playsound(get_turf(user), 'sound/foley/dropsound/paper_drop.ogg', 40, TRUE, -1)
+
+			// Create a paper with the original content
+			var/obj/item/paper/recovered_paper = new(get_turf(src))
+			recovered_paper.info = stored_info
+			recovered_paper.name = stored_name
+
+			qdel(src)
+			return
+
+	// Allow bandits to tear down notices with weapons
+	if(user.mind && user.mind.assigned_role == "Bandit")
+		if(istype(W, /obj/item/rogueweapon) || W.force > 0)
+			to_chat(user, "<span class='warning'>You slash at the bandit notice, tearing it to shreds!</span>")
+			playsound(get_turf(user), 'sound/foley/dropsound/paper_drop.ogg', 60, TRUE, -1)
+
+			// Create torn paper scraps
+			var/obj/item/paper/torn_paper = new(get_turf(user))
+			torn_paper.info = ""
+			torn_paper.name = "shredded paper"
+
+			// Send a message to nearby players
+			for(var/mob/living/M in view(7, user))
+				if(M != user)
+					to_chat(M, "<span class='warning'>[user] destroys a bandit notice with [W]!</span>")
+
+			qdel(src)
+			return
+
+	return ..()
