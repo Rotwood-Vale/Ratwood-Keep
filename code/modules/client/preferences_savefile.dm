@@ -442,7 +442,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	real_name = reject_bad_name(real_name)
 	gender = sanitize_gender(gender)
-
+	body_type = sanitize_gender(body_type, FALSE, FALSE, gender)
 
 	//Should help old characters with no voice type auto set it
 	S["voice_type"]		>> voice_type
