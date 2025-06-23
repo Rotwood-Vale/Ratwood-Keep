@@ -9,8 +9,8 @@
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\conflict_marker.dm"
-#include "_maps\rockhill.dm"
 #include "_maps\map_files\byos\byosfinal.dmm"
+#include "_maps\map_files\rockhill\rockhill.dmm"
 #include "_maps\templates\arcyne_fortress.dm"
 #include "_maps\templates\bog_shack_small.dm"
 #include "_maps\templates\sewers.dm"
