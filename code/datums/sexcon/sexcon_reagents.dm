@@ -12,10 +12,10 @@
 
 /datum/reagent/consumable/ethanol/beer/emberwine/on_mob_metabolize(mob/living/carbon/human/C)
 	..()
-	C.sexcon.aphrodisiac += 1
+	C.sexcon.aphrodisiac++
 
 /datum/reagent/consumable/ethanol/beer/emberwine/on_mob_end_metabolize(mob/living/carbon/human/C)
-	C.sexcon.aphrodisiac -= 1
+	C.sexcon.aphrodisiac--
 	..()
 
 /datum/reagent/consumable/ethanol/beer/emberwine/on_mob_life(mob/living/carbon/human/C)
@@ -60,7 +60,7 @@
 	to_chat(C, "<span class='aphrodisiac'>The glow in your stomach spreads, rushing to your head and warming your face.</span>")
 	metabolization_rate = 0.2 //Purges faster while overdosing because this is really debilitating
 	C.emote("sexmoanhvy", forced = TRUE)
-	C.sexcon.aphrodisiac += 1
+	C.sexcon.aphrodisiac++
 	C.Jitter(20)
 	C.Stun(15)
 
