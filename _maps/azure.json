@@ -1,0 +1,37 @@
+{
+	"map_name": "Azure Peak",
+	"map_path": "map_files/azure",
+	"map_file": "azure.dmm",
+	"traits": [
+		{
+			"Up": true,
+			"Turf Weather Effects": true
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Turf Weather Effects": true,
+			"Baseturf": "/turf/open/transparent/openspace"
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Turf Weather Effects": true,
+			"Baseturf": "/turf/open/transparent/openspace"
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Turf Weather Effects": true,
+			"Baseturf": "/turf/open/transparent/openspace"
+		},
+		{
+			"Down": true,
+			"Turf Weather Effects": true,
+			"Baseturf": "/turf/open/transparent/openspace"
+		}
+	],
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}
