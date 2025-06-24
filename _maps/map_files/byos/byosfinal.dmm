@@ -426,7 +426,7 @@
 "sd" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
 "se" = (/turf/closed/wall/mineral/rogue/craftstone,/turf/closed/wall/mineral/rogue/craftstone,/area/rogue/under/cave)
 "sg" = (/obj/structure/toilet,/turf/open/floor/rogue/blocks,/area/rogue/under/cave)
-"si" = (/obj/structure/fluff/canopy/green,/obj/structure/table/wood,/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/obj/structure/bars/passage/shutter{name = "Merchant"; redstone_id = "shutter_merchant"s"},/turf/open/dark_filler,/area/rogue/indoors/town/shop)
+"si" = (/obj/structure/fluff/canopy/green,/obj/structure/table/wood,/obj/structure/bars{icon_state = "barsbent"; layer = 2.81},/obj/structure/bars/passage/shutter{name = "Merchant"; redstone_id = "shutter_merchant"},/turf/open/dark_filler,/area/rogue/indoors/town/shop)
 "sk" = (/obj/effect/decal/cleanable/coom,/turf/open/floor/rogue/cobble,/area/rogue/under/cave)
 "sl" = (/obj/machinery/light/rogue/torchholder{dir = 8},/obj/structure/handcart,/turf/open/floor/rogue/metal,/area/rogue/under/cave)
 "sn" = (/obj/item/natural/rock,/turf/open/water/cleanshallow,/area/rogue/under/cave)
