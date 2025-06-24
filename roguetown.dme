@@ -2045,5 +2045,12 @@
 #include "modular\Neu_Food\code\raw\NeuFood_processed.dm"
 #include "modular\Neu_Food\code\raw\NeuFood_veggies.dm"
 #include "modular\Smoker\code\Smoker.dm"
+#include "modular\virtues\_virtue.dm"
+#include "modular\virtues\combat.dm"
+#include "modular\virtues\items.dm"
+#include "modular\virtues\movement.dm"
+#include "modular\virtues\size.dm"
+#include "modular\virtues\thief.dm"
+#include "modular\virtues\utility.dm"
 #include "modular\ze_genesis_call\genesis_call.dm"
 // END_INCLUDE
