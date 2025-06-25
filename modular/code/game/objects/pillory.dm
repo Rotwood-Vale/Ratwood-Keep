@@ -33,9 +33,13 @@
 /obj/structure/pillory/bounty/town_square
 	accepted_id = list("keep_dungeon", "keep_barracks", "town_dungeon", "town_barracks", "bog_dungeon", "bog_barracks", "church")
 
+
 /obj/structure/pillory/bounty/keep_dungeon
 	accepted_id = list("keep_dungeon")
 
+/obj/structure/pillory/reinforced/keep_dungeon
+	accepted_id = list("keep_dungeon")
+	
 /obj/structure/pillory/reinforced/town_dungeon
 	accepted_id = list("town_dungeon")
 

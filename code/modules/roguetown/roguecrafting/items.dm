@@ -176,6 +176,9 @@
 	result = /obj/item/rogueweapon/mace/woodclub
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/obj/item/rogueweapon/mace/woodclub/crafted
+	sellprice = 8
+
 /datum/crafting_recipe/roguetown/billhook
 	name = "improvised billhook - (sickle, rope, small log; COMPETENT)"
 	result = /obj/item/rogueweapon/spear/improvisedbillhook
