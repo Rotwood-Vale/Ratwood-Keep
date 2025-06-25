@@ -399,29 +399,6 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	heat = min(1000, burn_temp + heat)
 	qdel(item)
 
-/obj/structure/fermentation_keg/random/water
-	name = "water barrel"
-
-/obj/structure/fermentation_keg/random/water/Initialize()
-	. = ..()
-	reagents.add_reagent(/datum/reagent/water, rand(0,900))
-
-
-/obj/structure/fermentation_keg/random/beer/Initialize()
-	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,900))
-
-/obj/structure/fermentation_keg/water
-	name = "water barrel"
-
-/obj/structure/fermentation_keg/water/Initialize()
-	. = ..()
-	reagents.add_reagent(/datum/reagent/water,900)
-
-/obj/structure/fermentation_keg/beer/Initialize()
-	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer,900)
-
 /obj/structure/fermentation_keg/proc/create_items()
 	if(!ready_to_bottle)
 		return

@@ -9,6 +9,7 @@
 	To brew, you start by getting an empty barrel and then filling it with some kind of liquid - usually water.<br>
 	Then you add the ingredients needed for the recipe, such as fruits, vegetables or grains.<br>
 	Then, you can left click on the barrel to start brewing.<br>
+	A sack will automatically empty valid ingredients into the barrel when you click on it. Remember this!<br> 
 	Beware, brewing will clear all of the existing reagents in the barrel, so make sure you start with an empty barrel.<br>
 	You can also right-click on the barrel to clear it, this will also clear the reagents. If you do this by mistake, walk away to interrupt your action.<br> 
 	<div>

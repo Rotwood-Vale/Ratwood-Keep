@@ -21,7 +21,7 @@
 
 /obj/structure/fermentation_keg/random/beer/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol, rand(0,900))
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, rand(0,900))
 
 /obj/structure/fermentation_keg/water
 	name = "water barrel"
@@ -35,7 +35,7 @@
 
 /obj/structure/fermentation_keg/beer/Initialize()
 	. = ..()
-	reagents.add_reagent(/datum/reagent/consumable/ethanol,900)
+	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer, 900)
 
 
 // Alcohol 

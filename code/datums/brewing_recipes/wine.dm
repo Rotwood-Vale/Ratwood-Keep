@@ -23,6 +23,8 @@
 	brewed_amount = 6
 	brew_time = 5 MINUTES
 	sell_value = 50
+
+	ages = TRUE
 	age_times = list(
 		/datum/reagent/consumable/ethanol/plum_wine/aged = 10 MINUTES,
 		/datum/reagent/consumable/ethanol/plum_wine/delectable = 20 MINUTES
@@ -37,6 +39,8 @@
 	brewed_amount = 6
 	brew_time = 5 MINUTES
 	sell_value = 50
+
+	ages = TRUE
 	age_times = list(
 		/datum/reagent/consumable/ethanol/tangerine/aged = 10 MINUTES,
 		/datum/reagent/consumable/ethanol/tangerine/delectable = 20 MINUTES
@@ -51,6 +55,8 @@
 	brewed_amount = 6
 	brew_time = 5 MINUTES
 	sell_value = 50
+
+	ages = TRUE
 	age_times = list(
 		/datum/reagent/consumable/ethanol/raspberry/aged = 10 MINUTES,
 		/datum/reagent/consumable/ethanol/raspberry/delectable = 20 MINUTES
@@ -65,6 +71,8 @@
 	brewed_amount = 6
 	brew_time = 5 MINUTES
 	sell_value = 50
+
+	ages = TRUE
 	age_times = list(
 		/datum/reagent/consumable/ethanol/blackberry/aged = 10 MINUTES,
 		/datum/reagent/consumable/ethanol/blackberry/delectable = 20 MINUTES
