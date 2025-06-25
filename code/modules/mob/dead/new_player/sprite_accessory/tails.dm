@@ -357,3 +357,10 @@
 	icon_state = "lynx"
 	color_keys = 2
 	color_key_names = list("Tail", "Tip")
+
+
+/datum/sprite_accessory/tail/lion
+	name = "Lion"
+	icon_state = "lion"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
