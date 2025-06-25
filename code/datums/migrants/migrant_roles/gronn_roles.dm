@@ -1,3 +1,6 @@
+/datum/migrant_role/gronn
+	hidden_role = TRUE // all gronn roles are hidden from the actors list
+
 /datum/migrant_role/gronn/chieftain
 	name = "Gronn Chieftain"
 	greet_text = "You are the leader of your tribe. Guide them to glory or try to survive."

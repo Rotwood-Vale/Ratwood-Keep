@@ -223,9 +223,14 @@ SUBSYSTEM_DEF(migrants)
 		var/fakekey = character.ckey
 		if(character.ckey in GLOB.anonymize)
 			fakekey = get_fake_key(character.ckey)
-		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank])<BR>"
+		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank] - [role.name])<BR>"
 		GLOB.character_ckey_list[character.real_name] = character.ckey
-		log_character("[character.ckey] ([fakekey]) - [character.real_name] - [rank]")
+		if(!role.hidden_role)
+			if(role.obfuscated_role)
+				GLOB.actors_list[character.mobid] = "[character.real_name] as Refugee<BR>"
+			else
+				GLOB.actors_list[character.mobid] = "[character.real_name] as [role.name]<BR>"
+		log_character("[character.ckey] ([fakekey]) - [character.real_name] - [rank] ([role.name])")
 	if(GLOB.respawncounts[character.ckey])
 		var/AN = GLOB.respawncounts[character.ckey]
 		AN++

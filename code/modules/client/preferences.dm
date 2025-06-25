@@ -686,6 +686,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			else
 				dat += "<a class='linkOff' href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
 			dat += " - <a href='?_src_=prefs;preference=migrants'>MIGRATION</a>"
+			dat += "<br><a href='?_src_=prefs;preference=manifest'>ACTORS</a>"
 	else
 		dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
 
@@ -1926,6 +1927,10 @@ Slots: [job.spawn_positions]</span>
 
 				if("migrants")
 					migrant.show_ui()
+					return
+				
+				if("manifest")
+					parent.view_actors_manifest()
 					return
 
 				if("finished")
