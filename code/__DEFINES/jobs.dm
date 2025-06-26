@@ -170,6 +170,7 @@
 #define PRISONERR	(1<<12)
 #define PRISONERB	(1<<13)
 #define LUNATIC		(1<<14)
+#define PRISONERT	(1<<15)
 
 #define YOUNGFOLK	(1<<7)
 
@@ -198,6 +199,16 @@
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
 
+#define TRIBAL		(1<<12)
+
+#define TRIBALCHIEF	(1<<0)
+#define TRIBALSEER	(1<<1)
+#define TRIBALGUARD (1<<2)
+#define TRIBALTINKERER (1<<3)
+#define TRIBALCAVELING (1<<4)
+#define TRIBALLACKEY (1<<5)
+
+
 #define SLOP		(1<<10)
 
 #define TESTER		(1<<0)
@@ -219,6 +230,7 @@
 #define JCOLOR_MERCENARY "#c86e3a"
 #define JCOLOR_FOREIGNER "#776759"
 #define JCOLOR_GOBLIN "#33CC33"
+#define JCOLOR_TRIBAL "#cc3333"
 
 
 // job display orders //
@@ -302,8 +314,9 @@
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
-#define JDO_HOSTAGE 35.2
-#define JDO_LUNATIC 35.3
+#define JDO_PRISONERT 35.2
+#define JDO_HOSTAGE 35.3
+#define JDO_LUNATIC 35.4
 
 #define JDO_GOBLINCHIEF 36
 #define JDO_GOBLINCOOK 37
@@ -316,6 +329,13 @@
 #define JDO_REFUGEE 42.1
 #define JDO_MIGRANT 42.2
 #define JDO_BANDIT 42.3
+
+#define JDO_TRIBALCHIEF 43
+#define JDO_TRIBALSEER 44
+#define JDO_TRIBALGUARD 45
+#define JDO_TRIBALTINKERER 46
+#define JDO_TRIBALCAVELING 47
+#define JDO_TRIBALLACKEY 48
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -370,7 +390,8 @@
 	/datum/job/roguetown/bapprentice,\
 	/datum/job/roguetown/prisonerb,\
 	/datum/job/roguetown/hostage,\
-	/datum/job/roguetown/prisonerr
+	/datum/job/roguetown/prisonerr, \
+	/datum/job/roguetown/prisonert
 
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/mayor,\
@@ -411,3 +432,10 @@
 	/datum/job/roguetown/migrant,\
 	/datum/job/roguetown/bandit
 
+#define TRIBAL_ROLES \
+	/datum/job/roguetown/tribalcaveling,\
+	/datrum/job/roguetown/tribalchief,\
+ 	/datum/job/roguetown/tribalguard,\
+ 	/datum/job/roguetown/tribaltinkerer,\
+ 	/datum/job/roguetown/tribalseer,\
+ 	/datum/job/roguetown/triballackey	

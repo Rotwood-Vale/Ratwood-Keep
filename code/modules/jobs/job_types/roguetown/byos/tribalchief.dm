@@ -1,37 +1,37 @@
 /datum/job/roguetown/goblinchief
-	title = "Goblin Chief"
-	f_title = "Goblin Chieftess"
-	flag = GOBLINCHIEF
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
+	title = "Tribal Chief"
+	f_title = "Tribal Chieftess"
+	flag = TRIBALCHIEF
+	department_flag = TRIBAL
+	selection_color = JCOLOR_TRIBAL
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp, /datum/species/halforc)
-	tutorial = "You're the Chief of the local Goblin tribe. A representation of Graggar's rule, you are the biggest and strongest. You ensure the spread of his dominion over others where you can. \
-	Currently, you're in hiding, beneath the town and, thankfully, bypassing the Mire's gate. \
-	Have your subjects trudge through the sewers and elsewhere, robbing and kidnapping passersby. Spread your will upon the weak fools. Bring glory and slaves to your tribe in Graggar's name!"
+	allowed_races = list(/datum/species/goblinp, /datum/species/anthromorphsmall, /datum/species/kobold, /datum/species/dracon, /datum/species/halforc)
+	tutorial = "You're the Chief of the local island tribe. A representation of The Dragon's rule, as you are the biggest and strongest. You ensure the spread of his dominion over others where you can, while ensuring none disturb his slumber. \
+	There's news of an arriving duchy seeking to lay claim to The Dragon's island. \
+	Have your subjects sneak through the caves and elsewhere, robbing and kidnapping passersby. Spread His will upon the weak fools. Bring gold and slaves to your tribe in The Dragon's name!"
 	whitelist_req = FALSE
-	outfit = /datum/outfit/job/roguetown/goblinchief
-	display_order = JDO_GOBLINCHIEF
+	outfit = /datum/outfit/job/roguetown/tribalchief
+	display_order = JDO_TRIBALCHIEF
 	min_pq = 6
 	max_pq = null
 	announce_latejoin = FALSE
-	allowed_maps = list("Rockhill")
+	allowed_maps = list("Build Your Settlement")
 
-/datum/outfit/job/roguetown/goblinchief
+/datum/outfit/job/roguetown/tribalchief
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 
-/datum/outfit/job/roguetown/goblinchief/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalchief/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += "orcs"
+	H.faction += list("orcs", "kobolds")
 	//H.verbs |= /mob/living/carbon/human/proc/goblinannouncement
 	//H.verbs |= /mob/living/carbon/human/proc/goblinopenslot
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	head = /obj/item/clothing/head/roguetown/crown/surplus
 	cloak = /obj/item/clothing/cloak/heartfelt
@@ -67,10 +67,9 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 
-//If a non-Goblin or Horc gets control by admin intervention.
-	if(!H.has_language(/datum/language/orcish))
-		H.grant_language(/datum/language/orcish)
-		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+	if(!H.has_language(/datum/language/draconic))
+		H.grant_language(/datum/language/draconic)
+		to_chat(H, span_info("I can speak Draconic with ,s before my speech."))
 
 /*
 /mob/living/carbon/human/proc/goblinannouncement()

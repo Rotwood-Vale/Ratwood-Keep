@@ -1,28 +1,28 @@
-/datum/job/roguetown/prisonerb
-	title = "Prisoner (Bog)"
-	flag = PRISONERB
+/datum/job/roguetown/prisonert
+	title = "Prisoner (Tribe)"
+	flag = PRISONERT
 	department_flag = NOBLEMEN
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 4
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN
-	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	allowed_races = list(/datum/species/aasimar, /datum/species/axian, /datum/species/demihuman, /datum/species/dwarf, /datum/species/elf, /datum/species.human, /datum/species/lizardfolk, /datum/species/lupian, /datum/species/moth, /datum/species/vulpkanin, /datum/species/tabaxi, /datum/species/seelie, /datum/species/anthromorph, /datum/species/tieberian, /datum/species/human/halfelf)
+	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to this accursed island to rescue you. Might as well start praying to whatever god you find solace in."
 	seelie_tutorial = "Thrown in this accursed place, the collar around your neck prevents any and all magic you might've had. You waste away here, no mischief to be made or people to assist. Your life as a caged fae is miserable indeed."
 
-	outfit = /datum/outfit/job/roguetown/prisonerb
+	outfit = /datum/outfit/job/roguetown/prisonert
 	banned_leprosy = FALSE
-	display_order = JDO_PRISONERB
+	display_order = JDO_PRISONERT
 	give_bank_account = 10
 	min_pq = -14
 	max_pq = null
 	can_random = FALSE
-	allowed_maps = list("Rockhill")
+	allowed_maps = list("Build Your Settlement")
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 
-/datum/outfit/job/roguetown/prisonerb/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/prisonert/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -47,6 +47,4 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
-	if(istype(H.dna.species, /datum/species/goblinp))
-		H.set_patron(/datum/patron/inhumen/graggar)
 

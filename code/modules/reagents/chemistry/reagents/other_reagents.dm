@@ -107,8 +107,10 @@
 	metabolization_rate = 0.4
 
 /datum/reagent/water/salty/on_mob_life(mob/living/carbon/M)
-	M.adjustToxLoss(0.5)
-	M.add_nausea(50)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_WILD_EATER))
+		M.adjustToxLoss(0.5)
+		M.add_nausea(20)
+	return ..()
 
 /datum/reagent/rawsalt
 	name = "Raw Salt"
