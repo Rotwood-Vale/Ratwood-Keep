@@ -253,7 +253,7 @@
 "hS" = (/obj/structure/closet/crate/chest/gold{locked = 1; lockid = "gobbo_chief"},/obj/item/rogueore/gold,/obj/item/rogueore/gold,/turf/open/floor/rogue/cobble/mossy,/area/rogue/under/cave)
 "hT" = (/obj/structure/bed/rogue/inn/wool,/obj/item/bedsheet/rogue/fabric,/obj/effect/landmark/start/shophand,/turf/open/floor/carpet/royalblack,/area/rogue/indoors/town/shop)
 "hU" = (/obj/structure/flora/roguegrass/bush,/turf/open/floor/rogue/dirt/road,/area/rogue/under/cave)
-"hV" = (/obj/structure/plasticflaps{max_integrity = INFINITY},/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"hV" = (/obj/structure/plasticflaps{max_integrity = 1500},/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
 "hX" = (/turf/closed/wall/mineral/rogue/roofwall/middle{dir = 1},/area/rogue/indoors/town/tavern)
 "hZ" = (/obj/structure/fluff/railing/border{dir = 4},/obj/structure/fluff/railing/border{dir = 9},/turf/open/floor/rogue/grass,/area/rogue/outdoors/rtfield)
 "ia" = (/obj/effect/decal/remains/bigrat,/turf/open/floor/rogue/grass,/area/rogue/outdoors/bog)
