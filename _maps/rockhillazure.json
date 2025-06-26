@@ -1,7 +1,7 @@
 {
-	"map_name": "Azure Peak",
-	"map_path": "map_files/azure",
-	"map_file": "azure.dmm",
+	"map_name": "Rockhill (Azure Peak)",
+	"map_path": "map_files/rockhill_azure",
+	"map_file": "rockhill_azure.dmm",
 	"traits": [
 		{
 			"Up": true,
