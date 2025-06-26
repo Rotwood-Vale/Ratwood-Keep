@@ -1,5 +1,6 @@
 
 /datum/looping_sound/instrument
+	mid_sounds = list('sound/blank.ogg')
 	mid_length = 2400 // 4 minutes for some reason. better would be each song having a specific length
 	volume = 100
 	extra_range = 5
@@ -30,7 +31,7 @@
 	// grid_height = 64
 	// grid_width = 32
 
-/obj/item/rogue/instrument/equipped(mob/living/user, slot)
+/obj/item/rogue/instrument/equipped(mob/living/user, slot, initial, silent)
 	. = ..()
 	if(playing && user.get_active_held_item() != src)
 		playing = FALSE
@@ -76,12 +77,16 @@
 		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 		return
 	else
+		if(user.get_inactive_held_item())
+			to_chat(user, span_warning("You need your other hand free to play."))
+
 		var/playdecision = alert(user, "Would you like to start a band?", "Band Play", "Yes", "No")
 		switch(playdecision)
 			if("Yes")
 				groupplaying = TRUE
 			if("No")
 				groupplaying = FALSE
+				
 		if(!groupplaying)
 			var/list/options = song_list.Copy()
 			if(user.mind && user.mind.get_skill_level(/datum/skill/misc/music) >= 4)
@@ -91,7 +96,7 @@
 			if(!choice || !user)
 				return
 				
-			if(playing || !(src in user.held_items) || user.get_inactive_held_item())
+			if(playing || !(src in user.held_items))
 				return
 				
 			if(choice == "Upload New Song")
