@@ -154,6 +154,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/violated = list()
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
+
+	var/flavortext
+	var/flavortext_display
+
 	var/defiant = TRUE
 	var/virginity = FALSE
 	var/char_accent = "No accent"
@@ -416,6 +420,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<br><b>Nudeshot(3:4):</b> <a href='?_src_=prefs;preference=nudeshot;task=input'>Change</a>"
 			if(nudeshot_link != null)
 				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
+
+			dat += "<br><b>[(length(flavortext) > MAXIMUM_FLAVOR_TEXT) ? "<font color = '#802929'>" : ""]Flavortext:[(length(flavortext) > MAXIMUM_FLAVOR_TEXT) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
+			dat += "<br><a href='?_src_=prefs;preference=flavortext_preview;task=input'><b>Preview Flavortext</b></a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -1469,6 +1476,42 @@ Slots: [job.spawn_positions]</span>
 							return
 						voice_pitch = new_voice_pitch
 
+				if("formathelp")
+					var/list/dat = list()
+					dat +="You can use backslash (\\) to escape special characters.<br>"
+					dat += "<br>"
+					dat += "# text : Defines a header.<br>"
+					dat += "|text| : Centers the text.<br>"
+					dat += "**text** : Makes the text <b>bold</b>.<br>"
+					dat += "*text* : Makes the text <i>italic</i>.<br>"
+					dat += "^text^ : Increases the <font size = \"4\">size</font> of the text.<br>"
+					dat += "((text)) : Decreases the <font size = \"1\">size</font> of the text.<br>"
+					dat += "* item : An unordered list item.<br>"
+					dat += "--- : Adds a horizontal rule.<br>"
+					dat += "-=FFFFFFtext=- : Adds a specific <font color = '#FFFFFF'>colour</font> to text.<br><br>"
+					dat += "Maximum Flavortext: <b>[MAXIMUM_FLAVOR_TEXT]</b> characters.<br>"
+					var/datum/browser/popup = new(user, "Formatting Help", nwidth = 400, nheight = 350)
+					popup.set_content(dat.Join())
+					popup.open(FALSE)
+				if("flavortext")
+					to_chat(user, "<span class='notice'>["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory, the character's internal thoughts or your OOC preferences.</span>"]</span>")
+					var/new_flavortext = input(user, "Input your character description:", "Flavortext (max [MAXIMUM_FLAVOR_TEXT] characters)", flavortext) as message|null
+					if(new_flavortext == null)
+						return
+					if(new_flavortext == "")
+						flavortext = null
+						flavortext_display = null
+						ShowChoices(user)
+						return
+					flavortext = new_flavortext
+					var/ft = copytext(flavortext, 1, MAXIMUM_FLAVOR_TEXT + 1)
+					ft = html_encode(ft)
+					ft = replacetext(parsemarkdown_basic(ft), "\n", "<BR>")
+					flavortext_display = ft
+					to_chat(user, "<span class='notice'>Successfully updated flavortext</span>")
+					if(length(flavortext) > MAXIMUM_FLAVOR_TEXT)
+						to_chat(user, "<span class='warning'>Your flavourtext is too long (max [MAXIMUM_FLAVOR_TEXT] characters) and will be truncated.</span>")
+					log_game("[user] has set their flavortext.")
 				if("headshot")
 					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
 					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
@@ -1507,8 +1550,18 @@ Slots: [job.spawn_positions]</span>
 					to_chat(user, "<span class='notice'>Successfully updated nudeshot picture</span>")
 					log_game("[user] has set their Nudeshot image to '[nudeshot_link]'.")
 
-				if("species")
+				if("flavortext_preview")
+					var/list/dat = list()
+					dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[real_name]</b></font></div>"
+					if(valid_headshot_link(null, headshot_link, TRUE))
+						dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
+					if(flavortext && flavortext_display)
+						dat += "<div align='left'>[flavortext_display]</div>"
+					var/datum/browser/popup = new(user, "[real_name]", nwidth = 600, nheight = 600)
+					popup.set_content(dat.Join())
+					popup.open(FALSE)
 
+				if("species")
 					var/list/crap = list()
 					for(var/A in GLOB.roundstart_races)
 						var/datum/species/bla = GLOB.species_list[A]
@@ -2070,6 +2123,9 @@ Slots: [job.spawn_positions]</span>
 
 	character.headshot_link = headshot_link
 	character.nudeshot_link = nudeshot_link
+	
+	character.flavortext = flavortext
+	character.flavortext_display = flavortext_display
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)

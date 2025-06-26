@@ -7,11 +7,14 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
 			return
-		if(!valid_headshot_link(null, headshot_link, TRUE))
-			return
 		var/mob/user = usr
-		var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[headshot_link]' width='250px' height='250px'></td></table>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]</div>", 310, 330)
+		var/list/dat = list()
+		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src]</b></font></div>"
+		if(valid_headshot_link(null, headshot_link, TRUE))
+			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
+		if(flavortext)
+			dat += "<div align='left'>[flavortext_display]</div>"
+		var/datum/browser/popup = new(user, "[src]", nwidth = 600, nheight = 600)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
