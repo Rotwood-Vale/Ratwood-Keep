@@ -4529,7 +4529,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "dTD" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "dTL" = (
@@ -9191,7 +9191,7 @@
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue/under/cavewet/bogcaves)
 "iNT" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
 "iNX" = (
@@ -13001,10 +13001,6 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
-"nuH" = (
-/obj/structure/table/roguetree,
-/turf/open/floor/rogue/dirt,
-/area/rogue/outdoors/woods)
 "nvm" = (
 /obj/structure/stairs,
 /turf/open/floor/rogue/blocks,
@@ -15549,7 +15545,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods)
 "qmg" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
 "qmx" = (
@@ -18471,7 +18467,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "tzK" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "tzM" = (
@@ -19683,7 +19679,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/basement)
 "uTf" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield)
 "uTg" = (
@@ -20807,7 +20803,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "weA" = (
-/obj/structure/table/roguetree,
+/obj/structure/table/roguetree/stump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
 "weB" = (
@@ -273884,7 +273880,7 @@ uuq
 paf
 paf
 glM
-nuH
+wpY
 veW
 dcH
 veW
@@ -279918,7 +279914,7 @@ uuq
 paf
 paf
 glM
-nuH
+wpY
 paf
 paf
 paf
@@ -283541,7 +283537,7 @@ duw
 veW
 paf
 paf
-nuH
+wpY
 paf
 glM
 kOB
@@ -290370,7 +290366,7 @@ hcW
 hcW
 hcW
 veW
-nuH
+wpY
 glM
 duw
 duw
