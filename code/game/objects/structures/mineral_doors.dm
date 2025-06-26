@@ -319,7 +319,7 @@
 	if(!windowed)
 		set_opacity(FALSE)
 	flick("[base_state]opening",src)
-	sleep(10)
+	sleep(2)
 	density = FALSE
 	door_opened = TRUE
 	layer = OPEN_DOOR_LAYER
@@ -341,7 +341,7 @@
 	if(!silent)
 		playsound(src, closeSound, 100)
 	flick("[base_state]closing",src)
-	sleep(10)
+	sleep(2)
 	density = TRUE
 	if(!windowed)
 		set_opacity(TRUE)
