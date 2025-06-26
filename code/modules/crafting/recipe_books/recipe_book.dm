@@ -64,6 +64,18 @@
 			temp_recipe = new path()
 			var/datum/anvil_recipe/r = temp_recipe
 			category = r.category
+		else if(ispath(path, /datum/book_entry))
+			temp_recipe = new path()
+			var/datum/book_entry/r = temp_recipe
+			category = r.category
+		else if(ispath(path, /datum/alch_grind_recipe))
+			temp_recipe = new path()
+			var/datum/alch_grind_recipe/r = temp_recipe
+			category = r.category
+		else if(ispath(path, /datum/alch_cauldron_recipe))
+			temp_recipe = new path()
+			var/datum/alch_cauldron_recipe/r = temp_recipe
+			category = r.category
 		// else if(ispath(path, /datum/orderless_slapcraft))
 		// 	temp_recipe = new path()
 		// 	var/datum/orderless_slapcraft/r = temp_recipe
@@ -96,10 +108,6 @@
 		// 	temp_recipe = new path()
 		// 	var/datum/runerituals/r = temp_recipe
 		// 	category = r.category
-		// else if(ispath(path, /datum/book_entry))
-		// 	temp_recipe = new path()
-		// 	var/datum/book_entry/r = temp_recipe
-		// 	category = r.category
 
 		// Clean up our temporary instance
 		if(temp_recipe)
@@ -116,7 +124,7 @@
 /obj/item/recipe_book/attack_self(mob/user)
 	. = ..()
 	current_reader = user
-	current_reader << browse(generate_html(user),"window=recipe;size=800x810")
+	current_reader << browse(generate_html(user),"window=recipe;size=1000x810")
 
 /obj/item/recipe_book/proc/generate_html(mob/user)
 	var/client/client = user
@@ -433,6 +441,26 @@
 		var/datum/anvil_recipe/r = temp_recipe
 		recipe_name = initial(r.name)
 		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/book_entry))
+		temp_recipe = new path()
+		var/datum/book_entry/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/alch_grind_recipe))
+		temp_recipe = new path()
+		var/datum/alch_grind_recipe/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/alch_cauldron_recipe))
+		temp_recipe = new path()
+		var/datum/alch_cauldron_recipe/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	// else if(ispath(path, /datum/alch_cauldron_recipe))
+	// 	temp_recipe = new path()
+	// 	var/datum/alch_cauldron_recipe/r = temp_recipe
+	// 	recipe_name = initial(r.name)
+	// 	recipe_html = get_recipe_specific_html(r, user)
 	// else if(ispath(path, /datum/orderless_slapcraft))
 	// 	temp_recipe = new path()
 	// 	var/datum/orderless_slapcraft/r = temp_recipe
@@ -474,11 +502,6 @@
 	// 	var/datum/runerituals/r = temp_recipe
 	// 	recipe_name = initial(r.name)
 	// 	recipe_html = get_recipe_specific_html(r, user)
-	// else if(ispath(path, /datum/book_entry))
-	// 	temp_recipe = new path()
-	// 	var/datum/book_entry/r = temp_recipe
-	// 	recipe_name = initial(r.name)
-	// 	recipe_html = get_recipe_specific_html(r, user)
 
 	if(temp_recipe)
 		qdel(temp_recipe)
@@ -514,14 +537,14 @@
 			var/category = href_list["category"]
 			if(category)
 				current_category = category
-				current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+				current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 			return
 
 		if("search")
 			var/query = href_list["query"]
 			if(query)
 				search_query = query
-				current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+				current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 			return
 
 		if("remember_query")
@@ -535,39 +558,39 @@
 			if(recipe_path)
 				var/datum/path = text2path(recipe_path)
 				current_recipe = path
-				current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+				current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 			return
 
 		if("clear_recipe")
 			current_recipe = null
-			current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+			current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 			return
 
 	if(href_list["set_category"])
 		current_category = href_list["set_category"]
-		current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+		current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 		return
 
 	if(href_list["search"])
 		search_query = href_list["search"]
-		current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+		current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 		return
 
 	if(href_list["view_recipe"])
 		var/datum/path = text2path(href_list["view_recipe"])
 		current_recipe = path
-		current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+		current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 		return
 
 	if(href_list["clear_recipe"])
 		current_recipe = null
-		current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+		current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 		return
 
 	if(href_list["pick_recipe"])
 		var/datum/path = text2path(href_list["pick_recipe"])
 		current_recipe = path
-		current_reader << browse(generate_html(current_reader), "window=recipe;size=800x810")
+		current_reader << browse(generate_html(current_reader), "window=recipe;size=1000x810")
 
 /obj/item/recipe_book/Topic(href, href_list)
 	. = ..()

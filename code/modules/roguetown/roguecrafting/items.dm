@@ -113,6 +113,7 @@
 	verbage_simple = "braid"
 	verbage = "braids"
 
+<<<<<<< HEAD
 /datum/crafting_recipe/roguetown/bowstring
 	name = "bowstring - (2 fibers; BEGINNER)"
 	result = /obj/item/natural/bowstring
@@ -138,11 +139,16 @@
 
 /datum/crafting_recipe/roguetown/torch
 	name = "torch - (stick, fiber; NONE)"
+=======
+/datum/crafting_recipe/roguetown/survival/torch
+	name = "torch"
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 	result = /obj/item/flashlight/flare/torch
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/fibers = 1)
 	skill_level = 0
 
+<<<<<<< HEAD
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x3) - (2 fat; BEGINNER)"
 	result = list(/obj/item/candle/yellow,
@@ -341,6 +347,44 @@
 				)
 	reqs = list(/obj/item/natural/fibers = 5,
 				/obj/item/natural/cloth = 5)
+=======
+
+/datum/crafting_recipe/roguetown/survival/mortar
+	name = "alchemical mortar"
+	result = /obj/item/reagent_containers/glass/mortar
+	reqs = list(/obj/item/natural/stone = 1)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/pestle
+	name = "stone pestle"
+	result = /obj/item/pestle
+	reqs = list(/obj/item/natural/stone = 1)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/bag
+	name = "bag (1 fibers, 1 cloth)"
+	result = /obj/item/storage/roguebag/crafted
+	reqs = list(
+		/obj/item/natural/fibers = 1,
+		/obj/item/natural/cloth = 1,
+		)
+	tools = list(/obj/item/needle)
+	skillcraft = /datum/skill/misc/sewing
+
+/datum/crafting_recipe/roguetown/survival/bagx5
+	name = "bag x5 (5 fibers, 5 cloth)"
+	result = list(
+		/obj/item/storage/roguebag/crafted,
+		/obj/item/storage/roguebag/crafted,
+		/obj/item/storage/roguebag/crafted,
+		/obj/item/storage/roguebag/crafted,
+		/obj/item/storage/roguebag/crafted,
+		)
+	reqs = list(
+		/obj/item/natural/fibers = 5,
+		/obj/item/natural/cloth = 5,
+		)
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
 	req_table = FALSE
@@ -393,6 +437,7 @@
 /obj/item/clothing/mask/cigarette/pipe/crafted
 	sellprice = 4
 
+<<<<<<< HEAD
 /datum/crafting_recipe/roguetown/rod
 	name = "fishing rod - (small log, 2 fibers; BEGINNER)"
 	result = /obj/item/fishingrod
@@ -414,6 +459,19 @@
 
 /datum/crafting_recipe/roguetown/book_crafting_kit
 	name = "book crafting kit - (2 cured leather, cloth; NEEDLE; BEGINNER)"
+=======
+/datum/crafting_recipe/roguetown/survival/broom
+	name = "broom"
+	result = /obj/item/broom
+	reqs = list(
+		/obj/item/natural/fibers = 1,
+		/obj/item/grown/log/tree/stick = 4,
+		)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/book_crafting_kit
+	name = "book crafting kit"
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 	result = /obj/item/book_crafting_kit
 	reqs = list(
 			/obj/item/natural/hide/cured = 2,
@@ -421,6 +479,7 @@
 	tools = list(/obj/item/needle = 1)
 	req_table = TRUE
 
+<<<<<<< HEAD
 /datum/crafting_recipe/roguetown/woodcross
 	name = "amulet (wood) - (2 fibers, 2 sticks; BEGINNER)"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
@@ -466,6 +525,19 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
+=======
+/datum/crafting_recipe/roguetown/survival/mantrap
+	name = "mantrap"
+	result = list(
+		/obj/item/restraints/legcuffs/beartrap,
+		/obj/item/restraints/legcuffs/beartrap,
+		)
+	reqs = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/natural/fibers = 2,
+		/obj/item/ingot/iron = 1,
+		)
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 	req_table = TRUE
 	skill_level = 1
 	verbage_simple = "put together"
@@ -484,6 +556,7 @@
 	structurecraft = /obj/machinery/tanningrack
 	skill_level = 1
 
+<<<<<<< HEAD
 /datum/crafting_recipe/roguetown/parchment
 	name = "paper parchment (x8) - (small log, water; DRYING RACK; KNIFE; BEGINNER)"
 	result = list(/obj/item/paper,
@@ -508,6 +581,48 @@
 				/obj/item/natural/fibers = 3)
 	skillcraft = /datum/skill/magic/druidic
 	skill_level = 2 // druids & dendor clerics can craft
+=======
+/datum/crafting_recipe/roguetown/survival/prosthetic/woodleftarm
+	name = "wood arm (L)"
+	result = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/prosthetic/woodrightarm
+	name = "wood arm (R)"
+	result = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/prosthetic/woodleftleft
+	name = "wood leg (L)"
+	result = list(/obj/item/bodypart/l_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/prosthetic/woodrightleg
+	name = "wood leg (R)"
+	result = list(/obj/item/bodypart/r_leg/prosthetic)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/crafting
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/tarot_deck
+	name = "tarot deck"
+	result = list(/obj/item/toy/cards/deck/tarot)
+	reqs = list(
+		/obj/item/paper/scroll = 3,
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/ash = 1,
+		)
+	skillcraft = /datum/skill/misc/reading
+	tools = list(/obj/item/natural/feather)
+	req_table = TRUE
+	craftdiff = 2
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 
 // Woodcutting recipe
 
@@ -530,6 +645,7 @@
 	tools = list(/obj/item/rogueweapon/surgery/saw = 1)
 
 
+<<<<<<< HEAD
 // Blacksmithing Recipes
 
 /datum/crafting_recipe/roguetown/gorget/oring
@@ -630,3 +746,106 @@
 		/obj/item/natural/fibers = 3,
 		)
 	skill_level = 0
+=======
+/datum/crafting_recipe/hair_dye
+    name = "hair dye cream"
+    result = /obj/item/hair_dye_cream
+    reqs = list(
+        /obj/item/reagent_containers/glass/bowl = 1,
+        /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 3,
+    )
+
+// DIE
+
+/datum/crafting_recipe/roguetown/survival/d4
+	name = "bone die (d4)"
+	result = /obj/item/dice/d4
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/d6
+	name = "bone die (d6)"
+	result = /obj/item/dice/d6
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/d8
+	name = "bone die (d8)"
+	result = /obj/item/dice/d8
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/survival/d10
+	name = "bone die (d10)"
+	result = /obj/item/dice/d10
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/survival/d12
+	name = "bone die (d12)"
+	result = /obj/item/dice/d12
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/survival/d20
+	name = "bone die (d20)"
+	result = /obj/item/dice/d20
+	reqs = list(/obj/item/natural/bone = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/dye_brush
+	name = "dye brush"
+	result = /obj/item/needle
+	reqs = list(
+		/obj/item/grown/log/tree/stick = 2,
+		/obj/item/natural/fur = 1
+		)
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/whetstone
+	name = "whetstone"
+	result = /obj/item/natural/whetstone
+	reqs = list(
+		/obj/item/natural/stone = 1,
+		/obj/item/grown/log/tree/stake = 1,
+		)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/survival/rucksack
+	name = "rucksack"
+	result = /obj/item/storage/backpack/rogue/backpack/bagpack
+	reqs = list(
+		/obj/item/storage/roguebag = 1,
+		/obj/item/rope = 1,
+		)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/survival/rucksack/crafted
+	reqs = list(/obj/item/storage/roguebag/crafted = 1,
+				/obj/item/rope = 1)
+
+/datum/crafting_recipe/roguetown/survival/woodshaft
+	name = "wood shaft x2"
+	result = /obj/item/shaft/wood
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/survival/reinforcedshaft
+	name = "reinforced shaft"
+	result = /obj/item/shaft/reinforced
+	tools = list(/obj/item/rogueweapon/hammer)
+	reqs = list(
+		/obj/item/shaft/wood = 1,
+		/obj/item/natural/whetstone = 2,
+		)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+>>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)

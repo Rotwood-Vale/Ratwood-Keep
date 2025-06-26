@@ -70,7 +70,7 @@
 
 // TBD - Cauldron Recipes
 /obj/item/recipe_book/alchemy
-	name = "The Great Work: Secrets of Transmutation"
+	name = "Secrets of Alchemy"
 	icon_state = "book3_0"
 	base_icon_state = "book3"
 
@@ -80,5 +80,7 @@
 		/datum/crafting_recipe/roguetown/survival/mortar,
 		/datum/crafting_recipe/roguetown/survival/pestle,
 		/datum/crafting_recipe/roguetown/alchemy,
+		/datum/alch_grind_recipe,
+		/datum/alch_cauldron_recipe
 		)
  
