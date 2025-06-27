@@ -48,6 +48,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
 
+	SSticker.on_job_finalised(character)
+
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)
 		character.charflaw.apply_post_equipment(character)
