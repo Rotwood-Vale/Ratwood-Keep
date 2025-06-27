@@ -2,7 +2,6 @@
 
 /obj/item/recipe_book
 	icon = 'icons/roguetown/items/books.dmi'
-
 	grid_width = 32
 	grid_height = 32
 	var/list/types = list()

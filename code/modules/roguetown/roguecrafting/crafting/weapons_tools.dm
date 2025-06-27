@@ -4,7 +4,7 @@
 	req_table = TRUE
 	skillcraft = /datum/skill/craft/carpentry
 	category = "Tools"
-
+/*
 /datum/crafting_recipe/roguetown/survival/peasantry/thresher
 	name = "thresher (+1 Iron Ingot)"
 	reqs = list(

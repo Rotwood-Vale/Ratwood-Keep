@@ -1,3 +1,4 @@
+/*
 /datum/alch_grind_recipe/sinew
 	valid_input = /obj/item/alch/sinew
 	valid_outputs = list(/obj/item/alch/viscera = 1)

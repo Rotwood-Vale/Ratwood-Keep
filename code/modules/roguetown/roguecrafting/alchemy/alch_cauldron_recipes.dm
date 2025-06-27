@@ -1,3 +1,4 @@
+/*
 /datum/alch_cauldron_recipe/antidote
 	name = "Antidote"
 	smells_like = "wet moss"
@@ -108,3 +109,4 @@
 	smells_like = "calming"
 	skill_required = SKILL_LEVEL_EXPERT
 	output_reagents = list(/datum/reagent/buff/fortune = 27)
+*/

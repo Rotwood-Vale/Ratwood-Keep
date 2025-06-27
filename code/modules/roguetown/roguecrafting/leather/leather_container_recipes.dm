@@ -1,7 +1,7 @@
 /datum/crafting_recipe/roguetown/leather/container
 	abstract_type = /datum/crafting_recipe/roguetown/leather/container
 	category = "Container"
-
+/*
 /datum/crafting_recipe/roguetown/leather/container/pouch
 	name = "pouch x2 (1 fibers, 1 leather)"
 	result = list(/obj/item/storage/belt/rogue/pouch,

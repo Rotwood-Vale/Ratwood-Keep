@@ -1,7 +1,7 @@
 /datum/crafting_recipe/roguetown/leather/armor
 	abstract_type = /datum/crafting_recipe/roguetown/leather/armor
 	category = "Armor"
-
+/*
 /datum/crafting_recipe/roguetown/leather/armor/lgorget
 	name = "hardened leather gorget (1 fibers, 1 leather)"
 	result = /obj/item/clothing/neck/roguetown/leather

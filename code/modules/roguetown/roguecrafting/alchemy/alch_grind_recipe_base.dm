@@ -1,3 +1,4 @@
+/*
 /datum/alch_grind_recipe
 	var/name = "generic grind recipe"
 	var/category = "Grinding"
@@ -54,3 +55,4 @@
 
 /datum/alch_grind_recipe/proc/show_menu(mob/user)
 	user << browse(generate_html(user),"window=new_recipe;size=500x810")
+*/

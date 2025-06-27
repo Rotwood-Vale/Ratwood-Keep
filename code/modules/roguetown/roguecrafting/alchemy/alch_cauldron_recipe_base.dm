@@ -1,3 +1,4 @@
+/*
 /datum/alch_cauldron_recipe
 	abstract_type = /datum/alch_cauldron_recipe // This is an abstract type, it should not be instantiated directly.
 	var/name = "" //The name of the recipe, kinda there just in case.
@@ -57,3 +58,4 @@
 
 /datum/alch_cauldron_recipe/proc/show_menu(mob/user)
 	user << browse(generate_html(user),"window=new_recipe;size=500x810")
+*/

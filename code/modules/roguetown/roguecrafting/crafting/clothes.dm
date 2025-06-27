@@ -1,3 +1,4 @@
+/*
 /datum/crafting_recipe/roguetown/survival/skullmask
 	name = "skull mask"
 	category = "Clothes"

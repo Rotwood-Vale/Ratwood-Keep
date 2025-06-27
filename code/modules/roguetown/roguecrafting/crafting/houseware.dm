@@ -1,3 +1,4 @@
+/*
 /datum/crafting_recipe/roguetown/survival/spoon
 	name = "spoon (x3)"
 	category = "Houseware"

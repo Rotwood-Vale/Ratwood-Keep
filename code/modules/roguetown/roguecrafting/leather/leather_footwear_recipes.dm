@@ -1,7 +1,7 @@
 /datum/crafting_recipe/roguetown/leather/footwear
 	abstract_type = /datum/crafting_recipe/roguetown/leather/footwear
 	category = "Footwear"
-
+/*
 /datum/crafting_recipe/roguetown/leather/footwear/shoes
 	name = "shoes x3 (1 leather)"
 	result = list(/obj/item/clothing/shoes/roguetown/simpleshoes,

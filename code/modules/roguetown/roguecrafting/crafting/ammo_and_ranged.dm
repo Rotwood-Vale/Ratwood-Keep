@@ -1,3 +1,4 @@
+/*
 /datum/crafting_recipe/roguetown/survival/net
     name = "net"
     category = "Ranged"

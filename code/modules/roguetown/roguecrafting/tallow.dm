@@ -1,6 +1,6 @@
 // Previously cooking.dm, this is just so that I can include it in subcategories for
 // Class where they need tallow (Survival + Leatherworking)
-
+/*
 /datum/crafting_recipe/roguetown/tallow
 	abstract_type = /datum/crafting_recipe/roguetown/tallow
 	subtype_reqs = FALSE
