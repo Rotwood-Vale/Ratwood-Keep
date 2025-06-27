@@ -850,6 +850,7 @@
 #include "code\game\objects\effects\temporary_visuals\cult.dm"
 #include "code\game\objects\effects\temporary_visuals\miracles.dm"
 #include "code\game\objects\effects\temporary_visuals\miscellaneous.dm"
+#include "code\game\objects\effects\temporary_visuals\music.dm"
 #include "code\game\objects\effects\temporary_visuals\surrender_flag.dm"
 #include "code\game\objects\effects\temporary_visuals\temporary_visual.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\impact.dm"
