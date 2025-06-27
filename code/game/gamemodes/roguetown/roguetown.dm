@@ -105,7 +105,7 @@ var/global/list/roguegamemodes = list("Rebellion", "Vampires and Werewolves", "N
 					if(lord_dead)
 						lord_dead = FALSE
 					break
-	if(lord_dead || !lord_found)
+	if((lord_dead || !lord_found) && SSjob.GetJob("Duke")?.current_positions > 0)
 		if(!missing_lord_time)
 			missing_lord_time = world.time
 		if(world.time > missing_lord_time + 10 MINUTES)
