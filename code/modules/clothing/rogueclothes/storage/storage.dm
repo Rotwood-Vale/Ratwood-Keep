@@ -202,6 +202,8 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	fiber_salvage = FALSE
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/storage/belt/rogue/pouch/ComponentInitialize()
 	. = ..()

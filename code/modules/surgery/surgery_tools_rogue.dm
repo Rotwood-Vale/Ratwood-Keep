@@ -17,6 +17,8 @@
 	thrown_bclass = BCLASS_CUT
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()

@@ -100,6 +100,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/rune_to_scribe = null
 	var/amount = 8
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/chalk/examine(mob/user)
 	. = ..()
 	desc += "It has [amount] uses left."

@@ -16,6 +16,8 @@
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	anvilrepair = /datum/skill/craft/blacksmithing
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/reagent_containers/glass/cup/update_icon(dont_fill=FALSE)
 	testing("cupupdate")

@@ -540,6 +540,8 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_1"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_start/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -563,6 +565,9 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_2"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_two/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -585,7 +590,10 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_3"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
 	var/mature_proc = .proc/maturing_done
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_three/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -645,6 +653,8 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	slice_sound = TRUE
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	name = "wheel of aged cheese"

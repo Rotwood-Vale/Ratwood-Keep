@@ -300,6 +300,8 @@
 	icon = 'icons/roguetown/weapons/arquebus.dmi'
 	icon_state = "arquebus"
 	item_state = "arquebus"
+	grid_height = 64
+	grid_width = 96
 
 /obj/item/gun/ballistic/firearm/arquebus_pistol
 	name = "arquebus pistol"
@@ -317,6 +319,8 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 	cartridge_wording = "lead ball"
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/gun/ballistic/firearm/arquebus_pistol/getonmobprop(tag)
 	. = ..()

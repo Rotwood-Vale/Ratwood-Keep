@@ -12,6 +12,8 @@
 	var/fuze = 50
 	var/lit = FALSE
 	var/prob2fail = 1 //23 was lunacy
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/bomb/spark_act()
 	light()
