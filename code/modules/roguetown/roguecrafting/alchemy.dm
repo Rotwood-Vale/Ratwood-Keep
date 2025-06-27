@@ -13,18 +13,12 @@
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/alchemy/bbomb
-<<<<<<< HEAD
-	name = "Bottle bomb - (bottle, 2 ash, coal, cloth; METAL ALEMBIC; COMPETENT)"
-=======
 	name = "bottle bomb"
 	category = "Table"
->>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)
 	result = list(/obj/item/bomb)
 	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 2, /obj/item/rogueore/coal = 1, /obj/item/natural/cloth = 1)
 	skill_level = 2
 
-<<<<<<< HEAD
-=======
 /datum/crafting_recipe/roguetown/alchemy/ozium
 	name = "ozium"
 	category = "Table"
@@ -241,4 +235,3 @@
 	craftdiff = 6
 	verbage_simple = "transmute"
 
->>>>>>> bf92fe1cc (Merge pull request #2606 from WeNeedMorePhoron/recipe-book-expansion)

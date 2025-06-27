@@ -10,17 +10,11 @@
 	var/open
 	var/base_icon_state
 	var/can_spawn = TRUE
-<<<<<<< HEAD
-=======
 	resistance_flags = FLAMMABLE
 	var/list/categories = list("All") // Default categories
 	var/current_category = "All"      // Default selected category
 	var/current_recipe = null         // Currently viewed recipe
 	var/search_query = ""             // Current search query
-<<<<<<< HEAD
->>>>>>> 8b5f2f9d6 (Merge pull request #2526 from WeNeedMorePhoron/recipe-book-2)
-=======
->>>>>>> 8b5f2f9d6 (Merge pull request #2526 from WeNeedMorePhoron/recipe-book-2)
 
 /obj/item/recipe_book/New()
 	. = ..()
