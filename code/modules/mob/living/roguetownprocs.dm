@@ -22,6 +22,13 @@
 
 	if(user.mind)
 		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
+	else
+		if(HAS_TRAIT(user, TRAIT_ACCURACY_HIGH_NPC))
+			chance2hit += 70
+		else if(HAS_TRAIT(user, TRAIT_ACCURACY_MID_NPC))
+			chance2hit += 50
+		else if(HAS_TRAIT(user, TRAIT_ACCURACY_LOW_NPC))
+			chance2hit += 25
 
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
@@ -237,7 +244,16 @@
 	if(!can_see_cone(attacker))
 		return FALSE
 
-	var/drained = attacker.defdrain
+	var/drained
+	if(attacker.mind)
+		drained = attacker.defdrain
+	else
+		if(HAS_TRAIT(attacker, TRAIT_PARRY_HIGH_NPC))
+			drained = 15
+		else if(HAS_TRAIT(attacker, TRAIT_PARRY_MID_NPC))
+			drained = 30
+		else if(HAS_TRAIT(attacker, TRAIT_PARRY_LOW_NPC))
+			drained = 50
 	var/weapon_parry = FALSE
 	var/offhand_defense = 0
 	var/mainhand_defense = 0
@@ -270,11 +286,19 @@
 
 	var/defender_skill = 0
 	var/attacker_skill = 0
-	
+
 	var/prob2defend = attacker.defprob
 	if(m_intent == MOVE_INTENT_RUN)
 		prob2defend -= SPRINT_PENALTY
-	
+
+	if(!attacker.mind)
+		if(HAS_TRAIT(attacker, TRAIT_ACCURACY_HIGH_NPC))
+			prob2defend -= 150
+		else if(HAS_TRAIT(attacker, TRAIT_ACCURACY_MID_NPC))
+			prob2defend -= 105
+		else if(HAS_TRAIT(attacker, TRAIT_ACCURACY_LOW_NPC))
+			prob2defend -= 75
+
 	if(highest_defense <= (mind ? mind.get_skill_level(/datum/skill/combat/unarmed) : NPC_BASE_UNARMED_SKILL) * UNARMED_SKILL_BONUS)
 		defender_skill = mind?.get_skill_level(/datum/skill/combat/unarmed)
 		prob2defend += defender_skill * UNARMED_SKILL_BONUS
