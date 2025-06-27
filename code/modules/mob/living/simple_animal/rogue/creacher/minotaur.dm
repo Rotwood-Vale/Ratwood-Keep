@@ -13,8 +13,16 @@
 	see_in_dark = 10
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/minotaur_unarmed)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
-						/obj/item/natural/hide = 10)
+
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 5, 
+						/obj/item/natural/fur = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7,
+						/obj/item/natural/hide = 5,
+						/obj/item/natural/fur = 2)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
+						/obj/item/natural/hide = 7,
+						/obj/item/natural/fur = 3)
+
 	faction = list("caves")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 500

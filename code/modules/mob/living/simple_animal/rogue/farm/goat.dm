@@ -13,11 +13,15 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	emote_see = list("shakes her head.", "chews her cud.")
 
-
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+						/obj/item/natural/hide = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
-						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1)
+						/obj/item/natural/hide = 3)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+						/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/natural/hide = 3,
+						/obj/item/natural/fur = 2)
 
 
 	health = GOAT_FEMALE_HEALTH
