@@ -189,3 +189,14 @@
 		/datum/sprite_accessory/ears/lynx,
 		/datum/sprite_accessory/ears/broad,
 		)
+
+/datum/customizer_choice/organ/ears/elf
+	name = "Elf Ears"
+	organ_type = /obj/item/organ/ears
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/elf,
+		/datum/sprite_accessory/ears/elfw)
+
+/datum/customizer/organ/ears/elf
+	customizer_choices = list(/datum/customizer_choice/organ/ears/elf)
+	allows_disabling = FALSE
