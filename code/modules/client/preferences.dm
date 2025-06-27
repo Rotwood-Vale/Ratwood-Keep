@@ -1552,9 +1552,9 @@ Slots: [job.spawn_positions]</span>
 
 				if("flavortext_preview")
 					var/list/dat = list()
-					dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[real_name]</b></font></div>"
+					dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[real_name]</b></font></div><br>"
 					if(valid_headshot_link(null, headshot_link, TRUE))
-						dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
+						dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div><br>")
 					if(flavortext && flavortext_display)
 						dat += "<div align='left'>[flavortext_display]</div>"
 					var/datum/browser/popup = new(user, "[real_name]", nwidth = 600, nheight = 600)

@@ -9,9 +9,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 		var/mob/user = usr
 		var/list/dat = list()
-		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src]</b></font></div>"
+		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src]</b></font></div><br>"
 		if(valid_headshot_link(null, headshot_link, TRUE))
-			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
+			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div><br>")
 		if(flavortext)
 			dat += "<div align='left'>[flavortext_display]</div>"
 		var/datum/browser/popup = new(user, "[src]", nwidth = 600, nheight = 600)
