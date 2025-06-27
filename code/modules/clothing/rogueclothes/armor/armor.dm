@@ -63,6 +63,31 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/officerarmor
+	name = "officer"
+	desc = "A regulation-issue guard coat tailored from reinforced dark fabric and trimmed with light detailing, designed to offer modest protection and sharp appearance. While it won’t stop a blade at full swing, it holds up against brawls and weather alike—ideal for patrolling the alleys of a crumbling empire"
+	icon_state = "officerguard"
+	item_state = "officerguard"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	ignore_sleeves_code = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/northprotector
+	name = "north"
+	desc = "A heavy, weatherworn coat crafted for those who serve in the bleakest corners of the realm. Its layered fabric and muted tones provide warmth and concealment, while reinforced stitching and hardened plates offer modest protection. Issued to outcasts alike, it speaks of long nights, quiet orders, and a duty that demands endurance over glory."
+	icon_state = "northprotector"
+	item_state = "northprotector"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	ignore_sleeves_code = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/templararmor
+	name = "templar"
+	desc = "A long, oil-treated trench coat issued to templars stationed across the soaked archipelagos. Its high collar, dense fabric, and water-resistant lining shield the wearer from the island rain and sea-born damp. Meant to endure storms as much as silence, it’s a garment built for vigilance in a land where rot creeps in with the tide."
+	icon_state = "templararmor"
+	item_state = "templararmor"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	ignore_sleeves_code = TRUE
+
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/chainkini
 	name = "chainmail bikini"
 	desc = "Not very comfortable against the skin."
