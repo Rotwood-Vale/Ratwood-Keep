@@ -49,12 +49,7 @@
 		backr = /obj/item/fishingrod
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/flint
-		backpack_contents = list(
-							/obj/item/natural/worms = 2,
-							/obj/item/rogueweapon/shovel/small = 1,
-							/obj/item/flashlight/flare/torch = 1,
-							/obj/item/recipe_book/survival = 1,
-							)
+		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
