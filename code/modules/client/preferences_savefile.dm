@@ -348,6 +348,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/_load_appearence(S)
 	S["real_name"]			>> real_name
 	S["gender"]				>> gender
+	S["body_type"]			>> body_type
 	S["domhand"]			>> domhand
 //	S["alignment"]			>> alignment
 	S["age"]				>> age
@@ -459,7 +460,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	real_name = reject_bad_name(real_name)
 	gender = sanitize_gender(gender)
-
+	body_type = sanitize_gender(body_type, FALSE, FALSE, gender)
 
 	//Should help old characters with no voice type auto set it
 	S["voice_type"]		>> voice_type
@@ -549,6 +550,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Character
 	WRITE_FILE(S["real_name"]			, real_name)
 	WRITE_FILE(S["gender"]				, gender)
+	WRITE_FILE(S["body_type"]			, body_type)
 	WRITE_FILE(S["domhand"]				, domhand)
 //	WRITE_FILE(S["alignment"]			, alignment)
 	WRITE_FILE(S["age"]					, age)

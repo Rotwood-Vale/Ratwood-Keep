@@ -69,6 +69,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/real_name						//our character's name
 	var/gender = MALE					//gender of character (well duh)
 	var/age = AGE_ADULT						//age of character
+	var/body_type = MALE
 	var/voice_type = VOICE_TYPE_MASC // voice pack they use
 	var/origin = "Default"
 	var/underwear = "Nude"				//underwear type
@@ -336,6 +337,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			
 			// Allows you to select vioce pack					
 			dat += "<b>Voice Type</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
+
+			
+			var/dispBodyType
+			if(body_type == MALE)
+				dispBodyType = "Masculine"
+			else if(body_type == FEMALE)
+				dispBodyType = "Feminine"
+			else
+				dispBodyType = "Other"
+			dat += "<b>Body Type</b>: <a href='?_src_=prefs;preference=bodytype;task=input'>[dispBodyType]</a><BR>"
 
 			dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
@@ -1480,7 +1491,15 @@ Slots: [job.spawn_positions]</span>
 						voice_type = voicetype_input
 						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
 
-						
+				if ("bodytype")
+					var bodytype_input = input(user, "Choose your character's body type", "Body Type") as null|anything in list("Masculine", "Feminine")
+					if(bodytype_input)
+						body_type = MALE
+						if(bodytype_input == "Feminine")
+							body_type = FEMALE
+						to_chat(user, "<font color='red'>Your character's body is [lowertext(bodytype_input)].</font>")
+						update_preview_icon()
+
 				if("faith")
 					var/list/faiths_named = list()
 					for(var/path as anything in GLOB.preference_faiths)
@@ -2092,6 +2111,7 @@ Slots: [job.spawn_positions]</span>
 	character.age = age
 	character.dna.features = features.Copy()
 	character.gender = gender
+	character.body_type = body_type
 	character.set_species(pref_species.type, icon_update = FALSE, pref_load = src)
 
 	if((randomise[RANDOM_NAME] || randomise[RANDOM_NAME_ANTAG] && antagonist) && !character_setup)
