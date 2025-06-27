@@ -73,15 +73,33 @@
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/tabaxi/handle_speech(datum/source, list/speech_args)
-	var/static/regex/tabaxi_purr = new("r+", "g")
-	var/static/regex/tabaxi_Purr = new("R+", "g")
-	var/message = speech_args[SPEECH_MESSAGE]
+	var/original_message = speech_args[SPEECH_MESSAGE]
 	var/language = speech_args[5]
-	if(message[1] != "*" && (language != /datum/language/felid))
-		message = tabaxi_purr.Replace(message, "rrr")
-		message = tabaxi_Purr.Replace(message, "RRR")
-	speech_args[SPEECH_MESSAGE] = message
 
+	if(original_message[1] != "*" && (language != /datum/language/felid) && (usr.client.prefs.alternative_speech == TRUE))
+		var/list/word_list = splittext(original_message, " ")
+
+		for(var/word_index = 2 to word_list.len)
+			if(!prob(50))
+				continue 
+
+			var/word = word_list[word_index]
+			var/transformed_word = ""
+			var/replaced = FALSE
+
+			for(var/char_index = 1; char_index <= length(word); char_index++)
+				var/character = copytext(word, char_index, char_index + 1)
+				if(!replaced && (character == "r" || character == "R") && char_index != 1 && char_index != length(word))
+					transformed_word += (character == "r") ? "rr" : "RR"
+					replaced = TRUE
+				else
+					transformed_word += character
+
+			word_list[word_index] = transformed_word
+
+		original_message = jointext(word_list, " ")
+
+	speech_args[SPEECH_MESSAGE] = original_message
 
 /obj/item/organ/tongue/fly
 	name = "proboscis"
