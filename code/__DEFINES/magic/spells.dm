@@ -30,6 +30,7 @@
 #define SPELL_INVISIBILITY							/obj/effect/proc_holder/spell/invoked/invisibility
 #define SPELL_JOINCOMRADES							/obj/effect/proc_holder/spell/invoked/joincomrades
 #define SPELL_LEARNSPELL							/obj/effect/proc_holder/spell/invoked/learnspell
+#define SPELL_LEARNSPELL_WEAK						/obj/effect/proc_holder/spell/invoked/learnspell/weak
 #define SPELL_LESSER_HEAL							/obj/effect/proc_holder/spell/invoked/lesser_heal
 #define SPELL_MAGEBLINDNESS							/obj/effect/proc_holder/spell/invoked/mageblindness
 #define SPELL_MAGEINVISIBILITY						/obj/effect/proc_holder/spell/invoked/mageinvisibility
