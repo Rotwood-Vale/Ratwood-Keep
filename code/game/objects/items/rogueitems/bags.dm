@@ -1,8 +1,8 @@
 /obj/item/storage/roguebag
 	name = "sack"
-	desc = "A sack of rough cloth meant for peasantry."
+	desc = "A simple canvas sack."
 	icon_state = "cbag"
-	item_state = "cbag"
+	item_state = "bag"
 	icon = 'icons/roguetown/items/misc.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD
@@ -14,13 +14,16 @@
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
-	if(contents.len)
-		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+	if(length(contents))
+		. += span_notice("[length(contents)] thing[length(contents) > 1 ? "s" : ""] in [src].")
 
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		user.become_blind("blindfold_[REF(src)]")
+	if(HAS_TRAIT(user, TRAIT_ROTMAN))
+		to_chat(user, span_info("The [src] slips through dead fingers..."))
+		user.dropItemToGround(src, TRUE)
 
 /obj/item/storage/roguebag/dropped(mob/living/carbon/human/user)
 	..()
@@ -59,24 +62,7 @@
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/roguebag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 20
-	STR.click_gather = TRUE
-	STR.attack_hand_interact = FALSE
-	STR.collection_mode = COLLECT_EVERYTHING
-	STR.dump_time = 0
-	STR.allow_quick_gather = TRUE
-	STR.allow_quick_empty = TRUE
-	STR.allow_look_inside = FALSE
-	STR.allow_dump_out = TRUE
-	STR.display_numerical_stacking = TRUE
-
-
-/obj/item/storage/roguebag/getonmobprop(tag)
+/obj/item/storage/sack/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

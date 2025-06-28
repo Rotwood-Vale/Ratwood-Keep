@@ -208,15 +208,6 @@
 	grid_height = 64
 	grid_width = 32
 
-/obj/item/storage/belt/rogue/pouch/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 3
-		STR.not_while_equipped = FALSE
-
 /obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
 	. = ..()
 	var/obj/item/roguecoin/silver/pile/H = new(loc)
@@ -322,24 +313,6 @@
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
 
-/obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 18
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 4
-		STR.click_gather = TRUE
-		STR.allow_quick_empty = TRUE
-		STR.allow_dump_out = TRUE
-
-
-/obj/item/storage/backpack/rogue/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
-
 
 /obj/item/storage/backpack/rogue/backpack
 	name = "backpack"
@@ -355,17 +328,6 @@
 	bloody_icon_state = "bodyblood"
 	component_type = /datum/component/storage/concrete/grid/backpack
 
-
-/obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 14
-		STR.not_while_equipped = TRUE
-		STR.allow_dump_out = TRUE
-
 /obj/item/storage/backpack/rogue/backpack/rucksack
 	name = "rucksack"
 	desc = "A bulky backpack worn on the back which can store many items."
@@ -379,15 +341,7 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
-
-/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 10
-		STR.not_while_equipped = TRUE
+	component_type = /datum/component/storage/concrete/grid/backpack/rucksack
 
 /obj/item/storage/backpack/rogue/backpack/artibackpack
 	name = "Cooling backpack"
@@ -402,22 +356,14 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	sewrepair = FALSE
+	component_type = /datum/component/storage/concrete/grid/backpack/rucksack
 
-/obj/item/storage/backpack/rogue/backpack/artibackpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 10
-		STR.not_while_equipped = TRUE
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	name = "exotic silk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1
 	sewrepair = TRUE
-
 
 /obj/item/storage/belt/rogue/leather/overseer
     name = "belt with pouches"

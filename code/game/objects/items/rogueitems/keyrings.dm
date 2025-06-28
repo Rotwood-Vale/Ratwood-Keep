@@ -2,7 +2,7 @@
 
 /obj/item/storage/keyring
 	name = "keyring"
-	desc = "Will help you organize your keys."
+	desc = "A circular ring of metal. It will help you organize your keys."
 	icon_state = "keyring0"
 	icon = 'icons/roguetown/items/keys.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
@@ -10,11 +10,11 @@
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0
 	throwforce = 0
-	var/list/keys = list()
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
 	component_type = /datum/component/storage/concrete/grid/keyring
+	var/list/keys = list() //Used to generate starting keys on initialization, check contents instead for actual keys
 
 /obj/item/storage/keyring/Initialize()
 	. = ..()
@@ -27,6 +27,7 @@
 		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_key, null, TRUE, FALSE))
 			qdel(new_key)
 		LAZYREMOVE(keys, X)
+
 	update_icon()
 	update_desc()
 
@@ -37,29 +38,29 @@
 		return TRUE
 
 /obj/item/storage/keyring/update_icon()
-    ..()
-    switch(contents.len)
-        if(0)
-            icon_state = "keyring0"
-        if(1)
-            icon_state = "keyring1"
-        if(2)
-            icon_state = "keyring2"
-        if(3)
-            icon_state = "keyring3"
-        if(4)
-            icon_state = "keyring4"
-        else
-            icon_state = "keyring5"
-
-/obj/item/storage/keyring/update_desc()
 	. = ..()
-	if(contents.len)
-		desc = span_info("Holds \Roman[contents.len] key\s, including:")
-		for(var/obj/item/key/KE in contents)
-			desc += span_info("\n- [KE.name ? "A [KE.name]." : "	An unknown key."]")
-	else
-		desc = ""
+	switch(length(contents))
+		if(0)
+			icon_state = "keyring0"
+		if(1)
+			icon_state = "keyring1"
+		if(2)
+			icon_state = "keyring2"
+		if(3)
+			icon_state = "keyring3"
+		if(4)
+			icon_state = "keyring4"
+		else
+			icon_state = "keyring5"
+
+/obj/item/storage/keyring/proc/update_desc()
+	if(!length(contents))
+		desc = initial(desc)
+		return
+	desc = span_info("Holds \Roman[length(contents)] key\s, including:")
+	for(var/obj/item/key/KE in contents)
+		desc += span_info("\n- [KE.name ? "\A [KE.name]." : "An unknown key."]")
+
 
 /obj/item/storage/keyring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()

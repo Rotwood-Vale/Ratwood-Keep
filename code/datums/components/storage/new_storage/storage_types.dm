@@ -15,6 +15,12 @@
 	max_w_class = WEIGHT_CLASS_NORMAL
 	not_while_equipped = TRUE
 
+/datum/component/storage/concrete/grid/backpack/rucksack
+	screen_max_rows = 6
+	screen_max_columns = 4
+	max_w_class = WEIGHT_CLASS_NORMAL
+	not_while_equipped = TRUE
+
 /datum/component/storage/concrete/grid/surgery_bag
 	screen_max_rows = 5
 	screen_max_columns = 4
