@@ -300,7 +300,7 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison,
 				/obj/item/ammo_casing/caseless/rogue/arrow/poison
-				)
+		)
 	reqs = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/datum/reagent/berrypoison = 25
@@ -464,7 +464,7 @@
 	result = list(/obj/item/restraints/legcuffs/beartrap,
 				/obj/item/restraints/legcuffs/beartrap)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/fibers = 2,
+		/obj/item/natural/fibers = 2,
 				/obj/item/ingot/iron = 1)
 	req_table = TRUE
 	skill_level = 1

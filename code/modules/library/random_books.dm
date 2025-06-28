@@ -129,8 +129,18 @@
 	category = "Reference"
 	var/ref_book_prob = 20
 
-/obj/structure/bookcase/random/reference/Initialize(mapload)
+/obj/structure/bookcase/random_recipes
+	name = "bookcase (Recipes)"
+
+/obj/structure/bookcase/random_recipes/Initialize(mapload)
 	. = ..()
-	while(book_count > 0 && prob(ref_book_prob))
-		book_count--
-		new /obj/item/book/manual/random(src)
+	var/list/books = subtypesof(/obj/item/recipe_book)
+	for(var/obj/item/recipe_book/listed_book as anything in books)
+		if(initial(listed_book.can_spawn))
+			continue
+		books -= listed_book
+
+	for(var/i = 1 to books.len) // Spawn one copy of every book
+		var/obj/item/recipe_book/book = pick_n_take(books)
+		new book(src)
+	update_icon()
