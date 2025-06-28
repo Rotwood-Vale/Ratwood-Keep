@@ -71,21 +71,21 @@
 	STR.allow_dump_out = FALSE
 	STR.display_numerical_stacking = TRUE
 
-/obj/item/storage/magebag/apprentice/PopulateContents()
-	new /obj/item/natural/infernalash(src)
-	new /obj/item/natural/fairydust(src)
-	new /obj/item/natural/elementalmote(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-
-
+/obj/item/storage/magebag/apprentice
+	populate_contents = list(
+		/obj/item/natural/infernalash,
+		/obj/item/natural/fairydust,
+		/obj/item/natural/elementalmote,
+		/obj/item/natural/manacrystal,
+		/obj/item/natural/manacrystal,
+		/obj/item/natural/manacrystal,
+		/obj/item/natural/obsidian,
+		/obj/item/natural/obsidian,
+		/obj/item/natural/obsidian,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
+	)
 
 /obj/item/chalk
 	name = "stick of chalk"

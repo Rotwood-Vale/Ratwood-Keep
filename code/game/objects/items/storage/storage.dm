@@ -41,13 +41,18 @@
 /obj/item/storage/contents_explosion(severity, target)
 //Cyberboss says: "USE THIS TO FILL IT, NOT INITIALIZE OR NEW"
 
+/obj/item/storage/proc/insert_or_del(var/path)
+	if(!path || !ispath(path))
+		return
+	var/obj/item/new_item = new path(loc)
+	if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
+		new_item.inventory_flip(null, TRUE)
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
+			qdel(new_item)
+
 /obj/item/storage/proc/PopulateContents()
 	for(var/path in populate_contents)
-		var/obj/item/new_item = new path(loc)
-		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
-			new_item.inventory_flip(null, TRUE)
-			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_item, null, TRUE, TRUE))
-				qdel(new_item)
+		insert_or_del(path)
 
 /obj/item/storage/proc/emptyStorage()
 	var/datum/component/storage/ST = GetComponent(/datum/component/storage)

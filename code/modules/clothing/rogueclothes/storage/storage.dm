@@ -256,17 +256,19 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/food/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+/obj/item/storage/belt/rogue/pouch/food/
+	populate_contents = list(
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
+	)
 
 /obj/item/storage/belt/rogue/pouch/ammo
 	name = "sphere pouch"
 	desc = "Usually used for holding runelock sphreres."
-
-/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
+	populate_contents = list(
+		/obj/item/ammo_casing/caseless/runelock,
+		/obj/item/ammo_casing/caseless/runelock,
+		/obj/item/ammo_casing/caseless/runelock
+	)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
@@ -292,25 +294,30 @@
 	component_type = /datum/component/storage/concrete/grid/satchel
 
 
-/obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
-	new /obj/item/natural/feather(src)
-	new /obj/item/paper(src)
+/obj/item/storage/backpack/rogue/satchel/heartfelt
+	populate_contents = list(
+		/obj/item/natural/feather,
+		/obj/item/paper
+	)
 
 /obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
+	. = ..()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
 			if(1)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
+				insert_or_del(/obj/item/reagent_containers/powder/moondust_purest)
 			if(2)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
+				insert_or_del(/obj/item/reagent_containers/powder/moondust_purest)
 			if(3)
-				new /obj/item/reagent_containers/powder/ozium(src)
+				insert_or_del(/obj/item/reagent_containers/powder/ozium)
 			if(4)
-				new /obj/item/reagent_containers/powder/spice(src)
+				insert_or_del(/obj/item/reagent_containers/powder/spice)
 
-/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
-	new /obj/item/powderflask(src)
-	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
+/obj/item/storage/backpack/rogue/satchel/musketeer
+	populate_contents = list(
+		/obj/item/powderflask,
+		/obj/item/storage/belt/rogue/pouch/coins/mid
+	)
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
