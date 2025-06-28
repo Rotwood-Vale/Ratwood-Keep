@@ -74,3 +74,61 @@
 /datum/anvil_recipe/proc/item_added(mob/user)
 	user.visible_message(span_info("[user] adds [initial(needed_item.name)]."))
 	needed_item = null
+
+/datum/anvil_recipe/proc/show_menu(mob/user)
+	user << browse(generate_html(user),"window=new_recipe;size=500x810")
+
+/datum/anvil_recipe/proc/generate_html(mob/user)
+	var/client/client = user
+	if(!istype(client))
+		client = user.client
+	user << browse_rsc('html/book.png')
+	var/html = {"
+		<!DOCTYPE html>
+		<html lang="en">
+		<meta charset='UTF-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+		<body>
+		  <div>
+		    <h1>[name]</h1>
+		"}
+
+	if(skill_level > 0)
+		html += "For those of Good baldsmithing(change it to correct skill level name) skills<br>"
+	else
+		html += "Suitable for all skills<br>"
+
+	if(appro_skill == /datum/skill/craft/engineering) // SNOWFLAKE!!!
+		html += "in Engineering<br>"
+
+	html += {"<div>
+		      <strong>Requirements</strong>
+			  <br>"}
+
+	html += "[icon2html(new req_bar, user)] Start with [initial(req_bar.name)] on an anvil.<br>"
+	html += "Hammer the material.<br>"
+	for(var/atom/path as anything in additional_items)
+		html += "[icon2html(new path, user)] then add [initial(path.name)]<br>"
+		html += "Hammer the material.<br>"
+	html += "<br>"
+
+	html += {"
+		</div>
+		<div>
+		"}
+
+	html += "<strong class=class='scroll'>and then you get</strong> <br> [icon2html(new created_item, user)] <br> [initial(created_item.name)]<br>"
+/*
+	if(created_item.sellprice)
+		html += "<strong class=class='scroll'>You can sell this for [created_item.sellprice] mammons at a normal quality</strong> <br>"
+	else
+		html += "<strong class=class='scroll'>This is worthless for export</strong> <br>"
+*/
+	html += {"
+		</div>
+		</div>
+	</body>
+	</html>
+	"}
+	return html

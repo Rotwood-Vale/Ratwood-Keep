@@ -594,10 +594,10 @@
 		var/datum/path = text2path(href_list["pick_recipe"])
 		if(ispath(path, /datum/crafting_recipe))
 			var/datum/crafting_recipe/real_path = new path
-			real_path.show_menu(current_reader)/*
+			real_path.show_menu(current_reader)
 		else if(ispath(path, /datum/anvil_recipe))
 			var/datum/anvil_recipe/real_path = new path
-			real_path.show_menu(current_reader) *
+			real_path.show_menu(current_reader)
 		// if(ispath(path, /datum/repeatable_crafting_recipe))
 		// 	var/datum/repeatable_crafting_recipe/real_path = new path
 		// 	real_path.show_menu(current_reader)
@@ -625,7 +625,7 @@
 		// else if(ispath(path, /datum/book_entry))
 		// 	var/datum/book_entry/real_path = new path
 		// 	real_path.show_menu(current_reader)
-*/
+
 /obj/item/recipe_book/getonmobprop(tag)
 	. = ..()
 	if(tag)
