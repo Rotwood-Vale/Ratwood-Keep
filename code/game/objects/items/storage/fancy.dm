@@ -191,6 +191,8 @@
 	desc = ""
 	icon_state = "zig"
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/nicotine
+	component_type = /datum/component/storage/concrete/grid/zigbox
+
 
 /obj/item/storage/fancy/cigarettes/zig/empty
 	spawn_type = null

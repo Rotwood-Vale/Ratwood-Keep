@@ -10,6 +10,7 @@
 	resistance_flags = NONE
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/grid/sack
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()

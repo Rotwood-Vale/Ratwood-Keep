@@ -184,6 +184,8 @@
     toggle_heated()
     return TRUE
 
+/obj/item/storage/backpack/rogue/backpack/surgery
+	/obj/item/storage/backpack/rogue/backpack/surgery
 
 /obj/item/storage/backpack/rogue/backpack/surgery/PopulateContents()
 	new /obj/item/rogueweapon/surgery/scalpel(src)
@@ -193,3 +195,4 @@
 	new /obj/item/rogueweapon/surgery/retractor(src)
 	new /obj/item/rogueweapon/surgery/bonesetter(src)
 	new /obj/item/rogueweapon/surgery/cautery(src)
+	

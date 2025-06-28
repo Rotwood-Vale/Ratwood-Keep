@@ -171,6 +171,7 @@
 	color = "#b9a286"
 	heldz_items = 1
 	salvage_result = /obj/item/rope
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
@@ -178,6 +179,7 @@
 	icon_state = "cloth"
 	heldz_items = 1
 	salvage_result = /obj/item/natural/cloth
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -202,6 +204,7 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	fiber_salvage = FALSE
+	component_type = /datum/component/storage/concrete/grid/coin_pouch
 	grid_height = 64
 	grid_width = 32
 
@@ -286,6 +289,8 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
+	component_type = /datum/component/storage/concrete/grid/satchel
+
 
 /obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
 	new /obj/item/natural/feather(src)
@@ -341,6 +346,8 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
+	component_type = /datum/component/storage/concrete/grid/backpack
+
 
 /obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
 	. = ..()

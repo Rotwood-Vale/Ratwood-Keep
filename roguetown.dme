@@ -568,6 +568,7 @@
 #include "code\datums\components\storage\storage.dm"
 #include "code\datums\components\storage\concrete\_concrete.dm"
 #include "code\datums\components\storage\concrete\stack.dm"
+#include "code\datums\components\storage\new_storage\storage_types.dm"
 #include "code\datums\components\storage\new_storage\tetris.dm"
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\ai_flee_when_hurt.dm"
