@@ -53,7 +53,8 @@
 		else
 			icon_state = "keyring5"
 
-/obj/item/storage/keyring/proc/update_desc()
+/obj/item/storage/keyring/update_desc()
+	. = ..()
 	if(!length(contents))
 		desc = initial(desc)
 		return
