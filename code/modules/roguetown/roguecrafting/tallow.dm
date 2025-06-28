@@ -36,3 +36,4 @@
 	craftsound = 'sound/misc/frying.ogg'
 	verbage_simple = "render"
 	verbage = "renders"
+*/

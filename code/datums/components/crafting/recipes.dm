@@ -57,7 +57,7 @@
 		"}
 
 	if(craftdiff > 0)
-		html += "For those of [SSskills.level_names_plain[craftdiff]] skills<br>"
+		html += "For those of Fill this out skills<br>"
 	else
 		html += "Suitable for all skills<br>"	
 

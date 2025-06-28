@@ -5,7 +5,7 @@
 	base_icon_state = "book8"
 
 	types = list(
-	/datum/crafting_recipe/roguetown/tallow,
+	///datum/crafting_recipe/roguetown/tallow,
 	/datum/crafting_recipe/roguetown/leather, 		
 	)
 
@@ -15,8 +15,8 @@
 	base_icon_state = "book7"
 
 	types = list(
-		/datum/crafting_recipe/roguetown/survival/cloth, // Screw it just in case
-		/datum/crafting_recipe/roguetown/survival/cloth5x,
+		///datum/crafting_recipe/roguetown/survival/cloth, // Screw it just in case
+		///datum/crafting_recipe/roguetown/survival/cloth5x,
 		/datum/crafting_recipe/roguetown/sewing,
 		)
 
@@ -46,17 +46,17 @@
 	types = list(
 		/datum/crafting_recipe/roguetown/structure
 		)
-
+/*
 /obj/item/recipe_book/ceramics
 	name = "The Potter's Handbook"
 	icon_state = "book5_0"
 	base_icon_state = "book5"
 
 	types = list(
-		/datum/crafting_recipe/roguetown/structure/ceramicswheel,
-		/datum/crafting_recipe/roguetown/ceramics
+		///datum/crafting_recipe/roguetown/structure/ceramicswheel,
+		///datum/crafting_recipe/roguetown/ceramics
 		)
-
+*/
 // This book should be widely given to everyone
 /obj/item/recipe_book/survival
 	name = "The Survival Handbook"
@@ -64,10 +64,10 @@
 	base_icon_state = "book6"
 
 	types = list(
-		/datum/crafting_recipe/roguetown/survival,
-		/datum/crafting_recipe/roguetown/tallow,
+		///datum/crafting_recipe/roguetown/survival,
+		///datum/crafting_recipe/roguetown/tallow,
 		)
-
+/*
 // TBD - Cauldron Recipes
 /obj/item/recipe_book/alchemy
 	name = "Secrets of Alchemy"
@@ -83,4 +83,4 @@
 		/datum/alch_grind_recipe,
 		/datum/alch_cauldron_recipe
 		)
- 
+ */
