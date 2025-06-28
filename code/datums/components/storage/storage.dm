@@ -314,7 +314,7 @@
 //	while (do_after(M, dump_time, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))
 //		stoplag(1)
 //	qdel(progress)
-	var/turf/target = get_turf(A)
+	var/turf/target = get_step(M, M.dir)
 	for(var/obj/item/I in things)
 		things -= I
 //		if(I.loc != real_location)
