@@ -64,6 +64,7 @@
 	name = "Golden Calendula Tea"
 	description = "A refreshing tea, great to soothe wounds and relieve fatigue."
 	color = "#b38e17"
+	taste_description = "herbal flavor"
 
 /datum/reagent/consumable/golden_calendula_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))
@@ -86,6 +87,7 @@
 	description = "A refreshing tea, great to ease fatigue and relieve stress."
 	color = "#3b9146"
 	quality = DRINK_FANTASTIC
+	taste_description = "herbal flavor"
 
 /datum/reagent/consumable/soothing_valerian_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_NOROGSTAM))

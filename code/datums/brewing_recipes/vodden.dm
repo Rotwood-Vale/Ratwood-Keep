@@ -1,6 +1,8 @@
-/datum/brewing_recipe/vodden
-	name = "Vodden"
+/datum/brewing_recipe/voddena
+	name = "Voddena"
 	category = "Grain"
+	bottle_name = "voddena"
+	bottle_desc = "A bottle of locally-brewed voddena. Brewed from potatoes. It has a clean flavor."
 	reagent_to_brew = /datum/reagent/consumable/ethanol/voddena
 	needed_reagents = list(/datum/reagent/water = 198)
 	needed_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced = 12)

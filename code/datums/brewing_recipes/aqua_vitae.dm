@@ -1,6 +1,8 @@
 /datum/brewing_recipe/aqua_vitae
 	name = "Aqua Vitae - Apple"
 	category = "Aqua Vitae"
+	bottle_name = "aqua vitae"
+	bottle_desc = "A bottle of locally-distilled aqua vitae, distilled twice from cider then brandy, suitable for medicinal purposes. Not advised for drinking."
 	brewed_amount = 2
 	brew_time = 4 MINUTES
 	sell_value = 120

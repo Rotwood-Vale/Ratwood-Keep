@@ -14,7 +14,7 @@
 	description = ""
 	color = "#5f3b23" // rgb: 102, 67, 0
 	boozepwr = 40
-	taste_description = "rum"
+	taste_description = "sweetness with hint of caramel and vanilla"
 
 /datum/reagent/consumable/ethanol/cider
 	name = "Apple Cider"
@@ -98,7 +98,7 @@
 	name = "Ale"
 	description = "A dark alcoholic beverage made with malted barley and yeast."
 	color = "#664300" // rgb: 102, 67, 0
-	boozepwr = 65
+	boozepwr = 25
 	taste_description = "hearty barley ale"
 	glass_icon_state = "aleglass"
 	glass_name = "glass of ale"
@@ -118,8 +118,8 @@
 
 /datum/reagent/consumable/ethanol/gin
 	name = "Gin"
-	boozepwr = 12
-	taste_description = "fruity"
+	boozepwr = 65
+	taste_description = "strong, piney flavor"
 	color = "#809978"
 	quality = DRINK_NICE
 
@@ -145,7 +145,7 @@
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/onion
-	name = "Royal Onion Cognac"
+	name = "Onion Cognac"
 	boozepwr = 10
 	taste_description = "spicy sweet malty overtones"
 	color = "#683e00"
@@ -280,21 +280,21 @@
 /datum/reagent/consumable/ethanol/tangerine
 	name = "Tangerine Wine"
 	boozepwr = 15
-	taste_description = "bitter sweet young wine"
+	taste_description = "bittersweet, citrusy young wine"
 	color = "#e7aa59"
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/ethanol/tangerine/aged
 	name = "Aged Tangerine Wine"
 	boozepwr = 30
-	taste_description = "bitter sweet aged wine"
+	taste_description = "bittersweet, citrusy aged wine"
 	color = "#d68d2d"
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/tangerine/delectable
 	name = "Delectable Tangerine Wine"
 	boozepwr = 30
-	taste_description = "bitter sweet delectably aged wine"
+	taste_description = "bittersweet, citrusy delectably aged wine"
 	color = "#eb9321"
 	quality = DRINK_VERYGOOD
 
