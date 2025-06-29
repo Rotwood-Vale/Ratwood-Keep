@@ -55,6 +55,8 @@
 
 //click cooldowns, in tenths of a second, used for various combat actions
 #define CLICK_CD_EXHAUSTED 60
+#define CLICK_CD_TRACKING 30
+#define CLICK_CD_SLEUTH 10
 #define CLICK_CD_MELEE 12
 #define CLICK_CD_FAST 8
 #define CLICK_CD_RANGE 4
