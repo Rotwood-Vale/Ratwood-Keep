@@ -199,7 +199,7 @@
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
 
-#define TRIBAL		(1<<12)
+#define TRIBAL		(1<<10)
 
 #define TRIBALCHIEF	(1<<0)
 #define TRIBALSEER	(1<<1)
@@ -209,13 +209,13 @@
 #define TRIBALLACKEY (1<<5)
 
 
-#define SLOP		(1<<10)
+#define SLOP		(1<<11)
 
 #define TESTER		(1<<0)
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
-#define FOREIGNERS	(1<<11)
+#define FOREIGNERS	(1<<12)
 #define REFUGEE	(1<<0)
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
@@ -433,8 +433,8 @@
 	/datum/job/roguetown/bandit
 
 #define TRIBAL_ROLES \
-	/datum/job/roguetown/tribalcaveling,\
 	/datrum/job/roguetown/tribalchief,\
+	/datum/job/roguetown/tribalcaveling,\
  	/datum/job/roguetown/tribalguard,\
  	/datum/job/roguetown/tribaltinkerer,\
  	/datum/job/roguetown/tribalseer,\
