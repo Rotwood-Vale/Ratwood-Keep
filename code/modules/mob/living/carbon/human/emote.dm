@@ -4,11 +4,11 @@
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
-	message = "cries."
+	message = "плачет."
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_cry()
-	set name = "Cry"
+	set name = "Плакать"
 	set category = "Noises"
 
 	emote("cry", intentional = TRUE)
@@ -18,7 +18,7 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
-			message = "makes a noise. Tears stream down their face."
+			message = "издаёт сдавленный звук. По щекам начали катиться слёзы."
 
 
 /datum/emote/living/carbon/human/sexmoanlight
@@ -32,7 +32,7 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
-			message = "makes a noise."
+			message = "издаёт сдавленный звук."
 
 /datum/emote/living/carbon/human/sexmoanhvy
 	key = "sexmoanhvy"
@@ -45,15 +45,15 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.silent || !C.can_speak())
-			message = "makes a noise."
+			message = "издаёт сдавленный звук."
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
-	message = "raises an eyebrow."
+	message = "поднимает бровь."
 	emote_type = EMOTE_VISIBLE
 
 /mob/living/carbon/human/verb/emote_eyebrow()
-	set name = "Raise Eyebrow"
+	set name = "Поднять бровь"
 	set category = "Emotes"
 
 	emote("eyebrow", intentional = TRUE)
@@ -65,7 +65,7 @@
 	nomsg = TRUE
 
 /mob/living/carbon/human/verb/emote_psst()
-	set name = "Psst"
+	set name = "Псст"
 	set category = "Noises"
 
 	emote("psst", intentional = TRUE)
@@ -73,20 +73,20 @@
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
 	key_third_person = "grumbles"
-	message = "grumbles."
-	message_muffled = "makes a grumbling noise."
+	message = "бормочет."
+	message_muffled = "издаёт сдавленный бормочащий звук."
 	emote_type = EMOTE_AUDIBLE
 
 /mob/living/carbon/human/verb/emote_grumble()
-	set name = "Grumble"
+	set name = "Бормотать"
 	set category = "Noises"
 
 	emote("grumble", intentional = TRUE)
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
-	message = "shakes their own hands."
-	message_param = "shakes hands with %t."
+	message = "поживамает собственные руки."
+	message_param = "пожимает руку %t."
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 
@@ -94,30 +94,30 @@
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
-	message = "mumbles."
+	message = "бубнит."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"
-	message = "goes pale for a second."
+	message = "бледнеет на секунду."
 
 /datum/emote/living/carbon/human/raise
 	key = "raise"
 	key_third_person = "raises"
-	message = "raises a hand."
+	message = "поднимает руку."
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes."
-	message_param = "salutes to %t."
+	message = "салютует."
+	message_param = "салютует %t."
 	restraint_check = TRUE
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
 	key_third_person = "shrugs"
-	message = "shrugs."
+	message = "пожимает плечами."
 
 //tailwagstuff//
 
@@ -132,10 +132,10 @@
 	var/mob/living/carbon/human/H = user
 	if(!H.dna.species.is_wagging_tail(H))
 		H.dna.species.start_wagging_tail(H)
-		message = "stops wagging their tail."
+		message = "прекращает махать хвостом."
 	else
 		H.dna.species.stop_wagging_tail(H)
-		message = "wags their tail."
+		message = "машет хвостом."
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
@@ -154,7 +154,7 @@
 /datum/emote/living/carbon/human/flap
 	key = "flap"
 	key_third_person = "flaps"
-	message = "flaps their wings."
+	message = "хлопает крыльями."
 
 /datum/emote/living/carbon/human/wing
 	key = "wing"
@@ -167,10 +167,10 @@
 	var/mob/living/carbon/human/H = user
 	if(!H.dna.species.is_flaring_wings(H))
 		H.dna.species.start_flaring_wings(H)
-		message = "folds their wings."
+		message = "складывает крылья."
 	else
 		H.dna.species.stop_flaring_wings(H)
-		message = "flares their wings."
+		message = "раскрывает крылья."
 
 /datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
