@@ -459,14 +459,14 @@
 
 /datum/emote/living/chuckle
 	key = "chuckle"
-	key_third_person = "издаёт смешок
-	message = "издаёт смешок
+	key_third_person = "издаёт смешок"
+	message = "издаёт смешок"
 	message_muffled = "издаёт пришглушённый смешок"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/emote_chuckle()
-	set name = "Смешок
+	set name = "Смешок"
 	set category = "Noises"
 
 	emote("chuckle", intentional = TRUE)
