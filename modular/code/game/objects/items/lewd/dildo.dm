@@ -50,7 +50,8 @@
 	update_appearance()
 	return TRUE
 
-/obj/item/dildo/proc/update_appearance()
+/obj/item/dildo/update_appearance()
+	. = ..()
 	icon_state = "dildo_[dildo_type]_[dildo_size]"
 	name = "[dildo_size] [dildo_type] [dildo_material] dildo"
 	desc = "To quench the woman's thirst."

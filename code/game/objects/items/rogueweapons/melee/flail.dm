@@ -18,6 +18,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
+	grid_width = 32
+	grid_height = 96
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -148,6 +150,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 6
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()

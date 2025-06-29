@@ -13,6 +13,8 @@
 	reagent_flags = INJECTABLE
 	resistance_flags = FLAMMABLE
 	destroy_sound
+	grid_width = 32
+	grid_height = 32
 	var/foodtype = NONE
 	var/last_check_time
 	var/in_container = FALSE //currently just stops "was bitten X times!" messages on canned food

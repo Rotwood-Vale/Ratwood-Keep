@@ -10,12 +10,12 @@
 	throwforce = 0
 	slot_flags = null
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/snek
+	component_type = /datum/component/storage/concrete/grid/zigbox
 
 /obj/item/storage/fancy/shhig/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
-	STR.set_holdable(list(/obj/item/clothing/mask/cigarette/rollie/snek))
 
 /obj/item/storage/fancy/shhig/attack_self(mob_user)
 	return

@@ -25,6 +25,8 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/rogueweapon/mace/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))

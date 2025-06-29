@@ -18,6 +18,8 @@
 	force = 23
 	throwforce = 7
 	throw_range = 4
+	grid_height = 64
+	grid_width = 32
 	var/lastfilechange = 0
 	var/curvol = 100
 	var/datum/looping_sound/instrument/soundloop
@@ -26,10 +28,6 @@
 	var/groupplaying = FALSE
 	var/curfile = ""
 	var/playing = FALSE
-
-	// -- the below is for tetris inventory
-	// grid_height = 64
-	// grid_width = 32
 
 /obj/item/rogue/instrument/equipped(mob/living/user, slot, initial, silent)
 	. = ..()

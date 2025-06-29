@@ -3,6 +3,8 @@
 	icon = 'icons/roguetown/items/ore.dmi'
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/rogueore/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
@@ -103,6 +105,8 @@
 	smeltresult = null
 	var/ishot = FALSE
 	var/datum/anvil_recipe/currecipe
+	grid_width = 64
+	grid_height = 32
 
 /obj/item/ingot/proc/heat(value)
 	ishot = TRUE

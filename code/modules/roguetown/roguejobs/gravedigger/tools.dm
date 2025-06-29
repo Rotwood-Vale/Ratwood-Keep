@@ -139,6 +139,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	max_blade_int = 0
+	grid_height = 64
 	smeltresult = null
 
 /obj/item/burial_shroud

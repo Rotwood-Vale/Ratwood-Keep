@@ -18,6 +18,9 @@
 	var/deploy_speed = 2 SECONDS
 	resistance_flags = FLAMMABLE
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/bait/Initialize()
 	. = ..()
 	check_counter = world.time

@@ -20,6 +20,9 @@
 	associated_skill = /datum/skill/combat/maces
 	smeltresult = /obj/item/ash
 
+	grid_width = 32
+	grid_height = 64
+
 
 /*The modification code for hammers
 - Call it from other objects with right click
@@ -221,6 +224,8 @@
 	var/hott = FALSE
 	var/heat_time = 5 SECONDS
 	smeltresult = /obj/item/ingot/iron
+	grid_width = 32
+	grid_height = 96
 
 /obj/item/rogueweapon/tongs/examine(mob/user)
 	. = ..()

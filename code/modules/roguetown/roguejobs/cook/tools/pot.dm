@@ -50,8 +50,7 @@ obj/item/reagent_containers/glass/bucket/pot/proc/start_boiling()
 /* Component Initialize */
 obj/item/reagent_containers/glass/bucket/pot/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = AddComponent(/datum/component/storage/concrete/pot)
-	STR.set_holdable(null, STR.cant_hold)
+	AddComponent(/datum/component/storage/concrete/grid/food/cooking/pot)
 	boilloop = new(src, FALSE)
 
 /* Destroy */
