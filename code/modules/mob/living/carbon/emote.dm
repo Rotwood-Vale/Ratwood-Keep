@@ -19,17 +19,17 @@
 
 /datum/emote/living/carbon/blink
 	key = "blink"
-	key_third_person = "blinks"
-	message = "blinks."
+	key_third_person = "моргает"
+	message = "моргает."
 
 /datum/emote/living/carbon/blink_r
 	key = "blink_r"
-	message = "blinks rapidly."
+	message = "быстро моргает."
 
 /datum/emote/living/carbon/clap
 	key = "clap"
-	key_third_person = "claps"
-	message = "claps."
+	key_third_person = "хлопает"
+	message = "хлопает."
 	muzzle_ignore = TRUE
 	restraint_check = TRUE
 	emote_type = EMOTE_AUDIBLE
@@ -51,8 +51,8 @@
 /datum/emote/living/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans."
-	message_mime = "appears to moan!"
+	message = "стонет."
+	message_mime = "стонет!"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/roll
@@ -96,10 +96,10 @@
 
 /datum/emote/living/carbon/tail
 	key = "tail"
-	message = "waves their tail."
+	message = "машет хвостом."
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
 
 /datum/emote/living/carbon/wink
 	key = "wink"
 	key_third_person = "winks"
-	message = "winks."
+	message = "подмигивает."
