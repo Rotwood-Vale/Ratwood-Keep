@@ -23,6 +23,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = CONDUCT_1
+	component_type = /asd
 
 /obj/item/storage/bag/tray/psy
 	name = "tray"

@@ -19,14 +19,6 @@
 	salvage_result = /obj/item/natural/hide/cured
 	var/datum/wound/artery/artery_wound
 
-/obj/item/storage/belt/rogue/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = heldz_items
-
 /obj/item/storage/belt/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
 	if(CP)

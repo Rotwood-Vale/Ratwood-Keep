@@ -105,6 +105,8 @@
 	smeltresult = null
 	var/ishot = FALSE
 	var/datum/anvil_recipe/currecipe
+	grid_width = 64
+	grid_height = 32
 
 /obj/item/ingot/proc/heat(value)
 	ishot = TRUE

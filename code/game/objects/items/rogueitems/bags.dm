@@ -11,6 +11,8 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
 	component_type = /datum/component/storage/concrete/grid/sack
+	grid_height = 64
+	grid_width = 64
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
@@ -55,9 +57,13 @@
 	if(things.len)
 		icon_state = "fbag"
 		w_class = WEIGHT_CLASS_BULKY
+		grid_height = 128
+		grid_width = 128
 	else
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
+		grid_height = 64
+		grid_width = 64
 
 /obj/item/storage/sack/getonmobprop(tag)
 	. = ..()
