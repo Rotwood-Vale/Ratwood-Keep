@@ -13,9 +13,13 @@ Format:
 	votable (is this map votable)
 endmap
 
-map rogueworld
+map rockhill
 	default
 	#voteweight 1.5
 	votable
 endmap
 
+map byosfinal
+	votable
+	#voteweight 1
+endmap

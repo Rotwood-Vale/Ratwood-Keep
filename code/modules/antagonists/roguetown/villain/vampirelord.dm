@@ -1161,15 +1161,28 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 // LANDMARKS
 
 /obj/effect/landmark/start/vampirelord
+	
+	name = "Vampire Lord"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/vampirelord_byos
 	name = "Vampire Lord"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vampirelord/Initialize()
 	. = ..()
-	GLOB.vlord_starts += loc
+	if(!(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement"))
+		GLOB.vlord_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/vampirespawn
+	name = "Vampire Spawn"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/vampirespawn_byos
 	name = "Vampire Spawn"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
@@ -1180,9 +1193,17 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	jobspawn_override = list("Death Knight")
 	delete_after_roundstart = FALSE
 
+/obj/effect/landmark/start/vampireknight_byos
+	name = "Death Knight"
+	icon_state = "arrow"
+	jobspawn_override = list("Death Knight")
+	delete_after_roundstart = FALSE
+
 /obj/effect/landmark/start/vampirespawn/Initialize()
 	. = ..()
-	GLOB.vspawn_starts += loc
+	if(!(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement"))
+		GLOB.vspawn_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/vteleport
 	name = "Teleport Destination"

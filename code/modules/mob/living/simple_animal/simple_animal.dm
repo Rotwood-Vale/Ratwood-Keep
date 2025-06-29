@@ -67,6 +67,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/minbodytemp = 250
 	var/maxbodytemp = 350
 
+	var/resistance_flags = 0
+
 	///Healable by medical stacks? Defaults to yes.
 	var/healable = 1
 
