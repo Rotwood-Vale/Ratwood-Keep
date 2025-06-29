@@ -203,8 +203,7 @@
 	name = "Bullet Pouch (lead)"
 	cost = 30
 	contains = list(/obj/item/ammo_holder/bullet/lead)
-	grid_width = 32
-	grid_height = 64
+
 
 /datum/supply_pack/rogue/weapons/bullet/grape
 	name = "Bullet Pouch (grape)"
