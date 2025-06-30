@@ -54,6 +54,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(player.prefs.loadout3)
 		character.mind.special_items[player.prefs.loadout3::name] += player.prefs.loadout3.path
 
+	SSticker.on_job_finalised(character)
+
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)
 		character.charflaw.apply_post_equipment(character)
