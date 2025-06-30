@@ -1347,6 +1347,7 @@
 #include "code\modules\jobs\job_types\roguetown\bandits\types\knave.dm"
 #include "code\modules\jobs\job_types\roguetown\bandits\types\roguemage.dm"
 #include "code\modules\jobs\job_types\roguetown\bandits\types\sawbones.dm"
+#include "code\modules\jobs\job_types\roguetown\byos\stowaway.dm"
 #include "code\modules\jobs\job_types\roguetown\byos\tribalcaveling.dm"
 #include "code\modules\jobs\job_types\roguetown\byos\tribalchief.dm"
 #include "code\modules\jobs\job_types\roguetown\byos\tribalguard.dm"

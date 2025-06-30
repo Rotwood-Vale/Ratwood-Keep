@@ -440,6 +440,9 @@
         if(!isturf(target))
             to_chat(user, span_warning("You can't place a Nerve Master there!"))
             return
+        if(!isfloorturf(target))
+            to_chat(user, span_warning("You can't place a Nerve Master there!"))
+            return
         if(locate(/obj/structure/roguemachine/steward) in target)
             to_chat(user, span_warning("There is already a Nerve Master here!"))
             return

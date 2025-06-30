@@ -165,12 +165,13 @@
 #define GRABBER		(1<<7)
 #define NIGHTMASTER	(1<<8)
 #define BEGGAR		(1<<9)
-#define WENCH		(1<<10)
-#define VILLAGER	(1<<11)
-#define PRISONERR	(1<<12)
-#define PRISONERB	(1<<13)
-#define LUNATIC		(1<<14)
-#define PRISONERT	(1<<15)
+#define STOWAWAY	(1<<10)
+#define WENCH		(1<<11)
+#define VILLAGER	(1<<12)
+#define PRISONERR	(1<<13)
+#define PRISONERB	(1<<14)
+#define LUNATIC		(1<<15)
+#define PRISONERT	(1<<16)
 
 #define YOUNGFOLK	(1<<7)
 
@@ -311,6 +312,7 @@
 #define JDO_SEELIE 31.3
 
 #define JDO_VAGRANT 34
+#define JDO_STOWAWAY 34.1
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
@@ -380,6 +382,7 @@
 	/datum/job/roguetown/towner,\
 	/datum/job/roguetown/nightmaiden,\
 	/datum/job/roguetown/beggar,\
+	/datum/job/roguetown/stowaway,\
 	/datum/job/roguetown/butcher,\
 	/datum/job/roguetown/cook,\
 	/datum/job/roguetown/lunatic,\
