@@ -114,6 +114,8 @@
 	firefuel = 60 MINUTES // Extremely poweful fuel.
 	w_class = WEIGHT_CLASS_SMALL
 	metalizer_result = /obj/item/rogueore/gold
+	grid_height = 32
+	grid_width = 32
 
 //................	Unstrung bow	............... //
 /obj/item/grown/log/tree/bowpartial
