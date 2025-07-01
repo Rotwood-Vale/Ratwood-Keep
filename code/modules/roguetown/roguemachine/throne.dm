@@ -109,7 +109,7 @@ GLOBAL_VAR(king_throne)
         return
 
     new /obj/structure/roguethrone(target)
-	new /obj/structure/roguemachine/titan(target)
+    new /obj/structure/roguemachine/titan(target)
     to_chat(user, span_notice("You conjure a throne before you!"))
     playsound(user.loc, 'sound/magic/crystal.ogg', 100, TRUE)
     qdel(src)
