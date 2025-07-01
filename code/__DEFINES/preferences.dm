@@ -1,4 +1,4 @@
-#define MAXIMUM_FLAVOR_TEXT		300
+#define MAXIMUM_FLAVOR_TEXT		600
 
 //Preference toggles
 #define SOUND_ADMINHELP			(1<<0)
