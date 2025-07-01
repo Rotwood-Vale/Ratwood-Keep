@@ -23,7 +23,7 @@
 		if(/datum/patron/divine/dendor)
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			cloak = /obj/item/clothing/cloak/tabard/crusader/dendor
-			H.mind.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
+			H.adjust_skillrank(/datum/skill/magic/druidic, 2, TRUE) // enough to craft druid mask, at least
 		if(/datum/patron/divine/necra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
 			cloak = /obj/item/clothing/cloak/templar/necran
@@ -61,22 +61,22 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			backr = /obj/item/rogueweapon/shield/wood
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
-			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 1) // More intelligence and no speed penalty for Life Clerics.
 			H.change_stat("constitution", -1)
@@ -96,19 +96,19 @@
 			backr = /obj/item/rogueweapon/shield/wood
 			backl = /obj/item/storage/backpack/rogue/backpack
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife =1, /obj/item/clothing/neck/roguetown/chaincoif/iron = 1, /obj/item/rogueore/coal = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/hammer/iron = 1)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
-			H.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE) //Traded a few weapon proficiencies from war cleric for smithing.
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/malum_flame_rogue) // weaker astra fire spell. mostly for lighting things.
 			H.change_stat("intelligence", 2) // Changed to follow balance people's advice.
 			H.change_stat("constitution", 1)
 			H.change_stat("strength", 2)

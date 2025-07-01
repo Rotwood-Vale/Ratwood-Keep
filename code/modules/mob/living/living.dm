@@ -1030,18 +1030,14 @@
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
 
-	var/wrestling_diff = 0
-	var/resist_chance = 40
 	var/mob/living/L = pulledby
+	var/wrestling_diff = get_skill_level(/datum/skill/combat/wrestling) - L.get_skill_level(/datum/skill/combat/wrestling)
+	var/resist_chance = 40
 	var/combat_modifier = 1
 
 	if(HAS_TRAIT(src, TRAIT_PARALYSIS))//Will stop someone who is paralized from trying to resist
 		to_chat(src, span_warning("I can't move!"))
 		return FALSE
-	if(mind)
-		wrestling_diff += (mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
-	if(L.mind)
-		wrestling_diff -= (L.mind.get_skill_level(/datum/skill/combat/wrestling))
 
 	if(restrained())
 		combat_modifier -= 0.25
@@ -1077,8 +1073,8 @@
 			pulledby.stop_pulling() // the default is forced = TRUE
 
 		var/wrestling_cooldown_reduction = 0
-		if(pulledby?.mind?.get_skill_level(/datum/skill/combat/wrestling))
-			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.mind.get_skill_level(/datum/skill/combat/wrestling)
+		if(pulledby?.get_skill_level(/datum/skill/combat/wrestling))
+			wrestling_cooldown_reduction = 0.2 SECONDS * pulledby.get_skill_level(/datum/skill/combat/wrestling)
 		TIMER_COOLDOWN_START(src, "broke_free", max(0, 1.6 SECONDS - wrestling_cooldown_reduction))
 
 		return FALSE
@@ -1766,10 +1762,7 @@
 				//continue
 			if(M.mob_timers[MT_INVISIBILITY] > world.time) // Check if the mob is affected by the invisibility spell
 				continue
-			var/probby = 3 * STAPER
-			if(M.mind)
-				probby -= (M.mind.get_skill_level(/datum/skill/misc/sneaking) * 10)
-			probby = (max(probby, 5))
+			var/probby = max(3 * STAPER - (M.get_skill_level(/datum/skill/misc/sneaking) * 10), 5)
 			if(prob(probby))
 				found_ping(get_turf(M), client, "hidden")
 				if(M.m_intent == MOVE_INTENT_SNEAK)

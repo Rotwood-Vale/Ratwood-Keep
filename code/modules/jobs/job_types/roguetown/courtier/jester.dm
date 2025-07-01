@@ -32,26 +32,25 @@
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
-		if(!isseelie(H))	
-			H.STASTR = clamp(roll("4d6-4"), 1, 20)
-			H.STAINT = clamp(roll("4d6-4"), 1, 20)
-			H.STALUC = clamp(roll("4d6-4"), 1, 20)
-		else
-			H.mind.AddSpell(new SPELL_SEELIE_DUST)
-			H.mind.AddSpell(new SPELL_SUMMON_RAT)
-			H.mind.AddSpell(new SPELL_STRIP)
-			H.mind.AddSpell(new SPELL_SPLASH)
-			H.mind.AddSpell(new SPELL_ROUSTAME)
-			H.mind.AddSpell(new SPELL_ANIMATE_OBJECT)
-		H.cmode_music = 'sound/music/combat_jester.ogg'
+	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
+	if(!isseelie(H))	
+		H.STASTR = clamp(roll("4d6-4"), 1, 20)
+		H.STAINT = clamp(roll("4d6-4"), 1, 20)
+		H.STALUC = clamp(roll("4d6-4"), 1, 20)
+	else if(H.mind)
+		H.mind.AddSpell(new SPELL_SEELIE_DUST)
+		H.mind.AddSpell(new SPELL_SUMMON_RAT)
+		H.mind.AddSpell(new SPELL_STRIP)
+		H.mind.AddSpell(new SPELL_SPLASH)
+		H.mind.AddSpell(new SPELL_ROUSTAME)
+		H.mind.AddSpell(new SPELL_ANIMATE_OBJECT)
+	H.cmode_music = 'sound/music/combat_jester.ogg'
 	H.verbs |= /mob/living/carbon/human/proc/ventriloquate
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)

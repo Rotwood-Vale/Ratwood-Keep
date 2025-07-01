@@ -85,17 +85,10 @@
 			return
 		var/used_time = 3 SECONDS
 		var/exp_to_gain = 0
-		var/myskill = SKILL_LEVEL_NOVICE // default for NPCs
-		if(L.mind)
-			myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
-			exp_to_gain = L.STAINT/2
-			var/obj/structure/table/TA = locate() in L.loc
-			if(TA)
-				myskill += 1
-			else
-				var/obj/structure/chair/CH = locate() in L.loc
-				if(CH)
-					myskill += 1
+		var/myskill = L.get_skill_level(/datum/skill/misc/climbing, default_mindless_value = SKILL_LEVEL_NOVICE)
+		exp_to_gain = L.STAINT/2
+		if((locate(/obj/structure/table) in L.loc) || (locate(/obj/structure/chair) in L.loc))
+			myskill += 1
 		used_time = max(7 SECONDS - (myskill SECONDS) - (L.STASPD * 0.3 SECONDS), 3 SECONDS)
 		playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 		user.visible_message(span_warning("[user] starts to climb [src]."), span_warning("I start to climb [src]..."))
@@ -106,8 +99,7 @@
 			user.forceMove(target)
 			user.start_pulling(pulling,supress_message = TRUE)
 			playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
-			if(L.mind) // idk just following whats going on above
-				L.mind.add_sleep_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
+			L.add_sleep_experience(/datum/skill/misc/climbing, exp_to_gain, FALSE)
 
 /obj/structure/flora/newtree/update_icon()
 	icon_state = ""

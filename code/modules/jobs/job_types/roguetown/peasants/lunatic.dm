@@ -22,9 +22,8 @@
 
 /datum/outfit/job/roguetown/lunatic/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	pants = /obj/item/clothing/under/roguetown/tights/vagrant

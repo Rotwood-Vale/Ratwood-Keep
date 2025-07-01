@@ -178,11 +178,10 @@
 	if (affecting.bandage)
 		to_chat(user, "There is already a bandage.")
 		return
-	var/used_time = 100
-	if (H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
+	var/used_time = 10 SECONDS - (H.get_skill_level(/datum/skill/misc/medicine) SECONDS)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
-	if (!do_mob(user, M, used_time)) return
+	if (!do_mob(user, M, used_time))
+		return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)
@@ -299,9 +298,7 @@
 	if(affecting.bandage)
 		to_chat(user, span_warning("There is already a bandage."))
 		return
-	var/used_time = 70
-	if(H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
+	var/used_time = 7 SECONDS - (H.get_skill_level(/datum/skill/misc/medicine) SECONDS)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if(!do_mob(user, M, used_time))
 		return

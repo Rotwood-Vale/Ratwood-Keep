@@ -93,7 +93,7 @@
 		return 0 // going with the flow
 	if(swimmer.buckled)
 		return 0
-	var/swimming_skill_level = swimmer.mind ? swimmer.mind.get_skill_level(/datum/skill/misc/swimming) : NPC_SWIM_LEVEL
+	var/swimming_skill_level = swimmer.mind ? swimmer.get_skill_level(/datum/skill/misc/swimming) : NPC_SWIM_LEVEL
 	. = max(BASE_STAM_DRAIN - (swimming_skill_level * STAM_PER_LEVEL), MIN_STAM_DRAIN)
 //	. += (swimmer.checkwornweight()*2)
 	if(!swimmer.check_armor_skill())
@@ -246,8 +246,8 @@
 		return 0
 
 	var/returned = slowdown
-	if(user?.mind && swim_skill)
-		returned = returned - (user.mind.get_skill_level(/datum/skill/misc/swimming))
+	if(swim_skill)
+		returned = returned - user.get_skill_level(/datum/skill/misc/swimming)
 	return returned
 
 //turf/open/water/Initialize()

@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(ranged_ability_user && chargetime)
 		var/newtime = chargetime
 		//skill block
-		newtime = newtime - (chargetime * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
+		newtime = newtime - (chargetime * (ranged_ability_user.get_skill_level(associated_skill) * 0.05))
 		//int block
 		if(ranged_ability_user.STAINT > 10)
 			newtime = newtime - (chargetime * (ranged_ability_user.STAINT * 0.02))
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(ranged_ability_user && releasedrain)
 		var/newdrain = releasedrain
 		//skill block
-		newdrain = newdrain - (releasedrain * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
+		newdrain = newdrain - (releasedrain * (ranged_ability_user.get_skill_level(associated_skill) * 0.05))
 		//int block
 		if(ranged_ability_user.STAINT > 10)
 			newdrain = newdrain - (releasedrain * (ranged_ability_user.STAINT * 0.02))

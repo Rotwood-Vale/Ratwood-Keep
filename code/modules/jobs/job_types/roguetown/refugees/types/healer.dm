@@ -24,16 +24,16 @@
 	switch(classchoice)
 
 		if("Alchemist")
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			pants = /obj/item/clothing/under/roguetown/tights
 			shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -49,15 +49,15 @@
 			H.change_stat("strength", -1)
 
 		if("War Surgeon")
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)	//in line with town physicians and can now revive
-			H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)	//in line with town physicians and can now revive
+			H.adjust_skillrank(/datum/skill/misc/alchemy, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.AddSpell(new SPELL_DIAGNOSE_SECULAR)
 			head = /obj/item/clothing/head/roguetown/nightman
 			neck = /obj/item/clothing/neck/roguetown/coif

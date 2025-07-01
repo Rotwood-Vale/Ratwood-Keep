@@ -54,7 +54,7 @@
 	if(!istype(user, /mob/living))
 		return
 	var/mob/living/player = user
-	var/skill = player.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = player.get_skill_level(/datum/skill/craft/engineering)
 	if(current_charge)
 		. += span_warning("The contraption has [current_charge] charges left.")
 	if(!current_charge)
@@ -78,7 +78,7 @@
 	return
 
 /obj/item/contraption/proc/misfire(obj/O, mob/living/user)
-	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT * 5))
+	user.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT * 5))
 	to_chat(user, span_info("Oh fuck."))
 	playsound(src, 'sound/misc/bell.ogg', 100)
 	addtimer(CALLBACK(src, PROC_REF(misfire_result), O, user), rand(5, 30))
@@ -196,7 +196,7 @@
 		S.set_up(1, 1, front)
 		S.start()
 		return
-	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = user.get_skill_level(/datum/skill/craft/engineering)
 	if(istype(O, /obj/structure/mineral_door/wood)) //This is to ensure the new door will retain its lock
 		var/obj/structure/mineral_door/wood/I = O
 		var/obj/structure/mineral_door/wood/new_door = new I.metalizer_result(get_turf(I))
@@ -214,7 +214,7 @@
 	charge_deduction(O, user, 1)
 	shake_camera(user, 1, 1)
 	playsound(src, 'sound/magic/swap.ogg', 100, TRUE)
-	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
+	user.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 2))
 	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
 		misfire(O, user)
 	return
@@ -282,7 +282,7 @@
 		S.set_up(1, 1, front)
 		S.start()
 		return
-	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 3))
+	user.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT / 3))
 	charge_deduction(O, user, 1)
 	flick(on_icon, src)
 	playsound(loc, 'sound/misc/machinevomit.ogg', 50, TRUE)
@@ -290,7 +290,7 @@
 	return
 
 /obj/item/contraption/smelter/proc/smelt_part2(obj/O, mob/living/user)
-	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = user.get_skill_level(/datum/skill/craft/engineering)
 	var/turf/turf = get_turf(O)
 	playsound(O, pick('sound/combat/hits/burn (1).ogg','sound/combat/hits/burn (2).ogg'), 100)
 	new /obj/effect/decal/cleanable/ash(turf)
@@ -322,7 +322,7 @@
 	if(!istype(user, /mob/living))
 		return
 	var/mob/living/player = user
-	var/skill = player.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = player.get_skill_level(/datum/skill/craft/engineering)
 	if(skill >= 2)
 		. += span_warning("The [name] is currently in [mode] mode.")
 		if(skill >= 4)
@@ -353,7 +353,7 @@
 	..()
 	if(!current_charge)
 		return
-	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = user.get_skill_level(/datum/skill/craft/engineering)
 	var/valid_lock
 	for(var/type in allowed_locks)
 		if(istype(O, type))
@@ -378,7 +378,7 @@
 				var/turf/front = get_turf(O)
 				S.set_up(1, 1, front)
 				S.start()
-				user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT)) // Only imprinting gives EXP
+				user.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT)) // Only imprinting gives EXP
 				message_admins("[user] has used [name] to change the lock of [O] to [stored_lock_id] hash [stored_lock_hash] in [ADMIN_VERBOSEJMP(front)]")
 				log_game("[user] has used [name] to change the lock of [O] to [stored_lock_id] hash [stored_lock_hash] in [ADMIN_VERBOSEJMP(front)]")
 				if(!skill && prob(sneaky_misfire_chance))
@@ -461,7 +461,7 @@
 			S.repeat_message(input_text)
 		for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)//make the listenstone hear scomstone
 			S.repeat_message(input_text)
-	var/skill = user.mind.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = user.get_skill_level(/datum/skill/craft/engineering)
 
 	flick(on_icon, src)
 	charge_deduction(src, user, 1)

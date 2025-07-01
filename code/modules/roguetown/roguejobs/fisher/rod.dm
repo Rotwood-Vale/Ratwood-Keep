@@ -76,11 +76,10 @@
 	var/casting_time = (rand(8 SECONDS, 15 SECONDS)) //How long before a fish bites
 	var/fishing_time = 3 SECONDS //How long to reel in our catch
 	var/skill_level 
-	if(current_fisherman.mind)
-		skill_level = current_fisherman.mind.get_skill_level(/datum/skill/labor/fishing)
-		if(skill_level)
-			casting_time = clamp((casting_time - skill_level SECONDS), 1, 15 SECONDS) //Can't go under 1
-			fishing_time = clamp((fishing_time / skill_level), 1, 3 SECONDS)
+	skill_level = current_fisherman.get_skill_level(/datum/skill/labor/fishing)
+	if(skill_level)
+		casting_time = clamp((casting_time - skill_level SECONDS), 1, 15 SECONDS) //Can't go under 1
+		fishing_time = clamp((fishing_time / skill_level), 1, 3 SECONDS)
 
 	if(!do_after(current_fisherman, casting_time, target = target))
 		return
@@ -114,7 +113,7 @@
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
 	QDEL_NULL(baited)
-	current_fisherman.mind.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
+	current_fisherman.add_sleep_experience(/datum/skill/labor/fishing, amt2raise) 
 	update_icon()
 
 /obj/item/fishingrod/update_icon()

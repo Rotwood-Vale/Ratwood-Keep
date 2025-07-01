@@ -84,7 +84,7 @@ post_handle
 ========*/
 //Will be used to do certain actions (e.g. remove reganets from the other item)
 /datum/food_handle_recipes/proc/post_handle(user, to_check = list())
-	//user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+	//user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 	return TRUE
 
 

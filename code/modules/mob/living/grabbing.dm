@@ -106,12 +106,8 @@
 	if(!valid_check())
 		return FALSE
 	user.changeNext_move(CLICK_CD_MELEE * 2 - user.STASPD) // 24 - the user's speed
-	var/skill_diff = 0
+	var/skill_diff = user.get_skill_level(/datum/skill/combat/wrestling) - M.get_skill_level(/datum/skill/combat/wrestling)
 	var/combat_modifier = 1
-	if(user.mind)
-		skill_diff += (user.mind.get_skill_level(/datum/skill/combat/wrestling))
-	if(M.mind)
-		skill_diff -= (M.mind.get_skill_level(/datum/skill/combat/wrestling))
 
 	if(M.surrendering)
 		combat_modifier = 2
@@ -209,9 +205,8 @@
 			user.stamina_add(rand(3,8))
 			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
 			if(I)
-				if(M.mind)
-					if(I.associated_skill)
-						probby -= M.mind.get_skill_level(I.associated_skill) * 5
+				if(I.associated_skill)
+					probby -= M.get_skill_level(I.associated_skill) * 5
 				if(I.wielded)
 					probby -= 20
 				if(prob(probby))
@@ -493,22 +488,21 @@
 	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
 		playsound(C.loc, "smallslash", 100, FALSE, -1)
 		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE)
-		if(user.mind)
-			if(user.mind.has_antag_datum(/datum/antagonist/werewolf))
-				caused_wound?.werewolf_infect_attempt()
-				if(prob(30))
-					user.werewolf_feed(C)
-			var/datum/antagonist/zombie/zombie_antag = user.mind.has_antag_datum(/datum/antagonist/zombie)
-			if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
-				var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
-				if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
-					user.mind.adjust_triumphs(1)
-			if(HAS_TRAIT(user, TRAIT_POISONBITE))
-				if(C.reagents)
-					var/poison = user.STACON/4 //more peak species level, more poison
-					C.reagents.add_reagent(/datum/reagent/toxin/venom, poison)
-					//C.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
-					to_chat(user, span_warning("You inject venom into [C]!"))
+		var/datum/antagonist/zombie/zombie_antag = user.mind?.has_antag_datum(/datum/antagonist/zombie)
+		var/datum/antagonist/werewolf/werewolf_antag = user.mind?.has_antag_datum(/datum/antagonist/werewolf)
+		if(werewolf_antag)
+			caused_wound?.werewolf_infect_attempt()
+			if(prob(30))
+				user.werewolf_feed(C)
+		if(zombie_antag || istype(user, /mob/living/carbon/human/species/deadite))
+			var/datum/antagonist/zombie/existing_zomble = C.mind?.has_antag_datum(/datum/antagonist/zombie)
+			if(caused_wound?.zombie_infect_attempt() && !existing_zomble)
+				user.mind.adjust_triumphs(1)
+		if(HAS_TRAIT(user, TRAIT_POISONBITE) && C.reagents)
+			var/poison = user.STACON/4 //more peak species level, more poison
+			C.reagents.add_reagent(/datum/reagent/toxin/venom, poison)
+			//C.reagents.add_reagent(/datum/reagent/medicine/soporpot, poison)
+			to_chat(user, span_warning("You inject venom into [C]!"))
 	else
 		C.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 	C.visible_message(span_danger("[user] bites [C]'s [parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), \

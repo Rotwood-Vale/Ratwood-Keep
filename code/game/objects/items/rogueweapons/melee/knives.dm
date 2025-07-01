@@ -210,7 +210,7 @@
 		var/obj/item/item = O
 		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!
 			var/salvage_time = 70
-			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			var/skill_level = user.get_skill_level(/datum/skill/misc/sewing)
 			salvage_time = (70 - (skill_level * 10))
 			if(!do_after(user, salvage_time, target = user))
 				return
@@ -224,7 +224,7 @@
 				to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
 				playsound(item, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				qdel(item)
-				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
+				user.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
 				return //We are returning early if the skill check fails!
 			item.salvage_amount -= item.torn_sleeve_number
 			for(var/i = 1; i <= item.salvage_amount; i++) // We are spawning salvage result for the salvage amount minus the torn sleves!
@@ -233,7 +233,7 @@
 			user.visible_message(span_notice("[user] salvages [item] into usable materials."))
 			playsound(item, 'sound/items/flint.ogg', 100, TRUE) //In my mind this sound was more fitting for a scissor
 			qdel(item)
-			user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //We're getting experience for salvaging!
+			user.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //We're getting experience for salvaging!
 	..()
 
 /obj/item/rogueweapon/huntingknife/scissors/steel

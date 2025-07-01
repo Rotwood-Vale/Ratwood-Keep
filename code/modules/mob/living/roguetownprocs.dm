@@ -15,13 +15,11 @@
 	if( (target.dir == turn(get_dir(target,user), 180)))
 		return zone
 
-	var/chance2hit = 0
+	var/chance2hit = user.get_skill_level(associated_skill) * 7
 
 	if(check_zone(zone) == zone)
 		chance2hit += 10
 
-	if(user.mind)
-		chance2hit += (user.mind.get_skill_level(associated_skill) * 7)
 
 	if(used_intent)
 		if(used_intent.blade_class == BCLASS_STAB)
@@ -255,11 +253,11 @@
 
 	if(mainhand)
 		if(mainhand.can_parry)
-			mainhand_defense += (mind ? mind.get_skill_level(mainhand.associated_skill) : NPC_BASE_WEAPON_SKILL) * MAINHAND_SKILL_BONUS
+			mainhand_defense += get_skill_level(mainhand.associated_skill, default_mindless_value = NPC_BASE_WEAPON_SKILL) * MAINHAND_SKILL_BONUS
 			mainhand_defense += mainhand.wdefense * MAINHAND_WDEFENSE_BONUS
 	if(offhand)
 		if(offhand.can_parry)
-			offhand_defense += (mind ? mind.get_skill_level(offhand.associated_skill) : NPC_BASE_WEAPON_SKILL) * OFFHAND_SKILL_BONUS
+			offhand_defense += get_skill_level(offhand.associated_skill, default_mindless_value = NPC_BASE_WEAPON_SKILL) * OFFHAND_SKILL_BONUS
 			offhand_defense += offhand.wdefense * OFFHAND_WDEFENSE_BONUS
 
 	if(mainhand_defense >= offhand_defense)
@@ -275,22 +273,22 @@
 	if(m_intent == MOVE_INTENT_RUN)
 		prob2defend -= SPRINT_PENALTY
 	
-	if(highest_defense <= (mind ? mind.get_skill_level(/datum/skill/combat/unarmed) : NPC_BASE_UNARMED_SKILL) * UNARMED_SKILL_BONUS)
-		defender_skill = mind?.get_skill_level(/datum/skill/combat/unarmed)
+	if(highest_defense <= (get_skill_level(/datum/skill/combat/unarmed, default_mindless_value = NPC_BASE_UNARMED_SKILL) * UNARMED_SKILL_BONUS))
+		defender_skill = get_skill_level(/datum/skill/combat/unarmed, default_mindless_value = NPC_BASE_UNARMED_SKILL)
 		prob2defend += defender_skill * UNARMED_SKILL_BONUS
 		weapon_parry = FALSE
 	else
-		defender_skill = mind?.get_skill_level(used_weapon.associated_skill)
+		defender_skill = get_skill_level(used_weapon.associated_skill)
 		prob2defend += highest_defense
 		weapon_parry = TRUE
 
 	if(enemy_intent.masteritem)
-		attacker_skill = attacker.mind ? attacker.mind.get_skill_level(enemy_intent.masteritem.associated_skill) : NPC_BASE_WEAPON_SKILL
+		attacker_skill = attacker.get_skill_level(enemy_intent.masteritem.associated_skill, default_mindless_value = NPC_BASE_WEAPON_SKILL)
 		prob2defend -= attacker_skill * ATTACKER_WEAPON_SKILL_PENALTY
 		if((enemy_intent.masteritem.wbalance > 0) && (attacker.STASPD > STASPD)) //enemy weapon is quick, so get a bonus based on spddiff
 			prob2defend -= enemy_intent.masteritem.wbalance * ((attacker.STASPD - STASPD) * ATTACKER_SWIFT_WEAPON_PENALTY)
 	else
-		attacker_skill = attacker.mind ? attacker.mind.get_skill_level(/datum/skill/combat/unarmed) : NPC_BASE_UNARMED_SKILL
+		attacker_skill = attacker.get_skill_level(/datum/skill/combat/unarmed, default_mindless_value = NPC_BASE_UNARMED_SKILL)
 		prob2defend -= attacker_skill * ATTACKER_UNARMED_SKILL_PENALTY
 
 	// parrying while knocked down sucks ass
@@ -315,19 +313,18 @@
 
 		// defender skill gain
 		if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, used_weapon.associated_skill, attacker_skill - SKILL_LEVEL_NOVICE))
-			mind.add_sleep_experience(used_weapon.associated_skill, round(STAINT/2), FALSE)
+			add_sleep_experience(used_weapon.associated_skill, round(STAINT/2), FALSE)
 
 		var/obj/item/attacker_weapon = enemy_intent.masteritem
 
 		//attacker skill gain
-		if(attacker.mind)
-			var/attacker_skill_type
-			if(attacker_weapon)
-				attacker_skill_type = attacker_weapon.associated_skill
-			else
-				attacker_skill_type = /datum/skill/combat/unarmed
-			if((attacker.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(attacker, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
-				attacker.mind.add_sleep_experience(attacker_skill_type, round(STAINT/2), FALSE)
+		var/attacker_skill_type
+		if(attacker_weapon)
+			attacker_skill_type = attacker_weapon.associated_skill
+		else
+			attacker_skill_type = /datum/skill/combat/unarmed
+		if((attacker.mobility_flags & MOBILITY_STAND) && can_train_combat_skill(attacker, attacker_skill_type, defender_skill - SKILL_LEVEL_NOVICE))
+			attacker.add_sleep_experience(attacker_skill_type, round(STAINT/2), FALSE)
 
 		// make sparks fly when metal weapons meet
 		if(prob(PARRY_SPARK_CHANCE) && (attacker_weapon?.flags_1 & CONDUCT_1) && (used_weapon.flags_1 & CONDUCT_1))
@@ -346,8 +343,8 @@
 		if(!do_unarmed_parry(drained, attacker)) // failed the unarmed parry
 			testing("failparry")
 			return FALSE
-		if(mind && (mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
-			mind.add_sleep_experience(/datum/skill/combat/unarmed, round(STAINT/2), FALSE)
+		if((mobility_flags & MOBILITY_STAND) && can_train_combat_skill(src, /datum/skill/combat/unarmed, attacker_skill - SKILL_LEVEL_NOVICE))
+			add_sleep_experience(/datum/skill/combat/unarmed, round(STAINT/2), FALSE)
 		flash_fullscreen("blackflash2")
 		return TRUE
 
@@ -398,19 +395,16 @@
 			prob2defend -= used_item.wbalance * ((user.STASPD - STASPD) * 10)
 		if(used_item.wbalance < 0 && STASPD > user.STASPD) //enemy weapon is slow, so its easier to dodge if we're faster
 			prob2defend += used_item.wbalance * ((STASPD - user.STASPD) * 10)
-		if(user.mind)
-			prob2defend -= user.mind.get_skill_level(used_item.associated_skill) * 10
+		prob2defend -= user.get_skill_level(used_item.associated_skill) * 10
 	prob2defend -= user.STASPD * 10
 	if(used_item) //the enemy attacked us with a weapon
 		if(!used_item.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack
 			prob2defend += 10
-		else if(mind)
-			prob2defend += mind.get_skill_level(used_item.associated_skill) * 10
+		else
+			prob2defend += get_skill_level(used_item.associated_skill) * 10
 	else if(user.used_intent.unarmed) //the enemy attacked us unarmed
-		if(user.mind)
-			prob2defend -= user.mind.get_skill_level(/datum/skill/combat/unarmed) * 10
-		if(mind)
-			prob2defend = prob2defend + mind.get_skill_level(/datum/skill/combat/unarmed) * 10
+		prob2defend += get_skill_level(/datum/skill/combat/unarmed) * 10
+		prob2defend -= user.get_skill_level(/datum/skill/combat/unarmed) * 10
 	// dodging while knocked down sucks ass
 	if(!(mobility_flags & MOBILITY_STAND))
 		prob2defend *= 0.25

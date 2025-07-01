@@ -24,7 +24,7 @@
 
 	user.visible_message(span_notice("[user] begins deploying the fishing cage..."), \
 						span_notice("I begin deploying the fishing cage..."))
-	var/deploy_speed = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
+	var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 
 	if(!is_valid_fishing_spot(T))
 		to_chat(user, span_warning("This body of water seems devoid of aquatic life..."))
@@ -42,14 +42,14 @@
 
 /obj/item/fishingcage/attack_hand(mob/user)
 	if(deployed)
-		var/deploy_speed = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
+		var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
 		if(caught)
 			user.visible_message(span_notice("[user] begins to harvest from the cage..."), \
 								span_notice("I begin harvesting the from the cage..."))
 			if(do_after(user, deploy_speed, target = src))
 				STOP_PROCESSING(SSobj, src)
 				icon_state = "fishingcage_deployed"
-				add_sleep_experience(user, /datum/skill/labor/fishing, 20)
+				user.add_sleep_experience(/datum/skill/labor/fishing, 20)
 				new caught(user.loc)
 				caught = null
 				desc = initial(desc)
@@ -79,7 +79,7 @@
 			I.forceMove(src)
 			bait = I
 			check_counter = world.time
-			time2catch = get_skill_delay(user.mind.get_skill_level(/datum/skill/labor/fishing), fastest = 15, slowest = 120) //in seconds
+			time2catch = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), fastest = 15, slowest = 120) //in seconds
 			icon_state = "fishingcage_ready"
 			START_PROCESSING(SSobj, src)
 			return

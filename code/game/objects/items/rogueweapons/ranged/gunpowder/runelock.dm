@@ -50,10 +50,9 @@
 	else
 		if(!cocked)
 			to_chat(user, span_info("I ready the runelock to be fired..."))
-			if(user.mind)
-				var/skill = user.mind.get_skill_level(/datum/skill/combat/firearms)
-				if(skill)
-					reload_time = reload_time / skill
+			var/skill = user.get_skill_level(/datum/skill/combat/firearms)
+			if(skill > SKILL_LEVEL_NONE) // don't divide by zero when unskilled
+				reload_time /= skill
 			if(move_after(user, reload_time SECONDS, target = user))
 				playsound(user, 'sound/foley/musketcock.ogg', 100, FALSE)
 				cocked = TRUE
@@ -66,16 +65,15 @@
 		if(cocked)
 			if((loc == user) && (user.get_inactive_held_item() != src))
 				return
-			..()
+			return ..()
 		else
 			to_chat(user, span_warning("I need to cock the runelock first!"))
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/runelock/process_fire/(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(user.mind)
-		var/skill = user.mind.get_skill_level(/datum/skill/combat/firearms)
-		if(skill)
-			misfire_chance = max(0, misfire_chance - (skill * 2))
-			spread = max(3, spread / skill)
+	var/skill = user.get_skill_level(/datum/skill/combat/firearms)
+	if(skill)
+		misfire_chance = max(0, misfire_chance - (skill * 2))
+		spread = max(3, spread / skill)
 	if(prob(misfire_chance))
 		to_chat(user, span_warning("The [name] misfires!"))
 		explosion(src, light_impact_range = 2, heavy_impact_range = 1, smoke = TRUE, soundin = 'sound/misc/explode/bomb.ogg')

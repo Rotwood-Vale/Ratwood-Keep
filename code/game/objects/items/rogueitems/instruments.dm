@@ -88,7 +88,7 @@
 				
 		if(!groupplaying)
 			var/list/options = song_list.Copy()
-			if(user.mind && user.mind.get_skill_level(/datum/skill/misc/music) >= 4)
+			if(user.get_skill_level(/datum/skill/misc/music) >= SKILL_LEVEL_EXPERT)
 				options["Upload New Song"] = "upload"
 			
 			var/choice = input(user, "Which song?", "Music", name) as null|anything in options
@@ -130,7 +130,7 @@
 			curfile = song_list[choice]
 			if(!user || playing || !(src in user.held_items))
 				return
-			switch(user.mind? user.mind.get_skill_level(/datum/skill/misc/music) : SKILL_LEVEL_NONE)
+			switch(user.get_skill_level(/datum/skill/misc/music))
 				if(SKILL_LEVEL_NONE, SKILL_LEVEL_NOVICE)
 					soundloop.stress2give = /datum/stressevent/music
 				if(SKILL_LEVEL_APPRENTICE)

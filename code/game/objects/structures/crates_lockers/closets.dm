@@ -323,7 +323,7 @@ obj/structure/closet/proc/trypicklock(obj/item/I, mob/user)
 
 		var/mob/living/L = user
 
-		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/pickskill = user.get_skill_level(/datum/skill/misc/lockpicking)
 		var/perbonus = L.STAPER/2
 		var/luckbonus = L.STALUC/4
 		var/picktime = 70
@@ -348,10 +348,9 @@ obj/structure/closet/proc/trypicklock(obj/item/I, mob/user)
 				lockprogress += moveup
 				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
 				to_chat(user, "<span class='warning'>Click...</span>")
-				if(L.mind)
-					var/amt2raise = L.STAINT
-					var/boon = L.STALUC/4
-					L.mind.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+				var/amt2raise = L.STAINT
+				var/boon = L.STALUC/4
+				L.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
 				if(lockprogress >= locktreshold)
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					togglelock(user)

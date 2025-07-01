@@ -38,17 +38,17 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/newmage/adept
 		backr = /obj/item/storage/backpack/rogue/satchel
+	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)	//they get potion crafting round start now.
+	H.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+	H.change_stat("intelligence", 3)
+	H.change_stat("strength", -1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)	//they get potion crafting round start now.
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_spellpoints(3)
-		H.change_stat("intelligence", 3)
-		H.change_stat("strength", -1)
 	if(istype(H.dna.species, /datum/species/dwarf) || istype(H.dna.species,/datum/species/anthromorphsmall)|| istype(H.dna.species, /datum/species/kobold))
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 		armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage

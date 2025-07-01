@@ -51,9 +51,8 @@
 	var/mob/living/carbon/C = parent
 	var/is_zombie
 
-	if(C.mind)
-		if(C.mind.has_antag_datum(/datum/antagonist/zombie))
-			is_zombie = TRUE
+	if(C.mind?.has_antag_datum(/datum/antagonist/zombie))
+		is_zombie = TRUE
 	if(!is_zombie)
 		if(C.stat != DEAD)
 			qdel(src)

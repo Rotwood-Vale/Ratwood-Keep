@@ -24,13 +24,13 @@
 	switch(classchoice)
 
 		if("Peddler")
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/chaperon
 			cloak = /obj/item/clothing/cloak/raincloak/blue
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
@@ -62,15 +62,15 @@
 					to_chat(H, span_info("I got out with quite the haul."))
 				
 		if("Spicer")
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			shirt = /obj/item/clothing/under/roguetown/tights/sailor

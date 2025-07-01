@@ -377,18 +377,18 @@
 	if(!mind)
 		mind_initialize()
 
-	mind.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
-	mind.adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/labor/mining, 1, TRUE)
-	mind.adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/crossbows, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	adjust_skillrank_up_to(/datum/skill/craft/crafting, 1, TRUE) //Some basic skills, for actual undead servants. Don't have to be all combat
+	adjust_skillrank_up_to(/datum/skill/craft/carpentry, 1, TRUE)
+	adjust_skillrank_up_to(/datum/skill/craft/masonry, 1, TRUE)
+	adjust_skillrank_up_to(/datum/skill/labor/lumberjacking, 1, TRUE)
+	adjust_skillrank_up_to(/datum/skill/labor/mining, 1, TRUE)
+	adjust_skillrank_up_to(/datum/skill/craft/cooking, 1, TRUE)
 	mind.current.job = null
 
 	dna.species.species_traits |= NOBLOOD

@@ -83,13 +83,13 @@
 		return
 	else
 		active_item = TRUE
-		user.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		user.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		to_chat(user, span_notice("I feel almost spiderlike!"))
 
 /datum/magic_item/superior/climbing/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		user.mind.adjust_skillrank(/datum/skill/misc/climbing, -2, TRUE)
+		user.adjust_skillrank(/datum/skill/misc/climbing, -2, TRUE)
 		to_chat(user, span_notice("I feel mundane once more"))
 
 /datum/magic_item/superior/thievery
@@ -105,15 +105,15 @@
 		return
 	else
 		active_item = TRUE
-		user.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-		user.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+		user.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+		user.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 		to_chat(user, span_notice("I feel more dexterious!"))
 
 /datum/magic_item/superior/thievery/on_drop(var/obj/item/i, var/mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		user.mind.adjust_skillrank_down_to(/datum/skill/misc/stealing, 2, TRUE)
-		user.mind.adjust_skillrank_down_to(/datum/skill/misc/lockpicking, 1, TRUE)
+		user.adjust_skillrank_down_to(/datum/skill/misc/stealing, 2, TRUE)
+		user.adjust_skillrank_down_to(/datum/skill/misc/lockpicking, 1, TRUE)
 		to_chat(user, span_notice("I feel mundane once more"))
 
 /datum/magic_item/superior/trekk

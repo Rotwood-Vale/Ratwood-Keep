@@ -444,7 +444,7 @@
 				if(ishuman(A))
 					var/mob/living/carbon/human/U = src
 					var/mob/living/carbon/human/V = A
-					var/thiefskill = src.mind.get_skill_level(/datum/skill/misc/stealing)
+					var/thiefskill = src.get_skill_level(/datum/skill/misc/stealing)
 					var/stealroll = roll("[thiefskill]d6")
 					var/targetperception = (V.STAPER)
 					var/list/stealablezones = list("chest", "neck", "groin", "r_hand", "l_hand")
@@ -510,7 +510,7 @@
 							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
 						// If we're pickpocketing someone else, and that person is conscious, grant XP
 						if(src != V && V.stat == CONSCIOUS && V.client != null)
-							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
+							add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 						changeNext_move(mmb_intent.clickcd)
 				return
 			if(INTENT_SPELL)

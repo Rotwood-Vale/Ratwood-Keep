@@ -32,17 +32,16 @@
 	backpack_contents = list(/obj/item/storage/keyring/goblin = 1)
 	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.change_stat("intelligence", 1)
-		H.change_stat("fortune", 1)
-		H.ventcrawler = VENTCRAWLER_ALWAYS
+	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/farming, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.change_stat("intelligence", 1)
+	H.change_stat("fortune", 1)
+	H.ventcrawler = VENTCRAWLER_ALWAYS
 
 //If a non-Goblin gets control by admin intervention.
 	if(!H.has_language(/datum/language/orcish))

@@ -183,8 +183,7 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 					if(R.skill_level)
 						prob2craft -= (25*R.skill_level)
 					if(R.skillcraft)
-						if(user.mind)
-							prob2craft += (user.mind.get_skill_level(R.skillcraft) * 25)
+						prob2craft += (user.get_skill_level(R.skillcraft) * 25)
 					else
 						prob2craft = 100
 					if(isliving(user))
@@ -217,18 +216,18 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
 										span_notice("I [R.verbage_simple] \a [result_name]!"))
-					if(user.mind && R.skillcraft && R.xpgain)	//Most recipes give xp, but those that don't should not
-						if(isliving(user))
-							var/mob/living/L = user
-							var/amt2raise = L.STAINT * 2// its different over here
-							if(R.skill_level > 0) //difficult recipe
-								amt2raise += (R.skill_level * 10) // also gets more
-							if(amt2raise > 0)
-								user.mind.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
+					//Most recipes give xp, but those that don't should not
+					if(isliving(user) && R.skillcraft && R.xpgain)
+						var/mob/living/L = user
+						var/amt2raise = L.STAINT * 2// its different over here
+						if(R.skill_level > 0) //difficult recipe
+							amt2raise += (R.skill_level * 10) // also gets more
+						if(amt2raise > 0)
+							user.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
 					return TRUE
 				return 0
 			return "."
-		to_chat(usr, span_warning("I'm missing a tool."))
+		to_chat(user, span_warning("I'm missing a tool."))
 		return
 	return ", missing component."
 
@@ -254,18 +253,17 @@ proc/check_constructability(mob/user, datum/crafting_recipe/R)
 				if(do_after(user, time2use, target = user))
 					contents = get_surroundings(user)
 					if(!check_contents(R, contents))
-						to_chat(usr, span_warning("I'm missing a component."))
+						to_chat(user, span_warning("I'm missing a component."))
 						return FALSE
 					if(!check_tools(user, R, contents))
-						to_chat(usr, span_warning("I'm missing a tool."))
+						to_chat(user, span_warning("I'm missing a tool."))
 						return FALSE
 
 					var/prob2craft = 25
 					if(R.skill_level)
 						prob2craft -= (25*R.skill_level)
 					if(R.skillcraft)
-						if(user.mind)
-							prob2craft += (user.mind.get_skill_level(R.skillcraft) * 25)
+						prob2craft += (user.get_skill_level(R.skillcraft) * 25)
 					else
 						prob2craft = 100
 					if(isliving(user))
@@ -281,20 +279,19 @@ proc/check_constructability(mob/user, datum/crafting_recipe/R)
 						continue
 					del_reqs(R, user)
 
-					if(user.mind && R.skillcraft)
-						if(isliving(user))
-							var/mob/living/L = user
-							var/amt2raise = L.STAINT * 2// its different over here
-							if(R.skill_level > 0) //difficult recipe
-								amt2raise += (R.skill_level * 10) // also gets more
-							if(amt2raise > 0)
-								user.mind.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
+					if(R.skillcraft && isliving(user))
+						var/mob/living/L = user
+						var/amt2raise = L.STAINT * 2// its different over here
+						if(R.skill_level > 0) //difficult recipe
+							amt2raise += (R.skill_level * 10) // also gets more
+						if(amt2raise > 0)
+							user.add_sleep_experience(R.skillcraft, amt2raise, FALSE)
 					return TRUE
 				return FALSE
 			return FALSE
-		to_chat(usr, span_warning("I'm missing a tool."))
+		to_chat(user, span_warning("I'm missing a tool."))
 		return FALSE
-	to_chat(usr, span_warning("I'm missing a component."))
+	to_chat(user, span_warning("I'm missing a component."))
 	return FALSE
 
 /*Del reqs works like this:

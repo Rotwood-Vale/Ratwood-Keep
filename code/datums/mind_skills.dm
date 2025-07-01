@@ -7,7 +7,7 @@
 	var/list/skill_experience = list()
 
 // Mob helpers for the mind-level skill procs, to prep for moving skillsets off minds
-/mob/proc/get_skill_level(skill, default_mindless_value)
+/mob/proc/get_skill_level(skill, default_mindless_value = SKILL_LEVEL_NONE)
 	return mind? mind.get_skill_level(skill) : default_mindless_value
 
 /mob/proc/add_sleep_experience(skill, amt, silent = FALSE)

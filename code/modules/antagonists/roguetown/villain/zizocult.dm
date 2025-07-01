@@ -38,7 +38,7 @@
 
 	owner.special_role = "Cultist"
 	H.cmode_music = 'sound/music/combatcult.ogg'
-	owner.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	owner.current.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/maniac.ogg', 80, FALSE, pressure_affected = FALSE)
 	owner.current.verbs |= /mob/living/carbon/human/proc/praise
 	owner.current.verbs |= /mob/living/carbon/human/proc/communicate
@@ -48,13 +48,13 @@
 
 	if(islesser)
 		add_objective(/datum/objective/zizoserve)
-		owner.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		owner.current.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		H.change_stat("intelligence", -2)
 		greet()
 	else
 		add_objective(/datum/objective/zizo)
-		owner.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		owner.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+		owner.current.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+		owner.current.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
 		H.change_stat("constitution", 2)

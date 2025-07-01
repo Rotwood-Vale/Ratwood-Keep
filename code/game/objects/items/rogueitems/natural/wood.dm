@@ -23,7 +23,7 @@
 
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+	var/skill_level = user.get_skill_level(/datum/skill/labor/lumberjacking)
 	var/planking_time = (40 - (skill_level * 5))
 	if(lumber_amount && I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
@@ -35,7 +35,7 @@
 				new /obj/item/grown/log/tree/small(get_turf(src.loc))
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
-			user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+			user.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
 			return
@@ -58,7 +58,7 @@
 				new lumber(get_turf(src))
 		if(!skill_level)
 			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
-		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		user.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
 		return TRUE
@@ -84,7 +84,7 @@
 	if(item_flags & IN_STORAGE)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/carpentry)
+	var/skill_level = user.get_skill_level(/datum/skill/craft/carpentry)
 	var/planking_time = (45 - (skill_level * 5))
 	if(I.tool_behaviour == TOOL_SAW || I.tool_behaviour == TOOL_IMPROVSAW)
 		playsound(get_turf(src.loc), 'sound/foley/sawing.ogg', 100)
@@ -94,7 +94,7 @@
 			if(user.is_holding(src))
 				user.dropItemToGround(src)
 				user.put_in_hands(S)
-			user.mind.add_sleep_experience(/datum/skill/craft/carpentry, (user.STAINT*0.5))
+			user.add_sleep_experience(/datum/skill/craft/carpentry, (user.STAINT*0.5))
 			new /obj/effect/decal/cleanable/debris/woody(get_turf(src))
 			qdel(src)
 			return

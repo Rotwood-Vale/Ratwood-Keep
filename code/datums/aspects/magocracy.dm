@@ -37,19 +37,16 @@
 /datum/round_aspect/magocracy/proc/give_spells(mob/living/carbon/human/H)
 	var/already_had_magic = FALSE
 
-	if (H.mind)
-		if (H.mind.get_skill_level(/datum/skill/magic/arcane) > 0)
-			if (!HAS_TRAIT(H, TRAIT_NOBLE))
-				ADD_TRAIT(H, TRAIT_NOBLE, name)
-			already_had_magic = TRUE
-		if (H.job in GLOB.noble_positions || HAS_TRAIT(H, TRAIT_NOBLE))
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-
-		if (!already_had_magic)
-			H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-			var/list/choices = valid_spells.Copy()
-			for (var/i = 0; i<spells_per_noble; ++i)
-				var/path = pick_n_take(choices)
-				if(H.mind)
-					H.mind.AddSpell(new path)
-	return
+	if (H.get_skill_level(/datum/skill/magic/arcane) > 0)
+		if (!HAS_TRAIT(H, TRAIT_NOBLE))
+			ADD_TRAIT(H, TRAIT_NOBLE, name)
+		already_had_magic = TRUE
+	if (H.job in GLOB.noble_positions || HAS_TRAIT(H, TRAIT_NOBLE))
+		H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+	if (!H.mind || already_had_magic)
+		return
+	H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+	var/list/choices = valid_spells.Copy()
+	for(var/i in 1 to spells_per_noble)
+		var/path = pick_n_take(choices)
+		H.mind.AddSpell(new path)

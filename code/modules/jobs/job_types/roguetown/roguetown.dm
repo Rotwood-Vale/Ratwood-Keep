@@ -67,16 +67,15 @@
 		else
 			// Characters during round start are first equipped before clients are moved into them. This is a bandaid to give an important piece of information correctly to the client
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, change_message), 5 SECONDS)
-	if(H.mind)
-		var/datum/species/pref_species = H.dna?.species
-		for(var/skill_type in pref_species.specskills)
-			H.mind.adjust_skillrank(skill_type, H.dna.species.specskills[skill_type], TRUE)
-		if(H.gender == FEMALE)
-			for(var/skill_type in pref_species.specskills_f)
-				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_f[skill_type], TRUE)
-		else
-			for(var/skill_type in pref_species.specskills_m)
-				H.mind.adjust_skillrank(skill_type, H.dna.species.specskills_m[skill_type], TRUE)
+	var/datum/species/pref_species = H.dna?.species
+	for(var/skill_type in pref_species.specskills)
+		H.adjust_skillrank(skill_type, H.dna.species.specskills[skill_type], TRUE)
+	if(H.gender == FEMALE)
+		for(var/skill_type in pref_species.specskills_f)
+			H.adjust_skillrank(skill_type, H.dna.species.specskills_f[skill_type], TRUE)
+	else
+		for(var/skill_type in pref_species.specskills_m)
+			H.adjust_skillrank(skill_type, H.dna.species.specskills_m[skill_type], TRUE)
 	H.underwear_color = null
 	H.update_body()
 
