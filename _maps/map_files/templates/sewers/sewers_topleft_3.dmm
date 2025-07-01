@@ -191,7 +191,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "IJ" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "JR" = (
@@ -208,7 +208,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "MC" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/sewer)
 "MZ" = (
