@@ -8,25 +8,26 @@
 
 // Mob helpers for the mind-level skill procs, to prep for moving skillsets off minds
 /mob/proc/get_skill_level(skill, default_mindless_value = SKILL_LEVEL_NONE)
-	return mind? mind.get_skill_level(skill) : default_mindless_value
+	return mind? UNLINT(mind.get_skill_level(skill)) : default_mindless_value
 
 /mob/proc/add_sleep_experience(skill, amt, silent = FALSE)
-	return mind?.add_sleep_experience(skill, amt, silent = silent)
+	return UNLINT(mind?.add_sleep_experience(skill, amt, silent = silent))
 
 /mob/proc/adjust_experience(skill, amt, silent = FALSE)
-	return mind?.adjust_experience(skill, amt, silent = silent)
+	return UNLINT(mind?.adjust_experience(skill, amt, silent = silent))
 
 /mob/proc/adjust_skillrank_up_to(skill, amt, silent = FALSE)
-	return mind?.adjust_skillrank_up_to(skill, amt, silent = silent)
+	return UNLINT(mind?.adjust_skillrank_up_to(skill, amt, silent = silent))
 
 /mob/proc/adjust_skillrank_down_to(skill, amt, silent = FALSE)
-	return mind?.adjust_skillrank_down_to(skill, amt, silent = silent)
+	return UNLINT(mind?.adjust_skillrank_down_to(skill, amt, silent = silent))
 
 /mob/proc/adjust_skillrank(skill, amt, silent = FALSE)
-	return mind?.adjust_skillrank(skill, amt, silent = silent)
+	return UNLINT(mind?.adjust_skillrank(skill, amt, silent = silent))
 
 // The actual mind-level procs
 /datum/mind/proc/get_skill_level(skill)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	if(has_antag_datum(/datum/antagonist/zombie) && !current.client) // Non-player deadites don't have skills.
 		return SKILL_LEVEL_NONE
 	var/datum/skill/S = GetSkillRef(skill)
@@ -51,10 +52,12 @@
 	to_chat(user, msg)
 
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	sleep_adv?.add_sleep_experience(skill, amt, silent)
 
 ///Adjust experience of a specific skill
 /datum/mind/proc/adjust_experience(skill, amt, silent = FALSE)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	var/datum/skill/S = GetSkillRef(skill)
 	skill_experience[S] = max(0, skill_experience[S] + amt) //Prevent going below 0
 	var/old_level = known_skills[S]
@@ -96,18 +99,21 @@
 		to_chat(current, span_warning("My [S.name] has weakened to [SSskills.level_names[known_skills[S]]]!"))
 
 /datum/mind/proc/adjust_skillrank_up_to(skill, amt, silent = FALSE)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	var/proper_amt = amt - get_skill_level(skill)
 	if(proper_amt <= 0)
 		return
 	adjust_skillrank(skill, proper_amt, silent)
 
 /datum/mind/proc/adjust_skillrank_down_to(skill, amt, silent = FALSE)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	var/proper_amt = get_skill_level(skill) - amt
 	if(proper_amt < 0)
 		return
 	adjust_skillrank(skill, -proper_amt, silent)
 
 /datum/mind/proc/adjust_skillrank(skill, amt, silent = FALSE)
+	PRIVATE_PROC(TRUE) // used to prevent direct calls
 	var/datum/skill/S = GetSkillRef(skill)
 	var/amt2gain = 0
 	if(skill == /datum/skill/magic/arcane)

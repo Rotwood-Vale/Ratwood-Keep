@@ -50,7 +50,7 @@
 			return SLEEP_EXP_LEGENDARY
 
 /datum/sleep_adv/proc/enough_sleep_xp_to_advance(skill_type, level_amount)
-	var/skill_level = mind.get_skill_level(skill_type)
+	var/skill_level = UNLINT(mind.get_skill_level(skill_type))
 	if(skill_level == SKILL_LEVEL_LEGENDARY)
 		return FALSE
 	var/needed_xp = get_required_sleep_xp_for_skill(skill_type, level_amount)
@@ -59,7 +59,7 @@
 	return TRUE
 
 /datum/sleep_adv/proc/get_required_sleep_xp_for_skill(skill_type, level_amount)
-	var/skill_level = mind.get_skill_level(skill_type)
+	var/skill_level = UNLINT(mind.get_skill_level(skill_type))
 	var/next_skill_level = skill_level
 	var/needed_xp = 0
 	for(var/i in 1 to level_amount)
@@ -184,7 +184,7 @@
 /datum/sleep_adv/proc/get_next_level_for_skill(skill_type)
 	if(!mind.current)
 		return 0
-	var/next_level = mind.get_skill_level(skill_type) + 1
+	var/next_level = UNLINT(mind.get_skill_level(skill_type)) + 1
 	return next_level
 
 /datum/sleep_adv/proc/get_skill_cost(skill_type)
@@ -206,7 +206,7 @@
 		to_chat(mind.current, span_notice(dream_text))
 	sleep_adv_points -= get_skill_cost(skill_type)
 	adjust_sleep_xp(skill_type, -get_required_sleep_xp_for_skill(skill_type, 1))
-	mind.adjust_skillrank(skill_type, 1, FALSE)
+	UNLINT(mind.adjust_skillrank(skill_type, 1, FALSE))
 
 /datum/sleep_adv/proc/grant_inspiration_xp(skill_amt)
 	var/list/viable_skills = list()
@@ -217,7 +217,7 @@
 			continue
 		if(enough_sleep_xp_to_advance(skill_type, 1))
 			continue
-		var/current_skill_level = mind.get_skill_level(skill_type)
+		var/current_skill_level = UNLINT(mind.get_skill_level(skill_type))
 		if(current_skill_level >= INSPIRATION_MAX_SKILL_LEVEL)
 			continue
 		var/required_level_to_cap = INSPIRATION_MAX_SKILL_LEVEL - current_skill_level
@@ -285,7 +285,7 @@
 /proc/can_train_combat_skill(mob/living/user, skill_type, target_skill_level)
 	if(!user.mind)
 		return FALSE
-	var/user_skill_level = user.mind.get_skill_level(skill_type)
+	var/user_skill_level = user.get_skill_level(skill_type)
 	var/level_diff = target_skill_level - user_skill_level
 	if(level_diff <= 0)
 		return FALSE
