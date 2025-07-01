@@ -24,7 +24,6 @@
 	var/wallcraft = FALSE
 	/// Skill level required to have a base 25% chance to craft this recipe.
 	var/skill_level = 1
-	var/craftdiff = 1
 	var/sellprice = 0
 	//crafting diff, every diff removes 25% chance to craft
 	var/xpgain = TRUE //Most recipes should return xp
@@ -56,8 +55,8 @@
 		    <h1>[name]</h1>
 		"}
 
-	if(craftdiff > 0)
-		html += "For those of Fill this out skills<br>"
+	if(skill_level > 0)
+		html += "For those of [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"	
 

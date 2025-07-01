@@ -118,7 +118,11 @@
 		<div>
 		"}
 
-	html += "<strong class=class='scroll'>and then you get</strong> <br> [icon2html(new created_item, user)] <br> [initial(created_item.name)]<br>"
+	var/atom/movable/item_to_show = created_item // this is important, otherwise it would runetime when item we crate is a list, like for 5x arrows
+	if(islist(created_item))
+		item_to_show = pick(created_item)
+	if(item_to_show)
+		html += "<strong class='scroll'>and then you get</strong> <br> [icon2html(new item_to_show, user)] <br> [initial(item_to_show.name)]<br>"
 /*
 	if(created_item.sellprice)
 		html += "<strong class=class='scroll'>You can sell this for [created_item.sellprice] mammons at a normal quality</strong> <br>"
