@@ -20,7 +20,7 @@
 	. = ..()
 	if(!length(keys))
 		return
-	if(length(keys) > 10)
+	if(length(keys) > 12)
 		stack_trace("Keyring [src] has too many keys and the list will get cut short!")
 	for(var/X as anything in keys)
 		var/obj/item/key/new_key = new X(loc)

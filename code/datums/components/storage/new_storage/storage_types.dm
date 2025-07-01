@@ -45,6 +45,7 @@
 	screen_max_rows = 4
 	screen_max_columns = 6
 	max_w_class = WEIGHT_CLASS_SMALL
+	max_items = 12
 	allow_dump_out = TRUE
 	click_gather = TRUE
 	attack_hand_interact = FALSE
