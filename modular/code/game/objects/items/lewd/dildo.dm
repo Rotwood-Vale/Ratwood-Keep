@@ -16,6 +16,8 @@
 	var/pleasure = 4
 	var/can_custom = TRUE
 	var/dildo_material
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/dildo/New()
 	. = ..()
@@ -43,10 +45,13 @@
 			switch(dildo_size)
 				if("small")
 					pleasure = 4
+					grid_height = 32
 				if("medium")
 					pleasure = 6
+					grid_height = 64
 				if("big")
 					pleasure = 8
+					grid_height = 96
 	update_appearance()
 	return TRUE
 
