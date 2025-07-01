@@ -17,7 +17,7 @@
 	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 1)
 	tools = list(/obj/item/cooking/pan,)
 	structurecraft = /obj/machinery/light/rogue/hearth
-	craftdiff = 0
+	skill_level = 0
 	craftsound = 'sound/misc/frying.ogg'
 	verbage_simple = "render"
 	verbage = "renders"
@@ -32,7 +32,7 @@
 	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 1)
 	tools = list(/obj/item/cooking/pan,)
 	structurecraft = /obj/machinery/light/rogue/campfire
-	craftdiff = 0
+	skill_level = 0
 	craftsound = 'sound/misc/frying.ogg'
 	verbage_simple = "render"
 	verbage = "renders"

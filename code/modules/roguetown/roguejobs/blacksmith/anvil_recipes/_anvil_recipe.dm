@@ -95,7 +95,7 @@
 		"}
 
 	if(skill_level > 0)
-		html += "For those of Good baldsmithing(change it to correct skill level name) skills<br>"
+		html += "For those of Good [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"
 

@@ -15,8 +15,8 @@
 	base_icon_state = "book7"
 
 	types = list(
-		///datum/crafting_recipe/roguetown/survival/cloth, // Screw it just in case
-		///datum/crafting_recipe/roguetown/survival/cloth5x,
+		/datum/crafting_recipe/roguetown/survival/cloth, // Screw it just in case
+		/datum/crafting_recipe/roguetown/survival/cloth5x,
 		/datum/crafting_recipe/roguetown/sewing,
 		)
 
@@ -64,7 +64,7 @@
 	base_icon_state = "book6"
 
 	types = list(
-		///datum/crafting_recipe/roguetown/survival,
+		/datum/crafting_recipe/roguetown/survival,
 		///datum/crafting_recipe/roguetown/tallow,
 		)
 /*
