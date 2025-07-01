@@ -70,8 +70,8 @@
 		    <h1>[name]</h1>
 		"}
 
-	if(craftdiff > 0)
-		html += "For those of [SSskills.level_names_plain[craftdiff]] skills<br>"
+	if(skill_level > 1)
+		html += "For those of [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"	
 

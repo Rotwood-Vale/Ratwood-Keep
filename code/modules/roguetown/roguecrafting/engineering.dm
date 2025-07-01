@@ -10,7 +10,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/engineering/lever
 	name = "lever"
@@ -28,7 +28,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/engineering/bars
 	name = "metal bars"
@@ -53,7 +53,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/engineering/freedomchair
 	name = "LIBERTAS"
@@ -62,7 +62,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	skill_level = 4
 
 /datum/crafting_recipe/roguetown/engineering/passage
 	name = "passage"
@@ -72,7 +72,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/engineering/passage/TurfCheck(mob/user, turf/T)
 	if(istype(T,/turf/open/transparent/openspace))
@@ -90,7 +90,7 @@
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
 	req_table = TRUE
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/engineering/pyrobolt_five
@@ -105,7 +105,7 @@
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 5,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
 	req_table = TRUE
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow
@@ -114,7 +114,7 @@
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
 	req_table = TRUE
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow_five
@@ -129,5 +129,5 @@
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 5,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 5)
 	req_table = TRUE
-	craftdiff = 1
+	skill_level = 1
 	skillcraft = /datum/skill/craft/engineering

@@ -5,7 +5,7 @@
 	var/atom/req_bar
 	var/atom/movable/created_item
 	var/createditem_num = 1 // How many units to make.
-	var/craftdiff = 0
+	var/skill_level = 0
 	var/needed_item
 	var/needed_item_text
 	var/quality_mod = 0
@@ -96,8 +96,8 @@
 		    <h1>[name]</h1>
 		"}
 
-	if(craftdiff > 0)
-		html += "For those of [SSskills.level_names_plain[craftdiff]] skills<br>"
+	if(skill_level > 0)
+		html += "For those of [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"
 

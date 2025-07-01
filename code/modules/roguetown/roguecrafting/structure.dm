@@ -118,7 +118,7 @@
 	result = /obj/structure/mannequin
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 2
+	skill_level = 2
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/mannequin_female
@@ -127,7 +127,7 @@
 	result = /obj/structure/mannequin/male/female
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 2
+	skill_level = 2
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/structure/mannequin_male
@@ -136,7 +136,7 @@
 	result = /obj/structure/mannequin/male
 	verbage_simple = "construct"
 	verbage = "constructs"
-	craftdiff = 2
+	skill_level = 2
 	skillcraft = /datum/skill/craft/carpentry
 
 /obj/structure/fermentation_keg/crafted
@@ -150,7 +150,7 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/crafting
-	craftdiff = 2
+	skill_level = 2
 
 /datum/crafting_recipe/roguetown/roguebin
 	name = "bin - (2 small lgos; NONE)"

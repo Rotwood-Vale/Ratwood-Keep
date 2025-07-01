@@ -90,7 +90,7 @@
 	time = 10 SECONDS
 	verbage_simple = "roll"
 	verbage = "rolls"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/survival/sigsweet/cheroot
 	name = "swampweed cheroot"
@@ -102,7 +102,7 @@
 	time = 10 SECONDS
 	verbage_simple = "roll"
 	verbage = "rolls"
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/survival/sigdry
 	name = "westleach zig"

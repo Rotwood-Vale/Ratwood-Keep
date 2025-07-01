@@ -8,17 +8,20 @@
 	var/transport_fee = 1
 	var/withdraw_disabled = FALSE
 	var/demand = 100
-	//v may send it to a place instead like treasures to horde. If false, will increment held_items and delete the item instead
-	var/transport_item = FALSE
+	// If the type of item is a mint item it will be reminted into coins
+	var/mint_item = FALSE
 	//SStreasury.queens_tax is used in getting import price
 	var/export_price = 1
+	// Limit for stockpile. Only accounted for if it is not mint_item
+	var/stockpile_limit = 100 // Limit beyond which the stockpile will just eat your things for free. Very high limit just to be safe you should define it directly.
 	//how many of the items are consumed/spawned when exporting/importing
 	var/importexport_amt = 10
 	var/import_only = FALSE //for importing crackers, etc
+	var/export_only = FALSE
 	var/stable_price = FALSE
 	var/percent_bounty = FALSE
-	/// How much to generate in the remote section each firing of the treasury system.
-	var/passive_generation = 0
+	var/passive_generation = 0 //How much to generate in the remote section each firing of the treasury system.
+	var/category = "Raw Materials" // Category for the stockpile
 
 /datum/roguestock/New()
 	..()
@@ -39,7 +42,11 @@
 	//To stop people selling half-eaten food and rotten meat to the stockpile
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/food = I
-		if(food.eat_effect == /datum/status_effect/debuff/rotfood || food.bitecount > 0)
+		if(food.eat_effect == /datum/status_effect/debuff/rotfood)
+			return FALSE
+		if(food.bitecount > 0)
+			return FALSE
+		if(food.slices_num && food.slices_num < initial(food.slices_num)) // prevent selling partly-sliced butter
 			return FALSE
 	return TRUE
 
