@@ -37,6 +37,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/list/jobspawn_override = list()
 	var/delete_after_roundstart = TRUE
 	var/used = FALSE
+	var/map = null
 
 /obj/effect/landmark/start/proc/after_round_start()
 	if(delete_after_roundstart)
@@ -50,6 +51,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 				GLOB.jobspawn_overrides[X] = list()
 			GLOB.jobspawn_overrides[X] += src
 	..()
+	if(src.map && SSmapping && SSmapping.config && SSmapping.config.map_name != src.map)
+		qdel(src)
+		return
 	if(name != "start")
 		tag = "start*[name]"
 
@@ -95,12 +99,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	jobspawn_override = list("Bandit")
 	delete_after_roundstart = FALSE
+	map = "Rockhill"
 
 /obj/effect/landmark/start/banditlate_byos
 	name = "Bandit"
 	icon_state = "arrow"
 	jobspawn_override = list("Bandit")
 	delete_after_roundstart = FALSE
+	map = "Build Your Settlement"
 
 
 /obj/effect/landmark/start/bogguardlate
@@ -546,23 +552,23 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "bandit"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
+	map = "Rockhill"
 
 /obj/effect/landmark/start/bandit/Initialize()
-    ..()
-    if(!(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement"))
-        GLOB.bandit_starts += loc
-    return INITIALIZE_HINT_QDEL
+	..()
+	GLOB.bandit_starts += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/bandit_byos
 	name = "bandit_byos"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
+	map = "Build Your Settlement"
 
 /obj/effect/landmark/start/bandit_byos/Initialize()
-    ..()
-    if(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement")
-        GLOB.bandit_starts += loc
-    return INITIALIZE_HINT_QDEL
+	..()
+	GLOB.bandit_starts_byos += loc
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/effect/landmark/start/delf
