@@ -65,7 +65,6 @@
 		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/attack_self(mob/living/user)
-	var/stressevent = /datum/stressevent/music
 	. = ..()
 	if(.)
 		return
@@ -131,33 +130,24 @@
 			curfile = song_list[choice]
 			if(!user || playing || !(src in user.held_items))
 				return
-			if(user.mind)
-				switch(user.mind.get_skill_level(/datum/skill/misc/music))
-					if(1)
-						stressevent = /datum/stressevent/music
-						soundloop.stress2give = stressevent
-					if(2)
-						note_color = "#ffffff"
-						stressevent = /datum/stressevent/music/two
-						soundloop.stress2give = stressevent
-					if(3)
-						note_color = "#1eff00"
-						stressevent = /datum/stressevent/music/three
-						soundloop.stress2give = stressevent
-					if(4)
-						note_color = "#0070dd"
-						stressevent = /datum/stressevent/music/four
-						soundloop.stress2give = stressevent
-					if(5)
-						note_color = "#a335ee"
-						stressevent = /datum/stressevent/music/five
-						soundloop.stress2give = stressevent
-					if(6)
-						note_color = "#ff8000"
-						stressevent = /datum/stressevent/music/six
-						soundloop.stress2give = stressevent
-					else
-						soundloop.stress2give = stressevent
+			switch(user.mind? user.mind.get_skill_level(/datum/skill/misc/music) : SKILL_LEVEL_NONE)
+				if(SKILL_LEVEL_NONE, SKILL_LEVEL_NOVICE)
+					soundloop.stress2give = /datum/stressevent/music
+				if(SKILL_LEVEL_APPRENTICE)
+					note_color = "#ffffff"
+					soundloop.stress2give = /datum/stressevent/music/two
+				if(SKILL_LEVEL_JOURNEYMAN)
+					note_color = "#1eff00"
+					soundloop.stress2give = /datum/stressevent/music/three
+				if(SKILL_LEVEL_EXPERT)
+					note_color = "#0070dd"
+					soundloop.stress2give = /datum/stressevent/music/four
+				if(SKILL_LEVEL_MASTER)
+					note_color = "#a335ee"
+					soundloop.stress2give = /datum/stressevent/music/five
+				if(SKILL_LEVEL_LEGENDARY to INFINITY)
+					note_color = "#ff8000"
+					soundloop.stress2give = /datum/stressevent/music/six
 			if(!(src in user.held_items))
 				return
 			if(user.get_inactive_held_item())
@@ -170,17 +160,16 @@
 				soundloop.mid_sounds = list(curfile)
 				soundloop.cursound = null
 				soundloop.start()
-				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
+				user.apply_status_effect(/datum/status_effect/buff/playing_music, soundloop.stress2give, note_color)
 			else
 				playing = FALSE
 				groupplaying = FALSE
 				soundloop.stop()
 				user.remove_status_effect(/datum/status_effect/buff/playing_music)
 		if(groupplaying)
-			var/pplnearby =view(7,loc)
 			var/list/instrumentsintheband = list()
 			var/list/bandmates = list()
-			for(var/mob/living/carbon/human/potentialbandmates in pplnearby)
+			for(var/mob/living/carbon/human/potentialbandmates in view(7, user))
 				var/list/thisguyinstrument = list()
 				var/obj/item/iteminhand = potentialbandmates.get_active_held_item()
 				if(istype(iteminhand, /obj/item/rogue/instrument))
@@ -207,7 +196,7 @@
 					bandinstrumentsband.soundloop.cursound = null
 					bandinstrumentsband.soundloop.start()
 					for(var/mob/living/carbon/human/A in bandmates)
-						A.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
+						A.apply_status_effect(/datum/status_effect/buff/playing_music, soundloop.stress2give, note_color)
 
 /obj/item/rogue/instrument/lute
 	name = "lute"
