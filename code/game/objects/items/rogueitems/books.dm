@@ -10,7 +10,8 @@
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	force = 5
 	associated_skill = /datum/skill/misc/reading
-	w_class = WEIGHT_CLASS_SMALL
+	//grid_width = 32 // Thats for grid storage, for now disabled
+	//grid_height = 32
 
 /obj/item/book/rogue/getonmobprop(tag)
 	. = ..()

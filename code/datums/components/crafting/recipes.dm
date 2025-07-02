@@ -1,5 +1,6 @@
 
 /datum/crafting_recipe
+	abstract_type = /datum/crafting_recipe
 	var/name = "" //in-game display name
 	var/reqs[] = list() //type paths of items consumed associated with how many are needed
 	var/blacklist[] = list() //type paths of items explicitly not allowed as an ingredient
@@ -10,7 +11,7 @@
 	var/time = 0 //time in deciseconds
 	var/parts[] = list() //type paths of items that will be placed in the result
 	var/chem_catalysts[] = list() //like tools but for reagents
-	var/category = CAT_NONE //where it shows up in the crafting UI
+	var/category = "Misc" // Where it shows in the recipe books
 	var/subcategory = CAT_NONE
 	var/always_available = FALSE //Set to FALSE if it needs to be learned first.
 	var/ontile = FALSE		//crafted on our tile instead of in front of us
@@ -45,20 +46,6 @@
 	if(!istype(client))
 		client = user.client
 	user << browse_rsc('html/book.png')
-	var/uncrafted_sellprice = 0
-	if(islist(result))
-		var/list/result_list = result
-		if(result_list.len)
-			if(istype(/atom/movable, result[1]))
-				var/atom/movable/AM = result[1]
-				if(AM.sellprice)
-					uncrafted_sellprice = AM.sellprice
-	else if(istype(result, /atom/movable))
-		var/atom/movable/AM = result
-		if(AM.sellprice)
-			uncrafted_sellprice = AM.sellprice
-
-	var/final_sellprice = sellprice || uncrafted_sellprice
 	var/html = {"
 		<!DOCTYPE html>
 		<html lang="en">
@@ -70,7 +57,7 @@
 		    <h1>[name]</h1>
 		"}
 
-	if(skill_level > 1)
+	if(skill_level > 0)
 		html += "For those of [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"	
@@ -87,9 +74,9 @@
 		else if(ispath(path, /obj)) // Prevent a runtime from happening w/ datum atm until it is
 			var/atom/atom = path
 			if(subtype_reqs)
-				html += "- [count] of any [initial(atom.name)]<br>"
+				html += "[icon2html(new atom, user)] [count] of any [initial(atom.name)]<br>"
 			else
-				html += "- [count] [initial(atom.name)]<br>"
+				html += "[icon2html(new atom, user)] [count] [initial(atom.name)]<br>"
 
 	html += {"
 		</div>
@@ -136,11 +123,6 @@
 	if(wallcraft)
 		html += "<strong class=class='scroll'>start the process next to a wall</strong> <br>"
 
-	if(final_sellprice)
-		html += "<strong class=class='scroll'>You can sell this for [final_sellprice] mammons at a normal quality</strong> <br>"
-	else(
-		html += "<strong class=class='scroll'>This is worthless for export</strong> <br>"
-	)
 
 	html += {"
 		</div>

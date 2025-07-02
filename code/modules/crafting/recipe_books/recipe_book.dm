@@ -4,7 +4,6 @@
 	icon = 'icons/roguetown/items/books.dmi'
 	//grid_width = 32
 	//grid_height = 32
-	firefuel = 5 MINUTES
 	var/list/types = list()
 	var/mob/current_reader
 	var/open
@@ -54,17 +53,15 @@
 			temp_recipe = new path()
 			var/datum/crafting_recipe/r = temp_recipe
 			category = r.category
-		/*
 		else if(ispath(path, /datum/anvil_recipe))
 			temp_recipe = new path()
 			var/datum/anvil_recipe/r = temp_recipe
 			category = r.category
-		*/
-		/*
 		else if(ispath(path, /datum/book_entry))
 			temp_recipe = new path()
 			var/datum/book_entry/r = temp_recipe
 			category = r.category
+			/* Alchemy books
 		else if(ispath(path, /datum/alch_grind_recipe))
 			temp_recipe = new path()
 			var/datum/alch_grind_recipe/r = temp_recipe
@@ -72,7 +69,7 @@
 		else if(ispath(path, /datum/alch_cauldron_recipe))
 			temp_recipe = new path()
 			var/datum/alch_cauldron_recipe/r = temp_recipe
-			category = r.category*/
+			category = r.category */
 		// else if(ispath(path, /datum/orderless_slapcraft))
 		// 	temp_recipe = new path()
 		// 	var/datum/orderless_slapcraft/r = temp_recipe

@@ -1,4 +1,5 @@
 /datum/crafting_recipe/roguetown/alchemy
+	abstract_type = /datum/crafting_recipe/roguetown/alchemy
 	req_table = FALSE
 	tools = list(/obj/item/reagent_containers/glass/alembic)
 	verbage_simple = "mix"

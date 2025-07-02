@@ -1,6 +1,10 @@
 /datum/crafting_recipe/roguetown/engineering
 	abstract_type = /datum/crafting_recipe/roguetown/engineering
 
+/*
+/datum/crafting_recipe/roguetown/engineering
+	abstract_type = /datum/crafting_recipe/roguetown/engineering
+
 /datum/crafting_recipe/roguetown/engineering/coolingtable
 	name = "Cooling Table"
 	result = /obj/structure/table/cooling
@@ -46,23 +50,14 @@
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
 
-/datum/crafting_recipe/roguetown/engineering/distiller
-	name = "copper distiller"
-	result = /obj/structure/fermentation_keg/distiller
-	reqs = list(/obj/item/ingot/copper = 2, /obj/item/roguegear = 1)
-	verbage_simple = "engineer"
-	verbage = "engineers"
-	skillcraft = /datum/skill/craft/engineering
-	skill_level = 2
-
 /datum/crafting_recipe/roguetown/engineering/freedomchair
 	name = "LIBERTAS"
 	result = /obj/structure/chair/freedomchair/crafted
-	reqs = list(/obj/item/ingot/gold = 1, /obj/item/roguegear = 3)
+	reqs = list(/obj/item/ingot/blacksteel = 1, /obj/item/roguegear = 3)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	skill_level = 4
+	skill_level = 5
 
 /datum/crafting_recipe/roguetown/engineering/passage
 	name = "passage"
@@ -131,3 +126,4 @@
 	req_table = TRUE
 	skill_level = 1
 	skillcraft = /datum/skill/craft/engineering
+*/

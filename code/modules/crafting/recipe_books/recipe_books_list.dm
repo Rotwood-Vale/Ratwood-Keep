@@ -1,12 +1,11 @@
 // Deleted the flavorful desc from Vanderlin until I can think of a better desc. 
-/*
 /obj/item/recipe_book/leatherworking
 	name = "The Tanned Hide Tome: Mastery of Leather and Craft"
 	icon_state = "book8_0"
 	base_icon_state = "book8"
 
 	types = list(
-	/datum/crafting_recipe/roguetown/tallow,
+	///datum/crafting_recipe/roguetown/tallow,
 	/datum/crafting_recipe/roguetown/leather, 		
 	)
 
@@ -47,29 +46,28 @@
 	types = list(
 		/datum/crafting_recipe/roguetown/structure
 		)
-
+/*
 /obj/item/recipe_book/ceramics
 	name = "The Potter's Handbook"
 	icon_state = "book5_0"
 	base_icon_state = "book5"
 
 	types = list(
-		/datum/crafting_recipe/roguetown/structure/ceramicswheel,
-		/datum/crafting_recipe/roguetown/ceramics
+		///datum/crafting_recipe/roguetown/structure/ceramicswheel,
+		///datum/crafting_recipe/roguetown/ceramics
 		)
-
+*/
 // This book should be widely given to everyone
 /obj/item/recipe_book/survival
 	name = "The Survival Handbook"
-	desc = "A book full of recipes and tips for surviving in the wild. Can be used as fuel in a pinch."
 	icon_state = "book6_0"
 	base_icon_state = "book6"
 
 	types = list(
 		/datum/crafting_recipe/roguetown/survival,
-		/datum/crafting_recipe/roguetown/tallow,
+		///datum/crafting_recipe/roguetown/tallow,
 		)
-
+/*
 // TBD - Cauldron Recipes
 /obj/item/recipe_book/alchemy
 	name = "Secrets of Alchemy"
@@ -85,15 +83,4 @@
 		/datum/alch_grind_recipe,
 		/datum/alch_cauldron_recipe
 		)
- 
-/obj/item/recipe_book/cooking
-	name = "The Culinary Codex"
-	desc = "A book full of recipes and tips for cooking. This version looks very incomplete, and only contain brewing recipes. Perhaps it will be filled in later?"
-	icon_state = "book2_0"
-	base_icon_state = "book2"
-
-	types = list(
-		/datum/brewing_recipe,
-		/datum/book_entry/brewing
-	)
-*/
+ */
