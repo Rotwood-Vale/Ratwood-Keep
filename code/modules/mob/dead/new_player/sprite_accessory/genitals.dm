@@ -77,6 +77,12 @@
 	icon_state = "hemi"
 	name = "Hemi"
 	default_colors = list("C52828", "C52828")
+	
+/datum/sprite_accessory/penis/hemi_mammal
+	icon_state = "hemi"
+	name = "Hemi"
+	color_key_defaults = list(null, KEY_CHEST_COLOR)
+	default_colors = list("C52828", null)
 
 /datum/sprite_accessory/penis/hemiknot
 	icon_state = "hemiknot"
