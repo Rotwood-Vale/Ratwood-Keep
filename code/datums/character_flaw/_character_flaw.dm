@@ -478,5 +478,5 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "Leper"
 	desc = "I'm cursed by leprosy."
 
-/datum/charflaw/mute/on_mob_creation(mob/user)
+/datum/charflaw/leper/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_LEPROSY, TRAIT_GENERIC)
