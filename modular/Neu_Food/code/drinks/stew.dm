@@ -101,6 +101,21 @@
 	color = "#863333"
 	taste_description = "suspiciously bitter berries"
 
+/datum/reagent/consumable/soup/oatmeal
+	name = "oatmeal"
+	description = "Fitting for a peasant."
+	reagent_state = LIQUID
+	color = "#c38553"
+	nutriment_factor = 7
+	metabolization_rate = 0.5 // half as fast as normal, last twice as long
+	taste_description = "oatmeal"
+	taste_mult = 5
+	hydration = 2
+
+/datum/reagent/consumable/soup/veggie/beet
+	color = "#8E3A59"
+	taste_description = "watery beets"
+
 // Copy pasted from berry poison, but stew metabolizes much faster so it is less deadly. You CAN use it as a source of hydration / nutrition if you are desperate enough???
 /datum/reagent/consumable/soup/stew/berry_poisoned/on_mob_life(mob/living/carbon/M)
 	if(volume > 0.09)

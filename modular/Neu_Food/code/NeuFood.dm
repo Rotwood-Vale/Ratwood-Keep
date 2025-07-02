@@ -281,3 +281,4 @@
 				new /obj/item/reagent_containers/powder/coarse_salt(loc)
 				qdel(src)
 	else ..()
+

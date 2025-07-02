@@ -56,7 +56,7 @@
 					return
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot = attachment
-			/*if(istype(W, /obj/item/reagent_containers/food/snacks/grown/oat))
+			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/oat))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 51))
 					to_chat(user, "<span class='notice'>Not enough water.</span>")
 					return TRUE
@@ -72,7 +72,7 @@
 					playsound(src, "bubbles", 30, TRUE)
 					pot.reagents.add_reagent(/datum/reagent/consumable/soup/oatmeal, 50)
 					pot.reagents.remove_reagent(/datum/reagent/water, 1)
-				return*/
+				return
 
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks/rogue/veg))
 				if(!pot.reagents.has_reagent(/datum/reagent/water, 24))
@@ -97,12 +97,12 @@
 						playsound(src, "bubbles", 30, TRUE)
 						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/onion, 16)
 						pot.reagents.remove_reagent(/datum/reagent/water, 1)
-					/*if(istype(W, /obj/item/reagent_containers/food/snacks/grown/beet))
+					if(istype(W, /obj/item/reagent_containers/food/snacks/grown/beet))
 						qdel(W)
 						sleep(600)
 						playsound(src, "bubbles", 30, TRUE)
 						pot.reagents.add_reagent(/datum/reagent/consumable/soup/veggie/beet, 16)
-						pot.reagents.remove_reagent(/datum/reagent/water, 1)*/
+						pot.reagents.remove_reagent(/datum/reagent/water, 1)
 					if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced))
 						qdel(W)
 						sleep(700)
