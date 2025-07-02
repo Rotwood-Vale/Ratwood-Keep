@@ -216,13 +216,11 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 										I.pixel_x = 32
 									if(WEST)
 										I.pixel_x = -32
-							message_admins("[R] offset=[R.offset] ([R.type]) [I.pixel_x],[I.pixel_y]")
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
 					else
 						if(ispath(R.result, /turf))
 							var/turf/X = T.PlaceOnTop(R.result)
-							message_admins("[R] offset=[R.offset] ([R.type])")
 							if(X)
 								X.OnCrafted(user.dir, user)
 						else
@@ -239,7 +237,6 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 										I.pixel_x = 32
 									if(WEST)
 										I.pixel_x = -32
-							message_admins("[R] offset=[R.offset] ([R.type]) [I.pixel_x],[I.pixel_y]")
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
