@@ -356,7 +356,8 @@
 	in_melee = TRUE
 	if(!target)
 		return
-	return target.attack_animal(src)
+	if(!QDELETED(target))
+		return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range
