@@ -198,3 +198,8 @@
 	timer = 30 MINUTES
 	stressadd = -5
 	desc = span_green("All my problems have washed away!")
+
+/datum/stressevent/noble_lavish_food
+	stressadd = -4
+	desc = span_green("Truly, a feast befitting my station.")
+	timer = 30 MINUTES

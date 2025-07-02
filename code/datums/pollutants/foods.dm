@@ -135,3 +135,39 @@
 /datum/pollutant/food/fried_crow
 	name = "fried crows"
 	scent = "fried crows"
+
+/datum/pollutant/food/fried_bacon
+	name = "fried bacon"
+	scent = "fried bacon"
+
+/datum/pollutant/food/cooked_chicken
+	name = "cooked chicken"
+	scent = "cooked chicken"
+
+/datum/pollutant/food/fried_sausage
+	name = "fried sausage"
+	scent = "fried sausage"
+
+// Fried crab, especially soft shell crab, has a very distinct smell
+/datum/pollutant/food/fried_crab
+	name = "fried crab"
+	scent = "fried crab"
+
+// Fried shellfish meat has a distinct
+/datum/pollutant/food/fried_shellfish
+	name = "fried shellfish"
+	scent = "fried shellfish"
+
+// Special smell just for you
+/datum/pollutant/food/fried_crab_cake
+	name = "fried crab cake"
+	scent = "fried crab cake"
+
+// Other server have multiple different fish but logically most fresh fish don't really smell much when cooked
+/datum/pollutant/food/cooked_fish
+	name = "cooked fish"
+	scent = "cooked fish"
+
+/datum/pollutant/food/fried_butter
+	name = "fried butter"
+	scent = "fried butter"

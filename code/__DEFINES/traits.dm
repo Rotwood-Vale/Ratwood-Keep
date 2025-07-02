@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
 	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
+	TRAIT_WOODWALKER = span_notice("I can climb trees quicker, and gain climbing experience twice as quickly. I can step on thorns and branches safely in the woods. I can get twice as many things from searching bushes, and I can stand on leaves in trees safely."),
 ))
 
 // trait accessor defines
@@ -290,6 +291,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
+#define TRAIT_WOODWALKER 		"Woodwalker"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
 #define TRAIT_TOXIMMUNE			"toxin_immune"
 #define TRAIT_HARDDISMEMBER		"hard_dismember"

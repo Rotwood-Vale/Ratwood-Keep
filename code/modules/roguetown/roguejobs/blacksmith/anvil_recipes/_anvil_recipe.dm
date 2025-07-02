@@ -1,13 +1,13 @@
 /datum/anvil_recipe
+	abstract_type = /datum/anvil_recipe
 	var/name
+	var/category = "Misc"
 	var/list/additional_items = list()
 	var/appro_skill = /datum/skill/craft/blacksmithing
 	var/atom/req_bar
 	var/atom/movable/created_item
-	var/createditem_num = 1 // How many units to make.
-	var/skill_level = 0
-	var/needed_item
-	var/needed_item_text
+	var/skill_level = 2
+	var/obj/item/needed_item
 	var/quality_mod = 0
 	var/progress
 	var/i_type
@@ -74,8 +74,6 @@
 /datum/anvil_recipe/proc/item_added(mob/user)
 	user.visible_message(span_info("[user] adds [initial(needed_item.name)]."))
 	needed_item = null
-	user.visible_message(span_info("[user] adds [needed_item_text]"))
-	needed_item_text = null
 
 /datum/anvil_recipe/proc/show_menu(mob/user)
 	user << browse(generate_html(user),"window=new_recipe;size=500x810")
@@ -97,7 +95,7 @@
 		"}
 
 	if(skill_level > 0)
-		html += "For those of [skill_level] skills<br>"
+		html += "For those of Good [skill_level] skills<br>"
 	else
 		html += "Suitable for all skills<br>"
 
@@ -120,16 +118,17 @@
 		<div>
 		"}
 
-	if(createditem_num > 1)
-		html += "<strong class=class='scroll'>and then you get</strong> <br> [createditem_num] [icon2html(new created_item, user)] <br> [initial(created_item.name)]<br>"
-	else
-		html += "<strong class=class='scroll'>and then you get</strong> <br> [icon2html(new created_item, user)] <br> [initial(created_item.name)]<br>"
-
+	var/atom/movable/item_to_show = created_item // this is important, otherwise it would runetime when item we crate is a list, like for 5x arrows
+	if(islist(created_item))
+		item_to_show = pick(created_item)
+	if(item_to_show)
+		html += "<strong class='scroll'>and then you get</strong> <br> [icon2html(new item_to_show, user)] <br> [initial(item_to_show.name)]<br>"
+/*
 	if(created_item.sellprice)
 		html += "<strong class=class='scroll'>You can sell this for [created_item.sellprice] mammons at a normal quality</strong> <br>"
 	else
 		html += "<strong class=class='scroll'>This is worthless for export</strong> <br>"
-
+*/
 	html += {"
 		</div>
 		</div>

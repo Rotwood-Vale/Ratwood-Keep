@@ -141,7 +141,7 @@
 
 /obj/structure/fermentation_keg/crafted
 	sellprice = 6
-
+/*
 /datum/crafting_recipe/roguetown/structure/meathook
 	name = "meat hook"
 	result = /obj/structure/meathook
@@ -151,7 +151,7 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/crafting
 	skill_level = 2
-
+*/
 /datum/crafting_recipe/roguetown/roguebin
 	name = "bin - (2 small lgos; NONE)"
 	result = /obj/item/roguebin

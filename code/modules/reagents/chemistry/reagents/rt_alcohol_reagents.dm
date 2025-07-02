@@ -496,7 +496,7 @@
 
 /datum/reagent/consumable/ethanol/murkwine/on_mob_life(mob/living/carbon/M)
 	M.apply_status_effect(/datum/status_effect/buff/murkwine)
-	M.rogfat_add(0.1)
+	//M.rogfat_add(0.1) //fix it
 	..()
 	. = 1
 

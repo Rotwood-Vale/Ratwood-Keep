@@ -65,7 +65,7 @@
 	icon_state = "silver"
 	sellprice = 30
 	last_used = 0
-	is_silver = TRUE
+	//is_silver = TRUE
 
 /obj/item/reagent_containers/glass/cup/silver/small
 	name = "silver cup"
@@ -127,13 +127,14 @@
 	icon_state = "gcup"
 	sellprice = 40
 
+/*
 /obj/item/reagent_containers/glass/cup/golden/poison
 	name = "golden goblet"
 	desc = "Adorned with gemstones, this goblet radiates opulence and grandeur."
 	icon_state = "golden"
 	sellprice = 50
-	list_reagents = list(/datum/reagent/toxin/killersice = 1, /datum/reagent/consumable/ethanol/elfred = 20)
-
+	list_reagents = list(/datum/reagent/toxin/killersice = 1, /datum/reagent/consumable/ethanol/beer/elfred = 20)
+*/
 /obj/item/reagent_containers/glass/cup/skull
 	name = "skull goblet"
 	desc = "The hollow eye sockets tell me of forgotten, dark rituals."
@@ -149,7 +150,7 @@
 /obj/item/reagent_containers/glass/cup/ceramic/examine()
 	. = ..()
 	. += span_info("It can be brushed with a dye brush to glaze it.")
-
+/*
 /obj/item/reagent_containers/glass/cup/ceramic/attackby(obj/item/I, mob/living/carbon/human/user)
 	. = ..()
 	if(istype(I, /obj/item/dye_brush))
@@ -161,7 +162,7 @@
 			new /obj/item/reagent_containers/glass/cup/ceramic/fancy(get_turf(src))
 			qdel(src)
 		return
-
+*/
 /obj/item/reagent_containers/glass/cup/ceramic/fancy
 	name = "fancy teacup"
 	desc = "A fancy tea cup made out of ceramic. Used to serve tea."

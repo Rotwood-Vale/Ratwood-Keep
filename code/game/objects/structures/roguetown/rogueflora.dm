@@ -485,7 +485,7 @@
 	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
-
+/*
 /*	..................   Wild Swampweed   ................... */
 /obj/structure/wild_swampweed
 	name = "swampweed"
@@ -505,7 +505,7 @@
 		qdel(src)
 /obj/structure/wild_swampweed/Crossed(mob/living/carbon/human/H)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
-
+*/
 /obj/structure/flora/rogueshroom
 	name = "mushroom"
 	desc = "Mushrooms are the only happy beings in this island."
@@ -649,9 +649,9 @@
 	climbable = FALSE
 	dir = SOUTH
 	debris = list(/obj/item/natural/fibers = 1)
-	var/list/looty2 = list()
-	var/bushtype2
-	var/res_replenish2
+	var/list/looty = list()
+	var/bushtype
+	var/res_replenish
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/update_icon()
 	icon_state = "pyroflower[rand(1,3)]"
@@ -659,15 +659,15 @@
 /obj/structure/flora/roguegrass/pyroclasticflowers/Initialize()
 	. = ..()
 	if(prob(88))
-		bushtype2 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
+		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
 	loot_replenish2()
 	pixel_x += rand(-3,3)
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/proc/loot_replenish2()
-	if(bushtype2)
-		looty2 += bushtype2
+	if(bushtype)
+		looty += bushtype
 	if(prob(66))
-		looty2 += /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+		looty += /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
 
 // pyroflower cluster looting
 /obj/structure/flora/roguegrass/pyroclasticflowers/attack_hand(mob/user)
@@ -820,3 +820,11 @@
 /obj/structure/flora/roguetree/pine/dead/Initialize()
 	. = ..()
 	icon_state = "dead[rand(1, 3)]"
+
+/obj/structure/flora/roguetree/stump/pine
+	name = "pine stump"
+	icon_state = "dead4"
+	icon = 'icons/obj/flora/pines.dmi'
+	static_debris = list(/obj/item/rogueore/coal/charcoal = 1)
+	stump_type = null
+	pixel_x = -32

@@ -44,6 +44,7 @@
 	stockpile_limit = 50
 	category = "Foodstuffs"
 
+/*
 /datum/roguestock/stockpile/garlick
 	name = "Garlick"
 	desc = "A pungent root vegetable."
@@ -57,7 +58,7 @@
 	passive_generation = 3
 	stockpile_limit = 50
 	category = "Foodstuffs"
-
+*/
 /datum/roguestock/stockpile/meat
 	name = "Meat"
 	desc = "Edible flesh harvested from animals."
@@ -99,7 +100,7 @@
 	stockpile_limit = 25
 	passive_generation = 1
 	category = "Foodstuffs"
-
+/*
 /datum/roguestock/stockpile/rabbit
 	name = "Cabbit Meat"
 	desc = "Edible flesh harvested from cabbits."
@@ -113,7 +114,7 @@
 	stockpile_limit = 25
 	passive_generation = 2
 	category = "Foodstuffs"
-
+*/
 /datum/roguestock/stockpile/egg
 	name = "Egg"
 	desc = "Egg laid by a hen."
@@ -141,7 +142,7 @@
 	stockpile_limit = 25
 	passive_generation = 2
 	category = "Foodstuffs"
-
+/*
 /datum/roguestock/stockpile/tallow
 	name = "Tallow"
 	desc = "Shelf-stabilized fatty tissue."
@@ -155,7 +156,7 @@
 	stockpile_limit = 25
 	passive_generation = 2
 	category = "Foodstuffs"
-
+*/
 /datum/roguestock/stockpile/butter
 	name = "Butter"
 	desc = "The product of milk and salt."
@@ -295,7 +296,7 @@
 	stockpile_limit = 50
 	passive_generation = 2
 	category = "Foodstuffs"
-
+/*
 /datum/roguestock/stockpile/poppy
 	name = "Poppy"
 	desc = "A seed with a sedative effect."
@@ -309,7 +310,7 @@
 	stockpile_limit = 50
 	passive_generation = 2
 	category = "Foodstuffs"
-
+*/
 /datum/roguestock/stockpile/rocknut
 	name = "Rocknut"
 	desc = "A nut with mild stimulant properties."

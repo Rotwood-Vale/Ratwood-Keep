@@ -12,7 +12,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "ac" = (
-/obj/structure/fermentation_keg/water,
+/obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "ad" = (
@@ -3384,9 +3384,27 @@
 	pixel_x = 32
 	},
 /turf/open/floor/rogue/cobble,
-/area/rogue)
-"It" = (
-/obj/structure/fermentation_keg/random/beer,
+/area/rogue/under/town/goblin)
+"Ig" = (
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/natural/feather,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/structure/roguemachine/mail{
+	mailtag = "Goblin Encampment"
+	},
+/turf/open/floor/rogue/cobble,
+/area/rogue/under/town/goblin)
+"Ih" = (
+/obj/structure/fermenting_barrel/beer,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/banditcamp)
 "In" = (
@@ -3640,9 +3658,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/goblin)
 "LN" = (
-/obj/structure/fermentation_keg/random/water,
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/banditcamp)
+/obj/item/roguebin/water,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/under/town/goblin)
 "LS" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	locked = 1
@@ -3764,7 +3782,7 @@
 /area/rogue/under/town/goblin)
 "NV" = (
 /obj/effect/decal/cleanable/vomit/old,
-/obj/structure/fermentation_keg/beer,
+/obj/structure/fermenting_barrel/beer,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/goblin)
 "NZ" = (

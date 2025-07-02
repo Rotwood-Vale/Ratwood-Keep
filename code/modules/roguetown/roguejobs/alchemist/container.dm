@@ -22,9 +22,23 @@
 /obj/item/reagent_containers/glass/bottle/rogue/poison
 	list_reagents = list(/datum/reagent/toxin/killersice = 1)
 
+/obj/item/reagent_containers/glass/bottle/rogue/water
+	list_reagents = list(/datum/reagent/water = 48)
+
+/obj/item/reagent_containers/glass/bottle/rogue/milk
+	list_reagents = list(/datum/reagent/consumable/milk = 45)
+	
 /obj/item/reagent_containers/glass/bottle/rogue/berrypoison
 	list_reagents = list(/datum/reagent/berrypoison = 30)	
 
+/obj/item/reagent_containers/glass/bottle/rogue/embalm
+	name = "bottle of embalming fluid"
+	list_reagents = list(/datum/reagent/medicine/enbalming = 20)
+
+/obj/item/reagent_containers/glass/bottle/rogue/emberwine
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 24)
+	desc = "A bottle with an unmarked, tannin-tinted cork-seal. Zybantu red or another such cheap wine, in all likelihood."
+/*
 /obj/item/reagent_containers/glass/bottle/rogue/strongpoison
 	list_reagents = list(/datum/reagent/strongpoison = 15)
 
@@ -54,6 +68,7 @@
 
 /obj/item/reagent_containers/glass/bottle/alchemical/lucpot
 	list_reagents = list(/datum/reagent/buff/fortune = 27)
+*/
 
 //////////////////////////
 /// ALCOHOLIC BOTTLES ///

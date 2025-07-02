@@ -6,7 +6,11 @@
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
-
+	experimental_inhand = FALSE
+	/// Type of splat to use. If null - produce is unsquashable.
+	var/splat_type = null
+	/// Color of the splat, applied when splat_type is spawned (after squashing).
+	var/splat_color = null
 
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload)
 	. = ..()
@@ -20,33 +24,61 @@
 		var/turf/location = get_turf(src)
 		if(seed && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
-			var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
-			var/chance_to_ruin = 50 - (farming_skill * 10)
-			if(prob(chance_to_ruin))
+			if(prob(5))
 				user.visible_message(span_warning("[user] fails to extract the seeds."))
 				qdel(src)
 				return
 			user.visible_message(span_info("[user] extracts the seeds."))
 			new seed(location)
-			var/chance_to_get_seeds =  (farming_skill * 30)
-			if(istype(weapon, /obj/item/rogueweapon/thresher))
-				chance_to_get_seeds += 80
-			if(prob(chance_to_get_seeds))
+			if(prob(90))
 				new seed(location)
-			if(prob(chance_to_get_seeds-60))
+			if(prob(23))
 				new seed(location)
-			if(prob(chance_to_get_seeds-80))
+			if(prob(6))
 				new seed(location)
 			qdel(src)
 			return
-		else
-			return ..()
 	return ..()
+
+/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(!QDELETED(src) && !QDELETED(hit_atom) && !isnull(splat_type))
+		return squash(hit_atom, throwingdatum)
+
+/// Squashing logic. Returns TRUE if food is squashed and qdeleted, FALSE - otherwise.
+/obj/item/reagent_containers/food/snacks/grown/proc/squash(atom/movable/hit_atom, datum/thrownthing/throwingdatum)
+	var/mob/living/thrower = throwingdatum?.thrower
+	if(istype(thrower) && (thrower.STASTR < 9 && prob(40 + (20 - thrower.STASTR))))
+		visible_message(span_warning("[src] bounces off [hit_atom]!"))
+		return FALSE // If thrower is weaker than average, it bounces off with no effect just for the pun of it.
+
+	var/turf/T = get_turf(src)
+	if(istransparentturf(T))
+		T = GET_TURF_BELOW(src)
+	if(istype(hit_atom) && !(hit_atom.density && !(hit_atom?.pass_flags & LETPASSTHROW) && !(hit_atom?.flags_1 & ON_BORDER_1)))
+		T = get_turf(hit_atom) // No splats under walls and dense atoms
+
+	forceMove(T)
+	if(ispath(splat_type, /obj/effect/decal/cleanable/food/plant_smudge))
+		if(filling_color)
+			var/atom/movable/spawned_splat = new splat_type(T)
+			spawned_splat.color = splat_color
+			spawned_splat.name = "[name] smudge"
+	else if(splat_type)
+		new splat_type(T)
+
+	if(trash)
+		generate_trash(T)
+
+	visible_message(span_warning("[src] has been squashed."), null, span_hear("I hear a smack."))
+
+	qdel(src)
+	return TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat grain"
-	desc = "Strike with object to make seeds, use with Millstone to make Powder"
+	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "wheat"
 	gender = PLURAL
@@ -60,7 +92,7 @@
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
 	name = "oat grain"
-	desc = "Strike with object to make seeds, use with Millstone to make Powder"
+	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "oat"
 	gender = PLURAL
@@ -74,7 +106,7 @@
 /obj/item/reagent_containers/food/snacks/grown/rice
 	seed = /obj/item/seeds/rice
 	name = "rice grain"
-	desc = ""
+	desc = "Rice grains, ready to be worked with water to be cleaned."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "rice"
 	gender = PLURAL
@@ -83,6 +115,7 @@
 	foodtype = GRAIN
 	tastes = list("rice" = 1)
 	grind_results = list(/datum/reagent/floure = 10)
+	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/grown/apple
 	seed = /obj/item/seeds/apple
@@ -94,6 +127,7 @@
 	foodtype = FRUIT
 	tastes = list("apple" = 1)
 	trash = /obj/item/trash/applecore
+	faretype = FARE_POOR
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD
 	worn_x_dimension = 64
@@ -123,7 +157,7 @@
 		H.dropItemToGround(H.head)
 		return 0
 
-/obj/item/reagent_containers/food/snacks/grown/apple/equipped(mob/M, slot, initial = FALSE, silent = FALSE)
+/obj/item/reagent_containers/food/snacks/grown/apple/equipped(mob/M)
 	..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -148,6 +182,7 @@
 	foodtype = FRUIT
 	faretype = FARE_POOR
 	rotprocess = SHELFLIFE_DECENT
+	splat_type = /obj/effect/decal/cleanable/food/plant_smudge
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/pear
 	name = "pear"
@@ -155,6 +190,7 @@
 	desc = "A juicy, bell-shaped fruit with a delicate sweetness and soft, grainy flesh."
 	icon_state = "pear"
 	tastes = list("pear" = 1)
+	splat_color = "#D2B48C"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lemon
 	name = "lemon"
@@ -162,6 +198,7 @@
 	desc = "A bright yellow citrus fruit, prized for its tart, refreshing juice and fragrant zest."
 	icon_state = "lemon"
 	tastes = list("lemon" = 1)
+	splat_color = "#FFFF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/lime
 	name = "lime"
@@ -169,6 +206,7 @@
 	desc = "A small, green citrus fruit with a sharp, tangy flavor, often used to add zest to dishes and drinks."
 	icon_state = "lemon" // Need a real icon
 	tastes = list("lime" = 1)
+	splat_color = "#00FF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
 	name = "tangerine"
@@ -176,6 +214,7 @@
 	desc = "A small, easy-to-peel citrus fruit with a vibrant orange color and sweet, juicy segments."
 	icon_state = "tangerine"
 	tastes = list("tangerine" = 1)
+	splat_color = "#FFA500"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/plum
 	name = "plum"
@@ -183,6 +222,7 @@
 	desc = "A smooth-skinned fruit with juicy, sweet-tart flesh and a deep purple or red hue."
 	icon_state = "plum"
 	tastes = list("plum" = 1)
+	splat_color = "#8B008B"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/strawberry
 	name = "strawberry"
@@ -190,6 +230,7 @@
 	desc = "A small, red fruit with a sweet taste. It is often used in desserts."
 	icon_state = "strawberry"
 	tastes = list("strawberry" = 1)
+	splat_color = "#9A1B00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
 	name = "blackberry"
@@ -197,6 +238,7 @@
 	desc = "A small, dark fruit with a sweet and slightly tart taste. It is often used in desserts."
 	icon_state = "blackberry"
 	tastes = list("blackberry" = 1)
+	splat_color = "#272C3F"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
 	name = "raspberry"
@@ -204,6 +246,7 @@
 	desc = "A small, red fruit with a sweet and slightly tart taste. It is often used in desserts."
 	icon_state = "raspberry"
 	tastes = list("raspberry" = 1)
+	splat_color = "#A01600"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	name = "tomato"
@@ -211,6 +254,7 @@
 	desc = "A plump, red fruit with juicy flesh and a balanced sweet-tart flavor, essential in salads and sauces."
 	icon_state = "tomato"
 	tastes = list("tomato" = 1)
+	splat_color = "#CD5320"
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue
 	seed = /obj/item/seeds/berryrogue
@@ -219,11 +263,11 @@
 	icon_state = "berries"
 	tastes = list("berry" = 1)
 	bitesize = 5
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/water = 5)
+	faretype = FARE_NEUTRAL
 	dropshrink = 0.75
 	var/color_index = "good"
 	rotprocess = 15 MINUTES
-	mill_result = /obj/item/reagent_containers/powder/alch/berry
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
@@ -235,8 +279,8 @@
 		else
 			GLOB.berrycolors[color_index] = newcolor
 		filling_color = GLOB.berrycolors[color_index]
-	. = ..()
 	update_icon()
+	..()
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/On_Consume(mob/living/eater)
 	..()
@@ -253,7 +297,7 @@
 		used_state = "berriesc2"
 	if(bitecount == 4)
 		used_state = "berriesc1"
-	var/image/item_overlay = image(icon, used_state)
+	var/image/item_overlay = image(used_state)
 	item_overlay.color = filling_color
 	add_overlay(item_overlay)
 
@@ -261,10 +305,22 @@
 	seed = /obj/item/seeds/berryrogue/poison
 	icon_state = "berries"
 	tastes = list("berry" = 1)
-	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3)
+	list_reagents = list(/datum/reagent/berrypoison = 5, /datum/reagent/consumable/nutriment = 3, /datum/reagent/water = 5)
 	grind_results = list(/datum/reagent/berrypoison = 5)
 	color_index = "bad"
-	mill_result = /obj/item/reagent_containers/powder/alch/berryp
+
+/obj/item/reagent_containers/food/snacks/grown/nut
+	name = "rocknut"
+	desc = "a nut with mild stimulant properties. In powderized form, it can be used to make a zig."
+	seed = /obj/item/seeds/nut
+	icon_state = "rocknut"
+	tastes = list("nutty" = 1)
+	filling_color = "#6b4d18"
+	bitesize = 1
+	foodtype = FRUIT
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
+	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
+	mill_result = /obj/item/reagent_containers/powder/rocknut
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
@@ -386,21 +442,21 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed
 	seed = /obj/item/seeds/swampweed
 	name = "swampweed"
-	desc = "A 'foggy' pipe weed."
-	icon_state = "sweetleaf"
+	desc = "A pipeweed with pungent odor and a sparkling surface."
+	icon_state = "swampweed"
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	tastes = list("sweet" = 1,"bitterness" = 1)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 60 MINUTES
+	rotprocess = 15 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
 	name = "westleach leaf"
-	desc = "A generic kind of pipe weed."
-	icon_state = "pipeweed"
+	desc = "A pipeweed prized for its rich flavor."
+	icon_state = "westleach"
 	filling_color = "#008000"
 	bitesize_mod = 1
 	foodtype = VEGETABLES
@@ -408,32 +464,43 @@
 	list_reagents = list(/datum/reagent/drug/nicotine = 2, /datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 5)
 	grind_results = list(/datum/reagent/drug/nicotine = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	rotprocess = 60 MINUTES
+	rotprocess = 15 MINUTES
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null
 	name = "westleach leaf"
-	desc = "A dried leaf."
-	icon_state = "pipeweedd"
+	desc = "A dried pipeweed, ready to smoke."
+	icon_state = "westleachd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/nicotine = 30)
 	eat_effect = /datum/status_effect/debuff/badmeal
 	list_reagents = list(/datum/reagent/drug/nicotine = 5, /datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/nicotine = 10)
-	mill_result = /obj/item/reagent_containers/powder/alch/pipe
+/*
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/survival/sigdry,
+		/datum/crafting_recipe/roguetown/survival/sigdry/cheroot,
+		/datum/crafting_recipe/roguetown/survival/sigsweet/cheroot,
+		)
 
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+*/
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
 	seed = null
 	name = "swampweed"
-	desc = ""
-	icon_state = "sweetleafd"
+	desc = "A prepared pipeweed prized for its foggy effects."
+	icon_state = "swampweedd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/space_drugs = 30)
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
-	mill_result = /obj/item/reagent_containers/powder/alch/swamp
-
+/*
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
@@ -445,7 +512,7 @@
 		/datum/element/slapcrafting,\
 		slapcraft_recipes = slapcraft_recipe_list,\
 		)
-
+*/
 /obj/item/reagent_containers/food/snacks/grown/onion/rogue
 	name = "onion"
 	desc = "A wonderful vegetable with many layers and broad flavor profile."
@@ -472,13 +539,6 @@
 	chopping_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	seed = /obj/item/seeds/cabbage
-	icon_state = "cabbage"
-	tastes = list("cabbage" = 1)
-	filling_color = "#88c8a0"
-	bitesize = 3
-	foodtype = VEGETABLES
-	rotprocess = 15 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 
 /obj/item/reagent_containers/food/snacks/grown/potato/rogue
 	name = "potato"
@@ -495,50 +555,10 @@
 	rotprocess = null
 	seed = /obj/item/seeds/potato
 
-/obj/item/reagent_containers/food/snacks/grown/cherry
-	name = "cherries"
-	seed = /obj/item/seeds/cherry
-	icon_state = "cherry"
-	tastes = list("cherry" = 1)
-	filling_color = "#b90019"
-	bitesize = 3
-	foodtype = FRUIT
-	rotprocess = 20 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	grind_results = list(/datum/reagent/consumable/cherryjelly = 3)
-
-/obj/item/reagent_containers/food/snacks/grown/olive
-	name = "olive"
-	seed = /obj/item/seeds/olive
-	icon_state = "olive"
-	tastes = list("olive" = 1)
-	filling_color = "#a4c74b"
-	bitesize = 3
-	foodtype = FRUIT
-	rotprocess = 20 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-
-/obj/item/reagent_containers/food/snacks/grown/nut
-	name = "rocknut"
-	seed = /obj/item/seeds/nut
-	icon_state = "nut"
-	tastes = list("nutty" = 1)
-	filling_color = "#6b4d18"
-	bitesize = 3
-	foodtype = FRUIT
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
-
-/obj/item/reagent_containers/food/snacks/grown/tomato
-	name = "tomato"
-	seed = /obj/item/seeds/tomato
-	icon_state = "tomato"
-	tastes = list("tomato" = 1)
-	filling_color = "#e4532b"
-	bitesize = 3
-	foodtype = FRUIT
-	rotprocess = 20 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tomatojuice = 3)
-	grind_results = list(/datum/reagent/consumable/tomatojuice = 6)
+/obj/item/reagent_containers/food/snacks/grown/garlick/rogue
+	name = "garlick bulb"
+	desc = "Hated by the foule vampyres that lurk in the dark. Garlick."
+	icon_state = "garlick"
 	slices_num = 5
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
 	eat_effect = null
@@ -549,90 +569,67 @@
 	chopping_sound = TRUE
 	seed = /obj/item/seeds/garlick
 
-/obj/item/reagent_containers/food/snacks/grown/onion
-	name = "onion"
-	seed = /obj/item/seeds/onion
-	icon_state = "onion"
-	tastes = list("onion" = 1)
-	filling_color = "#fdfaca"
-	bitesize = 3
-	foodtype = VEGETABLES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tearjuice = 3)
-	grind_results = list(/datum/reagent/consumable/tearjuice = 6)
-	slices_num = 5
-	slice_batch = TRUE
-	//slice_path = /obj/item/reagent_containers/food/snacks/rogue/onionslice
+// poppies, from vanderlin
+/obj/item/reagent_containers/food/snacks/grown/rogue/poppy
+	name = "poppy"
+	desc = "For their crimson beauty and the sedating effect of their crushed seeds, these flowers are considered a symbol of Eora."
+	icon_state = "poppy"
+	seed = /obj/item/seeds/poppy
+	throwforce = 0
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	list_reagents = list(/datum/reagent/consumable/nutriment = 0)
+	dropshrink = 0.5
+	rotprocess = null
 
-/obj/item/reagent_containers/food/snacks/grown/garlic
-	name = "garlic"
-	desc = "Your last line of defense against the vampiric horde."
-	seed = /obj/item/seeds/garlic
-	icon_state = "garlic"
-	tastes = list("garlic" = 1)
-	filling_color = "#fff2c6"
-	bitesize = 3
-	foodtype = VEGETABLES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/garlic = 3)
-	grind_results = list(/datum/reagent/consumable/garlic = 6)
+/obj/item/reagent_containers/food/snacks/grown/coffee
+	name = "coffee cherry"
+	desc = "A small sweet, small red fruit that contains coffee bean(s) inside. Can be grounded in a millstone for coffee beans."
+	icon_state = "coffee"
+	seed = /obj/item/seeds/coffee
+	tastes = list("hibicus sweetness" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	mill_result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans
+	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/grown/tea
+	name = "tea leaves"
+	desc = "Tea leaves plucked from the plant. It is still fresh and needs to be dried before use."
+	icon_state = "tea"
+	seed = /obj/item/seeds/tea
+	tastes = list("grass" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	rotprocess = null
 
 /obj/item/reagent_containers/food/snacks/grown/carrot
 	name = "carrot"
-	seed = /obj/item/seeds/carrot
+	desc = "A long vegetable said to help with eyesight. Often baked"
 	icon_state = "carrot"
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked
 	tastes = list("carrot" = 1)
-	filling_color = "#d57916"
-	bitesize = 3
-	foodtype = VEGETABLES
-	rotprocess = 40 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/medicine/oculine = 1)
-	grind_results = list(/datum/reagent/medicine/oculine = 3)
+	dropshrink = 0.75
 
-/obj/item/reagent_containers/food/snacks/grown/potato
-	name = "potato"
-	seed = /obj/item/seeds/potato
-	icon_state = "potato"
-	tastes = list("potato" = 1)
-	filling_color = "#d8d8b6"
-	bitesize = 3
-	foodtype = VEGETABLES
-	rotprocess = 50 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	can_distill = TRUE
-	distill_reagent = /datum/reagent/consumable/ethanol/vodka
-	distill_amt = 12
+/*	..................   Cucumber   ................... */
+/obj/item/reagent_containers/food/snacks/grown/cucumber
+	name = "cucumber"
+	desc = "A long, green vegetable that is crunchy and refreshing. Can be sliced for easier consumption."
+	icon_state = "cucumber"
+	dropshrink = 0.75
+	slices_num = 2
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced
+	tastes = list("cucumber" = 1)
+	chopping_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/eggplant
-	name = "aubergine"
-	seed = /obj/item/seeds/eggplant
+	name = "eggplant"
+	desc = "A large, purple vegetable with a mild taste. Can be carved to be filled up."
 	icon_state = "eggplant"
-	tastes = list("aubergine" = 1)
-	filling_color = "#b6ab70"
-	bitesize = 3
-	foodtype = FRUIT
-	rotprocess = 20 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-
-/obj/item/reagent_containers/food/snacks/grown/bean
-	name = "beans"
-	seed = /obj/item/seeds/bean
-	icon_state = "bean"
-	tastes = list("bean" = 1)
-	filling_color = "#4b360e"
-	bitesize = 3
-	foodtype = FRUIT
-	rotprocess = 50 MINUTES
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-
-/obj/item/reagent_containers/food/snacks/grown/radish
-	seed = /obj/item/seeds/radish
-	name = "radish"
-	icon_state = "radish"
-	filling_color = "#d4689e"
-	bitesize = 3
-	foodtype = VEGETABLES
-	tastes = list("radish" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	rotprocess = 15 MINUTES
+	slices_num = 1
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/eggplantcarved
+	slice_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/beet
 	seed = /obj/item/seeds/beet
@@ -647,18 +644,32 @@
 	mill_result = /obj/item/reagent_containers/powder/sugar
 	rotprocess = 15 MINUTES
 
-/obj/item/reagent_containers/food/snacks/grown/bellpepper
-	seed = /obj/item/seeds/bellpepper
-	name = "tiefling's egg"
-	desc = "Ay ay ay!! Muy caliente!!"
-	icon_state = "bellpepper"
-	filling_color = "#d13f05"
+/obj/item/reagent_containers/food/snacks/grown/tomato
+	name = "tomato"
+	seed = /obj/item/seeds/tomato
+	icon_state = "tomato"
+	tastes = list("tomato" = 1)
+	filling_color = "#e4532b"
 	bitesize = 3
 	foodtype = FRUIT
-	tastes = list("heat" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/capsaicin = 3)
-	grind_results = list(/datum/reagent/consumable/capsaicin = 6)
-	rotprocess = 25 MINUTES
+	rotprocess = 20 MINUTES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/tomatojuice = 3)
+	grind_results = list(/datum/reagent/consumable/tomatojuice = 6)
+	slices_num = 5
+	slice_batch = TRUE
+	//slice_path = /obj/item/reagent_containers/food/snacks/rogue/tomatoslice
+
+/obj/item/reagent_containers/food/snacks/grown/garlic
+	name = "garlic"
+	desc = "Your last line of defense against the vampiric horde."
+	seed = /obj/item/seeds/garlic
+	icon_state = "garlic"
+	tastes = list("garlic" = 1)
+	filling_color = "#fff2c6"
+	bitesize = 3
+	foodtype = VEGETABLES
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/garlic = 3)
+	grind_results = list(/datum/reagent/consumable/garlic = 6)
 
 /obj/item/reagent_containers/food/snacks/grown/peas
 	seed = /obj/item/seeds/peas
@@ -670,62 +681,3 @@
 	tastes = list("mushy" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = 25 MINUTES
-
-/obj/item/reagent_containers/food/snacks/grown/cucumber
-	seed = /obj/item/seeds/cucumber
-	name = "cucumber"
-	icon_state = "cucumber"
-	filling_color = "#c2daab"
-	bitesize = 3
-	foodtype = FRUIT
-	tastes = list("cucumber" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	rotprocess = 20 MINUTES
-	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/shrimp = 10)
-
-/obj/item/reagent_containers/food/snacks/grown/tea
-	seed = /obj/item/seeds/tea
-	name = "tea"
-	icon_state = "tea"
-	filling_color = "#19300f"
-	bitesize = 5
-	foodtype = null
-	tastes = list("sugar" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/teapowder = 3)
-	grind_results = list(/datum/reagent/toxin/teapowder = 6)
-	rotprocess = 20 MINUTES
-
-/obj/item/reagent_containers/food/snacks/grown/plumphelmet
-	seed = /obj/item/seeds/mycelium/plumphelmet
-	name = "plump helmet mushroom"
-	icon_state = "plumphelmet"
-	filling_color = "#d0abda"
-	bitesize = 3
-	foodtype = VEGETABLES
-	tastes = list("the mountainhome" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	can_distill = TRUE
-	distill_reagent = /datum/reagent/consumable/ethanol/beer/mushroomwine
-	rotprocess = 60 MINUTES
-
-/obj/item/reagent_containers/food/snacks/grown/trippy
-	seed = /obj/item/seeds/mycelium/trippy
-	name = "strange blue mushroom"
-	icon_state = "trippy"
-	filling_color = "#abd4da"
-	bitesize = 3
-	foodtype = GROSS
-	tastes = list("colors" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/drug/space_drugs = 3)
-	grind_results = list(/datum/reagent/drug/space_drugs = 6)
-
-/obj/item/reagent_containers/food/snacks/grown/amanita
-	seed = /obj/item/seeds/mycelium/amanita
-	name = "strange red mushroom"
-	icon_state = "amanita"
-	filling_color = "#daabab"
-	bitesize = 3
-	foodtype = GROSS
-	tastes = list("numb" = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/amanitin = 3)
-	grind_results = list(/datum/reagent/toxin/amanitin = 6)

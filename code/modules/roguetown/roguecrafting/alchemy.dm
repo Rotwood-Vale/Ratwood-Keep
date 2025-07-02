@@ -63,7 +63,7 @@
 	result = list(/obj/item/reagent_containers/powder/salt)
 	reqs = list(/obj/item/ash = 1, /datum/reagent/water = 10, /obj/item/reagent_containers/food/snacks/rogue/meat/mince = 1)
 	skill_level = 0
-
+/*
 /datum/crafting_recipe/roguetown/alchemy/quicksilver
 	name = "quicksilver"
 	category = "Table"
@@ -256,3 +256,4 @@
 	skill_level = 6
 	verbage_simple = "transmute"
 
+*/

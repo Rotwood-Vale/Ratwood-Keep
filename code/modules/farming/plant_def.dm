@@ -353,7 +353,7 @@
 	produce_nutrition =  30
 	maturation_time = 6 MINUTES
 	produce_time = 3 MINUTES
-
+/*
 /datum/plant_def/bean
 	name = "bean bush"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -375,7 +375,7 @@
 	produce_nutrition =  15
 	maturation_time = 4 MINUTES
 	produce_time = 2 MINUTES
-
+*/
 /datum/plant_def/beet
 	name = "sugarbeet patch"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -387,7 +387,7 @@
 	produce_nutrition =  15
 	maturation_time = 4 MINUTES
 	produce_time = 2 MINUTES
-
+/*
 /datum/plant_def/bellpepper
 	name = "tiefling's egg bush"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -398,7 +398,7 @@
 	produce_nutrition =  30
 	maturation_time = 6 MINUTES
 	produce_time = 3 MINUTES
-
+*/
 /datum/plant_def/peas
 	name = "pea plant"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -431,6 +431,15 @@
 	maturation_time = 6 MINUTES
 	produce_time = 3 MINUTES
 
+/datum/plant_def/coffee
+	name = "coffee bush"
+	icon = 'icons/roguetown/misc/crops.dmi'
+	icon_state = "coffee"
+	produce_type = /obj/item/reagent_containers/food/snacks/grown/coffee
+	produce_amount_min = 2
+	produce_amount_max = 3
+	
+/*
 /datum/plant_def/plumphelmet
 	name = "plump helmet patch"
 	icon = 'icons/roguetown/misc/crops.dmi'
@@ -438,7 +447,7 @@
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/plumphelmet
 	produce_amount_min = 2
 	produce_amount_max = 3
-
+*/
 #undef SLOW_GROWING
 #undef FAST_GROWING
 #undef VERY_FAST_GROWING

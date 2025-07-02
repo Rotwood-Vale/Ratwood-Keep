@@ -36,7 +36,7 @@
 	importexport_amt = 10
 	stockpile_limit = 50 // Allow a small amount of stones to be sold for chiselling
 	passive_generation = 10 // Free rocks!!
-
+/*
 /datum/roguestock/stockpile/glass
 	name = "Glass Batch"	//'Raw' glass
 	desc = "A mixture of finely ground materials that is used to make glass."
@@ -49,7 +49,7 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	passive_generation = 3
-
+*/
 /datum/roguestock/stockpile/iron
 	name = "Raw Iron"
 	desc = "Chunks of iron used for smithing."

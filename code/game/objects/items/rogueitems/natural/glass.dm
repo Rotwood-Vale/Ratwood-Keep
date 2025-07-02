@@ -94,8 +94,6 @@
 	name = "shard"
 	desc = "A sharp shard of glass."
 	icon = 'icons/roguetown/items/crafting.dmi'
-	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
-	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
 	icon_state = "shard1"
 	item_state = "shard"
@@ -108,10 +106,13 @@
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
 	max_integrity = 40
 	smeltresult = /obj/item/natural/glass
-/obj/item/natural/glass_shard/New()
-	..()
-	icon_state = "shard[rand(1,3)]"
-/obj/item/natural/glass_shard/Crossed(mob/living/L)
-	. = ..()
-	playsound(loc,'sound/foley/glass_step.ogg', 35, FALSE)
 
+/obj/item/natural/glass/shard/Initialize()
+	. = ..()
+	AddComponent(/datum/component/caltrop, force)
+	AddComponent(/datum/component/butchering, 150, 65)
+
+/obj/item/natural/glass/shard/Crossed(mob/living/L)
+	if(istype(L) && has_gravity(loc))
+		playsound(loc, 'sound/foley/glass_step.ogg', HAS_TRAIT(L, TRAIT_LIGHT_STEP) ? 30 : 50, TRUE)
+	return ..()

@@ -293,3 +293,4 @@
 	rotprocess = SHELFLIFE_LONG
 	tastes = list("meat" = 1, "dough" = 1)
 	dropshrink = 0.6
+

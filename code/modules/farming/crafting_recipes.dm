@@ -50,7 +50,7 @@
 /datum/crafting_recipe/roguetown/sigsweet
 	name = "swampweed zig - (dry weed, paper; NONE)"
 	result = /obj/item/clothing/mask/cigarette/rollie/cannabis
-	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry = 1,
+	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry = 1,
 				/obj/item/paper = 1)
 	req_table = TRUE
 	time = 10 SECONDS

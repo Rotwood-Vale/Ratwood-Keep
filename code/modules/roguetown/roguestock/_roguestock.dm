@@ -22,6 +22,7 @@
 	var/percent_bounty = FALSE
 	var/passive_generation = 0 //How much to generate in the remote section each firing of the treasury system.
 	var/category = "Raw Materials" // Category for the stockpile
+	var/transport_item = FALSE
 
 /datum/roguestock/New()
 	..()

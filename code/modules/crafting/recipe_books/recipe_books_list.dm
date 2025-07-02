@@ -1,4 +1,5 @@
 // Deleted the flavorful desc from Vanderlin until I can think of a better desc. 
+/*
 /obj/item/recipe_book/leatherworking
 	name = "The Tanned Hide Tome: Mastery of Leather and Craft"
 	icon_state = "book8_0"
@@ -95,3 +96,4 @@
 		/datum/brewing_recipe,
 		/datum/book_entry/brewing
 	)
+*/

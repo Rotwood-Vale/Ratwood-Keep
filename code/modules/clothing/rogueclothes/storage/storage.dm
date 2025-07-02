@@ -252,7 +252,7 @@
 				qdel(H)
 
 /obj/item/storage/belt/rogue/pouch/food/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
 
 /obj/item/storage/belt/rogue/pouch/ammo
 	name = "sphere pouch"
