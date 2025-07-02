@@ -3035,14 +3035,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
 "BZ" = (
-/obj/structure/fluff/wallclock/r,
-/obj/structure/fermentation_keg/random/water,
-/obj/structure/fluff/railing/border{
-	dir = 1;
-	icon_state = "border"
-	},
-/turf/open/floor/rogue/cobble/mossy,
-/area/rogue/under/town/goblin)
+)
 "Cg" = (
 /obj/structure/fluff/traveltile/goblin_interior{
 	aportalgoesto = "goblin2exit";
@@ -3369,12 +3362,6 @@
 "HM" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/banditcamp)
-"Ig" = (
-/obj/structure/fermentation_keg/random/beer,
-/turf/open/floor/rogue/tile{
-	icon_state = "chess"
-	},
-/area/rogue/under/town/goblin)
 "HQ" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/woodturned,
@@ -42522,6 +42509,7 @@ tN
 tN
 tN
 bX
+BZ
 "}
 (166,1,1) = {"
 rQ
@@ -44591,6 +44579,7 @@ tN
 tN
 tN
 bX
+BZ
 "}
 (175,1,1) = {"
 rQ
@@ -45050,6 +45039,7 @@ tN
 tN
 tN
 bX
+BZ
 "}
 (177,1,1) = {"
 rQ

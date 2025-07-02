@@ -1786,7 +1786,6 @@
 	},
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath)
 "aSA" = (
@@ -2043,8 +2042,6 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/bath)
 "aWP" = (
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
@@ -2484,7 +2481,6 @@
 /area/rogue/indoors)
 "bis" = (
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/structure/fermentation_keg/wine,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "bit" = (
@@ -10029,9 +10025,6 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked{
-	pixel_y = 12
-	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
 "eHO" = (
@@ -10374,9 +10367,6 @@
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
 	pixel_y = -8
-	},
-/obj/structure/fermentation_keg/random/wine{
-	pixel_y = 8
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
@@ -18197,7 +18187,6 @@
 	},
 /obj/item/flashlight/flare/torch,
 /obj/item/flashlight/flare/torch/lantern,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "iBh" = (
@@ -20352,7 +20341,6 @@
 /turf/open/floor/rogue/grasscold,
 /area/rogue/outdoors/druidgrove)
 "jEU" = (
-/obj/item/reagent_containers/glass/bowl/pewter,
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
@@ -21178,7 +21166,6 @@
 	icon_state = "largetable"
 	},
 /obj/item/cooking/platter,
-/obj/item/kitchen/ironfork,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "jXn" = (
@@ -21453,7 +21440,6 @@
 	lockid = "seamster";
 	pixel_y = 10
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/rogue/ruinedwood{
@@ -21825,10 +21811,15 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "kmb" = (
-/obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/obj/structure/wild_swampweed,
-/turf/open/floor/rogue/dirt/npoor,
-/area/rogue/under/town/sewer)
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/obj/item/candle/skull{
+	pixel_y = 15
+	},
+/obj/item/kitchen/fork/gold,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor)
 "kmh" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4;
@@ -22851,9 +22842,13 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "kNA" = (
-/obj/structure/wild_swampweed,
-/turf/open/floor/rogue/grass,
-/area/rogue/outdoors/rtfield)
+/obj/structure/table/wood{
+	dir = 6;
+	icon_state = "largetable"
+	},
+/obj/item/kitchen/fork/gold,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor)
 "kNC" = (
 /obj/structure/flora/roguetree{
 	pixel_x = -10;
@@ -25302,10 +25297,17 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church/chapel)
 "maN" = (
-/obj/structure/wild_swampweed,
-/obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/dirt/npoor,
-/area/rogue/under/town/sewer)
+/obj/structure/table/wood{
+	dir = 10;
+	icon_state = "largetable";
+	pixel_x = -5
+	},
+/obj/structure/table/wood{
+	icon_state = "largetable"
+	},
+/obj/item/kitchen/fork/gold,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor)
 "maZ" = (
 /obj/structure/closet/crate/chest{
 	lockid = "butcher";
@@ -25782,7 +25784,6 @@
 	dir = 1
 	},
 /obj/structure/fluff/nest,
-/obj/item/kitchen/ironfork/silver,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/town/roofs)
 "mlT" = (
@@ -28860,8 +28861,6 @@
 /area/rogue/indoors)
 "nOt" = (
 /obj/structure/rack/rogue,
-/obj/item/seeds/sweetleaf,
-/obj/item/seeds/sweetleaf,
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
 /turf/open/floor/rogue/twig,
@@ -30450,7 +30449,6 @@
 /obj/item/reagent_containers/powder/alch/mincef,
 /obj/item/reagent_containers/powder/alch/mincem,
 /obj/item/reagent_containers/powder/alch/mincem,
-/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf,
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed,
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison,
 /obj/item/rogueweapon/hoe,
@@ -30770,7 +30768,6 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "oGP" = (
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/structure/closet/crate/chest{
 	lockid = "keep_dungeon"
 	},
@@ -33359,6 +33356,8 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/silver,
+/obj/item/bottle_kit,
+/obj/item/bottle_kit,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/tavern)
 "pSY" = (
@@ -33576,12 +33575,9 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "pZl" = (
-/obj/structure/closet/crate/chest{
-	lockid = "keep_dungeon"
-	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/turf/open/floor/rogue/wood,
-/area/rogue/under/town/basement)
+/obj/structure/fermentation_keg/distiller,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/tavern)
 "pZr" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -34365,6 +34361,7 @@
 	dir = 5;
 	icon_state = "largetable"
 	},
+/obj/item/kitchen/fork/gold,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor)
 "qvA" = (
@@ -35635,10 +35632,6 @@
 	locked = 1;
 	lockid = "keep_dungeon"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "reg" = (
@@ -36538,7 +36531,6 @@
 /area/rogue/outdoors/town/harbor)
 "rCh" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/kitchen/ironspoon/silver,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/sewer)
 "rCn" = (
@@ -37195,7 +37187,6 @@
 /obj/item/reagent_containers/powder/moondust_purest,
 /obj/item/reagent_containers/powder/ozium,
 /obj/item/reagent_containers/powder/ozium,
-/obj/item/seeds/sweetleaf,
 /obj/item/seeds/pipeweed,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = 32;
@@ -38213,9 +38204,6 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/item/kitchen/ironfork,
-/obj/item/kitchen/ironfork,
-/obj/item/kitchen/ironfork,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "sre" = (
@@ -38660,8 +38648,6 @@
 "sBQ" = (
 /obj/item/seeds/pipeweed,
 /obj/item/seeds/pipeweed,
-/obj/item/seeds/sweetleaf,
-/obj/item/seeds/sweetleaf,
 /obj/item/seeds/berryrogue/poison,
 /obj/item/seeds/berryrogue/poison,
 /obj/structure/closet/crate/chest{
@@ -38818,8 +38804,6 @@
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/town/basement)
 "sHi" = (
@@ -42304,12 +42288,6 @@
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
-/obj/item/kitchen/ironspoon,
-/obj/item/kitchen/ironspoon,
-/obj/item/kitchen/ironspoon,
-/obj/item/kitchen/ironspoon,
-/obj/item/kitchen/ironspoon,
-/obj/item/kitchen/ironspoon,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/tavern)
 "usw" = (
@@ -46106,8 +46084,6 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "woG" = (
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/structure/closet/crate/chest{
 	lockid = "bog_gatehouse"
 	},
@@ -46162,9 +46138,13 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/town)
 "wpH" = (
-/obj/structure/wild_swampweed,
-/turf/open/floor/rogue/dirt/npoor,
-/area/rogue/outdoors/bog)
+/obj/structure/table/wood{
+	dir = 1;
+	icon_state = "largetable"
+	},
+/obj/item/kitchen/fork/gold,
+/turf/open/floor/carpet/red,
+/area/rogue/indoors/town/manor)
 "wpJ" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/ruinedwood{
@@ -46627,6 +46607,30 @@
 /obj/item/cooking/platter,
 /obj/item/reagent_containers/glass/bowl,
 /obj/item/reagent_containers/glass/bowl,
+/obj/item/cooking/platter/gold,
+/obj/item/cooking/platter/gold,
+/obj/item/cooking/platter/gold,
+/obj/item/cooking/platter/silver,
+/obj/item/cooking/platter/silver,
+/obj/item/cooking/platter/silver,
+/obj/item/reagent_containers/glass/bowl/gold,
+/obj/item/reagent_containers/glass/bowl/gold,
+/obj/item/reagent_containers/glass/bowl/gold,
+/obj/item/reagent_containers/glass/bowl/silver,
+/obj/item/reagent_containers/glass/bowl/silver,
+/obj/item/reagent_containers/glass/bowl/silver,
+/obj/item/kitchen/spoon/gold,
+/obj/item/kitchen/spoon/gold,
+/obj/item/kitchen/spoon/gold,
+/obj/item/kitchen/spoon/silver,
+/obj/item/kitchen/spoon/silver,
+/obj/item/kitchen/spoon/silver,
+/obj/item/kitchen/fork/gold,
+/obj/item/kitchen/fork/gold,
+/obj/item/kitchen/fork/gold,
+/obj/item/kitchen/fork/silver,
+/obj/item/kitchen/fork/silver,
+/obj/item/kitchen/fork/silver,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors/town/manor)
 "wAU" = (
@@ -48706,13 +48710,9 @@
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /obj/structure/closet/crate/chest{
 	lockid = "blacksmith"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "xyU" = (
@@ -49238,7 +49238,6 @@
 /obj/structure/fluff/walldeco/rpainting{
 	pixel_x = -32
 	},
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "xMh" = (
@@ -49977,6 +49976,7 @@
 /area/rogue/outdoors/town)
 "yeM" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/structure/roguemachine/vaultbank,
 /turf/open/floor/rogue/tile{
 	icon_state = "glyph4"
 	},
@@ -218132,7 +218132,7 @@ vLA
 odi
 odi
 odi
-wpH
+vLA
 vLA
 vLA
 odi
@@ -221812,7 +221812,7 @@ tQZ
 gMO
 lEn
 orb
-nRZ
+pZl
 pJj
 nRZ
 nRZ
@@ -233452,7 +233452,7 @@ mVa
 rLv
 txa
 tTa
-pZl
+oGP
 gGN
 fqW
 txa
@@ -234919,7 +234919,7 @@ uaL
 uaL
 uaL
 uaL
-kNA
+qvR
 sjP
 thr
 pAj
@@ -245590,7 +245590,7 @@ pmJ
 uEX
 uEX
 uEX
-maN
+eee
 rRb
 lrs
 lrs
@@ -246019,7 +246019,7 @@ cTA
 cTA
 cTA
 gLf
-kmb
+xPb
 ocN
 uEX
 eee
@@ -333677,7 +333677,7 @@ sPu
 uOL
 kth
 cNv
-qyB
+wpH
 qUK
 cKi
 rwO
@@ -334542,7 +334542,7 @@ qFD
 kIS
 cNv
 iQL
-tJU
+kNA
 cKi
 rwO
 emP
@@ -335406,7 +335406,7 @@ wVO
 kIS
 cNv
 cod
-qUK
+maN
 cKi
 rwO
 gDZ
@@ -335838,7 +335838,7 @@ dXZ
 kIS
 cNv
 qyB
-bec
+kmb
 cKi
 rwO
 kYS
