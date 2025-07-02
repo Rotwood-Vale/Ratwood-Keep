@@ -5,11 +5,17 @@
 	icon_state = "signal_horn"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
+	var/last_horn
+
 
 /obj/item/signal_horn/attack_self(mob/living/user)
 	. = ..()
+	if(world.time < last_horn + 30 SECONDS)
+		to_chat(user, "My lungs must rest before I can blow the [src]")
+		return
 	user.visible_message("<span class='warning'>[user] is about to sound the [src]!</span>")
 	if(do_after(user, 15))
+		last_horn = world.time
 		sound_horn(user)
 
 /obj/item/signal_horn/proc/sound_horn(mob/living/user)
@@ -27,7 +33,7 @@
 		if(distance <= 7)
 			continue
 		var/dirtext = " to the "
-		var/direction = get_dir(player, origin_turf)
+		var/direction = angle2dir(Get_Angle(player, origin_turf))
 		switch(direction)
 			if(NORTH)
 				dirtext += "north"

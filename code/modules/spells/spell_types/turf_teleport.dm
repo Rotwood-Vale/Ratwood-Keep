@@ -6,7 +6,6 @@
 	var/inner_tele_radius = 1
 	var/outer_tele_radius = 2
 
-	var/include_space = FALSE //whether it includes space tiles in possible teleport locations
 	var/include_dense = FALSE //whether it includes dense tiles in possible teleport locations
 	var/sound1 = 'sound/blank.ogg'
 	var/sound2 = 'sound/blank.ogg'
@@ -17,8 +16,6 @@
 		var/list/turfs = new/list()
 		for(var/turf/T in range(target,outer_tele_radius))
 			if(T in range(target,inner_tele_radius))
-				continue
-			if(isspaceturf(T) && !include_space)
 				continue
 			if(T.density && !include_dense)
 				continue

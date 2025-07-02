@@ -169,7 +169,8 @@ GLOBAL_VAR(moneymaster)
 	if(!type_to_put || zenars_to_put < 1)
 		return
 	var/obj/item/roguecoin/G = new type_to_put(T, floor(zenars_to_put))
-	user.put_in_hands(G)
+	if(ismob(user))
+		user.put_in_hands(G)
 	playsound(T, 'sound/misc/coindispense.ogg', 100, FALSE, -1)
 /*
 /obj/structure/roguemachine/money/attack_right(mob/user)

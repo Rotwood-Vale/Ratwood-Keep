@@ -7,7 +7,7 @@
 	armor = list("blunt" = 50, "slash" = 40, "stab" = 30, "bullet" = 20, "laser" = 0, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 50)
 	max_integrity = 150
 	integrity_failure = 0.33
-	var/locked = FALSE
+	locked = FALSE
 	var/open = TRUE
 	var/obj/item/rogueweapon/sword/long/heirloom
 
@@ -22,7 +22,7 @@
 	return ..()
 
 /obj/structure/fireaxecabinet/attackby(obj/item/I, mob/user, params)
-	if(iscyborg(user) || I.tool_behaviour == TOOL_MULTITOOL)
+	if(I.tool_behaviour == TOOL_MULTITOOL)
 		toggle_lock(user)
 	else if(I.tool_behaviour == TOOL_WELDER && user.used_intent.type == INTENT_HELP && !broken)
 		if(obj_integrity < max_integrity)
@@ -70,12 +70,6 @@
 		playsound(src, 'sound/blank.ogg', 100, TRUE)
 	..()
 
-/obj/structure/fireaxecabinet/blob_act(obj/structure/blob/B)
-	if(heirloom)
-		heirloom.forceMove(loc)
-		heirloom = null
-	qdel(src)
-
 /obj/structure/fireaxecabinet/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -98,10 +92,6 @@
 
 /obj/structure/fireaxecabinet/attack_paw(mob/living/user)
 	return attack_hand(user)
-
-/obj/structure/fireaxecabinet/attack_ai(mob/user)
-	toggle_lock(user)
-	return
 
 /obj/structure/fireaxecabinet/attack_tk(mob/user)
 	if(locked)

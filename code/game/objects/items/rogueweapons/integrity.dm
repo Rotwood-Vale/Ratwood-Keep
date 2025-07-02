@@ -5,8 +5,6 @@
 	var/dismember_blade_int = 0
 	/// Maximum blade integrity
 	var/max_blade_int = 0
-	/// Required skill to repair the blade integrity
-	var/required_repair_skill = 0
 
 /obj/item/proc/remove_bintegrity(amt as num)
 	blade_int = blade_int - amt

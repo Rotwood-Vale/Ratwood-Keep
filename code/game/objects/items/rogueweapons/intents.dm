@@ -19,7 +19,7 @@
 	var/canparry = TRUE
 	var/candodge = TRUE
 	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
-	var/chargedrain = 0 //how mcuh fatigue is removed every second when at max charge
+	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
 	var/releasedrain = 1 //drain when we go off, regardless
 	var/misscost = 1	//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
 	var/tranged = 0
@@ -45,6 +45,8 @@
 	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
 	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
 	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
+	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -58,6 +60,8 @@
 	inspec += "<br><span class='notice'><b>[name]</b> intent</span>"
 	if(desc)
 		inspec += "\n[desc]"
+	if(reach != 1)
+		inspec += "\n<b>Reach:</b> [reach]"
 	if(damfactor != 1)
 		inspec += "\n<b>Damage:</b> [damfactor]"
 	if(penfactor)
@@ -148,7 +152,7 @@
 	if(mastermob)
 		if(chargedloop)
 			if(!istype(chargedloop))
-				chargedloop = new chargedloop(list(mastermob))
+				chargedloop = new chargedloop(mastermob)
 
 /datum/intent/proc/on_charge_start() //what the fuck is going on here lol
 	if(mastermob.curplaying)
@@ -156,10 +160,10 @@
 		mastermob.curplaying = null
 	if(chargedloop)
 		if(!istype(chargedloop, /datum/looping_sound))
-			chargedloop = new chargedloop(list(mastermob))
+			chargedloop = new chargedloop(mastermob)
 		else
 			chargedloop.stop()
-		chargedloop.start(chargedloop.output_atoms)
+		chargedloop.start(chargedloop.parent)
 		mastermob.curplaying = src
 
 /datum/intent/proc/on_mouse_up()
@@ -191,7 +195,7 @@
 	swingdelay = 5
 	misscost = 20
 	unarmed = TRUE
-	animname = "cut"
+	animname = "kick"
 	pointer = 'icons/effects/mousemice/human_kick.dmi'
 
 /datum/intent/bite
@@ -202,7 +206,8 @@
 	chargetime = 0
 	swingdelay = 0
 	unarmed = TRUE
-	noaa = TRUE
+	noaa = FALSE
+	animname = "bite"
 	attack_verb = list("bites")
 
 /datum/intent/jump
@@ -257,6 +262,10 @@
 	mid_length = 7
 	volume = 100
 
+/datum/looping_sound/drill
+	mid_sounds = list('sound/combat/drill_loop.ogg')
+	mid_length = 85
+	volume = 100
 
 /datum/intent/hit
 	name = "hit"
@@ -286,6 +295,17 @@
 	item_d_type = "stab"
 	blade_class = BCLASS_PICK
 	chargetime = 0
+	swingdelay = 3
+
+/datum/intent/drill
+	name = "drill"
+	icon_state = "inpick"
+	attack_verb = list("drills","augers")
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+	animname = "strike"
+	item_d_type = "stab"
+	blade_class = BCLASS_DRILL
+	chargetime = 0.3
 	swingdelay = 3
 
 /datum/intent/shoot //shooting crossbows or other guns, no parrydrain
@@ -333,7 +353,7 @@
 /datum/intent/unarmed/punch
 	name = "punch"
 	icon_state = "inpunch"
-	attack_verb = list("punches", "jabs", "clocks", "strikes")
+	attack_verb = list("punches", "jabs", "clocks")
 	chargetime = 0
 	animname = "blank22"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
@@ -368,7 +388,7 @@
 /datum/intent/unarmed/shove
 	name = "shove"
 	icon_state = "inshove"
-	attack_verb = list("shoves", "pushes")
+	attack_verb = list("shoves")
 	chargetime = 0
 	noaa = TRUE
 	rmb_ranged = TRUE
@@ -394,10 +414,10 @@
 	chargetime = 0
 	noaa = TRUE
 	rmb_ranged = TRUE
-	releasedrain = 0
-	misscost = 5
+	releasedrain = 8
+	misscost = 6.5
 	candodge = TRUE
-	canparry = FALSE
+	canparry = TRUE
 	item_d_type = "blunt"
 
 /datum/intent/unarmed/grab/rmb_ranged(atom/target, mob/user)
@@ -465,7 +485,8 @@
 	name = "bite"
 	icon_state = "instrike"
 	attack_verb = list("bites")
-	animname = "blank22"
+	noaa = FALSE
+	animname = "bite"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
@@ -473,4 +494,100 @@
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
-	item_d_type = "stab"
+
+
+/datum/intent/unarmed/claw
+	name = "claw"
+	icon_state = "instrike"
+	attack_verb = list("claws", "tears", "rips")
+	animname = "cut"
+	blade_class = BCLASS_CUT
+	hitsound = "smallslash"
+	penfactor = 20
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "claws the air!"
+	miss_sound = "bluntwooshmed"
+
+/datum/intent/unarmed/wwolf
+	name = "claw"
+	icon_state = "inchop"
+	attack_verb = list("claws", "mauls", "eviscerates")
+	animname = "cut"
+	blade_class = BCLASS_CHOP
+	hitsound = "genslash"
+	penfactor = 40
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "slashes the air!"
+	miss_sound = "bluntwooshlarge"
+
+/datum/intent/unarmed/ascendedclaw
+	name = "claw"
+	icon_state = "inchop"
+	attack_verb = list("claws", "mauls", "eviscerates")
+	animname = "cut"
+	blade_class = BCLASS_CHOP
+	hitsound = "genslash"
+	penfactor = 230
+	damfactor = 40
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "slashes the air!"
+	miss_sound = "bluntwooshlarge"
+
+/datum/intent/simple/sting
+	name = "sting"
+	icon_state = "instrike"
+	attack_verb = list("stings")
+	animname = "blank22"
+	blade_class = BCLASS_STAB
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 1
+	swingdelay = 0
+	candodge = FALSE
+	canparry = FALSE
+	miss_text = "stings the air!"
+
+/datum/intent/simple/bigbite
+	name = "big bite"
+	icon_state = "instrike"
+	attack_verb = list("gnashes", "viciously bites")
+	animname = "blank22"
+	blade_class = BCLASS_CHOP
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+
+/datum/intent/simple/stab
+	name = "stab"
+	icon_state = "instrike"
+	attack_verb = list("impales", "stabs")
+	animname = "blank22"
+	blade_class = BCLASS_STAB
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 25
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "stabs the air!"
+
+// Chicken
+/datum/intent/simple/peck
+	name = "peck"
+	icon_state = "instrike"
+	attack_verb = list("pecks", "scratches")
+	animname = "blank22"
+	blade_class = BCLASS_CUT
+	hitsound = "smallslash"
+	chargetime = 0
+	penfactor = 2
+	swingdelay = 1
+	candodge = TRUE
+	canparry = TRUE
+	miss_text = "pecks the air!"

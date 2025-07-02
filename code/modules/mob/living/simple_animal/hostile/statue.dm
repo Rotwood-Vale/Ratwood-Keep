@@ -61,19 +61,12 @@
 /mob/living/simple_animal/hostile/statue/Initialize(mapload, mob/living/creator)
 	. = ..()
 	// Give spells
-	mob_spell_list += new /obj/effect/proc_holder/spell/aoe_turf/flicker_lights(src)
 	mob_spell_list += new /obj/effect/proc_holder/spell/aoe_turf/blindness(src)
 	mob_spell_list += new /obj/effect/proc_holder/spell/targeted/night_vision(src)
 
 	// Set creator
 	if(creator)
 		src.creator = creator
-
-/mob/living/simple_animal/hostile/statue/med_hud_set_health()
-	return //we're a statue we're invincible
-
-/mob/living/simple_animal/hostile/statue/med_hud_set_status()
-	return //we're a statue we're invincible
 
 /mob/living/simple_animal/hostile/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
@@ -131,10 +124,6 @@
 			if(M.client && CanAttack(M) && !M.has_unlimited_silicon_privilege)
 				if(!M.eye_blind)
 					return M
-		for(var/obj/mecha/M in view(world.view + 1, check)) //assuming if you can see them they can see you
-			if(M.occupant && M.occupant.client)
-				if(!M.occupant.eye_blind)
-					return M.occupant
 	return null
 
 // Cannot talk
@@ -165,20 +154,6 @@
 
 // Statue powers
 
-// Flicker lights
-/obj/effect/proc_holder/spell/aoe_turf/flicker_lights
-	name = "Flicker Lights"
-	desc = ""
-
-	charge_max = 300
-	clothes_req = 0
-	range = 14
-
-/obj/effect/proc_holder/spell/aoe_turf/flicker_lights/cast(list/targets,mob/user = usr)
-	for(var/turf/T in targets)
-		for(var/obj/machinery/light/L in T)
-			L.flicker()
-	return
 
 //Blind AOE
 /obj/effect/proc_holder/spell/aoe_turf/blindness
@@ -229,7 +204,7 @@
 /mob/living/simple_animal/hostile/statue/sentience_act()
 	faction -= "neutral"
 
-/mob/living/simple_animal/hostile/statue/restrained(ignore_grab)
+/mob/living/simple_animal/hostile/statue/restrained(ignore_grab = TRUE)
 	. = ..()
 	if(can_be_seen(loc))
 		return 1

@@ -64,11 +64,18 @@
 	var/totallums = 0
 	var/thing
 	var/datum/lighting_corner/L
-	for(thing in corners)
+	var/totalSunFalloff
+	for (thing in corners)
 		if(!thing)
 			continue
 		L = thing
 		totallums += L.lum_r + L.lum_b + L.lum_g
+		totalSunFalloff += L.sunFalloff
+
+	if(outdoor_effect && outdoor_effect.state)
+		totalSunFalloff = 4
+
+	totallums += totalSunFalloff / 4
 
 	totallums /= 12 // 4 corners, each with 3 channels, get the average.
 
@@ -105,6 +112,9 @@
 		reconsider_lights()
 
 /turf/proc/change_area(area/old_area, area/new_area)
+	GLOB.SUNLIGHT_QUEUE_WORK += src
+	if(outdoor_effect)
+		GLOB.SUNLIGHT_QUEUE_UPDATE += outdoor_effect
 	if(SSlighting.initialized)
 		if(new_area.dynamic_lighting != old_area.dynamic_lighting)
 			if(new_area.dynamic_lighting)

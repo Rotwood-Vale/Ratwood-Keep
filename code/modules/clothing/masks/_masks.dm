@@ -15,7 +15,7 @@
 		var/status = !CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
 		to_chat(user, span_notice("I turn the voice box in [src] [status ? "on" : "off"]."))
 
-/obj/item/clothing/mask/equipped(mob/M, slot)
+/obj/item/clothing/mask/equipped(mob/M, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if (slot == SLOT_WEAR_MASK && modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
@@ -37,7 +37,7 @@
 //			if(HAS_BLOOD_DNA(src))
 //				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
 
-/obj/item/clothing/mask/update_clothes_damaged_state(damaging = TRUE)
+/obj/item/clothing/mask/update_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc

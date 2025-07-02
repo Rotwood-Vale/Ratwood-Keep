@@ -72,7 +72,7 @@
 		if(roundvoteend)
 			return TRUE
 		if(!SSvote.mode)
-			SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Aeon", "Gemini", "Aries"))
+			SSvote.initiate_vote("endround", "Zizo")
 //	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
 //		return TRUE
 	if(headrebdecree)
@@ -122,7 +122,7 @@
 	"Gatemaster",
 	"Retinue Captain",
 	"Inquisitor",
-	"Village Elder",
+	"Mayor",
 	"Watchman")
 	var/num_bandits = 0
 	if(num_players() >= 10)

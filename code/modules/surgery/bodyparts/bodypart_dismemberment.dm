@@ -32,6 +32,10 @@
 		return FALSE
 	if(HAS_TRAIT(C, TRAIT_NODISMEMBER))
 		return FALSE
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		if(human_owner.checkcritarmor(zone_precise, bclass))
+			return FALSE
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
@@ -46,14 +50,18 @@
 	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
 	C.add_stress(/datum/stressevent/dismembered)
 	var/stress2give = /datum/stressevent/viewdismember
+	var/guillotine_execution = FALSE
+
 	if(C)
 		if(C.buckled)
+			if(istype(C.buckled, /obj/structure/guillotine))
+				guillotine_execution = TRUE
 			if(istype(C.buckled, /obj/structure/fluff/psycross))
 				if(C.real_name in GLOB.excommunicated_players)
 					stress2give = /datum/stressevent/viewsinpunish
 	if(stress2give)
 		for(var/mob/living/carbon/CA in hearers(world.view, C))
-			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND))
+			if(CA != C && !HAS_TRAIT(CA, TRAIT_BLIND) && !guillotine_execution)
 				if(stress2give == /datum/stressevent/viewdismember)
 					if(HAS_TRAIT(CA, TRAIT_STEELHEARTED))
 						continue
@@ -62,8 +70,7 @@
 						continue
 				CA.add_stress(stress2give)
 	if(grabbedby)
-		qdel(grabbedby)
-		grabbedby = null
+		QDEL_LIST(grabbedby)
 
 	drop_limb()
 	if(dam_type == BURN)
@@ -132,13 +139,6 @@
 		bandage = null
 
 	if(!special)
-		if(was_owner.dna)
-			//some mutations require having specific limbs to be kept.
-			for(var/datum/mutation/human/mutation as anything in was_owner.dna.mutations)
-				if(mutation.limb_req != body_zone)
-					continue
-				was_owner.dna.force_lose(mutation)
-
 		for(var/obj/item/organ/organ as anything in was_owner.internal_organs) //internal organs inside the dismembered limb are dropped.
 			var/org_zone = check_zone(organ.zone)
 			if(org_zone != body_zone)
@@ -297,19 +297,22 @@
 
 	qdel(owner.GetComponent(/datum/component/creamed)) //clean creampie overlay
 
-	//Make sure de-zombification happens before organ removal instead of during it
-	var/obj/item/organ/zombie_infection/ooze = owner.getorganslot(ORGAN_SLOT_ZOMBIE)
-	if(istype(ooze))
-		ooze.transfer_to_limb(src, owner)
-
 	name = "[owner.real_name]'s head"
 	. = ..()
+	/* Evil cursed code, contain it in comments!
+	NOTE:	I'm not entirely sure why this is breaking re-entering
+			bodies as a ghost but it seems to be the culprit. It shouldn't
+			affect anything else though?
+			You do not get a ghost sprite if you are decapped, may need to fix later,
+			but that's nothing compared to decap nulling your body!!
+
 	if(brainmob)
 		QDEL_NULL(brainmob)
 	var/obj/item/organ/brain/BR = locate(/obj/item/organ/brain) in contents
 	if(BR)
 		if(BR.brainmob)
 			QDEL_NULL(BR.brainmob)
+	*/
 
 //Attach a limb to a human and drop any existing limb of that type.
 /obj/item/bodypart/proc/replace_limb(mob/living/carbon/C, special)
@@ -378,14 +381,15 @@
 
 /obj/item/bodypart/head/attach_limb(mob/living/carbon/C, special)
 	//Transfer some head appearance vars over
+	
 	if(brain)
 		if(brainmob)
-			brainmob.container = null //Reset brainmob head var.
 			brainmob.forceMove(brain) //Throw mob into brain.
-			brain.brainmob = brainmob //Set the brain to use the brainmob
+			//brain.brainmob = brainmob //Set the brain to use the brainmob
 			brainmob = null //Set head brainmob var to null
 		brain.Insert(C) //Now insert the brain proper
 		brain = null //No more brain in the head
+	
 
 	if(tongue)
 		tongue = null

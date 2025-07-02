@@ -59,102 +59,116 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"Cyborg",
 	ROLE_PAI))
 
+// FIRST POSITIONS SUCH AS DUKE OR HEAD BUTLER E.T.C. MUST ALWAYS STAY ON THE TOP OF THE LIST
 GLOBAL_LIST_INIT(noble_positions, list(
-	"King",
-	"Queen Consort",
-	"Prince",
+	"Duke",
+	"Duke Consort",
+	"Heir",
 	"Retinue Captain",
 	"Royal Marshal",
-	"Councillor",
 	"Steward",
 	"Knight",
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Court Magician",
-	"Court Physician",
-	"Jester",
 	"Head Butler",
+	"Court Magos",
+	"Court Physician",
+	"Councillor",
+	"Jester",
 ))
 
 GLOBAL_LIST_INIT(garrison_positions, list(
+	"Town Sheriff",
 	"Watchman",
-	"Bog Guard",
-	"Bog Master",
+	"Warden",
+	"Gatemaster",
+	"Vanguard",
+	"Veteran",
 	"Man at Arms",
 	"Dungeoneer",
-	"Gatemaster",
-	"Town Sheriff",
 ))
 
 GLOBAL_LIST_INIT(church_positions, list(
 	"Priest",
-	"Inquisitor",
-	"Confessor",
 	"Acolyte",
 	"Mortician",
 	"Templar",
 	"Druid",
+	"Hospitaller",
+))
+
+GLOBAL_LIST_INIT(inquisition_positions, list(
+	"Inquisitor",
+	"Confessor",
 ))
 
 GLOBAL_LIST_INIT(yeoman_positions, list(
+	"Mayor",
 	"Merchant",
+	"Scholar",
 	"Barkeep",
-	"Archivist",
-	"Armorer",
-	"Weaponsmith",
-	"Tailor",
+	"Guild Smith",
+	"Seamster",
 	"Alchemist",
-	"Mason",
+	"Architect",
+	"Artificer",
 	"Scribe",
-	"Village Elder",
+	"Harbormaster",
+	"Longshoreman",
 ))
 
 GLOBAL_LIST_INIT(peasant_positions, list(
 	"Soilson",
 	"Butcher",
 	"Cook",
-	"Lunatic",
 	"Miner",
 	"Hunter",
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Grabber",
 	"Nightmaster",
-	"Bath Swain",
+	"Henchman",
+	"Nightswain",
 	"Docker",
 	"Prisoner",
 	"Beggar",
-	"Adventurer",
-	"Pilgrim",
+	"Lunatic",
+	"Town Seelie",
 ))
 
 GLOBAL_LIST_INIT(mercenary_positions, list(
-	"Grenzelhoft Mercenary",
-	"Desert Rider Mercenary",
-	"Sellsword",
-	"Veteran",
+	"Guild Clerk",
+	"Mercenary",
 ))
 
 GLOBAL_LIST_INIT(youngfolk_positions, list(
 	"Squire",
 	"Clerk",
-	"Smithy Apprentice",
-	"Magicians Apprentice",
-	"Churchling",
 	"Servant",
+	"Magicians Apprentice",
+	"Smithy Apprentice",
+	"Novitiate",
 	"Shophand",
-	"Vagabond",
 ))
 
-GLOBAL_LIST_INIT(allmig_positions, list(
-	"Adventurer",
-	"Pilgrim",
+GLOBAL_LIST_INIT(foreigner_positions, list(
+	"Refugee",
+	"Migrant",
+	"Bandit",
 ))
 
 GLOBAL_LIST_INIT(roguewar_positions, list(
-	"Adventurer",
+	"Refugee",
+))
+
+GLOBAL_LIST_INIT(goblin_positions, list(
+	"Goblin Chief",
+	"Goblin Cook",
+	"Goblin Guard",
+	"Goblin Rabble",
+	"Goblin Smith",
+	"Goblin Shaman",
 ))
 
 GLOBAL_LIST_INIT(roguefight_positions, list(
@@ -180,9 +194,12 @@ GLOBAL_LIST_INIT(job_assignment_order, get_job_assignment_order())
 	sorting_order += GLOB.courtier_positions
 	sorting_order += GLOB.garrison_positions
 	sorting_order += GLOB.church_positions
+	sorting_order += GLOB.inquisition_positions
 	sorting_order += GLOB.yeoman_positions
 	sorting_order += GLOB.peasant_positions
 	sorting_order += GLOB.youngfolk_positions
+	sorting_order += GLOB.mercenary_positions
+	sorting_order += GLOB.foreigner_positions
 	return sorting_order
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(

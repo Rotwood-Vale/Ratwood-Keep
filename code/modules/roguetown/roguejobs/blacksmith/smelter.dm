@@ -1,7 +1,3 @@
-
-/obj/item
-	var/smeltresult
-
 /obj/machinery/light/rogue/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
@@ -15,30 +11,45 @@
 	climb_offset = 10
 	on = TRUE
 	var/list/ore = list()
+	var/heat_time = 50 SECONDS
 	var/maxore = 1
 	var/cooking = 0
-	fueluse = 5 MINUTES
+	fueluse = 30 MINUTES
+	start_fuel = 5 MINUTES
+	fuel_modifier = 0.33
 	crossfire = FALSE
 
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = W
-		if(ore.len && !T.hingot)
+		var/obj/item/item_to_insert
+		if(ore.len && !T.has_ingot())
 			var/obj/item/I = ore[ore.len]
 			ore -= I
+			if(isnull(I))
+				return
 			I.forceMove(T)
-			T.hingot = I
+			T.update_icon()
 			user.visible_message(span_info("[user] retrieves [I] from [src]."))
 			if(on)
-				var/tyme = world.time
-				T.hott = tyme
-				addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 50)
-			T.update_icon()
+				T.make_hot(40 SECONDS)
 			return
+
+		if(ore.len < maxore && length(T.contents))
+			item_to_insert = T.contents[1]
+			if(item_to_insert.smeltresult)
+				item_to_insert.forceMove(src)
+				T.update_icon()
+				user.visible_message("<span class='warning'>[user] puts something in the smelter.</span>")
+				ore += item_to_insert
+				cooking = 0
 		if(on)
 			return
-	if(istype(W, /obj/item/rogueore/coal) && fueluse <= 0)
-		return ..()
+
+	if(W.firefuel)
+		if (..())
+			return
+
 	if((ore.len < maxore) && W.smeltresult)
 		W.forceMove(src)
 		ore += W
@@ -63,7 +74,6 @@
 	else
 		return ..()
 
-
 /obj/machinery/light/rogue/smelter/process()
 	..()
 	if(maxore > 1)
@@ -75,7 +85,7 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 20)
-					for(var/obj/item/I in ore)
+					for(var/obj/item/I in ore)	
 						if(I.smeltresult)
 							ore -= I
 							var/obj/item/R = new I.smeltresult(src)
@@ -96,7 +106,6 @@
 	anchored = TRUE
 	density = TRUE
 	maxore = 4
-	fueluse = 10 MINUTES
 	climbable = FALSE
 
 /obj/machinery/light/rogue/smelter/great/process()
@@ -108,17 +117,39 @@
 				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
 			else
 				if(cooking == 30)
-					var/alloy
+
+					var/alloy //moving each alloy to it's own var allows for possible additions later
+					var/steelalloy
+					var/bronzealloy
+					var/blacksteelalloy
+
 					for(var/obj/item/I in ore)
 						if(I.smeltresult == /obj/item/rogueore/coal)
-							alloy = alloy + 1
+							steelalloy = steelalloy + 1
 						if(I.smeltresult == /obj/item/ingot/iron)
-							alloy = alloy + 2
-					if(alloy == 7)
-						testing("ALLOYED")
+							steelalloy = steelalloy + 2
+						if(I.smeltresult == /obj/item/ingot/tin)
+							bronzealloy = bronzealloy + 1
+						if(I.smeltresult == /obj/item/ingot/copper)
+							bronzealloy = bronzealloy + 2
+						if(I.smeltresult == /obj/item/ingot/silver)
+							blacksteelalloy = blacksteelalloy + 1
+						if(I.smeltresult == /obj/item/ingot/steel)
+							blacksteelalloy = blacksteelalloy + 2
+
+					if(steelalloy == 7)
+						testing("STEEL ALLOYED")
+						maxore = 3 // Coal no longer turns to steel
 						alloy = /obj/item/ingot/steel
+					else if(bronzealloy == 7)
+						testing("BRONZE ALLOYED")
+						alloy = /obj/item/ingot/bronze
+					else if(blacksteelalloy == 7)
+						testing("BLACKSTEEL ALLOYED")
+						alloy = /obj/item/ingot/blacksteel
 					else
 						alloy = null
+						
 					if(alloy)
 						for(var/obj/item/I in ore)
 							ore -= I
@@ -133,6 +164,7 @@
 								var/obj/item/R = new I.smeltresult(src)
 								ore += R
 								qdel(I)
+					maxore = initial(maxore)
 					playsound(src,'sound/misc/smelter_fin.ogg', 100, FALSE)
 					visible_message(span_notice("[src] is finished."))
 					cooking = 31

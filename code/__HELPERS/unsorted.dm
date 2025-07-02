@@ -1,4 +1,5 @@
-
+var/list/cardinal = list( NORTH, SOUTH, EAST, WEST )
+var/list/alldirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 /*
  * A large number of misc global procs.
@@ -235,64 +236,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 	return FALSE
 
 
-//Picks a string of symbols to display as the law number for hacked or ion laws
-/proc/ionnum()
-	return "[pick("!","@","#","$","%","^","&")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")][pick("!","@","#","$","%","^","&","*")]"
-
-//Returns a list of unslaved cyborgs
-/proc/active_free_borgs()
-	. = list()
-	for(var/mob/living/silicon/robot/R in GLOB.alive_mob_list)
-		if(R.connected_ai || R.shell)
-			continue
-		if(R.stat == DEAD)
-			continue
-		if(R.emagged || R.scrambledcodes)
-			continue
-		. += R
-
-//Returns a list of AI's
-/proc/active_ais(check_mind=0)
-	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
-			continue
-		if(A.control_disabled)
-			continue
-		if(check_mind)
-			if(!A.mind)
-				continue
-		. += A
-	return .
-
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
-/proc/select_active_ai_with_fewest_borgs()
-	var/mob/living/silicon/ai/selected
-	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots.len > A.connected_robots.len))
-			selected = A
-
-	return selected
-
-/proc/select_active_free_borg(mob/user)
-	var/list/borgs = active_free_borgs()
-	if(borgs.len)
-		if(user)
-			. = input(user,"Unshackled cyborg signals detected:", "Cyborg Selection", borgs[1]) in sortList(borgs)
-		else
-			. = pick(borgs)
-	return .
-
-/proc/select_active_ai(mob/user)
-	var/list/ais = active_ais()
-	if(ais.len)
-		if(user)
-			. = input(user,"AI signals detected:", "AI Selection", ais[1]) in sortList(ais)
-		else
-			. = pick(ais)
-	return .
-
 //Returns a list of all items of interest with their name
 /proc/getpois(mobs_only=0,skip_mindless=0,team=null)
 	var/list/mobs = sortmobs()
@@ -300,7 +243,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/pois = list()
 	for(var/mob/M in mobs)
 		if(skip_mindless && (!M.mind || !M.ckey))
-//			if(!isbot(M) && !iscameramob(M) && !ismegafauna(M))
 			continue
 		if(M.client && M.client.holder && M.client.holder.fakekey) //stealthmins
 			continue
@@ -310,10 +252,6 @@ Turf and target are separate in case you want to teleport some distance from a t
 			name += " \[[M.real_name]\]"
 		if(M.stat == DEAD)
 			continue
-/*			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"*/
 		pois[name] = M
 
 	if(!mobs_only)
@@ -713,26 +651,106 @@ Turf and target are separate in case you want to teleport some distance from a t
 		return FALSE
 	return TRUE
 
+/proc/wash_atom(atom/A, clean = CLEAN_WEAK)
+	SEND_SIGNAL(A, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	if(isobj(A))
+		wash_obj(A,clean)
+		var/obj/O = A
+		O.wash_act(clean)
+	else if(isturf(A))
+		wash_turf(A,clean)
+	else if(isliving(A))
+		wash_mob(A,clean)
+
+/obj/proc/wash_act(clean = CLEAN_WEAK)
+	return
+
+/proc/wash_obj(obj/O, clean = CLEAN_WEAK)
+	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, clean)
+
+/proc/wash_turf(turf/tile, clean = CLEAN_WEAK)
+	SEND_SIGNAL(tile, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	for(var/obj/effect/E in tile)
+		if(is_cleanable(E))
+			qdel(E)
+
+/proc/wash_mob(mob/living/L, clean = CLEAN_WEAK)
+	SEND_SIGNAL(L, COMSIG_COMPONENT_CLEAN_ACT, clean)
+	if(iscarbon(L))
+		var/mob/living/carbon/M = L
+		. = TRUE
+
+		for(var/obj/item/I in M.held_items)
+			wash_obj(I)
+
+		if(M.back && wash_obj(M.back))
+			M.update_inv_back(0)
+
+		var/list/obscured = M.check_obscured_slots()
+
+		if(M.head && wash_obj(M.head,clean))
+			M.update_inv_head()
+
+		if(M.glasses && !(SLOT_GLASSES in obscured) && wash_obj(M.glasses,clean))
+			M.update_inv_glasses()
+
+		if(M.wear_mask && !(SLOT_WEAR_MASK in obscured) && wash_obj(M.wear_mask,clean))
+			M.update_inv_wear_mask()
+
+		if(M.ears && !(HIDEEARS in obscured) && wash_obj(M.ears,clean))
+			M.update_inv_ears()
+
+		if(M.wear_neck && !(SLOT_NECK in obscured) && wash_obj(M.wear_neck,clean))
+			M.update_inv_neck()
+
+		if(M.shoes && !(HIDESHOES in obscured) && wash_obj(M.shoes,clean))
+			M.update_inv_shoes()
+
+		var/washgloves = FALSE
+		if(M.gloves && !(HIDEGLOVES in obscured))
+			washgloves = TRUE
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+
+			if(H.wear_armor && wash_obj(H.wear_armor,clean))
+				H.update_inv_armor()
+			else if(H.wear_shirt && wash_obj(H.wear_shirt,clean))
+				H.update_inv_shirt()
+			else if(H.wear_pants && wash_obj(H.wear_pants,clean))
+				H.update_inv_pants()
+
+			if(washgloves)
+				SEND_SIGNAL(H, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+
+			if(!H.is_mouth_covered())
+				H.lip_style = null
+				H.update_body()
+
+			if(H.belt && wash_obj(H.belt,clean))
+				H.update_inv_belt()
+
+			if(H.cloak && wash_obj(H.cloak,clean))
+				H.update_inv_cloak()
+		else
+			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+	else
+		SEND_SIGNAL(L, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+
 /*
 Checks if that loc and dir has an item on the wall
 */
 GLOBAL_LIST_INIT(WALLITEMS, typecacheof(list(
-	/obj/machinery/power/apc, /obj/machinery/airalarm, /obj/item/radio/intercom,
-	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
-	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
-	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard, /obj/machinery/button,
-	/obj/machinery/computer/security/telescreen, /obj/machinery/embedded_controller/radio/simple_vent_controller,
-	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
-	/obj/structure/mirror, /obj/structure/fireaxecabinet, /obj/machinery/computer/security/telescreen/entertainment,
-	/obj/structure/sign/picture_frame
+	/obj/structure/noticeboard,
+	/obj/structure/mirror,
+	/obj/structure/fireaxecabinet,
 	)))
 
 GLOBAL_LIST_INIT(WALLITEMS_EXTERNAL, typecacheof(list(
-	/obj/machinery/camera, /obj/structure/camera_assembly,
-	/obj/structure/light_construct, /obj/machinery/light)))
+	/obj/machinery/light)))
 
 GLOBAL_LIST_INIT(WALLITEMS_INVERSE, typecacheof(list(
-	/obj/structure/light_construct, /obj/machinery/light)))
+	/obj/machinery/light)))
 
 
 /proc/gotwallitem(loc, dir, check_external = 0)
@@ -1062,30 +1080,6 @@ B --><-- A
 	sleep(duration)
 	A.cut_overlay(O)
 
-/proc/get_random_station_turf()
-	return safepick(get_area_turfs(pick(GLOB.the_station_areas)))
-
-/proc/get_safe_random_station_turf() //excludes dense turfs (like walls) and areas that have valid_territory set to FALSE
-	for (var/i in 1 to 5)
-		var/list/L = get_area_turfs(pick(GLOB.the_station_areas))
-		var/turf/target
-		while (L.len && !target)
-			var/I = rand(1, L.len)
-			var/turf/T = L[I]
-			var/area/X = get_area(T)
-			if(!T.density && X.valid_territory)
-				var/clear = TRUE
-				for(var/obj/O in T)
-					if(O.density)
-						clear = FALSE
-						break
-				if(clear)
-					target = T
-			if (!target)
-				L.Cut(I,I+1)
-		if (target)
-			return target
-
 
 /proc/get_closest_atom(type, list, source)
 	var/closest_atom
@@ -1261,22 +1255,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 #define FOR_DVIEW_END GLOB.dview_mob.loc = null
 
-//can a window be here, or is there a window blocking it?
-/proc/valid_window_location(turf/T, dir_to_check)
-	if(!T)
-		return FALSE
-	for(var/obj/O in T)
-		if(istype(O, /obj/machinery/door/window) && (O.dir == dir_to_check || dir_to_check == FULLTILE_WINDOW_DIR))
-			return FALSE
-		if(istype(O, /obj/structure/windoor_assembly))
-			var/obj/structure/windoor_assembly/W = O
-			if(W.ini_dir == dir_to_check || dir_to_check == FULLTILE_WINDOW_DIR)
-				return FALSE
-		if(istype(O, /obj/structure/window))
-			var/obj/structure/window/W = O
-			if(W.ini_dir == dir_to_check || W.ini_dir == FULLTILE_WINDOW_DIR || dir_to_check == FULLTILE_WINDOW_DIR)
-				return FALSE
-	return TRUE
 
 #define UNTIL(X) while(!(X)) stoplag()
 
@@ -1441,18 +1419,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		var/atom/the_atom2 = target
 		REMOVE_TRAIT(the_atom2,trait,source)
 
-/proc/get_random_food()
-	var/list/blocked = list()
-	blocked |= typesof(/obj/item/reagent_containers/food/snacks/customizable)
-
-	return pick(subtypesof(/obj/item/reagent_containers/food/snacks) - blocked)
-
-/proc/get_random_drink()
-	var/list/blocked = list(/obj/item/reagent_containers/food/drinks/soda_cans,
-		/obj/item/reagent_containers/food/drinks/bottle
-		)
-	return pick(subtypesof(/obj/item/reagent_containers/food/drinks) - blocked)
-
 //For these two procs refs MUST be ref = TRUE format like typecaches!
 /proc/weakref_filter_list(list/things, list/refs)
 	if(!islist(things) || !islist(refs))
@@ -1569,6 +1535,40 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 // Roguetown
 
+#define VALID_FISHING_SPOTS list(\
+	/turf/open/water/river,\
+	/turf/open/water/cleanshallow,\
+	/turf/open/water/sea,\
+	/turf/open/water/sea/deep,\
+	/turf/open/water/swamp,\
+	/turf/open/water/swamp/deep )
+
+//Valid spots for fishing add to it if there's more.
+/proc/is_valid_fishing_spot(turf/T)
+	for(var/i in VALID_FISHING_SPOTS)
+		if(istype(T, i))
+			return TRUE
+	return FALSE
+
+
+#define VALID_HUNTING_AREAS list(\
+	/area/rogue/outdoors/bog )
+
+proc/is_valid_hunting_area(area/A)
+	for(var/i in VALID_HUNTING_AREAS)
+		if(istype(A, i))
+			return TRUE
+	return FALSE
+
+// How long an action (e.g. do_after) can takes IN SECONDS by using skill checks
+proc/get_skill_delay(skill_level, fastest = 0.5, slowest = 5) 
+	if(skill_level == SKILL_LEVEL_NONE) //can't divivde by zero
+		return slowest SECONDS
+	else
+		var/percentage = skill_level / SKILL_LEVEL_LEGENDARY // Turns it into a percentage
+		var/result = LERP(slowest, fastest, percentage)
+		return result SECONDS
+
 /proc/minone(input)
 	if(!input)
 		return FALSE
@@ -1576,3 +1576,87 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return input
 	else
 		return 1
+
+// -------- ECONOMY RELATED GLOBAL LISTS
+GLOBAL_LIST_INIT(ITEM_DOES_NOT_GENERATE_VAULT_RENT, typecacheof(list(
+	/obj/item/roguecoin
+	)))
+
+//Vars that will not be copied when using /DuplicateObject
+GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
+	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup"
+	))
+
+/proc/DuplicateObject(atom/original, perfectcopy = TRUE, sameloc, atom/newloc = null, nerf, holoitem)
+	RETURN_TYPE(original.type)
+	if(!original)
+		return
+	var/atom/O
+
+	if(sameloc)
+		O = new original.type(original.loc)
+	else
+		O = new original.type(newloc)
+
+	if(perfectcopy && O && original)
+		for(var/V in original.vars - GLOB.duplicate_forbidden_vars)
+			if(islist(original.vars[V]))
+				var/list/L = original.vars[V]
+				O.vars[V] = L.Copy()
+			else if(istype(original.vars[V], /datum))
+				continue	// this would reference the original's object, that will break when it is used or deleted.
+			else
+				O.vars[V] = original.vars[V]
+
+	if(isobj(O))
+		var/obj/N = O
+		if(holoitem)
+			N.resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // holoitems do not burn
+
+		if(nerf && isitem(O))
+			var/obj/item/I = O
+			I.damtype = STAMINA // thou shalt not
+
+		N.update_icon()
+
+	if(holoitem)
+		O.flags_1 |= HOLOGRAM_1
+		for(var/atom/thing in O)
+			thing.flags_1 |= HOLOGRAM_1
+		if(ismachinery(O))
+			var/obj/machinery/M = O
+			for(var/atom/contained_atom in M.component_parts)
+				contained_atom.flags_1 |= HOLOGRAM_1
+	return O
+
+/*================
+handle interaction
+================*/
+/*	- Takes the current item in your active hand, inactive hand, and what was hit (the src)
+	  and feeds it through the food_interaction recipes to determine what to do. This way
+	  we no longer have to write an copy paste a bunch of attackby code everywhere. - */
+
+/proc/food_handle_interaction(obj/item/source, mob/living/user, list/items, interaction_type)
+	var/obj/method_result
+	var/datum/food_handle_recipes/recipe = select_interaction_recipe(GLOB.food_combinations, items, interaction_type)
+
+	if (!recipe)
+		return FALSE
+
+	method_result = recipe.result
+
+	if(recipe.pre_check(user, items) == FALSE)
+		return FALSE //We can't do it!
+
+	to_chat(user, span_warning("[recipe.crafting_message]"))
+	playsound(user.loc, recipe.craft_sound, 100)
+	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
+	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
+	if(do_after(user, delay, source))
+		if(method_result != null)
+			new method_result(source.loc) // Always be on the table
+		recipe.clear_items(items)
+		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
+		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8) //TEMP: MAKE THIS ATTACHED TO RECIPES AT SOME POINT
+	return TRUE

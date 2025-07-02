@@ -125,6 +125,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(href_list["schizohelp"])
 		answer_schizohelp(locate(href_list["schizohelp"]))
 		return
+	
+	if(href_list["view_species_info"])
+		view_species_info(href_list["view_species_info"])
 
 	switch(href_list["_src_"])
 		if("holder")
@@ -226,7 +229,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
-//	chatOutput = new /datum/chatOutput(src)
+	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
@@ -278,6 +281,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.clientfps
+
+	if(prefs.prefer_old_chat == FALSE)
+		spawn() // Goonchat does some non-instant checks in start()
+			chatOutput.start()
 
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report
@@ -349,8 +356,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
-
-//	chatOutput.start() // Starts the chat
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -455,8 +460,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		toggle_fullscreeny(FALSE)
 
 	if(prefs.anonymize)
-		if(get_playerquality(ckey) > -5)
-			GLOB.anonymize |= ckey
+		GLOB.anonymize |= ckey
 
 	if(ckey in GLOB.clientmessages)
 		for(var/message in GLOB.clientmessages[ckey])
@@ -473,7 +477,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	to_chat(src, get_message_output("message", ckey))
 
-
+	
 
 //	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 //		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
@@ -505,6 +509,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
 		if (menuitem)
 			menuitem.Load_checked(src)
+
+
+	if(!funeral_login())
+		log_game("[key_name(src)] on login: had an issue with funeral-checking logic.")
 
 	Master.UpdateTickRate()
 
@@ -550,6 +558,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
+	QDEL_NULL(chatOutput)
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
@@ -873,6 +882,12 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		ip_intel = res.intel
 
 /client/Click(atom/object, atom/location, control, params)
+	if(click_intercept_time)
+		if(click_intercept_time >= world.time)
+			click_intercept_time = 0 //Reset and return. Next click should work, but not this one.
+			return
+		click_intercept_time = 0 //Just reset. Let's not keep re-checking forever.
+
 	var/ab = FALSE
 	var/list/L = params2list(params)
 
@@ -1081,6 +1096,9 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New()
 	..()
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		winset(src, null, "browser-options=find")
+		// byondstorage,devtools <- other options
 	fullscreen()
 
 /client/proc/give_award(achievement_type, mob/user)
@@ -1147,3 +1165,57 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		log_game("COMMEND: [ckey] commends [theykey].")
 		log_admin("COMMEND: [ckey] commends [theykey].")
 	return
+
+// Handles notifying funeralized players on login, or forcing them back to lobby, depending on configs. Called on /client/New().
+/client/proc/funeral_login()
+	if(QDELETED(mob) || QDELETED(mob.mind))
+		return FALSE
+	if(isnewplayer(mob))
+		return TRUE
+	var/buried_message
+	if(!CONFIG_GET(flag/force_respawn_on_funeral)) // by default, just notify funeralized people
+		buried_message = span_notice("Welcome back. Your body was funeralized, and you can respawn.")
+		if(isroguespirit(mob))
+			var/mob/living/carbon/spirit/spirit = mob
+			if(spirit.prevmind?.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the carriage to immediately return to the lobby."))
+				return TRUE
+		else if(isliving(mob))
+			var/mob/living/livingg = mob
+			if((livingg.stat >= DEAD) && livingg.mind.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the \"Journey to the Underworld\" verb to immediately return to the lobby."))
+				return TRUE
+		else if(isobserver(mob))
+			var/mob/dead/observer/observer = mob
+			if(observer.mind.funeral)
+				to_chat(src, buried_message + span_notice("\nUse the \"Journey to the Underworld\" verb to immediately return to the lobby."))
+				return TRUE
+		return FALSE
+	else // forcing funeralized people back to lobby is toggled on
+		if(holder) // Basically, if(client.isadmin). Excludes auto-deadmins
+			return TRUE
+		buried_message = span_rose("With my body buried in creation, my soul passes on in peace...")
+		// we have to do the silly if-else chain for reliability with types
+		if(isroguespirit(mob))
+			var/mob/living/carbon/spirit/S = mob
+			if(S.prevmind?.funeral)
+				to_chat(src, buried_message)
+				if(S.speaking_with)
+					to_chat(S.speaking_with, "The soul returns to the underworld.")
+				var/sghost = burial_rite_make_ghost(S)
+				burial_rite_return_ghost_to_lobby(sghost)
+				return TRUE
+		else if(isobserver(mob) && !isadminobserver(mob))
+			var/mob/dead/observer/O = mob
+			if(O.mind.funeral)
+				to_chat(src, buried_message)
+				burial_rite_return_ghost_to_lobby(O)
+				return TRUE
+		else if(isliving(mob)) // just in case the ghosting stuff messed up for some reason
+			var/mob/living/L = mob
+			if(L.mind.funeral) // no dead check, because w/ this config, once you're given a funeral, it's done.
+				to_chat(src, buried_message)
+				var/lghost = burial_rite_make_ghost(L)
+				burial_rite_return_ghost_to_lobby(lghost)
+		return FALSE
+	return FALSE

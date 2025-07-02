@@ -7,6 +7,7 @@
 	slot = ORGAN_SLOT_TAIL
 	var/can_wag = TRUE
 	var/wagging = FALSE
+	var/can_penetrate = FALSE
 
 /obj/item/organ/tail/cat
 	name = "cat tail"
@@ -19,6 +20,7 @@
 	color = "#116611"
 	accessory_type = /datum/sprite_accessory/tail/lizard/smooth
 	icon_state = "lizardtail"
+	can_penetrate = TRUE
 
 /obj/item/organ/tail/lizard/fake
 	name = "fabricated lizard tail"
@@ -59,6 +61,7 @@
 /obj/item/organ/tail/tiefling
 	name = "tiefling tail"
 	accessory_type =  /datum/sprite_accessory/tail/tiefling
+	can_penetrate = TRUE
 
 /obj/item/organ/tail/akula
 	name = "axian tail"
@@ -70,3 +73,4 @@
 	color = "#116611"
 	accessory_type =  /datum/sprite_accessory/tail/lizard/kobold
 	icon_state = "koboldtail"
+	can_penetrate = TRUE

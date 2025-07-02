@@ -1,19 +1,19 @@
 /obj/item/reagent_containers/pill
 	name = "pill"
 	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "pill"
-	item_state = "pill"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	icon_state = "pillb"
+	item_state = "pillb"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	possible_transfer_amounts = list()
 	volume = 50
-	grind_results = list()
+	grind_results = null
 	var/apply_type = INGEST
 	var/apply_method = "swallow"
 	var/rename_with_volume = FALSE
 	var/self_delay = 0 //pills are instant, this is because patches inheret their aplication from pills
-	var/dissolvable = TRUE
+	var/dissolvable = FALSE
 
 /obj/item/reagent_containers/pill/Initialize()
 	. = ..()
@@ -36,7 +36,8 @@
 		if(self_delay)
 			if(!do_mob(user, M, self_delay))
 				return FALSE
-		to_chat(M, span_notice("I [apply_method] [src]."))
+		to_chat(M, span_notice("I pop [src]."))
+		playsound(src, "sound/misc/pillpop.ogg", 100, TRUE)
 
 	else
 		M.visible_message(span_danger("[user] attempts to force [M] to [apply_method] [src]."), \
@@ -44,7 +45,8 @@
 		if(!do_mob(user, M))
 			return FALSE
 		M.visible_message(span_danger("[user] forces [M] to [apply_method] [src]."), \
-							span_danger("[user] forces you to [apply_method] [src]."))
+		span_danger("[user] forces you to [apply_method] [src]."))
+		playsound(src, "sound/misc/pillpop.ogg", 100, TRUE)
 
 	if(icon_state == "pill4" && prob(5)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), M, span_notice("[pick(strings(REDPILL_FILE, "redpill_questions"))]")), 50)
@@ -85,117 +87,6 @@
 	desc = ""
 	icon_state = "pill5"
 	list_reagents = list(/datum/reagent/toxin/cyanide = 50)
-
-/obj/item/reagent_containers/pill/adminordrazine
-	name = "adminordrazine pill"
-	desc = ""
-	icon_state = "pill16"
-	list_reagents = list(/datum/reagent/medicine/adminordrazine = 50)
-
-/obj/item/reagent_containers/pill/morphine
-	name = "morphine pill"
-	desc = ""
-	icon_state = "pill8"
-	list_reagents = list(/datum/reagent/medicine/morphine = 30)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/stimulant
-	name = "stimulant pill"
-	desc = ""
-	icon_state = "pill19"
-	list_reagents = list(/datum/reagent/medicine/ephedrine = 10, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 30)
-
-/obj/item/reagent_containers/pill/salbutamol
-	name = "salbutamol pill"
-	desc = ""
-	icon_state = "pill16"
-	list_reagents = list(/datum/reagent/medicine/salbutamol = 30)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/multiver
-	name = "multiver pill"
-	desc = ""
-	icon_state = "pill17"
-	list_reagents = list(/datum/reagent/medicine/C2/multiver = 5, /datum/reagent/medicine/granibitaluri = 5)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/epinephrine
-	name = "epinephrine pill"
-	desc = ""
-	icon_state = "pill5"
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/mannitol
-	name = "mannitol pill"
-	desc = ""
-	icon_state = "pill17"
-	list_reagents = list(/datum/reagent/medicine/mannitol = 50)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/mutadone
-	name = "mutadone pill"
-	desc = ""
-	icon_state = "pill20"
-	list_reagents = list(/datum/reagent/medicine/mutadone = 50)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/salicylic
-	name = "salicylic acid pill"
-	desc = ""
-	icon_state = "pill9"
-	list_reagents = list(/datum/reagent/medicine/sal_acid = 24)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/oxandrolone
-	name = "oxandrolone pill"
-	desc = ""
-	icon_state = "pill11"
-	list_reagents = list(/datum/reagent/medicine/oxandrolone = 24)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/insulin
-	name = "insulin pill"
-	desc = ""
-	icon_state = "pill18"
-	list_reagents = list(/datum/reagent/medicine/insulin = 50)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/psicodine
-	name = "psicodine pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/psicodine = 10)
-	icon_state = "pill22"
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/penacid
-	name = "pentetic acid pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/pen_acid = 10)
-	icon_state = "pill22"
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/neurine
-	name = "neurine pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/neurine = 10)
-	icon_state = "pill22"
-	rename_with_volume = TRUE
-
-///////////////////////////////////////// this pill is used only in a legion mob drop
-/obj/item/reagent_containers/pill/shadowtoxin
-	name = "black pill"
-	desc = ""
-	icon_state = "pill9"
-	color = "#454545"
-	list_reagents = list(/datum/reagent/mutationtoxin/shadow = 1)
-
-//////////////////////////////////////// drugs
-/obj/item/reagent_containers/pill/zoom
-	name = "yellow pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/medicine/synaptizine = 10, /datum/reagent/drug/nicotine = 10, /datum/reagent/drug/methamphetamine = 1)
-	icon_state = "pill7"
 
 
 /obj/item/reagent_containers/pill/happy
@@ -239,23 +130,35 @@
 	if(prob(20))
 		desc = pick(descs)
 
-/obj/item/reagent_containers/pill/potassiodide
-	name = "potassium iodide pill"
-	desc = ""
-	icon_state = "pill9"
-	list_reagents = list(/datum/reagent/medicine/potass_iodide = 15)
-	rename_with_volume = TRUE
-
-/obj/item/reagent_containers/pill/trophazole
-	name = "trophazole pill"
-	desc = ""
-	icon_state = "pill9"
-	list_reagents = list(/datum/reagent/medicine/trophazole = 15)
-	rename_with_volume = TRUE
-
 /obj/item/reagent_containers/pill/iron
 	name = "iron pill"
 	desc = ""
 	icon_state = "pill9"
 	list_reagents = list(/datum/reagent/iron = 30)
 	rename_with_volume = TRUE
+
+/obj/item/reagent_containers/pill/caffpill
+	name = "WAKE-UP"
+	desc = "Pep-pills. A promise to make you alert."
+	icon_state = "pillg"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/medicine/caffeine = 1, /datum/reagent/medicine/antihol = 10, /datum/reagent/consumable/coffee = 81) //coffee OD is safe. causes jitters for awhile.
+	dissolvable = FALSE
+	grind_results = null
+
+/obj/item/reagent_containers/pill/caffpill/attack(mob/M, mob/user, def_zone)
+	if(istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+		H.remove_status_effect(/datum/status_effect/debuff/sleepytime)
+		H.remove_stress(/datum/stressevent/sleepytime)
+	. = ..()
+	
+
+/obj/item/reagent_containers/pill/pnkpill
+	name = "PNKBAWLS"
+	desc = "Little pink balls. From a cursory glance, you can be pretty certain this is watered down red and ash."
+	icon_state = "pinkb"
+	icon = 'icons/roguetown/items/surgery.dmi'
+	list_reagents = list(/datum/reagent/ash = 15, /datum/reagent/iron = 15, /datum/reagent/medicine/healthpot = 15)
+	dissolvable = FALSE
+	grind_results = null

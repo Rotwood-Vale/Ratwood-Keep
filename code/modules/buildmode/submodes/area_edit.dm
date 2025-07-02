@@ -35,10 +35,6 @@
 		if(!areaname || !length(areaname))
 			return
 		storedarea = new areatype
-		storedarea.power_equip = 0
-		storedarea.power_light = 0
-		storedarea.power_environ = 0
-		storedarea.always_unpowered = 0
 		storedarea.name = areaname
 		areaimage.loc = storedarea // color our area
 

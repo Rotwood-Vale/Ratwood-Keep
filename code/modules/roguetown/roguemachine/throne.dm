@@ -25,7 +25,7 @@ GLOBAL_VAR(king_throne)
 	M.reset_offsets("bed_buckle")
 
 /obj/structure/roguethrone/Initialize()
-	..()
+	. = ..()
 	if(GLOB.king_throne == null)
 		GLOB.king_throne = src
 	if(GLOB.lordprimary)

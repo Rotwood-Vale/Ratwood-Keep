@@ -64,8 +64,15 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//End name span.
 	var/endspanpart = "</span></span>"
 
+	var/message_colour = null
+	if (ishuman(src) && ishuman(speaker))
+		var/mob/living/carbon/human/recipient = src
+		var/mob/living/carbon/human/sender = speaker
+		if (recipient.mind)
+			message_colour = recipient.mind.get_special_person_colour(sender)
+
 	//Message
-	var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mode)]</span></span>"
+	var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mode, FALSE, message_colour)]</span></span>"
 
 	var/arrowpart = ""
 
@@ -73,7 +80,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		var/turf/speakturf = get_turf(speaker)
 		var/turf/sourceturf = get_turf(src)
 		if(istype(speakturf) && istype(sourceturf) && !(speakturf in get_hear(7, sourceturf)))
-			switch(get_dir(src,speaker))
+			switch(angle2dir(Get_Angle(src, speaker)))
 				if(NORTH)
 					arrowpart = " ⇑"
 				if(SOUTH)
@@ -121,14 +128,16 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	else
 		return verb_say
 
-/atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode)
+/atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode, message_colour = null)
 	if(!input)
 		input = "..."
 
 	if(copytext_char(input, length_char(input) - 1) == "!!")
 		spans |= SPAN_YELL
 
-	var/spanned = attach_spans(input, spans)
+	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
+
+	var/spanned = attach_spans(input, spans, message_colour)
 	if(isliving(src))
 		var/mob/living/L = src
 		if(L.cmode)
@@ -136,27 +145,28 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return "[say_mod(input, message_mode)], \"[spanned]\""
 
 /atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mode)
+	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
 	var/pos = findtext_char(input, "*")
 	return pos? copytext_char(input, pos + 1) : input
 
 /atom/movable/proc/check_language_hear(language)
 	return FALSE
 
-/atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, message_mode, no_quote = FALSE)
+/atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, message_mode, no_quote = FALSE, message_colour = null)
 	if(has_language(language) || check_language_hear(language))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
-			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode)
+			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode, message_colour)
 		else
-			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
+			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode, message_colour)
 	else if(language)
 		var/atom/movable/AM = speaker.GetSource()
 		var/datum/language/D = GLOB.language_datum_instances[language]
 		raw_message = D.scramble(raw_message)
 		if(AM)
-			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode)
+			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode, message_colour)
 		else
-			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
+			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode, message_colour)
 	else
 		return "makes a strange sound."
 
@@ -237,13 +247,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 			job = "Unknown"
 	else if(iscarbon(M))  // Carbon nonhuman
 		job = "No ID"
-	else if(isAI(M))  // AI
-		job = "AI"
-	else if(iscyborg(M))  // Cyborg
-		var/mob/living/silicon/robot/B = M
-		job = "[B.designation] Cyborg"
-	else if(istype(M, /mob/living/silicon/pai))  // Personal AI (pAI)
-		job = "Personal AI"
 	else if(isobj(M))  // Cold, emotionless machines
 		job = "Machine"
 	else  // Unidentifiable mob
@@ -255,5 +258,3 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 /atom/movable/virtualspeaker/GetSource()
 	return source
 
-/atom/movable/virtualspeaker/GetRadio()
-	return radio

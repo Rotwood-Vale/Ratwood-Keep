@@ -1,6 +1,6 @@
 #define TARGET_CLOSEST 1
 #define TARGET_RANDOM 2
-
+#define MAGIC_XP_MULTIPLIER 0.5 //used to miltuply the amount of xp gained from spells
 
 /obj/effect/proc_holder
 	var/panel = "Debug"//What panel the proc holder needs to go on.
@@ -26,6 +26,8 @@
 	var/chargedloop = null
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
+
+	/// This will be the spells image and it is located in icons/mob/actions/roguespells.dmi
 	var/overlay_state = null
 
 
@@ -129,6 +131,9 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	density = FALSE
 	opacity = 0
 
+	var/cost = 0 //how many points it costs to learn this spell
+	var/xp_gain = FALSE
+
 	var/school = "evocation" //not relevant at now, but may be important later if there are changes to how spells work. the ones I used for now will probably be changed... maybe spell presets? lacking flexibility but with some other benefit?
 
 	var/charge_type = "recharge" //can be recharge or charges, see charge_max and charge_counter descriptions; can also be based on the holder's vars now, use "holder_var" for that
@@ -144,7 +149,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/holder_var_amount = 20 //same. The amount adjusted with the mob's var when the spell is used
 
 	var/clothes_req = FALSE //see if it requires clothes
-	var/cult_req = FALSE //SPECIAL SNOWFLAKE clothes required for cult only spells
 	var/human_req = FALSE //spell can only be cast by humans
 	var/nonabstract_req = FALSE //spell can only be cast by mobs that are physical entities
 	var/stat_allowed = FALSE //see if it requires being conscious/alive, need to set to 1 for ghostpells
@@ -254,6 +258,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		to_chat(user, span_warning("I can't cast spells!"))
 		return FALSE
 
+	if(HAS_TRAIT(user, TRAIT_NOC_CURSE))
+		to_chat(user, span_warning("My magicka has left me..."))
+		return FALSE
+
 	if(!antimagic_allowed)
 		var/antimagic = user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE)
 		if(antimagic)
@@ -273,27 +281,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			to_chat(user, span_warning("I can't get the words out!"))
 			return FALSE
 
-		var/list/casting_clothes = typecacheof(list(/obj/item/clothing/suit/wizrobe,
-		/obj/item/clothing/suit/space/hardsuit/wizard,
-		/obj/item/clothing/head/wizard,
-		/obj/item/clothing/head/helmet/space/hardsuit/wizard,
-		/obj/item/clothing/suit/space/hardsuit/shielded/wizard,
-		/obj/item/clothing/head/helmet/space/hardsuit/shielded/wizard))
-
-		if(clothes_req) //clothes check
-			if(!is_type_in_typecache(H.wear_armor, casting_clothes))
-				to_chat(H, span_warning("I don't feel strong enough without your robe!"))
-				return FALSE
-			if(!is_type_in_typecache(H.head, casting_clothes))
-				to_chat(H, span_warning("I don't feel strong enough without your hat!"))
-				return FALSE
-		if(cult_req) //CULT_REQ CLOTHES CHECK
-			if(!istype(H.wear_armor, /obj/item/clothing/suit/magusred) && !istype(H.wear_armor, /obj/item/clothing/suit/space/hardsuit/cult))
-				to_chat(H, span_warning("I don't feel strong enough without your armor."))
-				return FALSE
-			if(!istype(H.head, /obj/item/clothing/head/magus) && !istype(H.head, /obj/item/clothing/head/helmet/space/hardsuit/cult))
-				to_chat(H, span_warning("I don't feel strong enough without your helmet."))
-				return FALSE
 		if(miracle && !H.devotion?.check_devotion(src))
 			to_chat(H, span_warning("I don't have enough devotion!"))
 			return FALSE
@@ -301,7 +288,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if(clothes_req || human_req)
 			to_chat(user, span_warning("This spell can only be cast by humans!"))
 			return FALSE
-		if(nonabstract_req && (isbrain(user) || ispAI(user)))
+		if(nonabstract_req && (isbrain(user)))
 			to_chat(user, span_warning("This spell can only be cast by physical beings!"))
 			return FALSE
 
@@ -407,6 +394,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			recharging = FALSE
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
+	user.mob_timers[MT_SPELLSNEAK] = world.time //no more stealth mages for you.
 	before_cast(targets, user = user)
 	invocation(user)
 	if(user && user.ckey)
@@ -647,7 +635,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(!ishuman(user))
 		if(clothes_req || human_req)
 			return FALSE
-		if(nonabstract_req && (isbrain(user) || ispAI(user)))
+		if(nonabstract_req && (isbrain(user)))
 			return FALSE
 	if((invocation_type == "whisper" || invocation_type == "shout") && isliving(user))
 		var/mob/living/living_user = user
@@ -681,3 +669,4 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	user.visible_message(span_warning("A wreath of gentle light passes over [user]!"), span_notice("I wreath myself in healing light!"))
 	user.adjustBruteLoss(-10)
 	user.adjustFireLoss(-10)
+

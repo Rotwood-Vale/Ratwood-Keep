@@ -19,7 +19,7 @@
 			/obj/item/clothing/mask/rogue/facemask/steel,
 			/obj/item/clothing/neck/roguetown/bervor,
 			/obj/item/clothing/wrists/roguetown/bracers,
-			/obj/item/clothing/shoes/roguetown/boots/armor
+			/obj/item/clothing/shoes/roguetown/armor/steel
 			)
 	var/static/list/selectable_colors = list(
   		"Scrape Off Coating" = "#ffffff",
@@ -47,7 +47,8 @@
 		icon_state = "treatment0"
 
 /obj/structure/treating_furnace/Destroy()
-	inserted.forceMove(drop_location())
+	if(inserted)
+		inserted.forceMove(drop_location())
 	return ..()
 
 /obj/structure/treating_furnace/attackby(obj/item/I, mob/living/user)

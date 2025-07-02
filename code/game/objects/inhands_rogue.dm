@@ -1,12 +1,40 @@
 /obj/item
-	var/list/onprop = list()
+	/// A lazylist to store inhands data.
+	var/list/onprop
 	var/d_type = "blunt"
-//#ifdef TESTSERVER
+	var/worn_in
 	var/force_reupdate_inhand = TRUE
-//#else
-//	var/force_reupdate_inhand = FALSE
-//#endif
+	
+// Initalize addon for the var for custom inhands 32x32.
 
+/obj/item/Initialize()
+	. = ..()
+	if(!experimental_inhand)
+		inhand_x_dimension = 32
+		inhand_y_dimension = 32
+
+// This can't be where /item types root from is it??
+/* Allows modifying items by calling the hammer's proc.
+Not the best place for it but right clicking is based on the item you click
+And not the item you are using in your hand. It'd be nice if it were not the case... */
+/obj/item/attack_right(mob/user)
+	var/hasanvil = locate(/obj/machinery/anvil) in (loc)
+	if(!hasanvil)
+		return ..()
+	if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer/))
+		var/obj/item/rogueweapon/hammer/H = user.get_active_held_item()
+		if(obj_integrity >= max_integrity)
+			H.modify_item(src, user)
+	. = ..()
+
+
+// Helper items for spriters so they can see how in-hands look in game.
+// They're basically red square sprites placed on the floor so spriters can adjust their sprites properly
+// Used on admin testing area only.
+
+GLOBAL_LIST_INIT(IconStates_cache, list())
+
+// 32x32 in-hand helper item
 /obj/item/inhand_tester
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "inhand_test"
@@ -24,6 +52,8 @@
 	var/static/list/onmob_sprites = list()
 	var/icon/onmob = onmob_sprites["[tag][behind][mirrored][used_index]"]
 	if(!onmob || force_reupdate_inhand)
+		if(force_reupdate_inhand)
+			has_behind_state = null
 		onmob = fcopy_rsc(generateonmob(tag, prop, behind, mirrored))
 		onmob_sprites["[tag][behind][mirrored][used_index]"] = onmob
 	return onmob
@@ -60,6 +90,26 @@
 		if(0.7)
 			return 1
 
+// For checking if we have a specific icon state in an icon.
+// Cached cause asking icons is expensive. This is still expensive, so avoid using it if
+// you can reasonably expect the icon_state to exist beforehand, or if you can cache the
+// value somewhere.
+GLOBAL_LIST_EMPTY(icon_state_cache)
+/proc/check_state_in_icon(var/checkstate, var/checkicon)
+	// isicon() is apparently quite expensive so short-circuit out early if we can.
+	if(!istext(checkstate) || isnull(checkicon) || !(isfile(checkicon) || isicon(checkicon)))
+		return FALSE
+	var/checkkey = "\ref[checkicon]"
+	var/list/check = GLOB.icon_state_cache[checkkey]
+	if(!check)
+		check = list()
+		for(var/istate in icon_states(checkicon))
+			check[istate] = TRUE
+		GLOB.icon_state_cache[checkkey] = check
+	. = check[checkstate]
+
+/obj/item/var/has_behind_state
+
 /obj/item/proc/generateonmob(tag, prop, behind, mirrored)
 	var/list/used_prop = prop
 	var/UH = 64
@@ -69,18 +119,18 @@
 	var/icon/blended
 	var/skipoverlays = FALSE
 	if(behind)
-		var/icon/J = new(icon)
-		var/list/istates = J.IconStates()
-		if(istates.Find("[icon_state]_behind"))
+		if(!(icon in GLOB.IconStates_cache))
+			var/icon/J = new(icon)
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache[icon] = istates
+
+		if("[icon_state]_behind" in GLOB.IconStates_cache[icon])
 			blended=icon("icon"=icon, "icon_state"="[icon_state]_behind")
 			skipoverlays = TRUE
 		else
-		//	blended=icon("icon"=icon, "icon_state"=icon_state)
-//			blended=getFlatIcon(src)
 			blended=icon("icon"=icon, "icon_state"=icon_state)
 	else
-	//	blended=icon("icon"=icon, "icon_state"=icon_state)
-//		blended=getFlatIcon(src)
 		blended=icon("icon"=icon, "icon_state"=icon_state)
 
 	if(!blended)
@@ -708,16 +758,10 @@
 		if(!used_cat)
 			used_cat = "gen"
 
-		for(var/X in I.onprop)
-			if(X == used_cat)
-				var/list/L = I.onprop[X]
-				if(L.len)
-					if(!needtofind in L)
-						L += needtofind
-					for(var/P in L)
-						if(P == needtofind)
-							L[P] += 0.1
-							to_chat(LI, "[needtofind] = [L[P]]")
+		if(length(I.onprop?[used_cat]))
+			var/list/L = I.onprop[used_cat]
+			L[needtofind] += 0.1
+			to_chat(LI, "[needtofind] = [L[needtofind]]")
 	LI.update_inv_hands()
 	LI.update_inv_belt()
 	LI.update_inv_back()
@@ -752,16 +796,10 @@
 		if(!used_cat)
 			used_cat = "gen"
 
-		for(var/X in I.onprop)
-			if(X == used_cat)
-				var/list/L = I.onprop[X]
-				if(L.len)
-					if(!needtofind in L)
-						L += needtofind
-					for(var/P in L)
-						if(P == needtofind)
-							L[P] -= 0.1
-							to_chat(LI, "[needtofind] = [L[P]]")
+		if(length(I.onprop?[used_cat]))
+			var/list/L = I.onprop[used_cat]
+			L[needtofind] -= 0.1
+			to_chat(LI, "[needtofind] = [L[needtofind]]")
 	LI.update_inv_hands()
 	LI.update_inv_belt()
 	LI.update_inv_back()

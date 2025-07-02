@@ -20,6 +20,9 @@
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
 
+/obj/item/roguebin/on_reagent_change(changetype)
+	update_icon()
+
 /obj/item/roguebin/Initialize()
 	if(!base_state)
 		create_reagents(600, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
@@ -141,7 +144,8 @@
 			return TRUE
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
-		if(T.hingot && istype(T.hingot))
+		var/obj/item/ingot/tong_ingot = T.get_ingot()
+		if(tong_ingot && istype(tong_ingot, /obj/item/ingot))
 			return TRUE
 	return FALSE
 
@@ -150,26 +154,31 @@
 		return ..()
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
-		if(T.hingot && istype(T.hingot))
+		var/obj/item/ingot/tong_ingot = T.get_ingot()
+		if(!tong_ingot)
+			. = ..()
+			return
+
+		if(tong_ingot && istype(tong_ingot, /obj/item/ingot/))
 			var/removereg = /datum/reagent/water
 			if(!reagents.has_reagent(/datum/reagent/water, 5))
 				removereg = /datum/reagent/water/gross
 				if(!reagents.has_reagent(/datum/reagent/water/gross, 5))
 					to_chat(user, span_warning("Need more water to quench in."))
 					return
-			if(!T.hingot.currecipe)
+			if(!tong_ingot.currecipe)
 				to_chat(user, span_warning("Huh?"))
 				return
-			if(T.hingot.currecipe.progress != 100)
-				to_chat(user, span_warning("It's not finished yet."))
+			if(tong_ingot.currecipe.progress != 100)
+				to_chat(user, span_warning("tong_ingott's not finished yet."))
 				return
-			if(!T.hott)
+			if(!tong_ingot.ishot)
 				to_chat(user, span_warning("I need to heat it to temper the metal."))
 				return
 			var/used_turf = user.loc
 			if(!isturf(used_turf))
 				used_turf = get_turf(src)
-			var/datum/anvil_recipe/R = T.hingot.currecipe
+			var/datum/anvil_recipe/R = tong_ingot.currecipe
 			if(islist(R.created_item))
 				var/list/L = R.created_item
 				for(var/IT in L)
@@ -177,7 +186,7 @@
 			else
 				new R.created_item(used_turf)
 			playsound(src,pick('sound/items/quench_barrel1.ogg','sound/items/quench_barrel2.ogg'), 100, FALSE)
-			QDEL_NULL(T.hingot)
+			QDEL_NULL(tong_ingot)
 			T.update_icon()
 			reagents.remove_reagent(removereg, 5)
 			var/datum/reagent/water_to_dirty = reagents.has_reagent(/datum/reagent/water, 5)

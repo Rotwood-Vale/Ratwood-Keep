@@ -79,16 +79,12 @@
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
 
 #define MONKEY_BODYPART "monkey"
-#define ALIEN_BODYPART "alien"
-#define LARVA_BODYPART "larva"
 #define DEVIL_BODYPART "devil"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines for carbon mobs
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSmobs.wait/30)
-
-#define STAMINA_REGEN_BLOCK_TIME (10 SECONDS)
 
 #define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 400K point
@@ -238,10 +234,13 @@
 #define AI_OFF		3
 #define AI_Z_OFF	4
 
-#define AI_COMBAT	5
-#define AI_RETREAT	6
-#define AI_HUNT		7
-#define AI_FLEE		8
+// these are exclusively for hostile humantype mobs
+#define NPC_AI_OFF		0
+#define NPC_AI_IDLE		1
+#define NPC_AI_COMBAT	2
+#define NPC_AI_RETREAT	3
+#define NPC_AI_HUNT		4
+#define NPC_AI_FLEE		5
 
 //determines if a mob can smash through it
 #define ENVIRONMENT_SMASH_NONE			0
@@ -378,8 +377,6 @@
 #define MIRROR_PRIDE  (1<<2)
 //Race swap wizard event
 #define RACE_SWAP     (1<<3)
-//ERT spawn template (avoid races that don't function without correct gear)
-#define ERT_SPAWN     (1<<4)
 //xenobio black crossbreed
 #define SLIME_EXTRACT (1<<5)
 //Wabbacjack staff projectiles
@@ -435,6 +432,7 @@
 #define SKIN_COLOR_EBON "4e3729"
 
 //AASIMAR SKIN TONES
+#define SKIN_COLOR_ARCHON "feddcd"
 #define SKIN_COLOR_PLANETAR "ffd859"
 #define SKIN_COLOR_DEVA "b6f1f2"
 #define SKIN_COLOR_SOLAR "daeaeb"
@@ -442,7 +440,7 @@
 #define SKIN_COLOR_GAEIA "db874f"
 #define SKIN_COLOR_CELESTIAL "e1c565"
 #define SKIN_COLOR_OLYMPIA "c7f9cc"
-#define SKIN_COLOR_NECRAL "23130c"
+#define SKIN_COLOR_NECRAL "6e483c"
 #define SKIN_COLOR_ABYSSAL "22577a"
 
 //HALF ELF SKIN TONES
@@ -458,15 +456,19 @@
 #define SKIN_COLOR_BLACK_HAMMER "09371A"
 #define SKIN_COLOR_SHELLCREST "3C5166"
 #define SKIN_COLOR_SKULL_SEEKER "292413"
+#define SKIN_COLOR_LIGHT_RAIDER "9F9149"
 
 //TIEFLING SKIN TONES
-#define SKIN_COLOR_CASTILLIAN "cc5757"
-#define SKIN_COLOR_MYSTERIOUS "ff0000"
-#define SKIN_COLOR_SUCCUBUS "d2042d"
-#define SKIN_COLOR_INCUBUS "a23737"
-#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
 #define SKIN_COLOR_ZARIEL "DBA960"
+#define SKIN_COLOR_LEVISTUS "5B5F96"
+#define SKIN_COLOR_GLASYA "cc5757"
+#define SKIN_COLOR_ASMODEUS "8F3F50"
+#define SKIN_COLOR_BAALZEBUL "991F1D"
+#define SKIN_COLOR_MEPHISTOPHELES "9197C5"
+#define SKIN_COLOR_FIERNA "C62D4C"
 #define SKIN_COLOR_DISPATER "B289C6"
+#define SKIN_COLOR_NYMSEA "A8619E"
+#define SKIN_COLOR_MAMMON "E0CED8"
 
 //ARGONIAN SKIN TONES
 #define SKIN_COLOR_AQUARELA "ffff88"
@@ -499,3 +501,21 @@
 #define WHITEBROWN_FUR "c69b83"
 #define DARKBROWN_FUR "3b2e27"
 #define BLACK_FUR	 "271f1a"
+
+//SEELIE SKIN TONES
+#define SKIN_COLOR_WATER "abcbff"
+#define SKIN_COLOR_SOIL "ad7c58"
+#define SKIN_COLOR_ROCK "594638"
+#define SKIN_COLOR_AIR "fce5c2"
+#define SKIN_COLOR_FIRE "ff6e6e"
+#define SKIN_COLOR_FLORA "6afc74"
+#define SKIN_COLOR_ELECTRIC "faec8e"
+
+/// Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
+#define COLD_SLOWDOWN_FACTOR				20
+
+#ifdef NPC_THINK_DEBUG
+#define NPC_THINK(message) visible_message(message, runechat_message = message)
+#else
+#define NPC_THINK(message)
+#endif

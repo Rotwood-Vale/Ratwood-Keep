@@ -2,8 +2,12 @@
 	category = CATEGORY_ADMIN
 	weight = WEIGHT_ADMIN
 
+/datum/keybinding/admin/can_use(client/user)
+	return user.holder ? TRUE : FALSE
+
 /datum/keybinding/admin/admin_say
 	hotkey_keys = list("F3")
+	classic_keys = list("F3")
 	name = "admin_say"
 	full_name = "Admin say"
 	description = "Talk with other admins."
@@ -14,6 +18,7 @@
 
 /datum/keybinding/admin/admin_ghost
 	hotkey_keys = list("F5")
+	classic_keys = list("F5")
 	name = "admin_ghost"
 	full_name = "Aghost"
 	description = "Go ghost"
@@ -24,6 +29,7 @@
 
 /datum/keybinding/admin/player_panel_new
 	hotkey_keys = list("F6")
+	classic_keys = list("F6")
 	name = "player_panel_new"
 	full_name = "Player Panel New"
 	description = "Opens up the new player panel"
@@ -35,9 +41,10 @@
 	user.holder.player_panel_new()
 	return TRUE
 
-/*
+
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
+	classic_keys = list("F7")
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -48,6 +55,7 @@
 
 /datum/keybinding/admin/stealthmode
 	hotkey_keys = list("CtrlF8")
+	classic_keys = list("CtrlF8")
 	name = "stealth_mode"
 	full_name = "Stealth mode"
 	description = "Enters stealth mode"
@@ -75,4 +83,4 @@
 /datum/keybinding/admin/deadsay/down(client/user)
 	user.get_dead_say()
 	return TRUE
-*/
+

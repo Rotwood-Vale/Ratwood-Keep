@@ -1,20 +1,24 @@
 /mob/living/carbon/human/species/skeleton
 	name = "skeleton"
-	
+
 	race = /datum/species/human/northern
 	gender = MALE
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
 					 /obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
 	var/skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	var/skel_fragile = FALSE
 	ambushable = FALSE
 	rot_type = null
 	possible_rmb_intents = list()
+	cmode_music = 'sound/music/antag/combatskeleton.ogg'
 
 /mob/living/carbon/human/species/skeleton/npc
-	aggressive = 1
-	mode = AI_IDLE
+	aggressive = TRUE
+	mode = NPC_AI_IDLE
 	wander = FALSE
+	npc_jump_chance = 0 // no jumping skeletons
+	rude = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/ambush
 
@@ -22,6 +26,9 @@
 
 /mob/living/carbon/human/species/skeleton/Initialize()
 	. = ..()
+
+	remove_genitalia()
+
 	cut_overlays()
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 10)
 
@@ -48,16 +55,15 @@
 		QDEL_NULL(src.charflaw)
 	mob_biotypes |= MOB_UNDEAD
 	faction = list("undead")
-	name = "skelelon"
-	real_name = "skelelon"
+	name = "Skeleton"
+	real_name = "Skeleton"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOROGSTAM, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIMBATTACHMENT, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	for(var/obj/item/bodypart/B in src.bodyparts)
 		B.skeletonize(FALSE)
 	update_body()
@@ -71,7 +77,7 @@
 	if(prob(90))
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(80))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 	if(prob(30))
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	if(prob(30))
@@ -79,17 +85,17 @@
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(90))
-		pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+		pants = /obj/item/clothing/under/roguetown/trou/leather
 	if(prob(40))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(70))
 		gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 	if(prob(70))
-		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+		neck = /obj/item/clothing/neck/roguetown/coif
 	if(H.gender == FEMALE)
-		H.STASTR = rand(9,12)
+		H.STASTR = rand(9,11)
 	else
-		H.STASTR = rand(14,16)
+		H.STASTR = rand(10,12)
 	H.STASPD = 8
 	H.STACON = 4
 	H.STAEND = 15

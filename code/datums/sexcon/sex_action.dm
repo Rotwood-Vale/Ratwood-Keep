@@ -17,18 +17,27 @@
 	var/require_grab = FALSE
 	/// If a grab is required, this is the required state of it
 	var/required_grab_state = GRAB_AGGRESSIVE
+	/// Vrell - used for determining if the user/target should be gagged
+	var/gags_user = FALSE
+	var/gags_target = FALSE
 
 /datum/sex_action/proc/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return TRUE
 
 /datum/sex_action/proc/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return
+	if(gags_user)
+		user.mouth_blocked = TRUE
+	if(gags_target)
+		target.mouth_blocked = TRUE
 
 /datum/sex_action/proc/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return
 
 /datum/sex_action/proc/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return
+	if(gags_user)
+		user.mouth_blocked = FALSE
+	if(gags_target)
+		target.mouth_blocked = FALSE
 
 /datum/sex_action/proc/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return FALSE

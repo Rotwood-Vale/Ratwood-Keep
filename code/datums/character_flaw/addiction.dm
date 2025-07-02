@@ -37,7 +37,7 @@
 		return
 	if(user.mind.antag_datums)
 		for(var/datum/antagonist/D in user.mind.antag_datums)
-			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/werewolf) || istype(D, /datum/antagonist/skeleton) || istype(D, /datum/antagonist/zombie))
+			if(istype(D, /datum/antagonist/vampirelord) || istype(D, /datum/antagonist/werewolf) || istype(D, /datum/antagonist/skeleton) || istype(D, /datum/antagonist/zombie) || istype(D, /datum/antagonist/lich))
 				return
 	var/mob/living/carbon/human/H = user
 	var/oldsated = sated
@@ -94,3 +94,18 @@
 	time = 40 MINUTES
 	needsate_text = "Time for a flavorful smoke."
 
+/// GOD-FEARING
+
+/datum/charflaw/addiction/godfearing
+	name = "Devout Follower"
+	desc = "I need to pray to my Patron, their blessings are stronger."
+	time = 40 MINUTES
+	needsate_text = "Time to pray."
+
+/// ALCOHOLIC
+
+/datum/charflaw/addiction/lovefiend
+	name = "Love-Fiend"
+	desc = "I must make love!"
+	time = 50 MINUTES
+	needsate_text = "Time to get happy."

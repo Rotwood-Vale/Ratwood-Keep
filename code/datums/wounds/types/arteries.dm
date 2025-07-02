@@ -18,7 +18,7 @@
 	can_cauterize = TRUE
 	critical = TRUE
 	sleep_healing = 0
-	embed_chance = 75
+	embed_chance = 40
 
 	zombie_infection_probability = 50
 	werewolf_infection_probability = 50
@@ -99,7 +99,7 @@
 	check_name = span_artery("<B>UNSEWN</B>")
 	severity = WOUND_SEVERITY_FATAL
 	whp = 100
-	sewn_whp = 25
+	sewn_whp = 90
 	bleed_rate = 50
 	sewn_bleed_rate = 0.5
 	woundpain = 60

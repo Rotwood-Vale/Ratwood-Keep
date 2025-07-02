@@ -1,13 +1,20 @@
 /obj/item/rogueweapon/shovel
 	force = 21
-	possible_item_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop)
-	gripped_intents = list(/datum/intent/mace/strike/shovel, /datum/intent/shovelscoop, /datum/intent/axe/chop/stone)
+	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
+	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
 	name = "shovel"
 	desc = "Essential for digging (graves) in this darkened earth."
 	icon_state = "shovel"
+	item_state = "shovel"
 	icon = 'icons/roguetown/weapons/tools.dmi'
+	mob_overlay_icon = 'icons/roguetown/onmob/onmob.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
+	experimental_inhand = FALSE
+	experimental_onhip = FALSE
+	experimental_onback = FALSE
+	gripspriteonmob = TRUE
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	wdefense = 3
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
@@ -17,6 +24,22 @@
 	var/obj/item/natural/dirtclod/heldclod
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 50
+
+/obj/item/rogueweapon/shovel/pre_attack(atom/A, mob/living/user, params)
+	. = ..()
+	if(user.used_intent.type != /datum/intent/shovelscoop)
+		return
+	if(!istype(A, /obj/structure/snow))
+		return
+	var/turf/target_turf = get_turf(A)
+	playsound(A,'sound/items/dig_shovel.ogg', 100, TRUE)
+	qdel(A)
+	for(var/dir in GLOB.cardinals)
+		var/turf/card = get_step(target_turf, dir)
+		if(card.snow)
+			card.snow.update_corners()
+	user.changeNext_move(CLICK_CD_MELEE)
+	return TRUE
 
 /obj/item/rogueweapon/shovel/Destroy()
 	if(heldclod)
@@ -33,8 +56,10 @@
 /obj/item/rogueweapon/shovel/update_icon()
 	if(heldclod)
 		icon_state = "dirt[initial(icon_state)]"
+		item_state = "dirt[initial(icon_state)]"	// onmob itemstate does not update, TO DO
 	else
 		icon_state = "[initial(icon_state)]"
+		item_state = "[initial(item_state)]"
 
 /datum/intent/mace/strike/shovel
 	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
@@ -101,65 +126,14 @@
 		return
 	. = ..()
 
-/obj/item/rogueweapon/shovel/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,
-"sx" = 0,
-"sy" = -10,
-"nx" = 2,
-"ny" = -8,
-"wx" = -9,
-"wy" = -8,
-"ex" = 5,
-"ey" = -11,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 105,
-"sturn" = -90,
-"wturn" = 0,
-"eturn" = 90,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 1)
-			if("wielded")
-				return list("shrink" = 0.8,
-"sx" = 3,
-"sy" = -5,
-"nx" = -8,
-"ny" = -5,
-"wx" = 0,
-"wy" = -5,
-"ex" = 5,
-"ey" = -5,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 1,
-"nturn" = 135,
-"sturn" = -135,
-"wturn" = 240,
-"eturn" = 30,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 1)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
 
 /obj/item/rogueweapon/shovel/small
 	force = 7
 	name = "spade"
 	desc = "Indispensable for tending the soil."
 	icon_state = "spade"
+	item_state = "spade"
 	sharpness = IS_BLUNT
-	//dropshrink = 0.8
 	gripped_intents = null
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP
@@ -241,6 +215,94 @@
 			to_chat(usr, span_warning("There are too many things inside of [src] to fold it up!"))
 			return
 		visible_message(span_notice("[usr] folds up [src]."))
+		var/obj/item/bodybag/B = foldedbag_instance || new foldedbag_path
+		usr.put_in_hands(B)
+		qdel(src)
+
+/obj/item/bodybag
+	name = "body bag"
+	desc = ""
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "bodybag_folded"
+	w_class = WEIGHT_CLASS_SMALL
+	var/unfoldedbag_path = /obj/structure/closet/body_bag
+
+/obj/item/bodybag/attack_self(mob/user)
+	deploy_bodybag(user, user.loc)
+
+/obj/item/bodybag/afterattack(atom/target, mob/user, proximity)
+	. = ..()
+	if(proximity)
+		if(isopenturf(target))
+			deploy_bodybag(user, target)
+
+/obj/item/bodybag/proc/deploy_bodybag(mob/user, atom/location)
+	var/obj/structure/closet/body_bag/R = new unfoldedbag_path(location)
+	R.open(user)
+	R.add_fingerprint(user)
+	R.foldedbag_instance = src
+	moveToNullspace()
+
+/obj/item/bodybag/suicide_act(mob/user)
+	if(isopenturf(user.loc))
+		user.visible_message("<span class='suicide'>[user] is crawling into [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		var/obj/structure/closet/body_bag/R = new unfoldedbag_path(user.loc)
+		R.add_fingerprint(user)
+		qdel(src)
+		user.forceMove(R)
+		playsound(src, 'sound/blank.ogg', 15, TRUE, -3)
+		return (OXYLOSS)
+	..()
+
+
+/obj/structure/closet/body_bag
+	name = "body bag"
+	desc = ""
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "bodybag"
+	density = FALSE
+	mob_storage_capacity = 2
+	open_sound = 'sound/blank.ogg'
+	close_sound = 'sound/blank.ogg'
+	open_sound_volume = 15
+	close_sound_volume = 15
+	integrity_failure = 0
+	delivery_icon = null //unwrappable
+	anchorable = FALSE
+	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	drag_slowdown = 0
+	var/foldedbag_path = /obj/item/bodybag
+	var/obj/item/bodybag/foldedbag_instance = null
+
+/obj/structure/closet/body_bag/Destroy()
+	// If we have a stored bag, and it's in nullspace (not in someone's hand), delete it.
+	if (foldedbag_instance && !foldedbag_instance.loc)
+		QDEL_NULL(foldedbag_instance)
+	return ..()
+
+/obj/structure/closet/body_bag/open(mob/living/user)
+	. = ..()
+	if(.)
+		mouse_drag_pointer = MOUSE_INACTIVE_POINTER
+
+/obj/structure/closet/body_bag/close()
+	. = ..()
+	if(.)
+		density = FALSE
+		mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+
+/obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if(over_object == usr && Adjacent(usr) && (in_range(src, usr) || usr.contents.Find(src)))
+		if(!ishuman(usr))
+			return
+		if(opened)
+			to_chat(usr, "<span class='warning'>I wrestle with [src], but it won't fold while unzipped.</span>")
+			return
+		if(contents.len)
+			to_chat(usr, "<span class='warning'>There are too many things inside of [src] to fold it up!</span>")
+			return
+		visible_message("<span class='notice'>[usr] folds up [src].</span>")
 		var/obj/item/bodybag/B = foldedbag_instance || new foldedbag_path
 		usr.put_in_hands(B)
 		qdel(src)

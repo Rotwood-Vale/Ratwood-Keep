@@ -8,6 +8,11 @@
 	stressadd = 2
 	desc = span_red("Smells like death here.")
 
+/datum/stressevent/miasmagas/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_NASTY_EATER) || HAS_TRAIT(user, TRAIT_NOSTINK))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/peckish
 	timer = 10 MINUTES
 	stressadd = 1
@@ -43,10 +48,25 @@
 	stressadd = 5
 	desc = span_boldred("I've lost a limb.")
 
+/datum/stressevent/dismembered/can_apply(mob/living/user)
+	if(user.has_flaw(/datum/charflaw/masochist))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/dwarfshaved
 	timer = 40 MINUTES
 	stressadd = 6
 	desc = span_boldred("I'd rather cut my own throat than my beard.")
+
+/datum/stressevent/guillotinefail
+	timer = 5 MINUTES
+	stressadd = 3
+	desc = span_red("This execution sucks!")
+
+/datum/stressevent/guillotineexecutorfail
+	timer = 15 MINUTES
+	stressadd = 5
+	desc = span_boldred("I have failed the guillotine execution! What a shame!")
 
 /datum/stressevent/viewdismember
 	timer = 15 MINUTES
@@ -55,6 +75,11 @@
 	stressadd_per_extra_stack = 2
 	desc = span_red("Butchery.")
 
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/fviewdismember
 	timer = 1 MINUTES
 	max_stacks = 10
@@ -62,10 +87,20 @@
 	stressadd_per_extra_stack = 1
 	desc = span_red("I saw something horrible!")
 
+/datum/stressevent/fviewdismember/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/viewgib
 	timer = 5 MINUTES
 	stressadd = 2
 	desc = span_red("I saw something ghastly.")
+
+/datum/stressevent/viewgib/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/bleeding
 	timer = 2 MINUTES
@@ -97,15 +132,35 @@
 	stressadd = 1
 	desc = span_red("I fell. I'm a fool.")
 
+/datum/stressevent/hatezizo
+	timer = 999 MINUTES
+	stressadd = 10
+	desc = "<span class='red'>ZIZOZIZOZIZO</span>"
+
+/datum/stressevent/hatezizo/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ZIZO_MARKED))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/burntmeal
 	timer = 2 MINUTES
 	stressadd = 2
 	desc = span_red("YUCK!")
 
+/datum/stressevent/burntmeal/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/rotfood
 	timer = 2 MINUTES
 	stressadd = 4
 	desc = span_red("YUCK!")
+
+/datum/stressevent/rotfood/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/psycurse
 	timer = 999 MINUTES
@@ -122,12 +177,22 @@
 	stressadd = 2
 	desc = span_red("It tastes VILE!")
 
+/datum/stressevent/badmeal/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/vomit
 	timer = 3 MINUTES
 	stressadd = 2
 	max_stacks = 3
 	stressadd_per_extra_stack = 2
 	desc = span_red("I puked!")
+
+/datum/stressevent/vomit/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_NASTY_EATER))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/vomitself
 	timer = 3 MINUTES
@@ -141,15 +206,30 @@
 	stressadd = 5
 	desc = span_boldred("I was violated.")
 
+/datum/stressevent/cumbad/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
+		return FALSE
+	return TRUE
+
 /datum/stressevent/cumcorpse
 	timer = 1 MINUTES
 	stressadd = 10
 	desc = span_boldred("What have I done?")
 
-/datum/stressevent/blueb
+/datum/stressevent/cumcorpse/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_CRACKHEAD))
+		return FALSE
+	return TRUE
+
+/datum/stressevent/leechcult
 	timer = 1 MINUTES
-	stressadd = 2
-	desc = span_red("My loins ache!")
+	stressadd = 3
+	desc = list("<span class='red'>There's a little goblin in my head telling me to do things and I don't like it!</span>","<span class='red'>\"Kill your friends.\"</span>","<span class='red'>\"Make them bleed.\"</span>","<span class='red'>\"Give them no time to squeal.\"</span>","<span class='red'>\"Praise Zizo.\"</span>","<span class='red'>\"Death to the Ten.\"</span>","<span class='red'>\"The Weeper weeps his last.\"</span>")
+
+/datum/stressevent/delf
+	timer = 1 MINUTES
+	stressadd = 1
+	desc = span_red("Better stay away.")
 
 /datum/stressevent/shunned_race
 	timer = 1 MINUTES
@@ -159,7 +239,7 @@
 /datum/stressevent/shunned_race_xenophobic
 	timer = 2 MINUTES
 	stressadd = 5
-	desc = span_red("Better stay away.")
+	desc = span_red("Disgusting lesser, get them away.")
 
 /datum/stressevent/paracrowd
 	timer = 15 SECONDS
@@ -170,6 +250,11 @@
 	timer = 15 SECONDS
 	stressadd = 3
 	desc = span_red("There is so much blood here.. it's like a battlefield!")
+
+/datum/stressevent/viewdismember/can_apply(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_ORGAN_EATER) || HAS_TRAIT(user, TRAIT_STEELHEARTED))
+		return FALSE
+	return TRUE
 
 /datum/stressevent/parastr
 	timer = 2 MINUTES
@@ -251,3 +336,40 @@
 	stressadd = 6
 	desc = "I slept on the floor! What am I?! An animal?!"
 	timer = 3 MINUTES
+
+/datum/stressevent/darkling_toobright
+	stressadd = 1
+	desc = span_red("It's too bright, the light hurts my eyes.")
+	timer = 30 SECONDS
+
+/datum/stressevent/darkling_migraine
+	stressadd = 3
+	desc = span_red("My head is pounding, I need to rest in the darkness.")
+	timer = 1 MINUTES
+
+/datum/stressevent/psycurse
+	timer = 999 MINUTES
+	stressadd = 3
+	desc = span_boldred("Oh no! I've received divine punishment!")
+
+/datum/stressevent/excommunicated
+	timer = 999 MINUTES
+	stressadd = 5
+	desc = span_boldred("The Ten have forsaken me!")
+
+/datum/stressevent/apostasy
+
+	timer = 999 MINUTES
+	stressadd = 3
+	desc = span_boldred("The apostasy's mark is upon me!")
+
+/datum/stressevent/heretic_on_sermon
+
+	stressadd = 5
+	desc = span_red("My PATRON is NOT PROUD of ME!")
+	timer = 20 MINUTES
+
+/datum/stressevent/rottouched
+	timer = 1 MINUTES
+	stressadd = 8
+	desc = span_red("The Rot plague spreads even here... Better stay away.")

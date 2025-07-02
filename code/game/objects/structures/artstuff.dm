@@ -113,10 +113,6 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 			DrawPixelOn(theOriginalPix,pixX,pixY)
 		qdel(masterpiece)
 
-	//Drawing one pixel with a crayon
-	else if(istype(I, /obj/item/toy/crayon))
-		var/obj/item/toy/crayon/C = I
-		DrawPixelOn(C.paint_color, pixX, pixY)
 	else
 		return ..()
 

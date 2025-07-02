@@ -6,7 +6,6 @@
 	var/clusterMax = 5
 	var/clusterMin = 1
 	var/clusterCheckFlags = CLUSTER_CHECK_SAME_ATOMS
-	var/allowAtomsOnSpace = FALSE
 	var/checkdensity = TRUE
 	var/list/excluded_turfs = list()
 	var/list/allowed_turfs = list()
@@ -140,8 +139,6 @@
 			if(A.density)
 				. = 0
 				break
-	if(!allowAtomsOnSpace && (isspaceturf(T)))
-		. = 0
 
 
 ///////////////////////////////////////////////////////////

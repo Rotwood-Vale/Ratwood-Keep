@@ -2,7 +2,7 @@
 	force = 15
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "flail"
-	desc = "This is a swift, iron flail. Strikes hard and far."
+	desc = "This is a swift, iron flail. Strikes hard and fast."
 	icon_state = "iflail"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -11,7 +11,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
@@ -29,7 +29,7 @@
 	icon_state = "instrike"
 	item_d_type = "slash"
 
-/datum/intent/flail/strikerange
+/datum/intent/flail/strikerange //No flail seems to use this intent.
 	name = "ranged strike"
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("strikes", "hits")
@@ -44,6 +44,7 @@
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
+	chargedrain = 0.9
 	no_early_release = TRUE
 	penfactor = 80
 	recovery = 10
@@ -56,9 +57,10 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	item_d_type = "blunt"
 
-/datum/intent/flail/strike/smashrange
+/datum/intent/flail/strike/smashrange //No flail seems to use this intent.
 	name = "ranged smash"
 	chargetime = 25
+	chargedrain = 1
 	no_early_release = TRUE
 	penfactor = 50
 	recovery = 30
@@ -83,9 +85,9 @@
 
 
 /obj/item/rogueweapon/flail/sflail
-	force = 20
+	force = 21
 	icon_state = "flail"
-	desc = "This is a swift, steel flail. Strikes hard and far."
+	desc = "This is a swift, steel flail. Strikes hard and fast."
 	smeltresult = /obj/item/ingot/steel
 	minstr = 5
 
@@ -93,34 +95,35 @@
 /datum/intent/whip/lash
 	name = "lash"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes", "cracks")
+	attack_verb = list("lashes", "whips")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
 	penfactor = 10
 	reach = 2
 	icon_state = "inlash"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/crack
 	name = "crack"
-	blade_class = BCLASS_CUT
-	attack_verb = list("cracks", "strikes") //something something dwarf fotresss
+	blade_class = BCLASS_BLUNT
+	attack_verb = list("cracks") //something something dwarf fotresss
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
 	penfactor = 40
 	reach = 3
 	icon_state = "incrack"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/whip/punish
 	name = "punish"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("lashes")
+	attack_verb = list("punishes")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
+	damfactor = 0.5
 	penfactor = 0
 	reach = 2
 	icon_state = "inpunish"
@@ -137,9 +140,9 @@
 	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
-	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_HIP //| ITEM_SLOT_BELT (Either someone fixes this, or this remains disabled because it's very bugged)
 	associated_skill = /datum/skill/combat/whipsflails
-	anvilrepair = /datum/skill/craft/tanning
+	anvilrepair = /datum/skill/craft/hunting
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = WHIPWOOSH
 	throwforce = 5
@@ -160,41 +163,5 @@
 	force = 29
 	name = "Repenta En"
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle. It clearly needs to see more use."
-	minstr = 11
+	minstr = 8
 	icon_state = "gwhip"
-
-
-/obj/item/rogueweapon/flail/peasantwarflail
-	force = 10
-	force_wielded = 25
-	possible_item_intents = list(/datum/intent/flail/strike)
-	gripped_intents = list(/datum/intent/flail/strikerange, /datum/intent/flail/strike/smashrange)
-	name = "peasant war flail"
-	desc = "An agricultural flail turned into a weapon of war."
-	icon_state = "peasantwarflail"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = null
-	minstr = 12
-	wbalance = -2
-	smeltresult = /obj/item/ingot/iron
-	associated_skill = /datum/skill/combat/polearms
-	dropshrink = 0.6
-	blade_dulling = DULLING_BASHCHOP
-	wdefense = 1
-
-/obj/item/rogueweapon/flail/peasantwarflail/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)

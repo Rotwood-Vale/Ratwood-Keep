@@ -45,7 +45,7 @@
 /datum/component/riding/proc/handle_vehicle_layer()
 	var/atom/movable/AM = parent
 	var/static/list/defaults = list(TEXT_NORTH = OBJ_LAYER, TEXT_SOUTH = ABOVE_MOB_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
-	. = defaults["[AM.dir]"]
+	. = defaults["[AM.dir]"]	//I think this is force overwriting with defaults no matter what
 	if(directional_vehicle_layers["[AM.dir]"])
 		. = directional_vehicle_layers["[AM.dir]"]
 	if(isnull(.))	//you can set it to null to not change it.
@@ -85,7 +85,7 @@
 		for(var/m in AM.buckled_mobs)
 			passindex++
 			var/mob/living/buckled_mob = m
-			var/list/offsets = get_offsets(passindex)
+			var/list/offsets = get_offsets(passindex, buckled_mob)
 			var/rider_dir = get_rider_dir(passindex)
 			buckled_mob.setDir(rider_dir)
 			dir_loop:
@@ -118,7 +118,7 @@
 	directional_vehicle_offsets["[dir]"] = list(x, y)
 
 //Override this to set my vehicle's various pixel offsets
-/datum/component/riding/proc/get_offsets(pass_index) // list(dir = x, y, layer)
+/datum/component/riding/proc/get_offsets(pass_index, mob/living/user) // list(dir = x, y, layer)
 	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
 	if(riding_offsets["[pass_index]"])
 		. = riding_offsets["[pass_index]"]
@@ -185,7 +185,8 @@
 		handle_vehicle_layer()
 		handle_vehicle_offsets()
 	else
-		to_chat(user, span_warning("You'll need the keys in one of my hands to [drive_verb] [AM]."))
+		to_chat(user, "<span class='warning'>You'll need the keys in one of my hands to [drive_verb] [AM].</span>")
+	SEND_SIGNAL(AM, COMSIG_RIDDEN_DRIVER_MOVE, user, direction)
 	return TRUE
 
 /datum/component/riding/proc/Unbuckle(atom/movable/M)
@@ -252,9 +253,11 @@
 	else
 		AM.layer = MOB_LAYER
 
-/datum/component/riding/human/get_offsets(pass_index)
+/datum/component/riding/human/get_offsets(pass_index, mob/living/user)
 	var/mob/living/carbon/human/H = parent
-	if(H.buckle_lying)
+	if(HAS_TRAIT(user, TRAIT_TINY))
+		return list(TEXT_NORTH = list(5, 6), TEXT_SOUTH = list(5, 6), TEXT_EAST = list(-2, 6), TEXT_WEST = list( 2, 6))
+	else if(H.buckle_lying)
 		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
 	else
 		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
@@ -274,10 +277,6 @@
 	var/atom/movable/AM = parent
 	if(user.incapacitated())
 		var/kick = TRUE
-		if(iscyborg(AM))
-			var/mob/living/silicon/robot/R = AM
-			if(R.module && R.module.ride_allow_incapacitated)
-				kick = FALSE
 		if(kick)
 			to_chat(user, span_danger("I fall off of [AM]!"))
 			Unbuckle(user)
@@ -299,7 +298,7 @@
 	else
 		AM.layer = MOB_LAYER
 
-/datum/component/riding/cyborg/get_offsets(pass_index) // list(dir = x, y, layer)
+/datum/component/riding/cyborg/get_offsets(pass_index, mob/living/user) // list(dir = x, y, layer)
 	return list(TEXT_NORTH = list(0, 4), TEXT_SOUTH = list(0, 4), TEXT_EAST = list(-6, 3), TEXT_WEST = list( 6, 3))
 
 /datum/component/riding/cyborg/handle_vehicle_offsets()
@@ -307,13 +306,7 @@
 	if(AM.has_buckled_mobs())
 		for(var/mob/living/M in AM.buckled_mobs)
 			M.setDir(AM.dir)
-			if(iscyborg(AM))
-				var/mob/living/silicon/robot/R = AM
-				if(istype(R.module))
-					M.pixel_x = R.module.ride_offset_x[dir2text(AM.dir)]
-					M.pixel_y = R.module.ride_offset_y[dir2text(AM.dir)]
-			else
-				..()
+			..()
 
 /datum/component/riding/cyborg/force_dismount(mob/living/M)
 	var/atom/movable/AM = parent
@@ -373,7 +366,7 @@
 	selfdeleting = TRUE
 	. = ..()
 
-/obj/item/riding_offhand/equipped()
+/obj/item/riding_offhand/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	if(loc != rider && loc != parent)
 		selfdeleting = TRUE
 		qdel(src)

@@ -12,8 +12,11 @@
   */
 /world
 	mob = /mob/dead/new_player
-	turf = /turf/closed
-	area = /area/rogue
+	// DO NOT set this to any turf type that has ANY on-new or on-initialize functionality
+	// doing that breaks hotloading zlevels!
+	turf = /turf/open/dark_filler
+	// Similarly, world.area MUST be outdoors or else things will
+	area = /area/rogue/outdoors
 	view = "15x15"
 	hub = "Exadv1.spacestation13"
 	name = "Rotwood Vale"

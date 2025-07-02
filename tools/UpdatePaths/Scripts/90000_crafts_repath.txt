@@ -1,0 +1,3 @@
+/obj/effect/decal/cleanable/debris/glassy : /obj/effect/decal/cleanable/glass{@OLD}
+/obj/item/reagent_containers/glass/bucket/wooden : /obj/item/reagent_containers/glass/bucket/wooden/alter{@OLD}
+

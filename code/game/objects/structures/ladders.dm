@@ -34,13 +34,13 @@
 	var/obj/structure/ladder/L
 
 	if (!down)
-		L = locate() in SSmapping.get_turf_below(T)
+		L = locate() in GET_TURF_BELOW(T)
 		if (L)
 			down = L
 			L.up = src  // Don't waste effort looping the other way
 			L.update_icon()
 	if (!up)
-		L = locate() in SSmapping.get_turf_above(T)
+		L = locate() in GET_TURF_ABOVE(T)
 		if (L)
 			up = L
 			L.down = src  // Don't waste effort looping the other way
@@ -88,10 +88,7 @@
 		show_fluff_message(going_up, user)
 		ladder.add_fingerprint(user)
 	var/turf/T = get_turf(ladder)
-	if(isliving(user))
-		mob_move_travel_z_level(user, T)
-	else
-		user.forceMove(T)
+	movable_travel_z_level(user, T)
 
 /obj/structure/ladder/proc/use(mob/user, is_ghost=FALSE)
 	if(!in_range(src, user))
@@ -131,10 +128,6 @@
 	if(obj_flags & CAN_BE_HIT)
 		return ..()
 	return use(user)
-
-/obj/structure/ladder/attack_robot(mob/living/silicon/robot/R)
-	if(R.Adjacent(src))
-		return use(R)
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/structure/ladder/attack_ghost(mob/dead/observer/user)

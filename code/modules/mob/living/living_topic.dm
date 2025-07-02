@@ -13,7 +13,7 @@
 
 /mob/living/proc/check_heartbeat(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 		message += "<B>No heartbeat...</B>"
 	else
 		message += "<B>The heart is still beating.</B>"
@@ -24,7 +24,7 @@
 
 /mob/living/proc/soul_examine(mob/user)
 	var/list/message = list()
-	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || HAS_TRAIT(src, TRAIT_ROTMAN))
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 		if(suiciding)
 			message += "<span class='deadsay'>[p_they(TRUE)] commited suicide... Nothing can be done..."
 		if(isobserver(user) || HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
@@ -33,3 +33,13 @@
 			else
 				message += span_deadsay("[p_they(TRUE)] [p_are()] still earthbound.")
 	return message
+
+//Vrell - Moved this here 
+/mob/living/proc/has_penis()
+	return gender == MALE
+/mob/living/proc/has_testicles()
+	return gender == MALE
+/mob/living/proc/has_vagina()
+	return gender == FEMALE
+/mob/living/proc/has_breasts()
+	return gender == FEMALE

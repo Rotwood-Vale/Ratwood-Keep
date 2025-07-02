@@ -53,53 +53,68 @@
 
 /obj/item/needle/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/natural/fibers))
-		if(maxstring - stringamt < 5)
-			to_chat(user, span_warning("Not enough room for more thread!"))
+		if(infinite || maxstring - stringamt <= 0) //is the needle infinite OR does it have all of its uses left
+			to_chat(user, span_warning("The needle has no need to be refilled."))
 			return
-		else
-			to_chat(user, "I begin threading the needle with additional fibers...")
-			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
-				stringamt += 5
-				to_chat(user, "I replenish the needle's thread!")
-				qdel(I)
-			return
-	return ..()
+
+		to_chat(user, "I begin threading the needle with additional fibers...")
+		if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+			var/refill_amount
+			refill_amount = min(5, (maxstring - stringamt))
+			stringamt += refill_amount
+			to_chat(user, "I replenish the needle's thread by [refill_amount] uses!")
+			qdel(I)
+		return
 
 
 
 /obj/item/needle/attack_obj(obj/O, mob/living/user)
+	if(isnull(O))
+		return
 	var/obj/item/I = O
 	if(can_repair)
 		if(stringamt < 1)
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
-		if(I.sewrepair && I.max_integrity && !I.obj_broken)
+		if(!I.sewrepair || !I.max_integrity)
+			to_chat(user, span_warning("[I] can't be repaired!"))
+			return
+		if(I.sewrepair && I.max_integrity)
 			if(I.obj_integrity == I.max_integrity)
-				to_chat(user, span_warning("This is not broken."))
-				return
-			if(user.mind.get_skill_level(/datum/skill/misc/sewing) < I.required_repair_skill)
-				to_chat(user, span_warning("I don't know how to repair this..."))
+				to_chat(user, span_warning("[I] is not damaged!"))
 				return
 			if(!I.ontable())
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
+			var/armor_value = 0
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			var/armor_list = I.armor.getList()
+			for(var/key in armor_list) // Here we are checking if the armor value of the item is 0 so we can know if the item is armor without having to make a snowflake var
+				armor_value += armor_list[key]
+			if((armor_value == 0 && skill_level < 1) || (armor_value > 0 && skill_level < 2))
+				to_chat(user, span_warning("I should probably not be doing this..."))
 			playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-			var/sewtime = 70
-			if(user.mind)
-				sewtime = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
-			var/datum/component/storage/target_storage = I.GetComponent(/datum/component/storage) //Vrell - Part of storage item repair fix
-			if(do_after(user, sewtime, target = I))
-				playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-				user.visible_message(span_info("[user] repairs [I]!"))
-				I.obj_integrity = I.max_integrity
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
+			var/skill_multiplied = (skill_level * 10)
+			var/sewtime = (60 - skill_multiplied)
+			if(!do_after(user, sewtime, target = I))
 				return
+			if((armor_value == 0 && skill_level > 0) || (armor_value > 0 && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
+				user.visible_message(span_info("[user] repairs [I]!"))
+				I.mend_damage(skill_multiplied, TRUE)
 			else
-				//Vrell - Part of storage item repair fix
-				if(target_storage)
-					target_storage.being_repaired = FALSE
+				if(prob(20 - user.STALUC)) //Unlucky here!
+					I.take_damage(150, BRUTE, "slash")
+					user.visible_message(span_info("[user] was extremely unlucky and ruined [I] while trying to unskillfuly repair it!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				else if(prob(user.STALUC)) //Lucky here!
+					I.mend_damage(50, TRUE)
+					playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
+					user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what he was doing!"))
+				else
+					I.take_damage(50, BRUTE, "slash")
+					user.visible_message(span_info("[user] damaged [I] due to a lack of skill!"))
+					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
 		return
 	return ..()
 
@@ -111,9 +126,6 @@
 	if(stringamt < 1)
 		to_chat(user, span_warning("The needle has no thread left!"))
 		return
-	if(!get_location_accessible(patient, check_zone(doctor.zone_selected)))
-		to_chat(doctor, span_warning("Something in the way."))
-		return FALSE
 	var/list/sewable
 	var/obj/item/bodypart/affecting
 	if(iscarbon(patient))
@@ -151,10 +163,10 @@
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)
-			doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I stitch \a [target_wound.name] on my [affecting]."))
+			doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [doctor.p_them()]self."), span_notice("I stitch \a [target_wound.name] on my [affecting.name]."))
 		else
 			if(affecting)
-				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]'s [affecting]."), span_notice("I stitch \a [target_wound.name] on [patient]'s [affecting]."))
+				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]'s [affecting.name]."), span_notice("I stitch \a [target_wound.name] on [patient]'s [affecting.name]."))
 			else
 				doctor.visible_message(span_notice("[doctor] sews \a [target_wound.name] on [patient]."), span_notice("I stitch \a [target_wound.name] on [patient]."))
 		log_combat(doctor, patient, "sew", "needle")

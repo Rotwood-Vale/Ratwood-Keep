@@ -20,6 +20,10 @@
 	icon_state = "inuse"
 	no_attack = TRUE
 
+/obj/item/fishingrod/New()
+	. = ..()
+	icon_state = "rod[rand(1,3)]"
+
 /obj/item/fishingrod/attack_self(mob/user)
 	if(user.doing)
 		user.doing = 0
@@ -43,7 +47,7 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.6,"sx" = -17,"sy" = -1,"nx" = 11,"ny" = -1,"wx" = -14,"wy" = 0,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.6,"sx" = -14,"sy" = -1,"nx" = 11,"ny" = -1,"wx" = -11,"wy" = 0,"ex" = 5,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
@@ -59,6 +63,11 @@
 		return ..()
 
 	var/mob/living/current_fisherman = user
+	
+	if(!is_valid_fishing_spot(target))
+		to_chat(current_fisherman, span_warning("This body of water seems devoid of aquatic life..."))
+		return
+	
 	current_fisherman.visible_message(span_warning("[current_fisherman] casts a line!"), \
 						span_notice("I cast a line."))
 	playsound(loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
@@ -94,7 +103,13 @@
 		return
 
 	var/caught_thing = pickweight(baited.fishloot)
-	new caught_thing(current_fisherman.loc)
+	var/obj/item/I = new caught_thing(current_fisherman.loc)
+
+	if(istype(I, /obj/item/reagent_containers/food/snacks/fish))
+		var/obj/item/reagent_containers/food/snacks/fish/F = I
+		F.fished_from = target
+		F.set_rarity()
+		
 	amt2raise = current_fisherman.STAINT * 2
 	playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 
@@ -112,3 +127,25 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_inv_hands()
+
+/obj/item/fishingrod/attack_turf(turf/T, mob/living/user)
+	var/list/obj/item/baitables = list()
+	for(var/obj/item/I in T.contents)
+		if(I.baitchance)
+			baitables += I
+		if(baited)
+			to_chat(user, "My rod already has bait.")
+			return
+		for(I in baitables)
+			if(I.baitchance && !baited)
+				to_chat(user, span_info("I begin baiting \the [src]..."))
+				if(!do_after(user, 5, TRUE, src))
+					return
+				user.visible_message(span_notice("[user] hooks something to the line."), \
+								span_notice("I hook [I] to my line."))
+				playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
+				I.forceMove(src)
+				baited = I
+				update_icon()
+				return
+			. = ..()

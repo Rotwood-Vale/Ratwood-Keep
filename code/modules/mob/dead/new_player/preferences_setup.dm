@@ -8,13 +8,17 @@
 		gender = gender_override
 	else
 		gender = pick(MALE,FEMALE)
-	age = AGE_ADULT
+
+	voice_type = VOICE_TYPE_MASC
+	if(gender == FEMALE)
+		voice_type = VOICE_TYPE_FEM
+		
+	age = pick(pref_species.possible_ages)
 	var/list/skins = pref_species.get_skin_list()
 	skin_tone = skins[pick(skins)]
 	eye_color = random_eye_color()
 	features = pref_species.get_random_features()
 	body_markings = pref_species.get_random_body_markings(features)
-	accessory = "Nothing"
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
 
@@ -40,15 +44,6 @@
 			previewJob = SSjob.GetJob(job)
 			highest_pref = job_preferences[job]
 
-	if(previewJob)
-		// Silicons only need a very basic preview since there is no customization for them.
-		if(istype(previewJob,/datum/job/ai))
-			parent.show_character_previews(image('icons/mob/ai.dmi', icon_state = resolve_ai_icon(preferred_ai_core_display), dir = SOUTH))
-			return
-		if(istype(previewJob,/datum/job/cyborg))
-			parent.show_character_previews(image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH))
-			return
-
 	// Set up the dummy for its photoshoot
 	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 	copy_to(mannequin, 1, TRUE, TRUE)
@@ -58,7 +53,6 @@
 		mannequin.job = previewJob.title
 		previewJob.equip(mannequin, TRUE, preference_source = parent)
 
-	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 

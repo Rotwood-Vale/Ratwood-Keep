@@ -12,7 +12,7 @@
 	allowed_races = RACES_ALL_KINDS
 	tutorial = ""
 
-	spells = list(/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+	spells = list(SPELL_LIGHTNINGBOLT, SPELL_FETCH)
 	outfit = /datum/outfit/job/roguetown/deathknight
 
 	show_in_credits = FALSE
@@ -32,6 +32,9 @@
 			M.mind.special_role = "Death Knight"
 			M.mind.assigned_role = "Death Knight"
 			M.mind.current.job = null
+			for(var/datum/mind/vampire in C.vampires)
+				if (vampire.special_role == "Vampire Lord")
+					M.mind.add_special_person(vampire.current, "#DC143C")
 		if(H.dna && H.dna.species)
 			H.dna.species.species_traits |= NOBLOOD
 			H.dna.species.soundpack_m = new /datum/voicepack/skeleton()
@@ -60,12 +63,12 @@
 		H.underwear = "Nude"
 		if(H.charflaw)
 			QDEL_NULL(H.charflaw)
-		H.mob_biotypes = MOB_UNDEAD
+		H.mob_biotypes |= MOB_UNDEAD
 		H.faction = list("undead")
 		H.name = "Death Knight"
 		H.real_name = "Death Knight"
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOHUNGER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBREATH, TRAIT_GENERIC)
@@ -74,6 +77,12 @@
 		ADD_TRAIT(H, TRAIT_NOSLEEP, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_SHOCKIMMUNE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_SPECIALUNDEAD, TRAIT_GENERIC) //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
+		H.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+		/datum/rmb_intent/aimed,\
+		/datum/rmb_intent/strong,\
+		/datum/rmb_intent/riposte,\
+		/datum/rmb_intent/weak)
 		for(var/obj/item/bodypart/B in H.bodyparts)
 			B.skeletonize(FALSE)
 		H.update_body()
@@ -92,7 +101,7 @@
 
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/platelegs/blk/death
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+	shoes = /obj/item/clothing/shoes/roguetown/armor/steel/blkknight
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
 	gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
@@ -113,7 +122,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
 	color = CLOTHING_BLACK
 
-/obj/item/clothing/shoes/roguetown/boots/armor/blkknight/death
+/obj/item/clothing/shoes/roguetown/armor/steel/blkknight/death
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/gloves/roguetown/plate/blk/death

@@ -91,5 +91,20 @@
 				used = list('sound/vo/female/gen/se/sexlight (1).ogg','sound/vo/female/gen/se/sexlight (2).ogg','sound/vo/female/gen/se/sexlight (3).ogg','sound/vo/female/gen/se/sexlight (4).ogg','sound/vo/female/gen/se/sexlight (5).ogg','sound/vo/female/gen/se/sexlight (6).ogg','sound/vo/female/gen/se/sexlight (7).ogg')
 			if("sexmoanhvy")
 				used = list('sound/vo/female/gen/se/sex (1).ogg','sound/vo/female/gen/se/sex (2).ogg','sound/vo/female/gen/se/sex (3).ogg','sound/vo/female/gen/se/sex (4).ogg','sound/vo/female/gen/se/sex (5).ogg','sound/vo/female/gen/se/sex (6).ogg','sound/vo/female/gen/se/sex (7).ogg','sound/vo/female/gen/se/sex (8).ogg')
-
+			if("trill")
+				used = list('sound/vo/mrrp.ogg','sound/vo/mrrp (2).ogg')
+			if("meow")
+				used = list('sound/vo/meow.ogg','sound/vo/meow (2).ogg')
+			if("hiss")
+				used = list('sound/vo/hiss.ogg','sound/vo/hiss (2).ogg')
+			if("purr")
+				used = 'sound/vo/purr.ogg'
+			if("howl")
+				used = list('sound/vo/howl.ogg')
+			if("growl")
+				used = list('sound/vo/mobs/vw/idle (1).ogg','sound/vo/mobs/vw/idle (2).ogg','sound/vo/mobs/vw/idle (3).ogg','sound/vo/mobs/vw/idle (4).ogg')
+			if("whine")
+				used = list('sound/vo/whine (1).ogg','sound/vo/whine (2).ogg')
+			if("bark")
+				used = list('sound/vo/bwark.ogg','sound/vo/bwark (2).ogg','sound/vo/bwark (3).ogg')			
 	return used

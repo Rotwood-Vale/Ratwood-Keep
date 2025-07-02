@@ -4,7 +4,7 @@
 	unset_machine()
 	set_typing_indicator(FALSE)
 	GLOB.player_list -= src
-
+	SEND_SIGNAL(src, COMSIG_MOB_LOGOUT)
 	..()
 
 	if(loc)

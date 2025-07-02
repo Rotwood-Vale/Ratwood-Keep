@@ -35,7 +35,7 @@
 	/// Some surgeries require specific organs to be present in the patient
 	var/list/required_organs
 	/**
-	 * list of chems needed to complete the step. 
+	 * list of chems needed to complete the step.
 	 * Even on success, the step will have no effect if there aren't the chems required in the mob.
 	 */
 	var/list/chems_needed
@@ -58,12 +58,12 @@
 	var/skill_median = SKILL_LEVEL_JOURNEYMAN
 	/// Modifiers to success chance when you're above the median
 	var/list/skill_bonuses = list(
-		1 = 0.2,
-		2 = 0.4,
-		3 = 0.6,
-		4 = 0.8,
-		5 = 1,
-		6 = 2,
+		1 = 0.6,
+		2 = 0.8,
+		3 = 1,
+		4 = 2,
+		5 = 3,
+		6 = 4,
 	)
 	/// Modifiers to success chance when you're below the median
 	var/list/skill_maluses = list(
@@ -78,7 +78,7 @@
 	/// Handles techweb-oriented surgeries
 	var/requires_tech = FALSE
 	/**
-	 * type; doesn't show up if this type exists. 
+	 * type; doesn't show up if this type exists.
 	 * Set to /datum/surgery_step if you want to hide a "base" surgery  (useful for typing parents IE healing.dm just make sure to null it out again)
 	 */
 	var/replaced_by
@@ -106,7 +106,7 @@
 	// Always return false in this case
 	if(replaced_by == /datum/surgery_step)
 		return FALSE
-	
+
 	// True surgeons (like abductor scientists) need no instructions
 	if(HAS_TRAIT(user, TRAIT_SURGEON) || (user.mind && HAS_TRAIT(user.mind, TRAIT_SURGEON)))
 		// only show top-level surgeries
@@ -117,36 +117,6 @@
 	if(!requires_tech && !replaced_by)
 		return TRUE
 
-	if(iscyborg(user))
-		var/mob/living/silicon/robot/robot = user
-		var/obj/item/surgical_processor/surgical_processor = locate() in robot.module?.modules
-		// No early return for !surgical_processor since we want to check optable should this not exist.
-		if(surgical_processor)
-			if(replaced_by in surgical_processor.advanced_surgery_steps)
-				return FALSE
-			if(type in surgical_processor.advanced_surgery_steps)
-				return TRUE
-
-	var/turf/target_turf = get_turf(target)
-
-	// Get the relevant operating computer
-	var/obj/machinery/computer/operating/opcomputer
-	var/obj/structure/table/optable/table = locate(/obj/structure/table/optable) in target_turf
-	if(table?.computer)
-		opcomputer = table.computer
-	else
-		var/obj/machinery/stasis/the_stasis_bed = locate(/obj/machinery/stasis) in target_turf
-		if(the_stasis_bed?.op_computer)
-			opcomputer = the_stasis_bed.op_computer
-
-	if(!opcomputer || (opcomputer.stat & (NOPOWER | BROKEN)))
-		if(!requires_tech)
-			return TRUE
-		return FALSE
-	if(replaced_by in opcomputer.advanced_surgery_steps)
-		return FALSE
-	if(!(type in opcomputer.advanced_surgery_steps))
-		return FALSE
 	return TRUE
 
 /datum/surgery_step/proc/validate_user(mob/user, mob/living/target, target_zone, datum/intent/intent)
@@ -169,7 +139,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!self_operable && (user == target))
 		return FALSE
-	
+
 	if(target_mobtypes)
 		var/valid_mobtype = FALSE
 		for(var/mobtype in target_mobtypes)
@@ -178,10 +148,10 @@
 				break
 		if(!valid_mobtype)
 			return FALSE
-	
+
 	if(lying_required && (target.mobility_flags & MOBILITY_STAND))
 		return FALSE
-	
+
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		var/obj/item/bodypart/bodypart = carbon_target.get_bodypart(check_zone(target_zone))
@@ -191,7 +161,7 @@
 			var/obj/item/organ/organ = carbon_target.getorganslot(required_organ)
 			if(!organ)
 				return FALSE
-	
+
 	//no surgeries in the same body zone
 	if(target_zone && LAZYACCESS(target.surgeries, target_zone))
 		return FALSE
@@ -206,10 +176,10 @@
 		if(requires_missing_bodypart && bodypart)
 			return FALSE
 		return TRUE
-	
+
 	if(requires_bodypart_type && (bodypart.status != requires_bodypart_type))
 		return FALSE
-	
+
 	var/bodypart_flags = bodypart.get_surgery_flags()
 	if((surgery_flags & bodypart_flags) != surgery_flags)
 		return FALSE
@@ -230,13 +200,13 @@
 
 	if(!ignore_clothes && !get_location_accessible(target, target_zone || bodypart.body_zone))
 		return FALSE
-	
+
 	return TRUE
 
 /datum/surgery_step/proc/tool_check(mob/user, obj/item/tool)
 	SHOULD_CALL_PARENT(TRUE)
 	var/implement_type = FALSE
-	if(accept_hand && (!tool || iscyborg(user)))
+	if(accept_hand && (!tool))
 		implement_type = TOOL_HAND
 
 	if(tool)
@@ -250,10 +220,10 @@
 			if((key == TOOL_SHARP) && tool.get_sharpness())
 				implement_type = key
 				break
-			if((key == TOOL_HOT) && (tool.get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST))
+			if((key == TOOL_HOT) && (tool.get_temperature() >= 100+T0C))
 				implement_type = key
 				break
-		
+
 		if(!implement_type && accept_any_item)
 			implement_type = TOOL_NONE
 
@@ -272,7 +242,7 @@
 	for(var/reagent_needed in chems_needed)
 		if(target.reagents.has_reagent(reagent_needed))
 			return TRUE
-	
+
 	return FALSE
 
 /// Returns a string of the chemicals needed for this surgery step
@@ -300,7 +270,7 @@
 	if(!preop(user, target, target_zone, tool, intent))
 		LAZYREMOVE(target.surgeries, target_zone)
 		return FALSE
-	
+
 	var/speed_mod = get_speed_modifier(user, target, target_zone, tool, intent)
 	var/success_prob = max(get_success_probability(user, target, target_zone, tool, intent), 0)
 
@@ -310,7 +280,7 @@
 		return FALSE
 
 	LAZYREMOVE(target.surgeries, target_zone)
-	var/success = !try_to_fail && ((iscyborg(user) && !silicons_obey_prob) || prob(success_prob)) && chem_check(target)
+	var/success = !try_to_fail && (prob(success_prob)) && chem_check(target)
 	if(success && success(user, target, target_zone, tool, intent))
 		if(repeating && can_do_step(user, target, target_zone, tool, intent, try_to_fail))
 			initiate(user, target, target_zone, tool, intent, try_to_fail)
@@ -322,7 +292,7 @@
 			else
 				to_chat(user, span_warning("Surgery fail... [success_prob]%"))
 		return FALSE
-		
+
 	return FALSE
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)

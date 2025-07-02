@@ -2,6 +2,8 @@
 	var/amount = 0
 	var/last_process = 0
 	var/datum/looping_sound/fliesloop/soundloop
+	/// Stored skin tone to revert to before destroying if we don't zombify from rot.
+	var/skin_tone
 
 /datum/component/rot/Initialize(new_amount)
 	..()
@@ -11,17 +13,25 @@
 	if(new_amount)
 		amount = new_amount
 
-	soundloop = new(list(parent), FALSE)
+	soundloop = new(parent, FALSE)
 
 	START_PROCESSING(SSroguerot, src)
 
 /datum/component/rot/Destroy()
 	if(soundloop)
 		soundloop.stop()
+	if(ishuman(parent))
+		var/mob/living/carbon/human/H = parent
+		H.skin_tone = skin_tone
 	. = ..()
 
 /datum/component/rot/process()
 	var/amt2add = 10 //1 second
+	var/mob/living/carbon/C = parent
+	if(C && C.reagents && C.reagents.has_reagent(/datum/reagent/medicine/enbalming, 1))
+		C.reagents.remove_reagent(/datum/reagent/medicine/enbalming, 15)
+		amount = 0
+		return
 	if(last_process)
 		amt2add = ((world.time - last_process)/10) * amt2add
 	last_process = world.time
@@ -31,12 +41,16 @@
 /datum/component/rot/corpse/Initialize()
 	if(!iscarbon(parent))
 		return COMPONENT_INCOMPATIBLE
+	if(ishuman(parent)) // Edge-case where rot would be removed from a body that had a head attached after it had rotted.
+		var/mob/living/carbon/human/H = parent
+		skin_tone = H.skin_tone
 	. = ..()
 
 /datum/component/rot/corpse/process()
 	..()
 	var/mob/living/carbon/C = parent
 	var/is_zombie
+
 	if(C.mind)
 		if(C.mind.has_antag_datum(/datum/antagonist/zombie))
 			is_zombie = TRUE
@@ -49,7 +63,7 @@
 	if(!(C.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD)))
 		qdel(src)
 		return
-	
+
 	if(amount > 4 MINUTES)
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
@@ -89,7 +103,7 @@
 	if(findonerotten)
 		var/turf/open/T = C.loc
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.pollute_turf(/datum/pollutant/rot, 50)
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		else
@@ -118,13 +132,13 @@
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.pollute_turf(/datum/pollutant/rot, 50)
 	if(amount > 25 MINUTES)
 		qdel(src)
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
-	amount = MIASMA_GIBS_MOLES
+	amount = 0.005
 
 /datum/looping_sound/fliesloop
 	mid_sounds = list('sound/misc/fliesloop.ogg')

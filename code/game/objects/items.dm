@@ -1,7 +1,5 @@
 GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/effects/fire.dmi', "fire"))
 
-
-GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // if true, everyone item when created will have its name changed to be
 // more... RPG-like.
 
@@ -54,7 +52,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/w_class = WEIGHT_CLASS_NORMAL
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
 	pass_flags = PASSTABLE
-	pressure_resistance = 4
 	var/obj/item/master = null
 
 	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the HEAD, CHEST, GROIN, etc. flags. See setup.dm
@@ -129,8 +126,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/dying_key
 
 	//Grinder vars
-	var/list/grind_results //A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
-	var/list/juice_results //A reagent list containing blah blah... but when JUICED in a grinder!
+	var/list/grind_results = null //A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
+	var/list/juice_results = null //A reagent list containing blah blah... but when JUICED in a grinder!
 
 	var/canMouseDown = FALSE
 	var/can_parry = FALSE
@@ -145,14 +142,21 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/gripped_intents //intents while gripped, replacing main intents
 	var/force_wielded = 0
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
+	var/gripspriteonmob = FALSE //use alternate sprite for onmob
 
 	var/dropshrink = 0
 
 	var/wlength = WLENGTH_NORMAL		//each weapon length class has its own inherent dodge properties
 	var/wbalance = 0
 	var/wdefense = 0 //better at defending
+	var/wieldedwdefense = 3 //Bonus for wielding, default to 3 for all weapons
 	var/minstr = 0  //for weapons
 
+	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+
+	var/ignore_sleeves_code = FALSE // Use for clothing which has cropped parts for hands and doesn't use sleeved system. They will have layer under gloves
+	var/sleeves_state_override = FALSE // If you want to use sleeves that are different from the object's icon_state (to don't copy many similar states)
 	var/sleeved = null
 	var/sleevetype = null
 	var/nodismemsleeves = FALSE
@@ -170,6 +174,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/firefuel = 0 //add this idiot
 
+	var/leashable = FALSE //More elegant solution to leashchecks
+
 	var/thrown_bclass = BCLASS_BLUNT
 
 	var/icon/experimental_inhand = TRUE
@@ -185,8 +191,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	///The appropriate skill to repair this obj/item. If null, our object cannot be placed on an anvil to be repaired
 	var/anvilrepair
-	//this should be true or false
-	var/sewrepair
 
 	var/breakpath
 
@@ -198,7 +202,26 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/examine_effects = list()
 
 	///played when an item that is equipped blocks a hit
-	var/list/blocksound 
+	var/list/blocksound
+
+	// played when item is placed on hip_r or hip_l, the belt side slots
+	var/sheathe_sound
+
+	/// This is what we get when we either tear up or salvage a piece of clothing
+	var/obj/item/salvage_result = null
+
+	/// The amount of salvage we get out of salvaging with scissors
+	var/salvage_amount = 0 //This will be more accurate when sewing recipes get sorted
+
+	/// Path. For use in generating dummies for one-off items that would break the game like the crown.
+	var/visual_replacement
+
+	/// Temporary snowflake var to be used in the rare cases clothing doesn't require fibers to sew, to avoid material duping
+	var/fiber_salvage = FALSE
+
+	/// Number of torn sleves, important for salvaging calculations and examine text
+	var/torn_sleeve_number = 0
+	var/enchanted = FALSE
 
 /obj/item/Initialize()
 	. = ..()
@@ -209,6 +232,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		has_inspect_verb = TRUE
 	update_transform()
 
+/obj/item/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
 
 /obj/item/proc/update_transform()
 	transform = null
@@ -235,9 +260,23 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					B.remove()
 					B.generate_appearance()
 					B.apply()
+			if(gripspriteonmob)
+				item_state = "[initial(item_state)]1"
+				var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+				if(B)
+					B.remove()
+					B.generate_appearance()
+					B.apply()
 			return
 		if(gripsprite)
 			icon_state = initial(icon_state)
+			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
+			if(B)
+				B.remove()
+				B.generate_appearance()
+				B.apply()
+		if(gripspriteonmob)
+			item_state = initial(item_state)
 			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
 			if(B)
 				B.remove()
@@ -286,9 +325,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		new path(src)
 	actions_types = null
 
-	if(GLOB.rpg_loot_items)
-		AddComponent(/datum/component/fantasy)
-
 	if(force_string)
 		item_flags |= FORCE_STRING_OVERRIDE
 
@@ -308,7 +344,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(sharpness) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, 80 * toolspeed)
 
-	if(max_blade_int) 
+	if(max_blade_int)
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
@@ -330,6 +366,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else if(isliving(loc))
 			var/mob/living/embedded_mob = loc
 			embedded_mob.simple_remove_embedded_object(src)
+	if(artrecipe)
+		QDEL_NULL(artrecipe)
+	if(istype(loc, /obj/machinery/artificer_table))
+		var/obj/machinery/artificer_table/A = loc
+		A.material = null
+		A.update_icon()
 	return ..()
 
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
@@ -337,10 +379,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return 0
 	else
 		return 1
-
-/obj/item/blob_act(obj/structure/blob/B)
-	if(B && B.loc == loc)
-		qdel(src)
 
 //user: The mob that is suiciding
 //damagetype: The type of damage the item will inflict on the user
@@ -420,11 +458,20 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(istype(src,/obj/item/clothing))
 			var/obj/item/clothing/C = src
+			inspec += "<br>"
+			inspec += C.defense_examine()
+			if(C.body_parts_covered)
+				inspec += "\n<b>COVERAGE: <br></b>"
+				inspec += " | "
+				for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
+					inspec += "<b>[capitalize(zone)]</b> | "
+				inspec += "<br>"
 			if(C.prevent_crits)
 				if(C.prevent_crits.len)
-					inspec += "\n<b>DEFENSE</b>"
+					inspec += "\n<b>PREVENTS CRITS:</b>"
 					for(var/X in C.prevent_crits)
-						inspec += "\n<b>[X] damage</b>"
+						inspec += ("\n<b>[capitalize(X)]</b>")
+				inspec += "<br>"
 
 //**** General durability
 
@@ -462,15 +509,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return
 
 	if(twohands_required)
+		if(HAS_TRAIT(user, TRAIT_TINY))
+			to_chat(user, span_warning("[src] is too big for me to carry."))
+			return
 		if(user.get_num_arms() < 2)
 			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
-		var/obj/item/twohanded/required/H
-		H = user.get_inactive_held_item()
 		if(get_dist(src,user) > 1)
-			return
-		if(H != null)
-			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
 			return
 
 	if(w_class == WEIGHT_CLASS_GIGANTIC)
@@ -492,7 +537,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else
 			user.visible_message(span_warning("[user] burns [user.p_their()] hand putting out the fire on [src]!"))
 			extinguish()
-			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+			var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				C.update_damage_overlays()
 			return
@@ -502,7 +547,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
 				to_chat(user, span_warning("The acid on [src] burns my hand!"))
-				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				var/obj/item/bodypart/affecting = C.get_bodypart((user.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM)
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
 
@@ -545,6 +590,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return FALSE
 	for(var/obj/structure/table/T in src.loc)
 		return TRUE
+	for(var/obj/machinery/anvil/A in src.loc)
+		return TRUE
 	return FALSE
 
 /obj/item/proc/allow_attack_hand_drop(mob/user)
@@ -569,26 +616,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!user.put_in_active_hand(src, FALSE, FALSE))
 		user.dropItemToGround(src)
 
-/obj/item/attack_alien(mob/user)
-	var/mob/living/carbon/alien/A = user
-
-	if(!A.has_fine_manipulation)
-		if(src in A.contents) // To stop Aliens having items stuck in their pockets
-			A.dropItemToGround(src)
-		to_chat(user, span_warning("My claws aren't capable of such fine manipulation!"))
-		return
-	attack_paw(A)
-
-/obj/item/attack_ai(mob/user)
-	if(istype(src.loc, /obj/item/robot_module))
-		//If the item is part of a cyborg module, equip it
-		if(!iscyborg(user))
-			return
-		var/mob/living/silicon/robot/R = user
-		if(!R.low_power_mode) //can't equip modules with an empty cell.
-			R.activate_module(src)
-			R.hud_used.update_robot_modules_display()
-
 /obj/item/proc/GetDeconstructableContents()
 	return GetAllContents() - src
 
@@ -600,6 +627,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
 		return 1
 	return 0
+
+/obj/item/proc/hit_response(mob/living/carbon/human/owner, mob/living/carbon/human/attacker)
+	SEND_SIGNAL(src, COMSIG_ITEM_HIT_RESPONSE, owner, attacker)		//sends signal for Magic_items. Used to call enchantments effects for worn items
+
 
 /obj/item/proc/talk_into(mob/M, input, channel, spans, datum/language/language)
 	return ITALICS | REDUCE_RANGE
@@ -642,8 +673,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
+// The slot == refers to the new location of the item
 // Initial is used to indicate whether or not this is the initial equipment (job datums etc) or just a player doing it
-/obj/item/proc/equipped(mob/user, slot, initial = FALSE)
+/obj/item/proc/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 	for(var/X in actions)
@@ -651,11 +683,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
-	if(!initial)
-		if(equip_sound &&(slot_flags & slotdefine2slotbit(slot)))
-			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == SLOT_HANDS)
+	if(!initial && !silent) // Only non initial, non silent play (silent is false by default)
+		var/slotbit = slotdefine2slotbit(slot)
+		if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+		if(slotbit == ITEM_SLOT_HIP)
+			playsound(src, sheathe_sound, SHEATHE_SOUND_VOLUME, ignore_walls = FALSE)
+		else if(equip_sound &&(slot_flags & slotbit))
+			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
 	if(!user.is_holding(src))
@@ -663,13 +698,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			ungrip(user, FALSE)
 	if(twohands_required)
 		var/slotbit = slotdefine2slotbit(slot)
-		if(slot_flags & slotbit)
-			var/datum/O = user.is_holding_item_of_type(/obj/item/twohanded/offhand)
-			if(!O || QDELETED(O))
-				return
-			qdel(O)
-			return
-		if(slot == SLOT_HANDS)
+		if(slotbit == ITEM_SLOT_HANDS)
 			wield(user)
 		else
 			ungrip(user)
@@ -736,10 +765,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(user, span_warning("You're going to need to remove [M.p_their()] eye protection first!"))
 		return
 
-	if(isalien(M))//Aliens don't have eyes./N     slimes also don't have eyes!
-		to_chat(user, span_warning("I cannot locate any eyes on this creature!"))
-		return
-
 	if(isbrain(M))
 		to_chat(user, span_warning("I cannot locate any organic eyes on this brain!"))
 		return
@@ -784,7 +809,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(prob(50))
 			if(M.stat != DEAD)
 				if(M.drop_all_held_items())
-					to_chat(M, span_danger("I drop what you're holding and clutch at my eyes!"))
+					to_chat(M, span_danger("I drop what I'm holding and clutch at my eyes!"))
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Paralyze(40)
@@ -792,12 +817,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			M.become_blind(EYE_DAMAGE)
 			to_chat(M, span_danger("I go blind!"))
 
-/obj/item/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_FOUR)
-		throw_at(S,14,3, spin=0)
-	else
-		return
+/obj/item/singularity_pull()
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
@@ -959,18 +979,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		. = ""
 
-/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, d_type = "blunt")
-	return
+/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
+	return SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM, skipcatch, hitpush, blocked, throwingdatum, damage_type)
 
-/obj/item/attack_hulk(mob/living/carbon/human/user)
-	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/M)
 	if (obj_flags & CAN_BE_HIT)
 		return ..()
-	return 0
-
-/obj/item/mech_melee_attack(obj/mecha/M)
 	return 0
 
 /obj/item/burn()
@@ -992,13 +1007,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		MO.desc = ""
 		..()
 
-/obj/item/proc/microwave_act(obj/machinery/microwave/M)
-	if(istype(M) && M.dirty < 100)
-		M.dirty++
+/obj/item/proc/heating_act()
+	return
 
 /obj/item/proc/on_mob_death(mob/living/L, gibbed)
 
-/obj/item/proc/grind_requirements(obj/machinery/reagentgrinder/R) //Used to check for extra requirements for grinding an object
+/obj/item/proc/grind_requirements() //Used to check for extra requirements for grinding an object
 	return TRUE
 
  //Called BEFORE the object is ground up - use this to change grind results based on conditions
@@ -1164,9 +1178,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(force_wielded)
 			force = initial(force)
 		wdefense = initial(wdefense)
-		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
-		if(O && istype(O))
-			O.unwield()
 	if(altgripped)
 		altgripped = FALSE
 	update_transform()
@@ -1191,6 +1202,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			user.update_a_intents()
 
 /obj/item/proc/wield(mob/living/carbon/user)
+	if(HAS_TRAIT(user, TRAIT_TINY))
+		to_chat(user, span_warning("[src] is too big for me to carry."))
+		return
 	if(wielded)
 		return
 	if(user.get_inactive_held_item())
@@ -1202,14 +1216,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	wielded = TRUE
 	if(force_wielded)
 		force = force_wielded
-	wdefense = wdefense + 3
+	wdefense = wdefense + wieldedwdefense
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
-	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
-	O.name = "[name] - offhand"
-	O.wielded = TRUE
-	user.put_in_inactive_hand(O)
 	if(twohands_required)
 		if(!wielded)
 			user.dropItemToGround(src)
@@ -1235,3 +1245,71 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			ungrip(M, FALSE)
 
 
+/obj/item/proc/defense_examine()
+	var/list/str = list()
+	if(istype(src, /obj/item/clothing))
+		var/obj/item/clothing/C = src
+		if(C.armor)
+			var/defense = "<u><b>ABSORPTION: </b></u><br>"
+			var/datum/armor/def_armor = C.armor
+			defense += "[colorgrade_rating("BLUNT", def_armor.blunt)] | "
+			defense += "[colorgrade_rating("SLASH", def_armor.slash)] | "
+			defense += "[colorgrade_rating("STAB", def_armor.stab)] | "
+			defense += "[colorgrade_rating("PROJECTILE", def_armor.bullet)] "
+			str += "[defense]<br>"
+		else
+			str += "NO DEFENSE"
+	return str
+
+/obj/item/obj_fix()
+	..()
+	update_damaged_state(FALSE)
+
+
+/obj/item/proc/update_damaged_state(damaging = TRUE)
+	cut_overlays()
+	if (!obj_broken)
+		return
+	var/icon/damaged_icon = icon(initial(icon), icon_state, , TRUE)
+	damaged_icon.Blend("#fff", ICON_ADD)
+	damaged_icon.Blend(icon('icons/effects/item_damage.dmi', "itemdamaged"), ICON_MULTIPLY)
+	var/mutable_appearance/damage = new(damaged_icon)
+	damage.alpha = 150
+	add_overlay(damage)
+
+/proc/colorgrade_rating(input, rating)
+	var/str
+	switch(rating)
+		if(0)
+			var/color = "#f81a1a"
+			str = "<font color = '[color]'>[input] (F)</font>"
+		if(1 to 19)
+			var/color = "#680d0d"
+			str = "<font color = '[color]'>[input] (D)</font>"
+		if(20 to 39)
+			var/color = "#753e11"
+			str = "<font color = '[color]'>[input] (D+)</font>"
+		if(40 to 49)
+			var/color = "#c0a739"
+			str = "<font color = '[color]'>[input] (C)</font>"
+		if(50 to 59)
+			var/color = "#e3e63c"
+			str = "<font color = '[color]'>[input] (C+)</font>"
+		if(60 to 69)
+			var/color = "#425c33"
+			str = "<font color = '[color]'>[input] (B)</font>"
+		if(70 to 79)
+			var/color = "#1a9c00"
+			str = "<font color = '[color]'>[input] (B+)</font>"
+		if(80 to 89)
+			var/color = "#0fe021"
+			str = "<font color = '[color]'>[input] (A)</font>"
+		if(90 to 99)
+			var/color = "#ffffff"
+			str = "<font color = '[color]'>[input] (A+)</font>"
+		if(100)
+			var/color = "#339dff"
+			str = "<font color = '[color]'>[input] (S)</font>"
+		else
+			str = "[input] (Above 100 or under 0! Contact coders.)"
+	return str

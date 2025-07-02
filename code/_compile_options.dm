@@ -6,6 +6,7 @@
 #define MATURESERVER
 //#define TESTSERVER
 #define ALLOWPLAY
+//#define LOWMEMORYMODE
 
 #define RESPAWNTIME 0
 //0 test
@@ -46,7 +47,7 @@
 									//	2 for preloading absolutely everything;
 
 #ifdef LOWMEMORYMODE
-#define FORCE_MAP "_maps/runtimestation.json"
+#define FORCE_MAP "_maps/debug.json"
 #endif
 
 //Update this whenever you need to take advantage of more recent byond features
@@ -74,11 +75,10 @@
 #define TESTING
 #endif
 
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 100
-
 //Disable unimplemented proc/var warnings
 #ifdef OPENDREAM
 #pragma UnimplementedAccess disable
 #endif
+
+// Uncomment this for NPCs to display their 'thoughts' (AI planning steps) above their heads. Useful for debugging NPC logic.
+// #define NPC_THINK_DEBUG

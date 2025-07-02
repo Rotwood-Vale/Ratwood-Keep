@@ -21,21 +21,6 @@
 	if(requires_sharpness && !I.get_sharpness())
 		to_chat(user, span_warning("I can only sharpen items that are already sharp, such as knives!"))
 		return
-	if(istype(I, /obj/item/melee/transforming/energy))
-		to_chat(user, span_warning("I don't think \the [I] will be the thing getting modified if you use it on \the [src]!"))
-		return
-	if(istype(I, /obj/item/twohanded))//some twohanded items should still be sharpenable, but handle force differently. therefore i need this stuff
-		var/obj/item/twohanded/TH = I
-		if(TH.force_wielded >= max)
-			to_chat(user, span_warning("[TH] is much too powerful to sharpen further!"))
-			return
-		if(TH.wielded)
-			to_chat(user, span_warning("[TH] must be unwielded before it can be sharpened!"))
-			return
-		if(TH.force_wielded > initial(TH.force_wielded))
-			to_chat(user, span_warning("[TH] has already been refined before. It cannot be sharpened further!"))
-			return
-		TH.force_wielded = CLAMP(TH.force_wielded + increment, 0, max)//wieldforce is increased since normal force wont stay
 	if(I.force > initial(I.force))
 		to_chat(user, span_warning("[I] has already been refined before. It cannot be sharpened further!"))
 		return

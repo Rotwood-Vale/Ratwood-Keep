@@ -37,11 +37,9 @@
 		to_chat(src, span_warning("Filename must end in '.dmm': [map]"))
 		return
 	var/datum/map_template/M
-	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Shuttle", "Cancel"))
+	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Cancel"))
 		if("Normal")
 			M = new /datum/map_template(map, "[map]", TRUE)
-		if("Shuttle")
-			M = new /datum/map_template/shuttle(map, "[map]", TRUE)
 		else
 			return
 	if(!M.cached_map)

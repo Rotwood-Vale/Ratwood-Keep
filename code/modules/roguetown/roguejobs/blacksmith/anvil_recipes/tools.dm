@@ -1,274 +1,235 @@
+/datum/anvil_recipe/tools
+	i_type = "Tools"
+
+/datum/anvil_recipe/tools/steel
+	skill_level = 3
+
+/datum/anvil_recipe/general
+	i_type = "General"
 
 // --------- IRON -----------
-/datum/anvil_recipe/tools/torch
+/datum/anvil_recipe/general/torch
 	name = "Torches 5x (+1 Coal)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/rogueore/coal)
 	created_item = list(/obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal, /obj/item/flashlight/flare/torch/metal)
-	i_type = "General"
 
-/datum/anvil_recipe/tools/pan
-	name = "Frypan"
+/datum/anvil_recipe/general/locks
+	name = "Locks 2x"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/customlock, /obj/item/customlock)
+
+/datum/anvil_recipe/general/keys
+	name = "Keys 2x"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/key_custom_blank, /obj/item/key_custom_blank)
+
+/datum/anvil_recipe/tools/iron/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/huntingknife/scissors
+
+/datum/anvil_recipe/tools/iron/pan
+	name = "Skillet"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/cooking/pan
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/keyring
+/datum/anvil_recipe/general/catbell
+	name = "Catbell x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/catbell,
+						/obj/item/catbell,
+						/obj/item/catbell)
+
+/datum/anvil_recipe/general/iron/keyring
 	name = "Keyrings 3x"
 	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/keyring, /obj/item/keyring, /obj/item/keyring)
-	i_type = "General"
+	created_item = list(/obj/item/storage/keyring, /obj/item/storage/keyring, /obj/item/storage/keyring)
 
-/datum/anvil_recipe/tools/needle
+/datum/anvil_recipe/general/iron/sewingneedle
 	name = "Sewing Needles 5x"
 	req_bar = /obj/item/ingot/iron
 	created_item = list(/obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle, /obj/item/needle)
-	i_type = "General"
 
-/datum/anvil_recipe/tools/shovel
+/datum/anvil_recipe/tools/iron/shovel
 	name = "Shovel (+2 Sticks)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/hammer
+/datum/anvil_recipe/tools/iron/hammer
 	name = "Hammer (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer
-	i_type = "Tools"
+	created_item = /obj/item/rogueweapon/hammer/iron
 
-/datum/anvil_recipe/tools/tongs
+/datum/anvil_recipe/tools/iron/handsaw
+	name = "Handsaw (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/handsaw
+
+/datum/anvil_recipe/tools/iron/chisel
+	name = "Chisel"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rogueweapon/chisel
+
+/datum/anvil_recipe/tools/iron/tongs
 	name = "Tongs"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/tongs
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/sickle
+/datum/anvil_recipe/tools/iron/sickle
 	name = "Sickle (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/sickle
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pick
+/datum/anvil_recipe/tools/iron/pick
 	name = "Pickaxe (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/hoe
+/datum/anvil_recipe/tools/iron/hoe
 	name = "Hoe (+2 Sticks)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hoe
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/pitchfork
+/datum/anvil_recipe/tools/iron/pitchfork
 	name = "Pitchfork (+2 Sticks)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pitchfork
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/lamptern
+/datum/anvil_recipe/general/iron/lamptern
 	name = "Lamptern"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/flashlight/flare/torch/lantern
-	i_type = "General"
 
-/datum/anvil_recipe/tools/cups
-	name = "Cups 3x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup,/obj/item/reagent_containers/glass/cup)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/cogiron
-	name = "Cogs 3x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/locks
-	name = "Locks 5x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock, /obj/item/customlock)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/keys
-	name = "Keys 5x"
-	req_bar = /obj/item/ingot/iron
-	created_item = list(/obj/item/customblank, /obj/item/customblank, /obj/item/customblank, /obj/item/customblank, /obj/item/customblank)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/thresher
+/datum/anvil_recipe/tools/iron/thresher
 	name = "Thresher (+1 Stick)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/thresher
+
+/datum/anvil_recipe/general/chain
+	name = "Chain"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/rope/chain
+
+/datum/anvil_recipe/general/chainleash
+	name = "Chain Leash"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/leash/chain
+
+/datum/anvil_recipe/general/iron/ramrod
+	name = "Replacement Ramrods x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/ramrod,
+						/obj/item/ramrod,
+						/obj/item/ramrod
+						)
+
+	skill_level = 0
+
+/datum/anvil_recipe/tools/lockpicks
+	name = "Lockpicks x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/lockpick,
+						/obj/item/lockpick,
+						/obj/item/lockpick
+						)
+
+/datum/anvil_recipe/tools/lockpickring
+	name = "Lockpickrings x3"
+	req_bar = /obj/item/ingot/iron
+	created_item = list(/obj/item/lockpickring,
+						/obj/item/lockpickring,
+						/obj/item/lockpickring
+						)
+
+
+/datum/anvil_recipe/tools/alembic
+	name = "Alembic"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/reagent_containers/glass/alembic
 	i_type = "Tools"
-
-/datum/anvil_recipe/tools/pot
-	name = "Metal Pot"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/reagent_containers/glass/pot
-	i_type = "Tools"
-
-/datum/anvil_recipe/tools/iron_arm_left
-	name = "Iron arm (L)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/bodypart/l_arm/rprosthetic/iron
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/iron_arm_right
-	name = "Iron arm (R)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/bodypart/r_arm/rprosthetic/iron
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/iron_leg_left
-	name = "Iron leg (L)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/bodypart/l_leg/rprosthetic/iron
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/iron_leg_right
-	name = "Iron leg (R)"
-	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/bodypart/r_leg/rprosthetic/iron
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
 
 // --------- Steel -----------
 
-/datum/anvil_recipe/tools/steelpick
+/datum/anvil_recipe/tools/steel/hammer
+	name = "Claw hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/steel
+
+/datum/anvil_recipe/tools/steel/pick
 	name = "Pickaxe (+1 Stick)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/pick/steel
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/scalpel
+/datum/anvil_recipe/tools/steel/scissors
+	name = "Scissors"
+	req_bar = /obj/item/ingot/steel
+	created_item = /obj/item/rogueweapon/huntingknife/scissors/steel
+
+/datum/anvil_recipe/tools/surgery/steel/scalpel
 	name = "Scalpel"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/scalpel
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/saw
+/datum/anvil_recipe/tools/surgery/steel/saw
 	name = "Surgical Saw"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/saw
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/hemostat
+/datum/anvil_recipe/tools/surgery/steel/hemostat
 	name = "Forceps"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/hemostat
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/retractor
+/datum/anvil_recipe/tools/surgery/steel/retractor
 	name = "Speculum"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/retractor
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/bonesetter
+/datum/anvil_recipe/tools/surgery/steel/bonesetter
 	name = "Bone Forceps"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/bonesetter
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/surgery/cautery
+/datum/anvil_recipe/tools/surgery/steel/cautery
 	name = "Cautery Iron"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/surgery/cautery
-	i_type = "Tools"
 
-/datum/anvil_recipe/tools/cupssteel
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel, /obj/item/reagent_containers/glass/cup/steel)
-	i_type = "General"
+/datum/anvil_recipe/general/cowbell
+	name = "Cowbell x3"
+	req_bar = /obj/item/ingot/copper
+	created_item = list(/obj/item/catbell/cow,
+						/obj/item/catbell/cow,
+						/obj/item/catbell/cow)
 
-/datum/anvil_recipe/tools/cogsteel
-	name = "Cogs 3x"
-	req_bar = /obj/item/ingot/steel
-	created_item = list(/obj/item/roguegear, /obj/item/roguegear, /obj/item/roguegear)
-	i_type = "General"
+//black steel tools
+/datum/anvil_recipe/tools/blacksteel
+	skill_level = 5
 
-/datum/anvil_recipe/tools/steel_arm_left
-	name = "Steel arm (L)"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/bodypart/l_arm/rprosthetic/steel
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
+/datum/anvil_recipe/tools/blacksteel/hammer
+	name = "Blacksteel hammer (+1 Stick)"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/hammer/blacksteel
 
-/datum/anvil_recipe/tools/steel_arm_right
-	name = "Steel arm (R)"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/bodypart/r_arm/rprosthetic/steel
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
+/datum/anvil_recipe/tools/blacksteel/pick
+	name = "Blacksteel Pickaxe (+1 Stick)"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/pick/blacksteel
 
-/datum/anvil_recipe/tools/steel_leg_left
-	name = "Steel leg (L)"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/bodypart/l_leg/rprosthetic/steel
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/steel_leg_right
-	name = "Steel leg (R)"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/bodypart/r_leg/rprosthetic/steel
-	additional_items = list(/obj/item/roguegear)
-	i_type = "General"
-
-// --------- SILVER -----------
-
-/datum/anvil_recipe/tools/cupssil
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/silver
-	created_item = list(/obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver, /obj/item/reagent_containers/glass/cup/silver)
-	i_type = "General"
-
-// --------- GOLD -----------
-
-/datum/anvil_recipe/tools/cupsgold
-	name = "Goblets 3x"
-	req_bar = /obj/item/ingot/gold
-	created_item = list(/obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden, /obj/item/reagent_containers/glass/cup/golden)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/clock_arm_left
-	name = "Clockwork arm (L)"
-	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/bodypart/l_arm/rprosthetic/clock
-	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/clock_arm_right
-	name = "Clockwork arm (R)"
-	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/bodypart/r_arm/rprosthetic/clock
-	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/clock_leg_left
-	name = "Clockwork leg (L)"
-	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/bodypart/l_leg/rprosthetic/clock
-	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
-
-/datum/anvil_recipe/tools/clock_leg_right
-	name = "Clockwork leg (R)"
-	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/bodypart/r_leg/rprosthetic/clock
-	additional_items = list(/obj/item/roguegear,/obj/item/roguegear,/obj/item/roguegear)
-	i_type = "General"
+/datum/anvil_recipe/tools/blacksteel/tongs
+	name = "Blacksteel Tongs"
+	req_bar = /obj/item/ingot/blacksteel
+	created_item = /obj/item/rogueweapon/tongs/blacksteel

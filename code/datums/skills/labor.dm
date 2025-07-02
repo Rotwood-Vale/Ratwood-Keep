@@ -12,9 +12,6 @@
 /datum/skill/labor/fishing
 	name = "Fishing"
 
-/datum/skill/labor/butchering
-	name = "Butchering"
-
 /datum/skill/labor/lumberjacking
 	name = "Lumberjacking"
 	dreams = list(

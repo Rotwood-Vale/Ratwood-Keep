@@ -84,6 +84,7 @@
 	var/rotted = FALSE
 	var/skeletonized = FALSE
 
+	/// Can this bodypart swing weapons?
 	var/fingers = TRUE
 	var/organ_slowdown = 0 // Its here because this is first shared definition between two leg organ paths
 
@@ -100,7 +101,7 @@
 
 /obj/item/bodypart/proc/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
 	var/list/appearance_list = list()
-	var/specific_layer = aux ? aux_layer : BODYPARTS_LAYER
+	var/specific_layer = aux_layer ? aux_layer : BODYPARTS_LAYER
 	var/specific_render_zone = aux ? aux_zone : body_zone
 	for(var/key in specific_markings)
 		var/color = specific_markings[key]
@@ -134,11 +135,24 @@
 /obj/item/bodypart/grabbedintents(mob/living/user, precise)
 	return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
-/obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
-	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
+/obj/item/bodypart/l_arm/grabbedintents(mob/living/user, precise)
+	var/used_limb = precise
+	if(used_limb == BODY_ZONE_PRECISE_L_HAND)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash, /datum/intent/grab/disarm)
+	else
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
 
-/obj/item/bodypart/blob_act()
-	take_damage(max_damage)
+/obj/item/bodypart/r_arm/grabbedintents(mob/living/user, precise)
+	var/used_limb = precise
+	if(used_limb == BODY_ZONE_PRECISE_R_HAND)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash, /datum/intent/grab/disarm)
+	else
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
+
+/obj/item/bodypart/chest/grabbedintents(mob/living/user, precise)
+	if(precise == BODY_ZONE_PRECISE_GROIN)
+		return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/shove)
+	return list(/datum/intent/grab/move, /datum/intent/grab/shove)
 
 /obj/item/bodypart/Destroy()
 	if(owner)
@@ -151,16 +165,58 @@
 	return ..()
 
 /obj/item/bodypart/onbite(mob/living/carbon/human/user)
-	if((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
-		if(do_after(user, 50, target = src))
-			user.visible_message(span_warning("[user] consumes [src]!"),\
-							span_notice("I consume [src]!"))
-			playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
-			new /obj/effect/gibspawner/generic(get_turf(src), user)
-			user.fully_heal()
-			qdel(src)
-		return
-	return ..()
+    if ((user.mind && user.mind.has_antag_datum(/datum/antagonist/zombie)) || istype(user.dna.species, /datum/species/werewolf))
+        if (do_after(user, 50, target = src))
+            user.visible_message(
+                span_warning("[user] consumes [src]!"),
+                span_notice("I consume [src]!")
+            )
+            playsound(get_turf(user), pick(dismemsound), 100, FALSE, -1)
+            new /obj/effect/gibspawner/generic(get_turf(src), user)
+            user.fully_heal()
+
+            if (istype(user.dna.species, /datum/species/werewolf))
+                var/obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin/skin = null
+                // yes their armor is HERE
+                for (var/obj/item/item in user.contents)
+                    if (istype(item, /obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin))
+                        skin = item
+                        break
+
+                if (!skin)
+                    to_chat(user, "You do consume the flesh!")
+                else
+                    to_chat(user, "Your skin goes thicker...")
+                    skin.obj_integrity = skin.max_integrity
+
+            qdel(src)
+        return
+    return ..()
+
+/obj/item/bodypart/MiddleClick(mob/user, params)
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item)
+		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
+			if(!skeletonized)
+				var/used_time = 210
+				if(user.mind)
+					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+				visible_message("[user] begins to butcher \the [src].")
+				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
+				if(do_after(user, used_time, target = src))
+					if(species_id == "vulpkanin" || species_id == "anthromorph" || species_id == "lupian" || species_id == "tabaxi")
+						new /obj/item/natural/fur(get_turf(src))
+
+					if(rotted)
+						var/obj/item/reagent_containers/food/snacks/rogue/meat/steak/rotten_steak = new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+						rotten_steak.become_rotten()
+					else
+						new /obj/item/reagent_containers/food/snacks/rogue/meat/steak(get_turf(src))
+					new /obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+					qdel(src)
+			else
+				to_chat(user, span_warning("There is no meat to butcher."))
+	..()
 
 /obj/item/bodypart/attack(mob/living/carbon/C, mob/user)
 	if(ishuman(C))
@@ -246,7 +302,7 @@
 		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /obj/item/bodypart/Initialize()
-	..()
+	. = ..()
 	update_HP()
 
 /obj/item/bodypart/proc/update_HP()
@@ -282,10 +338,6 @@
 	if(!brute && !burn && !stamina)
 		return FALSE
 
-	switch(animal_origin)
-		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn //nothing can burn with so much snowflake code around
-			burn *= 2
-
 	//cap at maxdamage
 	if(brute_dam + brute > max_damage)
 		brute_dam = max_damage
@@ -309,10 +361,6 @@
 
 	if(owner && updating_health)
 		owner.updatehealth()
-		if(stamina > DAMAGE_PRECISION)
-			owner.update_stamina()
-			owner.stam_regen_start_time = world.time + STAMINA_REGEN_BLOCK_TIME
-			. = TRUE
 	consider_processing()
 	update_disabled()
 	return update_bodypart_damage_state() || .
@@ -346,6 +394,18 @@
 /obj/item/bodypart/proc/update_disabled()
 	update_HP()
 	set_disabled(is_disabled())
+
+/obj/item/bodypart/proc/cure_infections(cure_rot = TRUE, cure_werewolf = FALSE)
+	for(var/datum/wound/wound in wounds)
+		if (wound.has_special_infection() \
+		&& ((wound.zombie_infection_timer && cure_rot) || (wound.werewolf_infection_timer && cure_werewolf)))
+			// If we want to cure either infection, cure both - they shouldn't be simultaneously present on
+			// the same wound, but we want to avoid any weird bugs if it somehow happens anyway
+			if (wound.zombie_infection_timer)
+				deltimer(wound.zombie_infection_timer)
+			if (wound.werewolf_infection_timer)
+				deltimer(wound.werewolf_infection_timer)
+			qdel(wound)
 
 /obj/item/bodypart/proc/is_disabled()
 	if(!owner || !can_disable() || HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
@@ -426,7 +486,7 @@
 		C = owner
 		no_update = FALSE
 
-	if(HAS_TRAIT(C, TRAIT_HUSK) && is_organic_limb())
+	if((C) && HAS_TRAIT(C, TRAIT_HUSK) && is_organic_limb())
 		species_id = "husk" //overrides species_id
 		dmg_overlay_type = "" //no damage overlay shown when husked
 		should_draw_gender = FALSE
@@ -468,10 +528,7 @@
 		else
 			species_color = ""
 
-		if(!dropping_limb && H.dna.check_mutation(HULK))
-			mutation_color = "00aa00"
-		else
-			mutation_color = ""
+		mutation_color = ""
 
 		dmg_overlay_type = S.damage_overlay_type
 
@@ -586,7 +643,7 @@
 		override_color = SKIN_COLOR_ROT
 	if(is_organic_limb && should_draw_greyscale && !skeletonized)
 		var/draw_color =  mutation_color || species_color || skin_tone
-		if(rotted || (owner && HAS_TRAIT(owner, TRAIT_ROTMAN)))
+		if(rotted)
 			draw_color = SKIN_COLOR_ROT
 		if(draw_color)
 			limb.color = "#[draw_color]"
@@ -609,7 +666,7 @@
 			. += marking_overlays
 
 	// Organ overlays
-	if(!rotted && !skeletonized && draw_organ_features)
+	if(!skeletonized && draw_organ_features) // show while rotted so we can have furry zombies
 		for(var/obj/item/organ/organ as anything in get_organs())
 			if(!organ.is_visible())
 				continue
@@ -669,24 +726,10 @@
 	icon_state = "default_monkey_chest"
 	animal_origin = MONKEY_BODYPART
 
-/obj/item/bodypart/chest/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_chest"
-	dismemberable = 0
-	max_damage = 500
-	animal_origin = ALIEN_BODYPART
-
 /obj/item/bodypart/chest/devil
 	dismemberable = 0
 	max_damage = 5000
 	animal_origin = DEVIL_BODYPART
-
-/obj/item/bodypart/chest/larva
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "larva_chest"
-	dismemberable = 0
-	max_damage = 50
-	animal_origin = LARVA_BODYPART
 
 /obj/item/bodypart/l_arm
 	name = "left arm"
@@ -740,14 +783,6 @@
 	px_x = -5
 	px_y = -3
 
-/obj/item/bodypart/l_arm/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_l_arm"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
 
 /obj/item/bodypart/l_arm/devil
 	dismemberable = 0
@@ -806,15 +841,6 @@
 	px_x = 5
 	px_y = -3
 
-/obj/item/bodypart/r_arm/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_r_arm"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
-
 /obj/item/bodypart/r_arm/devil
 	dismemberable = 0
 	max_damage = 5000
@@ -832,6 +858,8 @@
 	px_x = -2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "l_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_L_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_L_LEG)
 	dismember_wound = /datum/wound/dismemberment/l_leg
@@ -862,15 +890,6 @@
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
 
-/obj/item/bodypart/l_leg/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_l_leg"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
-
 /obj/item/bodypart/l_leg/devil
 	dismemberable = 0
 	max_damage = 5000
@@ -889,6 +908,8 @@
 	px_x = 2
 	px_y = 12
 	max_stamina_damage = 50
+	aux_zone = "r_leg_above"
+	aux_layer = LEG_PART_LAYER
 	subtargets = list(BODY_ZONE_PRECISE_R_FOOT)
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg
@@ -919,14 +940,6 @@
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
 
-/obj/item/bodypart/r_leg/alien
-	icon = 'icons/mob/animal_parts.dmi'
-	icon_state = "alien_r_leg"
-	px_x = 0
-	px_y = 0
-	dismemberable = 0
-	max_damage = 100
-	animal_origin = ALIEN_BODYPART
 
 /obj/item/bodypart/r_leg/devil
 	dismemberable = 0

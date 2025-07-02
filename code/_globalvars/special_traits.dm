@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		// Apply the stuff if we dont have a job for some reason
 		apply_character_post_equipment(character, player)
 		return
-	if(length(job.advclass_cat_rolls))
+	if(length(job.subclass_cat_rolls))
 		// Dont apply the stuff, let adv class handler do it later
 		return
 	// Apply the stuff if we have a job that has no adv classes
@@ -47,6 +47,14 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		player = character.client
 	apply_charflaw_equipment(character, player)
 	apply_prefs_special(character, player)
+	if(player.prefs.loadout)
+		character.mind.special_items[player.prefs.loadout::name] += player.prefs.loadout.path
+	if(player.prefs.loadout2)
+		character.mind.special_items[player.prefs.loadout2::name] += player.prefs.loadout2.path
+	if(player.prefs.loadout3)
+		character.mind.special_items[player.prefs.loadout3::name] += player.prefs.loadout3.path
+
+	SSticker.on_job_finalised(character)
 
 /proc/apply_charflaw_equipment(mob/living/carbon/human/character, client/player)
 	if(character.charflaw)
@@ -139,7 +147,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	return pickweight(eligible_weight)
 
 /proc/apply_special_trait(mob/living/carbon/human/character, trait_type, silent)
-    var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
-    special.on_apply(character, silent)
-    if(!silent && special.greet_text)
-        to_chat(character, special.greet_text)
+	var/datum/special_trait/special = SPECIAL_TRAIT(trait_type)
+	special.on_apply(character, silent)
+	if(!silent && special.greet_text)
+		to_chat(character, special.greet_text)

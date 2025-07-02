@@ -8,10 +8,6 @@
 	stack_trace("[src]([type]) was instanced which should never happen. Changing into the next baseturf down...")
 	ScrapeAway()
 
-/turf/baseturf_skipover/shuttle
-	name = "Shuttle baseturf skipover"
-	desc = ""
-
 /turf/baseturf_bottom
 	name = "Z-level baseturf placeholder"
 	desc = ""

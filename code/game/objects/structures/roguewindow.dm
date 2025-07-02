@@ -1,7 +1,7 @@
 
 /obj/structure/roguewindow
 	name = "window"
-	desc = "A glass window. Glass is very rare nowadays."
+	desc = "A glass window."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "window-solid"
 	layer = TABLE_LAYER
@@ -27,8 +27,59 @@
 	var/stained = FALSE
 	var/night_variants = FALSE
 	leanable = TRUE
+	metalizer_result = /obj/structure/roguewindow/openclose/reinforced
 
 /obj/structure/roguewindow/Initialize()
+	update_icon()
+	..()
+
+/obj/structure/roguewindow/update_icon()
+	if(brokenstate)
+		icon_state = "[base_state]br"
+		return
+	icon_state = "[base_state]"
+
+/obj/structure/roguewindow/openclose/OnCrafted(dirin)
+	dirin = turn(dirin, 180)
+	lockdir = dirin
+	. = ..(dirin)
+
+/obj/structure/roguewindow/stained
+	icon_state = null
+	base_state = null
+	opacity = TRUE
+	max_integrity = 100 
+	integrity_failure = 0.75
+
+/obj/structure/roguewindow/stained/silver
+	icon_state = "stained-silver"
+	base_state = "stained-silver"
+
+/obj/structure/roguewindow/stained/yellow
+	icon_state = "stained-yellow"
+	base_state = "stained-yellow"
+	
+/obj/structure/roguewindow/stained/zizo
+	icon_state = "stained-zizo"
+	base_state = "stained-zizo"
+
+/obj/structure/roguewindow/openclose
+	icon_state = "woodwindowdir"
+	base_state = "woodwindow"
+	opacity = TRUE
+	max_integrity = 100
+	integrity_failure = 0.9
+
+/obj/structure/roguewindow/openclose/reinforced
+	desc = "A glass window. This one looks reinforced with a metal mesh."
+	icon_state = "reinforcedwindowdir"
+	base_state = "reinforcedwindow"
+	max_integrity = 800
+	integrity_failure = 0.1
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
+
+/obj/structure/roguewindow/openclose/Initialize()
 	lockdir = dir
 	icon_state = base_state
 	update_opacity()
@@ -97,6 +148,12 @@
 	update_icon()
 	return TRUE
 
+/obj/structure/roguewindow/CanAStarPass(ID, to_dir, caller)
+	. = ..()
+	var/atom/movable/mover = caller
+	if(!. && istype(mover) && (mover.pass_flags & PASSTABLE) && climbable)
+		return TRUE
+
 /obj/structure/roguewindow/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE) && climbable)
 		return 1
@@ -115,6 +172,12 @@
 		else
 			return !density
 	return ..()
+
+/obj/structure/roguewindow/proc/force_open()
+	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
+	climbable = TRUE
+	opacity = FALSE
+	update_icon()
 
 /obj/structure/roguewindow/attackby(obj/item/W, mob/user, params)
 	return ..()
@@ -183,7 +246,7 @@
 	icon_state = null
 	base_state = null
 	stained = TRUE
-	max_integrity = 100 
+	max_integrity = 100
 	integrity_failure = 0.75
 
 /obj/structure/roguewindow/stained/silver
@@ -193,7 +256,7 @@
 /obj/structure/roguewindow/stained/yellow
 	icon_state = "stained-yellow"
 	base_state = "stained-yellow"
-	
+
 /obj/structure/roguewindow/stained/zizo
 	icon_state = "stained-zizo"
 	base_state = "stained-zizo"
@@ -215,6 +278,8 @@
 	max_integrity = 800
 	integrity_failure = 0.1
 	night_variants = FALSE
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/roguewindow/curtain
 	icon_state = "window-solid-dir"

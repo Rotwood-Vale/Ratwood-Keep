@@ -1,6 +1,5 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
-	pressure_resistance = 8
 	max_integrity = 300
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 	layer = BELOW_OBJ_LAYER
@@ -27,7 +26,6 @@
 	if(redstone_id)
 		GLOB.redstone_objs += src
 		. = INITIALIZE_HINT_LATELOAD
-	GLOB.cameranet.updateVisibility(src)
 	if(leanable)
 		AddComponent(/datum/component/leanable)
 
@@ -46,7 +44,6 @@
 
 
 /obj/structure/Destroy()
-	GLOB.cameranet.updateVisibility(src)
 	if(isturf(loc))
 		for(var/mob/living/user in loc)
 			if(climb_offset)
@@ -72,17 +69,15 @@
 
 /obj/structure/Crossed(atom/movable/AM)
 	. = ..()
-	if(isliving(AM) && !AM.throwing)
-		var/mob/living/user = AM
-		if(climb_offset)
-			user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
+	var/mob/living/user = AM
+	if(climb_offset && isliving(user) && !user.is_floor_hazard_immune())
+		user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
 
 /obj/structure/Uncrossed(atom/movable/AM)
 	. = ..()
-	if(isliving(AM) && !AM.throwing)
-		var/mob/living/user = AM
-		if(climb_offset)
-			user.reset_offsets("structure_climb")
+	var/mob/living/user = AM
+	if(climb_offset && isliving(user) && !user.is_floor_hazard_immune())
+		user.reset_offsets("structure_climb")
 
 /obj/structure/ui_act(action, params)
 	..()
@@ -103,8 +98,6 @@
 			return
 	if(!istype(O, /obj/item) || user.get_active_held_item() != O)
 		return
-	if(iscyborg(user))
-		return
 	if(!user.dropItemToGround(O))
 		return
 	if (O.loc != src.loc)
@@ -112,6 +105,7 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
+		// this is done so that climbing onto something doesn't ignore other dense objects on the same turf
 		density = FALSE
 		. = step(A,get_dir(A,src.loc))
 		density = TRUE
@@ -123,12 +117,8 @@
 		adjusted_climb_time *= 2
 	if(!ishuman(user))
 		adjusted_climb_time = 0 //simple mobs instantly climb
-	if(HAS_TRAIT(user, TRAIT_FREERUNNING)) //do you have any idea how fast I am???
-		adjusted_climb_time *= 0.8
 	adjusted_climb_time -= user.STASPD * 2
 	adjusted_climb_time = max(adjusted_climb_time, 0)
-//	if(adjusted_climb_time)
-//		user.visible_message(span_warning("[user] starts climbing onto [src]."), span_warning("I start climbing onto [src]..."))								
 	structureclimber = user
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if structure has been destroyed
@@ -136,8 +126,6 @@
 				user.visible_message(span_warning("[user] climbs onto [src]."), \
 									span_notice("I climb onto [src]."))
 				log_combat(user, src, "climbed onto")
-//				if(climb_offset)
-//					user.set_mob_offsets("structure_climb", _x = 0, _y = climb_offset)
 				if(climb_stun)
 					user.Stun(climb_stun)
 				if(climb_sound)
@@ -147,6 +135,10 @@
 				to_chat(user, span_warning("I fail to climb onto [src]."))
 	structureclimber = null
 
+// You can path over a dense structure if it's climbable.
+/obj/structure/CanAStarPass(ID, to_dir, caller)
+	. = climbable || ..()
+
 /obj/structure/examine(mob/user)
 	. = ..()
 	if(!(resistance_flags & INDESTRUCTIBLE))
@@ -155,6 +147,22 @@
 		var/examine_status = examine_status(user)
 		if(examine_status)
 			. += examine_status
+	// Makes it so people know which items can be affected by which effects. Don't show other flags if the object is already indestructible, to prevent filling chat.
+	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity)
+		. += span_warning("[src] seems extremely sturdy! It'll probably withstand anything that could happen to it!")
+	else
+		if(resistance_flags & LAVA_PROOF)
+			. += span_warning("[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!")
+		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
+			. += span_warning("[src] looks pretty sturdy! It'd probably be able to withstand acid!")
+		if(resistance_flags & FREEZE_PROOF)
+			. += span_warning("[src] is made of cold-resistant materials.")
+		if(resistance_flags & FIRE_PROOF)
+			. += span_warning("[src] is made of fire-retardant materials.")
+
+	// Examines for weaknesses
+	if(resistance_flags & FLAMMABLE)
+		. += span_warning("[src] looks pretty flammable.")
 
 /obj/structure/proc/examine_status(mob/user) //An overridable proc, mostly for falsewalls.
 	if(max_integrity)

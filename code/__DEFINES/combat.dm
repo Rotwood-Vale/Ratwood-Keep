@@ -174,16 +174,23 @@
 #define ROD_CAST			/datum/intent/cast
 #define ROD_REEL			/datum/intent/reel
 
+// These names are confusing but here's the basic idea from what I gather:
+// Pour is 'feed' which is to feed others with reagents
+// fill is to fill itself with reagent.
+// These really need better names at some point
 #define INTENT_SPLASH		/datum/intent/splash
-#define INTENT_POUR			/datum/intent/pour
+#define INTENT_POUR			/datum/intent/pour 
+#define INTENT_FILL			/datum/intent/fill
 
 //Intent blade class for dismember class
 #define BCLASS_BLUNT		"blunt"
 #define BCLASS_SMASH		"smashing"
+#define BCLASS_DRILL		"drilling"
 #define BCLASS_CUT			"slash"
 #define BCLASS_CHOP			"chopping"
 #define BCLASS_STAB			"stabbing"
 #define BCLASS_PICK			"stab"
+#define BCLASS_ASSASSIN		"piercing"
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"

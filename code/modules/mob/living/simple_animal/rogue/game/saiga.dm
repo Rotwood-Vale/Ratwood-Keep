@@ -49,6 +49,7 @@
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	move_to_delay = 8
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
@@ -80,6 +81,8 @@
 	can_saddle = TRUE
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /obj/effect/decal/remains/saiga
 	name = "remains"
@@ -180,6 +183,7 @@
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	move_to_delay = 8
 	base_intents = list(/datum/intent/simple/headbutt)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
@@ -197,7 +201,6 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	retreat_health = 0.3
-	milkies = FALSE
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/wheat,/obj/item/reagent_containers/food/snacks/grown/oat,/obj/item/reagent_containers/food/snacks/grown/apple)
 	footstep_type = FOOTSTEP_MOB_SHOE
 	pooptype = /obj/item/natural/poo/horse
@@ -213,6 +216,8 @@
 	bonus_tame_chance = 15
 	aggressive = 1
 	remains_type = /obj/effect/decal/remains/saiga
+	language_known = list(/datum/language/beast)
+	language_not_known = list(/datum/language/common)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/update_icon()
 	cut_overlays()
@@ -238,12 +243,7 @@
 			return pick('sound/vo/mobs/saiga/death (1).ogg','sound/vo/mobs/saiga/death (2).ogg')
 		if("idle")
 			return pick('sound/vo/mobs/saiga/idle (1).ogg','sound/vo/mobs/saiga/idle (2).ogg','sound/vo/mobs/saiga/idle (3).ogg','sound/vo/mobs/saiga/idle (4).ogg','sound/vo/mobs/saiga/idle (5).ogg','sound/vo/mobs/saiga/idle (6).ogg','sound/vo/mobs/saiga/idle (7).ogg')
-
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/Initialize()
-	..()
-	if(tame)
-		tamed()
-
+	
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
@@ -331,7 +331,6 @@
 	maxHealth = 20
 	pass_flags = PASSTABLE | PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	milkies = FALSE
 	melee_damage_lower = 1
 	melee_damage_upper = 6
 	STACON = 5
@@ -341,6 +340,7 @@
 	tame = TRUE
 	can_buckle = FALSE
 	aggressive = 1
+	
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame
 	tame = TRUE
 

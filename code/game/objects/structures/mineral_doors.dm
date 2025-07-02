@@ -26,19 +26,19 @@
 	var/openSound = 'sound/blank.ogg'
 	var/closeSound = 'sound/blank.ogg'
 
-	var/sheetType = /obj/item/stack/sheet/metal //what we're made of
 	var/sheetAmount = 7 //how much we drop when deconstructed
 
 	var/windowed = FALSE
 	var/base_state = null
 
-	var/locked = FALSE
+	locked = FALSE
 	var/last_bump = null
 	var/brokenstate = 0
 	var/keylock = FALSE
-	var/lockhash = 0
-	var/lockid = null
+	lockhash = 0
+	lockid = null
 	var/lockbroken = 0
+	var/lockdiff = 6 //how hard it is to pick the lock of a door
 	var/locksound = 'sound/foley/doors/woodlock.ogg'
 	var/unlocksound = 'sound/foley/doors/woodlock.ogg'
 	var/rattlesound = 'sound/foley/doors/lockrattle.ogg'
@@ -53,8 +53,8 @@
 	var/resident_key_type
 	/// The required role of the resident
 	var/resident_role
-	/// The requied advclass of the resident
-	var/resident_advclass
+	/// The requied subclass of the resident
+	var/resident_subclass
 
 	damage_deflection = 10
 	leanable = TRUE
@@ -64,6 +64,7 @@
 	var/obj/item/repair_cost_first = null
 	var/obj/item/repair_cost_second = null	
 	var/repair_skill = null
+	var/mob/last_bumper = null
 
 /obj/structure/mineral_door/proc/try_award_resident_key(mob/user)
 	if(!grant_resident_key)
@@ -79,13 +80,13 @@
 		var/datum/job/job = SSjob.name_occupations[human.job]
 		if(job.type != resident_role)
 			return FALSE
-	if(resident_advclass)
+	if(resident_subclass)
 		if(!human.advjob)
 			return FALSE
-		var/datum/advclass/advclass = SSrole_class_handler.get_advclass_by_name(human.advjob)
-		if(!advclass)
+		var/datum/subclass/subclass = SSrole_class_handler.get_subclass_by_name(human.advjob)
+		if(!subclass)
 			return FALSE
-		if(advclass.type != resident_advclass)
+		if(subclass.type != resident_subclass)
 			return FALSE
 	var/alert = alert(user, "Is this my home?", "Home", "Yes", "No")
 	if(alert != "Yes")
@@ -100,11 +101,11 @@
 	else
 		resident_key_amount = 1
 	for(var/i in 1 to resident_key_amount)
-		var/obj/item/roguekey/key
+		var/obj/item/key/key
 		if(resident_key_type)
 			key = new resident_key_type(get_turf(human))
 		else
-			key = new /obj/item/roguekey(get_turf(human))
+			key = new /obj/item/key(get_turf(human))
 		key.lockid = lockid
 		key.lockhash = lockhash
 		human.put_in_hands(key)
@@ -184,6 +185,7 @@
 	if(lockhash)
 		GLOB.lockhashes += lockhash
 	else if(keylock)
+		AddElement(/datum/element/lockpickable, list(/obj/item/lockpick), list(/obj/item/lockpick), lockdiff)
 		if(lockid)
 			if(GLOB.lockids[lockid])
 				lockhash = GLOB.lockids[lockid]
@@ -208,11 +210,12 @@
 	..()
 	if(door_opened)
 		return
-	if(world.time < last_bump+20)
+	// An individual door can be bumped once every two seconds to avoid spamming knocks/rattles
+	if(world.time < last_bump + 2 SECONDS)
 		return
 	last_bump = world.time
-	if(ismob(AM))
-		var/mob/user = AM
+	if(isliving(AM))
+		var/mob/living/user = AM
 		if(HAS_TRAIT(user, TRAIT_BASHDOORS))
 			if(locked)
 				user.visible_message(span_warning("[user] bashes into [src]!"))
@@ -222,24 +225,23 @@
 				force_open()
 				user.visible_message(span_warning("[user] smashes through [src]!"))
 			return
+		//And you can bump-open maybe 3 doors per second. This is to prevent weird mass door openings
+		//While keeping things feeling snappy
+		if(world.time - user.last_bumped <= 0.3 SECONDS)
+			return
 		if(locked)
+			if(istype(user.get_active_held_item(), /obj/item/key) || istype(user.get_active_held_item(), /obj/item/storage/keyring))
+				src.attackby(user.get_active_held_item(), user, TRUE)
+				return
 			rattle()
 			return
-		if(TryToSwitchState(AM))
+		if(TryToSwitchState(user))
 			if(swing_closed)
-				if(isliving(AM))
-					var/mob/living/M = AM
-					if(M.m_intent == MOVE_INTENT_SNEAK)
-						addtimer(CALLBACK(src, PROC_REF(Close), TRUE), 25)
-					else
-						addtimer(CALLBACK(src, PROC_REF(Close), FALSE), 25)
+				if(user.m_intent == MOVE_INTENT_SNEAK)
+					addtimer(CALLBACK(src, PROC_REF(Close), TRUE), 25)
+				else
+					addtimer(CALLBACK(src, PROC_REF(Close), FALSE), 25)
 
-/obj/structure/mineral_door/attack_ai(mob/user) //those aren't machinery, they're just big fucking slabs of a mineral
-	if(isAI(user)) //so the AI can't open it
-		return
-	else if(iscyborg(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/mineral_door/attack_paw(mob/user)
 	return attack_hand(user)
@@ -255,12 +257,17 @@
 	if(try_award_resident_key(user))
 		return
 	if(locked)
+		if( user.used_intent.type == /datum/intent/unarmed/claw )
+			user.changeNext_move(CLICK_CD_MELEE)
+			to_chat(user, "<span class='warning'>The deadite claws at the door!!</span>")
+			take_damage(40, "brute", "melee", 1)
+			return
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				to_chat(user, span_warning("This door is locked."))
 				return
-		if(world.time >= last_bump+20)
+		if(world.time >= last_bump+2 SECONDS)
 			last_bump = world.time
 			playsound(src, 'sound/foley/doors/knocking.ogg', 100)
 			user.visible_message(span_warning("[user] knocks on [src]."), \
@@ -273,25 +280,30 @@
 		return !opacity
 	return !density
 
-/obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
-	if(isSwitchingStates || !anchored)
-		return
-	if(isliving(user))
-		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
-			return //NOTE do we really need that?
-		if(M.client)
-			if(iscarbon(M))
-				var/mob/living/carbon/C = M
-				if(!C.handcuffed)
-					if(C.m_intent == MOVE_INTENT_SNEAK)
-						SwitchState(TRUE)
-					else
-						SwitchState()
-			else
-				SwitchState()
-	else if(ismecha(user))
-		SwitchState()
+/obj/structure/mineral_door/CanAStarPass(ID, to_dir, datum/caller)
+	. = ..()
+	if(.) // we can already go through it
+		return TRUE
+	if(!anchored)
+		return FALSE
+	if(HAS_TRAIT(caller, TRAIT_BASHDOORS))
+		return TRUE // bash into it!
+	// it's openable
+	return ishuman(caller) && !locked // only humantype mobs can open doors, as funny as it'd be for a volf to walk in on you ERPing
+
+/obj/structure/mineral_door/proc/TryToSwitchState(mob/living/user)
+	if(!isliving(user) || isSwitchingStates || !anchored)
+		return FALSE
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		// must have a client or be trying to pass through the door
+		if(!human_user.client && !length(human_user.myPath))
+			return FALSE
+		if(human_user.handcuffed)
+			return FALSE
+	else if(!user.client) // simplemobs aren't allowed to pathfind through doors, currently
+		return FALSE
+	SwitchState(user.m_intent == MOVE_INTENT_SNEAK) // silent when sneaking
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)
@@ -307,7 +319,7 @@
 	if(!windowed)
 		set_opacity(FALSE)
 	flick("[base_state]opening",src)
-	sleep(10)
+	sleep(2)
 	density = FALSE
 	door_opened = TRUE
 	layer = OPEN_DOOR_LAYER
@@ -319,7 +331,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN, src)
 
-/obj/structure/mineral_door/proc/Close(silent = FALSE)
+/obj/structure/mineral_door/proc/Close(silent = FALSE, autobump = FALSE)
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
@@ -329,7 +341,7 @@
 	if(!silent)
 		playsound(src, closeSound, 100)
 	flick("[base_state]closing",src)
-	sleep(10)
+	sleep(2)
 	density = TRUE
 	if(!windowed)
 		set_opacity(TRUE)
@@ -339,6 +351,10 @@
 	update_icon()
 	isSwitchingStates = FALSE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSED, src)
+	if(autobump && src.Adjacent(last_bumper))
+		if(istype(last_bumper.get_active_held_item(), /obj/item/key) || istype(last_bumper.get_active_held_item(), /obj/item/storage/keyring))
+			src.attack_right(last_bumper)
+	last_bumper = null
 
 /obj/structure/mineral_door/update_icon()
 	icon_state = "[base_state][door_opened ? "open":""]"
@@ -365,21 +381,25 @@
 	animate(pixel_x = oldx-1, time = 0.5)
 	animate(pixel_x = oldx, time = 0.5)
 
-/obj/structure/mineral_door/attackby(obj/item/I, mob/user)
+/obj/structure/mineral_door/attackby(obj/item/I, mob/user, autobump = FALSE)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(I, /obj/item/roguekey) || istype(I, /obj/item/keyring))
+	if(istype(I, /obj/item/key) || istype(I, /obj/item/storage/keyring))
 		if(!locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the right."))
 			rattle()
 			return
-		trykeylock(I, user)
+		if(autobump == TRUE) //Attackby passes UI coordinate onclick stuff, so forcing check to TRUE
+			trykeylock(I, user, autobump)
+			return
+		else
+			trykeylock(I, user)
+			return
 //	else if(user.used_intent.type != INTENT_HARM)
 //		return attack_hand(user)
+	if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
+		repairdoor(I,user)
 	else
-		if(repairable && (user.mind.get_skill_level(repair_skill) > 0) && ((istype(I, repair_cost_first)) || (istype(I, repair_cost_second)))) // At least 1 skill level needed
-			repairdoor(I,user)
-		else
-			return ..()
+		return ..()
 
 /obj/structure/mineral_door/proc/repairdoor(obj/item/I, mob/user)
 	if(brokenstate)				
@@ -429,7 +449,7 @@
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
-	if(istype(item, /obj/item/roguekey) || istype(item, /obj/item/keyring))
+	if(istype(item, /obj/item/key) || istype(item, /obj/item/storage/keyring))
 		if(locked)
 			to_chat(user, span_warning("It won't turn this way. Try turning to the left."))
 			rattle()
@@ -438,7 +458,7 @@
 	else
 		return ..()
 
-/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user)
+/obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user, autobump = FALSE)
 	if(door_opened || isSwitchingStates)
 		return
 	if(!keylock)
@@ -446,31 +466,99 @@
 	if(lockbroken)
 		to_chat(user, span_warning("The lock to this door is broken."))
 	user.changeNext_move(CLICK_CD_MELEE)
-	if(istype(I,/obj/item/keyring))
-		var/obj/item/keyring/R = I
-		if(!R.keys.len)
+	if(istype(I,/obj/item/storage/keyring))
+		var/obj/item/storage/keyring/R = I
+		if(!R.contents.len)
 			return
-		var/list/keysy = shuffle(R.keys.Copy())
-		for(var/obj/item/roguekey/K in keysy)
+		var/list/keysy = shuffle(R.contents.Copy())
+		for(var/obj/item/key/K in keysy)
 			if(user.cmode)
 				if(!do_after(user, 10, TRUE, src))
 					break
 			if(K.lockhash == lockhash)
 				lock_toggle(user)
-				break
+				if(autobump && !locked)
+					src.Open()
+					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+					src.last_bumper = user
+				return
 			else
 				if(user.cmode)
 					rattle()
+		to_chat(user, span_warning("None of the keys on my keyring go to this door."))
+		rattle()
 		return
 	else
-		var/obj/item/roguekey/K = I
+		var/obj/item/key/K = I
 		if(K.lockhash == lockhash)
 			lock_toggle(user)
+			if(autobump)
+				src.Open()
+				addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
+				src.last_bumper = user
 			return
 		else
+			to_chat(user, span_warning("This is not the correct key that goes to this door."))
 			rattle()
 		return
 
+/obj/structure/mineral_door/proc/trypicklock(obj/item/I, mob/user)
+	if(door_opened || isSwitchingStates)
+		to_chat(user, "<span class='warning'>This cannot be picked while it is open.</span>")
+		return
+	if(!keylock)
+		return
+	if(lockbroken)
+		to_chat(user, "<span class='warning'>The lock to this door is broken.</span>")
+		user.changeNext_move(CLICK_CD_MELEE)
+	else
+		var/lockprogress = 0
+		var/locktreshold = 100 + (lockdiff * 20)
+
+		var/mob/living/L = user
+
+		var/pickskill = user.mind.get_skill_level(/datum/skill/misc/lockpicking)
+		var/perbonus = L.STAPER/2
+		var/luckbonus = L.STALUC/4
+		var/picktime = 70
+		var/pickchance = 35
+		var/moveup = 10
+
+		picktime -= (pickskill * 10)
+		picktime = clamp(picktime, 10, 70)
+
+		moveup += (pickskill * 3)
+		moveup = clamp(moveup, 10, 30)
+
+		pickchance += pickskill * 10
+		pickchance += perbonus
+		pickchance += luckbonus
+		pickchance -= lockdiff * 10
+		pickchance = clamp(pickchance, 1, 95)
+
+		while(!QDELETED(I) &&(lockprogress < locktreshold))
+			if(!do_after(user, picktime, target = src))
+				break
+			if(prob(pickchance))
+				lockprogress += moveup
+				playsound(src.loc, pick('sound/items/pickgood1.ogg','sound/items/pickgood2.ogg'), 5, TRUE)
+				to_chat(user, "<span class='warning'>Click...</span>")
+				if(L.mind)
+					var/amt2raise = L.STAINT
+					var/boon = L.STALUC/4
+					L.mind.add_sleep_experience(/datum/skill/misc/lockpicking, amt2raise + boon)
+				if(lockprogress >= locktreshold)
+					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
+					lock_toggle(user)
+					break
+				else
+					continue
+			else
+				playsound(loc, 'sound/items/pickbad.ogg', 40, TRUE)
+				I.take_damage(1, BRUTE, "blunt")
+				to_chat(user, span_warning("Clack."))
+				continue
+		return
 
 /obj/structure/mineral_door/proc/lock_toggle(mob/user)
 	if(isSwitchingStates || door_opened)
@@ -555,151 +643,6 @@
 	user.visible_message(span_notice("[user] pried [src] into pieces!"), span_notice("I pried apart [src]!"))
 	deconstruct(TRUE)
 
-
-/////////////////////// END TOOL OVERRIDES ///////////////////////
-/*
-
-/obj/structure/mineral_door/deconstruct(disassembled = TRUE)
-//	var/turf/T = get_turf(src)
-//	if(disassembled)
-//		new sheetType(T, sheetAmount)
-//	else
-//		new sheetType(T, max(sheetAmount - 2, 1))
-//	qdel(src)
-*/
-
-
-/obj/structure/mineral_door/iron
-	name = "iron door"
-	max_integrity = 300
-
-/obj/structure/mineral_door/silver
-	name = "silver door"
-	icon_state = "silver"
-	sheetType = /obj/item/stack/sheet/mineral/silver
-	max_integrity = 300
-	rad_insulation = RAD_HEAVY_INSULATION
-
-/obj/structure/mineral_door/gold
-	name = "gold door"
-	icon_state = "gold"
-	sheetType = /obj/item/stack/sheet/mineral/gold
-	rad_insulation = RAD_HEAVY_INSULATION
-
-/obj/structure/mineral_door/uranium
-	name = "uranium door"
-	icon_state = "uranium"
-	sheetType = /obj/item/stack/sheet/mineral/uranium
-	max_integrity = 300
-	light_range = 2
-
-/obj/structure/mineral_door/uranium/ComponentInitialize()
-	return
-
-/obj/structure/mineral_door/sandstone
-	name = "sandstone door"
-	icon_state = "sandstone"
-	sheetType = /obj/item/stack/sheet/mineral/sandstone
-	max_integrity = 100
-
-/obj/structure/mineral_door/transparent
-	opacity = FALSE
-	rad_insulation = RAD_VERY_LIGHT_INSULATION
-
-/obj/structure/mineral_door/transparent/Close()
-	..()
-	set_opacity(FALSE)
-
-/obj/structure/mineral_door/transparent/plasma
-	name = "plasma door"
-	icon_state = "plasma"
-	sheetType = /obj/item/stack/sheet/mineral/plasma
-
-/obj/structure/mineral_door/transparent/plasma/ComponentInitialize()
-	return
-
-/obj/structure/mineral_door/transparent/plasma/welder_act(mob/living/user, obj/item/I)
-	return
-
-/obj/structure/mineral_door/transparent/plasma/attackby(obj/item/W, mob/user, params)
-	if(W.get_temperature())
-		var/turf/T = get_turf(src)
-		message_admins("Plasma mineral door ignited by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(T)]")
-		log_game("Plasma mineral door ignited by [key_name(user)] in [AREACOORD(T)]")
-		TemperatureAct()
-	else
-		return ..()
-
-/obj/structure/mineral_door/transparent/plasma/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(exposed_temperature > 300)
-		TemperatureAct()
-
-/obj/structure/mineral_door/transparent/plasma/proc/TemperatureAct()
-	atmos_spawn_air("plasma=500;TEMP=1000")
-	deconstruct(FALSE)
-
-/obj/structure/mineral_door/transparent/diamond
-	name = "diamond door"
-	icon_state = "diamond"
-	sheetType = /obj/item/stack/sheet/mineral/diamond
-	max_integrity = 1000
-	rad_insulation = RAD_EXTREME_INSULATION
-
-
-
-
-/obj/structure/mineral_door/paperframe
-	name = "paper frame door"
-	icon_state = "paperframe"
-	openSound = 'sound/foley/doors/creak.ogg'
-	closeSound = 'sound/foley/doors/shut.ogg'
-	sheetType = /obj/item/stack/sheet/paperframes
-	sheetAmount = 3
-	resistance_flags = FLAMMABLE
-	max_integrity = 20
-
-/obj/structure/mineral_door/paperframe/Initialize()
-	. = ..()
-	queue_smooth_neighbors(src)
-
-/obj/structure/mineral_door/paperframe/examine(mob/user)
-	. = ..()
-	if(obj_integrity < max_integrity)
-		. += span_info("It looks a bit damaged, you may be able to fix it with some <b>paper</b>.")
-
-/obj/structure/mineral_door/paperframe/pickaxe_door(mob/living/user, obj/item/I)
-	return
-
-/obj/structure/mineral_door/paperframe/welder_act(mob/living/user, obj/item/I)
-	return
-
-/obj/structure/mineral_door/paperframe/crowbar_act(mob/living/user, obj/item/I)
-	return crowbar_door(user, I)
-
-/obj/structure/mineral_door/paperframe/attackby(obj/item/I, mob/living/user)
-	if(I.get_temperature()) //BURN IT ALL DOWN JIM
-		fire_act(I.get_temperature())
-		return
-
-	if((user.used_intent.type != INTENT_HARM) && istype(I, /obj/item/paper) && (obj_integrity < max_integrity))
-		user.visible_message(span_notice("[user] starts to patch the holes in [src]."), span_notice("I start patching some of the holes in [src]!"))
-		if(do_after(user, 20, TRUE, src))
-			obj_integrity = min(obj_integrity+4,max_integrity)
-			qdel(I)
-			user.visible_message(span_notice("[user] patches some of the holes in [src]."), span_notice("I patch some of the holes in [src]!"))
-			return TRUE
-
-	return ..()
-
-/obj/structure/mineral_door/paperframe/ComponentInitialize()
-	return
-
-/obj/structure/mineral_door/paperframe/Destroy()
-	queue_smooth_neighbors(src)
-	return ..()
-
-
-
 //ROGUEDOOR
 
 /obj/structure/mineral_door/wood
@@ -708,7 +651,6 @@
 	icon_state = "woodhandle"
 	openSound = 'sound/foley/doors/creak.ogg'
 	closeSound = 'sound/foley/doors/shut.ogg'
-	sheetType = null
 	resistance_flags = FLAMMABLE
 	max_integrity = 1000
 	damage_deflection = 12
@@ -723,6 +665,7 @@
 	repair_cost_first = /obj/item/grown/log/tree/small
 	repair_cost_second = /obj/item/grown/log/tree/small	
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = /obj/structure/mineral_door/wood/donjon
 
 /obj/structure/mineral_door/wood/Initialize()
 	if(icon_state =="woodhandle")
@@ -733,7 +676,7 @@
 				icon_state = "wcr"
 	if(over_state)
 		add_overlay(mutable_appearance(icon, "[over_state]", ABOVE_MOB_LAYER))
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/blue
 	icon_state = "wcb"
@@ -769,7 +712,6 @@
 	icon_state = "woodhandle"
 	openSound = 'sound/foley/doors/creak.ogg'
 	closeSound = 'sound/foley/doors/shut.ogg'
-	sheetType = null
 	resistance_flags = FLAMMABLE
 	max_integrity = 500
 	damage_deflection = 12
@@ -793,11 +735,13 @@
 	windowed = TRUE
 	desc = ""
 	over_state = "woodwindowopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/fancywood
 	icon_state = "fancy_wood"
 	desc = ""
 	over_state = "fancy_woodopen"
+	metalizer_result = null
 
 /obj/structure/mineral_door/wood/deadbolt
 	desc = "This door comes with a deadbolt."
@@ -816,7 +760,7 @@
 	lockdir = dir
 
 /obj/structure/mineral_door/wood/deadbolt/Initialize()
-	..()
+	. = ..()
 	lockdir = dir
 	icon_state = base_state
 
@@ -850,6 +794,8 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")		
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/carpentry
+	metalizer_result = null
+	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/mineral_door/wood/donjon/stone
 	desc = "stone door"
@@ -862,6 +808,7 @@
 	repair_cost_first = /obj/item/natural/stone
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
+	smeltresult = null
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
@@ -869,7 +816,7 @@
 /obj/structure/mineral_door/wood/donjon/Initialize()
 	viewportdir = dir
 	icon_state = base_state
-	..()
+	. = ..()
 
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
 	if(user.get_active_held_item())
@@ -914,7 +861,7 @@
 	blade_dulling = DULLING_BASH
 	opacity = FALSE
 	windowed = TRUE
-	sheetType = null
+	keylock = TRUE
 	locksound = 'sound/foley/doors/lock.ogg'
 	unlocksound = 'sound/foley/doors/unlock.ogg'
 	rattlesound = 'sound/foley/doors/lockrattlemetal.ogg'
@@ -932,7 +879,7 @@
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
-	..()
+	. = ..()
 	add_overlay(mutable_appearance(icon, "barsopen", ABOVE_MOB_LAYER))
 
 
@@ -944,8 +891,8 @@
 	locked = TRUE
 	keylock = TRUE
 	grant_resident_key = TRUE
-	resident_key_type = /obj/item/roguekey/townie
-	resident_role = /datum/job/roguetown/villager
+	resident_key_type = /obj/item/key/townie
+	resident_role = /datum/job/roguetown/towner
 	lockid = null //Will be randomized
 
 /obj/structure/mineral_door/wood/towner/generic
@@ -954,41 +901,49 @@
 	resident_key_amount = 2
 
 /obj/structure/mineral_door/wood/towner/blacksmith
-	resident_advclass = /datum/advclass/blacksmith
+	resident_subclass = /datum/subclass/blacksmith
 	lockid = "towner_blacksmith"
 
-/obj/structure/mineral_door/wood/towner/carpenter
-	resident_advclass = /datum/advclass/carpenter
-	lockid = "towner_carpenter"
-
 /obj/structure/mineral_door/wood/towner/cheesemaker
-	resident_advclass = /datum/advclass/cheesemaker
+	resident_subclass = /datum/subclass/cheesemaker
 	lockid = "towner_cheesemaker"
 
 /obj/structure/mineral_door/wood/towner/hunter
-	resident_advclass = /datum/advclass/hunter
+	resident_subclass = /datum/subclass/hunter
 	lockid = "towner_hunter"
 
 /obj/structure/mineral_door/wood/towner/miner
-	resident_advclass = /datum/advclass/miner
+	resident_subclass = /datum/subclass/miner
 	lockid = "towner_miner"
 
+/obj/structure/mineral_door/wood/towner/minstrel
+	resident_subclass = /datum/subclass/minstrel
+	lockid = "towner_minstrel"
+
 /obj/structure/mineral_door/wood/towner/farmer
-	resident_advclass = /datum/advclass/farmer
+	resident_subclass = /datum/subclass/farmer
 	lockid = "towner_farmer"
 
-/obj/structure/mineral_door/wood/towner/seamstress
-	resident_advclass = /datum/advclass/seamstress
-	lockid = "towner_seamstress"
-
 /obj/structure/mineral_door/wood/towner/towndoctor
-	resident_advclass = /datum/advclass/towndoctor
+	resident_subclass = /datum/subclass/towndoctor
 	lockid = "towner_towndoctor"
 
 /obj/structure/mineral_door/wood/towner/woodcutter
-	resident_advclass = /datum/advclass/woodcutter
+	resident_subclass = /datum/subclass/woodcutter
 	lockid = "towner_woodcutter"
 
 /obj/structure/mineral_door/wood/towner/fisher
-	resident_advclass = /datum/advclass/fisher
+	resident_subclass = /datum/subclass/fisher
 	lockid = "towner_fisher"
+
+/obj/structure/mineral_door/wood/deadbolt/shutter
+	name = "serving hatch"
+	desc = "Can be locked from the inside."
+	icon_state = "serving"
+	base_state = "serving"
+	max_integrity = 250
+	over_state = "servingopen"
+	openSound = 'modular/Neu_Food/sound/blindsopen.ogg'
+	closeSound = 'modular/Neu_Food/sound/blindsclose.ogg'
+	dir = NORTH
+	locked = TRUE

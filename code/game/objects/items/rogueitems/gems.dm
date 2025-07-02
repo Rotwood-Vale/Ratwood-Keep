@@ -56,6 +56,11 @@
 	sellprice = 121
 	desc = "Beautifully clear, it demands respect."
 
+/obj/item/roguegem/amethyst
+	name = "amythortz"
+	icon_state = "amethyst"
+	sellprice = 0
+	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
 
 /obj/item/roguegem/random
 	name = "random gem"
@@ -66,7 +71,7 @@
 	var/newgem = list(/obj/item/roguegem = 5, /obj/item/roguegem/green = 15, /obj/item/roguegem/blue = 10, /obj/item/roguegem/yellow = 20, /obj/item/roguegem/violet = 10, /obj/item/roguegem/diamond = 5, /obj/item/riddleofsteel = 1, /obj/item/rogueore/silver = 3)
 	var/pickgem = pickweight(newgem)
 	new pickgem(get_turf(src))
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 
 /// riddle
@@ -83,8 +88,27 @@
 	slot_flags = ITEM_SLOT_MOUTH
 	dropshrink = 0.4
 	drop_sound = 'sound/items/gem.ogg'
-	sellprice = 400
+	sellprice = 100
 
 /obj/item/riddleofsteel/Initialize()
-	..()
+	. = ..()
 	set_light(2, 1, "#ff0d0d")
+
+/obj/item/pearl
+	name = "pearl"
+	icon_state = "pearl"
+	icon = 'icons/roguetown/items/gems.dmi'
+	desc = "Insert description here."
+	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	w_class = WEIGHT_CLASS_TINY
+	slot_flags = ITEM_SLOT_MOUTH
+	dropshrink = 0.4
+	drop_sound = 'sound/items/gem.ogg'
+	sellprice = 20
+
+/obj/item/pearl/black
+	name = "Blue pearl"
+	icon_state = "bpearl"
+	desc = "Insert description here"
+	sellprice = 60

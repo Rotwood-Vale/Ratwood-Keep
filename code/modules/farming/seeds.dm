@@ -8,17 +8,22 @@
 	var/plant_def_type
 	var/seed_identity = "some seed"
 
+// WARNING!! Some seeds were removed from soilsons because their produce wasn't being used in New Cooking! Please give them the seeds back if this changes!!
+
 /obj/item/seeds/Initialize()
 	. = ..()
 	if(plant_def_type)
 		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
 		color = def.seed_color
 
-/obj/item/seeds/Crossed(mob/living/L)
+/obj/item/seeds/Crossed(atom/movable/crosser)
 	. = ..()
-	// Chance to destroy the seed as it's being stepped on
-	if(prob(35) && istype(L))
+	var/mob/living/crossy_mob = crosser
+	// Chance to destroy the seed as it's being stepped on if the mob is human-sized or larger
+	// TODO: Make TRAIT_TINY set mob_size, or replace TRAIT_TINY with just setting mob_size...?
+	if(prob(35) && istype(crossy_mob) && !HAS_TRAIT(crosser, TRAIT_TINY) && crossy_mob.mob_size >= MOB_SIZE_HUMAN && !crossy_mob.is_floor_hazard_immune())
 		qdel(src)
+
 
 /obj/item/seeds/examine(mob/user)
 	. = ..()
@@ -42,12 +47,16 @@
 		try_plant_seed(user, soil)
 		return
 	else if(istype(T, /turf/open/floor/rogue/dirt))
+		if(!(user.mind.get_skill_level(/datum/skill/labor/farming) >= 2))
+			to_chat(user, span_notice("I don't know enough to work without a tool."))
+			return
 		to_chat(user, span_notice("I begin making a mound for the seeds..."))
+		var/turf/open/floor/rogue/dirt/dirtturf = T
+		var/soil_type = dirtturf.soil_plot_type
 		if(do_after(user, get_farming_do_time(user, 10 SECONDS), target = src))
 			apply_farming_fatigue(user, 30)
-			soil = get_soil_on_turf(T)
-			if(!soil)
-				soil = new /obj/structure/soil(T)
+			soil = get_soil_on_turf(T)|| new soil_type(T)
+
 		return
 	. = ..()
 
@@ -180,3 +189,7 @@
 /obj/item/seeds/mycelium/amanita
 	seed_identity = "red mushroom spores"
 	plant_def_type = /datum/plant_def/amanita
+
+/obj/item/seeds/fyritius
+	seed_identity = "fyritius seeds"
+	plant_def_type = /datum/plant_def/fyritiusflower

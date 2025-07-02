@@ -6,6 +6,7 @@
 	var/light = -1
 	var/flash = -1
 	var/flames = -1
+	var/hotspots = -1
 
 /datum/buildmode_mode/boom/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
@@ -23,6 +24,9 @@
 	light = input(c, "Range of light impact. -1 to none", text("Input")) as num|null
 	if(light == null)
 		light = -1
+	hotspots = input(c, "Range of burning hotspots. -1 to none", text("Input")) as num|null
+	if(hotspots == null)
+		hotspots = -1
 	flash = input(c, "Range of flash. -1 to none", text("Input")) as num|null
 	if(flash == null)
 		flash = -1
@@ -35,5 +39,5 @@
 	var/left_click = pa.Find("left")
 
 	if(left_click)
-		explosion(object, devastation, heavy, light, flash, FALSE, TRUE, flames)
-		log_admin("Build Mode: [key_name(c)] caused an explosion(dev=[devastation], hvy=[heavy], lgt=[light], flash=[flash], flames=[flames]) at [AREACOORD(object)]")
+		explosion(object, devastation, heavy, light, flash, FALSE, TRUE, flames, hotspots)
+		log_admin("Build Mode: [key_name(c)] caused an explosion(dev=[devastation], hvy=[heavy], lgt=[light], hotspots=[hotspots], flash=[flash], flames=[flames]) at [AREACOORD(object)]")

@@ -16,7 +16,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/maces
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/mace/strike,/datum/intent/mace/smash)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
@@ -25,6 +25,32 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+
+/obj/item/rogueweapon/mace/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/maceherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/maceherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/maceherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Iron Maces...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/maceherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/maceherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		var/old_icon_state = icon_state
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/maceherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = old_icon_state
+	else
+		..()
 
 /obj/item/rogueweapon/mace/church
 	force = 25
@@ -47,6 +73,32 @@
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_BASH
 	wdefense = 3
+
+/obj/item/rogueweapon/mace/steel/attack_right(mob/user)
+	if(locate(/obj/machinery/anvil) in (loc))
+		return ..()
+	if(!overlays.len)
+		if(!('icons/roguetown/weapons/smaceherald.dmi' in GLOB.IconStates_cache))
+			var/icon/J = new('icons/roguetown/weapons/smaceherald.dmi')
+			var/list/istates = J.IconStates()
+			GLOB.IconStates_cache |= icon
+			GLOB.IconStates_cache['icons/roguetown/weapons/smaceherald.dmi'] = istates
+
+		var/picked_name = input(user, "Choose thy Weapon", "Steel Maces...", name) as null|anything in sortList(GLOB.IconStates_cache['icons/roguetown/weapons/smaceherald.dmi'])
+		if(!picked_name)
+			picked_name = "none"
+		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/smaceherald.dmi', picked_name)
+		M.alpha = 255
+		alpha = 255
+		var/old_icon_state = icon_state
+		icon_state = picked_name
+		icon = 'icons/roguetown/weapons/smaceherald.dmi'
+		lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+		if(alert("Are you pleased with your weapon?", "Heraldry", "Yes", "No") != "Yes")
+			icon_state = old_icon_state
+	else
+		..()
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	if(tag)
@@ -99,11 +151,42 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 
+/obj/item/rogueweapon/mace/warhammer
+	force = 20
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale)
+	gripped_intents = null
+	name = "warhammer"
+	desc = "Made to punch through armor and skull alike."
+	icon_state = "iwarhammer"
+	wbalance = -1
+	smeltresult = /obj/item/ingot/iron
+	blade_dulling = DULLING_BASH
+	wdefense = 3
+
+/obj/item/rogueweapon/mace/warhammer/steel
+	force = 25
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
+	name = "steel warhammer"
+	desc = "A fine steel warhammer, makes a satisfying sound when paired with a knight's helm."
+	icon_state = "swarhammer"
+	smeltresult = /obj/item/ingot/steel
+	wdefense = 4
+
+/obj/item/rogueweapon/mace/warhammer/getonmobprop(tag)
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -9,"sy" = -8,"nx" = 9,"ny" = -7,"wx" = -7,"wy" = -8,"ex" = 3,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -90,"eturn" = 90,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 3,"sy" = -7,"nx" = -6,"ny" = -3,"wx" = 3,"wy" = -4,"ex" = 4,"ey" = -3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -44,"sturn" = 45,"wturn" = 47,"eturn" = 33,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.4,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+	return ..()
 
 /datum/intent/mace/strike
 	name = "strike"
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "hits")
+	attack_verb = list("strikes", "whacks")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
 	penfactor = 15
@@ -125,7 +208,7 @@
 /datum/intent/mace/rangedthrust
 	name = "thrust"
 	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts")
+	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
 	icon_state = "instab"
 	reach = 2
@@ -134,6 +217,31 @@
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = 25
+	damfactor = 0.9
+	item_d_type = "stab"
+
+/datum/intent/mace/warhammer/stab // With the spike on the top of the hammer, quick thrust
+	name = "thrust"
+	icon_state = "instab"
+	blade_class = BCLASS_STAB
+	attack_verb = list("thrusts", "stabs")
+	animname = "stab"
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 25
+	damfactor = 0.9
+	item_d_type = "stab"
+
+/datum/intent/mace/warhammer/impale // With the spike on the opposite end of the hammer, strong stab
+	name = "impale"
+	icon_state = "inimpale"
+	blade_class = BCLASS_STAB
+	attack_verb = list("picks", "impales")
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 14
+	chargedrain = 1
+	misscost = 1
+	no_early_release = TRUE
+	penfactor = 80
 	damfactor = 0.9
 	item_d_type = "stab"
 
@@ -189,11 +297,10 @@
 
 /obj/item/rogueweapon/mace/wsword
 	name = "wooden sword"
-	desc = "This wooden sword is great for training."
+	desc = "This wooden sword is great for training. Or humiliating opponents."
 	force = 5
 	force_wielded = 8
 	icon_state = "wsword"
-	//dropshrink = 0.75
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
@@ -201,7 +308,7 @@
 	wdefense = 5
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
-
+	metalizer_result = /obj/item/rogueweapon/sword/gladius
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)
 	. = ..()
@@ -278,7 +385,6 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	dropshrink = 0.6
 	bigboy = TRUE
 	gripsprite = TRUE
 
@@ -299,6 +405,7 @@
 	icon_state = "polemace"
 	force = 15
 	force_wielded = 35
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()

@@ -4,13 +4,34 @@
 /datum/species/dracon
 	name = "Drakian"
 	id = "dracon"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Drakian</b><br>\
+	Drakians are a proud and ancient race that trace their heritage to dragons of old. \
+	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
+	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
+	After all, a single drop of draconic blood in one's bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness."
+	expanded_desc = "Drakians are a proud and ancient race that trace their heritage to dragons of old. \
+	They are highly protective of their bloodline and do everything in their power to make sure it does not spread beyond their own, \
+	as they believe themselves to be guardians of tradition and that it is their ultimate duty to maintain their prestige as a race. \
+	After all, a single drop of draconic blood in ones bloodline means that they will experience all of the benefits of having draconic ancestors such as agelessness.\
+	<br><br> \
+	Yet, it comes at a cost. \
+	While initially viewed as one of the noblest races, \
+	they are now hated for their insufferable arrogance and often appear completely out of touch with the rest of society. \
+	Their inability to have a concept of time, refusal to compromise or intermarry, \
+	along with their rejection of any technology that threatens their supremacy have earned them countless enemies from Axians to Dwarves. \
+	For instance, they view any Wild-kin with draconic features or blood as inherently inferior. \
+	Yet, not all Drakians are like this with some believing it is their duty to help lesser races, although many still view these Drakians to be just as insufferable.\
+	<br><br> \
+	In the past, Drakians held positions of power and prestige across all the realms. \
+	Many try to style themselves after knight-philosophers in an attempt to hide their brutish ways. \
+	When in reality, most Drakians are known for being bloody conquerors. \
+	However, the rise of humans have caused their ambitions to crumble, forcing them to work with other races, especially at the climax of the Great Sissean Uprising. \
+	Furthermore, dwindling numbers have caused Drakians to increasingly abandon the ways of old, forcing them to adapt to a more modern way of life."
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -19,7 +40,7 @@
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
 		OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,1), OFFSET_BACK = list(0,1), \
-		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,1), \
+		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_HANDS = list(0,1), OFFSET_UNDIES = list(0,1), \
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
@@ -28,14 +49,18 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0, 
-		"perception" = 0, 
-		"intelligence" = 1, 
-		"constitution" = 1, 
-		"endurance" = 0, 
-		"speed" = -1, 
+		"strength" = 1,
+		"perception" = 0,
+		"intelligence" = 1,
+		"constitution" = 1,
+		"endurance" = -1,
+		"speed" = -1,
 		"fortune" = 0
 		)
+	specstats_f = list(
+		"constitution" = -1,
+		"endurance" = 1,
+	)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -50,7 +75,7 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard,
+		//ORGAN_SLOT_TAIL = /obj/item/organ/tail/lizard, //Commenting out due to use of customizer organs.
 		ORGAN_SLOT_SNOUT = /obj/item/organ/snout/lizard,
 		ORGAN_SLOT_TAIL_FEATURE = /obj/item/organ/tail_feature/lizard_spines,
 		ORGAN_SLOT_FRILLS = /obj/item/organ/frills/lizard,
@@ -84,6 +109,8 @@
 		/datum/body_marking_set/tiger_dark,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/bellyscale,
 		/datum/body_marking/bellyscaleslim,
 		/datum/body_marking/bellyscaleslimsmooth,

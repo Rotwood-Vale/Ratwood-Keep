@@ -1,9 +1,9 @@
 /obj/item/bodypart
 	/// List of /datum/wound instances affecting this bodypart
-	var/list/datum/wound/wounds
+	var/list/datum/wound/wounds = list()
 	/// List of items embedded in this bodypart
 	var/list/obj/item/embedded_objects = list()
-	/// Bandage, if this ever hard dels thats fucking retarded lol
+	/// Bandage, if this ever hard dels thats fucking stupid lol
 	var/obj/item/bandage
 
 /// Checks if we have any embedded objects whatsoever
@@ -25,10 +25,25 @@
 		return FALSE
 	return (embedder in embedded_objects)
 
+/// Returns all wounds while sanitizing the list, checks for any nulled wounds, removes them.
+/obj/item/bodypart/proc/get_wounds()
+	for(var/datum/wound/wound as anything in wounds)
+		if(isnull(wound))
+			wounds -= wound
+			if(name == BODY_ZONE_HEAD || name == BODY_ZONE_PRECISE_NECK) // Due to not knowing how wounds are nulled, we add the most severe head injury (since this is the only organ this bug happens on), then remove it.
+				// Second pass over.
+				var/mob/living/carbon/carbon_affected = owner
+				REMOVE_TRAIT(carbon_affected, TRAIT_NO_BITE, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_PARALYSIS, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_NOPAIN, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_DISFIGURED, TRAIT_GENERIC)
+				REMOVE_TRAIT(carbon_affected, TRAIT_GARGLE_SPEECH, TRAIT_GENERIC)
+	return wounds
+
 /// Returns all wounds on this limb that can be sewn
 /obj/item/bodypart/proc/get_sewable_wounds()
 	var/list/woundies = list()
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(!wound.can_sew)
 			continue
 		woundies += wound
@@ -38,17 +53,17 @@
 /obj/item/bodypart/proc/has_wound(path, specific = FALSE)
 	if(!path)
 		return
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if((specific && wound.type != path) || !istype(wound, path))
 			continue
 		return wound
 
 /// Heals wounds on this bodypart by the specified amount
 /obj/item/bodypart/proc/heal_wounds(heal_amount)
-	if(!length(wounds))
+	if(!length(get_wounds()))
 		return FALSE
 	var/healed_any = FALSE
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(heal_amount <= 0)
 			continue
 		var/amount_healed = wound.heal_wound(heal_amount)
@@ -100,7 +115,7 @@
 	var/bleed_rate = 0
 	if(bandage && !HAS_BLOOD_DNA(bandage))
 		return 0
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		bleed_rate += wound.bleed_rate
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if(!embedded.embedding.embedded_bloodloss)
@@ -118,11 +133,14 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
+	var/do_crit = TRUE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
 			return FALSE
-	var/do_crit = TRUE
+		if(owner.mind && get_damage() < max_damage/2) //No crits except if it hits a damage threshold on players.
+			if(owner.mobility_flags & MOBILITY_STAND && !owner.buckled && !owner.has_healthpotion_active()) //Unless they're buckled or lying down.
+				do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
 			dam += 10
@@ -147,7 +165,7 @@
 					added_wound = /datum/wound/slash
 				if(1 to 10)
 					added_wound = /datum/wound/slash/small
-		if(BCLASS_STAB, BCLASS_PICK)
+		if(BCLASS_STAB, BCLASS_PICK, BCLASS_ASSASSIN)
 			switch(dam)
 				if(20 to INFINITY)
 					added_wound = /datum/wound/puncture/large
@@ -170,6 +188,9 @@
 		if(crit_attempt)
 			return crit_attempt
 	return added_wound
+
+/mob/living/proc/has_healthpotion_active()
+	return reagents?.has_reagent(/datum/reagent/medicine/lesserhealthpot) || reagents?.has_reagent(/datum/reagent/medicine/healthpot) || reagents?.has_reagent(/datum/reagent/medicine/greaterhealthpot)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
@@ -228,7 +249,7 @@
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
-	if ((bclass = BCLASS_PUNCH) && (user && dam))
+	if ((bclass == BCLASS_PUNCH) && (user && dam))
 		if(user && HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN))
 			dam += 15
 	if((bclass in GLOB.cbt_classes) && (zone_precise == BODY_ZONE_PRECISE_GROIN))
@@ -291,7 +312,7 @@
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else
+			else if (!resistance)
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
 		used = round(damage_dividend * 20 + (dam / 3), 1)
@@ -300,7 +321,7 @@
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 				used += 10
-		if(!owner.stat && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
+		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
 			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
@@ -345,7 +366,7 @@
 					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 					if(!my_ears || has_wound(/datum/wound/facial/ears))
 						attempted_wounds += /datum/wound/fracture/head/ears
-					else 
+					else
 						attempted_wounds += /datum/wound/facial/ears
 				else if(zone_precise in eyestab_zones)
 					var/obj/item/organ/my_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
@@ -367,7 +388,7 @@
 						attempted_wounds +=/datum/wound/fracture/head/nose
 					else
 						attempted_wounds += /datum/wound/facial/disfigurement/nose
-				else if(zone_precise in knockout_zones)
+				else if(!zone_precise in knockout_zones)
 					attempted_wounds += /datum/wound/fracture/head/brain
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -381,7 +402,7 @@
 	if(!embedder || !can_embed(embedder))
 		return FALSE
 	if(owner && ((owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_PIERCEIMMUNE)))
-		return FALSE 
+		return FALSE
 	LAZYADD(embedded_objects, embedder)
 	embedder.is_embedded = TRUE
 	embedder.forceMove(src)
@@ -391,7 +412,7 @@
 			owner.emote("embed")
 			playsound(owner, 'sound/combat/newstuck.ogg', 100, vary = TRUE)
 		if(crit_message)
-			owner.next_attack_msg += " <span class='userdanger'>[embedder] is stuck in [owner]'s [src]!</span>"
+			owner.next_attack_msg += " <span class='userdanger'>[embedder] is stuck in [owner]'s [name]!</span>"
 		update_disabled()
 	return TRUE
 
@@ -403,6 +424,11 @@
 		embedder = has_embedded_object(embedder)
 	if(!istype(embedder) || !is_object_embedded(embedder))
 		return FALSE
+	if(istype(embedder, /obj/item/grown/log/tree/stake))
+		var/mob/living/L = owner
+		var/datum/antagonist/vampirelord/vampire = L.mind?.has_antag_datum(/datum/antagonist/vampirelord)
+		if(vampire)
+			vampire.unstake()
 	LAZYREMOVE(embedded_objects, embedder)
 	embedder.is_embedded = FALSE
 	var/drop_location = owner?.drop_location() || drop_location()
@@ -432,7 +458,7 @@
 		var/obj/item/natural/cloth/cloth = bandage
 		bandage_effectiveness = cloth.bandage_effectiveness
 	var/highest_bleed_rate = 0
-	for(var/datum/wound/wound as anything in wounds)
+	for(var/datum/wound/wound as anything in get_wounds())
 		if(wound.bleed_rate < highest_bleed_rate)
 			continue
 		highest_bleed_rate = wound.bleed_rate
@@ -494,18 +520,18 @@
 	var/returned_flags = NONE
 	if(can_bloody_wound())
 		returned_flags |= SURGERY_BLOODY
-	for(var/datum/wound/slash/incision/incision in wounds)
+	for(var/datum/wound/slash/incision/incision in get_wounds())
 		if(incision.is_sewn())
 			continue
 		returned_flags |= SURGERY_INCISED
 		break
 	var/static/list/retracting_behaviors = list(
 		TOOL_RETRACTOR,
-		TOOL_CROWBAR,
+		TOOL_IMPROVRETRACTOR,
 	)
 	var/static/list/clamping_behaviors = list(
 		TOOL_HEMOSTAT,
-		TOOL_WIRECUTTER,
+		TOOL_IMPROVHEMOSTAT,
 	)
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
@@ -516,7 +542,7 @@
 		returned_flags |= SURGERY_DISLOCATED
 	if(has_wound(/datum/wound/fracture))
 		returned_flags |= SURGERY_BROKEN
-	for(var/datum/wound/puncture/drilling/drilling in wounds)
+	for(var/datum/wound/puncture/drilling/drilling in get_wounds())
 		if(drilling.is_sewn())
 			continue
 		returned_flags |= SURGERY_DRILLED

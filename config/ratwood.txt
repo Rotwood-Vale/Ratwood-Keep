@@ -1,0 +1,9 @@
+### Config options added by Ratwood code.
+### See config.txt for info about protecting config variables from varedit.
+
+## When players are funeralized, the default behavior is to prompt them to use the Underworld verb to respawn.
+## When funeralized, spirits already in Underworld get teleported back to the start and their toll is set to paid.
+## If this option is set, both behaviors will be foregone in favor of immediately sending funeralized bodies' players back to spawn.
+## The force-respawning behavior will apply whether the players are connected or not, and respawn code will be called on mob login.
+#FORCE_RESPAWN_ON_FUNERAL
+

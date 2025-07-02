@@ -16,7 +16,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = FALSE
+	locked = FALSE
 	var/budget = 0
 	var/secret_budget = 0
 	var/recent_payments = 0
@@ -24,8 +24,8 @@
 	var/drugrade_flags
 
 /obj/structure/roguemachine/drugmachine/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
 		if(K.lockid == "nightman")
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -34,9 +34,9 @@
 		else
 			to_chat(user, span_warning("Wrong key."))
 			return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		for(var/obj/item/key/KE in K.contents)
 			if(KE.lockid == "nightman")
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
@@ -157,51 +157,54 @@
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/drugmachine/attack_hand(mob/living/user)
-	. = ..()
-	if(.)
-		return
-	if(!ishuman(user))
-		return
-	if(locked)
-		return
-	user.changeNext_move(CLICK_CD_MELEE)
-	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-	var/canread = user.can_read(src, TRUE)
-	var/contents
-	if(canread)
-		contents = "<center>PURITY - In the name of pleasure.<BR>"
-		contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
-	else
-		contents = "<center>[stars("PURITY - In the name of pleasure.")]<BR>"
-		contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
+    . = ..()
+    if(.)
+        return
+    if(!ishuman(user))
+        return
+    if(locked)
+        return
+    user.changeNext_move(CLICK_CD_MELEE)
+    playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+    var/canread = user.can_read(src, TRUE)
+    var/contents
+    if(canread)
+        contents = "<center>PURITY - In the name of pleasure.<BR>"
+        contents += "<a href='?src=[REF(src)];change=1'>MAMMON LOADED:</a> [budget]<BR>"
+    else
+        contents = "<center>[stars("PURITY - In the name of pleasure.")]<BR>"
+        contents += "<a href='?src=[REF(src)];change=1'>[stars("MAMMON LOADED:")]</a> [budget]<BR>"
 
+    var/mob/living/carbon/human/H = user
+    if(H.job == "Nightmaster")
+        if(canread)
+            contents += "<a href='?src=[REF(src)];secrets=1'>Secrets</a><BR>"
+        else
+            contents += "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a><BR>"
 
-	var/mob/living/carbon/human/H = user
-	if(H.job == "Nightmaster")
-		if(canread)
-			contents = "<a href='?src=[REF(src)];secrets=1'>Secrets</a>"
-		else
-			contents = "<a href='?src=[REF(src)];secrets=1'>[stars("Secrets")]</a>"
+    // Dynamically generate item prices based on tax flag
+    for(var/I in held_items)
+        var/price = held_items[I]["PRICE"]
+        var/tax_amt = round(SStreasury.tax_value * price)
+        var/full_price = price + tax_amt
+        var/namer = held_items[I]["NAME"]
 
-	contents += "</center>"
+        // Apply tax exemption if the flag is set
+        if(drugrade_flags & DRUGRADE_NOTAX)
+            full_price = price
 
-	for(var/I in held_items)
-		var/price = held_items[I]["PRICE"] + (SStreasury.tax_value * held_items[I]["PRICE"])
-		var/namer = held_items[I]["NAME"]
-		if(!price)
-			price = "0"
-		if(!namer)
-			held_items[I]["NAME"] = "thing"
-			namer = "thing"
-		if(canread)
-			contents += "[namer] + [price] <a href='?src=[REF(src)];buy=[I]'>BUY</a>"
-		else
-			contents += "[stars(namer)] + [stars(price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a>"
-		contents += "<BR>"
+        if(!namer)
+            held_items[I]["NAME"] = "thing"
+            namer = "thing"
 
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
-	popup.set_content(contents)
-	popup.open()
+        if(canread)
+            contents += "[namer] + [full_price] <a href='?src=[REF(src)];buy=[I]'>BUY</a><BR>"
+        else
+            contents += "[stars(namer)] + [stars(full_price)] <a href='?src=[REF(src)];buy=[I]'>[stars("BUY")]</a><BR>"
+
+    var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 400)
+    popup.set_content(contents)
+    popup.open()
 
 /obj/structure/roguemachine/drugmachine/obj_break(damage_flag)
 	..()
@@ -228,18 +231,19 @@
 	. = ..()
 	START_PROCESSING(SSroguemachine, src)
 	update_icon()
-	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(41,55),"NAME" = "chuckledust")
-	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(25,47),"NAME" = "ozium")
-	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(13,25),"NAME" = "moondust")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(12,18),"NAME" = "swampweed zig")
-	held_items[/obj/item/clothing/mask/cigarette/rollie/nicotine] = list("PRICE" = rand(5,10),"NAME" = "zig")
-/*	held_items[/obj/item/reagent_containers/glass/bottle/rogue/wine] = list("PRICE" = rand(35,77),"NAME" = "vino")
-	held_items[/obj/item/rogueweapon/huntingknife/idagger] = list("PRICE" = rand(20,33),"NAME" = "kinfe")
-	held_items[/obj/item/clothing/cloak/half] = list("PRICE" = rand(103,110),"NAME" = "black halfcloak")
-	held_items[/obj/item/clothing/gloves/roguetown/fingerless] = list("PRICE" = rand(16,31),"NAME" = "gloves with 6 holes")
-	held_items[/obj/item/clothing/head/roguetown/roguehood/black] = list("PRICE" = rand(43,45),"NAME" = "black hood")
-	held_items[/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow] = list("PRICE" = rand(58,88),"NAME" = "crossed bow")
-	held_items[/obj/item/quiver/bolts] = list("PRICE" = rand(33,57),"NAME" = "quiver w/ bolts")*/
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/snekbt] = list("PRICE" = rand(40,65),"NAME" = "snake bite")
+	held_items[/obj/item/reagent_containers/powder/spice] = list("PRICE" = rand(30,40),"NAME" = "spice")
+	held_items[/obj/item/reagent_containers/powder/ozium] = list("PRICE" = rand(15,35),"NAME" = "ozium")
+	held_items[/obj/item/reagent_containers/powder/moondust] = list("PRICE" = rand(25,45),"NAME" = "moondust")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/cannabis] = list("PRICE" = rand(15,20),"NAME" = "swampweed zig")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/nourish] = list("PRICE" = rand(40,60),"NAME" = "NOURISH")
+	held_items[/obj/item/storage/fancy/shhig] = list("PRICE" = rand(30,50),"NAME" = "box of ssssigs")
+	held_items[/obj/item/storage/box/matches] = list("PRICE" = rand(5,15),"NAME" = "tinderbox")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sty/detox] = list("PRICE" = rand(25,55),"NAME" = "DETOX")
+	held_items[/obj/item/reagent_containers/glass/alembic] = list("PRICE" = rand(30,50),"NAME" = "alembic")
+	held_items[/obj/item/storage/fancy/pilltin/wake] = list("PRICE" = rand(30,40),"NAME" = "pep pills tin")
+	held_items[/obj/item/reagent_containers/hypospray/medipen/sealbottle/purify] = list("PRICE" = rand(20,25),"NAME" = "PURIFY")
+	held_items[/obj/item/natural/bundle/cloth/bandage/full] = list("PRICE" = rand(10,25),"NAME" = "roll of bandages")
 
 #undef DRUGRADE_MONEYA
 #undef DRUGRADE_MONEYB

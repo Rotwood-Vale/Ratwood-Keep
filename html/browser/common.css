@@ -416,3 +416,12 @@ ul.sparse {
     display: inline-block;
     vertical-align: middle;
 }
+
+.animationcolor {color: #5e5959;	font-weight: bold;	animation: docolors 1500ms infinite; animation-direction: alternate;}
+@keyframes docolors {
+	0%		{color: #5e5959;}
+	25%		{color: #7a3335;}
+	50%		{color: #89242b;}
+	75%		{color: #930e21;}
+	100%	{color: #b80000;}
+}

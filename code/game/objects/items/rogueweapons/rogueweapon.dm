@@ -13,14 +13,13 @@
 	block_chance = 0
 	armor_penetration = 0
 	sharpness = IS_SHARP
-	custom_materials = null
 	possible_item_intents = list(SWORD_CUT, SWORD_THRUST)
 	can_parry = TRUE
 	wlength = 45
 	sellprice = 1
 	has_inspect_verb = TRUE
 	parrysound = list('sound/combat/parry/parrygen.ogg')
-	anvilrepair = /datum/skill/craft/weaponsmithing
+	anvilrepair = /datum/skill/craft/blacksmithing
 	obj_flags = CAN_BE_HIT
 	blade_dulling = DULLING_BASH
 	max_integrity = 200
@@ -28,8 +27,8 @@
 	experimental_onhip = TRUE
 	experimental_onback = TRUE
 	embedding = list(
-		"embed_chance" = 20, 
-		"embedded_pain_multiplier" = 1, 
+		"embed_chance" = 20,
+		"embedded_pain_multiplier" = 1,
 		"embedded_fall_chance" = 0,
 	)
 	var/initial_sl
@@ -41,6 +40,18 @@
 	if(!destroy_message)
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = span_warning("[yea]")
+
+/obj/item/rogueweapon/get_examine_string(mob/user, thats = FALSE)
+	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
+
+/obj/item/rogueweapon/pickup(mob/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
+		var/mob/living/carbon/human/H = user
+		to_chat(H, span_warning("The idea repulses me!"))
+		H.cursed_freak_out()
+		H.Paralyze(20)
+		return
 
 /obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
@@ -87,3 +98,12 @@
 	else if(easy_dismember)
 		return probability * 1.5
 	return probability
+
+/obj/item/rogueweapon/obj_fix()
+	..()
+
+	force = initial(force)
+	armor_penetration = initial(armor_penetration)
+	wdefense = initial(wdefense)
+	sharpness = initial(sharpness)
+	can_parry = initial(can_parry)

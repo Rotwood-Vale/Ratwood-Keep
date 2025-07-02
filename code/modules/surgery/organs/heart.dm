@@ -21,23 +21,44 @@
 	var/failed = FALSE		//to prevent constantly running failing code
 	var/operated = FALSE	//whether the heart's been operated on to fix some of its damages
 
-	/// Marking on this heart for the maniac antagonist
-	var/inscryption
-	/// Associated maniac key
-	var/inscryption_key
+	/// Markings on this heart for the maniac antagonist.
+	/// Assoc list using Maniac antag datums as keys. One for each maniac, but not for each wonder.
+	var/inscryptions = list()
+	/// Assoc list tracking antag datums to 4-letter maniac keys
+	var/inscryption_keys = list()
+	/// Assoc list tracking antag datums to wonder ID number (1-4)
+	var/maniacs2wonder_ids = list()
+	/// List of Maniac datums that have inscribed on this heart
+	var/maniacs = list()
 
 /obj/item/organ/heart/examine(mob/user)
 	. = ..()
+	if(isadminobserver(user) && inscryptions)
+		for(var/datum/antagonist/maniac/maniaque in maniacs)
+			var/N = maniaque.owner?.name
+			var/W = LAZYACCESS(maniacs2wonder_ids, maniaque)
+			var/P = LAZYACCESS(inscryptions, maniaque)
+			. += span_notice("Marked by [N ? "[N]'s " : ""]Wonder[W ? " #[W]" : ""]: [P].")
+		return .
 	var/datum/antagonist/maniac/dreamer = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	if(dreamer)
-		if(!inscryption)
+		if(!maniacs)
 			. += "<span class='danger'><b>There is NOTHING on this heart. \
 				Should be? Following the TRUTH - not here. I need to keep LOOKING. Keep FOLLOWING my heart.</b></span>"
 		else
-			. += "<b><span class='warning'>There's something CUT on this HEART.</span>\n\"[inscryption]. Add it to the other keys to exit INRL.\"</b>"
-			if(!(inscryption in dreamer.hearts_seen))
-				dreamer.hearts_seen += inscryption
+			if(!(dreamer in maniacs))
+				. += "<span class='danger'><b>This heart has INDECIPHERABLE etching. \
+					Following the TRUTH - not here. I need to keep LOOKING. Keep FOLLOWING my heart.</b></span>"
+				return .
+			var/my_inscryption = LAZYACCESS(inscryptions, dreamer)
+			. += "<b><span class='warning'>There's something CUT on this HEART.</span>\n\"[my_inscryption]. Add it to the other keys to exit INRL.\"</b>"
+			if(!(my_inscryption in dreamer.hearts_seen))
+				var/wonder_code = LAZYACCESS(maniacs2wonder_ids, dreamer)
+				dreamer.hearts_seen += my_inscryption
 				SEND_SOUND(dreamer, 'sound/villain/newheart.ogg')
+				user.log_message("got the Maniac inscryption [wonder_code ? " for Wonder #[wonder_code]" : ""][my_inscryption ? ": \"[strip_html_simple(my_inscryption)].\"" : ""]", LOG_GAME)
+				if(wonder_code == 4)
+					message_admins("Maniac [ADMIN_LOOKUPFLW(user)] has obtained the fourth and final heart code.")
 
 /obj/item/organ/heart/update_icon()
 	if(beating)
@@ -200,56 +221,3 @@
 /datum/client_colour/cursed_heart_blood
 	priority = 100 //it's an indicator you're dying, so it's very high priority
 	colour = "red"
-
-/obj/item/organ/heart/cybernetic
-	name = "cybernetic heart"
-	desc = ""
-	icon_state = "heart-c"
-	organ_flags = ORGAN_SYNTHETIC
-	maxHealth = 1.1 * STANDARD_ORGAN_THRESHOLD
-
-	var/dose_available = TRUE
-	var/rid = /datum/reagent/medicine/epinephrine
-	var/ramount = 10
-
-/obj/item/organ/heart/cybernetic/emp_act(severity)
-	. = ..()
-	if(. & EMP_PROTECT_SELF)
-		return
-	Stop()
-	addtimer(CALLBACK(src, PROC_REF(Restart)), 20/severity SECONDS)
-	damage += 100/severity
-
-/obj/item/organ/heart/cybernetic/on_life()
-	. = ..()
-	if(dose_available && owner.health <= owner.crit_threshold && !owner.reagents.has_reagent(rid))
-		owner.reagents.add_reagent(rid, ramount)
-		used_dose()
-
-/obj/item/organ/heart/cybernetic/proc/used_dose()
-	dose_available = FALSE
-
-/obj/item/organ/heart/cybernetic/upgraded
-	name = "upgraded cybernetic heart"
-	desc = ""
-	icon_state = "heart-c-u"
-	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
-
-/obj/item/organ/heart/cybernetic/upgraded/used_dose()
-	. = ..()
-	addtimer(VARSET_CALLBACK(src, dose_available, TRUE), 5 MINUTES)
-
-/obj/item/organ/heart/freedom
-	name = "heart of freedom"
-	desc = ""
-	organ_flags = ORGAN_SYNTHETIC //the power of freedom prevents heart attacks
-	var/min_next_adrenaline = 0
-
-/obj/item/organ/heart/freedom/on_life()
-	. = ..()
-	if(owner.health < 5 && world.time > min_next_adrenaline)
-		min_next_adrenaline = world.time + rand(250, 600) //anywhere from 4.5 to 10 minutes
-		to_chat(owner, span_danger("I feel myself dying, but you refuse to give up!"))
-		owner.heal_overall_damage(15, 15, 0, BODYPART_ORGANIC)
-		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
-			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)

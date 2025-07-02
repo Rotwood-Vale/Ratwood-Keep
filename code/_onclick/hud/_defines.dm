@@ -69,10 +69,6 @@
 #define ui_monkey_neck "CENTER-3:15,SOUTH:5"	//monkey
 #define ui_monkey_back "CENTER-2:16,SOUTH:5"	//monkey
 
-//#define ui_alien_storage_l "CENTER-2:14,SOUTH:5"//alien
-#define ui_alien_storage_r "CENTER+1:18,SOUTH:5"//alien
-#define ui_alien_language_menu "EAST-3:26,SOUTH:5" //alien
-
 #define ui_drone_drop "CENTER+1:18,SOUTH:5"     //maintenance drones
 #define ui_drone_pull "CENTER+2:2,SOUTH:5"      //maintenance drones
 #define ui_drone_storage "CENTER-2:14,SOUTH:5"  //maintenance drones
@@ -197,53 +193,8 @@
 //borgs
 #define ui_borg_health "EAST-1:28,CENTER-1:15"		//borgs have the health display where humans have the pressure damage indicator.
 
-//aliens
-#define ui_alien_health "EAST,CENTER-1:15"	//aliens have the health display where humans have the pressure damage indicator.
-#define ui_alienplasmadisplay "EAST,CENTER-2:15"
-#define ui_alien_queen_finder "EAST,CENTER-3:15"
-
-//constructs
 #define ui_construct_pull "EAST,CENTER-2:15"
 #define ui_construct_health "EAST,CENTER:15"  //same as borgs and humans
-
-//slimes
-#define ui_slime_health "EAST,CENTER:15"  //same as borgs, constructs and humans
-
-// AI
-
-#define ui_ai_core "SOUTH:6,WEST"
-#define ui_ai_camera_list "SOUTH:6,WEST+1"
-#define ui_ai_track_with_camera "SOUTH:6,WEST+2"
-#define ui_ai_camera_light "SOUTH:6,WEST+3"
-#define ui_ai_crew_monitor "SOUTH:6,WEST+4"
-#define ui_ai_crew_manifest "SOUTH:6,WEST+5"
-#define ui_ai_alerts "SOUTH:6,WEST+6"
-#define ui_ai_announcement "SOUTH:6,WEST+7"
-#define ui_ai_shuttle "SOUTH:6,WEST+8"
-#define ui_ai_state_laws "SOUTH:6,WEST+9"
-#define ui_ai_pda_send "SOUTH:6,WEST+10"
-#define ui_ai_pda_log "SOUTH:6,WEST+11"
-#define ui_ai_take_picture "SOUTH:6,WEST+12"
-#define ui_ai_view_images "SOUTH:6,WEST+13"
-#define ui_ai_sensor "SOUTH:6,WEST+14"
-#define ui_ai_multicam "SOUTH+1:6,WEST+13"
-#define ui_ai_add_multicam "SOUTH+1:6,WEST+14"
-
-// pAI
-
-#define ui_pai_software "SOUTH:6,WEST"
-#define ui_pai_shell "SOUTH:6,WEST+1"
-#define ui_pai_chassis "SOUTH:6,WEST+2"
-#define ui_pai_rest "SOUTH:6,WEST+3"
-#define ui_pai_light "SOUTH:6,WEST+4"
-#define ui_pai_newscaster "SOUTH:6,WEST+5"
-#define ui_pai_host_monitor "SOUTH:6,WEST+6"
-#define ui_pai_crew_manifest "SOUTH:6,WEST+7"
-#define ui_pai_state_laws "SOUTH:6,WEST+8"
-#define ui_pai_pda_send "SOUTH:6,WEST+9"
-#define ui_pai_pda_log "SOUTH:6,WEST+10"
-#define ui_pai_take_picture "SOUTH:6,WEST+12"
-#define ui_pai_view_images "SOUTH:6,WEST+13"
 
 //Pop-up inventory
 #define ui_shoes "WEST+1:8,SOUTH:5"

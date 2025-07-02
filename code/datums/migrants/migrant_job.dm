@@ -13,8 +13,9 @@
 	display_order = JDO_MIGRANT
 	show_in_credits = FALSE
 	max_pq = null
-	min_pq = -999
+	min_pq = -100
 	wanderer_examine = TRUE
+	foreign_examine = TRUE
 	advjob_examine = TRUE
 
 	total_positions = 0

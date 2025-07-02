@@ -45,6 +45,10 @@ GLOBAL_LIST_INIT(badomens, list())
 			used = "The Sun, she is wounded!"
 		if(OMEN_SKELETONSIEGE)
 			used = "Unwelcome visitors!"
+		if("ascend")
+			used = "Zizo will rise once again."
+		if(OMEN_DESECRATE_DENDOR)
+			used = "An ominous silence falls over the forest." //evil trees, wolves, a werewolf or a dryad spawn in multiple locations
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
 

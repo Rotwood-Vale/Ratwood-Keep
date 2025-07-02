@@ -72,6 +72,8 @@
 /datum/spacevine_mutation/proc/on_explosion(severity, target, obj/structure/spacevine/holder)
 	return
 
+/datum/spacevine_mutation/proc/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	return TRUE
 
 /datum/spacevine_mutation/light
 	name = "light"
@@ -90,8 +92,6 @@
 	quality = NEGATIVE
 
 /datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(issilicon(crosser))
-		return
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
 		to_chat(crosser, span_alert("I accidentally touch the vine and feel a strange sensation."))
 		crosser.adjustToxLoss(5)
@@ -161,66 +161,6 @@
 	holder.set_opacity(0)
 	holder.alpha = 125
 
-/datum/spacevine_mutation/oxy_eater
-	name = "oxygen consuming"
-	hue = "#ffff88"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/oxy_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/oxygen])
-			return
-		GM.gases[/datum/gas/oxygen][MOLES] = max(GM.gases[/datum/gas/oxygen][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/nitro_eater
-	name = "nitrogen consuming"
-	hue = "#8888ff"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/nitro_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/nitrogen])
-			return
-		GM.gases[/datum/gas/nitrogen][MOLES] = max(GM.gases[/datum/gas/nitrogen][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/carbondioxide_eater
-	name = "CO2 consuming"
-	hue = "#00ffff"
-	severity = 3
-	quality = POSITIVE
-
-/datum/spacevine_mutation/carbondioxide_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/carbon_dioxide])
-			return
-		GM.gases[/datum/gas/carbon_dioxide][MOLES] = max(GM.gases[/datum/gas/carbon_dioxide][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
-/datum/spacevine_mutation/plasma_eater
-	name = "toxins consuming"
-	hue = "#ffbbff"
-	severity = 3
-	quality = POSITIVE
-
-/datum/spacevine_mutation/plasma_eater/process_mutation(obj/structure/spacevine/holder)
-	var/turf/open/floor/T = holder.loc
-	if(istype(T))
-		var/datum/gas_mixture/GM = T.air
-		if(!GM.gases[/datum/gas/plasma])
-			return
-		GM.gases[/datum/gas/plasma][MOLES] = max(GM.gases[/datum/gas/plasma][MOLES] - severity * holder.energy, 0)
-		GM.garbage_collect()
-
 /datum/spacevine_mutation/thorns
 	name = "thorny"
 	hue = "#666666"
@@ -257,21 +197,6 @@
 	else
 		. = expected_damage
 
-/datum/spacevine_mutation/flowering
-	name = "flowering"
-	hue = "#0A480D"
-	quality = NEGATIVE
-	severity = 10
-
-/datum/spacevine_mutation/flowering/on_grow(obj/structure/spacevine/holder)
-	if(holder.energy == 2 && prob(severity) && !locate(/obj/structure/alien/resin/flower_bud_enemy) in range(5,holder))
-		new/obj/structure/alien/resin/flower_bud_enemy(get_turf(holder))
-
-/datum/spacevine_mutation/flowering/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
-	if(prob(25))
-		holder.entangle(crosser)
-
-
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "weepvine"
@@ -293,11 +218,32 @@
 	break_sound = "plantcross"
 	destroy_sound = null
 
+/datum/spacevine_mutation/earthy
+	name = "earthy"
+	hue = "#213311"
+	quality = NEGATIVE
+	severity = 10
+
+/datum/spacevine_mutation/earthy/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if(prob(10) && !isvineimmune(crosser))
+		holder.entangle(crosser)
+	if(!isvineimmune(crosser))
+		if(crosser.apply_damage(5, BRUTE))
+			to_chat(crosser, span_alert("I cut myself on the thorny vines."))
+
+/datum/spacevine_mutation/earthy/can_cross(obj/structure/spacevine/holder, mob/living/crosser)
+	if(prob(30) && !isvineimmune(crosser))
+		to_chat(crosser, span_warning("I feel stuck on the vines."))
+		return FALSE
+	else
+		return TRUE
+
 /obj/structure/spacevine/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)
 	icon_state = "Light[rand(1,2)]"
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
+
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()/*
@@ -313,7 +259,8 @@
 
 /obj/structure/spacevine/Destroy()
 	for(var/datum/spacevine_mutation/SM in mutations)
-		SM.on_death(src)
+		if(!isnull(SM))
+			SM.on_death(src)
 	if(master)
 		master.VineDestroyed(src)
 	mutations = list()
@@ -379,9 +326,6 @@
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_hit(src, user)
 	user_unbuckle_mob(user,user)
-
-/obj/structure/spacevine/attack_alien(mob/living/user)
-	eat(user)
 
 /datum/spacevine_controller
 	var/list/obj/structure/spacevine/vines
@@ -543,7 +487,7 @@
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	if (!isspaceturf(stepturf) && stepturf.Enter(src))
+	if (stepturf.Enter(src))
 		for(var/datum/spacevine_mutation/SM in mutations)
 			SM.on_spread(src, stepturf)
 			stepturf = get_step(src,direction) //in case turf changes, to make sure no runtimes happen
@@ -560,7 +504,7 @@
 	if(!i)
 		qdel(src)
 
-/obj/structure/spacevine/temperature_expose(null, temp, volume)
+/obj/structure/spacevine/temperature_expose(temp, volume)
 	var/override = 0
 	for(var/datum/spacevine_mutation/SM in mutations)
 		override += SM.process_temperature(src, temp, volume)
@@ -568,14 +512,18 @@
 		qdel(src)
 
 /obj/structure/spacevine/CanPass(atom/movable/mover, turf/target)
-	if(isvineimmune(mover))
-		. = TRUE
-	else
-		. = ..()
+	var/result = TRUE
+	if(isliving(mover))
+		for(var/datum/spacevine_mutation/SM in mutations)
+			result = SM.can_cross(src, mover)
+	return result
 
 /proc/isvineimmune(atom/A)
 	. = FALSE
 	if(isliving(A))
 		var/mob/living/M = A
-		if(("vines" in M.faction) || ("plants" in M.faction))
+		if(("vines" in M.faction) || ("plants" in M.faction) || HAS_TRAIT(A, TRAIT_VINE_WALKER))
 			. = TRUE
+
+/obj/structure/spacevine/dendor
+	mutations = newlist(/datum/spacevine_mutation/earthy)

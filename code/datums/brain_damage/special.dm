@@ -120,30 +120,6 @@
 		user.visible_message(span_warning("[user] [slip_in_message]."), null, null, null, user)
 		user.visible_message(span_warning("[user] [slip_out_message]."), span_notice("...and find your way to the other side."))
 
-/datum/brain_trauma/special/psychotic_brawling
-	name = "Violent Psychosis"
-	desc = ""
-	scan_desc = ""
-	gain_text = span_warning("I feel unhinged...")
-	lose_text = span_notice("I feel more balanced.")
-	var/datum/martial_art/psychotic_brawling/psychotic_brawling
-
-/datum/brain_trauma/special/psychotic_brawling/on_gain()
-	..()
-	psychotic_brawling = new(null)
-	if(!psychotic_brawling.teach(owner, TRUE))
-		to_chat(owner, span_notice("But your martial knowledge keeps you grounded."))
-		qdel(src)
-
-/datum/brain_trauma/special/psychotic_brawling/on_lose()
-	..()
-	psychotic_brawling.remove(owner)
-	QDEL_NULL(psychotic_brawling)
-
-/datum/brain_trauma/special/psychotic_brawling/bath_salts
-	name = "Chemical Violent Psychosis"
-	clonable = FALSE
-
 /datum/brain_trauma/special/tenacity
 	name = "Tenacity"
 	desc = ""

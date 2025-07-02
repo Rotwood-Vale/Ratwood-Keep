@@ -20,6 +20,7 @@
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/turf/closed, /turf/open/floor/rogue/volcanic, /turf/open/floor/rogue/dirt, /turf/open/floor/rogue/dirt/road,/turf/open/floor/rogue/naturalstone)
 	neighborlay_override = "lavedge"
+	turf_flags = NONE
 
 /turf/open/lava/Initialize()
 	. = ..()
@@ -45,9 +46,6 @@
 /turf/open/lava/MakeDry(wet_setting = TURF_WET_WATER)
 	return
 
-/turf/open/lava/airless
-	initial_gas_mix = AIRLESS_ATMOS
-
 /turf/open/lava/Entered(atom/movable/AM)
 	if(!AM.throwing)
 		if(burn_stuff(AM))
@@ -70,22 +68,8 @@
 		playsound(src, 'sound/misc/lava_death.ogg', 100, FALSE)
 
 /turf/open/lava/process()
-	if(!burn_stuff())
+	if(!burn_stuff()) // try to burn everything in our contents, stop once nothing left can burn
 		STOP_PROCESSING(SSobj, src)
-
-/turf/open/lava/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	switch(the_rcd.mode)
-		if(RCD_FLOORWALL)
-			return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 3)
-	return FALSE
-
-/turf/open/lava/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_FLOORWALL)
-			to_chat(user, span_notice("I build a floor."))
-			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			return TRUE
-	return FALSE
 
 /turf/open/lava/singularity_act()
 	return
@@ -98,41 +82,41 @@
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
-/turf/open/lava/GetHeatCapacity()
-	. = 700000
+/turf/open/lava/can_traverse_safely(atom/movable/traveler)
+	return ..() && !will_burn(traveler) // can traverse safely if you won't burn in it
 
-/turf/open/lava/GetTemperature()
-	. = 5000
-
-/turf/open/lava/TakeTemperature(temp)
-
-
-/turf/open/lava/proc/is_safe()
-	//if anything matching this typecache is found in the lava, we don't burn things
-	var/static/list/lava_safeties_typecache = typecacheof(list(/obj/structure/lattice/catwalk, /obj/structure/stone_tile))
-	var/list/found_safeties = typecache_filter_list(contents, lava_safeties_typecache)
-	for(var/obj/structure/stone_tile/S in found_safeties)
-		if(S.fallen)
-			LAZYREMOVE(found_safeties, S)
-	return LAZYLEN(found_safeties)
-
+/turf/open/lava/proc/will_burn(atom/movable/thing)
+	if(isobj(thing))
+		var/obj/O = thing
+		if((O.resistance_flags & (LAVA_PROOF|INDESTRUCTIBLE)) || O.throwing)
+			return FALSE
+		return TRUE
+	else if (isliving(thing))
+		var/mob/living/L = thing
+		if(L.movement_type & FLYING)
+			return FALSE //YOU'RE FLYING OVER IT
+		if("lava" in L.weather_immunities) // just flat-out immune. is this even used in RT?
+			return FALSE
+		var/buckle_check = L.buckling
+		if(!buckle_check)
+			buckle_check = L.buckled
+		if(buckle_check && !will_burn(buckle_check))
+			return FALSE // buckled to something lavaproof
+		return TRUE
+	return FALSE // no handling for this type burning, obj or living only
 
 /turf/open/lava/proc/burn_stuff(AM)
-	. = 0
-
-	if(is_safe())
-		return FALSE
-
+	. = FALSE
 	var/thing_to_check = src
 	if (AM)
 		thing_to_check = list(AM)
 	for(var/thing in thing_to_check)
+		if(!will_burn(thing))
+			continue
 		if(isobj(thing))
 			var/obj/O = thing
-			if((O.resistance_flags & (LAVA_PROOF|INDESTRUCTIBLE)) || O.throwing)
-				continue
-			. = 1
-			if((O.resistance_flags & (ON_FIRE)))
+			. = TRUE
+			if((O.resistance_flags & (ON_FIRE))) // already on fire, don't bother. why do we do this exactly...? is this bad copypasta?
 				continue
 			if(!(O.resistance_flags & FLAMMABLE))
 				O.resistance_flags |= FLAMMABLE //Even fireproof things burn up in lava
@@ -142,23 +126,9 @@
 				O.armor = O.armor.setRating(fire = 50)
 			qdel(O)
 
-		else if (isliving(thing))
-			. = 1
+		else if(isliving(thing))
+			. = TRUE
 			var/mob/living/L = thing
-			if(L.movement_type & FLYING)
-				continue	//YOU'RE FLYING OVER IT
-			var/buckle_check = L.buckling
-			if(!buckle_check)
-				buckle_check = L.buckled
-			if(isobj(buckle_check))
-				var/obj/O = buckle_check
-				if(O.resistance_flags & LAVA_PROOF)
-					continue
-			else if(isliving(buckle_check))
-				var/mob/living/live = buckle_check
-				if("lava" in live.weather_immunities)
-					continue
-
 			if(!L.on_fire)
 				L.update_fire()
 
@@ -166,9 +136,10 @@
 				var/mob/living/carbon/C = L
 				var/obj/item/clothing/S = C.get_item_by_slot(SLOT_ARMOR)
 				var/obj/item/clothing/H = C.get_item_by_slot(SLOT_HEAD)
-
+				// we still catch fire if wearing lavaproof armor, but we don't get dusted when dead
+				// is this really the intended behaviour, or was it just badly coded? idk
 				if(S && H && S.clothing_flags & LAVAPROTECT && H.clothing_flags & LAVAPROTECT)
-					return
+					continue
 
 				if(C.health <= 0)
 					C.dust(drop_items = TRUE)
@@ -176,8 +147,8 @@
 			if("lava" in L.weather_immunities)
 				continue
 
-//			L.adjustFireLoss(50)
 			if(L) //mobs turning into object corpses could get deleted here.
+				L.adjustFireLoss(10)
 				L.adjust_fire_stacks(100)
 				L.IgniteMob()
 				if(L.health <= 0)
@@ -190,14 +161,6 @@
 	smooth = SMOOTH_MORE | SMOOTH_BORDER
 	canSmoothWith = list(/turf/open/lava/smooth)
 
-/turf/open/lava/smooth/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/lava/smooth/lava_land_surface
-
-/turf/open/lava/smooth/airless
-	initial_gas_mix = AIRLESS_ATMOS
-
 /turf/open/lava/acid
 	name = "acid"
 	icon_state = "acid"
@@ -207,9 +170,6 @@
 
 /turf/open/lava/acid/burn_stuff(AM)
 	. = 0
-
-	if(is_safe())
-		return FALSE
 
 	var/thing_to_check = src
 	if (AM)

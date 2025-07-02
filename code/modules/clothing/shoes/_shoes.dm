@@ -16,6 +16,7 @@
 	var/offset = 0
 	var/equipped_before_drop = FALSE
 	var/can_be_bloody = TRUE
+	var/isbarefoot = FALSE
 	bloody_icon_state = "shoeblood"
 
 /obj/item/clothing/shoes/ComponentInitialize()
@@ -54,7 +55,7 @@
 //		if(bloody)
 //			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
 
-/obj/item/clothing/shoes/equipped(mob/user, slot)
+/obj/item/clothing/shoes/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(offset && slot_flags & slotdefine2slotbit(slot))
 		user.pixel_y += offset
@@ -72,7 +73,7 @@
 		restore_offsets(user)
 	. = ..()
 
-/obj/item/clothing/shoes/update_clothes_damaged_state(damaging = TRUE)
+/obj/item/clothing/shoes/update_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc

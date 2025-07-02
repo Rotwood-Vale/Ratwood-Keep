@@ -1,5 +1,5 @@
 /datum/crafting_recipe/roguetown/gravemarker
-	name = "grave marker"
+	name = "grave marker - (stick; GRAVE; NONE)"
 	result = /obj/structure/gravemarker
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
 	time = 10 SECONDS
@@ -7,7 +7,7 @@
 	verbage = "ties together"
 	craftsound = 'sound/foley/Building-01.ogg'
 	structurecraft = /obj/structure/closet/dirthole
-	craftdiff = 0
+	skill_level = 0
 
 /datum/crafting_recipe/roguetown/gravemarker/TurfCheck(mob/user, turf/T)
 	if(!(locate(/obj/structure/closet/dirthole) in T))
@@ -37,7 +37,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		new /obj/item/grown/log/tree/stick(T)
-	..()
+	return ..()
 
 /mob/dead/new_player/proc/reducespawntime(amt)
 	if(ckey)
@@ -49,5 +49,5 @@
 	icon_state = "gravemarker[rand(1,3)]"
 	for(var/obj/structure/closet/dirthole/hole in loc)
 		if(pacify_coffin(hole, user))
-			to_chat(user, span_notice("I feel their soul finding peace..."))
+			break
 	return ..()

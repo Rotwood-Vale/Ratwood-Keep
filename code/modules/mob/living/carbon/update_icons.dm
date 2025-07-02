@@ -61,14 +61,14 @@
 	update_fire()
 
 /*
-/proc/get_inhand_sprite(/obj/item/I, layer)
+/proc/get_inhand_sprite(obj/item/I, layer)
 	var/index = "[I.icon_state]"
 	var/icon/inhand_icon = GLOB.inhand_icons[index]
 	if(!inhand_icon) 	//Create standing/laying icons if they don't exist
 		generate_inhand_icon(I)
 	return mutable_appearance(GLOB.inhand_icons[index], layer = -layer)
 
-/proc/generate_inhand_icon(/obj/item/I)
+/proc/generate_inhand_icon(obj/item/I)
 	testing("GDC [index]")
 	if(sleevetype)
 		var/icon/dismembered		= icon("icon"=icon, "icon_state"=t_color)
@@ -100,10 +100,7 @@
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			if(I.bigboy)
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
-					else
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
+					I.screen_loc = "WEST-4:16,SOUTH+7:-16"
 				else
 					if(get_held_index_of_item(I) == 1)
 						I.screen_loc = "WEST-4:0,SOUTH+7:-16"
@@ -111,10 +108,7 @@
 						I.screen_loc = "WEST-3:0,SOUTH+7:-16"
 			else
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-3:0,SOUTH+7"
-					else
-						I.screen_loc = "WEST-3:0,SOUTH+7"
+					I.screen_loc = "WEST-3:0,SOUTH+7"
 				else
 					I.screen_loc = ui_hand_position(get_held_index_of_item(I))
 			client.screen += I
@@ -144,10 +138,10 @@
 				used_prop = "gen"
 				prop = I.getonmobprop(used_prop)
 			if(I.force_reupdate_inhand)
-				if(I.onprop[used_prop])
+				if(I.onprop?[used_prop])
 					prop = I.onprop[used_prop]
 				else
-					I.onprop[used_prop] = prop
+					LAZYSET(I.onprop, used_prop, prop)
 			if(!prop)
 				continue
 			var/flipsprite = FALSE

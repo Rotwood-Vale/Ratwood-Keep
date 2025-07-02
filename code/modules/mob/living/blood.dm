@@ -15,7 +15,7 @@
 		to_chat(src, span_warning("The blood soaks through my bandage."))
 
 /mob/living/carbon/monkey/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	//Blood regeneration if there is some space
 	if(blood_volume < BLOOD_VOLUME_NORMAL)
@@ -24,7 +24,8 @@
 			adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 
 /mob/living/proc/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD)) //cryosleep, husked people, or bloodless creatures do not pump blood
+		blood_volume = 0
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
@@ -62,7 +63,6 @@
 		remove_status_effect(/datum/status_effect/debuff/bleeding)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
-
 	bleed_rate = get_bleed_rate()
 	if(bleed_rate)
 		bleed(bleed_rate)
@@ -71,7 +71,12 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		blood_volume = 0
+		remove_stress(/datum/stressevent/bleeding)
+		remove_status_effect(/datum/status_effect/debuff/bleeding)
+		remove_status_effect(/datum/status_effect/debuff/bleedingworse)
+		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 		return
 	
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
@@ -164,6 +169,8 @@
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/proc/bleed(amt)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return FALSE
 	if(!iscarbon(src) && !HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 		return FALSE
 	if(blood_volume <= 0)
@@ -228,12 +235,6 @@
 		var/mob/living/carbon/C = AM
 		if(blood_id == C.get_blood_id())//both mobs have the same blood substance
 			if(blood_id == /datum/reagent/blood) //normal blood
-				if(blood_data["viruses"])
-					for(var/thing in blood_data["viruses"])
-						var/datum/disease/D = thing
-						if((D.spread_flags & DISEASE_SPREAD_SPECIAL) || (D.spread_flags & DISEASE_SPREAD_NON_CONTAGIOUS))
-							continue
-						C.ForceContractDisease(D)
 				if(!(blood_data["blood_type"] in get_safe_blood(C.dna.blood_type)))
 					C.reagents.add_reagent(/datum/reagent/toxin, amount * 0.5)
 					return 1
@@ -253,11 +254,6 @@
 		var/blood_data = list()
 		//set the blood data
 		blood_data["donor"] = src
-		blood_data["viruses"] = list()
-
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			blood_data["viruses"] += D.Copy()
 
 		blood_data["blood_DNA"] = copytext(dna.unique_enzymes,1,0)
 		if(disease_resistances && disease_resistances.len)
@@ -282,14 +278,12 @@
 		blood_data["real_name"] = real_name
 		blood_data["features"] = dna.features
 		blood_data["factions"] = faction
-		blood_data["quirks"] = list()
-		for(var/V in roundstart_quirks)
-			var/datum/quirk/T = V
-			blood_data["quirks"] += T.type
 		return blood_data
 
 //get the id of the substance this mob use as blood.
 /mob/proc/get_blood_id()
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	return
 
 /mob/living/simple_animal/get_blood_id()
@@ -301,7 +295,7 @@
 		return /datum/reagent/blood
 
 /mob/living/carbon/human/get_blood_id()
-	if(HAS_TRAIT(src, TRAIT_HUSK))
+	if(HAS_TRAIT(src, TRAIT_HUSK) || HAS_TRAIT(src, TRAIT_NO_BLOOD))
 		return
 	if(dna?.species)
 		if(dna.species.exotic_blood)
@@ -335,6 +329,8 @@
 
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	if(!iscarbon(src))
 		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 			return
@@ -349,9 +345,12 @@
 		W.water_color = "#c43c3c"
 		W.update_icon()
 		return
-	new /obj/effect/decal/cleanable/blood/splatter(T, get_static_viruses())
+	new /obj/effect/decal/cleanable/blood/splatter(T)
+	T?.pollute_turf(/datum/pollutant/metallic_scent, 30)
 
 /mob/living/proc/add_drip_floor(turf/T, amt)
+	if(HAS_TRAIT(src, TRAIT_NO_BLOOD))
+		return
 	if(!iscarbon(src))
 		if(!HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 			return
@@ -378,23 +377,8 @@
 			D.drips++
 			D.update_icon()
 		else
-			new /obj/effect/decal/cleanable/blood/drip(T, get_static_viruses())
+			new /obj/effect/decal/cleanable/blood/drip(T)
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!(NOBLOOD in dna.species.species_traits))
 		..()
-
-/mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)
-	if(!T)
-		T = get_turf(src)
-	var/obj/effect/decal/cleanable/xenoblood/B = locate() in T.contents
-	if(!B)
-		B = new(T)
-	B.add_blood_DNA(list("UNKNOWN DNA" = "X*"))
-
-/mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip)
-	if(!T)
-		T = get_turf(src)
-	var/obj/effect/decal/cleanable/oil/B = locate() in T.contents
-	if(!B)
-		B = new(T)

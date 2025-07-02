@@ -28,8 +28,6 @@
 	icon_state = "act_equip"
 
 /atom/movable/screen/human/equip/Click()
-	if(ismecha(usr.loc)) // stops inventory actions in a mech
-		return 1
 	var/mob/living/carbon/human/H = usr
 	H.quick_equip()
 
@@ -61,24 +59,6 @@
 
 /atom/movable/screen/devil/soul_counter/proc/clear()
 	invisibility = INVISIBILITY_ABSTRACT
-
-/atom/movable/screen/ling
-	invisibility = INVISIBILITY_ABSTRACT
-
-/atom/movable/screen/ling/sting
-	name = "current sting"
-	screen_loc = ui_lingstingdisplay
-
-/atom/movable/screen/ling/sting/Click()
-	if(isobserver(usr))
-		return
-	var/mob/living/carbon/U = usr
-	U.unset_sting()
-
-/atom/movable/screen/ling/chems
-	name = "chemical storage"
-	icon_state = "power_display"
-	screen_loc = ui_lingchemdisplay
 
 /datum/hud/human/New(mob/living/carbon/human/owner)
 
@@ -428,11 +408,11 @@
 
 	zone_select.update_icon()
 
-	fats = new /atom/movable/screen/rogfat()
-	infodisplay += fats
+	stamina = new /atom/movable/screen/stamina()
+	infodisplay += stamina
 
-	stams = new /atom/movable/screen/rogstam()
-	infodisplay += stams
+	energy = new /atom/movable/screen/energy()
+	infodisplay += energy
 
 	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)

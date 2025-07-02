@@ -30,8 +30,8 @@
 	name = "Bee"
 	icon_state = "bee"
 
-/datum/sprite_accessory/wings/fairy
-	name = "Fairy"
+/datum/sprite_accessory/wings/seelie
+	name = "Seelie"
 	icon_state = "fairy"
 
 /datum/sprite_accessory/wings/feathery
@@ -142,7 +142,7 @@
 /datum/sprite_accessory/wings/wide
 	abstract_type = /datum/sprite_accessory/wings/wide
 	icon = 'icons/mob/sprite_accessory/wings/wings_wide.dmi'
-	pixel_x = -6
+	pixel_x = -7
 
 /datum/sprite_accessory/wings/wide/succubus
 	name = "Succubus"
@@ -204,6 +204,14 @@
 	name = "mechanical dragon wings"
 	icon_state = "robowing"
 
+/datum/sprite_accessory/wings/wide/featheralt1
+	name = "Feathery Alt"
+	icon_state = "featheryalt1"
+
+/datum/sprite_accessory/wings/wide/featheralt2
+	name = "Feathery Alt 2"
+	icon_state = "featheryalt2"
+
 /datum/sprite_accessory/wings/huge
 	abstract_type = /datum/sprite_accessory/wings/huge
 	icon = 'icons/mob/sprite_accessory/wings/wings_huge.dmi'
@@ -244,3 +252,7 @@
 /datum/sprite_accessory/wings/large/harpyswept
 	name = "Harpy (Swept)"
 	icon_state = "harpys"
+
+/datum/sprite_accessory/wings/large/angelalt
+	name = "Angel (Alt)"
+	icon_state = "angelalt"

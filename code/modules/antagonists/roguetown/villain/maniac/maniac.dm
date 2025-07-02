@@ -13,25 +13,16 @@
 		"They deserve to be put at my blade.",
 		"Do what thou wilt shall be the whole of the law.",
 	)
+	rogue_enabled = TRUE
 	/// Traits we apply to the owner
 	var/static/list/applied_traits = list(
-		TRAIT_CRITICAL_RESISTANCE,
 		TRAIT_DECEIVING_MEEKNESS,
 		TRAIT_NOSTINK,
 		TRAIT_EMPATH,
-		TRAIT_NOROGSTAM,
-		TRAIT_NOPAIN,
-		TRAIT_NOPAINSTUN,
 		TRAIT_STEELHEARTED,
 		TRAIT_NOMOOD,
-		TRAIT_HARDDISMEMBER,
-		TRAIT_NOSLEEP,
-		TRAIT_SHOCKIMMUNE,
-		TRAIT_STABLEHEART,
-		TRAIT_STABLELIVER,
-		TRAIT_ANTIMAGIC,
 		TRAIT_SCHIZO_AMBIENCE,
-		TRAIT_BLOODLOSS_IMMUNE,
+		TRAIT_DARKVISION,
 	)
 	/// Traits that only get applied in the final sequence
 	var/static/list/final_traits = list(
@@ -40,7 +31,7 @@
 	)
 	/// Cached old stats in case we get removed
 	var/STASTR
-	var/STACON 
+	var/STACON
 	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
@@ -50,12 +41,12 @@
 	)
 	/// Wonder recipes
 	var/static/list/recipe_progression = list(
-		/datum/crafting_recipe/roguetown/structure/wonder/first, 
-		/datum/crafting_recipe/roguetown/structure/wonder/second, 
-		/datum/crafting_recipe/roguetown/structure/wonder/third, 
+		/datum/crafting_recipe/roguetown/structure/wonder/first,
+		/datum/crafting_recipe/roguetown/structure/wonder/second,
+		/datum/crafting_recipe/roguetown/structure/wonder/third,
 		/datum/crafting_recipe/roguetown/structure/wonder/fourth,
 	)
-	/// Key number > Key text 
+	/// Key number > Key text
 	var/list/num_keys = list()
 	/// Key text > key number
 	var/list/key_nums = list()
@@ -73,6 +64,8 @@
 	var/list/wonders_made = list()
 	/// Hallucinations screen object
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
+
+GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 
 /datum/antagonist/maniac/New()
 	set_keys()
@@ -92,16 +85,26 @@
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.cmode_music = 'sound/music/combat_maniac2.ogg'
-			owner.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
-			owner.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-			owner.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE) 
+			owner.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
+			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON
 			STAEND = dreamer.STAEND
-			dreamer.STASTR = 20
-			dreamer.STACON = 20
-			dreamer.STAEND = 20
+			dreamer.STASTR = 16
+			dreamer.STACON = 16
+			dreamer.STAEND = 16
+			if(heart) // clear any inscryptions, in case of being made maniac midround
+				heart.inscryptions = list()
+				heart.inscryption_keys = list()
+				heart.maniacs2wonder_ids = list()
+				heart.maniacs = list()
+			dreamer.remove_stress(/datum/stressevent/saw_wonder)
+			dreamer.remove_curse(/datum/curse/zizo, TRUE)
+		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		for(var/trait in applied_traits)
 			ADD_TRAIT(owner.current, trait, "[type]")
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
@@ -124,6 +127,9 @@
 			dreamer.STASTR = STASTR
 			dreamer.STACON = STACON
 			dreamer.STAEND = STAEND
+			var/client/clinet = dreamer?.client
+			if(clinet) //clear screenshake animation
+				animate(clinet, dreamer.pixel_y)
 		for(var/trait in applied_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		for(var/trait in final_traits)
@@ -153,7 +159,7 @@
 		//Stick then in the lists, continue the loop
 		num_keys[randumb] = rantelligent
 		key_nums[rantelligent] = randumb
-	
+
 	sum_keys = 0
 	for(var/i in num_keys)
 		sum_keys += text2num(i)
@@ -195,13 +201,25 @@
 	return
 
 /datum/antagonist/maniac/proc/wake_up()
+	if(GLOB.maniac_highlander) // another Maniac has TRIUMPHED before we could
+		if(src.owner && src.owner.current)
+			var/straggler = src.owner.current
+			to_chat(straggler, span_danger("IT'S NO USE! I CAN'T WAKE UP!"))
+		return
+	GLOB.maniac_highlander = 1
 	STOP_PROCESSING(SSobj, src)
 	triumphed = TRUE
 	waking_up = FALSE
 	var/mob/living/carbon/dreamer = owner.current
+	dreamer.log_message("prayed their sum ([sum_keys]), beginning the Maniac TRIUMPH sequence and the end of the round.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(dreamer)] as Maniac TRIUMPHED[sum_keys ? " with sum [sum_keys]" : ""]. The round will end shortly.")
 	// var/client/dreamer_client = dreamer.client // Trust me, we need it later
+	to_chat(dreamer, "...It couldn't be.")
 	dreamer.clear_fullscreen("dream")
 	dreamer.clear_fullscreen("wakeup")
+	var/client/clinet = dreamer?.client
+	if(clinet) //clear screenshake animation
+		animate(clinet, dreamer.pixel_y)
 	for(var/datum/objective/objective in objectives)
 		objective.completed = TRUE
 	for(var/mob/connected_player in GLOB.player_list)
@@ -224,6 +242,7 @@
 				qdel(head)
 		if(brain)
 			qdel(brain)
+		cull_competitors(trey_liam)
 		trey_liam.SetSleeping(25 SECONDS)
 		trey_liam.add_stress(/datum/stressevent/maniac_woke_up)
 		sleep(1.5 SECONDS)
@@ -232,8 +251,8 @@
 		var/static/list/slop_lore = list(
 			span_deadsay("... Rockhill? No ... It doesn't exist ..."),
 			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
-			span_deadsay("... I'm on NT Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
-			span_deadsay("... Launched into the stars, INRL preserves their memories ... Their personalities ..."),
+			span_deadsay("... I'm on the Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
+			span_deadsay("... Launched into the stars, preserving their memories ... Their personalities ..."),
 			span_deadsay("... Keeps them alive in cyberspace, oblivious to the catastrophe ..."),
 			span_deadsay("... There is no hope left. Only the cyberspace deck lets me live in the forgery ..."),
 			span_deadsay("... What have I done!? ..."),
@@ -243,6 +262,7 @@
 			sleep(3 SECONDS)
 	else
 		INVOKE_ASYNC(src, PROC_REF(cant_wake_up), dreamer)
+		cull_competitors(dreamer)
 	sleep(15 SECONDS)
 	to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
 	SSticker.declare_completion()
@@ -263,6 +283,31 @@
 			qdel(head)
 	if(brain)
 		qdel(brain)
+
+// Culls any living maniacs in the world apart from the victor.
+/datum/antagonist/maniac/proc/cull_competitors(var/mob/living/carbon/victor)
+	for(var/mob/living/carbon/C in GLOB.carbon_list - victor)
+		var/datum/antagonist/maniac/competitor = C.mind?.has_antag_datum(/datum/antagonist/maniac)
+		if(competitor)
+			STOP_PROCESSING(SSobj, competitor)
+			competitor.waking_up = FALSE
+			C.clear_fullscreen("dream")
+			C.clear_fullscreen("wakeup")
+			//clear screenshake animation. traits need to be removed in case the guy ghosts in cmode
+			var/client/cnc = C?.client
+			if(cnc)
+				animate(cnc, C.pixel_y)
+			REMOVE_TRAIT(C, TRAIT_SCREENSHAKE, "/datum/antagonist/maniac")
+			REMOVE_TRAIT(C, TRAIT_SCHIZO_AMBIENCE, "/datum/antagonist/maniac")
+			C.log_message("was culled by the TRIUMPH of Maniac [key_name(victor)].", LOG_GAME)
+			sleep(1 SECONDS)
+			to_chat(C, span_userdanger("What?! No, no, this can't be!"))
+			sleep(2 SECONDS)
+			to_chat(C, span_userdanger("How can I be TOO LATE-"))
+			sleep(1 SECONDS)
+			INVOKE_ASYNC(src, PROC_REF(cant_wake_up), C)
+			QDEL_LIST(competitor.wonders_made)
+			competitor.wonders_made = null
 
 //TODO Collate
 /datum/antagonist/roundend_report()

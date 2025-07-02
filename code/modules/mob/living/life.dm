@@ -8,9 +8,6 @@
 	if (client)
 		var/turf/T = get_turf(src)
 		if(!T)
-			for(var/obj/effect/landmark/error/E in GLOB.landmarks_list)
-				forceMove(E.loc)
-				break
 			var/msg = "[ADMIN_LOOKUPFLW(src)] was found to have no .loc with an attached client, if the cause is unknown it would be wise to ask how this was accomplished."
 			message_admins(msg)
 			send2irc_adminless_only("Mob", msg, R_ADMIN)
@@ -45,17 +42,11 @@
 			for(var/datum/wound/wound as anything in get_wounds())
 				wound.heal_wound(1)
 
-		handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
-
 		if (QDELETED(src)) // diseases can qdel the mob via transformations
 			return
 
 		//Random events (vomiting etc)
 		handle_random_events()
-		//Handle temperature/pressure differences between body and environment
-		var/datum/gas_mixture/environment = loc.return_air()
-		if(environment)
-			handle_environment(environment)
 
 		handle_gravity()
 
@@ -76,11 +67,9 @@
 	if(stat != DEAD)
 		return 1
 
-/mob/living
-	var/last_deadlife
-
 /mob/living/proc/DeadLife()
 	set invisibility = 0
+	set waitfor = FALSE
 	if (notransform)
 		return
 	if(!loc)
@@ -100,10 +89,6 @@
 	return
 
 /mob/living/proc/handle_mutations_and_radiation()
-	radiation = 0 //so radiation don't accumulate in simple animals
-	return
-
-/mob/living/proc/handle_diseases()
 	return
 
 /mob/living/proc/handle_random_events()
@@ -124,9 +109,6 @@
 					Stun(110)
 					Knockdown(110)
 
-/mob/living/proc/handle_environment(datum/gas_mixture/environment)
-	return
-
 /mob/living/proc/handle_fire()
 	if(fire_stacks < 0) //If we've doused ourselves in water to avoid fire, dry off slowly
 		fire_stacks = min(0, fire_stacks + 1)//So we dry ourselves back to default, nonflammable.
@@ -139,10 +121,6 @@
 	else
 		ExtinguishMob()
 		return TRUE //mob was put out, on_fire = FALSE via ExtinguishMob(), no need to update everything down the chain.
-//	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-//	if(!G.gases[/datum/gas/oxygen] || G.gases[/datum/gas/oxygen][MOLES] < 1)
-//		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
-//		return TRUE
 	update_fire()
 	var/turf/location = get_turf(src)
 	location.hotspot_expose(700, 50, 1)
@@ -150,10 +128,12 @@
 /mob/living/proc/handle_wounds()
 	if(stat >= DEAD)
 		for(var/datum/wound/wound as anything in get_wounds())
-			wound.on_death()
+			if(!isnull(wound))
+				wound.on_death()
 		return
 	for(var/datum/wound/wound as anything in get_wounds())
-		wound.on_life()
+		if(!isnull(wound))
+			wound.on_life()
 
 /obj/item/proc/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
 	return

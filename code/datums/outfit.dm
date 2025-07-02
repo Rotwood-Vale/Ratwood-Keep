@@ -96,9 +96,6 @@
 	/// Should the toggle helmet proc be called on the helmet during equip
 	var/toggle_helmet = TRUE
 
-	///ID of the slot containing a gas tank
-	var/internals_slot = null
-
 	/**
 	  * list of items that should go in the backpack of the user
 	  *
@@ -108,13 +105,6 @@
 
 	/// Internals box. Will be inserted at the start of backpack_contents
 	var/box
-
-	/**
-	  * Any implants the mob should start implanted with
-	  *
-	  * Format of this list is (typepath, typepath, typepath)
-	  */
-	var/list/implants = null
 
   /// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
 	var/datum/sprite_accessory/undershirt = null
@@ -260,21 +250,10 @@
 				for(var/i in 1 to number)
 					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK, TRUE)
 
-	if(!H.head && toggle_helmet && istype(H.wear_armor, /obj/item/clothing/suit/space/hardsuit))
-		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_armor
-		HS.ToggleHelmet()
-
 	post_equip(H, visualsOnly)
 
 	if(!visualsOnly)
 		apply_fingerprints(H)
-		if(internals_slot)
-			H.internal = H.get_item_by_slot(internals_slot)
-			H.update_action_buttons_icon()
-		if(implants)
-			for(var/implant_type in implants)
-				var/obj/item/implant/I = new implant_type(H)
-				I.implant(H, null, TRUE)
 
 	H.update_body()
 	return TRUE
@@ -357,10 +336,8 @@
 	.["suit_store"] = suit_store
 	.["r_hand"] = r_hand
 	.["l_hand"] = l_hand
-	.["internals_slot"] = internals_slot
 	.["backpack_contents"] = backpack_contents
 	.["box"] = box
-	.["implants"] = implants
 	.["accessory"] = accessory
 
 /// Prompt the passed in mob client to download this outfit as a json blob
@@ -395,7 +372,6 @@
 	suit_store = text2path(outfit_data["suit_store"])
 	r_hand = text2path(outfit_data["r_hand"])
 	l_hand = text2path(outfit_data["l_hand"])
-	internals_slot = outfit_data["internals_slot"]
 	var/list/backpack = outfit_data["backpack_contents"]
 	backpack_contents = list()
 	for(var/item in backpack)
@@ -403,11 +379,5 @@
 		if(itype)
 			backpack_contents[itype] = backpack[item]
 	box = text2path(outfit_data["box"])
-	var/list/impl = outfit_data["implants"]
-	implants = list()
-	for(var/I in impl)
-		var/imptype = text2path(I)
-		if(imptype)
-			implants += imptype
 	accessory = text2path(outfit_data["accessory"])
 	return TRUE

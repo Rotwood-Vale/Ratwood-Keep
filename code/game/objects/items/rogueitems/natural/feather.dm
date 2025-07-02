@@ -6,7 +6,6 @@
 	desc = "A fluffy feather."
 	force = 0
 	throwforce = 0
-	obj_flags = null
 	firefuel = null
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HEAD|ITEM_SLOT_HIP

@@ -77,7 +77,6 @@
 			L.SetImmobilized(0)
 			L.SetParalyzed(0)
 			L.SetUnconscious(0)
-			L.reagents.add_reagent(/datum/reagent/medicine/muscle_stimulant, CLAMP(5 - L.reagents.get_reagent_amount(/datum/reagent/medicine/muscle_stimulant), 0, 5))	//If you don't have legs or get bola'd, tough luck!
 			colorize(L)
 
 /obj/item/hot_potato/examine(mob/user)
@@ -87,7 +86,7 @@
 		if(show_timer)
 			. += span_warning("[src]'s timer looks to be at [DisplayTimeText(activation_time - world.time)]!")
 
-/obj/item/hot_potato/equipped(mob/user)
+/obj/item/hot_potato/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(active)
 		to_chat(user, span_danger("I have a really bad feeling about [src]!"))

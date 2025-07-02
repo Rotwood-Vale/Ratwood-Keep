@@ -119,6 +119,10 @@
 
 	return dist
 
+/// Returns the squared Euclidean distance, which is cheaper because it doesn't require sqrt.
+/proc/get_dist_euclidean_squared(atom/Loc1, atom/Loc2)
+	return (Loc1.x - Loc2.x)**2 + (Loc1.y - Loc2.y)**2
+
 /proc/circlerangeturfs(center=usr,radius=3)
 
 	var/turf/centerturf = get_turf(center)
@@ -188,7 +192,7 @@
 				found_organ.organ_flags ^= ORGAN_FROZEN
 
 		for(var/atom/B in A)	//objects held within other objects are added to the processing list, unless that object is something that can hold organs safely
-			if(!processed_list[B] && !istype(B, /obj/structure/closet/crate/freezer) && !istype(B, /obj/structure/closet/secure_closet/freezer))
+			if(!processed_list[B])
 				processing_list+= B
 
 		index++
@@ -196,8 +200,8 @@
 
 	return
 
-// Better recursive loop, technically sort of not actually recursive cause that shit is retarded, enjoy.
-//No need for a recursive limit either
+// Better recursive loop, technically sort of not actually recursive cause that crap is moronic, enjoy.
+// No need for a recursive limit either.
 /proc/recursive_mob_check(atom/O,client_check=1,sight_check=1,include_radio=1)
 
 	var/list/processing_list = list(O)
@@ -217,12 +221,6 @@
 				passed=0
 
 			if(sight_check && !isInSight(A_tmp, O))
-				passed=0
-
-		else if(include_radio && istype(A, /obj/item/radio))
-			passed=1
-
-			if(sight_check && !isInSight(A, O))
 				passed=0
 
 		if(passed)
@@ -265,16 +263,6 @@
 			. += A
 		processing_list += A.contents
 
-/proc/get_mobs_in_radio_ranges(list/obj/item/radio/radios)
-	. = list()
-	// Returns a list of mobs who can hear any of the radios given in @radios
-	for(var/obj/item/radio/R in radios)
-		if(R)
-			. |= get_hearers_in_view(R.canhear_range, R)
-
-
-#define SIGNV(X) ((X<0)?-1:1)
-
 /proc/inLineOfSight(X1,Y1,X2,Y2,Z=1,PX1=16.5,PY1=16.5,PX2=16.5,PY2=16.5)
 	var/turf/T
 	if(X1==X2)
@@ -304,8 +292,47 @@
 			if(T.opacity)
 				return 0
 	return 1
-#undef SIGNV
 
+/// Like inLineOfSight, but it checks density instead of opacity.
+/proc/inLineOfTravel(mob/traveler, atom/target)
+	var/turf/our_turf = get_turf(traveler)
+	var/turf/their_turf = get_turf(target)
+	var/X1 = our_turf.x
+	var/Y1 = our_turf.y
+	var/X2 = their_turf.x
+	var/Y2 = their_turf.y
+	var/Z = our_turf.z
+	var/turf/current_turf = our_turf
+	var/turf/last_turf
+	if(X1==X2)
+		if(Y1==Y2)
+			return TRUE //you're already on the tile
+		else
+			var/s = SIGN(Y2-Y1)
+			Y1+=s
+			while(Y1!=Y2)
+				last_turf = current_turf
+				current_turf = locate(X1,Y1,Z)
+				if(current_turf.density || last_turf.LinkBlockedWithAccess(current_turf, traveler))
+					return FALSE
+				Y1+=s
+	else
+		var/m=(Y2-Y1)/(X2-X1) // slope
+		var/b=(Y1+0.5)-m*(X1+0.5) // y axis offset in tiles
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
+		if(X1<X2)
+			b+=m
+		while(X1!=X2 || Y1!=Y2)
+			if(round(m*X1+b-Y1))
+				Y1+=signY //Line exits tile vertically
+			else
+				X1+=signX //Line exits tile horizontally
+			last_turf = current_turf
+			current_turf = locate(X1,Y1,Z)
+			if(current_turf.density || last_turf.LinkBlockedWithAccess(current_turf, traveler))
+				return FALSE
+	return TRUE
 
 /proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)
@@ -341,29 +368,16 @@
 			var/mob/living/carbon/human/H
 			if(ishuman(M.current))
 				H = M.current
-			return M.current.stat != DEAD && !issilicon(M.current) && !isbrain(M.current) && (!H || H.dna.species.id != "memezombies")
+			return M.current.stat != DEAD && !isbrain(M.current) && (!H || H.dna.species.id != "memezombies")
 		else if(isliving(M.current))
 			return M.current.stat != DEAD
 	return FALSE
 
-/**
-  * Exiled check
-  *
-  * Checks if the current body of the mind has an exile implant and is currently in
-  * an away mission. Returns FALSE if any of those conditions aren't met.
-  */
-/proc/considered_exiled(datum/mind/M)
-	if(!ishuman(M?.current))
-		return FALSE
-	for(var/obj/item/implant/I in M.current.implants)
-		if(istype(I, /obj/item/implant/exile && M.current.onAwayMission()))
-			return TRUE
-
 /proc/considered_afk(datum/mind/M)
 	return !M || !M.current || !M.current.client || M.current.client.is_afk()
 
-/proc/ScreenText(obj/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
-	if(!isobj(O))
+/proc/ScreenText(atom/movable/O, maptext="", screen_loc="CENTER-7,CENTER-7", maptext_height=480, maptext_width=480)
+	if(!istype(O))
 		O = new /atom/movable/screen/text()
 	O.maptext = maptext
 	O.maptext_height = maptext_height
@@ -442,9 +456,12 @@
 
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		candidates += G
-	
+
 	for(var/mob/living/carbon/spirit/bigchungus in GLOB.player_list)
 		candidates += bigchungus
+
+	for(var/mob/dead/new_player/lobby_nerd in GLOB.player_list)
+		candidates += lobby_nerd
 
 	return pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
 
@@ -534,21 +551,6 @@
 
 	return A.loc
 
-/proc/AnnounceArrival(mob/living/carbon/human/character, rank)
-	return/*
-	if(!SSticker.IsRoundInProgress() || QDELETED(character))
-		return
-	var/area/A = get_area(character)
-	deadchat_broadcast(" has arrived at the station at <span class='name'>[A.name]</span>.", "<span class='game'><span class='name'>[character.real_name]</span> ([rank])", follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
-	if((!GLOB.announcement_systems.len) || (!character.mind))
-		return
-	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
-		return
-
-	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-	*/
-
 /proc/GetRedPart(const/hexa)
 	return hex2num(copytext(hexa, 2, 4))
 
@@ -558,24 +560,6 @@
 /proc/GetBluePart(const/hexa)
 	return hex2num(copytext(hexa, 6, 8))
 
-/proc/lavaland_equipment_pressure_check(turf/T)
-	. = FALSE
-	if(!istype(T))
-		return
-	var/datum/gas_mixture/environment = T.return_air()
-	if(!istype(environment))
-		return
-	var/pressure = environment.return_pressure()
-	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
-		. = TRUE
-
-/proc/ispipewire(item)
-	var/static/list/pire_wire = list(
-		/obj/machinery/atmospherics,
-		/obj/structure/disposalpipe,
-		/obj/structure/cable
-	)
-	return (is_type_in_list(item, pire_wire))
 
 // Find a obstruction free turf that's within the range of the center. Can also condition on if it is of a certain area type.
 /proc/find_obstruction_free_location(range, atom/center, area/specific_area)
@@ -591,22 +575,11 @@
 			if (!istype(turf_area, specific_area))
 				continue
 
-		if (!isspaceturf(found_turf))
-			if (!is_blocked_turf(found_turf))
-				possible_loc.Add(found_turf)
+		if (!is_blocked_turf(found_turf))
+			possible_loc.Add(found_turf)
 
 	// Need at least one free location.
 	if (possible_loc.len < 1)
 		return FALSE
 
 	return pick(possible_loc)
-
-/proc/power_fail(duration_min, duration_max)
-	for(var/P in GLOB.apcs_list)
-		var/obj/machinery/power/apc/C = P
-		if(C.cell && SSmapping.level_trait(C.z, ZTRAIT_STATION))
-			var/area/A = C.area
-			if(GLOB.typecache_powerfailure_safe_areas[A.type])
-				continue
-
-			C.energy_fail(rand(duration_min,duration_max))

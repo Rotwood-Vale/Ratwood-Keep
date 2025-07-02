@@ -33,16 +33,11 @@
 			. += accessory_overlay
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
-	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/C = I
-		C.use(1)
-		has_sensor = HAS_SENSORS
-		to_chat(user,span_notice("I repair the suit sensors on [src] with [C]."))
-		return 1
 	if(!attach_accessory(I, user))
 		return ..()
 
-/obj/item/clothing/under/update_clothes_damaged_state(damaging = TRUE)
+
+/obj/item/clothing/under/update_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc
@@ -65,7 +60,7 @@
 			var/mob/M = loc
 			to_chat(M,span_warning("The sensors on the [src] change rapidly!"))
 
-/obj/item/clothing/under/equipped(mob/user, slot)
+/obj/item/clothing/under/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
 	if(adjusted)
 		adjusted = NORMAL_STYLE

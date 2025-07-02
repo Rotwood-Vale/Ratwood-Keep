@@ -325,6 +325,9 @@
 	var/first_turf_index = 1
 	while(!ispath(members[first_turf_index], /turf)) //find first /turf object in members
 		first_turf_index++
+		if(first_turf_index > members.len)
+			first_turf_index = members.len
+			break
 
 	//turn off base new Initialization until the whole thing is loaded
 	SSatoms.map_loader_begin()

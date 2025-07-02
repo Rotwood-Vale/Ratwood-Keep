@@ -17,13 +17,13 @@
 	// Ghosts can see
 	if(!isliving(user))
 		return TRUE
-	var/mob/living/living_user = user
-	// Other defiants can not see
-	if(living_user.defiant)
+	//var/mob/living/living_user = user
+	// Other defiants can not see - Commented out for now so people don't ZAPE
+	/*if(living_user.defiant)
 		return FALSE
-	// Further than 2 tiles dont see it
+	// Further than 2 tiles dont see it - Commented out for now to always know who you can't ZAPE
 	if(get_dist(described, living_user) > 2)
-		return FALSE
+		return FALSE*/
 	return TRUE
 
 /datum/mob_descriptor/age
@@ -79,6 +79,8 @@
 			if(SHEATH_TYPE_NORMAL)
 				if(penis.penis_size == 3)
 					used_name = "a fat sheath"
+				if(penis.penis_size == 1)
+					used_name = "a small sheath"
 				else
 					used_name = "a sheath"
 			if(SHEATH_TYPE_SLIT)

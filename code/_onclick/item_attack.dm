@@ -40,6 +40,9 @@
 		return TRUE
 	return FALSE //return TRUE to avoid calling attackby after this proc does stuff
 
+/atom/proc/pre_attack_right(atom/A, mob/living/user, params)
+	return FALSE
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/user, params)
 	if(user.used_intent.tranged)
@@ -49,7 +52,10 @@
 	return FALSE
 
 /obj/attackby(obj/item/I, mob/living/user, params)
-	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
+	if(I.obj_flags_ignore)
+		return I.attack_obj(src, user)
+	else
+		return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
 
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
@@ -59,6 +65,15 @@
 		adf = round(adf * 1.4)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
 		adf = round(adf * 0.6)
+	for(var/obj/item/clothing/worn_thing in get_equipped_items(include_pockets = TRUE))//checks clothing worn by src.
+	// Things that are supposed to be worn, being held = cannot block
+		if(isclothing(worn_thing))
+			if(worn_thing in held_items)
+				continue
+		// Things that are supposed to be held, being worn = cannot block
+		else if(!(worn_thing in held_items))
+			continue
+		worn_thing.hit_response(src, user) //checks if clothing has hit response. Refer to Items.dm
 	user.changeNext_move(adf)
 	return I.attack(src, user)
 
@@ -91,6 +106,8 @@
 
 //	if(force)
 //		user.emote("attackgrunt")
+	//I wanted to avoid this
+	user.mob_timers[MT_SNEAKATTACK] = world.time
 	var/datum/intent/cached_intent = user.used_intent
 	if(user.used_intent.swingdelay)
 		if(!user.used_intent.noaa)
@@ -112,9 +129,9 @@
 				user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.rogfat_add(10)
+		user.stamina_add(10)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_PARRY)
 			if(!M.get_active_held_item() && !M.get_inactive_held_item()) //we parried with a bracer, redirect damage
@@ -174,6 +191,8 @@
 
 //the equivalent of the standard version of attack() but for object targets.
 /obj/item/proc/attack_obj(obj/O, mob/living/user)
+	//I wanted to avoid this
+	user.mob_timers[MT_SNEAKATTACK] = world.time
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, O, user) & COMPONENT_NO_ATTACK_OBJ)
 		return
 	if(item_flags & NOBLUDGEON)
@@ -185,6 +204,8 @@
 /obj/item/proc/attack_turf(turf/T, mob/living/user)
 	if(T.max_integrity)
 		if(T.attacked_by(src, user))
+			//I wanted to avoid this
+			user.mob_timers[MT_SNEAKATTACK] = world.time
 			user.do_attack_animation(T)
 			return TRUE
 
@@ -253,6 +274,9 @@
 				if(BCLASS_SMASH)
 					dullfactor = 1.5
 					cont = TRUE
+				if(BCLASS_DRILL)
+					dullfactor = 10
+					cont = TRUE
 				if(BCLASS_PICK)
 					dullfactor = 1.5
 					cont = TRUE
@@ -273,6 +297,9 @@
 				if(BCLASS_SMASH)
 					dullfactor = 1.5
 					cont = TRUE
+				if(BCLASS_DRILL)
+					dullfactor = 10
+					cont = TRUE
 				if(BCLASS_BLUNT)
 					cont = TRUE
 				if(BCLASS_PICK)
@@ -283,15 +310,16 @@
 			if(!cont)
 				return 0
 		if(DULLING_PICK) //cannot deal damage if not a pick item. aka rock walls
-				    
+
 			if(user.used_intent.blade_class != BCLASS_PICK)
-				return 0
+				if(user.used_intent.blade_class != BCLASS_DRILL)
+					return 0
 			var/mob/living/miner = user
 			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
 			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
-	
+
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * 0.5
@@ -315,16 +343,21 @@
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
 			newforce = 1
 	else
 		user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
+
+	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity)
+		user.visible_message(span_warning("[src] doesn't appear to take any damage!")) // Lets the player know that the object they're attacking is indestructible.
+
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, I, user)
 	return TRUE
 
 /turf/proc/attacked_by(obj/item/I, mob/living/user)
@@ -338,11 +371,12 @@
 	if(user.used_intent.no_attack)
 		return 0
 	user.changeNext_move(CLICK_CD_MELEE)
+
 	log_combat(user, src, "attacked", I)
 	var/verbu = "hits"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)
-		if(user.rogfat_add(5))
+		if(user.stamina_add(5))
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
 			user.visible_message(span_warning("[user] [verbu] [src] with [I]!"))
@@ -353,6 +387,7 @@
 	take_damage(newforce, I.damtype, I.d_type, 1)
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_TURF, I, user)
 	return TRUE
 
 /mob/living/proc/simple_limb_hit(zone)
@@ -417,7 +452,7 @@
 			next_attack_msg.Cut()
 			if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 				var/datum/wound/crit_wound  = simple_woundcritroll(user.used_intent.blade_class, newforce, user, hitlim)
-				if(should_embed_weapon(crit_wound, I))
+				if(should_embed_weapon(crit_wound, I) && user.Adjacent(src))
 					// throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)
 					simple_add_embedded_object(I, silent = FALSE, crit_message = TRUE)
 					src.grabbedby(user, 1, item_override = I)
@@ -485,7 +520,32 @@
 		else
 			return CLAMP(w_class * 6, 10, 100) // Multiply the item's weight class by 6, then clamp the value between 10 and 100
 
+proc/get_attack_flavor_text(mob/user, obj/item/I) // Arguments very important. The name comes from the fact that if you don't add the right arguments, then arguments break out between you and your screen. You start screaming, "WHY DOESN'T IT WOOOOORK?!!!".
+	if(!I) // If no item, return blank.
+		return ""
+
+	var/datum/skill/associated_skill = I.associated_skill // Yes, this grabs the delicious associated skill of the item we're using.
+	if(!associated_skill) // If we're using an item without a skill attached to it, we get nada.
+		return ""
+
+	if(!user.mind) // If we're a dumb mob without a player attached, we're definitely not utilizing the skill system. So don't just spam them with incompetently and inexpertly... It's not a very good look... (It's also a runtime safeguard)
+		return ""
+
+	var/skill_level = user.mind.get_skill_level(associated_skill) // Need this so we can actually grab skill levels of peoples
+	switch(skill_level) // Depending on our skill level
+		if(SKILL_LEVEL_NONE)	   return "incompetently "
+		if(SKILL_LEVEL_NOVICE)     return "inexpertly "
+		if(SKILL_LEVEL_APPRENTICE) return "amateurishly "
+		if(SKILL_LEVEL_JOURNEYMAN) return "competently "
+		if(SKILL_LEVEL_EXPERT)     return "adeptly "
+		if(SKILL_LEVEL_MASTER)     return "expertly "
+		if(SKILL_LEVEL_LEGENDARY)  return "masterfully "
+	return ""
+
 /mob/living/proc/send_item_attack_message(obj/item/I, mob/living/user, hit_area)
+	if(!I)
+		return 0
+	var/flavor_text = get_attack_flavor_text(user, I)
 	var/message_verb = "attacked"
 	if(user.used_intent)
 		message_verb = "[pick(user.used_intent.attack_verb)]"
@@ -497,8 +557,8 @@
 	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
 	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
 	if(user in viewers(src, null))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
+		attack_message = "[user] [flavor_text][message_verb] [src][message_hit_area] with [I]!" // Delicious flavor texting area.
+		attack_message_local = "[user] [flavor_text][message_verb] me[message_hit_area] with [I]!" // Delicious flavor texting area.
 	visible_message(span_danger("[attack_message][next_attack_msg.Join()]"),\
 		span_danger("[attack_message_local][next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()

@@ -41,21 +41,19 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define CONDUCT_1					(1<<5)
 /// For machines and structures that should not break into parts, eg, holodeck stuff
 #define NODECONSTRUCT_1				(1<<7)
-/// atom queued to SSoverlay
-#define OVERLAY_QUEUED_1			(1<<8)
 /// item has priority to check when entering or leaving
-#define ON_BORDER_1					(1<<9)
+#define ON_BORDER_1					(1<<8)
 /// Prevent clicking things below it on the same turf eg. doors/ fulltile windows
-#define PREVENT_CLICK_UNDER_1		(1<<11)
-#define HOLOGRAM_1					(1<<12)
+#define PREVENT_CLICK_UNDER_1		(1<<9)
+#define HOLOGRAM_1					(1<<10)
 /// TESLA_IGNORE grants immunity from being targeted by tesla-style electricity
-#define TESLA_IGNORE_1				(1<<13)
+#define TESLA_IGNORE_1				(1<<11)
 ///Whether /atom/Initialize() has already run for the object
-#define INITIALIZED_1				(1<<14)
+#define INITIALIZED_1				(1<<12)
 /// was this spawned by an admin? used for stat tracking stuff.
-#define ADMIN_SPAWNED_1			    (1<<15)
+#define ADMIN_SPAWNED_1			    (1<<13)
 /// should not get harmed if this gets caught by an explosion?
-#define PREVENT_CONTENTS_EXPLOSION_1 (1<<16)
+#define PREVENT_CONTENTS_EXPLOSION_1 (1<<14)
 
 //turf-only flags
 #define NOJAUNT_1					(1<<0)
@@ -135,8 +133,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define MOBILITY_STORAGE		(1<<5)
 /// can pull things
 #define MOBILITY_PULL			(1<<6)
+/// can, but is not, standing up; mostly used for AI. todo: revisit/refactor
+#define MOBILITY_CANSTAND		(1<<7)
 
-#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL)
+#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_CANSTAND)
 #define MOBILITY_FLAGS_INTERACTION (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_UI | MOBILITY_STORAGE)
 
 // radiation

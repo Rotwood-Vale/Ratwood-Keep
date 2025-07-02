@@ -28,6 +28,13 @@
 
 #endif
 
+
+/datum/sprite_accessory/tail/akulashark
+	name = "Akulashark"
+	icon_state = "tail_akula"
+	color_keys = 2
+	color_key_names = list("Tails", "Fins", "Neons")
+
 /datum/sprite_accessory/tail/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -45,6 +52,13 @@
 /datum/sprite_accessory/tail/batl
 	name = "Bat (Long)"
 	icon_state = "batl"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/snuppy
+	name = "Rattleyote"
+	icon_state = "snuppy"
 	color_keys = 2
 	color_key_names = list("Tail", "Tip")
 	can_wag = TRUE
@@ -67,6 +81,11 @@
 	icon_state = "catbig"
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/twocat
+	name = "Cat, Double"
+	icon_state = "twocat"
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/corvid
 	name = "Corvid"
 	icon_state = "crow"
@@ -80,6 +99,11 @@
 	icon_state = "eevee"
 	color_keys = 2
 	color_key_names = list("Tail", "Tip")
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/fshark
+	name = "Fancyshark"
+	icon_state = "tail_shark"
 	can_wag = TRUE
 
 /datum/sprite_accessory/tail/fennec
@@ -104,6 +128,7 @@
 /datum/sprite_accessory/tail/fox2
 	name = "Fox 2"
 	icon_state = "fox2"
+	can_wag = TRUE
 
 /datum/sprite_accessory/tail/hawk
 	name = "Hawk"
@@ -127,6 +152,12 @@
 /datum/sprite_accessory/tail/kangaroo
 	name = "kangaroo"
 	icon_state = "kangaroo"
+
+/datum/sprite_accessory/tail/kitsune
+	name = "Kitsune"
+	icon_state = "kitsune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
 
 /datum/sprite_accessory/tail/lab
 	name = "Lab"
@@ -182,6 +213,13 @@
 	color_key_names = list("Tail", "Inner")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
+	color_keys = 2
+	color_key_names = list("Tail", "Inner")
+	can_wag = TRUE
+
 /datum/sprite_accessory/tail/skunk
 	name = "Skunk"
 	icon_state = "skunk"
@@ -203,6 +241,12 @@
 	name = "Squirrel"
 	icon_state = "squirrel"
 	can_wag = TRUE
+
+/datum/sprite_accessory/tail/tamamo_kitsune
+	name = "Tamamo Kitsune Tails"
+	icon_state = "9sune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
 
 /datum/sprite_accessory/tail/tiger
 	name = "Tiger"
@@ -263,6 +307,12 @@
 	color_key_names = list("Tail", "Neons")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/sabresune
+	name = "Sabresune"
+	icon_state = "sabresune"
+	color_keys = 2
+	color_key_names = list("Tails", "Tips")
+
 /datum/sprite_accessory/tail/lizard
 	abstract_type = /datum/sprite_accessory/tail/lizard
 	icon = 'icons/mob/sprite_accessory/tails/lizard.dmi'	
@@ -288,8 +338,29 @@
 	name = "Kobold"
 	icon_state = "kobold"
 
-/datum/sprite_accessory/tail/tiefling
-	name = "Tiefling"
-	icon = 'icons/mob/sprite_accessory/tiefling.dmi'
+/datum/sprite_accessory/tail/tiefling/pointed
+	name = "Pointed"
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
 	icon_state = "tiebtail"
 	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/tiefling/heart
+	name = "Succubus"
+	icon = 'icons/mob/sprite_accessory/tails/tiefling.dmi'
+	icon_state = "hearttail"
+	color_key_defaults = list(KEY_SKIN_COLOR)
+	can_wag = TRUE
+
+/datum/sprite_accessory/tail/lynx
+	name = "Lynx"
+	icon_state = "lynx"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")
+
+
+/datum/sprite_accessory/tail/lion
+	name = "Lion"
+	icon_state = "lion"
+	color_keys = 2
+	color_key_names = list("Tail", "Tip")

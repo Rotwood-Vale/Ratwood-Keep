@@ -4,10 +4,11 @@
 	antagpanel_category = "Werewolf"
 	job_rank = ROLE_WEREWOLF
 	confess_lines = list(
-		"THE BEAST INSIDE ME!", 
-		"BEWARE THE BEAST!", 
+		"THE BEAST INSIDE ME!",
+		"BEWARE THE BEAST!",
 		"MY LUPINE MARK!",
 	)
+	rogue_enabled = TRUE
 	var/special_role = ROLE_WEREWOLF
 	var/transformed
 	var/transforming
@@ -99,7 +100,7 @@
 	return wolfy
 
 /mob/living/carbon/human/proc/werewolf_feed(mob/living/carbon/human/target)
-	if(!istype(target)) 
+	if(!istype(target))
 		return
 	if(target.mind)
 		if(target.mind.has_antag_datum(/datum/antagonist/zombie))
@@ -121,12 +122,12 @@
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
-	armor = list("blunt" = 100, "slash" = 90, "stab" = 80, "bullet" = 70, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 80, "slash" = 60, "stab" = 60, "bullet" = 60, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
-	max_integrity = 250
+	max_integrity = 500
 	item_flags = DROPDEL
 
 /datum/intent/simple/werewolf
@@ -150,12 +151,12 @@
 	lefthand_file = null
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
-	max_blade_int = 900
-	max_integrity = 900
+	max_blade_int = 999999
+	max_integrity = 999999
 	force = 25
 	block_chance = 0
 	wdefense = 4
-	armor_penetration = 15
+	armor_penetration = 20
 	associated_skill = /datum/skill/combat/unarmed
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
@@ -178,3 +179,4 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
+

@@ -25,8 +25,8 @@
 		/obj/item/storage/belt/rogue/leather/rope = 3,
 		/obj/item/clothing/under/roguetown/tights/vagrant = 4,
 		/obj/item/clothing/gloves/roguetown/leather = 4,
-		/obj/item/clothing/shoes/roguetown/boots = 4,
-		/obj/item/clothing/shoes/roguetown/boots/leather = 4,
+		/obj/item/clothing/shoes/roguetown/armor = 4,
+		/obj/item/clothing/shoes/roguetown/armor/leather = 4,
 
 		// Money
 		/obj/item/roguecoin/copper = 5,
@@ -53,7 +53,7 @@
 		/obj/item/paper/scroll = 3,
 		/obj/item/rope = 3,
 		/obj/item/rope/chain = 3,
-		/obj/item/storage/roguebag/crafted = 3,
+		/obj/item/storage/roguebag = 3,
 		/obj/item/clothing/mask/cigarette/pipe = 3,
 		/obj/item/paper = 3,
 		/obj/item/reagent_containers/glass/bowl = 3,
@@ -71,7 +71,7 @@
 		/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 2,
 		/obj/item/ammo_casing/caseless/rogue/arrow/iron = 4,
 		/obj/item/ammo_casing/caseless/rogue/bolt = 4,
-		/obj/item/rogueweapon/mace/woodclub/crafted = 3,
+		/obj/item/rogueweapon/mace/woodclub = 3,
 		/obj/item/rogueweapon/mace/cudgel = 2,
 		/obj/item/rogueweapon/mace/wsword = 3,
 		/obj/item/rogueweapon/huntingknife = 3,
@@ -87,7 +87,7 @@
 		/obj/item/flint = 4,
 		/obj/item/rogueweapon/stoneaxe/woodcut = 3,
 		/obj/item/rogueweapon/stoneaxe = 3,
-		/obj/item/rogueweapon/hammer = 3,
+		/obj/item/rogueweapon/hammer/wood = 3,
 		/obj/item/rogueweapon/tongs = 3,
 		/obj/item/rogueweapon/pick = 3,
 
@@ -108,7 +108,7 @@
 
 
 		//food
-		/obj/item/reagent_containers/food/snacks/rogue/crackers = 3,
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw = 3,
 		/obj/item/reagent_containers/food/snacks/butterslice = 3,
 		/obj/item/reagent_containers/powder/salt = 3,
 		/obj/item/reagent_containers/food/snacks/egg = 3,

@@ -15,10 +15,11 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "vampire"
 	confess_lines = list(
-		"I WANT YOUR BLOOD!", 
-		"DRINK THE BLOOD!", 
+		"I WANT YOUR BLOOD!",
+		"DRINK THE BLOOD!",
 		"CHILD OF KAIN!",
 	)
+	rogue_enabled = TRUE
 	var/disguised = TRUE
 	var/vitae = 1000
 	var/last_transform
@@ -60,14 +61,19 @@
 		ADD_TRAIT(owner.current, TRAIT_NOBLE, TRAIT_GENERIC)
 	owner.special_role = name
 	ADD_TRAIT(owner.current, TRAIT_STRONGBITE, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_NOROGSTAM, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOBREATH, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_NOPAIN, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_TOXIMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(owner.current, TRAIT_TOLERANT, TRAIT_GENERIC)
 	ADD_TRAIT(owner.current, TRAIT_LIMPDICK, TRAIT_GENERIC)
+	ADD_TRAIT(owner.current, TRAIT_SPECIALUNDEAD, TRAIT_GENERIC) //Prevents necromancers from "reanimating" them to kill them. Any new undead type should have this.
+	owner.current.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/weak)
 	owner.current.cmode_music = 'sound/music/combat_vamp2.ogg'
 	var/obj/item/organ/eyes/eyes = owner.current.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
@@ -83,7 +89,8 @@
 //			batform = new
 //			owner.current.AddSpell(batform)
 	owner.current.verbs |= /mob/living/carbon/human/proc/disguise_button
-	owner.current.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
+	owner.current.AddSpell(new /obj/effect/proc_holder/spell/targeted/vamp_rejuv)
+
 	if(!is_lesser)
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_strength
 		owner.current.verbs |= /mob/living/carbon/human/proc/blood_celerity
@@ -95,6 +102,7 @@
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("I am no longer a [job_rank]!"))
 	owner.special_role = null
+	owner.current.possible_rmb_intents = initial(owner.current.possible_rmb_intents)
 	if(!isnull(batform))
 		owner.current.RemoveSpell(batform)
 		QDEL_NULL(batform)
@@ -120,7 +128,7 @@
 
 /datum/antagonist/vampire/proc/finalize_vampire()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
-	
+
 
 
 /datum/antagonist/vampire/on_life(mob/user)
@@ -167,7 +175,8 @@
 /mob/living/carbon/human/proc/disguise_button()
 	set name = "Disguise"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -191,34 +200,90 @@
 	VD.disguised = TRUE
 	skin_tone = VD.cache_skin
 	hair_color = VD.cache_hair
-	eye_color = VD.cache_eyes
 	facial_hair_color = VD.cache_hair
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new VD.cache_eyes
+	eyes.Insert(src)
+	set_eye_color(src, VD.cache_eye_color, VD.cache_eye_color)
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes &= ~MOB_UNDEAD
+	faction = list()
 	to_chat(src, span_notice("My true form is hidden."))
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = VD.cache_skin
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = VD.cache_skin
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = VD.cache_skin
+		regenerate_icons()
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampirelord/VD)
 	if(!VD)
 		return
 	VD.disguised = FALSE
-//	VD.cache_skin = skin_tone
-//	VD.cache_eyes = eye_color
-//	VD.cache_hair = hair_color
 	skin_tone = "c9d3de"
 	hair_color = "181a1d"
 	facial_hair_color = "181a1d"
-	eye_color = "ff0000"
+	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	if(eyes)
+		eyes.Remove(src,1)
+		QDEL_NULL(eyes)
+	eyes = new /obj/item/organ/eyes/night_vision/zombie
+	eyes.Insert(src)
+	set_eye_color(src, "#FF0000", "#FF0000")
 	update_body()
 	update_hair()
 	update_body_parts(redraw = TRUE)
+	eyes.update_accessory_colors()
+	mob_biotypes |= MOB_UNDEAD
+	faction = list("undead")
 	to_chat(src, span_notice("My true form is revealed."))
+	if(dna.species.use_skintones)
+		var/obj/item/organ/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
+		if(breasts)
+			breasts.accessory_colors = "#c9d3de"
+		var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+		if(penis)
+			penis.accessory_colors = "#c9d3de"
+		var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
+		if(testicles)
+			testicles.accessory_colors = "#c9d3de"
+		regenerate_icons()
 
+/mob/living/carbon/human/proc/alter_button()
+	set name = "Alter Appearance"
+	set category = "VAMPIRE"
+	if(!is_not_staked(usr))
+		return
+	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
+	if(!VD)
+		return
+	if(world.time < VD.last_transform + 30 SECONDS)
+		var/timet2 = (VD.last_transform + 30 SECONDS) - world.time
+		to_chat(src, span_warning("No.. not yet. [round(timet2/10)]s"))
+		return
+	else
+		if(VD.vitae < 100)
+			to_chat(src, span_warning("I don't have enough Vitae!"))
+			return
+		VD.last_transform = world.time
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "Altered Appearance"), 1 SECONDS)
 
 /mob/living/carbon/human/proc/blood_strength()
 	set name = "Night Muscles"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -250,7 +315,8 @@
 /mob/living/carbon/human/proc/blood_celerity()
 	set name = "Quickening"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 	if(!VD)
 		return
@@ -285,7 +351,8 @@
 /mob/living/carbon/human/proc/blood_fortitude()
 	set name = "Armor of Darkness"
 	set category = "VAMPIRE"
-
+	if(!is_not_staked(usr))
+		return
 	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 	if(!VD)
 		return
@@ -341,30 +408,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
 	max_integrity = 0
-
-/mob/living/carbon/human/proc/vamp_regenerate()
-	set name = "Regenerate"
-	set category = "VAMPIRE"
-	var/silver_curse_status = FALSE
-	for(var/datum/status_effect/debuff/silver_curse/silver_curse in status_effects)
-		silver_curse_status = TRUE
-		break
-	var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
-	if(!VD)
-		return
-	if(VD.disguised)
-		to_chat(src, span_warning("My curse is hidden."))
-		return
-	if(silver_curse_status)
-		to_chat(src, span_warning("My BANE is not letting me REGEN!."))	
-		return
-	if(VD.vitae < 500)
-		to_chat(src, span_warning("Not enough vitae."))
-		return
-	to_chat(src, span_greentext("! REGENERATE !"))
-	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.handle_vitae(-500)
-	fully_heal()
 
 /mob/living/carbon/human/proc/vampire_infect()
 	if(!mind)

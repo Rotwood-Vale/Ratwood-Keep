@@ -66,8 +66,8 @@
 		for(var/obj/structure/flora/newleaf/LEAF in DIA)
 			LEAF.obj_destruction(damage_flag)
 
-	if(!istype(NT, /turf/open/transparent/openspace) && !(locate(/obj/structure/flora/roguetree/stump) in NT))//if i don't add the stump check it spawns however many zlevels it goes up because of src recursion
-		new /obj/structure/flora/roguetree/stump(NT)
+	if(!istype(NT, /turf/open/transparent/openspace) && !(locate(/obj/structure/table/roguetree/stump) in NT))//if i don't add the stump check it spawns however many zlevels it goes up because of src recursion
+		new /obj/structure/table/roguetree/stump(NT)
 	playsound(src, 'sound/misc/treefall.ogg', 100, FALSE)
 	. = ..()
 
@@ -83,10 +83,11 @@
 		if(!L.can_zTravel(target, UP))
 			to_chat(user, span_warning("I can't climb there."))
 			return
-		var/used_time = 0
-		var/exp_to_gain = 0 
+		var/used_time = 3 SECONDS
+		var/exp_to_gain = 0
+		var/myskill = SKILL_LEVEL_NOVICE // default for NPCs
 		if(L.mind)
-			var/myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
+			myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
 			exp_to_gain = L.STAINT/2
 			var/obj/structure/table/TA = locate() in L.loc
 			if(TA)
@@ -95,7 +96,7 @@
 				var/obj/structure/chair/CH = locate() in L.loc
 				if(CH)
 					myskill += 1
-			used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
+		used_time = max(7 SECONDS - (myskill SECONDS) - (L.STASPD * 0.3 SECONDS), 3 SECONDS)
 		playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 		user.visible_message(span_warning("[user] starts to climb [src]."), span_warning("I start to climb [src]..."))
 		if(do_after(L, used_time, target = src))
@@ -134,7 +135,8 @@
 	var/turf/target = get_step_multiz(src, UP)
 	if(istype(target, /turf/open/transparent/openspace))
 		var/obj/structure/flora/newtree/T = new(target)
-		T.base_state = "center-leaf[rand(1,2)]"
+		T.base_state = "center-leaf[tree_type]"
+		T.tree_type = tree_type
 		T.update_icon()
 
 /obj/structure/flora/newtree/proc/build_branches()
@@ -147,19 +149,32 @@
 					if(!locate(/obj/structure) in NB)
 						var/obj/structure/flora/newbranch/T = new(NB)
 						T.dir = D
+						T.base_state = "center-leaf[tree_type]"
+						T.update_icon()
 					if(!locate(/obj/structure) in NT)
 						var/obj/structure/flora/newbranch/connector/TC = new(NT)
 						TC.dir = D
+						TC.base_state = "center-leaf[tree_type]"
+						TC.update_icon()
 				else
 					if(!locate(/obj/structure) in NB)
-						new /obj/structure/flora/newleaf(NB)
+						var/obj/structure/flora/newleaf/NL= new(NB)
+						NL.dir = D
+						NL.leaf_type = tree_type
+						NL.update_icon()
+
 					if(!locate(/obj/structure) in NT)
 						var/obj/structure/flora/newbranch/TC = new(NT)
 						TC.dir = D
+						TC.base_state = "center-leaf[tree_type]"
+						TC.update_icon()
 			else
 				if(!locate(/obj/structure) in NT)
 					var/obj/structure/flora/newbranch/TC = new(NT)
 					TC.dir = D
+					TC.base_state = "center-leaf[tree_type]"
+					TC.update_icon()
+
 		else
 			if(prob(70))
 				if(isopenturf(NT))
@@ -176,6 +191,8 @@
 			if(!locate(/obj/structure) in NT)
 				var/obj/structure/flora/newleaf/corner/T = new(NT)
 				T.dir = D
+				T.leaf_type = tree_type
+				T.update_icon()
 
 
 ///BRANCHES
@@ -185,8 +202,7 @@
 	desc = "A stable branch, should be safe to walk on."
 	icon = 'icons/roguetown/misc/tree.dmi'
 	icon_state = "branch-end1"
-//	var/tree_type = 1
-	var/base_state = TRUE
+	var/base_state = 1
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	static_debris = list(/obj/item/grown/log/tree/stick = 1)
 	density = FALSE
@@ -208,7 +224,6 @@
 	. = ..()
 	if(base_state)
 		AddComponent(/datum/component/squeak, list('sound/foley/plantcross1.ogg','sound/foley/plantcross2.ogg','sound/foley/plantcross3.ogg','sound/foley/plantcross4.ogg'), 100)
-		base_state = "center-leaf[rand(1,2)]"
 	update_icon()
 
 /obj/structure/flora/newbranch/connector
@@ -244,10 +259,8 @@
 	icon_state = "corner-leaf1"
 
 
-/obj/structure/flora/newleaf/corner/Initialize()
-	. = ..()
-	icon_state = "corner-leaf[rand(1,2)]"
-	update_icon()
+/obj/structure/flora/newleaf/corner/update_icon()
+	icon_state = "corner-leaf[leaf_type]"
 
 /obj/structure/flora/newleaf
 	name = "leaves"
@@ -255,8 +268,7 @@
 	icon_state = "center-leaf1"
 	density = FALSE
 	max_integrity = 10
+	var/leaf_type = 1
 
-/obj/structure/flora/newleaf/Initialize()
-	. = ..()
-	icon_state = "center-leaf[rand(1,2)]"
-	update_icon()
+/obj/structure/flora/newleaf/update_icon()
+	icon_state = "center-leaf[leaf_type]"

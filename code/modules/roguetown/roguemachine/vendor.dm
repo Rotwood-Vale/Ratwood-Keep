@@ -10,10 +10,10 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/list/held_items = list()
-	var/locked = TRUE
+	locked = TRUE
 	var/budget = 0
 	var/wgain = 0
-	var/keycontrol = "merchant"
+	lockid = "merchant"
 	var/funynthing = FALSE
 
 /obj/structure/roguemachine/vendor/proc/insert(obj/item/P, mob/living/user)
@@ -38,9 +38,9 @@
 		update_icon()
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		return attack_hand(user)
-	if(istype(P, /obj/item/roguekey))
-		var/obj/item/roguekey/K = P
-		if(K.lockid == keycontrol)
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
+		if(K.lockid == lockid)
 			locked = !locked
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			update_icon()
@@ -51,10 +51,10 @@
 			else	
 				to_chat(user, span_warning("Wrong key."))
 				return
-	if(istype(P, /obj/item/keyring))
-		var/obj/item/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
-			if(KE.lockid == keycontrol)
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		for(var/obj/item/key/KE in K.contents)
+			if(KE.lockid == lockid)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
@@ -133,6 +133,8 @@
 				preprice = held_items[O]["PRICE"]
 			var/newprice = input(usr, "SET A NEW PRICE FOR THIS PRODUCT", src, preprice) as null|num
 			if(newprice)
+				if (newprice < 0)
+					return attack_hand(usr)
 				if(findtext(num2text(newprice), "."))
 					return attack_hand(usr)
 				held_items[O]["PRICE"] = newprice
@@ -225,7 +227,7 @@
 	desc = "Give this thing money, and you will immediately buy a neat property in the capital."
 	max_integrity = 0
 	icon_state = "streetvendor1"
-	keycontrol = "dhjlashfdg"
+	lockid = "dhjlashfdg"
 	var/list/cachey = list()
 
 /obj/structure/roguemachine/vendor/centcom/attack_hand(mob/living/user)
@@ -260,13 +262,92 @@
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 
 /obj/structure/roguemachine/vendor/inn
-	keycontrol = "tavern"
+	lockid = "tavern"
 
 /obj/structure/roguemachine/vendor/inn/Initialize()
 	. = ..()
-	for(var/X in list(/obj/item/roguekey/roomi,/obj/item/roguekey/roomii,/obj/item/roguekey/roomiii,/obj/item/roguekey/roomiv,/obj/item/roguekey/roomv,/obj/item/roguekey/roomvi))
+	for(var/X in list(/obj/item/key/roomi,/obj/item/key/roomii,/obj/item/key/roomiii,/obj/item/key/roomiv,/obj/item/key/roomv,/obj/item/key/roomvi))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 20
+
+	for(var/X in list(/obj/item/key/fancyroomi, /obj/item/key/fancyroomii, /obj/item/key/fancyroomiii))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 100
+	update_icon()
+
+//Buyable shops vendors
+
+/obj/structure/roguemachine/vendor/portshop
+	lockid = "steward"
+	name = "Portshop Key Seller."
+	desc = "Get the key for the shop here!"
+
+/obj/structure/roguemachine/vendor/portshop/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/portshop))
 		var/obj/P = new X(src)
 		held_items[P] = list()
 		held_items[P]["NAME"] = P.name
 		held_items[P]["PRICE"] = 10
-	update_icon()
+
+/obj/structure/roguemachine/vendor/street_smithshop01
+	lockid = "steward"
+	name = "Shop Key Seller"
+	desc = "Get the key for the shop here!"
+
+/obj/structure/roguemachine/vendor/street_smithshop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_smithshop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10
+
+/obj/structure/roguemachine/vendor/street_shop01
+	lockid = "steward"
+	name = "Shop Key Seller"
+	desc = "Get the key for the shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop01/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop01))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10
+
+/obj/structure/roguemachine/vendor/street_shop02
+	lockid = "steward"
+	name = "Shop Key Seller"
+	desc = "Get the key for the shop here!"
+
+/obj/structure/roguemachine/vendor/street_shop02/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/street_shop02))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10
+
+/obj/structure/roguemachine/vendor/smallstreet_master01
+	lockid = "steward"
+	name = "Stall Shop Key Seller"
+	desc = "Get the key for a stall here!"
+
+/obj/structure/roguemachine/vendor/smallstreet_master01/Initialize()
+	. = ..()
+	for(var/X in list(
+		/obj/item/key/smallstreet_shop01,
+		/obj/item/key/smallstreet_shop02,
+		/obj/item/key/smallstreet_shop03,
+		/obj/item/key/smallstreet_shop04,
+		/obj/item/key/smallstreet_shop05,
+		/obj/item/key/smallstreet_shop06))
+		var/obj/P = new X(src)
+		held_items[P] = list()
+		held_items[P]["NAME"] = P.name
+		held_items[P]["PRICE"] = 10

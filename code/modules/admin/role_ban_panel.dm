@@ -7,7 +7,7 @@
 	var/reason
 	var/list/roles
 	var/list/migrants
-	var/list/advclasses
+	var/list/subclasses
 	var/list/antags
 	var/list/traits
 	var/list/misc
@@ -26,10 +26,10 @@
 		for(var/migrant in migrants)
 			migrant_string += "[migrant] "
 		strings += migrant_string
-	if(advclasses)
+	if(subclasses)
 		var/adv_string = "Adv. Classes: "
-		for(var/advclass in advclasses)
-			adv_string += "[advclass] "
+		for(var/subclass in subclasses)
+			adv_string += "[subclass] "
 		strings += adv_string
 	if(antags)
 		var/antag_string = "Antags: "
@@ -63,8 +63,8 @@
 		ban_data["roles"] = roles.Copy()
 	if(migrants)
 		ban_data["migrants"] = migrants.Copy()
-	if(advclasses)
-		ban_data["advclasses"] = advclasses.Copy()
+	if(subclasses)
+		ban_data["subclasses"] = subclasses.Copy()
 	if(antags)
 		ban_data["antags"] = antags.Copy()
 	if(traits)
@@ -85,8 +85,8 @@
 		roles = ban_data["roles"].Copy()
 	if(ban_data["migrants"])
 		migrants = ban_data["migrants"].Copy()
-	if(ban_data["advclasses"])
-		advclasses = ban_data["advclasses"].Copy()
+	if(ban_data["subclasses"])
+		subclasses = ban_data["subclasses"].Copy()
 	if(ban_data["antags"])
 		antags = ban_data["antags"].Copy()
 	if(ban_data["traits"])
@@ -105,7 +105,7 @@
 
 	var/list/selected_roles = list()
 	var/list/selected_migrants = list()
-	var/list/selected_advclasses = list()
+	var/list/selected_subclasses = list()
 	var/list/selected_antags = list()
 	var/list/selected_traits = list()
 	var/list/selected_misc = list()
@@ -131,9 +131,9 @@
 	for(var/migrant_name in selected_migrants)
 		dat += "<BR> - [migrant_name] <a href='?src=[REF(src)];task=remove_migrant;migrant_name=[migrant_name]'>Remove</a>"
 
-	dat += "<BR><BR><b>Banned Adv Classes:</b> <a href='?src=[REF(src)];task=add_advclass'>Add</a>"
-	for(var/adv_name in selected_advclasses)
-		dat += "<BR> - [adv_name] <a href='?src=[REF(src)];task=remove_advclass;advclass_name=[adv_name]'>Remove</a>"
+	dat += "<BR><BR><b>Banned Adv Classes:</b> <a href='?src=[REF(src)];task=add_subclass'>Add</a>"
+	for(var/adv_name in selected_subclasses)
+		dat += "<BR> - [adv_name] <a href='?src=[REF(src)];task=remove_subclass;subclass_name=[adv_name]'>Remove</a>"
 
 	dat += "<BR><BR><b>Banned Antags:</b> <a href='?src=[REF(src)];task=add_antag'>Add</a>"
 	for(var/antag_name in selected_antags)
@@ -225,14 +225,14 @@
 			var/to_remove = href_list["migrant_name"]
 			selected_migrants -= to_remove
 
-		if("add_advclass")
-			var/selected_advclass = input(user, "Choose Adv Class", "Adv Class", null) as null|anything in SSrole_class_handler.get_all_advclass_names()
-			if(!selected_advclass)
+		if("add_subclass")
+			var/selected_subclass = input(user, "Choose Adv Class", "Adv Class", null) as null|anything in SSrole_class_handler.get_all_subclass_names()
+			if(!selected_subclass)
 				return
-			selected_advclasses |= selected_advclass
-		if("remove_advclass")
-			var/to_remove = href_list["advclass_name"]
-			selected_advclasses -= to_remove
+			selected_subclasses |= selected_subclass
+		if("remove_subclass")
+			var/to_remove = href_list["subclass_name"]
+			selected_subclasses -= to_remove
 
 		if("add_antag")
 			var/selected_antag = input(user, "Choose antag", "Antags", null) as null|anything in ALL_ANTAG_BANS
@@ -336,8 +336,8 @@
 		instance.roles = selected_roles.Copy()
 	if(length(selected_migrants))
 		instance.migrants = selected_migrants.Copy()
-	if(length(selected_advclasses))
-		instance.advclasses = selected_advclasses.Copy()
+	if(length(selected_subclasses))
+		instance.subclasses = selected_subclasses.Copy()
 	if(length(selected_antags))
 		instance.antags = selected_antags.Copy()
 	if(length(selected_traits))
@@ -358,7 +358,7 @@
 	selected_is_permanent = FALSE
 	selected_roles.Cut()
 	selected_migrants.Cut()
-	selected_advclasses.Cut()
+	selected_subclasses.Cut()
 	selected_antags.Cut()
 	selected_traits.Cut()
 	selected_misc.Cut()

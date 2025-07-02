@@ -1,8 +1,8 @@
 /datum/faith/inhumen
 	name = "Inhumen Pantheon"
-	desc = "The ten are FALSE GODS.\n\
-		They keep us trapped in tartarus and choke out our divine light, \
-		but only though FULL BELIEF in the divinity of men and women can we escape and reach the TRUE spiritual realm.\n\
-		The godhead smiles upon us as we defile Psydon and become the divinities we were always meant to be."
-	worshippers = "Dark elves, cultists and those forsaken by the ten"
-	godhead = /datum/patron/inhumen/zizo
+	desc = "The Church fears the fact that mortals can ascend to Godhood and usurp the spiritual realms.\n\
+		A trio of adventurers were enlightened to the potential that lies within us all. Baotha was the first to ascend, \
+		followed by her twin brother Graggar and her adventuring companion Matthios. Through them mortals shall come to usurp \
+		the Heavens as the Inhumen have done with the Hells."
+	worshippers = "The Disillusioned, Outcasts, and Races Created by the Inhumen"
+	godhead = /datum/patron/inhumen/baotha

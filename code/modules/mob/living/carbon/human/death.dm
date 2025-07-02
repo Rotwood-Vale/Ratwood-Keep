@@ -6,9 +6,9 @@
 
 /mob/living/carbon/human/spawn_gibs(with_bodyparts)
 	if(with_bodyparts)
-		new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human(drop_location(), src)
 	else
-		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src, get_static_viruses())
+		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src)
 
 /mob/living/carbon/human/spawn_dust(just_ash = FALSE)
 	if(just_ash)
@@ -43,6 +43,18 @@
 			var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 			if(VD)
 				dust(just_ash=TRUE,drop_items=TRUE)
+				return
+		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
+		if (L && !L.out_of_lives)
+			if(L.consume_phylactery())
+				visible_message(span_warning("[src]'s body begins to shake violently, as eldritch forces begin to whisk them away!"))
+				to_chat(src, span_userdanger("Death is not the end for me. I begin to rise again."))
+				playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
+				gibbed = FALSE
+			else
+				to_chat(src, span_userdanger("No, NO! This cannot be!"))
+				L.out_of_lives = TRUE
+				gib()
 				return
 
 	if(!gibbed)
@@ -92,7 +104,7 @@
 				adjust_triumphs(-1)
 
 		switch(job)
-			if("King")
+			if("Duke")
 				//omen gets added separately, after a few minutes
 				for(var/mob/living/carbon/human/HU in GLOB.player_list)
 					if(!HU.stat && is_in_roguetown(HU))
@@ -113,26 +125,18 @@
 
 	dizziness = 0
 	jitteriness = 0
-
-	if(ismecha(loc))
-		var/obj/mecha/M = loc
-		if(M.occupant == src)
-			M.go_out()
-
 	dna.species.spec_death(gibbed, src)
 
 	if(SSticker.HasRoundStarted())
 		SSblackbox.ReportDeath(src)
 		log_message("has died (BRUTE: [src.getBruteLoss()], BURN: [src.getFireLoss()], TOX: [src.getToxLoss()], OXY: [src.getOxyLoss()], CLONE: [src.getCloneLoss()])", LOG_ATTACK)
-	if(is_devil(src))
-		INVOKE_ASYNC(is_devil(src), TYPE_PROC_REF(/datum/antagonist/devil, beginResurrectionCheck), src)
 
 /mob/living/carbon/human/revive(full_heal, admin_revive)
 	. = ..()
 	if(!.)
 		return
 	switch(job)
-		if("King")
+		if("Duke")
 			removeomen(OMEN_NOLORD)
 		if("Priest")
 			removeomen(OMEN_NOPRIEST)
@@ -147,21 +151,5 @@
 			CA.add_stress(/datum/stressevent/viewgib)
 	return ..()
 
-/mob/living/carbon/human/proc/makeSkeleton()
-	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
-	set_species(/datum/species/skeleton)
-	return TRUE
-
-/mob/living/carbon/proc/Drain()
-	become_husk(CHANGELING_DRAIN)
-	ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN)
-	blood_volume = 0
-	return TRUE
-
-/mob/living/carbon/proc/makeUncloneable()
-	ADD_TRAIT(src, TRAIT_BADDNA, MADE_UNCLONEABLE)
-	blood_volume = 0
-	return TRUE
-
 /proc/can_death_zombify(mob/living/carbon/human)
-	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)
+	return TRUE

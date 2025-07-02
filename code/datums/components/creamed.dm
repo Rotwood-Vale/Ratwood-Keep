@@ -1,8 +1,7 @@
 GLOBAL_LIST_INIT(creamable, typecacheof(list(
 	/mob/living/carbon/human,
 	/mob/living/carbon/monkey,
-	/mob/living/simple_animal/pet/dog/corgi,
-	/mob/living/silicon/ai)))
+	/mob/living/simple_animal/pet/dog/corgi)))
 
 /**
   * # Creamed component
@@ -31,8 +30,6 @@ GLOBAL_LIST_INIT(creamable, typecacheof(list(
 		creamface.icon_state = "creampie_monkey"
 	else if(iscorgi(parent))
 		creamface.icon_state = "creampie_corgi"
-	else if(isAI(parent))
-		creamface.icon_state = "creampie_ai"
 
 	var/atom/A = parent
 	A.add_overlay(creamface)
@@ -53,9 +50,9 @@ GLOBAL_LIST_INIT(creamable, typecacheof(list(
 
 /datum/component/creamed/UnregisterFromParent()
 	UnregisterSignal(parent, list(
-		COMSIG_COMPONENT_CLEAN_ACT, 
+		COMSIG_COMPONENT_CLEAN_ACT,
 		COMSIG_COMPONENT_CLEAN_FACE_ACT))
-	
+
 ///Callback to remove pieface
 /datum/component/creamed/proc/clean_up(datum/source, strength)
 	if(strength >= CLEAN_WEAK)

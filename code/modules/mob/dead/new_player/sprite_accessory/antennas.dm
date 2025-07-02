@@ -82,3 +82,15 @@
 /datum/sprite_accessory/antenna/moth/mothra
 	name = "Mothra"
 	icon_state = "mothra"
+
+/datum/sprite_accessory/antenna/moth/brown
+	name = "Brown"
+	icon_state = "brown"
+
+/datum/sprite_accessory/antenna/moth/rosy
+	name = "Rosy"
+	icon_state = "rosy"
+
+/datum/sprite_accessory/antenna/moth/feathery
+	name = "Feathery"
+	icon_state = "feathery"

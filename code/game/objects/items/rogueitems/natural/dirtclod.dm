@@ -42,7 +42,7 @@
 
 /obj/item/natural/dirtclod/Initialize()
 	icon_state = "clod[rand(1,2)]"
-	..()
+	. = ..()
 
 /obj/structure/fluff/clodpile
 	name = "dirt pile"
@@ -81,4 +81,4 @@
 
 /obj/structure/fluff/clodpile/Initialize()
 	dir = pick(GLOB.cardinals)
-	..()
+	. = ..()

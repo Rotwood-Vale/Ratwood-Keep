@@ -2,7 +2,7 @@
 
 /obj/structure/roguemachine/mail
 	name = "HERMES"
-	desc = ""
+	desc = "Carrier zads have fallen severely out of fashion ever since the advent of this hydropneumatic mail system."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mail"
 	density = FALSE
@@ -10,6 +10,8 @@
 	pixel_y = 32
 	var/coin_loaded = FALSE
 	var/ournum
+	var/mailtag
+	var/obfuscated = FALSE
 
 /obj/structure/roguemachine/mail/attack_hand(mob/user)
 	if(SSroguemachine.hermailermaster && ishuman(user))
@@ -89,7 +91,14 @@
 			STR.handle_item_insertion(P, prevent_warning=TRUE)
 			X.new_mail=TRUE
 			X.update_icon()
-			send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
+			//There's a right hand version of this letter stuff too???
+			for(var/mob/living/carbon/human/H in GLOB.human_list)
+				if(P.mailedto == H.real_name)
+					//OOC note was not a good place to try to send this chat message
+					to_chat(H, span_danger("A new letter has arrived! From: <font color='grey'><b>[sentfrom].</b></font>"))
+					H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE)
+
+			
 		else
 			to_chat(user, span_warning("The master of mails has perished?"))
 			return
@@ -171,7 +180,13 @@
 				else
 					visible_message(span_warning("[user] sends something."))
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-					send_ooc_note(span_boldwarning("New letter from <b>[sentfrom].</b>"), name = send2place)
+
+					//Is there a better way to get this to send the noise?
+					for(var/mob/living/carbon/human/H in GLOB.human_list)
+						if(P.mailedto == H.real_name)
+							//OOC note was not a good place to try to send this chat message
+							to_chat(H, span_danger("A new letter has arrived! From: <font color='grey'><b>[sentfrom].</b></font>"))
+							H.playsound_local(H, 'sound/misc/mail.ogg', 100, FALSE)
 					return
 	if(istype(P, /obj/item/roguecoin))
 		if(coin_loaded)
@@ -196,6 +211,7 @@
 /obj/structure/roguemachine/mail/Destroy()
 	set_light(0)
 	SSroguemachine.hermailers -= src
+	return ..()
 
 /obj/structure/roguemachine/mail/r
 	pixel_y = 0
@@ -215,8 +231,32 @@
 		set_light(1, 1, "#1b7bf1")
 
 
+/obj/structure/roguemachine/mail/examine(mob/user)
+	. = ..()
+	. += "<a href='?src=[REF(src)];directory=1'>Directory:</a> [mailtag]"
 
+/obj/structure/roguemachine/mail/Topic(href, href_list)
+	..()
 
+	if(!usr)
+		return
+
+	if(href_list["directory"])
+		view_directory(usr)
+
+/obj/structure/roguemachine/mail/proc/view_directory(mob/user)
+	var/dat
+	for(var/obj/structure/roguemachine/mail/X in SSroguemachine.hermailers)
+		if(X.obfuscated)
+			continue
+		if(X.mailtag)
+			dat += "#[X.ournum] [X.mailtag]<br>"
+		else
+			dat += "#[X.ournum] [capitalize(get_area_name(X))]<br>"
+
+	var/datum/browser/popup = new(user, "hermes_directory", "<center>HERMES DIRECTORY</center>", 387, 420)
+	popup.set_content(dat)
+	popup.open(FALSE)
 
 /obj/item/roguemachine/mastermail
 	name = "MASTER OF MAILS"

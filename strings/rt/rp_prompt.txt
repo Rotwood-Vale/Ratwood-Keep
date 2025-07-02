@@ -1,12 +1,44 @@
-(Welcome to BLACKSTONE)
-<br>
-It is the age of abandonment
-<br><br>
-It is the year 1522, the world has recently seen the end of a massive conflict known as the War in the Mists between the two major nations of the world. To the west, the Zybatine Empire has grown out of the remnants of the Golden-Bridge Empire of old, its name lost to the annals of time and the greed of its sultans.
-To the east, the Grenzelhofts have carved an imperiate out of the various tribes and nations of its continent, its legions marching upon its foes with ruthless efficiency to those its politicians cannot coerce with trade and political overpowering. Many claim the Gods have abandoned this world, with the hordes of beasts growing ever more present in daily life, the various wars between petty-kings over whatever remains untouched by the dominant powers and the ever amassing fervor against the arts of magic leading to what has been referred to as 'The Fallow Years'.
-<br><br>
-However, not all places are afflicted as miserably by the growing pains of a new era. Such as the place our story takes place: Rockhill. The mantlepiece of a small petty kingdom on the Isle of Enigma, this township has long since stood upon the burrows of a much more ancient and mysterious empire of old. This town is a melting pot of cultural, political and martial history, with it being a cornerstone location where adventurers and townsfolk alike congregate to share in its rather impressive wealth and quality of living compared to other borderstates.
-<br><br>
-A typical role-play character in BLACKSTONE comes from a diverse set of backgrounds, experiences, and world-views. It is up to you, the player: to decide how to portray such a complex history through your character. You may be a good person looking to the betterment of your daily lot in life, morally grey and survival focused or a terrible whoreson of little morality. This is your story to create.
-<br><br>
-Will you go down in legend or falter into obscurity this day?
+<head>
+    <style>
+        h1, h2 {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            border-bottom: 2px solid;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Before Times</h1>
+        <p>Countless ages of conflict and creation, they no longer matter.<br><br>
+        Only scholars and erudites retain knowledge of what happened in the Before-Times, the term common folk use to refer to all history and myths preceding the Great Rot. From the first Great Divine Act: the creation of the world, the fabled Age of Psydon and its culmination with God’s demise at the hands of Zizo; the great Council of Dieca that identified His Successors and established The Church; the mysterious emergence of the Beastling races. Most recently, the rise and decline of the cosmopolitan Grenzelhoft and slave Zybantine empires, and the innumerable historical events before, after and in between.<br><br>
+        Ancient history seems of little importance now, except to those seeking cause or solution to the tragedy of this world.<br>
+
+        <h2>The Great Rot</h2>
+        <p>It began in the south. In less than a year, it was everywhere.<br><br>
+        Ever since the founding of the Church, Necra was widely acknowledged as the deity who gave solemn peace to the dead. One day, it stopped. Physicians claimed it’s a disease, a great imbalance in the humors of the body; The clergy was quick to blame the dreaded Inhumen Pantheon: fragments of Psydon’s shattered psyche claimed and corrupted by mortals; The common folk, victims of ignorance and fear, began persecuting the diverse: in every city and kingdom, the few became the scapegoats of the many.
+        Named “The Rot”. A curse that causes every unburied corpse to resuscitate as a ghoul, or “deadite”, around 5 minutes after its death. A curse that also spreads via bites and scratches. The first recorded cases can be traced back to the remote slave hubs of Zybantium, and in the coastal Free Cities of Grenzelhoft only days after.<br><br>
+        The world finds itself dealing with outbreaks on a daily basis. Disastrous military campaigns against the deadite hordes and the breach of the first quarantine regions allowed evil to thrive like never before. Cultists and heresiarchs proclaim the Age of Zizo, the self-made Goddess. Liches expand their domain unhindered, and all kinds of creatures of the night prey on mortals like flies circling around a dying carcass.</p>
+
+        <h2>The Exodus</h2>
+        <p>The masses flee, seeking safety and bringing doom.<br><br>
+        Fear and hope have driven countless people of every background, race and lineage to flee from the Rot and embark on a great migration to places rumored to be safe. Desolate kingdoms and underdeveloped baronies, communities depopulated from war or poverty. The sparse plains, where little grows, lives, or dies. Snowy wastes where fools hope the fallen stay frozen. These insignificant and piteous locations now find themselves targeted by seemingly endless waves of refugees. Some lords let everyone in, hoping to capitalize on the growing demographic, only to succumb to internal strife or a sudden outbreak; Others choose to isolate themselves completely, until the masses grow so large they are simply overwhelmed.<br><br>
+        This is the prelude to the End, when the World will be made anew in Zizo’s image.</p>
+    </div>
+</body>
+</html>

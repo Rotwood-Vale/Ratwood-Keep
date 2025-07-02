@@ -31,6 +31,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	canSmoothWith = list(/turf/closed/mineral,/turf/closed/wall/mineral/rogue, /turf/open/floor/rogue)
 	smooth = SMOOTH_MORE
 	neighborlay_override = "staticedge"
+	turf_flags = NONE
 
 /turf/open/transparent/openspace/cardinal_smooth(adjacencies)
 	roguesmooth(adjacencies)
@@ -42,9 +43,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		M.layer = SPLASHSCREEN_LAYER + 0.01
 		M.plane = OPENSPACE_BACKDROP_PLANE + 0.01
 		add_overlay(M)
-
-/turf/open/transparent/openspace/airless
-	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/transparent/openspace/debug/update_multiz()
 	..()
@@ -58,11 +56,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	. = ..()
 	dynamic_lighting = 1
 	vis_contents += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
-
-/turf/open/transparent/openspace/can_have_cabling()
-	if(locate(/obj/structure/lattice/catwalk, src))
-		return TRUE
-	return FALSE
 
 /turf/open/transparent/openspace/zAirIn()
 	return TRUE
@@ -86,6 +79,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open/transparent/openspace/zPassOut(atom/movable/A, direction, turf/destination)
 	if(A.anchored)
 		return FALSE
+	if(HAS_TRAIT(A, TRAIT_I_AM_INVISIBLE_ON_A_BOAT))
+		return FALSE
 	if(direction == DOWN)
 		testing("dir=down")
 		for(var/obj/O in contents)
@@ -100,6 +95,15 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return TRUE
 	return FALSE
 
+/turf/open/transparent/openspace/can_traverse_safely(atom/movable/traveler)
+	var/turf/destination = GET_TURF_BELOW(src)
+	if(!destination)
+		return TRUE // this shouldn't happen, but if it does we can't fall
+	if(!traveler.can_zTravel(destination, DOWN, src)) // something is blocking their fall!
+		return TRUE
+	if(!traveler.can_zFall(src, DOWN, destination)) // they can't fall!
+		return TRUE
+	return FALSE
 
 /turf/open/transparent/openspace/proc/CanCoverUp()
 	return can_cover_up
@@ -149,64 +153,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	..()
 	if(!CanBuildHere())
 		return
-	if(istype(C, /obj/item/stack/rods))
-		var/obj/item/stack/rods/R = C
-		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-		var/obj/structure/lattice/catwalk/W = locate(/obj/structure/lattice/catwalk, src)
-		if(W)
-			to_chat(user, span_warning("There is already a catwalk here!"))
-			return
-		if(L)
-			if(R.use(1))
-				to_chat(user, span_notice("I construct a catwalk."))
-				playsound(src, 'sound/blank.ogg', 50, TRUE)
-				new/obj/structure/lattice/catwalk(src)
-			else
-				to_chat(user, span_warning("I need two rods to build a catwalk!"))
-			return
-		if(R.use(1))
-			to_chat(user, span_notice("I construct a lattice."))
-			playsound(src, 'sound/blank.ogg', 50, TRUE)
-			ReplaceWithLattice()
-		else
-			to_chat(user, span_warning("I need one rod to build a lattice."))
-		return
-	if(istype(C, /obj/item/stack/tile/plasteel))
-		if(!CanCoverUp())
-			return
-		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-		if(L)
-			var/obj/item/stack/tile/plasteel/S = C
-			if(S.use(1))
-				qdel(L)
-				playsound(src, 'sound/blank.ogg', 50, TRUE)
-				to_chat(user, span_notice("I build a floor."))
-				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			else
-				to_chat(user, span_warning("I need one floor tile to build a floor!"))
-		else
-			to_chat(user, span_warning("The plating is going to need some support! Place metal rods first."))
-
-/turf/open/transparent/openspace/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-	if(!CanBuildHere())
-		return FALSE
-
-	switch(the_rcd.mode)
-		if(RCD_FLOORWALL)
-			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-			if(L)
-				return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 1)
-			else
-				return list("mode" = RCD_FLOORWALL, "delay" = 0, "cost" = 3)
-	return FALSE
-
-/turf/open/transparent/openspace/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
-	switch(passed_mode)
-		if(RCD_FLOORWALL)
-			to_chat(user, span_notice("I build a floor."))
-			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
-			return TRUE
-	return FALSE
 
 /turf/open/transparent/openspace/bullet_act(obj/projectile/P)
 	if(!P.arcshot)

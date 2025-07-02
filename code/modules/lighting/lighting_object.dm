@@ -27,7 +27,6 @@
 	myturf.lighting_object = src
 	myturf.luminosity = 0
 
-
 	needs_update = TRUE
 	SSlighting.objects_queue += src
 
@@ -134,9 +133,6 @@
 	return
 
 /atom/movable/lighting_object/singularity_pull()
-	return
-
-/atom/movable/lighting_object/blob_act(obj/structure/blob/B)
 	return
 
 /atom/movable/lighting_object/onTransitZ()

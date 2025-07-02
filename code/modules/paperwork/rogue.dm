@@ -12,7 +12,7 @@
 
 
 /obj/item/paper/scroll/attackby(obj/item/P, mob/living/carbon/human/user, params)
-	if(istype(P, /obj/item/pen) || istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
+	if(istype(P, /obj/item/natural/thorn) || istype(P, /obj/item/natural/feather))
 		if(!open)
 			to_chat(user, span_warning("Open me."))
 			return
@@ -73,9 +73,8 @@
 		return span_warning("I'm too far away to read it.")
 
 /obj/item/paper/scroll/Initialize()
-	open = FALSE
+	. = ..()
 	update_icon_state()
-	..()
 
 /obj/item/paper/scroll/rmb_self(mob/user)
 	attack_right(user)
@@ -122,14 +121,14 @@
 	textper = 150
 
 /obj/item/paper/scroll/cargo/Destroy()
-	for(var/datum/supply_order/SO in orders)
+	for(var/datum/supply_pack/SO in orders)
 		orders -= SO
 	return ..()
 
 /obj/item/paper/scroll/cargo/examine(mob/user)
 	. = ..()
-//	if(signedname)
-//		. += "It was signed by [signedname] the [signedjob]."
+	if(signedname)
+		. += "It was signed by [signedname] the [signedjob]."
 
 	//for each order, add up total price and display orders
 
@@ -167,21 +166,22 @@
 
 /obj/item/paper/scroll/cargo/proc/rebuild_info()
 	info = null
-	info += "<h2>Shipping Order</h2>"
+	info += "<div style='vertical-align:top'>"
+	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>Shipping Order</h2>"
 	info += "<hr/>"
 
 	if(orders.len)
-		info += "Orders: <br/>"
 		info += "<ul>"
-		for(var/datum/supply_order/A in orders)
-			info += "<li>[A.pack.name]</li><br/>"
+		for(var/datum/supply_pack/A in orders)
+			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[A.name] - [A.cost] mammons</li><br/>"
 		info += "</ul>"
 
 	info += "<br/></font>"
 
 	if(signedname)
-		info += "SIGNED,<br/>"
-		info += "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of Rockhill</font>"
+		info += "<font size=\"2\" face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of Rockhill</font>"
+
+	info += "</div>"
 
 /obj/item/paper/confession
 	name = "confession"

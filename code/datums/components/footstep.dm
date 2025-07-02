@@ -43,9 +43,7 @@
 		return
 
 	var/mob/living/LM = parent
-	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.throwing || LM.movement_type & (VENTCRAWLING | FLYING))
-		if (LM.lying && !LM.buckled && !(!T.footstep || LM.movement_type & (VENTCRAWLING | FLYING))) //play crawling sound if we're lying
-			playsound(T, 'sound/blank.ogg', 15 * volume)
+	if(!T.footstep || LM.buckled || LM.lying || !CHECK_MULTIPLE_BITFIELDS(LM.mobility_flags, MOBILITY_STAND | MOBILITY_MOVE) || LM.is_floor_hazard_immune() || (LM.movement_type & VENTCRAWLING))
 		return
 
 	if(iscarbon(LM))
@@ -87,7 +85,7 @@
 		return
 	//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 	if(!footstep_sounds[turf_footstep] || (LAZYLEN(footstep_sounds) < 3))
-		testing("SOME RETARD GAVE AN INVALID FOOTSTEP [footstep_type] VALUE ([turf_footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+		CRASH("Invalid footstep value given. Turf type: [T.type]; Footstep Type: [footstep_type]; Value: [turf_footstep]")
 		return
 	playsound(T, pick(footstep_sounds[turf_footstep][1]), footstep_sounds[turf_footstep][2], FALSE, footstep_sounds[turf_footstep][3] + e_range)
 
@@ -96,15 +94,24 @@
 	if(!T)
 		return
 	var/mob/living/carbon/human/H = parent
+	//TODO: Look into implementing soft fluttering sounds instead, and prevent this check that will happen for every footstep ever
+	if(H.is_floor_hazard_immune())
+		return
+	if(HAS_TRAIT(H,TRAIT_LIGHT_STEP)) //TODO, do the above.
+		return
 	var/feetCover = (H.wear_armor && (H.wear_armor.body_parts_covered & FEET)) || (H.wear_pants && (H.wear_pants.body_parts_covered & FEET))
 
 	var/used_sound
 	var/list/used_footsteps
 
-	if(H.shoes || feetCover) //are we wearing shoes
+	var/obj/item/clothing/shoes/humshoes = H.shoes
+	// use the non-barefoot sound if:
+	// - we have shoes that either aren't barefoot or aren't of type /obj/item/clothing/shoes
+	// - our armour or pants are covering our feet
+	if((humshoes && (!istype(humshoes) || !humshoes.isbarefoot)) || feetCover)
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.footstep[T.footstep] || (LAZYLEN(GLOB.footstep[T.footstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID FOOTSTEP VALUE ([T.footstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+			CRASH("Invalid footstep value. Turf type: [T.type]; Value: [T.footstep]")
 			return
 		used_footsteps = GLOB.footstep[T.footstep][1]
 		used_footsteps = used_footsteps.Copy()
@@ -122,7 +129,7 @@
 	else
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
-			testing("SOME RETARD GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
+			CRASH("Invalid barefootstep value given. Turf type: [T.type]; Value: [T.barefootstep]")
 			return
 		used_footsteps = GLOB.barefootstep[T.barefootstep][1]
 		used_footsteps = used_footsteps.Copy()

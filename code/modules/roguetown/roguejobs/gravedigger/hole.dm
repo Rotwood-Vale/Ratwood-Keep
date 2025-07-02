@@ -61,10 +61,7 @@
 	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
 		for(var/mob/living/M in contents)
 			return FALSE
-		for(var/obj/structure/closet/C in contents)
-			if(istype(C, /obj/structure/closet/crate/coffin))
-				return TRUE
-			return FALSE
+	if(istype(AM, /obj/structure/closet/crate/coffin))
 		return TRUE
 	. = ..()
 
@@ -129,7 +126,7 @@
 			var/mob/living/carbon/C = user
 			if(C.domhand)
 				used_str = C.get_str_arms(C.used_hand)
-			C.rogfat_add(max(60 - (used_str * 5), 1))
+			C.stamina_add(max(60 - (used_str * 5), 1))
 		if(stage < 3)
 			if(faildirt < 2)
 				if(prob(used_str * 5))
@@ -197,9 +194,6 @@
 			user.visible_message(span_notice("[user] stuffs [O] into [src]."), \
 							 	 span_notice("I stuff [O] into [src]."), \
 							 	 span_hear("I hear a loud bang."))
-			var/mob/living/L = O
-			if(!issilicon(L))
-				L.Paralyze(40)
 			O.forceMove(T)
 			user_buckle_mob(O, user)
 	else
@@ -218,24 +212,13 @@
 	if(!opened || !can_close(user))
 		return FALSE
 	take_contents()
-	for(var/mob/A in contents)
-		if((A.stat) && (istype(A, /mob/living/carbon/human)))
-			var/mob/living/carbon/human/B = A
-			B.buried = TRUE
-	for(var/obj/structure/closet/crate/coffin/C in contents)
-		for(var/mob/living/carbon/human/D in C.contents)
-			D.buried = TRUE
 	opened = FALSE
 //	update_icon()
 	return TRUE
 
 /obj/structure/closet/dirthole/dump_contents()
-	for(var/mob/A in contents)
-		if((!A.stat) && (istype(A, /mob/living/carbon/human)))
-			var/mob/living/carbon/human/B = A
-			B.buried = FALSE
 	..()
-	
+
 /obj/structure/closet/dirthole/open(mob/living/user)
 	if(opened)
 		return
@@ -266,28 +249,26 @@
 	update_abovemob()
 
 /obj/structure/closet/dirthole/Initialize()
-	abovemob = mutable_appearance('icons/turf/roguefloor.dmi', "grave_above")
-	abovemob.layer = ABOVE_MOB_LAYER
-	update_icon()
-	var/turf/open/floor/rogue/dirt/T = loc
-	if(istype(T))
-		mastert = T
-		T.holie = src
-		if(T.muddy)
-			if(!(locate(/obj/item/natural/worms) in T))
-				if(prob(55))
-					if(prob(20))
-						if(prob(30))
-							new /obj/item/natural/worms/grubs(T)
-						else
-							new /obj/item/natural/worms/leech(T)
-					else
-						new /obj/item/natural/worms(T)
-		else
-			if(!(locate(/obj/item/natural/stone) in T))
-				if(prob(23))
-					new /obj/item/natural/stone(T)
-	return ..()
+    abovemob = mutable_appearance('icons/turf/roguefloor.dmi', "grave_above")
+    abovemob.layer = ABOVE_MOB_LAYER
+    update_icon()
+    var/turf/open/floor/rogue/dirt/T = loc
+    if(istype(T))
+        mastert = T
+        T.holie = src
+        if(T.muddy)
+            if(prob(55))
+                if(prob(20))
+                    if(prob(30))
+                        new /obj/item/natural/worms/grubs(T)
+                    else
+                        new /obj/item/natural/worms/leech(T)
+                else
+                    new /obj/item/natural/worms(T)
+        else
+            if(prob(23))
+                new /obj/item/natural/stone(T)
+    return ..()
 
 /obj/structure/closet/dirthole/Destroy()
 	QDEL_NULL(abovemob)
@@ -309,3 +290,102 @@
 	. = ..()
 	update_abovemob()
 
+
+/obj/structure/spike_pit
+	name = "spike pit"
+	desc = "A hole filled with sharp wooden ends that protrude upwards."
+	icon_state = "spike_pit"
+	can_buckle = TRUE
+	icon = 'icons/turf/roguefloor.dmi'
+	density = FALSE
+	anchored = TRUE
+	can_buckle = FALSE
+	max_integrity = 0
+	buckle_lying = 90
+	layer = 2.8
+
+/obj/structure/spike_pit/Crossed(atom/movable/AM)
+	var/hitsound = pick('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	// TO DO: figure out how to either make jumping its own special proc
+	// Or read throw_at to understand how to parse it here to allow jumping
+	
+	if(isliving(AM))
+		var/mob/living/L = AM
+		if(L.movement_type & (FLYING|FLOATING)) //don't close the trap if they're flying/floating over it.
+			return ..()
+
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		var/area = BODY_ZONE_L_LEG
+		if(prob(50))
+			area = BODY_ZONE_R_LEG
+		var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(area))
+		if(!affecting) //if somehow no legs
+			affecting =  H.get_bodypart(check_zone(BODY_ZONE_CHEST))
+
+		//Wounds bleed pretty slow alone so this is more to be annoying than dangerous.
+		var/damage = 30
+		affecting.receive_damage(damage)
+		var/datum/wound/choice = /datum/wound/puncture
+		if(prob(25))
+			choice = /datum/wound/puncture/large
+		affecting.add_wound(choice)
+		H.forceMove(drop_location())
+
+		H.emote("painscream")
+		var/delay = 20 - H.STACON // Might be too long, if you figure out a better answer let me know.
+		delay = delay * 10
+		//H.Paralyze(delay)
+		buckle_mob(H, TRUE)
+		H.clear_alert("buckled") //easiest way to hide this option. Have to click the pit with a free hand to get loose.
+		playsound(src.loc, hitsound, 100)
+		return
+
+	if(istype(AM, /mob/living/simple_animal))
+		var/mob/living/simple_animal/L = AM
+		L.adjustHealth(40)
+		L.Paralyze(40)
+		buckle_mob(L, TRUE)
+		L.get_sound("pain")
+		playsound(src.loc, hitsound, 100)
+		return
+
+	. = ..()
+
+/obj/structure/spike_pit/attackby(obj/item/I, mob/user, params)
+	
+	if(istype(I, /obj/item/rogueweapon/shovel))
+		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
+		to_chat(user, span_info("I start covering up \the [name]..."))
+		if(do_after(user, 5 SECONDS, src))
+			playsound(loc,'sound/items/empty_shovel.ogg', 100, TRUE)
+			qdel(src)
+			return
+	. = ..()
+
+obj/structure/spike_pit/attack_hand(mob/user)
+	
+	if(has_buckled_mobs())
+		var/person = buckled_mobs[1].name
+		if(user == buckled_mobs[1])
+			person = "themself"
+		user.visible_message(span_warning("[user.name] starts to pull [person] off \the [name]..."))
+		if(do_after(user, 3 SECONDS))
+			unbuckle_mob(buckled_mobs[1], TRUE)
+			user.visible_message(span_warning("[user.name] pulls [person] out of the spikes."))
+
+	. = ..()
+	
+
+/datum/crafting_recipe/roguetown/spike_pit
+	name = "spike pit - (3 stakes; SHOVEL; BEGINNER)"
+	result = list( /obj/structure/spike_pit )
+	tools = list( /obj/item/rogueweapon/shovel = 1 )
+	reqs = list( /obj/item/grown/log/tree/stake = 3)
+
+/datum/crafting_recipe/roguetown/spike_pit/TurfCheck(mob/user, turf/T)
+	var/turf/to_check = get_step(user.loc, user.dir)
+	if(!istype(to_check, /turf/open/floor/rogue/dirt))
+		to_chat(user, span_info("I need a dirt floor to do this."))
+		return FALSE
+	return TRUE

@@ -18,6 +18,8 @@
 	if(!silent && prefs.parent)
 		if(new_state)
 			to_chat(prefs.parent, span_notice("You are now in the migrant queue, and will join the game with them when they arrive"))
+			if(prefs.defiant)
+				to_chat(src, span_userdanger("Remember : Defiant ERP protection is only enabled while COMBAT mode is active. AHELP if necessary."))
 		else
 			to_chat(prefs.parent, span_boldwarning("You are no longer in the migrant queue"))
 
@@ -31,7 +33,7 @@
 		if(SSmigrants.can_be_role(prefs.parent, role_type))
 			role_preferences += role_type
 			var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
-			to_chat(prefs.parent, span_nicegreen("You have prioritizd the [role.name]. This does not guarantee getting the role"))
+			to_chat(prefs.parent, span_nicegreen("You have prioritized the [role.name]. This does not guarantee getting the role"))
 		else
 			to_chat(prefs.parent, span_warning("You can't be this role. (Wrong species, gender or age; or banned)"))
 
@@ -74,7 +76,7 @@
 		dat += "<br><center>They will arrive in [(SSmigrants.wave_timer / (1 SECONDS))] seconds...</center>"
 
 	var/datum/browser/popup = new(client.mob, "migration", "<center>Find a purpose</center>", 330, 410)
-	popup.set_window_options("can_close=0")
+	//popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
 

@@ -193,7 +193,6 @@ SUBSYSTEM_DEF(migrants)
 /datum/controller/subsystem/migrants/proc/spawn_migrant(datum/migrant_wave/wave, datum/migrant_assignment/assignment, spawn_on_location, migrant_wave_id)
 	var/rank = "Migrant"
 	var/mob/dead/new_player/newplayer = assignment.client.mob
-	var/ckey = assignment.client.ckey
 
 	SSjob.AssignRole(newplayer, rank, TRUE)
 
@@ -201,6 +200,7 @@ SUBSYSTEM_DEF(migrants)
 
 	character.islatejoin = TRUE
 	SSjob.EquipRank(character, rank, TRUE)
+	SSjob.initialise_memories(character, rank, TRUE)
 
 	var/datum/migrant_role/role = MIGRANT_ROLE(assignment.role_type)
 	character.migrant_type = assignment.role_type
@@ -211,7 +211,6 @@ SUBSYSTEM_DEF(migrants)
 	/// Fade effect
 	var/atom/movable/screen/splash/Spl = new(character.client, TRUE)
 	Spl.Fade(TRUE)
-	character.update_parallax_teleport()
 
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))
@@ -222,11 +221,16 @@ SUBSYSTEM_DEF(migrants)
 
 	if(humanc)
 		var/fakekey = character.ckey
-		if(ckey in GLOB.anonymize)
+		if(character.ckey in GLOB.anonymize)
 			fakekey = get_fake_key(character.ckey)
-		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank])<BR>"
+		GLOB.character_list[character.mobid] = "[fakekey] was [character.real_name] ([rank] - [role.name])<BR>"
 		GLOB.character_ckey_list[character.real_name] = character.ckey
-		log_character("[character.ckey] ([fakekey]) - [character.real_name] - [rank]")
+		if(!role.hidden_role)
+			if(role.obfuscated_role)
+				GLOB.actors_list[character.mobid] = "[character.real_name] as Refugee<BR>"
+			else
+				GLOB.actors_list[character.mobid] = "[character.real_name] as [role.name]<BR>"
+		log_character("[character.ckey] ([fakekey]) - [character.real_name] - [rank] ([role.name])")
 	if(GLOB.respawncounts[character.ckey])
 		var/AN = GLOB.respawncounts[character.ckey]
 		AN++
@@ -258,8 +262,8 @@ SUBSYSTEM_DEF(migrants)
 
 	role.after_spawn(character)
 
-	if(role.advclass_cat_rolls)
-		SSrole_class_handler.setup_class_handler(character, role.advclass_cat_rolls, migrant_wave_id)
+	if(role.subclass_cat_rolls)
+		SSrole_class_handler.setup_class_handler(character, role.subclass_cat_rolls, migrant_wave_id)
 		hugboxify_for_class_selection(character)
 	else
 		// Apply post equipment stuff
@@ -425,10 +429,6 @@ SUBSYSTEM_DEF(migrants)
 	character.advsetup = 1
 	character.invisibility = INVISIBILITY_MAXIMUM
 	character.become_blind("advsetup")
-
-	if(GLOB.adventurer_hugbox_duration)
-		///FOR SOME RETARDED FUCKING REASON THIS REFUSED TO WORK WITHOUT A FUCKING TIMER IT JUST FUCKED SHIT UP
-		addtimer(CALLBACK(character, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
 
 /proc/grant_lit_torch(mob/living/carbon/human/character)
 	var/obj/item/flashlight/flare/torch/torch = new()

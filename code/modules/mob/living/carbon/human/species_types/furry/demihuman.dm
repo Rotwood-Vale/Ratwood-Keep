@@ -4,7 +4,26 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Half-kin</b><br>\
+	Half-kins are a highly diversified people. Half-kins are primarily \
+	a consequence of Beastling races mixing with a Humens and Elves, although some have \
+	acquired their Beastling traits due to magical curses or blessings from a god, typically \
+	Dendor. Half-kins can reproduce with one another, and their children will inherit features \
+	from both parents. Half-kin genes are dominant when mixing with Humens or Elves."
+
+	expanded_desc = "Half-kins are a highly diversified people. Half-kins are primarily \
+	a consequence of Beastling races mixing with a Humens and Elves, although some have \
+	acquired their Beastling traits due to magical curses or blessings from a god, typically \
+	Dendor. Half-kins can reproduce with one another, and their children will inherit features \
+	from both parents. Half-kin genes are dominant when mixing with Humens or Elves. \
+	<br><br> \
+	Half-kins have an easier time being accepted into societies depending on what Beastling features \
+	they have, but it is highly dependent on both their appearance and attitude. However, due to both \
+	historic and ongoing discrimination of mixed bloods they are usually not fully accepted by either \
+	of their parent races. Hence, Half-kins tend to share a strong sense of kinship with similar Half-kins. \
+	Yet, their shared traits with respectable races do mean that Half-kins are more widely accepted into \
+	societies that they share blood ties with than other Beastling races."
+
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,MUTCOLORS_PARTSONLY)
@@ -15,9 +34,8 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = NONE
 	liked_food = NONE
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/mob/species/male.dmi'
-	limbs_icon_f = 'icons/mob/species/female.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -26,7 +44,7 @@
 		OFFSET_ID = list(0,1), OFFSET_GLOVES = list(0,1), OFFSET_WRISTS = list(0,1),\
 		OFFSET_CLOAK = list(0,1), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), \
 		OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,1), OFFSET_BACK = list(0,1), \
-		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,1), \
+		OFFSET_NECK = list(0,1), OFFSET_MOUTH = list(0,1), OFFSET_PANTS = list(0,0), \
 		OFFSET_SHIRT = list(0,1), OFFSET_ARMOR = list(0,1), OFFSET_HANDS = list(0,1), OFFSET_UNDIES = list(0,1), \
 		OFFSET_ID_F = list(0,-1), OFFSET_GLOVES_F = list(0,0), OFFSET_WRISTS_F = list(0,0), OFFSET_HANDS_F = list(0,0), \
 		OFFSET_CLOAK_F = list(0,0), OFFSET_FACEMASK_F = list(0,-1), OFFSET_HEAD_F = list(0,-1), \
@@ -57,7 +75,7 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/testicles/human,
+		/datum/customizer/organ/testicles/external,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
@@ -67,6 +85,8 @@
 		/datum/body_marking_set/socks,
 	)
 	body_markings = list(
+		/datum/body_marking/flushed_cheeks,
+		/datum/body_marking/eyeliner,
 		/datum/body_marking/tonage,
 		/datum/body_marking/socklonger,
 		/datum/body_marking/tips,
@@ -140,40 +160,3 @@
 		"Lalvestine" = SKIN_COLOR_LALVESTINE,
 		"Ebon" = SKIN_COLOR_EBON,
 	)
-
-//Groups of Accents for each race set by associated 'skin_tone', see 'get_skin_list' above
-// "full" group in JSON lists
-/datum/species/demihuman/get_accent(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "full")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "full")
-		return null
-
-// "start" group in JSON lists
-/datum/species/demihuman/get_accent_start(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "start")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "start")
-		return null
-
-// "end" group in JSON lists
-/datum/species/demihuman/get_accent_end(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "end")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "end")
-		return null
-
-// "syllable" group in JSON lists
-/datum/species/demihuman/get_accent_any(mob/living/carbon/human/H)
-		switch(H.skin_tone)
-				if(SKIN_COLOR_GRENZELHOFT) //Grenzelhoft
-						return strings("german_replacement.json", "syllable")
-				if(SKIN_COLOR_HAMMERHOLD) //Hammerhold
-						return strings("Anglish.json", "syllable")
-		return null

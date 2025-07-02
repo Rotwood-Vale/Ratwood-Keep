@@ -19,12 +19,6 @@
 		GLOB.surgeries_list += new path()
 	sortList(GLOB.surgeries_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
-	//Materials
-	for(var/path in subtypesof(/datum/material))
-		var/datum/material/D = new path()
-		GLOB.materials_list[D.id] = D
-	sortList(GLOB.materials_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
-
 	// Keybindings
 	init_keybindings()
 
@@ -33,6 +27,8 @@
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
 	init_subtypes(/datum/anvil_recipe, GLOB.anvil_recipes)
+
+	init_subtypes(/datum/artificer_recipe, GLOB.artificer_recipes)
 
 	for(var/i in 0 to 20)
 		GLOB.mouseicons_human += file("icons/effects/mousemice/swang/[i * 5].dmi")

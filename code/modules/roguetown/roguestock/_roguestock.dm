@@ -17,6 +17,8 @@
 	var/import_only = FALSE //for importing crackers, etc
 	var/stable_price = FALSE
 	var/percent_bounty = FALSE
+	/// How much to generate in the remote section each firing of the treasury system.
+	var/passive_generation = 0
 
 /datum/roguestock/New()
 	..()
@@ -34,6 +36,11 @@
 /datum/roguestock/proc/check_item(obj/item/I) //for checking monster heads if they belong to monsters and other stuff
 	if(import_only) //so you can't submit crackers to stockpile
 		return FALSE
+	//To stop people selling half-eaten food and rotten meat to the stockpile
+	if(istype(I, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/food = I
+		if(food.eat_effect == /datum/status_effect/debuff/rotfood || food.bitecount > 0)
+			return FALSE
 	return TRUE
 
 /datum/roguestock/proc/get_export_price()

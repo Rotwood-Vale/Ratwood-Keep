@@ -3,6 +3,9 @@
 	weight = WEIGHT_MOB
 
 
+/datum/keybinding/living/can_use(client/user)
+	return isliving(user.mob)
+
 /datum/keybinding/living/swap_left
 	hotkey_keys = list("Q")
 	classic_keys = list("Q") // PAGEUP
@@ -139,7 +142,7 @@
 		return
 	if(L.doing)
 		L.doing = 0
-	L.submit()
+	L.submit(TRUE)
 	return TRUE
 
 
@@ -332,6 +335,10 @@
 		M.pixelshifted = TRUE
 		M.pixelshift_layer = M.pixelshift_layer + 0.01
 		M.layer = 4 + M.pixelshift_layer
+		if(M.layer > 3.9)
+			M.layer = 4 + M.pixelshift_layer
+		else
+			M.layer = 3.8 + M.pixelshift_layer
 	return TRUE
 
 /datum/keybinding/living/pixel_shift_layerdown
@@ -346,5 +353,8 @@
 	if(M.pixelshift_layer >= -0.04)
 		M.pixelshifted = TRUE
 		M.pixelshift_layer = M.pixelshift_layer - 0.01
-		M.layer = 4 + M.pixelshift_layer
+		if(M.layer > 3.9)
+			M.layer = 4 + M.pixelshift_layer
+		else
+			M.layer = 3.8 + M.pixelshift_layer
 	return TRUE

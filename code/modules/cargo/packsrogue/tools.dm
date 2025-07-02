@@ -25,12 +25,17 @@
 */
 /datum/supply_pack/rogue/tools/chains
 	name = "Chains"
-	cost = 55
+	cost = 50 //3 iron
 	contains = list(
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
 					/obj/item/rope/chain,
 				)
+
+/datum/supply_pack/rogue/tools/lockpicks
+	name = "Lockpicks"
+	cost = 20
+	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/tools/sacks
 	name = "Sacks"
@@ -103,14 +108,24 @@
 				)
 
 /datum/supply_pack/rogue/tools/prarml
-	name = "Prosthetic Arm (L)"
-	cost = 40
-	contains = list(/obj/item/bodypart/l_arm/rprosthetic)
+	name = "Prosthetic Left Wooden Arm"
+	cost = 20
+	contains = list(/obj/item/bodypart/l_arm/prosthetic/wood)
 
 /datum/supply_pack/rogue/tools/prarmr
-	name = "Prosthetic Arm (R)"
-	cost = 40
-	contains = list(/obj/item/bodypart/r_arm/rprosthetic)
+	name = "Prosthetic Right Wooden Arm"
+	cost = 20
+	contains = list(/obj/item/bodypart/r_arm/prosthetic/wood)
+
+/datum/supply_pack/rogue/tools/prarmlB
+	name = "Advanced Prosthetic Left Bronze Arm"
+	cost = 60
+	contains = list(/obj/item/bodypart/l_arm/prosthetic/bronze)
+
+/datum/supply_pack/rogue/tools/prarmrB
+	name = "Advanced Prosthetic Right Bronze Arm"
+	cost = 60
+	contains = list(/obj/item/bodypart/r_arm/prosthetic/bronze)
 
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
@@ -124,19 +139,131 @@
 
 /datum/supply_pack/rogue/tools/keyrings
 	name = "Keyrings"
-	cost = 8
-	contains = list(/obj/item/keyring,
-					/obj/item/keyring,
-					/obj/item/keyring)
+	cost = 20
+	contains = list(/obj/item/storage/keyring,
+					/obj/item/storage/keyring,
+					/obj/item/storage/keyring)
 
 /datum/supply_pack/rogue/tools/needles
 	name = "Needles"
-	cost = 15
+	cost = 20
 	contains = list(/obj/item/needle,
+					/obj/item/needle,
+					/obj/item/needle,
 					/obj/item/needle,
 					/obj/item/needle)
 
-/datum/supply_pack/rogue/tools/shopkeyy
-	name = "Spare Shopkey"
-	cost = 10
-	contains = list(/obj/item/roguekey/shop)
+/datum/supply_pack/rogue/tools/bandage
+	name = "Bandages"
+	cost = 25
+	contains = list(/obj/item/natural/bundle/cloth/bandage/full)
+
+/datum/supply_pack/rogue/tools/alembic
+	name = "Alembic"
+	cost = 30
+	contains = list(/obj/item/reagent_containers/glass/alembic)
+
+/datum/supply_pack/rogue/tools/ifak
+	name = "Personal Patch Kit"
+	cost = 50
+	contains = list(/obj/item/storage/fancy/ifak)
+
+/datum/supply_pack/rogue/tools/surgery
+	name = "Full Surgery Kit"
+	cost = 90
+	contains = list(/obj/item/storage/fancy/skit)
+
+/datum/supply_pack/rogue/tools/lamptern
+	name = "Lampterns"
+	cost = 50 //3 iron
+	contains = list(/obj/item/flashlight/flare/torch/lantern,
+					/obj/item/flashlight/flare/torch/lantern,
+					/obj/item/flashlight/flare/torch/lantern
+					)
+
+/datum/supply_pack/rogue/tools/smith
+	name = "Tongs & Hammer"
+	cost = 40
+	contains = list(/obj/item/rogueweapon/tongs,
+					/obj/item/rogueweapon/hammer/iron,
+					)
+
+/datum/supply_pack/rogue/tools/farm
+	name = "Farming Tools Set"
+	cost = 50
+	contains = list(/obj/item/rogueweapon/sickle,
+					/obj/item/rogueweapon/hoe,
+					/obj/item/rogueweapon/pitchfork,
+					)
+
+/datum/supply_pack/rogue/tools/skillet
+	name = "Iron skillet"
+	cost = 20
+	contains = list(/obj/item/cooking/pan)
+
+/datum/supply_pack/rogue/tools/scissors
+	name = "Iron scissors"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/huntingknife/scissors)
+
+/datum/supply_pack/rogue/tools/tntstick
+	name = "Blackpowder sticks"
+	cost = 80
+	contains = list(/obj/item/tntstick,
+					/obj/item/tntstick,
+					/obj/item/tntstick,
+					)
+
+/datum/supply_pack/rogue/tools/bombsatchel
+	name = "Bomb satchel"
+	cost = 120
+	contains = list(/obj/item/satchel_bomb)					
+
+/datum/supply_pack/rogue/tools/impactgrenadecontact
+	name = "Impact grenade contact"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/explosion,
+					/obj/item/impact_grenade/explosion,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegas
+	name = "Impact grenade gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke/poison_gas,
+					/obj/item/impact_grenade/smoke/poison_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasheal
+	name = "Impact grenade healing gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke/healing_gas,
+					/obj/item/impact_grenade/smoke/healing_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasfire
+	name = "Impact grenade fire gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke/fire_gas,
+					/obj/item/impact_grenade/smoke/fire_gas,
+					)
+
+/datum/supply_pack/rogue/tools/impactgrenadegasblind
+	name = "Impact grenade blind gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke/blind_gas,
+					/obj/item/impact_grenade/smoke/blind_gas,
+					)			
+
+/datum/supply_pack/rogue/tools/impactgrenadegasmute
+	name = "Impact grenade mute gas"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke/mute_gas,
+					/obj/item/impact_grenade/smoke/mute_gas,
+					)								
+
+/datum/supply_pack/rogue/tools/impactgrenadesmoke
+	name = "Impact grenade smoke"
+	cost = 50
+	contains = list(/obj/item/impact_grenade/smoke,
+					/obj/item/impact_grenade/smoke,
+					)			

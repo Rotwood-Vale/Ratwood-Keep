@@ -119,22 +119,23 @@
 	key_third_person = "shrugs"
 	message = "shrugs."
 
+//tailwagstuff//
+
 /datum/emote/living/carbon/human/wag
 	key = "wag"
 	key_third_person = "wags"
-	message = "wags their tail."
 
 /datum/emote/living/carbon/human/wag/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(!.)
 		return
 	var/mob/living/carbon/human/H = user
-	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
-		return
 	if(!H.dna.species.is_wagging_tail(H))
 		H.dna.species.start_wagging_tail(H)
+		message = "stops wagging their tail."
 	else
 		H.dna.species.stop_wagging_tail(H)
+		message = "wags their tail."
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
@@ -145,15 +146,46 @@
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(!H.dna || !H.dna.species)
-		return
 	if(H.dna.species.is_wagging_tail(H))
 		. = null
+
+///wingflarestuff//
+
+/datum/emote/living/carbon/human/flap
+	key = "flap"
+	key_third_person = "flaps"
+	message = "flaps their wings."
 
 /datum/emote/living/carbon/human/wing
 	key = "wing"
 	key_third_person = "wings"
-	message = "flaps their wings."
+
+/datum/emote/living/carbon/human/wing/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!H.dna.species.is_flaring_wings(H))
+		H.dna.species.start_flaring_wings(H)
+		message = "folds their wings."
+	else
+		H.dna.species.stop_flaring_wings(H)
+		message = "flares their wings."
+
+/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	return H.dna && H.dna.species && H.dna.species.can_flare_wings(user)
+
+/datum/emote/living/carbon/human/wing/select_message_type(mob/user, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.dna.species.is_flaring_wings(H))
+		. = null
+
+
+//these two procs are legacy procs that don't actually do anything because they got mulched in the cleanup pr but we might wanna bring them back later
 
 /mob/living/carbon/human/proc/OpenWings()
 	return

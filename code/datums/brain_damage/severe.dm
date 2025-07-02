@@ -203,8 +203,7 @@
 				owner.dizziness += 20
 				owner.confused += 20
 				owner.Jitter(20)
-				owner.adjustStaminaLoss(50)
-
+				
 		if(3, 4)
 			if(!high_stress)
 				to_chat(owner, span_warning("I feel really lonely..."))
@@ -224,6 +223,9 @@
 				else
 					to_chat(owner, span_danger("I feel my heart lurching in my chest..."))
 					owner.adjustOxyLoss(8)
+		else
+			//No effect
+			return
 
 /datum/brain_trauma/severe/discoordination
 	name = "Discoordination"

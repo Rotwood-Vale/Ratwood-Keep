@@ -6,9 +6,107 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "leech"
 	baitchance = 100
-	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 5,
-					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
-					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
+	fishloot = list(
+		/obj/item/trash/applecore = 50,
+		/obj/item/trash/pearcore = 25, //Pears, in Rockhill? Perish the thought.
+		/obj/item/natural/fibers = 15, //It's pretty hard to hook a fiber.
+		/obj/item/grown/log/tree/stick = 2, //Single stick
+		/obj/item/reagent_containers/food/snacks/fish/carp = 214,
+		/obj/item/reagent_containers/food/snacks/fish/eel = 214,
+		/obj/item/reagent_containers/food/snacks/fish/angler = 214,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp = 180, //Shrimp man gone. Life bad.
+		/obj/item/reagent_containers/food/snacks/fish/clownfish = 214,
+		/obj/item/natural/bundle/stick = 15, //Bundle of sticks
+		/obj/item/natural/stone = 15, //Hard to catch stones!
+		/obj/item/clothing/head/roguetown/helmet/tricorn = 25,
+		/obj/item/clothing/head/roguetown/helmet/bandana = 25,
+		/obj/item/clothing/head/roguetown/roguehood = 25,
+		/obj/item/clothing/under/roguetown/loincloth/brown = 25,
+		/obj/item/clothing/shoes/roguetown/sandals = 25,
+		/obj/item/clothing/shoes/roguetown/simpleshoes = 25,
+		/obj/item/clothing/gloves/roguetown/fingerless = 25,
+		/obj/item/clothing/gloves/roguetown/leather = 25,
+		/obj/item/clothing/shoes/roguetown/armor/leather = 25,
+		/obj/item/reagent_containers/syringe = 1, //These are terrifyingly powerful.
+		/obj/item/reagent_containers/glass/cup/wooden = 27,
+		/obj/item/ammo_casing/caseless/rogue/arrow = 45,
+		/obj/item/roguecoin/copper = 30,
+		/obj/item/leash = 15,
+		/obj/item/customlock = 30,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 30,
+		/obj/item/shard = 15,
+		/obj/item/natural/feather = 25,
+		/obj/item/natural/cloth = 30,
+		/obj/item/kitchen/spoon = 5, //My... Spoon!
+		/obj/item/restraints/legcuffs/beartrap = 25, //Too many. 
+		/obj/item/roguecoin/silver = 15,
+		/obj/item/roguecoin/gold = 5,
+		/obj/item/clothing/ring/copper = 25,
+		/obj/item/clothing/ring/topazc = 6,
+		/obj/item/clothing/ring/emeraldc = 6,
+		/obj/item/clothing/ring/sapphirec = 6,
+		/obj/item/clothing/ring/silver = 30,
+		/obj/item/clothing/ring/topazs = 10,
+		/obj/item/clothing/ring/emeralds = 10,
+		/obj/item/storage/belt/rogue/pouch/coins/mid = 7,
+		/obj/item/clothing/ring/rubyc = 15,
+		/obj/item/clothing/ring/quartzc = 15,
+		/obj/item/clothing/ring/rubys = 10,
+		/obj/item/clothing/ring/quartzs = 10,
+		/obj/item/clothing/ring/gold = 5, //Regular gold rings.
+		/obj/item/clothing/ring/topaz = 3, //Topaz is beautiful but cheap 
+		/obj/item/clothing/ring/sapphire = 2, //Sapphires are rare-ish  
+		/obj/item/clothing/ring/quartz = 3, //Quartz not worth as much. 
+		/obj/item/clothing/ring/ruby = 2, //Ditto to below, but for ruby
+		/obj/item/clothing/ring/diamond = 2, //Should be rare as this is the gold diamond ring. 
+		/obj/item/roguestatue/gold/loot = 8,
+		/obj/item/clothing/ring/diamondc = 6,
+		/obj/item/clothing/ring/diamonds = 5,)
+		//Approximate Catch Rates: (OUTDATED: TODO - RECALCULATE WHEN TM IS OVER)
+		//Very Common: 25.0%
+		//Common: Actual = 14.98%
+		//Rare: Target = 9.9%
+		//Super Rare: 4.95%
+		//Ultra Rare: 0.91% - Exclusive to leeches.
+		//Absolute Rarest: 0.5% - Exclusive to leeches. The real treasures are the friends we made along the way.
+		//NOTE: These values are not used for RINGS, which are being adjusted manually because of potential abuse involving the treasury & bandit mechanics.
+
+	cageloot = list(/obj/item/trash/applecore = 50,
+					/obj/item/trash/pearcore = 25, //Pears, in Rockhill? Perish the thought.
+					/obj/item/grown/log/tree/stick = 2, //Single stick
+					/obj/item/reagent_containers/food/snacks/fish/oyster = 214,
+					/obj/item/reagent_containers/food/snacks/fish/shrimp = 214,
+					/obj/item/reagent_containers/food/snacks/fish/crab = 214,
+					/obj/item/reagent_containers/food/snacks/fish/lobster = 214,
+					/obj/item/natural/bundle/stick = 15, //Bundle of sticks
+					/obj/item/natural/stone = 30, //Easy for stones to trigger the traps accidentally
+					/obj/item/clothing/head/roguetown/helmet/tricorn = 15,
+					/obj/item/clothing/head/roguetown/helmet/bandana = 15,
+					/obj/item/clothing/head/roguetown/roguehood = 15,
+					/obj/item/clothing/under/roguetown/loincloth/brown = 15,
+					/obj/item/clothing/shoes/roguetown/sandals = 15,
+					/obj/item/clothing/shoes/roguetown/simpleshoes = 15,
+					/obj/item/clothing/gloves/roguetown/fingerless = 15,
+					/obj/item/clothing/gloves/roguetown/leather = 15,
+					/obj/item/clothing/shoes/roguetown/armor/leather = 15,
+					/obj/item/reagent_containers/syringe = 1, //These are terrifyingly powerful.
+					/obj/item/reagent_containers/glass/cup/wooden = 27,
+					/obj/item/ammo_casing/caseless/rogue/arrow = 35,
+					/obj/item/leash = 15,
+					/obj/item/customlock = 35,
+					/obj/item/storage/belt/rogue/pouch/coins/poor = 25,
+					/obj/item/shard = 1, //Bait is smaller
+					/obj/item/natural/cloth = 15,
+					/obj/item/kitchen/spoon = 1,
+					/obj/item/restraints/legcuffs/beartrap = 25,
+					/obj/item/clothing/ring/copper = 35, //lowered chance of rings, too small to trigger a trap reliably, but still here for gacha
+					/obj/item/clothing/ring/topazc = 10,
+					/obj/item/clothing/ring/emeraldc = 10,
+					/obj/item/clothing/ring/sapphirec = 10,
+					/obj/item/clothing/ring/silver = 15,
+					/obj/item/clothing/ring/topazs = 3,
+					/obj/item/clothing/ring/emeralds = 3)
+
 	embedding = list(
 		"embed_chance" = 100,
 		"embedded_unsafe_removal_time" = 0,
@@ -31,6 +129,8 @@
 	/// Maximum amount of blood we can store
 	var/blood_maximum = BLOOD_VOLUME_SURVIVE
 	w_class = WEIGHT_CLASS_SMALL
+	// Completely silent, no do_after and no visible_message
+	var/completely_silent = FALSE
 
 /obj/item/natural/worms/leech/Initialize()
 	. = ..()
@@ -62,7 +162,7 @@
 	if(drainage)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/natural/worms/leech/attack(mob/living/M, mob/user)
+/obj/item/natural/worms/leech/attack(mob/living/M, mob/living/user)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
@@ -71,7 +171,9 @@
 		if(!get_location_accessible(H, check_zone(user.zone_selected)))
 			to_chat(user, span_warning("Something in the way."))
 			return
-		var/used_time = (70 - (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10))/2
+		var/used_time = (70 - (user.mind.get_skill_level(/datum/skill/misc/medicine) * 10))/2
+		if(completely_silent)
+			used_time = 0
 		if(!do_mob(user, H, used_time))
 			return
 		if(!H)
@@ -79,10 +181,12 @@
 		user.dropItemToGround(src)
 		src.forceMove(H)
 		affecting.add_embedded_object(src, silent = TRUE, crit_message = FALSE)
+		if(completely_silent)
+			return
 		if(M == user)
-			user.visible_message(span_notice("[user] places [src] on [user.p_their()] [affecting]."), span_notice("I place a leech on my [affecting]."))
+			user.visible_message(span_notice("[user] places \a [src] on [user.p_their()] [affecting.name]."), span_notice("I place \a [src] on my [affecting.name]."))
 		else
-			user.visible_message(span_notice("[user] places [src] on [M]'s [affecting]."), span_notice("I place a leech on [M]'s [affecting]."))
+			user.visible_message(span_notice("[user] places \a [src] on [M]'s [affecting.name]."), span_notice("I place \a [src] on [M]'s [affecting.name]."))
 		return
 	return ..()
 
@@ -207,5 +311,29 @@
 	else
 		user.visible_message(span_notice("[user] squeezes [src]."),\
 							span_notice("I squeeze [src]. It will now extract blood."))
+
+/obj/item/natural/worms/leech/propaganda
+	name = "accursed leech"
+	desc = "A leech like none other."
+	drainage = 0
+	blood_sucking = 0
+	completely_silent = TRUE
+	embedding = list(
+		"embed_chance" = 100,
+		"embedded_unsafe_removal_time" = 0,
+		"embedded_pain_chance" = 0,
+		"embedded_fall_chance" = 0,
+		"embedded_bloodloss"= 0,
+	)
+
+/obj/item/natural/worms/leech/propaganda/on_embed_life(mob/living/user, obj/item/bodypart/bodypart)
+	. = ..()
+	if(!user)
+		return
+	if(iscarbon(user))
+		var/mob/living/carbon/V = user
+		if(prob(5))
+			V.say(pick("PRAISE ZIZO!", "DEATH TO THE TEN..."))
+		V.add_stress(/datum/stressevent/leechcult)
 
 #undef MAX_LEECH_EVILNESS

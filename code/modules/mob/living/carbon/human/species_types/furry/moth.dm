@@ -4,11 +4,24 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
-	desc = "In time you will learn the history of this race"
+	desc = "<b>Fluvian</b><br> \
+    Fluvians are a diverse race of moth-like creechers that live in sparse, nomadic communities across Grimoria. \
+    Aside from their obsession with the concept of their propensity with esoteric and seemingly inhumen rites and \
+	rituals, not much is known about the moth-kin. These so-called \"mystics\" are rarely seen within humen and \
+	beastkin settlements, but those that find themselves in civilisation are oft ascended to nobility."
+
+	expanded_desc = "Fluvians are a diverse race of moth-like creechers that live in sparse, nomadic communities across Grimoria. \
+    Aside from their obsession with the concept of their propensity with esoteric and seemingly inhumen rites and rituals, not much \
+	is known about the moth-kin.\ These so-called \"mystics\" are rarely seen within humen and beastkin settlements. \
+	<br><br> \
+	Scholars frequently argue about the patron god of the Fluvian race, erring towards either the twin of Astrata, Noc, or the God-Head \
+	Herself, Zizo. In truth however, the moth-kin forsake the paths of the Ten and the Inhumen, worshipping instead the whims of fate. \
+	As such, they oft find themselves as fortune tellers, mystics and spirit mediums, being the origin of mysticism in Grimoria as a whole."
+
+
 	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	possible_ages = ALL_AGES_LIST
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/moth_m.dmi'
 	limbs_icon_f = 'icons/mob/species/moth_f.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -60,6 +73,7 @@
 		)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
+		/datum/customizer/bodypart_feature/hair/head/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/organ/wings/moth,

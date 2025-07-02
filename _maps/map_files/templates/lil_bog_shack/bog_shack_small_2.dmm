@@ -15,7 +15,7 @@
 "o" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
 "p" = (/obj/machinery/light/rogue/hearth,/obj/effect/decal/cleanable/cobweb{icon_state = "cobweb2"},/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
 "q" = (/obj/structure/closet/crate/roguecloset,/obj/item/natural/bundle/fibers,/obj/item/natural/hide,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
-"r" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
+"r" = (/obj/structure/closet/crate/chest,/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
 "s" = (/obj/structure/bed/rogue/shit,/turf/open/floor/rogue/ruinedwood{icon_state = "weird1"},/area/rogue/indoors/shelter/bog)
 "t" = (/turf/open/transparent/openspace,/area/rogue/outdoors/bog)
 "u" = (/turf/open/transparent/openspace,/turf/open/transparent/openspace,/area/rogue/outdoors/bog)

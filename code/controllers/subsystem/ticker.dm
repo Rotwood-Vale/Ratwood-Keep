@@ -1,5 +1,7 @@
 #define ROUND_START_MUSIC_LIST "strings/round_start_sounds.txt"
 
+#define ASPECT_VOTE_OPTIONS 2
+#define ASPECT_ACTIVATION_CHANCE 35
 
 GLOBAL_VAR_INIT(round_timer, INITIAL_ROUND_TIMER)
 
@@ -38,7 +40,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_at
 	//576000 dusk
 	//376000 day
-	var/gametime_offset = 288001		//Deciseconds to add to world.time for station time.
+	var/gametime_offset = 279000				//Deciseconds to add to world.time for station time.
 	var/station_time_rate_multiplier = 50		//factor of station time progressal vs real time.
 	var/time_until_vote = 150 MINUTES
 	var/last_vote_time = null
@@ -67,7 +69,7 @@ SUBSYSTEM_DEF(ticker)
 	var/end_state = "undefined"
 	var/job_change_locked = FALSE
 	var/list/royals_readied = list()
-	var/rulertype = "King" // reports whether king or queen rules
+	var/rulertype = "Duke" // reports whether duke or duchess rules
 	var/rulermob = null // reports what the ruling mob is.
 	var/failedstarts = 0
 	var/list/manualmodes = list()
@@ -83,6 +85,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/end_party = FALSE
 	var/last_lobby = 0
+
+	var/aspect_vote_initiated = FALSE
+	var/list/datum/round_aspect/round_aspects = list()
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -185,11 +190,12 @@ SUBSYSTEM_DEF(ticker)
 			if(isnull(timeLeft))
 				timeLeft = max(0,start_at - world.time)
 			totalPlayers = LAZYLEN(GLOB.new_player_list)
-			totalPlayersReady = 0
-			for(var/i in GLOB.new_player_list)
-				var/mob/dead/new_player/player = i
-				if(player.ready == PLAYER_READY_TO_PLAY)
-					++totalPlayersReady
+			totalPlayersReady = num_players(TRUE)
+
+			if(!aspect_vote_initiated)
+				if (prob(ASPECT_ACTIVATION_CHANCE))
+					SSvote.initiate_vote("aspects", "Psydon", timeLeft/2)
+				aspect_vote_initiated = TRUE
 
 			if(start_immediately)
 				timeLeft = 0
@@ -206,15 +212,9 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			if(timeLeft <= 0)
-				if(!checkreqroles())
-/*					if(failedstarts >= 13)
-						current_state = GAME_STATE_SETTING_UP
-						Master.SetRunLevel(RUNLEVEL_SETUP)
-						if(start_immediately)
-							fire()
-					else*/
-					current_state = GAME_STATE_STARTUP
-					start_at = world.time + 600
+				if(!checkreqroles()) // Unable to find a duke.
+					current_state = GAME_STATE_PREGAME
+					start_at = world.time + 60 SECONDS
 					timeLeft = null
 					Master.SetRunLevel(RUNLEVEL_LOBBY)
 				else
@@ -227,7 +227,7 @@ SUBSYSTEM_DEF(ticker)
 			if(!setup())
 				//setup failed
 				current_state = GAME_STATE_STARTUP
-				start_at = world.time + 600
+				start_at = world.time + 60 SECONDS
 				timeLeft = null
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
@@ -248,9 +248,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/checkreqroles()
 	var/list/readied_jobs = list()
-	var/list/required_jobs = list()
+	var/list/required_jobs = list("Duke")
 
-	//var/list/required_jobs = list("Queen","King","Merchant") //JTGSZ - 4/11/2024 - This was the prev set of required jobs to go with the hardcoded checks commented out below
+	// Start now server button
+	if(start_immediately)
+		job_change_locked = TRUE
+		return TRUE
 
 	for(var/V in required_jobs)
 		for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -262,48 +265,15 @@ SUBSYSTEM_DEF(ticker)
 						if(player.IsJobUnavailable(V) != JOB_AVAILABLE)
 							to_chat(player, span_warning("You cannot be [V] and thus are not considered."))
 							continue
-				readied_jobs.Add(V)
-		/*
-			// These else conditions stop the round from starting unless there is a merchant, king, and queen.
-		else
-			var/list/stuffy = list("Set a Ruler to 'high' in your class preferences to start the game!", "PLAY Ruler NOW!", "A Ruler is required to start.", "Pray for a Ruler.", "One day, there will be a Ruler.", "Just try playing Ruler.", "If you don't play Ruler, the game will never start.", "We need at least one Ruler to start the game.", "We're waiting for you to pick Ruler to start.", "Still no Ruler is readied..", "I'm going to lose my mind if we don't get a Ruler readied up.","No. The game will not start because there is no Ruler.","What's the point of ROGUETOWN without a Ruler?")
-			to_chat(world, span_purple("[pick(stuffy)]"))
-			return FALSE
-	else
-		var/list/stuffy = list("Set Merchant to 'high' in your class preferences to start the game!", "PLAY Merchant NOW!", "A Merchant is required to start.", "Pray for a Merchant.", "One day, there will be a Merchant.", "Just try playing Merchant.", "If you don't play Merchant, the game will never start.", "We need at least one Merchant to start the game.", "We're waiting for you to pick Merchant to start.", "Still no Merchant is readied..", "I'm going to lose my mind if we don't get a Merchant readied up.","No. The game will not start because there is no Merchant.","What's the point of ROGUETOWN without a Merchant?")
+					readied_jobs.Add(V)
+
+#ifndef FASTLOAD
+	if(!("Duke" in readied_jobs))
+		var/list/stuffy = list("Set Duke to 'high' in your class preferences to start the game!", "PLAY Duke NOW!", "A Duke is required to start.", "Pray for a Duke.", "One day, there will be a Duke.", "Just try playing Duke.", "If you don't play Duke, the game will never start.", "We need at least one Duke to start the game.", "We're waiting for you to pick Duke to start.", "Still no Duke is readied..", "I'm going to lose my mind if we don't get a Duke readied up.","No. The game will not start because there is no Duke.")
 		to_chat(world, span_purple("[pick(stuffy)]"))
 		return FALSE
-	*/
+#endif
 
-	/*
-		This prevents any gamemode from starting unless theres at least 2 players ready, but the comments say 20 or it defaults into a deathmatch mode.
-		It is commented out and just left here for posterity
-	*/
-	/*
-	var/amt_ready = 0
-	for(var/mob/dead/new_player/player in GLOB.player_list)
-		if(!player)
-			continue
-		if(player.ready == PLAYER_READY_TO_PLAY)
-			amt_ready++
-
-	if(amt_ready < 2)
-		to_chat(world, span_purple("[amt_ready]/20 players ready."))
-		failedstarts++
-		if(failedstarts > 7)
-			to_chat(world, span_purple("[failedstarts]/13"))
-		if(failedstarts >= 13)
-			to_chat(world, span_greentext("Starting ROGUEFIGHT..."))
-			var/icon/ikon
-			var/file_path = "icons/roguefight_title.dmi"
-			ASSERT(fexists(file_path))
-			ikon = new(fcopy_rsc(file_path))
-			if(SStitle.splash_turf && ikon)
-				SStitle.splash_turf.icon = ikon
-			for(var/mob/dead/new_player/player in GLOB.player_list)
-				player.playsound_local(player, 'sound/music/wartitle.ogg', 100, TRUE)
-		return FALSE
-	*/
 	job_change_locked = TRUE
 	return TRUE
 
@@ -448,10 +418,8 @@ SUBSYSTEM_DEF(ticker)
 				qdel(L)
 
 	log_game("GAME SETUP: Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
+	round_start_time = world.time - (world.timeofday - init_start)
 	round_start_irl = REALTIMEOFDAY
-//	SSshuttle.emergency.startTime = world.time
-//	SSshuttle.emergency.setTimer(ROUNDTIMERBOAT)
 
 	SSdbcore.SetRoundStart()
 
@@ -481,8 +449,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
 	mode.post_setup()
-	GLOB.start_state = new /datum/station_state()
-	GLOB.start_state.count()
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
@@ -499,6 +465,8 @@ SUBSYSTEM_DEF(ticker)
 			S.after_round_start()
 		else
 			stack_trace("[S] [S.type] found in start landmarks list, which isn't a start landmark!")
+
+	SSticker.on_round_start()
 
 
 //These callbacks will fire after roundstart key transfer
@@ -546,28 +514,26 @@ SUBSYSTEM_DEF(ticker)
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
-//	var/captainless=1
 	var/list/valid_characters = list()
 	for(var/mob/dead/new_player/new_player as anything in GLOB.new_player_list)
 		var/mob/living/carbon/human/player = new_player.new_character
 		if(istype(player) && player.mind?.assigned_role)
-//			if(player.mind.assigned_role == "Captain")
-//				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
 				valid_characters[player] = new_player
 	sortTim(valid_characters, GLOBAL_PROC_REF(cmp_assignedrole_dsc))
 	for(var/mob/character as anything in valid_characters)
 		var/mob/new_player = valid_characters[character]
 		SSjob.EquipRank(new_player, character.mind.assigned_role, joined_late = FALSE)
-		if(CONFIG_GET(flag/roundstart_traits) && ishuman(character))
-			SSquirks.AssignQuirks(character, new_player.client, TRUE)
 		CHECK_TICK
-//	if(captainless)
-//		for(var/i in GLOB.new_player_list)
-//			var/mob/dead/new_player/N = i
-//			if(N.new_character)
-//				to_chat(N, span_notice("Captainship not forced on anyone."))
-//			CHECK_TICK
+	// NOTE: Though the comment above initialise_memories specifies that it should always be called after EquipRank,
+	// in this specific case, it needs to be called after ALL calls to EquipRank have been processed in a second pass.
+	// This is because the derived implementations of EquipRank actually set role information and the mob's real name,
+	// and the base version is called BEFORE the derived implementation rather than after.
+	// Consequently, when initialising the game, we need to call initialise_memories in a second pass, so each character
+	// will actually have the correct role information set.
+	for (var/mob/character as anything in valid_characters)
+		var/mob/new_player = valid_characters[character]
+		SSjob.initialise_memories(new_player, character.mind.assigned_role, joined_late = FALSE)
 
 /datum/controller/subsystem/ticker/proc/transfer_characters()
 	var/list/livings = list()
@@ -641,8 +607,6 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/check_maprotate()
 	if (!CONFIG_GET(flag/maprotation))
-		return
-	if (SSshuttle.emergency && SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
 		return
 	if (maprotatechecked)
 		return
@@ -742,8 +706,6 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The project started by [station_name()] to upgrade their silicon units with advanced equipment have been largely successful, though they have thus far refused to release schematics in a violation of company policy."
 		if(CLOCK_PROSELYTIZATION)
 			news_message = "The burst of energy released near [station_name()] has been confirmed as merely a test of a new weapon. However, due to an unexpected mechanical error, their communications system has been knocked offline."
-		if(SHUTTLE_HIJACK)
-			news_message = "During routine evacuation procedures, the emergency shuttle of [station_name()] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")
@@ -805,6 +767,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	SStriumphs.end_triumph_saving_time()
+
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
@@ -833,8 +796,58 @@ SUBSYSTEM_DEF(ticker)
 		world.Reboot()
 
 /datum/controller/subsystem/ticker/Shutdown()
-	gather_newscaster() //called here so we ensure the log is created even upon admin reboot
 	save_admin_data()
 	update_everything_flag_in_db()
 
 	text2file(login_music, "data/last_round_lobby_music.txt")
+
+/datum/controller/subsystem/ticker/proc/aspect_vote_choices()
+	var/list/aspects = list()
+	var/list/choices = list()
+
+	for (var/aspect in GLOB.all_aspects)
+		if (istype(GLOB.all_aspects[aspect], /datum/round_aspect))
+			var/datum/round_aspect/round_aspect = GLOB.all_aspects[aspect]
+			aspects[round_aspect.name] = round_aspect.weight
+
+	for (var/i =0; i<ASPECT_VOTE_OPTIONS; ++i)
+		choices += pickweight_n_take(aspects)
+
+	choices += "None"
+	return choices
+
+/datum/controller/subsystem/ticker/proc/aspect_vote_result(winner_name)
+	if (winner_name == "None")
+		return
+	for (var/aspect in GLOB.all_aspects)
+		if (istype(GLOB.all_aspects[aspect], /datum/round_aspect))
+			var/datum/round_aspect/a = GLOB.all_aspects[aspect]
+			if (a.name == winner_name)
+				round_aspects += a
+				a.on_selection()
+				break
+
+/datum/controller/subsystem/ticker/proc/add_aspect(aspect)
+	var/datum/round_aspect/aspect_to_add 
+	if (ispath(aspect, /datum/round_aspect))
+		aspect_to_add = new
+	else
+		aspect_to_add = aspect
+
+	if (istype(aspect_to_add, /datum/round_aspect))
+		round_aspects[aspect_to_add] = TRUE
+
+/datum/controller/subsystem/ticker/proc/on_round_start()
+	for(var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_round_start()
+
+/datum/controller/subsystem/ticker/proc/on_mob_spawn(mob/living/carbon/human/H, latejoin = FALSE)
+	for (var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_mob_spawn(H, latejoin)
+
+/datum/controller/subsystem/ticker/proc/on_job_finalised(mob/living/carbon/human/H)
+	for (var/datum/round_aspect/aspect in round_aspects)
+		aspect.on_job_finalised(H)
+
+/datum/controller/subsystem/ticker/proc/get_aspect_chance()
+	return ASPECT_ACTIVATION_CHANCE

@@ -16,7 +16,7 @@
 
 /obj/structure/roguetent/Initialize()
 	update_icon()
-	..()
+	. = ..()
 
 /obj/structure/roguetent/update_icon()
 	if(density)
