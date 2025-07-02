@@ -94,6 +94,8 @@
 	name = "shard"
 	desc = "A sharp shard of glass."
 	icon = 'icons/roguetown/items/crafting.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	experimental_inhand = FALSE
 	icon_state = "shard1"
 	item_state = "shard"

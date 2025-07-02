@@ -37,7 +37,7 @@
 	time = 4 SECONDS
 
 /datum/crafting_recipe/roguetown/survival/dryleaf
-	name = "dry swampweed"
+	name = "dry swampweed - (swamp weed; DRYING RACK; NONE)"
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1)
 	structurecraft = /obj/machinery/tanningrack
