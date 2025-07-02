@@ -204,15 +204,42 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 						var/list/L = R.result
 						for(var/IT in L)
 							var/atom/movable/I = new IT(T)
+							if(R.offset)
+								I.pixel_x = 0
+								I.pixel_y = 0
+								switch(user.dir)
+									if(NORTH)
+										I.pixel_y = 32
+									if(SOUTH)
+										I.pixel_y = -32
+									if(EAST)
+										I.pixel_x = 32
+									if(WEST)
+										I.pixel_x = -32
+							message_admins("[R] offset=[R.offset] ([R.type]) [I.pixel_x],[I.pixel_y]")
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
 					else
 						if(ispath(R.result, /turf))
 							var/turf/X = T.PlaceOnTop(R.result)
+							message_admins("[R] offset=[R.offset] ([R.type])")
 							if(X)
 								X.OnCrafted(user.dir, user)
 						else
 							var/atom/movable/I = new R.result (T)
+							if(R.offset)
+								I.pixel_x = 0
+								I.pixel_y = 0
+								switch(user.dir)
+									if(NORTH)
+										I.pixel_y = 32
+									if(SOUTH)
+										I.pixel_y = -32
+									if(EAST)
+										I.pixel_x = 32
+									if(WEST)
+										I.pixel_x = -32
+							message_admins("[R] offset=[R.offset] ([R.type]) [I.pixel_x],[I.pixel_y]")
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
@@ -455,6 +482,8 @@ proc/roguecraft(location, control, params, mob/user)
 	if(!A.can_craft_here())
 		to_chat(user, span_warning("I can't craft here."))
 		return
+	if(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement")
+		register_byos_recipes()
 	var/list/data = list()
 	var/list/catty = list()
 	var/list/surroundings = get_surroundings(user)
