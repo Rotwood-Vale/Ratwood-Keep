@@ -273,20 +273,19 @@ Vegetables
 	input =  /obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced
 	output = /datum/reagent/consumable/soup/veggie/cabbage
 	cooking_time = 70 SECONDS
-/*
+
 /datum/pot_recipe/beet_stew
 	input = /obj/item/reagent_containers/food/snacks/grown/beet
 	output = /datum/reagent/consumable/soup/veggie/beet
-*/
+
 /*==
 MISC
 ==*/
-/*
 /datum/pot_recipe/oatmeal
 	input =  /obj/item/reagent_containers/food/snacks/grown/oat
 	output = /datum/reagent/consumable/soup/oatmeal
 	cooking_time = 40 SECONDS
-*/
+
 /datum/pot_recipe/porridge
 	input =  /obj/item/reagent_containers/food/snacks/grown/wheat
 	output = /datum/reagent/consumable/soup/porridge

@@ -88,16 +88,6 @@
 	icon_state = "orecoal[rand(1,3)]"
 	return ..()
 	
-/obj/item/rogueore/coal/charcoal
-	name = "charcoal"
-	icon_state = "oreada"
-	desc = "Wood that has been burnt and transformed into charcoal. Can be used to fuel fires or used to smelt iron."
-	dropshrink = 0.8
-	color = "#929292"
-	firefuel = 15 MINUTES
-	smeltresult = /obj/item/rogueore/coal/charcoal
-	sellprice = 1
-
 /obj/item/rogueore/cinnabar
 	name = "cinnabar"
 	desc = "Red gems that contain the essence of quicksilver."

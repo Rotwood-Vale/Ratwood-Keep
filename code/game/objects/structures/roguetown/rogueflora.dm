@@ -485,7 +485,7 @@
 	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
-/*
+
 /*	..................   Wild Swampweed   ................... */
 /obj/structure/wild_swampweed
 	name = "swampweed"
@@ -496,16 +496,16 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 60
 	density = FALSE
-	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1)
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1)
 /obj/structure/wild_swampweed/attack_hand(mob/living/carbon/human/user)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
 	user.visible_message(span_warning("[user] harvests [src]."))
 	if(do_after(user, 3 SECONDS, target = src))
-		new /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf (get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed (get_turf(src))
 		qdel(src)
 /obj/structure/wild_swampweed/Crossed(mob/living/carbon/human/H)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
-*/
+
 /obj/structure/flora/rogueshroom
 	name = "mushroom"
 	desc = "Mushrooms are the only happy beings in this island."
@@ -813,7 +813,7 @@
 	name = "burnt pine tree"
 	icon_state = "dead1"
 	max_integrity = 50
-	static_debris = list(/obj/item/rogueore/coal/charcoal = 1)
+	static_debris = list(/obj/item/rogueore/coal = 1)
 	resistance_flags = FIRE_PROOF
 	stump_type = /obj/structure/flora/roguetree/stump/pine
 
@@ -825,6 +825,6 @@
 	name = "pine stump"
 	icon_state = "dead4"
 	icon = 'icons/obj/flora/pines.dmi'
-	static_debris = list(/obj/item/rogueore/coal/charcoal = 1)
+	static_debris = list(/obj/item/rogueore/coal = 1)
 	stump_type = null
 	pixel_x = -32

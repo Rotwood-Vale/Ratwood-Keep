@@ -2,7 +2,7 @@
 	import_only = TRUE
 	stable_price = TRUE
 // Worked Iron standard rates should be 20, worked steel should be 25. Both will be added 5 for transport costs. Everything else should default to stockpile prices and +5 if worked other things can be added to the total costs
-/*
+
 /datum/roguestock/import/crackers
 	name = "Bin of Rations"
 	desc = "Low moisture bread that keeps well."
@@ -12,17 +12,17 @@
 
 /obj/item/roguebin/crackers/Initialize()
 	. = ..()
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
-*/
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+	new /obj/item/reagent_containers/food/snacks/rogue/crackerscooked(src)
+
 /obj/structure/closet/crate/chest/steward
 	lockid = "steward"
 	locked = TRUE

@@ -41,37 +41,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/emberwine
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 24)
 	desc = "A bottle with an unmarked, tannin-tinted cork-seal. Zybantu red or another such cheap wine, in all likelihood."
-/*
-/obj/item/reagent_containers/glass/bottle/rogue/strongpoison
-	list_reagents = list(/datum/reagent/strongpoison = 15)
-
-/obj/item/reagent_containers/glass/bottle/rogue/stampoison
-	list_reagents = list(/datum/reagent/stampoison = 15)
-
-/obj/item/reagent_containers/glass/bottle/rogue/strongstampoison
-	list_reagents = list(/datum/reagent/strongstampoison = 15)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/strpot
-	list_reagents = list(/datum/reagent/buff/strength = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/perpot
-	list_reagents = list(/datum/reagent/buff/perception = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/endpot
-	list_reagents = list(/datum/reagent/buff/endurance = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/conpot
-	list_reagents = list(/datum/reagent/buff/constitution = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/intpot
-	list_reagents = list(/datum/reagent/buff/intelligence = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/spdpot
-	list_reagents = list(/datum/reagent/buff/speed = 27)
-
-/obj/item/reagent_containers/glass/bottle/alchemical/lucpot
-	list_reagents = list(/datum/reagent/buff/fortune = 27)
-*/
 
 //////////////////////////
 /// ALCOHOLIC BOTTLES ///
