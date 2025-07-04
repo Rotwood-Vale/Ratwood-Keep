@@ -157,6 +157,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/flavortext
 	var/flavortext_display
+	var/flavortext_nsfw
+	var/flavortext_nsfw_display
+	var/ooc_notes
+	var/ooc_notes_display
 
 	var/defiant = TRUE
 	var/virginity = FALSE
@@ -422,7 +426,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				dat += "<a href='?_src_=prefs;preference=view_nudeshot;task=input'>View</a>"
 
 			dat += "<br><b>[(length(flavortext) > MAXIMUM_FLAVOR_TEXT) ? "<font color = '#802929'>" : ""]Flavortext:[(length(flavortext) > MAXIMUM_FLAVOR_TEXT) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
-			dat += "<br><a href='?_src_=prefs;preference=flavortext_preview;task=input'><b>Preview Flavortext</b></a>"
+			dat += "<br><b>[(length(flavortext_nsfw) > MAXIMUM_NSFW_FLAVOR_TEXT) ? "<font color = '#802929'>" : ""]Flavortext (nsfw):[(length(flavortext_nsfw) > MAXIMUM_NSFW_FLAVOR_TEXT) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=flavortext_nsfw;task=input'>Change</a>"
+			dat += "<br><b>[(length(ooc_notes) > MAXIMUM_OOC_NOTES) ? "<font color = '#802929'>" : ""]OOC Notes:[(length(ooc_notes) > MAXIMUM_OOC_NOTES) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=ooc_notes;task=input'>Change</a>"
+			dat += "<br><a href='?_src_=prefs;preference=flavortext_preview;task=input'><b>Preview Examine</b></a>"
 			dat += "</td>"
 
 			dat += "</tr></table>"
@@ -1512,6 +1518,45 @@ Slots: [job.spawn_positions]</span>
 					if(length(flavortext) > MAXIMUM_FLAVOR_TEXT)
 						to_chat(user, "<span class='warning'>Your flavourtext is too long (max [MAXIMUM_FLAVOR_TEXT] characters) and will be truncated.</span>")
 					log_game("[user] has set their flavortext.")
+				if("flavortext_nsfw")
+					to_chat(user, "<span class='notice'>["<span class='bold'>This flavortext is visible when your character is nude. Flavortext should not include nonphysical nonsensory attributes such as backstory, the character's internal thoughts or your OOC preferences.</span>"]</span>")
+					var/new_nsfw_flavortext = input(user, "Input your character description (nsfw):", "Flavortext (max [MAXIMUM_NSFW_FLAVOR_TEXT] characters)", flavortext) as message|null
+					if(new_nsfw_flavortext == null)
+						return
+					if(new_nsfw_flavortext == "")
+						flavortext_nsfw = null
+						flavortext_nsfw_display = null
+						ShowChoices(user)
+						return
+					flavortext_nsfw = new_nsfw_flavortext
+					var/ft = copytext(flavortext_nsfw, 1, MAXIMUM_NSFW_FLAVOR_TEXT + 1)
+					ft = html_encode(ft)
+					ft = replacetext(parsemarkdown_basic(ft), "\n", "<BR>")
+					flavortext_nsfw_display = ft
+					to_chat(user, "<span class='notice'>Successfully updated nsfw flavortext</span>")
+					if(length(flavortext_nsfw) > MAXIMUM_NSFW_FLAVOR_TEXT)
+						to_chat(user, "<span class='warning'>Your flavourtext is too long (max [MAXIMUM_NSFW_FLAVOR_TEXT] characters) and will be truncated.</span>")
+					log_game("[user] has set their nsfw flavortext.")
+				if("ooc_notes")
+					to_chat(user, "<span class='notice'>["<span class='bold'>If you put 'anything goes' or 'no limits' here, do not be surprised if people take you up on it.</span>"]</span>")
+					var/new_ooc_notes = input(user, "Input your OOC preferences:", "OOC notes", ooc_notes) as message|null
+					if(new_ooc_notes == null)
+						return
+					if(new_ooc_notes == "")
+						ooc_notes = null
+						ooc_notes_display = null
+						ShowChoices(user)
+						return
+					ooc_notes = new_ooc_notes
+
+					var/ooc = copytext(ooc_notes, 1, MAXIMUM_OOC_NOTES + 1)
+					ooc = html_encode(ooc)
+					ooc = replacetext(parsemarkdown_basic(ooc), "\n", "<BR>")
+					ooc_notes_display = ooc
+					if(length(ooc_notes) > MAXIMUM_OOC_NOTES)
+						to_chat(user, "<span class='warning'>Your OOC notes are too long (max [MAXIMUM_OOC_NOTES] characters) and will be truncated.</span>")
+					to_chat(user, "<span class='notice'>Successfully updated OOC notes.</span>")
+					log_game("[user] has set their OOC notes'.")
 				if("headshot")
 					to_chat(user, "<span class='notice'>Please use a relatively SFW image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
 					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
@@ -1530,7 +1575,6 @@ Slots: [job.spawn_positions]</span>
 					headshot_link = new_headshot_link
 					to_chat(user, "<span class='notice'>Successfully updated headshot picture</span>")
 					log_game("[user] has set their Headshot image to '[headshot_link]'.")
-
 				if("nudeshot")
 					to_chat(user, "<span class='notice'>["<span class='bold'>do not use a real life photo or use any image that is less than serious.</span>"]</span>")
 					to_chat(user, "<span class='notice'>If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser.</span>")
@@ -1556,8 +1600,16 @@ Slots: [job.spawn_positions]</span>
 					if(valid_headshot_link(null, headshot_link, TRUE))
 						dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div><br>")
 					if(flavortext && flavortext_display)
-						dat += "<div align='left'>[flavortext_display]</div>"
-					var/datum/browser/popup = new(user, "[real_name]", nwidth = 600, nheight = 600)
+						dat += "<div align='left'>[flavortext_display]</div><br>"
+					if(flavortext_nsfw && flavortext_nsfw_display)
+						dat += "<div align='left'>[flavortext_nsfw_display]</div><br>"
+					if(ooc_notes && ooc_notes_display)
+						dat += "<div align='center'><b>OOC notes</b></div>"
+						dat += "<div align='left'>[ooc_notes_display]</div>"
+					if(nudeshot_link)
+						dat += "<br><div align='center'><b>NSFW</b></div>"
+						dat += ("<br><div align='center'><img src='[nudeshot_link]' width='600px' height='725px'></div>")
+					var/datum/browser/popup = new(user, "[real_name]", nwidth = 600, nheight = 800)
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
 
@@ -2126,6 +2178,10 @@ Slots: [job.spawn_positions]</span>
 	
 	character.flavortext = flavortext
 	character.flavortext_display = flavortext_display
+	character.flavortext_nsfw = flavortext_nsfw_display
+	character.flavortext_nsfw_display = flavortext_nsfw_display
+	character.ooc_notes = ooc_notes
+	character.ooc_notes_display = ooc_notes_display
 
 	if(parent)
 		var/list/L = get_player_curses(parent.ckey)

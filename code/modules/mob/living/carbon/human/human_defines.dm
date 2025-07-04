@@ -110,6 +110,10 @@
 
 	var/flavortext = null
 	var/flavortext_display = null
+	var/flavortext_nsfw = null
+	var/flavortext_nsfw_display = null
+	var/ooc_notes = null
+	var/ooc_notes_display = null
 
 	var/received_resident_key = FALSE
 

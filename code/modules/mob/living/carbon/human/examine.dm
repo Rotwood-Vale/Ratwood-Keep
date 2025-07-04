@@ -597,8 +597,8 @@
 		if(flavortext || headshot_link)
 			. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
 
-	if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
-		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
+	// if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
+	// 	. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)

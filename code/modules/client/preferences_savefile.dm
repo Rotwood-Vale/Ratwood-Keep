@@ -431,6 +431,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["flavortext"]			>> flavortext
 	S["flavortext_display"]	>> flavortext_display
+
+	S["flavortext_nsfw"]			>> flavortext_nsfw
+	S["flavortext_nsfw_display"]	>> flavortext_nsfw_display
+
+	S["ooc_notes"]			>> ooc_notes
+	S["ooc_notes_display"]	>> ooc_notes_display
 	
 	S["char_accent"]		>> char_accent
 	if (!char_accent)
@@ -597,6 +603,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	
 	WRITE_FILE(S["flavortext"] , html_decode(flavortext))
 	WRITE_FILE(S["flavortext_display"], flavortext_display)
+	WRITE_FILE(S["flavortext_nsfw"] , html_decode(flavortext_nsfw))
+	WRITE_FILE(S["flavortext_nsfw_display"], flavortext_nsfw_display)
+	WRITE_FILE(S["ooc_notes"] , html_decode(ooc_notes))
+	WRITE_FILE(S["ooc_notes_display"], ooc_notes_display)
 
 	return TRUE
 
