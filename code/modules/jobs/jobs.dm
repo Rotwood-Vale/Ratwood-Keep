@@ -153,6 +153,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 ))
 
 GLOBAL_LIST_INIT(foreigner_positions, list(
+	"Adventurer",
 	"Refugee",
 	"Migrant",
 	"Bandit",
