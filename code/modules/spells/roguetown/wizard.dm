@@ -13,7 +13,8 @@ That said, mage apprentices for the most part, start off with 5 (8 if counting t
 Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
 Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
 Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
--Radiantflash */
+-Radiantflash
+*/
 //A spell to choose new spells, upon spawning or gaining levels - NOTE: Please keep this spell at the top of the file to make it better for organization -RadiantFlash
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
@@ -22,6 +23,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	overlay_state = "book1"
 	chargedrain = 0
 	chargetime = 0
+	var/maxspells = 12 //Handles how many spells you can have (12 is the maximum, and mages always start with 2 spells, so in reality you will want to add 2 to any number you cap mage spells at, e.g 5 is actually 3 learnable spells)
+
+/obj/effect/proc_holder/spell/invoked/learnspell/weak
+	maxspells = 7 //5 max.
 
 /obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
 	. = ..()
@@ -103,10 +108,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/totalspellcount = 0
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		totalspellcount++
-	if(totalspellcount >= 12)
+	if(totalspellcount >= maxspells)
 		to_chat(user,span_warning("You can not memorize more spells then you already have!"))
 		return
-	var/spellsleft = 12 - totalspellcount
+	var/spellsleft = maxspells - totalspellcount
 	to_chat(user,span_warning("You can memorize [spellsleft] more spells."))
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
@@ -124,6 +129,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
