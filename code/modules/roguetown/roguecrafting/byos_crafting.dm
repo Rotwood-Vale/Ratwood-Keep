@@ -62,6 +62,24 @@ proc/register_byos_recipes()
 	reqs = list(/obj/item/natural/stoneblock = 1)
 	skill_level = 3
 
+/datum/crafting_recipe/roguetown/turfs/stone/decorated/byos
+	name = "wall (decorated stone) - (stone block; PROFICIENT)"
+	result = /turf/closed/wall/mineral/rogue/decostone
+	reqs = list(/obj/item/natural/stoneblock = 1)
+	skill_level = 3
+
+/datum/crafting_recipe/roguetown/turfs/stone/craft/byos
+	name = "wall (craftstone) - (stone block; EXPERT)"
+	result = /turf/closed/wall/mineral/rogue/craftstone
+	reqs = list(/obj/item/natural/stoneblock = 1)
+	skill_level = 4
+
+/datum/crafting_recipe/roguetown/turfs/stone/window
+	name = "murder hole (stone) - (stone block; COMPETENT)"
+	result = /turf/closed/wall/mineral/rogue/stone/window
+	reqs = list(/obj/item/natural/stoneblock = 1)
+	skill_level = 2
+
 //Twig
 /datum/crafting_recipe/roguetown/turfs/twigplatform/byos
 	name = "twig platform - (3 sticks; COMPETENT)"
