@@ -372,7 +372,7 @@
 
 /turf/open/water/river
 	name = "river"
-	desc = "Crystal clear water! Flowing swiflty along the river."
+	desc = "Crystal clear water! Flowing swiftly along the river."
 	icon_state = "rivermove"
 	icon = 'icons/turf/roguefloor.dmi'
 	water_level = 3
