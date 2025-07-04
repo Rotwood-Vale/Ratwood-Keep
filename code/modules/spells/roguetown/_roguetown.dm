@@ -51,7 +51,7 @@
 /obj/effect/proc_holder/spell/invoked/proc/on_deactivation(mob/user)
 	return
 
-/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target) 
+/obj/effect/proc_holder/spell/invoked/InterceptClickOn(mob/living/caller, params, atom/target)
 	. = ..()
 	if(.)
 		return FALSE
@@ -68,7 +68,7 @@
 			return FALSE
 	if(perform(list(target), TRUE, user = ranged_ability_user))
 		return TRUE
-	
+
 
 /obj/effect/proc_holder/spell/invoked/projectile
 	var/projectile_type = /obj/projectile/magic/teleport
@@ -102,6 +102,7 @@
 		if(istype(P, /obj/projectile/magic/bloodsteal))
 			var/obj/projectile/magic/bloodsteal/B = P
 			B.sender = user
+		P.def_zone = user.zone_selected
 		P.firer = user
 		P.preparePixelProjectile(target, user)
 		for(var/V in projectile_var_overrides)
