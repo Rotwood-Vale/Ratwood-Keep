@@ -184,12 +184,8 @@
 //proc to upgrade a simple pull into a more aggressive grab.
 /mob/living/proc/grippedby(mob/living/carbon/user, instant = FALSE)
 	user.changeNext_move(CLICK_CD_MELEE * 2 - user.STASPD)
-	var/skill_diff = 0
+	var/skill_diff = user.get_skill_level(/datum/skill/combat/wrestling) - get_skill_level(/datum/skill/combat/wrestling)
 	var/combat_modifier = 1
-	if(user.mind)
-		skill_diff += (user.mind.get_skill_level(/datum/skill/combat/wrestling)) //NPCs don't use this
-	if(mind)
-		skill_diff -= (mind.get_skill_level(/datum/skill/combat/wrestling))
 
 	if(user == src)
 		instant = TRUE

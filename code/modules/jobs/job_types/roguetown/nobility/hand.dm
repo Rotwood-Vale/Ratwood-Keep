@@ -58,29 +58,28 @@
 	backl = /obj/item/clothing/suit/roguetown/armor/leather/hand
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/lockpick = 1)
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
-		if(!isseelie(H)) //No stat changes for Seelie hands
-			H.change_stat("strength", 2)
-			H.change_stat("perception", 3)
-			H.change_stat("intelligence", 3)
-		else 
-			H.mind.AddSpell(new SPELL_PUSH_SPELL) //Repulse, good for getting people away from the King
-			H.mind.AddSpell(new SPELL_ROUSTAME) //Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
-			H.mind.AddSpell(new SPELL_SLOWDOWN_SPELL_AOE) //Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
+	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
+	if(!isseelie(H)) //No stat changes for Seelie hands
+		H.change_stat("strength", 2)
+		H.change_stat("perception", 3)
+		H.change_stat("intelligence", 3)
+	else if(H.mind)
+		H.mind.AddSpell(new SPELL_PUSH_SPELL) //Repulse, good for getting people away from the King
+		H.mind.AddSpell(new SPELL_ROUSTAME) //Rous taming still makes sense for a Hand, a 'master of words' vibe. Summoning rats however does not - its undignified
+		H.mind.AddSpell(new SPELL_SLOWDOWN_SPELL_AOE) //Immobilizes for 3 seconds in a 3x3, seems fitting for a Hand to be able to calm the court room when theres chaos
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	if(!isseelie(H)) //Only give heavy armor trait for non-seelie hands
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

@@ -26,11 +26,10 @@
 		user.visible_message(span_warning("[user] strikes the bar!"))
 		return FALSE
 	var/moveup = 1
-	var/user_skill = user.mind.get_skill_level(appro_skill)
+	var/user_skill = user.get_skill_level(appro_skill)
 	var/proab = max((skill_level - user_skill)*7, 1)
-	if(user.mind)
-		moveup += round((user_skill * 6) * (breakthrough == 1 ? 1.5 : 1))
-		moveup -= 3 * skill_level
+	moveup += round((user_skill * 6) * (breakthrough ? 1.5 : 1))
+	moveup -= 3 * skill_level
 
 	if(!user_skill)
 		proab = max(proab, 25)
@@ -54,15 +53,14 @@
 			progress -= skill_level * 2 - user_skill //Lose progress when you make mistakes
 			return FALSE
 	else
-		if(user.mind)
-			if(isliving(user))
-				var/mob/living/L = user
-				var/amt2raise = L.STAINT/3 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
-				//i feel like leveling up takes forever regardless, this would just make it faster
-				if(amt2raise > 0 && moveup > 0) //Can't raise the skill if you aren't making any progress
-					user.mind.add_sleep_experience(appro_skill, amt2raise, FALSE)
-				else if (prob(20)) //Might take a few hits to realize you're wasting your time
-					to_chat(user, span_warning("This is too complicated for my current skill level, I'm not making any progress."))
+		if(isliving(user))
+			var/mob/living/L = user
+			var/amt2raise = L.STAINT/3 // (L.STAINT+L.STASTR)/4 optional: add another stat that isn't int
+			//i feel like leveling up takes forever regardless, this would just make it faster
+			if(amt2raise > 0 && moveup > 0) //Can't raise the skill if you aren't making any progress
+				user.add_sleep_experience(appro_skill, amt2raise, FALSE)
+			else if (prob(20)) //Might take a few hits to realize you're wasting your time
+				to_chat(user, span_warning("This is too complicated for my current skill level, I'm not making any progress."))
 		if(breakthrough)
 			user.visible_message(span_warning("[user] strikes the bar!"))
 		else

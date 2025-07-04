@@ -1,7 +1,5 @@
 /mob/living/proc/update_stamina() //update hud and regen after last_fatigued delay on taking
-	var/athletics_skill = 0
-	if(mind)
-		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	var/athletics_skill = get_skill_level(/datum/skill/misc/athletics)
 	max_stamina = (STAEND + athletics_skill) * 10 //This here is the calculation for max STAMINA / GREEN
 	if(world.time > last_fatigued + 50) //regen fatigue
 		var/added = energy / max_energy // Add an amount of stamina from our energy pool. Blue -> Green
@@ -16,9 +14,7 @@
 	update_health_hud()
 
 /mob/living/proc/update_energy()
-	var/athletics_skill = 0
-	if(mind)
-		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	var/athletics_skill = get_skill_level(/datum/skill/misc/athletics)
 	max_energy = (STAEND + athletics_skill) * 100 // ENERGY / BLUE (Average of 1000)
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
@@ -31,7 +27,7 @@
 	if(HAS_TRAIT(src, TRAIT_NOSTAMINA))
 		return TRUE
 	if(m_intent == MOVE_INTENT_RUN)
-		mind?.add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
+		add_sleep_experience(/datum/skill/misc/athletics, (STAINT*0.02))
 	energy += added
 	if(energy > max_energy)
 		energy = max_energy

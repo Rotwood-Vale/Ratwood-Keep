@@ -26,23 +26,23 @@
 		pants = /obj/item/clothing/under/roguetown/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 
-	H.mind.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE) // AXE MEN! GIVE ME SPLINTERS!
-	H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
-	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) // Need to climb to build
-	H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) 
-	H.mind.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE) // AXE MEN! GIVE ME SPLINTERS!
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) 
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) // Need to climb to build
+	H.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/carpentry, 3, TRUE) 
+	H.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	if(H.age == AGE_MIDDLEAGED)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/lumberjacking, 1, TRUE)
 	if(H.age == AGE_OLD)
-		H.mind.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 
 	H.change_stat("strength", 3)
 	H.change_stat("constitution", 1)

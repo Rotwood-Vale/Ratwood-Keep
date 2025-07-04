@@ -58,7 +58,7 @@
 			return
 
 		to_chat(user, "I begin threading the needle with additional fibers...")
-		if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+		if(do_after(user, 6 SECONDS - user.get_skill_level(/datum/skill/misc/sewing), target = I))
 			var/refill_amount
 			refill_amount = min(5, (maxstring - stringamt))
 			stringamt += refill_amount
@@ -87,7 +87,7 @@
 				to_chat(user, span_warning("I should put this on a table first."))
 				return
 			var/armor_value = 0
-			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			var/skill_level = user.get_skill_level(/datum/skill/misc/sewing)
 			var/armor_list = I.armor.getList()
 			for(var/key in armor_list) // Here we are checking if the armor value of the item is 0 so we can know if the item is armor without having to make a snowflake var
 				armor_value += armor_list[key]
@@ -114,7 +114,7 @@
 					I.take_damage(50, BRUTE, "slash")
 					user.visible_message(span_info("[user] damaged [I] due to a lack of skill!"))
 					playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
-				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
+				user.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
 		return
 	return ..()
 
@@ -146,9 +146,7 @@
 	if(!target_wound)
 		return FALSE
 
-	var/moveup = 10
-	if(doctor.mind)
-		moveup = ((doctor.mind.get_skill_level(/datum/skill/misc/medicine)+1) * 5)
+	var/moveup = ((doctor.get_skill_level(/datum/skill/misc/medicine, default_mindless_value = SKILL_LEVEL_NOVICE)+1) * 5)
 	while(!QDELETED(target_wound) && !QDELETED(src) && \
 		!QDELETED(user) && (target_wound.sew_progress < target_wound.sew_threshold) && \
 		stringamt >= 1)
@@ -158,8 +156,7 @@
 		target_wound.sew_progress = min(target_wound.sew_progress + moveup, target_wound.sew_threshold)
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
-		if(doctor.mind)
-			doctor.mind.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * 2.5)
+		doctor.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * 2.5)
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)

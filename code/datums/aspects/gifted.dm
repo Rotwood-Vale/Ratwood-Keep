@@ -27,4 +27,4 @@
 	if (highest_non_legendary_level < SKILL_LEVEL_LEGENDARY)
 		var/datum/skill/skill_to_raise = pick(highest_non_legendary_skill_paths)
 		if (skill_to_raise)
-			H.mind.adjust_skillrank_up_to(skill_to_raise.type, SKILL_LEVEL_LEGENDARY, TRUE)
+			H.adjust_skillrank_up_to(skill_to_raise.type, SKILL_LEVEL_LEGENDARY, TRUE)

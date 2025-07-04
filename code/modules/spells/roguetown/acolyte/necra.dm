@@ -51,10 +51,8 @@
 
 /obj/effect/proc_holder/spell/targeted/churn/cast(list/targets,mob/living/user = usr)
 	var/prob2explode = 100
-	if(user && user.mind)
-		prob2explode = 0
-		for(var/i in 1 to user.mind.get_skill_level(/datum/skill/magic/holy))
-			prob2explode += 30
+	if(user)
+		prob2explode = 30 * user.get_skill_level(/datum/skill/magic/holy)
 	for(var/mob/living/L in targets)
 		var/isvampire = FALSE
 		var/iszombie = FALSE

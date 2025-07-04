@@ -643,7 +643,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 	user.stamina_add(fatigue_used + extra_fatigue)
 
-	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	var/skill_level = user.get_skill_level(attached_spell.associated_skill)
 	if (skill_level >= SKILL_LEVEL_EXPERT)
 		fatigue_used = 0 // we do this after we've actually changed fatigue because we're hard-capping the raises this gives to Expert
 
@@ -658,7 +658,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 	var/obj/effect/proc_holder/spell/targeted/touch/prestidigitation/base_spell = attached_spell
 	if (user)
-		add_sleep_experience(user, base_spell.associated_skill, fatigue)
+		user.add_sleep_experience(base_spell.associated_skill, fatigue)
 
 /obj/item/melee/touch_attack/prestidigitation/proc/handle_mote(mob/living/carbon/human/user)
 	// adjusted from /obj/item/wisp_lantern & /obj/item/wisp
@@ -666,7 +666,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		return // should really never happen
 
 	//let's adjust the light power based on our skill, too
-	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	var/skill_level = user.get_skill_level(attached_spell.associated_skill)
 	var/mote_power = clamp(4 + (skill_level - 3), 4, 7) // every step above journeyman should get us 1 more tile of brightness
 	mote.light_range = mote_power
 
@@ -700,7 +700,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	// adjusted from /obj/item/soap in clown_items.dm, some duplication unfortunately (needed for flavor)
 
 	// let's adjust the clean speed based on our skill level
-	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	var/skill_level = user.get_skill_level(attached_spell.associated_skill)
 	cleanspeed = initial(cleanspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 
 	if (istype(target, /obj/effect/decal/cleanable) || istype(target, /obj/effect/decal/remains))
@@ -724,7 +724,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 
 /obj/item/melee/touch_attack/prestidigitation/proc/gather_thing(atom/target, mob/living/carbon/human/user)
 
-	var/skill_level = user.mind?.get_skill_level(attached_spell.associated_skill)
+	var/skill_level = user.get_skill_level(attached_spell.associated_skill)
 	gatherspeed = initial(gatherspeed) - (skill_level * 3) // 3 cleanspeed per skill level, from 35 down to a maximum of 17 (pretty quick)
 	var/turf/Turf = get_turf(target)
 	if (istype(target, /obj/structure/well/fountain/mana))

@@ -213,7 +213,7 @@
 
 /obj/structure/table/roguetree/stump/attackby(obj/item/I, mob/living/user)
 	if(user.used_intent.blade_class == BCLASS_CHOP && lumber_amount)
-		var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+		var/skill_level = user.get_skill_level(/datum/skill/labor/lumberjacking)
 		var/lumber_time = (120 - (skill_level * 15))
 		playsound(src, 'sound/misc/woodhit.ogg', 100, TRUE)
 		if(!do_after(user, lumber_time, target = user))
@@ -231,7 +231,7 @@
 				new lumber(get_turf(src))
 		if(!skill_level)
 			to_chat(user, span_info("I could have gotten more timber were I more skilled..."))
-		user.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
+		user.add_sleep_experience(/datum/skill/labor/lumberjacking, (user.STAINT*0.5))
 		playsound(src, destroy_sound, 100, TRUE)
 		qdel(src)
 		return TRUE

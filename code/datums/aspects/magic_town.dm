@@ -34,19 +34,17 @@
 /datum/round_aspect/magic_town/on_job_finalised(mob/living/carbon/human/H)
 	give_spells(H)
 
-/datum/round_aspect/magic_town/proc/give_spells(mob/living/carbon/human/H)
+/datum/round_aspect/magic_town/proc/give_spells(mob/living/carbon/human/victim)
 	var/already_had_magic = FALSE
+	if (victim.get_skill_level(/datum/skill/magic/arcane) > 0)
+		already_had_magic = TRUE
+	victim.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 
-	if (H.mind)
-		if (H.mind.get_skill_level(/datum/skill/magic/arcane) > 0)
-			already_had_magic = TRUE
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	if (already_had_magic || !victim.mind)
+		return
 
-	if (!already_had_magic)
-		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
-		var/list/choices = valid_spells.Copy()
-		for (var/i = 0; i<spells_per_person; ++i)
-			var/path = pick_n_take(choices)
-			if(H.mind)
-				H.mind.AddSpell(new path)
-	return
+	victim.mind.AddSpell(new SPELL_PRESTIDIGITATION)
+	var/list/choices = valid_spells.Copy()
+	for(var/i in 1 to spells_per_person)
+		var/path = pick_n_take(choices)
+		victim.mind.AddSpell(new path)

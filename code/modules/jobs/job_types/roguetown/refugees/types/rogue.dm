@@ -26,16 +26,16 @@
 	switch(classchoice)
 
 		if("Thief")
-			H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -56,16 +56,16 @@
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Smuggler")
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) 
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) 
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE) 
-			H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) 
+			H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) 
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE) 
+			H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 			head =/obj/item/clothing/head/roguetown/helmet/bandana
 			shoes = /obj/item/clothing/shoes/roguetown/armor/leather
 			neck = /obj/item/clothing/neck/roguetown/coif
@@ -88,18 +88,18 @@
 			ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
 		if("Stalker") //thief but ranger
-			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/hunting, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			neck = /obj/item/clothing/neck/roguetown/coif
 			pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -120,11 +120,11 @@
 				if("Bow")
 					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 					beltl = /obj/item/ammo_holder/quiver/arrows
-					H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+					H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 				if("Crossbow")
 					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 					beltl = /obj/item/ammo_holder/quiver/bolts
-					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+					H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 
 			H.change_stat("perception", 2)
 			H.change_stat("speed", 2)

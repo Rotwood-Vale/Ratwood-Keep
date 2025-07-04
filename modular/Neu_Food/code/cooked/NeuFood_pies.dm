@@ -86,15 +86,14 @@
 
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
-		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	short_cooktime = 6 SECONDS - (user.get_skill_level(/datum/skill/craft/cooking) * 0.5 SECONDS)
+	long_cooktime = 10 SECONDS - (user.get_skill_level(/datum/skill/craft/cooking) SECONDS)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish))
 		if (process_step > 4)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a fish pie...</span>")
 			name = "unfinished fish pie"
 			process_step += 1
@@ -103,14 +102,14 @@
 			qdel(I)
 			return
 		if(fishy && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the fish pie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(fishy && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the fish pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
@@ -122,7 +121,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a meat pie...</span>")
 			name = "unfinished meat pie"
 			process_step += 1
@@ -131,14 +130,14 @@
 			qdel(I)
 			return
 		if(meaty && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the meat pie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(meaty && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the meat pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
@@ -150,7 +149,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a pot pie...</span>")
 			name = "unfinished pot pie"
 			process_step += 1
@@ -160,7 +159,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the pot pie. Needs more.</span>")
 			process_step += 1
 			var/mutable_appearance/pot2 = mutable_appearance(icon, "fill_pot2")
@@ -168,7 +167,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the pot pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			var/mutable_appearance/pot3 = mutable_appearance(icon, "fill_pot3")
@@ -181,7 +180,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a pot pie...</span>")
 			name = "unfinished pot pie"
 			process_step += 1
@@ -191,7 +190,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the pot pie. Needs more.</span>")
 			process_step += 1
 			var/mutable_appearance/egg2 = mutable_appearance(icon, "fill_egg2")
@@ -199,7 +198,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the pot pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			var/mutable_appearance/egg3 = mutable_appearance(icon, "fill_egg3")
@@ -212,7 +211,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a pot pie...</span>")
 			name = "unfinished pot pie"
 			process_step += 1
@@ -222,7 +221,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the pot pie. Needs more.</span>")
 			process_step += 1
 			var/mutable_appearance/animal2 = mutable_appearance(icon, "fill_fish2")
@@ -230,7 +229,7 @@
 			qdel(I)
 			return
 		if(potpie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the pot pie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			var/mutable_appearance/animal3 = mutable_appearance(icon, "fill_fish3")
@@ -250,7 +249,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a applepie...</span>")
 			name = "unfinished applepie"
 			process_step += 1
@@ -259,14 +258,14 @@
 			qdel(I)
 			return
 		if(applepie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the applepie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(applepie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the applepie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
@@ -278,7 +277,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a berrypie...</span>")
 			name = "unfinished berrypie"
 			process_step += 1
@@ -288,7 +287,7 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
 			process_step += 1
 			poisoning = TRUE	
@@ -296,7 +295,7 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			poisoning = TRUE	
@@ -309,7 +308,7 @@
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Starting on a berrypie...</span>")
 			name = "unfinished berrypie"
 			process_step += 1
@@ -318,14 +317,14 @@
 			qdel(I)
 			return
 		if(berrypie && process_step == 2 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Adding filling to the berrypie. Needs more.</span>")
 			process_step += 1
 			update_icon()
 			qdel(I)
 			return
 		if(berrypie && process_step == 3 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			to_chat(user, "<span class='notice'>Filling the berrypie to the brim. Still lacks a pie roof.</span>")
 			process_step += 1
 			update_icon()
@@ -335,7 +334,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/piedough))
 		playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
 		if(fishy && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked fish pie"
 			icon_state = "fishpie_raw"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/fish
@@ -345,7 +344,7 @@
 			update_icon()
 			qdel(I)
 		if(meaty && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked meat pie"
 			icon_state = "meatpie_raw"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/meat/meat
@@ -355,7 +354,7 @@
 			update_icon()
 			qdel(I)
 		if(potpie && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked pot pie"
 			filling_color = "#755430"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/pot
@@ -364,7 +363,7 @@
 			update_icon()
 			qdel(I)
 		if(applepie && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked applepie"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/apple
 			cooked_smell = /datum/pollutant/food/apple_pie
@@ -372,7 +371,7 @@
 			update_icon()
 			qdel(I)
 		if(berrypie && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked berrypie"
 			filling_color = "#4a62cf"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/berry
@@ -381,7 +380,7 @@
 			update_icon()
 			qdel(I)
 		if(poisoning && process_step == 4 && do_after(user,short_cooktime, target = src))
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+			user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			name = "uncooked berrypie"
 			filling_color = "#4a62cf"
 			cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pie/cooked/poison

@@ -24,40 +24,41 @@
 	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 
 	r_hand = /obj/item/rogueweapon/woodstaff
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) //needs climbing to get into hideout
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)	//Bandit mage. You failed out of mage school/didn't finish your apprenticeship, you get no learning skill boyo
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		if(H.age == AGE_OLD)
-			head = /obj/item/clothing/head/roguetown/wizhat/gen
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe
-			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-			H.change_stat("speed", -1)
-			H.change_stat("intelligence", 2)
-			H.change_stat("perception", 1)
-			H.mind.adjust_spellpoints(1)
-		H.change_stat("strength", 1)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE) //needs climbing to get into hideout
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/alchemy, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)	//Bandit mage. You failed out of mage school/didn't finish your apprenticeship, you get no learning skill boyo
+	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+	if(H.age == AGE_OLD)
+		head = /obj/item/clothing/head/roguetown/wizhat/gen
+		armor = /obj/item/clothing/suit/roguetown/shirt/robe
+		H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 2)
-		H.change_stat("endurance", 1)
-		H.change_stat("speed",1)
-		ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
-		ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+		H.change_stat("perception", 1)
+		if(H.mind)
+			H.mind.adjust_spellpoints(1)
+	H.change_stat("strength", 1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("endurance", 1)
+	H.change_stat("speed",1)
+	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_WANTED, TRAIT_GENERIC)
+	H.ambushable = FALSE
+	if(H.mind)
 		H.mind.adjust_spellpoints(4)
 		H.mind.AddSpell(new SPELL_PRESTIDIGITATION)
 		H.mind.AddSpell(new SPELL_LEARNSPELL)
-		H.ambushable = FALSE
 
 

@@ -81,15 +81,15 @@
 						carbon_user.stamina_add(max(21 - (used_str * 3), 0)*advance_multiplier)
 					else
 						carbon_user.stamina_add(max(30 - (used_str * 3), 0)*advance_multiplier)
-				var/total_chance = 7 * user.mind.get_skill_level(hingot.currecipe.appro_skill) * (user.STAPER + user.STAINT)/20 * hammer.quality
-				var/breakthrough = 0
+				var/total_chance = 7 * user.get_skill_level(hingot.currecipe.appro_skill) * (user.STAPER + user.STAINT)/20 * hammer.quality
+				var/breakthrough = FALSE
 				if(prob((1 + total_chance)*advance_multiplier)) //Small chance to flash
 					user.flash_fullscreen("whiteflash")
 					var/datum/effect_system/spark_spread/S = new()
 					var/turf/front = get_turf(src)
 					S.set_up(1, 1, front)
 					S.start()
-					breakthrough = 1
+					breakthrough = TRUE
 
 				if(!hingot.currecipe.advance(user, breakthrough, advance_multiplier))
 					shake_camera(user, 1, 1)

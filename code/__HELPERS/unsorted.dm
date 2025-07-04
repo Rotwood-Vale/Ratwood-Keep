@@ -1651,12 +1651,12 @@ handle interaction
 
 	to_chat(user, span_warning("[recipe.crafting_message]"))
 	playsound(user.loc, recipe.craft_sound, 100)
-	var/user_skill = user.mind?.get_skill_level(/datum/skill/craft/cooking)
+	var/user_skill = user.get_skill_level(/datum/skill/craft/cooking)
 	var/delay = get_skill_delay(user_skill, recipe.time_to_make[1], recipe.time_to_make[2])
 	if(do_after(user, delay, source))
 		if(method_result != null)
 			new method_result(source.loc) // Always be on the table
 		recipe.clear_items(items)
 		recipe.post_handle(user, items) // final checks for removing reagents from non consumable things or other stuff (e.g. peppermill)
-		user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8) //TEMP: MAKE THIS ATTACHED TO RECIPES AT SOME POINT
+		user.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8) //TEMP: MAKE THIS ATTACHED TO RECIPES AT SOME POINT
 	return TRUE

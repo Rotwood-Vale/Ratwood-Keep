@@ -35,13 +35,12 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		cloak = /obj/item/clothing/cloak/apron/brown
 
-	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 
 	H.change_stat("strength", 2)
 	H.change_stat("endurance", 1)

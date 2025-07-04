@@ -47,7 +47,7 @@
 
 /datum/special_trait/scrooge/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_SEEPRICES, "[type]")
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/reading, 3, TRUE)
 	character.mind.special_items["My mammon"] = /obj/item/storage/belt/rogue/pouch/coins/poor
 	character.mind.special_items["More of my mammon"] = /obj/item/storage/belt/rogue/pouch/coins/mid
 	character.mind.special_items["A pouch for my mammon"] = /obj/item/storage/belt/rogue/pouch
@@ -63,9 +63,9 @@
 	character.change_stat("strength", -1)
 	character.change_stat("endurance", 2)
 	character.change_stat("speed", 2)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 2, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/climbing, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 
 /datum/special_trait/lightfooted
@@ -76,7 +76,7 @@
 /datum/special_trait/lightfooted/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_LIGHT_STEP, "[type]")
 	character.change_stat("speed", 1)
-	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 
 
 /datum/special_trait/night_owl
@@ -109,7 +109,7 @@
 	character.cmode_music = 'sound/music/combat_duelist.ogg'
 	character.change_stat("speed", 2)
 	character.change_stat("endurance", 2)
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/combat/swords, 6, TRUE)
 	character.mind.special_items["my sword"] = /obj/item/rogueweapon/sword/long/heirloom
 	to_chat(character, span_notice("I need to get my sword from that tree."))
 
@@ -128,7 +128,7 @@
 
 /datum/special_trait/bookworm/on_apply(mob/living/carbon/human/character, silent)
 	character.change_stat("intelligence", 2)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/reading, 4, TRUE)
 
 /datum/special_trait/arsonist
 	name = "Arsonist"
@@ -138,7 +138,7 @@
 /datum/special_trait/arsonist/on_apply(mob/living/carbon/human/character, silent)
 	character.mind.special_items["A firebomb"] = /obj/item/bomb
 	character.mind.special_items["Another firebomb"] = /obj/item/bomb
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 2, TRUE)
 
 /datum/special_trait/psydons_rider
 	name = "Psydon's Drunkest Rider"
@@ -152,7 +152,7 @@
 	for(var/i in 1 to 2)
 		var/obj/item/bottle = new /obj/item/reagent_containers/glass/bottle/rogue/wine(get_turf(character))
 		character.put_in_hands(bottle, forced = TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/riding, 4, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/riding, 4, TRUE)
 	new /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled(get_turf(character))
 
 
@@ -187,10 +187,10 @@
 	weight = 100
 
 /datum/special_trait/thief/on_apply(mob/living/carbon/human/character, silent)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/stealing, 5, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/sneaking, 4, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/climbing, 3, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 4, TRUE)
 
 
 /datum/special_trait/polyglot
@@ -227,7 +227,7 @@
 
 /datum/special_trait/noble/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_NOBLE, "[type]")
-	character.mind.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/misc/reading, 2, TRUE)
 
 
 /datum/special_trait/swift
@@ -238,7 +238,7 @@
 /datum/special_trait/swift/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_DODGEEXPERT, "[type]")
 	ADD_TRAIT(character, TRAIT_GOODRUNNER, "[type]")
-	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
+	character.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
 	character.change_stat("speed", 3)
 
 
@@ -457,8 +457,8 @@
 	weight = 10
 
 /datum/special_trait/my_precious/on_apply(mob/living/carbon/human/character, silent)
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/wrestling, rand(1,3), TRUE)
-	character.mind.adjust_skillrank_up_to(/datum/skill/combat/unarmed, rand(1,3), TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/combat/wrestling, rand(1,3), TRUE)
+	character.adjust_skillrank_up_to(/datum/skill/combat/unarmed, rand(1,3), TRUE)
 	ADD_TRAIT(character, TRAIT_STRONGBITE, "[type]") // It's literally Smeagol. This trait is supposed to be positive. Give the walking pinata some sort of way to protect that ring.
 	QDEL_NULL(character.wear_pants)
 	QDEL_NULL(character.wear_shirt)
@@ -478,8 +478,8 @@
 	weight = 60
 
 /datum/special_trait/reps_redemption/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-	character.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	character.change_stat("strength", 2)
 	character.change_stat("constitution", 2)
 	character.change_stat("speed", -2)
@@ -493,7 +493,7 @@
 	weight = 100
 
 /datum/special_trait/seed_feed/on_apply(mob/living/carbon/human/character)
-	character.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	character.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	character.mind.special_items["The Bag"] = /obj/item/storage/roguebag/seedfeed
 	character.mind.special_items["The Sickle"] = /obj/item/rogueweapon/sickle
 
@@ -508,4 +508,4 @@
 /datum/special_trait/runic_faith/on_apply(mob/living/carbon/human/character, silent)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_L)
 	character.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/runelock, SLOT_BELT_R)
-	character.mind.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)
+	character.adjust_skillrank(/datum/skill/combat/firearms, 4, TRUE)

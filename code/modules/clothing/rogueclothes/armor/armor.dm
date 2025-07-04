@@ -1214,7 +1214,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))
-		if(user.mind?.get_skill_level(/datum/skill/craft/engineering) >= 3)
+		if(user.get_skill_level(/datum/skill/craft/engineering) >= 3)
 			toggle_mode(user)
 			return
 	if(istype(I, /obj/item/natural/melded/t1) && !powered)
@@ -1236,9 +1236,9 @@
 	if(!powered || active_item || slot != SLOT_ARMOR)
 		return
 	if(mode == 1)
-		if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+		if(user.get_skill_level(/datum/skill/magic/arcane))
 			active_item = TRUE
-			user.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+			user.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			to_chat(user, span_notice("Magicks flow throughout your body."))
 			user.change_stat("intelligence", 3)
 			return
@@ -1247,9 +1247,9 @@
 	if(mode == 2)
 		if(slot != SLOT_ARMOR)
 			return
-		if(user.mind.get_skill_level(/datum/skill/misc/athletics))
+		if(user.get_skill_level(/datum/skill/misc/athletics))
 			active_item = TRUE
-			user.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+			user.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 			to_chat(user, span_notice("Strength flow throughout your body."))
 			user.change_stat("strength", 2)
 			user.change_stat("endurance", 2)
@@ -1260,24 +1260,24 @@
 /obj/item/clothing/suit/roguetown/armor/plate/artificerarmor/dropped(mob/living/user) //Remove some bugfixing stuff in exchange for stricter checks.
 	if(active_item)
 		if(mode == 1)
-			if(user.mind.get_skill_level(/datum/skill/magic/arcane))
+			if(user.get_skill_level(/datum/skill/magic/arcane))
 				var/mob/living/carbon/human/H = user
 				if(H.get_item_by_slot(SLOT_ARMOR) == src) //Hopefully fixes this last issue.
 					to_chat(H, span_notice("Gone is the arcane magicks enhancing thine abilities..."))
 					H.change_stat("intelligence", -3) //Ensure to not give inf intelligence.
-					H.mind.adjust_skillrank(/datum/skill/magic/arcane, -1, TRUE)
+					H.adjust_skillrank(/datum/skill/magic/arcane, -1, TRUE)
 					active_item = FALSE
 					return
 			else
 				to_chat(user, span_warning("The feeling of death and decay departs the moment you leave the curiass be."))
 		if(mode == 2)
-			if(user.mind.get_skill_level(/datum/skill/misc/athletics))
+			if(user.get_skill_level(/datum/skill/misc/athletics))
 				var/mob/living/carbon/human/H = user
 				if(H.get_item_by_slot(SLOT_ARMOR) == src) //Hopefully fixes this last issue.
 					to_chat(H, span_notice("Gone is the strength enhancing thine abilities..."))
 					user.change_stat("strength", -2)
 					user.change_stat("endurance", -2)
-					H.mind.adjust_skillrank(/datum/skill/misc/athletics, -2, TRUE)
+					H.adjust_skillrank(/datum/skill/misc/athletics, -2, TRUE)
 					active_item = FALSE
 					return
 			else

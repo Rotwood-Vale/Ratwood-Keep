@@ -159,9 +159,8 @@
 		smitelevel = 2
 	else
 		smitelevel = 1
-	if(user && user.mind)
-		for(var/i in 1 to user.mind.get_skill_level(/datum/skill/magic/holy))
-			prob2smite += 20
+	if(user)
+		prob2smite += user.get_skill_level(/datum/skill/magic/holy) * 20
 	for(var/mob/living/L in targets)
 		if(L.stat == DEAD)
 			continue

@@ -9,33 +9,31 @@
 
 /datum/outfit/job/roguetown/towner/fisher/pre_equip(mob/living/carbon/human/H)
 	..()
-	if(H.mind)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //idk why the fisher gets bows
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE) //Fishers should be good at gutting particularly ornery fish.
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) //Fishers should be good at spearfishing and harpooning their prey.
+	H.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //idk why the fisher gets bows
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE) //Fishers should be good at gutting particularly ornery fish.
-		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) //Fishers should be good at spearfishing and harpooning their prey.
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-
-		H.change_stat("intelligence", 1)
-		H.change_stat("perception", 2)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
-		if(H.age == AGE_OLD)
-			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 5, TRUE)
-		else
-			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 4, TRUE)
+	H.change_stat("intelligence", 1)
+	H.change_stat("perception", 2)
+	H.change_stat("constitution", 1)
+	H.change_stat("speed", 1)
+	if(H.age == AGE_OLD)
+		H.adjust_skillrank(/datum/skill/labor/fishing, 5, TRUE)
+	else
+		H.adjust_skillrank(/datum/skill/labor/fishing, 4, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random

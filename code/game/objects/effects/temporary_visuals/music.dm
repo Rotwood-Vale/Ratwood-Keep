@@ -42,7 +42,7 @@
 			if (!H.client)
 				continue
 			if (!H.has_stress_event(stress_to_apply))
-				add_sleep_experience(owner, /datum/skill/misc/music, owner.STAINT)
+				owner.add_sleep_experience(/datum/skill/misc/music, owner.STAINT)
 				H.add_stress(stress_to_apply)
 				if (prob(50))
 					to_chat(H, stress_to_apply.desc)

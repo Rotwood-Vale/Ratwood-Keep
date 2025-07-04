@@ -20,7 +20,7 @@
 		var/turf/location = get_turf(src)
 		if(seed && (user.used_intent.blade_class == BCLASS_BLUNT) && (!user.used_intent.noaa))
 			playsound(src,'sound/items/seedextract.ogg', 100, FALSE)
-			var/farming_skill = user.mind.get_skill_level(/datum/skill/labor/farming)
+			var/farming_skill = user.get_skill_level(/datum/skill/labor/farming)
 			var/chance_to_ruin = 50 - (farming_skill * 10)
 			if(prob(chance_to_ruin))
 				user.visible_message(span_warning("[user] fails to extract the seeds."))

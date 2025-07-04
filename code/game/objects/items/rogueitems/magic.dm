@@ -45,7 +45,7 @@
 	if(!user.mind || !user.mind.do_i_know(name=input))
 		to_chat(user, span_warning("I don't know anyone by that name."))
 		return
-	var/arcane_skill = user.mind.get_skill_level(/datum/skill/magic/arcane)
+	var/arcane_skill = user.get_skill_level(/datum/skill/magic/arcane)
 	if(world.time < last_scry + cooldown)
 		to_chat(user, span_warning("The orb doesn't seem ready. Maybe I should wait..."))
 	if(!do_after(user, (60 / arcane_skill), target = user))

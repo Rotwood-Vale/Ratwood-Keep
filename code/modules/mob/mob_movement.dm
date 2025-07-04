@@ -617,8 +617,7 @@
 //* Updates a mob's sneaking status, rendering them invisible or visible in accordance to their status. TODO:Fix people bypassing the sneak fade by turning, and add a proc var to have a timer after resetting visibility.
 /mob/living/update_sneak_invis(reset = FALSE) //Why isn't this in mob/living/living_movements.dm? Why, I'm glad you asked!
 	if(ishuman(src))
-		if(mind)
-			rogue_sneaking_light_threshhold = (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.101)+0.18 //This fixes all known rogue complaints involving new sneak.
+		rogue_sneaking_light_threshhold = (get_skill_level(/datum/skill/misc/sneaking) * 0.101)+0.18 //This fixes all known rogue complaints involving new sneak.
 	if(!reset && world.time < mob_timers[MT_INVISIBILITY]) // Check if the mob is affected by the invisibility spell
 		rogue_sneaking = TRUE
 		return
@@ -629,9 +628,7 @@
 	if(T != null)
 		light_amount = T.get_lumcount()
 		
-	var/used_time = 50
-	if(mind)
-		used_time = max(used_time - (mind.get_skill_level(/datum/skill/misc/sneaking) * 8), 0)
+	var/used_time = max(5 SECONDS - (get_skill_level(/datum/skill/misc/sneaking) * 0.8 SECONDS), 0)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
 		if((stat > SOFT_CRIT) || IsSleeping() || (world.time < mob_timers[MT_FOUNDSNEAK] + 30 SECONDS) || !T || reset || (m_intent != MOVE_INTENT_SNEAK) || light_amount >= rogue_sneaking_light_threshhold || (world.time < mob_timers[MT_SNEAKATTACK] + 6 SECONDS) || (world.time < mob_timers[MT_SPELLSNEAK] + 25 SECONDS)) //SEVERELY nerfs sneak attacking.
@@ -645,7 +642,7 @@
 		if(light_amount < rogue_sneaking_light_threshhold && m_intent == MOVE_INTENT_SNEAK)
 			animate(src, alpha = 0, time = used_time)
 			if(ishuman(src))
-				invisibility = (SEE_INVISIBLE_LIVING + (mind.get_skill_level(/datum/skill/misc/sneaking) * 0.75))+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
+				invisibility = (SEE_INVISIBLE_LIVING + (get_skill_level(/datum/skill/misc/sneaking) * 0.75))+1 //At 5 sneak, you get a total of ~24 invis - 3.75 bonus
 			else
 				invisibility = (SEE_INVISIBLE_LIVING + 1) //fixes ghosts being unable to see these guys
 			alpha = 150 //Forcibly set these guys to have an alpha of 150 (to differentiate for admemes)

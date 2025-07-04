@@ -85,11 +85,11 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current
 			dreamer.cmode_music = 'sound/music/combat_maniac2.ogg'
-			owner.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
+			dreamer.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
+			dreamer.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
+			dreamer.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
+			dreamer.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+			dreamer.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON

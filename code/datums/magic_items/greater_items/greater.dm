@@ -123,8 +123,8 @@
 		return
 	else
 		user.change_stat("perception", 2)
-		user.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		user.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
+		user.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+		user.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		to_chat(user, span_notice("I feel more dexterious!"))
 		active_item = TRUE
 
@@ -132,8 +132,8 @@
 	if(active_item)
 		active_item = FALSE
 		user.change_stat("perception", -2)
-		user.mind.adjust_skillrank_down_to(/datum/skill/combat/bows, 2, TRUE)
-		user.mind.adjust_skillrank_down_to(/datum/skill/combat/crossbows, 2, TRUE)
+		user.adjust_skillrank_down_to(/datum/skill/combat/bows, 2, TRUE)
+		user.adjust_skillrank_down_to(/datum/skill/combat/crossbows, 2, TRUE)
 		to_chat(user, span_notice("I feel mundane once more"))
 
 /datum/magic_item/greater/leaping

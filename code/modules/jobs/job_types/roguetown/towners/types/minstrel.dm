@@ -10,17 +10,17 @@
 
 /datum/outfit/job/roguetown/towner/minstrel/pre_equip(mob/living/carbon/human/H)
     ..()
-    H.mind.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-    H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/music, 5, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+    H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+    H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+    H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
     head = /obj/item/clothing/head/roguetown/bardhat
     pants = /obj/item/clothing/under/roguetown/tights/random
     gloves = /obj/item/clothing/gloves/roguetown/fingerless

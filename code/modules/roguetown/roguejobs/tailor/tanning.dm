@@ -39,7 +39,7 @@
 			return
 	if((user.used_intent.type == /datum/intent/dagger/cut || user.used_intent.type == /datum/intent/sword/cut || user.used_intent.type == /datum/intent/axe/cut) && hide)
 		if(anchored)
-			var/skill_level = user.mind.get_skill_level(/datum/skill/craft/hunting)
+			var/skill_level = user.get_skill_level(/datum/skill/craft/hunting)
 			var/work_time = (120 - (skill_level * 15))
 			var/pieces_to_spawn = rand(1, min(skill_level + 1, 6)) //Random number from 1 to skill level
 			var/sound_played = FALSE
@@ -48,7 +48,7 @@
 				return
 			playsound(src,pick('sound/items/book_open.ogg','sound/items/book_page.ogg'), 100, FALSE)
 			hide = null
-			user.mind.add_sleep_experience(/datum/skill/craft/hunting, user.STAINT * 2) //these numbers may need some revision
+			user.add_sleep_experience(/datum/skill/craft/hunting, user.STAINT * 2) //these numbers may need some revision
 			update_icon()
 			for(var/i = 0; i < pieces_to_spawn; i++)
 				if(prob(skill_level + user.goodluck(2)))

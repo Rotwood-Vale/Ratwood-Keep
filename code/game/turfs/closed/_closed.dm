@@ -79,26 +79,17 @@
 				if(F && (F.density && !F.climbable))
 					to_chat(user, span_warning("I can't climb here."))
 					return
-			var/used_time = 0
-			if(L.mind)
-				var/myskill = L.mind.get_skill_level(/datum/skill/misc/climbing)
-				var/obj/structure/table/TA = locate() in L.loc
-				if(TA)
-					myskill += 1
-				else
-					var/obj/structure/chair/CH = locate() in L.loc
-					if(CH)
-						myskill += 1
-					var/obj/structure/wallladder/WL = locate() in L.loc
-					if(WL)
-						if(get_dir(WL.loc,src) == WL.dir)
-							myskill += 8
-							climbsound = 'sound/foley/ladder.ogg'
-
-				if(myskill < climbdiff)
-					to_chat(user, span_warning("I'm not capable of climbing this wall."))
-					return
-				used_time = max(70 - (myskill * 10) - (L.STASPD * 3), 30)
+			var/myskill = L.get_skill_level(/datum/skill/misc/climbing)
+			var/obj/structure/wallladder/WL = locate() in L.loc
+			if(WL && get_dir(WL.loc,src) == WL.dir) // wall ladder takes priority
+				myskill += 8
+				climbsound = 'sound/foley/ladder.ogg'
+			else if(locate(/obj/structure/table) in L.loc || locate(/obj/structure/chair) in L.loc)
+				myskill += 1
+			if(myskill < climbdiff)
+				to_chat(user, span_warning("I'm not capable of climbing this wall."))
+				return
+			var/used_time = max(7 SECONDS - (myskill SECONDS) - (L.STASPD * 0.3 SECONDS), 3 SECONDS)
 			if(user.m_intent != MOVE_INTENT_SNEAK)
 				playsound(user, climbsound, 100, TRUE)
 			user.visible_message(span_warning("[user] starts to climb [src]."), span_warning("I start to climb [src]..."))

@@ -399,15 +399,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/obj/item/held_item = user.get_active_held_item()
 		if(held_item)
 			if((butcher_results || guaranteed_butcher_results) && held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
-				var/used_time = 210
-				if(user.mind)
-					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+				var/used_time = 21 SECONDS - (user.get_skill_level(/datum/skill/craft/hunting) * 3 SECONDS)
 				visible_message("[user] begins to butcher [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				var/amt2raise = user.STAINT // this is due to the fact that butchering is not as spammable as training a sword because you cant just spam click
 				if(do_after(user, used_time, target = src))
-					if(user.mind)
-						user.mind.add_sleep_experience(/datum/skill/craft/hunting, amt2raise * 4)
+					user.add_sleep_experience(/datum/skill/craft/hunting, amt2raise * 4)
 					butcher(user)
 	..()
 
@@ -699,20 +696,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/hostile/user_unbuckle_mob(mob/living/M, mob/user)
 	if(user != M)
 		return
-	var/time2mount = 0
-	var/amt = M.mind.get_skill_level(/datum/skill/misc/riding)
-	if(M.mind)
-		if(amt)
-			if(amt <= 3)
-				time2mount = 40 - (amt * 10)
-			else
-				time2mount = 0 // Instant at Expert and above
-		else
-			time2mount = 40
+	var/riding_skill_level = M.get_skill_level(/datum/skill/misc/riding)
+	var/time2mount = max(4 SECONDS - (riding_skill_level SECONDS), 0) // At EXPERT (4) or above it's 0
+	var/can_fumble = riding_skill_level < SKILL_LEVEL_JOURNEYMAN
 	if(ssaddle)
 		playsound(src, 'sound/foley/saddledismount.ogg', 100, TRUE)
 	if(!move_after(M,time2mount, target = src))
-		if(amt < 3) // Skilled prevents you from fumbling
+		if(can_fumble)
 			M.Paralyze(50)
 			M.Stun(50)
 			playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
@@ -733,17 +723,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		return
 	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(riding_datum)
-		var/time2mount = 12
+		var/riding_skill_level = M.get_skill_level(/datum/skill/misc/riding)
+		var/time2mount = max(5 SECONDS - (riding_skill_level SECONDS), 0) // At MASTER (5) or above it's 0
 		riding_datum.vehicle_move_delay = move_to_delay
-		if(M.mind)
-			var/amt = M.mind.get_skill_level(/datum/skill/misc/riding)
-			if(amt)
-				if(amt <= 3)
-					time2mount = 50 - (amt * 10)
-				else
-					time2mount = 0 // Instant at Master and above
-			else
-				time2mount = 50
 
 		if(!move_after(M,time2mount, target = src))
 			return
@@ -790,17 +772,16 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 						playsound(loc,pick('sound/foley/footsteps/hoof/horsewalk (1).ogg','sound/foley/footsteps/hoof/horsewalk (2).ogg','sound/foley/footsteps/hoof/horsewalk (3).ogg'), 100, TRUE)
 					else
 						do_footstep = FALSE
-			if(user.mind)
-				var/amt = user.mind.get_skill_level(/datum/skill/misc/riding)
-				if(amt)
-					amt = clamp(amt, 0, 4) //higher speed amounts are a little wild. Max amount achieved at expert riding.
-					riding_datum.vehicle_move_delay -= (amt/5 + 2)
-				riding_datum.vehicle_move_delay -= 3
+			var/amt = user.get_skill_level(/datum/skill/misc/riding)
+			if(amt)
+				amt = clamp(amt, SKILL_LEVEL_NONE, SKILL_LEVEL_EXPERT) //higher speed amounts are a little wild. Max amount achieved at expert riding.
+				riding_datum.vehicle_move_delay -= (amt/5 + 2)
+			riding_datum.vehicle_move_delay -= 3
 			if(loc != oldloc && isliving(user))
 				var/mob/living/L = user
 				var/obj/structure/mineral_door/MD = locate() in loc
 				if(MD && !MD.ridethrough && !isseelie(L))
-					var/strong_thighs = L.mind.get_skill_level((/datum/skill/misc/riding))
+					var/strong_thighs = L.get_skill_level((/datum/skill/misc/riding))
 					if(prob(60 - (strong_thighs * 10))) // Legendary riders do not fall!
 						unbuckle_mob(L)
 						L.Paralyze(50)

@@ -24,14 +24,14 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
+	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing , 2, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, pick(0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, pick(0,1), TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/climbing , 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		H.mind.AddSpell(new SPELL_SEELIE_DUST)
 		H.mind.AddSpell(new SPELL_SUMMON_RAT)
 		H.mind.AddSpell(new SPELL_SEELIE_KISS)

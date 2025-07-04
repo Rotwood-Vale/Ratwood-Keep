@@ -249,21 +249,21 @@
 			switch(user.used_intent.blade_class)
 				if(BCLASS_CUT)
 					var/mob/living/lumberjacker = user
-					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+					var/lumberskill = lumberjacker.get_skill_level(/datum/skill/labor/lumberjacking)
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.2
 					else
 						dullfactor = 0.45 + (lumberskill * 0.15)
-						lumberjacker.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
+						lumberjacker.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 				if(BCLASS_CHOP)
 					var/mob/living/lumberjacker = user
-					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
+					var/lumberskill = lumberjacker.get_skill_level(/datum/skill/labor/lumberjacking)
 					if(!I.remove_bintegrity(1))
 						dullfactor = 0.3
 					else
 						dullfactor = 1.0 + (lumberskill * 0.25)
-						lumberjacker.mind.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
+						lumberjacker.add_sleep_experience(/datum/skill/labor/lumberjacking, (lumberjacker.STAINT*0.2))
 					cont = TRUE
 			if(!cont)
 				return 0
@@ -304,7 +304,7 @@
 					cont = TRUE
 				if(BCLASS_PICK)
 					var/mob/living/miner = user
-					var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
+					var/mineskill = miner.get_skill_level(/datum/skill/labor/mining)
 					dullfactor = 1.5 * (mineskill * 0.1)
 					cont = TRUE
 			if(!cont)
@@ -315,10 +315,10 @@
 				if(user.used_intent.blade_class != BCLASS_DRILL)
 					return 0
 			var/mob/living/miner = user
-			var/mineskill = miner.mind.get_skill_level(/datum/skill/labor/mining)
+			var/mineskill = miner.get_skill_level(/datum/skill/labor/mining)
 			newforce = newforce * (8+(mineskill*1.5))
 			shake_camera(user, 1, 1)
-			miner.mind.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
+			miner.add_sleep_experience(/datum/skill/labor/mining, (miner.STAINT*0.2))
 
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
@@ -531,7 +531,7 @@ proc/get_attack_flavor_text(mob/user, obj/item/I) // Arguments very important. T
 	if(!user.mind) // If we're a dumb mob without a player attached, we're definitely not utilizing the skill system. So don't just spam them with incompetently and inexpertly... It's not a very good look... (It's also a runtime safeguard)
 		return ""
 
-	var/skill_level = user.mind.get_skill_level(associated_skill) // Need this so we can actually grab skill levels of peoples
+	var/skill_level = user.get_skill_level(associated_skill) // Need this so we can actually grab skill levels of peoples
 	switch(skill_level) // Depending on our skill level
 		if(SKILL_LEVEL_NONE)	   return "incompetently "
 		if(SKILL_LEVEL_NOVICE)     return "inexpertly "

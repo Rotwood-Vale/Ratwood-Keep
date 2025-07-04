@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/stone/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/masonry)
+	var/skill_level = user.get_skill_level(/datum/skill/craft/masonry)
 	var/work_time = (35 - (skill_level * 5))
 	if(istype(W, /obj/item/natural/stone))
 		playsound(src.loc, pick('sound/items/stonestone.ogg'), 100)
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
 			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
 			qdel(src)
-			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.2))
+			user.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.2))
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
 		to_chat(user, span_warning("You most use both hands to chisel blocks."))
@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 
 /obj/item/natural/rock/attackby(obj/item/W, mob/living/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/skill_level = user.mind.get_skill_level(/datum/skill/craft/masonry)
+	var/skill_level = user.get_skill_level(/datum/skill/craft/masonry)
 	var/work_time = (120 - (skill_level * 15))
 	if(istype(W, /obj/item/natural/stone))
 		user.visible_message(span_info("[user] strikes the stone against the rock."))
@@ -366,7 +366,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			new /obj/item/natural/stoneblock(get_turf(src.loc))
 			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
 			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
-			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.5))
+			user.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*0.5))
 			qdel(src)
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))
@@ -518,7 +518,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			new /obj/item/natural/stoneblock(get_turf(src.loc))
 			new /obj/effect/decal/cleanable/debris/stony(get_turf(src))
 			playsound(src.loc, pick('sound/combat/hits/onrock/onrock (1).ogg', 'sound/combat/hits/onrock/onrock (2).ogg', 'sound/combat/hits/onrock/onrock (3).ogg', 'sound/combat/hits/onrock/onrock (4).ogg'), 100)
-			user.mind.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*1))
+			user.add_sleep_experience(/datum/skill/craft/masonry, (user.STAINT*1))
 			qdel(src)
 		return
 	else if(istype(W, /obj/item/rogueweapon/chisel/assembly))

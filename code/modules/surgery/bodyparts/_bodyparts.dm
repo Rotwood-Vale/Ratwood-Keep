@@ -198,9 +198,7 @@
 	if(held_item)
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(!skeletonized)
-				var/used_time = 210
-				if(user.mind)
-					used_time -= (user.mind.get_skill_level(/datum/skill/craft/hunting) * 30)
+				var/used_time = 21 SECONDS - (user.get_skill_level(/datum/skill/craft/hunting) * 3 SECONDS)
 				visible_message("[user] begins to butcher \the [src].")
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, used_time, target = src))
