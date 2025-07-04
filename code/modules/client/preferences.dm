@@ -1520,7 +1520,7 @@ Slots: [job.spawn_positions]</span>
 					log_game("[user] has set their flavortext.")
 				if("flavortext_nsfw")
 					to_chat(user, "<span class='notice'>["<span class='bold'>This flavortext is visible when your character is nude. Flavortext should not include nonphysical nonsensory attributes such as backstory, the character's internal thoughts or your OOC preferences.</span>"]</span>")
-					var/new_nsfw_flavortext = input(user, "Input your character description (nsfw):", "Flavortext (max [MAXIMUM_NSFW_FLAVOR_TEXT] characters)", flavortext) as message|null
+					var/new_nsfw_flavortext = input(user, "Input your character description (nsfw):", "Flavortext (max [MAXIMUM_NSFW_FLAVOR_TEXT] characters)", flavortext_nsfw) as message|null
 					if(new_nsfw_flavortext == null)
 						return
 					if(new_nsfw_flavortext == "")
