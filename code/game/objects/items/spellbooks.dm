@@ -447,6 +447,7 @@
 					qdel(P)
 		return ..()
 /obj/item/book/granter/spellbook/apprentice/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	..()
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if (istype(P, /obj/item/natural/artifact))
 		if(isturf(loc) && (found_table))
@@ -477,6 +478,7 @@
 					user.electrocute_act(40, src)
 					qdel(P)
 /obj/item/book/granter/spellbook/adept/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	..()
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if (istype(P, /obj/item/natural/artifact))
 		if(isturf(loc) && (found_table))
@@ -507,6 +509,7 @@
 					user.electrocute_act(40, src)
 					qdel(P)
 /obj/item/book/granter/spellbook/expert/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	..()
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if (istype(P, /obj/item/natural/artifact))
 		if(isturf(loc) && (found_table))
@@ -537,6 +540,7 @@
 					user.electrocute_act(60, src)
 					qdel(P)
 /obj/item/book/granter/spellbook/master/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	..()
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if (istype(P, /obj/item/natural/artifact))
 		if(isturf(loc) && (found_table))
@@ -566,8 +570,6 @@
 					span_notice("I should have known messing with the arcyne as dangerous!"))
 					user.electrocute_act(80, src)
 					qdel(P)
-	else
-		return ..()
 
 // qualityoflearn buff shit
 
