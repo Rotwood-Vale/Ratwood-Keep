@@ -209,7 +209,7 @@
 				else
 					I = M.get_inactive_held_item()
 			user.stamina_add(rand(3,8))
-			var/probby = clamp((((18 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
+			var/probby = clamp((((4.5 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
 			if(I)
 				if(M.mind)
 					if(I.associated_skill)
