@@ -15,9 +15,16 @@
 	speak_chance = 2
 	faction = list("chickens")
 
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
 						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
 						/obj/item/natural/feather = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 2,
+						/obj/item/natural/feather = 2,
+						/obj/item/natural/hide = 1)
+
+
 
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
 	food_type = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue,

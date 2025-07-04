@@ -25,6 +25,10 @@
 	dir = dirin
 	return
 
+/atom/proc/post_craft()
+	return
+
+
 /obj/item/OnCrafted(dirin)
 	. = ..()
 

@@ -91,12 +91,12 @@
 	name = "Vegetables Pack"
 	cost = 50
 	contains = list(
-					/obj/item/reagent_containers/food/snacks/grown/cabbage,
-					/obj/item/reagent_containers/food/snacks/grown/cabbage,
-					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/onion,
-					/obj/item/reagent_containers/food/snacks/grown/potato,
-					/obj/item/reagent_containers/food/snacks/grown/potato,
+					/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+					/obj/item/reagent_containers/food/snacks/grown/cabbage/rogue,
+					/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+					/obj/item/reagent_containers/food/snacks/grown/onion/rogue,
+					/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
+					/obj/item/reagent_containers/food/snacks/grown/potato/rogue,
 					/obj/item/reagent_containers/food/snacks/grown/beet,
 					)
 
