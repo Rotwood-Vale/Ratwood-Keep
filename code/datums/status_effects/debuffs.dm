@@ -677,25 +677,30 @@
 	var/list/traits_added = list()
 	var/list/bodyparts_disabled = list()
 	
+#define PARALYZE_L_ARM 0x1
+#define PARALYZE_R_ARM 0x2
+#define PARALYZE_L_LEG 0x4
+#define PARALYZE_R_LEG 0x8
+#define PARALYZE_SUM (PARALYZE_L_ARM | PARALYZE_R_ARM | PARALYZE_L_LEG | PARALYZE_R_LEG)
 /datum/status_effect/debuff/mishap_arcane_paralysis/on_apply()
 	. = ..()
-	var/limbs = rand(1, 15) // To be used as bits, NOT a meaningful integer value
+	var/limbs = rand(1, PARALYZE_SUM) // To be used as bits, NOT a meaningful integer value
 	// This method ensures our limbs are chosen randomly,
 	// that all limbs have a 50% chance of being paralyzed,
 	// and at least one limb is guaranteed to be paralyzed
-	if (limbs & 0x1)
+	if (limbs & PARALYZE_L_ARM)
 		ADD_TRAIT(owner, TRAIT_PARALYSIS_L_ARM, id)
 		traits_added.Add(TRAIT_PARALYSIS_L_ARM)
 		bodyparts_disabled.Add(BODY_ZONE_L_ARM)
-	if (limbs & 0x2)
+	if (limbs & PARALYZE_R_ARM)
 		ADD_TRAIT(owner, TRAIT_PARALYSIS_R_ARM, id)
 		traits_added.Add(TRAIT_PARALYSIS_R_ARM)
 		bodyparts_disabled.Add(BODY_ZONE_R_ARM)
-	if (limbs & 0x4)
+	if (limbs & PARALYZE_L_LEG)
 		ADD_TRAIT(owner, TRAIT_PARALYSIS_L_LEG, id)
 		traits_added.Add(TRAIT_PARALYSIS_L_LEG)
 		bodyparts_disabled.Add(BODY_ZONE_L_LEG)
-	if (limbs & 0x8)
+	if (limbs & PARALYZE_R_LEG)
 		ADD_TRAIT(owner, TRAIT_PARALYSIS_R_LEG, id)
 		traits_added.Add(TRAIT_PARALYSIS_R_LEG)
 		bodyparts_disabled.Add(BODY_ZONE_R_LEG)
