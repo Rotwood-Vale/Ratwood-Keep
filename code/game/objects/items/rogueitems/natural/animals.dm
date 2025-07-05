@@ -52,6 +52,8 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	grid_height = 32
+	grid_width = 32
 
 /obj/item/natural/fur
 	name = "fur"

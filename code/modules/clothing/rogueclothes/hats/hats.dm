@@ -499,6 +499,9 @@
 	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
 	desc = "A helmet which covers the top of the head."

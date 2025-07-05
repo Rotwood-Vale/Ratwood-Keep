@@ -23,6 +23,8 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
 	max_storage = 20
 	ammo_type = list (/obj/item/ammo_casing/caseless/rogue/arrow, /obj/item/ammo_casing/caseless/rogue/bolt)
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/ammo_holder/bullet
 	name = "bullet pouch"
@@ -31,6 +33,8 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	max_storage = 10
 	ammo_type = list(/obj/item/ammo_casing) //common denominator type for runelock and arquebus bullets
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/ammo_holder/quiver/attack_turf(turf/T, mob/living/user)
 	if(ammo.len >= max_storage)

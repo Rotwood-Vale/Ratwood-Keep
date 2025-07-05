@@ -41,9 +41,11 @@
 		if(try_ferment(I, user))
 			return TRUE
 	if(istype(I,/obj/item/storage/roguebag) && I.contents.len)
+		var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
 		var/success
 		for(var/obj/item/reagent_containers/food/snacks/grown/bagged_fruit in I.contents)
 			if(try_ferment(bagged_fruit, user, TRUE))
+				STR.remove_from_storage(bagged_fruit, src)
 				success = TRUE
 		if(success)
 			to_chat(user, span_info("I dump the contents of [I] into [src]."))

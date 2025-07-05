@@ -27,6 +27,9 @@
 	embedding = list("embedded_unsafe_removal_time" = 40, "embedded_pain_chance" = 10, "embedded_pain_multiplier" = 1, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	max_integrity = 100
 
+	grid_width = 64
+	grid_height = 64
+
 /obj/item/restraints/legcuffs/beartrap/attack_hand(mob/user)
 	if(iscarbon(user) && armed && isturf(loc))
 		var/mob/living/carbon/C = user

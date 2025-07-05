@@ -31,6 +31,9 @@
 		"embedded_pain_multiplier" = 1,
 		"embedded_fall_chance" = 0,
 	)
+	grid_height = 64
+	grid_width = 32
+	
 	var/initial_sl
 	var/list/possible_enhancements
 	var/renamed_name

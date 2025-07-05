@@ -27,6 +27,8 @@ Reel teleports the attached atom to the grabbed turf.
 	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/bronze
 	slot_flags = ITEM_SLOT_HIP
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/grapplinghook/Initialize(mapload)
 	. = ..()

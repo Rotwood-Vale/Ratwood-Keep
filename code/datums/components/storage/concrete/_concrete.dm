@@ -73,14 +73,6 @@
 		var/datum/component/storage/slave = i
 		slave.refresh_mob_views()
 
-/datum/component/storage/concrete/emp_act(datum/source, severity)
-	if(emp_shielded)
-		return
-	var/atom/real_location = real_location()
-	for(var/i in real_location)
-		var/atom/A = i
-		A.emp_act(severity)
-
 /datum/component/storage/concrete/proc/on_slave_link(datum/component/storage/S)
 	if(S == src)
 		return FALSE
@@ -177,6 +169,9 @@
 	I.item_flags |= IN_STORAGE
 	refresh_mob_views()
 	I.mouse_opacity = MOUSE_OPACITY_OPAQUE //So you can click on the area around the item to equip it, instead of having to pixel hunt
+	// if(ismovable(parent))
+	// 	if(ismob(parent:loc))
+	// 		parent:loc:encumbrance_to_speed()
 	if(M)
 		if(M.client && M.active_storage != src)
 			M.client.screen -= I

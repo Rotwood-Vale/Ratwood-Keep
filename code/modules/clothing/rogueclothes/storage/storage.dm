@@ -19,14 +19,6 @@
 	salvage_result = /obj/item/natural/hide/cured
 	var/datum/wound/artery/artery_wound
 
-/obj/item/storage/belt/rogue/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = heldz_items
-
 /obj/item/storage/belt/rogue/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
 	if(CP)
@@ -171,6 +163,7 @@
 	color = "#b9a286"
 	heldz_items = 1
 	salvage_result = /obj/item/rope
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth
 	name = "cloth sash"
@@ -178,6 +171,7 @@
 	icon_state = "cloth"
 	heldz_items = 1
 	salvage_result = /obj/item/natural/cloth
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
 	color = "#575160"
@@ -202,15 +196,9 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	fiber_salvage = FALSE
-
-/obj/item/storage/belt/rogue/pouch/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 6
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 3
-		STR.not_while_equipped = FALSE
+	component_type = /datum/component/storage/concrete/grid/coin_pouch
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
 	. = ..()
@@ -251,17 +239,19 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/food/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked(src)
+/obj/item/storage/belt/rogue/pouch/food/
+	populate_contents = list(
+		/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
+	)
 
 /obj/item/storage/belt/rogue/pouch/ammo
 	name = "sphere pouch"
 	desc = "Usually used for holding runelock sphreres."
-
-/obj/item/storage/belt/rogue/pouch/ammo/PopulateContents()
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
-	new /obj/item/ammo_casing/caseless/runelock(src)
+	populate_contents = list(
+		/obj/item/ammo_casing/caseless/runelock,
+		/obj/item/ammo_casing/caseless/runelock,
+		/obj/item/ammo_casing/caseless/runelock
+	)
 
 /obj/item/storage/backpack/rogue //holding salvage vars for children
 	sewrepair = TRUE
@@ -284,47 +274,36 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
+	component_type = /datum/component/storage/concrete/grid/satchel
 
-/obj/item/storage/backpack/rogue/satchel/heartfelt/PopulateContents()
-	new /obj/item/natural/feather(src)
-	new /obj/item/paper(src)
+
+/obj/item/storage/backpack/rogue/satchel/heartfelt
+	populate_contents = list(
+		/obj/item/natural/feather,
+		/obj/item/paper
+	)
 
 /obj/item/storage/backpack/rogue/satchel/mule/PopulateContents()
+	. = ..()
 	for(var/i in 1 to 3)
 		switch(rand(1,4))
 			if(1)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
+				insert_or_del(/obj/item/reagent_containers/powder/moondust_purest)
 			if(2)
-				new /obj/item/reagent_containers/powder/moondust_purest(src)
+				insert_or_del(/obj/item/reagent_containers/powder/moondust_purest)
 			if(3)
-				new /obj/item/reagent_containers/powder/ozium(src)
+				insert_or_del(/obj/item/reagent_containers/powder/ozium)
 			if(4)
-				new /obj/item/reagent_containers/powder/spice(src)
+				insert_or_del(/obj/item/reagent_containers/powder/spice)
 
-/obj/item/storage/backpack/rogue/satchel/musketeer/PopulateContents()
-	new /obj/item/powderflask(src)
-	new /obj/item/storage/belt/rogue/pouch/coins/mid(src)
+/obj/item/storage/backpack/rogue/satchel/musketeer
+	populate_contents = list(
+		/obj/item/powderflask,
+		/obj/item/storage/belt/rogue/pouch/coins/mid
+	)
 
 /obj/item/storage/backpack/rogue/satchel/black
 	color = CLOTHING_BLACK
-
-/obj/item/storage/backpack/rogue/satchel/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 18
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 4
-		STR.click_gather = TRUE
-		STR.allow_quick_empty = TRUE
-		STR.allow_dump_out = TRUE
-
-
-/obj/item/storage/backpack/rogue/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
 
 
 /obj/item/storage/backpack/rogue/backpack
@@ -339,16 +318,7 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
-
-/obj/item/storage/backpack/rogue/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 14
-		STR.not_while_equipped = TRUE
-		STR.allow_dump_out = TRUE
+	component_type = /datum/component/storage/concrete/grid/backpack
 
 /obj/item/storage/backpack/rogue/backpack/rucksack
 	name = "rucksack"
@@ -363,15 +333,7 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
-
-/obj/item/storage/backpack/rogue/backpack/rucksack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 10
-		STR.not_while_equipped = TRUE
+	component_type = /datum/component/storage/concrete/grid/backpack/rucksack
 
 /obj/item/storage/backpack/rogue/backpack/artibackpack
 	name = "Cooling backpack"
@@ -386,22 +348,14 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	sewrepair = FALSE
+	component_type = /datum/component/storage/concrete/grid/backpack/rucksack
 
-/obj/item/storage/backpack/rogue/backpack/artibackpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 42
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 10
-		STR.not_while_equipped = TRUE
 /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	name = "exotic silk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
 	icon_state = "exoticsilkbelt"
 	heldz_items = 1
 	sewrepair = TRUE
-
 
 /obj/item/storage/belt/rogue/leather/overseer
     name = "belt with pouches"

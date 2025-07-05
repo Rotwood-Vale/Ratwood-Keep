@@ -17,6 +17,8 @@
 	gripped_intents = list(/datum/intent/hit)
 	possible_item_intents = list(/datum/intent/hit)
 	w_class = WEIGHT_CLASS_HUGE
+	grid_width = 64
+	grid_height = 32
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
 	var/lumber_amount = 2
 	metalizer_result = /obj/item/rogueore/iron
@@ -78,6 +80,8 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 	metalizer_result = /obj/item/rogueore/copper
+	grid_height = 64
+	grid_width = 64
 
 
 /obj/item/grown/log/tree/small/attackby(obj/item/I, mob/living/user, params)
@@ -110,6 +114,8 @@
 	firefuel = 60 MINUTES // Extremely poweful fuel.
 	w_class = WEIGHT_CLASS_SMALL
 	metalizer_result = /obj/item/rogueore/gold
+	grid_height = 32
+	grid_width = 32
 
 //................	Unstrung bow	............... //
 /obj/item/grown/log/tree/bowpartial

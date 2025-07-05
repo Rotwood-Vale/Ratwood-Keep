@@ -11,6 +11,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	///The current bait that we have attached to our fishing rod
 	var/obj/item/baited = null
+	grid_height = 96
+	grid_width = 32
 
 /datum/intent/cast
 	name = "cast"
