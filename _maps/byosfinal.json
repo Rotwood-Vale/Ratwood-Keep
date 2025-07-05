@@ -1,0 +1,17 @@
+{
+	"map_name": "Build Your Settlement",
+	"map_path": "map_files/byos",
+	"map_file": "byosfinal.dmm",
+
+	"traits": [
+				{"Up": true, "Turf Weather Effects": true},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Up": true, "Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"},
+				{"Down": true, "Turf Weather Effects": true, "Baseturf": "/turf/open/transparent/openspace"}
+			],
+
+	"minetype": null,
+	"space_empty_levels": 0,
+	"space_ruin_levels": 0
+}

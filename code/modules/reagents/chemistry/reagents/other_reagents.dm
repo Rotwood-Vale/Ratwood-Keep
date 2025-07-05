@@ -67,6 +67,13 @@
 	results = list(/datum/reagent/water/gross = 2)
 	required_reagents = list(/datum/reagent/water/gross = 1, /datum/reagent/water = 1)
 
+/datum/chemical_reaction/boil_saltwater
+    name = "Boiled Salt Water"
+    id = "boilsaltwater"
+    results = list(/datum/reagent/water = 1)
+    required_reagents = list(/datum/reagent/water/salty = 1)
+    required_temp = 374
+
 /datum/chemical_reaction/disinfectwater
 	name = "Boiled Water"
 	id = "boilwater"
@@ -97,10 +104,13 @@
 	name = "Salt Water"
 	taste_description = "salt"
 	hydration = -7 //Saltwater makes you thirstier
+	metabolization_rate = 0.4
 
 /datum/reagent/water/salty/on_mob_life(mob/living/carbon/M)
-	M.adjustToxLoss(0.5)
-	M.add_nausea(50)
+	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_WILD_EATER))
+		M.adjustToxLoss(0.5)
+		M.add_nausea(20)
+	return ..()
 
 /datum/reagent/rawsalt
 	name = "Raw Salt"

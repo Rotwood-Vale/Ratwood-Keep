@@ -37,6 +37,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/list/jobspawn_override = list()
 	var/delete_after_roundstart = TRUE
 	var/used = FALSE
+	var/map = null
 
 /obj/effect/landmark/start/proc/after_round_start()
 	if(delete_after_roundstart)
@@ -50,6 +51,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 				GLOB.jobspawn_overrides[X] = list()
 			GLOB.jobspawn_overrides[X] += src
 	..()
+	if(src.map && SSmapping && SSmapping.config && SSmapping.config.map_name != src.map)
+		qdel(src)
+		return
 	if(name != "start")
 		tag = "start*[name]"
 
@@ -95,6 +99,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 	jobspawn_override = list("Bandit")
 	delete_after_roundstart = FALSE
+	map = "Rockhill"
+
+/obj/effect/landmark/start/banditlate_byos
+	name = "Bandit"
+	icon_state = "arrow"
+	jobspawn_override = list("Bandit")
+	delete_after_roundstart = FALSE
+	map = "Build Your Settlement"
+
 
 /obj/effect/landmark/start/bogguardlate
 	name = "Bogguardlate"
@@ -341,6 +354,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Beggar"
 	icon_state = "arrow"
 
+/obj/effect/landmark/start/stowaway
+	name = "Stowaway"
+	icon_state = "arrow"
+
 /obj/effect/landmark/start/lady
 	name = "Duke Consort"
 	icon_state = "arrow"
@@ -359,6 +376,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/hostage
 	name = "Hostage"
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/prisonert
+	name = "Prisoner (Tribe)"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/jester
@@ -466,6 +487,44 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Goblin Shaman")
 	delete_after_roundstart = FALSE
 
+// Tribal job spawns
+
+/obj/effect/landmark/start/tribalchief
+    name = "Tribal Chief"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Chief")
+    delete_after_roundstart = FALSE
+
+
+/obj/effect/landmark/start/tribalguard
+    name = "Tribal Guard"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Guard")
+    delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/tribalseer
+    name = "Tribal Seer"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Seer")
+    delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/tribaltinkerer
+    name = "Tribal Tinkerer"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Tinkerer")
+    delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/tribalcaveling
+    name = "Tribal Caveling"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Caveling")
+    delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/triballackey
+    name = "Tribal Lackey"
+    icon_state = "arrow"
+    jobspawn_override = list("Tribal Lackey")
+    delete_after_roundstart = FALSE
 
 //Antagonist spawns
 
@@ -493,10 +552,22 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "bandit"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
+	map = "Rockhill"
 
 /obj/effect/landmark/start/bandit/Initialize()
 	..()
 	GLOB.bandit_starts += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/bandit_byos
+	name = "bandit_byos"
+	icon = 'icons/mob/landmarks.dmi'
+	icon_state = "arrow"
+	map = "Build Your Settlement"
+
+/obj/effect/landmark/start/bandit_byos/Initialize()
+	..()
+	GLOB.bandit_starts_byos += loc
 	return INITIALIZE_HINT_QDEL
 
 
