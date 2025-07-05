@@ -532,6 +532,7 @@
 /mob/living/carbon
 	var/nausea = 0
 	var/mouth_blocked = FALSE
+	var/body_type = MALE
 
 /mob/living/carbon/proc/add_nausea(amt)
 	nausea = clamp(nausea + amt, 0, 300)

@@ -56,6 +56,15 @@
 	if(lay)
 		layer = lay
 
+/obj/structure/fluff/railing/post_craft()
+	switch(dir)
+		if(NORTH)
+			pixel_y = 10
+		if(WEST)
+			pixel_x = -10
+		if(EAST)
+			pixel_x = 10
+
 /obj/structure/fluff/railing/proc/getwlayer(dirin)
 	switch(dirin)
 		if(NORTH)

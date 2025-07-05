@@ -52,9 +52,17 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	move_to_delay = 8
 	animal_species = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+						/obj/item/natural/hide = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
-						/obj/item/natural/hide = 4)
+						/obj/item/natural/hide = 3)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+						/obj/item/reagent_containers/food/snacks/fat = 2,
+						/obj/item/natural/hide = 3,
+						/obj/item/natural/fur = 2)
+
 	base_intents = list(/datum/intent/simple/headbutt)
 	health = 156
 	maxHealth = 156
@@ -243,7 +251,7 @@
 			return pick('sound/vo/mobs/saiga/death (1).ogg','sound/vo/mobs/saiga/death (2).ogg')
 		if("idle")
 			return pick('sound/vo/mobs/saiga/idle (1).ogg','sound/vo/mobs/saiga/idle (2).ogg','sound/vo/mobs/saiga/idle (3).ogg','sound/vo/mobs/saiga/idle (4).ogg','sound/vo/mobs/saiga/idle (5).ogg','sound/vo/mobs/saiga/idle (6).ogg','sound/vo/mobs/saiga/idle (7).ogg')
-	
+
 /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
@@ -340,7 +348,7 @@
 	tame = TRUE
 	can_buckle = FALSE
 	aggressive = 1
-	
+
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame
 	tame = TRUE
 
