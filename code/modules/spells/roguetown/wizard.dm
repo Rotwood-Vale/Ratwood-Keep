@@ -32,7 +32,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
 		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
 		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
-		SPELL_BLINK_ROG,			// 4 cost	mobility, teleport 5 tiles, with restrictions
+		SPELL_BLINK_ROG,			// 4 cost	mobility, teleport 7 tiles, with restrictions, also up or down Zs.
 		SPELL_ACID_SPLASH,			// 3 cost	combat, low (10) initial damage, potential of ~80 over duration. Burn is AWFUL. Primarily for crippling / paincrit.
 		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
 		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
@@ -1885,10 +1885,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 //Blink
 /obj/effect/proc_holder/spell/invoked/blink
 	name = "Blink"
-	desc = "Teleport to a targeted location within your field of view. Limited to a range of 5 tiles. Only works on the same plane as the caster."
+	desc = "Teleport to a targeted location within your field of view. Can blink onto another plane, or remain on the same, with a 7 tile range."
 	school = "conjuration"
-	cost = 4
-	releasedrain = 40
+	cost = 4//Z blinking. 7 tile range.
+	releasedrain = 90
 	chargedrain = 1
 	chargetime = 5 SECONDS
 	charge_max = 14 SECONDS
@@ -1900,9 +1900,9 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blink"//AP Shadowstep icon. For now.
 	xp_gain = TRUE
-	invocation = "Nictare Teleporto!"
+	invocation = "Nictare Teleporto!!"
 	invocation_type = "shout"
-	var/max_range = 5
+	var/max_range = 7
 	var/phase = /obj/effect/temp_visual/blink
 
 /obj/effect/temp_visual/blink
@@ -1928,11 +1928,14 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		revert_cast()
 		return
 
+//Remove the commenting out below if you want Z jumping disabled again.
+/*
 	if(T.z != start.z)
 		to_chat(user, span_warning("I can only teleport on the same plane!"))
 
 		revert_cast()
 		return
+*/
 
 	if(istransparentturf(T))
 		to_chat(user, span_warning("I cannot teleport to the open air!"))
