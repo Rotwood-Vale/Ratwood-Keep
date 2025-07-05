@@ -3,6 +3,7 @@
 //Kingsfield decrees, "All holy items are now barred from vault scrying and merchant guild selling."
 
 /datum/crafting_recipe/roguetown/sewing
+	abstract_type = /datum/crafting_recipe/roguetown/sewing
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/misc/sewing
 	verbage_simple = "sew"

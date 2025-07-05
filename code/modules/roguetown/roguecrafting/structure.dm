@@ -1,5 +1,6 @@
 
 /datum/crafting_recipe/roguetown/structure
+	abstract_type = /datum/crafting_recipe/roguetown/structure
 	req_table = FALSE
 	craftsound = 'sound/foley/Building-01.ogg'
 

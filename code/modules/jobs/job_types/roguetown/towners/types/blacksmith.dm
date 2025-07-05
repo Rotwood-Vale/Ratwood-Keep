@@ -18,7 +18,7 @@
 	beltl = /obj/item/rogueweapon/tongs
 	backl = /obj/item/storage/backpack/rogue/satchel
 	pants = /obj/item/clothing/under/roguetown/trou
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/huntingknife = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/recipe_book/blacksmithing = 1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/rogueweapon/huntingknife = 1)
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		shoes = /obj/item/clothing/shoes/roguetown/armor/leather
