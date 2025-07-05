@@ -221,6 +221,8 @@
 /datum/sex_controller/proc/after_ejaculation()
 	user.add_stress(/datum/stressevent/cumok)
 	set_arousal(40)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		user.sate_addiction()
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
@@ -271,6 +273,8 @@
 	set_charge(charge + amount)
 
 /datum/sex_controller/proc/handle_charge(dt)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		dt *= 2
 	adjust_charge(dt * CHARGE_RECHARGE_RATE)
 	if(is_spent())
 		if(arousal > 60)
@@ -337,7 +341,7 @@
 		arousal_amt = 0
 		pain_amt = 0
 
-	if(!arousal_frozen) 
+	if(!arousal_frozen)
 		adjust_arousal(arousal_amt)
 
 	damage_from_pain(pain_amt)

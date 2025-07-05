@@ -86,7 +86,7 @@
 	time = 40 MINUTES
 	needsate_text = "Time to get really high."
 
-/// Smoker
+/// SMOKER
 
 /datum/charflaw/addiction/smoker
 	name = "Smoker"
@@ -101,11 +101,22 @@
 	desc = "I need to pray to my Patron, their blessings are stronger."
 	time = 40 MINUTES
 	needsate_text = "Time to pray."
+	sated_text = "May my Patron hear my words."
 
-/// ALCOHOLIC
+/// NYMPHOMANIAC
 
 /datum/charflaw/addiction/lovefiend
 	name = "Love-Fiend"
 	desc = "I must make love!"
-	time = 50 MINUTES
+	time = 30 MINUTES
 	needsate_text = "Time to get happy."
+	sated_text = "I'll be fine. For now."
+
+/// SADIST
+
+/datum/charflaw/addiction/sadist
+	name = "Sadist"
+	desc = "There is no greater pleasure than the suffering of another."
+	time = 40 MINUTES
+	needsate_text = "I need to hear someone whimper."
+	sated_text = "Finally..."

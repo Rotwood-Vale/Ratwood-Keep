@@ -439,15 +439,6 @@
 	ADD_TRAIT(character, TRAIT_CRITICAL_WEAKNESS, "[type]")
 
 
-/datum/special_trait/leper
-	name = "Leper"
-	greet_text = span_boldwarning("I'm a disgusting leper...")
-	weight = 10
-
-/datum/special_trait/leper/on_apply(mob/living/carbon/human/character, silent)
-	ADD_TRAIT(character, TRAIT_LEPROSY, "[type]")
-
-
 // Job Specials
 /datum/special_trait/my_precious
 	name = "My Precious"
