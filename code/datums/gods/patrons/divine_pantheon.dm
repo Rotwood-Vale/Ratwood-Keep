@@ -1,7 +1,8 @@
 /datum/patron/divine
 	name = null
 	associated_faith = /datum/faith/divine
-	t0 = /obj/effect/proc_holder/spell/invoked/lesser_heal
+	t0 = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/lesser_heal)
+
 
 /datum/patron/divine/astrata
 	name = "Astrata"
@@ -108,7 +109,7 @@
 	desc = "The Loving Daughter of Psydon, gifted man medicine."
 	worshippers = "The Sick, Phyicians, Apothecaries"
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
-	t0 = list(/obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine both spells on t0
+	t0 = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/diagnose, /obj/effect/proc_holder/spell/invoked/lesser_heal) // Combine all spells on t0
 	t1 = /obj/effect/proc_holder/spell/invoked/mercy
 	t2 = /obj/effect/proc_holder/spell/invoked/attach_bodypart
 	t3 = /obj/effect/proc_holder/spell/invoked/cure_rot
