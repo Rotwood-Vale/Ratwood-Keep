@@ -32,7 +32,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
 		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
 		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
-		SPELL_BLINK,				// 4 cost	mobility, teleport 5 tiles, with restrictions
+		SPELL_BLINK_ROG,			// 4 cost	mobility, teleport 5 tiles, with restrictions
 		SPELL_ACID_SPLASH,			// 3 cost	combat, low (10) initial damage, potential of ~80 over duration. Burn is AWFUL. Primarily for crippling / paincrit.
 		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
 		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
