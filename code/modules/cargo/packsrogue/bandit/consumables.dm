@@ -76,7 +76,7 @@
 /datum/supply_pack/rogue/bandit/Consumables/rations
 	name = "Ration"
 	cost = 10
-	contains = list(/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked)
+	contains = list(/obj/item/reagent_containers/food/snacks/rogue/crackerscooked)
 
 /datum/supply_pack/rogue/bandit/Consumables/coppiettes
 	name = "Dry Meat"

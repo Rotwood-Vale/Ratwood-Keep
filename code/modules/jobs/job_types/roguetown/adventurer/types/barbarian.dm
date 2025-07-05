@@ -36,6 +36,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+			backpack_contents = list(/obj/item/recipe_book/survival,)
 			beltr = /obj/item/rogueweapon/sword/iron
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -78,6 +79,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			backpack_contents = list(/obj/item/recipe_book/survival = 1,)
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut
 			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			l_hand = /obj/item/ammo_holder/quiver/arrows

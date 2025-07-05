@@ -11,7 +11,7 @@
 	fill_icon_thresholds = list(0, 25, 50, 75, 100)
 	dropshrink = 0.5
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
-	obj_flags = CAN_BE_HIT
+	obj_flags = CAN_BE_HIT|UNIQUE_RENAME
 	spillable = FALSE
 	var/closed = TRUE
 	reagent_flags = TRANSPARENT
@@ -20,6 +20,10 @@
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
 	experimental_onhip = TRUE
+	debris = list(/obj/item/natural/glass_shard = 1)
+	var/desc_uncorked = "An open bottle. Hopefully the cork is nearby."
+	var/fancy		// for bottles with custom descriptors that you don't want to change when bottle manipulated
+	var/glass_on_impact = TRUE // If TRUE, bottle will generate glass shard on impact. Otherwise it won't.
 
 /obj/item/reagent_containers/glass/bottle/update_icon(dont_fill=FALSE)
 	if(!fill_icon_thresholds || dont_fill)
@@ -44,6 +48,19 @@
 
 	if(closed)
 		add_overlay("[icon_state]cork")
+
+/obj/item/reagent_containers/glass/bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
+	playsound(loc, 'sound/combat/hits/onglass/glassbreak (4).ogg', 100)
+	shatter(get_turf(src))
+	..()
+
+/obj/item/reagent_containers/glass/bottle/proc/shatter(turf/T)
+	if(istransparentturf(T))
+		shatter(GET_TURF_BELOW(T))
+		return 
+	glass_on_impact && new /obj/item/natural/glass_shard(get_turf(T))
+	new /obj/effect/decal/cleanable/debris/glassy(get_turf(T))
+	qdel(src)
 
 /obj/item/reagent_containers/glass/bottle/rmb_self(mob/user)
 	. = ..()

@@ -78,118 +78,126 @@
 	seed_identity = "oat seeds"
 	plant_def_type = /datum/plant_def/oat
 
+/obj/item/seeds/rice
+	seed_identity = "rice seeds"
+	plant_def_type = /datum/plant_def/rice
+
 /obj/item/seeds/apple
 	seed_identity = "apple seeds"
-	plant_def_type = /datum/plant_def/apple
-
-/obj/item/seeds/pipeweed
-	seed_identity = "westleach leaf seeds"
-	plant_def_type = /datum/plant_def/pipeweed
-
-/obj/item/seeds/sweetleaf
-	seed_identity = "swampweed seeds"
-	plant_def_type = /datum/plant_def/sweetleaf
-
-/obj/item/seeds/berryrogue
-	seed_identity = "berry seeds"
-	plant_def_type = /datum/plant_def/berry
-
-/obj/item/seeds/berryrogue/poison
-	seed_identity = "berry seeds"
-	plant_def_type = /datum/plant_def/berry_poison
-
-/obj/item/seeds/cabbage
-	seed_identity = "cabbage seeds"
-	plant_def_type = /datum/plant_def/cabbage
+	plant_def_type = /datum/plant_def/tree/apple
 
 /obj/item/seeds/pear
 	seed_identity = "pear seeds"
-	plant_def_type = /datum/plant_def/pear
+	plant_def_type = /datum/plant_def/tree/pear
 
-/obj/item/seeds/cherry
-	seed_identity = "cherry seeds"
-	plant_def_type = /datum/plant_def/cherry
+/obj/item/seeds/lemon
+	seed_identity = "lemon seeds"
+	plant_def_type = /datum/plant_def/tree/lemon
 
-/obj/item/seeds/olive
-	seed_identity = "olive seeds"
-	plant_def_type = /datum/plant_def/olive
+/obj/item/seeds/lime
+	seed_identity = "lime seeds"
+	plant_def_type = /datum/plant_def/tree/lime
+
+/obj/item/seeds/tangerine
+	seed_identity = "tangerine seeds"
+	plant_def_type = /datum/plant_def/tree/tangerine
+
+/obj/item/seeds/plum
+	seed_identity = "plum seeds"
+	plant_def_type = /datum/plant_def/tree/plum
+
+/obj/item/seeds/strawberry
+	seed_identity = "strawberry seeds"
+	plant_def_type = /datum/plant_def/bush/strawberry
+
+/obj/item/seeds/blackberry
+	seed_identity = "blackberry seeds"
+	plant_def_type = /datum/plant_def/bush/blackberry
+
+/obj/item/seeds/raspberry
+	seed_identity = "raspberry seeds"
+	plant_def_type = /datum/plant_def/bush/raspberry
+
+/obj/item/seeds/tomato
+	seed_identity = "tomato seeds"
+	plant_def_type = /datum/plant_def/bush/tomato
 
 /obj/item/seeds/nut
 	seed_identity = "rocknut seeds"
 	plant_def_type = /datum/plant_def/nut
 
-/obj/item/seeds/tomato
-	seed_identity = "tomato seeds"
-	plant_def_type = /datum/plant_def/tomato
+/obj/item/seeds/sugarcane
+	seed_identity = "sugarcane seeds"
+	plant_def_type = /datum/plant_def/sugarcane
+
+/obj/item/seeds/pipeweed
+	seed_identity = "westleach leaf seeds"
+	plant_def_type = /datum/plant_def/pipeweed
+
+/obj/item/seeds/swampweed
+	seed_identity = "swampweed seeds"
+	plant_def_type = /datum/plant_def/swampweed
+
+/obj/item/seeds/berryrogue
+	seed_identity = "berry seeds"
+	plant_def_type = /datum/plant_def/bush/berry
+
+/obj/item/seeds/berryrogue/poison
+	seed_identity = "berry seeds"
+	plant_def_type = /datum/plant_def/bush/berry_poison
+
+/obj/item/seeds/turnip
+	seed_identity = "turnip seeds"
+	plant_def_type = /datum/plant_def/turnip
+
+/obj/item/seeds/sunflower
+	seed_identity = "sunflower seeds"
+	plant_def_type = /datum/plant_def/sunflower
 
 /obj/item/seeds/onion
 	seed_identity = "onion seeds"
 	plant_def_type = /datum/plant_def/onion
 
-/obj/item/seeds/garlic
-	seed_identity = "garlic seeds"
-	plant_def_type = /datum/plant_def/garlic
-
-/obj/item/seeds/carrot
-	seed_identity = "carrot seeds"
-	plant_def_type = /datum/plant_def/carrot
+/obj/item/seeds/cabbage
+	seed_identity = "cabbage seeds"
+	plant_def_type = /datum/plant_def/cabbage
 
 /obj/item/seeds/potato
-	seed_identity = "potato eyes"
+	seed_identity = "potato seeds"
 	plant_def_type = /datum/plant_def/potato
 
-/obj/item/seeds/eggplant
-	seed_identity = "eggplant seeds"
-	plant_def_type = /datum/plant_def/eggplant
+/obj/item/seeds/fyritius
+    seed_identity = "fyritius seeds"
+    plant_def_type = /datum/plant_def/fyritiusflower
 
-/obj/item/seeds/bean
-	seed_identity = "bean seeds"
-	plant_def_type = /datum/plant_def/bean
+/obj/item/seeds/poppy
+	seed_identity = "poppy seeds"
+	plant_def_type = /datum/plant_def/poppy
 
-/obj/item/seeds/radish
-	seed_identity = "radish seeds"
-	plant_def_type = /datum/plant_def/radish
+/obj/item/seeds/garlick
+	seed_identity = "garlick seeds"
+	plant_def_type = /datum/plant_def/garlick
 
-/obj/item/seeds/beet
-	seed_identity = "sugarbeet seeds"
-	plant_def_type = /datum/plant_def/beet
-
-/obj/item/seeds/bellpepper
-	seed_identity = "little tiefling eggs"
-	plant_def_type = /datum/plant_def/bellpepper
-
-/obj/item/seeds/peas
-	seed_identity = "pea seeds"
-	plant_def_type = /datum/plant_def/peas
-
-/obj/item/seeds/rice
-	seed_identity = "rice seeds"
-	plant_def_type = /datum/plant_def/rice
-
-/obj/item/seeds/cucumber
-	seed_identity = "cucumber seeds"
-	plant_def_type = /datum/plant_def/cucumber
+/obj/item/seeds/coffee
+	seed_identity = "coffee seeds"
+	plant_def_type = /datum/plant_def/coffee
 
 /obj/item/seeds/tea
 	seed_identity = "tea seeds"
 	plant_def_type = /datum/plant_def/tea
 
-/obj/item/seeds/mycelium
-	name = "spores"
-	icon_state = "mycelium"
+/obj/item/seeds/beet
+	seed_identity = "sugarbeet seeds"
+	plant_def_type = /datum/plant_def/beet
 
-/obj/item/seeds/mycelium/plumphelmet
-	seed_identity = "plump helmet spores"
-	plant_def_type = /datum/plant_def/plumphelmet
+/obj/item/seeds/peas
+	seed_identity = "pea seeds"
+	plant_def_type = /datum/plant_def/peas
 
-/obj/item/seeds/mycelium/trippy
-	seed_identity = "blue mushroom spores"
-	plant_def_type = /datum/plant_def/trippy
+/obj/item/seeds/garlic
+	seed_identity = "garlic seeds"
+	plant_def_type = /datum/plant_def/garlic
 
-/obj/item/seeds/mycelium/amanita
-	seed_identity = "red mushroom spores"
-	plant_def_type = /datum/plant_def/amanita
-
-/obj/item/seeds/fyritius
-	seed_identity = "fyritius seeds"
-	plant_def_type = /datum/plant_def/fyritiusflower
+/obj/item/seeds/peas
+	seed_identity = "pea seeds"
+	plant_def_type = /datum/plant_def/peas

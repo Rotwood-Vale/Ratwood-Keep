@@ -1,4 +1,5 @@
 /datum/anvil_recipe/armor
+	abstract_type = /datum/anvil_recipe/armor
 	appro_skill = /datum/skill/craft/blacksmithing
 	skill_level = 1
 	i_type = "Armor"

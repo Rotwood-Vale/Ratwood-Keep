@@ -64,3 +64,8 @@
 	icon_state = "scalloped_potatoes"
 	tastes = list("potato" = 1, "cheese" = 1)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
+
+/obj/item/reagent_containers/food/snacks/veg/turnip_sliced
+	name = "cleaned turnip"
+	icon = 'modular/Neu_Food/icons/raw/raw_veggies.dmi'
+	icon_state = "turnip_sliced"

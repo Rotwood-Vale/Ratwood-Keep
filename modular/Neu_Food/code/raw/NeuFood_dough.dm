@@ -82,41 +82,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 
-/*	.................   Hardtack   ................... */
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
-	name = "raw hardtack"
-	desc = "Doughy, soft, unacceptable."
-	icon_state = "raw_tack"
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
-	w_class = WEIGHT_CLASS_NORMAL
-	eat_effect = null
-
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked
-	name = "hardtack"
-	desc = "Very, very hard and dry."
-	icon_state = "tack6"
-	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION)
-	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("spelt" = 1)
-	bitesize = 6
-	rotprocess = null
-
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked/On_Consume(mob/living/eater)
-	..()
-	if(bitecount == 1)
-		icon_state = "tack5"
-	if(bitecount == 2)
-		icon_state = "tack4"
-	if(bitecount == 3)
-		icon_state = "tack3"
-	if(bitecount == 4)
-		icon_state = "tack2"
-	if(bitecount == 5)
-		icon_state = "tack1"
-	else
-		icon_state = "tack6"
-
-
 /*	.................   Bread   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/bread
 	name = "bread loaf"
