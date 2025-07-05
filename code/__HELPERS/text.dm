@@ -470,6 +470,17 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 
 	t = replacetext(t, "!", "$a")
 
+// Parse colour
+	if(!barebones)
+		var/regex/hexgex = regex(@"(?<=-=)(.{6})", "g")
+		while(hexgex.Find(t))
+			var/endblock = findtext(t, "=-", hexgex.index)
+			if(!endblock)
+				break
+			t = replacetext(t, "=-", "</font>", hexgex.index, endblock+2)
+			var/c_code = sanitize_hexcolor(hexgex.match)
+			t = replacetext(t, "-=[hexgex.match]", "<font color='[c_code]'>", hexgex.index-2, endblock+2)
+
 	// Parse hr and small
 
 	if(!limited)

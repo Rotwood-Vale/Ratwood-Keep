@@ -19,6 +19,7 @@
 		user.add_stress(/datum/stressevent/beautiful)
 	if(HAS_TRAIT(src, TRAIT_ROTTOUCHED) && src != user)
 		user.add_stress(/datum/stressevent/rottouched)
+
 /mob/living/carbon/human/examine(mob/user)
 	var/observer_privilege = isobserver(user)
 	var/aghost_privilege = isadminobserver(user)
@@ -589,10 +590,15 @@
 			if(!(mobility_flags & MOBILITY_STAND) && user != src && (user.zone_selected == BODY_ZONE_CHEST))
 				. += "<a href='?src=[REF(src)];check_hb=1'>Listen to Heartbeat</a>"
 
-	if(!obscure_name && headshot_link)
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>View face closely</a>"
-	if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
-		. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
+	// possible todo: port client.prefs.masked_examine sometime
+	if(!obscure_name)
+		if(headshot_link)
+			. += "<span class='info'><img src=[headshot_link] width=100 height=100/></span>"
+		if(flavortext || headshot_link)
+			. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
+
+	// if(nudeshot_link && get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
+	// 	. += "<a href='?src=[REF(src)];task=view_nudeshot;'>View body closely</a>"
 
 	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	for(var/line in lines)
