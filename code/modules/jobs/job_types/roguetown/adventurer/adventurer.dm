@@ -16,8 +16,8 @@
 
 	outfit = null
 	outfit_female = null
-	total_positions = 50
-	spawn_positions = 50
+	total_positions = 20
+	spawn_positions = 20
 	selection_color = JCOLOR_FOREIGNER
 	show_in_credits = TRUE
 	min_pq = 0
