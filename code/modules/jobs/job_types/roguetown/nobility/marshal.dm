@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	allowed_sexes = list(MALE)
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_TOLERATED_UP
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
 	display_order = JDO_MARSHAL
@@ -126,7 +126,7 @@
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(lord_outlaw_requested), src, lord, inputty)
 			else
 				make_outlaw(inputty)
-				
+
 /proc/find_lord(required_stat = CONSCIOUS)
 	var/mob/living/lord
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
