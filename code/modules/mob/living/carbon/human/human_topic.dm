@@ -3,13 +3,15 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 /mob/living/carbon/human/Topic(href, href_list)
 	var/observer_privilege = isobserver(usr)
+	var/aghost_privilege = isadminobserver(usr)
 
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
 			return
 		var/mob/user = usr
 		var/list/dat = list()
-		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src]</b></font></div><br>"
+		var/nude = get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN)
+		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src.real_name]</b></font></div><br>"
 		if(valid_headshot_link(null, headshot_link, TRUE))
 			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div><br>")
 		if(flavortext)
@@ -21,7 +23,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(nudeshot_link || flavortext_nsfw)
 			dat += "<br>"
 			dat += "<div align='center'><b>NSFW</b></div>"
-			if(get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
+			if(aghost_privilege || nude)
 				if(flavortext_nsfw)
 					dat += "<br>"
 					dat += "<div align='left'>[flavortext_nsfw_display]</div>"
