@@ -53,7 +53,7 @@
 		return FALSE
 	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
-	if(length(message2recognize) > 150)
+	if(length(message2recognize) > 50)
 		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
 			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
