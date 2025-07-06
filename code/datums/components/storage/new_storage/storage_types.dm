@@ -138,8 +138,14 @@
 
 /datum/component/storage/concrete/grid/magebag
 	max_w_class = WEIGHT_CLASS_NORMAL
-	screen_max_rows = 8
+	screen_max_rows = 4
 	screen_max_columns = 5
+	click_gather = TRUE
+	collection_mode = COLLECT_EVERYTHING
+	allow_quick_gather = TRUE
+	allow_quick_empty = TRUE
+	allow_dump_out = TRUE
+	display_numerical_stacking = TRUE
 
 /datum/component/storage/concrete/grid/magebag/New(datum/P, ...)
 	. = ..()
