@@ -18,6 +18,8 @@
 	subclass_cat_rolls = list(CTAG_TRIBALS = 20)
 	advjob_examine = TRUE
 	announce_latejoin = FALSE
+	same_job_respawn_delay = 5 MINUTES
+	job_reopens_slots_on_death = FALSE
 	allowed_maps = list("Build Your Settlement")
 
 /datum/outfit/job/roguetown/tribalguard
