@@ -17,7 +17,7 @@
 	min_pq = 0
 	max_pq = null
 	announce_latejoin = FALSE
-	same_job_respawn_delay = 5 MINUTES
+	same_job_respawn_delay = 25 MINUTES
 	job_reopens_slots_on_death = FALSE
 	allowed_maps = list("Build Your Settlement")
 
