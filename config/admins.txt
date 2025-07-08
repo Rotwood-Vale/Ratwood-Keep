@@ -13,4 +13,3 @@ BlackCat055 = Watcher
 Muaru = Game Master
 Wolfskralle4 = Watcher
 RogueRay = Host
-Albo3 = Host
