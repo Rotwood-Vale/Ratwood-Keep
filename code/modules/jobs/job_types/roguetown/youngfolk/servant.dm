@@ -11,7 +11,7 @@
 	allowed_ages = ALL_AGES_LIST
 	subclass_cat_rolls = list(CTAG_SERVANT = 20)
 
-	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Head Butler/Maid's commands and spend your day performing necessary but menial tasks."
+	tutorial = "Granted a life of comfortable servitute in the Duke's manor, you follow the Butler's commands and spend your day performing necessary but menial tasks."
 	seelie_tutorial = "Though once you were a mischievous fae, you've now accepted the comfort and security of service in the manor instead. Your spells may come in handy, but you've allowed the more chaotic ones to fade to memory."
 
 	outfit = /datum/outfit/job/roguetown/servant

@@ -107,10 +107,10 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/storage/keyring/marshal
-	keys = list(/obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/keep_armory, /obj/item/key/keep_gatehouse, /obj/item/key/walls, /obj/item/key/town_armory, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_dungeon_torture, /obj/item/key/sheriff_office)
 
 /obj/item/storage/keyring/councillor
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/kitchen)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/keep_gatehouse)
 
 /obj/item/storage/keyring/bog_guard
 	keys = list(/obj/item/key/bog_gatehouse)
@@ -125,19 +125,19 @@
 	keys = list(/obj/item/key/sheriff_office, /obj/item/key/town_armory, /obj/item/key/town_barracks, /obj/item/key/town_dungeon)
 
 /obj/item/storage/keyring/man_at_arms
-	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls, /obj/item/key/keep_armory)
 
-/obj/item/storage/keyring/squire 
+/obj/item/storage/keyring/squire
 	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/captain
-	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/dungeoneer
 	keys = list(/obj/item/key/keep_dungeon, /obj/item/key/keep_dungeon_torture, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/bog_gatehouse, /obj/item/key/manor, /obj/item/key/keep_barracks)
 
 /obj/item/storage/keyring/veteran
-	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
+	keys = list(/obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_dungeon)
 
 /obj/item/storage/keyring/knight
 	keys = list(/obj/item/key/councillor_rooms, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/keep_barracks, /obj/item/key/keep_dungeon, /obj/item/key/manor, /obj/item/key/walls)
@@ -152,7 +152,6 @@
 	keys = list(/obj/item/key/tavern/village, /obj/item/key/roomvi/village, /obj/item/key/roomv/village, /obj/item/key/roomiv/village, /obj/item/key/roomiii/village, /obj/item/key/roomii/village, /obj/item/key/roomi/village)
 
 /obj/item/storage/keyring/gatemaster
-	keys = list(/obj/item/key/keep_gatehouse, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/walls)
 
 /obj/item/storage/keyring/merchant
 	keys = list(/obj/item/key/shop, /obj/item/key/merchant)
@@ -182,7 +181,7 @@
 	keys = list(/obj/item/key/nightman)
 
 /obj/item/storage/keyring/hand
-	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/kitchen)
+	keys = list(/obj/item/key/keep_armory, /obj/item/key/steward, /obj/item/key/town_dungeon, /obj/item/key/town_barracks, /obj/item/key/keep_gatehouse, /obj/item/key/councillor_rooms, /obj/item/key/hand, /obj/item/key/walls, /obj/item/key/keep_dungeon, /obj/item/key/keep_barracks, /obj/item/key/manor, /obj/item/key/kitchen, /obj/item/key/prince_rooms, /obj/item/key/royal)
 
 /obj/item/storage/keyring/steward
 	keys = list(/obj/item/key/steward, /obj/item/key/walls, /obj/item/key/manor, /obj/item/key/kitchen)
@@ -190,8 +189,11 @@
 /obj/item/storage/keyring/servant
 	keys = list(/obj/item/key/manor, /obj/item/key/kitchen, /obj/item/key/keep_barracks)
 
+/obj/item/storage/keyring/butler
+	keys = list(/obj/item/key/manor, /obj/item/key/kitchen, /obj/item/key/prince_rooms, /obj/item/key/royal, /obj/item/key/keep_barracks, /obj/item/key/walls, /obj/item/key/keep_gatehouse, /obj/item/key/keep_armory, /obj/item/key/councillor_rooms, /obj/item/key/keep_dungeon,  /obj/item/key/keep_dungeon_torture, /obj/item/key/physician, /obj/item/key/tower)
+
 /obj/item/storage/keyring/archivist
-	keys = list(/obj/item/key/manor, /obj/item/key/archive)
+	keys = list(/obj/item/key/archive)
 
 /obj/item/storage/keyring/architect
 	keys = list(/obj/item/key/blacksmith)
