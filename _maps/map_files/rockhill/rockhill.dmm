@@ -4303,8 +4303,10 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church)
 "bVX" = (
-/turf/closed/wall/mineral/rogue/decostone/cand,
-/area/rogue/under/cave)
+/turf/closed/wall/mineral/rogue/roofwall/outercorner{
+	dir = 1
+	},
+/area/rogue/indoors/town/dwarfin)
 "bWc" = (
 /obj/structure/table/vtable/v2,
 /obj/item/natural/feather,
@@ -19017,6 +19019,10 @@
 /obj/structure/fluff/railing/border{
 	dir = 10
 	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "iFj" = (
@@ -27383,6 +27389,10 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "mDl" = (
@@ -29398,6 +29408,16 @@
 	pixel_y = -9
 	},
 /turf/open/floor/carpet/inn,
+/area/rogue/indoors/town/bath)
+"nDg" = (
+/obj/structure/fluff/railing/border{
+	dir = 9
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
 "nDh" = (
 /obj/structure/closet/crate/roguecloset{
@@ -33849,6 +33869,10 @@
 	},
 /obj/structure/fluff/railing/border{
 	dir = 10
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -47638,8 +47662,11 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "wsF" = (
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/under/cave)
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/under/town/basement)
 "wsK" = (
 /obj/item/natural/rock,
 /turf/open/floor/rogue/cobble/mossy,
@@ -49427,6 +49454,11 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
+"xgO" = (
+/turf/closed/wall/mineral/rogue/roofwall/middle{
+	dir = 4
+	},
+/area/rogue/indoors/town/dwarfin)
 "xgP" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grassyel,
@@ -51671,6 +51703,10 @@
 	},
 /obj/structure/fluff/railing/border{
 	dir = 9
+	},
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/bath)
@@ -111092,7 +111128,7 @@ txa
 vup
 jzl
 txa
-wsF
+txa
 jFF
 dFE
 dFE
@@ -111946,7 +111982,7 @@ bpD
 bpD
 bpD
 txa
-lLE
+wsF
 lLE
 txa
 txa
@@ -112377,9 +112413,9 @@ bpD
 bpD
 bpD
 bpD
-wsF
-wsF
-wsF
+txa
+txa
+txa
 txa
 urg
 cBf
@@ -113679,7 +113715,7 @@ bpD
 bpD
 bpD
 bpD
-wsF
+txa
 txa
 koU
 mVa
@@ -114500,11 +114536,11 @@ bpD
 bpD
 bpD
 bpD
-tQZ
-tQZ
-bVX
-wsF
-tQZ
+scK
+scK
+soz
+xrC
+scK
 scK
 scK
 scK
@@ -114930,8 +114966,8 @@ bpD
 bpD
 bpD
 bpD
-tQZ
-wsF
+scK
+xrC
 xrC
 fNk
 eiv
@@ -117522,8 +117558,8 @@ bpD
 bpD
 bpD
 bpD
-eHf
-eHf
+bpD
+bpD
 scK
 iuN
 ppl
@@ -118388,8 +118424,8 @@ bpD
 bpD
 bpD
 bpD
-eHf
-eHf
+bpD
+bpD
 scK
 bjz
 vLn
@@ -118821,7 +118857,7 @@ bpD
 bpD
 bpD
 bpD
-eHf
+bpD
 scK
 xTB
 sIR
@@ -119253,7 +119289,7 @@ bpD
 bpD
 bpD
 bpD
-eHf
+bpD
 scK
 kuP
 fqM
@@ -119685,7 +119721,7 @@ bpD
 bpD
 bpD
 bpD
-eHf
+bpD
 scK
 qYX
 yjj
@@ -120117,7 +120153,7 @@ bpD
 bpD
 bpD
 bpD
-eHf
+bpD
 scK
 pdG
 pLA
@@ -223375,7 +223411,7 @@ iFf
 yjd
 mCY
 pGh
-tcZ
+nDg
 aoN
 sXU
 pwW
@@ -223803,7 +223839,7 @@ orb
 rhw
 ueZ
 nfP
-sIR
+sAY
 sIR
 sIR
 sIR
@@ -224235,7 +224271,7 @@ csO
 rhw
 tmF
 nfP
-sIR
+sAY
 sIR
 cnb
 uyU
@@ -461003,7 +461039,7 @@ rZi
 col
 eNY
 sco
-veS
+ygj
 xyQ
 sco
 hTf
@@ -461435,7 +461471,7 @@ rZi
 col
 eNY
 sco
-ygj
+sco
 sco
 sco
 hTf
@@ -461864,10 +461900,10 @@ fZJ
 fZJ
 ptX
 xqU
+rVR
 sco
 sco
-sco
-sco
+dAF
 sco
 rjS
 veS
@@ -462731,7 +462767,7 @@ nbz
 tCn
 dMk
 dMk
-dAF
+dMk
 sco
 aKi
 veS
@@ -463160,7 +463196,7 @@ fZJ
 fZJ
 fZJ
 nbz
-sco
+rVR
 sco
 sco
 sco
@@ -464456,8 +464492,8 @@ rZi
 jqs
 uHa
 nbz
-sco
-sco
+bVX
+xgO
 sco
 sco
 sco
@@ -464890,7 +464926,7 @@ fZJ
 ptX
 xqU
 rZi
-sco
+rVR
 sco
 mbl
 sIQ
@@ -466618,7 +466654,7 @@ fZJ
 fZJ
 ptX
 kqe
-sco
+bVX
 sco
 sco
 sco
