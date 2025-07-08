@@ -4303,10 +4303,15 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church)
 "bVX" = (
-/turf/closed/wall/mineral/rogue/roofwall/outercorner{
-	dir = 1
+/obj/structure/fluff/railing/border{
+	dir = 9
 	},
-/area/rogue/indoors/town/dwarfin)
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/bath)
 "bWc" = (
 /obj/structure/table/vtable/v2,
 /obj/item/natural/feather,
@@ -9205,10 +9210,6 @@
 /turf/closed/wall/mineral/rogue/wood/window,
 /area/rogue/indoors/town/church)
 "edY" = (
-/obj/structure/lever{
-	pixel_y = -5;
-	redstone_id = "watchman_shutter"
-	},
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
@@ -24427,7 +24428,7 @@
 	},
 /obj/structure/bars/passage/shutter{
 	name = "Watchman's";
-	redstone_id = sss
+	redstone_id = "watchman_shutter"
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/garrison)
@@ -29409,16 +29410,6 @@
 	},
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
-"nDg" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 4;
-	pixel_x = 2
-	},
-/turf/open/floor/rogue/herringbone,
-/area/rogue/indoors/town/bath)
 "nDh" = (
 /obj/structure/closet/crate/roguecloset{
 	keylock = 1;
@@ -32903,6 +32894,11 @@
 	},
 /turf/open/floor/rogue/twig,
 /area/rogue/under/town/basement)
+"pkE" = (
+/turf/closed/wall/mineral/rogue/roofwall/outercorner{
+	dir = 1
+	},
+/area/rogue/indoors/town/dwarfin)
 "pkJ" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -41845,6 +41841,11 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/fluff/walldeco/wantedposter,
 /obj/structure/chair/wood/rogue,
+/obj/structure/lever/wall{
+	dir = 8;
+	pixel_y = 10;
+	redstone_id = "watchman_shutter"
+	},
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "txZ" = (
@@ -43860,6 +43861,12 @@
 	},
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/church)
+"uxR" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/rogue/ruinedwood{
+	icon_state = "weird1"
+	},
+/area/rogue/under/town/basement)
 "uxU" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/grown/log/tree,
@@ -47662,11 +47669,10 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "wsF" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/rogue/ruinedwood{
-	icon_state = "weird1"
+/turf/closed/wall/mineral/rogue/roofwall/middle{
+	dir = 4
 	},
-/area/rogue/under/town/basement)
+/area/rogue/indoors/town/dwarfin)
 "wsK" = (
 /obj/item/natural/rock,
 /turf/open/floor/rogue/cobble/mossy,
@@ -49454,11 +49460,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
-"xgO" = (
-/turf/closed/wall/mineral/rogue/roofwall/middle{
-	dir = 4
-	},
-/area/rogue/indoors/town/dwarfin)
 "xgP" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grassyel,
@@ -111982,7 +111983,7 @@ bpD
 bpD
 bpD
 txa
-wsF
+uxR
 lLE
 txa
 txa
@@ -223411,7 +223412,7 @@ iFf
 yjd
 mCY
 pGh
-nDg
+bVX
 aoN
 sXU
 pwW
@@ -464492,8 +464493,8 @@ rZi
 jqs
 uHa
 nbz
-bVX
-xgO
+pkE
+wsF
 sco
 sco
 sco
@@ -466654,7 +466655,7 @@ fZJ
 fZJ
 ptX
 kqe
-bVX
+pkE
 sco
 sco
 sco
