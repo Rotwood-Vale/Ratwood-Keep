@@ -27,7 +27,7 @@
 
 /datum/outfit/job/roguetown/tribalchief/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += list("orcs", "kobolds")
+	H.faction += list("orcs", "tribe")
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
