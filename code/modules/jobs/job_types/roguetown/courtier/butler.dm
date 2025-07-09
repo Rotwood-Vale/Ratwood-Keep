@@ -15,7 +15,7 @@
 	outfit = /datum/outfit/job/roguetown/butler
 	display_order = JDO_BUTLER
 	give_bank_account = 30
-	min_pq = 0
+	min_pq = 4
 	max_pq = null
 
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
@@ -52,5 +52,6 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_CICERONE, TRAIT_GENERIC)
 
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
