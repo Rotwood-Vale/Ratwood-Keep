@@ -1862,6 +1862,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
+"aSH" = (
+/obj/structure/bars/steel,
+/turf/open/lava,
+/area/rogue/under/cavewet/bogcaves)
 "aTd" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -7443,6 +7447,7 @@
 	icon_state = "tablewood1";
 	dir = 1
 	},
+/obj/item/storage/belt/rogue/pouch,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavewet/bogcaves)
 "dpC" = (
@@ -25337,11 +25342,10 @@
 	},
 /area/rogue/under/town/basement)
 "lFg" = (
-/obj/machinery/light/roguestreet/orange/walllamp{
-	pixel_y = -10
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
 	},
-/obj/structure/bars/grille,
-/turf/open/lava,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/under/cavewet/bogcaves)
 "lFC" = (
 /obj/structure/fluff/railing/border{
@@ -41271,8 +41275,8 @@
 /turf/closed/wall/mineral/rogue/decostone/mossy/blue/cand,
 /area/rogue/indoors/town/church/chapel)
 "tll" = (
-/obj/structure/bars/grille,
-/turf/open/lava,
+/obj/structure/chair/stool/rogue,
+/turf/open/floor/rogue/hexstone,
 /area/rogue/under/cavewet/bogcaves)
 "tly" = (
 /obj/structure/roguewindow/stained/yellow,
@@ -84112,7 +84116,7 @@ whb
 whb
 whb
 whb
-whb
+xks
 xks
 gWl
 daY
@@ -84544,13 +84548,13 @@ whb
 whb
 whb
 dVO
-dVO
 xks
+aSH
 tll
 eiF
-tll
+qRc
+aSH
 xks
-dVO
 dVO
 whb
 whb
@@ -84974,15 +84978,15 @@ xaf
 xaf
 whb
 whb
-whb
-whb
+dVO
 dVO
 xks
+aSH
 lFg
 pSH
-tll
+qRc
+aSH
 xks
-dVO
 dVO
 whb
 whb
@@ -85406,15 +85410,15 @@ xaf
 xaf
 whb
 whb
-whb
-xks
+dVO
 dVO
 xks
+aSH
 tll
 pSH
-tll
+qRc
+aSH
 xks
-dVO
 dVO
 xks
 whb
@@ -85838,15 +85842,15 @@ dVO
 dVO
 whb
 whb
-whb
-whb
 dVO
+dVO
+xks
 xks
 xks
 frk
 xks
 xks
-dVO
+xks
 dVO
 dVO
 whb
@@ -86270,8 +86274,8 @@ dVO
 dVO
 dVO
 dVO
-whb
-whb
+dVO
+dVO
 dVO
 dVO
 ngD
@@ -87135,6 +87139,7 @@ dVO
 dVO
 dVO
 dVO
+whb
 dVO
 dVO
 dVO
@@ -87144,8 +87149,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
-dVO
+whb
 whb
 whb
 whb
@@ -87577,7 +87581,7 @@ dVO
 dVO
 dVO
 jdY
-dVO
+whb
 whb
 whb
 whb
@@ -88009,7 +88013,7 @@ dVO
 dVO
 dVO
 dVO
-dVO
+whb
 whb
 whb
 whb
@@ -250180,8 +250184,8 @@ qTl
 suV
 gHg
 jyI
-cTA
-cTA
+ylC
+ylC
 cTA
 cBx
 gUu
@@ -250612,8 +250616,8 @@ oME
 hSh
 fmg
 jyI
-cTA
-cTA
+ylC
+ylC
 cTA
 cBx
 gUu
@@ -251044,8 +251048,8 @@ kZo
 mzh
 cbU
 cTA
-cTA
-cTA
+ylC
+ylC
 jyI
 cBx
 gUu
@@ -340920,10 +340924,10 @@ qdm
 uOD
 fnA
 jju
-jju
+nqU
 izr
 nqU
-jju
+hHI
 jju
 qFU
 lDc
