@@ -17,4 +17,3 @@
 	ingsize = 3
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/iron
-	associated_skill = /datum/skill/craft/cooking
