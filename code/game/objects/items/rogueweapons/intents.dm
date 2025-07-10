@@ -36,7 +36,7 @@
 	var/datum/looping_sound/chargedloop = null
 	var/keep_looping = TRUE
 	var/damfactor = 1 // Multiplied by weapon's force for damage. (Example 10 damage on damfactor = 1.1 means 10% which is 11, so, 20 + 10% would be 22, yes damfactor 1.05 is +5% and damfactor 0.9 is -10%)
-	var/penfactor = 0 // See armor_penetration. (Or just read this, it basically ignores the matching type of damage, be it blunt/slash/stab, for example if they had armor protection to blunt 20, and the thing does 10 raw damage but it has protection 5 to blunt it would deal 5 damage instead, however if penfactor was 4 it would deal 9 damage because it ignores 4 out of 5 of the damage, if it was penfactor -4 it would be 1 damage going through)
+	var/penfactor = 0 // See armor_penetration. (Or just read this, [rough and partially inaccurate oversimplified explanation] it basically ignores the matching type of damage, be it blunt/slash/stab, for example if they had armor protection to blunt 20, and the thing does 10 raw damage but it has protection 5 to blunt it would deal 5 damage instead, however if penfactor was 4 it would deal 9 damage because it ignores 4 out of 5 of the damage, if it was penfactor -4 it would be 1 damage going through)
 	var/item_d_type = "blunt" // Changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
 	var/charging_slowdown = 0 // The bigger the number the worse the slowdown. (For example war dirt gives a slowdown of 2)
 	var/warnoffset = 0
