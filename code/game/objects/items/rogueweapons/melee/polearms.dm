@@ -363,13 +363,14 @@
 
 /obj/item/rogueweapon/halberd/bardiche
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
 	desc = "A beautiful, better suited for cutting and chopping variant of an halberd."
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
+	max_integrity = 150
 
 /datum/intent/spear/cut/halberd/bardiche
 	damfactor = 1
@@ -503,15 +504,15 @@
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
 	icon_state = "estoc"
-	force = 12
+	force = 14
 	force_wielded = 25
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	possible_item_intents = list(/datum/intent/sword/chop/onehanded, /datum/intent/sword/strike/onehanded)
-	gripped_intents = list(/datum/intent/sword/thrust/estoc, /datum/intent/sword/lunge, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	possible_item_intents = list(/datum/intent/sword/strike/onehanded, /datum/intent/sword/thrust/onehanded)
+	gripped_intents = list(/datum/intent/sword/thrust/estoc, /datum/intent/sword/lunge, /datum/intent/sword/estoc_halfsword, /datum/intent/sword/strike)
 	bigboy = TRUE
 	gripsprite = TRUE
 	wlength = WLENGTH_GREAT
@@ -519,8 +520,40 @@
 	minstr = 8
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
+	max_integrity = 235
 	max_blade_int = 300
-	wdefense = 5
+	wdefense = 5.5
+
+/datum/intent/sword/thrust/estoc
+    name = "thrust"
+    penfactor = 60
+    recovery = 10 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
+    clickcd = 11
+
+/datum/intent/sword/lunge
+    name = "lunge"
+    icon_state = "inimpale"
+    attack_verb = list("lunges")
+    animname = "stab"
+    blade_class = BCLASS_STAB
+    hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+    penfactor = 40
+    damfactor = 1.3
+    chargetime = 10
+    recovery = 20 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
+    clickcd = 8
+
+/datum/intent/sword/estoc_halfsword
+    name = "half-sword"
+    icon_state = "inpick"
+    attack_verb = list("picks", "imaples")
+    animname = "strike"
+    blade_class = BCLASS_STAB
+    hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+    penfactor = 60
+    damfactor = 1.2
+    clickcd = 15
+    swingdelay = 10
 
 /obj/item/rogueweapon/estoc/getonmobprop(tag)
 	. = ..()
@@ -574,23 +607,3 @@
 					"wflip" = 8,
 					"eflip" = 0,
 					)
-
-/datum/intent/sword/thrust/estoc
-	name = "thrust"
-	penfactor = 50
-	recovery = 20 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
-	clickcd = 10
-
-/datum/intent/sword/lunge
-	name = "lunge"
-	icon_state = "inimpale"
-	attack_verb = list("lunges")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	reach = 2
-	penfactor = 30
-	damfactor = 1.2
-	chargetime = 5
-	recovery = 20 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
-	clickcd = 10
