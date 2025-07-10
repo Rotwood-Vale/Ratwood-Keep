@@ -464,8 +464,8 @@
 	name = "broad executioner"
 	force = 22
 	force_wielded = 32
-	possible_item_intents = list(/datum/intent/sword/strike/exe/onehanded, /datum/intent/axe/chop/exe/onehanded)
-	gripped_intents = list(/datum/intent/sword/strike/exe, /datum/intent/axe/chop/exe, /datum/intent/sword/thrust/exe, /datum/intent/shovelscoop)
+	possible_item_intents = list(/datum/intent/sword/strike/exe/onehanded, /datum/intent/axe/chop/exe/onehanded, /datum/intent/sword/strike/exe/blunt_blade_side)
+	gripped_intents = list(/datum/intent/sword/strike/exe, /datum/intent/axe/chop/exe, /datum/intent/sword/thrust/exe, /datum/intent/sword/strike/exe/blunt_blade_side) /// TODO: If alt-grip is ever added, /datum/intent/shovelscoop, add that intent when it's coded for this specific weapon proper.
 	desc = "A longsword with extra heft and thickness to its blade with a blunted curved tip."
 	minstr = 10
 	wlength = WLENGTH_GREAT
@@ -497,6 +497,16 @@
 	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
 	blade_class = BCLASS_BLUNT
 	item_d_type = "blunt"
+	reach = 2
+
+/datum/intent/sword/strike/exe/blunt_blade_side
+	attack_verb = list("smack across")
+	swingdelay = 10
+	penfactor = 25
+	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
+	damfactor = 0.3
+	misscost = 2
+	icon_state = "inpunish"
 	reach = 2
 
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
