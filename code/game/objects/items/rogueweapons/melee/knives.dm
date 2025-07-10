@@ -177,8 +177,6 @@
 /datum/intent/dagger/cut/combatknife
 	penfactor = 10
 	damfactor = 1.2
-	can_cdg = TRUE
-	can_assin = TRUE
 
 /datum/intent/dagger/chop/cleaver/combatknife
 	penfactor = 20
