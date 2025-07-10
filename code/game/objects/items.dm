@@ -154,6 +154,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
 	var/can_cdg = FALSE			//Weapon: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+	var/can_grf = FALSE			//Weapon: Can Grapplefu - Special flag to denote a weapon capable of being used in grapple combat. (Rondel daggers, ideally.)
 
 	var/ignore_sleeves_code = FALSE // Use for clothing which has cropped parts for hands and doesn't use sleeved system. They will have layer under gloves
 	var/sleeves_state_override = FALSE // If you want to use sleeves that are different from the object's icon_state (to don't copy many similar states)

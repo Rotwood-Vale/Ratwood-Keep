@@ -464,3 +464,29 @@
 	name = "nite elf dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
 	force = 25
+
+//A very singular purpose dagger, intended to deal with armour.
+/obj/item/rogueweapon/huntingknife/idagger/steel/rondel
+	name = "rondel dagger"
+	desc = "A dagger intended to be carried at one's hip. The perfect sidearm. Best used while grappling an opponent."
+	possible_item_intents = list(/datum/intent/dagger/thrust/rondel, /datum/intent/dagger/cut)//You get cut, but that's not the weapon's purpose.
+	force = 14//2 less than a combat knife. 1 less than an iron dagger.
+	throwforce = 14
+	icon_state = "sdagger_sk"
+	wdefense = 4//A great circular catch above the grip. Same defense as most swords.
+	can_cdg = TRUE//They're down? Finish them.
+	can_grf = TRUE//Grapple them for that 80% AP.
+
+//Rondel's unique intent.
+/datum/intent/dagger/thrust/rondel
+	name = "pick"
+	icon_state = "inpick"
+	attack_verb = list("punctures", "perforates")
+	blade_class = BCLASS_PICK//Punctures. Punctures abound. Can also be used for mining, given it's a utility item, too.
+	hitsound = list('sound/combat/hits/bladed/largeslash (1).ogg', 'sound/combat/hits/bladed/largeslash (2).ogg', 'sound/combat/hits/bladed/largeslash (3).ogg')
+	penfactor = 30//You get the AP from grapplefu. If you're grabbing them, it jumps to 80%. This is 10% less than a normal dagger thrust, otherwise.
+	clickcd = 14
+	swingdelay = 5//Same as chop. Not meant to be quick. Not nearly as long as normal picking.
+//	damfactor = 1.3//30% extra damage felt terrible in testing. Probably not a good idea to uncomment this.
+	ican_cdg = TRUE
+	ican_grf = TRUE
