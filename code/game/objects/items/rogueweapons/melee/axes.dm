@@ -32,6 +32,27 @@
 	swingdelay = 12 // One-handed chops are logically slower.
 	penfactor = 32
 
+/datum/intent/axe/bash // Adds a worse non-lethal option.
+	name = "bash"
+	icon_state = "inbash"
+	attack_verb = list("bashes", "clubs")
+	animname = "strike"
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 5
+	damfactor = 1.1
+	item_d_type = "blunt"
+
+/datum/intent/axe/bash/pommel
+	icon_state = "inpunish"
+	attack_verb = list("strike pommels", "hilt pommels")
+	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
+	penfactor = 15  // It's the handle.
+	damfactor = 0.5 // The whole point of this is to ensure they don't perish from internal bleeding.
+	swingdelay = 2
+
 /obj/item/rogueweapon/stoneaxe
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
@@ -112,13 +133,13 @@
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 23
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/axe/cut/battle/onehanded, /datum/intent/axe/chop/battle/onehanded)
+	possible_item_intents = list(/datum/intent/axe/cut/battle/onehanded, /datum/intent/axe/chop/battle/onehanded, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	name = "battle axe"
 	desc = "A steel battleaxe of war. Has a wicked edge."
 	icon_state = "battleaxe"
 	max_blade_int = 300
 	smeltresult = /obj/item/ingot/steel
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle)
+	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	minstr = 12
 	wdefense = 4
 
@@ -152,17 +173,17 @@
 	name = "axe"
 	force = 20
 	force_wielded = 26
-	possible_item_intents = list(/datum/intent/axe/cut/onehanded, /datum/intent/axe/chop/onehanded)
+	possible_item_intents = list(/datum/intent/axe/cut/onehanded, /datum/intent/axe/chop/onehanded, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	desc = "A regular iron woodcutting axe."
 	icon_state = "axe"
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/iron
-	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	wdefense = 2
 
 /obj/item/rogueweapon/stoneaxe/handaxe
 	force = 19
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	name = "hatchet"
 	desc = "An iron hand axe."
 	icon_state = "hatchet"
