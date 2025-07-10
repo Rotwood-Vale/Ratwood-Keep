@@ -488,6 +488,17 @@
 	misscost = 20 // Definitely do not miss or get dodged.
 	clickcd = 20
 
+/datum/intent/sword/thrust/exe
+	clickcd = 16 	// Thrusting this heavy thing is straining.
+	swingdelay = 8	// Think of it as a one two motion.
+	penfactor = 40
+	misscost = 10
+	attack_verb = list("blunty thrusts", "bluntly stabs")
+	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
+	blade_class = BCLASS_BLUNT
+	item_d_type = "blunt"
+	reach = 2
+
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
 	. = ..()
 	if(tag)
