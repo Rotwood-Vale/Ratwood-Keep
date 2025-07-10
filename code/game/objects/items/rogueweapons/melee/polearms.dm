@@ -19,7 +19,7 @@
 
 /datum/intent/spear/bash
 	name = "bash"
-	"Hilt pommeling and blunt-front bashing motions making blunting through armor easier."
+	desc = "Hilt pommeling and blunt-front bashing motions making blunting through armor easier."
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
 	attack_verb = list("bashes", "clubs", "strikes")
