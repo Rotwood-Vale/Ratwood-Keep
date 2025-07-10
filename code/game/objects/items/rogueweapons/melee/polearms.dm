@@ -546,7 +546,7 @@
 /datum/intent/sword/estoc_halfsword
     name = "half-sword"
     icon_state = "inpick"
-    attack_verb = list("picks", "imaples")
+    attack_verb = list("picks", "impales")
     animname = "strike"
     blade_class = BCLASS_STAB
     hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
