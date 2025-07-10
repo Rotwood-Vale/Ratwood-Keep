@@ -64,7 +64,7 @@
 	attack_verb = list("picks", "impales")
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 75
+	penfactor = 70
 	clickcd = 15 // Changed from 14 to 15 to avoid the spam fest with swift intent bypassing parries and dodges if clicking isn't on point.
 	swingdelay = 12
 	damfactor = 1.5
