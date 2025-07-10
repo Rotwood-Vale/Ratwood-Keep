@@ -83,6 +83,7 @@
 
 /datum/intent/sword/chop
 	name = "chop"
+	desc = "Chopping and hacking motions leading to an concentrated blow that makes delimbing easier."
 	icon_state = "inchop"
 	attack_verb = list("chops", "hacks")
 	animname = "chop"
@@ -95,6 +96,7 @@
 
 /datum/intent/sword/chop/onehanded
 	swingdelay = 10
+	desc = "Chopping and hacking motions leading to an concentrated blow that makes delimbing easier. (slightly slower to land due to being one-handed)"
 
 /obj/item/rogueweapon/sword
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK

@@ -2,6 +2,7 @@
 
 /datum/intent/spear/thrust
 	name = "thrust"
+	desc = "Thrusting and stabbing motions making them slightly more accurate than cuts while also having a way easier time penetrating armor."
 	blade_class = BCLASS_STAB
 	attack_verb = list("thrusts")
 	animname = "stab"
@@ -18,6 +19,7 @@
 
 /datum/intent/spear/bash
 	name = "bash"
+	"Hilt pommeling and blunt-front bashing motions making blunting through armor easier."
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
 	attack_verb = list("bashes", "clubs", "strikes")
@@ -25,8 +27,14 @@
 	damfactor = 0.8
 	item_d_type = "blunt"
 
+/datum/intent/spear/bash/woodstaff
+	damfactor = 1
+	icon_state = "instrike"
+	attack_verb = list("strikes", "whacks")
+
 /datum/intent/spear/cut
 	name = "cut"
+	desc = "Poke-slashing and cutting-across motions making this both slower and less damaging than proper stabs."
 	blade_class = BCLASS_CUT
 	attack_verb = list("cuts", "slashes")
 	icon_state = "incut"
@@ -39,8 +47,8 @@
 /obj/item/rogueweapon/woodstaff
 	force = 10
 	force_wielded = 15
-	possible_item_intents = list(SPEAR_BASH)
-	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
+	possible_item_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/spear/bash) // The bash intent is kept for those that wish to train polearms, go easier on others or humiliate them.
+	gripped_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/mace/smash/wood, /datum/intent/spear/bash)
 	name = "wooden staff"
 	desc = "Not so heavy, perfect for beggars, Refugees and mages."
 	icon_state = "woodstaff"

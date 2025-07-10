@@ -2,6 +2,7 @@
 
 /datum/intent/mace/strike
 	name = "strike"
+	desc = "Swinging and striking motions making blunting through armor easier."
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("strikes", "whacks")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -20,7 +21,7 @@
 
 /datum/intent/mace/strike/directstrike/onehanded
 	name = "one-handed direct strike"
-	desc = "A firmly gripped direct strike that is a tad more damaging and armor penetrating in-exchange of being unable to make rapid consecutive hits."
+	desc = "A firmly gripped direct strike that is more damaging and armor penetrating in-exchange of being unable to make rapid consecutive hits. (Slightly slower due to being one-handed)"
 	clickcd = 18
 	penfactor = 23
 
@@ -38,6 +39,7 @@
 
 /datum/intent/mace/smash
 	name = "smash"
+	desc = "Winding up an powerful concentrated blow that smashes through armor with ease."
 	blade_class = BCLASS_SMASH
 	attack_verb = list("smashes")
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
@@ -49,6 +51,7 @@
 
 /datum/intent/mace/smash/onehanded // This intent was added to add variety, even if it's pretty bad.
 	name = "one-handed smash"
+	desc = "Winding up an powerful concentrated blow that smashes through armor with ease. (very slow due to being one-handed and slightly slower to land)"
 	clickcd = 20
 	swingdelay = 12
 	penfactor = 55

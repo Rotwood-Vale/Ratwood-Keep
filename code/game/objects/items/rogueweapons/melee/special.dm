@@ -1,6 +1,6 @@
 /obj/item/rogueweapon/lordscepter
 	force = 20
-	force_wielded = 20
+	force_wielded = 25
 	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/lordbash)
 	name = "master's rod"
@@ -19,10 +19,11 @@
 
 /datum/intent/lordbash
 	name = "bash"
+	desc = "Smack some royal sense into the unruly subjects."
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "clubs", "strikes")
-	penfactor = 10
+	attack_verb = list("royaly-bashes", "royaly-clubs", "royaly-strikes")
+	penfactor = 25
 	item_d_type = "blunt"
 
 /datum/intent/lord_electrocute

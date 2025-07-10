@@ -2,6 +2,7 @@
 
 /datum/intent/flail/strike
 	name = "strike"
+	desc = "Swinging-across and striking-around motions making blunting through armor easier."
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("strikes", "hits")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -24,6 +25,7 @@
 
 /datum/intent/flail/strike/smash
 	name = "smash"
+	desc = "Winding up an powerful concentrated blow that smashes through armor with ease, yet becoming tiring if held for too long."
 	chargetime = 5
 	chargedrain = 0.9
 	no_early_release = TRUE

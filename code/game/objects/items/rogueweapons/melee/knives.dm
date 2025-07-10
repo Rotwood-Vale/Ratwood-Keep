@@ -5,6 +5,7 @@
 
 /datum/intent/dagger/cut
 	name = "cut"
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs leaving less of a cutting impact due to the dagger design."
 	icon_state = "incut"
 	attack_verb = list("cuts", "slashes")
 	animname = "cut"
@@ -21,9 +22,11 @@
 
 /datum/intent/dagger/cut/knife
 	damfactor = 1.1
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs while being slightly more damaging."
 
 /datum/intent/dagger/thrust
 	name = "thrust"
+	desc = "Stabbing and thrusting motions making them slightly more accurate and faster than cuts while also having an easier time penetrating armor."
 	icon_state = "instab"
 	attack_verb = list("thrusts", "stabs")
 	animname = "stab"
@@ -39,6 +42,7 @@
 /datum/intent/dagger/thrust/knife
 	penfactor = 20
 	damfactor = 0.9
+	desc = "Stabbing and thrusting motions making them slightly more accurate and faster than cuts while also having an easier time penetrating armor even if only half as good as daggers at it."
 
 /datum/intent/dagger/chop
 	name = "chop"
@@ -55,6 +59,7 @@
 
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
+	desc = "Precise poke-slipping and tap-thrusting motions, slower yet effective way to beat armor is to slip through its gaps with a narrow blade, be it an wind-up precise blow, or just taking sometime to poke around to find a gap before stabbing it in."
 	icon_state = "inpick"
 	attack_verb = list("picks", "impales")
 	blade_class = BCLASS_STAB
@@ -68,6 +73,7 @@
 
 /datum/intent/dagger/thrust/pick/mining
 	name = "mining icepick stab"
+	desc = "Reverse gripping the dagger in question to use it as a improvised pick, to mine away at the problems at hand."
 	no_attack = TRUE
 	ican_cdg = FALSE
 	ican_assin = FALSE
