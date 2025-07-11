@@ -192,3 +192,96 @@
 		M.adjust_fire_stacks(6)
 		M.IgniteMob()
 	explosion(get_turf(target), -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire, soundin = explode_sound)
+
+//sling bullets
+
+/obj/item/ammo_casing/caseless/rogue/sling_bullet //parent of sling ammo and the temporary sling bullet for stones. shouldn't ever be seen
+	name = "soaring stone"
+	desc = "You shouldn't be seeing this."
+	projectile_type = /obj/projectile/bullet/sling_bullet
+	caliber = "slingbullet"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "arrow"
+	force = 5
+	throwforce = 5 // You can still throw them, but shouldn't.
+	dropshrink = 0.6
+	possible_item_intents = list(INTENT_GENERIC) //not intended to attack with them
+	max_integrity = 20
+
+/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone //these should be seen
+	name = "stone sling bullet"
+	desc = "A stone refined for wrath."
+	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/stone
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "stone_sling_bullet"
+
+/obj/projectile/bullet/sling_bullet //not reusable since stones will break on impact. i couldnt figure out how to prevent that
+	name = "sling bullet"
+	desc = "If you're reading this: duck."
+	damage = 25
+	damage_type = BRUTE
+	armor_penetration = 0
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "stone1"
+	range = 15
+	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
+	embedchance = 0
+	woundclass = BCLASS_BLUNT
+	flag = "piercing"
+	speed = 0.4
+
+/obj/projectile/bullet/sling_bullet/on_hit(atom/target)
+	. = ..()
+
+	var/mob/living/L = firer
+	if(!L || !L.mind) return
+
+	var/skill_multiplier = 0
+
+	if(isliving(target)) // If the target theyre shooting at is a mob/living
+		var/mob/living/T = target
+		if(T.stat != DEAD) // If theyre alive
+			skill_multiplier = 4
+
+	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/slings, SKILL_LEVEL_LEGENDARY))
+		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
+
+/obj/projectile/bullet/reusable/sling_bullet //parent for proper reusable sling bullets
+	name = "sling bullet"
+	desc = "If you're reading this: duck."
+	damage = 25
+	damage_type = BRUTE
+	armor_penetration = 0
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "stone1"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet
+	range = 15
+	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
+	embedchance = 0
+	woundclass = BCLASS_BLUNT
+	flag = "piercing"
+	speed = 0.4
+
+/obj/projectile/bullet/reusable/sling_bullet/on_hit(atom/target)
+	. = ..()
+
+	var/mob/living/L = firer
+	if(!L || !L.mind) return
+
+	var/skill_multiplier = 0
+
+	if(isliving(target)) // If the target theyre shooting at is a mob/living
+		var/mob/living/T = target
+		if(T.stat != DEAD) // If theyre alive
+			skill_multiplier = 4
+
+	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/slings, SKILL_LEVEL_LEGENDARY))
+		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
+
+/obj/projectile/bullet/reusable/sling_bullet/stone
+	name = "stone sling bullet"
+	damage = 30 //proper stones are better
+	armor_penetration = 0
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "musketball_proj"
