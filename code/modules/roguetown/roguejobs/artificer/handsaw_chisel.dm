@@ -51,6 +51,8 @@
 	associated_skill = /datum/skill/combat/knives
 	max_blade_int = 50
 	dropshrink = 0.9
+	grid_height = 64
+	grid_width = 32
 	var/already_assembled
 
 /obj/item/rogueweapon/chisel/attackby(obj/item/W, mob/living/user, params)

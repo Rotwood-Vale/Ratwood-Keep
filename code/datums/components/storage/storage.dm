@@ -29,21 +29,22 @@
 	var/locked = FALSE								//when locked nothing can see inside or use it.
 
 	var/max_w_class = WEIGHT_CLASS_SMALL			//max size of objects that will fit.
-	var/max_combined_w_class = 14					//max combined sizes of objects that will fit.
-	var/max_items = 7								//max number of objects that will fit.
+	var/max_combined_w_class = 1000					//max combined sizes of objects that will fit.
+	var/max_items = 1000								//max number of objects that will fit.
 
 	var/emp_shielded = FALSE
 
 	var/silent = FALSE								//whether this makes a message when things are put in.
 	var/click_gather = FALSE						//whether this can be clicked on items to pick it up rather than the other way around.
-	var/rustle_sound = TRUE							//play rustle sound on interact.
+	var/rustle_sound = "rustle"							//play rustle sound on interact. empty string or null to silence
 	var/allow_quick_empty = FALSE					//allow empty verb which allows dumping on the floor of everything inside quickly.
 	var/allow_quick_gather = FALSE					//allow toggle mob verb which toggles collecting all items from a tile.
 
-	var/allow_dump_out = FALSE
+	var/allow_dump_out = FALSE						//allow dumping out contents via LMB click-dragging
 
 	var/collection_mode = COLLECT_EVERYTHING
 
+	var/insert_verb = "tuck"						//you "tuck" things into a bag
 	var/insert_preposition = "in"					//you put things "in" a bag, but "on" a tray.
 
 	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
@@ -56,14 +57,12 @@
 	var/attack_hand_interact = TRUE					//interact on attack hand.
 	var/quickdraw = FALSE							//altclick interact
 
-	var/datum/action/item_action/storage_gather_mode/modeswitch_action
-
 	//Screen variables: Do not mess with these vars unless you know what you're doing. They're not defines so storage that isn't in the same location can be supported in the future.
-	var/screen_max_columns = 7							//These two determine maximum screen sizes.
-	var/screen_max_rows = INFINITY
+	var/screen_max_columns = INFINITY							//These two determine maximum screen sizes.
+	var/screen_max_rows = 9
 	var/screen_pixel_x = 16								//These two are pixel values for screen loc of boxes and closer
 	var/screen_pixel_y = 16
-	var/screen_start_x = 4								//These two are where the storage starts being rendered, screen_loc wise.
+	var/screen_start_x = 1								//These two are where the storage starts being rendered, screen_loc wise.
 	var/screen_start_y = 2
 	//End
 
@@ -104,7 +103,6 @@
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_PAW, PROC_REF(on_attack_hand))
-	RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, PROC_REF(emp_act))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_GHOST, PROC_REF(show_to_ghost))
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(refresh_mob_views))
 	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(_remove_and_refresh))
@@ -121,8 +119,6 @@
 	RegisterSignal(parent, COMSIG_MOUSEDROP_ONTO, PROC_REF(mousedrop_onto))
 	RegisterSignal(parent, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(mousedrop_receive))
 
-	update_actions()
-
 /datum/component/storage/Destroy()
 	close_all()
 	QDEL_NULL(boxes)
@@ -130,8 +126,6 @@
 	LAZYCLEARLIST(is_using)
 	return ..()
 
-/datum/component/storage/PreTransfer()
-	update_actions()
 
 /datum/component/storage/proc/set_holdable(can_hold_list, cant_hold_list)
 	can_hold_description = generate_hold_desc(can_hold_list)
@@ -150,20 +144,6 @@
 		desc += "\a [initial(valid_item.name)]"
 
 	return "\n\t<span class='notice'>[desc.Join("\n\t")]</span>"
-
-/datum/component/storage/proc/update_actions()
-	QDEL_NULL(modeswitch_action)
-	return
-	if(!isitem(parent) || !allow_quick_gather)
-		return
-	var/obj/item/I = parent
-	modeswitch_action = new(I)
-	RegisterSignal(modeswitch_action, COMSIG_ACTION_TRIGGER, PROC_REF(action_trigger))
-	if(I.obj_flags & IN_INVENTORY)
-		var/mob/M = I.loc
-		if(!istype(M))
-			return
-		modeswitch_action.Grant(M)
 
 /datum/component/storage/proc/change_master(datum/component/storage/concrete/new_master)
 	if(new_master == src || (!isnull(new_master) && !istype(new_master)))
@@ -206,7 +186,6 @@
 
 /datum/component/storage/proc/attack_self(datum/source, mob/M)
 	if(locked)
-//		to_chat(M, span_warning("[parent] seems to be locked!"))
 		return FALSE
 	if((M.get_active_held_item() == parent) && allow_quick_empty)
 		quick_empty(M)
@@ -216,7 +195,6 @@
 		return FALSE
 	. = COMPONENT_NO_ATTACK
 	if(locked)
-//		to_chat(M, span_warning("[parent] seems to be locked!"))
 		return FALSE
 	var/obj/item/I = O
 	if(collection_mode == COLLECT_ONE)
@@ -250,7 +228,7 @@
 //			if (TICK_CHECK)
 //				progress.update(progress.goal - things.len)
 //				return TRUE
-//	qdel(progress)
+//	progress.end_progress()
 //	to_chat(M, span_notice("I put everything I could [insert_preposition] [parent]."))
 
 /datum/component/storage/proc/handle_mass_item_insertion(list/things, datum/component/storage/src_object, mob/user, datum/progressbar/progress)
@@ -276,20 +254,16 @@
 	for(var/obj/item/I in things)
 		things -= I
 		if(I.loc != thing_loc)
-			testing("debugbag1 [I]")
 			continue
 		if(I.type in rejections) // To limit bag spamming: any given type only complains once
-			testing("debugbag2 [I]")
 			continue
 		if(!can_be_inserted(I, stop_messages = TRUE))	// Note can_be_inserted still makes noise when the answer is no
 			if(real_location.contents.len >= max_items)
 				break
-			testing("debugbag3 [I]")
 			rejections += I.type	// therefore full bags are still a little spammy
 			continue
 
 		handle_item_insertion(I, TRUE)	//The TRUE stops the "You put the [parent] into [S]" insertion message from being displayed.
-		testing("debugbag4 [I]")
 		if (TICK_CHECK)
 			progress.update(progress.goal - things.len)
 			return TRUE
@@ -297,28 +271,38 @@
 	progress.update(progress.goal - things.len)
 	return FALSE
 
-/datum/component/storage/proc/quick_empty(mob/M)
+/datum/component/storage/proc/quick_empty(mob/user) // Evidently this handles emptying sacks in Roguetown...
 	var/atom/A = parent
-	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
+	if(!user.canUseStorage() || !A.Adjacent(user) || user.incapacitated(ignore_grab = TRUE)) // Some sanity checks
 		return
 	if(locked)
 //		to_chat(M, span_warning("[parent] seems to be locked!"))
 		return FALSE
-	A.add_fingerprint(M)
+	A.add_fingerprint(user)
 //	to_chat(M, span_notice("I start dumping out [parent]."))
 //	var/turf/T = get_turf(A)
 	var/list/things = contents()
-	playsound(A, "rustle", 50, FALSE, -5)
+	if(rustle_sound)
+		playsound(A, rustle_sound, 50, FALSE, -5)
 //	var/datum/progressbar/progress = new(M, length(things), T)
 //	while (do_after(M, dump_time, TRUE, T, FALSE, CALLBACK(src, PROC_REF(mass_remove_from_storage), T, things, progress)))
 //		stoplag(1)
-//	qdel(progress)
-	var/turf/target = get_turf(A)
-	for(var/obj/item/I in things)
+//	progress.end_progress()
+	var/turf/T = get_step(user, user.dir)
+	if(istype(T, /turf/closed)) // Is there an impassible turf in the way? Try to drop on user turf instead
+		T = get_turf(user)
+		if(istype(T, /turf/closed))
+			to_chat(user, span_warning("Something in the way."))
+			return
+	for(var/obj/structure/S in T) // Is there a structure in the way that isn't a chest, table, rack, or handcart? Can't dump the sack out on that
+		if(S.density && !istype(S, /obj/structure/table) && !istype(S, /obj/structure/closet/crate) && !istype(S, /obj/structure/rack) && !istype(S, /obj/structure/bars) && !istype(S, /obj/structure/handcart))
+			to_chat(user, span_warning("Something in the way."))
+			return
+	for(var/obj/item/I in things) // If the above aren't true, dump the sack onto the tile in front of us
 		things -= I
 //		if(I.loc != real_location)
 //			continue
-		remove_from_storage(I, target)
+		remove_from_storage(I, T)
 		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
 		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 //		if(trigger_on_found && I.on_found())
@@ -329,13 +313,11 @@
 	for(var/obj/item/I in things)
 		things -= I
 		if(I.loc != real_location)
-			testing("debugbag5 [I]")
 			continue
 		remove_from_storage(I, target)
 		I.pixel_x = initial(I.pixel_x) + rand(-10,10)
 		I.pixel_y = initial(I.pixel_y) + rand(-10,10)
 		if(trigger_on_found && I.on_found())
-			testing("debugbag6 [I]")
 			return FALSE
 		if(TICK_CHECK)
 			progress.update(progress.goal - length(things))
@@ -384,8 +366,8 @@
 		numbered_contents = _process_numerical_display()
 		adjusted_contents = numbered_contents.len
 
-	var/columns = CLAMP(max_items, 1, screen_max_columns)
-	var/rows = CLAMP(CEILING(adjusted_contents / columns, 1), 1, screen_max_rows)
+	var/rows = CLAMP(max_items, 1, screen_max_rows)
+	var/columns = CLAMP(CEILING(adjusted_contents / rows, 1), 1, screen_max_columns)
 	standard_orient_objs(rows, columns, numbered_contents)
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
@@ -423,7 +405,7 @@
 				cy++
 				if(cy - screen_start_y >= rows)
 					break
-	closer.screen_loc = "[screen_start_x + cols]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y]"
+	closer.screen_loc = "[screen_start_x]:[screen_pixel_x],[screen_start_y+rows]:[screen_pixel_y]"
 
 /datum/component/storage/proc/show_to(mob/M)
 	if(!M.client)
@@ -457,18 +439,13 @@
 
 /datum/component/storage/proc/close(mob/M)
 	hide_from(M)
+	SEND_SIGNAL(parent, COMSIG_STORAGE_CLOSED, M)
 
 /datum/component/storage/proc/close_all()
 	. = FALSE
 	for(var/mob/M in can_see_contents())
 		close(M)
 		. = TRUE //returns TRUE if any mobs actually got a close(M) call
-
-/datum/component/storage/proc/emp_act(datum/source, severity)
-	if(emp_shielded)
-		return
-	var/datum/component/storage/concrete/master = master()
-	master.emp_act(source, severity)
 
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
@@ -505,11 +482,9 @@
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the new_location target, if that is null it's being deleted
 /datum/component/storage/proc/remove_from_storage(atom/movable/AM, atom/new_location)
 	if(!istype(AM))
-		testing("debugbag88")
 		return FALSE
 	var/datum/component/storage/concrete/master = master()
 	if(!istype(master))
-		testing("debugbag99")
 		return FALSE
 	return master.remove_from_storage(AM, new_location)
 
@@ -537,7 +512,8 @@
 //			to_chat(M, span_warning("[parent] seems to be locked!"))
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
-			playsound(A, "rustle", 50, TRUE, -5)
+			if(rustle_sound)
+				playsound(A, rustle_sound, 50, TRUE, -5)
 			return TRUE
 	update_icon()
 	return FALSE
@@ -602,7 +578,7 @@
 		return
 	if(!over_object)
 		return
-	if(M.incapacitated() || !M.canUseStorage())
+	if(M.incapacitated(ignore_grab = TRUE) || !M.canUseStorage())
 		return
 
 	if(ishuman(M))
@@ -664,15 +640,12 @@
 		var/obj/item/I = O
 		if(iscarbon(M))
 			var/mob/living/L = M
-			if(!L.incapacitated() && I == L.get_active_held_item())
+			if(!L.incapacitated(ignore_grab = TRUE) && I == L.get_active_held_item())
 				if(!SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE) && can_be_inserted(I, FALSE))	//If it has storage it should be trying to dump, not insert.
 					handle_item_insertion(I, FALSE, L)
 
 /obj/item/proc/StorageBlock(obj/item/I, mob/user)
 	return FALSE
-
-/obj
-	var/component_block = FALSE
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
@@ -687,7 +660,6 @@
 	if(real_location == I.loc)
 		return FALSE //Means the item is already in the storage item
 	if(!ismob(host.loc) && !isturf(host.loc))
-		testing("fugg [host] | [host.loc] | [M]")
 		return FALSE
 	if(locked)
 		if(M && !stop_messages)
@@ -759,17 +731,19 @@
 	. = master.handle_item_insertion_from_slave(src, I, prevent_warning, M)
 
 /datum/component/storage/proc/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
+	if(!length(is_using))
+		SEND_SIGNAL(parent, COMSIG_STORAGE_CLOSED, M)
 	if(silent && !override)
 		return
 	if(rustle_sound)
-		playsound(parent, "rustle", 50, TRUE, -5)
+		playsound(parent, rustle_sound, 50, TRUE, -5)
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)
-			to_chat(usr, span_notice("I tuck [I] [insert_preposition]to [parent]."))
+			to_chat(usr, "<span class='notice'>I [insert_verb] [I] [insert_preposition]to [parent].</span>")
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message(span_notice("[M] tucks [I] [insert_preposition]to [parent]."), MSG_VISUAL)
+			viewing.show_message("<span class='notice'>[M] [insert_verb]s [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
 		else
-			viewing.show_message(span_notice("[M] tucks something [insert_preposition]to [parent]."), MSG_VISUAL)
+			viewing.show_message("<span class='notice'>[M] [insert_verb]s something [insert_preposition]to [parent].</span>", MSG_VISUAL)
 
 /datum/component/storage/proc/update_icon()
 	if(isobj(parent))
@@ -834,11 +808,11 @@
 	if((user.active_storage == src) && A.Adjacent(user)) //if you're already looking inside the storage item
 		user.active_storage.close(user)
 		close(user)
-		. = COMPONENT_NO_ATTACK_HAND
+		. = COMPONENT_NO_ATTACK_RIGHT
 		return
 
 	if(rustle_sound)
-		playsound(A, "rustle", 50, TRUE, -5)
+		playsound(A, rustle_sound, 50, TRUE, -5)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -865,9 +839,9 @@
 				return
 
 	if(A.Adjacent(user))
-		. = COMPONENT_NO_ATTACK_HAND
+		. = COMPONENT_NO_ATTACK_RIGHT
 		if(locked || !allow_look_inside)
-//			to_chat(user, span_warning("[parent] seems to be locked!"))
+//			to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 			return
 		else
 			show_to(user)
@@ -884,7 +858,7 @@
 		return
 
 	if(rustle_sound)
-		playsound(A, "rustle", 50, TRUE, -5)
+		playsound(A, rustle_sound, 50, TRUE, -5)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -920,7 +894,6 @@
 
 /datum/component/storage/proc/signal_on_pickup(datum/source, mob/user)
 	var/atom/A = parent
-	update_actions()
 	for(var/mob/M in range(1, A))
 		if(M.active_storage == src)
 			close(M)
@@ -947,10 +920,11 @@
 	if(!quickdraw)
 		A.add_fingerprint(user)
 		user_show_to_mob(user)
-		playsound(A, "rustle", 50, TRUE, -5)
+		if(rustle_sound)
+			playsound(A, rustle_sound, 50, TRUE, -5)
 		return
 
-	if(!user.incapacitated())
+	if(!user.incapacitated(ignore_grab = TRUE))
 		var/obj/item/I = locate() in real_location()
 		if(!I)
 			return

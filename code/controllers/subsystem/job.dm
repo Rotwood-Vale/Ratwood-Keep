@@ -677,6 +677,8 @@ SUBSYSTEM_DEF(job)
 	if(job && H)
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 
+	SSticker.on_mob_spawn(H, joined_late)
+
 	return H
 
 // For late joiners, this should be called immediately after EquipRank.

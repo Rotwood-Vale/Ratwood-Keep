@@ -206,15 +206,18 @@ proc/construct_item(mob/user, datum/crafting_recipe/R)
 							var/atom/movable/I = new IT(T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
+							I.post_craft()
 					else
 						if(ispath(R.result, /turf))
 							var/turf/X = T.PlaceOnTop(R.result)
 							if(X)
 								X.OnCrafted(user.dir, user)
+								X.post_craft()
 						else
 							var/atom/movable/I = new R.result (T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
+							I.post_craft()
 					user.visible_message(span_notice("[user] [R.verbage] \a [result_name]!"), \
 										span_notice("I [R.verbage_simple] \a [result_name]!"))
 					if(user.mind && R.skillcraft && R.xpgain)	//Most recipes give xp, but those that don't should not

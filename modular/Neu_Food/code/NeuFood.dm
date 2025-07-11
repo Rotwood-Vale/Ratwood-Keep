@@ -317,6 +317,8 @@ attackby
 	resistance_flags = NONE
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	experimental_inhand = FALSE
+	grid_width = 32
+	grid_height = 32
 	var/datum/platter_sprites/sprite_choice = new /datum/platter_sprites/
 
 /obj/item/cooking/platter/pewter

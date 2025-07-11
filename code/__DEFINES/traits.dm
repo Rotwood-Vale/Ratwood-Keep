@@ -49,6 +49,7 @@
 #define TRAIT_WATERBREATHING "Water Breathing"
 #define TRAIT_DARKLING "Darkling"
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles or anastasia or cure rot
+#define TRAIT_SIMPLESPEECH "Simple Speech" // Can only say the 1000 most common English-language words; other words get modified
 
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
@@ -197,6 +198,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SLEUTH = span_info("I can spot my tracked Mark's trail without needing to approach it, and can spot them at a distance. I can track more frequently, and the act is not impaired by movement. I can examine tracks right away."),
 	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),
 	TRAIT_KEENEARS = span_info("I've a good pair of ears, and can tell who is speaking, even when they're out of sight. I can also hear whispers from further away."),
+	TRAIT_SIMPLESPEECH = span_info("I can not say hard words.")
 ))
 
 // trait accessor defines

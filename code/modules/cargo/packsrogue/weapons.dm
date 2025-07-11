@@ -204,6 +204,7 @@
 	cost = 30
 	contains = list(/obj/item/ammo_holder/bullet/lead)
 
+
 /datum/supply_pack/rogue/weapons/bullet/grape
 	name = "Bullet Pouch (grape)"
 	cost = 30
