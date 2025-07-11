@@ -19,6 +19,9 @@
 	grid_height = 96
     grid_width = 32
 
+	grid_height = 96
+	grid_width = 32
+
 /datum/intent/lordbash
 	name = "bash"
 	desc = "Smack some royal sense into the unruly subjects."

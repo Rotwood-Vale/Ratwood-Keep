@@ -8,6 +8,7 @@
 	slot_flags = ITEM_SLOT_HIP
 	resistance_flags = NONE
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/grid/magebag
 
 /obj/item/storage/magebag/examine(mob/user)
 	. = ..()
@@ -36,56 +37,21 @@
 		icon_state = "summoning"
 		w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/magebag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 42
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 20
-	STR.set_holdable(list(
+/obj/item/storage/magebag/apprentice
+	populate_contents = list(
 		/obj/item/natural/infernalash,
-		/obj/item/natural/hellhoundfang,
-		/obj/item/natural/moltencore,
-		/obj/item/natural/abyssalflame,
 		/obj/item/natural/fairydust,
-		/obj/item/natural/iridescentscale,
-		/obj/item/natural/heartwoodcore,
-		/obj/item/natural/sylvanessence,
 		/obj/item/natural/elementalmote,
-		/obj/item/natural/elementalshard,
-		/obj/item/natural/elementalfragment,
-		/obj/item/natural/elementalrelic,
-		/obj/item/natural/obsidian,
-		/obj/item/natural/leyline,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
 		/obj/item/natural/manacrystal,
-		/obj/item/natural/artifact
-		))
-	STR.click_gather = TRUE
-	STR.attack_hand_interact = TRUE
-	STR.collection_mode = COLLECT_EVERYTHING
-	STR.dump_time = 0
-	STR.allow_quick_gather = TRUE
-	STR.allow_quick_empty = TRUE
-	STR.allow_look_inside = TRUE
-	STR.allow_dump_out = FALSE
-	STR.display_numerical_stacking = TRUE
-
-/obj/item/storage/magebag/apprentice/PopulateContents()
-	new /obj/item/natural/infernalash(src)
-	new /obj/item/natural/fairydust(src)
-	new /obj/item/natural/elementalmote(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/manacrystal(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/natural/obsidian(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-	new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom(src)
-
-
+		/obj/item/natural/manacrystal,
+		/obj/item/natural/manacrystal,
+		/obj/item/natural/obsidian,
+		/obj/item/natural/obsidian,
+		/obj/item/natural/obsidian,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
+	)
 
 /obj/item/chalk
 	name = "stick of chalk"
@@ -100,6 +66,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/rune_to_scribe = null
 	var/amount = 8
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/chalk/examine(mob/user)
 	. = ..()
 	desc += "It has [amount] uses left."

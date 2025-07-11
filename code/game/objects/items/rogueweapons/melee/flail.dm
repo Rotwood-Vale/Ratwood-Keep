@@ -76,9 +76,9 @@
 	throwforce = 5
 	wdefense = 0.5
 	minstr = 4
-	grid_height = 64
-    grid_width = 32
-
+  grid_width = 32
+	grid_height = 96
+  
 /obj/item/rogueweapon/flail/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -162,7 +162,7 @@
 	wdefense = 0
 	minstr = 6
 	grid_width = 32
-    grid_height = 64
+	grid_height = 64
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()
