@@ -1924,3 +1924,17 @@
 	update_cone_show()
 //	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
 
+/mob/living/proc/get_carry_capacity()
+	return max(45, STAEND * 12)
+
+///this is returned as decimal value between 0 and 1
+/mob/living/proc/get_encumbrance()
+	return 0
+
+/mob/living/proc/get_total_weight()
+	return 0
+
+/mob/living/proc/encumbrance_to_dodge()
+	return 1
+
+/mob/living/proc/encumbrance_to_speed()

@@ -499,6 +499,9 @@
 	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
 
+	grid_height = 64
+	grid_width = 64
+
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
 	desc = "A helmet which covers the top of the head."
@@ -1715,19 +1718,21 @@
     sellprice = 40
 
 /obj/item/clothing/head/flowers
-    name = "Flowers"
-    desc = " "
-    icon_state = "dflower"
-    item_state = "dflower"
-    icon = 'icons/roguetown/misc/flowerspack.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
-    slot_flags = ITEM_SLOT_HEAD
-    body_parts_covered = NONE
-    force = 0
-    throwforce = 0
-    w_class = WEIGHT_CLASS_TINY
-    throw_speed = 1
-    throw_range = 3
+	name = "Flowers"
+	desc = " "
+	icon_state = "dflower"
+	item_state = "dflower"
+	icon = 'icons/roguetown/misc/flowerspack.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
+	slot_flags = ITEM_SLOT_HEAD
+	body_parts_covered = NONE
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/clothing/head/flowers/Initialize()
 	. = ..()
