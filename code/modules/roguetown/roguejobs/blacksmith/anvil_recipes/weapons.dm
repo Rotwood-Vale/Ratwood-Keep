@@ -28,6 +28,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 
+/datum/anvil_recipe/weapons/iron/rondel
+	name = "Misericorde (+1 iron)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/misericorde
+
 /datum/anvil_recipe/weapons/iron/flail
 	name = "Flail"
 	req_bar = /obj/item/ingot/iron

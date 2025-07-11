@@ -50,6 +50,8 @@
 	name = "Iron Daggers"
 	cost = 50
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
+
+
 /datum/supply_pack/rogue/bandit/Sawbones
 	group = "Sawbones"
 	crate_name = "Gifts of Medicine"
@@ -136,6 +138,11 @@
 	name = "Iron Daggers"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
+
+/datum/supply_pack/rogue/bandit/Sawbones/misericorde
+	name = "Misericorde"
+	cost = 35
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde)
 
 /datum/supply_pack/rogue/bandit/Sawbones/daggerss
 	name = "Steel Dagger"
