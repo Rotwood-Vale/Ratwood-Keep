@@ -300,26 +300,6 @@
 /obj/structure/fluff/railing/fence,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
-"afN" = (
-/obj/structure/closet/crate/chest{
-	lockid = "manor"
-	},
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/butter,
-/turf/open/floor/rogue/blocks,
-/area/rogue/indoors/town/manor)
 "age" = (
 /obj/structure/roguewindow/curtain{
 	dir = 4
@@ -4785,10 +4765,10 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cfZ" = (
-/obj/machinery/light/rogue/wallfire/candle{
-	pixel_y = -32
+/obj/machinery/light/rogue/wallfire/candle/r,
+/turf/open/floor/rogue/tile{
+	icon_state = "bfloorz"
 	},
-/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "cgg" = (
 /obj/effect/decal/cleanable/generic,
@@ -7486,6 +7466,26 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/water/swamp,
 /area/rogue/under/town/sewer)
+"doW" = (
+/obj/structure/closet/crate/chest{
+	lockid = "manor"
+	},
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/butter,
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/town/manor)
 "dpc" = (
 /obj/effect/landmark/start/magician,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
@@ -15762,10 +15762,10 @@
 /turf/open/floor/rogue/dirt/nrich,
 /area/rogue/outdoors/rtfield)
 "hby" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
-/turf/open/floor/rogue/tile{
-	icon_state = "bfloorz"
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
 	},
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "hbE" = (
 /obj/structure/mineral_door/wood/donjon/stone{
@@ -27154,13 +27154,9 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "mtp" = (
-/obj/structure/mineral_door/wood{
-	icon_state = "wcv";
-	locked = 1;
-	lockid = "kitchen";
-	name = "Kitchen Storage"
-	},
-/turf/open/floor/rogue/concrete,
+/obj/structure/chair/stool/rogue,
+/obj/machinery/light/rogue/wallfire/candle/l,
+/turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "mtA" = (
 /obj/structure/chair/bench{
@@ -28075,9 +28071,13 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "mQY" = (
-/obj/structure/chair/stool/rogue,
-/obj/machinery/light/rogue/wallfire/candle/l,
-/turf/open/floor/rogue/wood,
+/obj/structure/mineral_door/wood{
+	icon_state = "wcv";
+	locked = 1;
+	lockid = "kitchen";
+	name = "Kitchen Storage"
+	},
+/turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/manor)
 "mRe" = (
 /obj/structure/stairs,
@@ -334995,7 +334995,7 @@ vIa
 vIa
 sHm
 rsn
-mQY
+mtp
 coS
 oif
 oif
@@ -335433,7 +335433,7 @@ cNY
 nVa
 eAu
 rUh
-hby
+cfZ
 uYE
 eAu
 cfm
@@ -335862,7 +335862,7 @@ tTX
 cNY
 sGv
 cNY
-cfZ
+hby
 uOL
 jDm
 jDm
@@ -338451,7 +338451,7 @@ wAL
 bWf
 jDm
 jDm
-mtp
+mQY
 uOL
 puH
 mvO
@@ -339745,7 +339745,7 @@ wtF
 aBq
 vud
 gsj
-afN
+doW
 rqP
 sRV
 sHm
@@ -369630,8 +369630,8 @@ jTl
 iRo
 beQ
 moU
-jEY
-jEY
+erZ
+oKK
 jEY
 jEY
 jEY
@@ -370062,8 +370062,8 @@ tML
 jFy
 iRo
 teW
-jEY
-jEY
+oKK
+oKK
 jEY
 jEY
 jEY
