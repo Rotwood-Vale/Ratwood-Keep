@@ -512,7 +512,7 @@
 //Rondel's unique intent.
 /datum/intent/dagger/thrust/rondel
 	name = "pick"
-	desc = "Slip the blade's point into gaps. 80% AP if the target is grappled. Allows the weapon to double as a mining implement."
+	desc = "Slip the blade's point into gaps. 80% AP if the target is grappled. Allows the weapon to double as a mining implement. Defaults to a no AP smash intent if targeting ears."
 	icon_state = "inpick"
 	attack_verb = list("punctures", "perforates")
 	blade_class = BCLASS_PICK//Punctures. Punctures abound. Can also be used for mining, given it's a utility item, too.

@@ -1616,9 +1616,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(H.pulledby == user)														//Check for Grapplefu
 		if(I.can_grf && user.used_intent.ican_grf)
 			if(prob(user?.mind?.get_skill_level(I.associated_skill) * user.STASPD))		//Skill check. Determined by speed.
-				to_chat(user, span_warning("I puncture [H]'s frame!"))
-				blade_class = BCLASS_ASSASSIN
-				pen = 80
+				if(selzone == BODY_ZONE_PRECISE_EARS)//If they're aiming ears, swap over to smashing.
+					blade_class = BCLASS_SMASH
+					to_chat(user, span_warning("I strike [H]'s head with the pommel!"))
+				else
+					to_chat(user, span_warning("I slip the blade into [H]'s form!"))
+					blade_class = BCLASS_ASSASSIN
+					pen = 80
 
 //End of special weapon checks.
 
