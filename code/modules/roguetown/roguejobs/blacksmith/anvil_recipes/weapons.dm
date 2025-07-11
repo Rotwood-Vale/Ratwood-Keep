@@ -28,7 +28,7 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 
-/datum/anvil_recipe/weapons/iron/rondel
+/datum/anvil_recipe/weapons/iron/misericorde
 	name = "Misericorde (+1 iron)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron)
