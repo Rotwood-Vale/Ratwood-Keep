@@ -71,19 +71,6 @@
 	ican_cdg = TRUE
 	ican_assin = TRUE
 
-/datum/intent/dagger/thrust/pick/mining
-	name = "mining icepick stab"
-	desc = "Reverse gripping the dagger in question to use it as a improvised pick, to mine away at the problems at hand."
-	no_attack = TRUE
-	ican_cdg = FALSE
-	ican_assin = FALSE
-	noaa = TRUE
-	releasedrain = 0
-	candodge = FALSE
-	canparry = FALSE
-	blade_class = BCLASS_PICK
-	clickcd = 12
-
 /obj/item/rogueweapon/huntingknife
 	force = 12
 	possible_item_intents = list(/datum/intent/dagger/cut/knife, /datum/intent/dagger/thrust/knife, /datum/intent/dagger/chop)
@@ -277,7 +264,7 @@
 	icon_state = "sscissors"
 
 /obj/item/rogueweapon/huntingknife/idagger
-	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick, /datum/intent/dagger/thrust/pick/mining)
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
 	max_integrity = 100
 	name = "iron dagger"
