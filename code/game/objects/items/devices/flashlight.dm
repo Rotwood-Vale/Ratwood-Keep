@@ -143,6 +143,9 @@
 	light_depth = 0
 	light_height = 0
 	metalizer_result = /obj/item/flashlight/flare/torch/lantern
+	
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()

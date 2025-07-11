@@ -5,6 +5,8 @@
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	var/obj/structure/linking
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/roguegear/Destroy()
 	if(linking)
