@@ -16,6 +16,8 @@
 	swingsound = BLUNTWOOSH_MED
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP
+	grid_height = 96
+    grid_width = 32
 
 /datum/intent/lordbash
 	name = "bash"

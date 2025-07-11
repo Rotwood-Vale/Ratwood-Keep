@@ -76,6 +76,8 @@
 	throwforce = 5
 	wdefense = 0.5
 	minstr = 4
+	grid_height = 64
+    grid_width = 32
 
 /obj/item/rogueweapon/flail/getonmobprop(tag)
 	. = ..()
@@ -97,6 +99,7 @@
 
 /datum/intent/whip/lash
 	name = "lash"
+	desc = "Whipping and lashing motions."
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("lashes", "whips")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -109,8 +112,9 @@
 
 /datum/intent/whip/crack
 	name = "crack"
+	desc = "Flicking back the arm and wrist before unleashing a long whipping strike."
 	blade_class = BCLASS_BLUNT
-	attack_verb = list("cracks", "snap-lashes") // Something, something, Dwarf Fotresss.
+	attack_verb = list("cracks", "snap-lashes") // Something, something, Dwarf Fotress.
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 10 // To prevent endless tap, slow-down poking.
 	charging_slowdown = 1 // if recovery gets coded, remove this.
@@ -122,6 +126,7 @@
 
 /datum/intent/whip/punish
 	name = "punish"
+	desc = "Punishing lashes, aimed for punishment rather than combat."
 	blade_class = BCLASS_BLUNT
 	attack_verb = list("punish-lashes, punish-whips")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
@@ -135,6 +140,7 @@
 
 /datum/intent/whip/punish/playful
 	name = "softer punish"
+	desc = "Punishing with softer lashes, be it for play or intimidation of a actually painful lash."
 	damfactor = 0.001 // idealy this should do one point of brute.
 
 /obj/item/rogueweapon/whip
@@ -155,6 +161,8 @@
 	throwforce = 5
 	wdefense = 0
 	minstr = 6
+	grid_width = 32
+    grid_height = 64
 
 /obj/item/rogueweapon/whip/getonmobprop(tag)
 	. = ..()
