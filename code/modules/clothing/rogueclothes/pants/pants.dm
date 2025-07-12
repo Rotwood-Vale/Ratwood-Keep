@@ -111,6 +111,8 @@
 	l_sleeve_status = SLEEVE_NORMAL
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/cloth
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "chain chausses"

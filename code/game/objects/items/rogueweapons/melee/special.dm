@@ -1,6 +1,6 @@
 /obj/item/rogueweapon/lordscepter
 	force = 20
-	force_wielded = 20
+	force_wielded = 25
 	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/lordbash)
 	name = "master's rod"
@@ -8,7 +8,6 @@
 	icon_state = "scepter"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
-	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
@@ -17,17 +16,21 @@
 	swingsound = BLUNTWOOSH_MED
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP
+	grid_height = 96
+	grid_width = 32
 
 /datum/intent/lordbash
 	name = "bash"
+	desc = "Smack some royal sense into the unruly subjects."
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
-	attack_verb = list("bashes", "clubs", "strikes")
-	penfactor = 10
+	attack_verb = list("royaly-bashes", "royaly-clubs", "royaly-strikes")
+	penfactor = 25
 	item_d_type = "blunt"
 
 /datum/intent/lord_electrocute
 	name = "electrocute"
+	desc = "Zap the unruly subjects."
 	blade_class = null
 	icon_state = "inuse"
 	tranged = TRUE
@@ -35,6 +38,7 @@
 
 /datum/intent/lord_silence
 	name = "silence"
+	desc = "Gag the unruly subjects."
 	blade_class = null
 	icon_state = "inuse"
 	tranged = TRUE
@@ -147,7 +151,7 @@
 		if(target.stamina >= target.max_stamina)
 			target.electrocute_act(5, src)
 			charge -= 6
-		else//TODO: Check target.STACON!!!!!!!!!!
+		else/// TODO: Check target.STACON!!!!!!!!!!
 			target.energy_add(-10)
 			target.stamina_add(5)
 			charge -= 3
@@ -238,7 +242,7 @@
 	associated_skill = /datum/skill/combat/unarmed
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	throwforce = 12
-	wdefense = 4
+	wdefense = 4.5
 	wbalance = 1
 	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing

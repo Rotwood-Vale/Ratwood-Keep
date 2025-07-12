@@ -41,7 +41,7 @@
 					underwear = "Nude"
 					update_body()
 					var/obj/item/undies/U
-					if(gender == MALE)
+					if(body_type == MALE)
 						U = new/obj/item/undies(get_turf(src))
 					else
 						U = new/obj/item/undies/f(get_turf(src))
@@ -57,6 +57,9 @@
 
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
 
+	if(!body_type)
+		body_type = gender
+	
 	//initialize limbs first
 	create_bodyparts()
 

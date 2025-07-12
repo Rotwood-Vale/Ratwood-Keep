@@ -29,6 +29,7 @@
 	beltl = /obj/item/rogueweapon/huntingknife
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/recipe_book/survival = 1,)
 	if(prob(25))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather
 	if(prob(25))

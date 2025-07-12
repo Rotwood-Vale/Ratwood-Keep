@@ -24,7 +24,7 @@
 	beltl = /obj/item/rogueweapon/huntingknife
 	backl = /obj/item/storage/backpack/rogue/satchel
 	r_hand = /obj/item/rogueweapon/woodstaff
-	backpack_contents = list(/obj/item/chalk = 1, /obj/item/book/granter/spellbook/adept = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 1)
+	backpack_contents = list(/obj/item/chalk = 1, /obj/item/recipe_book/survival = 1,/obj/item/book/granter/spellbook/adept = 1, /obj/item/reagent_containers/glass/bottle/rogue/manapot = 1)
 
 	if(H.mind)
 		to_chat(H, span_warning("Magic is often times refered to as an art. At times it is treated as a primordial beast, chaos incarnate. To more learned men it is a precise science, to be studied and examined. In the end, magic is all three of the above. It is Art, Chaos, and Science: a blessing, a curse, and progress. It all depends on who calls upon it, and for what purpose."))

@@ -16,4 +16,5 @@
 	fillsounds = list('sound/items/fillcup.ogg')
 	poursounds = list('sound/items/fillbottle.ogg')
 	sewrepair = TRUE
-
+	grid_width = 32
+	grid_height = 64

@@ -296,6 +296,8 @@
 	name = "tome in waiting"
 	icon_state = "spellbook_unfinished"
 	desc = "A fully bound tome of scroll paper. It's lacking a certain arcyne energy."
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/natural/hide/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)

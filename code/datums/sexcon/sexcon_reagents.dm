@@ -1,6 +1,6 @@
 /datum/reagent/consumable/ethanol/beer/emberwine
 	name = "Emberwine"
-	boozepwr = 80
+	boozepwr = 10
 	taste_description = "searing sweetness"
 	taste_mult = 0.5
 	quality = DRINK_VERYGOOD

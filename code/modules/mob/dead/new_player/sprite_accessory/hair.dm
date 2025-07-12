@@ -22,6 +22,10 @@
 	name = "80s-style Hair"
 	icon_state = "80s"
 
+/datum/sprite_accessory/hair/head/shorthaireighties_alt
+	name = "80s-style Hair (Alt)"
+	icon_state = "80s_alt"
+
 /datum/sprite_accessory/hair/head/afro
 	name = "Afro"
 	icon_state = "afro"
@@ -42,6 +46,10 @@
 	name = "Balding Hair"
 	icon_state = "balding"
 
+/datum/sprite_accessory/hair/head/bangsdiagonal
+	name = "Bangs (Diagonal)"
+	icon_state = "diagonalbangs"
+
 /datum/sprite_accessory/hair/head/bedhead
 	name = "Bedhead"
 	icon_state = "bedhead"
@@ -61,6 +69,10 @@
 /datum/sprite_accessory/hair/head/bedheadlongest
 	name = "Bedhead (Longest)"
 	icon_state = "bedhead-longest"
+	
+/datum/sprite_accessory/hair/head/badlycut
+	name = "Shorter Long Bedhead"
+	icon_state = "hair_verybadlycut"
 
 /datum/sprite_accessory/hair/head/beehive
 	name = "Beehive"
@@ -229,6 +241,10 @@
 /datum/sprite_accessory/hair/head/dandpompadour
 	name = "Dandy Pompadour"
 	icon_state = "dandypompadour"
+
+/datum/sprite_accessory/hair/head/dave
+	name = "Dave"
+	icon_state = "dave"
 
 /datum/sprite_accessory/hair/head/devillock
 	name = "Devil Lock"
@@ -402,6 +418,10 @@
 	name = "Long Side Part"
 	icon_state = "longsidepart"
 
+/datum/sprite_accessory/hair/head/mediumbraid
+	name = "Medium Braid"
+	icon_state = "mediumbraid"
+
 /datum/sprite_accessory/hair/head/megaeyebrows
 	name = "Mega Eyebrows"
 	icon_state = "megaeyebrows"
@@ -435,10 +455,6 @@
 	name = "Mohawk (Big)"
 	icon_state = "mohawk-unshaven"
 
-/datum/sprite_accessory/hair/head/newyou
-	name = "New You"
-	icon_state = "newyou"
-
 /datum/sprite_accessory/hair/head/mulder
 	name = "Mulder"
 	icon_state = "mulder"
@@ -446,6 +462,10 @@
 /datum/sprite_accessory/hair/head/nitori
 	name = "Nitori"
 	icon_state = "nitori"
+
+/datum/sprite_accessory/hair/head/newyou
+	name = "New You"
+	icon_state = "newyou"
 
 /datum/sprite_accessory/hair/head/odango
 	name = "Odango"
@@ -547,6 +567,14 @@
 	name = "Ponytail (Country)"
 	icon_state = "ponytail-country"
 
+/datum/sprite_accessory/hair/head/countryponytailalt
+	name = "Ponytail (Country Alt)"
+	icon_state = "countryalt"
+
+/datum/sprite_accessory/hair/head/ponytailyeager
+	name = "Ponytail (Yeager)"
+	icon_state = "ponytail_yeager"
+
 /datum/sprite_accessory/hair/head/fringetail
 	name = "Ponytail (Fringe)"
 	icon_state = "fringetail"
@@ -623,6 +651,18 @@
 	name = "Sidecut"
 	icon_state = "sidecut"
 
+/datum/sprite_accessory/hair/head/simple
+	name = "Simple"
+	icon_state = "simple"
+
+/datum/sprite_accessory/hair/head/simpleshort
+	name = "Simple (Short)"
+	icon_state = "simple_short"
+
+/datum/sprite_accessory/hair/head/simplelong
+	name = "Simple (Long)"
+	icon_state = "simple_long"
+
 /datum/sprite_accessory/hair/head/skinhead
 	name = "Skinhead"
 	icon_state = "skinhead"
@@ -630,6 +670,10 @@
 /datum/sprite_accessory/hair/head/protagonist
 	name = "Slightly Long Hair"
 	icon_state = "protagonist"
+
+/datum/sprite_accessory/hair/head/spicy
+	name = "Spicy"
+	icon_state = "spicy"
 
 /datum/sprite_accessory/hair/head/spiky
 	name = "Spiky"
@@ -642,6 +686,30 @@
 /datum/sprite_accessory/hair/head/spiky3
 	name = "Spiky 3"
 	icon_state = "spiky2"
+
+/datum/sprite_accessory/hair/head/stacy
+	name = "Stacy"
+	icon_state = "stacy"
+
+/datum/sprite_accessory/hair/head/stacybun
+	name = "Stacy (Bun)"
+	icon_state = "stacy_bun"
+
+/datum/sprite_accessory/hair/head/strict
+	name = "Strict"
+	icon_state = "strict"
+
+/datum/sprite_accessory/hair/head/strictshort
+	name = "Strict (Short)"
+	icon_state = "strict_short"
+
+/datum/sprite_accessory/hair/head/strictlong
+	name = "Strict (Long)"
+	icon_state = "strict_long"
+
+/datum/sprite_accessory/hair/head/stacybun
+	name = "Stacy (Bun)"
+	icon_state = "stacy_bun"
 
 /datum/sprite_accessory/hair/head/swept
 	name = "Swept Back Hair"
@@ -682,6 +750,10 @@
 /datum/sprite_accessory/hair/head/twintails
 	name = "Twintails"
 	icon_state = "twintail"
+
+/datum/sprite_accessory/hair/head/uncaring
+	name = "Uncaring"
+	icon_state = "makoto"
 
 /datum/sprite_accessory/hair/head/undercut
 	name = "Undercut"
@@ -871,9 +943,13 @@
 	name = "Ziegler"
 	icon_state = "ziegler"
 
+/datum/sprite_accessory/hair/head/zoey
+	name = "Zoey"
+	icon_state = "zoey"
+
 /datum/sprite_accessory/hair/head/gronnbraid
 	name = "Gronn Braid"
-	icon_state = "Zone"
+	icon_state = "gronnbraid"
 
 /datum/sprite_accessory/hair/head/grenzelcut
 	name = "Grenzel Cut"
@@ -1090,6 +1166,42 @@
 /datum/sprite_accessory/hair/head/baum
 	name = "Baum"
 	icon_state = "baum"
+
+/datum/sprite_accessory/hair/head/mcsqueeb
+	name = "Ye Old McSqueeb"
+	icon_state = "mcsqueeb"	
+
+/datum/sprite_accessory/hair/head/highlander
+	name = "Highlander"
+	icon_state = "highlander"	
+
+/datum/sprite_accessory/hair/head/royalcurls
+	name = "Royal Curls"
+	icon_state = "royalcurls"	
+
+/datum/sprite_accessory/hair/head/dreadlocksmessy
+	name = "Dreadlocks Messy"
+	icon_state = "dreadlong"	
+
+/datum/sprite_accessory/hair/head/suave
+	name = "Suave"
+	icon_state = "suave"	
+
+/datum/sprite_accessory/hair/head/kusanagi_alt
+	name = "Kusanagi (Alt)"
+	icon_state = "kusanagi_alt"
+
+/datum/sprite_accessory/hair/head/shorthair6
+	name = "Short Hair 6"
+	icon_state = "shorthair_alt"
+
+/datum/sprite_accessory/hair/head/bubblebraids
+	name = "Bubble Braids"
+	icon_state = "bubblebraid"
+
+/datum/sprite_accessory/hair/head/bubblebraids_v2
+	name = "Bubble Braids Alt"
+	icon_state = "bubblebraid_v2"
 
 /datum/sprite_accessory/hair/head/vulpkian
 	abstract_type = /datum/sprite_accessory/hair/head/vulpkian
@@ -1381,3 +1493,11 @@
 /datum/sprite_accessory/hair/facial/vox/neck
 	name = "Neck Quills"
 	icon_state = "neck"
+
+/datum/sprite_accessory/hair/head/playful
+	name = "Playful"
+	icon_state = "playful"
+
+/datum/sprite_accessory/hair/head/heiress
+	name = "Heiress"
+	icon_state = "heiress"
