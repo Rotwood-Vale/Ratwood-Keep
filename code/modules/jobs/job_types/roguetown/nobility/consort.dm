@@ -93,7 +93,8 @@
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
-		
+		ADD_TRAIT(H, TRAIT_EARGRAB, TRAIT_GENERIC)
+
 	else
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
@@ -101,12 +102,12 @@
 		r_hand = /obj/item/storage/keyring/royal
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
-		id = /obj/item/clothing/ring/active/nomag	
+		id = /obj/item/clothing/ring/active/nomag
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/duke
 		shoes = /obj/item/clothing/shoes/roguetown/armor
-		
+
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)

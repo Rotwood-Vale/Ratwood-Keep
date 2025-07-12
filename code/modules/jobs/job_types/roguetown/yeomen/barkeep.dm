@@ -34,6 +34,7 @@
 	H.change_stat("constitution", 2)
 	H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_CICERONE, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		belt = /obj/item/storage/belt/rogue/leather
