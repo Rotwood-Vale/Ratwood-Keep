@@ -29,7 +29,7 @@
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents = list(/obj/item/bait = 1, /obj/item/recipe_book/survival = 1,/obj/item/rogueweapon/huntingknife = 1)
 			beltl = /obj/item/ammo_holder/quiver/arrows
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
