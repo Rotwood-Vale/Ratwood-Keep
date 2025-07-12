@@ -71,6 +71,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/royals_readied = list()
 	var/rulertype = "Duke" // reports whether duke or duchess rules
 	var/rulermob = null // reports what the ruling mob is.
+	var/regentmob = null // keeps track of regent mob
+	var/regentday = -1 // to prevent regent shuffling
 	var/failedstarts = 0
 	var/list/manualmodes = list()
 
@@ -829,7 +831,7 @@ SUBSYSTEM_DEF(ticker)
 				break
 
 /datum/controller/subsystem/ticker/proc/add_aspect(aspect)
-	var/datum/round_aspect/aspect_to_add 
+	var/datum/round_aspect/aspect_to_add
 	if (ispath(aspect, /datum/round_aspect))
 		aspect_to_add = new
 	else

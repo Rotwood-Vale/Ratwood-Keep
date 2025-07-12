@@ -65,5 +65,28 @@
 		H.change_stat("speed", 1)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	H.verbs |= /mob/living/carbon/human/proc/adjust_taxes
 
-
+GLOBAL_VAR_INIT(steward_tax_cooldown, -50000) // Antispam
+/mob/living/carbon/human/proc/adjust_taxes()
+	set name = "Adjust Taxes"
+	set category = "Stewardry"
+	if(stat)
+		return
+	var/lord = find_lord()
+	if(lord)
+		to_chat(src, span_warning("You cannot adjust taxes while the [SSticker.rulertype] is present in the realm. Ask your liege."))
+		return
+	if(world.time < GLOB.steward_tax_cooldown + 600 SECONDS)
+		to_chat(src, span_warning("You must wait [round((GLOB.steward_tax_cooldown + 600 SECONDS - world.time)/600, 0.1)] minutes before adjusting taxes again! Think of the realm."))
+		return FALSE
+	var/newtax = input(src, "Set a new tax percentage (1-99)", src, SStreasury.tax_value*100) as null|num
+	if(newtax)
+		if(findtext(num2text(newtax), "."))
+			return
+		newtax = CLAMP(newtax, 1, 99)
+		if(stat)
+			return
+		SStreasury.tax_value = newtax / 100
+		priority_announce("The new tax in Rockhill shall be [newtax] percent.", "The Steward Meddles", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+		GLOB.steward_tax_cooldown = world.time
