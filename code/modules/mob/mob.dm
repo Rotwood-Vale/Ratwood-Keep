@@ -803,11 +803,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")
+			stat(null, "Map: [SSmapping.config?.map_name || "Loading..."]")
 			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
 			if(SSticker.mode?.roundvoteend)
 				stat("Round End: [DisplayTimeText(time_left)]")
 			stat("Time Of Dae: [daytime]")
 			stat("Dae of Week: [days]")
+
 
 	if(client && client.holder && check_rights(R_ADMIN,0))
 		if(statpanel("MC"))

@@ -77,16 +77,29 @@
 	var/can_advance_post = enough_sleep_xp_to_advance(skill, 1)
 	var/capped_post = enough_sleep_xp_to_advance(skill, 2)
 	var/datum/skill/skillref = GetSkillRef(skill)
-	if(!can_advance_pre && can_advance_post && !silent)
+
+	// BYOS auto-train: If on BYOS, can advance, and skill is 0, grant skill 1 instantly
+	var/byos_autotrain = FALSE
+	if(SSmapping.config?.map_name == "Build Your Settlement" && mind && mind.get_skill_level(skill) == 0 && can_advance_post)
+		mind.adjust_skillrank(skill, 1, FALSE)
 		to_chat(mind.current, span_nicegreen(pick(list(
-			"I'm getting a better grasp at [lowertext(skillref.name)]...",
-			"With some rest, I feel like I can get better at [lowertext(skillref.name)]...",
-			"[skillref.name] starts making more sense to me...",
+			"Something about this island helps you grasp the basics of [lowertext(skillref.name)].",
+			"The strange air of the island grants you an instinctive understanding of [lowertext(skillref.name)].",
+			"By simply being on this island, you feel you already know the basics of [lowertext(skillref.name)]."
 		))))
-	if(!capped_pre && capped_post && !silent)
-		to_chat(mind.current, span_nicegreen(pick(list(
-			"My [lowertext(skillref.name)] is not gonna get any better without some rest...",
-		))))
+		byos_autotrain = TRUE
+
+	if(!byos_autotrain)
+		if(!can_advance_pre && can_advance_post && !silent)
+			to_chat(mind.current, span_nicegreen(pick(list(
+				"I'm getting a better grasp at [lowertext(skillref.name)]...",
+				"With some rest, I feel like I can get better at [lowertext(skillref.name)]...",
+				"[skillref.name] starts making more sense to me...",
+			))))
+		if(!capped_pre && capped_post && !silent)
+			to_chat(mind.current, span_nicegreen(pick(list(
+				"My [lowertext(skillref.name)] is not gonna get any better without some rest...",
+			))))
 
 /datum/sleep_adv/proc/advance_cycle()
 	// Stuff

@@ -1,31 +1,34 @@
-/datum/job/roguetown/goblinshaman
-	title = "Goblin Shaman"
-	flag = GOBLINSHAMAN
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
+/datum/job/roguetown/tribalseer
+	title = "Tribal Seer"
+	flag = TRIBALSEER
+	department_flag = TRIBAL
+	selection_color = JCOLOR_TRIBAL
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp)
-	spells = list(SPELL_FETCH, SPELL_PRESTIDIGITATION,
-	SPELL_MESSAGE, SPELL_DIAGNOSE, SPELL_LEARNSPELL, SPELL_LESSER_HEAL)
-	tutorial = "Were you Humen, they'd call you a sorcerer. Perhaps a witch, even. But you know better than the rest. \
-	You're one of Graggar's chosen. A vessel for his power in this world, for better or worse. Serve as a spiritual advisor to your Chief. \
-	Assure he has all he needs to succeed, and, should he fail, take his place."
-	outfit = /datum/outfit/job/roguetown/goblinshaman
-	display_order = JDO_GOBLINSHAMAN
+	allowed_races = list(/datum/species/goblinp, /datum/species/kobold, /datum/species/anthromorphsmall)
+	spells = list(SPELL_FIREBALL, SPELL_PRESTIDIGITATION,
+	SPELL_MESSAGE, SPELL_DIAGNOSE, SPELL_LESSER_HEAL)
+	tutorial = "You've seen visions of fire and magma, gnashing claws and red scales. The Dragon's will burns behind your eyes, and Graggar's voice echoes in your dreams. \
+	Your wild hallucinations and prophetic trances set you apart from the rest of your tribe—some fear you, others revere you, but all know you are touched by something greater. \
+	You serve as the spiritual heart of the tribe, guiding the Chief and your kin with fervent, sometimes unsettling, devotion. \
+	Let no one doubt your faith: you are the Dragon's chosen, and you will do anything, no matter how mad, to see Graggar's vision made real."
+	outfit = /datum/outfit/job/roguetown/tribalseer
+	display_order = JDO_TRIBALSEER
 	min_pq = 5
 	max_pq = null
 	announce_latejoin = FALSE
-	allowed_maps = list("Rockhill")
+	same_job_respawn_delay = 25 MINUTES
+	job_reopens_slots_on_death = FALSE
+	allowed_maps = list("Build Your Settlement")
 
-/datum/outfit/job/roguetown/goblinshaman
-	allowed_patrons = list(/datum/patron/inhumen/graggar)
+/datum/outfit/job/roguetown/tribalseer
+    allowed_patrons = list(/datum/patron/inhumen/graggar)
 
-/datum/outfit/job/roguetown/goblinshaman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalseer/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += "orcs"
+	H.faction += list("orcs", "tribe")
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/keyring/goblinchief
@@ -33,8 +36,6 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff
-	l_hand = /obj/item/chalk
-	r_hand = /obj/item/book/granter/spellbook/apprentice
 	id = /obj/item/clothing/ringP/graggar
 	backpack_contents = list(/obj/item/storage/fancy/ifak = 1,
 							/obj/item/storage/fancy/skit = 1,
@@ -44,7 +45,7 @@
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -52,7 +53,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 		H.change_stat("intelligence", 6)
 		H.change_stat("fortune", 2)
 		H.ventcrawler = VENTCRAWLER_ALWAYS
@@ -61,7 +62,6 @@
 	C.grant_spells(H)//No real spells of Graggar, yet.
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
-//If a non-Goblin gets control by admin intervention.
-	if(!H.has_language(/datum/language/orcish))
-		H.grant_language(/datum/language/orcish)
-		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+	if(!H.has_language(/datum/language/draconic))
+		H.grant_language(/datum/language/draconic)
+		to_chat(H, span_info("I can speak Draconic with ,s before my speech."))

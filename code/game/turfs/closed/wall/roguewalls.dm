@@ -411,3 +411,76 @@
 
 /turf/closed/wall/mineral/rogue/decostone/mossy/red/cand
     icon_state = "decostone-cand-red"
+
+/turf/closed/wall/fake
+    name = "wall"
+    desc = "It looks just like any other wall."
+    icon = 'icons/turf/roguewall.dmi'
+    icon_state = "decostone-b"
+    opacity = TRUE
+    density = TRUE
+    var/real_icon = null
+    var/real_icon_state = null
+    var/real_desc = null
+    var/real_name = null
+    var/real_opacity = TRUE
+    var/real_density = TRUE
+    var/is_open = FALSE
+
+    // Call this to make the fake wall look like another wall
+    proc/copy_appearance_from(var/turf/closed/wall/W)
+        if(!istype(W, /turf/closed/wall)) return
+        real_icon = W.icon
+        real_icon_state = W.icon_state
+        real_desc = W.desc
+        real_name = W.name
+        real_opacity = W.opacity
+        real_density = W.density
+        icon = real_icon
+        icon_state = real_icon_state
+        desc = real_desc
+        name = real_name
+        opacity = real_opacity
+        density = real_density
+
+    // Toggle open/closed state
+    proc/toggle()
+        if(is_open)
+            // Close the wall
+            icon = real_icon
+            icon_state = real_icon_state
+            desc = real_desc
+            name = real_name
+            opacity = real_opacity
+            density = real_density
+            is_open = FALSE
+        else
+            // Open the wall (make it passable and maybe invisible)
+            icon = null
+            icon_state = ""
+            desc = "An open passage."
+            name = "open passage"
+            opacity = FALSE
+            density = FALSE
+            is_open = TRUE
+
+    // Example interaction: click to toggle
+    attack_hand(mob/user)
+        toggle()
+        to_chat(user, span_notice("You [is_open ? "open" : "close"] the wall."))
+
+    // Optional: initialize to copy appearance from a wall under it
+    Initialize()
+        . = ..()
+        var/turf/closed/wall/W = locate() in src.loc
+        if(W && W != src)
+            copy_appearance_from(W)
+
+
+/turf/closed/wall/mineral/rogue/fog
+    name = "fog wall"
+    desc = "A thick, unnatural wall of fog."
+    icon = 'icons/effects/96x96.dmi'
+    icon_state = "smoke"
+    opacity = TRUE
+    density = TRUE

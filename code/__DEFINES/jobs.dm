@@ -165,11 +165,13 @@
 #define GRABBER		(1<<7)
 #define NIGHTMASTER	(1<<8)
 #define BEGGAR		(1<<9)
-#define WENCH		(1<<10)
-#define VILLAGER	(1<<11)
-#define PRISONERR	(1<<12)
-#define PRISONERB	(1<<13)
-#define LUNATIC		(1<<14)
+#define STOWAWAY	(1<<10)
+#define WENCH		(1<<11)
+#define VILLAGER	(1<<12)
+#define PRISONERR	(1<<13)
+#define PRISONERB	(1<<14)
+#define LUNATIC		(1<<15)
+#define PRISONERT	(1<<16)
 
 #define YOUNGFOLK	(1<<7)
 
@@ -198,13 +200,23 @@
 #define GOBLINRABBLE	(1<<4)
 #define GOBLINSHAMAN	(1<<5)
 
-#define SLOP		(1<<10)
+#define TRIBAL		(1<<10)
+
+#define TRIBALCHIEF	(1<<0)
+#define TRIBALSEER	(1<<1)
+#define TRIBALGUARD (1<<2)
+#define TRIBALTINKERER (1<<3)
+#define TRIBALCAVELING (1<<4)
+#define TRIBALLACKEY (1<<5)
+
+
+#define SLOP		(1<<11)
 
 #define TESTER		(1<<0)
 #define DEATHKNIGHT (1<<1)
 #define SKELETON	(1<<2)
 
-#define FOREIGNERS	(1<<11)
+#define FOREIGNERS	(1<<12)
 #define REFUGEE	(1<<0)
 #define MIGRANT		(1<<1)
 #define BANDIT		(1<<2)
@@ -219,6 +231,7 @@
 #define JCOLOR_MERCENARY "#c86e3a"
 #define JCOLOR_FOREIGNER "#776759"
 #define JCOLOR_GOBLIN "#33CC33"
+#define JCOLOR_TRIBAL "#cc3333"
 
 
 // job display orders //
@@ -299,11 +312,13 @@
 #define JDO_SEELIE 31.3
 
 #define JDO_VAGRANT 34
+#define JDO_STOWAWAY 34.1
 
 #define JDO_PRISONERR 35
 #define JDO_PRISONERB 35.1
-#define JDO_HOSTAGE 35.2
-#define JDO_LUNATIC 35.3
+#define JDO_PRISONERT 35.2
+#define JDO_HOSTAGE 35.3
+#define JDO_LUNATIC 35.4
 
 #define JDO_GOBLINCHIEF 36
 #define JDO_GOBLINCOOK 37
@@ -316,6 +331,13 @@
 #define JDO_REFUGEE 42.1
 #define JDO_MIGRANT 42.2
 #define JDO_BANDIT 42.3
+
+#define JDO_TRIBALCHIEF 43
+#define JDO_TRIBALSEER 44
+#define JDO_TRIBALGUARD 45
+#define JDO_TRIBALTINKERER 46
+#define JDO_TRIBALCAVELING 47
+#define JDO_TRIBALLACKEY 48
 
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
@@ -360,6 +382,7 @@
 	/datum/job/roguetown/towner,\
 	/datum/job/roguetown/nightmaiden,\
 	/datum/job/roguetown/beggar,\
+	/datum/job/roguetown/stowaway,\
 	/datum/job/roguetown/butcher,\
 	/datum/job/roguetown/cook,\
 	/datum/job/roguetown/lunatic,\
@@ -370,7 +393,8 @@
 	/datum/job/roguetown/bapprentice,\
 	/datum/job/roguetown/prisonerb,\
 	/datum/job/roguetown/hostage,\
-	/datum/job/roguetown/prisonerr
+	/datum/job/roguetown/prisonerr, \
+	/datum/job/roguetown/prisonert
 
 #define YEOMEN_ROLES \
 	/datum/job/roguetown/mayor,\
@@ -411,3 +435,10 @@
 	/datum/job/roguetown/migrant,\
 	/datum/job/roguetown/bandit
 
+#define TRIBAL_ROLES \
+	/datrum/job/roguetown/tribalchief,\
+	/datum/job/roguetown/tribalcaveling,\
+ 	/datum/job/roguetown/tribalguard,\
+ 	/datum/job/roguetown/tribaltinkerer,\
+ 	/datum/job/roguetown/tribalseer,\
+ 	/datum/job/roguetown/triballackey	

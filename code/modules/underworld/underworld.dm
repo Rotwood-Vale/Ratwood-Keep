@@ -50,7 +50,8 @@
 #define CANT_LEAVE_ITEMS \
 	/obj/item/rogueweapon/woodstaff/aries, \
 	/obj/item/clothing/head/roguetown/crown, \
-	/obj/item/key/lord
+	/obj/item/key/lord, \
+	/obj/item/key/adventurekey
 
 /obj/structure/carriagedoor
 	name = "carriage door"

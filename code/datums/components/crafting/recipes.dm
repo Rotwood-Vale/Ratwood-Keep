@@ -22,6 +22,7 @@
 	var/structurecraft = null
 	var/buildsame = FALSE //allows palisades to be built on top of each other just not the same dir
 	var/wallcraft = FALSE
+	var/offset = FALSE //if TRUE, the result will be placed one tile in front of the user. This is for things that have built-in offsets.
 	/// Skill level required to have a base 25% chance to craft this recipe.
 	var/skill_level = 1
 	var/sellprice = 0

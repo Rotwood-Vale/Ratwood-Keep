@@ -36,7 +36,11 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/Initialize()
 	treasury_value = rand(800,1500)
+	// If on Build Your Settlement map, set to 200-400
+	if(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement")
+		treasury_value = rand(200,400)
 	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
+
 
 	for(var/path in subtypesof(/datum/roguestock/bounty))
 		var/datum/D = new path

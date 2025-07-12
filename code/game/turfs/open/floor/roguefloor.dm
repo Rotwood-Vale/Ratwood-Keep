@@ -1134,5 +1134,5 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/dirtland.wav'
-	slowdown = 2
+	slowdown = 0
 	smooth = SMOOTH_FALSE
