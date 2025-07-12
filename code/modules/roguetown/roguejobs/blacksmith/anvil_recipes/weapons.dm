@@ -1,4 +1,5 @@
 /datum/anvil_recipe/weapons
+	abstract_type = /datum/anvil_recipe/weapons
 	i_type = "Weapons"
 /datum/anvil_recipe/ammo
 	i_type = "Ammo"

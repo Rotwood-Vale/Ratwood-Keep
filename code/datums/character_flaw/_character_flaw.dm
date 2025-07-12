@@ -1,11 +1,14 @@
 
 GLOBAL_LIST_INIT(character_flaws, list(
 	"Alcoholic"=/datum/charflaw/addiction/alcoholic,
+	"Devout Follower"=/datum/charflaw/addiction/godfearing,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
 	"Greedy"=/datum/charflaw/greedy,
 	"Narcoleptic"=/datum/charflaw/narcoleptic,
 	"Masochist"=/datum/charflaw/masochist,
+	"Nymphomaniac"=/datum/charflaw/addiction/lovefiend,
+	"Sadist"=/datum/charflaw/addiction/sadist,
 	"Paranoid"=/datum/charflaw/paranoid,
 	"Bad Eyesight" =/datum/charflaw/badsight,
 	"Cyclops (R)"=/datum/charflaw/noeyer,
@@ -14,6 +17,9 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Wood Arm (R)"=/datum/charflaw/limbloss/arm_r,
 	"Wood Arm (L)"=/datum/charflaw/limbloss/arm_l,
 	"Hunted"=/datum/charflaw/dead_or_alive,
+	"Insomnia"=/datum/charflaw/sleepless,
+	"Mute"=/datum/charflaw/mute,
+	"Leper"=/datum/charflaw/leper,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
 	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw
 	))
@@ -237,7 +243,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	..()
 	if(!ishuman(user))
 		return
-	
+
 	var/mob/living/carbon/human/H = user
 	H.become_blind(TRAUMA_TRAIT)
 
@@ -453,3 +459,24 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	for(var/atom/movable/content in movable.contents)
 		mammons += get_mammons_in_atom(content)
 	return mammons
+
+/datum/charflaw/sleepless
+	name = "Insomnia"
+	desc = "I do not sleep. I cannot sleep. I've tried everything."
+
+/datum/charflaw/sleepless/on_mob_creation(mob/user)
+	ADD_TRAIT(user, TRAIT_NOSLEEP, TRAIT_GENERIC)
+
+/datum/charflaw/mute
+	name = "Mute"
+	desc = "I was born without the ability to speak."
+
+/datum/charflaw/mute/on_mob_creation(mob/user)
+	ADD_TRAIT(user, TRAIT_PERMAMUTE, TRAIT_GENERIC)
+
+/datum/charflaw/leper
+	name = "Leper"
+	desc = "I'm cursed by leprosy."
+
+/datum/charflaw/leper/on_mob_creation(mob/user)
+	ADD_TRAIT(user, TRAIT_LEPROSY, TRAIT_GENERIC)
