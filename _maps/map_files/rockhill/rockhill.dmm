@@ -20122,6 +20122,10 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/natural/feather,
+/obj/structure/roguemachine/mail{
+	mailtag = "Whitevein";
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
 "jdP" = (
@@ -24640,6 +24644,13 @@
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
+"lll" = (
+/obj/structure/fluff/statue/gargoyle{
+	pixel_x = 1;
+	pixel_y = -9
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/bath)
 "llm" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -27485,6 +27496,11 @@
 	icon_state = "tile"
 	},
 /area/rogue/indoors/town/tavern)
+"mBH" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/fluff/walldeco/maidendrape,
+/turf/open/water/bath,
+/area/rogue/indoors/town/bath)
 "mBJ" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/greenstone/runed,
@@ -47414,9 +47430,6 @@
 	icon_state = "borderfall";
 	pixel_y = 8
 	},
-/obj/structure/roguemachine/mail{
-	mailtag = "Whitevein"
-	},
 /obj/structure/flora/ausbushes/reedbush{
 	pixel_y = 4;
 	pixel_x = 6
@@ -51488,10 +51501,6 @@
 	locked = 1;
 	lockid = "nightman";
 	name = "Nightmaster's Room"
-	},
-/obj/structure/fluff/statue/gargoyle{
-	pixel_x = 1;
-	pixel_y = -9
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/bath)
@@ -110040,7 +110049,7 @@ bpD
 xrC
 rnK
 qyV
-xrC
+lll
 wAU
 djL
 asP
@@ -110473,7 +110482,7 @@ xrC
 evD
 asP
 xXc
-wAU
+mBH
 hfu
 tvr
 gJb
