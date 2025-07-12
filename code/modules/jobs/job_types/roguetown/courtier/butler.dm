@@ -1,6 +1,5 @@
 /datum/job/roguetown/butler
-	title = "Head Butler"
-	f_title = "Head Maid"
+	title = "Butler"
 	flag = BUTLER
 	department_flag = COURTIERS
 	selection_color = JCOLOR_COURTIER
@@ -21,42 +20,37 @@
 
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
 	..()
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+	pants = /obj/item/clothing/under/roguetown/tights/black
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	shoes = /obj/item/clothing/shoes/roguetown/armor
+	belt = /obj/item/storage/belt/rogue/leather/black
+	beltr = /obj/item/storage/keyring/butler
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/rich
+	cloak = /obj/item/clothing/suit/roguetown/armor/longcoat
+	backl = /obj/item/storage/backpack/rogue/satchel
+	id = /obj/item/clothing/ring/silver
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 5, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-		H.change_stat("strength", -1)
+		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 		H.change_stat("constitution", -1)
 		H.change_stat("intelligence", 2)
 		H.change_stat("perception", 2)
+		if(H.age == AGE_OLD)
+			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
+	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, TRAIT_GENERIC)
 
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-		head = /obj/item/clothing/head/roguetown/fancyhat
-	else
-		switch(H.patron?.type)
-			if(/datum/patron/divine/eora) //Eoran loadouts
-				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black
-				pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/silk/black, /obj/item/clothing/under/roguetown/tights/stockings/fishnet/black)
-			else
-				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen
-				pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/black, /obj/item/clothing/under/roguetown/tights/stockings/white) //Added stockings for the maids
-
-		pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-		cloak = /obj/item/clothing/cloak/apron/waist
-		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/storage/keyring/servant
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel = 1)
