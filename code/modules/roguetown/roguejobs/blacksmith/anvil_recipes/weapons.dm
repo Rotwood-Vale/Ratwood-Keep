@@ -29,6 +29,12 @@
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 
+/datum/anvil_recipe/weapons/iron/misericorde
+	name = "Misericorde (+1 iron)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/misericorde
+
 /datum/anvil_recipe/weapons/iron/flail
 	name = "Flail"
 	req_bar = /obj/item/ingot/iron
@@ -97,10 +103,16 @@
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/sword/iron/messer/steel
 
-/datum/anvil_recipe/weapons/iron/sdagger
+/datum/anvil_recipe/weapons/steel/sdagger
 	name = "Steel Dagger"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
+
+/datum/anvil_recipe/weapons/steel/rondel
+	name = "Rondel Dagger (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
 
 /datum/anvil_recipe/weapons/steel/flail
 	name = "Flail"
@@ -232,7 +244,7 @@
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/exe
 
-/// SILVER 
+/// SILVER
 /datum/anvil_recipe/weapons/silver
 	skill_level = 4
 
@@ -298,7 +310,7 @@
 /datum/anvil_recipe/weapons/terminus
 	name = "Terminus Est (+1 Gold Bar) (+1 Steel) (+1 Rontz)"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem)	
+	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
 	skill_level = 5
 
@@ -378,51 +390,51 @@
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
-						/obj/item/ammo_casing/caseless/rogue/arrow/iron, 
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
+						/obj/item/ammo_casing/caseless/rogue/arrow/iron,
 						/obj/item/ammo_casing/caseless/rogue/arrow/iron
 					)
 	skill_level = 3
-	
+
 /datum/anvil_recipe/ammo/bolts
 	name = "Bolts 20x"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
-	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
-						/obj/item/ammo_casing/caseless/rogue/bolt, 
+	created_item = list(/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
+						/obj/item/ammo_casing/caseless/rogue/bolt,
 						/obj/item/ammo_casing/caseless/rogue/bolt
 					)
 	skill_level = 3

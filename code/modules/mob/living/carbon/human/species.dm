@@ -491,7 +491,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	for(var/language_type in languages)
 		C.grant_language(language_type)
-	
+
 	if(default_scale_x != 1 || default_scale_y != 1)
 		C.transform = C.transform.Scale(default_scale_x, default_scale_y)
 		C.update_transform()
@@ -1599,6 +1599,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/Iforce = get_complex_damage(I, user) //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
 
+//Special weapon checks.
 	var/blade_class = user.used_intent?.blade_class
 	if(get_dir(user, H) == H.dir && H.pulledby == user)							//Check for Assassination
 		if(I.can_assin && user.used_intent.ican_assin)
@@ -1611,6 +1612,19 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(prob(user?.mind?.get_skill_level(I.associated_skill) * 15))		//Skill check, 15-95%
 				blade_class = BCLASS_ASSASSIN
 				pen = 100
+
+	if(H.pulledby == user)														//Check for Grapplefu
+		if(I.can_grf && user.used_intent.ican_grf)
+			if(prob(user?.mind?.get_skill_level(I.associated_skill) * user.STASPD))		//Skill check. Determined by speed.
+				if(selzone == BODY_ZONE_PRECISE_EARS)//If they're aiming ears, swap over to smashing.
+					blade_class = BCLASS_SMASH
+					to_chat(user, span_warning("I strike [H]'s head with the pommel!"))
+				else
+					to_chat(user, span_warning("I slip the blade into [H]'s form!"))
+					blade_class = BCLASS_ASSASSIN
+					pen = 80
+
+//End of special weapon checks.
 
 	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=blade_class)
 
@@ -1867,7 +1881,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		burn_damage = burn_damage * heatmod * H.physiology.heat_mod
 		if (H.stat < UNCONSCIOUS && (prob(burn_damage) * 10) / 4) //40% for level 3 damage on humans
 			H.emote("pain")
-		
+
 		H.apply_damage(CLAMP(burn_damage, 0, CONFIG_GET(number/per_tick/max_fire_damage)), BURN, spread_damage = TRUE)
 
 	else if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTCOLD))
