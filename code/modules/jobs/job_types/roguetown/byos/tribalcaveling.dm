@@ -1,31 +1,33 @@
-/datum/job/roguetown/goblinrabble
-	title = "Goblin Rabble"
-	flag = GOBLINRABBLE
-	department_flag = GOBLIN
-	selection_color = JCOLOR_GOBLIN
+/datum/job/roguetown/tribalcaveling
+	title = "Tribal Caveling"
+	flag = TRIBALCAVELING
+	department_flag = TRIBAL
+	selection_color = JCOLOR_TRIBAL
 	faction = "Station"
 	total_positions = 6
 	spawn_positions = 6
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = list(/datum/species/goblinp)
-	tutorial = "You're the lowest of the low. A goblin among many other goblins. You worship the chief as the representation of Graggar, the biggest and the strongest. \
+	allowed_races = list(/datum/species/goblinp, /datum/species/kobold, /datum/species/anthromorphsmall)
+	tutorial = "A gremlin among many other gremlins. You worship the chief as the representation of The Dragon, his chosen as the biggest and the strongest. \
 	There's little to say about you, aside from your proclivity for skullduggery over outright skull smashing, much to your chief's disappointment. Obey when called upon. \
-	When left to your own devices, you scrounge the sewers for valuables, shinies, occassionally skulking into town and stealing fresh treasures. \
-	Perhaps if you brought a fresh slave... The chief would finally notice you."
-	outfit = /datum/outfit/job/roguetown/goblinrabble
-	display_order = JDO_GOBLINRABBLE
+	This is The Dragon's island, and there's rumor of newcomers, which means more gold for him. \
+	Perhaps if you brought a fresh slave or mammons... The Dragon would finally notice you."
+	outfit = /datum/outfit/job/roguetown/tribalcaveling
+	display_order = JDO_TRIBALCAVELING
 	min_pq = 0
 	max_pq = null
 	announce_latejoin = FALSE
-	allowed_maps = list("Rockhill")
+	same_job_respawn_delay = 25 MINUTES
+	job_reopens_slots_on_death = FALSE
+	allowed_maps = list("Build Your Settlement")
 
-/datum/outfit/job/roguetown/goblinrabble
+/datum/outfit/job/roguetown/tribalcaveling
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
 
-/datum/outfit/job/roguetown/goblinrabble/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/tribalcaveling/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.faction += "orcs"
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+	H.faction += list("orcs", "tribe")
+	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	pants = /obj/item/clothing/under/roguetown/loincloth/brown
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	l_hand = /obj/item/rogueweapon/huntingknife/stoneknife
@@ -36,7 +38,6 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/goblin = 1, /obj/item/lockpickring/mundane = 1)
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	ADD_TRAIT(H, TRAIT_GOBLINCAMP, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -57,7 +58,6 @@
 		ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 		H.ventcrawler = VENTCRAWLER_ALWAYS
 
-//If a non-Goblin gets control by admin intervention.
-	if(!H.has_language(/datum/language/orcish))
-		H.grant_language(/datum/language/orcish)
-		to_chat(H, span_info("I can speak Orchish with ,o before my speech."))
+	if(!H.has_language(/datum/language/draconic))
+		H.grant_language(/datum/language/draconic)
+		to_chat(H, span_info("I can speak Draconic with ,s before my speech."))

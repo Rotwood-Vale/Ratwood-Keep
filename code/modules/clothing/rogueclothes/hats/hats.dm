@@ -414,7 +414,7 @@
 	name = "crown"
 	icon_state = "serpcrowno"
 	sellprice = 100
-	allowed_race = list(/datum/species/goblinp)
+	allowed_race = list(/datum/species/goblinp, /datum/species/halforc, /datum/species/dracon, /datum/species/anthromorphsmall, /datum/species/kobold)
 
 /obj/item/clothing/head/roguetown/crown/sparrowcrown
 	name = "champion's circlet"

@@ -298,6 +298,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PIERCEIMMUNE		"pierce_immunity"
 #define TRAIT_NODISMEMBER		"dismember_immunity"
 #define TRAIT_NOFIRE			"nonflammable"
+#define TRAIT_LAVA_PROOF 		"lava_proof"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
