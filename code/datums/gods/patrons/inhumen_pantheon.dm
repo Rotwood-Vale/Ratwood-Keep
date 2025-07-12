@@ -1,19 +1,20 @@
 /datum/patron/inhumen
 	name = null
 	associated_faith = /datum/faith/inhumen
+	t0 = /obj/effect/proc_holder/spell/targeted/touch/orison
 	undead_hater = FALSE
 	confess_lines = list()
 
 /datum/patron/inhumen/baotha
-    name = "Baotha"
-    domain = "Goddess of Addiction, Debauchery, Degeneracy, Depraved Artistic Expression"
-    desc = "Baotha taught Her followers that life is too short to care for the consequences of their pleasures and expressions. Baotha leads them to peculiar vices and perversions without care for consequences."
-    worshippers = "Addicts, Depraved Artists, and Perverts"
-    mob_traits = list(TRAIT_CRACKHEAD) // prevents overdoses
-    confess_lines = list(
-        "BAOTHA DEMANDS PLEASURE!",
-        "BAOTHA IS MY QUEEN!",
-        "BAOTHA IS MY JOY!",
+	name = "Baotha"
+	domain = "Goddess of Addiction, Debauchery, Degeneracy, Depraved Artistic Expression"
+	desc = "Baotha taught Her followers that life is too short to care for the consequences of their pleasures and expressions. Baotha leads them to peculiar vices and perversions without care for consequences."
+	worshippers = "Addicts, Depraved Artists, and Perverts"
+	mob_traits = list(TRAIT_CRACKHEAD) // prevents overdoses
+	confess_lines = list(
+		"BAOTHA DEMANDS PLEASURE!",
+		"BAOTHA IS MY QUEEN!",
+		"BAOTHA IS MY JOY!",
 	)
 
 /datum/patron/inhumen/graggar
@@ -28,7 +29,7 @@
 		"THE BLACK SUN DEMANDS BLOOD!",
 	)
 
-/datum/patron/inhumen/matthios 
+/datum/patron/inhumen/matthios
 	name = "Matthios"
 	domain = "God of Absolute Freedom, Camaraderie, Robbery"
 	desc = "Matthios taught His followers that only through robbery and rebellion can one rise above their lot in life, and that the Divine Order of Astrata must be torn down and society rebuilt so that people may attain divinity."

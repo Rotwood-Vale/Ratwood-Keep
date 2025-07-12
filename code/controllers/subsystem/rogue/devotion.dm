@@ -50,7 +50,7 @@
 	patron = null
 	granted_spells = null
 	STOP_PROCESSING(SSobj, src)
-	
+
 /datum/devotion/process()
 	if(!passive_devotion_gain && !passive_progression_gain)
 		return PROCESS_KILL
@@ -141,7 +141,7 @@
 	if(!H || !H.mind || !patron)
 		return
 
-	var/list/spelllist = list(/obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/lesser_heal, /obj/effect/proc_holder/spell/invoked/diagnose) //This would have caused jank.
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -157,7 +157,8 @@
 		return
 
 	granted_spells = list()
-	var/list/spelllist = list(patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
+//Force into the list Orison and Lesser Heal, given this won't work otherwise. Because this entire granter is broken, or something. I 'unno. Fix it at some point.
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/touch/orison, /obj/effect/proc_holder/spell/invoked/lesser_heal, patron.t0, patron.t1, patron.t2, patron.t3, patron.t4)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -202,14 +203,14 @@
 
 	if(!devotion)
 		return FALSE
-	
+
 	to_chat(src,"My devotion is [devotion.devotion].")
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
 	set name = "Give Prayer"
 	set category = "Cleric"
-	
+
 	if(!devotion)
 		return FALSE
 
