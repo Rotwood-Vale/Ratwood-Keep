@@ -53,7 +53,9 @@
 		return FALSE
 	var/message2recognize = sanitize_hear_message(message)
 	var/mob/living/carbon/human/M = L
-	if(length(message2recognize) > 15)
+	if(length(message2recognize) > 50)
+		if(L.has_flaw(/datum/charflaw/addiction/godfearing))
+			L.sate_addiction()
 		if(L.mob_timers[MT_PSYPRAY])
 			if(world.time < L.mob_timers[MT_PSYPRAY] + 1 MINUTES)
 				L.mob_timers[MT_PSYPRAY] = world.time
@@ -66,7 +68,7 @@
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
 			L.add_stress(/datum/stressevent/psyprayer)
 			return TRUE
-	else 
+	else
 		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /mob/living/proc/check_prayer_underworld(mob/living/L,message)
@@ -93,12 +95,12 @@
 		if(findtext(message2recognize, "[M.patron]"))
 			L.playsound_local(L, 'sound/misc/notice (2).ogg', 100, FALSE)
 			to_chat(L, "<font color='yellow'>I, [M.patron], have heard your prayer and yet cannot aid you.</font>")
-			/*var/obj/item/underworld/coin/C = new 
+			/*var/obj/item/underworld/coin/C = new
 			L.put_in_active_hand(C)*/
 			return TRUE
 		else
 			return TRUE
-	else 
+	else
 		to_chat(L, span_danger("My prayer was kinda short..."))
 
 /datum/emote/living/meditate
@@ -236,7 +238,7 @@
 	only_forced_audio = TRUE
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
-	
+
 /datum/emote/living/cross
 	key = "crossarms"
 	key_third_person = "crossesarms"
@@ -847,6 +849,15 @@
 	only_forced_audio = TRUE
 	show_runechat = FALSE
 
+/datum/emote/living/scream/painscream/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(.)
+		for(var/mob/living/carbon/human/L in viewers(7,user))
+			if(L == user)
+				continue
+			if(L.has_flaw(/datum/charflaw/addiction/sadist))
+				L.sate_addiction()
+
 /datum/emote/living/scream/agony
 	key = "agony"
 	message = "screams in agony!"
@@ -854,12 +865,30 @@
 	only_forced_audio = TRUE
 	show_runechat = FALSE
 
+/datum/emote/living/scream/agony/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(.)
+		for(var/mob/living/carbon/human/L in viewers(7,user))
+			if(L == user)
+				continue
+			if(L.has_flaw(/datum/charflaw/addiction/sadist))
+				L.sate_addiction()
+
 /datum/emote/living/scream/firescream
 	key = "firescream"
 	nomsg = TRUE
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE
+
+/datum/emote/living/scream/firescream/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(.)
+		for(var/mob/living/carbon/human/L in viewers(7,user))
+			if(L == user)
+				continue
+			if(L.has_flaw(/datum/charflaw/addiction/sadist))
+				L.sate_addiction()
 
 /datum/emote/living/aggro
 	key = "aggro"
@@ -1295,7 +1324,7 @@
 /mob/living/carbon/human/verb/emote_vomit()
 	set name = "Vomit"
 	set category = "Emotes"
-	
+
 	emote("vomit", intentional = TRUE)
 
 /datum/emote/living/vomit
