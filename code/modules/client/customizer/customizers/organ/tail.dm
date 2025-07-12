@@ -163,6 +163,7 @@
 		/datum/sprite_accessory/tail/lizard/ltiger,
 		/datum/sprite_accessory/tail/lizard/spikes,
 		/datum/sprite_accessory/tail/lynx,
+		/datum/sprite_accessory/tail/pinecone
 		)
 
 /datum/customizer/organ/tail/anthro
@@ -230,4 +231,5 @@
 		/datum/sprite_accessory/tail/snuppy,
 		/datum/sprite_accessory/tail/lynx,
 		/datum/sprite_accessory/tail/lion,
+		/datum/sprite_accessory/tail/pinecone
 		)

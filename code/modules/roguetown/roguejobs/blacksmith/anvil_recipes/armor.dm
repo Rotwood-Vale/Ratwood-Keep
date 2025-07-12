@@ -1,4 +1,5 @@
 /datum/anvil_recipe/armor
+	abstract_type = /datum/anvil_recipe/armor
 	appro_skill = /datum/skill/craft/blacksmithing
 	skill_level = 1
 	i_type = "Armor"
@@ -408,6 +409,11 @@
 	req_bar =  /obj/item/ingot/gold
 	created_item = list (/obj/item/clothing/shoes/roguetown/anklets)
 	skill_level = 4
+
+/datum/anvil_recipe/armor/gold/goldcirclet
+	name = "Gold Circlet"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/head/roguetown/circlet
 
 // --------- BLACKSTEEL RECIPES-----------
 
