@@ -1643,6 +1643,11 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"aNp" = (
+/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/fluff/walldeco/maidendrape,
+/turf/open/water/bath,
+/area/rogue/indoors/town/bath)
 "aNy" = (
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue/indoors/town/church)
@@ -18819,7 +18824,7 @@
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/under/town/basement)
 "iyp" = (
-/obj/structure/gate/bars{
+/obj/structure/gate/bars/preopen{
 	gid = "townin";
 	redstone_id = "townin"
 	},
@@ -24644,13 +24649,6 @@
 /obj/structure/mannequin/male,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
-"lll" = (
-/obj/structure/fluff/statue/gargoyle{
-	pixel_x = 1;
-	pixel_y = -9
-	},
-/turf/closed/wall/mineral/rogue/craftstone,
-/area/rogue/indoors/town/bath)
 "llm" = (
 /obj/structure/fluff/railing/border{
 	dir = 6
@@ -25241,7 +25239,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "lzE" = (
-/obj/structure/gate/bars{
+/obj/structure/gate/bars/preopen{
 	gid = "townin2";
 	redstone_id = "townin2"
 	},
@@ -27496,11 +27494,6 @@
 	icon_state = "tile"
 	},
 /area/rogue/indoors/town/tavern)
-"mBH" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/fluff/walldeco/maidendrape,
-/turf/open/water/bath,
-/area/rogue/indoors/town/bath)
 "mBJ" = (
 /obj/structure/roguemachine/scomm,
 /turf/open/floor/rogue/greenstone/runed,
@@ -35152,6 +35145,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
+"qli" = (
+/obj/structure/fluff/statue/gargoyle{
+	pixel_x = 1;
+	pixel_y = -9
+	},
+/turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue/indoors/town/bath)
 "qlv" = (
 /obj/structure/fluff/walldeco/wantedposter{
 	pixel_x = 32;
@@ -110049,7 +110049,7 @@ bpD
 xrC
 rnK
 qyV
-lll
+qli
 wAU
 djL
 asP
@@ -110482,7 +110482,7 @@ xrC
 evD
 asP
 xXc
-mBH
+aNp
 hfu
 tvr
 gJb
