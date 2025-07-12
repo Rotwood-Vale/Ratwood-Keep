@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	display_order = JDO_LORD
 	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error in their ways."
 	whitelist_req = FALSE
-	min_pq = 10
+	min_pq = 0
 	max_pq = null
 	give_bank_account = 1000
 	required = TRUE
@@ -76,6 +76,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name] is Duchess of Rockhill.</span></span></b>")
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
+
+		if(istype(SSticker.regentmob, /mob/living/carbon/human))
+			var/mob/living/carbon/human/regentbuddy = SSticker.regentmob
+			to_chat(L, span_notice("Word reached me on the approach that [regentbuddy.real_name], the [regentbuddy.job], served as regent in my absence."))
+		SSticker.regentmob = null //Time for regent to give up the position.
+
 		var/mob/living/carbon/human/H = L
 		var/index = findtext(H.real_name, " ")
 		if(index)
@@ -93,20 +99,25 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	if(H.gender == MALE)
+	if(SSroguemachine.crown == null || (QDELETED(SSroguemachine.crown)))
+		SSroguemachine.crown = null
 		head = /obj/item/clothing/head/roguetown/crown/serpcrown
+	else
+		to_chat(H, span_warning("My crown must be yet in the realm. I shall search it out."))
+
+	if(H.gender == MALE)
 		l_hand = /obj/item/rogueweapon/lordscepter
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/gun/ballistic/firearm/arquebus_pistol
 		beltl = /obj/item/ammo_holder/bullet/lead
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/powderflask = 1)
-		id = /obj/item/clothing/ring/active/nomag	
+		id = /obj/item/clothing/ring/active/nomag
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/duke
 		shoes = /obj/item/clothing/shoes/roguetown/armor
-		
+
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
@@ -146,7 +157,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
 	else
-		head = /obj/item/clothing/head/roguetown/crown/serpcrown
 		l_hand = /obj/item/rogueweapon/lordscepter
 		r_hand = /obj/item/clothing/head/roguetown/duchess_hood
 		beltl = /obj/item/storage/keyring/royal

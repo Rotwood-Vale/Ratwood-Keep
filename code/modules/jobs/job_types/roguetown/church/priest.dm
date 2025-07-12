@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2) //good at casting lots of miracles without tiring, divinely fortified stamina
-		H.change_stat("intelligence", 3) 
+		H.change_stat("intelligence", 3)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 
@@ -138,6 +138,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			if("female")
 				SSticker.rulertype = "Duchess"
 		SSticker.rulermob = HU
+		SSticker.regentmob = null
 		var/dispjob = mind.assigned_role
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you [SSticker.rulertype] of Rockhill!")

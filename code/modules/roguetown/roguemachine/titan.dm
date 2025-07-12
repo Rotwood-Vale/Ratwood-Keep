@@ -60,15 +60,16 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	var/nocrown
 	if(!istype(H.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
 		nocrown = TRUE
-	var/notlord
-	if(SSticker.rulermob != H)
-		notlord = TRUE
+	var/notlord = TRUE
+	if(SSticker.rulermob == H || SSticker.regentmob == H)
+		notlord = FALSE
 	var/message2recognize = sanitize_hear_message(original_message)
 
 	if(mode)
 		if(findtext(message2recognize, "nevermind"))
 			mode = 0
 			return
+
 	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
 		if(!SSroguemachine.crown)
 			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
@@ -103,11 +104,47 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+
+	if(findtext(message, "summon key"))
+		if(nocrown)
+			say("You need the crown.")
+			playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+			return
+		if(!SSroguemachine.key)
+			new /obj/item/key/lord(src.loc)
+			say("The key is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		if(SSroguemachine.key)
+			var/obj/item/key/lord/I = SSroguemachine.key
+			if(!I)
+				I = new /obj/item/key/lord(src.loc)
+			if(I && !ismob(I.loc))
+				I.anti_stall()
+				I = new /obj/item/key/lord(src.loc)
+				say("The key is summoned!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				return
+			if(ishuman(I.loc))
+				var/mob/living/carbon/human/HC = I.loc
+				if(HC.stat != DEAD)
+					say("[HC.real_name] holds the key!")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					return
+				else
+					HC.dropItemToGround(I, TRUE) //If you're dead, forcedrop it, then move it.
+			I.forceMove(src.loc)
+			say("The key is summoned!")
+			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+
 	switch(mode)
 		if(0)
 			if(findtext(message2recognize, "help"))
-				say("My commands are: Make Decree, Invalidate Decrees, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Make Law, Remove Law, Purge Laws, Nevermind")
+				say("My commands are: Make Decree, Invalidate Decrees, Make Announcement, Set Taxes, Declare Outlaw, Summon Crown, Summon Key, Make Law, Remove Law, Purge Laws, Become Regent, Nevermind")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
+
 			if(findtext(message2recognize, "make announcement"))
 				if(nocrown)
 					say("You need the crown.")
@@ -123,6 +160,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 1
 				return
+
 			if(findtext(message2recognize, "make decree"))
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
@@ -136,6 +174,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 2
 				return
+
 			if(findtext(message2recognize, "invalidate decrees"))
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
@@ -149,6 +188,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				invalidate_decrees()
 				return
+
 			if(findtext(message2recognize, "make law"))
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
@@ -162,6 +202,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				mode = 4
 				return
+
 			if(findtext(message2recognize, "remove law"))
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
@@ -180,6 +221,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				remove_law(law_index)
 				return
+
 			if(findtext(message2recognize, "purge laws"))
 				if(!SScommunications.can_announce(H))
 					say("I must gather my strength!")
@@ -193,6 +235,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machineyes.ogg', 100, FALSE, -1)
 				purge_laws()
 				return
+
 			if(findtext(message2recognize, "declare outlaw"))
 				if(notlord || nocrown)
 					say("You are not my master!")
@@ -202,6 +245,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machinequestion.ogg', 100, FALSE, -1)
 				mode = 3
 				return
+
 			if(findtext(message2recognize, "set taxes"))
 				if(notlord || nocrown)
 					say("You are not my master!")
@@ -211,6 +255,36 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				give_tax_popup(H)
 				return
+
+			if(findtext(message, "become regent"))
+				if(nocrown)
+					say("You need the crown.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(SSticker.rulermob && SSticker.rulermob == H) //failsafe for edge cases
+					say("No others share the throne with you, master.")
+					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+					SSticker.regentmob = null
+					return
+				if(SSticker.rulermob != null)
+					say("The true lord is already present in the realm.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(!(HAS_TRAIT(H, TRAIT_NOBLE)))
+					say("You have not the noble blood to be regent.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(SSticker.regentday == GLOB.dayspassed)
+					say("A regent has already been declared this dae!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				if(SSticker.regentmob == H)
+					say("You are already the regent!")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+				become_regent(H)
+				return
+
 		if(1)
 			make_announcement(H, raw_message)
 			COOLDOWN_START(src, king_announcement, 30 SECONDS)
@@ -332,3 +406,8 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 /proc/purge_laws()
 	GLOB.laws_of_the_land = list()
 	priority_announce("All laws of the land have been purged!", "LAWS PURGED", 'sound/misc/lawspurged.ogg', "Captain")
+
+/proc/become_regent(mob/living/carbon/human/H)
+	priority_announce("[H.name], the [H.get_role_title()], sits as the regent of the realm.", "A New Regent Resides", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+	SSticker.regentmob = H
+	SSticker.regentday = GLOB.dayspassed

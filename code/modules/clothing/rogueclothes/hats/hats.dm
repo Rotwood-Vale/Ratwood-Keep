@@ -401,7 +401,7 @@
 	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
-	src.visible_message(span_warning("The Crown of Rockhill crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	src.visible_message(span_warning("The lord's crown crumbles to dust, the ashes spiriting away in the direction of the throne."))
 	SSroguemachine.crown = null //Do not harddel.
 	qdel(src) //Anti-stall
 
