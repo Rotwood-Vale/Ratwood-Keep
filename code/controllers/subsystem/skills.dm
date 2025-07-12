@@ -17,6 +17,17 @@ SUBSYSTEM_DEF(skills)
 		SKILL_LEVEL_MASTER = "<b>Master</b>", 
 		SKILL_LEVEL_LEGENDARY = "<b><span style='color: green;'>Legendary</span></b>",
 	)//This list is already in the right order, due to indexing
+
+	///Plain level names without the span
+	var/static/list/level_names_plain = list(
+		SKILL_LEVEL_NOVICE = "Novice",
+		SKILL_LEVEL_APPRENTICE = "Apprentice",
+		SKILL_LEVEL_JOURNEYMAN = "Journeyman",
+		SKILL_LEVEL_EXPERT = "Expert",
+		SKILL_LEVEL_MASTER = "Master",
+		SKILL_LEVEL_LEGENDARY = "Legendary",
+	)
+
 /datum/controller/subsystem/skills/Initialize(timeofday)
 	InitializeSkills()
 	return ..()
