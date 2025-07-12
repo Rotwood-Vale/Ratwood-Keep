@@ -14,7 +14,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	beltr = /obj/item/rogueweapon/huntingknife/scissors/steel
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/natural/bundle/fibers/full = 1, /obj/item/needle = 1)
+	backpack_contents = list(/obj/item/natural/cloth = 2, /obj/item/recipe_book/sewing = 1, /obj/item/natural/bundle/fibers/full = 1, /obj/item/needle = 1)
 	if(H.gender == MALE) // We're givign males male specific clothes so they don't walk around in a dress
 		belt = /obj/item/storage/belt/rogue/leather/cloth
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson

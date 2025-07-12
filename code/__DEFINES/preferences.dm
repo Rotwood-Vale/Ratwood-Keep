@@ -1,3 +1,6 @@
+#define MAXIMUM_FLAVOR_TEXT			800
+#define MAXIMUM_NSFW_FLAVOR_TEXT	800
+#define MAXIMUM_OOC_NOTES			200
 
 //Preference toggles
 #define SOUND_ADMINHELP			(1<<0)

@@ -68,6 +68,9 @@
 	return needed_xp
 
 /datum/sleep_adv/proc/add_sleep_experience(skill, amt, silent = FALSE)
+	if((mind.get_skill_level(skill) < SKILL_LEVEL_NOVICE) && !is_considered_sleeping())
+		mind.adjust_experience(skill, amt)
+		return
 	var/capped_pre = enough_sleep_xp_to_advance(skill, 2)
 	var/can_advance_pre = enough_sleep_xp_to_advance(skill, 1)
 	adjust_sleep_xp(skill, amt)
