@@ -1161,28 +1161,63 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 // LANDMARKS
 
 /obj/effect/landmark/start/vampirelord
+	
 	name = "Vampire Lord"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
+	map = "Rockhill"
 
 /obj/effect/landmark/start/vampirelord/Initialize()
 	. = ..()
 	GLOB.vlord_starts += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/vampirelord_byos
+	name = "Vampire Lord"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+	map = "Build Your Settlement"
+
+/obj/effect/landmark/start/vampirelord_byos/Initialize()
+	. = ..()
+	GLOB.vlord_starts_byos += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/vampirespawn
 	name = "Vampire Spawn"
 	icon_state = "arrow"
 	delete_after_roundstart = FALSE
+	map = "Rockhill"
+
+/obj/effect/landmark/start/vampirespawn/Initialize()
+	. = ..()
+	GLOB.vspawn_starts += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/vampirespawn_byos
+	name = "Vampire Spawn"
+	icon_state = "arrow"
+	delete_after_roundstart = FALSE
+	map = "Build Your Settlement"
+
+/obj/effect/landmark/start/vampirespawn_byos/Initialize()
+	. = ..()
+	GLOB.vspawn_starts_byos += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/vampireknight
 	name = "Death Knight"
 	icon_state = "arrow"
 	jobspawn_override = list("Death Knight")
 	delete_after_roundstart = FALSE
+	map = "Rockhill"
 
-/obj/effect/landmark/start/vampirespawn/Initialize()
-	. = ..()
-	GLOB.vspawn_starts += loc
+/obj/effect/landmark/start/vampireknight_byos
+	name = "Death Knight"
+	icon_state = "arrow"
+	jobspawn_override = list("Death Knight")
+	delete_after_roundstart = FALSE
+	map = "Build Your Settlement"
 
 /obj/effect/landmark/vteleport
 	name = "Teleport Destination"

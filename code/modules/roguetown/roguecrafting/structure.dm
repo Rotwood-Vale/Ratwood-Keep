@@ -1,5 +1,6 @@
 
 /datum/crafting_recipe/roguetown/structure
+	abstract_type = /datum/crafting_recipe/roguetown/structure
 	req_table = FALSE
 	craftsound = 'sound/foley/Building-01.ogg'
 
@@ -18,6 +19,15 @@
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
+	skill_level = 2
+
+/datum/crafting_recipe/roguetown/structure/meathock
+	name = "meathook"
+	result = /obj/structure/meathook
+	reqs = list(/obj/item/grown/log/tree/small = 2,
+				/obj/item/ingot/iron = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
 	skill_level = 2
 
 /datum/crafting_recipe/roguetown/structure/handcart

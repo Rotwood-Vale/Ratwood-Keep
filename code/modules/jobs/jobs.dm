@@ -133,6 +133,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Docker",
 	"Prisoner",
 	"Beggar",
+	"Stowaway",
 	"Lunatic",
 	"Town Seelie",
 ))
@@ -153,6 +154,7 @@ GLOBAL_LIST_INIT(youngfolk_positions, list(
 ))
 
 GLOBAL_LIST_INIT(foreigner_positions, list(
+	"Adventurer",
 	"Refugee",
 	"Migrant",
 	"Bandit",
@@ -169,6 +171,15 @@ GLOBAL_LIST_INIT(goblin_positions, list(
 	"Goblin Rabble",
 	"Goblin Smith",
 	"Goblin Shaman",
+))
+
+GLOBAL_LIST_INIT(tribal_positions, list(
+	"Tribal Chief",
+	"Tribal Guard",
+	"Tribal Tinkerer",
+	"Tribal Seer",
+	"Tribal Lackey",
+	"Tribal Caveling",
 ))
 
 GLOBAL_LIST_INIT(roguefight_positions, list(

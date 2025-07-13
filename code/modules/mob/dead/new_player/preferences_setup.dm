@@ -12,6 +12,7 @@
 	voice_type = VOICE_TYPE_MASC
 	if(gender == FEMALE)
 		voice_type = VOICE_TYPE_FEM
+		body_type = FEMALE
 		
 	age = pick(pref_species.possible_ages)
 	var/list/skins = pref_species.get_skin_list()

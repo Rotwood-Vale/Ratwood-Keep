@@ -18,29 +18,41 @@
 	var/keycontrol = "steward"
 	var/current_tab = TAB_MAIN
 	var/compact = FALSE
+	var/created_by_kit = FALSE
 
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/key))
-		var/obj/item/key/K = P
-		if(K.lockid == keycontrol)
-			locked = !locked
-			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			update_icon()
-			return
-		else
-			to_chat(user, span_warning("Wrong key."))
-			return
-	if(istype(P, /obj/item/storage/keyring))
-		for(var/obj/item/key/KE in P.contents)
-			if(KE.lockid == keycontrol)
-				locked = !locked
-				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-				update_icon()
-				return
-		to_chat(user, span_warning("Wrong key."))
-		return
-	return ..()
+    if(istype(P, /obj/item/key))
+        var/obj/item/key/K = P
+        if(K.lockid == keycontrol)
+            locked = !locked
+            playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+            update_icon()
+            return
+        else
+            to_chat(user, span_warning("Wrong key."))
+            return
+    if(istype(P, /obj/item/storage/keyring))
+        for(var/obj/item/key/KE in P.contents)
+            if(KE.lockid == keycontrol)
+                locked = !locked
+                playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+                update_icon()
+                return
+        to_chat(user, span_warning("Wrong key."))
+        return
+
+    if(istype(P, /obj/item/roguecoin))
+        var/obj/item/roguecoin/C = P
+        var/amount = C.get_real_price()
+        SStreasury.treasury_value += amount
+        SStreasury.log_to_steward("+[amount]m deposited by [user.real_name]")
+        playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
+        to_chat(user, span_notice("You deposit [amount] mammon into the treasury."))
+        del(C)
+        return
+
+    return ..()
 
 
 /obj/structure/roguemachine/steward/Topic(href, href_list)
@@ -246,7 +258,8 @@
 			contents += "<center>NERVE MASTER<BR>"
 			contents += "--------------<BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_BANK]'>\[Bank\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_STOCK]'>\[Stockpile\]</a><BR>"
+			if(!src.created_by_kit)
+				contents += "<a href='?src=\ref[src];switchtab=[TAB_STOCK]'>\[Stockpile\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_IMPORT]'>\[Import\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_BOUNTIES]'>\[Bounties\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_LOG]'>\[Log\]</a><BR>"
@@ -370,6 +383,84 @@
 	popup.set_content(contents)
 	popup.open()
 
+/obj/item/carpet_bundle
+    name = "Vault Carpet"
+    desc = "A tightly wrapped bundle of priceless red carpet. It marks where this settlement will keep its most valuable possessions."
+    icon = 'icons/roguetown/items/natural.dmi'
+    icon_state = "clothroll2"
+    w_class = 3
+    force = 2
+    var/uses = 16
+    color = "#f02011"
+
+    examine(mob/user)
+        . = ..()
+        if(uses > 1)
+            . += "<br>There are [uses] uses left in the bundle."
+        else
+            . += "<br>There is [uses] use left in the bundle."
+        return .
+
+    attack_self(mob/user, params)
+        if(src.uses <= 0)
+            to_chat(user, "<span class='warning'>The bundle is empty.</span>")
+            return
+        var/turf/T = get_turf(user)
+        if(!isfloorturf(T))
+            to_chat(user, "<span class='warning'>I need ground to lay this on!</span>")
+            return
+        for(var/obj/A in T)
+            if(istype(A, /obj/structure))
+                to_chat(user, "<span class='warning'>I need some free space to lay a carpet here!</span>")
+                return
+            if(A.density && !(A.flags_1 & ON_BORDER_1))
+                to_chat(user, "<span class='warning'>There is already something here!</span>")
+                return
+        user.visible_message("<span class='notice'>[user] begins unrolling a velvet carpet bundle.</span>")
+        if(do_after(user, 15 SECONDS, TRUE, src))
+            new /turf/open/floor/carpet/inn(T)
+            if(!istype(T.loc, /area/rogue/indoors/town/vault))
+                new /area/rogue/indoors/town/vault(T)
+            src.uses--
+            to_chat(user, "<span class='notice'>You finish unrolling the carpet, revealing a plush red floor!</span>")
+            if(src.uses <= 0)
+                to_chat(user, "<span class='warning'>You used the last of the carpet.</span>")
+                del(src)
+
+/obj/item/nervemaster_kit
+    name = "Nerve Master Kit"
+    desc = "A heavy crate containing the parts to assemble a Nerve Master with ease. How handy! (Right-Click to disassemble.)"
+    icon = 'icons/roguetown/misc/structure.dmi'
+    icon_state = "woodchest"
+    w_class = 4
+    color = "#5e0808" 
+
+    attack_self(mob/user)
+        var/turf/target = get_step(get_turf(user), user.dir)
+        if(!isturf(target))
+            to_chat(user, span_warning("You can't place a Nerve Master there!"))
+            return
+        if(!isfloorturf(target))
+            to_chat(user, span_warning("You can't place a Nerve Master there!"))
+            return
+        if(locate(/obj/structure/roguemachine/steward) in target)
+            to_chat(user, span_warning("There is already a Nerve Master here!"))
+            return
+        user.visible_message(span_notice("[user] begins assembling a Nerve Master."))
+        if(do_after(user, 20 SECONDS, TRUE, src))
+            var/obj/structure/roguemachine/steward/S = new /obj/structure/roguemachine/steward(target)
+            S.created_by_kit = TRUE
+            to_chat(user, span_notice("You finish assembling the Nerve Master!"))
+            del(src)
+
+/obj/structure/roguemachine/steward/attack_right(mob/user)
+    if(!created_by_kit)
+        return
+    user.visible_message("<span class='notice'>[user] begins packing up the Nerve Master into a kit.</span>")
+    if(do_after(user, 50 SECONDS, TRUE, src))
+        new /obj/item/nervemaster_kit(get_turf(src))
+        to_chat(user, "<span class='notice'>You finish packing up the Nerve Master!</span>")
+        del(src)
 #undef TAB_MAIN
 #undef TAB_BANK
 #undef TAB_STOCK

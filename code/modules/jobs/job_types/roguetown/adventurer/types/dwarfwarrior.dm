@@ -17,6 +17,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/rogueweapon/shield/wood
 	backl = /obj/item/storage/backpack/rogue/satchel
+	backpack_contents = list(/obj/item/recipe_book/survival = 1,)
 	if(prob(25))
 		mask = /obj/item/clothing/mask/rogue/facemask
 	if(prob(25))

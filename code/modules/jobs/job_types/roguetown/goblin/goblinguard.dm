@@ -18,6 +18,7 @@
 	subclass_cat_rolls = list(CTAG_GOBS = 20)
 	advjob_examine = TRUE
 	announce_latejoin = FALSE
+	allowed_maps = list("Rockhill")
 
 /datum/outfit/job/roguetown/goblinguard
 	allowed_patrons = list(/datum/patron/inhumen/graggar)

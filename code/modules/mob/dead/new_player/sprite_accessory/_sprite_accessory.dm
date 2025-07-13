@@ -51,7 +51,7 @@
 	var/datum/species/species = owner.dna.species
 	for(var/mutable_appearance/appearance as anything in appearance_list)
 		var/list/offset_list
-		if(humie.gender == FEMALE)
+		if(humie.body_type == FEMALE)
 			offset_list = species.offset_features[feature_female_key]
 		else
 			offset_list = species.offset_features[feature_male_key]

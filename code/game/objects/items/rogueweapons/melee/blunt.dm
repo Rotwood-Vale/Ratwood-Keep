@@ -1,8 +1,66 @@
+// Basic intents blunt.
+
+/datum/intent/mace/strike
+	name = "strike"
+	desc = "Swinging and striking motions making blunting through armor easier."
+	blade_class = BCLASS_BLUNT
+	attack_verb = list("strikes", "whacks")
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 0
+	icon_state = "instrike"
+	item_d_type = "blunt"
+
+/datum/intent/mace/strike/directstrike
+	name = "direct strike"
+	desc = "A firmly gripped direct strike that is more damaging and armor penetrating in-exchange of being unable to make rapid consecutive hits."
+	clickcd = 16
+	penfactor = 25
+	damfactor = 1.2
+
+/datum/intent/mace/strike/directstrike/onehanded
+	name = "one-handed direct strike"
+	desc = "A firmly gripped direct strike that is more damaging and armor penetrating in-exchange of being unable to make rapid consecutive hits. (Slightly slower due to being one-handed)"
+	clickcd = 18
+	penfactor = 23
+
+/datum/intent/mace/strike/flowstrikes
+	name = "flowing strikes"
+	desc = "Loose grip and wrist motions that allow smoother strikes across which in turn open up rapid consecutive hits."
+	clickcd = 10
+	swingdelay = 4
+
+/datum/intent/mace/strike/flowstrikes/onehanded
+	name = "one-handed flowing strikes"
+	desc = "Loose grip and wrist motions that allow smoother strikes across which in turn open up rapid consecutive hits."
+	clickcd = 12
+	penfactor = 18
+
+/datum/intent/mace/smash
+	name = "smash"
+	desc = "Winding up an powerful concentrated blow that smashes through armor with ease."
+	blade_class = BCLASS_SMASH
+	attack_verb = list("smashes")
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	penfactor = 75
+	damfactor = 1.1
+	swingdelay = 10
+	icon_state = "insmash"
+	item_d_type = "blunt"
+
+/datum/intent/mace/smash/onehanded // This intent was added to add variety, even if it's pretty bad.
+	name = "one-handed smash"
+	desc = "Winding up an powerful concentrated blow that smashes through armor with ease. (very slow due to being one-handed and slightly slower to land)"
+	clickcd = 20
+	swingdelay = 12
+	penfactor = 55
+
 /obj/item/rogueweapon/mace
 	force = 20
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/mace/strike)
-	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash)
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash/onehanded, /datum/intent/mace/strike/directstrike/onehanded, /datum/intent/mace/strike/flowstrikes/onehanded)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/strike/directstrike, /datum/intent/mace/strike/flowstrikes)
 	name = "mace"
 	desc = "Helps anyone fall asleep."
 	icon_state = "mace"
@@ -11,7 +69,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	sharpness = IS_BLUNT
-	//dropshrink = 0.75
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
@@ -25,6 +82,8 @@
 	wdefense = 2
 	wbalance = -1
 	blade_dulling = DULLING_BASHCHOP
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/rogueweapon/mace/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))
@@ -64,8 +123,8 @@
 	wdefense = 3
 
 /obj/item/rogueweapon/mace/steel
-	force = 30
-	force_wielded = 40
+	force = 26
+	force_wielded = 32
 	name = "steel mace"
 	desc = "This steel mace is objectively superior to an iron one."
 	icon_state = "smace"
@@ -165,7 +224,7 @@
 
 /obj/item/rogueweapon/mace/warhammer/steel
 	force = 25
-	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
+	possible_item_intents = list(/datum/intent/mace/strike/directstrike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
 	name = "steel warhammer"
 	desc = "A fine steel warhammer, makes a satisfying sound when paired with a knight's helm."
 	icon_state = "swarhammer"
@@ -183,44 +242,7 @@
 				return list("shrink" = 0.4,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 
-/datum/intent/mace/strike
-	name = "strike"
-	blade_class = BCLASS_BLUNT
-	attack_verb = list("strikes", "whacks")
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = 15
-	swingdelay = 0
-	icon_state = "instrike"
-	item_d_type = "blunt"
-
-/datum/intent/mace/smash
-	name = "smash"
-	blade_class = BCLASS_SMASH
-	attack_verb = list("smashes")
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = 80
-	damfactor = 1.1
-	swingdelay = 10
-	icon_state = "insmash"
-	item_d_type = "blunt"
-	
-/datum/intent/mace/rangedthrust
-	name = "thrust"
-	blade_class = BCLASS_STAB
-	attack_verb = list("thrusts", "stabs")
-	animname = "stab"
-	icon_state = "instab"
-	reach = 2
-	chargetime = 1
-	recovery = 30
-	warnie = "mobwarning"
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 25
-	damfactor = 0.9
-	item_d_type = "stab"
-
-/datum/intent/mace/warhammer/stab // With the spike on the top of the hammer, quick thrust
+/datum/intent/mace/warhammer/stab // With the spike on the top of the hammer, quick thrust.
 	name = "thrust"
 	icon_state = "instab"
 	blade_class = BCLASS_STAB
@@ -231,7 +253,7 @@
 	damfactor = 0.9
 	item_d_type = "stab"
 
-/datum/intent/mace/warhammer/impale // With the spike on the opposite end of the hammer, strong stab
+/datum/intent/mace/warhammer/impale // With the spike on the opposite end of the hammer, strong stab.
 	name = "impale"
 	icon_state = "inimpale"
 	blade_class = BCLASS_STAB
@@ -251,7 +273,6 @@
 	name = "wooden club"
 	desc = "Unga! Unga to the head!"
 	icon_state = "club1"
-	//dropshrink = 0.75
 	wbalance = 0
 	wdefense = 1
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
@@ -271,15 +292,14 @@
 	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
 	penfactor = 20
 
-
 /obj/item/rogueweapon/mace/cudgel
 	name = "cudgel"
-	desc = "A stubby little club for brigands."
+	desc = "A stubby little cudgel for brigands and thieves alike."
 	force = 25
 	icon_state = "cudgel"
 	force_wielded = 25
 	gripped_intents = null
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	wbalance = 0
@@ -368,15 +388,14 @@
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/rangedthrust)
 	name = "Goedendag"
-	desc = "Thick club capped with an iron spike. Good morning."
+	desc = "Thick club capped with an iron spike. Good dae." // Good dae is a reference of the line that was used before knocking someone cold with it.
 	icon_state = "goedendag"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	sharpness = IS_BLUNT
-	//dropshrink = 0.75
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	associated_skill = /datum/skill/combat/maces
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/ingot/iron
 	parrysound = "parrywood"
 	swingsound = BLUNTWOOSH_MED
 	minstr = 10
@@ -387,6 +406,21 @@
 	inhand_y_dimension = 64
 	bigboy = TRUE
 	gripsprite = TRUE
+
+/datum/intent/mace/rangedthrust
+	name = "thrust"
+	blade_class = BCLASS_STAB
+	attack_verb = list("thrusts", "stabs")
+	animname = "stab"
+	icon_state = "instab"
+	reach = 2
+	chargetime = 1
+	recovery = 30 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
+	warnie = "mobwarning"
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 25
+	damfactor = 0.9
+	item_d_type = "stab"
 
 /obj/item/rogueweapon/mace/goden/getonmobprop(tag)
 	. = ..()
@@ -423,4 +457,3 @@
 
 /obj/item/rogueweapon/mace/steel/morningstar
 	icon_state = "morningstar"
-

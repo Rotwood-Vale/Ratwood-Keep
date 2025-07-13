@@ -1,8 +1,8 @@
 /obj/item/storage/roguebag
 	name = "sack"
-	desc = "A sack of rough cloth meant for peasantry."
+	desc = "A simple canvas sack."
 	icon_state = "cbag"
-	item_state = "cbag"
+	item_state = "bag"
 	icon = 'icons/roguetown/items/misc.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head_items.dmi'
 	slot_flags = ITEM_SLOT_HEAD
@@ -10,17 +10,20 @@
 	resistance_flags = NONE
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	max_integrity = 300
+	component_type = /datum/component/storage/concrete/grid/sack
+	grid_height = 64
+	grid_width = 64
 
 /obj/item/storage/roguebag/examine(mob/user)
 	. = ..()
-	if(contents.len)
-		. += span_notice("[contents.len] thing[contents.len > 1 ? "s" : ""] in the sack.")
+	if(length(contents))
+		. += span_notice("[length(contents)] thing[length(contents) > 1 ? "s" : ""] in [src].")
 
 /obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot, initial = FALSE, silent = FALSE)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		user.become_blind("blindfold_[REF(src)]")
-
+		
 /obj/item/storage/roguebag/dropped(mob/living/carbon/human/user)
 	..()
 	user.cure_blind("blindfold_[REF(src)]")
@@ -41,11 +44,9 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	testing("yea144")
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	var/list/things = STR.contents()
 	if(things.len)
-		testing("yea64")
 		var/obj/item/I = pick(things)
 		STR.remove_from_storage(I, get_turf(user))
 		user.put_in_hands(I)
@@ -56,28 +57,15 @@
 	if(things.len)
 		icon_state = "fbag"
 		w_class = WEIGHT_CLASS_BULKY
+		grid_height = 128
+		grid_width = 128
 	else
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
+		grid_height = 64
+		grid_width = 64
 
-/obj/item/storage/roguebag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 20
-	STR.click_gather = TRUE
-	STR.attack_hand_interact = FALSE
-	STR.collection_mode = COLLECT_EVERYTHING
-	STR.dump_time = 0
-	STR.allow_quick_gather = TRUE
-	STR.allow_quick_empty = TRUE
-	STR.allow_look_inside = FALSE
-	STR.allow_dump_out = TRUE
-	STR.display_numerical_stacking = TRUE
-
-
-/obj/item/storage/roguebag/getonmobprop(tag)
+/obj/item/storage/sack/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -106,19 +94,23 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/storage/roguebag/lunch/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
-	new /obj/item/reagent_containers/food/snacks/rogue/pieslice(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/water(src)
+/obj/item/storage/roguebag/lunch
+	populate_contents = list(
+		/obj/item/reagent_containers/food/snacks/rogue/pieslice,
+		/obj/item/reagent_containers/food/snacks/rogue/pieslice,
+		/obj/item/reagent_containers/glass/bottle/rogue/water
+	)
 
-/obj/item/storage/roguebag/seedfeed/PopulateContents()
-	new /obj/item/seeds/apple(src)
-	new /obj/item/seeds/apple(src)
-	new /obj/item/seeds/wheat(src)
-	new /obj/item/seeds/wheat(src)
-	new /obj/item/seeds/cabbage(src)
-	new /obj/item/seeds/cabbage(src)
-	new /obj/item/seeds/onion(src)
-	new /obj/item/seeds/onion(src)
-	new /obj/item/seeds/potato(src)
-	new /obj/item/seeds/potato(src)
+/obj/item/storage/roguebag/seedfeed
+	populate_contents = list(
+		/obj/item/seeds/apple,
+		/obj/item/seeds/apple,
+		/obj/item/seeds/wheat,
+		/obj/item/seeds/wheat,
+		/obj/item/seeds/cabbage,
+		/obj/item/seeds/cabbage,
+		/obj/item/seeds/onion,
+		/obj/item/seeds/onion,
+		/obj/item/seeds/potato,
+		/obj/item/seeds/potato
+	)

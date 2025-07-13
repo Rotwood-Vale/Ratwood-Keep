@@ -71,7 +71,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/steel
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			id = /obj/item/clothing/ring/silver
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife, /obj/item/recipe_book/survival = 1,)
 			cloak = /obj/item/clothing/cloak/tabard/crusader
 			switch(H.patron.name)
 				if("Astrata")

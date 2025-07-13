@@ -447,6 +447,8 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	misfire_chance = 15
 	charge_per_source = 5
+	grid_width = 96
+	grid_height = 96
 
 /obj/item/contraption/whisper/attack_self(mob/living/user)
 	..()
