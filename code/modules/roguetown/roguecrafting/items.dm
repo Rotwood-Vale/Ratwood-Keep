@@ -190,6 +190,9 @@
 	result = /obj/item/rogueweapon/mace/woodclub
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
+/obj/item/rogueweapon/mace/woodclub/crafted
+	sellprice = 8
+
 /datum/crafting_recipe/roguetown/survival/billhook
 	name = "improvised billhook - (sickle, rope, small log; COMPETENT)"
 	result = /obj/item/rogueweapon/spear/improvisedbillhook
@@ -644,7 +647,7 @@
 		/obj/item/natural/fibers = 3,
 		)
 	skill_level = 0
-
+  
 /datum/crafting_recipe/roguetown/flowercrown_salvia
 	name = "salvia flower crown"
 	result = /obj/item/clothing/head/roguetown/flower_crown/salvia
@@ -679,4 +682,3 @@
 	skill_level = 0
 	verbage_simple = "weave"
 	verbage = "weaves"
-

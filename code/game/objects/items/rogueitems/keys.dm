@@ -588,6 +588,12 @@
 	icon_state = "rustkey"
 	lockid = "smallstreet_master01"
 
+/obj/item/key/crafterguild
+	name = "guild's key"
+	icon_state = "brownkey"
+	lockid = "crafterguild"
+
+
 //BYOS Keys
 /obj/item/key/adventurekey
  name = "adventure key"
