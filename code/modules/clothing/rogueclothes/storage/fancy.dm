@@ -7,6 +7,11 @@
 	throwforce = 1
 	slot_flags = null
 	icon_type = "pill"
+	populate_contents = list(
+		/obj/item/reagent_containers/pill/caffpill,
+		/obj/item/reagent_containers/pill/caffpill,
+		/obj/item/reagent_containers/pill/caffpill
+	)
 
 /obj/item/storage/fancy/pilltin/update_icon()
 	if(fancy_open)
@@ -38,11 +43,6 @@
 /obj/item/storage/fancy/pilltin/wake
 	name = "pill tin (wake)"
 
-/obj/item/storage/fancy/pilltin/wake/PopulateContents()
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-	new /obj/item/reagent_containers/pill/caffpill(src)
-
 /obj/item/storage/fancy/skit
 	name = "surgery kit"
 	desc = "portable and compact"
@@ -51,6 +51,17 @@
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_HIP
 	throwforce = 1
+	populate_contents = list(
+		/obj/item/rogueweapon/surgery/scalpel,
+		/obj/item/rogueweapon/surgery/saw,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/retractor,
+		/obj/item/rogueweapon/surgery/bonesetter,
+		/obj/item/rogueweapon/surgery/cautery,
+		/obj/item/natural/worms/leech,
+		/obj/item/needle
+	)
 
 /obj/item/storage/fancy/skit/update_icon()
 	if(fancy_open)
@@ -104,17 +115,6 @@
 		/obj/item/needle/,
 	))
 
-/obj/item/storage/fancy/skit/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
-	new /obj/item/natural/worms/leech(src)
-	new /obj/item/needle(src)
-
 /obj/item/storage/fancy/ifak
 	name = "personal patch kit"
 	desc = "Personal treatment pouch; has all you need to stop you or someone else from meeting Necra. It even comes with a little guide scroll for the slow minded."
@@ -123,11 +123,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 1
 	slot_flags = null
-
-/obj/item/storage/fancy/ifak/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
+	populate_contents = list(
+		/obj/item/reagent_containers/hypospray/medipen/sealbottle/reju,
+		/obj/item/natural/bundle/cloth/bandage/full,
+		/obj/item/reagent_containers/hypospray/medipen/sty/detox,
+		/obj/item/reagent_containers/pill/pnkpill,
+		/obj/item/candle/yellow,
+		/obj/item/needle,
+		/obj/item/reagent_containers/glass/bottle/rogue/embalm,
+	)
 
 /obj/item/storage/fancy/ifak/update_icon()
 	if(fancy_open)
@@ -182,12 +186,3 @@
 		/obj/item/candle,
 		/obj/item/needle,
 	))
-
-/obj/item/storage/fancy/ifak/PopulateContents()
-	new /obj/item/reagent_containers/hypospray/medipen/sealbottle/reju(src)
-	new /obj/item/natural/bundle/cloth/bandage/full(src)
-	new /obj/item/reagent_containers/hypospray/medipen/sty/detox(src)
-	new /obj/item/reagent_containers/pill/pnkpill(src)
-	new /obj/item/candle/yellow(src)
-	new /obj/item/needle(src)
-	new /obj/item/reagent_containers/glass/bottle/rogue/embalm(src)

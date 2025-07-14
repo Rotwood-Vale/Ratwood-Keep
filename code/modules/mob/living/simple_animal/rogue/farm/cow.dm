@@ -15,9 +15,15 @@
 	emote_hear = list("brays.")
 	emote_see = list("shakes its head.", "chews her cud.")
 
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
-						/obj/item/natural/hide = 2,
-						/obj/item/reagent_containers/food/snacks/fat = 1)
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
+						/obj/item/natural/hide = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 5,
+						/obj/item/natural/hide = 3,
+						/obj/item/reagent_containers/food/snacks/fat = 2)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
+						/obj/item/natural/hide = 4,
+						/obj/item/reagent_containers/food/snacks/fat = 4)
+
 
 	health = COW_FEMALE_HEALTH
 	maxHealth = COW_FEMALE_HEALTH

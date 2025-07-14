@@ -15,6 +15,8 @@
 	sewrepair = TRUE
 	flags_inv = HIDEBOOB
 	w_class = WEIGHT_CLASS_SMALL
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt
 	name = "shirt"
@@ -543,3 +545,66 @@
     mob_overlay_icon = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
     sleeved = 'icons/roguetown/clothing/inquisition_overseers/onmob/overseer_onmob.dmi'
     color = null
+
+//-------
+/obj/item/clothing/suit/roguetown/shirt/dress/silkydress
+	name = "silky dress"
+	desc = "Despite not actually being made of silk, the legendary expertise needed to sew this puts the quality on par."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	icon_state = "silkydress"
+	item_state = "silkydress"
+	sleevetype = null
+	sleeved = null
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkydress/random/Initialize()
+	color = pick("#e6e5e5", "#249589", "#a32121", "#428138", "#8747b1", "#007fff")
+	..()
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gown
+	icon = 'icons/roguetown/clothing/shirts_gown.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_gown.dmi'
+	name = "spring gown"
+	desc = "A delicate gown that captures the essence of the season of renewal."
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	icon_state = "springgown"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_gown.dmi'
+	boobed = TRUE
+	detail_tag = "_detail"
+	detail_color = CLOTHING_DARK_GREEN
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	var/picked = FALSE
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gown/summergown
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "summer gown"
+	desc = "A breezy flowing gown fit for warm weathers."
+	icon_state = "summergown"
+	boobed = TRUE
+	detail_color = "#e395bb"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "fall gown"
+	desc = "A solemn long-sleeved gown that signifies the season of year's end."
+	icon_state = "fallgown"
+	boobed = TRUE
+	detail_color = "#8b3f00"
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	name = "winter gown"
+	desc = "A warm elegant gown adorned with soft fur for the cold winter."
+	icon_state = "wintergown"
+	boobed = TRUE
+	detail_color = "#45749d"
+
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress
+	name = "wedding silk dress"
+	desc = "A dress woven from fine silks, with golden threads inlaid in it. Made for that special day."
+	icon_state = "weddingdress"
+	item_state = "weddingdress"

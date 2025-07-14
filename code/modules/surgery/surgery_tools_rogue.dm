@@ -17,6 +17,8 @@
 	thrown_bclass = BCLASS_CUT
 	associated_skill = /datum/skill/combat/knives
 	anvilrepair = /datum/skill/craft/blacksmithing
+	grid_width = 32
+	grid_height = 64
 
 /obj/item/rogueweapon/surgery/Initialize()
 	. = ..()
@@ -182,12 +184,15 @@
     toggle_heated()
     return TRUE
 
+/obj/item/storage/backpack/rogue/backpack/surgery
 
-/obj/item/storage/backpack/rogue/backpack/surgery/PopulateContents()
-	new /obj/item/rogueweapon/surgery/scalpel(src)
-	new /obj/item/rogueweapon/surgery/saw(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src)
-	new /obj/item/rogueweapon/surgery/hemostat(src) //2 forceps so you can clamp bleeders AND manipulate organs
-	new /obj/item/rogueweapon/surgery/retractor(src)
-	new /obj/item/rogueweapon/surgery/bonesetter(src)
-	new /obj/item/rogueweapon/surgery/cautery(src)
+	populate_contents = list(
+		/obj/item/rogueweapon/surgery/scalpel,
+		/obj/item/rogueweapon/surgery/saw,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/hemostat,
+		/obj/item/rogueweapon/surgery/retractor,
+		/obj/item/rogueweapon/surgery/bonesetter,
+		/obj/item/rogueweapon/surgery/cautery
+	)
+

@@ -268,7 +268,8 @@ SUBSYSTEM_DEF(ticker)
 					readied_jobs.Add(V)
 
 #ifndef FASTLOAD
-	if(!("Duke" in readied_jobs))
+	var/population = GLOB.clients.len
+	if(!("Duke" in readied_jobs) && (population >= 25))
 		var/list/stuffy = list("Set Duke to 'high' in your class preferences to start the game!", "PLAY Duke NOW!", "A Duke is required to start.", "Pray for a Duke.", "One day, there will be a Duke.", "Just try playing Duke.", "If you don't play Duke, the game will never start.", "We need at least one Duke to start the game.", "We're waiting for you to pick Duke to start.", "Still no Duke is readied..", "I'm going to lose my mind if we don't get a Duke readied up.","No. The game will not start because there is no Duke.")
 		to_chat(world, span_purple("[pick(stuffy)]"))
 		return FALSE

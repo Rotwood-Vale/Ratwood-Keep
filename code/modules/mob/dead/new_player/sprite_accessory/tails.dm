@@ -364,3 +364,9 @@
 	icon_state = "lion"
 	color_keys = 2
 	color_key_names = list("Tail", "Tip")
+
+/datum/sprite_accessory/tail/pinecone
+	name = "Pinecone"
+	icon_state = "expi"
+	color_keys = 2
+	color_key_names = list("Upper", "Tip")

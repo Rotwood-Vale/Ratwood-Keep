@@ -9,6 +9,9 @@
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE //Vrell - AFAIK, all cloaks are cloth ATM. Technically semi-less future-proof, but it removes a line of code from every subtype, which is worth it IMO.
 	w_class = WEIGHT_CLASS_NORMAL
+	
+	grid_width = 64
+	grid_height = 64
 
 
 //////////////////////////
@@ -50,7 +53,7 @@
 	var/symbol_chosen = FALSE
 	if(design == "Symbol")
 		design = null
-		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","peace","z","imp","skull","widow","arrow")
+		design = input(user, "Select a symbol.","Tabard Design") as null|anything in list("chalice","psy","z","imp","skull","widow","arrow")
 		if(!design)
 			return
 		design = "_[design]"
@@ -635,15 +638,9 @@
 	GLOB.lordcolor -= src
 	return ..()
 
-
 /obj/item/clothing/cloak/lordcloak/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 4
-		STR.max_w_class = WEIGHT_CLASS_BULKY
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/grid/cloak/lord)
 
 /obj/item/clothing/cloak/lordcloak/dropped(mob/living/carbon/human/user)
 	..()
@@ -745,16 +742,11 @@
 
 /obj/item/clothing/cloak/raincloak/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/grid/cloak)
 
 /obj/item/clothing/cloak/raincloak/dropped(mob/living/carbon/human/user)
 	..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete/grid/cloak)
 	if(STR)
 		var/list/things = STR.contents()
 		for(var/obj/item/I in things)
@@ -970,12 +962,7 @@
 
 /obj/item/clothing/cloak/half/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/grid/cloak)
 
 /obj/item/clothing/cloak/half/dropped(mob/living/carbon/human/user)
 	..()
@@ -1295,11 +1282,8 @@
 
 /obj/item/clothing/cloak/cape/crusader/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/grid/cloak/lord)
+
 
 /obj/item/clothing/cloak/cape/crusader/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -1307,9 +1291,11 @@
 		CP.rmb_show(user)
 		return TRUE
 	..()
-
+	
 /obj/item/clothing/cloak/cape/crusader/dropped(mob/living/carbon/human/user)
 	..()
+	if(QDELETED(src))
+		return
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	if(STR)
 		var/list/things = STR.contents()
@@ -1335,12 +1321,7 @@
 
 /obj/item/clothing/cloak/shadow/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 3
-		STR.max_w_class = WEIGHT_CLASS_NORMAL
-		STR.max_items = 1
+	AddComponent(/datum/component/storage/concrete/grid/cloak)
 
 /obj/item/clothing/cloak/shadow/dropped(mob/living/carbon/human/user)
 	..()

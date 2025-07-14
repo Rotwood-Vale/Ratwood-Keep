@@ -19,11 +19,11 @@
 
 /datum/sex_action/masturbate_vagina_alt/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] starts fingering her cunt..."))
+	user.visible_message(span_warning("[user] starts fingering her [pick("slit","cunt","pussy","snatch")]..."))
 
 /datum/sex_action/masturbate_vagina_alt/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.do_message_signature("[type]"))
-		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers her cunt..."))
+		user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fingers her [pick("slit","cunt","pussy","snatch")]..."))
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -32,7 +32,7 @@
 
 /datum/sex_action/masturbate_vagina_alt/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	..()
-	user.visible_message(span_warning("[user] draws their fingers out from their vagina."))
+	user.visible_message(span_warning("[user] draws their fingers out from their [pick("slit","cunt","pussy","snatch")]."))
 
 /datum/sex_action/masturbate_vagina_alt/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

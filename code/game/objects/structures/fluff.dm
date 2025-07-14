@@ -56,6 +56,15 @@
 	if(lay)
 		layer = lay
 
+/obj/structure/fluff/railing/post_craft()
+	switch(dir)
+		if(NORTH)
+			pixel_y = 10
+		if(WEST)
+			pixel_x = -10
+		if(EAST)
+			pixel_x = 10
+
 /obj/structure/fluff/railing/proc/getwlayer(dirin)
 	switch(dirin)
 		if(NORTH)
@@ -1409,3 +1418,17 @@ obj/structure/bars/steel
 			new /obj/item/grown/log/tree/small  (get_turf(src))
 			new /obj/item/natural/cloth (get_turf(src))
 			qdel(src)
+
+/obj/structure/fluff/drake_statue //Ash drake status spawn on either side of the necropolis gate in lavaland.
+	name = "drake statue"
+	desc = "Possibly the only time you'll ever see its likeness up close and live to tell the tale."
+	icon = 'icons/effects/64x64.dmi'
+	icon_state = "drake_statue"
+	pixel_x = -16
+	density = TRUE
+	deconstructible = FALSE
+	layer = EDGED_TURF_LAYER
+
+/obj/structure/fluff/drake_statue/falling //A variety of statue in disrepair; parts are broken off and a gemstone is missing
+	desc = ""
+	icon_state = "drake_statue_falling"
