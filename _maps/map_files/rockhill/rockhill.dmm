@@ -14017,11 +14017,11 @@
 	icon_state = "barsbent";
 	layer = 2.81
 	},
+/obj/structure/fluff/canopy,
 /obj/structure/bars/passage/shutter{
 	name = "Weaponsmith";
-	redstone_id = "smith_shutter03"
+	redstone_id = "smith_shutter02"
 	},
-/obj/structure/fluff/canopy,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "gne" = (
@@ -14051,6 +14051,9 @@
 /obj/structure/chair/wood/rogue{
 	dir = 8;
 	pixel_y = 4
+	},
+/obj/machinery/light/rogue/wallfire/candle{
+	pixel_y = -32
 	},
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -20084,6 +20087,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/druidgrove)
+"jcP" = (
+/obj/machinery/light/rogue/oven/west{
+	pixel_x = 0
+	},
+/turf/closed/wall/mineral/rogue/decostone/cand,
+/area/rogue/indoors/town/dwarfin)
 "jdg" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -27073,8 +27082,10 @@
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/manor)
 "mpT" = (
-/obj/machinery/light/rogue/oven/west,
-/turf/open/floor/rogue/wood,
+/obj/machinery/light/rogue/torchholder{
+	dir = 8
+	},
+/turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "mqh" = (
 /obj/structure/table/wood{
@@ -350705,7 +350716,7 @@ dMk
 knY
 wvi
 gKv
-mpT
+veS
 veS
 sco
 eLe
@@ -351137,7 +351148,7 @@ rpA
 mXD
 pzi
 gKv
-teE
+jcP
 wih
 sco
 eLe
@@ -355890,7 +355901,7 @@ gKv
 dfx
 mPc
 sgL
-sgL
+mpT
 ouf
 wVI
 fCu
