@@ -49,14 +49,18 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,0), \
 		)
 	specstats = list(
-		"strength" = 0,
+		"strength" = 1,
 		"perception" = 0,
 		"intelligence" = 1,
 		"constitution" = 1,
-		"endurance" = 0,
+		"endurance" = -1,
 		"speed" = -1,
 		"fortune" = 0
 		)
+	specstats_f = list(
+		"constitution" = -1,
+		"endurance" = 1,
+	)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

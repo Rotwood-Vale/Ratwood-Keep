@@ -6,6 +6,8 @@
 	item_state = "ramrod"
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_SMALL
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/powderflask
 	name = "powderflask"
@@ -15,6 +17,8 @@
 	item_state = "powderflask"
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_NECK | ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_SMALL
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/gun/ballistic/firearm
 	name = "Gunpowder weapon"
@@ -300,6 +304,8 @@
 	icon = 'icons/roguetown/weapons/arquebus.dmi'
 	icon_state = "arquebus"
 	item_state = "arquebus"
+	grid_height = 64
+	grid_width = 96
 
 /obj/item/gun/ballistic/firearm/arquebus_pistol
 	name = "arquebus pistol"
@@ -317,6 +323,8 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 	cartridge_wording = "lead ball"
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/gun/ballistic/firearm/arquebus_pistol/getonmobprop(tag)
 	. = ..()

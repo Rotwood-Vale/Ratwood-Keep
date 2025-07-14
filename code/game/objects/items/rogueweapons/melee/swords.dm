@@ -1,10 +1,109 @@
+// Basic intents swords.
+
+/datum/intent/sword/cut // This usually goes on the first intent (rapier is an exception)
+	name = "cut"
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs while being slightly more damaging."
+	icon_state = "incut"
+	attack_verb = list("cuts", "slashes")
+	animname = "cut"
+	blade_class = BCLASS_CUT
+	chargetime = 0
+	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
+	swingdelay = 0
+	damfactor = 1.1 // It's a wide slash across the body, it's bound to deal more damage in a wider area.
+	item_d_type = "slash"
+	clickcd = 12 // Was already 12, this is here to clarify that an attack is 1.2 second.
+	ican_cdg = FALSE
+
+/datum/intent/sword/cut/onehanded // Shouldn't be used on one-handed swords.
+	name = "one-handed cut"
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs while being slightly more damaging. (slightly slower due to being one-handed)"
+	clickcd = 14 // It isn't much, but it's something.
+	/// TODO: Make accuracy slightly worse one-handed. (By 1 or 2%)
+
+/datum/intent/sword/cut/onehanded/long // This should only be used on long cumbersome swords.
+	name = "one-handed cut"
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs while being slightly more damaging. (slightly slower due to being one-handed)"
+	clickcd = 15 // Trying to cut one-handed would be more difficult with a long blade.
+	/// TODO: Make the cut accuracy worse for one-handed long. (By 2 to 4%)
+
+/datum/intent/sword/thrust
+	name = "stab"
+	desc = "Stabbing and thrusting motions making them slightly more accurate than cuts while also having an easier time penetrating armor."
+	icon_state = "instab"
+	attack_verb = list("stabs")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 20
+	chargetime = 0
+	swingdelay = 0
+	item_d_type = "stab"
+	clickcd = 11 // Reduced from 1.2 of a second to 1.1 of a second.
+	ican_cdg = TRUE
+
+/datum/intent/sword/thrust/onehanded // Shouldn't be used on one-handed swords.
+	name = "one-handed stab"
+	desc = "Stabbing and thrusting motions making them slightly more accurate than cuts while also having an easier time penetrating armor. (slightly slower due to being one-handed)"
+	clickcd = 13 // It isn't much, but it's something.
+	/// TODO: Make accuracy slightly worse one-handed. (By 0.5 or 1%)
+
+/datum/intent/sword/thrust/onehanded/long // This should only be used on long cumbersome swords.
+	name = "one-handed stab"
+	desc = "Stabbing and thrusting motions making them slightly more accurate than cuts while also having an easier time penetrating armor. (slightly slower due to being one-handed)" // This is here for whenever someone decides to add that it's slightly less accurate due to being one-handed.
+	clickcd = 14 // Trying to stab one-handed would be more difficult with a long blade.
+	ican_cdg = FALSE // Being able to do this with this cumbersome thing one-handed would be a tad silly.
+	/// TODO: Make accuracy slightly worse one-handed. (By 1 to 2%)
+
+/datum/intent/sword/strike // This usually appears on the third intent when gripped.
+	name = "pommel strike"
+	desc = "Hilt pommeling and striking motions making blunting through armor easier."
+	icon_state = "instrike"
+	attack_verb = list("pommel strikes", "hilt strikes")
+	animname = "strike"
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	chargetime = 0
+	penfactor = 20
+	swingdelay = 0
+	item_d_type = "blunt"
+	clickcd = 12
+	/// TODO: Up its accuracy by a bit. (By 3%)
+
+/datum/intent/sword/strike/onehanded
+	name = "one-handed pommel strike"
+	desc = "Hilt pommeling and striking motions making blunting through armor easier. (slightly slower due to being one-handed)"
+	clickcd = 14 // Striking things with one-hand is just logically slower.
+
+/datum/intent/sword/strike/onehanded/short // Simply pathed like this to inherit the quirks of the one above.
+	name = "lighter one-handed pommel strike"
+	desc = "Hilt pommeling and striking motions making blunting through armor easier."
+	clickcd = 11 // The weapon is lighter, it shouldn't be as bad.
+	damfactor = 0.9 // It lacks the weight to deal full damage.
+
+/datum/intent/sword/chop
+	name = "chop"
+	desc = "Chopping and hacking motions leading to an concentrated blow that makes delimbing easier."
+	icon_state = "inchop"
+	attack_verb = list("chops", "hacks")
+	animname = "chop"
+	blade_class = BCLASS_CHOP
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	penfactor = 15
+	swingdelay = 8
+	damfactor = 1.15 // the 15% will make more difference besides a extra point of damage to way stronger characters.
+	item_d_type = "slash"
+
+/datum/intent/sword/chop/onehanded
+	swingdelay = 10
+	desc = "Chopping and hacking motions leading to an concentrated blow that makes delimbing easier. (slightly slower to land due to being one-handed)"
 
 /obj/item/rogueweapon/sword
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 25
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
-	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded, /datum/intent/sword/thrust/onehanded, /datum/intent/sword/strike/onehanded)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	name = "sword"
 	desc = "A simple steel sword, clean and effective."
 	icon_state = "sword1"
@@ -23,12 +122,11 @@
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
-	//dropshrink = 0.75
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 	minstr = 7
 	sellprice = 30
-	wdefense = 4
+	wdefense = 4.5
 	var/accuracy_bonus = 20
 
 /obj/item/rogueweapon/sword/attack_right(mob/user)
@@ -90,49 +188,23 @@
 			if("onbelt")
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-
-/datum/intent/sword/cut
-	name = "cut"
-	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
-	animname = "cut"
-	blade_class = BCLASS_CUT
-	chargetime = 0
-	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
-	swingdelay = 0
-	item_d_type = "slash"
-	ican_cdg = TRUE
-
-/datum/intent/sword/thrust
-	name = "stab"
-	icon_state = "instab"
-	attack_verb = list("stabs")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 20
-	chargetime = 0
-	swingdelay = 0
-	item_d_type = "stab"
-	ican_cdg = TRUE
-
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
 	name = "arming sword"
 	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "shortsword"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
-	gripped_intents = null
+	gripped_intents = null /// TODO: Make a iron version of this sword, due to the short iron version having special intents and make this one double-grip.
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
-	wdefense = 4
+	wdefense = 4.5
 	can_cdg = TRUE
-	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
+	wlength = WLENGTH_SHORT	// Has a accuracy bonus of + 10.
 
 /obj/item/rogueweapon/sword/long
 	force = 25
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "longsword"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -155,7 +227,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
-	accuracy_bonus = 5	//large swords are unwieldy
+	accuracy_bonus = 5	// Large swords are unwieldy.
 
 /obj/item/rogueweapon/sword/long/death
 	color = CLOTHING_BLACK
@@ -177,7 +249,7 @@
 /obj/item/rogueweapon/sword/long/heirloom
 	force = 20
 	force_wielded = 32
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "heirloom"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -218,7 +290,7 @@
 /obj/item/rogueweapon/sword/long/judgement
 	force = 40
 	force_wielded = 55
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "judgement"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -260,7 +332,7 @@
 /obj/item/rogueweapon/sword/long/vlord
 	force = 30
 	force_wielded = 38
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "vlord"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -303,7 +375,7 @@
 /obj/item/rogueweapon/sword/long/rider
 	force = 26
 	force_wielded = 31
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "tabi"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -341,7 +413,7 @@
 /obj/item/rogueweapon/sword/long/rider/messer
 	force = 20
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/axe/chop, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	icon_state = "Kmesser"
 	item_state = "Kmesser"
@@ -351,7 +423,7 @@
 /obj/item/rogueweapon/sword/long/marlin
 	force = 26
 	force_wielded = 31
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "marlin"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -375,7 +447,7 @@
 	thrown_bclass = BCLASS_CUT
 	minstr = 6
 	sellprice = 42
-	wdefense = 5
+	wdefense = 5.5
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/marlin/getonmobprop(tag)
@@ -389,38 +461,55 @@
 			if("onbelt")
 				return list("shrink" = 0.5,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/datum/intent/sword/strike
-	name = "pommel strike"
-	icon_state = "instrike"
-	attack_verb = list("bashes", "clubs", "strikes")
-	animname = "strike"
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = 20
-	swingdelay = 5
-	damfactor = 0.8
-	item_d_type = "blunt"
-
-/datum/intent/sword/chop
-	name = "chop"
-	icon_state = "inchop"
-	attack_verb = list("chops", "hacks")
-	animname = "chop"
-	blade_class = BCLASS_CHOP
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 10
-	swingdelay = 8
-	damfactor = 0.8
-	item_d_type = "slash"
-
 /obj/item/rogueweapon/sword/long/exe
-	possible_item_intents = list(/datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/axe/chop)
 	icon_state = "exe"
-	name = "execution sword"
-	desc = ""
+	name = "broad executioner"
+	force = 22
+	force_wielded = 32
+	possible_item_intents = list(/datum/intent/sword/strike/exe/onehanded, /datum/intent/axe/chop/exe/onehanded, /datum/intent/sword/strike/exe/blunt_blade_side)
+	gripped_intents = list(/datum/intent/sword/strike/exe, /datum/intent/axe/chop/exe, /datum/intent/sword/thrust/exe, /datum/intent/sword/strike/exe/blunt_blade_side) /// TODO: If alt-grip is ever added, /datum/intent/shovelscoop, add that intent when it's coded for this specific weapon proper.
+	desc = "A longsword with extra heft and thickness to its blade with a blunted curved tip."
 	minstr = 10
+	wlength = WLENGTH_GREAT
+	slot_flags = ITEM_SLOT_BACK // Barely light enough to fit on the back.
+	accuracy_bonus = 12 // A tad hard to miss with a huge wide and thick piece such as this.
+
+/datum/intent/sword/strike/exe/onehanded
+	clickcd = 18
+
+/datum/intent/sword/strike/exe
+	clickcd = 14
+	damfactor = 1.1
+
+/datum/intent/axe/chop/exe // It's a pretty long one.
+	misscost = 15 // Do not miss or get dodged.
+	clickcd = 15
+	reach = 2
+
+/datum/intent/axe/chop/exe/onehanded
+	misscost = 20 // Definitely do not miss or get dodged.
+	clickcd = 20
+
+/datum/intent/sword/thrust/exe
+	clickcd = 16 	// Thrusting this heavy thing is straining.
+	swingdelay = 8	// Think of it as a one two motion.
+	penfactor = 40
+	misscost = 10
+	attack_verb = list("blunty thrusts", "bluntly stabs")
+	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
+	blade_class = BCLASS_BLUNT
+	item_d_type = "blunt"
+	reach = 2
+
+/datum/intent/sword/strike/exe/blunt_blade_side
+	attack_verb = list("smack across")
+	swingdelay = 10
+	penfactor = 25
+	hitsound = list('sound/combat/hits/blunt/shovel_hit3.ogg')
+	damfactor = 0.3
+	misscost = 2
+	icon_state = "inpunish"
+	reach = 2
 
 /obj/item/rogueweapon/sword/long/exe/getonmobprop(tag)
 	. = ..()
@@ -486,11 +575,11 @@
 	name = "short sword"
 	desc = "An archaic iron sword."
 	icon_state = "iswordshort"
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/strike/onehanded/short)
 	gripped_intents = null
 	minstr = 4
-	wdefense = 3
-	wlength = WLENGTH_SHORT	//It's a shortsword for crying outloud. Give it it's accuracy bonus for being short.
+	wdefense = 3.5
+	wlength = WLENGTH_SHORT	// It's more accurate due to being short.
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
@@ -500,7 +589,6 @@
 
 /datum/intent/sword/cut/short
 	clickcd = 10
-	damfactor = 0.9
 
 /datum/intent/sword/thrust/short
 	clickcd = 10
@@ -511,35 +599,36 @@
 	desc = "A single edged blade to slice and chop with."
 	icon_state = "imesser"
 	max_integrity = 125
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/axe/chop)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/axe/chop)
 	gripped_intents = null
 	minstr = 4
-	wdefense = 2
-	can_cdg = TRUE
+	wdefense = 2.5
+	can_cdg = FALSE // For clarity sake.
 
-/obj/item/rogueweapon/sword/iron/messer/steel
-	name = "steel messer" //People often ask for messers when the smithy only has steel, now they can make it.
+/obj/item/rogueweapon/sword/iron/messer/steel // A steel version didn't originally exist.
+	name = "steel messer"
 	desc = "A single edged blade to slice and chop with. This one is made of sturdy steel."
 	icon_state = "smesser"
 	smeltresult = /obj/item/ingot/steel
-	max_integrity = 175 //A stout blade that will last a long time before breakage
+	max_integrity = 175 // A stout blade that will last a long time before breakage.
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
 	desc = "A swift sabre. Parries realiantly and strikes swiftly"
 	icon_state = "saber"
 	max_integrity = 230
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike/onehanded/short)
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 5
-	wdefense = 6
+	wdefense = 6.5
 	wbalance = 1
 	accuracy_bonus = 10
 
 /datum/intent/sword/cut/sabre
 	clickcd = 10
+	damfactor = 1.15 // The 15% is only one point in damage difference however, this will benefit stronger characters.
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
@@ -557,18 +646,27 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
+	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier, /datum/intent/sword/strike/rapier)
 	gripped_intents = null
-	parrysound = list(
-		'sound/combat/parry/bladed/bladedthin (1).ogg',
-		'sound/combat/parry/bladed/bladedthin (2).ogg',
-		'sound/combat/parry/bladed/bladedthin (3).ogg',
-	)
+	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
 	minstr = 6
-	wdefense = 7
+	wdefense = 7.5
 	wbalance = 1
-	accuracy_bonus = 5	//Rapiers are already wildly accurate due to stab bonus
+	accuracy_bonus = 5	// Wobbly tip.
+
+/datum/intent/sword/cut/rapier
+	clickcd = 10
+	damfactor = 0.7
+
+/datum/intent/sword/thrust/rapier
+	clickcd = 8
+	damfactor = 1.15 // The 5% bonus rounds up for a extra point of damage, this will add up further on way stronger characters.
+	penfactor = 30
+
+/datum/intent/sword/strike/rapier
+	damfactor = 0.8 // It lacks much of a blade to give it mass force transfer.
+	clickcd = 11 	// It lacks much of a blade to slow it down.
 
 /obj/item/rogueweapon/sword/rapier/getonmobprop(tag)
 	. = ..()
@@ -644,13 +742,6 @@
 				"westabove" = 0,
 				)
 
-/datum/intent/sword/cut/rapier
-	clickcd = 10
-	damfactor = 0.7
-
-/datum/intent/sword/thrust/rapier
-	clickcd = 8
-
 /obj/item/rogueweapon/sword/rapier/dec
 	desc = "A fine duelist's instrument with a tapered thrusting blade. Its hilt is gilt in gold and inlaid, \
 	and its blade bears twin inscriptions on either side. One reads, 'CAST IN THE NAME OF GODS' while the \
@@ -668,16 +759,28 @@
 	sellprice = 300
 	max_integrity = 300
 	max_blade_int = 300
-	wdefense = 7
+	wdefense = 7.5
 
 /obj/item/rogueweapon/sword/cutlass
 	name = "cutlass"
 	desc = "Used by pirates and deckhands."
 	icon_state = "cutlass"
 	max_integrity = 220
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust)
+	possible_item_intents = list(/datum/intent/sword/cut/cutlass, /datum/intent/sword/cut/cutlassflow, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	gripped_intents = null
-	wdefense = 7
+	wdefense = 7 // Thick yet light blade.
+
+/datum/intent/sword/cut/cutlass
+	name = "direct cut"
+	desc = "A firmly gripped direct cut that deals a slightly better blow in-exchange of being unable to make rapid consecutive hits."
+	clickcd = 16
+	damfactor = 1.2
+
+/datum/intent/sword/cut/cutlassflow
+	name = "flowing cuts"
+	desc = "Loose grip and wrist motions that allow smoother cuts across which in turn open up rapid consecutive hits."
+	clickcd = 10
+	swingdelay = 3
 
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
@@ -754,7 +857,7 @@
 	update_icon()
 
 // BRONZE SWORDS
-//Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
+// Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high penfactor.
 
 /obj/item/rogueweapon/sword/gladius
 	force = 22
@@ -767,7 +870,7 @@
 	max_blade_int = 100
 	max_integrity = 150
 	dropshrink = 0.80
-	wdefense = 2
+	wdefense = 2.5
 
 /datum/intent/sword/cut/bronze
 	penfactor = 60

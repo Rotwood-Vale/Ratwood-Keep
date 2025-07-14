@@ -70,11 +70,10 @@
 			return
 
 		var/mob/living/L = user
-		var/my_icon = icon_state
 		user.doing = FALSE
-
-		spawn(1)
-		while(get_turf(src))
+		// Makes more sense for the check since they always
+		// become an open tile afterwards
+		while(density && user.Adjacent(src))
 			if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
 				..()
 				//does this even work?
@@ -85,10 +84,8 @@
 							if(user.Adjacent(src))
 								var/obj/item/natural/stone/S = new(src)
 								S.forceMove(get_turf(user))
-
-				//Turfs never die, they simply change
-				if(icon_state != my_icon)
-					break
+					if(!density)
+						break
 			else
 				break
 
@@ -114,6 +111,10 @@
 		else
 			return
 	else
+		if(lastminer.mind?.has_antag_datum(/datum/antagonist/bandit))
+			ScrapeAway()
+			queue_smooth_neighbors(src)
+			return
 		if(lastminer.goodluck(2) && mineralType)
 	//		to_chat(lastminer, span_notice("Bonus ducks!"))
 			new mineralType(src)
@@ -235,6 +236,38 @@
 	icon_state = "minrandhigh"
 	mineralChance = 33
 	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/cinnabar = 25,/turf/closed/mineral/rogue/gold = 9,/turf/closed/mineral/rogue/silver = 5,/turf/closed/mineral/rogue/iron = 33,/turf/closed/mineral/rogue/copper = 22,/turf/closed/mineral/rogue/tin = 15, /turf/closed/mineral/rogue/coal = 19, /turf/closed/mineral/rogue/gem = 3)
+
+
+/turf/closed/mineral/random/rogue/coppertin/med
+	icon_state = "minrandmed"
+	mineralChance = 10
+	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/gold = 3,/turf/closed/mineral/rogue/silver = 2,/turf/closed/mineral/rogue/copper = 33,/turf/closed/mineral/rogue/tin = 12, /turf/closed/mineral/rogue/gem = 1)
+
+/turf/closed/mineral/random/rogue/coppertin/high
+	icon_state = "minrandhigh"
+	mineralChance = 33
+	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/gold = 9,/turf/closed/mineral/rogue/silver = 5,/turf/closed/mineral/rogue/copper = 22,/turf/closed/mineral/rogue/tin = 15, /turf/closed/mineral/rogue/gem = 3)
+
+/turf/closed/mineral/random/rogue/ironcoal/med
+	icon_state = "minrandmed"
+	mineralChance = 10
+	mineralSpawnChanceList = list( /turf/closed/mineral/rogue/salt = 5,/turf/closed/mineral/rogue/gold = 3,/turf/closed/mineral/rogue/silver = 2,/turf/closed/mineral/rogue/iron = 33,/turf/closed/mineral/rogue/coal = 14, /turf/closed/mineral/rogue/gem = 1)
+
+/turf/closed/mineral/random/rogue/ironcoal/high
+	icon_state = "minrandhigh"
+	mineralChance = 33
+	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/gold = 9,/turf/closed/mineral/rogue/silver = 5,/turf/closed/mineral/rogue/iron = 33, /turf/closed/mineral/rogue/coal = 19, /turf/closed/mineral/rogue/gem = 3)
+
+/turf/closed/mineral/random/rogue/boglava/med
+	icon_state = "minrandmed"
+	mineralChance = 20
+	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/cinnabar = 20, /turf/closed/mineral/rogue/gold = 10,/turf/closed/mineral/rogue/silver = 5,/turf/closed/mineral/rogue/iron = 33,/turf/closed/mineral/rogue/coal = 14, /turf/closed/mineral/rogue/gem = 3)
+
+/turf/closed/mineral/random/rogue/boglava/high
+	icon_state = "minrandhigh"
+	mineralChance = 45
+	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/cinnabar = 20,/turf/closed/mineral/rogue/gold = 15,/turf/closed/mineral/rogue/silver = 10,/turf/closed/mineral/rogue/iron = 33,/turf/closed/mineral/rogue/coal = 19, /turf/closed/mineral/rogue/gem = 6)
+
 
 
 //begin actual mineral turfs

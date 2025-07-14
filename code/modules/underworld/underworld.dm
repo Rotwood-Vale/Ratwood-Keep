@@ -50,10 +50,11 @@
 #define CANT_LEAVE_ITEMS \
 	/obj/item/rogueweapon/woodstaff/aries, \
 	/obj/item/clothing/head/roguetown/crown, \
-	/obj/item/key/lord
+	/obj/item/key/lord, \
+	/obj/item/key/adventurekey
 
 /obj/structure/carriagedoor
-	name = "Carriage door"
+	name = "carriage door"
 	desc = "The wooden entrance to the carriage. It allows those who come to arrive and those who leave to depart."
 	icon = 'icons/roguetown/misc/doors.dmi'
 	icon_state = "carriage_door"
@@ -122,6 +123,7 @@ Carriage door attack by
 							GLOB.head_bounties -= removing_bounty
 
 				GLOB.chosen_names -= user.real_name
+				LAZYREMOVE(GLOB.actors_list, user.mobid)
 				
 				//log player to admins
 				message_admins(dat)

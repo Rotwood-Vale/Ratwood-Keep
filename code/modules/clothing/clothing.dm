@@ -1,8 +1,3 @@
-#define ARMOR_CLASS_NONE 0
-#define ARMOR_CLASS_LIGHT 1
-#define ARMOR_CLASS_MEDIUM 2
-#define ARMOR_CLASS_HEAVY 3
-
 /obj/item/clothing
 	name = "clothing"
 	resistance_flags = FLAMMABLE
@@ -295,7 +290,7 @@
 /*	if(damaged_clothes && istype(W, /obj/item/stack/sheet/cloth))
 		var/obj/item/stack/sheet/cloth/C = W
 		C.use(1)
-		update_clothes_damaged_state(FALSE)
+		update_damaged_state(FALSE)
 		obj_integrity = max_integrity
 		to_chat(user, span_notice("I fix the damage on [src] with [C]."))
 		return 1*/
@@ -357,17 +352,17 @@
 		. += how_cool_are_your_threads.Join()
 */
 
-/obj/item/clothing/proc/obj_fix(damage_flag)
-	obj_broken = FALSE
+/obj/item/clothing/obj_fix()
+	..()
 	if(damaged_clothes)
-		update_clothes_damaged_state(FALSE) 
+		update_damaged_state(FALSE) 
 		
-/obj/item/clothing/obj_break(damage_flag)
+/obj/item/clothing/obj_break()
 	if(!damaged_clothes)
-		update_clothes_damaged_state(TRUE)
+		update_damaged_state(TRUE)
 	..()
 
-/obj/item/clothing/proc/update_clothes_damaged_state(damaging = TRUE)
+/obj/item/clothing/update_damaged_state(damaging = TRUE)
 	var/index = "[REF(initial(icon))]-[initial(icon_state)]"
 	var/static/list/damaged_clothes_icons = list()
 	if(damaging)

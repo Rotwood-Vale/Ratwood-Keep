@@ -147,6 +147,22 @@
 		var/examine_status = examine_status(user)
 		if(examine_status)
 			. += examine_status
+	// Makes it so people know which items can be affected by which effects. Don't show other flags if the object is already indestructible, to prevent filling chat.
+	if((resistance_flags & INDESTRUCTIBLE) || !max_integrity)
+		. += span_warning("[src] seems extremely sturdy! It'll probably withstand anything that could happen to it!")
+	else
+		if(resistance_flags & LAVA_PROOF)
+			. += span_warning("[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!")
+		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
+			. += span_warning("[src] looks pretty sturdy! It'd probably be able to withstand acid!")
+		if(resistance_flags & FREEZE_PROOF)
+			. += span_warning("[src] is made of cold-resistant materials.")
+		if(resistance_flags & FIRE_PROOF)
+			. += span_warning("[src] is made of fire-retardant materials.")
+
+	// Examines for weaknesses
+	if(resistance_flags & FLAMMABLE)
+		. += span_warning("[src] looks pretty flammable.")
 
 /obj/structure/proc/examine_status(mob/user) //An overridable proc, mostly for falsewalls.
 	if(max_integrity)

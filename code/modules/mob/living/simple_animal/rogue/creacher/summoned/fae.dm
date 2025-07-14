@@ -331,8 +331,8 @@
 		return
 	if(client && world.time >= src.vine_cd + 100)
 		addtimer(CALLBACK(src,PROC_REF(vine),target), 1 SECONDS)
-	return target.attack_animal(src)
-
+	if(!QDELETED(target))
+		return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad/proc/contains_vines(var/turf/T)
 	for(var/obj/structure/spacevine/dendor/V in T)

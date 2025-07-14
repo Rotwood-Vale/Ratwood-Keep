@@ -4,6 +4,8 @@
 	desc = "A pink potion with a faintly sweet and fruity aroma emanating from the bottle. The label reads \"Love Potion\" and says it will make nearly anyone desire you."
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "lovebottle"
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/lovepotion/attack(mob/living/carbon/human/M, mob/user)
 	if(!isliving(M) || M.stat == DEAD)
@@ -25,6 +27,7 @@
 	to_chat(M, span_notice("I taste strawberries as the potion pours down my throat. My heart pounds against my chest as my mind becomes clouded with thoughts of [user]. Be this true love or be this obsession, it matters not. For I will have [user]."))
 	if(M.mind)
 		M.mind.store_memory("You are obsessed with [user].")
+		M.mind.add_special_person(user, "#FFC0CB")
 	M.faction |= "[REF(user)]"
 	M.apply_status_effect(STATUS_EFFECT_INLOVE, user)
 	qdel(src)

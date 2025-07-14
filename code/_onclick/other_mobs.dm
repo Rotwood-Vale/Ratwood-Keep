@@ -271,6 +271,132 @@
 		if(mind)
 			mind.attackedme[user.real_name] = world.time
 		log_combat(user, src, "bit")
+	return TRUE
+
+/mob/living/proc/get_jump_range()
+	if(!check_armor_skill() || get_item_by_slot(SLOT_LEGCUFFED))
+		return 1
+	if(m_intent == MOVE_INTENT_RUN)
+		return 3
+	return 2
+
+/// Returns the stamina cost to jump. Will never use more than 100 stam.
+/mob/living/proc/get_jump_stam_cost()
+	. = 10
+	if(m_intent == MOVE_INTENT_RUN)
+		. = 15
+	var/mob/living/carbon/human/H = src
+	if(istype(H))
+		. += H.get_complex_pain()/50
+	if(!check_armor_skill() || get_item_by_slot(SLOT_LEGCUFFED))
+		. += 50
+	return clamp(., 0, 100)
+
+/mob/living/proc/get_jump_offbalance_time()
+	if(m_intent == MOVE_INTENT_RUN)
+		return 3 SECONDS
+	return 2 SECONDS
+
+/// Performs a jump. Used by the jump MMB intent. Returns TRUE if a jump was performed.
+/mob/living/proc/can_jump(atom/A)
+	var/turf/our_turf = get_turf(src)
+	if(istype(our_turf, /turf/open/water))
+		to_chat(src, span_warning("I'm floating in [our_turf]."))
+		return FALSE
+	if(!A || QDELETED(A) || !A.loc)
+		return FALSE
+	if(A == src || A == src.loc)
+		return FALSE
+	if(get_num_legs() < 2)
+		return FALSE
+	if(pulledby && pulledby != src)
+		to_chat(src, span_warning("I'm being grabbed."))
+		return FALSE
+	if(IsOffBalanced())
+		to_chat(src, span_warning("I haven't regained my balance yet."))
+		return FALSE
+	if(!(mobility_flags & MOBILITY_STAND) && !HAS_TRAIT(src, TRAIT_LEAPER))// The Jester cares not for such social convention.
+		to_chat(src, span_warning("I should stand up first."))
+		return FALSE
+	if(A.z != z && !HAS_TRAIT(src, TRAIT_ZJUMP))
+		return FALSE
+	return TRUE
+
+/mob/living/proc/try_jump(atom/A)
+	if(!can_jump(A))
+		return FALSE
+	changeNext_move(mmb_intent.clickcd)
+	face_atom(A)
+	emote((m_intent == MOVE_INTENT_RUN) ? "leap" : "jump", forced = TRUE)
+	var/jrange = get_jump_range()
+	OffBalance(get_jump_offbalance_time())
+	if(stamina_add(get_jump_stam_cost()))
+		throw_at(A, jrange, 1, src, spin = FALSE)
+		while(src.throwing)
+			sleep(1)
+		// If sprinting, you have extra momentum.
+		if(m_intent == MOVE_INTENT_RUN && !HAS_TRAIT(src, TRAIT_LEAPER)) // The Jester lands where the Jester wants.
+			throw_at(get_step(src, src.dir), 1, 1, src, spin = FALSE)
+		if(isopenturf(src.loc))
+			var/turf/open/T = src.loc
+			if(T.landsound)
+				playsound(T, T.landsound, 100, FALSE)
+			T.Entered(src)
+	else
+		throw_at(A, 1, 1, src, spin = FALSE)
+	return TRUE
+
+/mob/living/proc/can_kick(atom/A, do_message = TRUE)
+	if(get_num_legs() < 2)
+		return FALSE
+	if(!A.Adjacent(src))
+		return FALSE
+	if(A == src)
+		return FALSE
+	if(isliving(A) && !(mobility_flags & MOBILITY_STAND) && pulledby)
+		return FALSE
+	if(IsOffBalanced())
+		if(do_message)
+			to_chat(src, span_warning("I haven't regained my balance yet."))
+		return FALSE
+	if(QDELETED(src) || QDELETED(A))
+		return FALSE
+	return TRUE
+
+/// Performs a kick. Used by the kick MMB intent. Returns TRUE if a kick was performed.
+/mob/living/proc/try_kick(atom/A)
+	if(!can_kick(A))
+		return FALSE
+	changeNext_move(mmb_intent.clickcd)
+	face_atom(A)
+
+	playsound(src, pick(PUNCHWOOSH), 100, FALSE, -1)
+	// play the attack animation even when kicking non-mobs
+	if(mmb_intent) // why this would be null and not INTENT_KICK i have no clue, but the check already existed
+		do_attack_animation(A, visual_effect_icon = mmb_intent.animname)
+	// but the rest of the logic is pretty much mob-only
+	if(ismob(A) && mmb_intent)
+		var/mob/living/M = A
+		sleep(mmb_intent.swingdelay)
+		if(QDELETED(src) || QDELETED(M))
+			return FALSE
+		if(!M.Adjacent(src))
+			return FALSE
+		if(src.incapacitated())
+			return FALSE
+		if(M.checkmiss(src))
+			return FALSE
+		if(M.checkdefense(mmb_intent, src))
+			return FALSE
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.dna.species.kicked(src, H)
+		else
+			M.onkick(src)
+	else
+		A.onkick(src)
+	OffBalance(3 SECONDS)
+	return TRUE
 
 /mob/living/MiddleClickOn(atom/A, params)
 	..()
@@ -290,116 +416,10 @@
 //				face_atom(A)
 //				A.ongive(src, params)
 			if(INTENT_KICK)
-				if(src.get_num_legs() < 2)
-					return
-				if(!A.Adjacent(src))
-					return
-				if(A == src)
-					return
-				if(isliving(A))
-					if(!(mobility_flags & MOBILITY_STAND) && pulledby)
-						return
-				if(IsOffBalanced())
-					to_chat(src, span_warning("I haven't regained my balance yet."))
-					return
-				changeNext_move(mmb_intent.clickcd)
-				face_atom(A)
-
-				if(ismob(A))
-					var/mob/living/M = A
-					if(src.used_intent)
-
-						src.do_attack_animation(M, visual_effect_icon = src.used_intent.animname)
-						playsound(src, pick(PUNCHWOOSH), 100, FALSE, -1)
-
-						sleep(src.used_intent.swingdelay)
-						if(QDELETED(src) || QDELETED(M))
-							return
-						if(!M.Adjacent(src))
-							return
-						if(src.incapacitated())
-							return
-						if(M.checkmiss(src))
-							return
-						if(M.checkdefense(src.used_intent, src))
-							return
-					if(M.checkmiss(src))
-						return
-					if(!M.checkdefense(mmb_intent, src))
-						if(ishuman(M))
-							var/mob/living/carbon/human/H = M
-							H.dna.species.kicked(src, H)
-						else
-							M.onkick(src)
-				else
-					A.onkick(src)
-				OffBalance(30)
+				try_kick(A)
 				return
 			if(INTENT_JUMP)
-				if(istype(src.loc, /turf/open/water))
-					to_chat(src, span_warning("I'm floating in [get_turf(src)]."))
-					return
-				if(!A || QDELETED(A) || !A.loc)
-					return
-				if(A == src || A == src.loc)
-					return
-				if(src.get_num_legs() < 2)
-					return
-				if(pulledby && pulledby != src)
-					to_chat(src, span_warning("I'm being grabbed."))
-					return
-				if(IsOffBalanced())
-					to_chat(src, span_warning("I haven't regained my balance yet."))
-					return
-				if(!(mobility_flags & MOBILITY_STAND))
-					if(!HAS_TRAIT(src, TRAIT_LEAPER))// The Jester cares not for such social convention.
-						to_chat(src, span_warning("I should stand up first."))
-						return
-				if(A.z != src.z)
-					if(!HAS_TRAIT(src, TRAIT_ZJUMP))
-						return
-				changeNext_move(mmb_intent.clickcd)
-				face_atom(A)
-				if(m_intent == MOVE_INTENT_RUN)
-					emote("leap", forced = TRUE)
-				else
-					emote("jump", forced = TRUE)
-				var/jadded
-				var/jrange
-				var/jextra = FALSE
-				if(m_intent == MOVE_INTENT_RUN)
-					OffBalance(30)
-					jadded = 15
-					jrange = 3
-					if(!HAS_TRAIT(src, TRAIT_LEAPER))// The Jester lands where the Jester wants.
-						jextra = TRUE
-				else
-					OffBalance(20)
-					jadded = 10
-					jrange = 2
-				if(ishuman(src))
-					var/mob/living/carbon/human/H = src
-					jadded += H.get_complex_pain()/50
-					if(!H.check_armor_skill() || H.legcuffed)
-						jadded += 50
-						jrange = 1
-				if(stamina_add(min(jadded,100)))
-					if(jextra)
-						throw_at(A, jrange, 1, src, spin = FALSE)
-						while(src.throwing)
-							sleep(1)
-						throw_at(get_step(src, src.dir), 1, 1, src, spin = FALSE)
-					else
-						throw_at(A, jrange, 1, src, spin = FALSE)
-						while(src.throwing)
-							sleep(1)
-					if(isopenturf(src.loc))
-						var/turf/open/T = src.loc
-						if(T.landsound)
-							playsound(T, T.landsound, 100, FALSE)
-						T.Entered(src)
-				else
-					throw_at(A, 1, 1, src, spin = FALSE)
+				try_jump(A)
 				return
 			if(INTENT_BITE)
 				if(!A.Adjacent(src))
@@ -447,7 +467,7 @@
 								to_chat(src, span_warning("What am I going to steal from there?"))
 								return
 							mobsbehind |= cone(V, list(turn(V.dir, 180)), list(src))
-							if(mobsbehind.Find(src))
+							if(mobsbehind.Find(src) || V.IsSleeping() || V.eyesclosed) //If they can't see you or are sleeping
 								switch(U.zone_selected)
 									if("chest")
 										if (V.get_item_by_slot(SLOT_BACK_L))
@@ -489,7 +509,7 @@
 							to_chat(V, span_danger("Someone tried pickpocketing me!"))
 							exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
 						// If we're pickpocketing someone else, and that person is conscious, grant XP
-						if(src != V && V.stat == CONSCIOUS)
+						if(src != V && V.stat == CONSCIOUS && V.client != null)
 							mind.add_sleep_experience(/datum/skill/misc/stealing, exp_to_gain, FALSE)
 						changeNext_move(mmb_intent.clickcd)
 				return

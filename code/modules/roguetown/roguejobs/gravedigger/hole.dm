@@ -378,7 +378,7 @@ obj/structure/spike_pit/attack_hand(mob/user)
 	
 
 /datum/crafting_recipe/roguetown/spike_pit
-	name = "spike pit"
+	name = "spike pit - (3 stakes; SHOVEL; BEGINNER)"
 	result = list( /obj/structure/spike_pit )
 	tools = list( /obj/item/rogueweapon/shovel = 1 )
 	reqs = list( /obj/item/grown/log/tree/stake = 3)

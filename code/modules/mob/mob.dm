@@ -803,11 +803,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client)
 		if(statpanel("RoundInfo"))
 			stat("Round ID: [GLOB.rogue_round_id]")
+			stat(null, "Map: [SSmapping.config?.map_name || "Loading..."]")
 			stat("Round Time: [gameTimestamp("hh:mm:ss", world.time - SSticker.round_start_time)] [world.time - SSticker.round_start_time]")
 			if(SSticker.mode?.roundvoteend)
 				stat("Round End: [DisplayTimeText(time_left)]")
 			stat("Time Of Dae: [daytime]")
 			stat("Dae of Week: [days]")
+
 
 	if(client && client.holder && check_rights(R_ADMIN,0))
 		if(statpanel("MC"))
@@ -1356,8 +1358,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return lowertext(copytext_char(input, 1, customsayverb))
 	. = ..()
 
-/atom/movable/proc/attach_spans(input, list/spans)
+/atom/movable/proc/attach_spans(input, list/spans, message_colour = null)
 	var/customsayverb = findtext_char(input, "*")
 	if(customsayverb)
 		input = capitalize(copytext_char(input, customsayverb+1))
-	return "[message_spans_start(spans)][input]</span>"
+	if (message_colour)
+		return "<span style='color:[message_colour];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>[message_spans_start(spans)][input]</span></span>"
+	else	
+		return "[message_spans_start(spans)][input]</span>"

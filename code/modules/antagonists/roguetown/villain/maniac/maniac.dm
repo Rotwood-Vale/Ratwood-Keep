@@ -88,7 +88,8 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			owner.adjust_skillrank_up_to(/datum/skill/combat/knives, 6, TRUE)
 			owner.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 5, TRUE)
 			owner.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
-			owner.adjust_skillrank_up_to(/datum/skill/misc/treatment, 3, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
+			owner.adjust_skillrank_up_to(/datum/skill/misc/alchemy, 4, TRUE)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			STASTR = dreamer.STASTR
 			STACON = dreamer.STACON

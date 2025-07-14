@@ -218,7 +218,7 @@
 
 /*	........   Drying Rack recipes   ................ */
 /datum/crafting_recipe/roguetown/cooking/salami
-	name = "salumoi"
+	name = "salumoi - (sausage, salt; DRYING RACK; NONE)"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
@@ -228,7 +228,7 @@
 	skill_level = 0
 
 /datum/crafting_recipe/roguetown/cooking/coppiette
-	name = "coppiette"
+	name = "coppiette - (steak, salt; DRYING RACK; NONE)"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
@@ -238,7 +238,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/salo
-	name = "salo"
+	name = "salo - (fat, salt; DRYING RACK; NONE)"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/fat = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
@@ -248,7 +248,7 @@
 	req_table = FALSE
 
 /datum/crafting_recipe/roguetown/cooking/saltfish
-	name = "saltfish"
+	name = "saltfish - (fish, salt; DRYING RACK; NONE)"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/fish = 1,
 		/obj/item/reagent_containers/powder/salt = 1)
@@ -261,7 +261,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/raisins
-	name = "raisins"
+	name = "raisins - (berries; DRYING RACK; NONE)"
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
 	parts = list(
 		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
@@ -540,6 +540,8 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_1"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_start/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -563,6 +565,9 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_2"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_two/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -585,7 +590,10 @@
 	name = "unfinished cheese wheel"
 	icon_state = "cheesewheel_3"
 	w_class = WEIGHT_CLASS_BULKY
+	grid_height = 32
+	grid_width = 96
 	var/mature_proc = .proc/maturing_done
+
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/cheesewheel_three/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
@@ -645,6 +653,8 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	slice_sound = TRUE
+	grid_height = 32
+	grid_width = 96
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged
 	name = "wheel of aged cheese"
