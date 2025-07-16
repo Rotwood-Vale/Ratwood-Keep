@@ -152,4 +152,4 @@
 	return ..()
 
 /proc/can_death_zombify(mob/living/carbon/human)
-	return TRUE
+	return hasomen(OMEN_NOPRIEST) || !is_in_roguetown(human)

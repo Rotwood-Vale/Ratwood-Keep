@@ -102,6 +102,9 @@
 #define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
 #define TRAIT_MATTHIOS_BRAND "Matthios Brand"
 #define TRAIT_MATTHIOS_BRAND_OLD "Old Matthios Brand"
+#define TRAIT_SLEUTH "Sleuth"
+#define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
+#define TRAIT_KEENEARS "Keen Ears"
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -193,6 +196,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXCOMMUNICATED = span_info("The Ten are not on my side any longer..."),
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
 	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
+	TRAIT_SLEUTH = span_info("I can spot my tracked Mark's trail without needing to approach it, and can spot them at a distance. I can track more frequently, and the act is not impaired by movement. I can examine tracks right away."),
+	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),
+	TRAIT_KEENEARS = span_info("I've a good pair of ears, and can tell who is speaking, even when they're out of sight. I can also hear whispers from further away."),
 	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words.")
 ))
@@ -292,6 +298,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PIERCEIMMUNE		"pierce_immunity"
 #define TRAIT_NODISMEMBER		"dismember_immunity"
 #define TRAIT_NOFIRE			"nonflammable"
+#define TRAIT_LAVA_PROOF 		"lava_proof"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
 #define TRAIT_NOMETABOLISM		"no_metabolism"

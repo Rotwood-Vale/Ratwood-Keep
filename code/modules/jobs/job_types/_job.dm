@@ -139,6 +139,9 @@
 	/// This job is immune to species-based swapped gender locks
 	var/immune_to_genderswap = FALSE
 
+	/// List of map names this job is allowed on. If null, allowed on all maps.
+	var/list/allowed_maps = null
+
 /*
 	How this works, its CTAG_DEFINE = amount_to_attempt_to_role
 	EX: subclass_cat_rolls = list(CTAG_REFUGEE = 5, CTAG_REFUGEE = 5)
@@ -398,7 +401,9 @@
 	return TRUE
 
 /datum/job/proc/map_check()
-	return TRUE
+    if(allowed_maps && !(SSmapping.config.map_name in allowed_maps))
+        return FALSE
+    return TRUE
 
 /datum/outfit/job
 	name = "Standard Gear"

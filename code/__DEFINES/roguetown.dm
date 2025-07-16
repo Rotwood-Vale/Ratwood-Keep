@@ -336,6 +336,7 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_ANTAG			"CAT_ANTAG"			// Antag class - results in an antag
 #define CTAG_GOBS			"CAT_GOBS"			// Goblin Guards
+#define CTAG_TRIBALS		"CAT_TRIBALS"		// Tribal classes
 
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
@@ -378,3 +379,9 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define SHELFLIFE_DECENT 75 MINUTES
 #define SHELFLIFE_SHORT 45 MINUTES
 #define SHELFLIFE_TINY 30 MINUTES
+
+
+#define ARMOR_CLASS_NONE 0
+#define ARMOR_CLASS_LIGHT 1
+#define ARMOR_CLASS_MEDIUM 2
+#define ARMOR_CLASS_HEAVY 3

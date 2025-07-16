@@ -827,7 +827,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		for(var/datum/job/job in sortList(SSjob.occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
 			if(!job.spawn_positions)
 				continue
-
+			if(!job.map_check())
+				continue
 			index += 1
 //			if((index >= limit) || (job.title in splitJobs))
 			if(index >= limit)

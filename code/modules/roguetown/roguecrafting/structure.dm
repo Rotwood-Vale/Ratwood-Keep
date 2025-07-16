@@ -380,6 +380,9 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 
+/obj/structure/closet/crate/roguecloset/crafted
+	sellprice = 6
+
 /datum/crafting_recipe/roguetown/structure/coffin
 	name = "coffin/casket - (2 small logs; BEGINNER)"
 	result = /obj/structure/closet/crate/coffin
