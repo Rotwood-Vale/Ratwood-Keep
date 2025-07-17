@@ -682,3 +682,59 @@
 	skill_level = 0
 	verbage_simple = "weave"
 	verbage = "weaves"
+
+//AP Slings
+
+/datum/crafting_recipe/roguetown/slingcraft
+	name = "sling"
+	category = "Ranged"
+	result = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+	reqs = list(/obj/item/natural/fibers = 6)
+	verbage_simple = "twist"
+	verbage = "twists"
+	skill_level = 1 //you should make some ammo first!
+
+/datum/crafting_recipe/roguetown/slingpouchcraft
+	name = "sling bullet pouch"
+	category = "Ranged"
+	result = /obj/item/ammo_holder/quiver/sling
+	reqs = list(
+		/obj/item/natural/fibers = 1,
+		/obj/item/natural/cloth = 1,
+		)
+	verbage_simple = "craft"
+	verbage = "crafts"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/stonebullets
+	name = "sling bullets - stone (x2)"
+	category = "Ranged"
+	result = list(
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		)
+	reqs = list(/obj/item/natural/stone = 1)
+	verbage_simple = "smooth"
+	verbage = "smooths"
+	skill_level = 0
+
+/datum/crafting_recipe/roguetown/stonebullets10x
+	name = "sling bullets - stone (x10)"
+	category = "Ranged"
+	result = list(
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		/obj/item/ammo_casing/caseless/rogue/sling_bullet/stone,
+		)
+	reqs = list(/obj/item/natural/stone = 5)
+	verbage_simple = "smooth"
+	verbage = "smooths"
+	skill_level = 0
+
