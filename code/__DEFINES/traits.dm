@@ -6,6 +6,7 @@
 #define TRAIT_XENOPHOBIC "Xenophobic"
 #define TRAIT_LEAPER "Leaper"
 #define TRAIT_NOSEGRAB "Nosey"
+#define TRAIT_EARGRAB "Ear-Catching"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
 #define TRAIT_SEEPRICES_SHITTY "Appraiser"
@@ -43,6 +44,7 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
+#define TRAIT_CICERONE "Cicerone"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
@@ -140,9 +142,11 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
 	TRAIT_LEAPER = "I can leap like a frog.",
 	TRAIT_NOSEGRAB = "I love to grab idiots by their noses!",
+	TRAIT_EARGRAB = "I am well-versed in giving my subordinates a good scolding.",
 	TRAIT_NUTCRACKER = "I love kicking idiots on the nuts!",
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
+	TRAIT_CICERONE = span_info("I am well-versed in the differences of brews and spirits, and can tell them apart at a glance."),
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_EMPATH = "I can notice when people are in pain.",

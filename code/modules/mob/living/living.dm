@@ -1113,6 +1113,16 @@
 											span_warning("I struggle against [pulledby]'s grip!"), null, null, pulledby)
 							to_chat(pulledby, span_warning("[src] struggles against my grip!"))
 							return FALSE
+		if(HAS_TRAIT(H, TRAIT_EARGRAB))
+			var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
+			for(var/obj/item/grabbing/G in grabbedby)
+				if(G.limb_grabbed == head)
+					if(G.grabbee == pulledby)
+						if(G.sublimb_grabbed == BODY_ZONE_PRECISE_EARS)
+							visible_message(span_warning("[src] struggles to break free from [pulledby]'s grip!"), \
+											span_warning("I struggle against [pulledby]'s grip!"), null, null, pulledby)
+							to_chat(pulledby, span_warning("[src] struggles against my grip!"))
+							return FALSE
 	return ..()
 
 /mob/living/proc/resist_buckle()
