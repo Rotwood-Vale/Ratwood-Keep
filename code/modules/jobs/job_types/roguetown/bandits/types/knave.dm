@@ -53,7 +53,7 @@
 		if("2x Dagger") //Rogue
 			cloak = /obj/item/clothing/cloak/raincloak
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/rogueweapon/huntingknife/idagger/misericorde
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1)
 			H.change_stat("speed", 2)

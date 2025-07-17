@@ -39,7 +39,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/mace
 
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde)
 
 			var/list/sword_types = list("long sword", "short sword")
 
@@ -89,7 +89,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/mace
 
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde)
 
 			if(H.mind)
 				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
@@ -126,7 +126,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/rogueweapon/mace
 
-			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger)
+			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde)
 
 			if(H.mind)
 				H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)

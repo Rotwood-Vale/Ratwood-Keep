@@ -28,6 +28,12 @@
 	name = "Combat Knife"
 	cost = 35
 	contains = list(/obj/item/rogueweapon/huntingknife/cleaver/combat)
+
+/datum/supply_pack/rogue/bandit/Knave/Knave_second_supply_pack/rondel
+	name = "Rondel Dagger"
+	cost = 35
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/rondel)
+
 //swords
 
 

@@ -29,7 +29,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/newmoon
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/newmoon_jacket
 	beltr = /obj/item/storage/keyring/mercenary
-	beltl = /obj/item/rogueweapon/huntingknife/idagger
+	beltl = /obj/item/rogueweapon/huntingknife/idagger/misericorde
 	backpack_contents = list(/obj/item/book/granter/spellbook/mid = 1, /obj/item/reagent_containers/glass/bottle/rogue/lessermanapot)
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/rogueweapon/sword/sabre_freeze
