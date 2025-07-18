@@ -5,4 +5,4 @@
 	grant_lit_torch = TRUE
 	show_wanderer_examine = TRUE
 	show_foreign_examine = TRUE
-
+	obfuscated_role = TRUE // show up as refugee instead of werewolf

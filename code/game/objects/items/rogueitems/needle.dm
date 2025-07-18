@@ -13,6 +13,10 @@
 	max_integrity = 20
 	anvilrepair = /datum/skill/craft/blacksmithing
 	tool_behaviour = TOOL_SUTURE
+
+	grid_width = 32
+	grid_height = 32
+
 	/// Amount of uses left
 	var/stringamt = 20
 	var/maxstring = 20
@@ -148,7 +152,7 @@
 
 	var/moveup = 10
 	if(doctor.mind)
-		moveup = ((doctor.mind.get_skill_level(/datum/skill/misc/treatment)+1) * 5)
+		moveup = ((doctor.mind.get_skill_level(/datum/skill/misc/medicine)+1) * 5)
 	while(!QDELETED(target_wound) && !QDELETED(src) && \
 		!QDELETED(user) && (target_wound.sew_progress < target_wound.sew_threshold) && \
 		stringamt >= 1)
@@ -159,7 +163,7 @@
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
 		if(doctor.mind)
-			doctor.mind.add_sleep_experience(/datum/skill/misc/treatment, doctor.STAINT * 2.5)
+			doctor.mind.add_sleep_experience(/datum/skill/misc/medicine, doctor.STAINT * 2.5)
 		use(1)
 		target_wound.sew_wound()
 		if(patient == doctor)

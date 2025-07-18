@@ -1,3 +1,6 @@
+/datum/migrant_role/gronn
+	hidden_role = TRUE // all gronn roles are hidden from the actors list
+
 /datum/migrant_role/gronn/chieftain
 	name = "Gronn Chieftain"
 	greet_text = "You are the leader of your tribe. Guide them to glory or try to survive."
@@ -81,7 +84,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)

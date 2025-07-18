@@ -41,7 +41,7 @@
 					underwear = "Nude"
 					update_body()
 					var/obj/item/undies/U
-					if(gender == MALE)
+					if(body_type == MALE)
 						U = new/obj/item/undies(get_turf(src))
 					else
 						U = new/obj/item/undies/f(get_turf(src))
@@ -57,6 +57,9 @@
 
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
 
+	if(!body_type)
+		body_type = gender
+	
 	//initialize limbs first
 	create_bodyparts()
 
@@ -875,3 +878,22 @@ Slip
 /mob/living/carbon/human/slip(obj/item/I)
 	visible_message(span_warn("[name] falls overs \the [I.name]!"))
 	Knockdown(20)
+
+/// Removes all existing genital organs from a human mob.
+/mob/living/carbon/human/proc/remove_genitalia()
+
+	// I don't know why we need two lists for internal organs.
+	var/obj/item/organ/PP = internal_organs_slot["penis"]
+	internal_organs_slot.Remove("penis")
+	if(PP)
+		internal_organs.Remove(PP)
+
+	var/obj/item/organ/TT = internal_organs_slot["testicles"]
+	internal_organs_slot.Remove("testicles")
+	if(TT)
+		internal_organs.Remove(TT)
+
+	var/obj/item/organ/VV = internal_organs_slot["vagina"]
+	internal_organs_slot.Remove("vagina")
+	if(VV)
+		internal_organs.Remove(VV)

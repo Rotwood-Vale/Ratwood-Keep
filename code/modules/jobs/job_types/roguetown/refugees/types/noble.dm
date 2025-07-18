@@ -64,7 +64,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)

@@ -131,6 +131,7 @@
 			playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
 		return
 	..()
+	
 /obj/structure/well/fountain/mana/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		var/obj/item/reagent_containers/glass/W = I
@@ -178,6 +179,7 @@
 	density = FALSE
 	var/time_between_uses = 12000
 	var/last_process = 0
+
 /obj/structure/leyline/Initialize()
 	.=..()
 	last_process = world.time

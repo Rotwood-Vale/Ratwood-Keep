@@ -14,6 +14,8 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	drop_sound = 'sound/items/gems (1).ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/key/Initialize()
 	. = ..()
@@ -40,6 +42,8 @@
 	max_integrity = 10
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK
 	destroy_sound = 'sound/items/pickbreak.ogg'
+	grid_height = 64
+	grid_width = 32
 
 //custom key
 /obj/item/key/custom
@@ -583,3 +587,16 @@
 	desc = "This key opens peddler selling shop keys."
 	icon_state = "rustkey"
 	lockid = "smallstreet_master01"
+
+/obj/item/key/crafterguild
+	name = "guild's key"
+	icon_state = "brownkey"
+	lockid = "crafterguild"
+
+
+//BYOS Keys
+/obj/item/key/adventurekey
+ name = "adventure key"
+ desc = "You should not be seeing this."
+ icon_state = "rustkey"
+ lockid = "setme"

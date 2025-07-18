@@ -20,15 +20,15 @@
 	if(W==/datum/weather/rain)
 		START_PROCESSING(SSweather,src)
 
+/obj/item/roguebin/on_reagent_change(changetype)
+	update_icon()
+
 /obj/item/roguebin/Initialize()
 	if(!base_state)
 		create_reagents(600, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
 		icon_state = "washbin[rand(1,2)]"
 		base_state = icon_state
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_HUGE
-	STR.max_items = 20
+	AddComponent(/datum/component/storage/concrete/grid/bin)
 	. = ..()
 	pixel_x = 0
 	pixel_y = 0

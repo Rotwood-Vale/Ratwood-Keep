@@ -26,6 +26,7 @@
 	var/last_pain = 0
 	var/msg_signature = ""
 	var/last_msg_signature = 0
+	var/aphrodisiac = 1
 
 /datum/sex_controller/New(mob/living/carbon/human/owner)
 	user = owner
@@ -220,6 +221,8 @@
 /datum/sex_controller/proc/after_ejaculation()
 	user.add_stress(/datum/stressevent/cumok)
 	set_arousal(40)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		user.sate_addiction()
 	adjust_charge(-CHARGE_FOR_CLIMAX)
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
@@ -270,6 +273,8 @@
 	set_charge(charge + amount)
 
 /datum/sex_controller/proc/handle_charge(dt)
+	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+		dt *= 2
 	adjust_charge(dt * CHARGE_RECHARGE_RATE)
 	if(is_spent())
 		if(arousal > 60)
@@ -287,6 +292,10 @@
 
 /datum/sex_controller/proc/update_erect_state()
 	var/obj/item/organ/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
+	if(user.mind)
+		var/datum/antagonist/werewolf/W = user.mind.has_antag_datum(/datum/antagonist/werewolf/)
+		if(W && W.transformed == TRUE)
+			user.regenerate_icons()
 	if(penis)
 		penis.update_erect_state()
 
@@ -332,7 +341,7 @@
 		arousal_amt = 0
 		pain_amt = 0
 
-	if(!arousal_frozen) 
+	if(!arousal_frozen)
 		adjust_arousal(arousal_amt)
 
 	damage_from_pain(pain_amt)
@@ -528,7 +537,7 @@
 			dat += "</tr><tr>"
 
 	dat += "</tr></table>"
-	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 490, 550)
+	var/datum/browser/popup = new(user, "sexcon", "<center>Sate Desire</center>", 500, 550)
 	popup.set_content(dat.Join())
 	popup.open()
 	return

@@ -62,6 +62,11 @@
 	penis_type = PENIS_TYPE_TAPERED_DOUBLE
 	sheath_type = SHEATH_TYPE_SLIT
 	icon_state = "hemipenis"
+	
+/obj/item/organ/penis/tapered_double_mammal
+	name = "hemi tapered penis"
+	penis_type = PENIS_TYPE_TAPERED_DOUBLE
+	sheath_type = SHEATH_TYPE_NORMAL
 
 /obj/item/organ/penis/tapered_double_knotted
 	name = "hemi knotted tapered penis"

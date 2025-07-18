@@ -9,6 +9,8 @@
 	var/mob/living/held_mob
 	var/can_head = TRUE
 	var/destroying = FALSE
+	grid_width = 64
+	grid_height = 96
 
 /obj/item/clothing/head/mob_holder/Initialize(mapload, mob/living/M, _worn_state, head_icon, lh_icon, rh_icon, _can_head = TRUE)
 	. = ..()

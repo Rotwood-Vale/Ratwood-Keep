@@ -16,6 +16,7 @@
 	give_bank_account = TRUE
 	min_pq = -5
 	max_pq = null
+	cmode_music = 'sound/music/combat_clergy.ogg'
 
 /datum/job/roguetown/undertaker/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -48,14 +49,15 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/flashlight/flare/torch/lantern = 1, /obj/item/natural/bundle/stick = 1, /obj/item/necra_censer = 1, /obj/item/ritualfeather = 1)
 	if(H.mind)
-		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE) 
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE) 
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)

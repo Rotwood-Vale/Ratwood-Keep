@@ -118,8 +118,9 @@
 	W.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/climbing, 6, TRUE)
-	W.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	W.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	W.mind.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 
 	if(isseelie(W.stored_mob))
 		W.change_stat("speed", -3)

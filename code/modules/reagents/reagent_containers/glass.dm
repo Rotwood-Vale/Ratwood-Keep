@@ -5,10 +5,10 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
 	volume = 50
-	reagent_flags = OPENCONTAINER|REFILLABLE
+	reagent_flags = OPENCONTAINER
 	obj_flags = CAN_BE_HIT
 	spillable = TRUE
-	possible_item_intents = list(/datum/intent/fill, INTENT_SPLASH, INTENT_POUR, INTENT_GENERIC)
+	possible_item_intents = list(INTENT_FILL, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
 	resistance_flags = ACID_PROOF
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -41,7 +41,7 @@
 	if(istype(M))
 		if(user.used_intent.type == INTENT_GENERIC)
 			return ..()
-		if(user.used_intent.type == /datum/intent/fill)
+		if(user.used_intent.type == INTENT_FILL)
 			if(ishuman(M))
 				var/mob/living/carbon/human/humanized = M
 				if(get_location_accessible(humanized, BODY_ZONE_CHEST))
@@ -63,8 +63,6 @@
 								to_chat(user, span_warning("[M] Does not seem to be producing milk."))
 					else
 						to_chat(user, span_warning("[M] cannot be milked!"))
-				else
-					to_chat(user, span_warning("[M]'s chest must be exposed before I can milk them!"))
 				return 1
 		if(!spillable)
 			return
@@ -106,75 +104,16 @@
 			addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), M, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 			playsound(M.loc,pick(drinksounds), 100, TRUE)
 			return
+
 /obj/item/reagent_containers/glass/attack_obj(obj/target, mob/living/user)
 	if(user.used_intent.type == INTENT_GENERIC)
 		return ..()
 
-	testing("attackobj1")
-
 	if(!spillable)
 		return
 
-
-	if(target.is_refillable() && (user.used_intent.type == INTENT_POUR)) //Something like a glass. Player probably wants to transfer TO it.
-		testing("attackobj2")
-		if(!reagents.total_volume)
-			to_chat(user, span_warning("[src] is empty!"))
-			return
-
-		if(target.reagents.holder_full())
-			to_chat(user, span_warning("[target] is full."))
-			return
-		user.visible_message(span_notice("[user] pours [src] into [target]."), \
-						span_notice("I pour [src] into [target]."))
-		if(user.m_intent != MOVE_INTENT_SNEAK)
-			if(poursounds)
-				playsound(user.loc,pick(poursounds), 100, TRUE)
-		for(var/i in 1 to 22)
-			if(do_after(user, 8, target = target))
-				if(!reagents.total_volume)
-					break
-				if(target.reagents.holder_full())
-					break
-				if(!reagents.trans_to(target, amount_per_transfer_from_this, transfered_by = user))
-					reagents.reaction(target, TOUCH, amount_per_transfer_from_this)
-			else
-				break
-		return
-
-	if(target.is_drainable() && (user.used_intent.type == /datum/intent/fill)) //A dispenser. Transfer FROM it TO us.
-		testing("attackobj3")
-		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty!"))
-			return
-
-		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
-			return
-		if(user.m_intent != MOVE_INTENT_SNEAK)
-			if(fillsounds)
-				playsound(user.loc,pick(fillsounds), 100, TRUE)
-		user.visible_message(span_notice("[user] fills [src] with [target]."), \
-							span_notice("I fill [src] with [target]."))
-		for(var/i in 1 to 22)
-			if(do_after(user, 8, target = target))
-				if(reagents.holder_full())
-					break
-				if(!target.reagents.total_volume)
-					break
-				target.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user)
-				onfill(target, user, silent = TRUE)
-			else
-				break
-
-
-		return
-
-	if(reagents.total_volume && user.used_intent.type == INTENT_SPLASH)
-		user.visible_message(span_danger("[user] splashes the contents of [src] onto [target]!"), \
-							span_notice("I splash the contents of [src] onto [target]."))
-		reagents.reaction(target, TOUCH)
-		reagents.clear_reagents()
+	if(can_reagent_interact(target, user, user.used_intent.type))
+		do_reagent_interact(target, user, user.used_intent.type)
 		return
 
 /obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
@@ -213,8 +152,6 @@
 				qdel(E)
 			return
 	..()
-// Called whenever this container is successfully filled via the target.
-/obj/item/reagent_containers/glass/proc/onfill(obj/target, mob/user, silent = FALSE)
 
 /obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot, initial = FALSE, silent = FALSE)
 	..()
@@ -272,7 +209,7 @@
 	name = "bucket"
 	icon_state = "woodbucket"
 	icon = 'icons/roguetown/items/misc.dmi'
-	possible_item_intents = list(/datum/intent/fill, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
+	possible_item_intents = list(INTENT_FILL, INTENT_POUR, INTENT_SPLASH, INTENT_GENERIC)
 	force = 5
 	throwforce = 10
 	amount_per_transfer_from_this = 9
@@ -316,13 +253,13 @@
 	cut_overlays()
 
 	if(reagents.total_volume > 0)
-		if(reagents.total_volume <= 200)
+		if(reagents.total_volume <= reagents.maximum_volume/2)
 			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_half")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
 			add_overlay(filling)
 
-		if(reagents.total_volume > 200)
+		if(reagents.total_volume > reagents.maximum_volume/2)
 			var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/misc.dmi', "bucket_full")
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			filling.alpha = mix_alpha_from_reagents(reagents.reagent_list)
@@ -336,11 +273,12 @@
 	dropshrink = 0.65
 	force = 7
 	w_class = WEIGHT_CLASS_SMALL
-
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/reagent_containers/glass/alembic  //this shit doesnt even use rogue bottles what the fuuuuuck
 	name = "metal alembic"
-	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH, /datum/intent/fill) //It's janky and annoying to need to fill the alembic this way, but also Moricode is stupid and I'll refactor it later.
+	possible_item_intents = list(INTENT_POUR, INTENT_SPLASH, INTENT_FILL) //It's janky and annoying to need to fill the alembic this way, but also Moricode is stupid and I'll refactor it later.
 	desc = "so you're an alchemist then?"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "alembic_empty"
@@ -393,7 +331,7 @@
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item))
-		if(user.mind.get_skill_level(/datum/skill/misc/treatment) <= 2)
+		if(user.mind.get_skill_level(/datum/skill/misc/alchemy) <= 2)
 			to_chat(user, span_warning("I don't know how this works."))
 			return TRUE
 		if(!I.can_brew)
@@ -433,10 +371,10 @@
 	icon = 'icons/roguetown/items/surgery.dmi'
 	icon_state = "mortar_empty"
 	volume = 100
-	reagent_flags = OPENCONTAINER|REFILLABLE|DRAINABLE
-	spillable = FALSE
 	var/obj/item/grinded
 	var/grinding_started = FALSE
+	grid_height = 32
+	grid_width = 64
 
 /obj/item/reagent_containers/glass/mortar/attack_self(mob/user)
 	if(grinding_started)
@@ -488,47 +426,23 @@
 	if(grinded)
 		to_chat(user, "There is something inside already!")
 		return TRUE
-	if(istype(I, /obj/item/reagent_containers/glass))
-		if(user.used_intent.type == INTENT_POUR)
-			if(!I.reagents.total_volume)
-				to_chat(user, "[I] is empty!")
-				return TRUE
-			if(reagents.holder_full())
-				to_chat(user, "[src] is full.")
-				return TRUE
-			user.visible_message(span_notice("Starting the transfer"), span_notice("Completing the transfer"))
-			if(user.m_intent != MOVE_INTENT_SNEAK)
-				if(poursounds)
-					playsound(user.loc, pick(poursounds), 100, TRUE)
-			for(var/i in 1 to 10)
-				if(do_after(user, 8, target = src))
-					if(!I.reagents.total_volume) break
-					if(reagents.holder_full()) break
-					if(!I.reagents.trans_to(src, amount_per_transfer_from_this, transfered_by = user))
-						reagents.reaction(src, TOUCH, amount_per_transfer_from_this)
-					else break
-			return
-		if(is_drainable() && (user.used_intent.type == /datum/intent/fill))
-			if(!reagents.total_volume)
-				to_chat(user, "[src] is empty!")
-				return
-			if(I.reagents.holder_full())
-				to_chat(user, "[I] is full.")
-				return
-			if(user.m_intent != MOVE_INTENT_SNEAK)
-				if(fillsounds)
-					playsound(user.loc, pick(fillsounds), 100, TRUE)
-			user.visible_message(span_notice("Starting the transfer"), span_notice("Completing the transfer"))
-			for(var/i in 1 to 10)
-				if(do_after(user, 8, target = src))
-					if(I.reagents.holder_full()) break
-					if(!reagents.total_volume) break
-					reagents.trans_to(I, amount_per_transfer_from_this, transfered_by = user)
-				else break
-			return
+
 	if(I.juice_results || I.grind_results || I.mill_result)
 		I.forceMove(src)
 		grinded = I
 		icon_state = "mortar_grind"
 		return
-	to_chat(user, "I can't grind this!")
+
+	..()
+
+/obj/item/reagent_containers/glass/mortar/update_icon()
+	if(length(contents))
+		icon_state = "mortar_grind"
+	else
+		icon_state = "mortar_empty"
+
+/obj/item/reagent_containers/glass/pre_attack_right(atom/A, mob/living/user, params)
+	if(can_reagent_interact(A, user, user.used_intent.type))
+		do_reagent_interact(A, user, user.used_intent.type, attempts = 1)
+		return
+

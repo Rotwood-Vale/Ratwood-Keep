@@ -452,6 +452,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_SMALL
 	bundletype = /obj/item/natural/bundle/stoneblock
 	sellprice = 2
+
 /obj/item/natural/stoneblock/attackby(obj/item, mob/living/user)
 	if(item_flags & IN_STORAGE)
 		return
@@ -490,6 +491,10 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	item_state = "block"
 	experimental_inhand = FALSE
+	grid_width = 64
+	grid_height = 64
+	base_width = 64
+	base_height = 64
 	drop_sound = 'sound/foley/brickdrop.ogg'
 	hitsound = list('sound/combat/hits/blunt/shovel_hit.ogg', 'sound/combat/hits/blunt/shovel_hit2.ogg', 'sound/combat/hits/blunt/shovel_hit3.ogg')
 	pickup_sound = 'sound/foley/brickdrop.ogg'

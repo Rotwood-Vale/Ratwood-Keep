@@ -25,9 +25,10 @@
 	var/fancy_open = FALSE
 
 /obj/item/storage/fancy/PopulateContents()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	for(var/i = 1 to STR.max_items)
-		new spawn_type(src)
+	. = ..()
+	if(!spawn_type)
+		return
+	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_FILL_TYPE, spawn_type)
 
 /obj/item/storage/fancy/update_icon()
 	if(fancy_open)
@@ -57,7 +58,6 @@
 	. = ..()
 	fancy_open = TRUE
 	update_icon()
-
 
 /*
  * Egg Box
@@ -191,6 +191,8 @@
 	desc = ""
 	icon_state = "zig"
 	spawn_type = /obj/item/clothing/mask/cigarette/rollie/nicotine
+	component_type = /datum/component/storage/concrete/grid/zigbox
+
 
 /obj/item/storage/fancy/cigarettes/zig/empty
 	spawn_type = null

@@ -18,6 +18,7 @@
 	min_pq = 5
 	max_pq = null
 	announce_latejoin = FALSE
+	allowed_maps = list("Rockhill")
 
 /datum/outfit/job/roguetown/goblinshaman
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
@@ -47,7 +48,8 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/alchemy, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)

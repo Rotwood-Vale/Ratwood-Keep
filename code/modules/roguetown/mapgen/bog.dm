@@ -13,7 +13,7 @@
 
 /datum/mapGeneratorModule/bog
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt)
+	allowed_turfs = list(/turf/open/floor/rogue/dirt/npoor)
 	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/newtree = 30,
 							/obj/structure/flora/roguegrass/bush = 25,
@@ -24,6 +24,7 @@
 							/obj/item/natural/rock = 6,
 							/obj/item/natural/artifact = 4,
 							/obj/structure/leyline = 1,
+							/obj/structure/zizo_bane = 4,
 							/obj/structure/voidstoneobelisk = 1,
 							/obj/structure/manaflower = 4,
 							/obj/item/natural/manacrystal = 1,

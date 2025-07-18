@@ -38,7 +38,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 3)
 		H.change_stat("speed", 2)
@@ -73,7 +73,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/sword/long/rider
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -90,7 +90,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 2)
@@ -126,7 +126,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/rogueweapon/whip
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/idagger = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
@@ -143,7 +143,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 2, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("strength", 2)
@@ -179,7 +179,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor 
+	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/cleaver/combat = 1, /obj/item/needle = 1)
 	if(H.mind)
@@ -197,7 +197,7 @@
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.change_stat("perception", 3)
@@ -214,14 +214,14 @@
 	greet_text = "An unlucky slave, captured and trained for labor, now being transported from the western deserts of the Zybantines to the Kingdom of Ferentia."
 	outfit = /datum/outfit/job/roguetown/slaver/slavez
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_NEARLY_ALL_PLUS_SEELIE_PLUS_GOBLIN
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 	show_foreign_examine = TRUE
 
-/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H) 
+/datum/outfit/job/roguetown/slaver/slavez/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra 
+	shirt = /obj/item/clothing/suit/roguetown/shirt/exoticsilkbra
 	neck = /obj/item/clothing/neck/roguetown/collar/leather/cursed
 	belt = /obj/item/storage/belt/rogue/leather/exoticsilkbelt
 	beltl = /obj/item/storage/belt/rogue/pouch
@@ -242,12 +242,16 @@
 		H.mind.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/hunting, 2, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.change_stat("strength", -3)
 		H.change_stat("constitution", -2)
 		H.change_stat("intelligence", 3)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", -1)
 		H.cmode_music = 'sound/music/combat_zybantine.ogg'
+	if(istype(H.dna.species, /datum/species/goblinp))
+		H.set_patron(/datum/patron/inhumen/graggar)
+		ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
+		H.ventcrawler = 2
 
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)

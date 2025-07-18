@@ -149,6 +149,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/wlength = WLENGTH_NORMAL		//each weapon length class has its own inherent dodge properties
 	var/wbalance = 0
 	var/wdefense = 0 //better at defending
+	var/wieldedwdefense = 3 //Bonus for wielding, default to 3 for all weapons
 	var/minstr = 0  //for weapons
 
 	var/can_assin = FALSE		//Weapon: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
@@ -222,6 +223,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/torn_sleeve_number = 0
 	var/enchanted = FALSE
 
+	// ~Grid INVENTORY VARIABLES
+	/// Width we occupy on the hud - Keep null to generate based on w_class
+	var/grid_width
+	/// Height we occupy on the hud - Keep null to generate based on w_class
+	var/grid_height
+
 /obj/item/Initialize()
 	. = ..()
 	if(!pixel_x && !pixel_y && !bigboy)
@@ -229,6 +236,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		pixel_y = rand(-5,5)
 	if(twohands_required)
 		has_inspect_verb = TRUE
+
+	if(grid_width <= 0)
+		grid_width = (w_class * world.icon_size)
+	if(grid_height <= 0)
+		grid_height = (w_class * world.icon_size)
+
 	update_transform()
 
 /obj/item/proc/step_action() //this was made to rewrite clown shoes squeaking
@@ -1215,7 +1228,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	wielded = TRUE
 	if(force_wielded)
 		force = force_wielded
-	wdefense = wdefense + 3
+	wdefense = wdefense + wieldedwdefense
 	update_transform()
 	to_chat(user, span_notice("I wield [src] with both hands."))
 	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)

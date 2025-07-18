@@ -316,6 +316,7 @@
 /atom/movable/screen/close/Click()
 	var/datum/component/storage/S = master
 	S.hide_from(usr)
+	SEND_SIGNAL(S.parent, COMSIG_STORAGE_CLOSED, usr)
 	return TRUE
 
 /atom/movable/screen/drop
@@ -807,7 +808,7 @@
 			iris.icon_state = "oeye_fixed"
 		else
 			iris.icon_state = "oeye"
-	iris.color = "#" + human.eye_color
+	iris.color = human.get_eye_color()
 	. += iris
 
 /atom/movable/screen/eye_intent/proc/toggle(mob/user)
@@ -889,15 +890,29 @@
 	master = new_master
 
 /atom/movable/screen/storage/Click(location, control, params)
+	var/list/modifiers = params2list(params)
+	if(modifiers["right"])
+		if(master)
+			var/obj/item/flipper = usr.get_active_held_item()
+			if(!flipper || (!usr.Adjacent(flipper) && !usr.DirectAccess(flipper)) || !isliving(usr) || usr.incapacitated(ignore_grab = TRUE))
+				return
+			var/old_width = flipper.grid_width
+			var/old_height = flipper.grid_height
+			flipper.grid_height = old_width
+			flipper.grid_width = old_height
+			update_hovering(location, control, params)
+			return
+
 	if(world.time <= usr.next_move)
 		return TRUE
-	if(usr.incapacitated())
+	if(usr.incapacitated(ignore_grab = TRUE))
 		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_held_item()
 		if(I)
-			master.attackby(null, I, usr, params)
+			master.attackby(src, I, usr, params, TRUE)
 	return TRUE
+
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"

@@ -55,6 +55,8 @@
 
 //click cooldowns, in tenths of a second, used for various combat actions
 #define CLICK_CD_EXHAUSTED 60
+#define CLICK_CD_TRACKING 30
+#define CLICK_CD_SLEUTH 10
 #define CLICK_CD_MELEE 12
 #define CLICK_CD_FAST 8
 #define CLICK_CD_RANGE 4
@@ -174,8 +176,13 @@
 #define ROD_CAST			/datum/intent/cast
 #define ROD_REEL			/datum/intent/reel
 
+// These names are confusing but here's the basic idea from what I gather:
+// Pour is 'feed' which is to feed others with reagents
+// fill is to fill itself with reagent.
+// These really need better names at some point
 #define INTENT_SPLASH		/datum/intent/splash
-#define INTENT_POUR			/datum/intent/pour
+#define INTENT_POUR			/datum/intent/pour 
+#define INTENT_FILL			/datum/intent/fill
 
 //Intent blade class for dismember class
 #define BCLASS_BLUNT		"blunt"

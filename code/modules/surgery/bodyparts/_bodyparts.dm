@@ -94,6 +94,9 @@
 	/// Visual features of the bodypart, such as hair and accessories
 	var/list/bodypart_features
 
+	grid_width = 32
+	grid_height = 64
+
 	resistance_flags = FLAMMABLE
 
 /obj/item/bodypart/proc/adjust_marking_overlays(var/list/appearance_list)
@@ -109,7 +112,7 @@
 
 		var/render_limb_string = specific_render_zone
 		if(BM.gendered && (!BM.gender_only_chest || specific_render_zone == BODY_ZONE_CHEST))
-			var/gendaar = (human_owner.gender == FEMALE) ? "f" : "m"
+			var/gendaar = (human_owner.body_type == FEMALE) ? "f" : "m"
 			render_limb_string = "[render_limb_string]_[gendaar]"
 
 		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -specific_layer)
@@ -503,7 +506,7 @@
 			return
 		var/datum/species/S = H.dna.species
 		species_id = S.limbs_id
-		if(H.gender == MALE)
+		if(H.body_type == MALE)
 			species_icon = S.limbs_icon_m
 		else
 			species_icon = S.limbs_icon_f
@@ -516,7 +519,7 @@
 		else
 			skin_tone = ""
 
-		body_gender = H.gender
+		body_gender = H.body_type
 		should_draw_gender = S.sexes
 
 		if((MUTCOLORS in S.species_traits) || (DYNCOLORS in S.species_traits))
@@ -702,6 +705,9 @@
 	offset = OFFSET_ARMOR
 	offset_f = OFFSET_ARMOR_F
 	dismemberable = FALSE
+	
+	grid_width = 64
+	grid_height = 96
 
 /obj/item/bodypart/chest/set_disabled(new_disabled)
 	. = ..()
