@@ -47,6 +47,7 @@
 	var/miss_sound 	// These are for unarmed missing attacks.
 	var/ican_assin = FALSE	// Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
 	var/ican_cdg = FALSE	// Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+	var/ican_grf = FALSE	// Intent: Can Grapplefu - Special flag to denote a weapon capable of being used in grapple combat. They're given flat 80% AP on a grab, and assassin blade class. (Rondel daggers, ideally.)
 
 /datum/intent/Destroy()
 	if(chargedloop)

@@ -55,6 +55,10 @@
 	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger)
 
+/datum/supply_pack/rogue/bandit/Knave/misericorde
+	name = "Misericorde"
+	cost = 30
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde)
 
 //swords
 

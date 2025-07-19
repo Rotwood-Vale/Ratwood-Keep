@@ -50,7 +50,7 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold
-	backpack_contents = list(/obj/item/storage/keyring/merchant)
+	backpack_contents = list(/obj/item/storage/keyring/merchant, /obj/item/rogueweapon/huntingknife/idagger/steel/rondel = 1)
 	if(isdarkelf(H))
 		backpack_contents.Add(/obj/item/clothing/mask/rogue/spectacles/delf)
 	if(H.gender == MALE)
