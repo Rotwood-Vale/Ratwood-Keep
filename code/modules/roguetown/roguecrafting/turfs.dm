@@ -240,7 +240,7 @@
 
 /// DURT
 /datum/crafting_recipe/roguetown/turfs/nrich
-	name = "soil plot - (ash, fiber, dirt clod; COMPETENT)"
+	name = "soil plot - (ash, fiber, 2 dirt clods; MASTER)"
 	result = /turf/open/floor/rogue/dirt/nrich
 	reqs = list(/obj/item/ash = 1,
 				/obj/item/natural/fibers = 1,
@@ -253,7 +253,7 @@
 /datum/crafting_recipe/roguetown/turfs/nrich/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue))
+	if(!istype(T, /turf/open/floor/rogue/dirt))
 		return
 	return TRUE
 
@@ -269,12 +269,12 @@
 /datum/crafting_recipe/roguetown/turfs/npoor/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue))
+	if(!istype(T, /turf/open/floor/rogue/dirt))
 		return
 	return TRUE
 
 /datum/crafting_recipe/roguetown/turfs/dirt
-	name = "decent dirt"
+	name = "decent dirt (ash, fiber, 2 dirt clods; PROFICIENT)"
 	result = /turf/open/floor/rogue/dirt
 	reqs = list(/obj/item/ash = 1,
 				/obj/item/natural/fibers = 1,
@@ -287,6 +287,6 @@
 /datum/crafting_recipe/roguetown/turfs/dirt/TurfCheck(mob/user, turf/T)
 	if(isclosedturf(T))
 		return
-	if(!istype(T, /turf/open/floor/rogue))
+	if(!istype(T, /turf/open/floor/rogue/dirt))
 		return
 	return TRUE
