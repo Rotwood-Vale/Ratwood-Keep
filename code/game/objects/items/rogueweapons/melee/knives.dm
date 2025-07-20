@@ -485,3 +485,46 @@
 	name = "drowish dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
 	force = 24
+
+//Very singular purpose dagger(s), intended to deal with armour. Steel.
+/obj/item/rogueweapon/huntingknife/idagger/steel/rondel
+	name = "rondel dagger"
+	desc = "A dagger intended to be carried at one's hip. The perfect sidearm. Best used while grappling an opponent."
+	icon_state = "rondel"//Just a temp sprite, base from sdagger_sk, blade from sildagger, bashed together.
+	possible_item_intents = list(/datum/intent/dagger/thrust/rondel, /datum/intent/dagger/cut)//You get cut, but that's not the weapon's purpose.
+	force = 14//2 less than a combat knife. 1 less than an iron dagger.
+	throwforce = 14
+	wdefense = 4//A great circular catch above the grip. Same defense as most swords.
+	can_grf = TRUE//Grapple them for that 80% AP.
+
+//A weaker version, intended for 'mercy' killing. The rondel's cousin. Iron.
+/obj/item/rogueweapon/huntingknife/idagger/misericorde
+	name = "misericorde"
+	desc = "A very lengthy dagger, intended to slip into joints and under plates to deliver a mercy kill. Best used while grappling an opponent."
+	icon_state = "misericorde"//Just a temp sprite, taken from sdaggeralt_old and bashed together.
+	possible_item_intents = list(/datum/intent/dagger/thrust/rondel/mis)//You get NO CUT. Unlike the rondel, you don't have a proper edge. Sorry.
+	force = 13//3 less than a combat knife. 2 less than an iron dagger.
+	throwforce = 13
+	max_integrity = 120//This isn't meant for up front combat. Be smart.
+	wdefense = 1//Don't try to parry with this. On par with the stone knife.
+	can_grf = TRUE//Grapple them for that 80% AP.
+
+//Rondel's unique intent.
+/datum/intent/dagger/thrust/rondel
+	name = "pick"
+	desc = "Slip the blade's point into gaps. 80% AP if the target is grappled. Allows the weapon to double as a mining implement. Defaults to a no AP smash intent if targeting ears, while grappling."
+	icon_state = "inpick"
+	attack_verb = list("punctures", "perforates")
+	blade_class = BCLASS_PICK//Punctures. Punctures abound. Can also be used for mining, given it's a utility item, too.
+	hitsound = list('sound/combat/hits/bladed/largeslash (1).ogg', 'sound/combat/hits/bladed/largeslash (2).ogg', 'sound/combat/hits/bladed/largeslash (3).ogg')
+	penfactor = 30//You get the AP from grapplefu. If you're grabbing them, it jumps to 80%. This is 10% less than a normal dagger thrust, otherwise.
+	clickcd = 14
+	swingdelay = 8//Longer than chop. Not meant to be quick. Not nearly as long as normal picking.
+//	damfactor = 1.3//30% extra damage felt terrible in testing. Probably not a good idea to uncomment this.
+	ican_cdg = TRUE//The entire point of the weapon is to deal with armour. Especially if they're down.
+	ican_grf = TRUE//As above, though THIS is the intent of the weapons themselves. Not CDG.
+
+//Misericorde's sub intent.
+/datum/intent/dagger/thrust/rondel/mis
+	clickcd = 12//Slightly faster than a rondel.
+	swingdelay = 6//Slightly faster than a rondel.
