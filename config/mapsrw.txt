@@ -23,3 +23,7 @@ map byosfinal
 	votable
 	#voteweight 1
 endmap
+
+map pirate_rockhill
+
+endmap

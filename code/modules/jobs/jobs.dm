@@ -182,6 +182,18 @@ GLOBAL_LIST_INIT(tribal_positions, list(
 	"Tribal Caveling",
 ))
 
+GLOBAL_LIST_INIT(db_positions, list(
+	"Drunkard Bastards Captain",
+	"Drunkard Bastards Quartermaster",
+	"Drunkard Bastards Shiphand",
+))
+
+GLOBAL_LIST_INIT(bs_positions, list(
+	"Black Spots Captain",
+	"Black Spots Quartermaster",
+	"Black Spots Shiphand",
+))
+
 GLOBAL_LIST_INIT(roguefight_positions, list(
 	"Red Captain",
 	"Red Caster",

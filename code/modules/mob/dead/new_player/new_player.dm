@@ -580,6 +580,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	omegalist += list(GLOB.youngfolk_positions)
 	omegalist += list(GLOB.goblin_positions)
 	omegalist += list(GLOB.tribal_positions)
+	omegalist += list(GLOB.db_positions)
+	omegalist += list(GLOB.bs_positions)
 
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode

@@ -209,6 +209,18 @@
 #define TRIBALCAVELING (1<<4)
 #define TRIBALLACKEY (1<<5)
 
+#define DB		(1<<11)
+
+#define CAPTAIN_DB	(1<<0)
+#define QUARTERMASTER_DB (1<<1)
+#define SHIPHAND_DB	(1<<2)
+
+#define BS		(1<<12)
+
+#define CAPTAIN_BS	(1<<0)
+#define QUARTERMASTER_BS (1<<1)
+#define SHIPHAND_BS	(1<<2)
+
 
 #define SLOP		(1<<11)
 
@@ -232,6 +244,8 @@
 #define JCOLOR_FOREIGNER "#776759"
 #define JCOLOR_GOBLIN "#33CC33"
 #define JCOLOR_TRIBAL "#cc3333"
+#define JCOLOR_BS "#414141"
+#define JCOLOR_DB "#746009"
 
 
 // job display orders //
@@ -339,6 +353,14 @@
 #define JDO_TRIBALCAVELING 47
 #define JDO_TRIBALLACKEY 48
 
+#define JDO_CAPTAIN_DB 49
+#define JDO_QUARTERMASTER_DB 50
+#define JDO_SHIPHAND_DB 51	
+
+#define JDO_CAPTAIN_BS 52
+#define JDO_QUARTERMASTER_BS 53
+#define JDO_SHIPHAND_BS 54
+
 #define MANOR_ROLES \
 	/datum/job/roguetown/jester,\
 	/datum/job/roguetown/veteran,\
@@ -442,3 +464,13 @@
  	/datum/job/roguetown/tribaltinkerer,\
  	/datum/job/roguetown/tribalseer,\
  	/datum/job/roguetown/triballackey	
+
+#define DRUNKENBASTARDS_ROLES \
+	/datum/job/roguetown/captain_db,\
+	/datum/job/roguetown/quatermaster_db,\
+	/datum/job/roguetown/shiphand_db,\
+
+#define BLACKSPOTS_ROLES \
+	/datum/job/roguetown/captain_bs,\
+	/datum/job/roguetown/quatermaster_bs,\
+	/datum/job/roguetown/shiphand_bs,\

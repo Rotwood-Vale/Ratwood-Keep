@@ -338,6 +338,10 @@ GLOBAL_LIST_EMPTY(job_respawn_delays)
 #define CTAG_GOBS			"CAT_GOBS"			// Goblin Guards
 #define CTAG_TRIBALS		"CAT_TRIBALS"		// Tribal classes
 
+//Event
+#define CTAG_DRUNKENBASTARDS 	"CAT_DRUNKENBASTARDS"	// Drunken Bastards classes
+#define CTAG_BLACKSPOTS		"CAT_BLACKSPOTS"	// Black Spots classes
+
 //Other
 #define CTAG_REFUGEE		"CAT_REFUGEE"		// Refugee classes
 #define CTAG_ADVENTURER		"CAT_ADVENTURER"		// Adventurer classes
