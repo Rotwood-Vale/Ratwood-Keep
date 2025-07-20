@@ -14,7 +14,6 @@ Format:
 endmap
 
 map rockhill
-	default
 	#voteweight 1.5
 	votable
 endmap
