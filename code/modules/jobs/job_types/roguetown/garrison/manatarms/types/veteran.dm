@@ -12,7 +12,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
 	beltl = /obj/item/rogueweapon/sword/decorated
 	r_hand = /obj/item/rogueweapon/halberd
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/signal_horn = 1, /obj/item/natural/cloth = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde = 1, /obj/item/rope/chain = 1, /obj/item/storage/keyring/man_at_arms = 1, /obj/item/signal_horn = 1, /obj/item/natural/cloth = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

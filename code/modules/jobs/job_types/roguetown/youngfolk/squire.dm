@@ -47,7 +47,7 @@
 	beltl = /obj/item/storage/keyring/squire
 	beltr = /obj/item/rogueweapon/sword/short
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/rope/chain = 1)
+	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/rogueweapon/huntingknife/idagger/misericorde = 1)
 
 /datum/subclass/squire/Page
 	name = "Page"
