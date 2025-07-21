@@ -159,6 +159,9 @@
 	blade_dulling = DULLING_BASHCHOP
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/fluff/railing/stonehedge/corner
+	icon_state = "stonehedge1"
+
 /obj/structure/fluff/railing/border
 	name = "border"
 	desc = ""
