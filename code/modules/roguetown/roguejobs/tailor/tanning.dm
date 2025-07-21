@@ -36,7 +36,7 @@
 			return
 		else
 			to_chat(user, span_warning("The rack is already occupied!"))
-			return
+			return//Todo, CHANGE THE USED INTENT CHECK TO BLADECLASS
 	if((user.used_intent.type == /datum/intent/dagger/cut || user.used_intent.type == /datum/intent/dagger/cut/knife || user.used_intent.type == /datum/intent/sword/cut || user.used_intent.type == /datum/intent/axe/cut) && hide)
 		if(anchored)
 			var/skill_level = user.mind.get_skill_level(/datum/skill/craft/hunting)
