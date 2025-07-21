@@ -2838,6 +2838,11 @@
 	},
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
+"bng" = (
+/turf/closed/wall/mineral/rogue/decostone/mossy/blue/end{
+	dir = 8
+	},
+/area/rogue/indoors/town/bath)
 "bnj" = (
 /obj/structure/fermenting_barrel,
 /turf/open/floor/rogue/cobble,
@@ -14382,6 +14387,12 @@
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield)
+"guE" = (
+/obj/structure/stairs/stone{
+	dir = 8
+	},
+/turf/open/water/bath,
+/area/rogue/indoors/town/bath)
 "guJ" = (
 /obj/structure/flora/roguegrass/water/reeds{
 	pixel_x = -5
@@ -22080,11 +22091,6 @@
 	lockid = "nightman";
 	name = "Arena"
 	},
-/obj/structure/mineral_door/wood/red{
-	locked = 1;
-	lockid = "nightman";
-	name = "Arena"
-	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/bath)
 "jZd" = (
@@ -24330,11 +24336,11 @@
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/bath)
 "lay" = (
+/obj/machinery/light/rogue/wallfire/candle/blue/r,
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall";
-	pixel_y = -5
+	pixel_y = -11
 	},
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors/town/bath)
 "laN" = (
@@ -26404,6 +26410,7 @@
 /obj/structure/chair/bench/coucha{
 	pixel_y = 2
 	},
+/obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/bath)
 "mcc" = (
@@ -30016,6 +30023,11 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/druidgrove)
+"nPb" = (
+/turf/closed/wall/mineral/rogue/decostone/mossy/blue/end{
+	dir = 1
+	},
+/area/rogue/indoors/town/bath)
 "nPj" = (
 /obj/structure/table/vtable,
 /obj/item/perfume/random,
@@ -35878,6 +35890,7 @@
 	pixel_x = 5
 	},
 /obj/structure/rack/rogue,
+/obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/bath)
 "qDn" = (
@@ -37157,8 +37170,10 @@
 	},
 /area/rogue/under/town/basement)
 "rmv" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/closed/wall/mineral/rogue/decostone,
+/obj/structure/stairs/stone{
+	dir = 4
+	},
+/turf/open/water/bath,
 /area/rogue/indoors/town/bath)
 "rmz" = (
 /obj/structure/fluff/railing/border{
@@ -40251,6 +40266,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/town/sewer)
+"sJX" = (
+/obj/structure/stairs/stone,
+/turf/open/water/bath,
+/area/rogue/indoors/town/bath)
 "sKd" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
@@ -40511,6 +40530,9 @@
 /obj/structure/fluff/statue/small{
 	pass_flags = 1;
 	pixel_x = -32
+	},
+/obj/structure/stairs/stone{
+	dir = 8
 	},
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
@@ -116552,7 +116574,7 @@ yhp
 sxH
 tIz
 mIy
-wpu
+rmv
 wpu
 wpu
 wpu
@@ -117848,7 +117870,7 @@ dId
 mcL
 kGM
 ufJ
-wpu
+guE
 wpu
 wpu
 wpu
@@ -118714,7 +118736,7 @@ mKf
 eGj
 wFm
 cRt
-wpu
+rmv
 otv
 scK
 bpD
@@ -120855,7 +120877,7 @@ scK
 bjz
 scK
 eFJ
-rmv
+eFJ
 eFJ
 tHT
 soz
@@ -120869,7 +120891,7 @@ soz
 hfH
 eFJ
 dyC
-rhw
+soz
 bjz
 mIT
 lpB
@@ -121301,7 +121323,7 @@ lmJ
 dhP
 krP
 wck
-soz
+rhw
 bjz
 jdP
 pQG
@@ -122149,7 +122171,7 @@ bpD
 bpD
 scK
 wXq
-wpu
+sJX
 eGj
 tHn
 hQG
@@ -122166,7 +122188,7 @@ kTL
 krP
 kbd
 eFJ
-bjz
+uAi
 bjz
 bjz
 bjz
@@ -123030,7 +123052,7 @@ nEC
 krP
 sIR
 eGj
-wpu
+guE
 wpu
 lPe
 scK
@@ -224980,7 +225002,7 @@ xrC
 scK
 uJF
 uJF
-pQd
+uJF
 uJF
 gLf
 gLf
@@ -228878,7 +228900,7 @@ uJF
 wVI
 lDc
 wbg
-uJF
+rRb
 lrs
 rSC
 rSC
@@ -229292,7 +229314,7 @@ sLa
 mZF
 arH
 qut
-eFJ
+nPb
 ncT
 wWV
 qoJ
@@ -229310,7 +229332,7 @@ pDh
 wbg
 rQs
 wVI
-uJF
+rRb
 lrs
 rSC
 lrs
@@ -229723,7 +229745,7 @@ ieR
 jfg
 eFJ
 soz
-eFJ
+bng
 soz
 eFJ
 soz
@@ -229742,7 +229764,7 @@ pDh
 wbg
 wbg
 gPY
-pQd
+lrs
 rSC
 agM
 rSC
@@ -230174,7 +230196,7 @@ pDh
 wbg
 rQs
 wVI
-uJF
+rRb
 agM
 uEX
 rSC
@@ -230606,7 +230628,7 @@ pDh
 xFd
 lDc
 wbg
-uJF
+rRb
 rSC
 lrs
 lrs
