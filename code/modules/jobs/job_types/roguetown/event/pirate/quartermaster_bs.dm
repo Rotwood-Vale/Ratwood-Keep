@@ -1,34 +1,31 @@
-/datum/job/roguetown/harbormaster
-	title = "Harbormaster"
-	flag = HARBORMASTER
-	department_flag = GARRISON
+/datum/job/roguetown/quatermaster_bs
+	title = "Black Spots Quartermaster"
+	flag = QUARTERMASTER_BS
+	department_flag = BS
+	selection_color = JCOLOR_BS
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "A long retired captain, \
-	you have seen everything the many ports of the known world have to offer. \
-	During the dae, you comfortably sit back and manage the flow of goods of the local harbor, \
-	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot. \
-	You work closely with the merchant and steward, ensuring the safety of them, the harbor and the goods that pass through it. Command your mates while listening to your supervisors in order to protect their business."
+	tutorial = "You've been dragged on yet another cock-eyed scheme from your oh-so-glorious captain to the backwater Duchy of Rockhill. Oh well, you've long since grown used to the sheer-minded absurdity that your captain involves themselves in. Time to put your head down and try your hardest to see their 'pirate kingdom' to fruition."
 
-	display_order = JDO_HARBORMASTER
+	display_order = JDO_QUARTERMASTER_BS
 	whitelist_req = FALSE
-	allowed_maps = list("Rockhill", "Build Your Settlement")
+	allowed_maps = list("Rockhill (Pirate Event)")
 
-	outfit = /datum/outfit/job/roguetown/harbormaster
+	outfit = /datum/outfit/job/roguetown/quatermaster_bs
 
 	give_bank_account = 20
 	min_pq = 5
 	max_pq = null
 	cmode_music = 'sound/music/combat_pirate.ogg'
 
-/datum/outfit/job/roguetown/harbormaster
+/datum/outfit/job/roguetown/quatermaster_bs
 	allowed_patrons = list(/datum/patron/divine/abyssor)
 
-/datum/outfit/job/roguetown/harbormaster/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/quatermaster_bs/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/tricorn/lucky
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced

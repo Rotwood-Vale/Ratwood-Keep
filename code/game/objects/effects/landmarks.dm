@@ -526,6 +526,44 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
     jobspawn_override = list("Tribal Lackey")
     delete_after_roundstart = FALSE
 
+// Pirate Event Spawns
+
+/obj/effect/landmark/start/pirate/captain_db
+	name = "Drunkard Bastards Captain"
+	icon_state = "arrow"
+	jobspawn_override = list("Drunkard Bastards Captain")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/pirate/quatermaster_db
+	name = "Drunkard Bastards Quartermaster"
+	icon_state = "arrow"
+	jobspawn_override = list("Drunkard Bastards Quartermaster")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/pirate/shiphand_db
+	name = "Drunkard Bastards Shiphand"
+	icon_state = "arrow"
+	jobspawn_override = list("Drunkard Bastards Shiphand")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/pirate/captain_bs
+	name = "Black Spots Captain"
+	icon_state = "arrow"
+	jobspawn_override = list("Black Spots Captain")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/pirate/quatermaster_bs
+	name = "Black Spots Quartermaster"
+	icon_state = "arrow"
+	jobspawn_override = list("Black Spots Quartermaster")
+	delete_after_roundstart = FALSE
+
+/obj/effect/landmark/start/pirate/shiphand_bs
+	name = "Black Spots Shiphand"
+	icon_state = "arrow"
+	jobspawn_override = list("Black Spots Shiphand")
+	delete_after_roundstart = FALSE
+	
 //Antagonist spawns
 
 /obj/effect/landmark/start/wizard

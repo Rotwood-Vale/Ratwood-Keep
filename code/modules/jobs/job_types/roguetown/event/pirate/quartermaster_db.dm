@@ -1,22 +1,19 @@
-/datum/job/roguetown/harbormaster
-	title = "Harbormaster"
-	flag = HARBORMASTER
-	department_flag = GARRISON
+/datum/job/roguetown/quatermaster_db
+	title = "Drunken Bastards Quartermaster"
+	flag = QUARTERMASTER_DB
+	department_flag = DB
+	selection_color = JCOLOR_DB
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "A long retired captain, \
-	you have seen everything the many ports of the known world have to offer. \
-	During the dae, you comfortably sit back and manage the flow of goods of the local harbor, \
-	but at night your mind looks to the south, to the great maritime cities and exotic markets of Grenzelhoft and Zybantium, now fallen to the Rot. \
-	You work closely with the merchant and steward, ensuring the safety of them, the harbor and the goods that pass through it. Command your mates while listening to your supervisors in order to protect their business."
+	tutorial = "You're the second in command of the Drunkard Bastards. Logistics and navigation are your forté, and you're often the one relied on for formal discussions, as your captain can get a tad rowdy without you by their side."
 
-	display_order = JDO_HARBORMASTER
+	display_order = JDO_QUARTERMASTER_DB
 	whitelist_req = FALSE
-	allowed_maps = list("Rockhill", "Build Your Settlement")
+	allowed_maps = list("Rockhill (Pirate Event)")
 
 	outfit = /datum/outfit/job/roguetown/harbormaster
 

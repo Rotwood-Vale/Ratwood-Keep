@@ -1,7 +1,8 @@
-/datum/job/roguetown/longshoreman
-	title = "Longshoreman"
-	flag = LONGSHOREMAN
-	department_flag = GARRISON
+/datum/job/roguetown/shiphand_bs
+	title = "Black Spots Shiphand"
+	flag = SHIPHAND_BS
+	department_flag = BS
+	selection_color = JCOLOR_BS
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
@@ -9,23 +10,21 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_VERY_SHUNNED_UP
 	allowed_ages = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
-	tutorial = "You answered Abyssor's call when you were young, though in troublesome ways, \
-	pilaging for treasury from anyone who'd cross your path. Now your captain retires from a life of crime, \
-	settling down as do you, serving them with undying loyalty along with their supervisors, the steward and merchant. Protect your employer's best interests as best you can and keep the rabble out."
-	display_order = JDO_LONGSHOREMAN
-	whitelist_req = TRUE
+	tutorial = "You've been a member of the Black Spots crew for a while, a loyal buccaneer and a mammon-minded opportunist. You're not sure how well your captain's plan to trick the Duke and form a pirate kingdom far off at sea will go, but the prospect of more coin drives you e'er onwards regardless. Either that, or you're too drunk to care. Yargh!"
+	display_order = JDO_SHIPHAND_BS
+	whitelist_req = FALSE
+	allowed_maps = list("Rockhill (Pirate Event)")
 
-	outfit = /datum/outfit/job/roguetown/longshoreman
+	outfit = /datum/outfit/job/roguetown/shiphand_bs
 	give_bank_account = 12
 	min_pq = 2
 	max_pq = null
 	cmode_music = 'sound/music/combat_pirate.ogg'
-	allowed_maps = list("Rockhill", "Build Your Settlement")
 
-/datum/outfit/job/roguetown/longshoreman
+/datum/outfit/job/roguetown/shiphand_bs
 	allowed_patrons = list(/datum/patron/divine/abyssor)
 
-/datum/outfit/job/roguetown/longshoreman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/shiphand_bs/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	head = /obj/item/clothing/head/roguetown/helmet/bandana
 	shoes = /obj/item/clothing/shoes/roguetown/armor/leather/advanced
