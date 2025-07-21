@@ -141,3 +141,7 @@
 #define SPELL_SUMMON_WEAPON							/obj/effect/proc_holder/spell/targeted/summonweapon
 #define SPELL_MENDING								/obj/effect/proc_holder/spell/invoked/mending
 #define SPELL_REPEL									/obj/effect/proc_holder/spell/invoked/projectile/repel
+#define SPELL_BLINK_ROG								/obj/effect/proc_holder/spell/invoked/blink
+#define SPELL_GUIDED_BOLT							/obj/effect/proc_holder/spell/invoked/projectile/guided_bolt
+#define SPELL_ACID_SPLASH							/obj/effect/proc_holder/spell/invoked/projectile/acidsplash
+#define SPELL_ORISON								/obj/effect/proc_holder/spell/targeted/touch/orison

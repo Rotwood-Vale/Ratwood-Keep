@@ -1931,6 +1931,7 @@
 #include "code\modules\spells\roguetown\acolyte\malum.dm"
 #include "code\modules\spells\roguetown\acolyte\necra.dm"
 #include "code\modules\spells\roguetown\acolyte\noc.dm"
+#include "code\modules\spells\roguetown\acolyte\orison.dm"
 #include "code\modules\spells\roguetown\acolyte\pestra.dm"
 #include "code\modules\spells\roguetown\acolyte\ravox.dm"
 #include "code\modules\spells\roguetown\acolyte\sawbones.dm"

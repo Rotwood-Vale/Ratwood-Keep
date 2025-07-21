@@ -105,6 +105,7 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/orison)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/message)
