@@ -12,6 +12,13 @@
 				/datum/reagent/medicine/lessermanapot = 15)
 	skill_level = 2
 
+/datum/crafting_recipe/roguetown/arcana/artifact
+	name = "runed artifact"
+	result = /obj/item/natural/artifact
+	reqs = list(/obj/item/natural/rock = 1,
+				/datum/reagent/medicine/lessermanapot = 15)
+	skill_level = 2
+
 /datum/crafting_recipe/roguetown/arcana/chalk
 	name = "chalk - (cinnabar, lesser mana potion; COMPETENT)"
 	result = /obj/item/chalk

@@ -118,6 +118,7 @@
 		if(lastminer.goodluck(2) && mineralType)
 	//		to_chat(lastminer, span_notice("Bonus ducks!"))
 			new mineralType(src)
+			new /obj/item/natural/artifact(get_turf(src))	//chance for runed artifacts while mining
 		gets_drilled(lastminer, give_exp = FALSE)
 		queue_smooth_neighbors(src)
 	..()
