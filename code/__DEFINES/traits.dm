@@ -124,6 +124,17 @@
 #define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
 #define TRAIT_BAOTHA_CURSE "Baotha's Curse"
 
+// ───────────── ACCURACY TRAITS NPC ─────────────
+// Affects accuracy chance in /proc/accuracy_check()
+#define TRAIT_ACCURACY_LOW_NPC "accuracy_low"      // +25 accuracy
+#define TRAIT_ACCURACY_MID_NPC "accuracy_mid"      // +50 accuracy
+#define TRAIT_ACCURACY_HIGH_NPC "accuracy_high"    // +70 accuracy
+
+// ───────────── PARRY STAMINA DRAIN TRAITS NPC  ─────────────
+// Affects stamina drain in get_generic_parry_drain() and var/prob2defend
+#define TRAIT_PARRY_LOW_NPC "parry_low"            // 50 stamina drain //75 prob2defend ignore
+#define TRAIT_PARRY_MID_NPC "parry_mid"            // 30 stamina drain //105 prob2defend ignore
+#define TRAIT_PARRY_HIGH_NPC "parry_high"          // 15 stamina drain //150  prob2defend ignore
 
 
 
