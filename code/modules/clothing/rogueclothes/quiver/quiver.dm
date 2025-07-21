@@ -163,3 +163,61 @@
 		var/obj/item/smokebomb/A = new()
 		ammo += A
 	update_icon()
+
+/obj/item/ammo_holder/quiver/sling
+	name = "sling bullet pouch"
+	desc = "This pouch holds the ouch." //i came up with this line on an impulse
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "slingpouch"
+	item_state = "slingpouch"
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_NECK
+	max_storage = 20
+	w_class = WEIGHT_CLASS_NORMAL
+	grid_height = 64
+	grid_width = 32
+
+/obj/item/ammo_holder/quiver/sling/attack_turf(turf/T, mob/living/user)
+	if(ammo.len >= max_storage)
+		to_chat(user, span_warning("My [src.name] is full!"))
+		return
+	to_chat(user, span_notice("I begin to gather the ammunition..."))
+	for(var/obj/item/ammo_casing/caseless/rogue/sling_bullet in T.contents)
+		if(do_after(user, 5))
+			if(!eatarrow(sling_bullet))
+				break
+
+/obj/item/ammo_holder/quiver/sling/attackby(obj/A, loc, params)
+	if(A.type in subtypesof(/obj/item/ammo_casing/caseless/rogue/sling_bullet))
+		if(ammo.len < max_storage)
+			if(ismob(loc))
+				var/mob/M = loc
+				M.doUnEquip(A, TRUE, src, TRUE, silent = TRUE)
+			else
+				A.forceMove(src)
+			ammo += A
+			update_icon()
+		else
+			to_chat(loc, span_warning("Full!"))
+		return
+	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/sling))
+		var/obj/item/gun/ballistic/revolver/grenadelauncher/sling/B = A
+		if(ammo.len && !B.chambered)
+			for(var/AR in ammo)
+				if(istype(AR, /obj/item/ammo_casing/caseless/rogue/sling_bullet))
+					ammo -= AR
+					B.attackby(AR, loc, params)
+					break
+		return
+	..()
+
+/obj/item/ammo_holder/quiver/sling/attack_right(mob/user)
+	if(ammo.len)
+		var/obj/O = ammo[ammo.len]
+		ammo -= O
+		O.forceMove(user.loc)
+		user.put_in_hands(O)
+		update_icon()
+		return TRUE
+
+/obj/item/ammo_holder/quiver/sling/update_icon()
+	return
