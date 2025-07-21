@@ -2,13 +2,13 @@
 	name = "mage robe"
 	desc = "base mage robe"
 	icon_state = "adept-red"
-	icon = 'icons/roguetown/clothing/mage.dmi'
+	icon = 'icons/roguetown/clothing/armor.dmi'
 	color = null
 	slot_flags = ITEM_SLOT_ARMOR
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/mage.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/mage.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/armor.dmi'
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	ignore_sleeves_code = TRUE 
@@ -214,8 +214,8 @@
 	color = null
 	icon_state = "adept-red"
 	item_state = "adept-red"
-	icon = 'icons/roguetown/clothing/magehead.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/magehead.dmi' //Overrides slot icon behavior
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
 	body_parts_covered = NECK
 	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
