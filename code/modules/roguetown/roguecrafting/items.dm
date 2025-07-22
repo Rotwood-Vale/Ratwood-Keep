@@ -263,15 +263,22 @@
 	reqs = list(/obj/item/natural/stone = 2)
 
 /datum/crafting_recipe/roguetown/survival/stonearrow
-	name = "arrow (stone) - (stick, stone; BEGINNER)"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	name = "stone arrow (x2) - (stick, stone; BEGINNER)"
+	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone
+				)
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 1)
-	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/survival/stonearrow_five
-	name = "stone arrow (x5) - (5 sticks, 5 stones; BEGINNER)"
+/datum/crafting_recipe/roguetown/survival/stonearrow_ten
+	name = "stone arrow (x10) - (5 sticks, 5 stones; BEGINNER)"
 	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
@@ -280,7 +287,6 @@
 				)
 	reqs = list(/obj/item/grown/log/tree/stick = 5,
 				/obj/item/natural/stone = 5)
-	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow
 	name = "poisoned arrow - (iron arrow, berry poison; BEGINNER)"
@@ -647,7 +653,7 @@
 		/obj/item/natural/fibers = 3,
 		)
 	skill_level = 0
-  
+
 /datum/crafting_recipe/roguetown/flowercrown_salvia
 	name = "salvia flower crown"
 	result = /obj/item/clothing/head/roguetown/flower_crown/salvia
