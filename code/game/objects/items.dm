@@ -140,6 +140,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/altgripped = FALSE
 	var/list/alt_intents //these replace main intents
 	var/list/gripped_intents //intents while gripped, replacing main intents
+	///Force when held in two hands.
 	var/force_wielded = 0
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
 	var/gripspriteonmob = FALSE //use alternate sprite for onmob
@@ -361,9 +362,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		//set blade integrity to randomized 60% to 100% if not already set
 		if(!blade_int)
 			blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
-		//set dismemberment integrity to max_blade_int if not already set
+		//set dismemberment integrity to 95% of max_blade_int if not already set. This variable is used to define what constitutes a "pristine blade" for dismemberment calculation.
 		if(!dismember_blade_int)
-			dismember_blade_int = max_blade_int
+			dismember_blade_int = max_blade_int * 0.95
 
 /obj/item/Destroy()
 	item_flags &= ~DROPDEL	//prevent reqdels

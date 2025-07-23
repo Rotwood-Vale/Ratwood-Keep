@@ -31,6 +31,9 @@
 
 	force = 10
 	force_wielded = 14
+	throwforce = 10
+	throw_range = 5
+	throw_speed = 1
 	wdefense = 2
 	wbalance = -2
 	wlength = 66
@@ -46,6 +49,7 @@
 
 	force = 12
 	force_wielded = 25
+	throwforce = 20
 
 /datum/intent/flailthresh
 	name = "thresh"
@@ -92,7 +96,6 @@
 	experimental_onhip = FALSE
 	sharpness = IS_SHARP
 	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CUT
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	max_blade_int = 50
 	smeltresult = /obj/item/ingot/iron
@@ -101,6 +104,11 @@
 	force = 11
 	wdefense = 0
 	wlength = 10
+	throwforce = 15
+	throw_range = 5
+	throw_speed = 1
+	thrown_bclass = BCLASS_CUT
+
 /obj/item/rogueweapon/sickle/New()
 	. = ..()
 	icon_state = "sickle[rand(1,3)]"
@@ -136,8 +144,12 @@
 	associated_skill = /datum/skill/combat/polearms
 	force = 5
 	force_wielded = 10
+	throwforce = 15
+	throw_range = 5
+	throw_speed = 1
 	wdefense = 2
 	wlength = 66
+
 /obj/item/rogueweapon/hoe/New()
 	. = ..()
 	icon_state = "hoe[rand(1,3)]"
@@ -195,6 +207,7 @@
 	experimental_onback = FALSE
 	experimental_onhip = FALSE
 	gripspriteonmob = TRUE
+	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	blade_dulling = DULLING_BASHCHOP
@@ -208,7 +221,8 @@
 	associated_skill = /datum/skill/combat/polearms
 	thrown_bclass = BCLASS_STAB
 	throwforce = 15
-
+	throw_range = 5
+	throw_speed = 1
 	force = 10
 	force_wielded = 22
 	wdefense = 1

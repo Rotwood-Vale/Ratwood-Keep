@@ -7,7 +7,9 @@
 	var/move_force = MOVE_FORCE_DEFAULT
 	var/pull_force = PULL_FORCE_DEFAULT
 	var/datum/thrownthing/throwing = null
-	var/throw_speed = 1 //How many tiles to move per ds when being thrown. Float values are fully supported
+	///How many tiles to move per ds when being thrown. Float values are fully supported
+	var/throw_speed = 1
+	///How far the thrown object can travel before it stops moving. This is in tiles.
 	var/throw_range = 7
 	var/mob/pulledby = null
 	var/initial_language_holder = /datum/language_holder
@@ -38,6 +40,7 @@
 	var/atom/movable/pulling
 	var/nodirchange = FALSE
 	var/grab_state = 0
+	///Force when thrown.
 	var/throwforce = 0
 	var/datum/component/orbiter/orbiting
 	var/can_be_z_moved = TRUE

@@ -57,7 +57,7 @@
 		var/find = rand(1,5)
 		switch(find)
 			if(1)
-				beltl = /obj/item/rogueweapon/sword/long/marlin
+				beltl = /obj/item/rogueweapon/sword/long/falchion
 				H.mind.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 				H.change_stat("strength", 4)
 			if(2)

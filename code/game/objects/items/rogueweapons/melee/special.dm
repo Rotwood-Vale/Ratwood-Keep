@@ -1,6 +1,9 @@
 /obj/item/rogueweapon/lordscepter
 	force = 20
 	force_wielded = 25
+	throwforce = 20
+	throw_range = 5
+	throw_speed = 1
 	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/lordbash)
 	name = "master's rod"
@@ -97,6 +100,9 @@
 /obj/item/rogueweapon/mace/stunmace
 	force = 25
 	force_wielded = 25
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	name = "stunmace"
 	icon_state = "stunmace0"
 	desc = "Pain is our currency here."
@@ -227,9 +233,13 @@
 /obj/item/rogueweapon/katar
 	slot_flags = ITEM_SLOT_HIP
 	force = 16
+	throwforce = 20
+	throw_range = 5
+	throw_speed = 1
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(/datum/intent/katar/cut, /datum/intent/katar/thrust)
 	name = "katar"
-	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting"
+	desc = "A blade that sits above the users fist. Commonly used by those proficient at unarmed fighting. \ It is made of sturdy steel."
 	icon_state = "katar"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	gripsprite = FALSE
@@ -244,7 +254,6 @@
 	throwforce = 12
 	wdefense = 4.5
 	wbalance = 1
-	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/steel
 

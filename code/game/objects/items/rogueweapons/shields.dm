@@ -10,15 +10,15 @@
 	slot_flags = ITEM_SLOT_BACK
 	flags_1 = null
 	force = 10
-	throwforce = 5
-	throw_speed = 1
+	throwforce = 15 // 15 is the default for shields. Can break windows.
 	throw_range = 3
+	throw_speed = 0.5
+	thrown_bclass = BCLASS_BLUNT
 	w_class = WEIGHT_CLASS_BULKY
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	block_chance = 0
 	sharpness = IS_BLUNT
 	wlength = WLENGTH_SHORT
-	resistance_flags = FLAMMABLE
 	can_parry = TRUE
 	wdefense = 15
 	var/coverage = 90
@@ -77,6 +77,7 @@
 	desc = "A sturdy wooden shield. Will block anything you can imagine."
 	icon_state = "woodsh"
 	dropshrink = 0.8
+	resistance_flags = FLAMMABLE // It's made of wood.
 	wdefense = 15
 	coverage = 40
 	metalizer_result = /obj/item/cooking/pan
@@ -114,14 +115,15 @@
 
 /obj/item/rogueweapon/shield/tower
 	name = "tower shield"
-	desc = "A huge iron shield!"
+	desc = "A huge wooden shield! It's reinforced with iron."
 	icon_state = "shield_tower"
 	force = 15
-	throwforce = 10
+	throwforce = 15
 	throw_speed = 1
 	throw_range = 3
-	wlength = WLENGTH_NORMAL
 	resistance_flags = FLAMMABLE
+	smeltresult = /obj/item/ingot/iron
+	wlength = WLENGTH_NORMAL
 	wdefense = 15
 	coverage = 70
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
@@ -139,10 +141,10 @@
 
 /obj/item/rogueweapon/shield/tower/metal
 	name = "kite shield"
-	desc = "A kite-shaped iron shield. Reliable and sturdy."
-	icon_state = "ironsh"
+	desc = "A kite-shaped steel shield. Reliable and sturdy."
+	icon_state = "metaltower"
 	force = 20
-	throwforce = 10
+	throwforce = 30
 	throw_speed = 1
 	throw_range = 3
 	wlength = WLENGTH_NORMAL
@@ -155,6 +157,7 @@
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	sellprice = 30
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/shield/tower/metal/getonmobprop(tag)
 	if(tag)
@@ -178,7 +181,7 @@
 		var/mutable_appearance/M = mutable_appearance('icons/roguetown/weapons/shield_heraldry.dmi', picked_name)
 		M.alpha = 190
 		add_overlay(M)
-		var/mutable_appearance/MU = mutable_appearance(icon, "ironsh_detail")
+		var/mutable_appearance/MU = mutable_appearance(icon, "metaltower_detail")
 		MU.alpha = 90
 		add_overlay(MU)
 		if(alert("Are you pleased with your heraldry?", "Heraldry", "Yes", "No") != "Yes")
@@ -191,12 +194,14 @@
 	desc = "A sturdy wood and leather shield. Made to not be too encumbering while still providing good protection."
 	icon_state = "heatershield"
 	force = 15
-	throwforce = 10
+	throwforce = 20
 	dropshrink = 0.8
 	coverage = 60
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
+	resistance_flags = FLAMMABLE
+	smeltresult = /obj/item/ash
 
 /obj/item/rogueweapon/shield/heater/attack_hand(mob/user)
 	if(!overlays.len)
@@ -225,11 +230,13 @@
 
 /obj/item/rogueweapon/shield/buckler
 	name = "buckler shield"
-	desc = "A sturdy buckler shield. Will block anything you can imagine."
+	desc = "A sturdy buckler shield. Will block anything you can imagine. \ It is made of sturdy steel."
 	icon_state = "bucklersh"
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 20
-	throwforce = 10
+	throwforce = 20
+	throw_range = 5
+	throw_speed = 1 // Throws like a frisbee.
 	dropshrink = 0.8
 	resistance_flags = null
 	wdefense = 9
@@ -239,6 +246,7 @@
 	max_integrity = 300
 	blade_dulling = DULLING_BASH
 	associated_skill = 0
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/shield/buckler/proc/bucklerskill(mob/living/user)
 	if(!ishuman(user))
@@ -271,7 +279,7 @@
 	desc = "A sturdy wood shield thats been highly modified by an artificer. It seems to have several pipes and gears built into it."
 	icon_state = "artificershield"
 	force = 15
-	throwforce = 10
+	throwforce = 20
 	dropshrink = 0.8
 	coverage = 60
 	attacked_sound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
@@ -280,6 +288,7 @@
 	var/smoke_path = /obj/effect/particle_effect/smoke
 	var/cooldowny
 	var/cdtime = 30 SECONDS
+	resistance_flags = null // Artificer shield should get a little buff, so it can't burn.
 
 /obj/item/rogueweapon/shield/artificer/attack_self(mob/user)
 	if(cooldowny)

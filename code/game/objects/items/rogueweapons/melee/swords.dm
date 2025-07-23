@@ -102,6 +102,10 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 25
+	throwforce = 15 // Defined here so you know what the default for swords is. Swords should probably not be thrown.
+	thrown_bclass = BCLASS_CUT // Swords swing in the air, making them cut when thrown.
+	throw_range = 3 // Swords don't travel very well when thrown.
+	throw_speed = 0.75 // Swords are awkward to throw, so they don't go very fast.
 	possible_item_intents = list(/datum/intent/sword/cut/onehanded, /datum/intent/sword/thrust/onehanded, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	name = "sword"
@@ -120,6 +124,7 @@
 	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
 	sheathe_sound = 'sound/items/wood_sharpen.ogg'
 	flags_1 = CONDUCT_1
+	//dropshrink = 0.75
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
@@ -168,7 +173,7 @@
 
 /obj/item/rogueweapon/sword/decorated
 	name = "engraved sword"
-	desc = "A valuable sword for celebrations and rites."
+	desc = "A valuable sword for celebrations and rites. \ The blade is mostly steel."
 	icon_state = "decsword1"
 	sellprice = 140
 
@@ -191,7 +196,7 @@
 /obj/item/rogueweapon/sword/short
 	slot_flags = ITEM_SLOT_HIP
 	name = "arming sword"
-	desc = "A short arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
+	desc = "A short steel arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "shortsword"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
 	gripped_intents = null /// TODO: Make a iron version of this sword, due to the short iron version having special intents and make this one double-grip.
@@ -204,6 +209,7 @@
 /obj/item/rogueweapon/sword/long
 	force = 25
 	force_wielded = 30
+	throwforce = 20 // Slightly more than shorter swords, but still bad.
 	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "longsword"
@@ -212,7 +218,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "bastard sword"
-	desc = "A bastard sword that can chop with ease."
+	desc = "A bastard sword that can chop with ease. \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -224,8 +230,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	accuracy_bonus = 5	// Large swords are unwieldy.
 
@@ -269,8 +273,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/getonmobprop(tag)
@@ -290,6 +292,7 @@
 /obj/item/rogueweapon/sword/long/judgement
 	force = 40
 	force_wielded = 55
+	throwforce = 30 // This is a big sword, but still not good.
 	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/thrust/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	icon_state = "judgement"
@@ -298,7 +301,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "judgement"
-	desc = "A sword with a silver grip, a topaz gem hilt and a steel blade, what more could a noble ask for?"
+	desc = "A sword with a silver grip, a topaz gem hilt and a steel blade, what more could a noble ask for? \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -310,8 +313,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -340,7 +341,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	name = "crimson fang"
-	desc = "A strange long sword with a green metal composition."
+	desc = "A strange long sword with a green metal composition. \ It is made of sturdy steel."
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -353,8 +354,7 @@
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
 	max_integrity = 9999
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
+	resistance_flags = INDESTRUCTIBLE // Special antag sword, so it should never break.
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
 	static_price = TRUE
@@ -395,8 +395,6 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/sword/long/rider/getonmobprop(tag)
@@ -418,20 +416,20 @@
 	icon_state = "Kmesser"
 	item_state = "Kmesser"
 	name = "langesmesser"
-	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency."
+	desc = "A lengthened messer, inspired by those from grenzelhoft. It chops and cuts with terrifying efficiency. \ It is made of sturdy steel."
 
-/obj/item/rogueweapon/sword/long/marlin
+/obj/item/rogueweapon/sword/long/falchion
 	force = 26
 	force_wielded = 31
 	possible_item_intents = list(/datum/intent/sword/cut/onehanded/long, /datum/intent/sword/strike/onehanded)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike, /datum/intent/sword/chop)
-	icon_state = "marlin"
+	icon_state = "falchion"
 	icon = 'icons/roguetown/weapons/64.dmi'
-	item_state = "marlin"
+	item_state = "falchion"
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
-	name = "shalal saber"
-	desc = "Lightweight, slender and curved."
+	name = "Falchion"
+	desc = "Lightweight, slender and curved. \ It's made of sturdy steel."
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -443,14 +441,12 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	associated_skill = /datum/skill/combat/swords
-	throwforce = 15
-	thrown_bclass = BCLASS_CUT
 	minstr = 6
 	sellprice = 42
 	wdefense = 5.5
 	smeltresult = /obj/item/ingot/steel
 
-/obj/item/rogueweapon/sword/long/marlin/getonmobprop(tag)
+/obj/item/rogueweapon/sword/long/falchion/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -572,8 +568,8 @@
 		..()
 
 /obj/item/rogueweapon/sword/iron/short
-	name = "short sword"
-	desc = "An archaic iron sword."
+	name = "arming sword"
+	desc = "A short iron arming sword, designed as a knightly sidearm. Best used with a shield or out of desperation."
 	icon_state = "iswordshort"
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/strike/onehanded/short)
 	gripped_intents = null
@@ -596,7 +592,7 @@
 
 /obj/item/rogueweapon/sword/iron/messer
 	name = "iron messer"
-	desc = "A single edged blade to slice and chop with."
+	desc = "A single edged blade to slice and chop with. \ It is made of iron."
 	icon_state = "imesser"
 	max_integrity = 125
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/axe/chop)
@@ -614,7 +610,7 @@
 
 /obj/item/rogueweapon/sword/sabre
 	name = "sabre"
-	desc = "A swift sabre. Parries realiantly and strikes swiftly"
+	desc = "A swift sabre. Parries realiantly and strikes swiftly. \ It is made of sturdy steel."
 	icon_state = "saber"
 	max_integrity = 230
 	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/sword/thrust, /datum/intent/sword/strike/onehanded/short)
@@ -637,7 +633,7 @@
 /obj/item/rogueweapon/sword/rapier
 	name = "rapier"
 	desc = "A duelist's weapon derived from western battlefield instruments, it features a tapered \
-	blade with a specialized stabbing tip."
+	blade with a specialized stabbing tip. \ It is made of sturdy steel."
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "rapier"
 	max_integrity = 215
@@ -745,7 +741,7 @@
 /obj/item/rogueweapon/sword/rapier/dec
 	desc = "A fine duelist's instrument with a tapered thrusting blade. Its hilt is gilt in gold and inlaid, \
 	and its blade bears twin inscriptions on either side. One reads, 'CAST IN THE NAME OF GODS' while the \
-	obverse reads, 'YE NOT GUILTY'."
+	obverse reads, 'YE NOT GUILTY'. \ It is made of sturdy steel."
 	icon_state = "decrapier"
 	sellprice = 140
 
@@ -754,7 +750,7 @@
 	name = "sword of the Mad Duke"
 	desc = "A noble heirloom whose spiraling basket hilt is inlaid with fine cut gems. It bears the burnish of \
 	time, where once sharply defined features have been worn down by so many hands. An old rumor ties this implement \
-	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders."
+	to the siege that smashed the Mad Duke's keep to rubble, and burnt the Duke himself to cinders. \ It is made of sturdy steel."
 	icon_state = "lordrap"
 	sellprice = 300
 	max_integrity = 300
@@ -785,7 +781,7 @@
 /obj/item/rogueweapon/sword/sabre/elf
 	force = 25
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven design."
+	desc = "This finely crafted saber is of elven design. \ It shines with the brilliance of silver."
 	icon_state = "esaber"
 	item_state = "esaber"
 	smeltresult = /obj/item/ingot/silver
@@ -801,7 +797,7 @@
 
 /obj/item/rogueweapon/sword/sabre_freeze
 	name = "Freezing Saber"
-	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite."
+	desc = "A fragile sabre adorned with a bright blue freezing mist. Holding the blade feels like it might give you frostbite. \ It is made of sturdy steel."
 	icon_state = "saber"
 	max_integrity = 150
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/freeze, /datum/intent/sword/thrust/freeze)
@@ -811,7 +807,6 @@
 	minstr = 5
 	wdefense = 6
 	wbalance = 1
-	damtype = BRUTE
 	light_color = LIGHT_COLOR_BLUE
 	var/on = FALSE
 

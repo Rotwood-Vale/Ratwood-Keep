@@ -70,6 +70,10 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 20
+	throwforce = 20 // Axes should probably have throw equal to two-handed force, as they're meant to be thrown.
+	throw_range = 5
+	throw_speed = 1
+	thrown_bclass = BCLASS_BLUNT
 	possible_item_intents = list(/datum/intent/axe/chop/stone, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	name = "stone axe"
 	desc = "A rough stone axe. Badly balanced."
@@ -146,11 +150,13 @@
 /obj/item/rogueweapon/stoneaxe/battle
 	force = 23
 	force_wielded = 30
+	throwforce = 30
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut/battle/onehanded, /datum/intent/axe/chop/battle/onehanded, /datum/intent/axe/bash/onehanded, /datum/intent/axe/bash/pommel)
 	name = "battle axe"
 	desc = "A steel battleaxe of war. Has a wicked edge."
 	icon_state = "battleaxe"
-	max_blade_int = 300
+	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel
 	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	minstr = 12
@@ -190,22 +196,26 @@
 	name = "axe"
 	force = 20
 	force_wielded = 26
+	throwforce = 26
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut/onehanded, /datum/intent/axe/chop/onehanded, /datum/intent/axe/bash/onehanded, /datum/intent/axe/bash/pommel)
 	desc = "A regular iron woodcutting axe."
 	icon_state = "axe"
-	max_blade_int = 400
+	max_blade_int = 300
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	wdefense = 2
 
 /obj/item/rogueweapon/stoneaxe/handaxe
-	force = 19
+	force = 20
+	throwforce = 20
+	thrown_bclass = BCLASS_CHOP
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash, /datum/intent/axe/bash/pommel)
 	name = "hatchet"
 	desc = "An iron hand axe."
 	icon_state = "hatchet"
 	minstr = 1
-	max_blade_int = 400
+	max_blade_int = 300
 	smeltresult = /obj/item/ingot/iron
 	gripped_intents = null
 	wdefense = 2
@@ -214,8 +224,9 @@
 	icon_state = "saxe"
 	force = 22
 	force_wielded = 28
+	throwforce = 28
+	thrown_bclass = BCLASS_CHOP
 	desc = "A steel woodcutting axe. Performs much better than its iron counterpart."
-	force = 26
 	max_blade_int = 500
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3

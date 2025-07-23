@@ -152,7 +152,9 @@
 	righthand_file = null
 	icon = 'icons/roguetown/weapons/32.dmi'
 	max_blade_int = 999999
+	blade_int = 999999 // Should spawn with max sharpness.
 	max_integrity = 999999
+	resistance_flags = INDESTRUCTIBLE // Special antag weapon, so it should never break.
 	force = 25
 	block_chance = 0
 	wdefense = 4

@@ -165,6 +165,12 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long
 
+/datum/anvil_recipe/weapons/steel/falchion
+	name = "Falchion (+1 Steel)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/sword/long/falchion
+
 /datum/anvil_recipe/weapons/steel/battleaxe
 	name = "Battle Axe (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
@@ -339,7 +345,7 @@
 	created_item = /obj/item/rogueweapon/shield/tower/metal
 
 /datum/anvil_recipe/weapons/iron/towershield
-	name = "Tower Shield (+1 Small Log)"
+	name = "Wooden Tower Shield (+1 Small Log)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/small)

@@ -73,10 +73,14 @@
 
 /obj/item/rogueweapon/huntingknife
 	force = 12
+	throwforce = 20 // Should be higher than base force, since knives are meant to be thrown.
+	throw_range = 7
+	throw_speed = 2 // Pretty fast!
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(/datum/intent/dagger/cut/knife, /datum/intent/dagger/thrust/knife, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	name = "hunting knife"
-	desc = "This survival knife might be able to get you through the wild."
+	desc = "This survival knife might be able to get you through the wild. \ It is made of iron."
 	icon_state = "huntingknife"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	item_state = "bone_dagger"
@@ -91,10 +95,8 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
-	throwforce = 12
 	wdefense = 3
 	wbalance = 1
-	thrown_bclass = BCLASS_CUT
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
 	can_cdg = TRUE
@@ -141,14 +143,13 @@
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
 	name = "cleaver"
-	desc = "A big, heavy knife designed to chop through meat with ease."
+	desc = "A big, heavy knife designed to chop through meat with ease. \ It is made of sturdy steel."
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	icon_state = "cleav"
 	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg','sound/combat/parry/bladed/bladedmedium (2).ogg','sound/combat/parry/bladed/bladedmedium (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
-	throwforce = 15
 	slot_flags = ITEM_SLOT_HIP
-	thrown_bclass = BCLASS_CHOP
+	thrown_bclass = BCLASS_CHOP // Can actually dismember limbs when thrown.
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/steel
 	can_cdg = FALSE
@@ -163,7 +164,6 @@
 	desc = "A swift and deadly combat knife."
 	possible_item_intents = list(/datum/intent/dagger/cut/combatknife, /datum/intent/dagger/thrust, /datum/intent/dagger/chop/cleaver/combatknife)
 	icon_state = "combatknife"
-	throwforce = 16
 	can_cdg = TRUE
 	can_assin = TRUE
 
@@ -207,6 +207,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/huntingknife/scissors
+	throwforce = 10
 	possible_item_intents = list(/datum/intent/dagger/thrust/knife, /datum/intent/dagger/cut, /datum/intent/snip)
 	max_integrity = 100
 	name = "iron scissors"
@@ -355,6 +356,7 @@
 	desc = "A crudely crafted knife made of stone."
 	icon_state = "stone_knife"
 	smeltresult = null
+	throwforce = 10
 	max_integrity = 50
 	max_blade_int = 50
 	wdefense = 1
@@ -362,7 +364,7 @@
 /obj/item/rogueweapon/huntingknife/elvish
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut)
 	name = "elvish dagger"
-	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
+	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too. \ It shines with the brilliance of silver."
 	force = 19
 	icon_state = "elfdagger"
 	item_state = "elfdag"
@@ -370,56 +372,6 @@
 	can_cdg = TRUE
 	can_assin = TRUE
 	var/last_used = 0
-
-/obj/item/rogueweapon/huntingknife/elvish/pickup(mob/user)
-	. = ..()
-	var/mob/living/carbon/human/H = user
-	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-	var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-	if(ishuman(H))
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't pick up the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
-
-/obj/item/rogueweapon/huntingknife/elvish/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
-	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
 
 /obj/item/rogueweapon/huntingknife/elvish/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
 	if(world.time < src.last_used + 100)

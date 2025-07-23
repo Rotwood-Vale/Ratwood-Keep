@@ -47,6 +47,9 @@
 /obj/item/rogueweapon/woodstaff
 	force = 10
 	force_wielded = 15
+	throwforce = 10
+	throw_range = 5
+	throw_speed = 1
 	possible_item_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/spear/bash) // The bash intent is kept for those that wish to train polearms, go easier on others or humiliate them.
 	gripped_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/mace/smash/wood, /datum/intent/spear/bash)
 	name = "wooden staff"
@@ -99,6 +102,7 @@
 	desc = "A blessed long silver staff adorned with an reinforced gold ornament atop. It is adorned with symbolism and icons of the Successors atop."
 	force = 25
 	force_wielded = 28
+	throwforce = 20 // It's a stick, but it's a fancy stick.
 	max_integrity = 300 // It's a one of a kind holy staff, no doubt Malum workshippers would go above and beyond to craft this thing to near perfection.
 	smeltresult = /obj/item/ingot/silver
 	icon_state = "aries"
@@ -130,40 +134,6 @@
 			if(loc == user)
 				user.adjust_fire_stacks(5)
 				user.IgniteMob()
-
-/obj/item/rogueweapon/woodstaff/aries/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
-	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-		var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-		if(V)
-			if(V.disguised)
-				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(40)
-				H.fire_act(1,10)
-			else
-				to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-				H.Knockdown(10)
-				H.Paralyze(10)
-				H.adjustFireLoss(40)
-				H.fire_act(1,10)
-		if(V_lord)
-			to_chat(H, span_userdanger("I can't equip the blessed silver, it REPELS ME!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(40)
-			H.fire_act(1,10)
-		if(W && W.transformed == TRUE)
-			to_chat(H, span_userdanger("I can't equip the silver, it is my BANE!"))
-			H.Knockdown(10)
-			H.Paralyze(10)
-			H.adjustFireLoss(25)
-			H.fire_act(1,10)
-
 
 /obj/item/rogueweapon/woodstaff/aries/funny_attack_effects(mob/living/target, mob/living/user = usr, nodmg)
 	if(world.time < src.last_used + 100)
@@ -212,9 +182,19 @@
 			src.last_used = world.time
 
 
-/obj/item/rogueweapon/spear /// TODO: Make a steel version that is more durable with penfactor 50, no, the billhook doesn't count.
+
+/obj/item/rogueweapon/woodstaff/aries/Initialize()
+	. = ..()
+	var/datum/magic_item/mundane/silver/effect = new
+	AddComponent(/datum/component/magic_item, effect)
+
+/obj/item/rogueweapon/spear // TODO: Make a steel version that is more durable with penfactor 50, no, the billhook doesn't count.
 	force = 18
 	force_wielded = 25
+	throwforce = 30
+	throw_range = 7
+	throw_speed = 1
+	thrown_bclass = BCLASS_STAB
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
@@ -254,6 +234,8 @@
 	desc = "A neat, steel hook."
 	icon_state = "billhook"
 	force_wielded = 30
+	throwforce = 25
+	throw_range = 5
 	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH)
 	gripped_intents = list(/datum/intent/spear/thrust/steel, SPEAR_CUT, SPEAR_BASH)
 	smeltresult = /obj/item/ingot/steel
@@ -266,8 +248,10 @@
 /obj/item/rogueweapon/spear/improvisedbillhook
 	force = 12
 	force_wielded = 25
+	throwforce = 18
+	throw_range = 5
 	name = "improvised billhook"
-	desc = "Looks hastily made."
+	desc = "Looks hastily made. \ It is made of iron."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
@@ -276,6 +260,7 @@
 /obj/item/rogueweapon/spear/stone
 	force = 15
 	force_wielded = 18
+	throwforce = 20
 	name = "stone spear"
 	desc = "This handmade spear is simple, but does the job."
 	icon_state = "stonespear"
@@ -299,6 +284,10 @@
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
+	throwforce = 30
+	throw_range = 5
+	throw_speed = 0.5
+	thrown_bclass = BCLASS_CUT
 	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(/datum/intent/spear/thrust/steel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
@@ -387,10 +376,13 @@
 /obj/item/rogueweapon/eaglebeak
 	force = 15
 	force_wielded = 30
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
-	desc = "A heavy polearm with a hammer on its end, topped with a spike."
+	desc = "A heavy polearm with a hammer on its end, topped with a spike. \ It is made of sturdy steel."
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -433,12 +425,21 @@
 
 /obj/item/rogueweapon/eaglebeak/lucerne
 	name = "lucerne"
-	desc = "A polehammer with a sharp pointy end."
+	desc = "A polehammer with a sharp pointy end. \ It is made of iron."
 	icon_state = "polehammer"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 	max_integrity = 115
+
+/datum/intent/spear/thrust/eaglebeak
+	penfactor = 20
+	damfactor = 0.9
+
+/datum/intent/mace/smash/eaglebeak
+	reach = 2
+	swingdelay = 12
+	clickcd = 14
 
 // BRONZE SPEARS
 // Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
@@ -461,10 +462,13 @@
 /obj/item/rogueweapon/greatsword
 	force = 12
 	force_wielded = 30
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	possible_item_intents = list(/datum/intent/sword/chop/onehanded, /datum/intent/sword/strike/onehanded) // Strike is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	name = "greatsword"
-	desc = "Might be able to chop anything in half!"
+	desc = "Might be able to chop anything in half! \ It is made of sturdy steel."
 	icon_state = "gsw"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -501,19 +505,22 @@
 
 /obj/item/rogueweapon/greatsword/zwei
 	name = "zweihander"
-	desc = "This is much longer than a common greatsword, and well balanced too!"
+	desc = "This is much longer than a common greatsword, and well balanced too! \ It is made of iron."
 	icon_state = "zwei"
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 200 // Less because it's made of iron.
 	wdefense = 4
 
 /obj/item/rogueweapon/estoc
 	name = "estoc"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
-	gaps in an opponent's armor. The hilt is wrapped tight in black leather."
+	gaps in an opponent's armor. The hilt is wrapped tight in black leather. \ It is made of sturdy steel."
 	icon_state = "estoc"
 	force = 14
 	force_wielded = 25
+	throwforce = 20
+	throw_range = 3
+	throw_speed = 0.5
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
 	pixel_x = -16
