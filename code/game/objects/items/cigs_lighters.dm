@@ -136,6 +136,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/roguetown/items/lighting.dmi'
 	heat = 1000
 	spitoutmouth = FALSE
+
+	grid_width = 32
+	grid_height = 32
+
 	var/dragtime = 100
 	var/nextdragtime = 0
 	var/lit = FALSE
@@ -280,10 +284,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 //		M.IgniteMob()
 	smoketime--
 	if(smoketime < 1)
-		if(iscarbon(loc))
-			var/mob/living/carbon/M = loc
+		if(ishuman(loc))
+			var/mob/living/carbon/human/M = loc
 			M.dropItemToGround(src, silent = TRUE)
-			M.mouth = new type_butt(M)
+			var/obj/item/butt = new type_butt(get_turf(M))
+			M.equip_to_slot_if_possible(butt, SLOT_MOUTH, bypass_equip_delay_self = TRUE)
 		else
 			new type_butt(location)
 		qdel(src)

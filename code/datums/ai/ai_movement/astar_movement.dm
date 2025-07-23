@@ -38,7 +38,7 @@
 
 			// this check if we're on exactly the next tile may be overly brittle for dense pawns who may get bumped slightly
 			// to the side while moving but could maybe still follow their path without needing a whole new path
-			if(get_turf(movable_pawn) == next_step)
+			if(get_turf(movable_pawn) == next_step && length(controller.movement_path))
 				controller.movement_path.Cut(1,2)
 			else
 				generate_path = TRUE

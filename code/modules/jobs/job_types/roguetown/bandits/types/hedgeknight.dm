@@ -27,7 +27,8 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	r_hand = /obj/item/rogueweapon/greatsword/zwei
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger = 1)
+	backl = /obj/item/gwstrap
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/rondel = 1)
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)

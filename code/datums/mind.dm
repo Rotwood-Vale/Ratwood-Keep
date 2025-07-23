@@ -96,6 +96,8 @@
 
 	var/list/notes = list() //RTD add notes button
 
+	var/list/special_people = list() // For characters whose text will display in a different colour when seen by this Mind
+
 	var/lastrecipe
 
 	var/datum/sleep_adv/sleep_adv = null
@@ -149,7 +151,12 @@
 		var/used_title = H.get_role_title()
 		if(!used_title)
 			used_title = "unknown"
+
+		var/datum/job/roguetown/job = SSjob.GetJob(H.job)
+		if (job && job.should_anonymise_job())
+			used_title = "Foreigner"
 		known_people[H.real_name]["FJOB"] = used_title
+
 		known_people[H.real_name]["FGENDER"] = H.gender
 		known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 		known_people[H.real_name]["FAGE"] = H.age
@@ -178,7 +185,12 @@
 						used_title = J.f_title
 				if(!used_title)
 					used_title = "unknown"
+
+				var/datum/job/roguetown/job = SSjob.GetJob(H.job)
+				if (job && job.should_anonymise_job())
+					used_title = "Foreigner"
 				M.known_people[H.real_name]["FJOB"] = used_title
+
 				M.known_people[H.real_name]["FGENDER"] = H.gender
 				M.known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 				M.known_people[H.real_name]["FAGE"] = H.age
@@ -859,3 +871,16 @@
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE)
 	sleep_adv.add_sleep_experience(skill, amt, silent)
 
+/datum/mind/proc/add_special_person(mob/M, special_colour)
+	if (!istext(special_colour))
+		return
+	if (!special_people[M.real_name])
+		special_people[M.real_name] = special_colour
+
+/datum/mind/proc/remove_special_person(mob/M)
+	if (special_people[M.real_name])
+		special_people -= M.real_name
+
+/datum/mind/proc/get_special_person_colour(mob/M)
+	if (special_people[M.real_name])
+		return special_people[M.real_name]

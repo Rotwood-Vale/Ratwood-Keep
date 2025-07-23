@@ -180,7 +180,7 @@
 		return
 	var/used_time = 100
 	if (H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if (!do_mob(user, M, used_time)) return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
@@ -202,7 +202,7 @@
 		if (W.woundpain > 30)
 			W.woundpain = 30
 
-/obj/item/natural/bundle/cloth/bandage 
+/obj/item/natural/bundle/cloth/bandage
 	name = "roll of bandages"
 	desc = "A bundle of bandages used to bind wounds. More effective than just cloth."
 	icon = 'icons/roguetown/items/surgery.dmi'
@@ -301,7 +301,7 @@
 		return
 	var/used_time = 70
 	if(H.mind)
-		used_time -= (H.mind.get_skill_level(/datum/skill/misc/treatment) * 10)
+		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if(!do_mob(user, M, used_time))
 		return

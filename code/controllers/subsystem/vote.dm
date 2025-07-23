@@ -158,6 +158,8 @@ SUBSYSTEM_DEF(vote)
 						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL] remain.</font>")
 						C.roundvoteend = TRUE
 						C.round_ends_at = (world.time - SSticker.round_start_time) + ROUND_END_TIME
+			if ("aspects")
+				SSticker.aspect_vote_result(.)
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -266,6 +268,9 @@ SUBSYSTEM_DEF(vote)
 				initiator_key = "Zizo"
 				choices.Add("Continue Playing","End Round")
 				vote_alert.file = 'sound/roundend/roundend-vote-sound.ogg'
+			if("aspects")
+				choices.Add(SSticker.aspect_vote_choices())
+				weighted = FALSE
 			else
 				return 0
 		mode = vote_type

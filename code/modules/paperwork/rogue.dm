@@ -217,6 +217,9 @@
 			return
 		if(signed)
 			return
-		M.add_stress(/datum/stressevent/confessed)
+		if(M.has_flaw(/datum/charflaw/addiction/godfearing))
+			M.add_stress(/datum/stressevent/confessedgood)
+		else
+			M.add_stress(/datum/stressevent/confessed)
 		signed = M.real_name
 		info = "THE GUILTY PARTY ADMITS THEIR SIN AND THE WEAKENING OF PSYDON'S HOLY FLOCK. THEY WILL REPENT AND SUBMIT TO ANY PUNISHMENT THE CLERGY DEEMS APPROPRIATE, OR BE RELEASED IMMEDIATELY. LET THIS RECORD OF THEIR SIN WEIGH ON THE ANGEL GABRIEL'S JUDGEMENT AT THE MANY-SPIKED GATES OF HEAVEN.<br/><br/>SIGNED,<br/><font color='red'>[signed]</font>"

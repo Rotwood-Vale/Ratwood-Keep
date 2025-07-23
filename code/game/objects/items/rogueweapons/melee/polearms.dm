@@ -1,6 +1,8 @@
+// Basic intents polearms.
 
 /datum/intent/spear/thrust
 	name = "thrust"
+	desc = "Thrusting and stabbing motions making them slightly more accurate than cuts while also having a way easier time penetrating armor."
 	blade_class = BCLASS_STAB
 	attack_verb = list("thrusts")
 	animname = "stab"
@@ -9,24 +11,35 @@
 	chargetime = 1.5
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 30
+	penfactor = 40 // Matches a dagger stab, but the raw damage makes up for it.
 	item_d_type = "stab"
+
+/datum/intent/spear/thrust/steel
+	penfactor = 50
 
 /datum/intent/spear/bash
 	name = "bash"
+	desc = "Hilt pommeling and blunt-front bashing motions making blunting through armor easier."
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
 	attack_verb = list("bashes", "clubs", "strikes")
-	penfactor = 10
+	penfactor = 15
 	damfactor = 0.8
 	item_d_type = "blunt"
 
+/datum/intent/spear/bash/woodstaff
+	damfactor = 1
+	icon_state = "instrike"
+	attack_verb = list("strikes", "whacks")
+
 /datum/intent/spear/cut
 	name = "cut"
+	desc = "Poke-slashing and cutting-across motions making this both slower and less damaging than proper stabs."
 	blade_class = BCLASS_CUT
 	attack_verb = list("cuts", "slashes")
 	icon_state = "incut"
 	damfactor = 0.8
+	swingdelay = 5 // Half a second to land, it has no charge up after all. (This delay is intent for pointy spears, not ones with blades)
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
 	item_d_type = "slash"
@@ -37,8 +50,8 @@
 	throwforce = 10
 	throw_range = 5
 	throw_speed = 1
-	possible_item_intents = list(SPEAR_BASH)
-	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
+	possible_item_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/spear/bash) // The bash intent is kept for those that wish to train polearms, go easier on others or humiliate them.
+	gripped_intents = list(/datum/intent/spear/bash/woodstaff, /datum/intent/mace/smash/wood, /datum/intent/spear/bash)
 	name = "wooden staff"
 	desc = "Not so heavy, perfect for beggars, Refugees and mages."
 	icon_state = "woodstaff"
@@ -52,20 +65,21 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	wdefense = 10
+	wdefense = 3
+	wieldedwdefense = 7
 	bigboy = TRUE
 	gripsprite = TRUE
 	associated_skill = /datum/skill/combat/polearms
 	metalizer_result = /obj/item/rogueweapon/spear/bronze
 
-// Allows blind carbons to examine if they click on an object using a wooden staff
+// Allows blind carbons to examine if they click on an object using a wooden staff.
 /obj/item/rogueweapon/woodstaff/pre_attack(atom/A, mob/living/user, params)
-	if(HAS_TRAIT(user, TRAIT_BLIND) && !user.cmode) //if is not used by a blind mob in combat mode it won't examine
-		var/list/exam = A.examine(user) //directly extracts the examine string without using the examinate proc
-		if(A != user) // avoids the message of user poking themselves
+	if(HAS_TRAIT(user, TRAIT_BLIND) && !user.cmode) // If is not used by a blind mob in combat mode it won't examine.
+		var/list/exam = A.examine(user) // Directly extracts the examine string without using the examinate proc.
+		if(A != user) // Avoids the message of user poking themselves.
 			src.visible_message(span_notice("[user] pokes [A] with [user.p_their()] wooden staff"))
 		if(exam)
-			to_chat(user, exam.Join("\n"))//relays the examine string to the user
+			to_chat(user, exam.Join("\n")) // Relays the examine string to the user.
 		return TRUE
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
@@ -89,7 +103,7 @@
 	force = 25
 	force_wielded = 28
 	throwforce = 20 // It's a stick, but it's a fancy stick.
-	max_integrity = 300 // From my code diving it was 200. It being unique to the Priest it should probably get this
+	max_integrity = 300 // It's a one of a kind holy staff, no doubt Malum workshippers would go above and beyond to craft this thing to near perfection.
 	smeltresult = /obj/item/ingot/silver
 	icon_state = "aries"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -174,14 +188,14 @@
 	var/datum/magic_item/mundane/silver/effect = new
 	AddComponent(/datum/component/magic_item, effect)
 
-/obj/item/rogueweapon/spear
+/obj/item/rogueweapon/spear // TODO: Make a steel version that is more durable with penfactor 50, no, the billhook doesn't count.
 	force = 18
 	force_wielded = 25
 	throwforce = 30
 	throw_range = 7
 	throw_speed = 1
 	thrown_bclass = BCLASS_STAB
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
+	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
 	desc = "This iron spear is great to impale goblins."
@@ -202,7 +216,9 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 5
+	wdefense = 3
+	thrown_bclass = BCLASS_STAB
+	throwforce = 25
 
 /obj/item/rogueweapon/spear/getonmobprop(tag)
 	. = ..()
@@ -225,7 +241,9 @@
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
 	minstr = 8
-	wdefense = 6
+	wdefense = 3
+	wieldedwdefense = 5
+	throwforce = 15
 
 /obj/item/rogueweapon/spear/improvisedbillhook
 	force = 12
@@ -237,7 +255,7 @@
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
-	wdefense = 4
+	throwforce = 10
 
 /obj/item/rogueweapon/spear/stone
 	force = 15
@@ -259,8 +277,9 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 4
-	max_integrity = 50
+	wdefense = 3
+	max_integrity = 100
+	throwforce = 20
 
 /obj/item/rogueweapon/halberd
 	force = 15
@@ -269,7 +288,7 @@
 	throw_range = 5
 	throw_speed = 0.5
 	thrown_bclass = BCLASS_CUT
-	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
+	possible_item_intents = list(/datum/intent/spear/thrust/steel, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(/datum/intent/spear/thrust/steel, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
 	desc = "A steel halberd, mostly used by town guards."
@@ -290,7 +309,12 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 3
+	wieldedwdefense = 6
+
+/datum/intent/spear/cut/halberd
+	damfactor = 0.9
+	swingdelay = 2.5
 
 /obj/item/rogueweapon/halberd/attack_right(mob/user)
 	if(locate(/obj/machinery/anvil) in (loc))
@@ -335,21 +359,19 @@
 
 
 /obj/item/rogueweapon/halberd/bardiche
-	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd, /datum/intent/axe/chop, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/halberd/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
-	desc = "A beautiful, iron variant of the halberd."
+	desc = "A beautiful, better suited for cutting and chopping variant of an halberd."
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 100
+	max_blade_int = 200
+	max_integrity = 150
 
-/datum/intent/spear/thrust/steel
-	penfactor = 50
-
-/datum/intent/spear/cut/halberd
-	damfactor = 0.9
-	swingdelay = 10
+/datum/intent/spear/cut/halberd/bardiche
+	damfactor = 1
+	swingdelay = 2
 
 /obj/item/rogueweapon/eaglebeak
 	force = 15
@@ -357,7 +379,7 @@
 	throwforce = 20
 	throw_range = 3
 	throw_speed = 0.5
-	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for less-lethal takedowns, only targets limbs.
+	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/smash/eaglebeak, SPEAR_BASH)
 	name = "eagle's beak"
 	desc = "A heavy polearm with a hammer on its end, topped with a spike. \ It is made of sturdy steel."
@@ -376,7 +398,18 @@
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE
-	wdefense = 6
+	wdefense = 2 // It's a heavy tipped weapon, it's hard to parry with.
+	wieldedwdefense = 5
+	max_integrity = 175 // Protecting this thing with safe parries is difficult.
+
+/datum/intent/spear/thrust/eaglebeak
+	penfactor = 20
+	damfactor = 0.9
+
+/datum/intent/mace/smash/eaglebeak
+	clickcd = 16 // Cool-down of 16 might seem cruel, but it is required considering the swift stance's ability to bypass parries and dodges if spammed on the previous 14 cool-down.
+	swingdelay = 12
+	reach = 2
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -396,7 +429,8 @@
 	icon_state = "polehammer"
 	force_wielded = 30
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 100
+	max_blade_int = 200
+	max_integrity = 115
 
 /datum/intent/spear/thrust/eaglebeak
 	penfactor = 20
@@ -408,18 +442,18 @@
 	clickcd = 14
 
 // BRONZE SPEARS
-//Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
+// Design goal: Bronze on par with Iron integrity wise, with low defense. However, it has high AP.
 
 /obj/item/rogueweapon/spear/bronze
 	name = "Bronze Spear"
 	desc = "A spear forged of bronze. Expensive but more durable than a regular iron one."
 	icon_state = "bronzespear"
 	max_blade_int = 100
-	possible_item_intents = list(/datum/intent/spear/thrust/bronze, SPEAR_BASH) //bash is for non-lethal takedowns, only targets limbs
+	possible_item_intents = list(/datum/intent/spear/thrust/bronze, SPEAR_BASH) // Bash is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
 	smeltresult = /obj/item/ingot/bronze
 	force = 20
 	force_wielded = 25
-	gripsprite = FALSE //someone really should make a grip sprite
+	gripsprite = FALSE /// TODO: Make a grip sprite for the bronze spear.
 	wdefense = 2
 
 /datum/intent/spear/thrust/bronze
@@ -431,8 +465,8 @@
 	throwforce = 20
 	throw_range = 3
 	throw_speed = 0.5
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for less-lethal takedowns, only targets limbs.
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/chop/onehanded, /datum/intent/sword/strike/onehanded) // Strike is for non-lethal takedowns, aim for the limbs for best effect. (Or aim for a lucky knockout to the head)
+	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike, /datum/intent/sword/chop)
 	name = "greatsword"
 	desc = "Might be able to chop anything in half! \ It is made of sturdy steel."
 	icon_state = "gsw"
@@ -450,6 +484,12 @@
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
 	wdefense = 5
+
+/datum/intent/sword/cut/zwei
+	reach = 2
+
+/datum/intent/sword/thrust/zwei
+	reach = 2
 
 /obj/item/rogueweapon/greatsword/getonmobprop(tag)
 	. = ..()
@@ -471,19 +511,12 @@
 	max_blade_int = 200 // Less because it's made of iron.
 	wdefense = 4
 
-
-/datum/intent/sword/cut/zwei
-	reach = 2
-
-/datum/intent/sword/thrust/zwei
-	reach = 2
-
 /obj/item/rogueweapon/estoc
 	name = "estoc"
 	desc = "A sword possessed of a quite long and tapered blade that is intended to be thrust between the \
 	gaps in an opponent's armor. The hilt is wrapped tight in black leather. \ It is made of sturdy steel."
 	icon_state = "estoc"
-	force = 12
+	force = 14
 	force_wielded = 25
 	throwforce = 20
 	throw_range = 3
@@ -493,16 +526,8 @@
 	pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	possible_item_intents = list(
-		/datum/intent/sword/chop,
-		/datum/intent/sword/strike,
-	)
-	gripped_intents = list(
-		/datum/intent/sword/thrust/estoc,
-		/datum/intent/sword/lunge,
-		/datum/intent/sword/chop,
-		/datum/intent/sword/strike,
-	)
+	possible_item_intents = list(/datum/intent/sword/strike/onehanded, /datum/intent/sword/thrust/onehanded)
+	gripped_intents = list(/datum/intent/sword/thrust/estoc, /datum/intent/sword/lunge, /datum/intent/sword/estoc_halfsword, /datum/intent/sword/strike)
 	bigboy = TRUE
 	gripsprite = TRUE
 	wlength = WLENGTH_GREAT
@@ -510,8 +535,40 @@
 	minstr = 8
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
+	max_integrity = 235
 	max_blade_int = 300
-	wdefense = 5
+	wdefense = 5.5
+
+/datum/intent/sword/thrust/estoc
+    name = "thrust"
+    penfactor = 60
+    recovery = 10 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
+    clickcd = 11
+
+/datum/intent/sword/lunge
+    name = "lunge"
+    icon_state = "inimpale"
+    attack_verb = list("lunges")
+    animname = "stab"
+    blade_class = BCLASS_STAB
+    hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+    penfactor = 40
+    damfactor = 1.3
+    chargetime = 10
+    recovery = 20 /// Notice: It isn't coded fully, does nothing as a result, can be found in intents.dm
+    clickcd = 8
+
+/datum/intent/sword/estoc_halfsword
+    name = "half-sword"
+    icon_state = "inpick"
+    attack_verb = list("picks", "impales")
+    animname = "strike"
+    blade_class = BCLASS_STAB
+    hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+    penfactor = 60
+    damfactor = 1.2
+    clickcd = 15
+    swingdelay = 10
 
 /obj/item/rogueweapon/estoc/getonmobprop(tag)
 	. = ..()
@@ -565,24 +622,3 @@
 					"wflip" = 8,
 					"eflip" = 0,
 					)
-
-/datum/intent/sword/thrust/estoc
-	name = "thrust"
-	penfactor = 50
-	recovery = 20
-	clickcd = 10
-
-
-/datum/intent/sword/lunge
-	name = "lunge"
-	icon_state = "inimpale"
-	attack_verb = list("lunges")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	reach = 2
-	penfactor = 30
-	damfactor = 1.2
-	chargetime = 5
-	recovery = 20
-	clickcd = 10

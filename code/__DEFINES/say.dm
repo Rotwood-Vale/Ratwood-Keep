@@ -23,6 +23,8 @@
 #define MODE_WHISPER "whisper"
 #define MODE_WHISPER_CRIT "whispercrit"
 
+#define MODE_SING "%"
+
 #define MODE_DEPARTMENT "department"
 #define MODE_KEY_DEPARTMENT "h"
 #define MODE_TOKEN_DEPARTMENT ":h"
@@ -53,6 +55,7 @@
 #define SPAN_REALLYBIG "reallybig"
 #define SPAN_COMMAND "command_headset"
 #define SPAN_CLOWN "clown"
+#define SPAN_SINGING "singing"
 
 #define SPAN_GEN "say"
 #define SPAN_DWARF "dwarf"

@@ -96,6 +96,7 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+		/datum/customizer/organ/ears/elf,
 		/datum/customizer/organ/testicles/human,
 		/datum/customizer/organ/penis/human,
 		/datum/customizer/organ/breasts/human,
@@ -173,4 +174,4 @@
 	var/datum/component/darkling/darkling_component = C.GetComponent(__IMPLIED_TYPE__)
 	if(darkling_component)
 		//Cleanup, in case you somehow change species. Like becoming a skeleton.
-		darkling_component.RemoveComponent()
+		qdel(darkling_component)

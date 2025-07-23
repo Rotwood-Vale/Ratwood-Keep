@@ -18,6 +18,9 @@
 	var/deploy_speed = 2 SECONDS
 	resistance_flags = FLAMMABLE
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/bait/Initialize()
 	. = ..()
 	check_counter = world.time
@@ -86,7 +89,7 @@
 							var/mob/M = pickweight(attracted_types)
 							new M(T)
 							if(prob(66))
-								new /obj/item/storage/roguebag/crafted(T)
+								new /obj/item/storage/roguebag(T)
 							else
 								new /obj/item/natural/cloth(T)
 							qdel(src)

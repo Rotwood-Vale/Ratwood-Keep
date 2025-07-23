@@ -11,7 +11,7 @@
 		"I WILL NOT LIVE IN YOUR WALLS!",
 		"I WILL NOT FOLLOW YOUR RULES!",
 	)
-	var/favor = 50
+	var/favor = 100
 	var/totaldonated = 0
 
 /datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
@@ -49,7 +49,10 @@
 	return
 
 /datum/antagonist/bandit/proc/move_to_spawnpoint()
-	owner.current.forceMove(pick(GLOB.bandit_starts))
+	if(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement" && GLOB.bandit_starts_byos && GLOB.bandit_starts_byos.len)
+		owner.current.forceMove(pick(GLOB.bandit_starts_byos))
+	else
+		owner.current.forceMove(pick(GLOB.bandit_starts))
 
 /datum/antagonist/bandit/proc/equip_bandit()
 

@@ -128,6 +128,30 @@
 		if(INTENT_DODGE)
 			return checkdodge(intenty, attacker)
 
+/// origin is used for multi-step dodges like NPC jukes
+/mob/living/proc/get_dodge_destinations(mob/living/attacker, atom/origin = src)
+	var/dodge_dir = get_dir(attacker, origin)
+	if(!dodge_dir) // dir is 0, so we're on the same tile.
+		return null
+	var/list/dirry = list(turn(dodge_dir, -90), dodge_dir, turn(dodge_dir, 90))
+	// pick a random dir
+	var/list/turf/dodge_candidates = list()
+	for(var/dir_to_check in dirry)
+		var/turf/dodge_candidate = get_step(origin, dir_to_check)
+		if(!dodge_candidate)
+			continue
+		if(dodge_candidate.density)
+			continue
+		var/has_impassable_atom = FALSE
+		for(var/atom/movable/AM in dodge_candidate)
+			if(!AM.CanPass(src, dodge_candidate))
+				has_impassable_atom = TRUE
+				break
+		if(has_impassable_atom)
+			continue
+		dodge_candidates += dodge_candidate
+	return dodge_candidates
+
 /mob/living/proc/checkdodge(datum/intent/intenty, mob/living/attacker)
 	if(!candodge)
 		return FALSE
@@ -141,28 +165,12 @@
 	if(has_status_effect(/datum/status_effect/debuff/riposted))
 		return FALSE
 	last_dodge = world.time
+	if(intenty && !intenty.candodge)
+		return FALSE
 	var/dodge_dir = get_dir(src, attacker)
 	if(!dodge_dir) // dir is 0, so we're on the same tile.
 		return FALSE
-	if(intenty && !intenty.candodge)
-		return FALSE
-	var/list/dirry = list(turn(dodge_dir, -90), dodge_dir, turn(dodge_dir, 90))
-	// pick a random dir
-	var/list/turf/dodge_candidates = list()
-	for(var/dir_to_check in dirry)
-		var/turf/dodge_candidate = get_step(src, dir_to_check)
-		if(!dodge_candidate)
-			continue
-		if(dodge_candidate.density)
-			continue
-		var/has_impassable_atom = FALSE
-		for(var/atom/movable/AM in dodge_candidate)
-			if(!AM.CanPass(attacker, dodge_candidate))
-				has_impassable_atom = TRUE
-				break
-		if(has_impassable_atom)
-			continue
-		dodge_candidates += dodge_candidate
+	var/list/turf/dodge_candidates = get_dodge_destinations(attacker)
 	if(!length(dodge_candidates))
 		to_chat(src, span_boldwarning("There's nowhere to dodge to!"))
 		return FALSE

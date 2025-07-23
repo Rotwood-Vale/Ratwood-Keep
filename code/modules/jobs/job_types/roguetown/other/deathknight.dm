@@ -32,6 +32,9 @@
 			M.mind.special_role = "Death Knight"
 			M.mind.assigned_role = "Death Knight"
 			M.mind.current.job = null
+			for(var/datum/mind/vampire in C.vampires)
+				if (vampire.special_role == "Vampire Lord")
+					M.mind.add_special_person(vampire.current, "#DC143C")
 		if(H.dna && H.dna.species)
 			H.dna.species.species_traits |= NOBLOOD
 			H.dna.species.soundpack_m = new /datum/voicepack/skeleton()

@@ -20,18 +20,13 @@
 	..()
 	H.adjust_blindness(-3)
 
-	var/classes
-
-	if(H.gender == MALE && !isdarkelf(H )|| H.gender == FEMALE && isdarkelf(H))
-		classes = list("Disgraced Lord", "Failed Condottiero")
-	else
-		classes = list("Widowed Lady")
+	var/list/classes = list("Widowed Consort", "Disgraced Noble", "Failed Condottiero")
 
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
 
-		if("Disgraced Lord")
+		if("Disgraced Noble")
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
@@ -63,13 +58,13 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 
-		if("Widowed Lady")
+		if("Widowed Consort")
 			H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
@@ -82,13 +77,17 @@
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel, /obj/item/storage/belt/rogue/pouch/coins/rich = 1)
 			neck = /obj/item/clothing/neck/roguetown/leather
 			id = /obj/item/clothing/ring/silver
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
 			r_hand = /obj/item/rogueweapon/woodstaff
-			pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
-			armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 			head = /obj/item/clothing/head/roguetown/hatblu
 			cloak = /obj/item/clothing/cloak/raincloak/purple
 			beltl = /obj/item/storage/belt/rogue/pouch/food
+			if(H.gender == MALE)
+				pants = /obj/item/clothing/under/roguetown/tights/purple
+				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
+			else
+				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/purple
+				pants = /obj/item/clothing/under/roguetown/tights/stockings/silk/white
+				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
 			H.change_stat("intelligence", 2)
 			H.change_stat("perception", 1)
 			H.change_stat("strength", -1)

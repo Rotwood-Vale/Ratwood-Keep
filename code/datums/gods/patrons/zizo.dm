@@ -4,6 +4,7 @@
 	desc = "A long time ago, a single woman achieved the impossible: she challenged God, and won."
 	worshippers = "Necromancers, The Power-hungry,  Cultists and Heretics of all kinds"
 	mob_traits = list(TRAIT_ZIZO_MARKED) // lets you see other zizoids + no negative moodlet
+	t0 = /obj/effect/proc_holder/spell/targeted/touch/orison
 	associated_faith = /datum/faith/zizo
 	confess_lines = list(
 		"PRAISE ZIZO!",

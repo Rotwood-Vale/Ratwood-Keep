@@ -13,7 +13,8 @@ That said, mage apprentices for the most part, start off with 5 (8 if counting t
 Court magos has a total of 17 points, To allow for picking of their 'strongest' spell, between greater fireball, meteor, and sundering lightning.
 Theoretically someone could get 12 spell points to get one of those spells, in 4 nights, but odds are, it's unlikely.
 Unless of course, they went heavy into the gameplay loop, and got a better book. And even then, it's likely only feasible for apprentices given modifiers.
--Radiantflash */
+-Radiantflash
+*/
 //A spell to choose new spells, upon spawning or gaining levels - NOTE: Please keep this spell at the top of the file to make it better for organization -RadiantFlash
 /obj/effect/proc_holder/spell/invoked/learnspell
 	name = "Attempt to learn a new spell"
@@ -22,6 +23,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	overlay_state = "book1"
 	chargedrain = 0
 	chargetime = 0
+	var/maxspells = 12 //Handles how many spells you can have (12 is the maximum, and mages always start with 2 spells, so in reality you will want to add 2 to any number you cap mage spells at, e.g 5 is actually 3 learnable spells)
+
+/obj/effect/proc_holder/spell/invoked/learnspell/weak
+	maxspells = 7 //5 max.
 
 /obj/effect/proc_holder/spell/invoked/learnspell/cast(list/targets, mob/living/user)
 	. = ..()
@@ -32,10 +37,13 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		SPELL_FIREBALLGREATER,		// 13 cost	combat, AOE heavy single target damage
 		SPELL_METEOR,				// 13 cost	combat, LARGE AOE, light damage.
 		SPELL_SUNDER_LIGHTNING,		// 13 cost	combat, upper level AOE hard stunning damage
+		SPELL_BLINK_ROG,			// 4 cost	mobility, teleport 7 tiles, with restrictions, also up or down Zs.
+		SPELL_ACID_SPLASH,			// 3 cost	combat, low (10) initial damage, potential of ~80 over duration. Burn is AWFUL. Primarily for crippling / paincrit.
 		SPELL_FIREBALL,				// 3 cost	combat, damaging AOE + damages worn/held things
 		SPELL_LIGHTNINGBOLT,		// 3 cost	combat, single target damage, knockdown
 		SPELL_SPITFIRE,				// 3 cost	combat, burstfire single target damage
 		SPELL_ARCANEBOLT,			// 3 cost	combat, single target single shot damage
+		SPELL_GUIDED_BOLT,			// 3 cost	combat, single target, arced arcane bolt, 5 less damage, very slow
 		SPELL_FROSTBOLT,			// 3 cost	combat, single target, single shot lesser damage w/ slow
 		SPELL_LIGHTNINGLURE,		// 3 cost	combat, ranged single target hard stun w/ time requirement.
 		SPELL_SLOWDOWN_SPELL_AOE,	// 3 cost	utility hold spell. Target unable to move, but can fight.
@@ -103,10 +111,10 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	var/totalspellcount = 0
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		totalspellcount++
-	if(totalspellcount >= 12)
+	if(totalspellcount >= maxspells)
 		to_chat(user,span_warning("You can not memorize more spells then you already have!"))
 		return
-	var/spellsleft = 12 - totalspellcount
+	var/spellsleft = maxspells - totalspellcount
 	to_chat(user,span_warning("You can memorize [spellsleft] more spells."))
 	var/choice = input("Choose a spell, points left: [user.mind.spell_points - user.mind.used_spell_points]") as null|anything in choices
 	var/obj/effect/proc_holder/spell/item = choices[choice]
@@ -124,6 +132,7 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 	else
 		user.mind.used_spell_points += item.cost
 		user.mind.AddSpell(new item)
+
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
 	name = "Bolt of Lightning"
@@ -1878,6 +1887,273 @@ Unless of course, they went heavy into the gameplay loop, and got a better book.
 		return TRUE
 	revert_cast()
 	return FALSE
+
+//Blink
+/obj/effect/proc_holder/spell/invoked/blink
+	name = "Blink"
+	desc = "Teleport to a targeted location within your field of view. Can blink onto another plane, or remain on the same, with a 7 tile range."
+	school = "conjuration"
+	cost = 4//Z blinking. 7 tile range.
+	releasedrain = 90
+	chargedrain = 1
+	chargetime = 5 SECONDS
+	charge_max = 14 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	charging_slowdown = 2
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	overlay_state = "blink"//AP Shadowstep icon. For now.
+	xp_gain = TRUE
+	invocation = "Nictare Teleporto!!"
+	invocation_type = "shout"
+	var/max_range = 7
+	var/phase = /obj/effect/temp_visual/blink
+
+/obj/effect/temp_visual/blink
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "hierophant_blast"
+	name = "teleportation magic"
+	desc = "Get out of the way!"
+	randomdir = FALSE
+	duration = 4 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/effect/temp_visual/blink/Initialize(mapload, new_caster)
+	. = ..()
+	var/turf/src_turf = get_turf(src)
+	playsound(src_turf,'sound/magic/blink.ogg', 65, TRUE, -5)
+
+/obj/effect/proc_holder/spell/invoked/blink/cast(list/targets, mob/user = usr)
+	var/turf/T = get_turf(targets[1])
+	var/turf/start = get_turf(user)
+
+	if(!T)
+		to_chat(user, span_warning("Invalid target location!"))
+		revert_cast()
+		return
+
+//Remove the commenting out below if you want Z jumping disabled again.
+/*
+	if(T.z != start.z)
+		to_chat(user, span_warning("I can only teleport on the same plane!"))
+
+		revert_cast()
+		return
+*/
+
+	if(istransparentturf(T))
+		to_chat(user, span_warning("I cannot teleport to the open air!"))
+		revert_cast()
+		return
+
+	if(T.density)
+		to_chat(user, span_warning("I cannot teleport into a wall!"))
+		revert_cast()
+		return
+
+	// Check range limit
+	var/distance = get_dist(start, T)
+	if(distance > max_range)
+		to_chat(user, span_warning("That location is too far away! I can only blink up to [max_range] tiles."))
+		revert_cast()
+		return
+
+	// Display a more obvious preparation message
+	user.visible_message(span_warning("<b>[user]'s body begins to shimmer with arcane energy as [user.p_they()] prepare[user.p_s()] to blink!</b>"),
+						span_notice("<b>I focus my arcane energy, preparing to blink across space!</b>"))
+
+	// Check if there's a wall in the way, but exclude the target turf
+	var/list/turf_list = getline(start, T)
+	// Remove the last turf (target location) from the check
+	if(length(turf_list) > 0)
+		turf_list.len--
+
+	for(var/turf/turf in turf_list)
+		if(turf.density)
+			to_chat(user, span_warning("I cannot blink through walls!"))
+			revert_cast()
+			return
+
+	// Check for doors and bars in the path
+	for(var/turf/traversal_turf in turf_list)
+		// Check for mineral doors
+		for(var/obj/structure/mineral_door/door in (traversal_turf.contents + T.contents))
+			if(door.density)
+				to_chat(user, span_warning("I cannot blink through doors!"))
+				revert_cast()
+				return
+
+		// Check for windows
+		for(var/obj/structure/roguewindow/window in (traversal_turf.contents + T.contents))
+			if(window.density && !window.climbable)
+				to_chat(user, span_warning("I cannot blink through windows!"))
+				revert_cast()
+				return
+
+		// Check for bars
+		for(var/obj/structure/bars/bars in (traversal_turf.contents + T.contents))
+			if(bars.density)
+				to_chat(user, span_warning("I cannot blink through bars!"))
+				revert_cast()
+				return
+
+		// Check for gates
+		for (var/obj/structure/gate/gate in (traversal_turf.contents + T.contents))
+			if(gate.density)
+				to_chat(user, span_warning("I cannot blink through gates!"))
+				revert_cast()
+				return
+
+	var/obj/spot_one = new phase(start, user.dir)
+	var/obj/spot_two = new phase(T, user.dir)
+
+	spot_one.Beam(spot_two, "purple_lightning", time = 1.5 SECONDS)
+	playsound(T, 'sound/magic/blink.ogg', 25, TRUE)
+
+	if(user.buckled) // don't stay remote-buckled to the guillotine/pillory
+		user.buckled.unbuckle_mob(user, TRUE)
+	do_teleport(user, T, channel = TELEPORT_CHANNEL_MAGIC)
+
+	user.visible_message(span_danger("<b>[user] vanishes in a mysterious purple flash!</b>"), span_notice("<b>I blink through space in an instant!</b>"))
+	return TRUE
+
+//Guided Bolt
+/obj/effect/proc_holder/spell/invoked/projectile/guided_bolt
+	name = "Guided Bolt"
+	desc = "Shoot out a bolt of arcyne magic in an indirect arc."
+	clothes_req = FALSE
+	range = 12
+	projectile_type = /obj/projectile/energy/guided_bolt
+	overlay_state = "force_dart"
+	sound = list('sound/magic/vlightning.ogg')
+	active = FALSE
+	releasedrain = 20
+	chargedrain = 1
+	chargetime = 7
+	charge_max = 8 SECONDS
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	invocation = "Sagitta Dirigitur!"
+	invocation_type = "shout"
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	cost = 3
+	xp_gain = TRUE
+
+/obj/projectile/energy/guided_bolt
+	name = "Guided Bolt"
+	icon_state = "arcane_barrage"
+	damage = 40
+	damage_type = BRUTE
+	armor_penetration = 10
+	woundclass = BCLASS_STAB
+	arcshot = TRUE
+	nodamage = FALSE
+	hitsound = 'sound/blank.ogg'
+	speed = 5
+
+/obj/projectile/energy/guided_bolt/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/living/carbon/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+	else
+		return
+
+//Acid Splash
+/obj/effect/proc_holder/spell/invoked/projectile/acidsplash
+	name = "Acid Splash"
+	desc = "A slow-moving glob of acid that sprays over an area upon impact."
+	range = 8
+	projectile_type = /obj/projectile/magic/acidsplash
+	overlay_state = "acid_splash"//AP icon.
+	sound = list('sound/magic/whiteflame.ogg')
+	active = FALSE
+
+	releasedrain = 30
+	chargedrain = 1
+	chargetime = 7
+	charge_max = 16 SECONDS//While burns are awful, it's still a high damage spell. AOE, too. Great for paincrit and crippling.
+
+	warnie = "spellwarning"
+	no_early_release = TRUE
+	movement_interrupt = FALSE
+	antimagic_allowed = FALSE
+	invocation = "Tabificus!"
+	invocation_type = "shout"
+	charging_slowdown = 3
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
+	cost = 3//Again, burn damage. Not great. Also 10 damage on the actual projectile. BUT, mass paincrit and crippling. So...
+
+	xp_gain = TRUE
+	miracle = FALSE
+
+/obj/effect/proc_holder/spell/self/acidsplash/cast(mob/user = usr)
+	var/mob/living/target = user
+	target.visible_message(span_warning("[target] hurls a caustic bubble!"), span_notice("You hurl a caustic bubble!"))
+	. = ..()
+
+/obj/projectile/magic/acidsplash
+	name = "acid bubble"
+	icon_state = "green_laser"
+	damage = 10
+	damage_type = BURN
+	woundclass = BCLASS_BURN//Doesn't really do ANYTHING as of now.
+	flag = "magic"
+	range = 15
+	speed = 5 //higher is slower
+	var/aoe_range = 1
+
+/obj/projectile/magic/acidsplash/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	var/turf/T = get_turf(src)
+	playsound(src, 'sound/misc/drink_blood.ogg', 100)
+
+	for(var/mob/living/L in range(aoe_range, get_turf(src))) //apply damage over time to mobs
+		if(!L.anti_magic_check())
+			var/mob/living/carbon/M = L
+			M.apply_status_effect(/datum/status_effect/buff/acidsplash)
+			new /obj/effect/temp_visual/acidsplash(get_turf(M))
+	for(var/turf/turfs_in_range in range(aoe_range+1, T)) //make a splash
+		new /obj/effect/temp_visual/acidsplash(T)
+
+/datum/status_effect/buff/acidsplash
+	id = "acid splash"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/acidsplash
+	duration = 20 SECONDS
+
+/datum/status_effect/buff/acidsplash/on_apply()
+	. = ..()
+	owner.playsound_local(get_turf(owner), 'sound/misc/lava_death.ogg', 35, FALSE, pressure_affected = FALSE)
+	owner.visible_message(span_warning("[owner] is covered in acid!"), span_danger("I am covered in acid!"))
+	owner.emote("agony")
+
+/datum/status_effect/buff/acidsplash/tick()
+	var/mob/living/target = owner
+	target.adjustFireLoss(5)
+
+/atom/movable/screen/alert/status_effect/buff/acidsplash
+	name = "Acid Burn"
+	desc = "My skin is burning!"
+	icon_state = "debuff"
+
+/obj/effect/temp_visual/acidsplash
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "greenshatter2"
+	name = "horrible acrid brine"
+	desc = "Best not touch this."
+	randomdir = TRUE
+	duration = 1 SECONDS
+	layer = ABOVE_ALL_MOB_LAYER
 
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK

@@ -30,7 +30,7 @@
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			head = /obj/item/clothing/head/roguetown/chaperon
 			cloak = /obj/item/clothing/cloak/raincloak/blue
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
@@ -69,7 +69,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 			shoes = /obj/item/clothing/shoes/roguetown/armor
 			pants = /obj/item/clothing/under/roguetown/trou/leather

@@ -24,7 +24,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
@@ -53,7 +53,7 @@
 		if("2x Dagger") //Rogue
 			cloak = /obj/item/clothing/cloak/raincloak
 			beltl = /obj/item/rogueweapon/huntingknife/idagger
-			beltr = /obj/item/rogueweapon/huntingknife/idagger
+			beltr = /obj/item/rogueweapon/huntingknife/idagger/misericorde
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1)
 			H.change_stat("speed", 2)

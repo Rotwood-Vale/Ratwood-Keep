@@ -50,7 +50,7 @@
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/misericorde = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/maces, 6, TRUE)
@@ -67,7 +67,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 3, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
 		H.change_stat("perception", 1)
 		H.change_stat("intelligence", 4)
 		H.change_stat("endurance", 1)

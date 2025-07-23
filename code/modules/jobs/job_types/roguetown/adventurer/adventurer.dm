@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/adventurer
 	title = "Adventurer"
-	flag = MIGRANT
+	//flag = MIGRANT
 	tutorial = "Hero of nothing, adventurer by trade. \
 	Whatever led you to this fate is up to the wind to decide, \
 	and you've never fancied yourself for much other than the thrill. \
@@ -16,7 +16,8 @@
 
 	outfit = null
 	outfit_female = null
-
+	total_positions = 20
+	spawn_positions = 20
 	selection_color = JCOLOR_FOREIGNER
 	show_in_credits = TRUE
 	min_pq = 0
@@ -24,6 +25,7 @@
 
 	subclass_cat_rolls = list(CTAG_ADVENTURER = 15)
 
+	display_order = JDO_FOREIGNER
 	wanderer_examine = TRUE
 	foreign_examine = TRUE
 	advjob_examine = TRUE

@@ -41,7 +41,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/armor/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
 	backr = /obj/item/gun/ballistic/firearm/flintgonne
-	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask = 1, /obj/item/rogueweapon/huntingknife = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
+	backpack_contents = list(/obj/item/storage/keyring/mercenary = 1, /obj/item/powderflask = 1, /obj/item/rogueweapon/huntingknife/idagger/misericorde = 1, /obj/item/flint = 1, /obj/item/bedroll = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1)
 
 
 	//Gone are the days of the Grenzelhoft whitewashing forcefields
@@ -69,7 +69,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 3)

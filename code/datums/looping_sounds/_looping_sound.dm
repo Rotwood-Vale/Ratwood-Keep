@@ -14,6 +14,10 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 
 /datum/sound_group/fire_loop
 	channel_count = 150
+
+/datum/sound_group/instruments
+	channel_count = 10
+	
 /*
 	parent	(the source of the sound)			The source the sound comes from
 

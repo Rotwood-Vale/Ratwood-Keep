@@ -2,14 +2,13 @@
 	name = "dye bin"
 	desc = "A bin with water."
 	icon = 'icons/roguetown/misc/structure.dmi'
-	icon_state = "dye_bin"
+	icon_state = "dye_bin_full"
 	density = TRUE
 	anchored = FALSE
 	max_integrity = 150
 	drag_slowdown = 2
 	throw_speed = 1
 	throw_range = 1
-	var/berry_charges = 0
 	var/atom/movable/inserted
 	var/list/allowed_types = list(
 			/obj/item/clothing,
@@ -17,6 +16,7 @@
 			/obj/item/bedroll,
 			)
 
+	var/list/used_colors
 	var/activecolor = "#FFFFFF"
 	var/static/list/selectable_colors = list(
 	"Royal White" = "#ffffff",
@@ -65,29 +65,16 @@
 
 /obj/structure/dye_bin/examine(mob/user)
 	. = ..()
-	if(berry_charges > 0)
-		. += span_info("There's some colorful dyes floating inside")
-	else
-		. += span_info("There's no dyes inside")
 
 /obj/structure/dye_bin/update_icon()
 	. = ..()
-	if(berry_charges > 0)
-		icon_state = "dye_bin_full"
-	else
-		icon_state = "dye_bin"
+	icon_state = "dye_bin_full"
 
 /obj/structure/dye_bin/Destroy()
 	inserted.forceMove(drop_location())
 	return ..()
 
 /obj/structure/dye_bin/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
-		to_chat(user, span_notice("I squeeze \the [I] into some colorful dye."))
-		berry_charges += 5
-		update_icon()
-		qdel(I)
-		return
 	if(is_type_in_list(I, allowed_types))
 		if(contents.len)
 			to_chat(user, "<span class='warning'>Something is in \the [name]!</span>")
@@ -98,8 +85,13 @@
 		user.visible_message("<span class='notice'>[user] inserts [I] into the [src].</span>")
 
 		inserted = I
+		ui_interact(user)
 	else
 		return ..()
+
+/obj/structure/dye_bin/attack_hand(mob/living/user)
+	ui_interact(user)
+
 
 /obj/structure/dye_bin/AllowDrop()
 	return FALSE
@@ -111,13 +103,11 @@
 	else
 		dat += "<font color='#777777'> Item inserted:</font> <i><font color='#C3C3C3'<i>[inserted.name]</i></font> "
 		dat += "<A href='?src=\ref[src];eject=1'>(Remove)</A><BR><BR>"
-		if(berry_charges <= 0)
-			dat += "<font color='#D25050'>There's no dye...</font>"
-		else
-			dat += "<b> <font color='[activecolor]'>&#10070 ACTIVE COLOR &#10070</font></b><BR>"
-			dat += "<A href='?src=\ref[src];select=1'>(Mix a color)</A> -- "
-			dat += "<A href='?src=\ref[src];paint=1'>(Rub the dyes in)</A>--"
-			dat += "<font color='#EFEFEF'><A href='?src=\ref[src];clear=1'>(Bleach it)</A></font>"
+
+		dat += "<b> <font color='[activecolor]'>&#10070 ACTIVE COLOR &#10070</font></b><BR>"
+		dat += "<A href='?src=\ref[src];select=1'>(Mix a color)</A> -- "
+		dat += "<A href='?src=\ref[src];paint=1'>(Rub the dyes in)</A>--"
+		dat += "<font color='#EFEFEF'><A href='?src=\ref[src];clear=1'>(Bleach it)</A></font>"
 	dat += "</center>"
 	var/datum/browser/menu = new(user, "colormate","<center> Dye Bucket</center>", 400, 170, src)
 	menu.set_content(dat.Join(""))
@@ -135,43 +125,32 @@
 		return
 
 	if(href_list["select"])
-		var/choice = input(usr,"Mix a color:","Dyes",null) as null|anything in selectable_colors
-		if(!choice)
-			return
-		activecolor = selectable_colors[choice]
+		var/choice
+		if(alert(usr, "Input Choice", "Primary Dye", "Color Wheel", "Color Preset") != "Color Wheel")
+			choice = input(usr, "Choose your dye:", "Dyes", null) as null|anything in selectable_colors
+			if(!choice)
+				return
+			activecolor = selectable_colors[choice]
+		else
+			activecolor = sanitize_hexcolor(color_pick_sanitized(usr, "Choose your dye:", "Dyes", choice ? choice : activecolor), 6, TRUE)
+			if(activecolor == "#000000")
+				activecolor = "#FFFFFF"
 		ui_interact(user)
 
 	if(href_list["paint"])
 		if(!inserted)
 			return
-		if(berry_charges <= 0)
-			ui_interact(user)
-			return
+
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		if(!do_after(user, 3 SECONDS, target = src))
-			return
-		if(berry_charges <= 0)
-			return
 		inserted.add_atom_colour(activecolor, FIXED_COLOUR_PRIORITY)
-		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		berry_charges--
 		update_icon()
 		ui_interact(user)
 
 	if(href_list["clear"])
 		if(!inserted)
 			return
-		if(berry_charges <= 0)
-			ui_interact(user)
-			return
 		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		if(!do_after(user, 3 SECONDS, target = src))
-			return
-		if(berry_charges <= 0)
-			return
 		inserted.remove_atom_colour(FIXED_COLOUR_PRIORITY)
-		playsound(src, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 50, FALSE)
-		berry_charges--
 		update_icon()
 		ui_interact(user)
 
@@ -181,3 +160,25 @@
 		inserted.forceMove(drop_location())
 		inserted = null
 		ui_interact(user)
+
+
+/proc/color_pick_sanitized(mob/user, description, title, default_value, min_tag = 0.07, max_tag = 0.80)
+	var/color = input(user, description, title, default_value) as color|null
+	var/good = TRUE
+	if(!color)
+		return
+	color = sanitize_hexcolor(color)
+	var/list/hsl = rgb2hsl(hex2num(copytext(color,1,3)),hex2num(copytext(color,3,5)),hex2num(copytext(color,5,7)))
+	if(hsl[3] < min_tag)
+		to_chat(user, span_warning("The picked color is too dark! Raising Luminosity to minimum 20%."))
+		hsl[3] = min_tag
+		good = FALSE
+	if(hsl[2] > max_tag)
+		to_chat(user, span_warning("The picked color is too bright! Lowering Saturation to maximum 80%."))
+		hsl[2] = max_tag
+		good = FALSE
+	if(!good)
+		var/list/rgb = hsl2rgb(arglist(hsl))
+		color = sanitize_hexcolor("[num2hex(rgb[1])][num2hex(rgb[2])][num2hex(rgb[3])]")
+
+	return color

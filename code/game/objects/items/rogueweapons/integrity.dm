@@ -1,9 +1,9 @@
 /obj/item
-	/// Current blade integrity
+	/// Current blade integrity.
 	var/blade_int = 0
-	/// Blade integrity at which dismemberment reaches 100% effectiveness
+	/// Blade integrity at which dismemberment reaches 100% effectiveness.
 	var/dismember_blade_int = 0
-	/// Maximum blade integrity
+	/// Maximum blade integrity, how sharp the blade is, taking it longer to dull out in precentage.
 	var/max_blade_int = 0
 
 /obj/item/proc/remove_bintegrity(amt as num)

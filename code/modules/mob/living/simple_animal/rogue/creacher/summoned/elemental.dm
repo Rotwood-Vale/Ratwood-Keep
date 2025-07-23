@@ -249,7 +249,8 @@
 	if(!target)
 		return
 	yeet(target)
-	return target.attack_animal(src)
+	if(!QDELETED(target))
+		return target.attack_animal(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden/proc/yeet(target)
 	if(isliving(target))
@@ -340,7 +341,8 @@
 	if(!target)
 		return
 	addtimer(CALLBACK(src,PROC_REF(yeet),target), 1 SECONDS)
-	return target.attack_animal(src)
+	if(!QDELETED(target))
+		return target.attack_animal(src)
 
 /obj/effect/temp_visual/marker
 	icon = 'icons/effects/effects.dmi'

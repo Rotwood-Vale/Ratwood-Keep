@@ -36,7 +36,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(2,3), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.change_stat("strength", 2)
 			H.change_stat("endurance", 2) // Slightly worse stats since they're now actually skilled
 			H.change_stat("constitution", 1)
@@ -47,6 +47,7 @@
 			belt = /obj/item/storage/belt/rogue/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+			backpack_contents = list(/obj/item/recipe_book/survival = 1,)
 			if(prob(70))
 				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 			else if(prob(50))
@@ -88,7 +89,7 @@
 			H.mind.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/misc/riding, pick(2,3), TRUE)
-			H.mind.adjust_skillrank(/datum/skill/misc/treatment, 1, TRUE)
+			H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 			H.change_stat("strength", 2) 
 			H.change_stat("endurance", 1)// Weaker endurance compared to a traditional warrior/soldier. Smarter due to study of rare magical beasts.

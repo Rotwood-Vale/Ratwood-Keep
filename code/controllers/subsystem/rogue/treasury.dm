@@ -36,7 +36,11 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/Initialize()
 	treasury_value = rand(800,1500)
+	// If on Build Your Settlement map, set to 200-400
+	if(SSmapping && SSmapping.config && SSmapping.config.map_name == "Build Your Settlement")
+		treasury_value = rand(200,400)
 	queens_tax = pick(0.09, 0.15, 0.21, 0.30)
+
 
 	for(var/path in subtypesof(/datum/roguestock/bounty))
 		var/datum/D = new path
@@ -82,14 +86,11 @@ SUBSYSTEM_DEF(treasury)
 		amt_to_generate = amt_to_generate - (amt_to_generate * queens_tax)
 		amt_to_generate = round(amt_to_generate)
 		give_money_treasury(amt_to_generate, "wealth horde")
-		var/people_told = 0
 		for(var/mob/living/carbon/human/X in GLOB.human_list)
-			switch(X.job)
-				if("Duke", "Steward", "Clerk")
-					people_told += 1
-					send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
-					if(people_told > 3)
-						return
+			if(!(X.mind && X.stat != DEAD))
+				continue
+			if(X.job in list("Duke", "Steward", "Clerk"))
+				send_ooc_note("Income from wealth horde: +[amt_to_generate]", name = X.real_name)
 
 /proc/num_players_in_round()
 	return LAZYLEN(GLOB.joined_player_list)

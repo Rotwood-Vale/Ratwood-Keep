@@ -91,6 +91,7 @@
 
 /mob/living/carbon/send_pull_message(mob/living/target)
 	var/used_limb = parse_zone(BODY_ZONE_CHEST)
+	var/tail = target.getorganslot(ORGAN_SLOT_TAIL)
 	var/obj/item/grabbing/I
 	if(active_hand_index == 1)
 		I = r_grab
@@ -99,7 +100,11 @@
 	if(I)
 		used_limb = parse_zone(I.sublimb_grabbed)
 
-	if(used_limb)
+	if((used_limb == "groin") && tail && (target.dir == turn(get_dir(target, src), 180))) // Thats an Ratwood edit here, it checks if the target is facing oposite of the grabber and if they have a tail.
+		target.visible_message(span_warning("[src] grabs [target] by their tail."), \
+						span_warning("[src] grabs my tail."), span_hear("I hear shuffling."), null, src)
+		to_chat(src, span_info("I grab [target] by their tail."))
+	else if(used_limb)
 		target.visible_message(span_warning("[src] grabs [target]'s [used_limb]."), \
 						span_warning("[src] grabs my [used_limb]."), span_hear("I hear shuffling."), null, src)
 		to_chat(src, span_info("I grab [target]'s [used_limb]."))

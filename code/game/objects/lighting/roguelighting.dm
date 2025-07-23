@@ -1,5 +1,5 @@
 /obj/machinery/light/roguestreet
-	name = "street lamp"
+	name = "street lamp" // Crafted through metalizing brazier(/obj/machinery/light/rogue/firebowl) and Standing Fire (/obj/machinery/light/rogue/firebowl/standing)
 	desc = "An obelisk of caste iron with an eerily glowing lamp attached to it. A promise of new technology at the dawn of a new age."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "slamp1_nozap"
@@ -11,9 +11,13 @@
 	fueluse = 0
 	bulb_colour = "#58dd90"
 	bulb_power = 0.95
-	max_integrity = 0
+	destroy_sound = "sound/foley/machinebreak.ogg" // A nice zappy noise for electric lights.
+	destroy_message = "The lamp sparks as it is smashed!" // Some flavor for when it's destroyed.
+	blade_dulling = DULLING_BASH
+	max_integrity = 250
 	pass_flags = LETPASSTHROW
 	smeltresult = /obj/item/ingot/bronze
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/roguestreet/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
@@ -21,13 +25,15 @@
 	base_state = "midlamp"
 	pixel_x = -16
 	density = TRUE
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/roguestreet/walllamp
-	name = "wall lamp"
+	name = "wall lamp" // Crafted through metalizing sconce.
 	desc = "An eerily glowing lamp attached to the wall via a caste iron frame. A promise of new technology at the dawn of a new age."
 	icon_state = "wlamp1_nozap"
 	base_state = "wlamp"
 	brightness = 7.8
+	max_integrity = 125
 	density = FALSE
 
 /obj/machinery/light/roguestreet/orange
@@ -37,6 +43,7 @@
 	brightness = 10.9
 	bulb_colour = "#da8c45"
 	bulb_power = 1
+	resistance_flags = null // This one is craftable.
 
 /obj/machinery/light/roguestreet/orange/midlamp
 	icon = 'icons/roguetown/misc/64x64.dmi'
@@ -44,6 +51,7 @@
 	base_state = "o_midlamp"
 	pixel_x = -16
 	density = TRUE
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/roguestreet/orange/walllamp
 	name = "wall lamp"
@@ -51,7 +59,9 @@
 	icon_state = "o_wlamp1_nozap"
 	base_state = "o_wlamp"
 	brightness = 7.8
+	max_integrity = 125
 	density = FALSE
+	resistance_flags = null // This one is craftable.
 
 /obj/machinery/light/roguestreet/proc/lights_out()
 	on = FALSE
@@ -96,7 +106,6 @@
 	pass_flags = LETPASSTHROW
 	var/cookonme = FALSE
 	var/crossfire = TRUE
-	var/can_damage = FALSE
 	var/start_fuel //Override for fueluse. Mostly used for smelters.
 	var/fuel_modifier = 1 //Modifier for firefuel
 
@@ -140,8 +149,8 @@
 
 /obj/machinery/light/rogue/OnCrafted(dirin, user)
 	. = ..()
-	can_damage = TRUE
 	burn_out()
+
 
 /obj/machinery/light/rogue/burn_out()
 	if(soundloop)
@@ -276,11 +285,6 @@
 				W.spark_act()
 	. = ..()
 
-/obj/machinery/light/rogue/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
-	if(!can_damage)
-		return
-	. = ..()
-
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
 	icon = 'icons/roguetown/misc/lighting.dmi'
@@ -292,6 +296,7 @@
 	cookonme = TRUE
 	fueluse = 0
 	max_integrity = 150
+	metalizer_result = /obj/machinery/light/roguestreet/orange // Can be crafted into street lamp.
 
 /obj/machinery/light/rogue/firebowl/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
@@ -331,7 +336,8 @@
 /obj/machinery/light/rogue/firebowl/church
 	icon_state = "churchfire1"
 	base_state = "churchfire"
-
+	metalizer_result = null // This item is not craftable, setting this to prevent grief by metalizer.
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/rogue/firebowl/standing
 	name = "standing fire"
@@ -340,17 +346,21 @@
 	bulb_colour = "#ff9648"
 	cookonme = FALSE
 	crossfire = FALSE
-
+	metalizer_result = /obj/machinery/light/roguestreet/orange
 
 /obj/machinery/light/rogue/firebowl/standing/blue
 	bulb_colour = "#b9bcff"
 	icon_state = "standingb1"
 	base_state = "standingb"
+	metalizer_result = null // This item is not craftable, setting this to prevent grief by metalizer.
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/rogue/firebowl/standing/green
 	bulb_colour = "#8ee2a7"
 	icon_state = "standingg1"
 	base_state = "standingg"
+	metalizer_result = null // This item is not craftable, setting this to prevent grief by metalizer.
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/rogue/firebowl/standing/proc/knock_over() //use this later for jump impacts and shit
 	icon_state = "[base_state]over"
@@ -395,6 +405,7 @@
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin, user)
 	pixel_x = 0
@@ -448,7 +459,7 @@
 	crossfire = FALSE
 	plane = GAME_PLANE_UPPER
 	cookonme = FALSE
-	metalizer_result = /obj/machinery/light/roguestreet/walllamp
+	metalizer_result = /obj/machinery/light/roguestreet/orange/walllamp
 
 /obj/machinery/light/rogue/torchholder/c
 	pixel_y = 32
@@ -579,6 +590,7 @@
 	soundloop = null
 	crossfire = FALSE
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
+	resistance_flags = INDESTRUCTIBLE // This item is not craftable yet, setting for anti-grief
 
 /obj/machinery/light/rogue/chand/attack_hand(mob/user)
 	if(isliving(user) && on)
@@ -769,7 +781,6 @@
 	fueluse = 10 MINUTES
 	bulb_colour = "#da5e21"
 	cookonme = TRUE
-	can_damage = TRUE
 	max_integrity = 30
 
 /obj/machinery/light/rogue/campfire/process()

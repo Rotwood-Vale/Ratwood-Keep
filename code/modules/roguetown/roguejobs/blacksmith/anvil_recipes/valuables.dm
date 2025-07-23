@@ -1,5 +1,6 @@
 /datum/anvil_recipe/valuables
 	i_type = "Valuables"
+	abstract_type = /datum/anvil_recipe/valuables
 	skill_level = 4
 
 /datum/anvil_recipe/valuables/special/ringf
