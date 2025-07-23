@@ -127,6 +127,26 @@
 	cost = 60
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/bronze)
 
+/datum/supply_pack/rogue/tools/bronzeright
+	name = "Advanced Prosthetic Right Bronze leg"
+	cost = 60
+	contains = list(/obj/item/bodypart/r_leg/prosthetic/bronzeright)
+
+/datum/supply_pack/rogue/tools/bronzeleft
+	name = "Advanced Prosthetic Left Bronze leg"
+	cost = 60
+	contains = list(/obj/item/bodypart/l_leg/prosthetic/bronzeleft)
+
+/datum/supply_pack/rogue/tools/folding_table
+	name = "Folding Table"
+	cost = 35
+	contains = list(/obj/item/contraption/folding_table_stored)
+
+/datum/supply_pack/rogue/adventure_supplies/Portable_Stove
+	name = "Portable Stove"
+	cost = 60
+	contains = list(/obj/item/mobilestove)
+
 /datum/supply_pack/rogue/tools/waterskin
 	name = "Waterskin"
 	cost = 10

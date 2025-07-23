@@ -361,6 +361,28 @@
 	max_integrity = 40 //making this weak, its fragile
 	smooth = 0
 
+/obj/structure/table/wood/folding
+	name = "folding table"
+	desc = "A folding table, useful for setting up a temporary workspace."
+	icon = 'icons/roguetown/items/gadgets.dmi'
+	icon_state = "foldingtableDeployed"
+	resistance_flags = FLAMMABLE
+	max_integrity = 50
+	smooth = 0
+	debris = list(/obj/item/grown/log/tree/small = 1)
+	climbable = TRUE
+	climb_offset = 10
+
+/obj/structure/table/wood/folding/examine()
+	. = ..()
+	. += span_blue("Right-Click to fold the table.")
+
+/obj/structure/table/wood/folding/attack_right(mob/user)
+	user.visible_message(span_notice("[user] folds [src]."), span_notice("You fold [src]."))
+	new /obj/item/contraption/folding_table_stored(drop_location())
+	qdel(src)
+	return ..()
+
 /obj/structure/table/finer
 	name = "wooden table"
 	desc = ""

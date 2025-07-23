@@ -301,21 +301,47 @@
 /obj/item/bodypart/l_arm/prosthetic/bronze
 	name = "bronze left arm"
 	desc = "A replacement left arm, engineered out of bronze."
-	icon_state = "prarm" 
+	icon_state = "bprarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/bodypart/r_arm/prosthetic/bronze
 	name = "bronze right arm"
 	desc = "A replacement right arm, engineered out of bronze."
-	icon_state = "prarm" 
+	icon_state = "bprarm" 
 	resistance_flags = FIRE_PROOF
 	max_damage = 170
 	max_integrity = 350
 	sellprice = 40
 	fingers = TRUE 
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
+
+/obj/item/bodypart/r_leg/prosthetic/bronzeright
+	name = "bronze right leg"
+	desc = "A replacement right leg, engineered out of bronze."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bpleg"
+	resistance_flags = FIRE_PROOF
+	max_damage = 170
+	max_integrity = 350
+	sellprice = 40
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze
+
+/obj/item/bodypart/l_leg/prosthetic/bronzeleft
+	name = "bronze left leg"
+	desc = "A replacement left leg, engineered out of bronze."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "bpleg"
+	resistance_flags = FIRE_PROOF
+	max_damage = 170
+	max_integrity = 350
+	sellprice = 3040
+	anvilrepair = /datum/skill/craft/engineering
+	smeltresult = /obj/item/ingot/bronze

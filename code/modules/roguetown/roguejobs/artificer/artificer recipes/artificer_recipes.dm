@@ -155,6 +155,22 @@
 /datum/artificer_recipe/contraptions
 	i_type = "Contraptions"
 
+/datum/artificer_recipe/contraptions/folding_table
+	name = "Folding Table (+1 Small Log)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/contraption/folding_table_stored
+	hammers_per_item = 5
+	skill_level = 1
+
+/datum/artificer_recipe/contraptions/mobilestove
+	name = "Mobile Stove (+Cog +Tin)" // capitalized to fall in line with the rest of engineering recipes T_T
+	required_item = /obj/item/ingot/bronze
+	created_item = /obj/item/mobilestove
+	additional_items = list(/obj/item/roguegear, /obj/item/ingot/tin)
+	hammers_per_item = 10
+	skill_level = 3
+
 /datum/artificer_recipe/contraptions/metalizer
 	name = "Wood Metalizer (+1 Wooden Cog)"
 	required_item = /obj/item/ingot/bronze
@@ -455,6 +471,16 @@
 /datum/artificer_recipe/bronze/prosthetic/arm_right
 	name = "Bronze Right Arm (+1 Cog)"
 	created_item = /obj/item/bodypart/r_arm/prosthetic/bronze
+
+/datum/artificer_recipe/bronze/prosthetic/bronzeleftleg
+	name = "Bronze Left Leg (+1 Cogs)"
+	additional_items = list(/obj/item/roguegear/bronze = 1)
+	created_item = /obj/item/bodypart/l_leg/prosthetic/bronzeleft
+
+/datum/artificer_recipe/bronze/prosthetic/bronzerightleg
+	name = "Bronze Right Leg (+1 Cogs)"
+	additional_items = list(/obj/item/roguegear/bronze = 1)
+	created_item = /obj/item/bodypart/r_leg/prosthetic/bronzeright
 
 // --------- GOLD -----------
 
