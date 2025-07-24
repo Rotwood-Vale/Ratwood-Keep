@@ -299,6 +299,87 @@
 		misfire(O, user)
 	addtimer(CALLBACK(O, PROC_REF(popcorn_smelt_result), turf), 20)
 	return
+/obj/item/contraption/folding_table_stored
+	name = "folding table"
+	desc = "A folding table, useful for setting up a temporary workspace."
+	icon = 'icons/roguetown/items/gadgets.dmi'
+	icon_state = "foldingTableStored"
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = FIRE_PROOF
+	grid_height = 32
+	grid_width = 64
+
+/obj/item/contraption/folding_table_stored/attack_self(mob/user)
+	. = ..()
+	//deploy the table if the user clicks on it with an open turf in front of them
+	var/turf/target_turf = get_step(user,user.dir)
+	if(target_turf.is_blocked_turf(TRUE) || (locate(/mob/living) in target_turf))
+		to_chat(user, span_danger("I can't deploy the folding table here!"))
+		return NONE
+	if(isopenturf(target_turf))
+		deploy_folding_table(user, target_turf)
+		return TRUE
+	return NONE
+
+/obj/item/contraption/folding_table_stored/proc/deploy_folding_table(mob/user, atom/location)
+	to_chat(user, "<span class='notice'>You deploy the folding table.</span>")
+	new /obj/structure/table/wood/folding(location)
+	qdel(src)
+
+/obj/item/contraption/shears
+	name = "amputation shears"
+	desc = "A powered shear used for achieving a clean separation between limb and patient. Keeping the patient still is imperative to aligning the blades."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "shears"
+	on_icon = "shears"
+	off_icon = "shears"
+	w_class = WEIGHT_CLASS_BULKY
+	smeltresult = /obj/item/ingot/bronze
+	charge_per_source = 4
+
+/obj/item/contraption/shears/hammer_action(obj/item/I, mob/user)
+	return
+
+/obj/item/contraption/shears/attack(mob/living/amputee, mob/living/user)
+	if(!current_charge)
+		return
+
+	if(!iscarbon(amputee))
+		return
+
+	var/targeted_zone = check_zone(user.zone_selected)
+	if(targeted_zone == BODY_ZONE_CHEST || targeted_zone == BODY_ZONE_HEAD)
+		to_chat(user, span_warning("I can't amputate that!"))
+		return
+
+	var/mob/living/carbon/patient = amputee
+
+	if(HAS_TRAIT(patient, TRAIT_NODISMEMBER))
+		to_chat(user, span_warning("[patient]'s limbs look too sturdy to amputate."))
+		return
+
+	var/obj/item/bodypart/limb_snip_candidate
+
+	limb_snip_candidate = patient.get_bodypart(targeted_zone)
+	if(!limb_snip_candidate)
+		to_chat(user, span_warning("[patient] is already missing that limb, what more do you want?"))
+		return
+
+	var/amputation_speed_mod = 1
+
+	patient.visible_message(span_danger("[user] begins to secure [src] around [patient]'s [limb_snip_candidate.name]."), span_userdanger("[user] begins to secure [src] around your [limb_snip_candidate.name]!"))
+	playsound(get_turf(patient), 'sound/misc/ratchet.ogg', 20, TRUE)
+	if(patient.stat >= UNCONSCIOUS || patient.buckled || locate(/obj/structure/table/optable) in get_turf(patient))
+		amputation_speed_mod *= 0.5
+	if(patient.stat != DEAD && (patient.jitteriness || patient.mobility_flags & MOBILITY_STAND)) //jittering will make it harder to secure the shears, even if you can't otherwise move
+		amputation_speed_mod *= 1.5 //15*0.5*1.5=11.25
+
+	var/skill_modifier = 1.5 - (user.mind?.get_skill_level(/datum/skill/craft/engineering) / 6)
+	if(do_after(user, 15 SECONDS * amputation_speed_mod * skill_modifier, target = patient))
+		playsound(get_turf(patient), 'sound/misc/guillotine.ogg', 20, TRUE)
+		limb_snip_candidate.drop_limb(TRUE)
+		user.visible_message(span_danger("[src] violently slams shut, amputating [patient]'s [limb_snip_candidate.name]."), span_notice("You amputate [patient]'s [limb_snip_candidate.name] with [src]."))
+		charge_deduction(amputee, user, 1)
 
 /obj/item/contraption/lock_imprinter
 	name = "lock imprinter"
