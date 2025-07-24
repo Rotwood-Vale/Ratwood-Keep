@@ -21,6 +21,16 @@
 	max_w_class = WEIGHT_CLASS_NORMAL
 	not_while_equipped = TRUE
 
+/datum/component/storage/concrete/grid/messkit
+	screen_max_rows = 5
+	screen_max_columns = 6
+	max_w_class = WEIGHT_CLASS_HUGE
+	not_while_equipped = TRUE
+
+/datum/component/storage/concrete/grid/messkit/New(datum/P, ...)
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/cooking, /obj/item/reagent_containers/food/snacks, /obj/item/reagent_containers/, /obj/item/kitchen))
+	
 /datum/component/storage/concrete/grid/surgery_bag
 	screen_max_rows = 5
 	screen_max_columns = 4

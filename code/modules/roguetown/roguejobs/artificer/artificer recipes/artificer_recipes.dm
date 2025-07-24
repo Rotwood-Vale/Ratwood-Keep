@@ -163,6 +163,14 @@
 	hammers_per_item = 5
 	skill_level = 1
 
+/datum/artificer_recipe/contraptionsg/mess_kit
+	name = "Mess Kit (+2 Iron)" // 3 Iron, cuz you get a pot, a pan and other things for free.
+	required_item = /obj/item/ingot/iron
+	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	created_item = /obj/item/storage/gadget/messkit
+	hammers_per_item = 5
+	skill_level = 2
+
 /datum/artificer_recipe/contraptions/mobilestove
 	name = "Mobile Stove (+Cog +Tin)" // capitalized to fall in line with the rest of engineering recipes T_T
 	required_item = /obj/item/ingot/bronze

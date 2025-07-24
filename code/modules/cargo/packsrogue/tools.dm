@@ -142,7 +142,12 @@
 	cost = 35
 	contains = list(/obj/item/contraption/folding_table_stored)
 
-/datum/supply_pack/rogue/adventure_supplies/Portable_Stove
+/datum/supply_pack/rogue/tools/mess_kit
+	name = "Mess Kit"
+	cost = 60
+	contains = list(/obj/item/storage/gadget/messkit)
+	
+/datum/supply_pack/rogue/tools/Portable_Stove
 	name = "Portable Stove"
 	cost = 60
 	contains = list(/obj/item/mobilestove)

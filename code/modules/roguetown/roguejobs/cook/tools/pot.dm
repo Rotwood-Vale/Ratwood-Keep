@@ -12,7 +12,9 @@
 	item_state = "pot"
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	sharpness = IS_BLUNT
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 96
+	grid_height = 96
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
 	//volume is same as buckets now, 198. (66oz) (whoever changed this to 300 before caused a lot of headaches)
