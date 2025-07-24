@@ -340,7 +340,7 @@ Reel teleports the attached atom to the grabbed turf.
 	dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	
-	/obj/item/storage/gadget/messkit
+/obj/item/storage/gadget/messkit
 	name = "mess kit"
 	desc = "A small, portable mess kit. It can be used to cook food."
 	slot_flags = ITEM_SLOT_HIP
@@ -353,4 +353,3 @@ Reel teleports the attached atom to the grabbed turf.
 	new /obj/item/cooking/platter(src)
 	new /obj/item/reagent_containers/glass/bowl(src)
 	new /obj/item/cooking/pan(src)
-	new /obj/item/reagent_containers/glass/bucket/pot(src)
