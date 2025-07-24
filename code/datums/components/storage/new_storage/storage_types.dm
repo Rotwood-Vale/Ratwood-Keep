@@ -23,8 +23,8 @@
 
 /datum/component/storage/concrete/grid/messkit
 	screen_max_rows = 5
-	screen_max_columns = 6
-	max_w_class = WEIGHT_CLASS_HUGE
+	screen_max_columns = 5
+	max_w_class = WEIGHT_CLASS_BULKY
 	not_while_equipped = TRUE
 
 /datum/component/storage/concrete/grid/messkit/New(datum/P, ...)
