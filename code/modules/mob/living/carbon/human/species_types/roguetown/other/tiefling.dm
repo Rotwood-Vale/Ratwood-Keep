@@ -125,6 +125,9 @@
 		"Dispater" = SKIN_COLOR_DISPATER,
 		"Nymsea" = SKIN_COLOR_NYMSEA,
 		"Mammon" = SKIN_COLOR_MAMMON
+		"Gremory" = SKIN_COLOR_GREMORY
+		"Alloces" = SKIN_COLOR_ALLOCES
+		"Balberith" = SKIN_COLOR_BALBERITH
 	)
 
 /datum/species/tieberian/get_hairc_list()
