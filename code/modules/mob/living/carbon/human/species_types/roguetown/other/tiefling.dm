@@ -124,7 +124,9 @@
 		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
 		"Nymsea" = SKIN_COLOR_NYMSEA,
-		"Mammon" = SKIN_COLOR_MAMMON
+		"Mammon" = SKIN_COLOR_MAMMON,
+		"Alloces" = SKIN_COLOR_ALLOCES,
+		"Balberith" = SKIN_COLOR_BALBERITH
 	)
 
 /datum/species/tieberian/get_hairc_list()
