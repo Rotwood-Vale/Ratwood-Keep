@@ -124,9 +124,9 @@
 		"Fierna" = SKIN_COLOR_FIERNA,
 		"Dispater" = SKIN_COLOR_DISPATER,
 		"Nymsea" = SKIN_COLOR_NYMSEA,
-		"Mammon" = SKIN_COLOR_MAMMON
-		"Gremory" = SKIN_COLOR_GREMORY
-		"Alloces" = SKIN_COLOR_ALLOCES
+		"Mammon" = SKIN_COLOR_MAMMON,
+		"Gremory" = SKIN_COLOR_GREMORY,
+		"Alloces" = SKIN_COLOR_ALLOCES,
 		"Balberith" = SKIN_COLOR_BALBERITH
 	)
 
