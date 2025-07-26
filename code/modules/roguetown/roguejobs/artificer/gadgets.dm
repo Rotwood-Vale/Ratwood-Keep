@@ -223,7 +223,7 @@ Reel teleports the attached atom to the grabbed turf.
 			var/safe_to_teleport = TRUE
 			if(isobj(target))
 				var/obj/O = target
-				if(!istype(target, /obj/structure/closet/crate) && !istype(target, /obj/structure/fermenting_barrel))	//We DO want to move crates & barrels
+				if(!istype(target, /obj/structure/closet/crate) && !istype(target, /obj/structure/fermentation_keg) && !istype(target, /obj/structure/handcart))	//We DO want to move crates, barrels & carts
 					if(O.density || istype(target, /obj/structure) || O.anchored || istype(target, /obj/machinery)) //This should cover most (fingers crossed) objects that shouldn't be moved around like this.
 						safe_to_teleport = FALSE
 /*			if(ishuman(target))			///TO DO: Make GIANT special people have a trait that makes them giant, so they can not use grapplers.

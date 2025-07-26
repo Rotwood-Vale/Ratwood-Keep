@@ -33,7 +33,7 @@
 							/obj/structure/table/roguetree/stump = 4,
 							/obj/effect/mob_spawner =5,
 							/obj/structure/closet/dirthole/closed/loot=3,
-							/obj/structure/wild_swampweed = 5,
+							///obj/structure/wild_swampweed = 5,
 							/obj/structure/flora/roguegrass/maneater/real=3,
 							/obj/effect/spawner/roguemap/flowerspawn = 30)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,

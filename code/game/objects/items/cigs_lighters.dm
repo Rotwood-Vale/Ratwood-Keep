@@ -366,6 +366,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
 
+/obj/item/clothing/mask/cigarette/rollie/cannabis/cheroot
+	name = "swampleaf cheroot"
+	desc = "Heady sweatleaf rolled in a broad westleach leaf, combining the desirable and troublesome \
+	aspects of both."
+	smoketime = 240
+	list_reagents = list(
+		/datum/reagent/drug/space_drugs = 30,
+		/datum/reagent/drug/nicotine = 15,
+		)
+		
 /obj/item/cigbutt
 	name = "cigarette butt"
 	desc = ""

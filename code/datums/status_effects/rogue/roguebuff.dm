@@ -13,6 +13,28 @@
 	desc = ""
 	icon_state = "drunk"
 
+/atom/movable/screen/alert/status_effect/buff/drunkmurk
+	name = "Murk-Knowledge"
+	desc = ""
+	icon_state = "drunk"
+
+/atom/movable/screen/alert/status_effect/buff/drunknoc
+	name = "Noc-Shine Strength"
+	desc = ""
+	icon_state = "drunk"
+
+/datum/status_effect/buff/murkwine
+	id = "murkwine"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/drunkmurk
+	effectedstats = list("intelligence" = 5)
+	duration = 2 MINUTES
+
+/datum/status_effect/buff/nocshine
+	id = "nocshine"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/drunknoc
+	effectedstats = list("strength" = 1, "endurance" = 1)
+	duration = 2 MINUTES
+
 /datum/status_effect/buff/snackbuff
 	id = "snack"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/snackbuff
@@ -35,7 +57,7 @@
 	id = "greatsnack"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/greatsnackbuff
 	effectedstats = list("constitution" = 1,"endurance" = 1)
-	duration = 10 MINUTES
+	duration = 15 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/greatsnackbuff
 	name = "Great Snack!"
@@ -343,6 +365,24 @@
 	else
 		to_chat(owner, span_warning("I can feel the strengthening magicks fade from my small body.."))
 	
+/datum/status_effect/buff/vigorized
+	id = "vigorized"
+	alert_type = /atom/movable/screen/alert/status_effect/vigorized
+	duration = 10 MINUTES
+	effectedstats = list("speed" = 1, "intelligence" = 1)
+
+/atom/movable/screen/alert/status_effect/vigorized
+	name = "Vigorized"
+	desc = "I feel a surge of energy inside, quickening my speed and sharpening my focus."
+	icon_state = "drunk"
+
+/datum/status_effect/buff/vigorized/on_apply()
+	. = ..()
+	to_chat(owner, span_warning("I feel a surge of energy inside me!"))
+
+/datum/status_effect/buff/vigorized/on_remove()
+	. = ..()
+	to_chat(owner, span_warning("The surge of energy inside me fades..."))
 
 /datum/status_effect/buff/seelie_drugs
 	id = "seelie drugs"

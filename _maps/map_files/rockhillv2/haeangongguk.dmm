@@ -8,7 +8,7 @@
 	lockid = "keep_armory"
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "ac" = (
@@ -457,7 +457,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "dS" = (
-/obj/structure/fermenting_barrel/random,
+/obj/structure/fermentation_keg/random,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "wooden_floort"
 	},
@@ -580,7 +580,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "eK" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "eM" = (
@@ -1207,7 +1207,7 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue)
 "ky" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "kD" = (
@@ -1817,7 +1817,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue)
 "pL" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = 0;
@@ -1886,7 +1886,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "qc" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
 	},
@@ -1955,7 +1955,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "qH" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "qI" = (
@@ -2485,7 +2485,7 @@
 /turf/open/floor/rogue/tile/tilerg,
 /area/rogue)
 "uo" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "uq" = (
@@ -2791,7 +2791,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "wu" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "wv" = (
@@ -2954,7 +2954,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "ya" = (
-/obj/structure/fermenting_barrel,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "yj" = (
@@ -3189,7 +3189,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "AP" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "AT" = (
@@ -3938,10 +3938,10 @@
 	lockid = "town_barracks"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/cooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
+/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Gi" = (
@@ -4287,7 +4287,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue)
 "IY" = (
-/obj/structure/fermenting_barrel,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "IZ" = (
@@ -4589,7 +4589,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "LK" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "LO" = (
@@ -5534,7 +5534,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Tg" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Th" = (

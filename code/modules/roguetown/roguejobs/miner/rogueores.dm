@@ -89,7 +89,7 @@
 /obj/item/rogueore/coal/Initialize()
 	icon_state = "orecoal[rand(1,3)]"
 	return ..()
-
+	
 /obj/item/rogueore/cinnabar
 	name = "cinnabar"
 	desc = "Red gems that contain the essence of quicksilver."

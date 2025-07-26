@@ -498,12 +498,12 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 60
 	density = FALSE
-	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf = 1)
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1)
 /obj/structure/wild_swampweed/attack_hand(mob/living/carbon/human/user)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
 	user.visible_message(span_warning("[user] harvests [src]."))
 	if(do_after(user, 3 SECONDS, target = src))
-		new /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf (get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed (get_turf(src))
 		qdel(src)
 /obj/structure/wild_swampweed/Crossed(mob/living/carbon/human/H)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
@@ -651,9 +651,9 @@
 	climbable = FALSE
 	dir = SOUTH
 	debris = list(/obj/item/natural/fibers = 1)
-	var/list/looty2 = list()
-	var/bushtype2
-	var/res_replenish2
+	var/list/looty = list()
+	var/bushtype
+	var/res_replenish
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/update_icon()
 	icon_state = "pyroflower[rand(1,3)]"
@@ -661,41 +661,172 @@
 /obj/structure/flora/roguegrass/pyroclasticflowers/Initialize()
 	. = ..()
 	if(prob(88))
-		bushtype2 = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
+		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1))
 	loot_replenish2()
 	pixel_x += rand(-3,3)
 
 /obj/structure/flora/roguegrass/pyroclasticflowers/proc/loot_replenish2()
-	if(bushtype2)
-		looty2 += bushtype2
+	if(bushtype)
+		looty += bushtype
 	if(prob(66))
-		looty2 += /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
+		looty += /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius
 
 // pyroflower cluster looting
 /obj/structure/flora/roguegrass/pyroclasticflowers/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
-		user.changeNext_move(CLICK_CD_MELEE)
+		user.changeNext_move(CLICK_CD_INTENTCAP)
 		playsound(src.loc, "plantcross", 80, FALSE, -1)
 		if(do_after(L, rand(1,5), target = src))
-#ifndef MATURESERVER
-			if(!looty2.len && (world.time > res_replenish2))
+			if(!looty.len && (world.time > res_replenish))
 				loot_replenish2()
-#endif
-			if(prob(50) && looty2.len)
-				if(looty2.len == 1)
-					res_replenish2 = world.time + 8 MINUTES
-				var/obj/item/B = pick_n_take(looty2)
+			if(prob(50) && looty.len)
+				if(looty.len == 1)
+					res_replenish = world.time + 8 MINUTES
+				var/obj/item/B = pick_n_take(looty)
 				if(B)
 					B = new B(user.loc)
 					user.put_in_hands(B)
 					user.visible_message("<span class='notice'>[user] finds [B] in [src].</span>")
 					return
 			user.visible_message("<span class='warning'>[user] searches through [src].</span>")
-#ifdef MATURESERVER
-			if(!looty2.len)
-				to_chat(user, "<span class='warning'>Picked clean.</span>")
-#else
-			if(!looty2.len)
+			if(!looty.len)
 				to_chat(user, "<span class='warning'>Picked clean... I should try later.</span>")
-#endif
+
+// swarmpweed bush -- STONEKEEP PORT
+/obj/structure/flora/roguegrass/swampweed
+	name = "bunch of swampweed"
+	desc = "a green root good for smoking."
+	icon_state = "swampweed1"
+	layer = ABOVE_ALL_MOB_LAYER
+	max_integrity = 1
+	climbable = FALSE
+	dir = SOUTH
+	debris = list(/obj/item/natural/fibers = 1)
+	var/list/looty = list()
+	var/bushtype
+	var/res_replenish
+
+/obj/structure/flora/roguegrass/swampweed/Initialize()
+	. = ..()
+	icon_state = "swampweed[rand(1,3)]"
+	if(prob(88))
+		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/grown/rogue/swampweed = 1))
+	loot_replenish3()
+	pixel_x += rand(-3,3)
+
+/obj/structure/flora/roguegrass/swampweed/proc/loot_replenish3()
+	if(bushtype)
+		looty += bushtype
+	if(prob(66))
+		looty += /obj/item/reagent_containers/food/snacks/grown/rogue/swampweed
+
+/obj/structure/flora/roguegrass/swampweed/attack_hand(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		user.changeNext_move(CLICK_CD_MELEE)
+		playsound(src.loc, "plantcross", 80, FALSE, -1)
+		if(do_after(L, rand(1,5), target = src))
+			if(!looty.len && (world.time > res_replenish))
+				loot_replenish3()
+			if(prob(50) && looty.len)
+				if(looty.len == 1)
+					res_replenish = world.time + 8 MINUTES
+				var/obj/item/B = pick_n_take(looty)
+				if(B)
+					B = new B(user.loc)
+					user.put_in_hands(B)
+					if(HAS_TRAIT(user, TRAIT_WOODWALKER))
+						var/obj/item/C = new B.type(user.loc)
+						user.put_in_hands(C)
+					user.visible_message("<span class='notice'>[user] finds [HAS_TRAIT(user, TRAIT_WOODWALKER) ? "two of " : ""][B] in [src].</span>")
+					return
+			user.visible_message("<span class='warning'>[user] searches through [src].</span>")
+			if(!looty.len)
+				to_chat(user, "<span class='warning'>Picked clean... I should try later.</span>")
+
+// cute underdark mushrooms from dreamkeep
+
+/obj/structure/flora/rogueshroom/happy
+	name = "underdark mushroom"
+	icon_state = "happymush1"
+	icon = 'icons/roguetown/misc/foliagetall.dmi'
+	desc = "Mushrooms might be the happiest beings in this god forsaken place."
+
+/obj/structure/flora/rogueshroom/happy/mushroom2
+	icon_state = "happymush2"
+
+/obj/structure/flora/rogueshroom/happy/mushroom3
+	icon_state = "happymush3"
+
+/obj/structure/flora/rogueshroom/happy/mushroom4
+	icon_state = "happymush4"
+
+/obj/structure/flora/rogueshroom/happy/mushroom5
+	icon_state = "happymush5"
+
+/obj/structure/flora/rogueshroom/happy/random
+
+/obj/structure/flora/rogueshroom/happy/random/Initialize()
+	. = ..()
+	icon_state = "happymush[rand(1,5)]"
+
+/obj/structure/flora/rogueshroom/happy/New(loc)
+	..()
+	set_light(3, 3, 3, l_color ="#5D3FD3")
+
+/obj/structure/flora/mushroomcluster
+	name = "mushroom cluster"
+	desc = "A cluster of mushrooms native to the underdark."
+	icon = 'icons/roguetown/misc/foliage.dmi'
+	icon_state = "mushroomcluster"
+	density = TRUE
+
+/obj/structure/flora/mushroomcluster/New(loc)
+	..()
+	set_light(1.5, 1.5, 1.5, l_color ="#5D3FD3")
+
+/obj/structure/flora/tinymushrooms
+	name = "small mushroom cluster"
+	desc = "A cluster of tiny mushrooms native to the underdark."
+	icon = 'icons/roguetown/misc/foliage.dmi'
+	icon_state = "tinymushrooms"
+
+/obj/structure/flora/roguetree/pine
+	name = "pine tree"
+	icon_state = "pine1"
+	desc = ""
+	icon = 'icons/obj/flora/pines.dmi'
+	pixel_w = -24
+	density = 0
+	max_integrity = 100
+	static_debris = list(/obj/item/grown/log/tree = 2)
+	stump_type = null
+
+/obj/structure/flora/roguetree/pine/Initialize()
+	. = ..()
+	icon_state = "pine[rand(1, 4)]"
+
+/obj/structure/flora/roguetree/pine/burn()
+	new /obj/structure/flora/roguetree/pine/dead(get_turf(src))
+	qdel(src)
+
+/obj/structure/flora/roguetree/pine/dead
+	name = "burnt pine tree"
+	icon_state = "dead1"
+	max_integrity = 50
+	static_debris = list(/obj/item/rogueore/coal = 1)
+	resistance_flags = FIRE_PROOF
+	stump_type = /obj/structure/flora/roguetree/stump/pine
+
+/obj/structure/flora/roguetree/pine/dead/Initialize()
+	. = ..()
+	icon_state = "dead[rand(1, 3)]"
+
+/obj/structure/flora/roguetree/stump/pine
+	name = "pine stump"
+	icon_state = "dead4"
+	icon = 'icons/obj/flora/pines.dmi'
+	static_debris = list(/obj/item/rogueore/coal = 1)
+	stump_type = null
+	pixel_x = -32

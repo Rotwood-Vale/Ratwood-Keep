@@ -4,6 +4,7 @@
 #define TAB_IMPORT 4
 #define TAB_BOUNTIES 5
 #define TAB_LOG 6
+#define TAB_STATISTICS 7
 
 /obj/structure/roguemachine/steward
 	name = "nerve master"
@@ -15,44 +16,49 @@
 	max_integrity = 0
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
+	locked = TRUE
 	var/keycontrol = "steward"
 	var/current_tab = TAB_MAIN
-	var/compact = FALSE
+	var/compact = TRUE
+	var/total_deposit = 0
+	var/list/excluded_jobs = list("Wretch","Vagabond","Adventurer")
+	var/current_category = "Raw Materials"
+	var/list/categories = list("Raw Materials", "Foodstuffs", "Fruits")
 	var/created_by_kit = FALSE
 
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
-    if(istype(P, /obj/item/key))
-        var/obj/item/key/K = P
-        if(K.lockid == keycontrol)
-            locked = !locked
-            playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-            update_icon()
-            return
-        else
-            to_chat(user, span_warning("Wrong key."))
-            return
-    if(istype(P, /obj/item/storage/keyring))
-        for(var/obj/item/key/KE in P.contents)
-            if(KE.lockid == keycontrol)
-                locked = !locked
-                playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-                update_icon()
-                return
-        to_chat(user, span_warning("Wrong key."))
-        return
-
-    if(istype(P, /obj/item/roguecoin))
-        var/obj/item/roguecoin/C = P
-        var/amount = C.get_real_price()
-        SStreasury.treasury_value += amount
-        SStreasury.log_to_steward("+[amount]m deposited by [user.real_name]")
-        playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
-        to_chat(user, span_notice("You deposit [amount] mammon into the treasury."))
-        del(C)
-        return
-
-    return ..()
+	if(istype(P, /obj/item/key))
+		var/obj/item/key/K = P
+		if(K.lockid == keycontrol || istype(K, /obj/item/key/lord)) //Master key
+			locked = !locked
+			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+			(locked) ? (icon_state = "steward_machine_off") : (icon_state = "steward_machine")
+			update_icon()
+			return
+		else
+			to_chat(user, span_warning("Wrong key."))
+			return
+	if(istype(P, /obj/item/storage/keyring))
+		var/obj/item/storage/keyring/K = P
+		if(!K.contents.len)
+			return
+		var/list/keysy = K.contents.Copy()
+		for(var/obj/item/key/KE in keysy)
+			if(KE.lockid == keycontrol)
+				locked = !locked
+				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+				(locked) ? (icon_state = "steward_machine_off") : (icon_state = "steward_machine")
+				update_icon()
+				return
+		to_chat(user, span_warning("Wrong key."))
+		return
+	if(istype(P, /obj/item/roguecoin))
+		SStreasury.give_money_treasury(P.get_real_price(), "NERVE MASTER deposit")
+		qdel(P)
+		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
+		return
+	return ..()
 
 
 /obj/structure/roguemachine/steward/Topic(href, href_list)
@@ -70,6 +76,7 @@
 			return
 		var/amt = D.get_import_price()
 		SStreasury.treasury_value -= amt
+		SStreasury.total_import += amt
 		SStreasury.log_to_steward("-[amt] imported [D.name]")
 		if(amt >= 100) //Only announce big spending.
 			scom_announce("Rockhill imports [D.name] for [amt] mammon.", )
@@ -79,24 +86,9 @@
 		var/datum/roguestock/D = locate(href_list["export"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
-		if((D.held_items[1] + D.held_items[2]) < D.importexport_amt)
+		if(!SStreasury.do_export(D))
 			say("Insufficient stock.")
 			return
-		var/amt = D.get_export_price()
-
-		// Try to export everything from town stockpile
-		if(D.held_items[1] >= D.importexport_amt)
-			D.held_items[1] -= D.importexport_amt
-		// If not possible, first pull form town stockpile, then bog stockpile
-		else
-			D.held_items[2] -= (D.importexport_amt - D.held_items[1])
-			D.held_items[1] = 0
-
-		SStreasury.treasury_value += amt
-		SStreasury.log_to_steward("+[amt] exported [D.name]")
-		if(amt >= 100) //Only announce big spending.
-			scom_announce("Rockhill exports [D.name] for [amt] mammon.")
-		D.lower_demand()
 	if(href_list["togglewithdraw"])
 		var/datum/roguestock/D = locate(href_list["togglewithdraw"]) in SStreasury.stockpile_datums
 		if(!D)
@@ -143,6 +135,19 @@
 				if(newtax < D.withdraw_price)
 					scom_announce("The withdraw price for [D.name] was decreased.")
 				D.withdraw_price = newtax
+	if(href_list["setlimit"])
+		var/datum/roguestock/D = locate(href_list["setlimit"]) in SStreasury.stockpile_datums
+		if(!D)
+			return
+		var/newlimit = input(usr, "Set a new limit for [D.name]", src, D.stockpile_limit) as null|num
+		if(newlimit)
+			if(!usr.canUseTopic(src, BE_CLOSE) || locked)
+				return
+			if(findtext(num2text(newlimit), "."))
+				return
+			newlimit = CLAMP(newlimit, 0, 999)
+			scom_announce("The stockpile limit for [D.name] was changed to [newlimit].")
+			D.stockpile_limit = newlimit
 	if(href_list["givemoney"])
 		var/X = locate(href_list["givemoney"])
 		if(!X)
@@ -158,7 +163,7 @@
 					return
 				if(newtax < 1)
 					return
-				SStreasury.give_money_account(newtax, A)
+				SStreasury.give_money_account(newtax, A, "NERVE MASTER")
 				break
 	if(href_list["fineaccount"])
 		var/X = locate(href_list["fineaccount"])
@@ -175,10 +180,10 @@
 					return
 				if(newtax < 1)
 					return
-				SStreasury.give_money_account(-newtax, A)
+				SStreasury.give_money_account(-newtax, A, "NERVE MASTER")
 				break
 	if(href_list["payroll"])
-		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions)
+		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions) + list(GLOB.inquisition_positions)
 		var/list/things = list()
 		for(var/list/category in L)
 			for(var/A in category)
@@ -199,24 +204,25 @@
 			return
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
 			if(H.job == job_to_pay)
-				SStreasury.give_money_account(amount_to_pay, H)
+				SStreasury.give_money_account(amount_to_pay, H, "NERVE MASTER")
 	if(href_list["compact"])
 		compact = !compact
-	if(href_list["withdraw"])
-		var/withdraw_amount = input(usr, "How much to withdraw", src) as null|num
+	if(href_list["changecat"])
+		current_category = href_list["changecat"]
+	if(href_list["changeautoexport"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
-		if(findtext(num2text(withdraw_amount), "."))
+		var/new_autoexport = input(usr, "Set a new autoexport percentage between 0 and 100", src, SStreasury.autoexport_percentage * 100) as null|num
+		if(!new_autoexport && new_autoexport != 0)
 			return
-		if(!withdraw_amount || !SStreasury.treasury_value)
+		if(findtext(num2text(new_autoexport), "."))
 			return
-		if(withdraw_amount < 1)
+		if(new_autoexport < 0 || new_autoexport > 100)
+			to_chat(usr, span_warning("Invalid autoexport percentage. Must be between 0 and 100."))
 			return
-		// If we try to withdraw more than is in the treasury, set the withdraw amount to the treasury value instead.
-		withdraw_amount = min(withdraw_amount, SStreasury.treasury_value)
-
-		SStreasury.remove_money_treasury(withdraw_amount, "direct withdraw")
-		budget2change(withdraw_amount, usr)
+		new_autoexport = round(new_autoexport)
+		SStreasury.autoexport_percentage = new_autoexport * 0.01
+	
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/steward/proc/do_import(datum/roguestock/D,number)
@@ -249,7 +255,7 @@
 	if(locked)
 		to_chat(user, span_warning("It's locked. Of course."))
 		return
-	user.changeNext_move(CLICK_CD_MELEE)
+	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
 	var/contents
@@ -263,46 +269,34 @@
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_IMPORT]'>\[Import\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_BOUNTIES]'>\[Bounties\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_LOG]'>\[Log\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_STATISTICS]'>\[Statistics\]</a><BR>"
 			contents += "</center>"
 		if(TAB_BANK)
+			var/total_deposit = 0
+			for(var/bank_account in SStreasury.bank_accounts)
+				total_deposit += SStreasury.bank_accounts[bank_account]
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
 			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
 			contents += "<center>Bank<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "<a href='?src=\ref[src];withdraw=1'>\[Withdraw\]</a></center><BR>"
+			contents += "Reserve Ratio: [round(SStreasury.treasury_value / total_deposit * 100)]%</center><BR>"
 			contents += "<a href='?src=\ref[src];payroll=1'>\[Pay by Class\]</a><BR><BR>"
-
-			for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
-				if(ishuman(A))
-					var/mob/living/carbon/human/tmp = A
-					var/name_to_display = tmp.real_name
-					var/job_to_display = tmp.advjob ? tmp.advjob : tmp.job
-
-					var/datum/job/roguetown/job
-					if (iswerewolf(A))
-						// We want to display 
-						name_to_display = A.stored_mob?.real_name
-						if (!name_to_display)
-							name_to_display = "UNKNOWN" // Should hopefully never happen, tell Zoni if you see this in-game
-						job = SSjob.GetJob(A.stored_mob?.job)
+			if(compact)
+				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+					if(ishuman(A))
+						var/mob/living/carbon/human/tmp = A
+						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job)]) - [SStreasury.bank_accounts[A]]m"
 					else
-						job = SSjob.GetJob(tmp.job)
-						
-					if (job && job.should_anonymise_job())
-						job_to_display = "FOREIGNER"
-					else if (!job)
-						job_to_display = "UNKNOWN" // Should hopefully never happen
-
-					contents += "[name_to_display] ([job_to_display]) - [SStreasury.bank_accounts[A]]m"
-				else
-					// Not a human mob, so just show real name and account
-					contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
-					
-				if (compact)
+						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
 					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
-				else
-					contents += "<BR>"
+			else
+				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+					if(ishuman(A))
+						var/mob/living/carbon/human/tmp = A
+						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job)]) - [SStreasury.bank_accounts[A]]m<BR>"
+					else
+						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
 					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
 		if(TAB_STOCK)
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
@@ -313,26 +307,58 @@
 				contents += "Treasury: [SStreasury.treasury_value]m"
 				contents += " / Lord's Tax: [SStreasury.tax_value*100]%"
 				contents += " / Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
+				contents += "<center>Auto Export Stockpile Above: "
+				contents += "<a href='?src=\ref[src];changeautoexport=1'>[SStreasury.autoexport_percentage * 100]%</a></center><BR>"
+				var/selection = "<center>Categories: "
+				for(var/category in categories)
+					if(category == current_category)
+						selection += "<b>[current_category]</b> "
+					else
+						selection += "<a href='?src=[REF(src)];changecat=[category]'>[category]</a> "
+				contents += selection + "<BR>"
+				contents += "--------------</center><BR>"
 				for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
+					if(A.category != current_category)
+						continue
 					contents += "<b>[A.name]:</b>"
 					contents += " [A.held_items[1] + A.held_items[2]]"
 					contents += " | SELL: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]m</a>"
 					contents += " / BUY: <a href='?src=\ref[src];setprice=\ref[A]'>[A.withdraw_price]m</a>"
-					if(A.importexport_amt)
-						contents += " <a href='?src=\ref[src];import=\ref[A]'>\[IMP [A.importexport_amt] ([A.get_import_price()])\]</a> <a href='?src=\ref[src];export=\ref[A]'>\[EXP [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
+					contents += " / LIMIT: <a href='?src=\ref[src];setlimit=\ref[A]'>[A.stockpile_limit]</a>"
+					if(!A.export_only)
+						if(A.importexport_amt)
+							contents += " <a href='?src=\ref[src];import=\ref[A]'>\[IMP [A.importexport_amt] ([A.get_import_price()])\]</a> <a href='?src=\ref[src];export=\ref[A]'>\[EXP [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
+					else
+						if(A.importexport_amt)
+							contents += " <a href='?src=\ref[src];export=\ref[A]'>\[EXP [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
+			
 			else
 				contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 				contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
 				contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
+				var/selection = "<center>Categories: "
+				for(var/category in categories)
+					if(category == current_category)
+						selection += "<b>[current_category]</b> "
+					else
+						selection += "<a href='?src=[REF(src)];changecat=[category]'>[category]</a> "
+				contents += selection + "<BR>"
+				contents += "--------------</center><BR>"
 				for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
+					if(A.category != current_category)
+						continue
 					contents += "[A.name]<BR>"
 					contents += "[A.desc]<BR>"
 					contents += "Stockpiled Amount: [A.held_items[1] + A.held_items[2]]<BR>"
 					contents += "Bounty Price: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]</a><BR>"
 					contents += "Withdraw Price: <a href='?src=\ref[src];setprice=\ref[A]'>[A.withdraw_price]</a><BR>"
 					contents += "Demand: [A.demand2word()]<BR>"
-					if(A.importexport_amt)
-						contents += "<a href='?src=\ref[src];import=\ref[A]'>\[Import [A.importexport_amt] ([A.get_import_price()])\]</a> <a href='?src=\ref[src];export=\ref[A]'>\[Export [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
+					if(!A.export_only)
+						if(A.importexport_amt)
+							contents += "<a href='?src=\ref[src];import=\ref[A]'>\[Import [A.importexport_amt] ([A.get_import_price()])\]</a> <a href='?src=\ref[src];export=\ref[A]'>\[Export [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
+					else
+						if(A.importexport_amt)
+							contents += " <a href='?src=\ref[src];export=\ref[A]'>\[Export [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
 					contents += "<a href='?src=\ref[src];togglewithdraw=\ref[A]'>\[[A.withdraw_disabled ? "Enable" : "Disable"] Withdrawing\]</a><BR><BR>"
 		if(TAB_IMPORT)
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
@@ -361,11 +387,11 @@
 			contents += "<center>Bounties<BR>"
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
-			contents += "Duke's Tax: [SStreasury.tax_value*100]%</center><BR>"
+			contents += "Lord's Tax: [SStreasury.tax_value*100]%</center><BR>"
 			for(var/datum/roguestock/bounty/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
-				contents += "Total Collected: [A.held_items[1] + A.held_items[2]]<BR>"
+				contents += "Total Collected: [SStreasury.minted]<BR>"
 				if(A.percent_bounty)
 					contents += "Bounty Price: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]%</a><BR><BR>"
 				else
@@ -376,12 +402,35 @@
 			contents += "--------------</center><BR><BR>"
 			for(var/i = SStreasury.log_entries.len to 1 step -1)
 				contents += "<span class='info'>[SStreasury.log_entries[i]]</span><BR>"
+		if(TAB_STATISTICS)
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			contents += "<center>Statistics:<BR>"
+			contents += "Known Economic Output: [SStreasury.economic_output]m<BR>"
+			contents += "Total Rural Tax: [SStreasury.total_rural_tax]m<BR>"
+			contents += "Total Deposit Tax: [SStreasury.total_deposit_tax]m<BR>"
+			contents += "Total Noble Estate Income: [SStreasury.total_noble_income]m<BR>"
+			contents += "Total Import: [SStreasury.total_import]m<BR>"
+			contents += "Total Export: [SStreasury.total_export]m<BR>"
+			contents += "Total Mammons Minted: [SStreasury.minted]m<BR>"
+			contents += "Trade Balance: [SStreasury.total_export - SStreasury.total_import]m<BR>"
+			contents  += "</center><BR>"
 
 	if(!canread)
 		contents = stars(contents)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 500, 800)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 700, 800)
 	popup.set_content(contents)
 	popup.open()
+
+/obj/structure/roguemachine/steward/proc/job_filter(advj, j)
+	if(advj in excluded_jobs)
+		return "Adventurer"
+	if(j in excluded_jobs)
+		return "Adventurer"
+	if(advj)
+		return advj
+	else
+		return j
+
 
 /obj/item/carpet_bundle
     name = "Vault Carpet"

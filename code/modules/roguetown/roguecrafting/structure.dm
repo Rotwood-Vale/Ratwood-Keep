@@ -115,13 +115,53 @@
 	skill_level = 3
 
 /datum/crafting_recipe/roguetown/structure/barrel
-	name = "barrel - (small log; BEGINNER)"
-	result = /obj/structure/fermenting_barrel
+	name = "wooden barrel"
+	result = /obj/structure/fermentation_keg/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	verbage_simple = "make"
 	verbage = "makes"
 	skillcraft = /datum/skill/craft/carpentry
 
+/datum/crafting_recipe/roguetown/structure/display_stand
+	name = "display stand"
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
+	result = /obj/structure/mannequin
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 2
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/mannequin_female
+	name = "mannequin (female)"
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
+	result = /obj/structure/mannequin/male/female
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 2
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/mannequin_male
+	name = "mannequin (male)"
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/grown/log/tree/stick = 2)
+	result = /obj/structure/mannequin/male
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skill_level = 2
+	skillcraft = /datum/skill/craft/carpentry
+
+/obj/structure/fermentation_keg/crafted
+	sellprice = 6
+/*
+/datum/crafting_recipe/roguetown/structure/meathook
+	name = "meat hook"
+	result = /obj/structure/meathook
+	reqs = list(/obj/item/grown/log/tree = 2,
+				/obj/item/rope = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/crafting
+	skill_level = 2
+*/
 /datum/crafting_recipe/roguetown/roguebin
 	name = "bin - (2 small lgos; NONE)"
 	result = /obj/item/roguebin

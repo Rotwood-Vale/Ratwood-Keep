@@ -719,3 +719,91 @@
 	rotprocess = null
 
 
+/obj/item/reagent_containers/food/snacks/rogue/candybase
+	name = "candy base"
+	desc = "About to become something great. (Add apple or berries)"
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "candybase"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("sweet, sticky, and malleable" = 1)
+	foodtype = SUGAR
+	eat_effect = /datum/status_effect/debuff/uncookedfood
+
+/obj/item/reagent_containers/food/snacks/rogue/candybase/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(user.mind)
+		short_cooktime = (60 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*5))
+		long_cooktime = (100 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*10))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/apple))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 90, TRUE, -1)
+			to_chat(user, "<span class='notice'>Breaking the apple down into the base...</span>")
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/applecandy(loc)
+				qdel(I)
+				qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/berries/rogue))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
+			to_chat(user, "<span class='notice'>Breaking the berries down into the base...</span>")
+			if(do_after(user,short_cooktime, target = src))
+				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
+				new /obj/item/reagent_containers/food/snacks/rogue/berrycandy(loc)
+				qdel(I)
+				qdel(src)
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/applecandy
+	name = "apple candy"
+	desc = "Sweet sweet candy, "
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "applecandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	w_class = WEIGHT_CLASS_SMALL
+	tastes = list("sweet, tart apple candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/sweet
+
+/obj/item/reagent_containers/food/snacks/rogue/applecandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "applecandy5"
+	if(bitecount == 2)
+		icon_state = "applecandy4"
+	if(bitecount == 3)
+		icon_state = "applecandy3"
+	if(bitecount == 4)
+		icon_state = "applecandy2"
+	if(bitecount == 5)
+		icon_state = "applecandy1"
+
+/obj/item/reagent_containers/food/snacks/rogue/berrycandy
+	name = "berry candy"
+	desc = ""
+	icon = 'icons/roguetown/items/food.dmi'
+	icon_state = "berrycandy6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	w_class = WEIGHT_CLASS_SMALL
+	tastes = list("sweet, tart berry candy" = 1)
+	foodtype = SUGAR
+	bitesize = 6
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/sweet
+
+/obj/item/reagent_containers/food/snacks/rogue/berrycandy/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "berrycandy5"
+	if(bitecount == 2)
+		icon_state = "berrycandy4"
+	if(bitecount == 3)
+		icon_state = "berrycandy3"
+	if(bitecount == 4)
+		icon_state = "berrycandy2"
+	if(bitecount == 5)
+		icon_state = "berrycandy1"
