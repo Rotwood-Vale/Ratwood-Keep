@@ -6,6 +6,7 @@
 #define TRAIT_XENOPHOBIC "Xenophobic"
 #define TRAIT_LEAPER "Leaper"
 #define TRAIT_NOSEGRAB "Nosey"
+#define TRAIT_EARGRAB "Ear-Catching"
 #define TRAIT_NUTCRACKER "Nutcracker"
 #define TRAIT_SEEPRICES "Skilled Appraiser"
 #define TRAIT_SEEPRICES_SHITTY "Appraiser"
@@ -43,12 +44,14 @@
 #define TRAIT_TINY "Tiny"
 #define TRAIT_STUDENT "Student"
 #define TRAIT_BOGVULNERABLE "Bog Vulnerable"
+#define TRAIT_CICERONE "Cicerone"
 // ROGUEspecialTRAITS (description when rmb skills button)
 #define TRAIT_CIVILIZEDBARBARIAN "Tavern Brawler"
 #define TRAIT_COMICSANS "Annoying Face"
 #define TRAIT_WATERBREATHING "Water Breathing"
 #define TRAIT_DARKLING "Darkling"
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles or anastasia or cure rot
+#define TRAIT_PERMAMUTE "Permanent Mute"
 #define TRAIT_SIMPLESPEECH "Simple Speech" // Can only say the 1000 most common English-language words; other words get modified
 
 ///trait determines if this mob can breed given by /datum/component/breeding
@@ -101,6 +104,9 @@
 #define TRAIT_DEATHBARGAIN "Death Bargain" // Used by UNDERMAIDEN'S BARGAIN
 #define TRAIT_MATTHIOS_BRAND "Matthios Brand"
 #define TRAIT_MATTHIOS_BRAND_OLD "Old Matthios Brand"
+#define TRAIT_SLEUTH "Sleuth"
+#define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
+#define TRAIT_KEENEARS "Keen Ears"
 
 // PATRON CURSE TRAITS
 #define TRAIT_CURSE "Curse" //source
@@ -136,9 +142,11 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_BAD_MOOD = span_warning("Everything just seems to piss me off"),
 	TRAIT_LEAPER = "I can leap like a frog.",
 	TRAIT_NOSEGRAB = "I love to grab idiots by their noses!",
+	TRAIT_EARGRAB = "I am well-versed in giving my subordinates a good scolding.",
 	TRAIT_NUTCRACKER = "I love kicking idiots on the nuts!",
 	TRAIT_SEEPRICES = "I can tell the prices of things down to the zenny.",
 	TRAIT_SEEPRICES_SHITTY = "I can tell the prices of things... <i>Kind of</i>.",
+	TRAIT_CICERONE = span_info("I am well-versed in the differences of brews and spirits, and can tell them apart at a glance."),
 	TRAIT_STRONGBITE = "Stronger bites, critical bite attacks.",
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
 	TRAIT_EMPATH = "I can notice when people are in pain.",
@@ -193,6 +201,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_RITUALIST = span_info("I am skilled in the holy arts. Using a ritual feather, I can more deftly channel my God's powers via runes."),
 	TRAIT_DEATHBARGAIN = span_info("A horrible deal has been prepared in your name. May you never see it fulfilled..."),
 	TRAIT_WOODWALKER = span_notice("I can climb trees quicker, and gain climbing experience twice as quickly. I can step on thorns and branches safely in the woods. I can get twice as many things from searching bushes, and I can stand on leaves in trees safely."),
+	TRAIT_SLEUTH = span_info("I can spot my tracked Mark's trail without needing to approach it, and can spot them at a distance. I can track more frequently, and the act is not impaired by movement. I can examine tracks right away."),
+	TRAIT_PERFECT_TRACKER = span_info("I am the perfect tracker. No tracks will deceive my eyes, nor will they hide their secrets from me."),
+	TRAIT_KEENEARS = span_info("I've a good pair of ears, and can tell who is speaking, even when they're out of sight. I can also hear whispers from further away."),
+	TRAIT_PERMAMUTE = span_notice("I am a mute. I cannot speak."),
 	TRAIT_SIMPLESPEECH = span_info("I can not say hard words.")
 ))
 
@@ -291,6 +303,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PIERCEIMMUNE		"pierce_immunity"
 #define TRAIT_NODISMEMBER		"dismember_immunity"
 #define TRAIT_NOFIRE			"nonflammable"
+#define TRAIT_LAVA_PROOF 		"lava_proof"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
 #define TRAIT_WOODWALKER 		"Woodwalker"

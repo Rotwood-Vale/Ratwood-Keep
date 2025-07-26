@@ -273,7 +273,8 @@
 	dropshrink = 0.65
 	force = 7
 	w_class = WEIGHT_CLASS_SMALL
-
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/reagent_containers/glass/alembic  //this shit doesnt even use rogue bottles what the fuuuuuck
 	name = "metal alembic"
@@ -330,7 +331,7 @@
 
 /obj/item/reagent_containers/glass/alembic/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item))
-		if(user.mind.get_skill_level(/datum/skill/misc/medicine) <= 2)
+		if(user.mind.get_skill_level(/datum/skill/misc/alchemy) <= 2)
 			to_chat(user, span_warning("I don't know how this works."))
 			return TRUE
 		if(!I.can_brew)
@@ -372,6 +373,8 @@
 	volume = 100
 	var/obj/item/grinded
 	var/grinding_started = FALSE
+	grid_height = 32
+	grid_width = 64
 
 /obj/item/reagent_containers/glass/mortar/attack_self(mob/user)
 	if(grinding_started)
@@ -429,7 +432,7 @@
 		grinded = I
 		icon_state = "mortar_grind"
 		return
-		
+
 	..()
 
 /obj/item/reagent_containers/glass/mortar/update_icon()

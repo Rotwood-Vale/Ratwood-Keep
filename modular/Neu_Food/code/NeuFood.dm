@@ -96,6 +96,152 @@
 	experimental_onhip = FALSE
 	experimental_onback = FALSE
 
+/obj/item/reagent_containers/glass/bowl
+	name = "wooden bowl"
+	desc = "It is the empty space that makes the bowl useful."
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	icon_state = "bowl"
+	force = 5
+	throwforce = 5
+	reagent_flags = OPENCONTAINER
+	amount_per_transfer_from_this = 7
+	possible_transfer_amounts = list(7)
+	dropshrink = 0.8
+	w_class = WEIGHT_CLASS_NORMAL
+	volume = 33
+	obj_flags = CAN_BE_HIT
+	sellprice = 1
+	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
+	fillsounds = list('sound/items/fillcup.ogg')
+	var/in_use // so you can't spam eating with spoon
+
+/obj/item/reagent_containers/glass/bowl/iron
+	icon_state = "bowl_iron"
+
+/obj/item/reagent_containers/glass/bowl/silver
+	name = "silver bowl"
+	desc = "It is the empty space that makes the bowl useful. Made with fancy silver!"
+	icon_state = "bowl_silver"
+	sellprice = 30
+	var/last_used = 0
+
+/obj/item/reagent_containers/glass/bowl/pewter
+	name = "pewter bowl"
+	desc = "It is the empty space that makes the bowl useful. Decorated and made with pewter!"
+	icon_state = "bowl_pewter"
+	sellprice = 10
+
+/obj/item/reagent_containers/glass/bowl/update_icon()
+	cut_overlays()
+	icon_state = "bowl" //reset this every time I guess.
+	if(reagents)
+		if(reagents.total_volume > 0) 
+			if(reagents.total_volume <= 11) 
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_low")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				add_overlay(filling)
+		if(reagents.total_volume > 11) 
+			if(reagents.total_volume <= 22) 
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_half")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				add_overlay(filling)
+		if(reagents.total_volume > 22) 
+			if(reagents.has_reagent(/datum/reagent/consumable/soup/oatmeal, 10)) 
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_oatmeal")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				add_overlay(filling)
+			if(reagents.has_reagent(/datum/reagent/consumable/soup/veggie/cabbage, 17) || reagents.has_reagent(/datum/reagent/consumable/soup/veggie/onion, 17) || reagents.has_reagent(/datum/reagent/consumable/soup/veggie/onion, 17))
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_full")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				icon_state = "bowl_steam"
+				add_overlay(filling)
+			if(reagents.has_reagent(/datum/reagent/consumable/soup/stew/chicken, 17) || reagents.has_reagent(/datum/reagent/consumable/soup/stew/meat, 17) || reagents.has_reagent(/datum/reagent/consumable/soup/stew/fish, 17))
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_stew")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				icon_state = "bowl_steam"
+				add_overlay(filling)
+			else 
+				var/mutable_appearance/filling = mutable_appearance('modular/Neu_Food/icons/cooking.dmi', "bowl_full")
+				filling.color = mix_color_from_reagents(reagents.reagent_list)
+				add_overlay(filling)
+	else
+		icon_state = "bowl"
+
+/obj/item/reagent_containers/glass/bowl/on_reagent_change(changetype)
+	..()
+	update_icon()
+
+/obj/item/reagent_containers/glass/bowl/attackby(obj/item/I, mob/living/user, params) // lets you eat with a spoon from a bowl
+	if(istype(I, /obj/item/kitchen/spoon))
+		if(reagents.total_volume > 0)
+			beingeaten()
+			playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
+			visible_message("<span class='info'>[user] eats from [src].</span>")
+			if(do_after(user,1 SECONDS, target = src))
+				addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, min(amount_per_transfer_from_this,5), TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+		return TRUE
+				
+/obj/item/reagent_containers/glass/bowl/proc/beingeaten()
+	in_use = TRUE
+	sleep(10)
+	in_use = FALSE
+
+/obj/item/reagent_containers/glass/cup
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+
+/obj/item/reagent_containers/glass/cup/pewter
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+
+/obj/item/cooking/pan
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	experimental_inhand = FALSE
+
+/obj/item/reagent_containers/peppermill // new with some animated art
+	name = "pepper mill"
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	icon_state = "peppermill"
+	layer = CLOSED_BLASTDOOR_LAYER // obj layer + a little, small obj layering above convenient
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	list_reagents = list(/datum/reagent/consumable/blackpepper = 5)
+	reagent_flags = TRANSPARENT
+
+/obj/item/cooking/platter
+	name = "platter"
+	desc = "Made from fired clay."
+	icon = 'modular/Neu_Food/icons/cooking.dmi'
+	lefthand_file = 'modular/Neu_Food/icons/food_lefthand.dmi'
+	righthand_file = 'modular/Neu_Food/icons/food_righthand.dmi'
+	icon_state = "platter"
+	resistance_flags = NONE
+	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	experimental_inhand = FALSE
+	grid_width = 32
+	grid_height = 32
+	var/datum/platter_sprites/sprite_choice = new /datum/platter_sprites/
+
+/obj/item/cooking/platter/pewter
+	name = "pewter platter"
+	desc = "Made from an alloy of tin and mercury. Rolls off the tongue quite nicely."
+	icon_state = "p_platter"
+	sellprice = 10
+
+/obj/item/cooking/platter/silver
+	name = "silver platter"
+	desc = "Made from polished silver. Fancy!"
+	icon_state = "s_platter"
+	sellprice = 30
+	var/last_used = 0
+
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
 	name = "Ye olde ways of cookinge"
 	desc = "Penned by Svend Fatbeard, butler in the fourth generation"

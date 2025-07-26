@@ -1,8 +1,79 @@
+// Basic intents knives. // Basic intents daggers.
 
+/datum/intent/dagger
+	clickcd = 8
+
+/datum/intent/dagger/cut
+	name = "cut"
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs leaving less of a cutting impact due to the dagger design."
+	icon_state = "incut"
+	attack_verb = list("cuts", "slashes")
+	animname = "cut"
+	blade_class = BCLASS_CUT
+	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
+	damfactor = 0.85 // Daggers were narrow and designed for stabbing.
+	penfactor = 0
+	chargetime = 0
+	swingdelay = 0
+	clickcd = 10
+	item_d_type = "slash"
+	ican_cdg = TRUE
+	ican_assin = TRUE
+
+/datum/intent/dagger/cut/knife
+	damfactor = 1.1
+	desc = "Cutting and slashing motions making them slightly less accurate than stabs while being slightly more damaging."
+
+/datum/intent/dagger/thrust
+	name = "thrust"
+	desc = "Stabbing and thrusting motions making them slightly more accurate and faster than cuts while also having an easier time penetrating armor."
+	icon_state = "instab"
+	attack_verb = list("thrusts", "stabs")
+	animname = "stab"
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 40
+	chargetime = 0
+	clickcd = 8 // Exists for readability. (Ultimately pointless due to /datum/intent/dagger existing)
+	item_d_type = "stab"
+	ican_cdg = TRUE
+	ican_assin = TRUE
+
+/datum/intent/dagger/thrust/knife
+	penfactor = 20
+	damfactor = 0.9
+	desc = "Stabbing and thrusting motions making them slightly more accurate and faster than cuts while also having an easier time penetrating armor even if only half as good as daggers at it."
+
+/datum/intent/dagger/chop
+	name = "chop"
+	icon_state = "inchop"
+	attack_verb = list("chops")
+	animname = "chop"
+	blade_class = BCLASS_CHOP
+	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
+	penfactor = 15
+	damfactor = 1.5
+	swingdelay = 5
+	clickcd = 10
+	item_d_type = "slash"
+
+/datum/intent/dagger/thrust/pick
+	name = "icepick stab"
+	desc = "Precise poke-slipping and tap-thrusting motions, slower yet effective way to beat armor is to slip through its gaps with a narrow blade, be it an wind-up precise blow, or just taking sometime to poke around to find a gap before stabbing it in."
+	icon_state = "inpick"
+	attack_verb = list("picks", "impales")
+	blade_class = BCLASS_STAB
+	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
+	penfactor = 70
+	clickcd = 15 // Changed from 14 to 15 to avoid the spam fest with swift intent bypassing parries and dodges if clicking isn't on point.
+	swingdelay = 12
+	damfactor = 1.5
+	ican_cdg = TRUE
+	ican_assin = TRUE
 
 /obj/item/rogueweapon/huntingknife
 	force = 12
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
+	possible_item_intents = list(/datum/intent/dagger/cut/knife, /datum/intent/dagger/thrust/knife, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	name = "hunting knife"
 	desc = "This survival knife might be able to get you through the wild."
@@ -12,7 +83,6 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	gripsprite = FALSE
-	//dropshrink = 0.75
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
@@ -59,51 +129,6 @@
 	. = ..()
 	AddElement(/datum/element/tipped_item)
 
-/datum/intent/dagger
-	clickcd = 8
-
-/datum/intent/dagger/cut
-	name = "cut"
-	icon_state = "incut"
-	attack_verb = list("cuts", "slashes")
-	animname = "cut"
-	blade_class = BCLASS_CUT
-	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 0
-	chargetime = 0
-	swingdelay = 0
-	clickcd = 10
-	item_d_type = "slash"
-	ican_cdg = TRUE
-	ican_assin = TRUE
-
-/datum/intent/dagger/thrust
-	name = "thrust"
-	icon_state = "instab"
-	attack_verb = list("thrusts", "stabs")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 40
-	chargetime = 0
-	clickcd = 8
-	item_d_type = "stab"
-	ican_cdg = TRUE
-	ican_assin = TRUE
-
-/datum/intent/dagger/thrust/pick
-	name = "icepick stab"
-	icon_state = "inpick"
-	attack_verb = list("picks", "impales")
-	blade_class = BCLASS_STAB
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 70
-	clickcd = 14
-	swingdelay = 12
-	damfactor = 1.5
-	ican_cdg = TRUE
-	ican_assin = TRUE
-
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -112,20 +137,6 @@
 				return list("shrink" = 0.4,"sx" = -10,"sy" = 0,"nx" = 11,"ny" = 0,"wx" = -4,"wy" = 0,"ex" = 2,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
-
-/datum/intent/dagger/chop
-	name = "chop"
-	icon_state = "inchop"
-	attack_verb = list("chops",)
-	animname = "chop"
-	blade_class = BCLASS_CHOP
-	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 10
-	damfactor = 1.5
-	swingdelay = 5
-	clickcd = 10
-	item_d_type = "slash"
 
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
@@ -142,15 +153,29 @@
 	smeltresult = /obj/item/ingot/steel
 	can_cdg = FALSE
 
+/datum/intent/dagger/chop/cleaver
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	penfactor = 30 // It's way easier to land chops with such a hefty blade.
+
 /obj/item/rogueweapon/huntingknife/cleaver/combat
 	force = 16
 	name = "combat knife"
 	desc = "A swift and deadly combat knife."
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/thrust)
+	possible_item_intents = list(/datum/intent/dagger/cut/combatknife, /datum/intent/dagger/thrust, /datum/intent/dagger/chop/cleaver/combatknife)
 	icon_state = "combatknife"
 	throwforce = 16
 	can_cdg = TRUE
 	can_assin = TRUE
+
+/datum/intent/dagger/cut/combatknife
+	penfactor = 10
+	damfactor = 1.2
+
+/datum/intent/dagger/chop/cleaver/combatknife
+	penfactor = 20
+	damfactor = 1.3
+	clickcd = 9
+	swingdelay = 3
 
 /obj/item/rogueweapon/huntingknife/cleaver/getonmobprop(tag)
 	. = ..()
@@ -181,13 +206,8 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-
-/datum/intent/dagger/chop/cleaver
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 30
-
 /obj/item/rogueweapon/huntingknife/scissors
-	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
+	possible_item_intents = list(/datum/intent/dagger/thrust/knife, /datum/intent/dagger/cut, /datum/intent/snip)
 	max_integrity = 100
 	name = "iron scissors"
 	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
@@ -244,7 +264,7 @@
 	icon_state = "sscissors"
 
 /obj/item/rogueweapon/huntingknife/idagger
-	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/dagger/thrust/pick)
 	force = 15
 	max_integrity = 100
 	name = "iron dagger"
@@ -283,6 +303,7 @@
 	name = "steel dagger"
 	desc = "This is a dagger made of solid steel, more durable."
 	icon_state = "sdagger"
+	force = 18
 	max_integrity = 150
 	smeltresult = /obj/item/ingot/steel
 
@@ -329,7 +350,7 @@
 	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rogueweapon/huntingknife/stoneknife
-	possible_item_intents = list(/datum/intent/dagger/cut,/datum/intent/dagger/chop)
+	possible_item_intents = list(/datum/intent/dagger/cut/knife, /datum/intent/dagger/chop)
 	name = "stone knife"
 	desc = "A crudely crafted knife made of stone."
 	icon_state = "stone_knife"
@@ -339,7 +360,7 @@
 	wdefense = 1
 
 /obj/item/rogueweapon/huntingknife/elvish
-	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut)
+	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut)
 	name = "elvish dagger"
 	desc = "This beautiful dagger is of intricate, elvish design. Sharper, too."
 	force = 19
@@ -461,6 +482,49 @@
 	AddComponent(/datum/component/magic_item, effect)
 
 /obj/item/rogueweapon/huntingknife/elvish/drow
-	name = "nite elf dagger"
+	name = "drowish dagger"
 	desc = "This ominous, dark handled dagger was crafted by the assassin race of nite elves."
-	force = 25
+	force = 24
+
+//Very singular purpose dagger(s), intended to deal with armour. Steel.
+/obj/item/rogueweapon/huntingknife/idagger/steel/rondel
+	name = "rondel dagger"
+	desc = "A dagger intended to be carried at one's hip. The perfect sidearm. Best used while grappling an opponent."
+	icon_state = "rondel"//Just a temp sprite, base from sdagger_sk, blade from sildagger, bashed together.
+	possible_item_intents = list(/datum/intent/dagger/thrust/rondel, /datum/intent/dagger/cut)//You get cut, but that's not the weapon's purpose.
+	force = 14//2 less than a combat knife. 1 less than an iron dagger.
+	throwforce = 14
+	wdefense = 4//A great circular catch above the grip. Same defense as most swords.
+	can_grf = TRUE//Grapple them for that 80% AP.
+
+//A weaker version, intended for 'mercy' killing. The rondel's cousin. Iron.
+/obj/item/rogueweapon/huntingknife/idagger/misericorde
+	name = "misericorde"
+	desc = "A very lengthy dagger, intended to slip into joints and under plates to deliver a mercy kill. Best used while grappling an opponent."
+	icon_state = "misericorde"//Just a temp sprite, taken from sdaggeralt_old and bashed together.
+	possible_item_intents = list(/datum/intent/dagger/thrust/rondel/mis)//You get NO CUT. Unlike the rondel, you don't have a proper edge. Sorry.
+	force = 13//3 less than a combat knife. 2 less than an iron dagger.
+	throwforce = 13
+	max_integrity = 120//This isn't meant for up front combat. Be smart.
+	wdefense = 1//Don't try to parry with this. On par with the stone knife.
+	can_grf = TRUE//Grapple them for that 80% AP.
+
+//Rondel's unique intent.
+/datum/intent/dagger/thrust/rondel
+	name = "pick"
+	desc = "Slip the blade's point into gaps. 80% AP if the target is grappled. Allows the weapon to double as a mining implement. Defaults to a no AP smash intent if targeting ears, while grappling."
+	icon_state = "inpick"
+	attack_verb = list("punctures", "perforates")
+	blade_class = BCLASS_PICK//Punctures. Punctures abound. Can also be used for mining, given it's a utility item, too.
+	hitsound = list('sound/combat/hits/bladed/largeslash (1).ogg', 'sound/combat/hits/bladed/largeslash (2).ogg', 'sound/combat/hits/bladed/largeslash (3).ogg')
+	penfactor = 30//You get the AP from grapplefu. If you're grabbing them, it jumps to 80%. This is 10% less than a normal dagger thrust, otherwise.
+	clickcd = 14
+	swingdelay = 8//Longer than chop. Not meant to be quick. Not nearly as long as normal picking.
+//	damfactor = 1.3//30% extra damage felt terrible in testing. Probably not a good idea to uncomment this.
+	ican_cdg = TRUE//The entire point of the weapon is to deal with armour. Especially if they're down.
+	ican_grf = TRUE//As above, though THIS is the intent of the weapons themselves. Not CDG.
+
+//Misericorde's sub intent.
+/datum/intent/dagger/thrust/rondel/mis
+	clickcd = 12//Slightly faster than a rondel.
+	swingdelay = 6//Slightly faster than a rondel.

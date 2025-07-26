@@ -39,6 +39,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/firearms, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
+	ADD_TRAIT(H, TRAIT_CICERONE, TRAIT_GENERIC)
 
 	head = /obj/item/clothing/head/roguetown/chaperon
 	neck = /obj/item/clothing/neck/roguetown/horus
@@ -50,7 +51,7 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backl = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold
-	backpack_contents = list(/obj/item/storage/keyring/merchant)
+	backpack_contents = list(/obj/item/storage/keyring/merchant, /obj/item/rogueweapon/huntingknife/idagger/steel/rondel = 1)
 	if(isdarkelf(H))
 		backpack_contents.Add(/obj/item/clothing/mask/rogue/spectacles/delf)
 	if(H.gender == MALE)

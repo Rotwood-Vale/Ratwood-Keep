@@ -3,30 +3,51 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 /mob/living/carbon/human/Topic(href, href_list)
 	var/observer_privilege = isobserver(usr)
+	var/aghost_privilege = isadminobserver(usr)
 
 	if(href_list["task"] == "view_headshot")
 		if(!ismob(usr))
 			return
-		if(!valid_headshot_link(null, headshot_link, TRUE))
-			return
 		var/mob/user = usr
-		var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[headshot_link]' width='250px' height='250px'></td></table>")
-		var/datum/browser/popup = new(user, "headshot", "<div align='center'>[src]</div>", 310, 330)
+		var/list/dat = list()
+		var/nude = get_location_accessible(src, BODY_ZONE_CHEST) && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN)
+		dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[src.real_name]</b></font></div><br>"
+		if(valid_headshot_link(null, headshot_link, TRUE))
+			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div><br>")
+		if(flavortext)
+			dat += "<div align='left'>[flavortext_display]</div>"
+		if(ooc_notes)
+			dat += "<br>"
+			dat += "<div align='center'><b>OOC notes</b></div>"
+			dat += "<div align='left'>[ooc_notes_display]</div>"
+		if(nudeshot_link || flavortext_nsfw)
+			dat += "<br>"
+			dat += "<div align='center'><b>NSFW</b></div>"
+			if(aghost_privilege || nude)
+				if(flavortext_nsfw)
+					dat += "<br>"
+					dat += "<div align='left'>[flavortext_nsfw_display]</div>"
+				if(nudeshot_link)
+					dat += "<br>"
+					dat += "<div align='center'><img src='[nudeshot_link]' width='360px' height='480px'></div>"
+			else
+				dat += "<br><center><i><font color = '#9d0080'; font size = 5>There is more to see but they are not naked...</font></i></center>"
+		var/datum/browser/popup = new(user, "[src]", nwidth = 600, nheight = 800)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
 	
-	if(href_list["task"] == "view_nudeshot")
-		if(!ismob(usr))
-			return
-		if(!valid_headshot_link(null, nudeshot_link, TRUE))
-			return
-		var/mob/user = usr
-		var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[nudeshot_link]' width='360px' height='480px'></td></table>")
-		var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]</div>", 400, 525)
-		popup.set_content(dat.Join())
-		popup.open(FALSE)
-		return
+	// if(href_list["task"] == "view_nudeshot")
+	// 	if(!ismob(usr))
+	// 		return
+	// 	if(!valid_headshot_link(null, nudeshot_link, TRUE))
+	// 		return
+	// 	var/mob/user = usr
+	// 	var/list/dat = list("<table width='100%' height='100%'><td align='center' valign='middle'><img src='[nudeshot_link]' width='360px' height='480px'></td></table>")
+	// 	var/datum/browser/popup = new(user, "nudeshot", "<div align='center'>[src]</div>", 400, 525)
+	// 	popup.set_content(dat.Join())
+	// 	popup.open(FALSE)
+	// 	return
 
 	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()

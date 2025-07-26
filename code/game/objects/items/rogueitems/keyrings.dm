@@ -2,7 +2,7 @@
 
 /obj/item/storage/keyring
 	name = "keyring"
-	desc = "Will help you organize your keys."
+	desc = "A circular ring of metal. It will help you organize your keys."
 	icon_state = "keyring0"
 	icon = 'icons/roguetown/items/keys.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
@@ -10,34 +10,26 @@
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0
 	throwforce = 0
-	var/list/keys = list()
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK|ITEM_SLOT_MOUTH|ITEM_SLOT_WRISTS
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/skill/craft/blacksmithing
+	component_type = /datum/component/storage/concrete/grid/keyring
+	var/list/keys = list() //Used to generate starting keys on initialization, check contents instead for actual keys
 
 /obj/item/storage/keyring/Initialize()
-    . = ..()
-    if(keys.len)
-        for(var/X in keys)
-            new X(src)
-            keys -= X
-    update_icon()
-    update_desc()
-
-/obj/item/storage/keyring/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
-		STR.max_combined_w_class = 20
-		STR.max_w_class = WEIGHT_CLASS_SMALL
-		STR.max_items = 9
-		STR.attack_hand_interact = FALSE
-		STR.click_gather = TRUE
-		STR.allow_dump_out = TRUE
-		STR.rustle_sound = FALSE
-		STR.set_holdable(list(
-			/obj/item/key,
-		))
+	if(!length(keys))
+		return
+	if(length(keys) > 12)
+		stack_trace("Keyring [src] has too many keys and the list will get cut short!")
+	for(var/X as anything in keys)
+		var/obj/item/key/new_key = new X(loc)
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_key, null, TRUE, FALSE))
+			qdel(new_key)
+		LAZYREMOVE(keys, X)
+
+	update_icon()
+	update_desc()
 
 /obj/item/storage/keyring/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -46,36 +38,38 @@
 		return TRUE
 
 /obj/item/storage/keyring/update_icon()
-    ..()
-    switch(contents.len)
-        if(0)
-            icon_state = "keyring0"
-        if(1)
-            icon_state = "keyring1"
-        if(2)
-            icon_state = "keyring2"
-        if(3)
-            icon_state = "keyring3"
-        if(4)
-            icon_state = "keyring4"
-        else
-            icon_state = "keyring5"
+	. = ..()
+	switch(length(contents))
+		if(0)
+			icon_state = "keyring0"
+		if(1)
+			icon_state = "keyring1"
+		if(2)
+			icon_state = "keyring2"
+		if(3)
+			icon_state = "keyring3"
+		if(4)
+			icon_state = "keyring4"
+		else
+			icon_state = "keyring5"
 
-/obj/item/storage/keyring/proc/update_desc()
-	if(contents.len)
-		desc = span_info("Holds \Roman[contents.len] key\s, including:")
-		for(var/obj/item/key/KE in contents)
-			desc += span_info("\n- [KE.name ? "A [KE.name]." : "	An unknown key."]")
-	else
-		desc = ""
+/obj/item/storage/keyring/update_desc()
+	. = ..()
+	if(!length(contents))
+		desc = initial(desc)
+		return
+	desc = span_info("Holds \Roman[length(contents)] key\s, including:")
+	for(var/obj/item/key/KE in contents)
+		desc += span_info("\n- [KE.name ? "\A [KE.name]." : "An unknown key."]")
+
 
 /obj/item/storage/keyring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-    . = ..()
-    playsound(src, "sound/items/gems (1).ogg", 100, FALSE)
-    update_desc()
+	. = ..()
+	update_desc()
 
 /obj/item/storage/keyring/Exited(atom/movable/gone, direction)
-    . = ..()
+	. = ..()
+	update_desc()
 
 /obj/item/storage/keyring/getonmobprop(tag)
 	. = ..()
@@ -326,7 +320,8 @@
 		if(3)
 			icon_state = "pickring3"
 
-/obj/item/lockpickring/proc/update_desc()
+/obj/item/lockpickring/update_desc()
+	. = ..()
 	if(picks.len)
 		desc = "<span class='info'>\Roman [picks.len] lockpicks.</span>"
 	else

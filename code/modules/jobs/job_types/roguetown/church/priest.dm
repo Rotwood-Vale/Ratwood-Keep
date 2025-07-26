@@ -64,6 +64,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	)
 	ADD_TRAIT(H, TRAIT_CHOSEN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
+
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
@@ -78,7 +79,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		H.mind.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 		H.change_stat("constitution", 1)
 		H.change_stat("endurance", 2) //good at casting lots of miracles without tiring, divinely fortified stamina
-		H.change_stat("intelligence", 3) 
+		H.change_stat("intelligence", 3)
 		if(H.age == AGE_OLD)
 			H.mind.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 

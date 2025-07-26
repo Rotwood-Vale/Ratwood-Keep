@@ -411,7 +411,7 @@
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
 			if(length(reagents.reagent_list))
-				if(user.can_see_reagents() || (user.Adjacent(src) && user.mind.get_skill_level(/datum/skill/misc/alchemy) >= 4)) //Show each individual reagent
+				if(user.can_see_reagents() || (user.Adjacent(src) && user.mind.get_skill_level(/datum/skill/misc/alchemy) >= 4 || HAS_TRAIT(user, TRAIT_CICERONE))) //Show each individual reagent
 					. += "It contains:"
 					for(var/datum/reagent/R in reagents.reagent_list)
 						. += "[round(R.volume / 3, 0.1)] oz of <font color=[R.color]>[R.name]</font>"
@@ -434,6 +434,37 @@
 				. += span_danger("It's empty.")
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
+
+/**
+ * Updates the appearence of the icon
+ *
+ * Mostly delegates to update_name, update_desc, and update_icon
+ *
+ * Arguments:
+ * - updates: A set of bitflags dictating what should be updated. Defaults to [ALL]
+ */
+/atom/proc/update_appearance(updates = ALL)
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+	. = NONE
+	updates &= ~SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_APPEARANCE, updates)
+	if(updates & UPDATE_NAME)
+		. |= update_name(updates)
+	if(updates & UPDATE_DESC)
+		. |= update_desc(updates)
+	if(updates & UPDATE_ICON)
+		. |= update_icon(updates)
+
+/// Updates the name of the atom
+/atom/proc/update_name(updates = ALL)
+	SHOULD_CALL_PARENT(TRUE)
+	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_NAME, updates)
+
+/// Updates the description of the atom
+/atom/proc/update_desc(updates = ALL)
+	SHOULD_CALL_PARENT(TRUE)
+	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_DESC, updates)
 
 /// Updates the icon of the atom
 /atom/proc/update_icon()

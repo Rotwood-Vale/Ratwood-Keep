@@ -1,6 +1,9 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/red/Initialize()
 	. = ..()
 	REMOVE_TRAIT(src, TRAIT_ANTIMAGIC, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_LAVA_PROOF, TRAIT_GENERIC) // Lava immunity
+	ADD_TRAIT(src, TRAIT_NOFIRE, TRAIT_GENERIC)
+	resistance_flags |= LAVA_PROOF
 
 /mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/red	//subtype for dragon-kobold event, requested by Mario
 	name = "red dragon"

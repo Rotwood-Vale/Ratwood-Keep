@@ -66,7 +66,6 @@
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
-	beltr = /obj/item/rogueweapon/sword/short
 	beltl = /obj/item/storage/keyring/knight
 	backl = /obj/item/gwstrap
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1)
@@ -108,6 +107,16 @@
 		if("Bardiche")
 			r_hand = /obj/item/rogueweapon/halberd/bardiche
 
+	var/sidearms = list("Arming Sword", "Rondel Dagger")
+	var/sidearm_choice = input("Choose your sidearm.", "TAKE UP ARMS") as anything in sidearms
+	switch(sidearm_choice)
+		if("Arming Sword")
+			beltr = /obj/item/rogueweapon/sword/short
+
+		if("Rondel Dagger")
+			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+
 /datum/subclass/knight/champion
 	name = "Champion"
 	tutorial = "Noble hero and protector. You are practiced in the art of the sword, and prefer lighter armor as to be more nimble."
@@ -122,7 +131,6 @@
 	neck = /obj/item/clothing/neck/roguetown/bervor
 	beltl = /obj/item/storage/keyring/knight
 	backpack_contents = list(/obj/item/rope/chain = 1, /obj/item/natural/feather = 1)
-	beltr = /obj/item/rogueweapon/sword/long
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	backl = /obj/item/gwstrap
 	if(H.mind)
@@ -162,6 +170,16 @@
 
 		if("Estoc")
 			r_hand = /obj/item/rogueweapon/estoc
+
+	var/sidearms = list("Bastard Sword", "Rondel Dagger")
+	var/sidearm_choice = input("Choose your sidearm.", "TAKE UP ARMS") as anything in sidearms
+	switch(sidearm_choice)
+		if("Bastard Sword")
+			beltr = /obj/item/rogueweapon/sword/long
+
+		if("Rondel Dagger")
+			beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/rondel
+			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 
 /datum/subclass/knight/juggernaut
 	name = "Juggernaut"

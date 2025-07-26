@@ -414,7 +414,7 @@
 	name = "crown"
 	icon_state = "serpcrowno"
 	sellprice = 100
-	allowed_race = list(/datum/species/goblinp)
+	allowed_race = list(/datum/species/goblinp, /datum/species/halforc, /datum/species/dracon, /datum/species/anthromorphsmall, /datum/species/kobold)
 
 /obj/item/clothing/head/roguetown/crown/sparrowcrown
 	name = "champion's circlet"
@@ -498,6 +498,9 @@
 	resistance_flags = FIRE_PROOF
 	clothing_flags = CANT_SLEEP_IN
 	sewrepair = FALSE
+
+	grid_height = 64
+	grid_width = 64
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
@@ -1063,7 +1066,7 @@
 /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "volf helmet"
-	desc = "Bandit initiation rites involve the slaying of a volf."
+	desc = "Some cultures has initiation rites that involves the slaying of a volf, usually bandits or tribals."
 	body_parts_covered = HEAD|HAIR|EARS
 	icon_state = "volfhead"
 	item_state = "volfhead"
@@ -1474,7 +1477,6 @@
 
 /obj/item/clothing/head/roguetown/witchhat
 	name = "witch hat"
-	desc = ""
 	icon_state = "witch"
 	item_state = "witch"
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -1584,14 +1586,16 @@
 	icon_state = "heavyhood"
 
 /obj/item/clothing/head/roguetown/padded/briarthorns
-	name = "briar thorns"
-	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity..."
+	name = "crown of thorns"
+	desc = "The pain it causes perhaps can distract from the whispers of a mad God overpowering your sanity... or be used as a torture device."
 	icon_state = "briarthorns"
+	alternate_worn_layer  = 8.9 //On top of helmet
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 
 /obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
 	. = ..()
 	to_chat(user, span_warning ("The thorns prick me."))
-	user.adjustBruteLoss(4)
+	user.adjustBruteLoss(20)
 
 /obj/item/clothing/head/roguetown/articap
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
@@ -1714,20 +1718,39 @@
     item_state = "viceseermask"
     sellprice = 40
 
+/obj/item/clothing/head/roguetown/flower_crown
+	name = "rose crown"
+	desc = "A crown made of roses, often worn by those who wish to show their love for Eora or Necra. It is said that the wearer will be blessed with peace and love."
+	icon_state = "rosa_crown"
+	item_state = "rosa_crown"
+	fiber_salvage = FALSE
+	salvage_amount = 0
+	dynamic_hair_suffix = null
+	alternate_worn_layer  = 8.9 //On top of helmet
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+
+/obj/item/clothing/head/roguetown/flower_crown/salvia
+	name = "salvia crown"
+	desc = "A crown made from salvia flowers, often worn by those who wish to show their love for Eora or Necra. It is said that the wearer will be blessed with peace and love."
+	icon_state = "salvia_crown"
+	item_state = "salvia_crown"
+
 /obj/item/clothing/head/flowers
-    name = "Flowers"
-    desc = " "
-    icon_state = "dflower"
-    item_state = "dflower"
-    icon = 'icons/roguetown/misc/flowerspack.dmi'
-    mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
-    slot_flags = ITEM_SLOT_HEAD
-    body_parts_covered = NONE
-    force = 0
-    throwforce = 0
-    w_class = WEIGHT_CLASS_TINY
-    throw_speed = 1
-    throw_range = 3
+	name = "Flowers"
+	desc = " "
+	icon_state = "dflower"
+	item_state = "dflower"
+	icon = 'icons/roguetown/misc/flowerspack.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
+	slot_flags = ITEM_SLOT_HEAD
+	body_parts_covered = NONE
+	force = 0
+	throwforce = 0
+	w_class = WEIGHT_CLASS_TINY
+	throw_speed = 1
+	throw_range = 3
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/clothing/head/flowers/Initialize()
 	. = ..()

@@ -410,6 +410,11 @@
 	created_item = list (/obj/item/clothing/shoes/roguetown/anklets)
 	skill_level = 4
 
+/datum/anvil_recipe/armor/gold/goldcirclet
+	name = "Gold Circlet"
+	req_bar = /obj/item/ingot/gold
+	created_item = /obj/item/clothing/head/roguetown/circlet
+
 // --------- BLACKSTEEL RECIPES-----------
 
 /datum/anvil_recipe/armor/blacksteel/cuirass

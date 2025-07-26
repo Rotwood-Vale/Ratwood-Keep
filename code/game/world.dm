@@ -97,6 +97,30 @@ GLOBAL_VAR(restart_counter)
 
 	Master.Initialize(10, FALSE, TRUE)
 
+	// Disable certain spawners in CentCom if CentCom.dmm is active
+	if(SSmapping && SSmapping.config && SSmapping.config.map_name == "CentCom.dmm")
+		for(var/type in list(
+			/obj/effect/landmark/start/banditlate,
+			/obj/effect/landmark/start/bandit,
+			/obj/effect/landmark/start/vampirespawn,
+			/obj/effect/landmark/start/vampirelord,
+			/obj/effect/landmark/start/vampireknight,
+			/obj/effect/landmark/start/goblinchief,
+			/obj/effect/landmark/start/goblincook,
+			/obj/effect/landmark/start/goblinshaman,
+			/obj/effect/landmark/start/goblinsmith,
+			/obj/effect/landmark/start/goblinguard,
+			/obj/effect/landmark/start/goblinrabble
+		))
+			for(var/obj/O in world)
+				if(istype(O, type))
+					var/turf/T = get_turf(O)
+					if(T && istype(T.loc, /area/centcom)) // Only delete if in CentCom area
+						qdel(O)
+
+	if(TEST_RUN_PARAMETER in params)
+		HandleTestRun()
+
 	if(TEST_RUN_PARAMETER in params)
 		HandleTestRun()
 

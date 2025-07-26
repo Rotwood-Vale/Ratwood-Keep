@@ -5,48 +5,49 @@
 //#define CLICK_CD_RAPID 2
 
 /datum/intent
-	var/name = "intent"
-	var/desc = ""
-	var/icon_state = "instrike"
-	var/list/attack_verb = list("hits", "strikes")
+	var/name = "intent" // The name of the intent, be it cut/stab/thrust/chop/strike when examined.
+	var/desc = "" // Description of the item/intent/object itself when examined.
+	var/icon_state = "instrike" // The icon of the intent itself.
+	var/list/attack_verb = list("hits", "strikes") // Basically x hits or strikes y with their item.
 	var/obj/item/masteritem
 	var/mob/living/mastermob
 	var/unarmed = FALSE
 	var/intent_type
-	var/animname = "strike"
-	var/blade_class = BCLASS_BLUNT
+	var/animname = "strike" // The animation type of the attack itself.
+	var/blade_class = BCLASS_BLUNT // What type of attack is it?; Is it blunt/slash or stab?
 	var/list/hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
-	var/canparry = TRUE
-	var/candodge = TRUE
-	var/chargetime = 0 //if above 0, this attack must be charged to reach full damage
-	var/chargedrain = 0 //how much fatigue is removed every second when at max charge
-	var/releasedrain = 1 //drain when we go off, regardless
-	var/misscost = 1	//extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
+	var/canparry = TRUE // Can this action be parried?; True = Yes | False = No.
+	var/candodge = TRUE // Can this action be dodged?; True = Yes | False = No.
+	var/chargetime = 0 		// If above 0, this attack must be charged to reach full damage.
+	var/chargedrain = 0		// How much stamina is removed every second when at max charge.
+	var/releasedrain = 1 	// Drain when we go off, regardless.
+	var/misscost = 1 // Extra drain from missing only, ALSO APPLIED IF ENEMY DODGES
 	var/tranged = 0
-	var/noaa = FALSE //turns off auto aiming, also turns off the 'swooshes'
-	var/warnie = ""
+	var/noaa = FALSE // Turns off auto aiming while also turning off the 'swooshes'.
+	var/warnie = "" // Gives a warning message that they are charging up an attack, usually on ranged weapons.
 	var/pointer = 'icons/effects/mousemice/human_attack.dmi'
-	var/clickcd = CLICK_CD_MELEE //the cd invoked clicking on stuff with this intent
-	var/recovery = 0		//RTD unable to move for this duration after an attack without becoming off balance
-	var/list/charge_invocation //list of stuff to say while charging
-	var/no_early_release = FALSE //we can't shoot off early
-	var/movement_interrupt = FALSE //we cancel charging when changing mob direction, for concentration spells
-	var/rmb_ranged = FALSE //we execute a proc with the same name when rmbing at range with no offhand intent selected
-	var/tshield = FALSE //probably needed or something
+	var/clickcd = CLICK_CD_MELEE // The cd (cool-down) invoked clicking on stuff with this intent.
+	var/recovery = 0 // RTD (Probably attacker) unable to move for this duration after an attack without becoming off balance. (Problem this was never coded fully, so it does literally nothing)
+	var/list/charge_invocation // List of stuff to say while charging.
+	var/no_early_release = FALSE // We can't shoot off early. (Until fully charged no release of this attack)
+	var/movement_interrupt = FALSE // We cancel charging when changing mob direction, for concentration spells.
+	var/rmb_ranged = FALSE // We execute a proc with the same name when right-clicking at range with no off-hand intent selected.
+	var/tshield = FALSE // Probably needed or something. (Don't question it)
 	var/datum/looping_sound/chargedloop = null
 	var/keep_looping = TRUE
-	var/damfactor = 1 //multiplied by weapon's force for damage
-	var/penfactor = 0 //see armor_penetration
-	var/item_d_type = "blunt" // changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
-	var/charging_slowdown = 0
+	var/damfactor = 1 // Multiplied by weapon's force for damage. (Example 10 damage on damfactor = 1.1 means 10% which is 11, so, 20 + 10% would be 22, yes damfactor 1.05 is +5% and damfactor 0.9 is -10%)
+	var/penfactor = 0 // See armor_penetration. (Or just read this, [rough and partially inaccurate oversimplified explanation] it basically ignores the matching type of damage, be it blunt/slash/stab, for example if they had armor protection to blunt 20, and the thing does 10 raw damage but it has protection 5 to blunt it would deal 5 damage instead, however if penfactor was 4 it would deal 9 damage because it ignores 4 out of 5 of the damage, if it was penfactor -4 it would be 1 damage going through)
+	var/item_d_type = "blunt" // Changes the item's attack type ("blunt" - area-pressure attack, "slash" - line-pressure attack, "stab" - point-pressure attack)
+	var/charging_slowdown = 0 // The bigger the number the worse the slowdown. (For example war dirt gives a slowdown of 2)
 	var/warnoffset = 0
-	var/swingdelay = 0
-	var/no_attack = FALSE //causes a return in /attack() but still allows to be used in attackby(
-	var/reach = 1 //In tiles, how far this weapon can reach; 1 for adjacent, which is default
-	var/miss_text //THESE ARE FOR UNARMED MISSING ATTACKS
-	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
-	var/ican_assin = FALSE			//Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
-	var/ican_cdg = FALSE			//Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+	var/swingdelay = 0 // Swing-delay works in 10 = 1 second, 15 = 1.5 second, 20 = 2 seconds, and so on, and so forth. (This isn't an attack cool-down but a delay before the confirmed attack lands)
+	var/no_attack = FALSE // Causes a return in /attack() but still allows to be used in attackby(
+	var/reach = 1 // In tiles, how far this weapon can reach; 1 for adjacent, which is default, great length weapons usually have two, the whip on "crack" intent has 3.
+	var/miss_text 	// These are for unarmed missing attacks.
+	var/miss_sound 	// These are for unarmed missing attacks.
+	var/ican_assin = FALSE	// Intent: Can Assassinate - Special flag for backstabbing weapons (Extra small, like daggers)
+	var/ican_cdg = FALSE	// Intent: Can Coup de Grace - Special flag for weapons that can be wedged under armor in a fight (short and portable)
+	var/ican_grf = FALSE	// Intent: Can Grapplefu - Special flag to denote a weapon capable of being used in grapple combat. They're given flat 80% AP on a grab, and assassin blade class. (Rondel daggers, ideally.)
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -148,13 +149,13 @@
 	if(Masteritem)
 		masteritem = Masteritem
 
-/datum/intent/proc/update_chargeloop() //what the fuck is going on here lol
+/datum/intent/proc/update_chargeloop() // Wonder what this does.
 	if(mastermob)
 		if(chargedloop)
 			if(!istype(chargedloop))
 				chargedloop = new chargedloop(mastermob)
 
-/datum/intent/proc/on_charge_start() //what the fuck is going on here lol
+/datum/intent/proc/on_charge_start() // Wonder what this does.
 	if(mastermob.curplaying)
 		mastermob.curplaying.chargedloop.stop()
 		mastermob.curplaying = null
@@ -171,7 +172,6 @@
 		chargedloop.stop()
 	if(mastermob.curplaying == src)
 		mastermob.curplaying = null
-
 
 /datum/intent/use
 	name = "use"
@@ -250,7 +250,6 @@
 	volume = 100
 	extra_range = 3
 
-
 /datum/looping_sound/invokeholy
 	mid_sounds = list('sound/magic/holycharging.ogg')
 	mid_length = 320
@@ -308,7 +307,7 @@
 	chargetime = 0.3
 	swingdelay = 3
 
-/datum/intent/shoot //shooting crossbows or other guns, no parrydrain
+/datum/intent/shoot // Shooting crossbows or other guns, no parry-drain.
 	name = "shoot"
 	icon_state = "inshoot"
 	tranged = 1
@@ -495,7 +494,6 @@
 	candodge = TRUE
 	canparry = TRUE
 
-
 /datum/intent/unarmed/claw
 	name = "claw"
 	icon_state = "instrike"
@@ -577,7 +575,7 @@
 	canparry = TRUE
 	miss_text = "stabs the air!"
 
-// Chicken
+// Chicken. (Cluckly cluck)
 /datum/intent/simple/peck
 	name = "peck"
 	icon_state = "instrike"

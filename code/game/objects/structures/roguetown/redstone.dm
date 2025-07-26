@@ -406,3 +406,32 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		sleep(40)
 		icon_state = "kybraxor1"
 		changing_state = FALSE
+
+/obj/structure/lever/cursed
+    name = "Cursed Lever"
+    desc = "A lever radiating a sinister aura. Only those of a certain allegiance may touch it."
+    icon = 'icons/roguetown/misc/structure.dmi'
+    icon_state = "leverwallred0"
+    var/allowed_factions = null // List of factions allowed to use this lever, e.g. list("orcs", "tribe")
+
+/obj/structure/lever/cursed/attack_hand(mob/user)
+    if(!istype(user, /mob/living))
+        return
+    var/mob/living/L = user
+    if(src.allowed_factions && (!L.faction || !length(src.allowed_factions & L.faction)))
+        to_chat(user, "<span class='danger'>A dark force repels your hand!</span>")
+        playsound(src, 'sound/magic/magic_nulled.ogg', 50)
+        return
+    . = ..()
+    icon_state = "leverwallred[toggled]"
+
+/obj/structure/lever/cursed/onkick(mob/user)
+    if(!istype(user, /mob/living))
+        return
+    var/mob/living/L = user
+    if(src.allowed_factions && (!L.faction || !length(src.allowed_factions & L.faction)))
+        to_chat(user, "<span class='danger'>A dark force repels your kick!</span>")
+        playsound(src, 'sound/magic/magic_nulled.ogg', 50)
+        return
+    . = ..()
+    icon_state = "leverwallred[toggled]"

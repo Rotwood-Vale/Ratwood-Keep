@@ -17,6 +17,7 @@
 	min_pq = 0
 	max_pq = null
 	announce_latejoin = FALSE
+	allowed_maps = list("Rockhill")
 
 /datum/outfit/job/roguetown/goblinrabble
 	allowed_patrons = list(/datum/patron/inhumen/graggar)
