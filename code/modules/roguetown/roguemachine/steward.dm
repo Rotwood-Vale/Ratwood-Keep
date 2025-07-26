@@ -24,6 +24,7 @@
 	var/list/excluded_jobs = list("Wretch","Vagabond","Adventurer")
 	var/current_category = "Raw Materials"
 	var/list/categories = list("Raw Materials", "Foodstuffs", "Fruits")
+	var/created_by_kit = FALSE
 
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)

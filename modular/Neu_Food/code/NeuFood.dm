@@ -5,6 +5,18 @@
  *						*
  * * * * * * * * * * * **/
 
+/datum/platter_sprites/
+	var/list/check_sprite = list(
+		/obj/item/reagent_containers/food/snacks/rogue/bun_grenz = "grenzbun_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian = "omelette_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/frybirdtato = "frybirdtato_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/friedrat = "cookedrat_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked = "roastchicken_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/peppersteak = "peppersteak_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienercabbage = "wienercabbage_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienerpotato = "wienerpotato_platter",
+		/obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions = "wpotonion_platter",
+	)
 
 /*	........   Templates / Base items   ................ */
 /obj/item/reagent_containers // added vars used in neu cooking, might be used for other things too in the future. How it works is in each items attackby code.
