@@ -25,12 +25,12 @@
 	created_item = /obj/item/rogueweapon/sword/iron/messer
 
 /datum/anvil_recipe/weapons/iron/idagger
-	name = "Iron Dagger"
+	name = "Dagger"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/rogueweapon/huntingknife/idagger
 
 /datum/anvil_recipe/weapons/iron/misericorde
-	name = "Misericorde (+1 iron)"
+	name = "Misericorde (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/misericorde
@@ -71,7 +71,7 @@
 	created_item = /obj/item/rogueweapon/spear
 
 /datum/anvil_recipe/weapons/iron/bardiche
-	name = "Bardiche (+1 Iron) (+1 Small Log)"
+	name = "Bardiche (+1 Iron, +1 Small Log)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd/bardiche
@@ -104,7 +104,7 @@
 	created_item = /obj/item/rogueweapon/sword/iron/messer/steel
 
 /datum/anvil_recipe/weapons/steel/sdagger
-	name = "Steel Dagger"
+	name = "Dagger"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel
 
@@ -203,7 +203,7 @@
 	created_item = /obj/item/rogueweapon/greatsword
 
 /datum/anvil_recipe/weapons/steel/lucerne
-	name = "Lucerne (+1 Steel) (+1 Small Log)"
+	name = "Lucerne (+1 Steel, +1 Small Log)"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak/lucerne
@@ -221,13 +221,13 @@
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 
 /datum/anvil_recipe/weapons/steel/halberd
-	name = "Halberd (+1 Steel) (+1 Small Log)"
+	name = "Halberd (+1 Steel, +1 Small Log)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/halberd
 
 /datum/anvil_recipe/weapons/steel/eaglebeak
-	name = "Eagle's Beak (+1 Steel) (+1 Small Log)"
+	name = "Eagle's Beak (+1 Steel, +1 Small Log)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/eaglebeak
@@ -239,7 +239,7 @@
 	created_item = /obj/item/rogueweapon/mace/goden/steel
 
 /datum/anvil_recipe/weapons/steel/execution
-	name = "Execution Sword (+ 1 Steel) (+1 Iron)"
+	name = "Execution Sword (+ 1 Steel, +1 Iron)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/sword/long/exe
@@ -254,7 +254,7 @@
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 
 /datum/anvil_recipe/weapons/silver/elfsaber
-	name = "Elvish Saber"
+	name = "Elvish Saber (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/sabre/elf
@@ -308,7 +308,7 @@
 	skill_level = 5
 
 /datum/anvil_recipe/weapons/terminus
-	name = "Terminus Est (+1 Gold Bar) (+1 Steel) (+1 Rontz)"
+	name = "Terminus Est (+1 Gold, +1 Steel, +1 Rontz)"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
@@ -323,7 +323,7 @@
 	skill_level = 2
 
 /datum/anvil_recipe/weapons/bronze/spear
-	name = "Bronze Spear (+1 Bronze) (+1 Small Log)"
+	name = "Spear (+1 Bronze, +1 Small Log)"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/bronze
@@ -332,7 +332,7 @@
 
 /// SHIELDS
 /datum/anvil_recipe/weapons/steel/kiteshield
-	name = "Heraldic Shield (+1 Steel) (+1 Cured Leather)"
+	name = "Heraldic Shield (+1 Steel, +1 Cured Leather)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
@@ -384,7 +384,7 @@
 	skill_level = 3
 
 /datum/anvil_recipe/ammo/arrows
-	name = "Arrows 20x"
+	name = "Arrows 20x (+1 Iron, +2 Small Log)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
@@ -412,7 +412,7 @@
 	skill_level = 3
 
 /datum/anvil_recipe/ammo/bolts
-	name = "Bolts 20x"
+	name = "Bolts 20x (+1 Iron, +2 Small Log)"
 	appro_skill = /datum/skill/craft/blacksmithing
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)

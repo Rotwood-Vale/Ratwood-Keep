@@ -4,13 +4,13 @@
 	skill_level = 4
 
 /datum/anvil_recipe/valuables/special/ringf
-	name = "flame ring (+1 Fat, +1 stone, +1 Fiber)"
+	name = "Flame Ring (+1 Fat, +1 Stone, +1 Fiber)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/ring/lantern
 	additional_items = list(/obj/item/reagent_containers/food/snacks/fat, /obj/item/natural/stone, /obj/item/natural/fibers)
 
 /datum/anvil_recipe/valuables/special/ringp
-	name = "blessed ring (+1 Psicross)"
+	name = "Blessed Ring (+1 Psicross)"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/ringP
 	additional_items = list(/obj/item/clothing/neck/roguetown/psicross)
