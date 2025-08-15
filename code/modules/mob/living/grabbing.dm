@@ -188,7 +188,7 @@
 			if(usr.buckled)
 				to_chat(user, span_warning("I can't be riding a mount."))
 				return
-			else
+			if(can_be_tackled(M,user))
 				user.stamina_add(rand(5,15))
 				if(prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.visible_message(span_danger("[user] shoves [M] to the ground!"), \
@@ -197,6 +197,8 @@
 				else
 					M.visible_message(span_warning("[user] tries to shove [M]!"), \
 									span_danger("[user] tries to shove me!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
+			else
+				to_chat(user, span_warning("I can't shove them down from this angle while they're armed."))
 		if(/datum/intent/grab/disarm)
 			var/obj/item/I
 			if(sublimb_grabbed == BODY_ZONE_PRECISE_L_HAND && M.active_hand_index == 1)
@@ -207,7 +209,7 @@
 				else
 					I = M.get_inactive_held_item()
 			user.stamina_add(rand(3,8))
-			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
+			var/probby = clamp((((4.5 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
 			if(I)
 				if(M.mind)
 					if(I.associated_skill)
@@ -237,6 +239,25 @@
 			else
 				to_chat(user, span_warning("They aren't holding anything on that hand!"))
 				return
+
+/obj/item/grabbing/proc/can_be_tackled(mob/living/target,mob/living/grabber)
+	if(!target.cmode)		// If the target is not in combat mode, tackle without issue.
+		return TRUE
+
+	var/dir_to_target = get_dir(grabber, target)	// Allow tackle if from the back.
+	if(target.dir == dir_to_target)
+		return TRUE
+
+	var/obj/item/weapon = target.get_active_held_item()	// Otherwise, check what the target is holding.
+	if(!weapon)
+		return TRUE // unarmed, nothing to prevent tackle
+	if(istype(weapon,/obj/item/rogueweapon/shield))	// holding a shield prevents tackling
+		return FALSE
+
+	if(weapon.wlength == WLENGTH_SHORT)	// holding a small weapon does not block tackle
+		return TRUE
+	else
+		return FALSE // opponent armed, facing you and ready.
 
 
 /obj/item/grabbing/proc/twistlimb(mob/living/user) //implies limb_grabbed and sublimb are things
