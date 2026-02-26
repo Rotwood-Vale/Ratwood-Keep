@@ -307,6 +307,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
+	var/obj/item/woodstaff = new /obj/item/rogueweapon/woodstaff(get_turf(H))
+	H.put_in_hands(woodstaff, forced = TRUE)
 	if(!H.wear_mask)
 		H.equip_to_slot_or_del(new /obj/item/clothing/glasses/blindfold(H), SLOT_WEAR_MASK)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)

@@ -122,12 +122,18 @@
 			GLOB.footstep[T.footstep][2],
 			FALSE,
 			GLOB.footstep[T.footstep][3] + e_range)
+		if(ismob(parent) || isobj(parent))
+			var/dir = H.dir
+			show_sensory_effect(parent, 5, "footstep", dir, ignore_self = TRUE)
 //	if(!islamia(H))
 	else
 		//SANITY CHECK, WILL NOT PLAY A SOUND IF THE LIST IS INVALID
 		if(!GLOB.barefootstep[T.barefootstep] || (LAZYLEN(GLOB.barefootstep[T.barefootstep]) < 3))
 			testing("SOME silly guy GAVE AN INVALID BAREFOOTSTEP VALUE ([T.barefootstep]) TO [T.type]!!! FIX THIS SHIT!!!")
 			return
+		if(ismob(parent) || isobj(parent))
+			var/dir = H.dir
+			show_sensory_effect(parent, 5, "footstep", dir, ignore_self = TRUE)
 		if(!islamia(H))
 			used_footsteps = GLOB.barefootstep[T.barefootstep][1]
 			used_footsteps = used_footsteps.Copy()
@@ -141,6 +147,7 @@
 				GLOB.barefootstep[T.barefootstep][2],
 				TRUE,
 				GLOB.barefootstep[T.barefootstep][3] + e_range)
+
 		else
 			used_footsteps = list(
 				'sound/foley/footsteps/lamia_slither (1).ogg',

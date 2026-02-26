@@ -68,6 +68,7 @@
 		shake_camera(user, recoil + 1, recoil)
 
 	playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
+	show_sensory_effect(user, 5, "gunfire", user.dir)
 	if(message)
 		user.visible_message("<span class='danger'>[user] shoots [src]!</span>", \
 						"<span class='danger'>I shoot [src]!</span>", \
